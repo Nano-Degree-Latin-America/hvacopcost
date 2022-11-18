@@ -1,0 +1,183 @@
+<?php
+
+namespace App\Http\Controllers;
+use DateTime;
+use DB;
+use Illuminate\Support\Facades\Storage;
+use Input;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\EmpresasModel;
+use App\SucursalesModel;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use App\User;
+class EmpresasController extends Controller
+{
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+
+        $empresas = DB::table('empresas')
+        ->join('users','users.id','=','empresas.id_user')
+        ->select('empresas.*','users.name as name_user')
+        ->get();
+
+        return view('empresas.index',["empresas"=>$empresas]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('empresas.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $empresa_p = new EmpresasModel;
+        $empresa_p->name = $request->get('nombre');
+        $empresa_p->email = $request->get('email');
+        $empresa_p->contacto = $request->get('contacto');
+        $empresa_p->direccion = $request->get('direccion');
+        $empresa_p->telefono = $request->get('telefono');
+        $empresa_p->direccion =$request->get('direccion');
+        $empresa_p->codigo_postal = $request->get('codigo_postal');
+        $empresa_p->ciudad =$request->get('ciudad');
+        $empresa_p->pais = $request->get('pais');
+        $empresa_p->datos_factura = $request->get('datos_factura');
+        $empresa_p->id_user =Auth::user()->id;
+        $empresa_p->status = 1;
+        $empresa_p->save();
+        if ($empresa_p->save()){
+            $user = new User;
+            $user->name = "user -".$request->get('nombre');
+            $user->email = $request->get('email');
+            $user->password = Hash::make('12345678');
+            $user->id_user =Auth::user()->id;
+            $user->tipo_user = 1;
+            $user->status = 1;
+            $user->save();
+
+            $sucursal = new SucursalesModel;
+            $sucursal->name = $empresa_p->name;
+            $sucursal->email = $empresa_p->email;
+            $sucursal->numero_fiscal = $empresa_p->datos_factura;
+            $sucursal->telefono = $empresa_p->telefono;
+            $sucursal->direccion = $empresa_p->direccion;
+            $sucursal->codigo_postal = $empresa_p->codigo_postal;
+            $sucursal->ciudad = $empresa_p->ciudad;
+            $sucursal->id_empresa = $empresa_p->id;
+            $sucursal->id_user =Auth::user()->id;
+            $sucursal->status = 1;
+            $sucursal->save();
+            if ($sucursal->save()){
+                $user_upate = User::find($user->id);
+                $user_upate->id_empresa = $sucursal->id;
+                $user_upate->update();
+                return redirect('/empresas');
+            }else{
+                return false;
+            }
+
+        }else{
+            return false;
+        }
+
+
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+
+        $empresa = DB::table('empresas')
+        ->where('empresas.id','=',$id)
+        ->first();
+        return view('empresas.edit',['empresa'=>$empresa]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $empresa_p = EmpresasModel::where('id',$id)->first();
+        $empresa_p->name = $request->get('nombre');
+        $empresa_p->email = $request->get('email');
+        $empresa_p->contacto = $request->get('contacto');
+        $empresa_p->direccion = $request->get('direccion');
+        $empresa_p->telefono = $request->get('telefono');
+        $empresa_p->direccion =$request->get('direccion');
+        $empresa_p->codigo_postal = $request->get('codigo_postal');
+        $empresa_p->ciudad =$request->get('ciudad');
+        $empresa_p->pais = $request->get('pais');
+        $empresa_p->datos_factura = $request->get('datos_factura');
+        $empresa_p->id_user =Auth::user()->id;
+        $empresa_p->status = 1;
+        $empresa_p->update();
+        if ($empresa_p->update()){
+            return redirect('empresas');
+        }else{
+            return false;
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $empresa_p= EmpresasModel::find($id);
+        $empresa_p->status=2;
+        $empresa_p->update();
+        if( $empresa_p->update()){
+
+        }else{
+            return false;
+        }
+
+    }
+}
