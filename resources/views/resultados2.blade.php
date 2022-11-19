@@ -2880,6 +2880,10 @@ span{
                                                             @if ($unid_med_1 === "")
                                                              <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} {{$unid_med_1}} </p>
                                                             @endif
+
+                                                            <div class="grid justify-center">
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_1)}}</p>
+                                                            </div>
                                                         </div>
 
 
@@ -2918,6 +2922,10 @@ span{
                                                             @if ($unid_med_2 === "")
                                                             <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}} {{$unid_med_2}} </p>
                                                             @endif
+
+                                                            <div class="grid justify-center">
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_2)}}</p>
+                                                            </div>
                                                         </div>
 
 
@@ -2955,6 +2963,10 @@ span{
                                                             @if ($unid_med_3 === "")
                                                             <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} {{$unid_med_3}} </p>
                                                             @endif
+
+                                                            <div class="grid justify-center">
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_3)}}</p>
+                                                            </div>
                                                         </div>
 
 
