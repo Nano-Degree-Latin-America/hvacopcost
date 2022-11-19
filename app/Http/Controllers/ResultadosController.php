@@ -1417,7 +1417,7 @@ class ResultadosController extends Controller
         ->select('solutions_project.val_aprox')
         ->first()->val_aprox;
 
-        $invs_rest =$inv_ini_ba - $inv_ini_a;
+        $invs_rest = $inv_ini_a - $inv_ini_ba;
 
       /*   (((dif_1 * yrs) – $invs_rest )/ $invs_rest) *100 */
 
