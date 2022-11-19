@@ -87,7 +87,7 @@ class ResultadosController extends Controller
                 $solution_enf1->name_disenio=$request->get('name_diseno_1_1');
                 $solution_enf1->name_t_control=$request->get('name_t_control_1_1');
                 $solution_enf1->dr_name=$request->get('dr_name_1_1');
-                $solution_enf1->inv_ini=$request->get('inv_ini_1_1');
+
                 $solution_enf1->dr	=$request->get('dr_1_1');
                 $solution_enf1->mantenimiento	=$request->get('csMantenimiento');
                 $solution_enf1->val_aprox	=$request->get('cheValorS_1_1');
@@ -436,7 +436,7 @@ class ResultadosController extends Controller
                 $solution_enf2_1->status=1;
                 $solution_enf2_1->id_empresa=Auth::user()->id_empresa;
                 $solution_enf2_1->id_user=Auth::user()->id;
-                $solution_enf2_1->inv_ini=$request->get('inv_ini_2_1');
+
 
                 $cooling_hrs =  $solution_enf2_1->coolings_hours;
                 $cost_energ =  $solution_enf2_1->costo_elec;
@@ -760,7 +760,7 @@ class ResultadosController extends Controller
                  $solution_enf3_1->name_disenio=$request->get('name_diseno_3_1');
                  $solution_enf3_1->name_t_control=$request->get('name_t_control_3_1');
                  $solution_enf3_1->dr_name=$request->get('dr_name_3_1');
-                 $solution_enf3_1->inv_ini=$request->get('inv_ini_3_1');
+
                  $solution_enf3_1->costo_elec=floatval($request->get('costo_elec_3_1'));
                  $solution_enf3_1->coolings_hours=$request->get('hrsEnfriado_3_1');
                  $solution_enf3_1->eficencia_ene=$request->get('csStd2_3_1');
@@ -1214,9 +1214,9 @@ class ResultadosController extends Controller
         $inv_ini = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id)
         ->where('solutions_project.num_enf','=',$num_enf)
-        ->select('solutions_project.inv_ini')
+        ->select('solutions_project.val_aprox')
         ->first();
-        return $inv_ini->inv_ini;
+        return $inv_ini->val_aprox;
     }
 
     public function dif_1($id,$count,$cost_elec){
@@ -1254,6 +1254,40 @@ class ResultadosController extends Controller
                 }
     }
 
+    public function dif_1_cost($id,$count,$cost_elec){
+        $sols = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id)
+        ->select('solutions_project.*')
+        ->get();
+
+
+
+                $num_1 = 0;
+                $num_2 = 0;
+                $num_3 = 0;
+                if($count == 2 || $count == 3){
+                    $res_1 = 0;
+                    $res_2 = 0;
+                    for ($i=0; $i < count($sols) ; $i++) {
+
+                        if($sols[$i]->num_enf == 1){
+
+                            $res_1 = $res_1 + $sols[$i]->cost_op_an;
+                            $num_1 = $res_1;
+                        }
+
+                        if($sols[$i]->num_enf == 2){
+
+                            $res_2 = $res_2 + $sols[$i]->cost_op_an;
+                            $num_2 = $res_2;
+                        }
+
+                    }
+                    $res = $num_1 - $num_2;
+                    return $res;
+                }
+    }
+
     public function dif_2($id,$count,$cost_elec){
         $sols = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id)
@@ -1285,6 +1319,40 @@ class ResultadosController extends Controller
                     $res = $num_1 - $num_3;
                     $dif = $res / $cost_elec;
                     return $dif;
+                }
+    }
+
+    public function dif_2_cost($id,$count,$cost_elec){
+        $sols = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id)
+        ->select('solutions_project.*')
+        ->get();
+
+
+                $num_1 = 0;
+                $num_2 = 0;
+                $num_3 = 0;
+                if($count == 3){
+                    $res_1 = 0;
+                    $res_3 = 0;
+                    for ($i=0; $i < count($sols) ; $i++) {
+                        $costoelec=$sols[$i]->costo_elec;
+                        if($sols[$i]->num_enf == 1){
+
+                            $res_1 = $res_1 + $sols[$i]->cost_op_an;
+                            $num_1 = $res_1;
+                        }
+
+                        if($sols[$i]->num_enf == 3){
+
+                            $res_3 = $res_3 + $sols[$i]->cost_op_an;
+                            $num_3 = $res_3;
+                        }
+
+                    }
+                    $res = $num_1 - $num_3;
+
+                    return $res;
                 }
     }
 
@@ -1325,8 +1393,8 @@ class ResultadosController extends Controller
         $inv_ini = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id)
         ->where('solutions_project.num_enf','=',$num_enf)
-        ->select('solutions_project.inv_ini')
-        ->first()->inv_ini;
+        ->select('solutions_project.val_aprox')
+        ->first()->val_aprox;
 
         $area = DB::table('projects')
         ->where('projects.id','=',$id)
@@ -1340,18 +1408,18 @@ class ResultadosController extends Controller
         $inv_ini_ba = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id)
         ->where('solutions_project.num_enf','=',1)
-        ->select('solutions_project.inv_ini')
-        ->first()->inv_ini;
+        ->select('solutions_project.val_aprox')
+        ->first()->val_aprox;
 
         $inv_ini_a = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id)
         ->where('solutions_project.num_enf','=',$num_enf)
-        ->select('solutions_project.inv_ini')
-        ->first()->inv_ini;
+        ->select('solutions_project.val_aprox')
+        ->first()->val_aprox;
 
         $invs_rest = $inv_ini_a - $inv_ini_ba;
 
-      /*   (((dif_1 * 3) – $invs_rest )/ $invs_rest) *100 */
+      /*   (((dif_1 * yrs) – $invs_rest )/ $invs_rest) *100 */
 
         /* (dif_1 * 3) */
        $difx3= $dif_1 * $yrs;
@@ -1430,9 +1498,9 @@ class ResultadosController extends Controller
     public function valor_eui($sumaopex,$costo_elec,$area,$porcent_hvac,$energy_star,$unidad){
 
        /* Factor Consumo energia ////////////////////
-       ((52.9 * (10,000 * 10.764))/3.412) * (100% - 60%) */
+       ((eui-energystart * (area * 10.764))/3.412) * (100% - 60%) */
 
-       /* (10,000 * 10.764) */
+       /* (area * 10.764) */
         if($unidad == 'mc'){
             $area_x_fact_fts=$area*10.764;
             /* (52.9 * (10,000 * 10.764)) */
@@ -1462,6 +1530,17 @@ class ResultadosController extends Controller
         /* (((338,466/0.12) + 667,545))*3.412 ) */
         $sumaopex_div_area_mas_area_mul_3 = $sumaopex_div_area_mas_area * 3.412;
 
-        return $sumaopex_div_area_mas_area_mul_3;
+
+        /* (area * 10.764) */
+        if($unidad == 'mc'){
+            $area_x_fact_fts_opex=$area*10.764;
+        }
+
+        if($unidad == 'ft'){
+            $area_x_fact_fts_opex = $area;
+        }
+
+        $res =  $sumaopex_div_area_mas_area_mul_3 / $area_x_fact_fts_opex;
+        return $res;
     }
 }

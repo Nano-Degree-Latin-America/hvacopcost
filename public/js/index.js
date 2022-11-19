@@ -1429,6 +1429,35 @@ function cap_term_change(value){
 
 }
 
+function asign_cos_ele(value){
+    if(value === '0'){
+        $('#costo_elec_1_2').val('');
+        $('#costo_elec_1_3').val('');
+
+        $('#costo_elec_2_1').val('');
+        $('#costo_elec_2_2').val('');
+        $('#costo_elec_2_3').val('');
+
+        $('#costo_elec_3_1').val('');
+        $('#costo_elec_3_2').val('');
+        $('#costo_elec_3_3').val('');
+    }
+
+    if(value !== '0'){
+        $('#costo_elec_1_2').val(value);
+        $('#costo_elec_1_3').val(value);
+
+        $('#costo_elec_2_1').val(value);
+        $('#costo_elec_2_2').val(value);
+        $('#costo_elec_2_3').val(value);
+
+        $('#costo_elec_3_1').val(value);
+        $('#costo_elec_3_2').val(value);
+        $('#costo_elec_3_3').val(value);
+    }
+
+}
+
 function set_porcent_hvac(value){
     $.ajax({
         type: 'get',
