@@ -2734,9 +2734,97 @@ span{
                                     <label class="font-bold text-white text-2xl font-roboto text-4xl">ANÁLISIS DE LA INTENSIDAD DEL USO DE LA ENERGÍA (EUI)</label>
                                 </div>
 
+                                <div class="w-full flex justify-center m-1 " >
+                                    <div class="flex w-1/3 justify-start">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 15)}} </label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-1/4  justify-start">
+                                        <div class="mr-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">País:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->region}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-1/3  justify-start">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-1/3  justify-start">
+                                        <div class="mr-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Categoría Edificio:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->cad_edi}}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-1/5 justify-start">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Área:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->area}}
+                                                @if ($tar_ele->unidad == 'mc')
+                                                    m²
+                                                @endif
+
+                                                @if ($tar_ele->unidad == 'ft')
+                                                ft²
+                                                @endif
+                                        </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="w-full flex justify-start m-1" >
+                                    <div class="flex w-2/5  justify-start">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tipo Edificio:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->tipo_edi}}</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="flex w-auto justify-start">
+                                        <div class="ml-3">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Horas Enfriamiento Anual:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->coolings_hours}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-1/4 justify-start ml-10 pl-1">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Elécrtica:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <br>
+
+
+
                                     <div class="flex w-full justify-center">
                                         <label class="font-bold text-blue-900 text-2xl font-roboto text-4xl" for="">Oficinas (KBTU/sqf)</label>
                                     </div>
+
+
 
                                     <div class="flex w-full justify-center gap-x-3">
                                             <div class="flex w-1/2 justify-center text-[24px] m-1 gap-x-4">

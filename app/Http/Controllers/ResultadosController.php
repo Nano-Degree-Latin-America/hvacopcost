@@ -1510,6 +1510,7 @@ class ResultadosController extends Controller
         if($unidad == 'ft'){
             $area_x_e_star = $energy_star *  $area;
         }
+
        /*  ((52.9 * (10,000 * 10.764))/3.412) */
         $area_x_e_star_div_3 =  $area_x_e_star / 3.412;
 
@@ -1523,7 +1524,7 @@ class ResultadosController extends Controller
         /* ((((338,466/0.12) + 667,545))*3.412 )/(10,000 * 10.764) */
 
         /* (338,466/0.12) */
-        $sumaopex_div_area = $sumaopex / $area;
+        $sumaopex_div_area = $sumaopex / $costo_elec;
 
         /* ((338,466/0.12) + 667,545 */
         $sumaopex_div_area_mas_area = $sumaopex_div_area + $factor_consumo_e;
