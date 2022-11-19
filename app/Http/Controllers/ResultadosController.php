@@ -1363,10 +1363,6 @@ class ResultadosController extends Controller
         ->select('results_project.*')
         ->first();
 
-        if($result_1 == null){
-            $result_1 = null;
-        }
-
         return $result_1;
     }
 
@@ -1421,7 +1417,7 @@ class ResultadosController extends Controller
         ->select('solutions_project.val_aprox')
         ->first()->val_aprox;
 
-        $invs_rest = $inv_ini_a - $inv_ini_ba;
+        $invs_rest =$inv_ini_ba - $inv_ini_a;
 
       /*   (((dif_1 * yrs) – $invs_rest )/ $invs_rest) *100 */
 
