@@ -1363,6 +1363,10 @@ class ResultadosController extends Controller
         ->select('results_project.*')
         ->first();
 
+        if($result_1 == null){
+            $result_1 = null;
+        }
+
         return $result_1;
     }
 
