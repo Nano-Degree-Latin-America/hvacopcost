@@ -1049,8 +1049,11 @@ span{
                                                                 @endif
                                                             </div>
 
-                                                            <div class="grid justify-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_1)}}</p>
+                                                            <div class="grid justify-items-center">
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
+                                                               <div class="flex w-full justify-center">
+                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_1/$tar_ele->costo_elec)}}</p><b class="text-blue-800 font-bold text-3xl font-roboto mt-5">Kw/hr</b>
+                                                               </div>
                                                             </div>
 
                                                         </div>
@@ -1091,8 +1094,11 @@ span{
                                                                 @endif
                                                             </div>
 
-                                                            <div class="grid justify-center text-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_2)}}</p>
+                                                            <div class="grid justify-items-center">
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
+                                                               <div class="flex w-full justify-center">
+                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_2/$tar_ele->costo_elec)}}</p><b class="text-blue-800 font-bold text-3xl font-roboto mt-5">Kw/hr</b>
+                                                               </div>
                                                             </div>
 
                                                         </div>
@@ -1130,8 +1136,11 @@ span{
                                                                 @endif
                                                             </div>
 
-                                                            <div class="grid justify-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_3)}}</p>
+                                                            <div class="grid justify-items-center">
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
+                                                               <div class="flex w-full justify-center">
+                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_3/$tar_ele->costo_elec)}}</p><b class="text-blue-800 font-bold text-3xl font-roboto mt-5">Kw/hr</b>
+                                                               </div>
                                                             </div>
                                                         </div>
                                                 </div>
@@ -1308,14 +1317,14 @@ span{
                                                     <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b>
                                                     </div>
                                                     <div class="flex justify-center w-full">
-                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">${{number_format($dif_1)}} Kw/hr año</b>
+                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">{{number_format($dif_1)}} Kw/hr año</b>
                                                     </div>
                                                 </div>
 
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
                                                     <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b>
-                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">$0</b>
+                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl text-center">0 Kw/hr año</b>
                                                     </div>
                                                 </div>
                                                 @endif
@@ -1331,7 +1340,7 @@ span{
                                                             <b class="text-blue-800 mr-1 font-roboto text-2xl mt-3">Solución  Base v/s A </b>
                                                             </div>
                                                         <div class="flex justify-center w-full">
-                                                            <b class="text-[24px] text-green-500 font-roboto text-5xl">{{number_format($dif_1)}}</b><b class="text-3xl mt-3 text-green-500 font-roboto"> Kw/hr año</b>
+                                                            <b class="text-[24px] text-green-500 font-roboto text-5xl">{{number_format($dif_1)}}</b> <b class="text-3xl mt-3 text-green-500 font-roboto ml-1">Kw/hr año</b>
                                                         </div>
                                                     </div>
                                                     @endif
@@ -1342,7 +1351,7 @@ span{
                                                         <b class="text-blue-800 mr-1 font-roboto text-2xl mt-3">Solución  Base v/s B </b>
                                                         </div>
                                                         <div class="flex w-full justify-center">
-                                                            <b class="text-[24px] text-green-500 font-roboto text-5xl">${{number_format($dif_2)}}</b><b class="text-3xl mt-3 text-green-500 font-roboto"> Kw/hr año</b>
+                                                            <b class="text-[24px] text-green-500 font-roboto text-5xl">{{number_format($dif_2)}}</b> <b class="text-3xl mt-3 text-green-500 font-roboto ml-1">Kw/hr año</b>
                                                         </div>
                                                     </div>
                                                     @endif
@@ -1519,7 +1528,11 @@ span{
                                                                     </div>
 
                                                                     <div class="grid justify-center">
-                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Inversión Inicial</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($inv_ini_1)}}</p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Inversión Inicial</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($inv_ini_1)}}</p>
+                                                                    </div>
+
+                                                                    <div class="grid justify-center">
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($sumaopex_1)}}</p>
                                                                     </div>
 
                                                                 </div>
@@ -1539,7 +1552,7 @@ span{
                                                                     </div>
 
 
-                                                                    <div class="grid justify-center text-center">
+                                                                    <div class="grid justify-items-center text-center">
 
                                                                         @if ($result2 ==! null)
                                                                         <?php  $sumaopex_2=$smasolutions->sumaopex($id_project,$result2->num_enf) ?>
@@ -1554,16 +1567,20 @@ span{
                                                                         @endif
 
                                                                         @if ($unid_med_2 !== "")
-                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}} {{$unid_med_2->unid_med}} </p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_2}} {{$unid_med_2->unid_med}} </p>
                                                                         @endif
 
                                                                         @if ($unid_med_2 === "")
-                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}} {{$unid_med_2}} </p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_2}} {{$unid_med_2}} </p>
                                                                         @endif
                                                                     </div>
 
-                                                                    <div class="grid justify-center text-center">
-                                                                        <label class="font-bold font-roboto text-2xl mt-3">Inversión Inicial</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($inv_ini_2)}}</p>
+                                                                    <div class="grid justify-items-center text-center">
+                                                                        <label class="font-bold font-roboto text-2xl mt-3">Inversión Inicial</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($inv_ini_2)}}</p>
+                                                                    </div>
+
+                                                                    <div class="grid justify-items-center">
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto  text-center">$ {{number_format($sumaopex_2)}}</p>
                                                                     </div>
 
                                                                 </div>
@@ -1604,12 +1621,19 @@ span{
                                                                     </div>
 
                                                                     <div class="grid justify-center">
-                                                                        <label class="font-bold font-roboto text-2xl mt-3">Inversión Inicial</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($inv_ini_3)}}</p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Inversión Inicial</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($inv_ini_3)}}</p>
+                                                                    </div>
+
+                                                                    <div class="grid justify-center">
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($sumaopex_3)}}</p>
                                                                     </div>
                                                                 </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
+
+
                                     </div>
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
@@ -1767,8 +1791,9 @@ span{
                                             </div>
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    @if ( true == ( isset( $dif_1 ) ? $dif_1 : null ) )
-                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">{{number_format($dif_1/$inv_ini_2)}}</b>
+                                                    @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
+                                                    <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1_cost) ?>
+                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">{{number_format($pay_back_a,2)}}</b>
                                                  @else
                                                  <b class="text-[24px] text-green-500 font-roboto text-5xl">N/A</b>
                                                 @endif
@@ -1776,8 +1801,9 @@ span{
                                             </div>
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    @if ( true == ( isset( $dif_2 ) ? $dif_2 : null ) )
-                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">{{number_format($dif_2/$inv_ini_3)}}</b>
+                                                    @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
+                                                    <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_2_cost) ?>
+                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">{{number_format($pay_back_b,2)}}</b>
                                                  @else
                                                  <b class="text-[24px] text-green-500 font-roboto text-5xl">N/A</b>
                                                 @endif

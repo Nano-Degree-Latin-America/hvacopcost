@@ -231,23 +231,25 @@ span{
 
                                             <div class="grid w-1/2 justify-items-start ">
                                                 <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Nombre Projecto:</b> </label>
-                                                <input  name="name_pro" id="name_pro" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                <input onchange="buton_check()"  name="name_pro" id="name_pro" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                <span id="name_warning" name="name_warning" class="text-red-500"></span>
                                             </div>
 
                                             <div class="grid w-1/2 justify-items-start ">
                                                 <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Categoria Edificio:</b> </label>
-                                                <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value);set_porcent_hvac(this.value);"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1"></select>
+                                                <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value);set_porcent_hvac(this.value);buton_check()"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1"></select>
+                                                <span id="cat_ed_warning" name="cat_ed_warning" class="text-red-500"></span>
                                             </div>
 
                                             <div class="grid w-1/2 justify-items-start ">
                                                 <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Tipo Edificio:</b> </label>
-                                                <select class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio"></select>
+                                                <select onchange="buton_check()" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio"></select>
                                             </div>
 
                                             <div class="flex w-1/2 justify-start gap-x-3">
                                                <div class="grid w-1/2 justify-items-start">
                                                     <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Aréa:</b> </label>
-                                                    <input  name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                    <input  onchange="buton_check()" name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" >
                                                </div>
 
                                                <div class="grid w-1/2 justify-items-start">
@@ -276,21 +278,21 @@ span{
 
                                                 <div class="grid w-1/2 justify-items-start">
                                                     <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>País:</b> </label>
-                                                    <select class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises" id="paises">
+                                                    <select onchange="buton_check()" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises" id="paises">
                                                         <option value="0">-Selecciona tu país-</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="grid w-1/2 justify-items-start">
                                                     <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Ciudad:</b> </label>
-                                                    <select class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades" id="ciudades">
+                                                    <select onchange="buton_check()" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades" id="ciudades">
                                                         <option value="0">-Selecciona tu ciudad-</option>
                                                     </select>
                                                 </div>
 
                                                 <div class="grid w-1/2 justify-items-start">
-                                                    <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>% HVAC:</b> </label>
-                                                    <select class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
+                                                    <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>% HVAC en el Edificio:</b> </label>
+                                                    <select onchange="buton_check()" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                                         <option value="0">-Selecciona porcentaje-</option>
                                                     </select>
                                                 </div>
@@ -439,11 +441,10 @@ span{
                                                     </div>
                                                     <div class="flex w-full justify-start gap-x-2">
                                                         <div class="w-full">
-                                                            <input type="text"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="capacidad_total" id="capacidad_total" >
+                                                            <input type="text"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" name="capacidad_total" id="capacidad_total" >
                                                         </div>
                                                         <div class="w-full">
-                                                        <select class="w-full  border-2 border-blue-600 rounded-md py-2" onchange="cap_term_change(this.value);"  id="unidad_capacidad_tot" name="unidad_capacidad_tot">
-                                                            <option value="0">Seleccionar</option>
+                                                        <select class="w-full  border-2 border-blue-600 rounded-md py-2 text-center" onchange="cap_term_change(this.value);"  id="unidad_capacidad_tot" name="unidad_capacidad_tot">
                                                             <option value="TR">TR</option>
                                                             <option value="KW">KW</option>
                                                         </select>
@@ -461,7 +462,7 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
-                                                        <input id="costo_elec" name="costo_elec" onchange="asign_cos_ele(this.value);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                        <input id="costo_elec" name="costo_elec" onchange="asign_cos_ele(this.value);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
                                                     </div>
 
                                                 </div>
@@ -486,7 +487,7 @@ span{
                                                         </select>
                                                     </div>
                                                     <div class="flex justify-start w-1/4">
-                                                        <input name="csStd_cant_1_1" id="csStd_cant_1_1"  type="text" class="w-full border-2 border-blue-600 rounded-md">
+                                                        <input name="csStd_cant_1_1" id="csStd_cant_1_1"  type="text" class="text-center w-full border-2 border-blue-600 rounded-md">
                                                     </div>
                                                 </div>
 
@@ -545,7 +546,7 @@ span{
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start">
-                                                        <input class="w-full border-2 border-blue-600 rounded-md py-1"  step="0.01" name="cheValorS_1_1" id="cheValorS_1_1" >
+                                                        <input class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_1" id="cheValorS_1_1" >
                                                     </div>
                                                 </div>
 
@@ -620,10 +621,10 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
                                                     </div>
                                                     <div class="w-full">
-                                                        <input name="capacidad_total_1_2" id="capacidad_total_1_2" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2" >
+                                                        <input name="capacidad_total_1_2" id="capacidad_total_1_2" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
                                                     </div>
                                                     <div class="w-full">
-                                                        <input class="w-full h-full   border-2 border-blue-600 rounded-md py-2"  type="text" readonly name="unidad_capacidad_tot_1_2" id="unidad_capacidad_tot_1_2" >
+                                                        <input class="w-full h-full   border-2 border-blue-600 rounded-md py-2"  type="text" readonly name="unidad_capacidad_tot_1_2" id="unidad_capacidad_tot_1_2 text-center" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -634,7 +635,7 @@ span{
                                                         <label style="font-size: 14px; " class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
-                                                        <input id="costo_elec_1_2" name="costo_elec_1_2" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                        <input id="costo_elec_1_2" name="costo_elec_1_2" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                      </div>
                                                 </div>
 
@@ -644,7 +645,7 @@ span{
                                                     </div>
 
                                                     <div class="flex justify-start w-1/3">
-                                                        <input type="number" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1"  step="0.01" name="hrsEnfriado_1_2" id="hrsEnfriado_1_2">
+                                                        <input type="number" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_1_2" id="hrsEnfriado_1_2">
                                                     </div>
                                                 </div>
                                             </div>
@@ -661,7 +662,7 @@ span{
                                                         </div>
 
                                                         <div class="flex justify-start w-1/4">
-                                                            <input id="csStd_cant_1_2" name="csStd_cant_1_2" type="number"  step="0.5" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                            <input id="csStd_cant_1_2" name="csStd_cant_1_2" type="number"  step="0.5" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                         </div>
 
 
@@ -717,7 +718,7 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>CAPEX $ Aproximado</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
-                                                         <input class="w-full border-2 border-blue-600 rounded-md py-1"  step="0.01" name="cheValorS_1_2" id="cheValorS_1_2" >
+                                                         <input class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_2" id="cheValorS_1_2" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -788,10 +789,10 @@ span{
                                                     </div>
                                                     <div class="flex w-full justify-start gap-x-2">
                                                         <div class="w-full">
-                                                            <input type="text" style="font-size: 14px;" onkeypress="return soloNumeros(event)" class="w-full h-full border-2 border-blue-600 rounded-md py-1"  name="capacidad_total_1_3" id="capacidad_total_1_3">
+                                                            <input type="text" style="font-size: 14px;" onkeypress="return soloNumeros(event)" class="text-center w-full h-full border-2 border-blue-600 rounded-md py-1"  name="capacidad_total_1_3" id="capacidad_total_1_3">
                                                         </div>
                                                         <div class="w-full">
-                                                            <input class="w-full h-full border-2 border-blue-600 rounded-md py-1"  type="text" readonly name="unidad_capacidad_tot_1_3" id="unidad_capacidad_tot_1_3" >
+                                                            <input class="w-full h-full border-2 border-blue-600 rounded-md py-1 text-center"  type="text" readonly name="unidad_capacidad_tot_1_3" id="unidad_capacidad_tot_1_3" >
 
                                                         </div>
                                                     </div>
@@ -805,7 +806,7 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
-                                                     <input id="costo_elec_1_3" name="costo_elec_1_3" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1"><p style="font-size: 12px; margin:0px;"></p>
+                                                     <input id="costo_elec_1_3" name="costo_elec_1_3" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"><p style="font-size: 12px; margin:0px;"></p>
                                                     </div>
                                                  </div>
 
@@ -814,7 +815,7 @@ span{
                                                         <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                     </div>
                                                     <div class="flex justify-start w-1/3">
-                                                        <input type="number" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1"  step="0.01" name="hrsEnfriado_1_3" id="hrsEnfriado_1_3">
+                                                        <input type="number" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_1_3" id="hrsEnfriado_1_3">
                                                     </div>
                                                 </div>
                                              </div>
@@ -829,7 +830,7 @@ span{
                                                          </select>
                                                     </div>
                                                     <div class="flex justify-start w-1/4">
-                                                        <input type="number" id="csStd_cant_1_3" name="csStd_cant_1_3" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                        <input type="number" id="csStd_cant_1_3" name="csStd_cant_1_3" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                         </div>
                                                     </div>
 
@@ -888,7 +889,7 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>CAPEX $ Aproximado</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
-                                                         <input class="w-full border-2 border-blue-600 rounded-md py-1"  step="0.01" name="cheValorS_1_3" id="cheValorS_1_3" >
+                                                         <input class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_3" id="cheValorS_1_3" >
                                                     </div>
                                                 </div>
                                              </div>
@@ -1069,10 +1070,10 @@ span{
                                                             </div>
                                                             <div class="flex w-full justify-start gap-x-2">
                                                                 <div class="w-full">
-                                                                    <input name="capacidad_total_2_1" id="capacidad_total_2_1" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2" >
+                                                                    <input name="capacidad_total_2_1" id="capacidad_total_2_1" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-2" >
                                                                 </div>
                                                                 <div class="w-full">
-                                                                    <input type="text" class="w-full h-full border-2 border-blue-600 rounded-md py-2" readonly name="unidad_capacidad_tot_2_1" id="unidad_capacidad_tot_2_1" >
+                                                                    <input type="text" class="text-center w-full h-full border-2 border-blue-600 rounded-md py-2" readonly name="unidad_capacidad_tot_2_1" id="unidad_capacidad_tot_2_1" >
 
                                                                  </div>
                                                              </div>
@@ -1085,7 +1086,7 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                            <input name="costo_elec_2_1" id="costo_elec_2_1" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                            <input name="costo_elec_2_1" id="costo_elec_2_1" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                              </div>
                                                         </div>
 
@@ -1094,7 +1095,7 @@ span{
                                                                 <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-1/3">
-                                                                <input type="number" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1"  step="0.01" name="hrsEnfriado_2_1" id="hrsEnfriado_2_1" readonly>
+                                                                <input type="number" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_2_1" id="hrsEnfriado_2_1" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1109,7 +1110,7 @@ span{
                                                                 </select>
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
-                                                            <input step="0.5" name="csStd_cant_2_1" id="csStd_cant_2_1" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                            <input step="0.5" name="csStd_cant_2_1" id="csStd_cant_2_1" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1">
                                                             </div>
 
                                                         </div>
@@ -1162,7 +1163,7 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>CAPEX $ Aproximado</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <input class="w-full border-2 border-blue-600 rounded-md"  step="0.01" step="0.01" name="cheValorS_2_1" id="cheValorS_2_1" >
+                                                                <input class="w-full border-2 border-blue-600 rounded-md text-center"  step="0.01" step="0.01" name="cheValorS_2_1" id="cheValorS_2_1" >
                                                             </div>
                                                         </div>
 
@@ -1232,10 +1233,10 @@ span{
                                                         </div>
                                                         <div class="flex w-full justify-start gap-x-2">
                                                             <div class="w-full">
-                                                                <input id="capacidad_total_2_2" name="capacidad_total_2_2" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2" >
+                                                                <input id="capacidad_total_2_2" name="capacidad_total_2_2" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
                                                              </div>
                                                              <div class="w-full">
-                                                                <input class="w-full border-2 h-full border-blue-600 rounded-md py-2"  type="text" readonly name="unidad_capacidad_tot_2_2" id="unidad_capacidad_tot_2_2" >
+                                                                <input class="w-full border-2 h-full border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_2_2" id="unidad_capacidad_tot_2_2" >
                                                             </div>
                                                         </div>
 
@@ -1248,7 +1249,7 @@ span{
                                                             <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                        <input name="costo_elec_2_2" id="costo_elec_2_2" readonly  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                        <input name="costo_elec_2_2" id="costo_elec_2_2" readonly  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1">
                                                           </div>
                                                     </div>
 
@@ -1258,7 +1259,7 @@ span{
                                                             <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-1/3">
-                                                            <input type="number" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1"  step="0.01" name="hrsEnfriado_2_2" id="hrsEnfriado_2_2" readonly>
+                                                            <input type="number" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1"  step="0.01" name="hrsEnfriado_2_2" id="hrsEnfriado_2_2" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1273,7 +1274,7 @@ span{
                                                             </select>
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
-                                                            <input step="0.5" name="csStd_cant_2_2" id="csStd_cant_2_2" type="number" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                            <input  name="csStd_cant_2_2" id="csStd_cant_2_2" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                         </div>
                                                     </div>
 
@@ -1329,7 +1330,7 @@ span{
                                                             <label style="font-size: 14px;" class="" for=""><b>CAPEX $ Aproximado</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                            <input class="w-full border-2 border-blue-600 rounded-md py-1"   name="cheValorS_2_2" id="cheValorS_2_2" >
+                                                            <input class="w-full border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
                                                         </div>
                                                 </div>
                                                 </div>
@@ -1384,7 +1385,7 @@ span{
                                                             <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                            <select class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="send_name(this.id);" name="cheDisenio_2_3" id="cheDisenio_2_3">
+                                                            <select class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  onchange="send_name(this.id);" name="cheDisenio_2_3" id="cheDisenio_2_3">
 
                                                             </select>
                                                         </div>
@@ -1398,10 +1399,10 @@ span{
 
                                                         <div class="flex w-full justify-start gap-x-2">
                                                             <div class="w-full">
-                                                                <input  name="capacidad_total_2_3" id="capacidad_total_2_3" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2" >
+                                                                <input  name="capacidad_total_2_3" id="capacidad_total_2_3" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2  text-center" >
                                                             </div>
                                                             <div class="w-full">
-                                                                <input class="w-full h-full border-2 border-blue-600 rounded-md py-2"  type="text" readonly name="unidad_capacidad_tot_2_3" id="unidad_capacidad_tot_2_3" >
+                                                                <input class="w-full h-full border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_2_3" id="unidad_capacidad_tot_2_3" >
                                                             </div>
                                                         </div>
 
@@ -1414,7 +1415,7 @@ span{
                                                             <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                        <input name="costo_elec_2_3" id="costo_elec_2_3" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                        <input name="costo_elec_2_3" id="costo_elec_2_3" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                         </div>
                                                     </div>
 
@@ -1423,7 +1424,7 @@ span{
                                                             <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-1/3">
-                                                        <input type="number" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1"  step="0.01" name="hrsEnfriado_2_3" id="hrsEnfriado_2_3" readonly>
+                                                        <input type="number" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  name="hrsEnfriado_2_3" id="hrsEnfriado_2_3" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1438,7 +1439,7 @@ span{
                                                             </select>
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
-                                                        <input step="0.5" name="csStd_cant_2_3" id="csStd_cant_2_3" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                        <input step="0.5" name="csStd_cant_2_3" id="csStd_cant_2_3" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1  text-center">
                                                           </div>
                                                     </div>
 
@@ -1488,7 +1489,7 @@ span{
                                                             <label style="font-size: 14px;" class="" for=""><b>CAPEX $ Aproximado</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                            <input class="w-full border-2 border-blue-600 rounded-md py-1" name="cheValorS_2_3" id="cheValorS_2_3" >
+                                                            <input class="w-full border-2 border-blue-600 rounded-md py-1  text-center" name="cheValorS_2_3" id="cheValorS_2_3" >
                                                         </div>
                                                 </div>
                                                 </div>
@@ -1687,10 +1688,10 @@ span{
                                                             <div class="flex w-full justify-start gap-x-2">
                                                                 <div class="w-full">
 
-                                                                    <input id="capacidad_total_3_1" name="capacidad_total_3_1" type="text" onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md" >
+                                                                    <input id="capacidad_total_3_1" name="capacidad_total_3_1" type="text" onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md  text-center" >
                                                                 </div>
                                                                 <div class="w-full">
-                                                                    <input class="w-full h-full py-2 border-2 border-blue-600 rounded-md"  type="text" readonly name="unidad_capacidad_tot_3_1" id="unidad_capacidad_tot_3_1" >
+                                                                    <input class="w-full h-full py-2 border-2 border-blue-600 rounded-md text-center"  type="text" readonly name="unidad_capacidad_tot_3_1" id="unidad_capacidad_tot_3_1" >
 
                                                                 </div>
                                                             </div>
@@ -1704,7 +1705,7 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <input name="costo_elec_3_1" id="costo_elec_3_1" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0">
+                                                                <input name="costo_elec_3_1" id="costo_elec_3_1" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0  text-center">
                                                             </div>
                                                         </div>
 
@@ -1713,7 +1714,7 @@ span{
                                                                 <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-1/3">
-                                                                <input type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md"  step="0.01" name="hrsEnfriado_3_1" id="hrsEnfriado_3_1" readonly>
+                                                                <input type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md  text-center"  step="0.01" name="hrsEnfriado_3_1" id="hrsEnfriado_3_1" readonly>
 
                                                             </div>
                                                         </div>
@@ -1729,7 +1730,7 @@ span{
                                                                 </select>
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
-                                                             <input step="0.5" name="cheStd_3_1" id="cheStd_3_1" type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md">
+                                                             <input  name="cheStd_3_1" id="cheStd_3_1" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
                                                             </div>
                                                         </div>
 
@@ -1782,7 +1783,7 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>CAPEX $ Aproximado</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                 <input class="w-full border-2 border-blue-600 rounded-md py-1"  step="0.01" step="0.01" name="cheValorS_3_1" id="cheValorS_3_1" >
+                                                                 <input class="w-full border-2 border-blue-600 rounded-md py-1  text-center"  step="0.01" step="0.01" name="cheValorS_3_1" id="cheValorS_3_1" >
                                                                 </div>
                                                         </div>
 
@@ -1852,10 +1853,10 @@ span{
                                                         </div>
                                                         <div class="flex w-full justify-start gap-x-2">
                                                             <div class="w-full">
-                                                                <input id="capacidad_total_3_2" name="capacidad_total_3_2" type="text" onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md" >
+                                                                <input id="capacidad_total_3_2" name="capacidad_total_3_2" type="text" onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md  text-center" >
                                                             </div>
                                                             <div class="w-full">
-                                                                <input class="w-full py-2 h-full border-2 border-blue-600 rounded-md"  type="text" readonly name="unidad_capacidad_tot_3_2" id="unidad_capacidad_tot_3_2" >
+                                                                <input class="w-full py-2 h-full border-2 border-blue-600 rounded-md  text-center"  type="text" readonly name="unidad_capacidad_tot_3_2" id="unidad_capacidad_tot_3_2" >
 
                                                             </div>
                                                         </div>
@@ -1869,7 +1870,7 @@ span{
                                                             <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                            <input name="costo_elec_3_2" id="costo_elec_3_2" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0">
+                                                            <input name="costo_elec_3_2" id="costo_elec_3_2" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0  text-center">
                                                         </div>
                                                     </div>
 
@@ -1878,7 +1879,7 @@ span{
                                                             <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-1/3">
-                                                            <input type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md"  step="0.01" name="hrsEnfriado_3_2" id="hrsEnfriado_3_2" readonly>
+                                                            <input type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md  text-center"  step="0.01" name="hrsEnfriado_3_2" id="hrsEnfriado_3_2" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1893,7 +1894,7 @@ span{
                                                             </select>
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
-                                                            <input step="0.5" name="csStd_cant_3_2" id="csStd_cant_3_2" type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md">
+                                                            <input step="0.5" name="csStd_cant_3_2" id="csStd_cant_3_2" type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md  text-center">
                                                         </div>
                                                     </div>
 
@@ -1947,7 +1948,7 @@ span{
                                                             <label style="font-size: 14px;" class="" for=""><b>CAPEX $ Aproximado</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                             <input class="w-full border-2 border-blue-600 rounded-md py-1" name="cheValorS2_3_2" id="cheValorS2_3_2" >
+                                                             <input class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS2_3_2" id="cheValorS2_3_2" >
                                                         </div>
                                                 </div>
                                                 </div>
@@ -2015,10 +2016,10 @@ span{
                                                             <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
                                                         </div>
                                                         <div class="w-full">
-                                                         <input name="capacidad_total_3_3" id="capacidad_total_3_3" type="text" onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md h-full" >
+                                                         <input name="capacidad_total_3_3" id="capacidad_total_3_3" type="text" onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md h-full text-center" >
                                                         </div>
                                                         <div class="w-full">
-                                                            <input readonly  type="text" class="w-full h-full py-2 border-2 border-blue-600 rounded-md" name="unidad_capacidad_tot_3_3" id="unidad_capacidad_tot_3_3" >
+                                                            <input readonly  type="text" class="w-full h-full py-2 border-2 border-blue-600 rounded-md text-center" name="unidad_capacidad_tot_3_3" id="unidad_capacidad_tot_3_3" >
 
                                                         </div>
                                                     </div>
@@ -2030,7 +2031,7 @@ span{
                                                             <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                         <input name="costo_elec_3_3"  onkeypress="return soloNumeros(event)" readonly id="costo_elec_3_3" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0">
+                                                         <input name="costo_elec_3_3"  onkeypress="return soloNumeros(event)" readonly id="costo_elec_3_3" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0 text-center">
                                                         </div>
                                                     </div>
 
@@ -2039,7 +2040,7 @@ span{
                                                             <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-1/3">
-                                                            <input type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md"  step="0.01" name="hrsEnfriado_3_3" id="hrsEnfriado_3_3" readonly>
+                                                            <input type="number" style="font-size: 14px;" class="text-center w-full py-1 border-2 border-blue-600 rounded-md"  step="0.01" name="hrsEnfriado_3_3" id="hrsEnfriado_3_3" readonly>
                                                         </div>
 
                                                     </div>
@@ -2055,7 +2056,7 @@ span{
                                                             </select>
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
-                                                         <input step="0.5" name="cheStd_3_3" id="cheStd_3_3" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                         <input step="0.5" name="cheStd_3_3" id="cheStd_3_3" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                         </div>
                                                     </div>
 
@@ -2105,7 +2106,7 @@ span{
                                                             <label style="font-size: 14px;" class="" for=""><b>CAPEX $ Aproximado</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                            <input class="w-full border-2 border-blue-600 rounded-md py-1" name="cheValorS_3_3" id="cheValorS_3_3" >
+                                                            <input class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_3_3" id="cheValorS_3_3" >
                                                         </div>
                                                 </div>
                                                 </div>
@@ -2122,17 +2123,19 @@ span{
                             </div>
 
 
-                            <div class="clearfix"></div>
-                            <hr style="width: 100%; margin-top:60px;">
+                            <div class="clearfix">
+                                <div class="my-5 gap-x-3">
+                                    {{--   <input type="file" id="file" name="file"> --}}
+                                      <button  type="button" name="calcular" id="calcular" onclick="check_form_submit();"  class="btn btn-primary font-roboto">Calcular</button>
+                                      <a class="btn btn-secondary font-roboto" id="btn-reset">Reset</a>
+                                  </div>
+                            </div>
+
                            {{--  <div class="banner banner-giga" style="width: 80%">
                                 <a href="https://www.desprosoft.com/" target="_blank"><img src="{{asset('assets/images/banners/desprosoft.jpg')}}" alt="Desprosoft"></a>
                                 <span class="lbl-banner hidden">Visitar</span>
                             </div> --}}
-                            <div class="bloque mb-3">
-                              {{--   <input type="file" id="file" name="file"> --}}
-                                <button  type="button" name="calcular" id="calcular" onclick="check_form_submit();"  class="btn btn-primary font-roboto">Calcular</button>
-                                <a class="btn btn-secondary font-roboto" id="btn-reset">Reset</a>
-                            </div>
+
 
 
                         </form>
@@ -2158,7 +2161,7 @@ span{
                 </div>
 
                 <div class="w-1/2 text-right">
-                    <button
+                    <button  onclick="check_form_project()" id="next" name="next"
                         x-show="step < 2"
                         @click="step++"
                         class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"

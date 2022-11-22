@@ -1,10 +1,12 @@
 // var sc = require('state-cities-db');
 
 $(document).ready(function () {
+    cap_term_change('TR');
     $('#pais').val($('#paises option:selected').text());
     $('#ciudad').val($('#ciudades option:selected').text());
     getPaises();
     traer_categorias_edif();
+    $('#next').prop( "disabled", true );
     //selecciona pais -> pinta ciudades de ese pais en el select
     $('#paises').on('change', function () {
         getCiudades($('#paises').val());
@@ -1484,4 +1486,27 @@ function set_porcent_hvac(value){
         }
     });
 
+}
+
+function check_form_project(){
+
+
+
+}
+
+function buton_check(){
+    var name =  $('#name_pro');
+    var cat_ed =  $('#cat_ed');
+  var tipo_edificio =  $('#tipo_edificio');
+    var ar_project =  $('#ar_project');
+   var paises =  $('#paises');
+   var ciudades =  $('#ciudades');
+  var porcent_hvac =  $('#porcent_hvac');
+
+
+
+
+    if (name.val() !== '' && cat_ed.val() !== '0' && tipo_edificio.val() !== '0' && ar_project.val() !== '' && paises.val() !== '0' && ciudades.val() !== '0' && porcent_hvac.val() !== '0') {
+        $('#next').prop( "disabled", false );
+    }
 }

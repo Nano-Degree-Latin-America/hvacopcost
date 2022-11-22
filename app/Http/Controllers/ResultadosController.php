@@ -1544,4 +1544,12 @@ class ResultadosController extends Controller
         $res =  $sumaopex_div_area_mas_area_mul_3 / $area_x_fact_fts_opex;
         return $res;
     }
+
+    public function pay_back($inv_ini_1,$inv_ini_x,$dif_cost){
+        /* $(inv_ini_x-$inv_ini_1)/dif_cost)*/
+        /* (inv_ini_x-$inv_ini_1) */
+        $par_1 = $inv_ini_x-$inv_ini_1;
+        $res = $par_1 / $dif_cost;
+        return $res;
+    }
 }
