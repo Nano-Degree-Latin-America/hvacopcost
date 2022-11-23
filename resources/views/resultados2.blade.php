@@ -1371,11 +1371,11 @@ span{
 
 
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b><b class="text-[24px] text-green-500 font-roboto text-5xl">$0</b>
+                                                <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b><b class="text-[24px] text-green-500 font-roboto text-5xl">0 Kw/hr año</b>
                                                 </div>
 
                                                     <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b><b class="text-[24px] text-green-500 font-roboto text-5xl">$0</b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b><b class="text-[24px] text-green-500 font-roboto text-5xl">0 Kw/hr año</b>
                                                     </div>
                                             </div>
                                              @endforeach
@@ -1669,7 +1669,7 @@ span{
                                                     @endif
 
                                                     @if ($result2===null)
-                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">$ 0</b>
+                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">0 / {{$uni_med3 = ($unidad_area == 'mc') ? 'm²' : 'ft²'}}</b>
                                                     @endif
                                                 </div>
                                             </div>
@@ -1684,7 +1684,7 @@ span{
                                                     @endif
 
                                                     @if ($result3===null)
-                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">$ 0</b>
+                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">0 / {{$uni_med3 = ($unidad_area == 'mc') ? 'm²' : 'ft²'}}</b>
                                                     @endif
                                                 </div>
                                             </div>
