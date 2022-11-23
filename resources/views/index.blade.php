@@ -230,32 +230,44 @@ span{
                                         <div class="grid gap-y-2 my-2 mx-1">
 
                                             <div class="grid w-1/2 justify-items-start ">
-                                                <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Nombre Projecto:</b> </label>
-                                                <input onchange="buton_check()"  name="name_pro" id="name_pro" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                    <div class="flex w-full">
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Nombre Projecto</b></label><label class="text-red-500">*</label>
+                                                    </div>
+                                                <input  name="name_pro" id="name_pro" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
                                                 <span id="name_warning" name="name_warning" class="text-red-500"></span>
                                             </div>
 
                                             <div class="grid w-1/2 justify-items-start ">
-                                                <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Categoria Edificio:</b> </label>
-                                                <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value);set_porcent_hvac(this.value);buton_check()"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1"></select>
+                                                <div class="flex w-full">
+                                                    <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Categoria Edificio</b></label></label><label class="text-red-500">*</label>
+                                                </div>
+                                                <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value);set_porcent_hvac(this.value);"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1"></select>
                                                 <span id="cat_ed_warning" name="cat_ed_warning" class="text-red-500"></span>
                                             </div>
 
                                             <div class="grid w-1/2 justify-items-start ">
-                                                <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Tipo Edificio:</b> </label>
-                                                <select onchange="buton_check()" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio"></select>
+                                              <div class="flex w-full">
+                                                <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
+                                              </div>
+                                                <select class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio"></select>
+                                                   <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
                                             </div>
 
                                             <div class="flex w-1/2 justify-start gap-x-3">
                                                <div class="grid w-1/2 justify-items-start">
-                                                    <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Aréa:</b> </label>
-                                                    <input  onchange="buton_check()" name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                    <div class="flex w-full">
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Aréa:</b></label><label class="text-red-500">*</label>
+                                                    </div>
+                                                    <input  name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                    <span id="ar_project_warning" name="ar_project_warning" class="text-red-500"></span>
                                                </div>
 
                                                <div class="grid w-1/2 justify-items-start">
                                               <div class="flex">
                                                <div>
-                                                <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Unidad:</b> </label>
+                                                <div class="flex w-full">
+                                                    <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Unidad:</b></label><label class="text-red-500">*</label>
+                                                </div>
                                                 <div class="flex gap-x-3 mt-3">
                                                    <div class="flex">
                                                     <input  id="check_mc"  onclick="check_unidad('mc');" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -277,24 +289,33 @@ span{
                                             <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-blue-600 rounded-xl"  name="unidad" id="unidad">
 
                                                 <div class="grid w-1/2 justify-items-start">
-                                                    <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>País:</b> </label>
-                                                    <select onchange="buton_check()" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises" id="paises">
+                                                    <div class="flex w-full">
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>País:</b></label><label class="text-red-500">*</label>
+                                                    </div>
+                                                    <select class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises" id="paises">
                                                         <option value="0">-Selecciona tu país-</option>
                                                     </select>
+                                                    <span id="paises_warning" name="paises_warning" class="text-red-500"></span>
                                                 </div>
 
                                                 <div class="grid w-1/2 justify-items-start">
-                                                    <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Ciudad:</b> </label>
-                                                    <select onchange="buton_check()" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades" id="ciudades">
+                                                    <div class="flex w-full">
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Ciudad:</b></label><label class="text-red-500">*</label>
+                                                    </div>
+                                                    <select class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades" id="ciudades">
                                                         <option value="0">-Selecciona tu ciudad-</option>
                                                     </select>
+                                                    <span id="ciudad_warning" name="ciudad_warning" class="text-red-500"></span>
                                                 </div>
 
                                                 <div class="grid w-1/2 justify-items-start">
-                                                    <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>% HVAC en el Edificio:</b> </label>
-                                                    <select onchange="buton_check()" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
+                                                    <div class="flex w-full">
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>% HVAC en el Edificio:</b></label><label class="text-red-500">*</label>
+                                                    </div>
+                                                    <select onchange="buton_check();" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                                         <option value="0">-Selecciona porcentaje-</option>
                                                     </select>
+                                                    <span id="por_hvac_warning" name="por_hvac_warning" class="text-red-500"></span>
                                                 </div>
 
                                         </div>
@@ -2160,12 +2181,18 @@ span{
                     >Atrás</button>
                 </div>
 
-                <div class="w-1/2 text-right">
-                    <button  onclick="check_form_project()" id="next" name="next"
-                        x-show="step < 2"
-                        @click="step++"
+                <div id="div_next" name="div_next" class="w-1/2 text-right">
+                    <button  id="next" name="next"
+                        onclick="buton_check();"
                         class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
                     >Siguiente</button>
+                </div>
+                <div id="div_next_h" name="div_next_h" class="w-1/2 text-right">
+                        <button  id="next_h" name="next_h"
+                            x-show="step < 2"
+                            @click="step++"
+                            class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
+                        >Siguiente</button>
 
                     {{-- <button
                         @click="step = 'complete'"

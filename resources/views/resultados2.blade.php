@@ -167,6 +167,8 @@ span{
         border-color: white !important;
         padding:1px;
 }
+
+
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
@@ -327,6 +329,7 @@ span{
                                             </div>
                                         </div>
                                     </div>
+                                    <hr class="mt-2 mb-3 mx-1 border-2 border-blue-900 rounded-md">
                                     <?php  $solutions=$solutions->solutions($id_project) ?>
 
                                     <div class="grid">
@@ -1004,6 +1007,7 @@ span{
                                             </div>
                                         </div>
                                     </div>
+                                    <hr class="mt-2 mb-3 mx-1 border-2 border-blue-900 rounded-md">
 
                                     {{--  --}}
                                         <div class="w-full flex justify-center my-3 " >
@@ -1479,7 +1483,7 @@ span{
                                         </div>
                                     </div>
 
-
+                                    <hr class="mt-2 mb-3 mx-1 border-2 border-blue-900 rounded-md">
                                     {{-- aqui va info proj --}}
 
                                                 <div class="w-full flex justify-center my-3 " >
@@ -1665,7 +1669,7 @@ span{
                                                     @endif
 
                                                     @if ($result2===null)
-                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">$0</b>
+                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">$ 0</b>
                                                     @endif
                                                 </div>
                                             </div>
@@ -1680,7 +1684,7 @@ span{
                                                     @endif
 
                                                     @if ($result3===null)
-                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">$0</b>
+                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">$ 0</b>
                                                     @endif
                                                 </div>
                                             </div>
@@ -1720,7 +1724,7 @@ span{
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
                                                     <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b>
-                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">$0</b>
+                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl text-center">$ 0</b>
                                                     </div>
                                                 </div>
                                                 @endif
@@ -1736,7 +1740,7 @@ span{
                                                             <b class="text-blue-800 mr-1 font-roboto text-2xl mt-3">Solución  Base v/s A </b>
                                                             </div>
                                                         <div class="flex justify-center w-full">
-                                                            <b class="text-[24px] text-green-500 font-roboto text-5xl">{{number_format($dif_1_cost)}}</b><b class="text-3xl mt-3 text-green-500 font-roboto"></b>
+                                                            <b class="text-[24px] text-green-500 font-roboto text-5xl">$ {{number_format($dif_1_cost)}}</b><b class="text-3xl mt-3 text-green-500 font-roboto"></b>
                                                         </div>
                                                     </div>
                                                     @endif
@@ -1747,7 +1751,7 @@ span{
                                                         <b class="text-blue-800 mr-1 font-roboto text-2xl mt-3">Solución  Base v/s B </b>
                                                         </div>
                                                         <div class="flex w-full justify-center">
-                                                            <b class="text-[24px] text-green-500 font-roboto text-5xl">${{number_format($dif_2_cost)}}</b><b class="text-3xl mt-3 text-green-500 font-roboto"></b>
+                                                            <b class="text-[24px] text-green-500 font-roboto text-5xl">$ {{number_format($dif_2_cost)}}</b><b class="text-3xl mt-3 text-green-500 font-roboto"></b>
                                                         </div>
                                                     </div>
                                                     @endif
@@ -1763,11 +1767,11 @@ span{
 
 
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b><b class="text-[24px] text-green-500 font-roboto text-5xl">$0</b>
+                                                <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b><b class="text-[24px] text-green-500 font-roboto text-5xl text-center">$ 0</b>
                                                 </div>
 
                                                     <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b><b class="text-[24px] text-green-500 font-roboto text-5xl">$0</b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b><b class="text-[24px] text-green-500 font-roboto text-5xl text-center">$ 0</b>
                                                     </div>
                                             </div>
                                              @endforeach
@@ -2190,7 +2194,7 @@ span{
                                     </div>
                                 </div>
 
-
+                                <hr class="mt-2 mb-3 mx-1 border-2 border-blue-900 rounded-md">
                                 <div class="w-full flex justify-center my-3 " >
                                     {{-- @foreach ($results as $solution)
 
@@ -2329,8 +2333,15 @@ span{
 
 {{--  --}}
                                 <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
-                                    <div class="flex w-full justify-center mb-5">
-                                        <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Reducción Energética - Mega Watts</label>
+                                    <div class="flex w-full justify-center">
+                                        <div class="flex w-30">
+                                            <img src="{{asset('/assets/images/watts.png')}}" style="width:100px; height:100px; z-index:1;" class="mx-10 mt-2" alt="Nano Degree">
+                                        </div>
+                                        <div class="flex w-full justify-center">
+
+                                                <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl mr-10">Reducción Energética - Mega Watts</label>
+
+                                        </div>
                                     </div>
                                     <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                         <div class="grid justify-center w-1/4">
@@ -2462,8 +2473,14 @@ span{
                                 </div>
                                 {{--  --}}
                                 <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
-                                    <div class="flex w-full justify-center mb-5">
-                                        <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Reducción Huella de Carbono – Ton. CO2</label>
+                                    <div class="flex w-full justify-center mb-2">
+                                        <div class="flex w-30">
+                                            <img src="{{asset('/assets/images/Huella.png')}}" style="width:100px; height:100px;" class="mx-10 mt-2" alt="Nano Degree">
+                                        </div>
+                                        <div class="flex w-full justify-center">
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Reducción Huella de Carbono – Ton. CO2</label>
+                                        </div>
+
                                     </div>
 
                                     <div class="flex w-full justify-center bg-gray-200 gap-x-3">
@@ -2603,8 +2620,14 @@ span{
 
                                              {{--  --}}
                                 <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
-                                    <div class="flex w-full justify-center mb-5">
-                                        <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Reducción de Bolsas de Basura - Recicladas</label>
+                                    <div class="flex w-full justify-center mb-2">
+                                        <div class="flex w-30">
+                                            <img src="{{asset('/assets/images/reducción-bolsas.png')}}" style="width:100px; height:90px;" class="mx-10 mt-2" alt="Nano Degree">
+                                        </div>
+                                        <div class="flex w-full justify-center">
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Reducción de Bolsas de Basura - Recicladas</label>
+                                        </div>
+
                                     </div>
 
                                     <div class="flex w-full justify-center bg-gray-200 gap-x-3">
@@ -2842,7 +2865,7 @@ span{
                                     </div>
                                 </div>
 
-                                <br>
+                                <hr class="mt-2 mb-3 mx-1 border-2 border-blue-900 rounded-md">
 
 
 
@@ -2853,13 +2876,15 @@ span{
 
 
                                     <div class="flex w-full justify-center gap-x-3">
-                                            <div class="flex w-1/2 justify-center text-[24px] m-1 gap-x-4">
+                                            <div class="flex w-1/2 justify-center text-[24px] m-1">
                                                 <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
+                                                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}" style="width:150px; height:90px;" class="mx-2 mt-2" alt="Nano Degree">
                                                 <b class="text-blue-800 mr-1 font-roboto text-4xl mt-5">EUI - Energy Star</b><b class="text-[24px] text-green-500 font-roboto mt-3 text-5xl">{{number_format($energy_star,2)}}</b>
                                             </div>
 
-                                            <div class="flex w-1/2 justify-center text-[24px] m-1 gap-x-4">
+                                            <div class="flex w-1/2 justify-center text-[24px] m-1">
                                                 <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
+                                                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}" style="width:150px; height:90px;" class="mx-2 mt-2" alt="Nano Degree">
                                                 <b class="text-blue-800 mr-1 font-roboto text-4xl mt-5">EUI - ASHRAE</b><b class="text-[24px] text-green-500 font-roboto mt-3 text-5xl">{{$ashrae}}</b>
                                             </div>
                                     </div>

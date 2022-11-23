@@ -1425,10 +1425,17 @@ class ResultadosController extends Controller
        $difx3= $dif_1 * $yrs;
         /* (dif_1 * 3) – $invs_rest ) */
         $difx3_rest_inv = $difx3 - $invs_rest;
+        if($invs_rest == 0){
+            $roi_res=0;
+        }
 
-        $div_difx3_rest_inv__invs_rest = $difx3_rest_inv/$invs_rest;
+        if($invs_rest > 0){
+            $div_difx3_rest_inv__invs_rest = $difx3_rest_inv/$invs_rest;
+            $roi_res=$div_difx3_rest_inv__invs_rest*100;
+        }
 
-        $roi_res=$div_difx3_rest_inv__invs_rest*100;
+
+
         return $roi_res;
     }
 
