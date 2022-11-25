@@ -113,3 +113,6 @@ Route::get('get_cat_edi', 'ProjectController@categories_paieses');
 Route::get('get_cat_edi/{id}', 'ProjectController@get_cat_edi');
 Route::get('mis_projectos', 'ProjectController@mis_projectos');
 Route::get('porcents_aux/{id}', 'ProjectController@porcents_aux');
+Route::get('edit_project/{id_project}', 'ResultadosController@edit_project');
+
+

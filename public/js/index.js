@@ -253,17 +253,23 @@ function getDegreeHrs(pais, cd) {
                 cooling = cooling + mes['cooling'];
             });
 
-            $('#hrsEnfriado').val(cooling);
-            $('#hrsEnfriado_1_2').val(cooling);
-            $('#hrsEnfriado_1_3').val(cooling);
+            let dollarUSLocale = Intl.NumberFormat('en-US');
 
-            $('#hrsEnfriado_2_1').val(cooling);
-            $('#hrsEnfriado_2_2').val(cooling);
-            $('#hrsEnfriado_2_3').val(cooling);
 
-            $('#hrsEnfriado_3_1').val(cooling);
-            $('#hrsEnfriado_3_2').val(cooling);
-            $('#hrsEnfriado_3_3').val(cooling);
+
+            var num_aux = dollarUSLocale.format(cooling);
+
+            $('#hrsEnfriado').val(num_aux);
+            $('#hrsEnfriado_1_2').val(num_aux);
+            $('#hrsEnfriado_1_3').val(num_aux);
+
+            $('#hrsEnfriado_2_1').val(num_aux);
+            $('#hrsEnfriado_2_2').val(num_aux);
+            $('#hrsEnfriado_2_3').val(num_aux);
+
+            $('#hrsEnfriado_3_1').val(num_aux);
+            $('#hrsEnfriado_3_2').val(num_aux);
+            $('#hrsEnfriado_3_3').val(num_aux);
             $('#dDays').val(heating);
 
         },
@@ -1447,16 +1453,24 @@ function asign_cos_ele(value){
     }
 
     if(value !== '0'){
-        $('#costo_elec_1_2').val(value);
-        $('#costo_elec_1_3').val(value);
 
-        $('#costo_elec_2_1').val(value);
-        $('#costo_elec_2_2').val(value);
-        $('#costo_elec_2_3').val(value);
+        let dollarUSLocale = Intl.NumberFormat('en-US');
+        var num = parseFloat(value);
 
-        $('#costo_elec_3_1').val(value);
-        $('#costo_elec_3_2').val(value);
-        $('#costo_elec_3_3').val(value);
+
+        var num_aux = dollarUSLocale.format(num);
+
+        $('#costo_elec').val('$'+num_aux);
+        $('#costo_elec_1_2').val('$'+num_aux);
+        $('#costo_elec_1_3').val('$'+num_aux);
+
+        $('#costo_elec_2_1').val('$'+num_aux);
+        $('#costo_elec_2_2').val('$'+num_aux);
+        $('#costo_elec_2_3').val('$'+num_aux);
+
+        $('#costo_elec_3_1').val('$'+num_aux);
+        $('#costo_elec_3_2').val('$'+num_aux);
+        $('#costo_elec_3_3').val('$'+num_aux);
     }
 
 }
@@ -1545,21 +1559,40 @@ function buton_check(){
     }
 }
 
+function check_input(value,id,id_warning){
+    var inpt = $("#"+id);
+    if (inpt.val() == '' || inpt.val() == '0') {
+        document.getElementById(id_warning).innerHTML = "Campo Obligatorio";
+    }else{
+        document.getElementById(id_warning).innerHTML = "";
+    }
+}
+
+function format_num(value,id){
+    var inpt = $("#"+id);
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+    var num = parseFloat(value);
+
+    if (inpt.val() != '') {
+       var num_aux = dollarUSLocale.format(num);
+       var num_format_split = num_aux.split(',');
+       inpt.val('$'+num_aux);
+    }
+
+}
+
+function format_nums_no_$(value,id){
+    var inpt = $("#"+id);
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+    var num = parseFloat(value);
+
+    if (inpt.val() != '') {
+       var num_aux = dollarUSLocale.format(num);
+       var num_format_split = num_aux.split(',');
+       inpt.val(num_aux);
+    }
+
+}
 
 
-   /*  const button_next = document.getElementById('next_div');
-
-    button_next.addEventListener('mouseover', (event) => {
-        alert('si');
-            var name = $("#name_pro");
-            if (name.val() == '') {
-                $("#name_warning").innerHTML = "Escrito de demanda";
-            }
-            var cat_ed = $("#cat_ed");
-            var tipo_edificio = $("#tipo_edificio");
-            var ar_project = $("#ar_project");
-            var paises = $("#paises");
-            var ciudades = $("#ciudades");
-            var porcent_hvac = $("#porcent_hvac");
-    }); */
 

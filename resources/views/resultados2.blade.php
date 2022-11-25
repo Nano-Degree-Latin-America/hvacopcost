@@ -329,10 +329,11 @@ span{
                                             </div>
                                         </div>
                                     </div>
-                                    <hr class="mt-2 mb-3 mx-1 border-2 border-blue-900 rounded-md">
+                                     </div>
+                                    <div class="grid my-3 bg-gray-200 rounded-md shadow-xl">
                                     <?php  $solutions=$solutions->solutions($id_project) ?>
 
-                                    <div class="grid">
+                                    <div class="grid my-2">
                                         {{-- 1 --}}
                                         <div class="w-full flex justify-center">
                                             @foreach ($solutions as $solution)
@@ -526,7 +527,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">CAPEX Estimado</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (OPEX)</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -710,7 +711,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">CAPEX Estimado</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (OPEX)</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -894,7 +895,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">CAPEX Estimado</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (OPEX)</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -1007,7 +1008,10 @@ span{
                                             </div>
                                         </div>
                                     </div>
-                                    <hr class="mt-2 mb-3 mx-1 border-2 border-blue-900 rounded-md">
+                                    </div>
+
+                                    <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
+
 
                                     {{--  --}}
                                         <div class="w-full flex justify-center my-3 " >
@@ -1143,7 +1147,7 @@ span{
                                                             <div class="grid justify-items-center">
                                                                 <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
                                                                <div class="flex w-full justify-center">
-                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_3/$tar_ele->costo_elec)}}</p><b class="text-blue-800 font-bold text-3xl font-roboto mt-5">Kw/hr</b>
+                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_3/$tar_ele->costo_elec)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kw/hr</b>
                                                                </div>
                                                             </div>
                                                         </div>
@@ -1153,7 +1157,7 @@ span{
                                     </div>
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
-                                        <div class="flex w-full justify-center mb-5">
+                                        <div class="flex w-full justify-center">
                                             <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Consumo de Energía HVAC por Área</label>
                                         </div>
 
@@ -1167,7 +1171,7 @@ span{
                                             <div class="flex justify-center w-1/3 ">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     @if (strlen($result_area_1) >= 19)
-                                                <b class="text-[24px] text-green-500 font-roboto text-4xl">${{number_format($result_area_1, 2)}} /
+                                                <b class="text-[24px] text-green-500 font-roboto text-6xl">${{number_format($result_area_1, 2)}} /
                                                     @if ($unidad_area == 'mc')
                                                     m²
                                                     @endif
@@ -1179,7 +1183,7 @@ span{
                                                      @endif
 
                                                      @if (strlen($result_area_1) < 19)
-                                                <b class="text-[24px] text-green-500 font-roboto text-5xl">${{number_format($result_area_1, 2)}} /
+                                                <b class="text-[24px] text-green-500 font-roboto text-6xl">${{number_format($result_area_1, 2)}} /
                                                     @if ($unidad_area == 'mc')
                                                     m²
                                                 @endif
@@ -1194,7 +1198,7 @@ span{
                                             @else
                                             <div class="flex justify-center w-1/3 mx-20 px-5">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b class="text-[24px] text-green-500 font-roboto text-5xl">$0 /
+                                                <b class="text-[24px] text-green-500 font-roboto text-6xl">$0 /
                                                     @if ($unidad_area == 'mc')
                                                     m²
                                                     @endif
@@ -1212,7 +1216,7 @@ span{
                                             <div class="flex justify-center w-1/3 ">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     @if (strlen($result_area_2) >= 19)
-                                                    <b class="text-[24px] text-green-500 font-roboto text-4xl">${{number_format($result_area_2, 2)}} /
+                                                    <b class="text-[24px] text-green-500 font-roboto text-6xl">${{number_format($result_area_2, 2)}} /
                                                      @if ($unidad_area == 'mc')
                                                     m²
                                                     @endif
@@ -1224,7 +1228,7 @@ span{
                                                     @endif
 
                                                     @if (strlen($result_area_2) < 19)
-                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">${{number_format($result_area_2, 2)}} /
+                                                    <b class="text-[24px] text-green-500 font-roboto text-6xl">${{number_format($result_area_2, 2)}} /
                                                      @if ($unidad_area == 'mc')
                                                     m²
                                                     @endif
@@ -1239,7 +1243,7 @@ span{
                                             @else
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b class="text-[24px] text-green-500 font-roboto text-5xl">$0 /
+                                                <b class="text-[24px] text-green-500 font-roboto text-6xl">$0 /
                                                     @if ($unidad_area == 'mc')
                                                     m²
                                                     @endif
@@ -1258,7 +1262,7 @@ span{
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     @if (strlen($result_area_3) >= 19)
-                                                        <b class="text-[24px] text-green-500 font-roboto text-5xl">${{number_format($result_area_3, 2)}} /
+                                                        <b class="text-[24px] text-green-500 font-roboto text-6xl">${{number_format($result_area_3, 2)}} /
                                                          @if ($unidad_area == 'mc')
                                                     m²
                                                     @endif
@@ -1269,7 +1273,7 @@ span{
                                                      @endif
 
                                                      @if (strlen($result_area_3) < 19)
-                                                     <b class="text-[24px] text-green-500 font-roboto text-5xl">${{number_format($result_area_3, 2)}} /
+                                                     <b class="text-[24px] text-green-500 font-roboto text-6xl">${{number_format($result_area_3, 2)}} /
                                                      @if ($unidad_area == 'mc')
                                                     m²
                                                     @endif
@@ -1283,7 +1287,7 @@ span{
                                             @else
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b class="text-[24px] text-green-500 font-roboto text-5xl">$0 /
+                                                <b class="text-[24px] text-green-500 font-roboto text-6xl">$0 /
                                                      @if ($unidad_area == 'mc')
                                                     m²
                                                     @endif
@@ -1301,8 +1305,8 @@ span{
                                     </div>
                                     <?php  $results=$results->results($id_project) ?>
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
-                                        <div class="flex w-full justify-center mb-5">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Ahorro Anual de Energía – Diferencia entre Soluciones</label>
+                                        <div class="flex w-full justify-center mb-3">
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año)</label>
                                         </div>
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             @if (count($results)>1)
@@ -1316,19 +1320,19 @@ span{
                                                 @if (count($results) == 2)
                                                 @if ($solution->num_enf == 1)
                                                 <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results),$tar_ele->costo_elec) ?>
-                                                <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
+                                                <div class="grid w-1/2 justify-center text-[24px] gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
                                                     </div>
                                                     <div class="flex justify-center w-full">
-                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl">{{number_format($dif_1)}} Kw/hr año</b>
+                                                    <b class="text-[24px] text-green-500 font-roboto text-6xl">{{number_format($dif_1)}} </b>
                                                     </div>
                                                 </div>
 
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b>
-                                                    <b class="text-[24px] text-green-500 font-roboto text-5xl text-center">0 Kw/hr año</b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
+                                                    <b class="text-[24px] text-green-500 font-roboto text-6xl text-center">0 </b>
                                                     </div>
                                                 </div>
                                                 @endif
@@ -1339,23 +1343,23 @@ span{
                                                 @if (count($results) == 3)
                                                     @if ($solution->num_enf == 1)
                                                     <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results),$tar_ele->costo_elec) ?>
-                                                    <div class="w-1/2 grid w-full justify-center text-[24px] m-1 gap-x-4">
+                                                    <div class="w-1/2 grid w-full justify-center text-[24px] gap-x-4">
                                                         <div class="flex justify-center w-full">
-                                                            <b class="text-blue-800 mr-1 font-roboto text-2xl mt-3">Solución  Base v/s A </b>
+                                                            <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
                                                             </div>
                                                         <div class="flex justify-center w-full">
-                                                            <b class="text-[24px] text-green-500 font-roboto text-5xl">{{number_format($dif_1)}}</b> <b class="text-3xl mt-3 text-green-500 font-roboto ml-1">Kw/hr año</b>
+                                                            <b class="text-[24px] text-green-500 font-roboto text-6xl">{{number_format($dif_1)}}</b> <b class="text-3xl mt-3 text-green-500 font-roboto ml-1"></b>
                                                         </div>
                                                     </div>
                                                     @endif
                                                     @if ($solution->num_enf == 2)
                                                     <?php  $dif_2=$smasolutions->dif_2($solution->id_project,count($results),$tar_ele->costo_elec) ?>
-                                                    <div class="w-1/2 grid w-full justify-center text-[24px] m-1 gap-x-4">
+                                                    <div class="w-1/2 grid w-full justify-center text-[24px]  gap-x-4">
                                                         <div class="flex w-full justify-center">
-                                                        <b class="text-blue-800 mr-1 font-roboto text-2xl mt-3">Solución  Base v/s B </b>
+                                                        <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s B </b>
                                                         </div>
                                                         <div class="flex w-full justify-center">
-                                                            <b class="text-[24px] text-green-500 font-roboto text-5xl">{{number_format($dif_2)}}</b> <b class="text-3xl mt-3 text-green-500 font-roboto ml-1">Kw/hr año</b>
+                                                            <b class="text-[24px] text-green-500 font-roboto text-6xl">{{number_format($dif_2)}}</b> <b class="text-3xl mt-3 text-green-500 font-roboto ml-1"></b>
                                                         </div>
                                                     </div>
                                                     @endif
@@ -1482,8 +1486,10 @@ span{
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <hr class="mt-2 mb-3 mx-1 border-2 border-blue-900 rounded-md">
+                                    <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
+
                                     {{-- aqui va info proj --}}
 
                                                 <div class="w-full flex justify-center my-3 " >
@@ -2194,7 +2200,9 @@ span{
                                     </div>
                                 </div>
 
-                                <hr class="mt-2 mb-3 mx-1 border-2 border-blue-900 rounded-md">
+                                </div>
+
+                                <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
                                 <div class="w-full flex justify-center my-3 " >
                                     {{-- @foreach ($results as $solution)
 
@@ -2864,11 +2872,8 @@ span{
                                         </div>
                                     </div>
                                 </div>
-
-                                <hr class="mt-2 mb-3 mx-1 border-2 border-blue-900 rounded-md">
-
-
-
+                                </div>
+                                <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
                                     <div class="flex w-full justify-center">
                                         <label class="font-bold text-blue-900 text-2xl font-roboto text-4xl" for="">Oficinas (KBTU/sqf)</label>
                                     </div>
@@ -3085,7 +3090,16 @@ span{
 							@click="step--"
 							class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 text-xl bg-white hover:bg-gray-100 font-medium border font-roboto"
 						>Átras</button>
+
+                       <a  href="{{URL::action('ResultadosController@edit_project',$id_project)}}">
+                            <button
+                            x-show="step == 1"
+                            class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 text-xl bg-white hover:bg-gray-100 font-medium border font-roboto"
+                        >Editar</button>
+                       </a>
 					</div>
+
+
 
 					<div class="w-1/2 text-right">
 						<button

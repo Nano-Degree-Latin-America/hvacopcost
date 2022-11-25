@@ -7,8 +7,22 @@
 @section('content')
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<div id="blur" class="blur">
-    @include('main.topbar')
+
+<div class="bg-blue-900 w-full flex justify-center" style="background-image: radial-gradient(rgb(10,19,59) 0%,rgb(5,1,25) 100%);">
+    <div class="w-1/3">
+        <img class="header" style="height:99px;" name="" id="" src="{{asset('/assets/images/logos/Administrador20210322133256.png')}}" alt="Nano Degree">
+    </div>
+    <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
+        {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
+        <a><img src="{{asset('/assets/images/logos/hvacopcostla.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px"></a>
+
+    </div>
+    <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
+    {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
+    <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 "><a class="mx-1" href="/home">Nuevo Projecto</a></button>
+
+    </div>
+</div>
     {{-- <div id="divSettings">
         <a href="{{route('settings')}}"><i class="fa fa-cog" aria-hidden="true" id="settings"></i>   </a>
     </div> --}}
@@ -207,7 +221,7 @@ span{
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Nombre Projecto</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                <input onchange="check_input(this.value,this.id,'name_warning');" name="name_pro" id="name_pro" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                <input onchange="check_input(this.value,this.id,'name_warning');" name="name_pro" id="name_pro" value="{{$project_edit->name}}" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
                                                 <span id="name_warning" name="name_warning" class="text-red-500"></span>
                                             </div>
 
@@ -215,7 +229,11 @@ span{
                                                 <div class="flex w-full">
                                                     <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Categoria Edificio</b></label></label><label class="text-red-500">*</label>
                                                 </div>
-                                                <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1"></select>
+                                                <select  name="cat_ed_edit" id="cat_ed_edit" onchange="traer_t_edif(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1">
+                                                    @foreach ($cate_edificio as $cat_edi)
+                                                    <option value="{{$cat_edi->id}}">{{$cat_edi->name}}</option>
+                                                    @endforeach
+                                                </select>
                                                 <span id="cat_ed_warning" name="cat_ed_warning" class="text-red-500"></span>
                                             </div>
 
@@ -223,7 +241,7 @@ span{
                                               <div class="flex w-full">
                                                 <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
                                               </div>
-                                                <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio"></select>
+                                                <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio_edit"  id="tipo_edificio_edit"></select>
                                                    <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
                                             </div>
 
@@ -232,7 +250,7 @@ span{
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Aréa:</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);"  name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
+                                                    <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);"  value="{{number_format($project_edit->area)}}" name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
                                                     <span id="ar_project_warning" name="ar_project_warning" class="text-red-500"></span>
                                                </div>
 
@@ -266,8 +284,10 @@ span{
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>País:</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select onchange="check_input(this.value,this.id,'paises_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises" id="paises">
-                                                        <option value="0">-Selecciona tu país-</option>
+                                                    <select onchange="check_input(this.value,this.id,'paises_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises_edit" id="paises_edit">
+                                                        @foreach ($paises as $pais)
+                                                        <option value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                        @endforeach
                                                     </select>
                                                     <span id="paises_warning" name="paises_warning" class="text-red-500"></span>
                                                 </div>
@@ -276,7 +296,7 @@ span{
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Ciudad:</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select onchange="check_input(this.value,this.id,'ciudad_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades" id="ciudades">
+                                                    <select onchange="check_input(this.value,this.id,'ciudad_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades_edit" id="ciudades_edit">
                                                         <option value="0">-Selecciona tu ciudad-</option>
                                                     </select>
                                                     <span id="ciudad_warning" name="ciudad_warning" class="text-red-500"></span>
@@ -710,7 +730,7 @@ span{
                                             <div class="flex w-full mt-3">
                                                 <div class="flex gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                        <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (OPEX)</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                          <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_2" id="cheValorS_1_2" >
@@ -881,7 +901,7 @@ span{
                                              <div class="flex w-full mt-3">
                                                  <div class="flex gap-x-3 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                        <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (OPEX)</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                          <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_3" id="cheValorS_1_3" >
@@ -1155,7 +1175,7 @@ span{
                                                     <div class="flex w-full mt-3">
                                                         <div class="flex gap-x-3 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                                <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (OPEX)</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md text-center"  step="0.01" step="0.01" name="cheValorS_2_1" id="cheValorS_2_1" >
@@ -1322,7 +1342,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                            <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (OPEX)</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
@@ -1481,7 +1501,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                            <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (OPEX)</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1  text-center" name="cheValorS_2_3" id="cheValorS_2_3" >
@@ -1775,7 +1795,7 @@ span{
                                                     <div class="flex w-full mt-3">
                                                         <div class="flex gap-x-3 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                                <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (OPEX)</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                  <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1  text-center"  step="0.01" step="0.01" name="cheValorS_3_1" id="cheValorS_3_1" >
@@ -1940,7 +1960,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                            <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (OPEX)</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                              <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS2_3_2" id="cheValorS2_3_2" >
@@ -2098,7 +2118,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                            <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (OPEX)</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_3_3" id="cheValorS_3_3" >
@@ -2180,11 +2200,6 @@ span{
     <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
 </div>
 
-
-
-
-
-</div>
 <script>
 function app() {
 			return {
