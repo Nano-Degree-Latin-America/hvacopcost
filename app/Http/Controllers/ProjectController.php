@@ -51,7 +51,7 @@ class ProjectController extends Controller
         ->join('tipo_edificio','tipo_edificio.id','=','projects.id_tipo_edificio')
         ->where('id_empresa','=',$id_empresa)
         ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
-        ->get();
+        ->paginate(10);
 
         return view('mis_projectos',['id_empresa'=>$id_empresa,'mis_projectos'=>$mis_projectos]);
     }
@@ -78,6 +78,28 @@ class ProjectController extends Controller
 
         return $arry;
 
+    }
+
+    public function get_ciudades($pais){
+        $id_pais = DB::table('pais')
+        ->where('pais','=',$pais)
+        ->first()->idPais;
+
+        $ciudades = DB::table('ciudad')
+        ->where('ciudad.idPais','=',$id_pais)
+        ->get();
+
+        return $ciudades;
+    }
+
+    public function get_ciudades_Edit($id){
+
+
+        $ciudades = DB::table('ciudad')
+        ->where('ciudad.idPais','=',$id)
+        ->get();
+
+        return $ciudades;
     }
 
 }

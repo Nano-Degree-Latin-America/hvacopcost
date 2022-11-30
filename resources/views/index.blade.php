@@ -360,8 +360,8 @@ span{
                                         <div style="background-color: #233064;" class="text-white rounded-t-xl w-80 flex justify-between py-3 ">
                                             <div class="ml-5 w-1/3 flex justify-start">
                                              <a href="#final1">   <button onclick="active_display('sol_1');" type="button" style="background-color: #233064;" class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button></a>
-                                                <input type="number" class="hidden" value="2" id="cont_sol_1" name="cont_sol_1">
-                                                <input type="number" class="hidden" value="1" id="set_sol_1" name="set_sol_1">
+                                                <input type="text" class="hidden" value="2" id="cont_sol_1" name="cont_sol_1">
+                                                <input type="text" class="hidden" value="1" id="set_sol_1" name="set_sol_1">
                                             </div>
                                             <div class="ml-5 w-full flex justify-start py-1">
                                                 <h2 class="text-white font-bold text-3xl ml-2">Solucion Base</h2>
@@ -388,7 +388,7 @@ span{
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start">
-                                                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 border-blue-600 rounded-md p-1" onchange="unidadHvac(this.value,1,'csTipo','csDisenio_1_1');"  >
+                                                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 border-blue-600 rounded-md p-1" onchange="valida_form_calc();unidadHvac(this.value,1,'csTipo','csDisenio_1_1');">
                                                             <option value="0">Seleccionar</option>
                                                             <option value="1">Paquetes (RTU)</option>
                                                             <option value="2">Split</option>
@@ -406,12 +406,12 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
                                                     </div>
                                                     <div class="w-full flex justify-start">
-                                                        <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="change_diseño(this.value,1,'csDisenio_1_1','tipo_control_1_1','dr_1_1','lblCsTipo_1_1');"  name="csTipo" id="csTipo">
+                                                        <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);change_diseño(this.value,1,'csDisenio_1_1','tipo_control_1_1','dr_1_1','lblCsTipo_1_1');"  name="csTipo" id="csTipo">
                                                         </select>
                                                     </div>
 
                                                     <input type="text" style="display: none" id="lblCsTipo_1_1" name="lblCsTipo_1_1">
-
+                                                    <input  id="tipo_equipo_1_1_count" name="tipo_equipo_1_1_count" type="number" class="hidden" value="1">
                                                 </div>
                                             </div>
 
@@ -423,11 +423,12 @@ span{
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start">
-                                                        <select onchange="send_name(this.id);" name="csDisenio_1_1" id="csDisenio_1_1" class="w-full border-2 border-blue-600 rounded-md  py-1">
+                                                        <select onchange="valida_selects_inps(this.id);send_name(this.id);" name="csDisenio_1_1" id="csDisenio_1_1" class="w-full border-2 border-blue-600 rounded-md  py-1">
                                                         </select>
                                                     </div>
                                                     <input type="text" style="display: none" id="lblCsDisenio" name="lblCsDisenio" value="ASHRAE 55/62.1/90.1">
                                                     <input type="text" style="display: none" id="name_diseno_1_1" name="name_diseno_1_1">
+                                                    <input  id="csDisenio_1_1_count" name="csDisenio_1_1_count" type="number" class="hidden" value="1">
                                                 </div>
 
                                                 <div class="flex gap-x-2 w-1/2">
@@ -436,8 +437,9 @@ span{
                                                     </div>
                                                     <div class="flex w-full justify-start gap-x-2">
                                                         <div class="w-full">
-                                                            <input type="text" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" name="capacidad_total" id="capacidad_total" >
+                                                            <input type="text" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" name="capacidad_total" id="capacidad_total" >
                                                         </div>
+                                                        <input  id="capacidad_total_1_1_count" name="capacidad_total_1_1_count" type="number" class="hidden" value="1">
                                                         <div class="w-full">
                                                         <select class="w-full  border-2 border-blue-600 rounded-md py-2 text-center" onchange="cap_term_change(this.value);"  id="unidad_capacidad_tot" name="unidad_capacidad_tot">
                                                             <option value="TR">TR</option>
@@ -457,9 +459,9 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
-                                                        <input id="costo_elec" name="costo_elec" onchange="asign_cos_ele(this.value);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
+                                                        <input id="costo_elec" name="costo_elec" onchange="valida_selects_inps(this.id);asign_cos_ele(this.value);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
                                                     </div>
-
+                                                    <input  id="costo_elec_1_1_count" name="costo_elec_1_1_count" type="number" class="hidden" value="1">
                                                 </div>
 
                                                 <div class="flex gap-x-2 w-1/2 ml-3">
@@ -467,7 +469,8 @@ span{
                                                         <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                     </div>
                                                     <div class="flex justify-start w-1/3">
-                                                        <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado" id="hrsEnfriado">
+                                                        <input  type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado" id="hrsEnfriado" onchange="valida_selects_inps(this.id);">
+                                                        <input  id="hrsEnfriado_1_1_count" name="hrsEnfriado_1_1_count" type="number" class="hidden" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -482,7 +485,8 @@ span{
                                                         </select>
                                                     </div>
                                                     <div class="flex justify-start w-1/4">
-                                                        <input name="csStd_cant_1_1" id="csStd_cant_1_1"  type="text" class="text-center w-full border-2 border-blue-600 rounded-md">
+                                                        <input name="csStd_cant_1_1" id="csStd_cant_1_1" onchange="valida_selects_inps(this.id);" type="text" class="text-center w-full border-2 border-blue-600 rounded-md">
+                                                        <input  id="csStd_cant_1_1_count" name="csStd_cant_1_1_count" type="number" class="hidden" value="1">
                                                     </div>
                                                 </div>
 
@@ -492,9 +496,11 @@ span{
                                                     </div>
 
                                                     <div class="flex justify-start w-full">
-                                                        <select class="w-full border-2 border-blue-600 rounded-md py-1"   onchange="send_name_t_c(this.id);" name="tipo_control_1_1" id="tipo_control_1_1">
+                                                        <select class="w-full border-2 border-blue-600 rounded-md py-1"   onchange="valida_selects_inps(this.id);send_name_t_c(this.id);" name="tipo_control_1_1" id="tipo_control_1_1">
 
                                                         </select>
+                                                        <input  id="tipo_control_1_1_count" name="tipo_control_1_1_count" type="number" class="hidden" value="1">
+
                                                     </div>
 
                                                     <input type="text" style="display: none" id="name_t_control_1_1" name="name_t_control_1_1">
@@ -507,10 +513,10 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                     </div>
                                                     <div class="w-full flex justify-start">
-                                                        <select style="width: 80%;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);" name="dr_1_1" id="dr_1_1" >
+                                                        <select style="width: 80%;" class="border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_1_1" id="dr_1_1" >
                                                         </select>
                                                     </div>
-
+                                                    <input  id="dr_1_1_count" name="dr_1_1_count" type="number" class="hidden" value="1">
                                                     <input type="text" style="display: none" id="dr_name_1_1" name="dr_name_1_1">
                                                 </div>
 
@@ -520,12 +526,14 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
                                                     </div>
                                                     <div class="flex w-full justify-start">
-                                                        <select class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento" id="csMantenimiento">
+                                                        <select onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento" id="csMantenimiento">
                                                             <option selected value="0">Seleccionar</option>
                                                             <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
                                                             <option value="Deficiente">Deficiente</option>
                                                             <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                         </select>
+                                                        <input  id="csMantenimiento_1_1_count" name="csMantenimiento_1_1_count" type="number" class="hidden" value="1">
+
                                                     </div>
 
 
@@ -716,6 +724,10 @@ span{
                                                          <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_2" id="cheValorS_1_2" >
                                                     </div>
                                                 </div>
+
+                                                <div class="flex gap-x-3 w-1/2 justify-end">
+                                                    <button onclick="inactive_display('sol_1')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                </div>
                                             </div>
                                           </div>
                                         </div>
@@ -878,7 +890,7 @@ span{
                                                  </div>
                                              </div>
 
-                                             <div class="flex w-full mt-3">
+                                             <div class="flex w-full mt-3 mb-2">
                                                  <div class="flex gap-x-3 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
@@ -887,7 +899,11 @@ span{
                                                          <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_3" id="cheValorS_1_3" >
                                                     </div>
                                                 </div>
-                                             </div>
+                                                <div class="flex gap-x-3 w-1/2 justify-end">
+                                                    <button onclick="inactive_display('sol_1')"  type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                </div>
+                                            </div>
+
                                            </div>
                                          </div>
                                         </div>
@@ -1038,10 +1054,11 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
                                                             </div>
                                                             <div class="w-full flex justify-start">
-                                                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="change_diseño(this.value,1,'cheDisenio_2_1','tipo_control_2_1','dr_2_1','lblCsTipo_2_1');"  name="cheTipo_2_1" id="cheTipo_2_1">
+                                                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);change_diseño(this.value,1,'cheDisenio_2_1','tipo_control_2_1','dr_2_1','lblCsTipo_2_1');"  name="cheTipo_2_1" id="cheTipo_2_1">
 
                                                                 </select>
                                                              </div>
+                                                             <input  id="cheTipo_2_1_count" name="cheTipo_2_1_count" type="number" class="hidden" value="1">
                                                             <input type="text" style="display: none" id="lblCsTipo_2_1" name="lblCsTipo_2_1">
                                                         </div>
                                                     </div>
@@ -1052,10 +1069,11 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="send_name(this.id);" name="cheDisenio_2_1" id="cheDisenio_2_1">
+                                                                <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);send_name(this.id);" name="cheDisenio_2_1" id="cheDisenio_2_1">
 
                                                                 </select>
                                                             </div>
+                                                            <input  id="cheDisenio_2_1_count" name="cheDisenio_2_1_count" type="number" class="hidden" value="1">
                                                             <input type="text" style="display: none" id="name_diseno_2_1" name="name_diseno_2_1">
                                                         </div>
 
@@ -1065,8 +1083,9 @@ span{
                                                             </div>
                                                             <div class="flex w-full justify-start gap-x-2">
                                                                 <div class="w-full">
-                                                                    <input name="capacidad_total_2_1" id="capacidad_total_2_1" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-2" >
+                                                                    <input name="capacidad_total_2_1" id="capacidad_total_2_1" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-2" >
                                                                 </div>
+                                                                <input  id="capacidad_total_2_1_count" name="capacidad_total_2_1_count" type="number" class="hidden" value="1">
                                                                 <div class="w-full">
                                                                     <input type="text" class="text-center w-full h-full border-2 border-blue-600 rounded-md py-2" readonly name="unidad_capacidad_tot_2_1" id="unidad_capacidad_tot_2_1" >
 
@@ -1080,9 +1099,11 @@ span{
                                                             <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
+
                                                             <div class="w-1/2 flex justify-start">
                                                             <input name="costo_elec_2_1" id="costo_elec_2_1" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
-                                                             </div>
+                                                            <input  id="costo_elec_2_1_count" name="costo_elec_2_1_count" type="number" class="hidden" value="1">
+                                                        </div>
                                                         </div>
 
                                                         <div class="flex gap-x-2 w-1/2 ml-3">
@@ -1090,7 +1111,8 @@ span{
                                                                 <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-1/3">
-                                                                <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_2_1" id="hrsEnfriado_2_1" readonly>
+                                                                <input type="text" style="font-size: 14px;" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_2_1" id="hrsEnfriado_2_1" readonly>
+                                                                <input  id="hrsEnfriado_2_1_count" name="hrsEnfriado_2_1_count" type="number" class="hidden" value="1">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1105,7 +1127,8 @@ span{
                                                                 </select>
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
-                                                            <input step="0.5" name="csStd_cant_2_1" id="csStd_cant_2_1" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1">
+                                                            <input onchange="valida_selects_inps(this.id);" step="0.5" name="csStd_cant_2_1" id="csStd_cant_2_1" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1">
+                                                            <input  id="csStd_cant_2_1_count" name="csStd_cant_2_1_count" type="number" class="hidden" value="1">
                                                             </div>
 
                                                         </div>
@@ -1115,9 +1138,11 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-full">
-                                                            <select class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="send_name_t_c(this.id);"  name="tipo_control_2_1" id="tipo_control_2_1">
+                                                            <select class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="valida_selects_inps(this.id);send_name_t_c(this.id);"  name="tipo_control_2_1" id="tipo_control_2_1">
 
                                                             </select>
+                                                            <input  id="tipo_control_2_1_count" name="tipo_control_2_1_count" type="number" class="hidden" value="1">
+
                                                             </div>
                                                             <input type="text" style="display: none" id="name_t_control_2_1" name="name_t_control_2_1">
                                                         </div>
@@ -1129,12 +1154,13 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                             </div>
                                                             <div class="w-full flex justify-start">
-                                                            <select  style="width: 80%;" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);" name="dr_2_1" id="dr_2_1" >
+                                                            <select  style="width: 80%;" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_2_1" id="dr_2_1" >
 
 
                                                             </select>
                                                             </div>
                                                             <input type="text" style="display: none" id="dr_name_2_1"   name="dr_name_2_1">
+                                                            <input  id="dr_2_1_count" name="dr_2_1_count" type="number" class="hidden" value="1">
                                                         </div>
 
                                                         <div class="flex gap-x-3 w-1/2">
@@ -1142,12 +1168,14 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
                                                             </div>
                                                             <div class="flex w-full justify-start">
-                                                                <select class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_2_1" id="csMantenimiento_2_1">
+                                                                <select class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_2_1" id="csMantenimiento_2_1" onchange="valida_selects_inps(this.id);">
                                                                     <option value="0">Seleccionar</option>
                                                                     <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
                                                                     <option value="Deficiente">Deficiente</option>
                                                                     <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                                 </select>
+                                                                <input  id="csMantenimiento_2_1_count" name="csMantenimiento_2_1_count" type="number" class="hidden" value="1">
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1320,14 +1348,17 @@ span{
                                                 </div>
 
                                                 <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-3 w-1/2">
-                                                        <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
-                                                        </div>
-                                                        <div class="w-1/2 flex justify-start">
-                                                            <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
-                                                        </div>
-                                                </div>
+                                                        <div class="flex gap-x-3 w-1/2">
+                                                            <div class="w-1/3 flex justify-start text-left">
+                                                                <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                            </div>
+                                                            <div class="w-1/2 flex justify-start">
+                                                                <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
+                                                            </div>
+                                                    </div>
+                                                    <div class="flex gap-x-3 w-1/2 justify-end">
+                                                        <button onclick="inactive_display('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    </div>
                                                 </div>
                                               </div>
                                             </div>
@@ -1486,7 +1517,11 @@ span{
                                                         <div class="w-1/2 flex justify-start">
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1  text-center" name="cheValorS_2_3" id="cheValorS_2_3" >
                                                         </div>
-                                                </div>
+                                                    </div>
+
+                                                    <div class="flex gap-x-3 w-1/2 justify-end">
+                                                        <button onclick="inactive_display('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    </div>
                                                 </div>
                                               </div>
                                             </div>
@@ -1654,10 +1689,12 @@ span{
                                                                  <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
                                                              </div>
                                                              <div class="w-full flex justify-start">
-                                                                    <select style="font-size: 14px" class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="change_diseño(this.value,1,'cheDisenio_3_1','tipo_control_3_1','dr_3_1','lblCsTipo_3_1');"  name="cheTipo_3_1" id="cheTipo_3_1">
+                                                                    <select style="font-size: 14px" class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="valida_selects_inps(this.id);change_diseño(this.value,1,'cheDisenio_3_1','tipo_control_3_1','dr_3_1','lblCsTipo_3_1');"  name="cheTipo_3_1" id="cheTipo_3_1">
 
                                                                     </select>
                                                             </div>
+                                                            <input  id="cheTipo_3_1_count" name="cheTipo_3_1_count" type="number" class="hidden" value="1">
+
                                                             <input type="text" style="display: none" id="lblCsTipo_3_1" name="lblCsTipo_3_1">
                                                         </div>
                                                     </div>
@@ -1668,10 +1705,11 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="send_name(this.id);" name="cheDisenio_3_1" id="cheDisenio_3_1">
+                                                                <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="valida_selects_inps(this.id);send_name(this.id);" name="cheDisenio_3_1" id="cheDisenio_3_1">
 
                                                                 </select>
                                                             </div>
+                                                            <input  id="cheDisenio_3_1_count" name="cheDisenio_3_1_count" type="number" class="hidden" value="1">
                                                             <input type="text" style="display: none" id="name_diseno_3_1" name="name_diseno_3_1">
                                                         </div>
 
@@ -1682,8 +1720,9 @@ span{
 
                                                             <div class="flex w-full justify-start gap-x-2">
                                                                 <div class="w-full">
+                                                                    <input id="capacidad_total_3_1" name="capacidad_total_3_1" type="text" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md  text-center" >
+                                                                    <input  id="capacidad_total_3_1_count" name="capacidad_total_3_1_count" type="number" class="hidden" value="1">
 
-                                                                    <input id="capacidad_total_3_1" name="capacidad_total_3_1" type="text" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md  text-center" >
                                                                 </div>
                                                                 <div class="w-full">
                                                                     <input class="w-full h-full py-2 border-2 border-blue-600 rounded-md text-center"  type="text" readonly name="unidad_capacidad_tot_3_1" id="unidad_capacidad_tot_3_1" >
@@ -1700,8 +1739,9 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <input name="costo_elec_3_1" id="costo_elec_3_1" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0  text-center">
+                                                                <input onchange="valida_selects_inps(this.id);" name="costo_elec_3_1" id="costo_elec_3_1" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0  text-center">
                                                             </div>
+                                                            <input  id="costo_elec_3_1_count" name="costo_elec_3_1_count" type="number" class="hidden" value="1">
                                                         </div>
 
                                                         <div class="flex gap-x-2 w-1/2 ml-3">
@@ -1709,9 +1749,11 @@ span{
                                                                 <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-1/3">
-                                                                <input type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md  text-center"  step="0.01" name="hrsEnfriado_3_1" id="hrsEnfriado_3_1" readonly>
+                                                                <input onchange="valida_selects_inps(this.id);" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md  text-center"  step="0.01" name="hrsEnfriado_3_1" id="hrsEnfriado_3_1" readonly>
 
                                                             </div>
+                                                            <input  id="hrsEnfriado_3_1_count" name="hrsEnfriado_3_1_count" type="number" class="hidden" value="1">
+
                                                         </div>
                                                     </div>
 
@@ -1725,8 +1767,9 @@ span{
                                                                 </select>
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
-                                                             <input  name="cheStd_3_1" id="cheStd_3_1" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
+                                                             <input  name="cheStd_3_1" id="cheStd_3_1" onchange="valida_selects_inps(this.id);" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
                                                             </div>
+                                                            <input  id="cheStd_3_1_count" name="cheStd_3_1_count" type="number" class="hidden" value="1">
                                                         </div>
 
                                                         <div class="flex gap-x-2 w-1/2">
@@ -1734,10 +1777,12 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-full">
-                                                                <select class="w-full py-1 border-2 border-blue-600 rounded-md ml-0"  onchange="send_name_t_c(this.id);"  name="tipo_control_3_1" id="tipo_control_3_1">
+                                                                <select class="w-full py-1 border-2 border-blue-600 rounded-md ml-0"  onchange="valida_selects_inps(this.id);send_name_t_c(this.id);"  name="tipo_control_3_1" id="tipo_control_3_1">
 
                                                                 </select>
                                                             </div>
+                                                            <input  id="tipo_control_3_1_count" name="tipo_control_3_1_count" type="number" class="hidden" value="1">
+
                                                             <input type="text" style="display: none" id="name_t_control_3_1" name="name_t_control_3_1">
                                                         </div>
                                                     </div>
@@ -1748,11 +1793,11 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                             </div>
                                                             <div class="w-full flex justify-start">
-                                                                <select  style="width: 80%;" class="w-full py-2 border-2 border-blue-600 rounded-md" onchange="send_name_dr(this.id);" name="dr_3_1" id="dr_3_1" >
-
-
+                                                                <select  style="width: 80%;" class="w-full py-2 border-2 border-blue-600 rounded-md" onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_3_1" id="dr_3_1" >
                                                                 </select>
                                                             </div>
+                                                            <input  id="dr_3_1_count" name="dr_3_1_count" type="number" class="hidden" value="1">
+
                                                             <input type="text" style="display: none" id="dr_name_3_1" name="dr_name_3_1">
 
                                                         </div>
@@ -1762,12 +1807,14 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
                                                             </div>
                                                             <div class="flex w-full justify-start">
-                                                                <select class="w-full py-2 border-2 border-blue-600 rounded-md" name="cheMantenimiento_3_1" id="cheMantenimiento">
+                                                                <select onchange="valida_selects_inps(this.id);" class="w-full py-2 border-2 border-blue-600 rounded-md" name="cheMantenimiento_3_1" id="cheMantenimiento_3_1">
                                                                     <option value="0">Seleccionar</option>
                                                                     <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
                                                                     <option value="Deficiente">Deficiente</option>
                                                                     <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                                 </select>
+                                                                <input  id="cheMantenimiento_3_1_count" name="cheMantenimiento_3_1_count" type="number" class="hidden" value="1">
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1945,7 +1992,10 @@ span{
                                                         <div class="w-1/2 flex justify-start">
                                                              <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS2_3_2" id="cheValorS2_3_2" >
                                                         </div>
-                                                </div>
+                                                    </div>
+                                                    <div class="flex gap-x-3 w-1/2 justify-end">
+                                                        <button onclick="inactive_display('sol_3')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    </div>
                                                 </div>
                                               </div>
                                             </div>
@@ -2103,7 +2153,10 @@ span{
                                                         <div class="w-1/2 flex justify-start">
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_3_3" id="cheValorS_3_3" >
                                                         </div>
-                                                </div>
+                                                    </div>
+                                                    <div class="flex gap-x-3 w-1/2 justify-end">
+                                                        <button onclick="inactive_display('sol_3')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    </div>
                                                 </div>
                                               </div>
                                             </div>
@@ -2167,12 +2220,6 @@ span{
                             @click="step++"
                             class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
                         >Siguiente</button>
-
-                    {{-- <button
-                        @click="step = 'complete'"
-                        x-show="step === 2"
-                        class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium"
-                    >Complete</button> --}}
                 </div>
             </div>
         </div>

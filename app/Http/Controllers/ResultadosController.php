@@ -197,6 +197,7 @@ class ResultadosController extends Controller
                if ($solution_enf1->unid_med == 'TR') {
 
                 $tr =  $solution_enf1->capacidad_tot;
+                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
                 //((TR x 12000)
                 $res_trx_12000 = $tr * 12000;
                 //((TR x 12000) x (Cooling Hours) x (Costo Energía)
@@ -1991,8 +1992,12 @@ class ResultadosController extends Controller
 
         $paises = DB::table('pais')->get();
 
+        $id_ciudad_ini = DB::table('ciudad')
+        ->where('ciudad','=',$project_edit->ciudad)
+        ->first()->idCiudad;
+
         return view('edit_index',['id_project'=>$id,'project_edit'=>$project_edit,
-                        'cate_edificio'=>$cate_edificio,'paises'=>$paises
+                        'cate_edificio'=>$cate_edificio,'paises'=>$paises,'id_ciudad_ini'=>$id_ciudad_ini
         ]);
     }
 

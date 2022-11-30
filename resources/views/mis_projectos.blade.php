@@ -8,6 +8,7 @@
 @section('content')
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <div id="blur" class="blur">
     @include('main.topbar')
     {{-- <div id="divSettings">
@@ -118,6 +119,10 @@ span{
         padding:1px;
 }
 
+.pagination {
+
+}
+
 @media (min-width: 640px) {
     table {
       display: inline-table !important;
@@ -136,6 +141,7 @@ span{
     border-bottom: 2px solid rgba(0, 0, 0, .1);
   }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 
@@ -203,7 +209,10 @@ span{
                     </tbody>
                 </table>
             </div>
+
+
         </div>
+        {{ $mis_projectos->links() }}
     </div>
 </div>
 

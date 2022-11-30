@@ -229,9 +229,14 @@ span{
                                                 <div class="flex w-full">
                                                     <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Categoria Edificio</b></label></label><label class="text-red-500">*</label>
                                                 </div>
-                                                <select  name="cat_ed_edit" id="cat_ed_edit" onchange="traer_t_edif(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1">
+                                                <select  name="cat_ed_edit" id="cat_ed_edit"onchange="traer_t_edif_edd(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1">
                                                     @foreach ($cate_edificio as $cat_edi)
+                                                    @if ($project_edit->id_cat_edifico == $cat_edi->id)
+                                                    <option selected value="{{$cat_edi->id}}">{{$cat_edi->name}}</option>
+                                                    @endif
+                                                    @if ($project_edit->id_cat_edifico != $cat_edi->id)
                                                     <option value="{{$cat_edi->id}}">{{$cat_edi->name}}</option>
+                                                    @endif
                                                     @endforeach
                                                 </select>
                                                 <span id="cat_ed_warning" name="cat_ed_warning" class="text-red-500"></span>
@@ -261,15 +266,32 @@ span{
                                                     <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Unidad:</b></label><label class="text-red-500">*</label>
                                                 </div>
                                                 <div class="flex gap-x-3 mt-3">
-                                                   <div class="flex">
-                                                    <input  id="check_mc"  onclick="check_unidad('mc');" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="check_mc" class="ml-2 text-xl font-medium text-gray-900 dark:text-gray-300 font-roboto">m²</label>
-                                                   </div>
+                                                    @if($project_edit->unidad == 'mc' )
+                                                    <div class="flex">
+                                                        <input  id="check_mc" checked  onclick="check_unidad('mc');" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <label for="check_mc" class="ml-2 text-xl font-medium text-gray-900 dark:text-gray-300 font-roboto">m²</label>
+                                                       </div>
 
-                                                   <div class="flex">
-                                                    <input  id="check_ft"  onclick="check_unidad('ft');" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="check_ft"   class="ml-2 text-xl font-medium text-gray-900 dark:text-gray-300 font-roboto">ft²</label>
-                                                   </div>
+                                                       <div class="flex">
+                                                        <input  id="check_ft"  onclick="check_unidad('ft');" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <label for="check_ft"   class="ml-2 text-xl font-medium text-gray-900 dark:text-gray-300 font-roboto">ft²</label>
+                                                       </div>
+
+                                                    @endif
+
+                                                    @if($project_edit->unidad == 'ft' )
+                                                    <div class="flex">
+                                                        <input  id="check_mc"   onclick="check_unidad('mc');" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <label for="check_mc" class="ml-2 text-xl font-medium text-gray-900 dark:text-gray-300 font-roboto">m²</label>
+                                                       </div>
+
+                                                       <div class="flex">
+                                                        <input  id="check_ft" checked onclick="check_unidad('ft');" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        <label for="check_ft"   class="ml-2 text-xl font-medium text-gray-900 dark:text-gray-300 font-roboto">ft²</label>
+                                                       </div>
+
+                                                    @endif
+
                                                 </div>
                                                </div>
                                               </div>
@@ -284,9 +306,14 @@ span{
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>País:</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select onchange="check_input(this.value,this.id,'paises_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises_edit" id="paises_edit">
+                                                    <select onchange="check_input(this.value,this.id,'paises_warning');traer_ciudad_edit(this.value)" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises_edit" id="paises_edit">
                                                         @foreach ($paises as $pais)
+                                                        @if ($project_edit->region == $pais->pais)
+                                                        <option selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                        @endif
+                                                        @if ($project_edit->region != $pais->pais)
                                                         <option value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                        @endif
                                                         @endforeach
                                                     </select>
                                                     <span id="paises_warning" name="paises_warning" class="text-red-500"></span>
@@ -296,8 +323,8 @@ span{
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Ciudad:</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select onchange="check_input(this.value,this.id,'ciudad_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades_edit" id="ciudades_edit">
-                                                        <option value="0">-Selecciona tu ciudad-</option>
+                                                    <select onchange="check_input(this.value,this.id,'ciudad_warning');getDegreeHrs_edd($('#paises_edit').val(),this.value)"  class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades_edit" id="ciudades_edit">
+
                                                     </select>
                                                     <span id="ciudad_warning" name="ciudad_warning" class="text-red-500"></span>
                                                 </div>
@@ -736,6 +763,9 @@ span{
                                                          <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_2" id="cheValorS_1_2" >
                                                     </div>
                                                 </div>
+                                                <div class="flex gap-x-3 w-1/2 justify-end">
+                                                    <button onclick="inactive_display('sol_1')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                </div>
                                             </div>
                                           </div>
                                         </div>
@@ -906,6 +936,9 @@ span{
                                                     <div class="w-1/2 flex justify-start">
                                                          <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_3" id="cheValorS_1_3" >
                                                     </div>
+                                                </div>
+                                                <div class="flex gap-x-3 w-1/2 justify-end">
+                                                    <button onclick="inactive_display('sol_1')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                 </div>
                                              </div>
                                            </div>
@@ -1347,7 +1380,10 @@ span{
                                                         <div class="w-1/2 flex justify-start">
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
                                                         </div>
-                                                </div>
+                                                    </div>
+                                                    <div class="flex gap-x-3 w-1/2 justify-end">
+                                                        <button onclick="inactive_display('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    </div>
                                                 </div>
                                               </div>
                                             </div>
@@ -1490,6 +1526,7 @@ span{
                                                         </div>
                                                         <div class="flex w-full justify-start">
                                                             <select class="w-full py-1 border-2 border-blue-600 rounded-md" name="cheMantenimiento_2_3" id="cheMantenimiento_2_3">
+                                                                <option value="0">Seleccionar</option>
                                                                 <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
                                                                 <option value="Deficiente">Deficiente</option>
                                                                 <option value="Sin Mantenimiento">Sin Mantenimiento</option>
@@ -1506,7 +1543,10 @@ span{
                                                         <div class="w-1/2 flex justify-start">
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1  text-center" name="cheValorS_2_3" id="cheValorS_2_3" >
                                                         </div>
-                                                </div>
+                                                    </div>
+                                                    <div class="flex gap-x-3 w-1/2 justify-end">
+                                                        <button onclick="inactive_display('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    </div>
                                                 </div>
                                               </div>
                                             </div>
@@ -1803,6 +1843,7 @@ span{
                                                         </div>
 
 
+
                                                     </div>
                                                   </div>
                                                 </div>
@@ -1965,7 +2006,10 @@ span{
                                                         <div class="w-1/2 flex justify-start">
                                                              <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS2_3_2" id="cheValorS2_3_2" >
                                                         </div>
-                                                </div>
+                                                    </div>
+                                                    <div class="flex gap-x-3 w-1/2 justify-end">
+                                                        <button onclick="inactive_display('sol_3')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    </div>
                                                 </div>
                                               </div>
                                             </div>
@@ -2123,7 +2167,10 @@ span{
                                                         <div class="w-1/2 flex justify-start">
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_3_3" id="cheValorS_3_3" >
                                                         </div>
-                                                </div>
+                                                    </div>
+                                                    <div class="flex gap-x-3 w-1/2 justify-end">
+                                                        <button onclick="inactive_display('sol_3')" type="button"class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    </div>
                                                 </div>
                                               </div>
                                             </div>
@@ -2201,6 +2248,19 @@ span{
 </div>
 
 <script>
+window.onload = function() {
+    val = '{{ $project_edit->id_cat_edifico }}';
+    id_tipo_edi = '{{ $project_edit->id_tipo_edificio }}';
+    pais_id ='{{ $project_edit->region }}';
+    id_ciudad ='{{ $project_edit->ciudad }}';
+    traer_t_edif_Edit(val,id_tipo_edi);
+    traer_ciudad(pais_id,id_ciudad);
+    caed_Edi_val_ini ='{{ $project_edit->ciudad }}';
+    porcent = '{{ $project_edit->porcent_hvac }}';
+    traer_porcent_ini(val,porcent);
+    id_ciudad_ini =  '{{ $id_ciudad_ini }}';
+    getDegreeHrs_edd($('#paises_edit').val(),id_ciudad_ini);
+};
 function app() {
 			return {
 				step: 1,
@@ -2228,6 +2288,211 @@ function app() {
 			}
 		}
 
+
+function traer_t_edif_Edit(val,id_tipo_edi) {
+    $.ajax({
+        type: 'get',
+        url: '/get_cat_edi/'+ val,
+        success: function (response) {
+
+            response.map((cat_ed, i) => {
+                if(id_tipo_edi == cat_ed.id){
+                    $('#tipo_edificio_edit').append($('<option>', {
+                    value: cat_ed.id,
+                    text: cat_ed.name
+                }));
+                $("#tipo_edificio_edit").find('option[value="' + cat_ed.id + '"]').attr("selected", "selected");;
+                }else if(id_tipo_edi != cat_ed.id){
+                    $('#tipo_edificio_edit').append($('<option>', {
+                    value: cat_ed.id,
+                    text: cat_ed.name
+                }));
+                }
+
+
+            });
+
+
+
+        },
+        error: function (responsetext) {
+
+        }
+    });
+}
+
+function traer_t_edif_edd(id_cat) {
+    $.ajax({
+        type: 'get',
+        url: '/get_cat_edi/'+ id_cat,
+        success: function (response) {
+            $('#tipo_edificio_edit').empty();
+            $('#tipo_edificio_edit').append($('<option>', {
+                value: 0,
+                text: 'Seleccionar'
+            }));
+
+            response.map((cat_ed, i) => {
+                $('#tipo_edificio_edit').append($('<option>', {
+                    value: cat_ed.id,
+                    text: cat_ed.name
+                }));
+            });
+
+
+
+        },
+        error: function (responsetext) {
+
+        }
+    });
+
+}
+
+
+
+function traer_ciudad(pais,id_ciudad) {
+    $.ajax({
+        type: 'get',
+        url: '/get_ciudades/'+ pais,
+        success: function (response) {
+
+            response.map((ciudades, i) => {
+                if(id_ciudad === ciudades.ciudad){
+                        $('#ciudades_edit').append($('<option>', {
+                        value: ciudades.idCiudad,
+                        text: ciudades.ciudad
+                    }));
+                    $("#ciudades_edit").find('option[value="' + ciudades.idPais + '"]').attr("selected", "selected");;
+                    }else if(id_ciudad != ciudades.ciudad){
+                        $('#ciudades_edit').append($('<option>', {
+                        value: ciudades.idCiudad,
+                        text: ciudades.ciudad
+                    }));
+                    }
+            });
+
+
+
+        },
+        error: function (responsetext) {
+
+        }
+    });
+
+}
+
+function traer_ciudad_edit(pais) {
+    $.ajax({
+        type: 'get',
+        url: '/get_ciudades_Edit/'+ pais,
+        success: function (response) {
+            $('#ciudades_edit').empty();
+            $('#ciudades_edit').append($('<option>', {
+                value: 0,
+                text: 'Seleccionar'
+            }));
+            response.map((ciudades, i) => {
+                $('#ciudades_edit').append($('<option>', {
+                    value: ciudades.idCiudad,
+                    text: ciudades.ciudad
+                }));
+
+            });
+
+
+
+        },
+        error: function (responsetext) {
+
+        }
+    });
+
+}
+
+function traer_porcent_ini(val,porcent) {
+    $.ajax({
+        type: 'get',
+        url: '/porcents_aux/'+ val,
+        success: function (response) {
+
+            response.map((cat_ed, i) => {
+
+                if(parseInt(porcent) === cat_ed){
+                    $('#porcent_hvac').append($('<option>', {
+                    value: cat_ed,
+                    text: cat_ed
+                }));
+
+                    $("#porcent_hvac").find('option[value="' + cat_ed + '"]').attr("selected", "selected");;
+                    }else if(parseInt(porcent) != cat_ed){
+                        $('#porcent_hvac').append($('<option>', {
+                            value: cat_ed,
+                    text: cat_ed
+                    }));
+                    }
+
+                 /*    response.map((cat_ed, i) => {
+                $('#porcent_hvac').append($('<option>', {
+                    value: cat_ed,
+                    text: cat_ed
+                }));
+            }); */
+            });
+
+
+
+        },
+        error: function (responsetext) {
+
+        }
+    });
+
+}
+
+function getDegreeHrs_edd(pais,cd) {
+
+    var cooling = heating = 0;
+    $.ajax({
+        type: 'POST',
+        url: '/getDegreeHrs',
+        dataType: 'json',
+        data: {
+            idPais: pais,
+            idCiudad: cd,
+            "_token": $("meta[name='csrf-token']").attr("content")
+        },
+        success: function (response) {
+            response.forEach(mes => {
+                mes['activoCooling'] == 1 ? heating += mes['heating'] : heating += 0;
+                cooling = cooling + mes['cooling'];
+            });
+
+            let dollarUSLocale = Intl.NumberFormat('en-US');
+
+
+
+            var num_aux = dollarUSLocale.format(cooling);
+
+            $('#hrsEnfriado').val(num_aux);
+            $('#hrsEnfriado_1_2').val(num_aux);
+            $('#hrsEnfriado_1_3').val(num_aux);
+
+            $('#hrsEnfriado_2_1').val(num_aux);
+            $('#hrsEnfriado_2_2').val(num_aux);
+            $('#hrsEnfriado_2_3').val(num_aux);
+
+            $('#hrsEnfriado_3_1').val(num_aux);
+            $('#hrsEnfriado_3_2').val(num_aux);
+            $('#hrsEnfriado_3_3').val(num_aux);
+            $('#dDays').val(heating);
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
 </script>
 @endsection
 @section('js')

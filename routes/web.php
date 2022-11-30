@@ -114,5 +114,6 @@ Route::get('get_cat_edi/{id}', 'ProjectController@get_cat_edi');
 Route::get('mis_projectos', 'ProjectController@mis_projectos');
 Route::get('porcents_aux/{id}', 'ProjectController@porcents_aux');
 Route::get('edit_project/{id_project}', 'ResultadosController@edit_project');
-
+Route::get('get_ciudades/{pais}', 'ProjectController@get_ciudades');
+Route::get('get_ciudades_Edit/{pais}', 'ProjectController@get_ciudades_Edit');
 
