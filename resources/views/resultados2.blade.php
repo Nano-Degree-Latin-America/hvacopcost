@@ -3056,7 +3056,7 @@ span{
 		</div>
 
 		<!-- Bottom Navigation -->
-		<div class="fixed bottom-0 left-0 right-0 py-5 bg-white shadow-md" x-show="step != 'complete'">
+		<div class="fixed bottom-0 left-0 right-0 py-5 bg-white shadow-md border-t-2 border-blue-900" x-show="step != 'complete'">
 			<div class="max-w-3xl mx-auto px-4">
 				<div class="flex justify-between">
 					<div class="w-1/2">

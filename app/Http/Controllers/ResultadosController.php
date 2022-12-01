@@ -166,23 +166,32 @@ class ResultadosController extends Controller
                 $solution_enf1->dr	=$request->get('dr_1_1');
                 $solution_enf1->mantenimiento	=$request->get('csMantenimiento');
 
-                $aux_val_aprox = explode("$",   $request->get('cheValorS_1_1'));
-                        $aux_val_aprox_a = explode(",",    $aux_val_aprox[1]);
-                        if(count($aux_val_aprox_a) == 1){
-                            $val_aprox_aux =  $aux_val_aprox_a[0];
-                        }
-                        if(count($aux_val_aprox_a) == 2){
-                            $val_aprox_aux=  $aux_val_aprox_a[0].$aux_val_aprox_a[1];
-                        }
-                        if(count($aux_val_aprox_a) == 3){
-                            $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2];
-                        }
-                        if(count($aux_val_aprox_a) == 4){
-                            $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2].$aux_val_aprox_a[3];
-                        }
-                        if(count($aux_val_aprox_a) == 5){
-                            $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2].$aux_val_aprox_a[3].$aux_val_aprox_a[4];
-                        }
+                if($request->get('cheValorS_1_1') != null){
+
+                    $aux_val_aprox = explode("$",   $request->get('cheValorS_1_1'));
+                    $aux_val_aprox_a = explode(",",    $aux_val_aprox[1]);
+
+                    if(count($aux_val_aprox_a) == 1){
+                        $val_aprox_aux =  $aux_val_aprox_a[0];
+                    }
+                    if(count($aux_val_aprox_a) == 2){
+                        $val_aprox_aux=  $aux_val_aprox_a[0].$aux_val_aprox_a[1];
+                    }
+                    if(count($aux_val_aprox_a) == 3){
+                        $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2];
+                    }
+                    if(count($aux_val_aprox_a) == 4){
+                        $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2].$aux_val_aprox_a[3];
+                    }
+                    if(count($aux_val_aprox_a) == 5){
+                        $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2].$aux_val_aprox_a[3].$aux_val_aprox_a[4];
+                    }
+
+                }else  if($request->get('cheValorS_1_1') == null){
+                    $val_aprox_aux = 0;
+                }
+
+
 
                 $solution_enf1->val_aprox=floatval( $val_aprox_aux);
                 $solution_enf1->status=1;
@@ -368,23 +377,29 @@ class ResultadosController extends Controller
                 $solution_enf2_2->dr = $request->get('dr_1_2');
                 $solution_enf2_2->mantenimiento = $request->get('csMantenimiento_1_2');
 
-                        $aux_val_aprox_1_2 = explode("$",   $request->get('cheValorS_1_2'));
-                        $aux_val_aprox_1_2_a = explode(",",    $aux_val_aprox_1_2[1]);
-                        if(count($aux_val_aprox_1_2_a) == 1){
-                            $val_aprox_aux_1_2 =  $aux_val_aprox_1_2_a[0];
-                        }
-                        if(count($aux_val_aprox_1_2_a) == 2){
-                            $val_aprox_aux_1_2=  $aux_val_aprox_1_2_a[0].$aux_val_aprox_1_2_a[1];
-                        }
-                        if(count($aux_val_aprox_1_2_a) == 3){
-                            $val_aprox_aux_1_2 =  $aux_val_aprox_1_2_a[0].$aux_val_aprox_1_2_a[1].$aux_val_aprox_1_2_a[2];
-                        }
-                        if(count($aux_val_aprox_1_2_a) == 4){
-                            $val_aprox_aux_1_2 =  $aux_val_aprox_1_2_a[0].$aux_val_aprox_1_2_a[1].$aux_val_aprox_1_2_a[2].$aux_val_aprox_1_2_a[3];
-                        }
-                        if(count($aux_val_aprox_1_2_a) == 5){
-                            $val_aprox_aux_1_2 =  $aux_val_aprox_1_2_a[0].$aux_val_aprox_1_2_a[1].$aux_val_aprox_1_2_a[2].$aux_val_aprox_1_2_a[3].$aux_val_aprox_1_2_a[4];
-                        }
+                if($request->get('cheValorS_1_2') != null){
+                    $aux_val_aprox_1_2 = explode("$",   $request->get('cheValorS_1_2'));
+                    $aux_val_aprox_1_2_a = explode(",",    $aux_val_aprox_1_2[1]);
+                    if(count($aux_val_aprox_1_2_a) == 1){
+                        $val_aprox_aux_1_2 =  $aux_val_aprox_1_2_a[0];
+                    }
+                    if(count($aux_val_aprox_1_2_a) == 2){
+                        $val_aprox_aux_1_2=  $aux_val_aprox_1_2_a[0].$aux_val_aprox_1_2_a[1];
+                    }
+                    if(count($aux_val_aprox_1_2_a) == 3){
+                        $val_aprox_aux_1_2 =  $aux_val_aprox_1_2_a[0].$aux_val_aprox_1_2_a[1].$aux_val_aprox_1_2_a[2];
+                    }
+                    if(count($aux_val_aprox_1_2_a) == 4){
+                        $val_aprox_aux_1_2 =  $aux_val_aprox_1_2_a[0].$aux_val_aprox_1_2_a[1].$aux_val_aprox_1_2_a[2].$aux_val_aprox_1_2_a[3];
+                    }
+                    if(count($aux_val_aprox_1_2_a) == 5){
+                        $val_aprox_aux_1_2 =  $aux_val_aprox_1_2_a[0].$aux_val_aprox_1_2_a[1].$aux_val_aprox_1_2_a[2].$aux_val_aprox_1_2_a[3].$aux_val_aprox_1_2_a[4];
+                    }
+                }else  if($request->get('cheValorS_1_2') == null){
+                                    $val_aprox_aux_1_2 = 0;
+                }
+
+
 
                 $solution_enf2_2->val_aprox = floatval($val_aprox_aux_1_2);
                 $solution_enf2_2->status = 1;
@@ -574,7 +589,8 @@ class ResultadosController extends Controller
                     $solution_enf1_3->dr = $request->get('dr_1_3');
                     $solution_enf1_3->mantenimiento = $request->get('csMantenimiento_1_3');
 
-                    $aux_val_aprox_1_3 = explode("$",   $request->get('cheValorS_1_3'));
+                    if($request->get('cheValorS_1_3') != null){
+                        $aux_val_aprox_1_3 = explode("$",   $request->get('cheValorS_1_3'));
                         $aux_val_aprox_1_3_a = explode(",",    $aux_val_aprox_1_3[1]);
                         if(count($aux_val_aprox_1_3_a) == 1){
                             $val_aprox_aux_1_3 =  $aux_val_aprox_1_3_a[0];
@@ -591,6 +607,11 @@ class ResultadosController extends Controller
                         if(count($aux_val_aprox_1_3_a) == 5){
                             $val_aprox_aux_1_3 =  $aux_val_aprox_1_3_a[0].$aux_val_aprox_1_3_a[1].$aux_val_aprox_1_3_a[2].$aux_val_aprox_1_3_a[3].$aux_val_aprox_1_3_a[4];
                         }
+                    }else  if($request->get('cheValorS_1_3') == null){
+                            $val_aprox_aux_1_3 = 0;
+                    }
+
+
 
                     $solution_enf1_3->val_aprox = floatval($val_aprox_aux_1_3);
                     $solution_enf1_3->status = 1;
@@ -802,23 +823,29 @@ class ResultadosController extends Controller
                 $solution_enf2_1->dr=$request->get('dr_2_1');
                 $solution_enf2_1->mantenimiento	=$request->get('csMantenimiento_2_1');
 
-                $aux_val_aprox_2_1 = explode("$",   $request->get('cheValorS_2_1'));
-                $aux_val_aprox_2_1_a = explode(",",    $aux_val_aprox_2_1[1]);
-                if(count($aux_val_aprox_2_1_a) == 1){
-                    $val_aprox_aux_2_1 =  $aux_val_aprox_2_1_a[0];
+
+                if($request->get('cheValorS_2_1') != null){
+                    $aux_val_aprox_2_1 = explode("$",   $request->get('cheValorS_2_1'));
+                    $aux_val_aprox_2_1_a = explode(",",    $aux_val_aprox_2_1[1]);
+                    if(count($aux_val_aprox_2_1_a) == 1){
+                        $val_aprox_aux_2_1 =  $aux_val_aprox_2_1_a[0];
+                    }
+                    if(count($aux_val_aprox_2_1_a) == 2){
+                        $val_aprox_aux_2_1=  $aux_val_aprox_2_1_a[0].$aux_val_aprox_2_1_a[1];
+                    }
+                    if(count($aux_val_aprox_2_1_a) == 3){
+                        $val_aprox_aux_2_1 =  $aux_val_aprox_2_1_a[0].$aux_val_aprox_2_1_a[1].$aux_val_aprox_2_1_a[2];
+                    }
+                    if(count($aux_val_aprox_2_1_a) == 4){
+                        $val_aprox_aux_2_1 =  $aux_val_aprox_2_1_a[0].$aux_val_aprox_2_1_a[1].$aux_val_aprox_2_1_a[2].$aux_val_aprox_2_1_a[3];
+                    }
+                    if(count($aux_val_aprox_2_1_a) == 5){
+                        $val_aprox_aux_2_1 =  $aux_val_aprox_2_1_a[0].$aux_val_aprox_2_1_a[1].$aux_val_aprox_2_1_a[2].$aux_val_aprox_2_1_a[3].$aux_val_aprox_2_1_a[4];
+                    }
+                }else  if($request->get('cheValorS_2_1') == null){
+                        $val_aprox_aux_2_1 = 0;
                 }
-                if(count($aux_val_aprox_2_1_a) == 2){
-                    $val_aprox_aux_2_1=  $aux_val_aprox_2_1_a[0].$aux_val_aprox_2_1_a[1];
-                }
-                if(count($aux_val_aprox_2_1_a) == 3){
-                    $val_aprox_aux_2_1 =  $aux_val_aprox_2_1_a[0].$aux_val_aprox_2_1_a[1].$aux_val_aprox_2_1_a[2];
-                }
-                if(count($aux_val_aprox_2_1_a) == 4){
-                    $val_aprox_aux_2_1 =  $aux_val_aprox_2_1_a[0].$aux_val_aprox_2_1_a[1].$aux_val_aprox_2_1_a[2].$aux_val_aprox_2_1_a[3];
-                }
-                if(count($aux_val_aprox_2_1_a) == 5){
-                    $val_aprox_aux_2_1 =  $aux_val_aprox_2_1_a[0].$aux_val_aprox_2_1_a[1].$aux_val_aprox_2_1_a[2].$aux_val_aprox_2_1_a[3].$aux_val_aprox_2_1_a[4];
-                }
+
 
                 $solution_enf2_1->val_aprox	=floatval($val_aprox_aux_2_1);
                 $solution_enf2_1->status=1;
@@ -1004,23 +1031,29 @@ class ResultadosController extends Controller
                 $solution_enf2_2->dr = $request->get('dr_2_2');
                 $solution_enf2_2->mantenimiento = $request->get('cheMantenimiento_2_2');
 
-                $aux_val_aprox_2_2 = explode("$",   $request->get('cheValorS_2_2'));
-                $aux_val_aprox_2_2_a = explode(",",    $aux_val_aprox_2_2[1]);
-                if(count($aux_val_aprox_2_2_a) == 1){
-                    $val_aprox_aux_2_2 =  $aux_val_aprox_2_2_a[0];
+                if($request->get('cheValorS_2_2') != null){
+                    $aux_val_aprox_2_2 = explode("$",   $request->get('cheValorS_2_2'));
+                    $aux_val_aprox_2_2_a = explode(",",    $aux_val_aprox_2_2[1]);
+                    if(count($aux_val_aprox_2_2_a) == 1){
+                        $val_aprox_aux_2_2 =  $aux_val_aprox_2_2_a[0];
+                    }
+                    if(count($aux_val_aprox_2_2_a) == 2){
+                        $val_aprox_aux_2_2=  $aux_val_aprox_2_2_a[0].$aux_val_aprox_2_2_a[1];
+                    }
+                    if(count($aux_val_aprox_2_2_a) == 3){
+                        $val_aprox_aux_2_2 =  $aux_val_aprox_2_2_a[0].$aux_val_aprox_2_2_a[1].$aux_val_aprox_2_2_a[2];
+                    }
+                    if(count($aux_val_aprox_2_2_a) == 4){
+                        $val_aprox_aux_2_2 =  $aux_val_aprox_2_2_a[0].$aux_val_aprox_2_2_a[1].$aux_val_aprox_2_2_a[2].$aux_val_aprox_2_2_a[3];
+                    }
+                    if(count($aux_val_aprox_2_2_a) == 5){
+                        $val_aprox_aux_2_2 =  $aux_val_aprox_2_2_a[0].$aux_val_aprox_2_2_a[1].$aux_val_aprox_2_2_a[2].$aux_val_aprox_2_2_a[3].$aux_val_aprox_2_2_a[4];
+                    }
+                }else  if($request->get('cheValorS_2_2') == null){
+                        $val_aprox_aux_2_2 = 0;
                 }
-                if(count($aux_val_aprox_2_2_a) == 2){
-                    $val_aprox_aux_2_2=  $aux_val_aprox_2_2_a[0].$aux_val_aprox_2_2_a[1];
-                }
-                if(count($aux_val_aprox_2_2_a) == 3){
-                    $val_aprox_aux_2_2 =  $aux_val_aprox_2_2_a[0].$aux_val_aprox_2_2_a[1].$aux_val_aprox_2_2_a[2];
-                }
-                if(count($aux_val_aprox_2_2_a) == 4){
-                    $val_aprox_aux_2_2 =  $aux_val_aprox_2_2_a[0].$aux_val_aprox_2_2_a[1].$aux_val_aprox_2_2_a[2].$aux_val_aprox_2_2_a[3];
-                }
-                if(count($aux_val_aprox_2_2_a) == 5){
-                    $val_aprox_aux_2_2 =  $aux_val_aprox_2_2_a[0].$aux_val_aprox_2_2_a[1].$aux_val_aprox_2_2_a[2].$aux_val_aprox_2_2_a[3].$aux_val_aprox_2_2_a[4];
-                }
+
+
 
                 $solution_enf2_2->val_aprox = floatval($val_aprox_aux_2_2);
                 $solution_enf2_2->status = 1;
@@ -1206,7 +1239,9 @@ class ResultadosController extends Controller
                     $solution_enf2_3->dr = $request->get('dr_2_3');
                     $solution_enf2_3->mantenimiento = $request->get('cheMantenimiento_2_3');
 
-                    $aux_val_aprox_2_3 = explode("$",   $request->get('cheValorS_2_3'));
+
+                    if($request->get('cheValorS_2_3') != null){
+                        $aux_val_aprox_2_3 = explode("$",   $request->get('cheValorS_2_3'));
                         $aux_val_aprox_2_3_a = explode(",",    $aux_val_aprox_2_3[1]);
                         if(count($aux_val_aprox_2_3_a) == 1){
                             $val_aprox_aux_2_3 =  $aux_val_aprox_2_3_a[0];
@@ -1223,6 +1258,11 @@ class ResultadosController extends Controller
                         if(count($aux_val_aprox_2_3_a) == 5){
                             $val_aprox_aux_2_3 =  $aux_val_aprox_2_3_a[0].$aux_val_aprox_2_3_a[1].$aux_val_aprox_2_3_a[2].$aux_val_aprox_2_3_a[3].$aux_val_aprox_2_3_a[4];
                         }
+                    }else  if($request->get('cheValorS_2_3') == null){
+                            $val_aprox_aux_2_3 = 0;
+                    }
+
+
 
                     $solution_enf2_3->val_aprox = floatval($val_aprox_aux_2_3);
                     $solution_enf2_3->status = 1;
@@ -1432,23 +1472,30 @@ class ResultadosController extends Controller
                  $solution_enf3_1->dr=$request->get('dr_3_1');
                  $solution_enf3_1->mantenimiento=$request->get('cheMantenimiento_3_1');
 
-                 $aux_val_aprox_3_1 = explode("$",   $request->get('cheValorS_3_1'));
-                        $aux_val_aprox_3_1_a = explode(",",    $aux_val_aprox_3_1[1]);
-                        if(count($aux_val_aprox_3_1_a) == 1){
-                            $val_aprox_aux_3_1 =  $aux_val_aprox_3_1_a[0];
-                        }
-                        if(count($aux_val_aprox_3_1_a) == 2){
-                            $val_aprox_aux_3_1=  $aux_val_aprox_3_1_a[0].$aux_val_aprox_3_1_a[1];
-                        }
-                        if(count($aux_val_aprox_3_1_a) == 3){
-                            $val_aprox_aux_3_1 =  $aux_val_aprox_3_1_a[0].$aux_val_aprox_3_1_a[1].$aux_val_aprox_3_1_a[2];
-                        }
-                        if(count($aux_val_aprox_3_1_a) == 4){
-                            $val_aprox_aux_3_1 =  $aux_val_aprox_3_1_a[0].$aux_val_aprox_3_1_a[1].$aux_val_aprox_3_1_a[2].$aux_val_aprox_3_1_a[3];
-                        }
-                        if(count($aux_val_aprox_3_1_a) == 5){
-                            $val_aprox_aux_3_1 =  $aux_val_aprox_3_1_a[0].$aux_val_aprox_3_1_a[1].$aux_val_aprox_3_1_a[2].$aux_val_aprox_3_1_a[3].$aux_val_aprox_3_1_a[4];
-                        }
+                 if($request->get('cheValorS_3_1') != null){
+                    $aux_val_aprox_3_1 = explode("$",   $request->get('cheValorS_3_1'));
+                    $aux_val_aprox_3_1_a = explode(",",    $aux_val_aprox_3_1[1]);
+                    if(count($aux_val_aprox_3_1_a) == 1){
+                        $val_aprox_aux_3_1 =  $aux_val_aprox_3_1_a[0];
+                    }
+                    if(count($aux_val_aprox_3_1_a) == 2){
+                        $val_aprox_aux_3_1=  $aux_val_aprox_3_1_a[0].$aux_val_aprox_3_1_a[1];
+                    }
+                    if(count($aux_val_aprox_3_1_a) == 3){
+                        $val_aprox_aux_3_1 =  $aux_val_aprox_3_1_a[0].$aux_val_aprox_3_1_a[1].$aux_val_aprox_3_1_a[2];
+                    }
+                    if(count($aux_val_aprox_3_1_a) == 4){
+                        $val_aprox_aux_3_1 =  $aux_val_aprox_3_1_a[0].$aux_val_aprox_3_1_a[1].$aux_val_aprox_3_1_a[2].$aux_val_aprox_3_1_a[3];
+                    }
+                    if(count($aux_val_aprox_3_1_a) == 5){
+                        $val_aprox_aux_3_1 =  $aux_val_aprox_3_1_a[0].$aux_val_aprox_3_1_a[1].$aux_val_aprox_3_1_a[2].$aux_val_aprox_3_1_a[3].$aux_val_aprox_3_1_a[4];
+                    }
+                }else  if($request->get('cheValorS_3_1') == null){
+                        $val_aprox_aux_3_1 = 0;
+                }
+
+
+
 
                  $solution_enf3_1->val_aprox=floatval($val_aprox_aux_3_1);
                  $solution_enf3_1->status=1;
@@ -1633,23 +1680,30 @@ class ResultadosController extends Controller
                  $solution_enf3_2->dr = $request->get('dr_3_2');
                  $solution_enf3_2->mantenimiento = $request->get('cheMantenimiento_3_2');
 
-                 $aux_val_aprox_3_2 = explode("$",   $request->get('cheValorS2_3_2'));
-                        $aux_val_aprox_3_2_a = explode(",",    $aux_val_aprox_3_2[1]);
-                        if(count($aux_val_aprox_3_2_a) == 1){
-                            $val_aprox_aux_3_2 =  $aux_val_aprox_3_2_a[0];
-                        }
-                        if(count($aux_val_aprox_3_2_a) == 2){
-                            $val_aprox_aux_3_2=  $aux_val_aprox_3_2_a[0].$aux_val_aprox_3_2_a[1];
-                        }
-                        if(count($aux_val_aprox_3_2_a) == 3){
-                            $val_aprox_aux_3_2 =  $aux_val_aprox_3_2_a[0].$aux_val_aprox_3_2_a[1].$aux_val_aprox_3_2_a[2];
-                        }
-                        if(count($aux_val_aprox_3_2_a) == 4){
-                            $val_aprox_aux_3_2 =  $aux_val_aprox_3_2_a[0].$aux_val_aprox_3_2_a[1].$aux_val_aprox_3_2_a[2].$aux_val_aprox_3_2_a[3];
-                        }
-                        if(count($aux_val_aprox_3_2_a) == 5){
-                            $val_aprox_aux_3_2 =  $aux_val_aprox_3_2_a[0].$aux_val_aprox_3_2_a[1].$aux_val_aprox_3_2_a[2].$aux_val_aprox_3_2_a[3].$aux_val_aprox_3_2_a[4];
-                        }
+                 if($request->get('cheValorS2_3_2') != null){
+                    $aux_val_aprox_3_2 = explode("$",   $request->get('cheValorS2_3_2'));
+                    $aux_val_aprox_3_2_a = explode(",",    $aux_val_aprox_3_2[1]);
+                    if(count($aux_val_aprox_3_2_a) == 1){
+                        $val_aprox_aux_3_2 =  $aux_val_aprox_3_2_a[0];
+                    }
+                    if(count($aux_val_aprox_3_2_a) == 2){
+                        $val_aprox_aux_3_2=  $aux_val_aprox_3_2_a[0].$aux_val_aprox_3_2_a[1];
+                    }
+                    if(count($aux_val_aprox_3_2_a) == 3){
+                        $val_aprox_aux_3_2 =  $aux_val_aprox_3_2_a[0].$aux_val_aprox_3_2_a[1].$aux_val_aprox_3_2_a[2];
+                    }
+                    if(count($aux_val_aprox_3_2_a) == 4){
+                        $val_aprox_aux_3_2 =  $aux_val_aprox_3_2_a[0].$aux_val_aprox_3_2_a[1].$aux_val_aprox_3_2_a[2].$aux_val_aprox_3_2_a[3];
+                    }
+                    if(count($aux_val_aprox_3_2_a) == 5){
+                        $val_aprox_aux_3_2 =  $aux_val_aprox_3_2_a[0].$aux_val_aprox_3_2_a[1].$aux_val_aprox_3_2_a[2].$aux_val_aprox_3_2_a[3].$aux_val_aprox_3_2_a[4];
+                    }
+                }else  if($request->get('cheValorS2_3_2') == null){
+                        $val_aprox_aux_3_2 = 0;
+                }
+
+
+
 
                  $solution_enf3_2->val_aprox = floatval($val_aprox_aux_3_2);
                  $solution_enf3_2->status = 1;
@@ -1834,7 +1888,8 @@ class ResultadosController extends Controller
                      $solution_enf3_3->dr = $request->get('dr_3_3');
                      $solution_enf3_3->mantenimiento = $request->get('cheMantenimiento_3_3');
 
-                     $aux_val_aprox_3_3 = explode("$",$request->get('cheValorS_3_3'));
+                     if($request->get('cheValorS_3_3') != null){
+                        $aux_val_aprox_3_3 = explode("$",$request->get('cheValorS_3_3'));
                         $aux_val_aprox_3_3_a = explode(",",$aux_val_aprox_3_3[1]);
                         if(count($aux_val_aprox_3_3_a) == 1){
                             $val_aprox_aux_3_3 =  $aux_val_aprox_3_3_a[0];
@@ -1851,6 +1906,11 @@ class ResultadosController extends Controller
                         if(count($aux_val_aprox_3_3_a) == 5){
                             $val_aprox_aux_3_3 =  $aux_val_aprox_3_3_a[0].$aux_val_aprox_3_3_a[1].$aux_val_aprox_3_3_a[2].$aux_val_aprox_3_3_a[3].$aux_val_aprox_3_3_a[4];
                         }
+                    }else  if($request->get('cheValorS_3_3') == null){
+                            $val_aprox_aux_3_3 = 0;
+                    }
+
+
 
                      $solution_enf3_3->val_aprox = floatval($val_aprox_aux_3_3);
                      $solution_enf3_3->status = 1;
@@ -2305,7 +2365,9 @@ class ResultadosController extends Controller
     }
 
     public function roi_inv_tot($yrs,$dif,$inv_ini){
-
+        if($inv_ini == 0){
+            return false;
+        }else{
         /* (((dif_1 * yrs) – inv_ini )/ inv_ini) *100 */
         /* (dif_1 * yrs) */
         $dif_yrs = $dif * $yrs;
@@ -2317,6 +2379,8 @@ class ResultadosController extends Controller
         $res =   $dif_yrs_rest_inv_ini_div__inv_div * 100;
            /*  (((dif_1 * yrs) – inv_ini )/ inv_ini) *100 */
         return $res;
+        }
+
     }
 
     public function red_en_mw($yrs,$dif){
