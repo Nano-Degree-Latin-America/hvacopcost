@@ -1780,13 +1780,13 @@ function inactive_display(value)
        var dr_1_1 =$('#dr_1_1');
        var dr_1_1_count = $('#dr_1_1_count').val();
 
-       if(dr_1_1.val() == 0 || dr_1_1.val() == null){
+       if(dr_1_1.val() == "" || dr_1_1.val() == null){
 
         dr_1_1.css("border-color", "red")
         dr_1_1_count = 1;
         $('#dr_1_1_count').val(dr_1_1_count);
 
-       }else if (dr_1_1.val() != 0 || dr_1_1.val() != null) {
+       }else if (dr_1_1.val() != "" || dr_1_1.val() != null) {
 
         dr_1_1_count = 0;
         $('#dr_1_1_count').val(dr_1_1_count);
