@@ -131,11 +131,13 @@ span{
         padding:1px;
 }
     </style>
+
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+@inject('traer_unidad_hvac','app\Http\Controllers\ResultadosController')
 <div class="bg-white h-full" x-data="app()" x-cloak>
     <div class="w-full px-4">
-
+        @echo '<script src="../../js/index.js?v='.time().'"></script>';
         <div x-show.transition="step === 'complete'">
             <div class="bg-white rounded-lg p-10 flex items-center shadow justify-between">
                 <div>
@@ -436,14 +438,62 @@ span{
 
                                                     <div class="w-1/2 flex justify-start">
                                                         <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 border-blue-600 rounded-md p-1" onchange="unidadHvac(this.value,1,'csTipo','csDisenio_1_1');"  >
-                                                            <option value="0">Seleccionar</option>
+                                                            <?php  $unidad_hvac_val=$traer_unidad_hvac->traer_unidad_hvac($id_project,1,1) ?>
+
+                                                            @if ($unidad_hvac_val == 1)
+                                                            <option selected value="1">Paquetes (RTU)</option>
+                                                            @else
                                                             <option value="1">Paquetes (RTU)</option>
+                                                            @endif
+
+                                                            @if ($unidad_hvac_val == 2)
+                                                            <option selected value="2">Split</option>
+                                                            @else
                                                             <option value="2">Split</option>
+                                                            @endif
+
+                                                            @if ($unidad_hvac_val == 3)
+                                                            <option selected value="3">VRF No Ductados</option>
+                                                            @else
                                                             <option value="3">VRF No Ductados</option>
+                                                            @endif
+
+                                                            @if ($unidad_hvac_val == 4)
+                                                            <option  value="4">VRF Ductados</option>
+                                                            @else
                                                             <option value="4">VRF Ductados</option>
+                                                            @endif
+
+                                                            @if ($unidad_hvac_val == 5)
+                                                            <option selected value="5">PTAC</option>
+                                                            @else
                                                             <option value="5">PTAC</option>
+                                                            @endif
+
+                                                            @if ($unidad_hvac_val == 6)
+                                                            <option selected value="6">WSHP</option>
+                                                            @else
                                                             <option value="6">WSHP</option>
+                                                            @endif
+
+                                                            @if ($unidad_hvac_val == 7)
+                                                            <option selected value="7">Minisplit Inverter</option>
+                                                            @else
                                                             <option value="7">Minisplit Inverter</option>
+                                                            @endif
+                                                            @if ($unidad_hvac_val == 8)
+                                                            <option selected value="8">Chiller</option>
+                                                            @else
+                                                            <option value="8">Chiller</option>
+                                                            @endif
+                                                            @if ($unidad_hvac_val !== null)
+                                                            <script>
+                                                            $(document).ready(function () {
+                                                                unidadHvac('{{$unidad_hvac_val}}',1,'csTipo','csDisenio_1_1');
+                                                            });
+                                                            </script>
+                                                            @endif
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -454,6 +504,7 @@ span{
                                                     </div>
                                                     <div class="w-full flex justify-start">
                                                         <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="change_diseño(this.value,1,'csDisenio_1_1','tipo_control_1_1','dr_1_1','lblCsTipo_1_1');"  name="csTipo" id="csTipo">
+
                                                         </select>
                                                     </div>
 
@@ -1074,14 +1125,61 @@ span{
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,1,'cheTipo_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
-                                                                    <option value="0">Seleccionar</option>
+                                                                    <?php  $unidad_hvac_val=$traer_unidad_hvac->traer_unidad_hvac($id_project,1,2) ?>
+                                                                    @if ($unidad_hvac_val == 1)
+                                                                    <option selected value="1">Paquetes (RTU)</option>
+                                                                    @else
                                                                     <option value="1">Paquetes (RTU)</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 2)
+                                                                    <option selected value="2">Split</option>
+                                                                    @else
                                                                     <option value="2">Split</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 3)
+                                                                    <option selected value="3">VRF No Ductados</option>
+                                                                    @else
                                                                     <option value="3">VRF No Ductados</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 4)
+                                                                    <option  value="4">VRF Ductados</option>
+                                                                    @else
                                                                     <option value="4">VRF Ductados</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 5)
+                                                                    <option selected value="5">PTAC</option>
+                                                                    @else
                                                                     <option value="5">PTAC</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 6)
+                                                                    <option selected value="6">WSHP</option>
+                                                                    @else
                                                                     <option value="6">WSHP</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 7)
+                                                                    <option selected value="7">Minisplit Inverter</option>
+                                                                    @else
                                                                     <option value="7">Minisplit Inverter</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 8)
+                                                                    <option selected value="8">Chiller</option>
+                                                                    @else
+                                                                    <option value="8">Chiller</option>
+                                                                    @endif
+                                                                    @if ($unidad_hvac_val !== null)
+                                                                    <script>
+                                                                    $(document).ready(function () {
+                                                                        unidadHvac('{{$unidad_hvac_val}}',1,'cheTipo_2_1');
+                                                                    });
+                                                                    </script>
+                                                                    @endif
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1697,14 +1795,62 @@ span{
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <select class="w-full py-1 border-2 border-blue-600 rounded-md"  onchange="unidadHvac(this.value,1,'cheTipo_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
-                                                                    <option value="0">Seleccionar</option>
+                                                                    <?php  $unidad_hvac_val=$traer_unidad_hvac->traer_unidad_hvac($id_project,1,3) ?>
+                                                                    @if ($unidad_hvac_val == 1)
+                                                                    <option selected value="1">Paquetes (RTU)</option>
+                                                                    @else
                                                                     <option value="1">Paquetes (RTU)</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 2)
+                                                                    <option selected value="2">Split</option>
+                                                                    @else
                                                                     <option value="2">Split</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 3)
+                                                                    <option selected value="3">VRF No Ductados</option>
+                                                                    @else
                                                                     <option value="3">VRF No Ductados</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 4)
+                                                                    <option  value="4">VRF Ductados</option>
+                                                                    @else
                                                                     <option value="4">VRF Ductados</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 5)
+                                                                    <option selected value="5">PTAC</option>
+                                                                    @else
                                                                     <option value="5">PTAC</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 6)
+                                                                    <option selected value="6">WSHP</option>
+                                                                    @else
                                                                     <option value="6">WSHP</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 7)
+                                                                    <option selected value="7">Minisplit Inverter</option>
+                                                                    @else
                                                                     <option value="7">Minisplit Inverter</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val == 8)
+                                                                    <option selected value="8">Chiller</option>
+                                                                    @else
+                                                                    <option value="8">Chiller</option>
+                                                                    @endif
+
+                                                                    @if ($unidad_hvac_val !== null)
+                                                                    <script>
+                                                                    $(document).ready(function () {
+                                                                        unidadHvac('{{$unidad_hvac_val}}',1,'cheTipo_3_1');
+                                                                    });
+                                                                    </script>
+                                                                    @endif
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -2261,6 +2407,9 @@ window.onload = function() {
     id_ciudad_ini =  '{{ $id_ciudad_ini }}';
     getDegreeHrs_edd($('#paises_edit').val(),id_ciudad_ini);
 };
+function prueba(val){
+    alert(val);
+}
 function app() {
 			return {
 				step: 1,
@@ -2424,7 +2573,7 @@ function traer_porcent_ini(val,porcent) {
                     text: cat_ed
                 }));
 
-                    $("#porcent_hvac").find('option[value="' + cat_ed + '"]').attr("selected", "selected");;
+                    $("#porcent_hvac").find('option[value="' + cat_ed + '"]').attr("selected", "selected");
                     }else if(parseInt(porcent) != cat_ed){
                         $('#porcent_hvac').append($('<option>', {
                             value: cat_ed,

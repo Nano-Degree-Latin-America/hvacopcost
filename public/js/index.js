@@ -6,7 +6,7 @@ $(document).ready(function () {
     $('#ciudad').val($('#ciudades option:selected').text());
     getPaises();
     traer_categorias_edif();
-    $('#div_next_h').addClass("hidden");
+    $('#div_next').addClass("hidden");
     $('#calcular').attr('disabled', true);
     $('#calcular').css('background-color','gray');
  /*    $('#next').attr('disabled', true); */
@@ -432,6 +432,11 @@ function unidadHvac(value,num_div,id_select){
                 '{ "text":"Pared - Piso - Techo" , "value":"pa_pi_te" }' +
                 ']}';
                 break;
+                case "8":
+                    var arry = '{ "arr" : [' +
+                    '{ "text":"Enfriado por Aire" , "value":"enf_air" },' +
+                    '{"text":"Enfriado por Agua" , "value":"enf_agu" } ]}';
+                    break;
               default:
                     // code block
             }
@@ -492,6 +497,11 @@ function unidadHvac(value,num_div,id_select){
             '{ "text":"Pared - Piso - Techo" , "value":"pa_pi_te" }' +
             ']}';
             break;
+            case "8":
+                var arry = '{ "arr" : [' +
+                '{ "text":"Enfriado por Aire" , "value":"enf_air" },' +
+                '{"text":"Enfriado por Agua" , "value":"enf_agu" } ]}';
+                break;
           default:
                 // code block
         }
@@ -517,8 +527,6 @@ function unidadHvac(value,num_div,id_select){
                     var arry = '{ "arr" : [' +
                     '{ "text":"Básico" , "value":"basico" },' +
                     '{"text":"c/ Economizador" , "value":"c_economizador" } ]}';
-
-
                     break;
                 case "2":
                 var arry = '{ "arr" : [' +
@@ -550,6 +558,12 @@ function unidadHvac(value,num_div,id_select){
                 '{ "text":"Pared - Piso - Techo" , "value":"pa_pi_te" }' +
                 ']}';
                 break;
+                case "8":
+                    var arry = '{ "arr" : [' +
+                    '{ "text":"Enfriado por Aire" , "value":"enf_air" },' +
+                    '{"text":"Enfriado por Agua" , "value":"enf_agu" } ]}';
+                    break;
+
               default:
                 // code block
         }
@@ -585,7 +599,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
          $('#'+id_dr).empty();
          $('#'+id_dr).append($('<option>', {
-             value: 0,
+             value: '',
              text: 'Seleccionar'
          }));
 
@@ -610,7 +624,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
                           var arry_dr = '{ "arry_dr" : [' +
                           '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                          '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+                          '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
                           $('#'+equipo_value).val(1.13);
 
                       break;
@@ -630,7 +644,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
                           var arry_dr = '{ "arry_dr" : [' +
                           '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                          '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+                          '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
                           $('#'+equipo_value).val(1.03);
                       break;
 
@@ -651,7 +665,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                           var arry_dr = '{ "arry_dr" : [' +
                           '{ "text":"No Aplica" , "value":0},' +
                           '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                          '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+                          '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
 
                           $('#'+equipo_value).val(1.18);
                       break;
@@ -673,7 +687,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                           var arry_dr = '{ "arry_dr" : [' +
                           '{ "text":"No Aplica" , "value":0},' +
                           '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                          '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+                          '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
 
                           $('#'+equipo_value).val(1.2);
                       break;
@@ -708,7 +722,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
                         var arry_dr = '{ "arry_dr" : [' +
                         '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                        '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+                        '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
                         $('#'+equipo_value).val(0.85);
                       break;
 
@@ -744,7 +758,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                         var arry_dr = '{ "arry_dr" : [' +
                         '{ "text":"No Aplica" , "value":0.08},' +
                         '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                        '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+                        '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
 
 
                         $('#'+equipo_value).val(0.86);
@@ -764,6 +778,43 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                         '{"text":"No Aplica" , "value":0.08 } ]}';
 
                         $('#'+equipo_value).val(1.1);
+
+                      break;
+                      case "enf_air":
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                        '{ "text":"c/ VAV y Retorno Ductado" , "value":0},' +
+                        '{ "text":"Descarga a Plenum" , "value":0.15},' +
+                        '{ "text":"c/ Ducto Flex. y Plenum Retorno" , "value":0.25},' +
+                        '{"text":"ASHRAE 55/62.1/90.0" , "value":-0.15 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
+                        '{"text":"Defenza de Zona" , "value":0.95 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+                        '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
+                        $('#'+equipo_value).val(1.08);
+
+                      break;
+
+                      case "enf_agu":
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                        '{ "text":"c/ VAV y Retorno Ductado" , "value":0},' +
+                        '{ "text":"Descarga a Plenum" , "value":0.15},' +
+                        '{ "text":"c/ Ducto Flex. y Plenum Retorno" , "value":0.25},' +
+                        '{"text":"ASHRAE 55/62.1/90.0" , "value":-0.15 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
+                        '{"text":"Defenza de Zona" , "value":0.95 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+                        '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
+                        $('#'+equipo_value).val(1.13);
 
                       break;
 
@@ -804,7 +855,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
       }else if( num_div == 2){
           $('#'+id_select).empty();
           $('#'+id_select).append($('<option>', {
-              value: 0,
+              value: '',
               text: 'Seleccionar'
           }));
 
@@ -816,7 +867,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
           $('#'+id_dr).empty();
           $('#'+id_dr).append($('<option>', {
-              value: 0,
+              value: '',
               text: 'Seleccionar'
           }));
 
@@ -996,6 +1047,44 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
             '{"text":"No Aplica" , "value":0.08 } ]}';
 
             $('#'+equipo_value).val(1.1);
+          break;
+
+          case "enf_air":
+            var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"c/ VAV y Retorno Ductado" , "value":0},' +
+            '{ "text":"Descarga a Plenum" , "value":0.15},' +
+            '{ "text":"c/ Ducto Flex. y Plenum Retorno" , "value":0.25},' +
+            '{"text":"ASHRAE 55/62.1/90.0" , "value":-0.15 } ]}';
+
+            var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
+            '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
+            '{"text":"Defenza de Zona" , "value":0.95 } ]}';
+
+            var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+            '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
+            $('#'+equipo_value).val(1.08);
+
+          break;
+
+          case "enf_agu":
+            var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"c/ VAV y Retorno Ductado" , "value":0},' +
+            '{ "text":"Descarga a Plenum" , "value":0.15},' +
+            '{ "text":"c/ Ducto Flex. y Plenum Retorno" , "value":0.25},' +
+            '{"text":"ASHRAE 55/62.1/90.0" , "value":-0.15 } ]}';
+
+            var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
+            '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
+            '{"text":"Defenza de Zona" , "value":0.95 } ]}';
+
+            var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+            '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
+            $('#'+equipo_value).val(1.13);
+
           break;
 
         default:
@@ -1032,7 +1121,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
       }else if(num_div == 3){
           $('#'+id_select).empty();
           $('#'+id_select).append($('<option>', {
-              value: 0,
+              value: '',
               text: 'Seleccione'
           }));
 
@@ -1045,7 +1134,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
           $('#'+id_dr).empty();
           $('#'+id_dr).append($('<option>', {
-              value: 0,
+              value: '',
               text: 'Seleccione'
           }));
           $('#'+equipo_value).empty();
@@ -1223,6 +1312,44 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
             '{"text":"No Aplica" , "value":0.08 } ]}';
 
             $('#'+equipo_value).val(1.1);
+          break;
+
+          case "enf_air":
+            var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"c/ VAV y Retorno Ductado" , "value":0},' +
+            '{ "text":"Descarga a Plenum" , "value":0.15},' +
+            '{ "text":"c/ Ducto Flex. y Plenum Retorno" , "value":0.25},' +
+            '{"text":"ASHRAE 55/62.1/90.0" , "value":-0.15 } ]}';
+
+            var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
+            '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
+            '{"text":"Defenza de Zona" , "value":0.95 } ]}';
+
+            var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+            '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
+            $('#'+equipo_value).val(1.08);
+
+          break;
+
+          case "enf_agu":
+            var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"c/ VAV y Retorno Ductado" , "value":0},' +
+            '{ "text":"Descarga a Plenum" , "value":0.15},' +
+            '{ "text":"c/ Ducto Flex. y Plenum Retorno" , "value":0.25},' +
+            '{"text":"ASHRAE 55/62.1/90.0" , "value":-0.15 } ]}';
+
+            var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
+            '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
+            '{"text":"Defenza de Zona" , "value":0.95 } ]}';
+
+            var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+            '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
+            $('#'+equipo_value).val(1.13);
+
           break;
 
             default:
@@ -1687,8 +1814,10 @@ function inactive_display(value)
     var sol_1_3 = $('#cUnidad_1_3');
 
     var sol_2_1 = $('#cUnidad_2_1');
+    var sol_2_2 = $('#cUnidad_2_2');
 
     var sol_3_1 = $('#cUnidad_3_1');
+    var sol_3_2 = $('#cUnidad_3_2');
 
 
     /* alert(sol_1_2.val()); */
@@ -1859,99 +1988,319 @@ function inactive_display(value)
     //////////////////////////////////////////////////////////////
 
     if (sol_1_2.val() != '0'){
+
         var tipo_equipo_1_2 =$('#csTipo_1_2');
+        var csTipo_1_2_count = $('#csTipo_1_2_count').val();
+
         if(tipo_equipo_1_2.val() == 0  || tipo_equipo_1_2.val() == null){
+
             tipo_equipo_1_2.css("border-color", "red")
-        }
+            csTipo_1_2_count = 1;
+            $('#csTipo_1_2_count').val(csTipo_1_2_count);
+
+        }else if (tipo_equipo_1_2.val() != 0 || tipo_equipo_1_2.val() != null) {
+
+            csTipo_1_2_count = 0;
+            $('#csTipo_1_2_count').val(csTipo_1_2_count);
+
+       }
 
         var  capacidad_total_1_2=$('#capacidad_total_1_2');
+        var capacidad_tota_1_2_count = $('#capacidad_tota_1_2_count').val();
+
         if(capacidad_total_1_2.val() == 0){
             capacidad_total_1_2.css("border-color", "red")
+            capacidad_tota_1_2_count = 1;
+            $('#capacidad_tota_1_2_count').val(capacidad_tota_1_2_count);
+        }else if (capacidad_total_1_2.val() != 0) {
+
+            capacidad_tota_1_2_count = 0;
+        $('#capacidad_tota_1_2_count').val(capacidad_tota_1_2_count);
+
         }
 
         var costo_elec_1_2 =$('#costo_elec_1_2');
+        var costo_elec_1_2_count = $('#costo_elec_1_2_count').val();
+
         if(costo_elec_1_2.val() == 0){
             costo_elec_1_2.css("border-color", "red")
+            costo_elec_1_2_count = 1;
+            $('#costo_elec_1_2_count').val(costo_elec_1_2_count);
+        }else if (costo_elec_1_2.val() != 0) {
+
+            costo_elec_1_2_count = 0;
+        $('#costo_elec_1_2_count').val(costo_elec_1_2_count);
+
         }
 
         var csStd_cant_1_2 =$('#csStd_cant_1_2');
+        var csStd_1_2_count = $('#csStd_1_2_count').val();
+
         if(csStd_cant_1_2.val() == 0){
             csStd_cant_1_2.css("border-color", "red")
+            csStd_1_2_count = 1;
+            $('#csStd_1_2_count').val(csStd_1_2_count);
+        }else if (csStd_cant_1_2.val() != 0) {
+
+            csStd_1_2_count = 0;
+        $('#csStd_1_2_count').val(csStd_1_2_count);
+
         }
 
         var tipo_control_1_2 =$('#tipo_control_1_2');
+        var tipo_control_1_2_count = $('#tipo_control_1_2_count').val();
+
         if(tipo_control_1_2.val() == 0 || tipo_control_1_2.val() == null){
             tipo_control_1_2.css("border-color", "red")
+            tipo_control_1_2_count = 1;
+            $('#tipo_control_1_2_count').val(tipo_control_1_2_count);
+        }else if (tipo_control_1_2.val() != 0) {
+
+            tipo_control_1_2_count = 0;
+            $('#tipo_control_1_2_count').val(tipo_control_1_2_count);
+
         }
 
         var dr_1_2 =$('#dr_1_2');
-        if(dr_1_2.val() == 0 || dr_1_2.val() == null){
+        var dr_1_2_count = $('#dr_1_2_count').val();
+
+        if(dr_1_2.val() == "" || dr_1_2.val() == null){
+
             dr_1_2.css("border-color", "red")
+            dr_1_2_count = 1;
+            $('#dr_1_2_count').val(dr_1_2_count);
+
+        }else if (dr_1_2 .val() != '' || dr_1_2.val() != null) {
+
+            dr_1_2_count = 0;
+            $('#dr_1_2_count').val(dr_1_2_count);
+
         }
 
         var csMantenimiento_1_2 =$('#csMantenimiento_1_2');
+        var csMantenimiento_1_2_count = $('#csMantenimiento_1_2_count').val();
+
         if(csMantenimiento_1_2.val() == 0){
+
             csMantenimiento_1_2.css("border-color", "red")
+            csMantenimiento_1_2_count = 1;
+            $('#csMantenimiento_1_2_count').val(csMantenimiento_1_2_count);
+
+        }else if (csMantenimiento_1_2.val() != 0) {
+
+            csMantenimiento_1_2_count = 0;
+            $('#csMantenimiento_1_2_count').val(csMantenimiento_1_2_count);
+
         }
 
         var csDisenio_1_2 =$('#csDisenio_1_2');
-        if(csDisenio_1_2.val() == 0 || csDisenio_1_2.val() == null){
+        var csDisenio_1_2_count = $('#csDisenio_1_2_count').val();
+
+        if(csDisenio_1_2.val() == "" || csDisenio_1_2.val() == null){
+
          csDisenio_1_2.css("border-color", "red")
+         csDisenio_1_2_count = 1;
+         $('#csDisenio_1_2_count').val(csDisenio_1_2_count);
+
+        }else if (csDisenio_1_2.val() != '' || csDisenio_1_2.val() != null) {
+
+            csDisenio_1_2_count = 0;
+        $('#csDisenio_1_2_count').val(csDisenio_1_2_count);
+
+
         }
 
-        var hrsEnfriado =$('#hrsEnfriado_1_2');
-        if(hrsEnfriado.val() == 0 || hrsEnfriado.val() == ""){
-         hrsEnfriado.css("border-color", "red")
+        var hrsEnfriado_1_2 =$('#hrsEnfriado_1_2');
+        var hrsEnfriado_1_2_count = $('#hrsEnfriado_1_2_count').val();
+
+        if(hrsEnfriado_1_2.val() == 0 || hrsEnfriado_1_2.val() == ""){
+
+            hrsEnfriado_1_2.css("border-color", "red")
+         hrsEnfriado_1_2_count = 1;
+         $('#hrsEnfriado_1_2_count').val(hrsEnfriado_1_2_count);
+
+        }else if (hrsEnfriado_1_2.val() != 0) {
+
+            hrsEnfriado_1_2_count = 0;
+        $('#hrsEnfriado_1_2_count').val(hrsEnfriado_1_2_count);
+
         }
+
+
+            var count_inps_1_2 = csTipo_1_2_count +
+            capacidad_tota_1_2_count + costo_elec_1_2_count
+            + dr_1_2_count + csStd_1_2_count +
+            tipo_control_1_2_count + csMantenimiento_1_2_count +
+            csDisenio_1_2_count + hrsEnfriado_1_2_count;
+            if(count_inps_1_2>0){
+                Swal.fire({
+                            title: '¡Atención!',
+                            icon: 'warning',
+                            text:'Faltan campos por completar en la Solucion Base'
+
+                        })
+                        return false;
+                        }
+
         }
 
         ////////////////////////////////////////
 
         if (sol_1_3.val() != '0'){
-            var tipo_equipo_1_3 =$('#lblCsTipo_1_3');
+            var tipo_equipo_1_3 =$('#csTipo_1_3');
+            var csTipo_1_3_count = $('#csTipo_1_3_count').val();
             if(tipo_equipo_1_3.val() == 0  || tipo_equipo_1_3.val() == null){
+
                 tipo_equipo_1_3.css("border-color", "red")
+                csTipo_1_3_count = 1;
+                $('#csTipo_1_3_count').val(csTipo_1_3_count);
+            }else if (tipo_equipo_1_3.val() != 0) {
+
+                csTipo_1_3_count = 0;
+                $('#csTipo_1_3_count').val(csTipo_1_3_count);
+
             }
 
             var  capacidad_total_1_3=$('#capacidad_total_1_3');
+            var capacidad_total_1_3_count = $('#capacidad_total_1_3_count').val();
+
             if(capacidad_total_1_3.val() == 0){
+
                 capacidad_total_1_3.css("border-color", "red")
+                capacidad_total_1_3_count = 1;
+                $('#capacidad_total_1_3_count').val(capacidad_total_1_3_count);
+            }else if (capacidad_total_1_3.val() != 0) {
+
+                capacidad_total_1_3_count = 0;
+                $('#capacidad_total_1_3_count').val(capacidad_total_1_3_count);
+
             }
 
             var costo_elec_1_3 =$('#costo_elec_1_3');
+            var costo_elec_1_3_count = $('#costo_elec_1_3_count').val();
+
             if(costo_elec_1_3.val() == 0){
+
                 costo_elec_1_3.css("border-color", "red")
+                costo_elec_1_3_count = 1;
+                $('#costo_elec_1_3_count').val(costo_elec_1_3_count);
+
+            }else if (costo_elec_1_3.val() != 0) {
+
+                costo_elec_1_3_count = 0;
+            $('#costo_elec_1_3_count').val(costo_elec_1_3_count);
+
             }
 
             var csStd_cant_1_3 =$('#csStd_cant_1_3');
+            var csStd_cant_1_3_count = $('#csStd_cant_1_3_count').val();
+
             if(csStd_cant_1_3.val() == 0){
                 csStd_cant_1_3.css("border-color", "red")
+                csStd_cant_1_3_count = 1;
+                $('#csStd_cant_1_3_count').val(csStd_cant_1_3_count);
+            }else if (csStd_cant_1_1.val() != 0) {
+
+                csStd_cant_1_3_count = 0;
+            $('#csStd_cant_1_3_count').val(csStd_cant_1_3_count);
+
             }
 
             var tipo_control_1_3 =$('#tipo_control_1_3');
+            var tipo_control_1_3_count = $('#tipo_control_1_3_count').val();
+
             if(tipo_control_1_3.val() == 0 || tipo_control_1_3.val() == null){
                 tipo_control_1_3.css("border-color", "red")
+                tipo_control_1_3_count = 1;
+                $('#tipo_control_1_3_count').val(tipo_control_1_3_count);
+            }else if (tipo_control_1_3.val() != 0) {
+
+                tipo_control_1_3_count = 0;
+            $('#tipo_control_1_3_count').val(tipo_control_1_3_count);
+
             }
 
             var dr_1_3 =$('#dr_1_3');
-            if(dr_1_3.val() == 0 || dr_1_3.val() == null){
+            var dr_1_3_count = $('#dr_1_3_count').val();
+
+            if(dr_1_3.val() == '' || dr_1_3.val() == null){
                 dr_1_3.css("border-color", "red")
+                dr_1_3_count = 1;
+                $('#dr_1_3_count').val(dr_1_3_count);
+            }else if (dr_1_3.val() != '' || dr_1_3.val() != null) {
+
+                dr_1_3_count = 0;
+            $('#dr_1_3_count').val(dr_1_3_count);
+
             }
 
             var csMantenimiento_1_3 =$('#csMantenimiento_1_3');
+            var csMantenimiento_1_3_count = $('#csMantenimiento_1_3_count').val();
+
             if(csMantenimiento_1_3.val() == 0){
                 csMantenimiento_1_3.css("border-color", "red")
+                csMantenimiento_1_3_count = 1;
+                $('#csMantenimiento_1_3_count').val(csMantenimiento_1_3_count);
+            }else if (csMantenimiento_1_3.val() != 0) {
+
+                csMantenimiento_1_3_count = 0;
+            $('#csMantenimiento_1_3_count').val(csMantenimiento_1_3_count);
+
             }
 
             var csDisenio_1_3 =$('#csDisenio_1_3');
+            var csDisenio_1_3_count = $('#csDisenio_1_3_count').val();
+
             if(csDisenio_1_3.val() == 0 || csDisenio_1_3.val() == null){
                 csDisenio_1_3.css("border-color", "red")
+                csDisenio_1_3_count = 1;
+                $('#csDisenio_1_3_count').val(csDisenio_1_3_count);
+            }else if (csDisenio_1_3.val() != 0) {
+
+                csDisenio_1_3_count = 0;
+            $('#csDisenio_1_3_count').val(csDisenio_1_3_count);
+
             }
 
             var hrsEnfriado_1_3 =$('#hrsEnfriado_1_3');
+            var hrsEnfriado_1_3_count = $('#hrsEnfriado_1_3_count').val();
+
             if(hrsEnfriado_1_3.val() == 0 || hrsEnfriado_1_3.val() == ""){
                 hrsEnfriado_1_3.css("border-color", "red")
+                hrsEnfriado_1_3_count = 1;
+                $('#hrsEnfriado_1_3_count').val(hrsEnfriado_1_3_count);
+            }else if (hrsEnfriado_1_3.val() != 0) {
+
+                hrsEnfriado_1_3_count = 0;
+            $('#hrsEnfriado_1_3_count').val(hrsEnfriado_1_3_count);
+
             }
+
+
+
+
+
+
+
+
+
+
+
+            var count_inps_1_3 = csTipo_1_3_count +
+            capacidad_total_1_3_count + costo_elec_1_3_count
+            + dr_1_3_count + csStd_cant_1_3_count +
+            tipo_control_1_3_count + csMantenimiento_1_3_count +
+            csDisenio_1_3_count + hrsEnfriado_1_3_count;
+
+            if(count_inps_1_3>0){
+                Swal.fire({
+                            title: '¡Atención!',
+                            icon: 'warning',
+                            text:'Faltan campos por completar en la Solucion Base'
+
+                        })
+                        return false;
+                        }
             }
 
 
@@ -2043,13 +2392,13 @@ function inactive_display(value)
                 var dr_2_1 =$('#dr_2_1');
                 var dr_2_1_count = $('#dr_2_1_count').val();
 
-                if(dr_2_1.val() == 0 || dr_2_1.val() == null){
+                if(dr_2_1.val() == '' || dr_2_1.val() == null){
 
                     dr_2_1.css("border-color", "red")
                     dr_2_1_count = 1;
                     $('#dr_2_1_count').val(dr_2_1_count);
 
-                }else if (dr_2_1.val() != 0 || dr_2_1.val() != null) {
+                }else if (dr_2_1.val() != '' || dr_2_1.val() != null) {
 
                     dr_2_1_count = 0;
                     $('#dr_2_1_count').val(dr_2_1_count);
@@ -2117,7 +2466,192 @@ function inactive_display(value)
                                 return false;
                                 }
 
+
+
                 }
+
+
+                if (sol_2_2.val() != '0'){
+
+                    /////////////////////////////////////
+                var cheTipo_2_2 =$('#cheTipo_2_2');
+                var cheTipo_2_2_count = $('#cheTipo_2_2_count').val();
+
+                if(cheTipo_2_2.val() == 0){
+
+                    cheTipo_2_2.css("border-color", "red")
+                    cheTipo_2_2_count = 1;
+                    $('#cheTipo_2_2_count').val(cheTipo_2_2_count);
+
+                }else if (cheTipo_2_2.val() != 0) {
+
+                    cheTipo_2_2_count = 0;
+                    $('#cheTipo_2_2_count').val(cheTipo_2_2_count);
+
+                }
+                /////////////////////////////////////
+                var  capacidad_total_2_2=$('#capacidad_total_2_2');
+                var capacidad_total_2_2_count = $('#capacidad_total_2_2_count').val();
+
+                if(capacidad_total_2_2.val() == 0 || capacidad_total_2_2.val() == ''){
+
+                    capacidad_total_2_2.css("border-color", "red")
+                    capacidad_total_2_2_count = 1;
+                    $('#capacidad_total_2_2_count').val(capacidad_total_2_2_count);
+
+                }else if (capacidad_total_2_2.val() != 0 || capacidad_total_2_2.val() != '') {
+
+                    capacidad_total_2_2_count = 0;
+                    $('#capacidad_total_2_2_count').val(capacidad_total_2_2_count);
+
+                }
+                    /////////////////////////////////////
+                var costo_elec_2_2 =$('#costo_elec_2_2');
+                var costo_elec_2_2_count = $('#costo_elec_2_2_count').val();
+
+                if(costo_elec_2_2.val() == 0){
+
+                    costo_elec_2_2.css("border-color", "red")
+                    costo_elec_2_2_count = 1;
+                    $('#costo_elec_2_2_count').val(costo_elec_2_2_count);
+
+                }else if (costo_elec_2_2.val() != 0) {
+
+                    costo_elec_2_2_count = 0;
+                    $('#costo_elec_2_2_count').val(costo_elec_2_2_count);
+
+                }
+                    /////////////////////////////////////
+
+                var csStd_cant_2_2 =$('#csStd_cant_2_2');
+                var csStd_cant_2_2_count = $('#csStd_cant_2_2_count').val();
+
+                if(csStd_cant_2_2.val() == 0){
+
+                    csStd_cant_2_2.css("border-color", "red");
+                    csStd_cant_2_2_count = 1;
+                    $('#csStd_cant_2_2_count').val(csStd_cant_2_2_count);
+
+                }else if (csStd_cant_2_2.val() != 0) {
+
+                    csStd_cant_2_2_count = 0;
+                    $('#csStd_cant_2_2_count').val(csStd_cant_2_2_count);
+
+                }
+
+                /////////////////////////////////////
+                var tipo_control_2_2 =$('#tipo_control_2_2');
+                var tipo_control_2_2_count = $('#tipo_control_2_2_count').val();
+
+                if(tipo_control_2_2.val() == 0 || tipo_control_2_2.val() == null){
+
+                    tipo_control_2_2.css("border-color", "red")
+                    tipo_control_2_2_count = 1;
+                    $('#tipo_control_2_2_count').val(tipo_control_2_2_count);
+
+                }else if (tipo_control_2_2.val() != 0) {
+
+                    tipo_control_2_2_count = 0;
+                    $('#tipo_control_2_2_count').val(tipo_control_2_2_count);
+
+                }
+                    /////////////////////////////////////
+                var dr_2_2 =$('#dr_2_2');
+                var dr_2_2_count = $('#dr_2_2_count').val();
+
+                if(dr_2_2.val() == '' || dr_2_2.val() == null){
+
+                    dr_2_2.css("border-color", "red")
+                    dr_2_2_count = 1;
+                    $('#dr_2_2_count').val(dr_2_2_count);
+
+                }else if (dr_2_2.val() != '' || dr_2_2.val() != null) {
+
+                    dr_2_2_count = 0;
+                    $('#dr_2_2_count').val(dr_2_2_count);
+
+                }
+                    /////////////////////////////////////
+                var cheMantenimiento_2_2 =$('#cheMantenimiento_2_2');
+                var cheMantenimiento_2_2_count = $('#cheMantenimiento_2_2_count').val();
+
+                if(cheMantenimiento_2_2.val() == 0){
+
+                    cheMantenimiento_2_2.css("border-color", "red")
+                    cheMantenimiento_2_2_count = 1;
+                    $('#cheMantenimiento_2_2_count').val(cheMantenimiento_2_2_count);
+
+                }else if (cheMantenimiento_2_2.val() != 0) {
+
+                    cheMantenimiento_2_2_count = 0;
+                    $('#cheMantenimiento_2_2_count').val(cheMantenimiento_2_2_count);
+
+                }
+                /////////////////////////////////////
+                var cheDisenio_2_2 =$('#cheDisenio_2_2');
+                var cheDisenio_2_2_count = $('#cheDisenio_2_2_count').val();
+
+                if(cheDisenio_2_2.val() == '' || cheDisenio_2_2.val() == null){
+
+                    cheDisenio_2_2.css("border-color", "red")
+                    cheDisenio_2_2_count = 1;
+                    $('#cheDisenio_2_2_count').val(cheDisenio_2_2_count);
+
+                }else if (cheDisenio_2_2.val() != '' || cheDisenio_2_2.val() != null) {
+
+                    cheDisenio_2_2_count = 0;
+                    $('#cheDisenio_2_2_count').val(cheDisenio_2_2_count);
+
+
+                }
+                    /////////////////////////////////////
+                var hrsEnfriado_2_2 =$('#hrsEnfriado_2_2');
+                var hrsEnfriado_2_2_count = $('#hrsEnfriado_2_2_count').val();
+
+                if(hrsEnfriado_2_2.val() == 0 || hrsEnfriado_2_2.val() == ""){
+
+                    hrsEnfriado_2_2.css("border-color", "red")
+                    hrsEnfriado_2_2_count = 1;
+                    $('#hrsEnfriado_2_2_count').val(hrsEnfriado_2_2_count);
+
+                }else if (hrsEnfriado_2_2.val() != 0 || hrsEnfriado_2_2.val() != null) {
+
+                    hrsEnfriado_2_2_count = 0;
+                $('#hrsEnfriado_2_2_count').val(hrsEnfriado_2_2_count);
+
+                    }
+
+                    /*       alert(count_inps_2_1); */
+
+
+
+
+
+
+
+
+
+
+                var count_inps_2_2 = cheTipo_2_2_count
+                + capacidad_total_2_2_count
+                + costo_elec_2_2_count
+                + dr_2_2_count + csStd_cant_2_2_count
+                 + tipo_control_2_2_count + cheMantenimiento_2_2_count
+                 + cheDisenio_2_2_count + hrsEnfriado_2_2_count;
+
+                if(count_inps_2_2>0){
+                        Swal.fire({
+                                    title: '¡Atención!',
+                                    icon: 'warning',
+                                    text:'Faltan campos por completar en la Solucion A'
+
+                                })
+                                return false;
+                                }
+
+                }
+
+//////////////////////////////////////////////////////////////////////////////////////////
 
 
                 /* ////////////////3.1//////////////////// */
@@ -2210,13 +2744,13 @@ function inactive_display(value)
                 var dr_3_1 =$('#dr_3_1');
                 var dr_3_1_count = $('#dr_3_1_count').val();
 
-                if(dr_3_1.val() == 0 || dr_3_1.val() == null){
+                if(dr_3_1.val() == '' || dr_3_1.val() == null){
 
                     dr_3_1.css("border-color", "red")
                     dr_3_1_count = 1;
                     $('#dr_3_1_count').val(dr_3_1_count);
 
-                }else if (dr_3_1.val() != 0 || dr_3_1.val() != null) {
+                }else if (dr_3_1.val() != '' || dr_3_1.val() != null) {
 
                     dr_3_1_count = 0;
                     $('#dr_3_1_count').val(dr_3_1_count);
@@ -2286,6 +2820,186 @@ function inactive_display(value)
                                 }
 
                 }
+
+                ////////////////////3-2//////////////////////////////////////
+                if (sol_3_2.val() != '0'){
+
+                    /////////////////////////////////////
+                var cheTipo_3_2 =$('#cheTipo_3_2');
+                var cheTipo_3_2_count = $('#cheTipo_3_2_count').val();
+
+                if(cheTipo_3_2.val() == 0){
+
+                    cheTipo_3_2.css("border-color", "red")
+                    cheTipo_3_2_count = 1;
+                    $('#cheTipo_3_2_count').val(cheTipo_3_2_count);
+
+                }else if (cheTipo_3_2.val() != 0) {
+
+                    cheTipo_3_2_count = 0;
+                    $('#cheTipo_3_2_count').val(cheTipo_3_2_count);
+
+                }
+                /////////////////////////////////////
+                var  capacidad_total_3_2=$('#capacidad_total_3_2');
+                var capacidad_total_3_2_count = $('#capacidad_total_3_2_count').val();
+
+                if(capacidad_total_3_2.val() == 0 || capacidad_total_3_2.val() == ''){
+
+                    capacidad_total_3_2.css("border-color", "red")
+                    capacidad_total_3_2_count = 1;
+                    $('#capacidad_total_3_2_count').val(capacidad_total_3_2_count);
+
+                }else if (capacidad_total_3_2.val() != 0 || capacidad_total_3_2.val() != '') {
+
+                    capacidad_total_3_2_count = 0;
+                    $('#capacidad_total_3_2_count').val(capacidad_total_3_2_count);
+
+                }
+                    /////////////////////////////////////
+                var costo_elec_3_2 =$('#costo_elec_3_2');
+                var costo_elec_3_2_count = $('#costo_elec_3_2_count').val();
+
+                if(costo_elec_3_2.val() == 0){
+
+                    costo_elec_3_2.css("border-color", "red")
+                    costo_elec_3_2_count = 1;
+                    $('#costo_elec_3_2_count').val(costo_elec_3_2_count);
+
+                }else if (costo_elec_3_2.val() != 0) {
+
+                    costo_elec_3_2_count = 0;
+                    $('#costo_elec_3_2_count').val(costo_elec_3_2_count);
+
+                }
+                    /////////////////////////////////////
+
+                var csStd_cant_3_2 =$('#csStd_cant_3_2');
+                var csStd_cant_3_2_count = $('#csStd_cant_3_2_count').val();
+
+                if(csStd_cant_3_2.val() == 0){
+
+                    csStd_cant_3_2.css("border-color", "red");
+                    csStd_cant_3_2_count = 1;
+                    $('#csStd_cant_3_2_count').val(csStd_cant_3_2_count);
+
+                }else if (csStd_cant_3_2.val() != 0) {
+
+                    csStd_cant_3_2_count = 0;
+                    $('#csStd_cant_3_2_count').val(csStd_cant_3_2_count);
+
+                }
+
+                /////////////////////////////////////
+                var tipo_control_3_2 =$('#tipo_control_3_2');
+                var tipo_control_3_2_count = $('#tipo_control_3_2_count').val();
+
+                if(tipo_control_3_2.val() == 0 || tipo_control_3_2.val() == null){
+
+                    tipo_control_3_2.css("border-color", "red")
+                    tipo_control_3_2_count = 1;
+                    $('#tipo_control_3_2_count').val(tipo_control_3_2_count);
+
+                }else if (tipo_control_3_2.val() != 0) {
+
+                    tipo_control_3_2_count = 0;
+                    $('#tipo_control_3_2_count').val(tipo_control_3_2_count);
+
+                }
+                    /////////////////////////////////////
+                var dr_3_2 =$('#dr_3_2');
+                var dr_3_2_count = $('#dr_3_2_count').val();
+
+                if(dr_3_2.val() == '' || dr_3_2.val() == null){
+
+                    dr_3_2.css("border-color", "red")
+                    dr_3_2_count = 1;
+                    $('#dr_3_2_count').val(dr_3_2_count);
+
+                }else if (dr_3_2.val() != '' || dr_3_2.val() != null) {
+
+                    dr_3_2_count = 0;
+                    $('#dr_3_2_count').val(dr_3_2_count);
+
+                }
+                    /////////////////////////////////////
+                var cheMantenimiento_3_2 =$('#cheMantenimiento_3_2');
+                var cheMantenimiento_3_2_count = $('#cheMantenimiento_3_2_count').val();
+
+                if(cheMantenimiento_3_2.val() == 0){
+
+                    cheMantenimiento_3_2.css("border-color", "red")
+                    cheMantenimiento_3_2_count = 1;
+                    $('#cheMantenimiento_3_2_count').val(cheMantenimiento_3_2_count);
+
+                }else if (cheMantenimiento_3_2.val() != 0) {
+
+                    cheMantenimiento_3_2_count = 0;
+                    $('#cheMantenimiento_3_2_count').val(cheMantenimiento_3_2_count);
+
+                }
+                /////////////////////////////////////
+                var cheDisenio_3_2 =$('#cheDisenio_3_2');
+                var cheDisenio_3_2_count = $('#cheDisenio_3_2_count').val();
+
+                if(cheDisenio_3_2.val() == '' || cheDisenio_3_2.val() == null){
+
+                    cheDisenio_3_2.css("border-color", "red")
+                    cheDisenio_3_2_count = 1;
+                    $('#cheDisenio_3_2_count').val(cheDisenio_3_2_count);
+
+                }else if (cheDisenio_3_2.val() != '' || cheDisenio_3_2.val() != null) {
+
+                    cheDisenio_3_2_count = 0;
+                    $('#cheDisenio_3_2_count').val(cheDisenio_3_2_count);
+
+
+                }
+                    /////////////////////////////////////
+                var hrsEnfriado_3_2 =$('#hrsEnfriado_3_2');
+                var hrsEnfriado_3_2_count = $('#hrsEnfriado_3_2_count').val();
+
+                if(hrsEnfriado_3_2.val() == 0 || hrsEnfriado_3_2.val() == ""){
+
+                    hrsEnfriado_3_2.css("border-color", "red")
+                    hrsEnfriado_3_2_count = 1;
+                    $('#hrsEnfriado_3_2_count').val(hrsEnfriado_3_2_count);
+
+                }else if (hrsEnfriado_3_2.val() != 0 || hrsEnfriado_3_2.val() != null) {
+
+                    hrsEnfriado_3_2_count = 0;
+                $('#hrsEnfriado_3_2_count').val(hrsEnfriado_3_2_count);
+
+                    }
+
+
+
+
+
+
+
+
+
+
+
+                var count_inps_3_2 = cheTipo_3_2_count +
+                capacidad_total_3_2_count + costo_elec_3_2_count +
+                dr_3_2_count + csStd_cant_3_2_count + tipo_control_3_2_count +
+                cheMantenimiento_3_2_count + cheDisenio_3_2_count +
+                hrsEnfriado_3_2_count;
+              /*       alert(count_inps_2_1); */
+                if(count_inps_3_2>0){
+                        Swal.fire({
+                                    title: '¡Atención!',
+                                    icon: 'warning',
+                                    text:'Faltan campos por completar en la Solucion B'
+
+                                })
+                                return false;
+                                }
+
+                }
+                /////////////////////////////////////////////////////////
                 formulario = document.getElementById('formulario');
                 formulario.submit();
 
@@ -2312,3 +3026,5 @@ function valida_form_calc(){
         $('#calcular').css('background-color','gray');
     }
 }
+
+

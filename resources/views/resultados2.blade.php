@@ -419,6 +419,9 @@ span{
                                                                     @if ($solution->unidad_hvac == 7)
                                                                     Minisplit Inverter
                                                                     @endif
+                                                                    @if ($solution->unidad_hvac == 8)
+                                                                   Chiller
+                                                                    @endif
                                                                 </p>
                                                             </div>
 
@@ -464,6 +467,14 @@ span{
 
                                                                     @if ($solution->tipo_equipo == 'pa_pi_te')
                                                                     Pared - Piso - Techo
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'enf_agu')
+                                                                    Enfriado por Agua
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'enf_air')
+                                                                    Enfriado por Aire
                                                                     @endif
                                                                 </p>
                                                             </div>
@@ -603,6 +614,9 @@ span{
                                                                     @if ($solution->unidad_hvac == 7)
                                                                     Minisplit Inverter
                                                                     @endif
+                                                                    @if ($solution->unidad_hvac == 8)
+                                                                    Chiller
+                                                                    @endif
                                                                 </p>
                                                             </div>
 
@@ -648,6 +662,13 @@ span{
 
                                                                     @if ($solution->tipo_equipo == 'pa_pi_te')
                                                                     Pared - Piso - Techo
+                                                                    @endif
+                                                                    @if ($solution->tipo_equipo == 'enf_agu')
+                                                                    Enfriado por Agua
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'enf_air')
+                                                                    Enfriado por Aire
                                                                     @endif
                                                                 </p>
                                                             </div>
@@ -787,6 +808,9 @@ span{
                                                                     @if ($solution->unidad_hvac == 7)
                                                                     Minisplit Inverter
                                                                     @endif
+                                                                    @if ($solution->unidad_hvac == 8)
+                                                                    Chiller
+                                                                    @endif
                                                                 </p>
                                                             </div>
 
@@ -832,6 +856,13 @@ span{
 
                                                                     @if ($solution->tipo_equipo == 'pa_pi_te')
                                                                     Pared - Piso - Techo
+                                                                    @endif
+                                                                    @if ($solution->tipo_equipo == 'enf_agu')
+                                                                    Enfriado por Agua
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'enf_air')
+                                                                    Enfriado por Aire
                                                                     @endif
                                                                 </p>
                                                             </div>
@@ -1049,17 +1080,17 @@ span{
                                                                 @if ($unid_med_1 !== "")
                                                                     <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label>
                                                                     @if (strlen($sumacap_term_1) >= 15)
-                                                                    <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black">{{$unid_med_1->unid_med}}</b> </p>
+                                                                    <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
                                                                     @endif
 
                                                                     @if (strlen($sumacap_term_1) < 15)
-                                                                    <p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black" >{{$unid_med_1->unid_med}}</b>  </p>
+                                                                    <p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl" >{{$unid_med_1->unid_med}}</b>  </p>
                                                                     @endif
 
                                                                 @endif
 
                                                                 @if ($unid_med_1 === "")
-                                                                 <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black">{{$unid_med_1->unid_med}}</b> </p>
+                                                                 <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
                                                                 @endif
                                                             </div>
 
@@ -1100,11 +1131,11 @@ span{
                                                                 @endif
 
                                                                 @if ($unid_med_2 !== "")
-                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}} <b class="text-black" >{{$unid_med_2->unid_med}}</b></p>
+                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}} <b class="text-black text-3xl" >{{$unid_med_2->unid_med}}</b></p>
                                                                 @endif
 
                                                                 @if ($unid_med_2 === "")
-                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black" >{{$unid_med_2}}</b> </p>
+                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl" >{{$unid_med_2}}</b> </p>
                                                                 @endif
                                                             </div>
 
@@ -1142,11 +1173,11 @@ span{
                                                                 @endif
 
                                                                 @if ($unid_med_3 !== "")
-                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black">{{$unid_med_3->unid_med}}</b>  </p>
+                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b>  </p>
                                                                 @endif
 
                                                                 @if ($unid_med_3 === "")
-                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black">{{$unid_med_3}}</b> </p>
+                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3}}</b> </p>
                                                                 @endif
                                                             </div>
 
@@ -1483,17 +1514,17 @@ span{
                                                                         @if ($unid_med_1 !== "")
                                                                             <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label>
                                                                             @if (strlen($sumacap_term_1) >= 15)
-                                                                            <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black">{{$unid_med_1->unid_med}}</b> </p>
+                                                                            <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
                                                                             @endif
 
                                                                             @if (strlen($sumacap_term_1) < 15)
-                                                                            <p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black">{{$unid_med_1->unid_med}}</b>  </p>
+                                                                            <p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b>  </p>
                                                                             @endif
 
                                                                         @endif
 
                                                                         @if ($unid_med_1 === "")
-                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black"> {{$unid_med_1}}</b>  </p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black text-3xl"> {{$unid_med_1}}</b>  </p>
                                                                         @endif
                                                                     </div>
 
@@ -1537,11 +1568,11 @@ span{
                                                                         @endif
 
                                                                         @if ($unid_med_2 !== "")
-                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_2}}<b class="text-black">{{$unid_med_2->unid_med}}</b> </p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_2}}<b class="text-black text-3xl"> {{$unid_med_2->unid_med}}</b> </p>
                                                                         @endif
 
                                                                         @if ($unid_med_2 === "")
-                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_2}} <b class="text-black"> {{$unid_med_2}} </b></p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_2}} <b class="text-black text-3xl"> {{$unid_med_2}} </b></p>
                                                                         @endif
                                                                     </div>
 
@@ -1582,11 +1613,11 @@ span{
                                                                         @endif
 
                                                                         @if ($unid_med_3 !== "")
-                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black">{{$unid_med_3->unid_med}}</b></p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b></p>
                                                                         @endif
 
                                                                         @if ($unid_med_3 === "")
-                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}}  <b class="text-black"> {{$unid_med_3}}</b> </p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}}  <b class="text-black text-3xl"> {{$unid_med_3}}</b> </p>
                                                                         @endif
                                                                     </div>
 
@@ -1778,7 +1809,7 @@ span{
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
                                                     <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1_cost) ?>
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($pay_back_a,2)}}</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($pay_back_a)}}</b>
                                                  @else
                                                  <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">N/A</b>
                                                 @endif
@@ -1788,7 +1819,7 @@ span{
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
                                                     <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_2_cost) ?>
-                                                    <b style="color:#33cc33;"  class="text-[24px]  font-roboto text-6xl">{{number_format($pay_back_b,2)}}</b>
+                                                    <b style="color:#33cc33;"  class="text-[24px]  font-roboto text-6xl">{{number_format($pay_back_b)}}</b>
                                                  @else
                                                  <b  style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">N/A</b>
                                                 @endif
@@ -2209,11 +2240,11 @@ span{
                                                         @if ($unid_med_1 !== "")
                                                             <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label>
                                                             @if (strlen($sumacap_term_1) >= 15)
-                                                            <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black">{{$unid_med_1->unid_med}}</b>  </p>
+                                                            <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b>  </p>
                                                             @endif
 
                                                             @if (strlen($sumacap_term_1) < 15)
-                                                            <p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black">{{$unid_med_1->unid_med}}</b>  </p>
+                                                            <p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b>  </p>
                                                             @endif
 
                                                         @endif
@@ -2257,11 +2288,11 @@ span{
                                                         @endif
 
                                                         @if ($unid_med_2 !== "")
-                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}} <b class="text-black">{{$unid_med_2->unid_med}}</b></p>
+                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}} <b class="text-black text-3xl">{{$unid_med_2->unid_med}}</b></p>
                                                         @endif
 
                                                         @if ($unid_med_2 === "")
-                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black">{{$unid_med_2}}</b> </p>
+                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2}}</b> </p>
                                                         @endif
                                                     </div>
 
@@ -2296,11 +2327,11 @@ span{
                                                         @endif
 
                                                         @if ($unid_med_3 !== "")
-                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black">{{$unid_med_3->unid_med}}</b> </p>
+                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b> </p>
                                                         @endif
 
                                                         @if ($unid_med_3 === "")
-                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black"> {{$unid_med_3}}</b> </p>
+                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl"> {{$unid_med_3}}</b> </p>
                                                         @endif
                                                     </div>
 
@@ -2859,13 +2890,13 @@ span{
                                             <div class="flex w-1/2 justify-center text-[24px] m-1">
                                                 <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
                                                 <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}" style="width:120px; height:75px;" class="mx-2 mt-6" alt="Nano Degree">
-                                                <b class="text-blue-800 mr-1 font-roboto text-4xl mt-8">EUI - Energy Star</b><b style="color:#33cc33;" class="text-[24px] font-roboto mt-3 text-6xl">{{number_format($energy_star,2)}}</b>
+                                                <b class="text-blue-800 mr-1 font-roboto text-4xl mt-8">EUI - Energy Star</b><b style="color:#33cc33;" class="text-[24px] font-roboto mt-3 text-6xl">&nbsp;{{number_format($energy_star,1)}}</b>
                                             </div>
 
                                             <div class="flex w-1/2 justify-center text-[24px] m-1">
                                                 <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
                                                 <img src="{{asset('/assets/images/Logo-ASHRAE-png.png')}}" style="width:115px; height:75px;" class="mx-2 mt-6" alt="Nano Degree">
-                                                <b class="text-blue-800 mr-1 font-roboto text-4xl mt-8">EUI - ASHRAE</b><b style="color:#33cc33;" class="text-[24px] font-roboto mt-3 text-6xl">{{$ashrae}}</b>
+                                                <b class="text-blue-800 mr-1 font-roboto text-4xl mt-8">EUI - ASHRAE</b><b style="color:#33cc33;" class="text-[24px] font-roboto mt-3 text-6xl">&nbsp;{{$ashrae}}</b>
                                             </div>
                                     </div>
 
@@ -2899,17 +2930,17 @@ span{
                                                             @if ($unid_med_1 !== "")
                                                                 <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label>
                                                                 @if (strlen($sumacap_term_1) >= 15)
-                                                                <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black">{{$unid_med_1->unid_med}}</b> </p>
+                                                                <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
                                                                 @endif
 
                                                                 @if (strlen($sumacap_term_1) < 15)
-                                                                <p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_1}}  <b class="text-black">{{$unid_med_1->unid_med}}</b> </p>
+                                                                <p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_1}}  <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
                                                                 @endif
 
                                                             @endif
 
                                                             @if ($unid_med_1 === "")
-                                                             <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black">{{$unid_med_1}}</b>  </p>
+                                                             <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1}}</b>  </p>
                                                             @endif
 
                                                             <div class="grid justify-center">
@@ -2947,11 +2978,11 @@ span{
                                                             @endif
 
                                                             @if ($unid_med_2 !== "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black">{{$unid_med_2->unid_med}} </b></p>
+                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2->unid_med}} </b></p>
                                                             @endif
 
                                                             @if ($unid_med_2 === "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black">{{$unid_med_2}}</b></p>
+                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2}}</b></p>
                                                             @endif
 
                                                             <div class="grid justify-center">
@@ -2988,11 +3019,11 @@ span{
                                                             @endif
 
                                                             @if ($unid_med_3 !== "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}}  <b class="text-black">{{$unid_med_3->unid_med}}</b></p>
+                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}}  <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b></p>
                                                             @endif
 
                                                             @if ($unid_med_3 === "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black">{{$unid_med_3}}</b>  </p>
+                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3}}</b>  </p>
                                                             @endif
 
                                                             <div class="grid justify-center">
@@ -3016,7 +3047,7 @@ span{
                                             <div class="w-1/3 flex justify-center">
                                                 @if ($result1 ==! null)
                                                 <?php  $valor_eui_base=$smasolutions->valor_eui($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                                                <label style="color:#33cc33;" class=" font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,2)}}</label>
+                                                <label style="color:#33cc33;" class=" font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
                                                 @endif
 
                                                 @if ($result1 === null)
@@ -3028,7 +3059,7 @@ span{
                                             <div class="w-1/3 flex justify-center">
                                                 @if ($result2 ==! null)
                                                 <?php  $valor_eui_a=$smasolutions->valor_eui($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                                                <label style="color:#33cc33;" class=" font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,2)}}</label>
+                                                <label style="color:#33cc33;" class=" font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
                                                 @endif
 
                                                 @if ($result2 === null)
@@ -3038,7 +3069,7 @@ span{
                                             <div class="w-1/3 flex justify-center">
                                                 @if ($result3 ==! null)
                                                 <?php  $valor_eui_b=$smasolutions->valor_eui($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                                                <label style="color:#33cc33;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,2)}}</label>
+                                                <label style="color:#33cc33;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
                                                 @endif
 
                                                 @if ($result3 === null)
