@@ -2500,6 +2500,7 @@ class ResultadosController extends Controller
         ->where('solutions_project.num_sol','=',$num_sol)
         ->first();
 
-        return $val_unidad->unidad_hvac;
+        return $val_unidad;
     }
+
 }

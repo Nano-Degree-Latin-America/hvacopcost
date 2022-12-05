@@ -250,11 +250,11 @@ span{
                                     <?php  $tar_ele=$solutions->tar_elec($id_project) ?>
                                     <div class="w-full flex justify-center m-1 " >
                                         <div class="flex w-1/3 justify-start">
-                                            <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
+                                            <div class="mx-1 ">
+                                                <label style="font-size: 18px;"   class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
                                             </div>
                                             <div>
-                                                <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 15)}} </label>
+                                                <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0,25)}} </label>
                                             </div>
                                         </div>
                                         <div class="flex w-1/4  justify-start">
@@ -970,7 +970,7 @@ span{
                                                 <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
                                             </div>
                                             <div>
-                                                <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 15)}} </label>
+                                                <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
                                             </div>
                                         </div>
                                         <div class="flex w-1/4  justify-start">
@@ -1402,7 +1402,7 @@ span{
                                                 <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
                                             </div>
                                             <div>
-                                                <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 15)}} </label>
+                                                <label style="font-size: 18px;" title="{{$tar_ele->name}}" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
                                             </div>
                                         </div>
                                         <div class="flex w-1/4  justify-start">
@@ -2130,7 +2130,7 @@ span{
                                             <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
                                         </div>
                                         <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 15)}} </label>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
                                         </div>
                                     </div>
                                     <div class="flex w-1/4  justify-start">
@@ -2803,7 +2803,7 @@ span{
                                             <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
                                         </div>
                                         <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 15)}} </label>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
                                         </div>
                                     </div>
                                     <div class="flex w-1/4  justify-start">

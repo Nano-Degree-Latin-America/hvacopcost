@@ -3023,7 +3023,7 @@ function valida_form_calc(){
         $('#calcular').css('background-color','#3c6382');
     }else if (sol_1_1.val() == '0'){
         $('#calcular').attr('disabled', true);
-        $('#calcular').css('background-color','gray');
+        $('#calcular').css('background-color','gray');7
     }
 }
 

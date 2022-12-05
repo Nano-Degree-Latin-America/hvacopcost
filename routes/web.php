@@ -116,4 +116,4 @@ Route::get('porcents_aux/{id}', 'ProjectController@porcents_aux');
 Route::get('edit_project/{id_project}', 'ResultadosController@edit_project');
 Route::get('get_ciudades/{pais}', 'ProjectController@get_ciudades');
 Route::get('get_ciudades_Edit/{pais}', 'ProjectController@get_ciudades_Edit');
-
+Route::post('/edit_project/{id}', 'ProjectController@edit_project')->name('edit_project');
