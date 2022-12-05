@@ -1815,6 +1815,7 @@ span{
                                                             <div class="w-1/2 flex justify-start">
                                                                 <select class="w-full py-1 border-2 border-blue-600 rounded-md"  onchange="unidadHvac(this.value,1,'cheTipo_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
                                                                     <?php  $unidad_hvac_val=$traer_unidad_hvac->traer_unidad_hvac($id_project,1,3) ?>
+
                                                                     @if ($unidad_hvac_val->unidad_hvac == 1)
                                                                     <option selected value="1">Paquetes (RTU)</option>
                                                                     @else
@@ -1834,7 +1835,7 @@ span{
                                                                     @endif
 
                                                                     @if ($unidad_hvac_val->unidad_hvac == 4)
-                                                                    <option  value="4">VRF Ductados</option>
+                                                                    <option selected value="4">VRF Ductados</option>
                                                                     @else
                                                                     <option value="4">VRF Ductados</option>
                                                                     @endif
