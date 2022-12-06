@@ -1210,7 +1210,7 @@ span{
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
 
                                             @if ($result1 ==! null)
-                                            <?php  $result_area_1=$results->result_area($id_project,1,$sumaopex_1,$tar_ele->costo_elec) ?>
+                                            <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
 
                                             <div class="flex justify-center w-1/3 ">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
@@ -1240,7 +1240,7 @@ span{
                                             @endif
 
                                             @if ($result2 ==! null)
-                                            <?php  $result_area_2=$results->result_area($id_project,2,$sumaopex_2,$tar_ele->costo_elec) ?>
+                                            <?php  $result_area_2=$results->result_area($id_project,$sumaopex_2) ?>
                                             <div class="flex justify-center w-1/3 ">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     @if (strlen($result_area_2) >= 19)
@@ -1265,7 +1265,7 @@ span{
                                             @endif
 
                                             @if ($result3 ==! null)
-                                            <?php  $result_area_3=$results->result_area($id_project,3,$sumaopex_3,$tar_ele->costo_elec) ?>
+                                            <?php  $result_area_3=$results->result_area($id_project,$sumaopex_3) ?>
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     @if (strlen($result_area_3) >= 19)

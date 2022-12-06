@@ -2137,8 +2137,15 @@ class ResultadosController extends Controller
         ->where('solutions_project.id_project','=',$id)
         ->where('solutions_project.num_enf','=',$num_enf)
         ->select('solutions_project.val_aprox')
-        ->first();
-        return $inv_ini->val_aprox;
+        ->get();
+
+        $res = 0;
+
+        foreach($inv_ini as $inv){
+            $res = $res + $inv->val_aprox;
+        }
+
+        return $res;
     }
 
     public function dif_1($id,$count,$cost_elec){
@@ -2288,7 +2295,7 @@ class ResultadosController extends Controller
         return $result_1;
     }
 
-    public function result_area($id,$num_enf,$sumaopex,$tar_ele){
+    public function result_area($id,$sumaopex){
        $proj = DB::table('projects')
        ->where('projects.id','=',$id)
        ->first();
@@ -2316,13 +2323,17 @@ class ResultadosController extends Controller
         ->where('solutions_project.id_project','=',$id)
         ->where('solutions_project.num_enf','=',$num_enf)
         ->select('solutions_project.val_aprox')
-        ->first()->val_aprox;
+        ->get();
+        $suma = 0;
+        foreach($inv_ini as $inv){
+            $suma = $suma + $inv->val_aprox;
+        }
 
         $area = DB::table('projects')
         ->where('projects.id','=',$id)
         ->first()->area;
 
-        $res =  $inv_ini/$area;
+        $res =  $suma/$area;
         return $res;
     }
 
@@ -2331,15 +2342,26 @@ class ResultadosController extends Controller
         ->where('solutions_project.id_project','=',$id)
         ->where('solutions_project.num_enf','=',1)
         ->select('solutions_project.val_aprox')
-        ->first()->val_aprox;
+        ->get();
+        $res_base = 0;
+
+        foreach($inv_ini_ba as $inv){
+            $res_base = $res_base + $inv->val_aprox;
+        }
 
         $inv_ini_a = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id)
         ->where('solutions_project.num_enf','=',$num_enf)
         ->select('solutions_project.val_aprox')
-        ->first()->val_aprox;
+        ->get();
 
-        $invs_rest = $inv_ini_a - $inv_ini_ba;
+        $res_a= 0;
+
+        foreach($inv_ini_a as $inv){
+            $res_a = $res_a + $inv->val_aprox;
+        }
+
+        $invs_rest = $res_a - $res_base;
 
       /*   (((dif_1 * yrs) – $invs_rest )/ $invs_rest) *100 */
 

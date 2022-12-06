@@ -1320,6 +1320,18 @@ class ProjectController extends Controller
         }
     }
 
+    public function traer_unidad_hvac($id,$num_sol,$num_enf){
+
+
+        $val_unidad = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id)
+        ->where('solutions_project.num_enf','=',$num_enf)
+        ->where('solutions_project.num_sol','=',$num_sol)
+        ->first();
+
+      return response()->json(['val_unidad' => $val_unidad]);
+    }
+
 
 
 }

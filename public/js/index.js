@@ -891,7 +891,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
               var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
               $('#'+equipo_value).val(1.13);
 
           break;
@@ -911,7 +911,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
               var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
               $('#'+equipo_value).val(1.03);
 
           break;
@@ -933,7 +933,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
               var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"No Aplica" , "value":0},' +
               '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
 
               $('#'+equipo_value).val(1.18);
 
@@ -956,7 +956,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
               var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"No Aplica" , "value":0},' +
               '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
 
               $('#'+equipo_value).val(1.2);
 
@@ -993,7 +993,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
             var arry_dr = '{ "arry_dr" : [' +
             '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-            '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+            '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
             $('#'+equipo_value).val(0.85);
           break;
 
@@ -1028,7 +1028,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
             var arry_dr = '{ "arry_dr" : [' +
             '{ "text":"No Aplica" , "value":0.08},' +
             '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-            '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+            '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
 
 
             $('#'+equipo_value).val(0.86);
@@ -1176,7 +1176,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
               var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
               $('#'+equipo_value).val(1.03);
 
           break;
@@ -1198,7 +1198,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
               var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"No Aplica" , "value":0},' +
               '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
 
               $('#'+equipo_value).val(1.18);
 
@@ -1221,7 +1221,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
               var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"No Aplica" , "value":0},' +
               '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+              '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
 
               $('#'+equipo_value).val(1.2);
 
@@ -1258,7 +1258,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
             var arry_dr = '{ "arry_dr" : [' +
             '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-            '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+            '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
             $('#'+equipo_value).val(0.85);
           break;
 
@@ -1293,7 +1293,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
             var arry_dr = '{ "arry_dr" : [' +
             '{ "text":"No Aplica" , "value":0.08},' +
             '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-            '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":1.14 } ]}';
+            '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
 
 
             $('#'+equipo_value).val(0.86);
@@ -3028,3 +3028,51 @@ function valida_form_calc(){
 }
 
 
+function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,tipo_control,dr
+    ,Mantenimiento,lblCsTipo,capacidad_total,costo_elec,csStd_cant
+    ,cheValorS,num_solu) {
+    $.ajax({
+        type: 'get',
+        url: "/traer_unidad_hvac/" + id_project + "/" + num_sol + "/" +num_enf,
+        success: function (res) {
+            if (res){
+                $("#"+cUnidad).find('option[value="' + res.val_unidad.unidad_hvac + '"]').attr("selected", "selected");
+                unidadHvac(res.val_unidad.unidad_hvac,1,csTipo,csDisenio);
+                $("#"+csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').attr("selected", "selected");
+                change_diseño(res.val_unidad.tipo_equipo,1,csDisenio,tipo_control,dr,lblCsTipo);
+                $("#"+csDisenio).find('option[value="' + res.val_unidad.tipo_diseño + '"]').attr("selected", "selected");
+                $("#"+tipo_control).find('option[value="' + res.val_unidad.tipo_control + '"]').attr("selected", "selected");
+                $("#"+dr).find('option[value="' + res.val_unidad.dr + '"]').attr("selected", "selected");
+                $("#"+Mantenimiento).find('option[value="' +   res.val_unidad.mantenimiento + '"]').attr("selected", "selected");
+                send_name(csDisenio);
+                send_name_t_c(tipo_control);
+                send_name_dr(dr);
+                let dollarUSLocale = Intl.NumberFormat('en-US');
+                $("#"+capacidad_total).val(dollarUSLocale.format(res.val_unidad.capacidad_tot));
+                $("#"+costo_elec).val('$'+dollarUSLocale.format(res.val_unidad.costo_elec));
+                $("#"+csStd_cant).val(dollarUSLocale.format(res.val_unidad.eficencia_ene_cant));
+                $("#"+cheValorS).val('$'+dollarUSLocale.format(res.val_unidad.val_aprox));
+                if(num_solu != ''){
+                    $( "#"+num_solu ).removeClass( "hidden" );
+                }
+            }else{
+
+            }
+            /* $('#cat_ed').append($('<option>', {
+                value: 0,
+                text: 'Seleccionar'
+            }));
+
+            response.map((cat_ed, i) => {
+                $('#cat_ed').append($('<option>', {
+                    value: cat_ed.id,
+                    text: cat_ed.name
+                }));
+            }); */
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}

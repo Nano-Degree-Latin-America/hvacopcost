@@ -439,70 +439,21 @@ span{
 
                                                     <div class="w-1/2 flex justify-start">
                                                         <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 border-blue-600 rounded-md p-1" onchange="unidadHvac(this.value,1,'csTipo','csDisenio_1_1');"  >
-                                                            <?php  $unidad_hvac_val=$traer_unidad_hvac->traer_unidad_hvac($id_project,1,1) ?>
-
-                                                            @if ($unidad_hvac_val->unidad_hvac == 1)
-                                                            <option selected value="1">Paquetes (RTU)</option>
-                                                            @else
+                                                            <option value="0">Seleccionar</option>
                                                             <option value="1">Paquetes (RTU)</option>
-                                                            @endif
-
-                                                            @if ($unidad_hvac_val->unidad_hvac== 2)
-                                                            <option selected value="2">Split</option>
-                                                            @else
                                                             <option value="2">Split</option>
-                                                            @endif
-
-                                                            @if ($unidad_hvac_val->unidad_hvac == 3)
-                                                            <option selected value="3">VRF No Ductados</option>
-                                                            @else
                                                             <option value="3">VRF No Ductados</option>
-                                                            @endif
-
-                                                            @if ($unidad_hvac_val->unidad_hvac == 4)
-                                                            <option  value="4">VRF Ductados</option>
-                                                            @else
                                                             <option value="4">VRF Ductados</option>
-                                                            @endif
-
-                                                            @if ($unidad_hvac_val->unidad_hvac == 5)
-                                                            <option selected value="5">PTAC</option>
-                                                            @else
                                                             <option value="5">PTAC</option>
-                                                            @endif
-
-                                                            @if ($unidad_hvac_val->unidad_hvac == 6)
-                                                            <option selected value="6">WSHP</option>
-                                                            @else
                                                             <option value="6">WSHP</option>
-                                                            @endif
-
-                                                            @if ($unidad_hvac_val->unidad_hvac == 7)
-                                                            <option selected value="7">Minisplit Inverter</option>
-                                                            @else
                                                             <option value="7">Minisplit Inverter</option>
-                                                            @endif
-                                                            @if ($unidad_hvac_val->unidad_hvac == 8)
-                                                            <option selected value="8">Chiller</option>
-                                                            @else
                                                             <option value="8">Chiller</option>
-                                                            @endif
-                                                            @if ($unidad_hvac_val->unidad_hvac !== null)
                                                             <script>
                                                             $(document).ready(function () {
-                                                                unidadHvac('{{$unidad_hvac_val->unidad_hvac}}',1,'csTipo','csDisenio_1_1');
-                                                                $("#csTipo").find('option[value="' + '{{$unidad_hvac_val->tipo_equipo}}' + '"]').attr("selected", "selected");
-                                                                change_diseño('{{$unidad_hvac_val->tipo_equipo}}',1,'csDisenio_1_1','tipo_control_1_1','dr_1_1','lblCsTipo_1_1');
-                                                                $("#csDisenio_1_1").find('option[value="' + '{{$unidad_hvac_val->tipo_diseño}}' + '"]').attr("selected", "selected");
-                                                                $("#tipo_control_1_1").find('option[value="' + '{{$unidad_hvac_val->tipo_control}}' + '"]').attr("selected", "selected");
-                                                                $("#dr_1_1").find('option[value="' + '{{$unidad_hvac_val->dr}}' + '"]').attr("selected", "selected");
-                                                                $("#csMantenimiento").find('option[value="' + '{{$unidad_hvac_val->mantenimiento}}' + '"]').attr("selected", "selected");
-                                                                send_name('csDisenio_1_1');
-                                                                send_name_t_c('tipo_control_1_1');
-                                                                send_name_dr('dr_1_1');
+                                                                traer_unidad_hvac('{{$id_project}}',1,1,'cUnidad_1_1','csTipo','csDisenio_1_1','tipo_control_1_1','dr_1_1','csMantenimiento','lblCsTipo_1_1','capacidad_total','costo_elec','csStd_cant_1_1','cheValorS_1_1','');
                                                             });
                                                             </script>
-                                                            @endif
+
 
                                                         </select>
                                                     </div>
@@ -544,7 +495,7 @@ span{
                                                     </div>
                                                     <div class="flex w-full justify-start gap-x-2">
                                                         <div class="w-full">
-                                                            <input type="text" value="{{$unidad_hvac_val->capacidad_tot}}" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" name="capacidad_total" id="capacidad_total" >
+                                                            <input type="text" {{-- value="{{$unidad_hvac_val->capacidad_tot}}" --}} onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" name="capacidad_total" id="capacidad_total" >
                                                         </div>
                                                         <div class="w-full">
                                                         <select class="w-full  border-2 border-blue-600 rounded-md py-2 text-center" onchange="cap_term_change(this.value);"  id="unidad_capacidad_tot" name="unidad_capacidad_tot">
@@ -565,7 +516,7 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
-                                                        <input id="costo_elec" name="costo_elec" value="${{$unidad_hvac_val->costo_elec}}" onchange="asign_cos_ele(this.value);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
+                                                        <input id="costo_elec" name="costo_elec"{{--  value="${{$unidad_hvac_val->costo_elec}}" --}} onchange="asign_cos_ele(this.value);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
                                                     </div>
 
                                                 </div>
@@ -590,7 +541,7 @@ span{
                                                         </select>
                                                     </div>
                                                     <div class="flex justify-start w-1/4">
-                                                        <input name="csStd_cant_1_1" id="csStd_cant_1_1" value="{{number_format($unidad_hvac_val->eficencia_ene_cant)}}" type="text" class="text-center w-full border-2 border-blue-600 rounded-md">
+                                                        <input name="csStd_cant_1_1" id="csStd_cant_1_1" {{-- value="{{number_format($unidad_hvac_val->eficencia_ene_cant)}}" --}} type="text" class="text-center w-full border-2 border-blue-600 rounded-md">
                                                     </div>
                                                 </div>
 
@@ -649,7 +600,7 @@ span{
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start">
-                                                        <input onchange="format_num(this.value,this.id);" value="${{number_format($unidad_hvac_val->val_aprox)}}" type="text" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_1" id="cheValorS_1_1" >
+                                                        <input onchange="format_num(this.value,this.id);" {{-- value="${{number_format($unidad_hvac_val->val_aprox)}}" --}} type="text" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_1" id="cheValorS_1_1" >
                                                     </div>
                                                 </div>
 
@@ -665,13 +616,14 @@ span{
                                       {{-- 1.1 --}}
 
                                       {{-- 1.2 --}}
-                                      <div class="grid w-full hidden"  id="sol_1_2" name="sol_1_2">
+
+                                     <div class="grid w-full hidden"  id="sol_1_2" name="sol_1_2">
+
                                        <div class="mx-2">
                                         <hr>
                                        </div>
                                         <div class="flex">
                                         <div class="rounded-xl mt-2 bg-gray-200 rounded-md shadow-md mx-2">
-
                                           <div class="grid gap-y-2 my-2">
                                             <div class="flex w-full mt-3">
                                                 <div class="flex gap-x-2 w-1/2">
@@ -679,8 +631,9 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                     </div>
 
+
                                                     <div class="w-1/2 flex justify-start">
-                                                        <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,2,'csTipo_1_2');" name="cUnidad_1_2" id="cUnidad_1_2" >
+                                                        <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,2,'csTipo_1_2','csDisenio_1_2');" name="cUnidad_1_2" id="cUnidad_1_2" >
                                                             <option value="0">Seleccionar</option>
                                                             <option value="1">Paquetes (RTU)</option>
                                                             <option value="2">Split</option>
@@ -689,6 +642,18 @@ span{
                                                             <option value="5">PTAC</option>
                                                             <option value="6">WSHP</option>
                                                             <option value="7">Minisplit Inverter</option>
+                                                            <option value="8">Chiller</option>
+
+                                                            <script>
+                                                            $(document).ready(function () {
+
+                                                                traer_unidad_hvac('{{$id_project}}',2,1,'cUnidad_1_2','csTipo_1_2','csDisenio_1_2'
+                                                                ,'tipo_control_1_2','dr_1_2','csMantenimiento_1_2','lblCsTipo_1_2','capacidad_total_1_2'
+                                                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2');
+
+                                                            });
+                                                            </script>
+
                                                         </select>
                                                     </div>
                                                 </div>
@@ -724,7 +689,7 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
                                                     </div>
                                                     <div class="w-full">
-                                                        <input name="capacidad_total_1_2" id="capacidad_total_1_2" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
+                                                        <input name="capacidad_total_1_2" id="capacidad_total_1_2"   onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
                                                     </div>
                                                     <div class="w-full">
                                                         <input class="w-full h-full border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_1_2" id="unidad_capacidad_tot_1_2" >
@@ -738,7 +703,7 @@ span{
                                                         <label style="font-size: 14px; " class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
-                                                        <input id="costo_elec_1_2" name="costo_elec_1_2" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
+                                                        <input id="costo_elec_1_2" name="costo_elec_1_2"  readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                      </div>
                                                 </div>
 
@@ -1135,70 +1100,28 @@ span{
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,1,'cheTipo_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
-                                                                    <?php  $unidad_hvac_val=$traer_unidad_hvac->traer_unidad_hvac($id_project,1,2) ?>
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 1)
-                                                                    <option selected value="1">Paquetes (RTU)</option>
-                                                                    @else
+                                                                    <option value="0">Seleccionar</option>
                                                                     <option value="1">Paquetes (RTU)</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 2)
-                                                                    <option selected value="2">Split</option>
-                                                                    @else
                                                                     <option value="2">Split</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 3)
-                                                                    <option selected value="3">VRF No Ductados</option>
-                                                                    @else
                                                                     <option value="3">VRF No Ductados</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 4)
-                                                                    <option  value="4">VRF Ductados</option>
-                                                                    @else
                                                                     <option value="4">VRF Ductados</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 5)
-                                                                    <option selected value="5">PTAC</option>
-                                                                    @else
                                                                     <option value="5">PTAC</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 6)
-                                                                    <option selected value="6">WSHP</option>
-                                                                    @else
                                                                     <option value="6">WSHP</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 7)
-                                                                    <option selected value="7">Minisplit Inverter</option>
-                                                                    @else
                                                                     <option value="7">Minisplit Inverter</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 8)
-                                                                    <option selected value="8">Chiller</option>
-                                                                    @else
                                                                     <option value="8">Chiller</option>
-                                                                    @endif
-                                                                    @if ($unidad_hvac_val->unidad_hvac !== null)
                                                                     <script>
                                                                     $(document).ready(function () {
-                                                                        unidadHvac('{{$unidad_hvac_val->unidad_hvac }}',1,'cheTipo_2_1');
-                                                                        $("#cheTipo_2_1").find('option[value="' + '{{$unidad_hvac_val->tipo_equipo}}' + '"]').attr("selected", "selected");
-                                                                        change_diseño('{{$unidad_hvac_val->tipo_equipo}}',1,'cheDisenio_2_1','tipo_control_2_1','dr_2_1','lblCsTipo_2_1');
-                                                                        $("#cheDisenio_2_1").find('option[value="' + '{{$unidad_hvac_val->tipo_diseño}}' + '"]').attr("selected", "selected");
-                                                                        $("#tipo_control_2_1").find('option[value="' + '{{$unidad_hvac_val->tipo_control}}' + '"]').attr("selected", "selected");
-                                                                        $("#dr_2_1").find('option[value="' + '{{$unidad_hvac_val->dr}}' + '"]').attr("selected", "selected");
-                                                                        $("#csMantenimiento_2_1").find('option[value="' + '{{$unidad_hvac_val->mantenimiento}}' + '"]').attr("selected", "selected");
-                                                                        send_name('cheDisenio_2_1');
-                                                                        send_name_t_c('tipo_control_2_1');
-                                                                        send_name_dr('dr_2_1');
+
+                                                                        traer_unidad_hvac('{{$id_project}}',1,2,'cUnidad_2_1','cheTipo_2_1','cheDisenio_2_1'
+                                                                        ,'tipo_control_2_1','dr_2_1','csMantenimiento_2_1','lblCsTipo_2_1','capacidad_total_2_1'
+                                                                        ,'costo_elec_2_1','csStd_cant_2_1','cheValorS_2_1','');
+
+
+
+
                                                                     });
                                                                     </script>
-                                                                    @endif
+
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1208,7 +1131,7 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
                                                             </div>
                                                             <div class="w-full flex justify-start">
-                                                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="change_diseño(this.value,1,'cheDisenio_2_1','tipo_control_2_1','dr_2_1','lblCsTipo_2_1');"  name="cheTipo_2_1" id="cheTipo_2_1">
+                                                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="change_diseño(this.value,1,'cheDisenio_2_1','tipo_control_2_1','dr_2_1','lblCsTipo_2_1','');"  name="cheTipo_2_1" id="cheTipo_2_1">
 
                                                                 </select>
                                                              </div>
@@ -1235,7 +1158,7 @@ span{
                                                             </div>
                                                             <div class="flex w-full justify-start gap-x-2">
                                                                 <div class="w-full">
-                                                                    <input name="capacidad_total_2_1" id="capacidad_total_2_1"  value="{{number_format($unidad_hvac_val->capacidad_tot)}}" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-2" >
+                                                                    <input name="capacidad_total_2_1" id="capacidad_total_2_1"   onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-2" >
                                                                 </div>
                                                                 <div class="w-full">
                                                                     <input type="text" class="text-center w-full h-full border-2 border-blue-600 rounded-md py-2" readonly name="unidad_capacidad_tot_2_1" id="unidad_capacidad_tot_2_1" >
@@ -1251,7 +1174,7 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                            <input name="costo_elec_2_1" id="costo_elec_2_1" value="${{number_format($unidad_hvac_val->costo_elec,2)}}" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
+                                                            <input name="costo_elec_2_1" id="costo_elec_2_1"  readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                              </div>
                                                         </div>
 
@@ -1275,7 +1198,7 @@ span{
                                                                 </select>
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
-                                                            <input step="0.5" name="csStd_cant_2_1" id="csStd_cant_2_1" value="{{number_format($unidad_hvac_val->eficencia_ene_cant)}}" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1">
+                                                            <input step="0.5" name="csStd_cant_2_1" id="csStd_cant_2_1"  type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1">
                                                             </div>
 
                                                         </div>
@@ -1328,7 +1251,7 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (OPEX)</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <input onchange="format_num(this.value,this.id);" value="${{number_format($unidad_hvac_val->val_aprox)}}" class="w-full border-2 border-blue-600 rounded-md text-center"  step="0.01" step="0.01" name="cheValorS_2_1" id="cheValorS_2_1" >
+                                                                <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md text-center"  step="0.01" step="0.01" name="cheValorS_2_1" id="cheValorS_2_1" >
                                                             </div>
                                                         </div>
 
@@ -1340,7 +1263,9 @@ span{
                                         </div>
                                         {{-- 2.1 --}}
                                         {{-- 2.2 --}}
-                                      <div class="grid w-full hidden"  id="sol_2_2" name="sol_2_2">
+
+                                        <div class="grid w-full hidden"  id="sol_2_2" name="sol_2_2">
+
                                         <div class="mx-2">
                                             <hr>
                                         </div>
@@ -1362,6 +1287,18 @@ span{
                                                                 <option value="5">PTAC</option>
                                                                 <option value="6">WSHP</option>
                                                                 <option value="7">Minisplit Inverter</option>
+                                                                <option value="8">Chiller</option>
+                                                                <script>
+                                                                $(document).ready(function () {
+
+                                                                    traer_unidad_hvac('{{$id_project}}',2,2,'cUnidad_2_2','cheTipo_2_2','cheDisenio_2_2'
+                                                                    ,'tipo_control_2_2','dr_2_2','cheMantenimiento_2_2','lblCsTipo_2_2',
+                                                                    'capacidad_total_2_2','costo_elec_2_2','csStd_cant_2_2','cheValorS_2_2','sol_2_2');
+
+
+                                                                });
+                                                                </script>
+
                                                             </select>
                                                         </div>
                                                     </div>
@@ -1398,7 +1335,7 @@ span{
                                                         </div>
                                                         <div class="flex w-full justify-start gap-x-2">
                                                             <div class="w-full">
-                                                                <input id="capacidad_total_2_2" name="capacidad_total_2_2" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
+                                                                <input id="capacidad_total_2_2" name="capacidad_total_2_2"  onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
                                                              </div>
                                                              <div class="w-full">
                                                                 <input class="w-full border-2 h-full border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_2_2" id="unidad_capacidad_tot_2_2" >
@@ -1439,7 +1376,7 @@ span{
                                                             </select>
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
-                                                            <input  name="csStd_cant_2_2" id="csStd_cant_2_2" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
+                                                            <input  name="csStd_cant_2_2" id="csStd_cant_2_2" type="text" style="font-size: 14px;"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                         </div>
                                                     </div>
 
@@ -1523,7 +1460,8 @@ span{
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,3,'cheTipo_2_3');" name="cUnidad_2_3" id="cUnidad_2_3" >
-                                                                <option value="0">Seleccionar</option><option value="1">Paquetes (RTU)</option>
+                                                                <option value="0">Seleccionar</option>
+                                                                <option value="1">Paquetes (RTU)</option>
                                                                 <option value="2">Split</option>
                                                                 <option value="3">VRF No Ductados</option>
                                                                 <option value="4">VRF Ductados</option>
@@ -1814,72 +1752,23 @@ span{
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <select class="w-full py-1 border-2 border-blue-600 rounded-md"  onchange="unidadHvac(this.value,1,'cheTipo_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
-                                                                    <?php  $unidad_hvac_val=$traer_unidad_hvac->traer_unidad_hvac($id_project,1,3) ?>
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 1)
-                                                                    <option selected value="1">Paquetes (RTU)</option>
-                                                                    @else
+                                                                    <option value="0">Seleccionar</option>
                                                                     <option value="1">Paquetes (RTU)</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 2)
-                                                                    <option selected value="2">Split</option>
-                                                                    @else
                                                                     <option value="2">Split</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 3)
-                                                                    <option selected value="3">VRF No Ductados</option>
-                                                                    @else
                                                                     <option value="3">VRF No Ductados</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 4)
-                                                                    <option selected value="4">VRF Ductados</option>
-                                                                    @else
                                                                     <option value="4">VRF Ductados</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac  == 5)
-                                                                    <option selected value="5">PTAC</option>
-                                                                    @else
                                                                     <option value="5">PTAC</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 6)
-                                                                    <option selected value="6">WSHP</option>
-                                                                    @else
                                                                     <option value="6">WSHP</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 7)
-                                                                    <option selected value="7">Minisplit Inverter</option>
-                                                                    @else
                                                                     <option value="7">Minisplit Inverter</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac == 8)
-                                                                    <option selected value="8">Chiller</option>
-                                                                    @else
                                                                     <option value="8">Chiller</option>
-                                                                    @endif
-
-                                                                    @if ($unidad_hvac_val->unidad_hvac !== null)
                                                                     <script>
                                                                     $(document).ready(function () {
-                                                                        unidadHvac('{{$unidad_hvac_val->unidad_hvac }}',1,'cheTipo_3_1');
-                                                                        $("#cheTipo_3_1").find('option[value="' + '{{$unidad_hvac_val->tipo_equipo}}' + '"]').attr("selected", "selected");
-                                                                        change_diseño('{{$unidad_hvac_val->tipo_equipo }}',1,'cheDisenio_3_1','tipo_control_3_1','dr_3_1','lblCsTipo_3_1');
-                                                                        $("#cheDisenio_3_1").find('option[value="' + '{{$unidad_hvac_val->tipo_diseño}}' + '"]').attr("selected", "selected");
-                                                                        $("#tipo_control_3_1").find('option[value="' + '{{$unidad_hvac_val->tipo_control}}' + '"]').attr("selected", "selected");
-                                                                        $("#dr_3_1").find('option[value="' + '{{$unidad_hvac_val->dr}}' + '"]').attr("selected", "selected");
-                                                                        $("#cheMantenimiento_3_1").find('option[value="' + '{{$unidad_hvac_val->mantenimiento}}' + '"]').attr("selected", "selected");
-                                                                        send_name('cheDisenio_3_1');
-                                                                        send_name_t_c('tipo_control_3_1');
-                                                                        send_name_dr('dr_3_1');
+                                                                        traer_unidad_hvac('{{$id_project}}',1,3,'cUnidad_3_1','cheTipo_3_1','cheDisenio_3_1'
+                                                                        ,'tipo_control_3_1','dr_3_1','cheMantenimiento_3_1','lblCsTipo_3_1','capacidad_total_3_1'
+                                                                        ,'costo_elec_3_1','cheStd_3_1','cheValorS_3_1','');
                                                                     });
                                                                     </script>
-                                                                    @endif
+
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1918,7 +1807,7 @@ span{
                                                             <div class="flex w-full justify-start gap-x-2">
                                                                 <div class="w-full">
 
-                                                                    <input id="capacidad_total_3_1" name="capacidad_total_3_1" value="{{number_format($unidad_hvac_val->capacidad_tot)}}" type="text" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md  text-center" >
+                                                                    <input id="capacidad_total_3_1" name="capacidad_total_3_1" type="text" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md  text-center" >
                                                                 </div>
                                                                 <div class="w-full">
                                                                     <input class="w-full h-full py-2 border-2 border-blue-600 rounded-md text-center"  type="text" readonly name="unidad_capacidad_tot_3_1" id="unidad_capacidad_tot_3_1" >
@@ -1935,7 +1824,7 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <input name="costo_elec_3_1" id="costo_elec_3_1" value="${{$unidad_hvac_val->costo_elec}}" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0  text-center">
+                                                                <input name="costo_elec_3_1" id="costo_elec_3_1"  readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0  text-center">
                                                             </div>
                                                         </div>
 
@@ -1960,7 +1849,7 @@ span{
                                                                 </select>
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
-                                                             <input  name="cheStd_3_1" id="cheStd_3_1" type="text" value="{{number_format($unidad_hvac_val->eficencia_ene_cant)}}" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
+                                                             <input  name="cheStd_3_1" id="cheStd_3_1" type="text"  style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
                                                             </div>
                                                         </div>
 
@@ -2013,7 +1902,7 @@ span{
                                                                 <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (OPEX)</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                 <input onchange="format_num(this.value,this.id);" value="${{number_format($unidad_hvac_val->val_aprox)}}" class="w-full border-2 border-blue-600 rounded-md py-1  text-center"  step="0.01" step="0.01" name="cheValorS_3_1" id="cheValorS_3_1" >
+                                                                 <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1  text-center"  step="0.01" step="0.01" name="cheValorS_3_1" id="cheValorS_3_1" >
                                                                 </div>
                                                         </div>
 
@@ -2048,6 +1937,15 @@ span{
                                                                 <option value="5">PTAC</option>
                                                                 <option value="6">WSHP</option>
                                                                 <option value="7">Minisplit Inverter</option>
+                                                                <option value="8">Chiller</option>
+
+                                                                <script>
+                                                                $(document).ready(function () {
+                                                                    traer_unidad_hvac('{{$id_project}}',1,3,'cUnidad_3_2','cheTipo_3_2','cheDisenio_3_2'
+                                                                    ,'tipo_control_3_2','dr_3_2','cheMantenimiento_3_2','lblCsTipo_3_2','capacidad_total_3_2'
+                                                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2');
+                                                                });
+                                                                </script>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -2215,6 +2113,7 @@ span{
                                                                 <option value="5">PTAC</option>
                                                                 <option value="6">WSHP</option>
                                                                 <option value="7">Minisplit Inverter</option>
+                                                                <option value="8">Chiller</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -2672,6 +2571,8 @@ function getDegreeHrs_edd(pais,cd) {
         }
     });
 }
+
+
 </script>
 @endsection
 @section('js')
