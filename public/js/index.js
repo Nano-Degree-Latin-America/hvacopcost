@@ -323,8 +323,7 @@ function resetValues() {
 
 }
 
-function active_display(value)
-{
+function active_display(value){
    var cont_sol_1 =  parseInt($('#cont_sol_1').val());
    var cont_sol_2 =  parseInt($('#cont_sol_2').val());
    var cont_sol_3 =  parseInt($('#cont_sol_3').val());
@@ -1715,8 +1714,7 @@ function format_nums_no_$(value,id){
 
 
 
-function inactive_display(value)
-{
+function inactive_display(value){
    var cont_sol_1 =  parseInt($('#cont_sol_1').val());
    var cont_sol_2 =  parseInt($('#cont_sol_2').val());
    var cont_sol_3 =  parseInt($('#cont_sol_3').val());
@@ -1728,9 +1726,9 @@ function inactive_display(value)
 
 
     if (value == 'sol_1') {
-
         if(cont_sol_1 == 3){
-             $( "#sol_1_2" ).addClass( "hidden" );
+
+            $( "#sol_1_2" ).addClass( "hidden" );
              var select_1_2 = $('#cUnidad_1_2');
              select_1_2.val($('option:first', select_1_2).val());
 
@@ -3030,7 +3028,7 @@ function valida_form_calc(){
 
 function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,tipo_control,dr
     ,Mantenimiento,lblCsTipo,capacidad_total,costo_elec,csStd_cant
-    ,cheValorS,num_solu) {
+    ,cheValorS,num_solu,action_submit,cont_sol) {
     $.ajax({
         type: 'get',
         url: "/traer_unidad_hvac/" + id_project + "/" + num_sol + "/" +num_enf,
@@ -3054,6 +3052,17 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 $("#"+cheValorS).val('$'+dollarUSLocale.format(res.val_unidad.val_aprox));
                 if(num_solu != ''){
                     $( "#"+num_solu ).removeClass( "hidden" );
+                    $("#"+action_submit).val('update');
+                    if (cont_sol !== '' || cont_sol !== null){
+                        var cont_val = parseInt($('#'+cont_sol).val());
+                        var sum_cont = cont_val + 1;
+                        $('#'+cont_sol).val(sum_cont);
+
+
+
+                    }
+                    /*  $cont_sol =
+                    parseInt($('#cont_sol_3').val()); */
                 }
             }else{
 
@@ -3076,3 +3085,155 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
         }
     });
 }
+
+function inactive_display_edit(value){
+    var cont_sol_1 =  parseInt($('#cont_sol_1').val());
+    var cont_sol_2 =  parseInt($('#cont_sol_2').val());
+    var cont_sol_3 =  parseInt($('#cont_sol_3').val());
+
+    var set_sol_1 =  parseInt($('#set_sol_1').val());
+
+
+
+
+
+     if (value == 'sol_1') {
+         if(cont_sol_1 == 2){
+
+             $( "#sol_1_2" ).addClass( "hidden" );
+              var select_1_2 = $('#cUnidad_1_2');
+              select_1_2.val($('option:first', select_1_2).val());
+
+              $( "#sol_1_3" ).addClass( "hidden" );
+              var select_1_3 = $('#cUnidad_1_3');
+              select_1_3.val($('option:first', select_1_3).val());
+
+              cont_sol_1 =  cont_sol_1 - 1;
+              set_sol_1 =  set_sol_1 - 1;
+              $('#set_sol_1').val(set_sol_1);
+              $('#cont_sol_1').val(cont_sol_1);
+
+          }else if(cont_sol_1 == 3){
+
+              set_sol_1 =  set_sol_1 - 1;
+              cont_sol_1 =  cont_sol_1 - 1;
+              $('#set_sol_1').val(set_sol_1);
+              $('#cont_sol_1').val(cont_sol_1);
+              $( "#sol_1_2" ).removeClass( "hidden" );
+              $( "#sol_1_3" ).addClass( "hidden" );
+              var select_1_3 = $('#cUnidad_1_3');
+              select_1_3.val($('option:first', select_1_3).val());
+
+          }
+     }
+
+
+     if (value == 'sol_2') {
+
+         if(cont_sol_2 == 3){
+             $( "#sol_2_2" ).addClass( "hidden" );
+             var select_2_2 = $('#cUnidad_2_2');
+             select_2_2.val($('option:first', select_2_2).val());
+
+             $( "#sol_2_3" ).addClass( "hidden" );
+             var select_2_3 = $('#cUnidad_2_3');
+             select_2_3.val($('option:first', select_2_3).val());
+
+             cont_sol_2 =  cont_sol_2 - 1;
+             $('#cont_sol_2').val(cont_sol_2);
+         }else if(cont_sol_2 == 4){
+
+            cont_sol_2 =  cont_sol_2 - 1;
+             $('#cont_sol_2').val(cont_sol_2);
+             $( "#sol_2_2" ).removeClass( "hidden" );
+             var select_2_2 = $('#cUnidad_2_2');
+             select_2_2.val($('option:first', select_2_2).val());
+             $( "#sol_2_3" ).addClass( "hidden" );
+         }
+     }
+
+     if (value == 'sol_3') {
+
+         if(cont_sol_3 == 3){
+              $( "#sol_3_2" ).addClass( "hidden" );
+              var select_3_2 = $('#cUnidad_3_2');
+              select_3_2.val($('option:first', select_3_2).val());
+
+              $( "#sol_3_3" ).addClass( "hidden" );
+              var select_3_3 = $('#cUnidad_3_3');
+              select_3_3.val($('option:first', select_3_3).val());
+
+              cont_sol_3 =  cont_sol_3 - 1;
+              $('#cont_sol_3').val(cont_sol_3);
+          }else if(cont_sol_3 == 4){
+
+             cont_sol_3 =  cont_sol_3 - 1;
+              $('#cont_sol_3').val(cont_sol_3);
+              $( "#sol_3_2" ).removeClass( "hidden" );
+              $( "#sol_3_3" ).addClass( "hidden" );
+              $( "#sol_3_3" ).addClass( "hidden" );
+              var select_3_3 = $('#cUnidad_3_3');
+              select_3_3.val($('option:first', select_3_3).val());
+
+          }
+     }
+
+ }
+
+ function active_display_Edit(value){
+    var cont_sol_1 =  parseInt($('#cont_sol_1').val());
+    var cont_sol_2 =  parseInt($('#cont_sol_2').val());
+    var cont_sol_3 =  parseInt($('#cont_sol_3').val());
+
+    var set_sol_1 =  parseInt($('#set_sol_1').val());
+
+     if (value == 'sol_1') {
+
+        if(cont_sol_1 == 1){
+             $( "#sol_1_2" ).removeClass( "hidden" );
+             $( "#sol_1_3" ).addClass( "hidden" );
+            //validando_eliminacion
+             cont_sol_1 =  cont_sol_1 + 1;
+             set_sol_1 =  set_sol_1 + 1;
+             $('#set_sol_1').val(set_sol_1);
+             $('#cont_sol_1').val(cont_sol_1);
+         }else if(cont_sol_1 == 2){
+             set_sol_1 =  set_sol_1 + 1;
+             cont_sol_1 =  cont_sol_1 + 1;
+             $('#set_sol_1').val(set_sol_1);
+             $('#cont_sol_1').val(cont_sol_1);
+             $( "#sol_1_2" ).removeClass( "hidden" );
+             $( "#sol_1_3" ).removeClass( "hidden" );
+
+         }
+
+
+     }else if(value == 'sol_2') {
+
+         if(cont_sol_2 == 2){
+             $( "#sol_2_2" ).removeClass( "hidden" );
+             $( "#sol_2_3" ).addClass( "hidden" );
+             cont_sol_2 =  cont_sol_2 + 1;
+             $('#cont_sol_2').val(cont_sol_2);
+         }else if(cont_sol_2 == 3){
+             cont_sol_2 =  cont_sol_2 + 1;
+             $('#cont_sol_2').val(cont_sol_2);
+             $( "#sol_2_2" ).removeClass( "hidden" );
+             $( "#sol_2_3" ).removeClass( "hidden" );
+         }
+
+     }else if(value == 'sol_3') {
+         if(cont_sol_3 == 2){
+             $( "#sol_3_2" ).removeClass( "hidden" );
+             $( "#sol_3_3" ).addClass( "hidden" );
+             cont_sol_3 =  cont_sol_3 + 1;
+             $('#cont_sol_3').val(cont_sol_3);
+         }else if(cont_sol_3 == 3){
+             cont_sol_3 =  cont_sol_3 + 1;
+             $('#cont_sol_3').val(cont_sol_3);
+             $( "#sol_3_2" ).removeClass( "hidden" );
+             $( "#sol_3_3" ).removeClass( "hidden" );
+         }
+
+     }
+ }

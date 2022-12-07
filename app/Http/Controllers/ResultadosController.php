@@ -352,7 +352,7 @@ class ResultadosController extends Controller
                 }
                 $solution_enf2_2->costo_elec = floatval($costo_elec_aux);
 
-                $cooling_hours_aux_1_2 = explode(",",   $request->get('capacidad_total'));
+                $cooling_hours_aux_1_2 = explode(",",   $request->get('hrsEnfriado_1_2'));
                 if(count($cooling_hours_aux_1_2) == 1){
                     $aux_cooling_hours_1_2 =  $cooling_hours_aux_1_2[0];
                 }
@@ -564,7 +564,7 @@ class ResultadosController extends Controller
 
                     $solution_enf1_3->costo_elec = floatval($costo_elec_aux_1_3);
 
-                    $cooling_hours_aux_1_3 = explode(",",   $request->get('capacidad_total'));
+                    $cooling_hours_aux_1_3 = explode(",",   $request->get('hrsEnfriado_1_3'));
                         if(count($cooling_hours_aux_1_3) == 1){
                             $aux_cooling_hours_1_3 =  $cooling_hours_aux_1_3[0];
                         }
@@ -798,7 +798,7 @@ class ResultadosController extends Controller
 
                 $solution_enf2_1->costo_elec=floatval($costo_elec_aux_2_1);
 
-                $cooling_hours_aux_2_1 = explode(",",   $request->get('capacidad_total'));
+                $cooling_hours_aux_2_1 = explode(",",   $request->get('hrsEnfriado_2_1'));
                 if(count($cooling_hours_aux_2_1) == 1){
                     $aux_cooling_hours_2_1 =  $cooling_hours_aux_2_1[0];
                 }

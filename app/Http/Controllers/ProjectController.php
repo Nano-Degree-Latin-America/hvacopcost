@@ -384,13 +384,20 @@ class ProjectController extends Controller
 
             }
 
-            /* if ($sol_1_2 !== 0) {
-                $solution_enf2_2=new SolutionsProjectModel;
-                $solution_enf2_2->num_sol = 2;
-                $solution_enf2_2->num_enf = 1;
-                $solution_enf2_2->unidad_hvac = $request->get('cUnidad_1_2');
-                $solution_enf2_2->tipo_equipo	= $request->get('csTipo_1_2');
-                $solution_enf2_2->tipo_diseño	= $request->get('csDisenio_1_2');
+             if ($sol_1_2 !== 0) {
+                 $id_solution_1_2 = DB::table('solutions_project')
+                 ->where('solutions_project.id_project','=',$id)
+                 ->where('solutions_project.num_enf','=',1)
+                 ->where('solutions_project.num_sol','=',2)
+                 ->first();
+
+
+                $solution_enf1_2= SolutionsProjectModel::find($id_solution_1_2->id);
+                $solution_enf1_2->num_sol = 2;
+                $solution_enf1_2->num_enf = 1;
+                $solution_enf1_2->unidad_hvac = $request->get('cUnidad_1_2');
+                $solution_enf1_2->tipo_equipo	= $request->get('csTipo_1_2');
+                $solution_enf1_2->tipo_diseño	= $request->get('csDisenio_1_2');
 
 
                 $aux_cap_tot_1_2 = explode(",",   $request->get('capacidad_total_1_2'));
@@ -410,12 +417,12 @@ class ProjectController extends Controller
                     $cap_tot_aux_1_2 =  $aux_cap_tot_1_2[0].$aux_cap_tot_1_2[1].$aux_cap_tot_1_2[2].$aux_cap_tot_1_2[3].$aux_cap_tot_1_2[4];
                 }
 
-                $solution_enf2_2->capacidad_tot =floatval($cap_tot_aux_1_2);
-                $solution_enf2_2->unid_med = $request->get('unidad_capacidad_tot_1_2');
+                $solution_enf1_2->capacidad_tot =floatval($cap_tot_aux_1_2);
+                $solution_enf1_2->unid_med = $request->get('unidad_capacidad_tot_1_2');
 
-                $solution_enf2_2->name_disenio=$request->get('name_diseno_1_2');
-                $solution_enf2_2->name_t_control=$request->get('name_t_control_1_2');
-                $solution_enf2_2->dr_name=$request->get('dr_name_1_2');
+                $solution_enf1_2->name_disenio=$request->get('name_diseno_1_2');
+                $solution_enf1_2->name_t_control=$request->get('name_t_control_1_2');
+                $solution_enf1_2->dr_name=$request->get('dr_name_1_2');
 
                 $aux_costo_elec_1_2 = explode("$",   $request->get('costo_elec_1_2'));
                 $aux_costo_elec_a_1_2 = explode(",",    $aux_costo_elec_1_2[1]);
@@ -434,9 +441,9 @@ class ProjectController extends Controller
                 if(count($aux_costo_elec_a_1_2) == 5){
                     $costo_elec_aux =  $aux_costo_elec_a_1_2[0].$aux_costo_elec_a_1_2[1].$aux_costo_elec_a_1_2[2].$aux_costo_elec_a_1_2[3].$aux_costo_elec_a_1_2[4];
                 }
-                $solution_enf2_2->costo_elec = floatval($costo_elec_aux);
+                $solution_enf1_2->costo_elec = floatval($costo_elec_aux);
 
-                $cooling_hours_aux_1_2 = explode(",",   $request->get('capacidad_total'));
+                $cooling_hours_aux_1_2 = explode(",",   $request->get('hrsEnfriado_1_2'));
                 if(count($cooling_hours_aux_1_2) == 1){
                     $aux_cooling_hours_1_2 =  $cooling_hours_aux_1_2[0];
                 }
@@ -453,13 +460,13 @@ class ProjectController extends Controller
                     $aux_cooling_hours_1_2 =  $cooling_hours_aux_1_2[0].$cooling_hours_aux_1_2[1].$cooling_hours_aux_1_2[2].$cooling_hours_aux_1_2[3].$cooling_hours_aux_1_2[4];
                 }
 
-                $solution_enf2_2->coolings_hours =intval($aux_cooling_hours_1_2);
-                $solution_enf2_2->eficencia_ene = $request->get('csStd_1_2');
-                $solution_enf2_2->eficencia_ene_cant = $request->get('csStd_cant_1_2');
-                $solution_enf2_2->tipo_control = $request->get('tipo_control_1_2');
+                $solution_enf1_2->coolings_hours =intval($aux_cooling_hours_1_2);
+                $solution_enf1_2->eficencia_ene = $request->get('csStd_1_2');
+                $solution_enf1_2->eficencia_ene_cant = $request->get('csStd_cant_1_2');
+                $solution_enf1_2->tipo_control = $request->get('tipo_control_1_2');
 
-                $solution_enf2_2->dr = $request->get('dr_1_2');
-                $solution_enf2_2->mantenimiento = $request->get('csMantenimiento_1_2');
+                $solution_enf1_2->dr = $request->get('dr_1_2');
+                $solution_enf1_2->mantenimiento = $request->get('csMantenimiento_1_2');
 
                 if($request->get('cheValorS_1_2') != null){
                     $aux_val_aprox_1_2 = explode("$",   $request->get('cheValorS_1_2'));
@@ -485,17 +492,17 @@ class ProjectController extends Controller
 
 
 
-                $solution_enf2_2->val_aprox = floatval($val_aprox_aux_1_2);
-                $solution_enf2_2->status = 1;
-                $solution_enf2_2->id_empresa=Auth::user()->id_empresa;
-                $solution_enf2_2->id_user=Auth::user()->id;
+                $solution_enf1_2->val_aprox = floatval($val_aprox_aux_1_2);
+                $solution_enf1_2->status = 1;
+                $solution_enf1_2->id_empresa=Auth::user()->id_empresa;
+                $solution_enf1_2->id_user=Auth::user()->id;
 
 
-                $cooling_hrs =  $solution_enf2_2->coolings_hours;
-                $cost_energ =  $solution_enf2_2->costo_elec;
-                $seer = $solution_enf2_2->eficencia_ene_cant;
+                $cooling_hrs =  $solution_enf1_2->coolings_hours;
+                $cost_energ =  $solution_enf1_2->costo_elec;
+                $seer = $solution_enf1_2->eficencia_ene_cant;
 
-               if ($solution_enf2_2->unid_med == 'TR') {
+               if ($solution_enf1_2->unid_med == 'TR') {
 
                 $tr =  $solution_enf1->capacidad_tot;
                 //((TR x 12000)
@@ -540,11 +547,11 @@ class ProjectController extends Controller
                 }
                 $res_res_fact_m =  $res_res * $factor_m;
 
-                $solution_enf2_2->cost_op_an = $res_res_fact_m;
-            }else if($solution_enf2_2->unid_med == 'KW'){
+                $solution_enf1_2->cost_op_an = $res_res_fact_m;
+            }else if($solution_enf1_2->unid_med == 'KW'){
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
                   //(((Kw / 3.5)
-                  $kw =  $solution_enf2_2->capacidad_tot;
+                  $kw =  $solution_enf1_2->capacidad_tot;
                   $kw_3_5 = $kw / 3.5;
                   //(((Kw / 3.5) x 12000 )
                   $kw_a = $kw_3_5 * 12000;
@@ -582,16 +589,17 @@ class ProjectController extends Controller
                 }
                 $res_res_fact_m =  $res_res * $factor_m;
 
-                $solution_enf2_2->cost_op_an =floatval(number_format($factor_m,2, '.', ''));
+                $solution_enf1_2->cost_op_an =floatval(number_format($factor_m,2, '.', ''));
 
                 }
-            $mew_project->save();
-            if( $mew_project->save()){
-                $solution_enf2_2->id_project = $mew_project->id;
-                $solution_enf2_2->save();
+            $update_project->update();
+            if( $update_project->update()){
+                $solution_enf1_2->id_project = $update_project->id;
+                $solution_enf1_2->update();
+
             }
 
-            } */
+            }
 
 
 
@@ -648,7 +656,7 @@ class ProjectController extends Controller
 
                     $solution_enf1_3->costo_elec = floatval($costo_elec_aux_1_3);
 
-                    $cooling_hours_aux_1_3 = explode(",",   $request->get('capacidad_total'));
+                    $cooling_hours_aux_1_3 = explode(",",   $request->get('hrsEnfriado_1_3'));
                         if(count($cooling_hours_aux_1_3) == 1){
                             $aux_cooling_hours_1_3 =  $cooling_hours_aux_1_3[0];
                         }
@@ -800,30 +808,35 @@ class ProjectController extends Controller
                     $solution_enf1_3->save();
                 }
 
-                } */
-
-                if($update_project->update()){
-                    $res_sum = 0;
-                    $cants = DB::table('solutions_project')
-                    ->where('id_project','=',$update_project->id)
-                    ->get();
-
-                    foreach($cants as $cant){
-                        $res_sum = $res_sum + $cant->cost_op_an;
-                    }
-                    $id_result = DB::table('results_project')
-                    ->where('id_project','=',$id)
-                    ->where('num_enf','=',1)
-                    ->first();
-                    $new_result = ResultsProjectModel::find($id_result->id);
-                   $new_result->num_enf = 1;
-                   $new_result->cost_op_an = $res_sum;
-                   $new_result->id_project = $id;
-                   $new_result->id_empresa=Auth::user()->id_empresa;
-                   $new_result->id_user=Auth::user()->id;
-                   $new_result->update();
                 }
+
+
+        */
+        if($update_project->update()){
+            $res_sum = 0;
+            $cants = DB::table('solutions_project')
+            ->where('id_project','=',$update_project->id)
+            ->get();
+
+            foreach($cants as $cant){
+                $res_sum = $res_sum + $cant->cost_op_an;
+            }
+            $id_result = DB::table('results_project')
+            ->where('id_project','=',$id)
+            ->where('num_enf','=',1)
+            ->first();
+            $new_result = ResultsProjectModel::find($id_result->id);
+           $new_result->num_enf = 1;
+           $new_result->cost_op_an = $res_sum;
+           $new_result->id_project = $id;
+           $new_result->id_empresa=Auth::user()->id_empresa;
+           $new_result->id_user=Auth::user()->id;
+           $new_result->update();
         }
+
+            }
+
+
 
 
                 ////EditSolution enfriamiento 2
@@ -891,7 +904,7 @@ class ProjectController extends Controller
 
                         $solution_enf2_1->costo_elec=floatval($costo_elec_aux_2_1);
 
-                        $cooling_hours_aux_2_1 = explode(",",   $request->get('capacidad_total'));
+                        $cooling_hours_aux_2_1 = explode(",",   $request->get('hrsEnfriado_2_1'));
                         if(count($cooling_hours_aux_2_1) == 1){
                             $aux_cooling_hours_2_1 =  $cooling_hours_aux_2_1[0];
                         }
@@ -960,6 +973,7 @@ class ProjectController extends Controller
                         //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
                         $tot_1er_res = $res_1er_parent / $seer;
                         $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+
                         //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
                         /* $res_ene_apl_tot_enf_1 */
 
@@ -970,7 +984,7 @@ class ProjectController extends Controller
                         //(Fórmula Energía x Factor S)
                         $factor_s = $request->get('lblCsTipo_2_1');
                         $factor_d = floatval($request->get('cheDisenio_2_1'));
-                        $factor_c = $request->get('tipo_control_2_1');
+                        $factor_c = floatval($request->get('tipo_control_2_1'));
                         $factor_t =floatval($request->get('dr_2_1'));
                         $factor_m =$request->get('csMantenimiento_2_1');
 
@@ -983,6 +997,7 @@ class ProjectController extends Controller
                         $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
 
                         $res_res =  $res_parent_1 *  $factor_c;
+
 
                         if($factor_m==='ASHRAE 180 Proactivo'){
                             $factor_m = 0.9;
@@ -1043,6 +1058,221 @@ class ProjectController extends Controller
                     if( $update_project->update()){
                         $solution_enf2_1->id_project = $update_project->id;
                         $solution_enf2_1->update();
+                    }
+
+                    }
+
+                    if ($sol_2_2 !== 0) {
+
+                        $id_solution_2_2 = DB::table('solutions_project')
+                        ->where('solutions_project.id_project','=',$id)
+                        ->where('solutions_project.num_enf','=',2)
+                        ->where('solutions_project.num_sol','=',2)
+                        ->first();
+
+
+
+                        $solution_enf2_2=SolutionsProjectModel::find($id_solution_2_2->id);
+                        $solution_enf2_2->num_sol = 2;
+                        $solution_enf2_2->num_enf = 2;
+                        $solution_enf2_2->unidad_hvac = $request->get('cUnidad_2_2');
+                        $solution_enf2_2->tipo_equipo = $request->get('cheTipo_2_2');
+                        $solution_enf2_2->tipo_diseño = $request->get('cheDisenio_2_2');
+
+                        $aux_cap_tot_2_2 = explode(",",   $request->get('capacidad_total_2_2'));
+                            if(count($aux_cap_tot_2_2) == 1){
+                                $cap_tot_aux_2_2 =  $aux_cap_tot_2_2[0];
+                            }
+                            if(count($aux_cap_tot_2_2) == 2){
+                                $cap_tot_aux_2_2=  $aux_cap_tot_2_2[0].$aux_cap_tot_2_2[1];
+                            }
+                            if(count($aux_cap_tot_2_2) == 3){
+                                $cap_tot_aux_2_2 =  $aux_cap_tot_2_2[0].$aux_cap_tot_2_2[1].$aux_cap_tot_2_2[2];
+                            }
+                            if(count($aux_cap_tot_2_2) == 4){
+                                $cap_tot_aux_2_2 =  $aux_cap_tot_2_2[0].$aux_cap_tot_2_2[1].$aux_cap_tot_2_2[2].$aux_cap_tot_2_2[3];
+                            }
+                            if(count($aux_cap_tot_2_2) == 5){
+                                $cap_tot_aux_2_2 =  $aux_cap_tot_2_2[0].$aux_cap_tot_2_2[1].$aux_cap_tot_2_2[2].$aux_cap_tot_2_2[3].$aux_cap_tot_2_2[4];
+                            }
+
+                        $solution_enf2_2->capacidad_tot = floatval($cap_tot_aux_2_2);
+                        $solution_enf2_2->unid_med = $request->get('unidad_capacidad_tot_2_2');
+
+                        $solution_enf2_2->name_disenio=$request->get('name_diseno_2_2');
+                        $solution_enf2_2->name_t_control=$request->get('name_t_control_2_2');
+                        $solution_enf2_2->dr_name=$request->get('dr_name_2_2');
+
+                        $aux_costo_elec_2_2 = explode("$",   $request->get('costo_elec_2_2'));
+                        $aux_costo_elec_2_2_a = explode(",",    $aux_costo_elec_2_2[1]);
+                        if(count($aux_costo_elec_2_2_a) == 1){
+                            $costo_elec_aux_2_2 =  $aux_costo_elec_2_2_a[0];
+                        }
+                        if(count($aux_costo_elec_2_2_a) == 2){
+                            $costo_elec_aux_2_2=  $aux_costo_elec_2_2_a[0].$aux_costo_elec_2_2_a[1];
+                        }
+                        if(count($aux_costo_elec_2_2_a) == 3){
+                            $costo_elec_aux_2_2 =  $aux_costo_elec_2_2_a[0].$aux_costo_elec_2_2_a[1].$aux_costo_elec_2_2_a[2];
+                        }
+                        if(count($aux_costo_elec_2_2_a) == 4){
+                            $costo_elec_aux_2_2 =  $aux_costo_elec_2_2_a[0].$aux_costo_elec_2_2_a[1].$aux_costo_elec_2_2_a[2].$aux_costo_elec_2_2_a[3];
+                        }
+                        if(count($aux_costo_elec_2_2_a) == 5){
+                            $costo_elec_aux_2_2 =  $aux_costo_elec_2_2_a[0].$aux_costo_elec_2_2_a[1].$aux_costo_elec_2_2_a[2].$aux_costo_elec_2_2_a[3].$aux_costo_elec_2_2_a[4];
+                        }
+
+                        $solution_enf2_2->costo_elec = floatval($costo_elec_aux_2_2);
+
+                        $cooling_hours_aux_2_2 = explode(",",   $request->get('hrsEnfriado_2_2'));
+                        if(count($cooling_hours_aux_2_2) == 1){
+                            $aux_cooling_hours_2_2 =  $cooling_hours_aux_2_2[0];
+                        }
+                        if(count($cooling_hours_aux_2_2) == 2){
+                            $aux_cooling_hours_2_2=  $cooling_hours_aux_2_2[0].$cooling_hours_aux_2_2[1];
+                        }
+                        if(count($cooling_hours_aux_2_2) == 3){
+                            $aux_cooling_hours_2_2 =  $cooling_hours_aux_2_2[0].$cooling_hours_aux_2_2[1].$cooling_hours_aux_2_2[2];
+                        }
+                        if(count($cooling_hours_aux_2_2) == 4){
+                            $aux_cooling_hours_2_2 =  $cooling_hours_aux_2_2[0].$cooling_hours_aux_2_2[1].$cooling_hours_aux_2_2[2].$cooling_hours_aux_2_2[3];
+                        }
+                        if(count($cooling_hours_aux_2_2) == 5){
+                            $aux_cooling_hours_2_2 =  $cooling_hours_aux_2_2[0].$cooling_hours_aux_2_2[1].$cooling_hours_aux_2_2[2].$cooling_hours_aux_2_2[3].$cooling_hours_aux_2_2[4];
+                        }
+
+                        $solution_enf2_2->coolings_hours = intval($aux_cooling_hours_2_2);
+                        $solution_enf2_2->eficencia_ene = $request->get('csStd_2_2');
+                        $solution_enf2_2->eficencia_ene_cant = floatval($request->get('csStd_cant_2_2'));
+                        $solution_enf2_2->tipo_control = $request->get('tipo_control_2_2');
+
+                        $solution_enf2_2->dr = $request->get('dr_2_2');
+                        $solution_enf2_2->mantenimiento = $request->get('cheMantenimiento_2_2');
+
+                        if($request->get('cheValorS_2_2') != null){
+                            $aux_val_aprox_2_2 = explode("$",   $request->get('cheValorS_2_2'));
+                            $aux_val_aprox_2_2_a = explode(",",    $aux_val_aprox_2_2[1]);
+                            if(count($aux_val_aprox_2_2_a) == 1){
+                                $val_aprox_aux_2_2 =  $aux_val_aprox_2_2_a[0];
+                            }
+                            if(count($aux_val_aprox_2_2_a) == 2){
+                                $val_aprox_aux_2_2=  $aux_val_aprox_2_2_a[0].$aux_val_aprox_2_2_a[1];
+                            }
+                            if(count($aux_val_aprox_2_2_a) == 3){
+                                $val_aprox_aux_2_2 =  $aux_val_aprox_2_2_a[0].$aux_val_aprox_2_2_a[1].$aux_val_aprox_2_2_a[2];
+                            }
+                            if(count($aux_val_aprox_2_2_a) == 4){
+                                $val_aprox_aux_2_2 =  $aux_val_aprox_2_2_a[0].$aux_val_aprox_2_2_a[1].$aux_val_aprox_2_2_a[2].$aux_val_aprox_2_2_a[3];
+                            }
+                            if(count($aux_val_aprox_2_2_a) == 5){
+                                $val_aprox_aux_2_2 =  $aux_val_aprox_2_2_a[0].$aux_val_aprox_2_2_a[1].$aux_val_aprox_2_2_a[2].$aux_val_aprox_2_2_a[3].$aux_val_aprox_2_2_a[4];
+                            }
+                        }else  if($request->get('cheValorS_2_2') == null){
+                                $val_aprox_aux_2_2 = 0;
+                        }
+
+
+
+                        $solution_enf2_2->val_aprox = floatval($val_aprox_aux_2_2);
+                        $solution_enf2_2->status = 1;
+                        $solution_enf2_2->id_empresa=Auth::user()->id_empresa;
+                        $solution_enf2_2->id_user=Auth::user()->id;
+
+
+                        $cooling_hrs =  $solution_enf2_2->coolings_hours;
+                        $cost_energ =  $solution_enf2_2->costo_elec;
+                        $seer = $solution_enf2_2->eficencia_ene_cant;
+
+                       if ($solution_enf2_2->unid_med == 'TR') {
+
+                        $tr =  $solution_enf2_2->capacidad_tot;
+                        //((TR x 12000)
+                        $res_trx_12000 = $tr * 12000;
+                        //((TR x 12000) x (Cooling Hours) x (Costo Energía)
+                        $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
+                        //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
+                        $tot_1er_res = $res_1er_parent / $seer;
+                        $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                        //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
+
+
+                        //energia aplicada proccess
+                        //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                        //(Fórmula Energía x Factor S)
+                        $factor_s = $request->get('lblCsTipo_2_2');
+                        $factor_d = floatval($request->get('cheDisenio_2_2'));
+                        $factor_c = $request->get('tipo_control_2_2');
+                        $factor_t =floatval($request->get('dr_2_2'));
+                        $factor_m = $request->get('cheMantenimiento_2_2');
+
+                        $res_1_parent1= $res_ene_apl_tot_enf_1 * $factor_s;
+
+                        $res_2_parent1= $res_ene_apl_tot_enf_1 * $factor_d;
+
+                        $res_3_parent1= $res_ene_apl_tot_enf_1 * $factor_t;
+
+                        $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+
+                        $res_res =  $res_parent_1 *  $factor_c;
+
+                        if($factor_m==='ASHRAE 180 Proactivo'){
+                            $factor_m = 0.9;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.05;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.15;
+                        }
+                        $res_res_fact_m =  $res_res * $factor_m;
+
+                        $solution_enf2_2->cost_op_an = $res_res_fact_m;
+                    }else if($solution_enf2_2->unid_med == 'KW'){
+                        $kw =  $solution_enf2_2->capacidad_tot;
+                        $kw_3_5 = $kw / 3.5;
+                        //(((Kw / 3.5) x 12000 )
+                        $kw_a = $kw_3_5 * 12000;
+                        $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                        //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
+                        $res_div_seer = $res_dividiendo / $seer;
+                        //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
+                        $res_div_seer_a = $res_div_seer / 1000;
+                        //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+
+                                     //energia aplicada proccess
+                           //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                           //(Fórmula Energía x Factor S)
+                           $res_1_parent1= $res_div_seer_a * $factor_s;
+                           // (Fórmula Energía x Factor D)
+                           $res_2_parent1= $res_div_seer_a * $factor_d;
+                               //(Fórmula Energía x Factor T)
+                           $res_3_parent1= $res_div_seer_a * $factor_t;
+           //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
+                           $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+               //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+                           $res_res =  $res_parent_1 *  $factor_c;
+                           if($factor_m==='ASHRAE 180 Proactivo'){
+                            $factor_m = 0.9;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.05;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.15;
+                        }
+                            $res_res_fact_m =  $res_res * $factor_m;
+                           $solution_enf2_2->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
+                    }
+                    $update_project->update();
+                    if( $update_project->update()){
+                        $solution_enf2_2->id_project = $update_project->id;
+                        $solution_enf2_2->update();
+
                     }
 
                     }
@@ -1287,6 +1517,220 @@ class ProjectController extends Controller
              }
 
              }
+
+             if ($sol_3_2 !== 0) {
+                $id_solution_3_2 = DB::table('solutions_project')
+                ->where('solutions_project.id_project','=',$id)
+                ->where('solutions_project.num_enf','=',3)
+                ->where('solutions_project.num_sol','=',2)
+                ->first();
+
+                $solution_enf3_2=SolutionsProjectModel::find($id_solution_3_2->id);
+                $solution_enf3_2->num_sol = 2;
+                $solution_enf3_2->num_enf = 3;
+                $solution_enf3_2->unidad_hvac = $request->get('cUnidad_3_2');
+                $solution_enf3_2->tipo_equipo = $request->get('cheTipo_3_2');
+                $solution_enf3_2->tipo_diseño = $request->get('cheDisenio_3_2');
+
+                $aux_cap_tot_3_2 = explode(",",   $request->get('capacidad_total_3_2'));
+                   if(count($aux_cap_tot_3_2) == 1){
+                       $cap_tot_aux_3_2 =  $aux_cap_tot_3_2[0];
+                   }
+                   if(count($aux_cap_tot_3_2) == 2){
+                       $cap_tot_aux_3_2=  $aux_cap_tot_3_2[0].$aux_cap_tot_3_2[1];
+                   }
+                   if(count($aux_cap_tot_3_2) == 3){
+                       $cap_tot_aux_3_2 =  $aux_cap_tot_3_2[0].$aux_cap_tot_3_2[1].$aux_cap_tot_3_2[2];
+                   }
+                   if(count($aux_cap_tot_3_2) == 4){
+                       $cap_tot_aux_3_2 =  $aux_cap_tot_3_2[0].$aux_cap_tot_3_2[1].$aux_cap_tot_3_2[2].$aux_cap_tot_3_2[3];
+                   }
+                   if(count($aux_cap_tot_3_2) == 5){
+                       $cap_tot_aux_3_2 =  $aux_cap_tot_3_2[0].$aux_cap_tot_3_2[1].$aux_cap_tot_3_2[2].$aux_cap_tot_3_2[3].$aux_cap_tot_3_2[4];
+                   }
+
+                $solution_enf3_2->capacidad_tot = floatval($cap_tot_aux_3_2);
+                $solution_enf3_2->unid_med = $request->get('unidad_capacidad_tot_3_2');
+
+
+                $solution_enf3_2->name_disenio=$request->get('name_diseno_3_2');
+                $solution_enf3_2->name_t_control=$request->get('name_t_control_3_2');
+                $solution_enf3_2->dr_name=$request->get('dr_name_3_2');
+
+
+                $aux_costo_elec_3_2 = explode("$",   $request->get('costo_elec_3_2'));
+                       $aux_costo_elec_3_2_a = explode(",",    $aux_costo_elec_3_2[1]);
+                       if(count($aux_costo_elec_3_2_a) == 1){
+                           $costo_elec_aux_3_2 =  $aux_costo_elec_3_2_a[0];
+                       }
+                       if(count($aux_costo_elec_3_2_a) == 2){
+                           $costo_elec_aux_3_2=  $aux_costo_elec_3_2_a[0].$aux_costo_elec_3_2_a[1];
+                       }
+                       if(count($aux_costo_elec_3_2_a) == 3){
+                           $costo_elec_aux_3_2 =  $aux_costo_elec_3_2_a[0].$aux_costo_elec_3_2_a[1].$aux_costo_elec_3_2_a[2];
+                       }
+                       if(count($aux_costo_elec_3_2_a) == 4){
+                           $costo_elec_aux_3_2 =  $aux_costo_elec_3_2_a[0].$aux_costo_elec_3_2_a[1].$aux_costo_elec_3_2_a[2].$aux_costo_elec_3_2_a[3];
+                       }
+                       if(count($aux_costo_elec_3_2_a) == 5){
+                           $costo_elec_aux_3_2 =  $aux_costo_elec_3_2_a[0].$aux_costo_elec_3_2_a[1].$aux_costo_elec_3_2_a[2].$aux_costo_elec_3_2_a[3].$aux_costo_elec_3_2_a[4];
+                       }
+
+                $solution_enf3_2->costo_elec = floatval($costo_elec_aux_3_2);
+
+                $cooling_hours_aux_3_2 = explode(",",   $request->get('hrsEnfriado_3_2'));
+               if(count($cooling_hours_aux_3_2) == 1){
+                   $aux_cooling_hours_3_2 =  $cooling_hours_aux_3_2[0];
+               }
+               if(count($cooling_hours_aux_3_2) == 2){
+                   $aux_cooling_hours_3_2=  $cooling_hours_aux_3_2[0].$cooling_hours_aux_3_2[1];
+               }
+               if(count($cooling_hours_aux_3_2) == 3){
+                   $aux_cooling_hours_3_2 =  $cooling_hours_aux_3_2[0].$cooling_hours_aux_3_2[1].$cooling_hours_aux_3_2[2];
+               }
+               if(count($cooling_hours_aux_3_2) == 4){
+                   $aux_cooling_hours_3_2 =  $cooling_hours_aux_3_2[0].$cooling_hours_aux_3_2[1].$cooling_hours_aux_3_2[2].$cooling_hours_aux_3_2[3];
+               }
+               if(count($cooling_hours_aux_3_2) == 5){
+                   $aux_cooling_hours_3_2 =  $cooling_hours_aux_3_2[0].$cooling_hours_aux_3_2[1].$cooling_hours_aux_3_2[2].$cooling_hours_aux_3_2[3].$cooling_hours_aux_3_2[4];
+               }
+
+                $solution_enf3_2->coolings_hours = intval($aux_cooling_hours_3_2);
+                $solution_enf3_2->eficencia_ene = $request->get('csStd_3_2');
+                $solution_enf3_2->eficencia_ene_cant =floatval($request->get('csStd_cant_3_2'));
+                $solution_enf3_2->tipo_control = $request->get('tipo_control_3_2');
+
+                $solution_enf3_2->dr = $request->get('dr_3_2');
+                $solution_enf3_2->mantenimiento = $request->get('cheMantenimiento_3_2');
+
+                if($request->get('cheValorS2_3_2') != null){
+                   $aux_val_aprox_3_2 = explode("$",   $request->get('cheValorS2_3_2'));
+                   $aux_val_aprox_3_2_a = explode(",",    $aux_val_aprox_3_2[1]);
+                   if(count($aux_val_aprox_3_2_a) == 1){
+                       $val_aprox_aux_3_2 =  $aux_val_aprox_3_2_a[0];
+                   }
+                   if(count($aux_val_aprox_3_2_a) == 2){
+                       $val_aprox_aux_3_2=  $aux_val_aprox_3_2_a[0].$aux_val_aprox_3_2_a[1];
+                   }
+                   if(count($aux_val_aprox_3_2_a) == 3){
+                       $val_aprox_aux_3_2 =  $aux_val_aprox_3_2_a[0].$aux_val_aprox_3_2_a[1].$aux_val_aprox_3_2_a[2];
+                   }
+                   if(count($aux_val_aprox_3_2_a) == 4){
+                       $val_aprox_aux_3_2 =  $aux_val_aprox_3_2_a[0].$aux_val_aprox_3_2_a[1].$aux_val_aprox_3_2_a[2].$aux_val_aprox_3_2_a[3];
+                   }
+                   if(count($aux_val_aprox_3_2_a) == 5){
+                       $val_aprox_aux_3_2 =  $aux_val_aprox_3_2_a[0].$aux_val_aprox_3_2_a[1].$aux_val_aprox_3_2_a[2].$aux_val_aprox_3_2_a[3].$aux_val_aprox_3_2_a[4];
+                   }
+               }else  if($request->get('cheValorS2_3_2') == null){
+                       $val_aprox_aux_3_2 = 0;
+               }
+
+
+
+
+                $solution_enf3_2->val_aprox = floatval($val_aprox_aux_3_2);
+                $solution_enf3_2->status = 1;
+                $solution_enf3_2->id_empresa=Auth::user()->id_empresa;
+                $solution_enf3_2->id_user=Auth::user()->id;
+
+
+                $cooling_hrs =  $solution_enf3_2->coolings_hours;
+                $cost_energ =  $solution_enf3_2->costo_elec;
+                $seer = $solution_enf3_2->eficencia_ene_cant;
+
+               if ($solution_enf3_2->unid_med == 'TR') {
+
+                $tr =  $solution_enf3_2->capacidad_tot;
+                //((TR x 12000)
+                $res_trx_12000 = $tr * 12000;
+                //((TR x 12000) x (Cooling Hours) x (Costo Energía)
+                $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
+                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
+                $tot_1er_res = $res_1er_parent / $seer;
+                $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
+
+
+                //energia aplicada proccess
+                //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                //(Fórmula Energía x Factor S)
+                $factor_s = $request->get('lblCsTipo_3_2');
+                $factor_d = floatval($request->get('cheDisenio_3_2'));
+                $factor_c = $request->get('tipo_control_3_2');
+                $factor_t =floatval($request->get('dr_3_2'));
+                $factor_m = $request->get('cheMantenimiento_3_2');
+                $res_1_parent1= $res_ene_apl_tot_enf_1 * $factor_s;
+
+                $res_2_parent1= $res_ene_apl_tot_enf_1 * $factor_d;
+
+                $res_3_parent1= $res_ene_apl_tot_enf_1 * $factor_t;
+
+                $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+
+                $res_res =  $res_parent_1 *  $factor_c;
+
+                if($factor_m==='ASHRAE 180 Proactivo'){
+                   $factor_m = 0.9;
+               }
+
+               if($factor_m==='Deficiente'){
+                   $factor_m = 1.05;
+               }
+
+               if($factor_m==='Sin Mantenimiento'){
+                   $factor_m = 1.15;
+               }
+                   $res_res_fact_m =  $res_res * $factor_m;
+
+                $solution_enf3_2->cost_op_an = $res_res_fact_m;
+            }else if($solution_enf3_2->unid_med == 'KW'){
+               $kw =  $solution_enf3_2->capacidad_tot;
+               $kw_3_5 = $kw / 3.5;
+               //(((Kw / 3.5) x 12000 )
+               $kw_a = $kw_3_5 * 12000;
+               $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+               //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
+               $res_div_seer = $res_dividiendo / $seer;
+               //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
+               $res_div_seer_a = $res_div_seer / 1000;
+               //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+
+                            //energia aplicada proccess
+                  //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                  //(Fórmula Energía x Factor S)
+                  $res_1_parent1= $res_div_seer_a * $factor_s;
+                  // (Fórmula Energía x Factor D)
+                  $res_2_parent1= $res_div_seer_a * $factor_d;
+                      //(Fórmula Energía x Factor T)
+                  $res_3_parent1= $res_div_seer_a * $factor_t;
+  //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
+                  $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+      //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+                  $res_res =  $res_parent_1 *  $factor_c;
+                  if($factor_m==='ASHRAE 180 Proactivo'){
+                   $factor_m = 0.9;
+               }
+
+               if($factor_m==='Deficiente'){
+                   $factor_m = 1.05;
+               }
+
+               if($factor_m==='Sin Mantenimiento'){
+                   $factor_m = 1.15;
+               }
+                   $res_res_fact_m =  $res_res * $factor_m;
+                  $solution_enf3_2->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
+            }
+            $update_project->update();
+            if( $update_project->update()){
+                $solution_enf3_2->id_project = $update_project->id;
+                $solution_enf3_2->update();
+
+            }
+
+            }
 
              if($update_project->update()){
                 $res_sum = 0;

@@ -1270,13 +1270,13 @@ span{
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     @if (strlen($result_area_3) >= 19)
                                                     <div class="w-full flex justify-center">
-                                                        <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">${{number_format($result_area_3, 2)}}</b>
+                                                        <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_3, 2)}}</b>
                                                     </div>
                                                      @endif
 
                                                      @if (strlen($result_area_3) < 19)
                                                      <div class="w-full flex justify-center">
-                                                        <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">${{number_format($result_area_3, 2)}}</b>
+                                                        <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_3, 2)}}</b>
                                                     </div>
                                                      @endif
                                                 </div>

@@ -409,8 +409,8 @@ span{
                                     <div style="width: 100%; text-align: -webkit-right;" class="mx-1">
                                         <div style="background-color: #233064;" class="text-white rounded-t-xl w-80 flex justify-between py-3 ">
                                             <div class="ml-5 w-1/3 flex justify-start">
-                                             <a href="#final1">   <button onclick="active_display('sol_1');" type="button" style="background-color: #233064;" class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button></a>
-                                                <input type="number" class="hidden" value="2" id="cont_sol_1" name="cont_sol_1">
+                                             <a href="#final1">   <button onclick="active_display_Edit('sol_1');" type="button" style="background-color: #233064;" class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button></a>
+                                                <input type="number" class="hidden" value="1" id="cont_sol_1" name="cont_sol_1">
                                                 <input type="number" class="hidden" value="1" id="set_sol_1" name="set_sol_1">
                                             </div>
                                             <div class="ml-5 w-full flex justify-start py-1">
@@ -627,6 +627,7 @@ span{
                                           <div class="grid gap-y-2 my-2">
                                             <div class="flex w-full mt-3">
                                                 <div class="flex gap-x-2 w-1/2">
+                                                    <input type="text" value="" class="hidden" id="action_submit_1_2" name="action_submit_1_2">
                                                     <div class="w-1/3 flex justify-start">
                                                         <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                     </div>
@@ -649,7 +650,7 @@ span{
 
                                                                 traer_unidad_hvac('{{$id_project}}',2,1,'cUnidad_1_2','csTipo_1_2','csDisenio_1_2'
                                                                 ,'tipo_control_1_2','dr_1_2','csMantenimiento_1_2','lblCsTipo_1_2','capacidad_total_1_2'
-                                                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2');
+                                                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2','action_submit_1_2','cont_sol_1');
 
                                                             });
                                                             </script>
@@ -713,7 +714,7 @@ span{
                                                     </div>
 
                                                     <div class="flex justify-start w-1/3">
-                                                        <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_1_2" id="hrsEnfriado_1_2">
+                                                        <input type="text" style="font-size: 14px;" readonly class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_1_2" id="hrsEnfriado_1_2">
                                                     </div>
                                                 </div>
                                             </div>
@@ -790,7 +791,7 @@ span{
                                                     </div>
                                                 </div>
                                                 <div class="flex gap-x-3 w-1/2 justify-end">
-                                                    <button onclick="inactive_display('sol_1')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    <button onclick="inactive_display_edit('sol_1')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                 </div>
                                             </div>
                                           </div>
@@ -886,7 +887,7 @@ span{
                                                         <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                     </div>
                                                     <div class="flex justify-start w-1/3">
-                                                        <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_1_3" id="hrsEnfriado_1_3">
+                                                        <input type="text" style="font-size: 14px;" readonly class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_1_3" id="hrsEnfriado_1_3">
                                                     </div>
                                                 </div>
                                              </div>
@@ -964,7 +965,7 @@ span{
                                                     </div>
                                                 </div>
                                                 <div class="flex gap-x-3 w-1/2 justify-end">
-                                                    <button onclick="inactive_display('sol_1')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    <button onclick="inactive_display_edit('sol_1')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                 </div>
                                              </div>
                                            </div>
@@ -1074,7 +1075,7 @@ span{
                                         <div  class="text-white rounded-t-xl w-80 bg-blue-700 flex justify-between py-3 ">
                                             <div class="ml-5 w-1/3 flex justify-start">
                                                 <a href="#final2">
-                                                    <button onclick="active_display('sol_2');" type="button"  class="bg-blue-700 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white "></i></button>
+                                                    <button onclick="active_display_Edit('sol_2');" type="button"  class="bg-blue-700 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white "></i></button>
                                                 </a>
                                             <input type="number" class="hidden" value="2" id="cont_sol_2" name="cont_sol_2">
                                             </div>
@@ -1436,7 +1437,7 @@ span{
                                                         </div>
                                                     </div>
                                                     <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                        <button onclick="inactive_display_edit('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                     </div>
                                                 </div>
                                               </div>
@@ -1600,7 +1601,7 @@ span{
                                                         </div>
                                                     </div>
                                                     <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                        <button onclick="inactive_display_edit('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                     </div>
                                                 </div>
                                               </div>
@@ -1726,7 +1727,7 @@ span{
                                          <div  class="bg-blue-500 text-white rounded-t-xl w-80 flex justify-between py-3 ">
                                             <div class="ml-5 w-1/3 flex justify-start">
                                                 <a href="#final3">
-                                                    <button onclick="active_display('sol_3');" type="button"  class="bg-blue-500 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button>
+                                                    <button onclick="active_display_Edit('sol_3');" type="button"  class="bg-blue-500 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button>
                                                 </a>
                                                 <input type="number" class="hidden" value="2" id="cont_sol_3" name="cont_sol_3">
                                             </div>
@@ -2081,7 +2082,7 @@ span{
                                                         </div>
                                                     </div>
                                                     <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display('sol_3')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                        <button onclick="inactive_display_edit('sol_3')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                     </div>
                                                 </div>
                                               </div>
@@ -2243,7 +2244,7 @@ span{
                                                         </div>
                                                     </div>
                                                     <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display('sol_3')" type="button"class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                        <button onclick="inactive_display_edit('sol_3')" type="button"class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                     </div>
                                                 </div>
                                               </div>
@@ -2266,7 +2267,9 @@ span{
                                       <a class="btn btn-secondary font-roboto" id="btn-reset">Reset</a>
                                   </div>
                             </div>
-
+                            <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+                                    {{-- espacio --}}
+                            </div>
                            {{--  <div class="banner banner-giga" style="width: 80%">
                                 <a href="https://www.desprosoft.com/" target="_blank"><img src="{{asset('assets/images/banners/desprosoft.jpg')}}" alt="Desprosoft"></a>
                                 <span class="lbl-banner hidden">Visitar</span>
