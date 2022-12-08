@@ -117,5 +117,5 @@ Route::get('edit_project/{id_project}', 'ResultadosController@edit_project');
 Route::get('get_ciudades/{pais}', 'ProjectController@get_ciudades');
 Route::get('get_ciudades_Edit/{pais}', 'ProjectController@get_ciudades_Edit');
 Route::post('/edit_project/{id}', 'ProjectController@edit_project')->name('edit_project');
-
 Route::get('traer_unidad_hvac/{id_project}/{num_sol}/{num_enf}', 'ProjectController@traer_unidad_hvac');
+Route::get('inactive_tarject/{id_project}/{num_sol}/{num_enf}', 'ProjectController@inactive_tarject');

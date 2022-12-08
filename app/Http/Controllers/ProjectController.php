@@ -385,14 +385,20 @@ class ProjectController extends Controller
             }
 
              if ($sol_1_2 !== 0) {
-                 $id_solution_1_2 = DB::table('solutions_project')
-                 ->where('solutions_project.id_project','=',$id)
-                 ->where('solutions_project.num_enf','=',1)
-                 ->where('solutions_project.num_sol','=',2)
-                 ->first();
+
+                $action_submit =  $request->get('action_submit_1_2');
 
 
-                $solution_enf1_2= SolutionsProjectModel::find($id_solution_1_2->id);
+                if($action_submit == 'store'){
+                    $solution_enf1_2=new SolutionsProjectModel;
+                }else if($action_submit == 'update'){
+                    $id_solution_1_2 = DB::table('solutions_project')
+                    ->where('solutions_project.id_project','=',$id)
+                    ->where('solutions_project.num_enf','=',1)
+                    ->where('solutions_project.num_sol','=',2)
+                    ->first();
+                    $solution_enf1_2= SolutionsProjectModel::find($id_solution_1_2->id);
+                }
                 $solution_enf1_2->num_sol = 2;
                 $solution_enf1_2->num_enf = 1;
                 $solution_enf1_2->unidad_hvac = $request->get('cUnidad_1_2');
@@ -592,12 +598,26 @@ class ProjectController extends Controller
                 $solution_enf1_2->cost_op_an =floatval(number_format($factor_m,2, '.', ''));
 
                 }
-            $update_project->update();
-            if( $update_project->update()){
-                $solution_enf1_2->id_project = $update_project->id;
-                $solution_enf1_2->update();
 
-            }
+                $update_project->update();
+
+                if($action_submit == 'store'){
+
+                    if( $update_project->update()){
+                        $solution_enf1_2->id_project = $update_project->id;
+                        $solution_enf1_2->save();
+
+                    }
+                }else if($action_submit == 'update'){
+
+
+                    if( $update_project->update()){
+                        $solution_enf1_2->id_project = $update_project->id;
+                        $solution_enf1_2->update();
+                    }
+                }
+
+
 
             }
 
@@ -1064,15 +1084,21 @@ class ProjectController extends Controller
 
                     if ($sol_2_2 !== 0) {
 
-                        $id_solution_2_2 = DB::table('solutions_project')
-                        ->where('solutions_project.id_project','=',$id)
-                        ->where('solutions_project.num_enf','=',2)
-                        ->where('solutions_project.num_sol','=',2)
-                        ->first();
+                        $action_submit =  $request->get('action_submit_2_2');
+
+                        if($action_submit == 'store'){
+                            $solution_enf2_2=new SolutionsProjectModel;
+                        }else if($action_submit == 'update'){
+                            $id_solution_2_2 = DB::table('solutions_project')
+                            ->where('solutions_project.id_project','=',$id)
+                            ->where('solutions_project.num_enf','=',2)
+                            ->where('solutions_project.num_sol','=',2)
+                            ->first();
+
+                            $solution_enf2_2=SolutionsProjectModel::find($id_solution_2_2->id);
+                        }
 
 
-
-                        $solution_enf2_2=SolutionsProjectModel::find($id_solution_2_2->id);
                         $solution_enf2_2->num_sol = 2;
                         $solution_enf2_2->num_enf = 2;
                         $solution_enf2_2->unidad_hvac = $request->get('cUnidad_2_2');
@@ -1269,11 +1295,25 @@ class ProjectController extends Controller
                            $solution_enf2_2->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
                     }
                     $update_project->update();
-                    if( $update_project->update()){
-                        $solution_enf2_2->id_project = $update_project->id;
-                        $solution_enf2_2->update();
 
+                    if($action_submit == 'store'){
+
+                        if( $update_project->update()){
+                            $solution_enf2_2->id_project = $update_project->id;
+                            $solution_enf2_2->save();
+
+                        }
+                    }else if($action_submit == 'update'){
+
+
+                        if( $update_project->update()){
+                            $solution_enf2_2->id_project = $update_project->id;
+                            $solution_enf2_2->update();
+
+                        }
                     }
+
+
 
                     }
 
@@ -1519,13 +1559,22 @@ class ProjectController extends Controller
              }
 
              if ($sol_3_2 !== 0) {
-                $id_solution_3_2 = DB::table('solutions_project')
-                ->where('solutions_project.id_project','=',$id)
-                ->where('solutions_project.num_enf','=',3)
-                ->where('solutions_project.num_sol','=',2)
-                ->first();
 
-                $solution_enf3_2=SolutionsProjectModel::find($id_solution_3_2->id);
+                $action_submit =  $request->get('action_submit_3_2');
+
+                        if($action_submit == 'store'){
+                            $solution_enf3_2=new SolutionsProjectModel;
+                        }else if($action_submit == 'update'){
+                            $id_solution_3_2 = DB::table('solutions_project')
+                            ->where('solutions_project.id_project','=',$id)
+                            ->where('solutions_project.num_enf','=',3)
+                            ->where('solutions_project.num_sol','=',2)
+                            ->first();
+
+                            $solution_enf3_2=SolutionsProjectModel::find($id_solution_3_2->id);
+                        }
+
+
                 $solution_enf3_2->num_sol = 2;
                 $solution_enf3_2->num_enf = 3;
                 $solution_enf3_2->unidad_hvac = $request->get('cUnidad_3_2');
@@ -1723,11 +1772,22 @@ class ProjectController extends Controller
                    $res_res_fact_m =  $res_res * $factor_m;
                   $solution_enf3_2->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
             }
-            $update_project->update();
-            if( $update_project->update()){
-                $solution_enf3_2->id_project = $update_project->id;
-                $solution_enf3_2->update();
 
+            $update_project->update();
+
+
+            if($action_submit == 'store'){
+                if( $update_project->update()){
+                    $solution_enf3_2->id_project = $update_project->id;
+                    $solution_enf3_2->save();
+
+                }
+            }else if($action_submit == 'update'){
+
+                if( $update_project->update()){
+                        $solution_enf3_2->id_project = $update_project->id;
+                        $solution_enf3_2->update();
+                }
             }
 
             }
@@ -1775,6 +1835,23 @@ class ProjectController extends Controller
 
       return response()->json(['val_unidad' => $val_unidad]);
     }
+
+    public function inactive_tarject($id,$num_enf,$num_sol){
+
+        $id_solution = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id)
+        ->where('solutions_project.num_enf','=',$num_enf)
+        ->where('solutions_project.num_sol','=',$num_sol)
+        ->first()->id;
+
+        $solution_del=SolutionsProjectModel::find($id_solution);
+        $solution_del->delete();
+
+        return response()->json(['solution_del' => $solution_del]);
+       /* response()->json(['val_unidad' => $val_unidad]); */
+    }
+
+
 
 
 

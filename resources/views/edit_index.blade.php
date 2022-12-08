@@ -135,6 +135,9 @@ span{
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 @inject('traer_unidad_hvac','app\Http\Controllers\ResultadosController')
+@inject('num_tarjets','app\Http\Controllers\ResultadosController')
+@inject('num_tarjets_2','app\Http\Controllers\ResultadosController')
+@inject('num_tarjets_3','app\Http\Controllers\ResultadosController')
 <div class="bg-white h-full" x-data="app()" x-cloak>
     <div class="w-full px-4">
 
@@ -410,7 +413,8 @@ span{
                                         <div style="background-color: #233064;" class="text-white rounded-t-xl w-80 flex justify-between py-3 ">
                                             <div class="ml-5 w-1/3 flex justify-start">
                                              <a href="#final1">   <button onclick="active_display_Edit('sol_1');" type="button" style="background-color: #233064;" class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button></a>
-                                                <input type="number" class="hidden" value="1" id="cont_sol_1" name="cont_sol_1">
+                                             <?php  $num_tarjets=$num_tarjets->num_tarjets($id_project,1) ?>
+                                             <input type="number" class="hidden" value="{{$num_tarjets}}" id="cont_sol_1" name="cont_sol_1">
                                                 <input type="number" class="hidden" value="1" id="set_sol_1" name="set_sol_1">
                                             </div>
                                             <div class="ml-5 w-full flex justify-start py-1">
@@ -627,6 +631,7 @@ span{
                                           <div class="grid gap-y-2 my-2">
                                             <div class="flex w-full mt-3">
                                                 <div class="flex gap-x-2 w-1/2">
+
                                                     <input type="text" value="" class="hidden" id="action_submit_1_2" name="action_submit_1_2">
                                                     <div class="w-1/3 flex justify-start">
                                                         <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
@@ -791,7 +796,7 @@ span{
                                                     </div>
                                                 </div>
                                                 <div class="flex gap-x-3 w-1/2 justify-end">
-                                                    <button onclick="inactive_display_edit('sol_1')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    <button onclick="inactive_display_edit('sol_1','{{$id_project}}',1,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                 </div>
                                             </div>
                                           </div>
@@ -1077,7 +1082,9 @@ span{
                                                 <a href="#final2">
                                                     <button onclick="active_display_Edit('sol_2');" type="button"  class="bg-blue-700 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white "></i></button>
                                                 </a>
-                                            <input type="number" class="hidden" value="2" id="cont_sol_2" name="cont_sol_2">
+                                                <?php  $num_tarjets_2=$num_tarjets_2->num_tarjets($id_project,2) ?>
+
+                                            <input type="number" class="hidden" value="{{$num_tarjets_2}}" id="cont_sol_2" name="cont_sol_2">
                                             </div>
                                             <div class="ml-5 w-full flex justify-start py-1">
                                                 <h2 class="text-white font-bold justify-start text-3xl ml-5">Solución A</h2>
@@ -1275,6 +1282,7 @@ span{
                                               <div class="grid gap-y-2 my-2">
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex gap-x-1 w-1/2">
+                                                        <input type="text" value="" class="hidden" id="action_submit_2_2" name="action_submit_2_2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
@@ -1294,7 +1302,8 @@ span{
 
                                                                     traer_unidad_hvac('{{$id_project}}',2,2,'cUnidad_2_2','cheTipo_2_2','cheDisenio_2_2'
                                                                     ,'tipo_control_2_2','dr_2_2','cheMantenimiento_2_2','lblCsTipo_2_2',
-                                                                    'capacidad_total_2_2','costo_elec_2_2','csStd_cant_2_2','cheValorS_2_2','sol_2_2');
+                                                                    'capacidad_total_2_2','costo_elec_2_2','csStd_cant_2_2','cheValorS_2_2'
+                                                                    ,'sol_2_2','action_submit_2_2','cont_sol_2');
 
 
                                                                 });
@@ -1437,7 +1446,7 @@ span{
                                                         </div>
                                                     </div>
                                                     <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display_edit('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                        <button onclick="inactive_display_edit('sol_2','{{$id_project}}',2,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                     </div>
                                                 </div>
                                               </div>
@@ -1729,7 +1738,8 @@ span{
                                                 <a href="#final3">
                                                     <button onclick="active_display_Edit('sol_3');" type="button"  class="bg-blue-500 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button>
                                                 </a>
-                                                <input type="number" class="hidden" value="2" id="cont_sol_3" name="cont_sol_3">
+                                                <?php  $num_tarjets_3=$num_tarjets_3->num_tarjets($id_project,2) ?>
+                                                <input type="number" class="hidden" value="{{$num_tarjets_3}}" id="cont_sol_3" name="cont_sol_3">
                                             </div>
                                             <div class="ml-5 w-full flex justify-start py-1">
                                                 <h2 class="text-white font-bold justify-start  text-3xl ml-5">Solución B</h2>
@@ -1925,6 +1935,7 @@ span{
                                               <div class="grid gap-y-2 my-2">
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex gap-x-2 w-1/2">
+                                                        <input type="text" value="" class="hidden" id="action_submit_3_2" name="action_submit_3_2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
@@ -1944,7 +1955,7 @@ span{
                                                                 $(document).ready(function () {
                                                                     traer_unidad_hvac('{{$id_project}}',2,3,'cUnidad_3_2','cheTipo_3_2','cheDisenio_3_2'
                                                                     ,'tipo_control_3_2','dr_3_2','cheMantenimiento_3_2','lblCsTipo_3_2','capacidad_total_3_2'
-                                                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2');
+                                                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2','action_submit_3_2','cont_sol_3');
                                                                 });
                                                                 </script>
                                                             </select>
@@ -2082,7 +2093,7 @@ span{
                                                         </div>
                                                     </div>
                                                     <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display_edit('sol_3')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                        <button onclick="inactive_display_edit('sol_3','{{$id_project}}',3,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                     </div>
                                                 </div>
                                               </div>

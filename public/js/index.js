@@ -2620,16 +2620,6 @@ function inactive_display(value){
                     }
 
                     /*       alert(count_inps_2_1); */
-
-
-
-
-
-
-
-
-
-
                 var count_inps_2_2 = cheTipo_2_2_count
                 + capacidad_total_2_2_count
                 + costo_elec_2_2_count
@@ -3086,15 +3076,12 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
     });
 }
 
-function inactive_display_edit(value){
+function inactive_display_edit(value,id_project,num_enf,num_sol){
     var cont_sol_1 =  parseInt($('#cont_sol_1').val());
     var cont_sol_2 =  parseInt($('#cont_sol_2').val());
     var cont_sol_3 =  parseInt($('#cont_sol_3').val());
 
     var set_sol_1 =  parseInt($('#set_sol_1').val());
-
-
-
 
 
      if (value == 'sol_1') {
@@ -3113,6 +3100,22 @@ function inactive_display_edit(value){
               $('#set_sol_1').val(set_sol_1);
               $('#cont_sol_1').val(cont_sol_1);
 
+
+                $.ajax({
+                    type: 'get',
+                    url: '/inactive_tarject/'+ id_project +'/'+ num_enf + '/' +num_sol,
+                    success: function (response) {
+                    console.log(response.solution_del);
+
+
+                    },
+                    error: function (responsetext) {
+
+                    }
+                });
+
+
+
           }else if(cont_sol_1 == 3){
 
               set_sol_1 =  set_sol_1 - 1;
@@ -3130,7 +3133,7 @@ function inactive_display_edit(value){
 
      if (value == 'sol_2') {
 
-         if(cont_sol_2 == 3){
+         if(cont_sol_2 == 2){
              $( "#sol_2_2" ).addClass( "hidden" );
              var select_2_2 = $('#cUnidad_2_2');
              select_2_2.val($('option:first', select_2_2).val());
@@ -3141,7 +3144,21 @@ function inactive_display_edit(value){
 
              cont_sol_2 =  cont_sol_2 - 1;
              $('#cont_sol_2').val(cont_sol_2);
-         }else if(cont_sol_2 == 4){
+
+             $.ajax({
+                type: 'get',
+                url: '/inactive_tarject/'+ id_project +'/'+ num_enf + '/' +num_sol,
+                success: function (response) {
+                console.log(response.solution_del);
+
+
+                },
+                error: function (responsetext) {
+
+                }
+            });
+
+         }else if(cont_sol_2 == 3){
 
             cont_sol_2 =  cont_sol_2 - 1;
              $('#cont_sol_2').val(cont_sol_2);
@@ -3154,7 +3171,7 @@ function inactive_display_edit(value){
 
      if (value == 'sol_3') {
 
-         if(cont_sol_3 == 3){
+         if(cont_sol_3 == 2){
               $( "#sol_3_2" ).addClass( "hidden" );
               var select_3_2 = $('#cUnidad_3_2');
               select_3_2.val($('option:first', select_3_2).val());
@@ -3165,7 +3182,20 @@ function inactive_display_edit(value){
 
               cont_sol_3 =  cont_sol_3 - 1;
               $('#cont_sol_3').val(cont_sol_3);
-          }else if(cont_sol_3 == 4){
+
+              $.ajax({
+                type: 'get',
+                url: '/inactive_tarject/'+ id_project +'/'+ num_enf + '/' +num_sol,
+                success: function (response) {
+                console.log(response.solution_del);
+
+
+                },
+                error: function (responsetext) {
+
+                }
+            });
+          }else if(cont_sol_3 == 3){
 
              cont_sol_3 =  cont_sol_3 - 1;
               $('#cont_sol_3').val(cont_sol_3);
@@ -3190,9 +3220,13 @@ function inactive_display_edit(value){
      if (value == 'sol_1') {
 
         if(cont_sol_1 == 1){
-             $( "#sol_1_2" ).removeClass( "hidden" );
-             $( "#sol_1_3" ).addClass( "hidden" );
-            //validando_eliminacion
+             $("#sol_1_2").removeClass( "hidden" );
+             $("#sol_1_3").addClass( "hidden" );
+             $("#action_submit_1_2").val('store');
+             var consto_elect_project = $("#costo_elec").val();
+             $("#costo_elec_1_2").val(consto_elect_project);
+            /*  $("#sol_1_3").val(''); */
+            //validando_eliminacion mandar store a vallidar_submit
              cont_sol_1 =  cont_sol_1 + 1;
              set_sol_1 =  set_sol_1 + 1;
              $('#set_sol_1').val(set_sol_1);
@@ -3204,18 +3238,26 @@ function inactive_display_edit(value){
              $('#cont_sol_1').val(cont_sol_1);
              $( "#sol_1_2" ).removeClass( "hidden" );
              $( "#sol_1_3" ).removeClass( "hidden" );
+             var consto_elect_project = $("#costo_elec").val();
+             $("#costo_elec_1_2").val(consto_elect_project);
+             $("#costo_elec_1_3").val(consto_elect_project);
 
          }
 
 
      }else if(value == 'sol_2') {
 
-         if(cont_sol_2 == 2){
+         if(cont_sol_2 == 1){
              $( "#sol_2_2" ).removeClass( "hidden" );
              $( "#sol_2_3" ).addClass( "hidden" );
+
+             $("#action_submit_2_2").val('store');
+             var consto_elect_project = $("#costo_elec").val();
+             $("#costo_elec_2_2").val(consto_elect_project);
+
              cont_sol_2 =  cont_sol_2 + 1;
              $('#cont_sol_2').val(cont_sol_2);
-         }else if(cont_sol_2 == 3){
+         }else if(cont_sol_2 == 2){
              cont_sol_2 =  cont_sol_2 + 1;
              $('#cont_sol_2').val(cont_sol_2);
              $( "#sol_2_2" ).removeClass( "hidden" );
@@ -3223,12 +3265,17 @@ function inactive_display_edit(value){
          }
 
      }else if(value == 'sol_3') {
-         if(cont_sol_3 == 2){
+         if(cont_sol_3 == 1){
              $( "#sol_3_2" ).removeClass( "hidden" );
              $( "#sol_3_3" ).addClass( "hidden" );
+
+             $("#action_submit_3_2").val('store');
+             var consto_elect_project = $("#costo_elec").val();
+             $("#costo_elec_3_2").val(consto_elect_project);
+
              cont_sol_3 =  cont_sol_3 + 1;
              $('#cont_sol_3').val(cont_sol_3);
-         }else if(cont_sol_3 == 3){
+         }else if(cont_sol_3 == 2){
              cont_sol_3 =  cont_sol_3 + 1;
              $('#cont_sol_3').val(cont_sol_3);
              $( "#sol_3_2" ).removeClass( "hidden" );
