@@ -1738,7 +1738,7 @@ span{
                                                 <a href="#final3">
                                                     <button onclick="active_display_Edit('sol_3');" type="button"  class="bg-blue-500 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button>
                                                 </a>
-                                                <?php  $num_tarjets_3=$num_tarjets_3->num_tarjets($id_project,2) ?>
+                                                <?php  $num_tarjets_3=$num_tarjets_3->num_tarjets($id_project,3) ?>
                                                 <input type="number" class="hidden" value="{{$num_tarjets_3}}" id="cont_sol_3" name="cont_sol_3">
                                             </div>
                                             <div class="ml-5 w-full flex justify-start py-1">
