@@ -2525,10 +2525,10 @@ class ResultadosController extends Controller
         return $val_unidad;
     }
 
-    public function num_tarjets($id){
+    public function num_tarjets($id,$num_enf){
         $solutions = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id)
-        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_enf','=',$num_enf)
         ->get();
 
         return count($solutions);

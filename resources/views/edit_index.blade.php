@@ -1955,7 +1955,7 @@ span{
                                                                 $(document).ready(function () {
                                                                     traer_unidad_hvac('{{$id_project}}',2,3,'cUnidad_3_2','cheTipo_3_2','cheDisenio_3_2'
                                                                     ,'tipo_control_3_2','dr_3_2','cheMantenimiento_3_2','lblCsTipo_3_2','capacidad_total_3_2'
-                                                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2','action_submit_3_2','cont_sol_3');
+                                                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2','action_submit_3_2');
                                                                 });
                                                                 </script>
                                                             </select>
