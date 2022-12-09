@@ -457,7 +457,7 @@ span{
                                                 <div class="flex w-1/2 gap-x-2">
                                                     <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                        {{--  <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico</b><b style="font-size: 10px;"> $/Kwh</b> </label> --}}
-                                                        <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                        <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                         <input id="costo_elec" name="costo_elec" onchange="valida_selects_inps(this.id);asign_cos_ele(this.value);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
@@ -640,7 +640,7 @@ span{
                                             <div class="flex w-full mt-3">
                                                 <div class="flex w-1/2 gap-x-2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px; " class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                        <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                         <input id="costo_elec_1_2" name="costo_elec_1_2" readonly onchange="valida_selects_inps(this.id);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -833,7 +833,7 @@ span{
                                              <div class="flex w-full mt-3">
                                                  <div class="flex w-1/2 gap-x-2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                        <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                      <input id="costo_elec_1_3" name="costo_elec_1_3" readonly onchange="valida_selects_inps(this.id);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"><p style="font-size: 12px; margin:0px;"></p>
@@ -1133,7 +1133,7 @@ span{
                                                     <div class="flex w-full mt-3">
                                                         <div class="flex w-1/2 gap-x-2">
                                                             <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                                <label style="" class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
 
                                                             <div class="w-1/2 flex justify-start">
@@ -1311,7 +1311,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                            <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                         <input name="costo_elec_2_2" id="costo_elec_2_2" readonly onchange="valida_selects_inps(this.id);"nkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1">
@@ -1489,7 +1489,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                            <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                         <input name="costo_elec_2_3" id="costo_elec_2_3" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -1788,7 +1788,7 @@ span{
                                                     <div class="flex w-full mt-3">
                                                         <div class="flex w-1/2 gap-x-2">
                                                             <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                                <label style="" class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <input onchange="valida_selects_inps(this.id);" name="costo_elec_3_1" id="costo_elec_3_1" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0  text-center">
@@ -1966,7 +1966,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                            <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <input name="costo_elec_3_2" id="costo_elec_3_2" onchange="valida_selects_inps(this.id);" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0  text-center">
@@ -2144,7 +2144,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                            <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                          <input name="costo_elec_3_3"  onkeypress="return soloNumeros(event)" readonly id="costo_elec_3_3" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0 text-center">
@@ -2297,12 +2297,60 @@ span{
     </div>
     <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
 </div>
-
-
-
-
-
 </div>
+<style>
+@media (min-width: 640px) {
+    .labels{
+        font-size:11px;
+    }
+}
+/* md	768px */
+@media (min-width: 768px) {
+    .labels{
+        font-size:11px;
+    }
+}
+/* lg	1024px */
+@media (min-width: 1024px) {
+    .labels{
+        font-size:11px;
+    }
+}
+/* xl	1280px */
+@media (min-width: 1280px) {
+    .labels{
+        font-size:11px;
+    }
+}
+
+@media (min-width: 1540px) {
+    .labels{
+        font-size:11px;
+    }
+
+}
+
+@media (min-width: 1640px) {
+    .labels{
+        font-size:11px;
+    }
+
+}
+
+@media (min-width: 1760px) {
+    .labels{
+        font-size:13px;
+    }
+
+}
+/* 2xl	1536px */
+@media (min-width: 1940px) {
+    .labels{
+        font-size:14px;
+    }
+
+}
+</style>
 <script>
 function app() {
 			return {

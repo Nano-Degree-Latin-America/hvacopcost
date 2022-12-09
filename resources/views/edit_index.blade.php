@@ -517,7 +517,7 @@ span{
                                                 <div class="flex w-1/2 gap-x-2">
                                                     <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                        {{--  <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico</b><b style="font-size: 10px;"> $/Kwh</b> </label> --}}
-                                                        <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                        <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                         <input id="costo_elec" name="costo_elec"{{--  value="${{$unidad_hvac_val->costo_elec}}" --}} onchange="asign_cos_ele(this.value);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
@@ -655,7 +655,7 @@ span{
 
                                                                 traer_unidad_hvac('{{$id_project}}',2,1,'cUnidad_1_2','csTipo_1_2','csDisenio_1_2'
                                                                 ,'tipo_control_1_2','dr_1_2','csMantenimiento_1_2','lblCsTipo_1_2','capacidad_total_1_2'
-                                                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2','action_submit_1_2','cont_sol_1');
+                                                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2','action_submit_1_2');
 
                                                             });
                                                             </script>
@@ -706,7 +706,7 @@ span{
                                             <div class="flex w-full mt-3">
                                                 <div class="flex w-1/2 gap-x-2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px; " class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                        <label class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                         <input id="costo_elec_1_2" name="costo_elec_1_2"  readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -817,6 +817,7 @@ span{
                                            <div class="grid gap-y-2 my-2 mx-2 bg-gray-200 rounded-md shadow-md">
                                              <div class="flex w-full mt-3">
                                                  <div class="flex gap-x-2 w-1/2">
+                                                    <input type="text" value="" class="hidden" id="action_submit_1_3" name="action_submit_1_3">
                                                     <div class="w-1/3 flex justify-start">
                                                         <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                     </div>
@@ -830,6 +831,15 @@ span{
                                                             <option value="5">PTAC</option>
                                                             <option value="6">WSHP</option>
                                                             <option value="7">Minisplit Inverter</option>
+                                                            <option value="8">Chiller</option>
+                                                            <script>
+                                                                $(document).ready(function () {
+
+                                                                    traer_unidad_hvac('{{$id_project}}',3,1,'cUnidad_1_3','csTipo_1_3','csDisenio_1_3'
+                                                                    ,'tipo_control_1_3','dr_1_3','csMantenimiento_1_3','lblCsTipo_1_3','capacidad_total_1_3'
+                                                                    ,'costo_elec_1_3','csStd_cant_1_3','cheValorS_1_3','sol_1_3','action_submit_1_3');
+                                                                });
+                                                                </script>
                                                         </select>
                                                     </div>
                                                  </div>
@@ -880,7 +890,7 @@ span{
                                              <div class="flex w-full mt-3">
                                                  <div class="flex w-1/2 gap-x-2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                        <label class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                      <input id="costo_elec_1_3" name="costo_elec_1_3" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"><p style="font-size: 12px; margin:0px;"></p>
@@ -970,7 +980,7 @@ span{
                                                     </div>
                                                 </div>
                                                 <div class="flex gap-x-3 w-1/2 justify-end">
-                                                    <button onclick="inactive_display_edit('sol_1')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    <button onclick="inactive_display_edit('sol_1','{{$id_project}}',1,3)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                 </div>
                                              </div>
                                            </div>
@@ -1179,7 +1189,7 @@ span{
                                                     <div class="flex w-full mt-3">
                                                         <div class="flex w-1/2 gap-x-2">
                                                             <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                                <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                             <input name="costo_elec_2_1" id="costo_elec_2_1"  readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -1303,7 +1313,7 @@ span{
                                                                     traer_unidad_hvac('{{$id_project}}',2,2,'cUnidad_2_2','cheTipo_2_2','cheDisenio_2_2'
                                                                     ,'tipo_control_2_2','dr_2_2','cheMantenimiento_2_2','lblCsTipo_2_2',
                                                                     'capacidad_total_2_2','costo_elec_2_2','csStd_cant_2_2','cheValorS_2_2'
-                                                                    ,'sol_2_2','action_submit_2_2','cont_sol_2');
+                                                                    ,'sol_2_2','action_submit_2_2');
 
 
                                                                 });
@@ -1358,7 +1368,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                            <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                         <input name="costo_elec_2_2" id="costo_elec_2_2" readonly  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1">
@@ -1465,6 +1475,8 @@ span{
                                               <div class="grid gap-y-2 my-2">
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex gap-x-3 w-1/2">
+                                                        <input type="text" value="" class="hidden" id="action_submit_2_3" name="action_submit_2_3">
+
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
@@ -1478,6 +1490,20 @@ span{
                                                                 <option value="5">PTAC</option>
                                                                 <option value="6">WSHP</option>
                                                                 <option value="7">Minisplit Inverter</option>
+                                                                <option value="8">Chiller</option>
+                                                                <script>
+                                                                    $(document).ready(function () {
+
+                                                                        traer_unidad_hvac('{{$id_project}}',3,2,'cUnidad_2_3','cheTipo_2_3','cheDisenio_2_3'
+                                                                        ,'tipo_control_2_3','dr_2_3','cheMantenimiento_2_3','lblCsTipo_2_3','capacidad_total_2_3'
+                                                                        ,'costo_elec_2_3','csStd_cant_2_3','cheValorS_2_3','sol_2_3','action_submit_2_3');
+                                                                    });
+
+
+
+
+
+                                                                    </script>
                                                             </select>
                                                     </div>
                                                     </div>
@@ -1528,7 +1554,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                            <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                         <input name="costo_elec_2_3" id="costo_elec_2_3" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -1610,7 +1636,7 @@ span{
                                                         </div>
                                                     </div>
                                                     <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display_edit('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                        <button onclick="inactive_display_edit('sol_2','{{$id_project}}',2,3)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                     </div>
                                                 </div>
                                               </div>
@@ -1832,7 +1858,7 @@ span{
                                                     <div class="flex w-full mt-3">
                                                         <div class="flex w-1/2 gap-x-2">
                                                             <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                                <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <input name="costo_elec_3_1" id="costo_elec_3_1"  readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0  text-center">
@@ -2008,7 +2034,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                            <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <input name="costo_elec_3_2" id="costo_elec_3_2" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0  text-center">
@@ -2112,6 +2138,8 @@ span{
                                               <div class="grid gap-y-2 my-2">
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex gap-x-3 w-1/2">
+                                                        <input type="text" value="" class="hidden" id="action_submit_3_3" name="action_submit_3_3">
+
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
@@ -2126,6 +2154,14 @@ span{
                                                                 <option value="6">WSHP</option>
                                                                 <option value="7">Minisplit Inverter</option>
                                                                 <option value="8">Chiller</option>
+
+                                                                <script>
+                                                                $(document).ready(function () {
+                                                                    traer_unidad_hvac('{{$id_project}}',3,3,'cUnidad_3_3','cheTipo_3_3','cheDisenio_3_3'
+                                                                    ,'tipo_control_3_3','dr_3_3','cheMantenimiento_3_3','lblCsTipo_3_3','capacidad_total_3_3'
+                                                                    ,'costo_elec_3_3','cheStd_3_3','cheValorS_3_3','sol_3_3','action_submit_3_3');
+                                                                });
+                                                                </script>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -2173,7 +2209,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                            <label class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                          <input name="costo_elec_3_3"  onkeypress="return soloNumeros(event)" readonly id="costo_elec_3_3" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0 text-center">
@@ -2255,7 +2291,7 @@ span{
                                                         </div>
                                                     </div>
                                                     <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display_edit('sol_3')" type="button"class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                        <button onclick="inactive_display_edit('sol_3','{{$id_project}}',3,3)" type="button"class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                                     </div>
                                                 </div>
                                               </div>
@@ -2334,7 +2370,59 @@ span{
     </div>
     <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
 </div>
+<style>
+    @media (min-width: 640px) {
+        .labels{
+            font-size:11px;
+        }
+    }
+    /* md	768px */
+    @media (min-width: 768px) {
+        .labels{
+            font-size:11px;
+        }
+    }
+    /* lg	1024px */
+    @media (min-width: 1024px) {
+        .labels{
+            font-size:11px;
+        }
+    }
+    /* xl	1280px */
+    @media (min-width: 1280px) {
+        .labels{
+            font-size:11px;
+        }
+    }
 
+    @media (min-width: 1540px) {
+        .labels{
+            font-size:11px;
+        }
+
+    }
+
+    @media (min-width: 1640px) {
+        .labels{
+            font-size:11px;
+        }
+
+    }
+
+    @media (min-width: 1760px) {
+        .labels{
+            font-size:13px;
+        }
+
+    }
+    /* 2xl	1536px */
+    @media (min-width: 1940px) {
+        .labels{
+            font-size:14px;
+        }
+
+    }
+    </style>
 <script>
 window.onload = function() {
     val = '{{ $project_edit->id_cat_edifico }}';

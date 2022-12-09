@@ -6,7 +6,7 @@ $(document).ready(function () {
     $('#ciudad').val($('#ciudades option:selected').text());
     getPaises();
     traer_categorias_edif();
-    $('#div_next_h').addClass("hidden");
+    $('#div_next').addClass("hidden");
     $('#calcular').attr('disabled', true);
     $('#calcular').css('background-color','gray');
  /*    $('#next').attr('disabled', true); */
@@ -3127,6 +3127,19 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
               var select_1_3 = $('#cUnidad_1_3');
               select_1_3.val($('option:first', select_1_3).val());
 
+               $.ajax({
+                    type: 'get',
+                    url: '/inactive_tarject/'+ id_project +'/'+ num_enf + '/' +num_sol,
+                    success: function (response) {
+                    console.log(response.solution_del);
+
+
+                    },
+                    error: function (responsetext) {
+
+                    }
+                });
+
           }
      }
 
@@ -3163,9 +3176,22 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
             cont_sol_2 =  cont_sol_2 - 1;
              $('#cont_sol_2').val(cont_sol_2);
              $( "#sol_2_2" ).removeClass( "hidden" );
-             var select_2_2 = $('#cUnidad_2_2');
-             select_2_2.val($('option:first', select_2_2).val());
+             var select_2_3 = $('#cUnidad_2_3');
+             select_2_3.val($('option:first', select_2_3).val());
              $( "#sol_2_3" ).addClass( "hidden" );
+
+             $.ajax({
+                type: 'get',
+                url: '/inactive_tarject/'+ id_project +'/'+ num_enf + '/' +num_sol,
+                success: function (response) {
+                console.log(response.solution_del);
+
+
+                },
+                error: function (responsetext) {
+
+                }
+            });
          }
      }
 
@@ -3201,10 +3227,21 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
               $('#cont_sol_3').val(cont_sol_3);
               $( "#sol_3_2" ).removeClass( "hidden" );
               $( "#sol_3_3" ).addClass( "hidden" );
-              $( "#sol_3_3" ).addClass( "hidden" );
               var select_3_3 = $('#cUnidad_3_3');
               select_3_3.val($('option:first', select_3_3).val());
 
+              $.ajax({
+                type: 'get',
+                url: '/inactive_tarject/'+ id_project +'/'+ num_enf + '/' +num_sol,
+                success: function (response) {
+                console.log(response.solution_del);
+
+
+                },
+                error: function (responsetext) {
+
+                }
+            });
           }
      }
 
@@ -3241,6 +3278,7 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
              var consto_elect_project = $("#costo_elec").val();
              $("#costo_elec_1_2").val(consto_elect_project);
              $("#costo_elec_1_3").val(consto_elect_project);
+             $("#action_submit_1_3").val('store');
 
          }
 
@@ -3262,6 +3300,10 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
              $('#cont_sol_2').val(cont_sol_2);
              $( "#sol_2_2" ).removeClass( "hidden" );
              $( "#sol_2_3" ).removeClass( "hidden" );
+
+             $("#action_submit_2_3").val('store');
+             var consto_elect_project = $("#costo_elec").val();
+             $("#costo_elec_2_3").val(consto_elect_project);
          }
 
      }else if(value == 'sol_3') {
@@ -3280,6 +3322,10 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
              $('#cont_sol_3').val(cont_sol_3);
              $( "#sol_3_2" ).removeClass( "hidden" );
              $( "#sol_3_3" ).removeClass( "hidden" );
+
+             $("#action_submit_3_3").val('store');
+             var consto_elect_project = $("#costo_elec").val();
+             $("#costo_elec_3_3").val(consto_elect_project);
          }
 
      }
