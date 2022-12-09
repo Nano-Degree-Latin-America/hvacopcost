@@ -546,7 +546,7 @@ span{
                                             <div class="flex w-full mt-3">
                                                 <div class="flex gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                        <label class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start">
@@ -734,7 +734,7 @@ span{
                                             <div class="flex w-full mt-3">
                                                 <div class="flex gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                        <label class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                          <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_2" id="cheValorS_1_2" >
@@ -928,7 +928,7 @@ span{
                                              <div class="flex w-full mt-3 mb-2">
                                                  <div class="flex gap-x-3 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                        <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                          <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_3" id="cheValorS_1_3" >
@@ -1219,7 +1219,7 @@ span{
                                                     <div class="flex w-full mt-3">
                                                         <div class="flex gap-x-3 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                                <label class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md text-center"  step="0.01" step="0.01" name="cheValorS_2_1" id="cheValorS_2_1" >
@@ -1400,7 +1400,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                         <div class="flex gap-x-3 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                                <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
@@ -1563,7 +1563,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                            <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1  text-center" name="cheValorS_2_3" id="cheValorS_2_3" >
@@ -1874,7 +1874,7 @@ span{
                                                     <div class="flex w-full mt-3">
                                                         <div class="flex gap-x-3 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                                <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                  <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1  text-center"  step="0.01" step="0.01" name="cheValorS_3_1" id="cheValorS_3_1" >
@@ -2057,7 +2057,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                            <label class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                              <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS2_3_2" id="cheValorS2_3_2" >
@@ -2219,7 +2219,7 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                            <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_3_3" id="cheValorS_3_3" >
