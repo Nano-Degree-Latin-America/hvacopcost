@@ -53,6 +53,12 @@ class ProjectController extends Controller
         ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
         ->paginate(10);
 
+        $sin_ashraeh = DB::table('ciudad')
+        ->join('pais','pais.idPais','=','ciudad.idPais')
+        ->where('ashrae','=','')
+        ->get();
+
+
         return view('mis_projectos',['id_empresa'=>$id_empresa,'mis_projectos'=>$mis_projectos]);
     }
 

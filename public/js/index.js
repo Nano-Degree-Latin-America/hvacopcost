@@ -2,11 +2,12 @@
 
 $(document).ready(function () {
     cap_term_change('TR');
+
     $('#pais').val($('#paises option:selected').text());
     $('#ciudad').val($('#ciudades option:selected').text());
     getPaises();
     traer_categorias_edif();
-    $('#div_next_h').addClass("hidden");
+    $('#div_next').addClass("hidden");
     $('#calcular').attr('disabled', true);
     $('#calcular').css('background-color','gray');
  /*    $('#next').attr('disabled', true); */
@@ -3018,7 +3019,7 @@ function valida_form_calc(){
 
 function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,tipo_control,dr
     ,Mantenimiento,lblCsTipo,capacidad_total,costo_elec,csStd_cant
-    ,cheValorS,num_solu,action_submit,cont_sol) {
+    ,cheValorS,num_solu,action_submit,csStd) {
     $.ajax({
         type: 'get',
         url: "/traer_unidad_hvac/" + id_project + "/" + num_sol + "/" +num_enf,
@@ -3040,20 +3041,22 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 $("#"+costo_elec).val('$'+dollarUSLocale.format(res.val_unidad.costo_elec));
                 $("#"+csStd_cant).val(dollarUSLocale.format(res.val_unidad.eficencia_ene_cant));
                 $("#"+cheValorS).val('$'+dollarUSLocale.format(res.val_unidad.val_aprox));
-                if(num_solu != ''){
+
+                $("#"+csStd).find('option[value="' + res.val_unidad.eficencia_ene + '"]').attr("selected", "selected");
+                set_ser_to_sers(res.val_unidad.eficencia_ene);
+                if(num_solu != '' || num_solu != null){
                     $( "#"+num_solu ).removeClass( "hidden" );
                     $("#"+action_submit).val('update');
                     if (cont_sol !== '' || cont_sol !== null){
                         var cont_val = parseInt($('#'+cont_sol).val());
                         var sum_cont = cont_val + 1;
                         $('#'+cont_sol).val(sum_cont);
-
-
-
                     }
                     /*  $cont_sol =
                     parseInt($('#cont_sol_3').val()); */
                 }
+
+
             }else{
 
             }
@@ -3329,4 +3332,53 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
          }
 
      }
+ }
+
+ function set_ser_to_sers(value){
+
+    if(value == 'SEER'){
+        var efi = 'SEER';
+    }
+
+    if(value == 'SEER2'){
+        var efi = 'SEER2';
+    }
+
+    if(value == 'IEER'){
+        var efi = 'IEER';
+    }
+
+    if(value == 'IPVL'){
+        var efi = 'IPVL';
+    }
+
+    if(value === ''){
+        $('#csStd_1_2').val('');
+        $('#csStd_1_3').val('');
+
+        $('#csStd_2_1').val('');
+        $('#csStd_2_2').val('');
+        $('#csStd_2_3').val('');
+
+
+        $('#csStd2_3_1').val('');
+        $('#csStd_3_2').val('');
+        $('#csStd_3_3').val('');
+    }
+
+    if(value !== ''){
+        $('#csStd_1_2').val(efi);
+        $('#csStd_1_3').val(efi);
+
+        $('#csStd_2_1').val(efi);
+        $('#csStd_2_2').val(efi);
+        $('#csStd_2_3').val(efi);
+
+
+        $('#csStd2_3_1').val(efi);
+        $('#csStd_3_2').val(efi);
+        $('#csStd_3_3').val(efi);
+    }
+
+
  }

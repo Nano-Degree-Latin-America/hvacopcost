@@ -14,7 +14,8 @@
     </div>
     <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
         {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
-        <a><img src="{{asset('/assets/images/logos/hvacopcostla.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px"></a>
+        <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
+
 
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
@@ -454,7 +455,8 @@ span{
                                                             <option value="8">Chiller</option>
                                                             <script>
                                                             $(document).ready(function () {
-                                                                traer_unidad_hvac('{{$id_project}}',1,1,'cUnidad_1_1','csTipo','csDisenio_1_1','tipo_control_1_1','dr_1_1','csMantenimiento','lblCsTipo_1_1','capacidad_total','costo_elec','csStd_cant_1_1','cheValorS_1_1','');
+                                                                traer_unidad_hvac('{{$id_project}}',1,1,'cUnidad_1_1','csTipo','csDisenio_1_1','tipo_control_1_1','dr_1_1','csMantenimiento','lblCsTipo_1_1'
+                                                                ,'capacidad_total','costo_elec','csStd_cant_1_1','cheValorS_1_1','','','csStd');
                                                             });
                                                             </script>
 
@@ -538,10 +540,11 @@ span{
                                             <div class="flex w-full mt-3">
                                                 <div class="flex w-1/2 gap-x-2">
                                                     <div class="flex justify-start w-1/3">
-                                                        <select name="csStd" id="csStd" class="w-full py-1  border-2 border-blue-600 rounded-md">
-                                                            <option value="0">SEER</option>
-                                                            <option value="1">IEER</option>
-                                                            <option value="2" disabled>IPVL</option>
+                                                        <select name="csStd" id="csStd"  onchange="set_ser_to_sers(this.value);" class="w-full py-1  border-2 border-blue-600 rounded-md">
+                                                            <option value="SEER">SEER</option>
+                                                            <option value="SEER2">SEER2</option>
+                                                            <option value="IEER">IEER</option>
+                                                            <option value="IPVL" disabled>IPVL</option>
                                                         </select>
                                                     </div>
                                                     <div class="flex justify-start w-1/4">
@@ -728,11 +731,7 @@ span{
                                                 <div class="flex w-1/2 gap-x-2">
 
                                                         <div class="flex justify-start w-1/3">
-                                                        <select name="csStd_1_2" id="csStd_1_2" class="w-full py-1  border-2 border-blue-600 rounded-md">
-                                                            <option value="0">SEER</option>
-                                                            <option value="1">IEER</option>
-                                                            <option value="2" disabled>IPVL</option>
-                                                        </select>
+                                                        <input type="text" readonly name="csStd_1_2" id="csStd_1_2" class="w-full py-1  border-2 border-blue-600 rounded-md">
                                                         </div>
 
                                                         <div class="flex justify-start w-1/4">
@@ -910,11 +909,8 @@ span{
                                              <div class="flex w-full mt-3">
                                                  <div class="flex w-1/2 gap-x-2">
                                                     <div class="flex justify-start w-1/3">
-                                                         <select name="csStd_1_3" id="csStd_1_3" class="w-full border-2 border-blue-600 rounded-md py-1">
-                                                             <option value="0">SEER</option>
-                                                             <option value="1">IEER</option>
-                                                             <option value="2" disabled>IPVL</option>
-                                                         </select>
+                                                         <input readonly type="text" name="csStd_1_3" id="csStd_1_3" class="w-full border-2 border-blue-600 rounded-md py-1">
+
                                                     </div>
                                                     <div class="flex justify-start w-1/4">
                                                         <input type="number" id="csStd_cant_1_3" name="csStd_cant_1_3" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -1209,11 +1205,8 @@ span{
                                                     <div class="flex w-full mt-3">
                                                         <div class="flex w-1/2 gap-x-2">
                                                             <div class="flex justify-start w-1/3">
-                                                                <select name="csStd_2_1" id="csStd_2_1" class="w-full border-2 border-blue-600 rounded-md py-1">
-                                                                    <option value="0">SEER</option>
-                                                                    <option value="1">IEER</option>
-                                                                    <option value="2" disabled>IPVL</option>
-                                                                </select>
+                                                                <input readonly type="text" name="csStd_2_1" id="csStd_2_1" class="w-full border-2 border-blue-600 rounded-md py-1">
+
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
                                                             <input step="0.5" name="csStd_cant_2_1" id="csStd_cant_2_1"  type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1">
@@ -1389,11 +1382,8 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="flex justify-start w-1/3">
-                                                            <select name="csStd_2_2" id="csStd_2_2" class="w-full border-2 border-blue-600 rounded-md py-1">
-                                                                <option value="0">SEER</option>
-                                                                <option value="1">IEER</option>
-                                                                <option value="2" disabled>IPVL</option>
-                                                            </select>
+                                                            <input type="text" readonly name="csStd_2_2" id="csStd_2_2" class="w-full border-2 border-blue-600 rounded-md py-1">
+
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
                                                             <input  name="csStd_cant_2_2" id="csStd_cant_2_2" type="text" style="font-size: 14px;"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -1574,11 +1564,8 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="flex justify-start w-1/3">
-                                                            <select name="csStd_2_3" id="csStd_2_3" class="w-full border-2 border-blue-600 rounded-md py-1">
-                                                                <option value="0">SEER</option>
-                                                                <option value="1">IEER</option>
-                                                                <option value="2" disabled>IPVL</option>
-                                                            </select>
+                                                            <input type="text" readonly name="csStd_2_3" id="csStd_2_3" class="w-full border-2 border-blue-600 rounded-md py-1">
+
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
                                                         <input step="0.5" name="csStd_cant_2_3" id="csStd_cant_2_3" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1  text-center">
@@ -1879,11 +1866,8 @@ span{
                                                     <div class="flex w-full mt-3">
                                                         <div class="flex w-1/2 gap-x-2">
                                                             <div class="flex justify-start w-1/3">
-                                                                <select name="csStd2_3_1" id="csStd2_3_1" class="w-full py-1 border-2 border-blue-600 rounded-md">
-                                                                    <option value="0">SEER</option>
-                                                                    <option value="1">IEER</option>
-                                                                    <option value="2" disabled>IPVL</option>
-                                                                </select>
+                                                                <input readonly type="text" name="csStd2_3_1" id="csStd2_3_1" class="w-full py-1 border-2 border-blue-600 rounded-md">
+
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
                                                              <input  name="cheStd_3_1" id="cheStd_3_1" type="text"  style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
@@ -2054,11 +2038,8 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="flex justify-start w-1/3">
-                                                            <select name="csStd_3_2" id="csStd_3_2" class="w-full py-1 border-2 border-blue-600 rounded-md">
-                                                                <option value="0">SEER</option>
-                                                                <option value="1">IEER</option>
-                                                                <option value="2" disabled>IPVL</option>
-                                                            </select>
+                                                            <input readonly type="text" name="csStd_3_2" id="csStd_3_2" class="w-full py-1 border-2 border-blue-600 rounded-md">
+
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
                                                             <input step="0.5" name="csStd_cant_3_2" id="csStd_cant_3_2" type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md  text-center">
@@ -2230,11 +2211,8 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="flex justify-start w-1/3">
-                                                            <select name="csStd_3_3" id="csStd_3_3" class="w-full py-1 border-2 border-blue-600 rounded-md">
-                                                                <option value="0">SEER</option>
-                                                                <option value="1">IEER</option>
-                                                                <option value="2" disabled>IPVL</option>
-                                                            </select>
+                                                            <input readonly type="text" name="csStd_3_3" id="csStd_3_3" class="w-full py-1 border-2 border-blue-600 rounded-md">
+
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
                                                          <input step="0.5" name="cheStd_3_3" id="cheStd_3_3" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">

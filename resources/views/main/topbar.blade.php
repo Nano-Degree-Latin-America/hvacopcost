@@ -7,7 +7,7 @@
          </div>
          <div class=" col-4 flex justify-center" style="line-height: 30px">
              {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
-             <a><img src="{{asset('/assets/images/logos/hvacopcostla.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px"></a>
+             <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
 
             </div>
          <div class="col-4 mt-5 flex justify-end">

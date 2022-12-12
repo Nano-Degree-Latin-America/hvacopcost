@@ -479,10 +479,11 @@ span{
                                             <div class="flex w-full mt-3">
                                                 <div class="flex w-1/2 gap-x-2">
                                                     <div class="flex justify-start w-1/3">
-                                                        <select name="csStd" id="csStd" class="w-full py-1  border-2 border-blue-600 rounded-md">
-                                                            <option value="0">SEER</option>
-                                                            <option value="1">IEER</option>
-                                                            <option value="2" disabled>IPVL</option>
+                                                        <select name="csStd" id="csStd"  onchange="set_ser_to_sers(this.value);" class="w-full py-1  border-2 border-blue-600 rounded-md">
+                                                            <option value="SEER">SEER</option>
+                                                            <option value="SEER2">SEER2</option>
+                                                            <option value="IEER">IEER</option>
+                                                            <option value="IPVL" disabled>IPVL</option>
                                                         </select>
                                                     </div>
                                                     <div class="flex justify-start w-1/4">
@@ -666,11 +667,8 @@ span{
                                                 <div class="flex w-1/2 gap-x-2">
 
                                                         <div class="flex justify-start w-1/3">
-                                                        <select name="csStd_1_2" id="csStd_1_2" class="w-full py-1  border-2 border-blue-600 rounded-md">
-                                                            <option value="0">SEER</option>
-                                                            <option value="1">IEER</option>
-                                                            <option value="2" disabled>IPVL</option>
-                                                        </select>
+                                                        <input type="text" readonly name="csStd_1_2" id="csStd_1_2" class="w-full py-1  border-2 border-blue-600 rounded-md">
+
                                                         </div>
 
                                                         <div class="flex justify-start w-1/4">
@@ -857,11 +855,7 @@ span{
                                              <div class="flex w-full mt-3">
                                                  <div class="flex w-1/2 gap-x-2">
                                                     <div class="flex justify-start w-1/3">
-                                                         <select name="csStd_1_3" id="csStd_1_3" class="w-full border-2 border-blue-600 rounded-md py-1">
-                                                             <option value="0">SEER</option>
-                                                             <option value="1">IEER</option>
-                                                             <option value="2" disabled>IPVL</option>
-                                                         </select>
+                                                         <input type="text" readonly name="csStd_1_3" id="csStd_1_3" class="w-full border-2 border-blue-600 rounded-md py-1">
                                                     </div>
                                                     <div class="flex justify-start w-1/4">
                                                         <input type="number" onchange="valida_selects_inps(this.id);" id="csStd_cant_1_3" name="csStd_cant_1_3" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -1156,11 +1150,7 @@ span{
                                                     <div class="flex w-full mt-3">
                                                         <div class="flex w-1/2 gap-x-2">
                                                             <div class="flex justify-start w-1/3">
-                                                                <select name="csStd_2_1" id="csStd_2_1" class="w-full border-2 border-blue-600 rounded-md py-1">
-                                                                    <option value="0">SEER</option>
-                                                                    <option value="1">IEER</option>
-                                                                    <option value="2" disabled>IPVL</option>
-                                                                </select>
+                                                                <input name="csStd_2_1" readonly id="csStd_2_1" class="w-full border-2 border-blue-600 rounded-md py-1">
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
                                                             <input onchange="valida_selects_inps(this.id);" step="0.5" name="csStd_cant_2_1" id="csStd_cant_2_1" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1">
@@ -1335,11 +1325,8 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="flex justify-start w-1/3">
-                                                            <select name="csStd_2_2" id="csStd_2_2" class="w-full border-2 border-blue-600 rounded-md py-1">
-                                                                <option value="0">SEER</option>
-                                                                <option value="1">IEER</option>
-                                                                <option value="2" disabled>IPVL</option>
-                                                            </select>
+                                                            <input readonly name="csStd_2_2" id="csStd_2_2" class="w-full border-2 border-blue-600 rounded-md py-1">
+
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
                                                             <input  name="csStd_cant_2_2" id="csStd_cant_2_2" type="text" style="font-size: 14px;" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -1509,11 +1496,8 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="flex justify-start w-1/3">
-                                                            <select name="csStd_2_3" id="csStd_2_3" class="w-full border-2 border-blue-600 rounded-md py-1">
-                                                                <option value="0">SEER</option>
-                                                                <option value="1">IEER</option>
-                                                                <option value="2" disabled>IPVL</option>
-                                                            </select>
+                                                            <input readonly name="csStd_2_3" id="csStd_2_3" class="w-full border-2 border-blue-600 rounded-md py-1">
+
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
                                                         <input step="0.5" name="csStd_cant_2_3" id="csStd_cant_2_3" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1  text-center">
@@ -1812,11 +1796,8 @@ span{
                                                     <div class="flex w-full mt-3">
                                                         <div class="flex w-1/2 gap-x-2">
                                                             <div class="flex justify-start w-1/3">
-                                                                <select name="csStd2_3_1" id="csStd2_3_1" class="w-full py-1 border-2 border-blue-600 rounded-md">
-                                                                    <option value="0">SEER</option>
-                                                                    <option value="1">IEER</option>
-                                                                    <option value="2" disabled>IPVL</option>
-                                                                </select>
+                                                                <input readonly type="text" name="csStd2_3_1" id="csStd2_3_1" class="w-full py-1 border-2 border-blue-600 rounded-md">
+
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
                                                              <input  name="cheStd_3_1" id="cheStd_3_1" onchange="valida_selects_inps(this.id);" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
@@ -1990,11 +1971,8 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="flex justify-start w-1/3">
-                                                            <select name="csStd_3_2" id="csStd_3_2" class="w-full py-1 border-2 border-blue-600 rounded-md">
-                                                                <option value="0">SEER</option>
-                                                                <option value="1">IEER</option>
-                                                                <option value="2" disabled>IPVL</option>
-                                                            </select>
+                                                            <input type="text" name="csStd_3_2" id="csStd_3_2" class="w-full py-1 border-2 border-blue-600 rounded-md">
+
                                                         </div>
 
                                                         <div class="flex justify-start w-1/4">
@@ -2165,11 +2143,8 @@ span{
                                                 <div class="flex w-full mt-3">
                                                     <div class="flex w-1/2 gap-x-2">
                                                         <div class="flex justify-start w-1/3">
-                                                            <select name="csStd_3_3" id="csStd_3_3" class="w-full py-1 border-2 border-blue-600 rounded-md">
-                                                                <option value="0">SEER</option>
-                                                                <option value="1">IEER</option>
-                                                                <option value="2" disabled>IPVL</option>
-                                                            </select>
+                                                            <input readonly type="text" name="csStd_3_3" id="csStd_3_3" class="w-full py-1 border-2 border-blue-600 rounded-md">
+
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
                                                          <input step="0.5" name="cheStd_3_3" id="cheStd_3_3" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -2352,6 +2327,11 @@ span{
 }
 </style>
 <script>
+    $(document).ready(function () {
+
+        set_ser_to_sers('SEER');
+    });
+
 function app() {
 			return {
 				step: 1,

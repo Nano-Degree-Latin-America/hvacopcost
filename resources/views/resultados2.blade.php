@@ -178,7 +178,7 @@ span{
     </div>
     <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
         {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
-        <a><img src="{{asset('/assets/images/logos/hvacopcostla.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px"></a>
+        <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
 
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
@@ -378,7 +378,7 @@ span{
 
                                                         <div class="w-full flex justify-start">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">SEER</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
@@ -570,7 +570,7 @@ span{
 
                                                         <div class="w-full flex justify-start">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">SEER</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
@@ -757,7 +757,7 @@ span{
 
                                                         <div class="w-full flex justify-start">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">SEER</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
@@ -944,7 +944,7 @@ span{
 
                                                         <div class="w-full flex justify-start">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">SEER</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
@@ -1139,7 +1139,7 @@ span{
 
                                                         <div class="w-full flex justify-start">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">SEER</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
@@ -1329,7 +1329,7 @@ span{
 
                                                                 <div class="w-full flex justify-start">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">SEER</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
@@ -1519,7 +1519,7 @@ span{
 
                                                                         <div class="w-full flex justify-start">
                                                                             <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">SEER</label>
+                                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
@@ -2630,7 +2630,7 @@ span{
                                                 {{-- <b class="text-[24px] text-blue-900 font-roboto text-4xl">5 Años</b> --}}
                                                 @if ($result2 !== null)
                                                 <?php  $roi_ent_dif_inv_5=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,5,$dif_1_cost) ?>
-                                                <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_ent_dif_inv_5)}}%</b>
+                                                <b class="text-[24px] font-roboto text-5xl">{{number_format($roi_ent_dif_inv_5)}}%</b>
                                                 @endif
 
                                                 @if ($result2 === null)
@@ -2824,7 +2824,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result3 !== null)
-                                                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(5,$dif_2,$inv_ini_3) ?>
+                                                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(5,$dif_2_cost,$inv_ini_3) ?>
                                                 <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_inv_tot_b_2)}}%</b>
                                                 @endif
 
@@ -3790,6 +3790,8 @@ span{
                                     </div>
                                     {{--  --}}
 
+                                </div>
+                                <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
 
                                     <div class="flex w-full justify-center">
                                         <label class="font-bold text-blue-900 text-2xl font-roboto text-4xl" for="">Valores EUI</label>
@@ -3799,7 +3801,7 @@ span{
                                             <div class="w-1/3 flex justify-center">
                                                 @if ($result1 ==! null)
                                                 <?php  $valor_eui_base=$smasolutions->valor_eui($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                                                <label style="color:#33cc33;" class=" font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
+                                                <label style="color:#33cc33;" class=" font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,2)}}</label>
                                                 @endif
 
                                                 @if ($result1 === null)
@@ -3829,8 +3831,12 @@ span{
                                                 @endif
                                             </div>
                                     </div>
-
                                 </div>
+     {{-- espacio --}}
+     <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+
+     </div>
+      {{-- espacio --}}
                             </div>
                         </div>
                 </div>

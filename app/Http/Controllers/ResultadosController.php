@@ -2475,9 +2475,11 @@ class ResultadosController extends Controller
 
         /* ((52.9 * (10,000 * 10.764))/3.412) * (100% - 60%)  */
         //sacar_porciento
-        $porcent = $porcent_hvac/1000;
+        $porcent= $porcent_hvac / 100;
 
-        $factor_consumo_e = $area_x_e_star_div_3 * $porcent;
+        $porcent_A = 1 - $porcent;
+
+        $factor_consumo_e = $area_x_e_star_div_3 * $porcent_A;
 
         //////////Consumo Anual OPEX////////////////////
         /* ((((338,466/0.12) + 667,545))*3.412 )/(10,000 * 10.764) */
@@ -2507,8 +2509,8 @@ class ResultadosController extends Controller
     public function pay_back($inv_ini_1,$inv_ini_x,$dif_cost){
         /* $(inv_ini_x-$inv_ini_1)/dif_cost)*/
         /* (inv_ini_x-$inv_ini_1) */
-        $par_1 = $inv_ini_x-$inv_ini_1;
-        $res = $par_1 / $dif_cost;
+      /*   $par_1 = $inv_ini_x-$inv_ini_1; */
+        $res = $inv_ini_x / $dif_cost;
         return $res;
     }
 
