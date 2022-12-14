@@ -2541,7 +2541,7 @@ class ResultadosController extends Controller
 
         $view =  \View::make('pdf_resultados',compact('id_project'))->render();
         //->setPaper($customPaper, 'landscape');
-        $pdf = \App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('Portada.pdf');
         ini_set('max_execution_time', 300);
