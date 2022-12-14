@@ -11,6 +11,9 @@ use App\ResultsProjectModel;
 use App\TipoEdificioModel;
 use Illuminate\Support\Facades\Redirect;
 use Excel;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Imports\TypeEdificio;
 class ResultadosController extends Controller
 {
@@ -2541,6 +2544,7 @@ class ResultadosController extends Controller
 
         $view =  \View::make('pdf_resultados',compact('id_project'))->render();
         //->setPaper($customPaper, 'landscape');
+
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('Portada.pdf');
