@@ -5,8 +5,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use App\SolutionsProjectModel;
 use App\ProjectsModel;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\ResultsProjectModel;
 use Illuminate\Support\Facades\Redirect;
 class ProjectController extends Controller

@@ -2328,7 +2328,6 @@ span{
 </style>
 <script>
     $(document).ready(function () {
-
         set_ser_to_sers('SEER');
     });
 

@@ -3,8 +3,7 @@
 $(document).ready(function () {
     cap_term_change('TR');
 
-    $('#pais').val($('#paises option:selected').text());
-    $('#ciudad').val($('#ciudades option:selected').text());
+
     getPaises();
     traer_categorias_edif();
     $('#div_next').addClass("hidden");
@@ -210,6 +209,8 @@ function getPaises() {
 function getCiudades(idPais) {
     $('#ciudades').trigger('click');
     $("#paises").val(idPais);
+    $('#pais').val($('#paises option:selected').text());
+   // $('#ciudad').val($('#ciudades option:selected').text());
     //$('#paises').trigger('change');
     $.ajax({
         type: 'POST',
@@ -1573,9 +1574,40 @@ function asign_cos_ele(value){
 
     if(value !== '0'){
 
-        let dollarUSLocale = Intl.NumberFormat('en-US');
-        var num = parseFloat(value);
+        const myArray = value.split('$');
 
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+
+    if (myArray.length > 1) {
+        var num = parseFloat(myArray[1]);
+        const myArray_coma =myArray[1].split(',');
+
+        if (myArray_coma.length > 1) {
+            if (myArray_coma.length == 2) {
+               num = myArray_coma[0] + myArray_coma[1];
+            }
+
+            if (myArray_coma.length == 3) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2];
+             }
+
+             if (myArray_coma.length == 4) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3];
+             }
+
+             if (myArray_coma.length == 5) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3] + myArray_coma[4];
+             }
+
+             if (myArray_coma.length == 6) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3] + myArray_coma[4] + myArray_coma[6];
+             }
+        }
+    }
+
+    if (myArray.length==1) {
+        var num = parseFloat(value);
+    }
 
         var num_aux = dollarUSLocale.format(num);
 
@@ -1689,8 +1721,39 @@ function check_input(value,id,id_warning){
 
 function format_num(value,id){
     var inpt = $("#"+id);
+    const myArray = value.split('$');
+
     let dollarUSLocale = Intl.NumberFormat('en-US');
-    var num = parseFloat(value);
+    if (myArray.length > 1) {
+        var num = parseFloat(myArray[1]);
+        const myArray_coma =myArray[1].split(',');
+
+        if (myArray_coma.length > 1) {
+            if (myArray_coma.length == 2) {
+               num = myArray_coma[0] + myArray_coma[1];
+            }
+
+            if (myArray_coma.length == 3) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2];
+             }
+
+             if (myArray_coma.length == 4) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3];
+             }
+
+             if (myArray_coma.length == 5) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3] + myArray_coma[4];
+             }
+
+             if (myArray_coma.length == 6) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3] + myArray_coma[4] + myArray_coma[6];
+             }
+        }
+    }
+
+    if (myArray.length==1) {
+        var num = parseFloat(value);
+    }
 
     if (inpt.val() != '') {
        var num_aux = dollarUSLocale.format(num);
