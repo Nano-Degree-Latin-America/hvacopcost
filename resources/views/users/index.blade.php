@@ -182,7 +182,7 @@ span{
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 
                             <td class="px-6 py-2">
-                                <a  onclick=inactivar('{{$client->id}}','del_usr'); class=" inline-block text-center">
+                                <a  onclick="inactivar('{{$client->id}}','del_usr');" class=" inline-block text-center">
                                  <i class="fa-sharp fa-solid fa-trash text-red-600  text-[25px]"></i>
                                 </a>
                             </td>
