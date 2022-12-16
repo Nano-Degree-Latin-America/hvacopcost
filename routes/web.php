@@ -14,17 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/home', function () {
-
-/*     if(Auth::user()){
-
-    }else if (Auth::user()->tipo_user == 1 || Auth::user()->tipo_user == 3) { */
-            return view('index');
-      /*   }else if(Auth::user()->tipo_user == 5){
-            return view('lobby');
-        } */
-
-})->name('index');
+Route::get('/home', 'IndexController@check_user');
 
 Route::get('/', 'UserController@redirect_login');
 

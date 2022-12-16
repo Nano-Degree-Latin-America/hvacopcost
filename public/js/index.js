@@ -578,6 +578,12 @@ function unidadHvac(value,num_div,id_select){
                     console.log( myObj.arr[i].value);
                 }
     }
+    var costo_elec = $('#costo_elec');
+   $('#costo_elec_2_1').val(costo_elec.val());
+   $('#costo_elec_3_1').val(costo_elec.val());
+
+   console.log(costo_elec);
+
 
 }
 

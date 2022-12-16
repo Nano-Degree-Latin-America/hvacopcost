@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
-
+use Illuminate\Support\Facades\Storage;
+use Input;
+use Illuminate\Support\Facades\Auth;
 class IndexController extends Controller
 {
     /**
@@ -15,31 +17,50 @@ class IndexController extends Controller
      */
     public function __construct()
     {
-        
+
     }
+
+    public function check_user(Request $request)
+    {
+        if (Auth::user()->tipo_user==5 && Auth::user()->status==1) {
+            return view('lobby');
+        }else if(Auth::user()->tipo_user==1 && Auth::user()->status==1){
+            return view('index');
+        }else if(Auth::user()->tipo_user==3 && Auth::user()->status==1){
+            return view('index');
+        }else if(Auth::user()->tipo_user==3 && Auth::user()->status==2){
+            Auth::logout();
+            return redirect('/');
+        }else{
+            Auth::logout();
+            return redirect('/');
+        }
+    }
+
     public function getPaises(Request $request)
     {
         $submit = DB::table('pais')
         ->orderBy('pais', 'asc')
-        ->get();        
-        
+        ->get();
+
         return response()->json($submit);
     }
     public function getCiudades(Request $request)
     {
         $submit = DB::table('ciudad')
         ->where('idPais', $request->input('idPais'))
+        ->where('ashrae','!=','')
         ->orderBy('ciudad', 'asc')
-        ->get();        
-        
+        ->get();
+
         return response()->json($submit);
     }
     public function getDegreeHrs(Request $request)
     {
         $submit = DB::table('ciudad_hrs_mes')
         ->where('idCiudad', $request->input('idCiudad'))
-        ->get();        
-        
+        ->get();
+
         return response()->json($submit);
     }
 }
