@@ -7,7 +7,7 @@
     <!-- hoja de estilos -->
     {{-- <link rel="stylesheet" type="text/css" href="../public/assets/css/styles.css"> --}}
     <link href="{{asset('assets/css/styles.css')}}" rel="stylesheet">
-    <!--===============================================================================================-->  
+    <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="{{asset('assets/images/logo_default.webp')}}"/>
 <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('login-assets/vendor/bootstrap/css/bootstrap.min.css')}}">
@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('login-assets/fonts/Linearicons-Free-v1.0.0/icon-font.min.css')}}">
 <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('login-assets/vendor/animate/animate.css')}}">
-<!--===============================================================================================-->  
+<!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('login-assets/vendor/css-hamburgers/hamburgers.min.css')}}">
 <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{asset('login-assets/vendor/select2/select2.min.css')}}">
@@ -44,8 +44,8 @@
                 <div class="w-full flex justify-center">
                     <form  style="width: 390px;" role="form" method="POST" action="./lo_gin">
                         @csrf
-                        
-    
+
+
                         <div class="wrap-input100 validate-input m-b-10" data-validate = "Se requiere el usuario">
                             <input class="input100" type="text" name="username" placeholder="Usuario" required="">
                             <span class="focus-input100"></span>
@@ -53,7 +53,7 @@
                                 <i class="fa fa-user"></i>
                             </span>
                         </div>
-    
+
                         <div class="wrap-input100 validate-input m-b-10" data-validate = "Se requiere contraseña">
                             <input class="input100" type="password" name="password" placeholder="Contraseña" required="">
                             <span class="focus-input100"></span>
@@ -61,17 +61,17 @@
                                 <i class="fa fa-lock"></i>
                             </span>
                         </div>
-    
+
                         <div class="container-login100-form-btn p-t-10">
                             <input type="submit" class="login100-form-btn" style="" value="Entrar">
                         </div>
 
-                        
+
                     </form>
                 </div>
                 <div class="w-full flex justify-between mt-3">
                     <div>
-                       <a href="/register">
+                       <a href="#">
                         <input type="button" class="bg-gray-100 text-[14px] text-black cursor-pointer font-bold p-3 rounded-xl hover:text-white hover:bg-gray-500" style="" value="Registro Demo">
                        </a>
                     </div>
