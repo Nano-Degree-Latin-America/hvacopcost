@@ -23,7 +23,7 @@ class IndexController extends Controller
     public function check_user(Request $request)
     {
         if (Auth::user()->tipo_user==5 && Auth::user()->status==1) {
-            return view('lobby');
+            return view('index');
         }else if(Auth::user()->tipo_user==1 && Auth::user()->status==1){
             return view('index');
         }else if(Auth::user()->tipo_user==3 && Auth::user()->status==1){
