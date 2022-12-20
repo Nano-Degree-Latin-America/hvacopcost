@@ -39,8 +39,22 @@ class UserController extends Controller
 
     public function users(Request $request){
         $query=trim($request->GET('searchText'));
-        $users = DB::table('users')
-        ->get();
+        if($request)
+       {
+        if($query != ""){
+            $users = DB::table('users')
+            ->where('users.id_empresa','=',$query)
+            ->paginate(10);
+        }
+
+        if($query == ""){
+            $users = DB::table('users')
+            ->paginate(10);
+        }
+
+        }
+
+
 
         $empresas = DB::table('empresas')
         ->get();
@@ -63,7 +77,7 @@ class UserController extends Controller
         $user->name=$request->get('nombre');
         $user->email=$request->get('email');
         $user->id_empresa=$request->get('empresa');
-        $user->password=Hash::make('12345678__');
+        $user->password=Hash::make('12345678');
         $user->tipo_user=$request->get('type_user');
         $user->fecha_inicio=$request->get('fecha_inicio');
         $user->fecha_termino=$request->get('fecha_termino');
@@ -251,5 +265,7 @@ class UserController extends Controller
             }
 
     }
+
+
 
 }

@@ -1,6 +1,6 @@
 
 @extends('main.main')
-
+@inject('tipo_usuario','app\Http\Controllers\ProjectController')
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
 @endsection
@@ -152,10 +152,11 @@ span{
 
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
-    {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
-    <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 "><a class="mx-1" href="/home">Nuevo Projecto</a></button>
+        {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
+        <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 "><a class="mx-1" href="/home">Nuevo Projecto</a></button>
 
-    </div>
+        </div>
+
 </div>
 <div class="w-full flex justify-center">
     <div class="w-3/4">

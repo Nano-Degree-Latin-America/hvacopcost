@@ -66,6 +66,12 @@
                             <input type="submit" class="login100-form-btn" style="" value="Entrar">
                         </div>
 
+                        @if (Route::has('password.request'))
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                            {{ __('Olvidaste tu contraseña?') }}
+                        </a>
+                    @endif
+
 
                     </form>
                 </div>

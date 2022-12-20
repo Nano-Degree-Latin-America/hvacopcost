@@ -39,6 +39,7 @@ span{
   transform:scale(1);
 }
   </style>
+
   <div class="my-3 mx-3 font-semibold text-gray-700 flex-1">
     <nav class="flex" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-3">
@@ -63,11 +64,8 @@ span{
 </div>
 <hr>
 
-<div class="flex  w-full">
 
-    @include('users.search')
-</div>
-
+@include('users.search')
 
   <div class="w-0.8 my-5 mx-5 justify-center">
     <!-- This example requires Tailwind CSS v2.0+ -->
@@ -212,10 +210,14 @@ span{
 
                       </tbody>
                   </table>
-              </div>
+                </div>
+            </div>
+          <diva class="m-2">
+
+            {{ $users->links() }}
           </div>
-      </div>
-  </div>
+        </div>
+    </div>
 </div>
 <script>
     //FUNCION PARA BORRAR REGISTROS// AUX ES LA RUTA QUE RECIBE

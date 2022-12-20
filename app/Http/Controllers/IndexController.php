@@ -26,7 +26,7 @@ class IndexController extends Controller
             return view('index');
         }else if(Auth::user()->tipo_user==1 && Auth::user()->status==1){
             return view('index');
-        }else if(Auth::user()->tipo_user==3 && Auth::user()->status==1){
+        }else if(Auth::user()->tipo_user==2 && Auth::user()->status==1){
             return view('index');
         }else if(Auth::user()->tipo_user==3 && Auth::user()->status==2){
             Auth::logout();

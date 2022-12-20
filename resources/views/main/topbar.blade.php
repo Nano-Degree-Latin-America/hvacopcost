@@ -19,6 +19,10 @@
          @if (Request::path() == 'mis_projectos' || Request::path() == 'resultados')
          <button class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="home">Nuevo Projecto</a></button>
          @endif
+
+         @if (Auth::user()->tipo_user == 5)
+         <button class="ml-5 p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="lobby_admin">Admin</a></button>
+         @endif
          </div>
      </div>
  </header>

@@ -11,6 +11,7 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
   <!-- Tailwind is included -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
   <link rel="stylesheet" href="{{asset("assets/styles_layout/css/main.css")}}">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
@@ -31,14 +32,7 @@
 <div id="app">
 
 <nav id="navbar-main" class="navbar is-fixed-top">
-  <div class="navbar-brand">
-    <a class="navbar-item mobile-aside-button">
-      <span class="icon"><i class="mdi mdi-forwardburger mdi-24px"></i></span>
-    </a>
-    <div class="navbar-item">
-     {{--  <div class="control"><input placeholder="Search everywhere..." class="input"></div> --}}
-    </div>
-  </div>
+
   <div class="navbar-brand is-right">
     <a class="navbar-item --jb-navbar-menu-toggle" data-target="navbar-menu">
       <span class="icon"><i class="mdi mdi-dots-vertical mdi-24px"></i></span>

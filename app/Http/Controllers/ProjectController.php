@@ -49,17 +49,29 @@ class ProjectController extends Controller
     public function mis_projectos(){
         $id_empresa = Auth::user()->id_empresa;
 
-        $mis_projectos = DB::table('projects')
-        ->join('categorias_edificios','categorias_edificios.id','=','projects.id_cat_edifico')
-        ->join('tipo_edificio','tipo_edificio.id','=','projects.id_tipo_edificio')
-        ->where('id_empresa','=',$id_empresa)
-        ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
-        ->paginate(10);
+        $tipo_user= DB::table('users')
+        ->where('users.id','=',Auth::user()->id)
+        ->first()->tipo_user;
 
-        $sin_ashraeh = DB::table('ciudad')
-        ->join('pais','pais.idPais','=','ciudad.idPais')
-        ->where('ashrae','=','')
-        ->get();
+        if($tipo_user == 5 || $tipo_user == 2){
+            $mis_projectos = DB::table('projects')
+            ->join('categorias_edificios','categorias_edificios.id','=','projects.id_cat_edifico')
+            ->join('tipo_edificio','tipo_edificio.id','=','projects.id_tipo_edificio')
+            ->where('id_empresa','=',$id_empresa)
+            ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
+            ->paginate(10);
+        }
+
+        if($tipo_user == 1){
+            $mis_projectos = DB::table('projects')
+            ->join('categorias_edificios','categorias_edificios.id','=','projects.id_cat_edifico')
+            ->join('tipo_edificio','tipo_edificio.id','=','projects.id_tipo_edificio')
+            ->where('projects.id_empresa','=',$id_empresa)
+            ->where('projects.id_user','=',Auth::user()->id)
+            ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
+            ->paginate(10);
+        }
+
 
 
         return view('mis_projectos',['id_empresa'=>$id_empresa,'mis_projectos'=>$mis_projectos]);
@@ -2347,6 +2359,8 @@ class ProjectController extends Controller
 
 
 
+    public function tipo_usuario(){
 
+    }
 
 }
