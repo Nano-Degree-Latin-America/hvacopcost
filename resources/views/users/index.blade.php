@@ -65,7 +65,7 @@ span{
 <hr>
 
 
-@include('users.search')
+{{-- @include('users.search') --}}
 
   <div class="w-0.8 my-5 mx-5 justify-center">
     <!-- This example requires Tailwind CSS v2.0+ -->
