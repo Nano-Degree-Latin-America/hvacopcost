@@ -37,19 +37,22 @@ class UserController extends Controller
         return view('users.index', ['users' => $users]);
     }
 
-    public function users_sucs(Request $request, $id){
-
+    public function users(Request $request){
+        $query=trim($request->GET('searchText'));
         $users = DB::table('users')
-        ->where('id_empresa','=',$id)
         ->get();
 
-        return view('users.index', ['users' => $users,'id'=>$id]);
+        $empresas = DB::table('empresas')
+        ->get();
+
+        return view('users.index', ['users' => $users,'empresas'=>$empresas,"searchText"=>$query]);
     }
 
-    public function create(Request $request,$id){
+    public function create(Request $request){
+        $empresas = DB::table('empresas')
+        ->get();
 
-
-        return view('users.create',['id'=>$id]);
+        return view('users.create',['empresas'=>$empresas]);
     }
 
     public function users_store(Request $request){
@@ -59,14 +62,16 @@ class UserController extends Controller
         $user=new User;
         $user->name=$request->get('nombre');
         $user->email=$request->get('email');
-        $user->id_empresa=$request->get('id_sucursal');
-        $user->password=Hash::make($request->get('password'));
-        $user->tipo_user=$request->get('tipo_user');;
+        $user->id_empresa=$request->get('empresa');
+        $user->password=Hash::make('12345678__');
+        $user->tipo_user=$request->get('type_user');
+        $user->fecha_inicio=$request->get('fecha_inicio');
+        $user->fecha_termino=$request->get('fecha_termino');
         $user->status=1;
         $user->save();
 
         return redirect()->action(
-            'UserController@users_sucs', [$request->get('id_sucursal')]
+            'UserController@users'
         );
     }
 
@@ -104,8 +109,9 @@ class UserController extends Controller
         $user_edit = DB::table('users')
         ->where('users.id','=',$id)
         ->first();
-
-        return view('users.edit',['user_edit' => $user_edit]);
+        $empresas = DB::table('empresas')
+        ->get();
+        return view('users.edit',['user_edit' => $user_edit,'empresas'=>$empresas]);
     }
 
     public function update(Request $request,$id){
@@ -113,20 +119,16 @@ class UserController extends Controller
         $user_update= User::find($id);
         $user_update->name=$request->get('nombre');
         $user_update->email=$request->get('email');
-
-        if($request->get('password') === null){
-
-        }else{
-            $user_update->password=Hash::make($request->get('password'));
-        }
-
-        $user_update->tipo_user=$request->get('tipo_user');;
+        $user_update->id_empresa=$request->get('empresa');
+        $user_update->tipo_user=$request->get('type_user');
+        $user_update->fecha_inicio=$request->get('fecha_inicio');
+        $user_update->fecha_termino=$request->get('fecha_termino');
         $user_update->status=1;
         $user_update->update();
 
         if($user_update->update()){
             return redirect()->action(
-                'UserController@users_sucs', [$user_update->id_empresa]
+                'UserController@users'
             );
         }
     }

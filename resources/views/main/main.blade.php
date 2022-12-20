@@ -73,5 +73,5 @@
 
     @show
 </body>
-@include('main.footer')
+{{-- @include('main.footer') --}}
 </html>

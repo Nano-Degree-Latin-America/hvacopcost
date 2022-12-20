@@ -118,91 +118,91 @@
 
 <form action="{{ route('users_store') }}" id="formulario" method="POST">
     @csrf
-    <div class="row">
-        <div class="col-12">
-            <div class="card-box">
+    <div class="flex w-full justify-start mx-5">
+        <div class="grid w-2/5 gap-x-4 border-2 border-blue-500 rounded-xl my-5">
 
-                <div class="grid">
-
-
-                    <div class="w-full">
-                        <div class="w-1/2 bg-gray-100 p-2 m-2 rounded-lg">
-                            <h4 class="header-title">Formulario de registro para nuevos usuarios</h4><br>
-
-                            <input type="text" value="{{$id}}" id="id_sucursal" name="id_sucursal" style="display:none;">
-                            <div class="form-group">
-                                <label for="userName">Nombre del usuario<span
-                                        class="text-danger">*</span></label>
-                                <input type="text" name="nombre"
-                                   {{--  onKeyUp="document.getElementById(this.id).value=document.getElementById(this.id).value.toUpperCase()" --}}
-                                    onkeypress="return soloLetras(event)" maxlength="30" minlength="1"
-                                    parsley-trigger="change" value="{{old('nombre')}}" placeholder="Ingresar el nombre" required
-                                    class="form-control" id="nombre">
-                            </div>
-
-                            <div class="form-groups">
-                                <label for="userName">Tipo Usuario<span class="text-danger">*</span></label>
-                                <select class="form-control" style="width: 100%" name="tipo_user"
-                                    data-placeholder="Seleccione una opción ..." id="tipo_user" required
-                                    data-toggle="select2">
-                                    <option value="" selected>Seleccione una opción</option>
-                                       <option value="1">Común</option>
-                                       <option value="3">Demo</option>
-
-
-
-                                </select>
-
-                            </div>
-
-
-
-                            <div class="form-group">
-                                <label for="emailAddress">Email<span class="text-danger">*</span></label>
-                                <input type="email" name="email"  onchange="valida_email_form('form',this.value);" parsley-trigger="change" required
-                                    placeholder="Ingresar el email" class="form-control" id="email">
-                                <div class="text-danger" value="{{old('email')}}" id='error_email' name="error_email"></div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="userName">Contraseña<span class="text-danger">*</span></label>
-                                <input class="form-control" type="password" value="{{old('password')}}" required="" name="password" id="password"
-                                    placeholder="Ingresa una contraseña">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="userName">Confirma tu contraseña<span
-                                        class="text-danger">*</span></label>
-                                <input class="form-control" type="password" value="{{old('password')}}" required="" id="password_confirmation"
-                                    name="password_confirmation" onKeyUp="valida_contra();"
-                                    placeholder="Repite la contraseña">
-                                <div class="text-danger" id='error_pass' name="error_pass"></div>
-                            </div>
-
-
-
-                            <div class="form-group text-right mb-0">
-                                <button class=" mx-2 py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 cursor-pointer " onclick="check_store();"  id="submit1" name="submit1" type="button">
-                                    Guardar
-                                </button>
-                                <button type="reset" onclick="location.href='/users_admin_hvaccopcostla'" class="mx-2 py-2 px-4 bg-red-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 cursor-pointer">
-                                    Cancelar
-                                </button>
-                            </div>
-
-
+            <div class="w-90 m-3">
+                <div class="flex w-full gap-x-4">
+                    <div class="w-3/4">
+                        <div class="w-full flex">
+                            <label class="text-[16px]" style="color: #102E52">Empresa<span class="text-red-500">*</span></label>
                         </div>
-
+                        <div class="w-full flex justify-start">
+                            <select name="empresa" id="empresa" required class="w-full border-2 border-blue-500 rounded-md" onchange="valida_form_calc();unidadHvac(this.value,1,'csTipo','csDisenio_1_1');">
+                                <option value="">Seleccionar</option>
+                                @foreach ($empresas as $empresa)
+                                <option value="{{$empresa->id}}">{{$empresa->name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                     </div>
+                </div>
 
+                <div class="flex w-full gap-x-4 mt-3">
+                    <div class="w-3/4">
+                        <div class="w-full flex">
+                            <label class="text-[16px]" style="color: #102E52">Nombre<span class="text-red-500">*</span></label>
+                        </div>
+                        <input type="text" id="nombre" name="nombre" required  type="text" placeholder="Ingrese nombre" class="w-full border-2 border-blue-500 rounded-md" >
+                    </div>
+                </div>
 
+                <div class="flex w-full mt-3 gap-x-4">
+                    <div class="w-3/4">
+                        <div class="w-full flex">
+                            <label class="text-[16px]" style="color: #102E52">Tipo de Usuario<span class="text-red-500">*</span></label>
+                        </div>
+                        <div class="w-full flex justify-start">
+                            <select name="type_user" id="type_user" required class="w-full border-2 border-blue-500 rounded-md" onchange="valida_form_calc();unidadHvac(this.value,1,'csTipo','csDisenio_1_1');">
+                                <option selected value="">Seleccionar</option>
+                                <option value="1">Estandar</option>
+                                <option value="2">Master</option>
+                                <option value="3">Demo</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex w-full mt-3 gap-x-4">
+                    <div class="w-3/4">
+                        <div class="w-full flex">
+                            <label class="text-[16px]" style="color: #102E52">Correo<span class="text-red-500">*</span></label>
+                        </div>
+                        <input id="email" name="email" type="email" required placeholder="Ingrese correo" class="w-full border-2 border-blue-500 rounded-md">
+                    </div>
+                </div>
+
+                <div class="flex w-full mt-3 gap-x-4">
+                    <div class="w-3/4">
+                        <div class="w-full flex">
+                            <label class="text-[16px]" style="color: #102E52">Fecha Inicio<span class="text-red-500">*</span></label>
+                        </div>
+                        <input id="fecha_inicio" name="fecha_inicio" type="date" required placeholder="Ingrese correo" class="w-full border-2 border-blue-500 rounded-md">
+                    </div>
+                </div>
+
+                <div class="flex w-full mt-3 gap-x-4">
+                    <div class="w-3/4">
+                        <div class="w-full flex">
+                            <label class="text-[16px]" style="color: #102E52">Fecha de Termino<span class="text-red-500">*</span></label>
+                        </div>
+                        <input id="fecha_termino" name="fecha_termino" type="date" required placeholder="Ingrese correo" class="w-full border-2 border-blue-500 rounded-md">
+                    </div>
                 </div>
 
 
+                <div class="flex w-full justify-end mt-3">
+                    <button type="submit" class="focus:bg-gray-500 hover:bg-blue-800 text-white bg-blue-500 rounded-md p-2 border-2 border-white waves-effect waves-light mr-1"  id="submit1" name="submit1" type="button">
+                        Guardar
+                    </button>
+                    <button type="reset" onclick="location.href='/empresas'" class="focus:bg-gray-500 hover:bg-red-800 text-white rounded-md bg-red-500 p-2 border-2 border-white  waves-effect">
+                        Cancelar
+                    </button>
+                </div>
             </div>
 
-        </div>
 
+        </div>
 
     </div> <!-- end row -->
 </form>

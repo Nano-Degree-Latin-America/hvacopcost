@@ -171,9 +171,9 @@ span{
                                     <span class="icon"><i class="mdi mdi-pencil"></i></span>
                                   </button>
 
-                            <button onclick="redirect_sucursal({{$empresa->id}});" class="button small green --jb-modal"  data-target="sample-modal-2" type="button">
-                                <span class="icon"><i class="mdi mdi-eye"></i></span>
-                              </button>
+                                 {{--  <button onclick="redirect_urs_suc({{$empresa->id}});" class="button small green --jb-modal"  data-target="sample-modal-2" type="button">
+                                    <span class="icon"><i class="mdi mdi-account-group"></i></span>
+                                  </button> --}}
                               <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
                               <button  onclick="inactivar('{{$empresa->id}}','empresas');" class="button small red --jb-modal" data-target="sample-modal" type="button">
                                 <span class="icon"><i class="mdi mdi-trash-can"></i></span>
@@ -202,8 +202,8 @@ function redirect_edit(id){
     window.location.href = "edit_empresa"+"/"+id;
 }
 
-function redirect_sucursal(id){
-    window.location.href = "sucursales_emp"+"/"+id;
+function redirect_urs_suc(id){
+    window.location.href = "/users_sucs"+"/"+id;
 }
 </script>
 @endsection

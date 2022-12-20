@@ -94,7 +94,7 @@
       <li>
         <a class="dropdown">
           <span class="icon"><i class="mdi mdi-view-list"></i></span>
-          <span class="menu-item-label">Empresas</span>
+          <span class="menu-item-label">Menu</span>
           <span class="icon"><i class="mdi mdi-plus"></i></span>
         </a>
         <ul>
@@ -104,8 +104,8 @@
             </a>
           </li>
           <li>
-            <a href="#">
-              <span>Sucursales</span>
+            <a href="users">
+              <span>Usuario</span>
             </a>
           </li>
         </ul>

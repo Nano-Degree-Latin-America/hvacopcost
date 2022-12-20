@@ -72,14 +72,14 @@ Route::post('/resultados','ResultadosController@getResultados')->name('resultado
 
 //rutas resources y user controller
 Route::get('/users_admin_hvaccopcostla/{$id}', 'UserController@index')->name('index');;
-Route::get('/users/create/{id}', 'UserController@create');
+Route::get('/users/create/', 'UserController@create');
 Route::get('/users_edit/{id}', 'UserController@edit');
 Route::get('/del_usr/{id}', 'UserController@delete')->name('delete');
 Route::post('/edit_usr/{id}', 'UserController@update')->name('update');
 Route::post('users_store', 'UserController@users_store')->name('users_store');
 Route::post('/getLogo','UserController@getLogo');
 Route::post('/actualizarLogo','UserController@actualizarLogo')->name('setLogo');
-Route::get('/users_sucs/{id}', 'UserController@users_sucs');
+Route::get('/users', 'UserController@users');
 //rutas settings
 Route::post('/setDegreeHrs','SettingsController@setDegreeHrs');
 

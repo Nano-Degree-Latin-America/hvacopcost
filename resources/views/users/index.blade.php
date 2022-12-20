@@ -63,6 +63,11 @@ span{
 </div>
 <hr>
 
+<div class="flex  w-full">
+
+    @include('users.search')
+</div>
+
 
   <div class="w-0.8 my-5 mx-5 justify-center">
     <!-- This example requires Tailwind CSS v2.0+ -->
@@ -72,9 +77,12 @@ span{
             <div class="flex w-full my-3">
                 <div class="w-1/2">
 
-                        <button onclick="redirect_create_user('{{$id}}');" class="mx-5 py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 cursor-pointer">
+                    <a href="/users/create" >
+                        <button class="mx-5 py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 cursor-pointer">
                             Crear nuevo
                          </button>
+
+                    </a>
 
 
                   </div>
@@ -145,7 +153,13 @@ span{
                              @if ($client->tipo_user === 1)
                             <td class="px-6 py-4">
                                 <div class="text-xm text-gray-900">
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-500 text-white"> Común </span>
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-500 text-white"> Estandar </span>
+                                </div>
+                            </td>
+                            @elseif($client->tipo_user == 2)
+                            <td class="px-6 py-4">
+                                <div class="text-sm text-gray-900">
+                                    <span class="px-2 inline-flex text-xm leading-5 font-semibold rounded-full bg-orange-500 text-white"> Master </span>
                                 </div>
                             </td>
                             @elseif($client->tipo_user == 3)
@@ -239,9 +253,9 @@ span{
     })
 }
 
-function redirect_create_user(id){
+/* function redirect_create_user(id){
     window.location.href = "/users/create"+"/"+id;
-}
+} */
 </script>
 @section('content')
 @endsection

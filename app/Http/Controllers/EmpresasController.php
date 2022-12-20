@@ -69,35 +69,9 @@ class EmpresasController extends Controller
         $empresa_p->status = 1;
         $empresa_p->save();
         if ($empresa_p->save()){
-            $user = new User;
-            $user->name = "user -".$request->get('nombre');
-            $user->email = $request->get('email');
-            $user->password = Hash::make('12345678');
-            $user->id_user =Auth::user()->id;
-            $user->tipo_user = 1;
-            $user->status = 1;
-            $user->save();
 
-            $sucursal = new SucursalesModel;
-            $sucursal->name = $empresa_p->name;
-            $sucursal->email = $empresa_p->email;
-            $sucursal->numero_fiscal = $empresa_p->datos_factura;
-            $sucursal->telefono = $empresa_p->telefono;
-            $sucursal->direccion = $empresa_p->direccion;
-            $sucursal->codigo_postal = $empresa_p->codigo_postal;
-            $sucursal->ciudad = $empresa_p->ciudad;
-            $sucursal->id_empresa = $empresa_p->id;
-            $sucursal->id_user =Auth::user()->id;
-            $sucursal->status = 1;
-            $sucursal->save();
-            if ($sucursal->save()){
-                $user_upate = User::find($user->id);
-                $user_upate->id_empresa = $sucursal->id;
-                $user_upate->update();
                 return redirect('/empresas');
-            }else{
-                return false;
-            }
+
 
         }else{
             return false;

@@ -62,6 +62,24 @@
     margin: 10px;
 }
 
+
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33%;
+}
+
+/* Clear floats after the columns */
+.tr_style{
+    width:100% !important;
+
+}
+
+.td_style{
+    width:50% !important;
+}
+
 	</style>
 </head>
 
@@ -104,22 +122,62 @@
         </div>
     </div>
 
-    <div style="margin-top:5px;" class="tarjet">
+    <div style="margin-top:5px; height:85%;" class="tarjet">
         <?php  $solutions=$solutions->solutions($id_project) ?>
-        <div class="container flex-d">
-<div>
-    asdas
-</div>
+        <div style="margin-left:15px; margin-right:15px;">
+            <div>
+                <div style="margin-right:5px;margin-top:5px;" class="column" >
+                    <div style="width:100%;background-color: #2c5282;border_radius:5px;">
+                        <label style="margin-left:40px;" class="title_style">Solución Base</label>
+                    </div>
+                    <table class="">
+                        <tbody style="width: 100%;">
+                            @foreach ($solutions as $solution)
+                            <tr class="tr_style">
+                                @if ($solution->num_sol == 1 && $solution->num_enf == 1)
+                                    <td class="td_style">Capacidad Térmica</td>
+                                    <td class="td_style">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</td>
+                                @endif
+                            </tr>
+                          <tr class="tr_style">
+                            @if ($solution->num_sol == 1 && $solution->num_enf == 1)
+                            <td class="td_style">{{$solution->eficencia_ene}}</td>
+                            <td class="td_style">{{$solution->eficencia_ene_cant}}</td>
+                            @endif
+                          </tr>
+                          <tr class="tr_style">
+                            @if ($solution->num_sol == 1 && $solution->num_enf == 1)
+                            <td class="td_style">Sistemas HVAC</td>
+                            @endif
+                          </tr>
+                          @endforeach
+                        </tbody>
+                      </table>
+                </div>
 
-<div>
-    asdas
-</div>
+            </div>
 
-<div>
-    asdas
-</div>
+            <div>
+                <div style="background-color: #4299e1;margin-top:5px;border_radius:5px;" class="column" >
+                    <div style="width:100%;">
+                        <label style="margin-left:45px;" class="title_style">Solución A</label>
+                    </div>
+
+                </div>
+            </div>
+
+            <div>
+                <div style="background-color:#4299e1;margin-left:5px;margin-top:5px;border_radius:5px;" class="column" >
+                    <div style="width:100%;">
+                        <label style="margin-left:45px;" class="title_style">Solución B</label>
+                    </div>
+
+                </div>
+            </div>
+
 
         </div>
+
     </div>
 </body>
 </html>
