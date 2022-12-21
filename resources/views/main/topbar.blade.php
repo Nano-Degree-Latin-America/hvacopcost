@@ -21,7 +21,7 @@
          @endif
 
          @if (Auth::user()->tipo_user == 5)
-         <button class="ml-5 p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="lobby_admin">Admin</a></button>
+         <button class="ml-5 p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="empresas">Admin</a></button>
          @endif
          </div>
      </div>

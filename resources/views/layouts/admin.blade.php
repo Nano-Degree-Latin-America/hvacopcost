@@ -97,9 +97,16 @@
               <span>Empresas</span>
             </a>
           </li>
+
           <li>
             <a href="users">
               <span>Usuario</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="home">
+              <span>Nuevo Proyecto</span>
             </a>
           </li>
         </ul>
