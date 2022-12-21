@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use DB;
+use Form;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use App\User;
