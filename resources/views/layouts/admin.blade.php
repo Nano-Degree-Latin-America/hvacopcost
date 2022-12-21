@@ -93,19 +93,19 @@
         </a>
         <ul>
           <li>
-            <a href="empresas">
+            <a href="/empresas">
               <span>Empresas</span>
             </a>
           </li>
 
           <li>
-            <a href="users">
+            <a href="/users">
               <span>Usuario</span>
             </a>
           </li>
 
           <li>
-            <a href="home">
+            <a href="/home">
               <span>Nuevo Proyecto</span>
             </a>
           </li>
