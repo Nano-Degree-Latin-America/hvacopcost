@@ -322,7 +322,7 @@ span{
                                         </div>
                                         <div class="flex w-1/4 justify-start ml-10 pl-1">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Elécrtica:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
@@ -2218,7 +2218,7 @@ span{
                                         </div>
                                         <div class="flex w-1/4 justify-start ml-10 pl-1">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Elécrtica:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
@@ -2650,7 +2650,7 @@ span{
                                         </div>
                                         <div class="flex w-1/4 justify-start ml-10 pl-1">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Elécrtica:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
@@ -2888,7 +2888,7 @@ span{
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Inversión Inicial (OPEX) por Área <b class="text-orange-500">($/{{$uni_med1 = ($unidad_area == 'mc') ? 'm²' : 'ft²'}})</b></label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Consumo de Energía (OPEX) por Área <b class="text-orange-500">($/{{$uni_med1 = ($unidad_area == 'mc') ? 'm²' : 'ft²'}})</b></label>
                                         </div>
 
 
@@ -3609,7 +3609,7 @@ span{
                                     </div>
                                     <div class="flex w-1/4 justify-start ml-10 pl-1">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Elécrtica:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
@@ -4282,7 +4282,7 @@ span{
                                     </div>
                                     <div class="flex w-1/4 justify-start ml-10 pl-1">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Elécrtica:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
@@ -4568,6 +4568,7 @@ span{
 	</div>
 
 <script>
+     javascript:history.forward(1)
 function app() {
 			return {
 				step: 1,

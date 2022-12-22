@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     getPaises();
     traer_categorias_edif();
-    $('#div_next').addClass("hidden");
+    $('#div_next_h').addClass("hidden");
     $('#calcular').attr('disabled', true);
     $('#calcular').css('background-color','gray');
  /*    $('#next').attr('disabled', true); */
@@ -106,6 +106,7 @@ $(document).ready(function () {
       $("#ciudades").on('change', () => {
         $('#ciudad').val($('#ciudades option:selected').text());
       });
+
       $('area').mouseover(function() {
         cambiarLblMapa(this.alt);
      }).mouseout(function() {
@@ -3094,6 +3095,15 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
         url: "/traer_unidad_hvac/" + id_project + "/" + num_sol + "/" +num_enf,
         success: function (res) {
             if (res){
+
+                let dollarUSLocale = Intl.NumberFormat('en-US');
+                $("#"+capacidad_total).val(dollarUSLocale.format(res.val_unidad.capacidad_tot));
+                $("#"+costo_elec).val('$'+dollarUSLocale.format(res.val_unidad.costo_elec));
+                $("#"+csStd_cant).val(dollarUSLocale.format(res.val_unidad.eficencia_ene_cant));
+                $("#"+cheValorS).val('$'+dollarUSLocale.format(res.val_unidad.val_aprox));
+
+                $("#"+csStd).find('option[value="' + res.val_unidad.eficencia_ene + '"]').attr("selected", "selected");
+
                 $("#"+cUnidad).find('option[value="' + res.val_unidad.unidad_hvac + '"]').attr("selected", "selected");
                 unidadHvac(res.val_unidad.unidad_hvac,1,csTipo,csDisenio);
                 $("#"+csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').attr("selected", "selected");
@@ -3105,13 +3115,7 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 send_name(csDisenio);
                 send_name_t_c(tipo_control);
                 send_name_dr(dr);
-                let dollarUSLocale = Intl.NumberFormat('en-US');
-                $("#"+capacidad_total).val(dollarUSLocale.format(res.val_unidad.capacidad_tot));
-                $("#"+costo_elec).val('$'+dollarUSLocale.format(res.val_unidad.costo_elec));
-                $("#"+csStd_cant).val(dollarUSLocale.format(res.val_unidad.eficencia_ene_cant));
-                $("#"+cheValorS).val('$'+dollarUSLocale.format(res.val_unidad.val_aprox));
 
-                $("#"+csStd).find('option[value="' + res.val_unidad.eficencia_ene + '"]').attr("selected", "selected");
                 set_ser_to_sers(res.val_unidad.eficencia_ene);
                 if(num_solu != '' || num_solu != null){
                     $( "#"+num_solu ).removeClass( "hidden" );

@@ -2220,9 +2220,8 @@ span{
                             <div class="clearfix">
                                 <div class="my-5 gap-x-3">
                                     {{--   <input type="file" id="file" name="file"> --}}
-                                      <button  type="button" name="calcular" id="calcular" onclick="check_form_submit();"  class="btn btn-primary font-roboto">Calcular</button>
-                                      <a class="btn btn-secondary font-roboto" id="btn-reset">Reset</a>
-                                  </div>
+{{--                                       <a class="btn btn-secondary font-roboto" id="btn-reset">Reset</a>
+ --}}                                  </div>
                             </div>
 
                            {{--  <div class="banner banner-giga" style="width: 80%">
@@ -2266,7 +2265,11 @@ span{
                             @click="step++"
                             class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
                         >Siguiente</button>
+
+                        <button  x-show="step > 1" type="button" name="calcular" id="calcular" onclick="check_form_submit();"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">Calcular</button>
+
                 </div>
+
             </div>
         </div>
     </div>

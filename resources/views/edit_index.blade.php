@@ -171,19 +171,19 @@ span{
                                 <h2 id="lblMapa">Da Clic en el Mapa</h2>
                             <img style="width: 500px; height:600px;" src="{{asset('assets\images\mapa2.png')}}" alt="" usemap="#mapa" onClick="cambiarLblMapa('Mapa')">
                             <map class="w-full" name="mapa">
-                                <area shape="polygon" coords="2,3, 67,5, 98,19, 121,43, 129,81, 174,65, 150,91, 139,112, 78,93, 29,54, 8,27" onclick="getCiudades(17); cambiarLblMapa('México')" alt="México">
-                                <area shape="polygon" coords="144,108, 155,96, 155,89, 175,84, 232,133, 216,150, 179,131, 171,117" onclick="getCiudades(28); cambiarLblMapa('Centro América')" alt="Centro América">
-                                <area shape="polygon" coords="187,59,210,55,237,66,272,76,302,83,302,91,260,95,226,92" onclick="getCiudades(27); cambiarLblMapa('Caribe')" alt="Caribe">
-                                <area shape="polygon" coords="227,142,234,139,244,126,258,120,256,128,253,136,258,142,266,146,272,148,279,152,285,151,285,158,285,167,280,171,274,173,271,182,273,193,256,193,241,181,233,179,224,173" onclick="getCiudades(5); cambiarLblMapa('Colombia')" alt="Colombia">
-                                <area shape="polygon" coords="223,175,229,179,237,179,241,185,236,192,227,196,222,203,214,202,210,192,213,179" onclick="getCiudades(8); cambiarLblMapa('Ecuador')"  alt="Ecuador">
-                                <area shape="polygon" coords="270,274,277,265,275,257,278,247,276,238,268,236,256,229,249,219,256,207,269,200,267,193,257,194,244,183,235,194,228,197,225,203,209,204,215,216,236,254,249,264" onclick="getCiudades(21); cambiarLblMapa('Perú')"  alt="Perú">
-                                <area shape="polygon" coords="278,237,287,237,299,231,301,240,309,246,327,255,329,265,339,267,340,282,333,281,319,282,315,295,306,295,297,294,288,297,283,282,279,270" onclick="getCiudades(2); cambiarLblMapa('Bolivia')"  alt="Bolivia">
-                                <area shape="polygon" coords="275,273,270,278,268,304,262,335,262,346,261,364,250,388,241,451,243,491,256,508,281,516,276,496,260,492,253,482,252,471,259,462,263,442,260,424,260,403,265,395,264,382,270,376,271,365,270,353,272,342,274,335,279,324,281,312,287,305,290,299,283,296" onclick="getCiudades(4); cambiarLblMapa('Chile')"  alt="Chile">
-                                <area shape="polygon" coords="319,307,314,297,307,300,297,296,292,300,289,307,283,311,283,320,278,331,274,346,273,365,272,376,266,386,266,403,262,408,263,430,264,441,260,464,255,470,261,485,281,493,280,479,297,462,298,449,292,447,298,436,309,423,318,411,327,397,346,389,352,378,339,365,341,343,351,331,336,327,340,314" onclick="getCiudades(1); cambiarLblMapa('Argentina')"  alt="Argentina">
-                                <area shape="polygon" coords="341,365,342,356,345,344,356,349,363,352,369,358,369,366,360,372,349,370" onclick="getCiudades(25); cambiarLblMapa('Uruguay')"  alt="Uruguay">
-                                <area shape="polygon" coords="373,355,361,348,351,344,351,335,364,325,369,320,363,313,358,302,351,296,343,296,343,279,345,271,339,264,328,255,301,236,292,230,280,236,269,236,270,229,261,229,254,220,263,205,273,202,276,185,289,176,303,176,310,171,318,159,332,159,331,169,335,174,347,172,373,171,380,160,403,184,451,196,478,216,471,233,451,253,451,278,432,302,421,303,398,316,396,333,386,347" onclick="getCiudades(3); cambiarLblMapa('Brasil')"  alt="Brasil">
-                                <area shape="polygon" coords="340,324,348,326,356,325,361,316,360,307,354,302,349,297,342,297,340,285,332,281,321,283,318,291,316,296,322,299,326,303,333,308,345,313" onclick="getCiudades(19); cambiarLblMapa('Paraguay')"  alt="Paraguay">
-                                <area shape="polygon" coords="266,119,260,123,256,131,260,136,261,142,274,145,279,148,289,148,291,171,301,172,308,167,304,159,314,158,324,154,333,157,334,166,343,170,358,168,374,166,375,156,349,149,326,133,313,126,292,126" onclick="getCiudades(26); cambiarLblMapa('Venezuela/Guyana/Suniam')"  alt="Venezuela">
+                                <area shape="polygon" coords="2,3, 67,5, 98,19, 121,43, 129,81, 174,65, 150,91, 139,112, 78,93, 29,54, 8,27" onclick="traer_ciudad_edit(17); cambiarLblMapa_Edit('México');change_option(17);" alt="México">
+                                <area shape="polygon" coords="144,108, 155,96, 155,89, 175,84, 232,133, 216,150, 179,131, 171,117" onclick="traer_ciudad_edit(28); cambiarLblMapa_Edit('Centro América');change_option(28);" alt="Centro América">
+                                <area shape="polygon" coords="187,59,210,55,237,66,272,76,302,83,302,91,260,95,226,92" onclick="traer_ciudad_edit(27); cambiarLblMapa_Edit('Caribe');change_option(27);" alt="Caribe">
+                                <area shape="polygon" coords="227,142,234,139,244,126,258,120,256,128,253,136,258,142,266,146,272,148,279,152,285,151,285,158,285,167,280,171,274,173,271,182,273,193,256,193,241,181,233,179,224,173" onclick="traer_ciudad_edit(5); cambiarLblMapa_Edit('Colombia');change_option(5);" alt="Colombia">
+                                <area shape="polygon" coords="223,175,229,179,237,179,241,185,236,192,227,196,222,203,214,202,210,192,213,179" onclick="traer_ciudad_edit(8); cambiarLblMapa_Edit('Ecuador');change_option(8);"  alt="Ecuador">
+                                <area shape="polygon" coords="270,274,277,265,275,257,278,247,276,238,268,236,256,229,249,219,256,207,269,200,267,193,257,194,244,183,235,194,228,197,225,203,209,204,215,216,236,254,249,264" onclick="traer_ciudad_edit(21);cambiarLblMapa_Edit('Perú');change_option(21);"  alt="Perú">
+                                <area shape="polygon" coords="278,237,287,237,299,231,301,240,309,246,327,255,329,265,339,267,340,282,333,281,319,282,315,295,306,295,297,294,288,297,283,282,279,270" onclick="traer_ciudad_edit(2); cambiarLblMapa_Edit('Bolivia');change_option(2);"  alt="Bolivia">
+                                <area shape="polygon" coords="275,273,270,278,268,304,262,335,262,346,261,364,250,388,241,451,243,491,256,508,281,516,276,496,260,492,253,482,252,471,259,462,263,442,260,424,260,403,265,395,264,382,270,376,271,365,270,353,272,342,274,335,279,324,281,312,287,305,290,299,283,296" onclick="traer_ciudad_edit(4);cambiarLblMapa_Edit('Chile');change_option(4);"  alt="Chile">
+                                <area shape="polygon" coords="319,307,314,297,307,300,297,296,292,300,289,307,283,311,283,320,278,331,274,346,273,365,272,376,266,386,266,403,262,408,263,430,264,441,260,464,255,470,261,485,281,493,280,479,297,462,298,449,292,447,298,436,309,423,318,411,327,397,346,389,352,378,339,365,341,343,351,331,336,327,340,314" onclick="traer_ciudad_edit(1);cambiarLblMapa_Edit('Argentina');change_option(1);"  alt="Argentina">
+                                <area shape="polygon" coords="341,365,342,356,345,344,356,349,363,352,369,358,369,366,360,372,349,370" onclick="traer_ciudad_edit(25); cambiarLblMapa_Edit('Uruguay');change_option(25);"  alt="Uruguay">
+                                <area shape="polygon" coords="373,355,361,348,351,344,351,335,364,325,369,320,363,313,358,302,351,296,343,296,343,279,345,271,339,264,328,255,301,236,292,230,280,236,269,236,270,229,261,229,254,220,263,205,273,202,276,185,289,176,303,176,310,171,318,159,332,159,331,169,335,174,347,172,373,171,380,160,403,184,451,196,478,216,471,233,451,253,451,278,432,302,421,303,398,316,396,333,386,347" onclick="traer_ciudad_edit(3); cambiarLblMapa_Edit('Brasil');change_option(3);"  alt="Brasil">
+                                <area shape="polygon" coords="340,324,348,326,356,325,361,316,360,307,354,302,349,297,342,297,340,285,332,281,321,283,318,291,316,296,322,299,326,303,333,308,345,313" onclick="traer_ciudad_edit(19); cambiarLblMapa_Edit('Paraguay');change_option(19);"  alt="Paraguay">
+                                <area shape="polygon" coords="266,119,260,123,256,131,260,136,261,142,274,145,279,148,289,148,291,171,301,172,308,167,304,159,314,158,324,154,333,157,334,166,343,170,358,168,374,166,375,156,349,149,326,133,313,126,292,126" onclick="traer_ciudad_edit(26); cambiarLblMapa_Edit('Venezuela/Guyana/Suniam');change_option(26);"  alt="Venezuela">
                             </map>
                             </div>
                             <div class="col-4">
@@ -2288,8 +2288,6 @@ span{
                             <div class="clearfix">
                                 <div class="my-5 gap-x-3">
                                     {{--   <input type="file" id="file" name="file"> --}}
-                                      <button  type="button" name="guardar" id="guardar" onclick="check_form_submit();"  class="btn btn-primary font-roboto">Guardar</button>
-                                      <a class="btn btn-secondary font-roboto" id="btn-reset">Reset</a>
                                   </div>
                             </div>
                             <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
@@ -2322,6 +2320,13 @@ span{
                         @click="step--"
                         class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
                     >Atrás</button>
+
+                    <a href="/project/8">
+                        <button
+                        x-show="step == 1"
+                        class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
+                    >Resultado</button>
+                    </a>
                 </div>
 
                 <div id="div_next" name="div_next" class="w-1/2 text-right">
@@ -2336,6 +2341,7 @@ span{
                             @click="step++"
                             class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
                         >Siguiente</button>
+                        <button  x-show="step === 2" type="button" name="guardar" id="guardar" onclick="check_form_submit();"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">Guardar</button>
 
                     {{-- <button
                         @click="step = 'complete'"
@@ -2402,6 +2408,7 @@ span{
     }
     </style>
 <script>
+
 window.onload = function() {
     val = '{{ $project_edit->id_cat_edifico }}';
     id_tipo_edi = '{{ $project_edit->id_tipo_edificio }}';
@@ -2418,6 +2425,7 @@ window.onload = function() {
 function prueba(val){
     alert(val);
 }
+
 function app() {
 			return {
 				step: 1,
@@ -2509,7 +2517,9 @@ function traer_t_edif_edd(id_cat) {
 
 
 function traer_ciudad(pais,id_ciudad) {
-
+    $('#ciudades_edit').trigger('click');
+    $("#paises_edit").find('option[value="' + pais + '"]').attr("selected", "selected");
+    $('#pais').val($('#paises option:selected').text());
     $.ajax({
         type: 'get',
         url: '/get_ciudades/'+ pais,
@@ -2652,7 +2662,20 @@ function getDegreeHrs_edd(pais,cd) {
     });
 }
 
+function cambiarLblMapa_Edit(txt) {
+    $('#lblMapa').text(txt);
+}
+$('area').mouseover(function() {
+    cambiarLblMapa_Edit(this.alt);
+}).mouseout(function() {
+    $('#paises_edit').val() > 0 ? cambiarLblMapa_Edit($('#paises_edit option:selected').text()) : cambiarLblMapa('Da Clic en el Mapa');
 
+      });
+
+function change_option(id){
+    $("#paises_edit").find('option[value="' + id + '"]').attr("selected", "selected");
+    console.log(id);
+}
 </script>
 @endsection
 @section('js')
