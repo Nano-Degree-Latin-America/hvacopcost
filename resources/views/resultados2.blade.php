@@ -4462,7 +4462,7 @@ span{
                                                 <?php  $valor_eui_base=$smasolutions->valor_eui($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
                                                     @if ($valor_eui_base <= $ashrae)
                                                     <label style="color:#33cc33;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
-                                                    @elseif ($valor_eui_base == $energy_star && $valor_eui_base > $ashrae)
+                                                    @elseif ($valor_eui_base <= $energy_star && $valor_eui_base > $ashrae)
                                                         <label  class=" text-orange-500 font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
                                                     @elseif ($valor_eui_base > $energy_star)
                                                     <label  style="color:#ea0000;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
@@ -4481,9 +4481,9 @@ span{
                                                 @if ($result2 ==! null)
                                                 <?php  $valor_eui_a=$smasolutions->valor_eui($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
                                                     @if ($valor_eui_a <= $ashrae)
-                                                    <label class="text-orange-500  font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
-                                                    @elseif ($valor_eui_a == $energy_star && $valor_eui_a > $ashrae)
-                                                    <label style="color:#33cc33;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
+                                                    <label style="color:#33cc33;"  class=" font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
+                                                    @elseif ($valor_eui_a <= $energy_star && $valor_eui_a > $ashrae)
+                                                    <label class=" text-orange-500 font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
                                                     @elseif ($valor_eui_a > $energy_star)
                                                     <label  style="color:#ea0000;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
                                                     @else
@@ -4500,7 +4500,7 @@ span{
                                                 <?php  $valor_eui_b=$smasolutions->valor_eui($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
                                                     @if ($valor_eui_b <= $ashrae)
                                                     <label style="color:#33cc33;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
-                                                    @elseif ($valor_eui_b == $energy_star && $valor_eui_a > $ashrae)
+                                                    @elseif ($valor_eui_b <= $energy_star && $valor_eui_a > $ashrae)
                                                     <label  class="text-orange-500 font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
                                                     @elseif ($valor_eui_b > $energy_star)
                                                     <label  style="color:#ea0000;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>

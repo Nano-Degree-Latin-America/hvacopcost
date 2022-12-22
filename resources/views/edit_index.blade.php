@@ -2321,7 +2321,7 @@ span{
                         class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
                     >Atrás</button>
 
-                    <a href="/project/8">
+                    <a href="/project/{{$id_project}}">
                         <button
                         x-show="step == 1"
                         class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
