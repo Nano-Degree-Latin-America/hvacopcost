@@ -600,7 +600,7 @@ span{
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full mt-3">
+                                            <div class="flex w-full mt-3 mb-2">
                                                 <div class="flex gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label style="" class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
