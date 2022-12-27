@@ -3360,6 +3360,20 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
 
 
      }else if(value == 'sol_2') {
+         if (cont_sol_2 == 0 ){
+
+            let valor_unidad_hvac =  $("#cUnidad_2_1").val();
+
+              if(valor_unidad_hvac === '0' || valor_unidad_hvac === ''){
+
+                  return false;
+              }
+
+              if(valor_unidad_hvac !== '0' && valor_unidad_hvac !== ''){
+                  cont_sol_2 = 1;
+              }
+
+          }
 
          if(cont_sol_2 == 1){
              $( "#sol_2_2" ).removeClass( "hidden" );
@@ -3383,6 +3397,22 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
          }
 
      }else if(value == 'sol_3') {
+
+        if (cont_sol_3 == 0 ){
+
+            let valor_unidad_hvac =  $("#cUnidad_3_1").val();
+
+              if(valor_unidad_hvac === '0' || valor_unidad_hvac === ''){
+
+                  return false;
+              }
+
+              if(valor_unidad_hvac !== '0' && valor_unidad_hvac !== ''){
+                cont_sol_3 = 1;
+              }
+
+          }
+
          if(cont_sol_3 == 1){
              $( "#sol_3_2" ).removeClass( "hidden" );
              $( "#sol_3_3" ).addClass( "hidden" );
@@ -3452,6 +3482,115 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
         $('#csStd_3_2').val(efi);
         $('#csStd_3_3').val(efi);
     }
+
+
+ }
+
+
+ function inactive_display_sol_edit(value,id_project,num_enf,num_sol,name_disp){
+    Swal.fire({
+        icon: 'info',
+        title: 'Seleccione acción',
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: 'Limpiar Tarjeta',
+        denyButtonText: `Eliminar Solucion `+name_disp,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+            if (value == 'sol_2_1') {
+                $("#cheTipo_2_1").find('option[value="0"]').attr("selected", "selected");
+                $("#cheDisenio_2_1").find('option[value=""]').attr("selected", "selected");
+                $("#tipo_control_2_1").find('option[value="0"]').attr("selected", "selected");
+                $("#dr_2_1").find('option[value=""]').attr("selected", "selected");
+                $("#csMantenimiento_2_1").find('option[value="0"]').attr("selected", "selected");
+                $("#capacidad_total_2_1").val('');
+                $("#csStd_cant_2_2").val('');
+                $("#cheValorS_2_1").val('');
+            }
+
+            if (value == 'sol_3_1') {
+                $("#cheTipo_3_1").find('option[value="0"]').attr("selected", "selected");
+                $("#cheDisenio_3_1").find('option[value=""]').attr("selected", "selected");
+                $("#tipo_control_3_1").find('option[value="0"]').attr("selected", "selected");
+                $("#dr_3_1").find('option[value=""]').attr("selected", "selected");
+                $("#cheMantenimiento_3_1").find('option[value="0"]').attr("selected", "selected");
+                $("#capacidad_total_3_1").val('');
+                $("#cheStd_3_1").val('');
+                $("#cheValorS_3_1").val('');
+            }
+        } else if (result.isDenied) {
+
+            if (value == 'sol_2_1') {
+                $("#cUnidad_2_1").find('option[value="0"]').attr("selected", "selected");
+                $("#cheTipo_2_1").find('option[value="0"]').attr("selected", "selected");
+                $("#cheDisenio_2_1").find('option[value=""]').attr("selected", "selected");
+                $("#tipo_control_2_1").find('option[value="0"]').attr("selected", "selected");
+                $("#dr_2_1").find('option[value=""]').attr("selected", "selected");
+                $("#csMantenimiento_2_1").find('option[value="0"]').attr("selected", "selected");
+                $("#capacidad_total_2_1").val('');
+                $("#csStd_cant_2_2").val('');
+                $("#cheValorS_2_1").val('');
+
+                $.ajax({
+                    type: 'get',
+                    url: '/del_solution/'+ id_project +'/'+ num_enf + '/' +num_sol,
+                    success: function (response) {
+                    $("#action_submit_2_1").val('store');
+                    ////sol b disp 1
+
+                    ////sol b disp 2
+                    $( "#sol_2_2" ).addClass( "hidden" );
+                    $("#cUnidad_2_2").find('option[value="0"]').attr("selected", "selected");
+                    ////sol b disp 3
+                    $( "#sol_2_3" ).addClass( "hidden" );
+                    $("#cUnidad_2_3").find('option[value="0"]').attr("selected", "selected");
+                    $("#cont_sol_2").val(0);
+                    },
+                    error: function (responsetext) {
+
+                    }
+                });
+
+            }
+
+            if (value == 'sol_3_1') {
+                $("#cUnidad_3_1").find('option[value="0"]').attr("selected", "selected");
+                $("#cheTipo_3_1").find('option[value="0"]').attr("selected", "selected");
+                $("#cheDisenio_3_1").find('option[value=""]').attr("selected", "selected");
+                $("#tipo_control_3_1").find('option[value="0"]').attr("selected", "selected");
+                $("#dr_3_1").find('option[value=""]').attr("selected", "selected");
+                $("#cheMantenimiento_3_1").find('option[value="0"]').attr("selected", "selected");
+                $("#capacidad_total_3_1").val('');
+                $("#cheStd_3_1").val('');
+                $("#cheValorS_3_1").val('');
+
+                $.ajax({
+                    type: 'get',
+                    url: '/del_solution/'+ id_project +'/'+ num_enf + '/' +num_sol,
+                    success: function (response) {
+
+                    $("#action_submit_3_1").val('store');
+
+                    ////sol b disp 1
+
+                    ////sol b disp 2
+                    $( "#sol_3_2" ).addClass( "hidden" );
+                    $("#cUnidad_3_2").find('option[value="0"]').attr("selected", "selected");
+                    ////sol b disp 3
+                    $( "#sol_3_3" ).addClass( "hidden" );
+                    $("#cUnidad_3_3").find('option[value="0"]').attr("selected", "selected");
+                    $("#cont_sol_3").val(0);
+
+
+                    },
+                    error: function (responsetext) {
+
+                    }
+                });
+            }
+        }
+      })
 
 
  }
