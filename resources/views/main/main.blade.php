@@ -43,7 +43,7 @@
     @section('css')
 
     @show
-    <title>HVACOPCOST Latinoamérica</title>
+    <title>HVACOPCOST</title>
     <meta name="description" content="Herramienta para el cálculo de costos de operación en equipos de hvac">
     <meta name="keywords" content="Energía aire acondicionado, ahorro de energía en HVAC,
     Costos de energía en HVAC, y costo de energía aire acondicionado, enfriamiento, Latinoamérica,
