@@ -118,6 +118,7 @@ class ProjectController extends Controller
 
         $ciudades = DB::table('ciudad')
         ->where('ciudad.idPais','=',$id)
+        ->where('ciudad.ashrae','!=',"")
         ->get();
 
         return $ciudades;
