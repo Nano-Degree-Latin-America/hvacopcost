@@ -282,7 +282,7 @@ span{
                                                     <span id="ciudad_warning" name="ciudad_warning" class="text-red-500"></span>
                                                 </div>
 
-                                                <div class="grid w-1/3|  justify-items-start">
+                                                <div class="grid w-1/3 justify-items-start">
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>% HVAC en el Edificio:</b></label><label class="text-red-500">*</label>
                                                     </div>
