@@ -147,7 +147,7 @@ span{
                     <h3><i></i></h3>
 
                     <div id="mapa-div">
-                            <div class="col-7">
+                            <div class="col-6">
                                 <h2 id="lblMapa">Da Clic en el Mapa</h2>
                             <img style="width: 500px; height:600px;" src="{{asset('assets\images\mapa2.png')}}" alt="" usemap="#mapa" onClick="cambiarLblMapa('Mapa')">
                             <map class="w-full" name="mapa">
@@ -166,7 +166,7 @@ span{
                                 <area shape="polygon" coords="266,119,260,123,256,131,260,136,261,142,274,145,279,148,289,148,291,171,301,172,308,167,304,159,314,158,324,154,333,157,334,166,343,170,358,168,374,166,375,156,349,149,326,133,313,126,292,126" onclick="getCiudades(26); cambiarLblMapa('Venezuela/Guyana/Suniam')"  alt="Venezuela">
                             </map>
                             </div>
-                            <div class="col-4">
+                            <div class="ml-10 col-4">
                                 {{-- <ul style="padding-bottom: 60px; text-align: justify; font-size: 15px; font-style: italic; font-weight: 400">
                                     <li>Horas de Enfriamiento por Región y Ciudad de Latin América </li>
                                     <li>Comparador de Sistemas de Enfriamiento </li>
@@ -198,12 +198,12 @@ span{
                                         <div class="my-8">
                                             <label class="text-5xl font-roboto text-blue-800 font-bold leading-tight" for="">Análisis Energético y Financiero <br> de Sistemas HVAC</label>
                                         </div>
-                                     <div class="w-3/4 {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
+                                     <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
 
 
-                                        <div class="grid gap-y-2 my-2 mx-1">
+                                        <div class="grid gap-y-2 my-2 mx-1 justify-items-center">
 
-                                            <div class="grid w-1/2 justify-items-start ">
+                                            <div class="grid w-1/3 justify-items-start ">
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Nombre Projecto</b></label><label class="text-red-500">*</label>
                                                     </div>
@@ -211,7 +211,7 @@ span{
                                                 <span id="name_warning" name="name_warning" class="text-red-500"></span>
                                             </div>
 
-                                            <div class="grid w-1/2 justify-items-start ">
+                                            <div class="grid w-1/3 justify-items-start ">
                                                 <div class="flex w-full">
                                                     <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Categoria Edificio</b></label></label><label class="text-red-500">*</label>
                                                 </div>
@@ -219,7 +219,7 @@ span{
                                                 <span id="cat_ed_warning" name="cat_ed_warning" class="text-red-500"></span>
                                             </div>
 
-                                            <div class="grid w-1/2 justify-items-start ">
+                                            <div class="grid w-1/3 justify-items-start ">
                                               <div class="flex w-full">
                                                 <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
                                               </div>
@@ -227,7 +227,7 @@ span{
                                                    <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
                                             </div>
 
-                                            <div class="flex w-1/2 justify-start gap-x-3">
+                                            <div class="flex w-1/3 justify-start gap-x-3">
                                                <div class="grid w-1/2 justify-items-start">
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Aréa:</b></label><label class="text-red-500">*</label>
@@ -236,7 +236,7 @@ span{
                                                     <span id="ar_project_warning" name="ar_project_warning" class="text-red-500"></span>
                                                </div>
 
-                                               <div class="grid w-1/2 justify-items-start">
+                                               <div class="grid w-1/3 justify-items-start">
                                               <div class="flex">
                                                <div>
                                                 <div class="flex w-full">
@@ -262,7 +262,7 @@ span{
 
                                             <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-blue-600 rounded-xl"  name="unidad" id="unidad">
 
-                                                <div class="grid w-1/2 justify-items-start">
+                                                <div class="grid w-1/3 justify-items-start">
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>País:</b></label><label class="text-red-500">*</label>
                                                     </div>
@@ -272,7 +272,7 @@ span{
                                                     <span id="paises_warning" name="paises_warning" class="text-red-500"></span>
                                                 </div>
 
-                                                <div class="grid w-1/2 justify-items-start">
+                                                <div class="grid w-1/3 justify-items-start">
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Ciudad:</b></label><label class="text-red-500">*</label>
                                                     </div>
@@ -282,7 +282,7 @@ span{
                                                     <span id="ciudad_warning" name="ciudad_warning" class="text-red-500"></span>
                                                 </div>
 
-                                                <div class="grid w-1/2 justify-items-start">
+                                                <div class="grid w-1/3|  justify-items-start">
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>% HVAC en el Edificio:</b></label><label class="text-red-500">*</label>
                                                     </div>
