@@ -46,35 +46,67 @@ class ProjectController extends Controller
         return $tipo_edif;
     }
 
-    public function mis_projectos(){
+    public function mis_projectos(Request $request){
         $id_empresa = Auth::user()->id_empresa;
 
         $tipo_user= DB::table('users')
         ->where('users.id','=',Auth::user()->id)
         ->first()->tipo_user;
+        $query=trim($request->GET('searchText'));
+        if($request){
+            if($tipo_user == 5 || $tipo_user == 2){
+                if($query == ""){
+                    $mis_projectos = DB::table('projects')
+                    ->join('categorias_edificios','categorias_edificios.id','=','projects.id_cat_edifico')
+                    ->join('tipo_edificio','tipo_edificio.id','=','projects.id_tipo_edificio')
+                    ->where('id_empresa','=',$id_empresa)
+                    ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
+                    ->paginate(10);
+                }
 
-        if($tipo_user == 5 || $tipo_user == 2){
-            $mis_projectos = DB::table('projects')
-            ->join('categorias_edificios','categorias_edificios.id','=','projects.id_cat_edifico')
-            ->join('tipo_edificio','tipo_edificio.id','=','projects.id_tipo_edificio')
-            ->where('id_empresa','=',$id_empresa)
-            ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
-            ->paginate(10);
+                if($query != ""){
+                    $mis_projectos = DB::table('projects')
+                    ->join('categorias_edificios','categorias_edificios.id','=','projects.id_cat_edifico')
+                    ->join('tipo_edificio','tipo_edificio.id','=','projects.id_tipo_edificio')
+                    ->where('id_empresa','=',$id_empresa)
+                    ->where('projects.name','=',$query)
+                    ->orwhere('projects.region','=',$query)
+                    ->orwhere('projects.ciudad','=',$query)
+                    ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
+                    ->paginate(10);
+                }
+            }
+
+            if($tipo_user == 1){
+                if($query == ""){
+                $mis_projectos = DB::table('projects')
+                ->join('categorias_edificios','categorias_edificios.id','=','projects.id_cat_edifico')
+                ->join('tipo_edificio','tipo_edificio.id','=','projects.id_tipo_edificio')
+                ->where('projects.id_empresa','=',$id_empresa)
+                ->where('projects.id_user','=',Auth::user()->id)
+                ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
+                ->paginate(10);
+                }
+
+                if($query != ""){
+                    $mis_projectos = DB::table('projects')
+                    ->join('categorias_edificios','categorias_edificios.id','=','projects.id_cat_edifico')
+                    ->join('tipo_edificio','tipo_edificio.id','=','projects.id_tipo_edificio')
+                    ->where('projects.name','=',$query)
+                    ->orwhere('projects.region','=',$query)
+                    ->orwhere('projects.ciudad','=',$query)
+                    ->where('projects.id_empresa','=',$id_empresa)
+                    ->where('projects.id_user','=',Auth::user()->id)
+                    ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
+                    ->paginate(10);
+                }
+            }
         }
 
-        if($tipo_user == 1){
-            $mis_projectos = DB::table('projects')
-            ->join('categorias_edificios','categorias_edificios.id','=','projects.id_cat_edifico')
-            ->join('tipo_edificio','tipo_edificio.id','=','projects.id_tipo_edificio')
-            ->where('projects.id_empresa','=',$id_empresa)
-            ->where('projects.id_user','=',Auth::user()->id)
-            ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
-            ->paginate(10);
-        }
 
 
 
-        return view('mis_projectos',['id_empresa'=>$id_empresa,'mis_projectos'=>$mis_projectos]);
+        return view('mis_projectos',['id_empresa'=>$id_empresa,'mis_projectos'=>$mis_projectos,"searchText"=>$query]);
     }
 
     public function porcents_aux($id){
@@ -2474,6 +2506,37 @@ class ProjectController extends Controller
 
         return response()->json(['result' => $result]);
        /* response()->json(['val_unidad' => $val_unidad]); */
+    }
+
+    public function del_project($id){
+       $solutions_ids = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id)
+        ->get();
+
+        $results_ids = DB::table('results_project')
+        ->where('results_project.id_project','=',$id)
+        ->get();
+
+
+        foreach($solutions_ids as $solution){
+            $solution_del=SolutionsProjectModel::find($solution->id);
+            $solution_del->delete();
+        }
+
+        foreach($results_ids as $result){
+            $result_del=ResultsProjectModel::find($result->id);
+            $result_del->delete();
+        }
+
+            $solution_del=ProjectsModel::find($id);
+            $solution_del->delete();
+
+        if( $solution_del->delete()){
+            return true;
+
+        }else{
+            return false;
+        }
     }
 
 }

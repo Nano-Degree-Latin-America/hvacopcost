@@ -112,3 +112,4 @@ Route::get('inactive_tarject/{id_project}/{num_sol}/{num_enf}', 'ProjectControll
 Route::get('generatePDF/{id_project}', 'ResultadosController@generatePDF');
 Route::get('clean_solution/{id_project}/{num_sol}/{num_enf}', 'ProjectController@clean_solution');
 Route::get('del_solution/{id_project}/{num_sol}/{num_enf}', 'ProjectController@del_solution');
+Route::get('/del_project/{id}', 'ProjectController@del_project')->name('del_project');

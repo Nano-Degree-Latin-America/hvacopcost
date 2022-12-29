@@ -3594,3 +3594,37 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
 
 
  }
+
+ function elimiinar_project(id, aux) {
+    Swal.fire({
+        title: '¿Eliminar Projecto?',
+        text: "Se eliminara el projecto",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: 'orange',
+        confirmButtonText: 'Eliminar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // var route = ruta_global + "/" + aux + "/" + id + "";
+            var token = $("#_token").val();
+            $.ajax({
+                url: "/" + aux + "/" + id + "",
+                headers: { 'X-CSRF-TOKEN': token },
+                type: 'get',
+                dataType: 'json',
+                success: function () {
+                    Swal.fire(
+                        'Eliminado!',
+                        'El registro se ha eliminado.',
+                        'success'
+                    )
+                }
+            });
+
+            setTimeout(function () { location.reload() }, 1000);
+
+            //location.reload();
+        }
+    })
+}

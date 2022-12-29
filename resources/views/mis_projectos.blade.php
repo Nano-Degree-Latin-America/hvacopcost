@@ -165,8 +165,11 @@ span{
         </div>
 
 </div>
+
+
 <div class="w-full flex justify-center">
     <div class="w-3/4">
+        @include('search')
         <div class="grid my-3 rounded-md shadow-xl w-full">
             <div class="w-full">
                 <table class="font-roboto w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg">
@@ -220,9 +223,8 @@ span{
                             </td>
                             <td class="border-grey-light border flex hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer gap-x-2">
                                 <button title="Ver Resultados" class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="far fa-eye"></i></a></button>
-{{--                                 <button class="p-1 bg-red-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="project/{{$project->id}}" ><i class="fas fa-trash"></i></a></button>
- --}}
                                 <button title="Editar" class="p-1 bg-blue-400 rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="edit_project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-pen-to-square"></i></a></button>
+                                <button  onclick="elimiinar_project('{{$project->id}}','del_project');" class="p-1 bg-red-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a><i class="fas fa-trash"></i></a></button>
 
                             </td>
 
