@@ -254,7 +254,7 @@
             <table class="">
                 <tbody>
                   <tr>
-                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,10)}}</label></td>
+                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
                     <td class="info_project_size_font"><label for="">País:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
                     <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
                     <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
@@ -1458,7 +1458,7 @@
             <table class="">
                 <tbody>
                   <tr>
-                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,10)}}</label></td>
+                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
                     <td class="info_project_size_font"><label for="">País:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
                     <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
                     <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
@@ -1664,7 +1664,7 @@
             <table class="">
                 <tbody>
                   <tr>
-                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,10)}}</label></td>
+                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
                     <td class="info_project_size_font"><label for="">País:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
                     <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
                     <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
@@ -2028,7 +2028,7 @@
             <table class="">
                 <tbody>
                   <tr>
-                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,10)}}</label></td>
+                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
                     <td class="info_project_size_font"><label for="">País:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
                     <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
                     <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
@@ -2242,7 +2242,7 @@
             <table class="">
                 <tbody>
                   <tr>
-                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,10)}}</label></td>
+                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
                     <td class="info_project_size_font"><label for="">País:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
                     <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
                     <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
