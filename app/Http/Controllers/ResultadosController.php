@@ -2548,8 +2548,8 @@ class ResultadosController extends Controller
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
         return $pdf->stream('Portada.pdf');
-        ini_set('max_execution_time', 300);
-
+        //ini_set('max_execution_time', 1500);
+        set_time_limit(6000);
         /* $dompdf = new Dompdf();
         $dompdf->loadHtml('hello world');
         // (Optional) Setup the paper size and orientation

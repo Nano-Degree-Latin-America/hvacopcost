@@ -4452,8 +4452,9 @@ span{
                                 </div>
                                 <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
 
-                                    <div class="flex w-full justify-center">
-                                        <label class="font-bold text-blue-900 text-2xl font-roboto text-4xl" for="">Valores EUI</label>
+
+                                    <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
+                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Valores EUI</label>
                                     </div>
 
                                     <div class="flex w-full justify-center">
