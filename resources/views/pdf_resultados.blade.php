@@ -3339,13 +3339,13 @@
                         @if ($result3 ==! null)
                         <?php  $valor_eui_b=$smasolutions->valor_eui($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
                             @if ($valor_eui_b <= $ashrae)
-                            <label style="margin-left:60px;color:#33cc33;" class="cant_green">80.28</label>
+                            <label style="margin-left:60px;color:#33cc33;" class="cant_green">{{number_format($valor_eui_b,1)}}</label>
                             @elseif ($valor_eui_b <= $energy_star && $valor_eui_a > $ashrae)
-                            <label style="margin-left:60px;color:#ed8936;" class="cant_green">80.28</label>
+                            <label style="margin-left:60px;color:#ed8936;" class="cant_green">{{number_format($valor_eui_b,1)}}</label>
                             @elseif ($valor_eui_b > $energy_star)
-                            <label style="margin-left:60px;color:#ea0000;" class="cant_green">80.28</label>
+                            <label style="margin-left:60px;color:#ea0000;" class="cant_green">{{number_format($valor_eui_b,1)}}</label>
                             @else
-                            <label style="margin-left:60px;color:#2c5282;" class="cant_green">80.28</label>
+                            <label style="margin-left:60px;color:#2c5282;" class="cant_green">{{number_format($valor_eui_b,1)}}</label>
                             @endif
                         @endif
 
