@@ -1490,17 +1490,39 @@
                     <div class="sol_base" style="width:100%;">
                         <label style="margin-left:40px;" class="title_style">Solución Base</label>
                     </div>
+                    <?php  $result1=$results->result_1($id_project,1) ?>
+                    @if ($result1 ==! null)
+                    <?php  $sumaopex_1=$smasolutions->sumaopex($id_project,$result1->num_enf) ?>
+                    <?php  $sumacap_term_1=$smasolutions->sumacap_term($id_project,$result1->num_enf) ?>
+                    <?php  $unid_med_1=$smasolutions->unid_med($id_project,$result1->num_enf) ?>
+                    @elseif($result1 === null)
+                    <?php $sumaopex_1=0?>
+                   <?php $sumacap_term_1=0?>
+                   <?php $unid_med_1=""?>
+                    @endif
                     {{-- Capacidad Total --}}
                     <table class="">
                         <tbody style="width: 100%;">
+                            @if ($unid_med_1 !== "")
 
                             <tr class="tr_style">
                                 <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
-                                </tr>
+                            </tr>
 
-                                <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">350</label>
-                                    <label style="" class="unit_cap_term" for="">TR</label>
-                                  </td>
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
+                                <label style="" class="unit_cap_term" for="">{{$unid_med_1->unid_med}}</label>
+                            </td>
+                            @endif
+
+                            @if ($unid_med_1 === "")
+                            <tr class="tr_style">
+                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
+
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
+                                <label style="" class="unit_cap_term" for="">{{$unid_med_1->unid_med}}</label>
+                            </td>
+                           @endif
                         </tbody>
                     </table>
                     {{-- Consumo anual opex --}}
@@ -1511,7 +1533,7 @@
                               <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
                               </tr>
 
-                              <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">82,377</label>
+                              <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">{{number_format($sumaopex_1/$tar_ele->costo_elec)}}</label>
                                   <label style="" class="unit_opex" for="">Kw/hr</label>
                                 </td>
                       </tbody>
@@ -1526,18 +1548,40 @@
                     <div class="sol_ab">
                         <label style="margin-left:45px;" class="title_style">Solución A</label>
                     </div>
+                    <?php  $result2=$results->result_1($id_project,2) ?>
+                     @if ($result2 ==! null)
+                     <?php  $sumaopex_2=$smasolutions->sumaopex($id_project,$result2->num_enf) ?>
+                     <?php  $sumacap_term_2=$smasolutions->sumacap_term($id_project,$result2->num_enf) ?>
+                      <?php  $unid_med_2=$smasolutions->unid_med($id_project,$result2->num_enf) ?>
+                     @elseif($result2 === null)
+                    <?php $sumaopex_2=0?>
+                    <?php $sumacap_term_2=0?>
+                   <?php $unid_med_2=""?>
+                    @endif
 
                      {{-- Capacidad Total --}}
                      <table class="">
                       <tbody style="width: 100%;">
+                        @if ($unid_med_2 !== "")
+                            <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
 
-                          <tr class="tr_style">
-                              <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
-                              </tr>
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}}</label>
+                                <label  class="unit_cap_term" for="">{{$unid_med_2->unid_med}}</label>
+                              </td>
+                        @endif
 
-                              <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">350</label>
-                                  <label  class="unit_cap_term" for="">TR</label>
-                                </td>
+                        @if ($unid_med_2 === "")
+                        <tr class="tr_style">
+                         <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                        </tr>
+
+                        <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}}</label>
+                            <label  class="unit_cap_term" for="">{{$unid_med_2}}</label>
+                        </td>
+                      @endif
+
                       </tbody>
                   </table>
                   {{-- Consumo anual opex --}}
@@ -1548,7 +1592,7 @@
                             <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
                             </tr>
 
-                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">82,377</label>
+                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">{{number_format($sumaopex_2/$tar_ele->costo_elec)}}</label>
                                 <label  class="unit_opex" for="">Kw/hr</label>
                               </td>
                     </tbody>
@@ -1563,18 +1607,39 @@
                     <div class="sol_ab">
                         <label style="margin-left:45px;" class="title_style">Solución B</label>
                     </div>
-
+                    <?php  $result3=$results->result_1($id_project,3) ?>
+                    @if ($result3 ==! null)
+                    <?php  $sumaopex_3=$smasolutions->sumaopex($id_project,$result3->num_enf) ?>
+                    <?php  $sumacap_term_3=$smasolutions->sumacap_term($id_project,$result3->num_enf) ?>
+                    <?php  $unid_med_3=$smasolutions->unid_med($id_project,$result3->num_enf) ?>
+                    @elseif($result3 === null)
+                    <?php $sumaopex_3=0?>
+                   <?php $sumacap_term_3=0?>
+                   <?php $unid_med_3=""?>
+                    @endif
                      {{-- Capacidad Total --}}
                      <table class="">
                       <tbody style="width: 100%;">
+                        @if ($unid_med_3 !== "")
+                        <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
 
-                          <tr class="tr_style">
-                              <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
-                              </tr>
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
+                                <label class="unit_cap_term" for="">{{$unid_med_3->unid_med}}</label>
+                              </td>
+                        @endif
 
-                              <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">350</label>
-                                  <label class="unit_cap_term" for="">TR</label>
-                                </td>
+                        @if ($unid_med_3 === "")
+                        <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
+
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
+                                <label class="unit_cap_term" for="">{{$unid_med_3}}</label>
+                              </td>
+                        @endif
+
                       </tbody>
                   </table>
                   {{-- Consumo anual opex --}}
@@ -1585,7 +1650,7 @@
                             <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
                             </tr>
 
-                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">82,377</label>
+                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">{{number_format($sumaopex_3/$tar_ele->costo_elec)}}</label>
                                 <label  class="unit_cap_term" for="">Kw/hr</label>
                               </td>
                     </tbody>
@@ -1598,25 +1663,46 @@
  --}}
 {{-- title_style_no_bg --}}
     <div style="margin-top:5px; height:11%;" class="tarjet">
+        <?php  $unidad_area=$results->unidad_area($id_project,1,$sumaopex_1,$tar_ele->costo_elec) ?>
         <div align="center" class="title_tarjet_no_bg">
-            <p  class="title_style_no_bg">Consumo de Energía HVAC por Área <b style="color:#ed8936;">(Kwh/ m² )</b></p>
+            <p  class="title_style_no_bg">Consumo de Energía HVAC por Área <b style="color:#ed8936;">(Kwh/ @if ($unidad_area == 'mc')
+                m²
+                @endif
+                @if ($unidad_area == 'ft')
+                ft²
+                @endif )</b></p>
         </div>
 
         <div style="margin-left:15px; margin-right:15px;">
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">19.99</label>
+                        @if ($result1 ==! null)
+                        <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_1, 2)}}</label>
+                        @else
+                        <label style="margin-left:60px;" class="cant_green">0</label>
+                        @endif
                     </div>
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">27.49</label>
+                        @if ($result2 ==! null)
+                        <?php  $result_area_2=$results->result_area($id_project,$sumaopex_2) ?>
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_2, 2)}}</label>
+                        @else
+                        <label style="margin-left:60px;" class="cant_green">0</label>
+                        @endif
                     </div>
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">80.28</label>
+                        @if ($result3 ==! null)
+                        <?php  $result_area_3=$results->result_area($id_project,$sumaopex_3) ?>
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_3, 2)}}</label>
+                        @else
+                        <label style="margin-left:60px;" class="cant_green">0</label>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -1629,15 +1715,24 @@
         <div align="center" class="title_tarjet_no_bg">
             <p  class="title_style_no_bg">Ahorro Anual Energía – Diferencia entre Soluciones<b style="color:#ed8936;">(Kw/hr año)</b></p>
         </div>
+        <?php  $results=$results->results($id_project) ?>
 
         <div style="margin-left:15px; margin-right:15px;">
             <div>
+                @foreach ($results as $solution)
+                @if (count($results) == 1)
+
+                @endif
+
+                @if (count($results) == 2)
+                @if ($solution->num_enf == 1)
+                <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results),$tar_ele->costo_elec) ?>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
                         <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
                     </div>
                     <div style="width:100%;">
-                        <label style="margin-left:150px;" class="cant_green">-32,178</label>
+                        <label style="margin-left:150px;" class="cant_green">{{number_format($dif_1)}}</label>
                     </div>
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
@@ -1645,9 +1740,37 @@
                         <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Base v/s B</label>
                     </div>
                     <div style="width:100%;">
-                        <label style="margin-left:90px;" class="cant_green">-252,128</label>
+                        <label style="margin-left:90px;" class="cant_green">0</label>
                     </div>
                 </div>
+                @endif
+                @endif
+
+                @if (count($results) == 3)
+                @if ($solution->num_enf == 1)
+                <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+                <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
+                    <div style="width:100%;">
+                        <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
+                    </div>
+                    <div style="width:100%;">
+                        <label style="margin-left:150px;" class="cant_green">{{number_format($dif_1)}}</label>
+                    </div>
+                </div>
+                @endif
+                @if ($solution->num_enf == 2)
+                <?php  $dif_2=$smasolutions->dif_2($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+                <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
+                    <div style="width:100%;">
+                        <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Base v/s B</label>
+                    </div>
+                    <div style="width:100%;">
+                        <label style="margin-left:90px;" class="cant_green">{{number_format($dif_2)}}</label>
+                    </div>
+                 </div>
+                 @endif
+                 @endif
+                 @endforeach
             </div>
         </div>
 
@@ -1696,17 +1819,40 @@
                     <div class="sol_base" style="width:100%;">
                         <label style="margin-left:40px;" class="title_style">Solución Base</label>
                     </div>
-                    {{-- Capacidad Total --}}
+                        {{-- Capacidad Total --}}
+                        @if ($result1 ==! null)
+                        <?php  $sumaopex_1=$smasolutions->sumaopex($id_project,$result1->num_enf) ?>
+                        <?php  $sumacap_term_1=$smasolutions->sumacap_term($id_project,$result1->num_enf) ?>
+                        <?php  $inv_ini_1=$smasolutions->inv_ini($id_project,$result1->num_enf) ?>
+                        <?php  $unid_med_1=$smasolutions->unid_med($id_project,$result1->num_enf) ?>
+                        @elseif($result1 === null)
+                        <?php $sumaopex_1=0?>
+                        <?php $sumacap_term_1=0?>
+                        <?php $inv_ini_1=0?>
+                        <?php $unid_med_1=""?>
+                        @endif
                     <table class="">
                         <tbody style="width: 100%;">
-
+                            @if ($unid_med_1 !== "")
                             <tr class="tr_style">
                                 <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
-                                </tr>
+                            </tr>
 
-                                <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">350</label>
-                                    <label style="" class="unit_cap_term" for="">TR</label>
-                                  </td>
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
+                                    <label style="" class="unit_cap_term" for="">{{$unid_med_1->unid_med}}</label>
+                            </td>
+                            @endif
+
+                            @if ($unid_med_1 === "")
+                            <tr class="tr_style">
+                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
+
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
+                                    <label style="" class="unit_cap_term" for="">{{$unid_med_1}}</label>
+                            </td>
+                            @endif
+
                         </tbody>
                     </table>
                     {{-- inv iniciaol --}}
@@ -1714,10 +1860,10 @@
                         <tbody style="width: 100%;">
 
                             <tr class="tr_style">
-                                <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Inversión Inicial</label></td>
+                                <td style="width: 100%;" class=""><label style="margin-left:50px;" class="title_cap_term" for="">Inversión Inicial</label></td>
                                 </tr>
 
-                                <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">82,377</label>
+                                <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">${{number_format($inv_ini_1)}}</label>
                                   </td>
                         </tbody>
                     </table>
@@ -1729,8 +1875,8 @@
                               <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
                               </tr>
 
-                              <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">82,377</label>
-                                  <label style="" class="unit_opex" for="">Kw/hr</label>
+                              <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">${{number_format($sumaopex_1)}}</label>
+
                                 </td>
                       </tbody>
                   </table>
@@ -1748,14 +1894,40 @@
                      {{-- Capacidad Total --}}
                      <table class="">
                       <tbody style="width: 100%;">
+                        @if ($result2 ==! null)
+                        <?php  $sumaopex_2=$smasolutions->sumaopex($id_project,$result2->num_enf) ?>
+                        <?php  $sumacap_term_2=$smasolutions->sumacap_term($id_project,$result2->num_enf) ?>
+                        <?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
+                        <?php  $unid_med_2=$smasolutions->unid_med($id_project,$result2->num_enf) ?>
+                        @elseif($result2 === null)
+                        <?php $sumaopex_2=0?>
+                        <?php $inv_ini_2=0?>
+                        <?php $sumacap_term_2=0?>
+                        <?php $unid_med_2=""?>
+                        @endif
 
-                          <tr class="tr_style">
-                              <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
-                              </tr>
+                        @if ($unid_med_2 !== "")
+                        <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                        </tr>
 
-                              <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">350</label>
-                                  <label  class="unit_cap_term" for="">TR</label>
-                                </td>
+                        <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}}</label>
+                            <label  class="unit_cap_term" for="">{{$unid_med_2->unid_med}}</label>
+                        </td>
+                        @endif
+
+                        @if ($unid_med_2 === "")
+                        <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                        </tr>
+
+                        <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}}</label>
+                            <label  class="unit_cap_term" for="">{{$unid_med_2}}</label>
+                        </td>
+                        @endif
+
+
+
                       </tbody>
                   </table>
                   {{-- inv iniciaol --}}
@@ -1763,10 +1935,10 @@
                     <tbody style="width: 100%;">
 
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Inversión Inicial</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:50px;" class="title_cap_term" for="">Inversión Inicial</label></td>
                             </tr>
 
-                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">82,377</label>
+                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">$ {{number_format($inv_ini_2)}}</label>
                               </td>
                     </tbody>
                 </table>
@@ -1778,8 +1950,8 @@
                             <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
                             </tr>
 
-                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">82,377</label>
-                                <label  class="unit_opex" for="">Kw/hr</label>
+                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">$ {{number_format($sumaopex_2)}}</label>
+
                               </td>
                     </tbody>
                 </table>
@@ -1797,14 +1969,37 @@
                      {{-- Capacidad Total --}}
                      <table class="">
                       <tbody style="width: 100%;">
+                        @if ($result3 ==! null)
+                        <?php  $sumaopex_3=$smasolutions->sumaopex($id_project,$result3->num_enf) ?>
+                        <?php  $sumacap_term_3=$smasolutions->sumacap_term($id_project,$result3->num_enf) ?>
+                        <?php  $inv_ini_3=$smasolutions->inv_ini($id_project,$result3->num_enf) ?>
+                        <?php  $unid_med_3=$smasolutions->unid_med($id_project,$result3->num_enf) ?>
+                        @elseif($result3 === null)
+                        <?php $sumaopex_3=0?>
+                    <?php $sumacap_term_3=0?>
+                    <?php $inv_ini_3=0?>
+                    <?php $unid_med_3=""?>
+                        @endif
 
+                        @if ($unid_med_3 !== "")
                           <tr class="tr_style">
-                              <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
-                              </tr>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                          </tr>
 
-                              <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">350</label>
-                                  <label class="unit_cap_term" for="">TR</label>
-                                </td>
+                        <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
+                         <label class="unit_cap_term" for="">{{$unid_med_3->unid_med}}</label>
+                        </td>
+                        @endif
+
+                        @if ($unid_med_3 === "")
+                          <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                          </tr>
+
+                        <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
+                         <label class="unit_cap_term" for="">{{$unid_med_3}}</label>
+                        </td>
+                        @endif
                       </tbody>
                   </table>
                   {{-- inv iniciaol --}}
@@ -1812,10 +2007,10 @@
                     <tbody style="width: 100%;">
 
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Inversión Inicial</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:50px;" class="title_cap_term" for="">Inversión Inicial</label></td>
                             </tr>
 
-                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">82,377</label>
+                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">$ {{number_format($inv_ini_3)}}</label>
                               </td>
                     </tbody>
                 </table>
@@ -1827,8 +2022,8 @@
                             <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
                             </tr>
 
-                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">82,377</label>
-                                <label  class="unit_cap_term" for="">Kw/hr</label>
+                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">$ {{number_format($sumaopex_3)}}</label>
+
                               </td>
                     </tbody>
                 </table>
@@ -1839,24 +2034,39 @@
     {{-- nversión Inicial (CAPEX) por Área ($/m²) --}}
     <div style="margin-top:5px; height:11%;" class="tarjet">
         <div align="center" class="title_tarjet_no_bg">
-            <p  class="title_style_no_bg">Inversión Inicial (CAPEX) por Área<b style="color:#ed8936;">($/m²)</b></p>
+            <p  class="title_style_no_bg">Inversión Inicial (CAPEX) por Área<b style="color:#ed8936;">($/{{$uni_med1 = ($unidad_area == 'mc') ? 'm²' : 'ft²'}})</b></p>
         </div>
 
         <div style="margin-left:15px; margin-right:15px;">
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
+                    <?php  $inv_ini_ca_ar_1=$smasolutions->inv_ini_ca_ar($id_project,$result1->num_enf) ?>
                     <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">19.99</label>
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($inv_ini_ca_ar_1,1)}}</label>
                     </div>
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">27.49</label>
+                        @if ($result2!==null)
+                        <?php  $inv_ini_ca_ar_2=$smasolutions->inv_ini_ca_ar($id_project,$result2->num_enf) ?>
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($inv_ini_ca_ar_2,1)}}</label>
+                        @endif
+
+                        @if ($result2===null)
+                        <label style="margin-left:60px;" class="cant_green">0</label>
+                        @endif
                     </div>
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">80.28</label>
+                        @if ($result3!==null)
+                        <?php  $inv_ini_ca_ar_3=$smasolutions->inv_ini_ca_ar($id_project,$result3->num_enf) ?>
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($inv_ini_ca_ar_3,1)}}</label>
+                        @endif
+
+                        @if ($result3===null)
+                        <label style="margin-left:60px;" class="cant_green">0</label>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -1873,64 +2083,60 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">19.99</label>
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($sumaopex_1/$tar_ele->area,1)}}</label>
                     </div>
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">27.49</label>
+                        @if ($result2!==null)
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($sumaopex_2/$tar_ele->area,1)}}</label>
+                        @endif
+
+                        @if ($result2===null)
+                        <label style="margin-left:60px;" class="cant_green">0</label>
+                        @endif
                     </div>
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">80.28</label>
+                        @if ($result3!==null)
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($sumaopex_3/$tar_ele->area,1)}}</label>
+                        @endif
+
+                        @if ($result3===null)
+                        <label style="margin-left:60px;" class="cant_green">0</label>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-      {{--Payback Simple (años) --}}
-      <div style="margin-top:5px; height:11%;" class="tarjet">
-        <div align="center" class="title_tarjet_no_bg">
-            <p  class="title_style_no_bg">Payback Simple (años)<b style="color:#ed8936;"></b></p>
-        </div>
 
-        <div style="margin-left:15px; margin-right:15px;">
-            <div>
-                <div style="margin-right:5px;margin-top:5px;" class="column" >
-                    <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">19.99</label>
-                    </div>
-                </div>
-                <div style="margin-right:5px;margin-top:5px;" class="column" >
-                    <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">27.49</label>
-                    </div>
-                </div>
-                <div style="margin-right:5px;margin-top:5px;" class="column" >
-                    <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">80.28</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
-<div style="margin-top:5px; height:13%;" class="tarjet">
+<div style="margin-top:5px; height:14%;" class="tarjet">
     <div align="center" class="title_tarjet_no_bg">
         <p  class="title_style_no_bg">Ahorro Anual de Costo Energético – Entre Soluciones<b style="color:#ed8936;">(Kw/hr año)</b></p>
     </div>
-
+    @if (count($results)>1)
     <div style="margin-left:15px; margin-right:15px;">
         <div>
+            @foreach ($results as $solution)
+            @if (count($results) == 1)
+
+            @endif
+
+            @if (count($results) == 2)
+            @if ($solution->num_enf == 1)
+            <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                 <div style="width:100%;">
                     <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
                 </div>
                 <div style="width:100%;">
-                    <label style="margin-left:150px;" class="cant_green">-32,178</label>
+                    <label style="margin-left:150px;" class="cant_green">${{number_format($dif_1_cost)}}</label>
                 </div>
             </div>
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
@@ -1938,14 +2144,102 @@
                     <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Base v/s B</label>
                 </div>
                 <div style="width:100%;">
-                    <label style="margin-left:90px;" class="cant_green">-252,128</label>
+                    <label style="margin-left:90px;" class="cant_green">$ 0</label>
+                </div>
+            </div>
+            @endif
+            @endif
+
+            @if (count($results) == 3)
+            @if ($solution->num_enf == 1)
+            <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+
+            <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
+                <div style="width:100%;">
+                    <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
+                </div>
+                <div style="width:100%;">
+                    <label style="margin-left:150px;" class="cant_green">$ {{number_format($dif_1_cost)}}</label>
+                </div>
+            </div>
+            @endif
+            @if ($solution->num_enf == 2)
+            <?php  $dif_2_cost=$smasolutions->dif_2_cost($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+            <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
+                <div style="width:100%;">
+                    <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Base v/s B</label>
+                </div>
+                <div style="width:100%;">
+                    <label style="margin-left:90px;" class="cant_green">$ {{number_format($dif_2_cost)}}</label>
+                </div>
+            </div>
+            @endif
+            @endif
+            @endforeach
+        </div>
+    </div>
+    @endif
+
+    @if (count($results)==1)
+
+    @foreach ($results as $solution)
+    <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
+        <div style="width:100%;">
+            <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
+        </div>
+        <div style="width:100%;">
+            <label style="margin-left:150px;" class="cant_green">$ 0</label>
+        </div>
+    </div>
+    <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
+        <div style="width:100%;">
+            <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Base v/s B</label>
+        </div>
+        <div style="width:100%;">
+            <label style="margin-left:90px;" class="cant_green">$ 0</label>
+        </div>
+    </div>
+    @endforeach
+    @endif
+
+</div>
+{{--Payback Simple (años) --}}
+<div style="margin-top:5px; height:11%;" class="tarjet">
+    <div align="center" class="title_tarjet_no_bg">
+        <p  class="title_style_no_bg">Payback Simple (años)<b style="color:#ed8936;"></b></p>
+    </div>
+
+    <div style="margin-left:15px; margin-right:15px;">
+        <div>
+            <div style="margin-right:5px;margin-top:5px;" class="column" >
+                <div style="width:100%;">
+                    <label style="margin-left:60px;" class="cant_green">N/A</label>
+                </div>
+            </div>
+            <div style="margin-right:5px;margin-top:5px;" class="column" >
+                <div style="width:100%;">
+                    @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
+                    <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1_cost) ?>
+                    <label style="margin-left:60px;" class="cant_green">{{number_format($pay_back_a)}}</label>
+                    @else
+                    <label style="margin-left:60px;" class="cant_green">N/A</label>
+                   @endif
+                </div>
+            </div>
+            <div style="margin-right:5px;margin-top:5px;" class="column" >
+                <div style="width:100%;">
+                    @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
+                    <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_2_cost) ?>
+                    <label style="margin-left:60px;" class="cant_green">{{number_format($pay_back_b)}}</label>
+                    @else
+                    <label style="margin-left:60px;" class="cant_green">N/A</label>
+
+                   @endif
                 </div>
             </div>
         </div>
     </div>
-
 </div>
-
 
 {{-- ROI Diferencia de Inversión --}}
      <div style="page-break-after:always;"></div>
@@ -1966,17 +2260,160 @@
                 </tr>
                 <tr>
                 <td class="sol_ab_yrs_style">Solución A</td>
-                <td class="porcent_yrs_style">-14%</td>
-                <td class="porcent_yrs_style">43%</td>
-                <td class="porcent_yrs_style">186%</td>
-                <td class="porcent_yrs_style">329%</td>
+                @if ($result2 !== null)
+                <?php  $roi_ent_dif_inv=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,3,$dif_1_cost) ?>
+                @if ($roi_ent_dif_inv <= 0)
+                <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv)}}%</td>
+                @endif
+
+                @if ($roi_ent_dif_inv > 0 && $roi_ent_dif_inv < 20)
+                <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv)}}%</td>
+                @endif
+
+                @if ($roi_ent_dif_inv > 20)
+                <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv)}}%</td>
+                @endif
+                @endif
+
+                @if ($result2 === null)
+                <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                @endif
+                {{-- 5años --}}
+                @if ($result2 !== null)
+                <?php  $roi_ent_dif_inv_5=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,5,$dif_1_cost) ?>
+                    @if ($roi_ent_dif_inv_5 <= 0)
+                        <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_5)}}%</td>
+                    @endif
+
+                    @if ($roi_ent_dif_inv_5 > 0 && $roi_ent_dif_inv_5 < 20)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_5)}}%</td>
+                    @endif
+
+                    @if ($roi_ent_dif_inv_5 > 20)
+                    <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_5)}}%</td>
+                    @endif
+                @endif
+
+                @if ($result2 === null)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $roi_ent_dif_inv_10=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,10,$dif_1_cost) ?>
+                     @if ($roi_ent_dif_inv_10 <= 0)
+                        <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_10)}}%</td>
+                    @endif
+
+                    @if ($roi_ent_dif_inv_10 > 0 && $roi_ent_dif_inv_10 < 20)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_10)}}%</td>
+                    @endif
+
+                    @if ($roi_ent_dif_inv_10 > 20)
+                    <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_10)}}%</td>
+                    @endif
+                @endif
+
+                @if ($result2 === null)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $roi_ent_dif_inv_15=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,15,$dif_1_cost) ?>
+                    @if ($roi_ent_dif_inv_15 <= 0)
+                        <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_15)}}%</td>
+                    @endif
+
+                    @if ($roi_ent_dif_inv_15 > 0 && $roi_ent_dif_inv_15 < 20)
+                         <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_15)}}%</td>
+                    @endif
+
+                    @if ($roi_ent_dif_inv_15 > 20)
+                         <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_15)}}%</td>
+                    @endif
+
+                @endif
+
+                @if ($result2 === null)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                @endif
                 </tr>
                 <tr>
                     <td class="sol_ab_yrs_style">Solución B</td>
-                    <td class="porcent_yrs_style">-14%</td>
-                    <td class="porcent_yrs_style">43%</td>
-                    <td class="porcent_yrs_style">186%</td>
-                    <td class="porcent_yrs_style">329%</td>
+                    @if ($result3 !== null)
+                    <?php  $roi_ent_dif_inv_b_1=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,3,$dif_2_cost) ?>
+                          @if ($roi_ent_dif_inv_b_1 <= 0)
+                             <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_b_1)}}%</td>
+                          @endif
+
+                          @if ($roi_ent_dif_inv_b_1 > 0 && $roi_ent_dif_inv_b_1 < 20)
+                            <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_b_1)}}%</td>
+                          @endif
+
+                          @if ($roi_ent_dif_inv_b_1 > 20)
+                            <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_b_1)}}%</td>
+                          @endif
+                    @endif
+
+                    @if ($result3 === null)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                    @endif
+
+                    @if ($result3 !== null)
+                    <?php  $roi_ent_dif_inv_b_2=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,5,$dif_2_cost) ?>
+                         @if ($roi_ent_dif_inv_b_2 <= 0)
+                         <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_b_2)}}%</td>
+                         @endif
+
+                         @if ($roi_ent_dif_inv_b_2 > 0 && $roi_ent_dif_inv_b_2 < 20)
+                         <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_b_2)}}%</td>
+                         @endif
+
+                         @if ($roi_ent_dif_inv_b_2 > 20)
+                         <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_b_2)}}%</td>
+                         @endif
+                    @endif
+
+                    @if ($result3 === null)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                    @endif
+
+                    @if ($result3 !== null)
+                    <?php  $roi_ent_dif_inv_b_3=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,10,$dif_2_cost) ?>
+                          @if ($roi_ent_dif_inv_b_3 <= 0)
+                          <td  style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_b_3)}}%</td>
+                          @endif
+
+                          @if ($roi_ent_dif_inv_b_3 > 0 && $roi_ent_dif_inv_b_3 < 20)
+                          <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_b_3)}}%</td>
+                          @endif
+
+                          @if ($roi_ent_dif_inv_b_3 > 20)
+                          <td  style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_b_3)}}%</td>
+                          @endif
+                    @endif
+
+                    @if ($result3 === null)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                    @endif
+
+                    @if ($result3 !== null)
+                    <?php  $roi_ent_dif_inv_b_4=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,15,$dif_2_cost) ?>
+                           @if ($roi_ent_dif_inv_b_4 <= 0)
+                           <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_b_4)}}%</td>
+                           @endif
+
+                          @if ($roi_ent_dif_inv_b_4 > 0 && $roi_ent_dif_inv_b_4 < 20)
+                          <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_b_4)}}%</td>
+                          @endif
+
+                          @if ($roi_ent_dif_inv_b_4 > 20)
+                          <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_ent_dif_inv_b_4)}}%</td>
+                          @endif
+                    @endif
+
+                    @if ($result3 === null)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                    @endif
                 </tr>
             </table>
         </div>
@@ -2000,17 +2437,158 @@
                 </tr>
                 <tr>
                 <td class="sol_ab_yrs_style">Solución A</td>
-                <td class="porcent_yrs_style">-14%</td>
-                <td class="porcent_yrs_style">43%</td>
-                <td class="porcent_yrs_style">186%</td>
-                <td class="porcent_yrs_style">329%</td>
+                @if ($result2 !== null)
+                    <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(3,$dif_1_cost,$inv_ini_2) ?>
+                    @if ($roi_inv_tot_1 <= 0)
+                    <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_1)}}%</td>
+                    @endif
+
+                    @if ($roi_inv_tot_1 > 0 && $roi_inv_tot_1 < 20)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_1)}}%</td>
+                    @endif
+
+                    @if ($roi_inv_tot_1 > 20)
+                    <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_1)}}%</td>
+                    @endif
+                @endif
+                @if ($result2 === null)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(5,$dif_1_cost,$inv_ini_2) ?>
+                @if ($roi_inv_tot_2 <= 0)
+                    <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_2)}}%</td>
+                    @endif
+
+                    @if ($roi_inv_tot_2 > 0 && $roi_inv_tot_2 < 20)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_2)}}%</td>
+                    @endif
+
+                    @if ($roi_inv_tot_2 > 20)
+                    <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_2)}}%</td>
+                    @endif
+                @endif
+                @if ($result2 === null)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(10,$dif_1_cost,$inv_ini_2) ?>
+                     @if ($roi_inv_tot_3 <= 0)
+                     <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_3)}}%</td>
+                     @endif
+
+                     @if ($roi_inv_tot_3 > 0 && $roi_inv_tot_3 < 20)
+                     <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_3)}}%</td>
+                     @endif
+
+                    @if ($roi_inv_tot_3 > 20)
+                    <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_3)}}%</td>
+                    @endif
+                @endif
+                @if ($result2 === null)
+                <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(15,$dif_1_cost,$inv_ini_2) ?>
+                    @if ($roi_inv_tot_4 <= 0)
+                    <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
+                    @endif
+
+                    @if ($roi_inv_tot_4 > 0 && $roi_inv_tot_4 < 20)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
+                    @endif
+
+                    @if ($roi_inv_tot_4 > 20)
+                    <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
+                    @endif
+                @endif
+                @if ($result2 === null)
+                <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                @endif
                 </tr>
                 <tr>
                     <td class="sol_ab_yrs_style">Solución B</td>
-                    <td class="porcent_yrs_style">-14%</td>
-                    <td class="porcent_yrs_style">43%</td>
-                    <td class="porcent_yrs_style">186%</td>
-                    <td class="porcent_yrs_style">329%</td>
+
+                    @if ($result3 !== null)
+                    <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(3,$dif_2_cost,$inv_ini_3) ?>
+                        @if ($roi_inv_tot_b_1 <= 0)
+                        <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_1)}}%</td>
+                        @endif
+
+                        @if ($roi_inv_tot_b_1 > 0 && $roi_inv_tot_b_1 < 20)
+                        <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_1)}}%</td>
+                        @endif
+
+                        @if ($roi_inv_tot_b_1 > 20)
+                        <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_1)}}%</td>
+                        @endif
+                    @endif
+
+                    @if ($result3 === null)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                    @endif
+
+
+                    @if ($result3 !== null)
+                    <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(5,$dif_2_cost,$inv_ini_3) ?>
+                         @if ($roi_inv_tot_b_2 <= 0)
+                         <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_2)}}%</td>
+                         @endif
+
+                         @if ($roi_inv_tot_b_2 > 0 && $roi_inv_tot_b_2 < 20)
+                         <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_2)}}%</td>
+                         @endif
+
+                        @if ($roi_inv_tot_b_2 > 20)
+                        <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_2)}}%</td>
+                        @endif
+                     @endif
+
+                    @if ($result3 === null)
+                        <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                     @endif
+
+                     @if ($result3 !== null)
+                     <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot(10,$dif_2_cost,$inv_ini_3) ?>
+                         @if ($roi_inv_tot_b_3 <= 0)
+                         <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_3)}}%</td>
+                         @endif
+
+                          @if ($roi_inv_tot_b_3 > 0 && $roi_inv_tot_b_3 < 20)
+                          <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_3)}}%</td>
+                          @endif
+
+                         @if ($roi_inv_tot_b_3 > 20)
+                         <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_3)}}%</td>
+                         @endif
+                     @endif
+
+                      @if ($result3 === null)
+                      <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                      @endif
+
+                      @if ($result3 !== null)
+                         <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(15,$dif_2_cost,$inv_ini_3) ?>
+
+                         @if ($roi_inv_tot_b_4 <= 0)
+                         <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_4)}}%</td>
+                         @endif
+
+                         @if ($roi_inv_tot_b_4 > 0 && $roi_inv_tot_b_4 < 20)
+                         <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_4)}}%</td>
+                         @endif
+
+                         @if ($roi_inv_tot_b_4 > 20)
+                         <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_4)}}%</td>
+                         @endif
+                     @endif
+
+                     @if ($result3 === null)
+                     <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                     @endif
                 </tr>
             </table>
         </div>
@@ -2063,14 +2641,36 @@
                     {{-- Capacidad Total --}}
                     <table class="">
                         <tbody style="width: 100%;">
-
+                            @if ($result1 ==! null)
+                            <?php  $sumaopex_1=$smasolutions->sumaopex($id_project,$result1->num_enf) ?>
+                            <?php  $sumacap_term_1=$smasolutions->sumacap_term($id_project,$result1->num_enf) ?>
+                            <?php  $inv_ini_1=$smasolutions->inv_ini($id_project,$result1->num_enf) ?>
+                            <?php  $unid_med_1=$smasolutions->unid_med($id_project,$result1->num_enf) ?>
+                            @elseif($result1 === null)
+                            <?php $sumaopex_1=0?>
+                        <?php $sumacap_term_1=0?>
+                        <?php $inv_ini_1=0?>
+                        <?php $unid_med_1=""?>
+                            @endif
+                            @if ($unid_med_1 !== "")
                             <tr class="tr_style">
                                 <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
                                 </tr>
 
-                                <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">350</label>
-                                    <label style="" class="unit_cap_term" for="">TR</label>
+                                <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
+                                    <label style="" class="unit_cap_term" for="">{{$unid_med_1->unid_med}}</label>
                                   </td>
+                            @endif
+
+                            @if ($unid_med_1 === "")
+                            <tr class="tr_style">
+                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                                </tr>
+
+                                <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
+                                    <label style="" class="unit_cap_term" for="">{{$unid_med_1}}</label>
+                                  </td>
+                            @endif
                         </tbody>
                     </table>
 
@@ -2088,14 +2688,38 @@
                      {{-- Capacidad Total --}}
                      <table class="">
                       <tbody style="width: 100%;">
+                        @if ($result2 ==! null)
+                        <?php  $sumaopex_2=$smasolutions->sumaopex($id_project,$result2->num_enf) ?>
+                        <?php  $sumacap_term_2=$smasolutions->sumacap_term($id_project,$result2->num_enf) ?>
+                        <?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
+                        <?php  $unid_med_2=$smasolutions->unid_med($id_project,$result2->num_enf) ?>
+                        @elseif($result2 === null)
+                        <?php $sumaopex_2=0?>
+                        <?php $inv_ini_2=0?>
+                        <?php $sumacap_term_2=0?>
+                        <?php $unid_med_2=""?>
+                        @endif
 
-                          <tr class="tr_style">
-                              <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
-                              </tr>
+                        @if ($unid_med_2 !== "")
+                        <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
 
-                              <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">350</label>
-                                  <label  class="unit_cap_term" for="">TR</label>
-                                </td>
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}} </label>
+                                <label  class="unit_cap_term" for="">{{$unid_med_2->unid_med}}</label>
+                              </td>
+                        @endif
+
+                        @if ($unid_med_2 === "")
+                        <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
+
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}} </label>
+                                <label  class="unit_cap_term" for="">{{$unid_med_2}}</label>
+                              </td>
+                        @endif
+
                       </tbody>
                   </table>
 
@@ -2113,14 +2737,38 @@
                      {{-- Capacidad Total --}}
                      <table class="">
                       <tbody style="width: 100%;">
+                        @if ($result3 ==! null)
+                        <?php  $sumaopex_3=$smasolutions->sumaopex($id_project,$result3->num_enf) ?>
+                        <?php  $sumacap_term_3=$smasolutions->sumacap_term($id_project,$result3->num_enf) ?>
+                        <?php  $inv_ini_3=$smasolutions->inv_ini($id_project,$result3->num_enf) ?>
+                        <?php  $unid_med_3=$smasolutions->unid_med($id_project,$result3->num_enf) ?>
+                        @elseif($result3 === null)
+                        <?php $sumaopex_3=0?>
+                        <?php $sumacap_term_3=0?>
+                        <?php $inv_ini_3=0?>
+                        <?php $unid_med_3=""?>
+                        @endif
 
-                          <tr class="tr_style">
-                              <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
-                              </tr>
+                        @if ($unid_med_3 !== "")
+                        <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
 
-                              <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">350</label>
-                                  <label class="unit_cap_term" for="">TR</label>
-                                </td>
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
+                                <label class="unit_cap_term" for="">{{$unid_med_3->unid_med}}</label>
+                              </td>
+                        @endif
+
+                        @if ($unid_med_3 === "")
+                        <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
+
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
+                                <label class="unit_cap_term" for="">{{$unid_med_3}}</label>
+                              </td>
+                        @endif
+
                       </tbody>
                   </table>
 
@@ -2147,17 +2795,72 @@
                 </tr>
                 <tr>
                 <td class="sol_ab_yrs_style">Solución A</td>
-                <td class="porcent_analis_sus_yrs_style">-14%</td>
-                <td class="porcent_analis_sus_yrs_style">43%</td>
-                <td class="porcent_analis_sus_yrs_style">186%</td>
-                <td class="porcent_analis_sus_yrs_style">329%</td>
+                @if ($result2 !== null)
+                <?php  $red_en_mw_a_1=$smasolutions->red_en_mw(3,$dif_1) ?>
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_1)}}</td>
+                @endif
+                @if ($result2 === null)
+                <td class="porcent_analis_sus_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $red_en_mw_a_2=$smasolutions->red_en_mw(5,$dif_1) ?>
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_2)}}</td>
+                @endif
+                @if ($result2 === null)
+                <td class="porcent_analis_sus_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $red_en_mw_a_3=$smasolutions->red_en_mw(10,$dif_1) ?>
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_3)}}</td>
+                @endif
+                @if ($result2 === null)
+                <td class="porcent_analis_sus_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $red_en_mw_a_4=$smasolutions->red_en_mw(15,$dif_1) ?>
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_4)}}</td>
+                @endif
+
+                @if ($result2 === null)
+                <td class="porcent_analis_sus_yrs_style">N/A</td>
+                @endif
                 </tr>
                 <tr>
                     <td class="sol_ab_yrs_style">Solución B</td>
-                    <td class="porcent_analis_sus_yrs_style">-14%</td>
-                    <td class="porcent_analis_sus_yrs_style">43%</td>
-                    <td class="porcent_analis_sus_yrs_style">186%</td>
-                    <td class="porcent_analis_sus_yrs_style">329%</td>
+                    @if ($result3 !== null)
+                    <?php  $red_en_mw_b_1=$smasolutions->red_en_mw(3,$dif_2) ?>
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_1)}}</td>
+                    @endif
+                     @if ($result3 === null)
+                     <td class="porcent_analis_sus_yrs_style">N/A</td>
+                     @endif
+
+                     @if ($result3 !== null)
+                     <?php  $red_en_mw_b_2=$smasolutions->red_en_mw(5,$dif_2) ?>
+                     <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_2)}}</td>
+                    @endif
+                    @if ($result3 === null)
+                    <td class="porcent_analis_sus_yrs_style">N/A</td>
+                    @endif
+
+                     @if ($result3 !== null)
+                     <?php  $red_en_mw_b_3=$smasolutions->red_en_mw(10,$dif_2) ?>
+                     <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_3)}}</td>
+                     @endif
+                     @if ($result3 === null)
+                     <td class="porcent_analis_sus_yrs_style">N/A</td>
+                     @endif
+
+                     @if ($result3 !== null)
+                     <?php  $red_en_mw_b_4=$smasolutions->red_en_mw(15,$dif_2) ?>
+                     <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_4)}}</td>
+                     @endif
+                     @if ($result3 === null)
+                     <td class="porcent_analis_sus_yrs_style">N/A</td>
+                     @endif
                 </tr>
             </table>
         </div>
@@ -2181,17 +2884,73 @@
                 </tr>
                 <tr>
                 <td class="sol_ab_yrs_style">Solución A</td>
-                <td class="porcent_analis_sus_yrs_style">-14%</td>
-                <td class="porcent_analis_sus_yrs_style">43%</td>
-                <td class="porcent_analis_sus_yrs_style">186%</td>
-                <td class="porcent_analis_sus_yrs_style">329%</td>
+                @if ($result2 !== null)
+                <?php  $red_hu_carb_a_1=$smasolutions->red_hu_carb(3,$dif_1) ?>
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_1)}}</td>
+                @endif
+                @if ($result2 === null)
+                <td class="porcent_analis_sus_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $red_hu_carb_a_2=$smasolutions->red_hu_carb(5,$dif_1) ?>
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_2)}}</td>
+                @endif
+                @if ($result2 === null)
+                <td class="porcent_analis_sus_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $red_hu_carb_a_3=$smasolutions->red_hu_carb(10,$dif_1) ?>
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_3)}}</td>
+                @endif
+                @if ($result2 === null)
+                <td class="porcent_analis_sus_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $red_hu_carb_a_4=$smasolutions->red_hu_carb(15,$dif_1) ?>
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_4)}}</td>
+                @endif
+                @if ($result2 === null)
+                <td class="porcent_analis_sus_yrs_style">N/A</td>
+                @endif
                 </tr>
                 <tr>
                     <td class="sol_ab_yrs_style">Solución B</td>
-                    <td class="porcent_analis_sus_yrs_style">-14%</td>
-                    <td class="porcent_analis_sus_yrs_style">43%</td>
-                    <td class="porcent_analis_sus_yrs_style">186%</td>
-                    <td class="porcent_analis_sus_yrs_style">329%</td>
+                    @if ($result3 !== null)
+                    <?php  $red_hu_carb_b_1=$smasolutions->red_hu_carb(3,$dif_2) ?>
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_1)}}</td>
+                    @endif
+                    @if ($result3 === null)
+                    <td class="porcent_analis_sus_yrs_style">N/A</td>
+                    @endif
+
+                    @if ($result3 !== null)
+                    <?php  $red_hu_carb_b_2=$smasolutions->red_hu_carb(5,$dif_2) ?>
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_2)}}</td>
+                    @endif
+                    @if ($result3 === null)
+                    <td class="porcent_analis_sus_yrs_style">N/A</td>
+                    @endif
+
+                    @if ($result3 !== null)
+                     <?php  $red_hu_carb_b_3=$smasolutions->red_hu_carb(10,$dif_2) ?>
+                     <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_3)}}</td>
+                     @endif
+
+                     @if ($result3 === null)
+                     <td class="porcent_analis_sus_yrs_style">N/A</td>
+                     @endif
+
+                     @if ($result3 !== null)
+                      <?php  $red_hu_carb_b_4=$smasolutions->red_hu_carb(15,$dif_2) ?>
+                      <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_4)}}</td>
+                      @endif
+
+                      @if ($result3 === null)
+                      <td class="porcent_analis_sus_yrs_style">N/A</td>
+                      @endif
                 </tr>
             </table>
         </div>
@@ -2215,17 +2974,72 @@
                 </tr>
                 <tr>
                 <td class="sol_ab_yrs_style">Solución A</td>
-                <td class="porcent_analis_sus_yrs_style">-14%</td>
-                <td class="porcent_analis_sus_yrs_style">43%</td>
-                <td class="porcent_analis_sus_yrs_style">186%</td>
-                <td class="porcent_analis_sus_yrs_style">329%</td>
+                @if ($result2 !== null)
+                <?php  $red_bol_ba_a_1=$smasolutions->red_bol_ba(3,$dif_1) ?>
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_1)}}</td>
+                @endif
+
+                @if ($result2 === null)
+                <td class="porcent_analis_sus_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $red_bol_ba_a_2=$smasolutions->red_bol_ba(5,$dif_1) ?>
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_2)}}</td>
+                @endif
+                @if ($result2 === null)
+                <td class="porcent_analis_sus_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                 <?php  $red_bol_ba_a_3=$smasolutions->red_bol_ba(10,$dif_1) ?>
+                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_3)}}</td>
+                 @endif
+                @if ($result2 === null)
+                <td class="porcent_analis_sus_yrs_style">N/A</td>
+                @endif
+
+                @if ($result2 !== null)
+                <?php  $red_bol_ba_a_4=$smasolutions->red_bol_ba(15,$dif_1) ?>
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_4)}}</td>
+                @endif
+                @if ($result2 === null)
+                <td class="porcent_analis_sus_yrs_style">N/A</td>
+                @endif
                 </tr>
                 <tr>
                     <td class="sol_ab_yrs_style">Solución B</td>
-                    <td class="porcent_analis_sus_yrs_style">-14%</td>
-                    <td class="porcent_analis_sus_yrs_style">43%</td>
-                    <td class="porcent_analis_sus_yrs_style">186%</td>
-                    <td class="porcent_analis_sus_yrs_style">329%</td>
+                    @if ($result3 !== null)
+                    <?php  $red_bol_ba_b_1=$smasolutions->red_bol_ba(3,$dif_2) ?>
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_1)}}</td>
+                    @endif
+                    @if ($result3 === null)
+                    <td class="porcent_analis_sus_yrs_style">N/A</td>
+                    @endif
+
+                    @if ($result3 !== null)
+                    <?php  $red_bol_ba_b_2=$smasolutions->red_bol_ba(5,$dif_2) ?>
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_2)}}</td>
+                    @endif
+                    @if ($result3 === null)
+                    <td class="porcent_analis_sus_yrs_style">N/A</td>
+                    @endif
+
+                    @if ($result3 !== null)
+                    <?php  $red_bol_ba_b_3=$smasolutions->red_bol_ba(10,$dif_2) ?>
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_3)}}</td>
+                    @endif
+                    @if ($result3 === null)
+                    <td class="porcent_analis_sus_yrs_style">N/A</td>
+                     @endif
+
+                     @if ($result3 !== null)
+                     <?php  $red_bol_ba_b_4=$smasolutions->red_bol_ba(15,$dif_2) ?>
+                     <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_4)}}</td>
+                     @endif
+                     @if ($result3 === null)
+                     <td class="porcent_analis_sus_yrs_style">N/A</td>
+                     @endif
                 </tr>
             </table>
         </div>
@@ -2267,7 +3081,7 @@
         </div>
     </div>
     {{-- Info eui --}}
-    <div  style="margin-top:5px; height:35%;" class="tarjet">
+    <div  style="margin-top:5px; height:33%;" class="tarjet">
         <div align="center" style="margin-left:15px; margin-right:15px;">
             <label class="title_style_no_bg" for="">{{$tar_ele->tipo_edi}}  (KBTU/sqf)</label>
         </div>
@@ -2276,21 +3090,23 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
-                        <img  src="../public/assets/images/Energy-Star-Logo.png" width="150px" height="80px"/>
-                        <label style="margin-left:px;" class="dif_sols_subtitle">EUI - Energy Star</label>
+                        <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
+                        <img  src="../public/assets/images/Energy-Star-Logo.png" width="115px" height="60px"/>
+                        <label style="margin-left:px;" class="dif_sols_subtitle">EUI - Energy Star <b style="color:#33cc33;" class="dif_sols_subtitle">&nbsp;{{number_format($energy_star,1)}}</b></label>
                     </div>
 
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
-                        <img  src="../public/assets/images/Logo-ASHRAE-png.png" width="110px" height="80px"/>
-                        <label style="margin-left:px;" class="dif_sols_subtitle">EUI - ASHRAE</label>
+                        <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
+                        <img  src="../public/assets/images/Logo-ASHRAE-png.png" width="90px" height="60px"/>
+                        <label style="margin-left:px;" class="dif_sols_subtitle">EUI - ASHRAE <b style="color:#33cc33;" class="dif_sols_subtitle">&nbsp;{{$ashrae}}</b></label>
                     </div>
 
                 </div>
             </div>
         </div>
-        <br>
+
         <br>
         <br>
         <br>
@@ -2303,14 +3119,36 @@
                     {{-- Capacidad Total --}}
                     <table class="">
                         <tbody style="width: 100%;">
+                            @if ($result1 ==! null)
+                            <?php  $sumaopex_1=$smasolutions->sumaopex($id_project,$result1->num_enf) ?>
+                            <?php  $sumacap_term_1=$smasolutions->sumacap_term($id_project,$result1->num_enf) ?>
+                            <?php  $unid_med_1=$smasolutions->unid_med($id_project,$result1->num_enf) ?>
+                            @elseif($result1 === null)
+                            <?php $sumaopex_1=0?>
+                           <?php $sumacap_term_1=0?>
+                           <?php $unid_med_1=""?>
+                            @endif
 
+                            @if ($unid_med_1 !== "")
+                                <tr class="tr_style">
+                                    <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                                    </tr>
+
+                                    <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}} </label>
+                                        <label style="" class="unit_cap_term" for="">{{$unid_med_1->unid_med}}</label>
+                                    </td>
+                            @endif
+
+                            @if ($unid_med_1 === "")
                             <tr class="tr_style">
                                 <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
                                 </tr>
 
-                                <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">350</label>
-                                    <label style="" class="unit_cap_term" for="">TR</label>
-                                  </td>
+                                <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}} </label>
+                                    <label style="" class="unit_cap_term" for="">{{$unid_med_1}}</label>
+                                </td>
+                            @endif
+
                         </tbody>
                     </table>
                     {{-- Consumo anual opex --}}
@@ -2321,7 +3159,7 @@
                               <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
                               </tr>
 
-                              <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">82,377</label>
+                              <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">$ {{number_format($sumaopex_1)}}</label>
 
                                 </td>
                       </tbody>
@@ -2340,14 +3178,36 @@
                      {{-- Capacidad Total --}}
                      <table class="">
                       <tbody style="width: 100%;">
+                        @if ($result2 ==! null)
+                        <?php  $sumaopex_2=$smasolutions->sumaopex($id_project,$result2->num_enf) ?>
+                        <?php  $sumacap_term_2=$smasolutions->sumacap_term($id_project,$result2->num_enf) ?>
+                        <?php  $unid_med_2=$smasolutions->unid_med($id_project,$result2->num_enf) ?>
+                        @elseif($result2 === null)
+                        <?php $sumaopex_2=0?>
+                       <?php $sumacap_term_2=0?>
+                       <?php $unid_med_2=""?>
+                        @endif
 
-                          <tr class="tr_style">
-                              <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
-                              </tr>
+                        @if ($unid_med_2 !== "")
+                        <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
 
-                              <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">350</label>
-                                  <label  class="unit_cap_term" for="">TR</label>
-                                </td>
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}}</label>
+                                <label  class="unit_cap_term" for="">{{$unid_med_2->unid_med}}</label>
+                              </td>
+                        @endif
+
+                        @if ($unid_med_2 === "")
+                        <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
+
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}}</label>
+                                <label  class="unit_cap_term" for="">{{$unid_med_2}}</label>
+                              </td>
+                        @endif
+
                       </tbody>
                   </table>
                   {{-- Consumo anual opex --}}
@@ -2358,8 +3218,8 @@
                             <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
                             </tr>
 
-                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">82,377</label>
-                                <
+                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">$ {{number_format($sumaopex_2)}}</label>
+
                               </td>
                     </tbody>
                 </table>
@@ -2377,14 +3237,36 @@
                      {{-- Capacidad Total --}}
                      <table class="">
                       <tbody style="width: 100%;">
+                        @if ($result3 ==! null)
+                        <?php  $sumaopex_3=$smasolutions->sumaopex($id_project,$result3->num_enf) ?>
+                        <?php  $sumacap_term_3=$smasolutions->sumacap_term($id_project,$result3->num_enf) ?>
+                        <?php  $unid_med_3=$smasolutions->unid_med($id_project,$result3->num_enf) ?>
+                        @elseif($result3 === null)
+                        <?php $sumaopex_3=0?>
+                       <?php $sumacap_term_3=0?>
+                       <?php $unid_med_3=""?>
+                        @endif
 
-                          <tr class="tr_style">
-                              <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
-                              </tr>
+                        @if ($unid_med_3 !== "")
+                        <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
 
-                              <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">350</label>
-                                  <label class="unit_cap_term" for="">TR</label>
-                                </td>
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
+                                <label class="unit_cap_term" for="">{{$unid_med_3->unid_med}}</label>
+                              </td>
+                        @endif
+
+                        @if ($unid_med_3 === "")
+                        <tr class="tr_style">
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            </tr>
+
+                            <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
+                                <label class="unit_cap_term" for="">{{$unid_med_3}}</label>
+                              </td>
+                        @endif
+
                       </tbody>
                   </table>
                   {{-- Consumo anual opex --}}
@@ -2395,7 +3277,7 @@
                             <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
                             </tr>
 
-                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">82,377</label>
+                            <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">$ {{number_format($sumaopex_3)}}</label>
 
                               </td>
                     </tbody>
@@ -2414,17 +3296,62 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">19.99</label>
+                        @if ($result1 ==! null)
+                        <?php  $valor_eui_base=$smasolutions->valor_eui($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                             @if ($valor_eui_base <= $ashrae)
+                             <label style="margin-left:60px;color:#33cc33;" class="cant_green">{{number_format($valor_eui_base,1)}}</label>
+                             @elseif ($valor_eui_base <= $energy_star && $valor_eui_base > $ashrae)
+                             <label style="margin-left:60px;color:#ed8936;" class="cant_green">{{number_format($valor_eui_base,1)}}</label>
+                             @elseif ($valor_eui_base > $energy_star)
+                            <label style="margin-left:60px;color:#ea0000;" class="cant_green">{{number_format($valor_eui_base,1)}}</label>
+                            @else
+                            <label style="margin-left:60px;color:#2c5282;" class="cant_green">{{number_format($valor_eui_base,1)}}</label>
+                            @endif
+                         @endif
+
+                         @if ($result1 === null)
+                         <label style="margin-left:60px;color:#ea0000;" class="cant_green">0</label>
+                         @endif
                     </div>
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">27.49</label>
+                        @if ($result2 ==! null)
+                        <?php  $valor_eui_a=$smasolutions->valor_eui($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                            @if ($valor_eui_a <= $ashrae)
+                            <label style="margin-left:60px;color:#33cc33;" class="cant_green">{{number_format($valor_eui_a,1)}}</label>
+                            @elseif ($valor_eui_a <= $energy_star && $valor_eui_a > $ashrae)
+                            <label style="margin-left:60px;color:#ed8936;" class="cant_green">{{number_format($valor_eui_a,1)}}</label>
+                            @elseif ($valor_eui_a > $energy_star)
+                            <label style="margin-left:60px;color:#ea0000;" class="cant_green">{{number_format($valor_eui_a,1)}}</label>
+                            @else
+                            <label style="margin-left:60px;color:#2c5282;" class="cant_green">{{number_format($valor_eui_a,1)}}</label>
+                            @endif
+                        @endif
+
+                        @if ($result2 === null)
+                        <label style="margin-left:60px;color:#ea0000;" class="cant_green">0</label>
+                        @endif
                     </div>
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div style="width:100%;">
-                        <label style="margin-left:60px;" class="cant_green">80.28</label>
+                        @if ($result3 ==! null)
+                        <?php  $valor_eui_b=$smasolutions->valor_eui($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                            @if ($valor_eui_b <= $ashrae)
+                            <label style="margin-left:60px;color:#33cc33;" class="cant_green">80.28</label>
+                            @elseif ($valor_eui_b <= $energy_star && $valor_eui_a > $ashrae)
+                            <label style="margin-left:60px;color:#ed8936;" class="cant_green">80.28</label>
+                            @elseif ($valor_eui_b > $energy_star)
+                            <label style="margin-left:60px;color:#ea0000;" class="cant_green">80.28</label>
+                            @else
+                            <label style="margin-left:60px;color:#2c5282;" class="cant_green">80.28</label>
+                            @endif
+                        @endif
+
+                        @if ($result3 === null)
+                        <label style="margin-left:60px;color:#ea0000;" class="cant_green">0</label>
+                        @endif
                     </div>
                 </div>
             </div>
