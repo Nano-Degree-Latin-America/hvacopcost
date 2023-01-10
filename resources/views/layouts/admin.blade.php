@@ -57,7 +57,7 @@
           <a class="navbar-item" href="{{ route('logout') }}"
           onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-              <button class="botonF1">
+              <button class="">
                   Cerrar Sesión
                   </button>
           </a>

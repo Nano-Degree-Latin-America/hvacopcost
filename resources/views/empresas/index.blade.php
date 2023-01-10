@@ -178,6 +178,10 @@ span{
                               <button  onclick="inactivar('{{$empresa->id}}','empresas');" class="button small red --jb-modal" data-target="sample-modal" type="button">
                                 <span class="icon"><i class="mdi mdi-trash-can"></i></span>
                               </button>
+
+                              <button onclick="change_empresa({{$empresa->id}});" class="button small bg-orange-500 --jb-modal"  data-target="sample-modal-2" type="button">
+                                <span class="icon"><i class="text-white mdi mdi-factory"></i></span>
+                              </button>
                             </div>
                           </td>
                         </tr>
@@ -204,6 +208,43 @@ function redirect_edit(id){
 
 function redirect_urs_suc(id){
     window.location.href = "/users_sucs"+"/"+id;
+}
+
+function change_empresa(id_empresa){
+
+    Swal.fire({
+        title: '¿Administrar?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#0dcaf0',
+        cancelButtonColor: 'orange',
+        confirmButtonText: 'SI'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // var route = ruta_global + "/" + aux + "/" + id + "";
+            var token = $("#_token").val();
+            $.ajax({
+                type: 'get',
+                url: '/change_empresa/'+ id_empresa,
+                success: function (response) {
+                    Swal.fire(
+                        'Exito!',
+                        '',
+                        'success'
+                    )
+                },
+                error: function (responsetext) {
+
+                }
+            });
+
+            setTimeout(function () { location.reload() }, 1000);
+
+            //location.reload();
+        }
+    })
+
 }
 </script>
 @endsection

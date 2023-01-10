@@ -154,4 +154,19 @@ class EmpresasController extends Controller
         }
 
     }
+
+    public function change_empresa($id)
+    {
+        $id_admin = Auth::user()->id;
+        $user_admin= User::find($id_admin);
+        $user_admin->id_empresa=$id;
+        $user_admin->update();
+        if( $user_admin->update()){
+            return $id;
+        }else{
+            return false;
+        }
+
+
+    }
 }

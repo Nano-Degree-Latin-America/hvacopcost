@@ -279,7 +279,7 @@
         </div>
     </div>
 
-    <div style="margin-top:5px; height:85%;" class="tarjet">
+    <div style="margin-top:5px; height:83%;" class="tarjet">
         <?php  $solutions=$solutions->solutions($id_project) ?>
         <div style="margin-left:15px; margin-right:15px;">
             <div>
@@ -1314,7 +1314,7 @@
 
                               <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
                                 {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                                 <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for="">SISTEMA HVAC 2</label> </td>
+                                 <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for="">SISTEMA HVAC 3</label> </td>
                                  <td class="td_style style_sol_elem_value"><label class="label_style_sol_val"></label></td>
                                  {{--  @endif --}}
                                </tr>
