@@ -5,10 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 class LoginController extends Controller
 {
     /*
@@ -41,26 +38,8 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    protected function sendLoginResponse(Request $request)
+    protected function authenticated(Request $request, $user)
     {
-        $request->session()->regenerate();
-        $previous_session = Auth::User()->session_id;
-
-        if ($previous_session) {
-        \Session::getHandler()->destroy($previous_session);
-        }
-
-        Auth::user()->session_id = \Session::getId();
-        Auth::user()->save();
-
-        $this->clearLoginAttempts($request);
-
-        if ($response = $this->authenticated($request, $this->guard()->user())) {
-            return $response;
-        }
-
-        return $request->wantsJson()
-                    ? new JsonResponse([], 204)
-                    : redirect()->intended($this->redirectPath());
+        \Auth::logoutOtherDevices(\request('password'));
     }
 }
