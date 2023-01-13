@@ -32,13 +32,14 @@ class UserController extends Controller
 
 
     public function index(Request $request, $id){
-
         $users = DB::table('users')->get();
 
         return view('users.index', ['users' => $users]);
     }
 
     public function users(Request $request){
+        $today = date('Y-m-d');
+
         $query=trim($request->GET('searchText'));
         if($request)
        {
@@ -60,7 +61,7 @@ class UserController extends Controller
         $empresas = DB::table('empresas')
         ->get();
 
-        return view('users.index', ['users' => $users,'empresas'=>$empresas,"searchText"=>$query]);
+        return view('users.index', ['users' => $users,'empresas'=>$empresas,"searchText"=>$query,'today'=>$today]);
     }
 
     public function create(Request $request){

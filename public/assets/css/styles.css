@@ -94,7 +94,7 @@ strong {
 }
 [class*="col-"] {
     float: left;
-    padding: 15px;
+   /*  padding: 15px; */
 }
 
 .col-4{
@@ -419,8 +419,8 @@ img[usemap] {
     border-bottom: 1px solid rgb(236, 224, 200); */
     margin-bottom: 40px;
     overflow-x: auto;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 3%;
+    padding-right: 3%;
     /* background-color: #ebe7e0; */
 }
 
@@ -435,6 +435,11 @@ img[usemap] {
     line-height: 23px;
     width: 50%;
 }
+
+/* #mapa-div .col-6 {
+    line-height: 23px;
+    width: 50%;
+} */
 
 
 .hidden {
@@ -489,13 +494,43 @@ img[usemap] {
         float: initial;
     }
 }
-@media screen and (max-width: 1150px) {
+
+@media screen and (max-width: 1160) {
+    /* se ejecutaran estos estilos */
+    #content{
+        display: block !important;
+    }
+    #mapa-div .col-7, #mapa-div .col-4{
+        width: 40%!important;
+        height:50%!important;
+        padding-left: 0%!important;
+        padding-right: 0%!important;
+    }
+}
+
+@media screen and (max-width: 1080px) {
     /* se ejecutaran estos estilos */
     #content{
         display: block !important;
     }
     #mapa-div .col-7, #mapa-div .col-4{
         width: 100%;
+        height:100%;
+        padding-left: 0%;
+        padding-right: 0%;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    /* se ejecutaran estos estilos */
+    #content{
+        display: block !important;
+    }
+    #mapa-div .col-7, #mapa-div .col-4{
+        width: 100%;
+        height:100%;
+        padding-left: 0%;
+        padding-right: 0%;
     }
 }
 @media screen and (max-width: 565px) {

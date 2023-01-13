@@ -124,10 +124,14 @@ span{
                               </th>
 
                               <th class="px-6 py-2 text-xm text-white">
-                                  Fecha de Registro
+                                Días  Restantes
+                            </th>
+
+                              <th class="px-6 py-2 text-xm text-white">
+                                  Fecha de Inicio
                               </th>
                               <th class="px-6 py-2 text-xm text-white">
-                                  Fecha de Última Actualización
+                                  Fecha Termino
                               </th>
 
                               <th class="px-6 py-2 text-xm text-white">
@@ -190,13 +194,31 @@ span{
                                 </div>
                             </td>
                             @endif
+                            <td class="px-6 py-4 text-sm text-blue-900">
+                                <?php
+                                $days = (strtotime($client->fecha_termino)-strtotime($today))/86400
+                                    ?>
+                                    @if ($days <= 0)
+                                    <span class="px-2 inline-flex text-xm leading-5 font-semibold rounded-full bg-red-100 text-red-800">  {{ $days }} </span>
+                                    @endif
+
+                                    @if ($days > 20)
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  {{ $days }} </span>
+                                    @endif
+
+                                    @if ($days <= 20 && $days >= 0)
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-300 text-orange-800">  {{ $days }} </span>
+                                    @endif
+
+
+                            </td>
 
 
                             <td class="px-6 py-2">
-                                <div class="text-xm text-gray-500">{{$client->created_at}}</div>
+                                <div class="text-xm text-gray-500">{{date('d-m-Y', strtotime($client->fecha_inicio))}}</div>
                             </td>
                             <td class="px-6 py-2 text-xm text-gray-500">
-                                {{$client->updated_at}}
+                                {{date('d-m-Y', strtotime($client->fecha_termino))}}
                             </td>
 
                         <td class="px-6 py-2">
@@ -211,7 +233,7 @@ span{
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 
                             <td class="px-6 py-2">
-                                <a  onclick="inactivar('{{$client->id}}','del_usr');" class=" inline-block text-center">
+                                <a  onclick="inac('{{$client->id}}','del_usr');" class=" inline-block text-center">
                                  <i class="fa-sharp fa-solid fa-trash text-red-600  text-[25px]"></i>
                                 </a>
                             </td>
@@ -238,7 +260,7 @@ span{
 </div>
 <script>
     //FUNCION PARA BORRAR REGISTROS// AUX ES LA RUTA QUE RECIBE
-    function inactivar(id, aux) {
+    function inac(id, aux) {
     Swal.fire({
         title: 'Estás seguro?',
         text: "Se inactivará el registro!",
