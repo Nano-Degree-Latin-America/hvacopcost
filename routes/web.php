@@ -67,6 +67,7 @@ Route::get('/lo_gout', 'UserController@lo_gout')->name('lo_gout');
 Route::post('/getPaises','IndexController@getPaises');
 Route::post('/getCiudades','IndexController@getCiudades');
 Route::post('/getDegreeHrs','IndexController@getdegreeHrs');
+Route::get('/getDegreeHrsadd/{id}','IndexController@getDegreeHrsadd');
 // rutas resultados
 Route::post('/resultados','ResultadosController@getResultados')->name('resultados');
 

@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     getPaises();
     traer_categorias_edif();
-    $('#div_next').addClass("hidden");
+    $('#div_next_h').addClass("hidden");
     $('#calcular').attr('disabled', true);
     $('#calcular').css('background-color','gray');
  /*    $('#next').attr('disabled', true); */
@@ -3628,3 +3628,26 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
         }
     })
 }
+
+function hrs_enfs_inps(value){
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+    var num = parseFloat(value);
+
+
+       var num_aux = dollarUSLocale.format(num);
+       var num_format_split = num_aux.split(',');
+       /* inpt.val(num_aux); */
+
+       $('#hrsEnfriado_1_2').val(num_aux);
+       $('#hrsEnfriado_1_3').val(num_aux);
+
+       $('#hrsEnfriado_2_1').val(num_aux);
+       $('#hrsEnfriado_2_2').val(num_aux);
+       $('#hrsEnfriado_2_3').val(num_aux);
+
+       $('#hrsEnfriado_3_1').val(num_aux);
+       $('#hrsEnfriado_3_2').val(num_aux);
+       $('#hrsEnfriado_3_3').val(num_aux);
+}
+
+

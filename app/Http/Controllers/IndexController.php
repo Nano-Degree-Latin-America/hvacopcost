@@ -63,4 +63,23 @@ class IndexController extends Controller
 
         return response()->json($submit);
     }
+
+    public function getDegreeHrsadd($id)
+    {
+        /*$project_hrs_edit = DB::table('projects')
+         ->where('id','=',$id)
+        ->first();
+
+
+        if($project_hrs_edit->created_at != $project_hrs_edit->updated_at){
+
+         } */
+
+         $hrs_edited = DB::table('solutions_project')
+         ->where('id_project','=',$id)
+         ->first()->coolings_hours;
+         return $hrs_edited;
+
+       /*  */
+    }
 }

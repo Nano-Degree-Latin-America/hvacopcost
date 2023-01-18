@@ -534,7 +534,7 @@ span{
                                                         <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                     </div>
                                                     <div class="flex justify-start w-1/3">
-                                                        <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado" id="hrsEnfriado" >
+                                                        <input type="text" style="font-size: 14px;" onchange="hrs_enfs_inps(this.value);format_nums_no_$(this.value,this.id);"onkeypress="return soloNumeros(event)" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado" id="hrsEnfriado" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -2519,7 +2519,7 @@ window.onload = function() {
     porcent = '{{ $project_edit->porcent_hvac }}';
     traer_porcent_ini(val,porcent);
     id_ciudad_ini =  '{{ $id_ciudad_ini }}';
-    getDegreeHrs_edd($('#paises_edit').val(),id_ciudad_ini);
+    traer_horas_enf_edit('{{ $project_edit->id }}');
 };
 function prueba(val){
     alert(val);
@@ -2759,6 +2759,40 @@ function getDegreeHrs_edd(pais,cd) {
             console.log(responsetext);
         }
     });
+}
+
+function traer_horas_enf_edit(id) {
+    $.ajax({
+        type: 'get',
+        url: '/getDegreeHrsadd/'+ id,
+        success: function (response) {
+            console.log(response);
+
+            let dollarUSLocale = Intl.NumberFormat('en-US');
+
+
+
+var num_aux = dollarUSLocale.format(response);
+
+$('#hrsEnfriado').val(num_aux);
+$('#hrsEnfriado_1_2').val(num_aux);
+$('#hrsEnfriado_1_3').val(num_aux);
+
+$('#hrsEnfriado_2_1').val(num_aux);
+$('#hrsEnfriado_2_2').val(num_aux);
+$('#hrsEnfriado_2_3').val(num_aux);
+
+$('#hrsEnfriado_3_1').val(num_aux);
+$('#hrsEnfriado_3_2').val(num_aux);
+$('#hrsEnfriado_3_3').val(num_aux);
+
+
+        },
+        error: function (responsetext) {
+
+        }
+    });
+
 }
 
 function cambiarLblMapa_Edit(txt) {
