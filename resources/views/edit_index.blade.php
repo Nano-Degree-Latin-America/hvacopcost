@@ -1260,7 +1260,7 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 mb-2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 ">
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
                                                                 <label style="" class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
@@ -1882,7 +1882,7 @@ span{
                                                             </div>
                                                         </div>
 
-                                                        <div class="flg:grid 2xl:flex xl:flexlex gap-x-2 w-1/2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="flex justify-start w-1/2">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
                                                             </div>
