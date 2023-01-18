@@ -478,6 +478,16 @@ img[usemap] {
         width: 100%;
     }
     #content div{
+       /*  width: 100%; */
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    /* se ejecutaran estos estilos */
+    .center {
+        width: 100%;
+    }
+    #content div{
         width: 100%;
     }
 }

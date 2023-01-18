@@ -360,19 +360,19 @@ span{
                 </div>
                 <div x-show.transition.in="step === 2">
 
-                    <div class="w-full">
+                    <div  class="ancho">
 
                           {{--   <hr style="width: 100%;"> --}}
                             <div id="content" style=" display: flex; justify-content: center;" class="font-roboto">
                                     <div style="width: 100%; text-align: -webkit-right;" class="mx-1">
-                                        <div style="background-color: #233064;" class="text-white rounded-t-xl w-80 flex justify-between py-3 ">
-                                            <div class="ml-5 w-1/3 flex justify-start">
+                                        <div style="background-color: #233064;" class="text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0  ">
+                                            <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
                                              <a href="#final1">   <button onclick="active_display('sol_1');" type="button" style="background-color: #233064;" class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button></a>
                                                 <input type="text" class="hidden" value="2" id="cont_sol_1" name="cont_sol_1">
                                                 <input type="text" class="hidden" value="1" id="set_sol_1" name="set_sol_1">
                                             </div>
-                                            <div class="ml-5 w-full flex justify-start py-1">
-                                                <h2 class="text-white font-bold text-3xl ml-2">Solucion Base</h2>
+                                            <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex  2xl:justify-start xl:justify-center lg:justify-center  py-1">
+                                                <h2 class="text-white font-bold text-3xl mr-8">Solucion Base</h2>
                                             </div>
                                           {{--   <div cslass="w-1/2 flex justify-start">
                                                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
@@ -388,9 +388,9 @@ span{
                                        <div class="flex w-full ">
                                         <div class="w-full  mt-2 mx-2 bg-gray-200 rounded-md shadow-md">
                                           <div class="w-full grid gap-y-2 my-2 ">
-                                            <div class="flex w-full">
+                                            <div class="flex w-full  gap-x-1">
 
-                                                <div class="flex gap-x-1 w-1/2 justify-start">
+                                                <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2 ">
                                                     <div class="w-1/3 flex justify-start">
                                                         <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                     </div>
@@ -410,7 +410,7 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex gap-x-2 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
                                                     </div>
@@ -424,8 +424,8 @@ span{
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full mt-3">
-                                                <div class="flex gap-x-2 w-1/2">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
 
                                                     <div class="w-1/3 flex justify-start">
                                                         <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
@@ -440,7 +440,7 @@ span{
                                                     <input  id="csDisenio_1_1_count" name="csDisenio_1_1_count" type="number" class="hidden" value="1">
                                                 </div>
 
-                                                <div class="flex gap-x-2 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="flex w-1/3 justify-start text-left">
                                                         <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
                                                     </div>
@@ -461,8 +461,8 @@ span{
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full mt-3">
-                                                <div class="flex w-1/2 gap-x-2">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
                                                     <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                        {{--  <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico</b><b style="font-size: 10px;"> $/Kwh</b> </label> --}}
                                                         <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
@@ -473,7 +473,7 @@ span{
                                                     <input  id="costo_elec_1_1_count" name="costo_elec_1_1_count" type="number" class="hidden" value="1">
                                                 </div>
 
-                                                <div class="flex gap-x-2 w-1/2 ml-3">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
                                                     <div class="flex justify-start w-1/3">
                                                         <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                     </div>
@@ -484,8 +484,8 @@ span{
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full mt-3">
-                                                <div class="flex w-1/2 gap-x-2">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                                                     <div class="flex justify-start w-1/3">
                                                         <select name="csStd" id="csStd"  onchange="set_ser_to_sers(this.value);" class="w-full py-1  border-2 border-blue-600 rounded-md">
                                                             <option value="SEER">SEER</option>
@@ -500,7 +500,7 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex gap-x-2 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="flex justify-start w-1/2">
                                                         <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
                                                     </div>
@@ -517,8 +517,8 @@ span{
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full mt-3">
-                                                <div class="flex gap-x-2 w-1/2">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start">
                                                         <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                     </div>
@@ -531,7 +531,7 @@ span{
                                                 </div>
 
 
-                                                <div class="flex gap-x-3 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                     <div class="flex w-1/3 justify-start text-left">
                                                         <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
                                                     </div>
@@ -552,14 +552,14 @@ span{
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full mt-3">
-                                                <div class="flex gap-x-2 w-1/2">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start">
-                                                        <input onchange="format_num(this.value,this.id);" type="text" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_1" id="cheValorS_1_1" >
+                                                        <input onchange="format_num(this.value,this.id);" type="text" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_1" id="cheValorS_1_1" >
                                                     </div>
                                                 </div>
 
@@ -583,8 +583,8 @@ span{
                                         <div class="rounded-xl mt-2 bg-gray-200 rounded-md shadow-md mx-2">
 
                                           <div class="grid gap-y-2 my-2">
-                                            <div class="flex w-full mt-3">
-                                                <div class="flex gap-x-2 w-1/2">
+                                            <div class="flex w-full mt-3 gap-x-1">
+                                                <div class="lg:grid 2xl:flex xl:flex  gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start">
                                                         <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                     </div>
@@ -604,13 +604,13 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex gap-x-2 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
                                                     </div>
 
                                                     <div class="w-full flex justify-start">
-                                                        <select style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md" onchange="valida_selects_inps(this.id);change_diseño(this.value,2,'csDisenio_1_2','tipo_control_1_2','dr_1_2','lblCsTipo_1_2');"  name="csTipo_1_2" id="csTipo_1_2">
+                                                        <select style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);change_diseño(this.value,2,'csDisenio_1_2','tipo_control_1_2','dr_1_2','lblCsTipo_1_2');"  name="csTipo_1_2" id="csTipo_1_2">
                                                         </select>
                                                     </div>
                                                     <input  id="csTipo_1_2_count" name="csTipo_1_2_count" type="number" class="hidden" value="1">
@@ -618,8 +618,8 @@ span{
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full mt-3">
-                                                <div class="flex gap-x-3 w-1/2">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                     <div class="w-1/3 flex justify-start">
                                                         <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
                                                     </div>
@@ -632,10 +632,12 @@ span{
                                                     <input type="text" style="display: none" id="name_diseno_1_2" name="name_diseno_1_2">
                                                 </div>
 
-                                                <div class="flex gap-x-2 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="flex w-1/3 justify-start text-left">
                                                         <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
                                                     </div>
+
+                                                    <div class="flex w-full justify-start gap-x-2">
                                                     <div class="w-full">
                                                         <input name="capacidad_total_1_2" id="capacidad_total_1_2" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
                                                     </div>
@@ -643,11 +645,12 @@ span{
                                                     <div class="w-full">
                                                         <input class="w-full h-full border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_1_2" id="unidad_capacidad_tot_1_2" >
                                                     </div>
+                                                    </div>
                                                 </div>
                                             </div>
 
                                             <div class="flex w-full mt-3">
-                                                <div class="flex w-1/2 gap-x-2">
+                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
@@ -658,7 +661,7 @@ span{
 
                                                 </div>
 
-                                                <div class="flex gap-x-2 w-1/2 ml-3">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
                                                     <div class="flex justify-start w-1/3">
                                                         <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                     </div>
@@ -671,8 +674,8 @@ span{
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full mt-3">
-                                                <div class="flex w-1/2 gap-x-2">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
 
                                                         <div class="flex justify-start w-1/3">
                                                         <input type="text" readonly name="csStd_1_2" id="csStd_1_2" class="w-full py-1  border-2 border-blue-600 rounded-md">
@@ -688,7 +691,7 @@ span{
 
                                                 </div>
 
-                                                <div class="flex gap-x-2 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="flex justify-start w-1/2">
                                                         <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
                                                     </div>
@@ -703,8 +706,8 @@ span{
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full mt-3">
-                                                <div class="flex gap-x-2 w-1/2">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start">
                                                         <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                     </div>
@@ -718,7 +721,7 @@ span{
                                                     <input type="text" style="display: none" id="dr_name_1_2" name="dr_name_1_2">
                                                 </div>
 
-                                                <div class="flex gap-x-3 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                     <div class="flex w-1/3 justify-start ">
                                                         <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
                                                     </div>
@@ -737,8 +740,8 @@ span{
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full mt-3">
-                                                <div class="flex gap-x-2 w-1/2">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                     </div>
@@ -765,181 +768,181 @@ span{
 
                                         <div class="flex">
 
-                                         <div class="w-full mt-2">
-                                           <div class="grid gap-y-2 my-2 mx-2 bg-gray-200 rounded-md shadow-md">
-                                             <div class="flex w-full mt-3">
-                                                 <div class="flex gap-x-2 w-1/2">
-                                                    <div class="w-1/3 flex justify-start">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
-                                                    </div>
-                                                    <div class="w-1/2 flex justify-start">
-                                                        <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,3,'csTipo_1_3');" name="cUnidad_1_3" id="cUnidad_1_3" >
-                                                             <option selected value="0">Seleccionar</option>
-                                                            <option value="1">Paquetes (RTU)</option>
-                                                            <option value="2">Split</option>
-                                                            <option value="3">VRF No Ductados</option>
-                                                            <option value="4">VRF Ductados</option>
-                                                            <option value="5">PTAC</option>
-                                                            <option value="6">WSHP</option>
-                                                            <option value="7">Minisplit Inverter</option>
-                                                            <option value="8">Chiller</option>
-                                                        </select>
-                                                    </div>
-                                                 </div>
-
-                                                 <div class="flex gap-x-2 w-1/2">
-                                                    <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
-                                                    </div>
-                                                    <div class="w-full flex justify-start">
-                                                     <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="valida_selects_inps(this.id);change_diseño(this.value,3,'csDisenio_1_3','tipo_control_1_3','dr_1_3','lblCsTipo_1_3');"   name="csTipo_1_3" id="csTipo_1_3">
-                                                     </select>
-                                                     <input  id="csTipo_1_3_count" name="csTipo_1_3_count" type="number" class="hidden" value="1">
-
-                                                    </div>
-                                                     <input type="text" style="display: none" id="lblCsTipo_1_3" name="lblCsTipo_1_3">
-                                                 </div>
-                                             </div>
-
-                                             <div class="flex w-full mt-3">
-                                                 <div class="flex gap-x-2 w-1/2">
-                                                    <div class="w-1/3 flex justify-start">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
-                                                    </div>
-                                                    <div class="w-1/2 flex justify-start">
-                                                     <select  onchange="valida_selects_inps(this.id);send_name(this.id);" class="w-full border-2 border-blue-600 rounded-md py-1" name="csDisenio_1_3" id="csDisenio_1_3">
-
-                                                     </select>
-                                                     <input  id="csDisenio_1_3_count" name="csDisenio_1_3_count" type="number" class="hidden" value="1">
-
-                                                    </div>
-                                                     <input type="text" style="display: none" id="name_diseno_1_3" name="name_diseno_1_3">
-                                                     <input type="text" style="display: none" id="lblCsDisenio_1_3" name="lblCsDisenio_1_3" value="ASHRAE 55/62.1/90.1">
-                                                 </div>
-
-                                                 <div class="flex gap-x-2 w-1/2">
-                                                    <div class="flex w-1/3 justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
-                                                    </div>
-                                                    <div class="flex w-full justify-start gap-x-2">
-                                                        <div class="w-full">
-                                                            <input type="text" style="font-size: 14px;" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" class="text-center w-full h-full border-2 border-blue-600 rounded-md py-1"  name="capacidad_total_1_3" id="capacidad_total_1_3">
+                                            <div class="mt-3 mx-2 bg-gray-200 rounded-md shadow-md">
+                                                <div class="grid gap-y-2 my-2">
+                                                    <div class="flex w-full mt-3 gap-x-1">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                           <div class="w-1/3 flex justify-start">
+                                                               <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                           </div>
+                                                           <div class="w-1/2 flex justify-start">
+                                                               <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,3,'csTipo_1_3');" name="cUnidad_1_3" id="cUnidad_1_3" >
+                                                                    <option selected value="0">Seleccionar</option>
+                                                                   <option value="1">Paquetes (RTU)</option>
+                                                                   <option value="2">Split</option>
+                                                                   <option value="3">VRF No Ductados</option>
+                                                                   <option value="4">VRF Ductados</option>
+                                                                   <option value="5">PTAC</option>
+                                                                   <option value="6">WSHP</option>
+                                                                   <option value="7">Minisplit Inverter</option>
+                                                                   <option value="8">Chiller</option>
+                                                               </select>
+                                                           </div>
                                                         </div>
-                                                        <input  id="capacidad_total_1_3_count" name="capacidad_total_1_3_count" type="number" class="hidden" value="1">
 
-                                                        <div class="w-full">
-                                                            <input class="w-full h-full border-2 border-blue-600 rounded-md py-1 text-center"  type="text" readonly name="unidad_capacidad_tot_1_3" id="unidad_capacidad_tot_1_3" >
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                           <div class="w-1/3 flex justify-start text-left">
+                                                               <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                           </div>
+                                                           <div class="w-full flex justify-start">
+                                                            <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="valida_selects_inps(this.id);change_diseño(this.value,3,'csDisenio_1_3','tipo_control_1_3','dr_1_3','lblCsTipo_1_3');"   name="csTipo_1_3" id="csTipo_1_3">
+                                                            </select>
+                                                            <input  id="csTipo_1_3_count" name="csTipo_1_3_count" type="number" class="hidden" value="1">
 
+                                                           </div>
+                                                            <input type="text" style="display: none" id="lblCsTipo_1_3" name="lblCsTipo_1_3">
                                                         </div>
                                                     </div>
 
-                                                 </div>
-                                             </div>
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                           <div class="w-1/3 flex justify-start">
+                                                               <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                           </div>
+                                                           <div class="w-1/2 flex justify-start">
+                                                            <select  onchange="valida_selects_inps(this.id);send_name(this.id);" class="w-full border-2 border-blue-600 rounded-md py-1" name="csDisenio_1_3" id="csDisenio_1_3">
 
-                                             <div class="flex w-full mt-3">
-                                                 <div class="flex w-1/2 gap-x-2">
-                                                    <div class="w-1/3 flex justify-start text-left">
-                                                        <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
-                                                    </div>
-                                                    <div class="w-1/2 flex justify-start">
-                                                     <input id="costo_elec_1_3" name="costo_elec_1_3" readonly onchange="valida_selects_inps(this.id);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"><p style="font-size: 12px; margin:0px;"></p>
-                                                    </div>
-                                                    <input  id="costo_elec_1_3_count" name="costo_elec_1_3_count" type="number" class="hidden" value="1">
+                                                            </select>
+                                                            <input  id="csDisenio_1_3_count" name="csDisenio_1_3_count" type="number" class="hidden" value="1">
 
-                                                 </div>
-
-                                                 <div class="flex gap-x-2 w-1/2 ml-3">
-                                                    <div class="flex justify-start w-1/3">
-                                                        <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
-                                                    </div>
-                                                    <div class="flex justify-start w-1/3">
-                                                        <input type="text" style="font-size: 14px;" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_1_3" id="hrsEnfriado_1_3">
-                                                    </div>
-                                                    <input  id="hrsEnfriado_1_3_count" name="hrsEnfriado_1_3_count" type="number" class="hidden" value="1">
-
-                                                </div>
-                                             </div>
-
-                                             <div class="flex w-full mt-3">
-                                                 <div class="flex w-1/2 gap-x-2">
-                                                    <div class="flex justify-start w-1/3">
-                                                         <input type="text" readonly name="csStd_1_3" id="csStd_1_3" class="w-full border-2 border-blue-600 rounded-md py-1">
-                                                    </div>
-                                                    <div class="flex justify-start w-1/4">
-                                                        <input type="number" onchange="valida_selects_inps(this.id);" id="csStd_cant_1_3" name="csStd_cant_1_3" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
-                                                        </div>
-                                                        <input  id="csStd_cant_1_3_count" name="csStd_cant_1_3_count" type="number" class="hidden" value="1">
-
-                                                    </div>
-
-                                                    <div class="flex gap-x-2 w-1/2">
-                                                        <div class="flex justify-start w-1/2">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                           </div>
+                                                            <input type="text" style="display: none" id="name_diseno_1_3" name="name_diseno_1_3">
+                                                            <input type="text" style="display: none" id="lblCsDisenio_1_3" name="lblCsDisenio_1_3" value="ASHRAE 55/62.1/90.1">
                                                         </div>
 
-                                                        <div class="flex justify-start w-full">
-                                                         <select class="w-full py-1 border-2 border-blue-600 rounded-md"  onchange="valida_selects_inps(this.id);send_name_t_c(this.id);" name="tipo_control_1_3" id="tipo_control_1_3">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                           <div class="flex w-1/3 justify-start text-left">
+                                                               <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                           </div>
+                                                           <div class="flex w-full justify-start gap-x-2">
+                                                               <div class="w-full">
+                                                                   <input type="text" style="font-size: 14px;" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" class="text-center w-full h-full border-2 border-blue-600 rounded-md py-1"  name="capacidad_total_1_3" id="capacidad_total_1_3">
+                                                               </div>
+                                                               <input  id="capacidad_total_1_3_count" name="capacidad_total_1_3_count" type="number" class="hidden" value="1">
 
-                                                         </select>
-                                                         <input  id="tipo_control_1_3_count" name="tipo_control_1_3_count" type="number" class="hidden" value="1">
+                                                               <div class="w-full">
+                                                                   <input class="w-full h-full border-2 border-blue-600 rounded-md py-1 text-center"  type="text" readonly name="unidad_capacidad_tot_1_3" id="unidad_capacidad_tot_1_3" >
+
+                                                               </div>
+                                                           </div>
 
                                                         </div>
-                                                         <input type="text" style="display: none" id="name_t_control_1_3" name="name_t_control_1_3">
+                                                    </div>
+
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
+                                                           <div class="w-1/3 flex justify-start text-left">
+                                                               <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                           </div>
+                                                           <div class="w-1/2 flex justify-start">
+                                                            <input id="costo_elec_1_3" name="costo_elec_1_3" readonly onchange="valida_selects_inps(this.id);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"><p style="font-size: 12px; margin:0px;"></p>
+                                                           </div>
+                                                           <input  id="costo_elec_1_3_count" name="costo_elec_1_3_count" type="number" class="hidden" value="1">
+
+                                                        </div>
+
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
+                                                           <div class="flex justify-start w-1/3">
+                                                               <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                           </div>
+                                                           <div class="flex justify-start w-1/3">
+                                                               <input type="text" style="font-size: 14px;" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_1_3" id="hrsEnfriado_1_3">
+                                                           </div>
+                                                           <input  id="hrsEnfriado_1_3_count" name="hrsEnfriado_1_3_count" type="number" class="hidden" value="1">
+
+                                                       </div>
+                                                    </div>
+
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                        <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
+                                                           <div class="flex justify-start w-1/3">
+                                                                <input type="text" readonly name="csStd_1_3" id="csStd_1_3" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                           </div>
+                                                           <div class="flex justify-start w-1/4">
+                                                               <input type="number" onchange="valida_selects_inps(this.id);" id="csStd_cant_1_3" name="csStd_cant_1_3" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
+                                                               </div>
+                                                               <input  id="csStd_cant_1_3_count" name="csStd_cant_1_3_count" type="number" class="hidden" value="1">
+
+                                                           </div>
+
+                                                           <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                               <div class="flex justify-start w-1/2">
+                                                                   <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                               </div>
+
+                                                               <div class="flex justify-start w-full">
+                                                                <select class="w-full py-1 border-2 border-blue-600 rounded-md"  onchange="valida_selects_inps(this.id);send_name_t_c(this.id);" name="tipo_control_1_3" id="tipo_control_1_3">
+
+                                                                </select>
+                                                                <input  id="tipo_control_1_3_count" name="tipo_control_1_3_count" type="number" class="hidden" value="1">
+
+                                                               </div>
+                                                                <input type="text" style="display: none" id="name_t_control_1_3" name="name_t_control_1_3">
+
+                                                           </div>
 
                                                     </div>
 
-                                            </div>
 
 
+                                                    <div class="flex w-full2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
+                                                           <div class="w-1/3 flex justify-start">
+                                                               <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                           </div>
+                                                           <div class="w-full flex justify-start">
+                                                            <select style="width: 80%;" class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_1_3" id="dr_1_3" >
+                                                                <option value="0">Seleccionar</option>
 
-                                             <div class="flex w-full mt-3">
-                                                 <div class="flex gap-x-3 w-1/2">
-                                                    <div class="w-1/3 flex justify-start">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                            </select>
+                                                            <input  id="dr_1_3_count" name="dr_1_3_count" type="number" class="hidden" value="1">
+
+                                                           </div>
+                                                            <input type="text" style="display: none" id="dr_name_1_3" name="dr_name_1_3">
+                                                        </div>
+
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
+                                                           <div class="flex w-1/3 justify-start">
+                                                               <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                           </div>
+                                                           <div class="flex w-full justify-start">
+                                                            <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="valida_selects_inps(this.id);" name="csMantenimiento_1_3" id="csMantenimiento_1_3">
+                                                               <option selected value="0">Seleccionar</option>
+                                                               <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
+                                                               <option value="Deficiente">Deficiente</option>
+                                                               <option value="Sin Mantenimiento">Sin Mantenimiento</option>
+                                                            </select>
+                                                            <input  id="csMantenimiento_1_3_count" name="csMantenimiento_1_3_count" type="number" class="hidden" value="1">
+
+                                                           </div>
+                                                            <input type="text" style="display: none" id="lblCsMantenimiento_1_3" name="lblCsMantenimiento_1_3" value="ASHRAE 180 Proactivo">
+
+                                                        </div>
                                                     </div>
-                                                    <div class="w-full flex justify-start">
-                                                     <select style="width: 80%;" class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_1_3" id="dr_1_3" >
-                                                         <option value="0">Seleccionar</option>
 
-                                                     </select>
-                                                     <input  id="dr_1_3_count" name="dr_1_3_count" type="number" class="hidden" value="1">
-
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 mb-2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
+                                                           <div class="w-1/3 flex justify-start text-left">
+                                                               <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                           </div>
+                                                           <div class="w-1/2 flex justify-start">
+                                                                <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_3" id="cheValorS_1_3" >
+                                                           </div>
+                                                       </div>
+                                                       <div class="flex gap-x-3 w-1/2 justify-end">
+                                                           <button onclick="inactive_display('sol_1')"  type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                       </div>
                                                     </div>
-                                                     <input type="text" style="display: none" id="dr_name_1_3" name="dr_name_1_3">
-                                                 </div>
-
-                                                 <div class="flex gap-x-3 w-1/2">
-                                                    <div class="flex w-1/3 justify-start">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
-                                                    </div>
-                                                    <div class="flex w-full justify-start">
-                                                     <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="valida_selects_inps(this.id);" name="csMantenimiento_1_3" id="csMantenimiento_1_3">
-                                                        <option selected value="0">Seleccionar</option>
-                                                        <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
-                                                        <option value="Deficiente">Deficiente</option>
-                                                        <option value="Sin Mantenimiento">Sin Mantenimiento</option>
-                                                     </select>
-                                                     <input  id="csMantenimiento_1_3_count" name="csMantenimiento_1_3_count" type="number" class="hidden" value="1">
-
-                                                    </div>
-                                                     <input type="text" style="display: none" id="lblCsMantenimiento_1_3" name="lblCsMantenimiento_1_3" value="ASHRAE 180 Proactivo">
-
-                                                 </div>
-                                             </div>
-
-                                             <div class="flex w-full mt-3 mb-2">
-                                                 <div class="flex gap-x-3 w-1/2">
-                                                    <div class="w-1/3 flex justify-start text-left">
-                                                        <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
-                                                    </div>
-                                                    <div class="w-1/2 flex justify-start">
-                                                         <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_3" id="cheValorS_1_3" >
-                                                    </div>
-                                                </div>
-                                                <div class="flex gap-x-3 w-1/2 justify-end">
-                                                    <button onclick="inactive_display('sol_1')"  type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
-                                                </div>
-                                            </div>
 
                                            </div>
                                          </div>
@@ -1045,15 +1048,15 @@ span{
                                 </div>
                                     <div style="width: 100%" class="mx-1">
                                         {{-- 2.1 --}}
-                                        <div  class="text-white rounded-t-xl w-80 bg-blue-700 flex justify-between py-3 ">
-                                            <div class="ml-5 w-1/3 flex justify-start">
+                                        <div  class="text-white rounded-t-xl w-80 bg-blue-700 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
+                                            <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
                                                 <a href="#final2">
                                                     <button onclick="active_display('sol_2');" type="button"  class="bg-blue-700 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white "></i></button>
                                                 </a>
                                             <input type="number" class="hidden" value="2" id="cont_sol_2" name="cont_sol_2">
                                             </div>
-                                            <div class="ml-5 w-full flex justify-start py-1">
-                                                <h2 class="text-white font-bold justify-start text-3xl ml-5">Solución A</h2>
+                                            <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex 2xl:justify-start xl:justify-center lg:justify-center py-1">
+                                                <h2 class="text-white font-bold justify-start text-3xl mr-10">Solución A</h2>
                                             </div>
                                           {{--   <div cslass="w-1/2 flex justify-start">
                                                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
@@ -1067,8 +1070,8 @@ span{
                                             <div class="flex">
                                                 <div class="w-full mx-2 mt-2 bg-gray-200 rounded-md shadow-md">
                                                   <div class="grid gap-y-2 my-1">
-                                                    <div class="flex w-full mt-2">
-                                                        <div class="flex gap-x-1 w-1/2 justify-start">
+                                                    <div class="flex w-full gap-x-1">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                             <div class="w-1/3 flex justify-start">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                             </div>
@@ -1087,7 +1090,7 @@ span{
                                                             </div>
                                                         </div>
 
-                                                        <div class="flex gap-x-2 w-1/2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
                                                             </div>
@@ -1101,8 +1104,8 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full mt-3">
-                                                        <div class="flex gap-x-2 w-1/2">
+                                                    <div class="flex w-full  2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="w-1/3 flex justify-start">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
                                                             </div>
@@ -1115,7 +1118,7 @@ span{
                                                             <input type="text" style="display: none" id="name_diseno_2_1" name="name_diseno_2_1">
                                                         </div>
 
-                                                        <div class="flex gap-x-2 w-1/2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="flex w-1/3 justify-start text-left">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
                                                             </div>
@@ -1132,8 +1135,8 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full mt-3">
-                                                        <div class="flex w-1/2 gap-x-2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
                                                             <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                                 <label style="" class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
@@ -1144,7 +1147,7 @@ span{
                                                         </div>
                                                         </div>
 
-                                                        <div class="flex gap-x-2 w-1/2 ml-3">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
                                                             <div class="flex justify-start w-1/3">
                                                                 <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                             </div>
@@ -1155,8 +1158,8 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full mt-3">
-                                                        <div class="flex w-1/2 gap-x-2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                        <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                                                             <div class="flex justify-start w-1/3">
                                                                 <input name="csStd_2_1" readonly id="csStd_2_1" class="w-full border-2 border-blue-600 rounded-md py-1">
                                                             </div>
@@ -1167,7 +1170,7 @@ span{
 
                                                         </div>
 
-                                                        <div class="flex gap-x-2 w-1/2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="flex justify-start w-1/2">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
                                                             </div>
@@ -1182,8 +1185,8 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full mt-3">
-                                                        <div class="flex gap-x-3 w-1/2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="w-1/3 flex justify-start">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                             </div>
@@ -1197,7 +1200,7 @@ span{
                                                             <input  id="dr_2_1_count" name="dr_2_1_count" type="number" class="hidden" value="1">
                                                         </div>
 
-                                                        <div class="flex gap-x-3 w-1/2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                             <div class="flex w-1/3 justify-start">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
                                                             </div>
@@ -1214,13 +1217,13 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full mt-3">
-                                                        <div class="flex gap-x-3 w-1/2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
                                                                 <label class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md text-center"  step="0.01" step="0.01" name="cheValorS_2_1" id="cheValorS_2_1" >
+                                                                <input onchange="format_num(this.value,this.id);"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md text-center py-1"  step="0.01" step="0.01" name="cheValorS_2_1" id="cheValorS_2_1" >
                                                             </div>
                                                         </div>
 
@@ -1239,8 +1242,8 @@ span{
                                         <div class="flex">
                                             <div class=" mt-2  mx-2 bg-gray-200 rounded-md shadow-md">
                                               <div class="grid gap-y-2 my-2">
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-1 w-1/2">
+                                                <div class="flex w-full mt-3 gap-x-1">
+                                                    <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
@@ -1259,7 +1262,7 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex  gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
                                                         <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
                                                         </div>
@@ -1273,8 +1276,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
                                                         </div>
@@ -1288,7 +1291,7 @@ span{
                                                         <input type="text" style="display: none" id="name_diseno_2_2" name="name_diseno_2_2">
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex w-1/3 justify-start text-left">
                                                             <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
                                                         </div>
@@ -1306,8 +1309,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex w-1/2 gap-x-2">
+                                                <div class="flex w-full xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                             <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
@@ -1318,7 +1321,7 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2 ml-3">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
 
                                                         <div class="flex justify-start w-1/3">
                                                             <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
@@ -1330,8 +1333,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex w-1/2 gap-x-2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 w-1/2 gap-x-2  gap-y-1">
                                                         <div class="flex justify-start w-1/3">
                                                             <input readonly name="csStd_2_2" id="csStd_2_2" class="w-full border-2 border-blue-600 rounded-md py-1">
 
@@ -1343,7 +1346,7 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex justify-start w-1/2">
                                                             <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
                                                         </div>
@@ -1358,8 +1361,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                         </div>
@@ -1372,7 +1375,7 @@ span{
                                                         <input type="text" style="display: none" id="dr_name_2_2" name="dr_name_2_2">
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex w-1/3 justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
                                                         </div>
@@ -1392,8 +1395,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                        <div class="flex gap-x-3 w-1/2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
                                                                 <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                             </div>
@@ -1419,8 +1422,8 @@ span{
                                         <div class="flex">
                                             <div class="mt-3 mx-2 bg-gray-200 rounded-md shadow-md">
                                               <div class="grid gap-y-2 my-2">
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                <div class="flex w-full mt-3  gap-x-1">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
@@ -1438,7 +1441,7 @@ span{
                                                     </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex  gap-x-3 w-1/2">
                                                          <div class="w-1/3 flex justify-start text-left">
                                                         <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
                                                          </div>
@@ -1451,8 +1454,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                <div class="flex  w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
                                                         </div>
@@ -1464,7 +1467,7 @@ span{
                                                         <input type="text" style="display: none" id="name_diseno_2_3" name="name_diseno_2_3">
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex  gap-x-2 w-1/2">
                                                         <div class="flex w-1/3 justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
                                                         </div>
@@ -1481,8 +1484,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex w-1/2 gap-x-2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                             <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
@@ -1491,7 +1494,7 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2 ml-3">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
                                                         <div class="flex justify-start w-1/3">
                                                             <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
@@ -1501,8 +1504,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex w-1/2 gap-x-2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                                                         <div class="flex justify-start w-1/3">
                                                             <input readonly name="csStd_2_3" id="csStd_2_3" class="w-full border-2 border-blue-600 rounded-md py-1">
 
@@ -1512,7 +1515,7 @@ span{
                                                           </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex justify-start w-1/2">
                                                             <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
                                                         </div>
@@ -1525,20 +1528,20 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                         </div>
                                                         <div class="w-full flex justify-start">
                                                         <select  style="width: 80%;" class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="send_name_dr(this.id);" name="dr_2_3" id="dr_2_3" >
-                                                            <option value="">Seleccione una opcion</option>
+
                                                         </select>
                                                         </div>
                                                         <input type="text" style="display: none" id="dr_name_2_3" name="dr_name_2_3">
                                                     </div>
 
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="flex w-1/3 justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
                                                         </div>
@@ -1552,8 +1555,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
                                                             <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                         </div>
@@ -1686,15 +1689,15 @@ span{
 
                                     <div style="width: 100%" class="mx-1">
                                          {{-- 3.1 --}}
-                                         <div  class="bg-blue-500 text-white rounded-t-xl w-80 flex justify-between py-3 ">
-                                            <div class="ml-5 w-1/3 flex justify-start">
+                                         <div  class="bg-blue-500 text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
+                                            <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
                                                 <a href="#final3">
                                                     <button onclick="active_display('sol_3');" type="button"  class="bg-blue-500 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button>
                                                 </a>
                                                 <input type="number" class="hidden" value="2" id="cont_sol_3" name="cont_sol_3">
                                             </div>
-                                            <div class="ml-5 w-full flex justify-start py-1">
-                                                <h2 class="text-white font-bold justify-start  text-3xl ml-5">Solución B</h2>
+                                            <div class="2xl:ml-0 xl:ml-0 lg:ml-10 w-full flex 2xl:justify-start xl:justify-center lg:justify-center py-1">
+                                                <h2 class="text-white font-bold  text-3xl mr-10">Solución B</h2>
                                             </div>
                                           {{--   <div cslass="w-1/2 flex justify-start">
                                                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
@@ -1708,8 +1711,8 @@ span{
                                             <div class="flex">
                                                 <div class="w-full mx-2 mt-2 bg-gray-200 rounded-md shadow-md">
                                                   <div class="grid gap-y-2 my-1">
-                                                    <div class="flex w-full mt-2">
-                                                        <div class="flex gap-x-1 w-1/2">
+                                                    <div class="flex w-full  gap-x-1">
+                                                        <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2">
                                                             <div class="w-1/3 flex justify-start">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                             </div>
@@ -1728,7 +1731,7 @@ span{
                                                             </div>
                                                         </div>
 
-                                                        <div class="flex gap-x-2 w-1/2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
                                                                  <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
                                                              </div>
@@ -1743,8 +1746,8 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full mt-3">
-                                                        <div class="flex gap-x-2 w-1/2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="w-1/3 flex justify-start">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
                                                             </div>
@@ -1757,7 +1760,7 @@ span{
                                                             <input type="text" style="display: none" id="name_diseno_3_1" name="name_diseno_3_1">
                                                         </div>
 
-                                                        <div class="flex gap-x-2 w-1/2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="flex w-1/3 justify-start text-left">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
                                                             </div>
@@ -1777,8 +1780,8 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full mt-3">
-                                                        <div class="flex w-1/2 gap-x-2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
                                                             <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                                 <label style="" class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
@@ -1788,7 +1791,7 @@ span{
                                                             <input  id="costo_elec_3_1_count" name="costo_elec_3_1_count" type="number" class="hidden" value="1">
                                                         </div>
 
-                                                        <div class="flex gap-x-2 w-1/2 ml-3">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
                                                             <div class="flex justify-start w-1/3">
                                                                 <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                             </div>
@@ -1801,11 +1804,10 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full mt-3">
-                                                        <div class="flex w-1/2 gap-x-2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                        <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                                                             <div class="flex justify-start w-1/3">
                                                                 <input readonly type="text" name="csStd2_3_1" id="csStd2_3_1" class="w-full py-1 border-2 border-blue-600 rounded-md">
-
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
                                                              <input  name="cheStd_3_1" id="cheStd_3_1" onchange="valida_selects_inps(this.id);" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
@@ -1813,7 +1815,7 @@ span{
                                                             <input  id="cheStd_3_1_count" name="cheStd_3_1_count" type="number" class="hidden" value="1">
                                                         </div>
 
-                                                        <div class="flex gap-x-2 w-1/2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="flex justify-start w-1/2">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
                                                             </div>
@@ -1828,8 +1830,8 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full mt-3">
-                                                        <div class="flex gap-x-3 w-1/2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="w-1/3 flex justify-start">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                             </div>
@@ -1843,7 +1845,7 @@ span{
 
                                                         </div>
 
-                                                        <div class="flex gap-x-3 w-1/2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                             <div class="flex w-1/3 justify-start text-left">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
                                                             </div>
@@ -1860,13 +1862,13 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full mt-3">
-                                                        <div class="flex gap-x-3 w-1/2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
                                                                 <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                 <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1  text-center"  step="0.01" step="0.01" name="cheValorS_3_1" id="cheValorS_3_1" >
+                                                                 <input onchange="format_num(this.value,this.id);"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1  text-center"  step="0.01" step="0.01" name="cheValorS_3_1" id="cheValorS_3_1" >
                                                                 </div>
                                                         </div>
 
@@ -1885,8 +1887,8 @@ span{
                                         <div class="flex w-full">
                                             <div class=" mx-2 bg-gray-200 rounded-md shadow-md w-full  mt-2">
                                               <div class="grid gap-y-2 my-2">
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                <div class="flex w-full mt-3 gap-x-1">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
@@ -1905,7 +1907,7 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                          <div class="w-1/3 flex justify-start text-left">
                                                               <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
                                                         </div>
@@ -1919,8 +1921,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
                                                         </div>
@@ -1933,7 +1935,7 @@ span{
                                                         <input type="text" id="name_diseno_3_2" name="name_diseno_3_2" style="display: none" >
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex w-1/3 justify-start text-left">
                                                             <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
                                                         </div>
@@ -1952,8 +1954,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex w-1/2 gap-x-2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                             <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
@@ -1964,7 +1966,7 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2 ml-3">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
                                                         <div class="flex justify-start w-1/3">
                                                             <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
@@ -1976,8 +1978,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex w-1/2 gap-x-2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                                                         <div class="flex justify-start w-1/3">
                                                             <input type="text" name="csStd_3_2" id="csStd_3_2" class="w-full py-1 border-2 border-blue-600 rounded-md">
 
@@ -1990,7 +1992,7 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex justify-start w-1/2">
                                                             <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
                                                         </div>
@@ -2005,8 +2007,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                         </div>
@@ -2020,7 +2022,7 @@ span{
                                                         <input type="text" id="dr_name_3_2" name="dr_name_3_2" style="display:none;">
                                                     </div>
 
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="flex w-1/3 justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
                                                         </div>
@@ -2040,8 +2042,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
                                                             <label class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                         </div>
@@ -2067,8 +2069,8 @@ span{
                                         <div class="flex">
                                             <div class="mx-2 bg-gray-200 rounded-md shadow-md w-full  mt-2 w-full mt-2">
                                               <div class="grid gap-y-2 my-2">
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                <div class="flex w-full mt-3  gap-x-1">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
@@ -2087,7 +2089,7 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                       <div class="w-1/3 flex justify-start text-left">
                                                             <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
                                                       </div>
@@ -2100,8 +2102,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
                                                         </div>
@@ -2113,22 +2115,23 @@ span{
                                                         <input type="text" style="display: none" id="name_diseno_3_3" name="name_diseno_3_3">
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex w-1/3 justify-start text-left">
                                                             <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
                                                         </div>
+                                                        <div class="flex w-full justify-start gap-x-2">
                                                         <div class="w-full">
                                                          <input name="capacidad_total_3_3" id="capacidad_total_3_3" type="text" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md h-full text-center" >
                                                         </div>
                                                         <div class="w-full">
                                                             <input readonly  type="text" class="w-full h-full py-2 border-2 border-blue-600 rounded-md text-center" name="unidad_capacidad_tot_3_3" id="unidad_capacidad_tot_3_3" >
-
                                                         </div>
+                                                    </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex w-1/2 gap-x-2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left">
                                                             <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
@@ -2137,7 +2140,7 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2 ml-3">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
                                                         <div class="flex justify-start w-1/3 text-left">
                                                             <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
@@ -2148,8 +2151,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex w-1/2 gap-x-2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                                                         <div class="flex justify-start w-1/3">
                                                             <input readonly type="text" name="csStd_3_3" id="csStd_3_3" class="w-full py-1 border-2 border-blue-600 rounded-md">
 
@@ -2159,7 +2162,7 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-2 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex justify-start w-1/2">
                                                             <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
                                                         </div>
@@ -2172,8 +2175,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                         </div>
@@ -2184,7 +2187,7 @@ span{
                                                         <input type="text" style="display: none" id="dr_name_3_3" name="dr_name_3_3">
                                                     </div>
 
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="flex w-1/3 justify-start">
                                                             <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
                                                         </div>
@@ -2199,8 +2202,8 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full mt-3">
-                                                    <div class="flex gap-x-3 w-1/2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
                                                             <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                         </div>
@@ -2245,6 +2248,9 @@ span{
                 </div>
 
             </div>
+            <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+                {{-- espacio --}}
+        </div>
             <!-- / Step Content -->
         </div>
     </div>
@@ -2297,9 +2303,50 @@ span{
     }
 }
 /* lg	1024px */
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
     .labels{
         font-size:11px;
+    }
+    .ancho{
+        width:60%;
+        margin-left:20%;
+    }
+
+}
+
+@media (max-width: 1082px) {
+    .labels{
+        font-size:11px;
+    }
+    .ancho{
+        width:60%;
+        margin-left:20%;
+    }
+}
+@media (min-width: 1085px) {
+    .labels{
+        font-size:11px;
+    }
+    .ancho{
+        width:100%;
+    }
+}
+
+@media (min-width: 1090px) {
+    .labels{
+        font-size:11px;
+    }
+    .ancho{
+        width:100%;
+    }
+}
+
+@media (min-width: 1230px) {
+    .labels{
+        font-size:11px;
+    }
+    .ancho{
+        width:100%;
     }
 }
 /* xl	1280px */
@@ -2307,34 +2354,45 @@ span{
     .labels{
         font-size:11px;
     }
+    .ancho{
+        width:100%;
+    }
 }
 
 @media (min-width: 1540px) {
     .labels{
         font-size:11px;
     }
-
+    .ancho{
+        width:100%;
+    }
 }
 
 @media (min-width: 1640px) {
     .labels{
         font-size:11px;
     }
-
+    .ancho{
+        width:100%;
+    }
 }
 
 @media (min-width: 1760px) {
     .labels{
         font-size:13px;
     }
-
+    .ancho{
+        width:100%;
+    }
 }
 /* 2xl	1536px */
 @media (min-width: 1940px) {
     .labels{
         font-size:14px;
     }
-
+    .ancho{
+        width:100%;
+    }
 }
 
 @media (min-width: 640px) {
