@@ -244,7 +244,7 @@ span{
 				<div class="h-full">
 					<div x-show.transition.in="step === 1">
                         <div class="w-full flex justify-center">
-                            <div class="w-3/4">
+                            <div class="2xl:w-3/4 xl:2/4">
                                 <div class="grid my-3 bg-gray-200 rounded-md shadow-xl">
                                     <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
                                         <label  class="font-bold text-white text-3xl font-roboto">ANÁLISIS ENERGÉTICO - ENFRIAMIENTO</label>
@@ -348,17 +348,17 @@ span{
                                                 {{-- ----DIV --}}
                                                         @if ($solution->num_enf == 1)
                                                         <div class="w-full bg-blue-800 rounded-md p-2 text-center">
-                                                        <label class="text-white font-bold text-4xl font-roboto" for="">Solución Base</label>
+                                                        <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl md:text-4xl  font-roboto" for="">Solución Base</label>
                                                         @endif
 
                                                         @if ($solution->num_enf == 2 || $solution->num_enf == 3)
                                                         <div class="w-full bg-blue-500 rounded-md p-2 text-center">
                                                             @if ($solution->num_enf == 2 )
-                                                            <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
+                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución A</label>
                                                             @endif
 
                                                             @if ($solution->num_enf == 3 )
-                                                            <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
+                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución B</label>
                                                             @endif
                                                         @endif
 
@@ -562,17 +562,17 @@ span{
                                                         {{-- ----DIV --}}
                                                                 @if ($solution->num_enf == 1)
                                                                 <div class="w-full bg-blue-800 rounded-md p-2 text-center">
-                                                                <label class="text-white font-bold text-4xl font-roboto" for="">Solución Base</label>
+                                                                <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución Base</label>
                                                                 @endif
 
                                                                 @if ($solution->num_enf == 2 || $solution->num_enf == 3)
                                                                 <div class="w-full bg-blue-500 rounded-md p-2 text-center">
                                                                     @if ($solution->num_enf == 2 )
-                                                                    <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
+                                                                    <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución A</label>
                                                                     @endif
 
                                                                     @if ($solution->num_enf == 3 )
-                                                                    <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
+                                                                    <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución B</label>
                                                                     @endif
                                                                 @endif
 
@@ -776,17 +776,17 @@ span{
                                                                 {{-- ----DIV --}}
                                                                         @if ($solution->num_enf == 1)
                                                                         <div class="w-full bg-blue-800 rounded-md p-2 text-center">
-                                                                        <label class="text-white font-bold text-4xl font-roboto" for="">Solución Base</label>
+                                                                        <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución Base</label>
                                                                         @endif
 
                                                                         @if ($solution->num_enf == 2 || $solution->num_enf == 3)
                                                                         <div class="w-full bg-blue-500 rounded-md p-2 text-center">
                                                                             @if ($solution->num_enf == 2 )
-                                                                            <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
+                                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución A</label>
                                                                             @endif
 
                                                                             @if ($solution->num_enf == 3 )
-                                                                            <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
+                                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución B</label>
                                                                             @endif
                                                                         @endif
 
@@ -2139,7 +2139,7 @@ span{
 
 					<div x-show.transition.in="step === 2">
                         <div class="w-full flex justify-center">
-                            <div class="w-3/4 my-3 ">
+                            <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
                                 <div class="grid bg-gray-200 rounded-md shadow-xl">
                                     <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
                                         <label class="font-bold text-white text-2xl font-roboto text-3xl">RESULTADOS ANÁLISIS ENERGÉTICO</label>
@@ -2572,7 +2572,7 @@ span{
 					</div>
 					<div x-show.transition.in="step === 3">
                         <div class="w-full flex justify-center">
-                            <div class="w-3/4 my-3 ">
+                            <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
                                 <div class="grid bg-gray-200 rounded-md shadow-xl">
                                     <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
                                         <label class="font-bold text-white text-2xl font-roboto text-4xl">RESULTADOS ANÁLISIS FINANCIERO</label>
@@ -3118,15 +3118,15 @@ span{
                                                @if ($result2 !== null)
                                                <?php  $roi_ent_dif_inv=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,3,$dif_1_cost) ?>
                                                     @if ($roi_ent_dif_inv <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_ent_dif_inv)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv > 0 && $roi_ent_dif_inv < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_ent_dif_inv)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_ent_dif_inv)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv)}}%</b>
                                                     @endif
                                                @endif
 
@@ -3140,15 +3140,15 @@ span{
                                                 @if ($result2 !== null)
                                                 <?php  $roi_ent_dif_inv_5=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,5,$dif_1_cost) ?>
                                                     @if ($roi_ent_dif_inv_5 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_ent_dif_inv_5)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_5)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_5 > 0 && $roi_ent_dif_inv_5 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_ent_dif_inv_5)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_5)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_5 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_ent_dif_inv_5)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_5)}}%</b>
                                                     @endif
                                                 @endif
 
@@ -3162,15 +3162,15 @@ span{
                                                @if ($result2 !== null)
                                                <?php  $roi_ent_dif_inv_10=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,10,$dif_1_cost) ?>
                                                     @if ($roi_ent_dif_inv_10 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_ent_dif_inv_10)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_10)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_10 > 0 && $roi_ent_dif_inv_10 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_ent_dif_inv_10)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_10)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_10 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_ent_dif_inv_10)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_10)}}%</b>
                                                     @endif
                                                @endif
 
@@ -3185,15 +3185,15 @@ span{
                                                <?php  $roi_ent_dif_inv_15=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,15,$dif_1_cost) ?>
 
                                                     @if ($roi_ent_dif_inv_15 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_ent_dif_inv_15)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_15)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_15 > 0 && $roi_ent_dif_inv_15 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_ent_dif_inv_15)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_15)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_15 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_ent_dif_inv_15)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_15)}}%</b>
                                                     @endif
 
                                                     @endif
@@ -3214,15 +3214,15 @@ span{
                                               @if ($result3 !== null)
                                               <?php  $roi_ent_dif_inv_b_1=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,3,$dif_2_cost) ?>
                                                     @if ($roi_ent_dif_inv_b_1 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_ent_dif_inv_b_1)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_1)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_b_1 > 0 && $roi_ent_dif_inv_b_1 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_ent_dif_inv_b_1)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_1)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_b_1 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_ent_dif_inv_b_1)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_1)}}%</b>
                                                     @endif
                                               @endif
 
@@ -3236,15 +3236,15 @@ span{
                                                @if ($result3 !== null)
                                                <?php  $roi_ent_dif_inv_b_2=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,5,$dif_2_cost) ?>
                                                     @if ($roi_ent_dif_inv_b_2 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_ent_dif_inv_b_2)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_2)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_b_2 > 0 && $roi_ent_dif_inv_b_2 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_ent_dif_inv_b_2)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_2)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_b_2 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_ent_dif_inv_b_2)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_2)}}%</b>
                                                     @endif
                                                @endif
 
@@ -3258,15 +3258,15 @@ span{
                                               @if ($result3 !== null)
                                               <?php  $roi_ent_dif_inv_b_3=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,10,$dif_2_cost) ?>
                                                     @if ($roi_ent_dif_inv_b_3 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_ent_dif_inv_b_3)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_3)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_b_3 > 0 && $roi_ent_dif_inv_b_3 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_ent_dif_inv_b_3)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_3)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_b_3 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_ent_dif_inv_b_3)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_3)}}%</b>
                                                     @endif
                                               @endif
 
@@ -3280,15 +3280,15 @@ span{
                                               @if ($result3 !== null)
                                               <?php  $roi_ent_dif_inv_b_4=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,15,$dif_2_cost) ?>
                                                      @if ($roi_ent_dif_inv_b_4 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_ent_dif_inv_b_4)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_4)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_b_4 > 0 && $roi_ent_dif_inv_b_4 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_ent_dif_inv_b_4)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_4)}}%</b>
                                                     @endif
 
                                                     @if ($roi_ent_dif_inv_b_4 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_ent_dif_inv_b_4)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_4)}}%</b>
                                                     @endif
                                               @endif
 
@@ -3341,15 +3341,15 @@ span{
                                               @if ($result2 !== null)
                                               <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(3,$dif_1_cost,$inv_ini_2) ?>
                                                 @if ($roi_inv_tot_1 <= 0)
-                                                <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_inv_tot_1)}}%</b>
+                                                <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_1)}}%</b>
                                                 @endif
 
                                                 @if ($roi_inv_tot_1 > 0 && $roi_inv_tot_1 < 20)
-                                                <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_inv_tot_1)}}%</b>
+                                                <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_1)}}%</b>
                                                 @endif
 
                                                 @if ($roi_inv_tot_1 > 20)
-                                                <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_inv_tot_1)}}%</b>
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_1)}}%</b>
                                                 @endif
                                             @endif
                                               @if ($result2 === null)
@@ -3362,15 +3362,15 @@ span{
                                                 @if ($result2 !== null)
                                               <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(5,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_2 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_inv_tot_2)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_2)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_2 > 0 && $roi_inv_tot_2 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_inv_tot_2)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_2)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_2 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_inv_tot_2)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_2)}}%</b>
                                                     @endif
                                               @endif
 
@@ -3384,15 +3384,15 @@ span{
                                                 @if ($result2 !== null)
                                                 <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(10,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_3 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_inv_tot_3)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_3)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_3 > 0 && $roi_inv_tot_3 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_inv_tot_3)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_3)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_3 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_inv_tot_3)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_3)}}%</b>
                                                     @endif
                                                 @endif
 
@@ -3406,15 +3406,15 @@ span{
                                                 @if ($result2 !== null)
                                                 <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(15,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_4 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_inv_tot_4)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_4)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_4 > 0 && $roi_inv_tot_4 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_inv_tot_4)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_4)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_4 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_inv_tot_4)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_4)}}%</b>
                                                     @endif
                                                 @endif
 
@@ -3434,15 +3434,15 @@ span{
                                                 @if ($result3 !== null)
                                                 <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(3,$dif_2_cost,$inv_ini_3) ?>
                                                     @if ($roi_inv_tot_b_1 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_inv_tot_b_1)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_1)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_1 > 0 && $roi_inv_tot_b_1 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_inv_tot_b_1)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_1)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_1 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_inv_tot_b_1)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_1)}}%</b>
                                                     @endif
                                                 @endif
 
@@ -3456,15 +3456,15 @@ span{
                                                 @if ($result3 !== null)
                                                 <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(5,$dif_2_cost,$inv_ini_3) ?>
                                                     @if ($roi_inv_tot_b_2 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_inv_tot_b_2)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_2)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_2 > 0 && $roi_inv_tot_b_2 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_inv_tot_b_2)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_2)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_2 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_inv_tot_b_2)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_2)}}%</b>
                                                     @endif
                                                 @endif
 
@@ -3477,15 +3477,15 @@ span{
                                                 @if ($result3 !== null)
                                                 <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot(10,$dif_2_cost,$inv_ini_3) ?>
                                                     @if ($roi_inv_tot_b_3 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_inv_tot_b_3)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_3)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_3 > 0 && $roi_inv_tot_b_3 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_inv_tot_b_3)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_3)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_3 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_inv_tot_b_3)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_3)}}%</b>
                                                     @endif
                                                 @endif
 
@@ -3500,15 +3500,15 @@ span{
                                                     <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(15,$dif_2_cost,$inv_ini_3) ?>
 
                                                     @if ($roi_inv_tot_b_4 <= 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto text-5xl">{{number_format($roi_inv_tot_b_4)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_4 > 0 && $roi_inv_tot_b_4 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($roi_inv_tot_b_4)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_4 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-5xl">{{number_format($roi_inv_tot_b_4)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
                                                     @endif
                                                 @endif
 
@@ -3531,7 +3531,7 @@ span{
 
                 <div x-show.transition.in="step === 4">
                     <div class="w-full flex justify-center">
-                        <div class="w-3/4 my-3 ">
+                        <div class="2xl:w-3/4 xl:w-3/4 my-3 lg:w-full ">
                             <div class="grid bg-gray-200 rounded-md shadow-xl">
                                 <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
                                     <label class="font-bold text-white text-2xl font-roboto text-4xl">RESULTADOS ANÁLISIS SUSTENTABLE</label>
@@ -3803,7 +3803,7 @@ span{
                                            {{--  <b class="text-[24px] text-blue-900 font-roboto text-4xl">3 Años</b> --}}
                                            @if ($result2 !== null)
                                            <?php  $red_en_mw_a_1=$smasolutions->red_en_mw(3,$dif_1) ?>
-                                           <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_en_mw_a_1)}}</b>
+                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_1)}}</b>
                                            @endif
 
                                            @if ($result2 === null)
@@ -3814,7 +3814,7 @@ span{
                                         <div class="grid justify-center w-1/5">
                                             @if ($result2 !== null)
                                             <?php  $red_en_mw_a_2=$smasolutions->red_en_mw(5,$dif_1) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_en_mw_a_2)}}</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_2)}}</b>
                                             @endif
 
                                             @if ($result2 === null)
@@ -3826,7 +3826,7 @@ span{
                                            {{--  <b class="text-[24px] text-blue-900 font-roboto text-4xl">10 Años</b> --}}
                                            @if ($result2 !== null)
                                            <?php  $red_en_mw_a_3=$smasolutions->red_en_mw(10,$dif_1) ?>
-                                           <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_en_mw_a_3)}}</b>
+                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_3)}}</b>
                                            @endif
 
                                            @if ($result2 === null)
@@ -3837,11 +3837,11 @@ span{
                                         <div class="grid justify-center w-1/5">
                                             @if ($result2 !== null)
                                             <?php  $red_en_mw_a_4=$smasolutions->red_en_mw(15,$dif_1) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_en_mw_a_4)}}</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_4)}}</b>
                                             @endif
 
                                             @if ($result2 === null)
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
                                             @endif
                                         </div>
                                     </div>
@@ -3854,7 +3854,7 @@ span{
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
                                             <?php  $red_en_mw_b_1=$smasolutions->red_en_mw(3,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_en_mw_b_1)}}</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_1)}}</b>
                                             @endif
 
                                             @if ($result3 === null)
@@ -3865,7 +3865,7 @@ span{
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
                                             <?php  $red_en_mw_b_2=$smasolutions->red_en_mw(5,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_en_mw_b_2)}}</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_2)}}</b>
                                             @endif
 
                                             @if ($result3 === null)
@@ -3876,7 +3876,7 @@ span{
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
                                             <?php  $red_en_mw_b_3=$smasolutions->red_en_mw(10,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_en_mw_b_3)}}</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_3)}}</b>
                                             @endif
 
                                             @if ($result3 === null)
@@ -3887,7 +3887,7 @@ span{
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
                                             <?php  $red_en_mw_b_4=$smasolutions->red_en_mw(15,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_en_mw_b_4)}}</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_4)}}</b>
                                             @endif
 
                                             @if ($result3 === null)
@@ -3944,7 +3944,7 @@ span{
                                         <div class="grid justify-center w-1/5">
                                           @if ($result2 !== null)
                                           <?php  $red_hu_carb_a_1=$smasolutions->red_hu_carb(3,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_hu_carb_a_1)}}</b>
+                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_1)}}</b>
                                           @endif
 
                                           @if ($result2 === null)
@@ -3956,7 +3956,7 @@ span{
 
                                             @if ($result2 !== null)
                                           <?php  $red_hu_carb_a_2=$smasolutions->red_hu_carb(5,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_hu_carb_a_2)}}</b>
+                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_2)}}</b>
                                           @endif
 
                                           @if ($result2 === null)
@@ -3968,7 +3968,7 @@ span{
 
                                             @if ($result2 !== null)
                                           <?php  $red_hu_carb_a_3=$smasolutions->red_hu_carb(10,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_hu_carb_a_3)}}</b>
+                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_3)}}</b>
                                           @endif
 
                                           @if ($result2 === null)
@@ -3980,7 +3980,7 @@ span{
 
                                             @if ($result2 !== null)
                                           <?php  $red_hu_carb_a_4=$smasolutions->red_hu_carb(15,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_hu_carb_a_4)}}</b>
+                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_4)}}</b>
                                           @endif
 
                                           @if ($result2 === null)
@@ -3998,7 +3998,7 @@ span{
 
                                              @if ($result3 !== null)
                                             <?php  $red_hu_carb_b_1=$smasolutions->red_hu_carb(3,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_hu_carb_b_1)}}</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_1)}}</b>
                                             @endif
 
                                             @if ($result3 === null)
@@ -4010,7 +4010,7 @@ span{
 
                                              @if ($result3 !== null)
                                             <?php  $red_hu_carb_b_2=$smasolutions->red_hu_carb(5,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_hu_carb_b_2)}}</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_2)}}</b>
                                             @endif
 
                                             @if ($result3 === null)
@@ -4021,7 +4021,7 @@ span{
                                         <div class="grid justify-center w-1/5">
                                              @if ($result3 !== null)
                                             <?php  $red_hu_carb_b_3=$smasolutions->red_hu_carb(10,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_hu_carb_b_3)}}</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_3)}}</b>
                                             @endif
 
                                             @if ($result3 === null)
@@ -4033,7 +4033,7 @@ span{
 
                                              @if ($result3 !== null)
                                           <?php  $red_hu_carb_b_4=$smasolutions->red_hu_carb(15,$dif_2) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_hu_carb_b_4)}}</b>
+                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_4)}}</b>
                                           @endif
 
                                           @if ($result3 === null)
@@ -4091,7 +4091,7 @@ span{
                                         <div class="grid justify-center w-1/5">
                                           @if ($result2 !== null)
                                           <?php  $red_bol_ba_a_1=$smasolutions->red_bol_ba(3,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_bol_ba_a_1)}}</b>
+                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_1)}}</b>
                                           @endif
 
                                           @if ($result2 === null)
@@ -4103,7 +4103,7 @@ span{
 
                                             @if ($result2 !== null)
                                           <?php  $red_bol_ba_a_2=$smasolutions->red_bol_ba(5,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_bol_ba_a_2)}}</b>
+                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_2)}}</b>
                                           @endif
 
                                           @if ($result2 === null)
@@ -4115,7 +4115,7 @@ span{
 
                                             @if ($result2 !== null)
                                           <?php  $red_bol_ba_a_3=$smasolutions->red_bol_ba(10,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_bol_ba_a_3)}}</b>
+                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_3)}}</b>
                                           @endif
 
                                           @if ($result2 === null)
@@ -4127,7 +4127,7 @@ span{
 
                                             @if ($result2 !== null)
                                           <?php  $red_bol_ba_a_4=$smasolutions->red_bol_ba(15,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_bol_ba_a_4)}}</b>
+                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_4)}}</b>
                                           @endif
 
                                           @if ($result2 === null)
@@ -4145,7 +4145,7 @@ span{
 
                                              @if ($result3 !== null)
                                             <?php  $red_bol_ba_b_1=$smasolutions->red_bol_ba(3,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_bol_ba_b_1)}}</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_1)}}</b>
                                             @endif
 
                                             @if ($result3 === null)
@@ -4157,7 +4157,7 @@ span{
 
                                              @if ($result3 !== null)
                                             <?php  $red_bol_ba_b_2=$smasolutions->red_bol_ba(5,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_bol_ba_b_2)}}</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_2)}}</b>
                                             @endif
 
                                             @if ($result3 === null)
@@ -4168,7 +4168,7 @@ span{
                                         <div class="grid justify-center w-1/5">
                                              @if ($result3 !== null)
                                             <?php  $red_bol_ba_b_3=$smasolutions->red_bol_ba(10,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_bol_ba_b_3)}}</b>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_3)}}</b>
                                             @endif
 
                                             @if ($result3 === null)
@@ -4180,7 +4180,7 @@ span{
 
                                              @if ($result3 !== null)
                                           <?php  $red_bol_ba_b_4=$smasolutions->red_bol_ba(15,$dif_2) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">{{number_format($red_bol_ba_b_4)}}</b>
+                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_4)}}</b>
                                           @endif
 
                                           @if ($result3 === null)
@@ -4204,7 +4204,7 @@ span{
 
                 <div x-show.transition.in="step === 5">
                     <div class="w-full flex justify-center">
-                        <div class="w-3/4 my-3 ">
+                        <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
                             <div class="grid bg-gray-200 rounded-md shadow-xl">
                                 <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
                                     <label class="font-bold text-white text-2xl font-roboto text-4xl">ANÁLISIS DE LA INTENSIDAD DEL USO DE LA ENERGÍA (EUI)</label>
