@@ -199,15 +199,15 @@ span{
                                 $days = (strtotime($client->fecha_termino)-strtotime($today))/86400
                                     ?>
                                     @if ($days <= 0)
-                                    <span class="px-2 inline-flex text-xm leading-5 font-semibold rounded-full bg-red-100 text-red-800">  {{ $days }} </span>
+                                    <span class="px-2 inline-flex text-xm leading-5 font-semibold rounded-full bg-red-100 text-red-800">  {{number_format($days)}} </span>
                                     @endif
 
                                     @if ($days > 20)
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  {{ $days }} </span>
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">  {{number_format($days)}} </span>
                                     @endif
 
                                     @if ($days <= 20 && $days >= 0)
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-300 text-orange-800">  {{ $days }} </span>
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-300 text-orange-800">  {{number_format($days)}} </span>
                                     @endif
 
 
