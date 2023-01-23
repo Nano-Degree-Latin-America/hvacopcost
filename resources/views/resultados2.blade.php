@@ -244,7 +244,7 @@ span{
 				<div class="h-full">
 					<div x-show.transition.in="step === 1">
                         <div class="w-full flex justify-center">
-                            <div class="2xl:w-3/4 xl:2/4">
+                            <div class="2xl:w-3/4 xl:w-3/4 lg:w-full">
                                 <div class="grid my-3 bg-gray-200 rounded-md shadow-xl">
                                     <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
                                         <label  class="font-bold text-white text-3xl font-roboto">ANÁLISIS ENERGÉTICO - ENFRIAMIENTO</label>
