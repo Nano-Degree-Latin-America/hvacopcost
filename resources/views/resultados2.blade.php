@@ -2504,7 +2504,7 @@ span{
 
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s B </b>
                                                     <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl text-center">0 </b>
                                                     </div>
                                                 </div>
@@ -2986,7 +2986,7 @@ span{
 
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b>
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
                                                     </div>
                                                 </div>
