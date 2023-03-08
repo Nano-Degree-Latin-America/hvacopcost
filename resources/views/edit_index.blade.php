@@ -10,7 +10,7 @@
 
 <div class="bg-blue-900 w-full flex justify-center" style="background-image: radial-gradient(rgb(10,19,59) 0%,rgb(5,1,25) 100%);">
     <div class="w-1/3">
-        <img class="header" style="height:99px;" name="" id="" src="{{asset('/assets/images/logos/Administrador20210322133256.png')}}" alt="Nano Degree">
+        <img class="header" style="height:99px;" name="" id="" src="{{asset('/assets/images/Logo-NDL_blanco_marca-r.png')}}" alt="Nano Degree">
     </div>
     <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
         {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
@@ -171,7 +171,7 @@ span{
                     <div id="mapa-div">
                             <div class="xl:ml-5 col-6">
                                 <h2 id="lblMapa">{{-- Da Clic en el Mapa --}}</h2>
-                            <img class="mapa_img mt-5" src="{{asset('assets\images\Mesa_de_rabajo_6-8.png')}}" alt="" usemap="#mapa"{{--  onClick="cambiarLblMapa('Mapa') --}}">
+                            <img class="mapa_img mt-5" src="{{asset('assets\images\Mapa-Hvacopcost_azul-sombra.png')}}" alt="" usemap="#mapa"{{--  onClick="cambiarLblMapa('Mapa') --}}">
                             <map class="w-full" name="mapa">
                                 {{-- <area shape="polygon" coords="2,3, 67,5, 98,19, 121,43, 129,81, 174,65, 150,91, 139,112, 78,93, 29,54, 8,27" onclick="traer_ciudad_edit(17); cambiarLblMapa_Edit('México');change_option(17);" alt="México">
                                 <area shape="polygon" coords="144,108, 155,96, 155,89, 175,84, 232,133, 216,150, 179,131, 171,117" onclick="traer_ciudad_edit(28); cambiarLblMapa_Edit('Centro América');change_option(28);" alt="Centro América">
@@ -2472,36 +2472,36 @@ span{
 
 @media (min-width: 640px) {
     .mapa_img{
-        width: 500px; height:600px;
+        width: 600px; height:600px;
 }
  }
 
 @media (min-width: 768px) {
     .mapa_img{
-        width: 500px; height:600px;
+        width: 600px; height:600px;
 }
  }
 
 @media (min-width: 1024px) {
     .mapa_img{
-        width: 500px; height:600px;
+        width: 600px; height:700px;
 }
  }
 
 @media (min-width: 1280px) {
     .mapa_img{
-        width: 500px; height:600px;
+        width: 520px; height:700px;
  }
 }
 @media (min-width: 1536px) {
     .mapa_img{
-        width: 500px; height:600px;
+        width: 550px; height:700px;
     }
  }
 
  @media (min-width: 1780px) {
     .mapa_img{
-        width: 500px; height:600px;
+        width: 600px; height:700px;
  }
  }
 

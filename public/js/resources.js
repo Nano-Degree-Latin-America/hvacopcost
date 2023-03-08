@@ -5,7 +5,7 @@ $(document).ready(function () {
         $('#blur').removeClass('blur');
         $('#footer').removeClass('blur');
     });
-    setLogo();  
+    setLogo();
     $('.banner').hover(function(){
         $('.lbl-banner').removeClass('hidden');
     }, function() {
@@ -22,11 +22,11 @@ function setLogo() {
             "_token": $("meta[name='csrf-token']").attr("content")
         },
         success: function (response) {
-            $('#logoEmpresa').attr("src", "assets/images/logos/" + response);;
+            $('#logoEmpresa').attr("src", "assets/images/" + response);;
         },
         error: function (responsetext) {
             console.log(responsetext);
         }
     });
-    $('#logoEmpresa').attr("src", "assets/images/logos/Administrador20210322133256.png");
+    $('#logoEmpresa').attr("src", "assets/images/Logo-NDL_blanco_marca-r.png");
 }
