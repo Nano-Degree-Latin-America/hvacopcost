@@ -399,13 +399,13 @@ span{
                                                         <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 border-blue-600 rounded-md p-1" onchange="valida_form_calc();unidadHvac(this.value,1,'csTipo','csDisenio_1_1');">
                                                             <option value="0">Seleccionar</option>
                                                             <option value="1">Paquetes (RTU)</option>
-                                                            <option value="2">Split</option>
+                                                            <option value="2">Split DX</option>
                                                             <option value="3">VRF No Ductados</option>
                                                             <option value="4">VRF Ductados</option>
                                                             <option value="5">PTAC</option>
                                                             <option value="6">WSHP</option>
                                                             <option value="7">Minisplit Inverter</option>
-                                                            <option value="8">Chiller</option>
+{{--                                                             <option value="8">Chiller</option> --}}
                                                         </select>
                                                     </div>
                                                 </div>
@@ -538,7 +538,7 @@ span{
                                                     <div class="flex w-full justify-start">
                                                         <select onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento" id="csMantenimiento">
                                                             <option selected value="0">Seleccionar</option>
-                                                            <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
+                                                            <option value="ASHRAE 180">ASHRAE 180</option>
                                                             <option value="Deficiente">Deficiente</option>
                                                             <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                         </select>
@@ -593,13 +593,13 @@ span{
                                                         <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,2,'csTipo_1_2');" name="cUnidad_1_2" id="cUnidad_1_2" >
                                                             <option value="0">Seleccionar</option>
                                                             <option value="1">Paquetes (RTU)</option>
-                                                            <option value="2">Split</option>
+                                                            <option value="2">Split DX</option>
                                                             <option value="3">VRF No Ductados</option>
                                                             <option value="4">VRF Ductados</option>
                                                             <option value="5">PTAC</option>
                                                             <option value="6">WSHP</option>
                                                             <option value="7">Minisplit Inverter</option>
-                                                            <option value="8">Chiller</option>
+                                                           {{--  <option value="8">Chiller</option> --}}
                                                         </select>
                                                     </div>
                                                 </div>
@@ -728,7 +728,7 @@ span{
                                                     <div class="flex w-full justify-start">
                                                         <select onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_1_2" id="csMantenimiento_1_2">
                                                             <option selected value="0">Seleccionar</option>
-                                                            <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
+                                                            <option value="ASHRAE 180">ASHRAE 180</option>
                                                             <option value="Deficiente">Deficiente</option>
                                                             <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                         </select>
@@ -779,13 +779,13 @@ span{
                                                                <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,3,'csTipo_1_3');" name="cUnidad_1_3" id="cUnidad_1_3" >
                                                                     <option selected value="0">Seleccionar</option>
                                                                    <option value="1">Paquetes (RTU)</option>
-                                                                   <option value="2">Split</option>
+                                                                   <option value="2">Split DX</option>
                                                                    <option value="3">VRF No Ductados</option>
                                                                    <option value="4">VRF Ductados</option>
                                                                    <option value="5">PTAC</option>
                                                                    <option value="6">WSHP</option>
                                                                    <option value="7">Minisplit Inverter</option>
-                                                                   <option value="8">Chiller</option>
+                                                                  {{--  <option value="8">Chiller</option> --}}
                                                                </select>
                                                            </div>
                                                         </div>
@@ -918,7 +918,7 @@ span{
                                                            <div class="flex w-full justify-start">
                                                             <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="valida_selects_inps(this.id);" name="csMantenimiento_1_3" id="csMantenimiento_1_3">
                                                                <option selected value="0">Seleccionar</option>
-                                                               <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
+                                                               <option value="ASHRAE 180">ASHRAE 180</option>
                                                                <option value="Deficiente">Deficiente</option>
                                                                <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                             </select>
@@ -1079,13 +1079,13 @@ span{
                                                                 <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,1,'cheTipo_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
                                                                     <option value="0">Seleccionar</option>
                                                                     <option value="1">Paquetes (RTU)</option>
-                                                                    <option value="2">Split</option>
+                                                                    <option value="2">Split DX</option>
                                                                     <option value="3">VRF No Ductados</option>
                                                                     <option value="4">VRF Ductados</option>
                                                                     <option value="5">PTAC</option>
                                                                     <option value="6">WSHP</option>
                                                                     <option value="7">Minisplit Inverter</option>
-                                                                    <option value="8">Chiller</option>
+                                                                  {{--   <option value="8">Chiller</option> --}}
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1207,7 +1207,7 @@ span{
                                                             <div class="flex w-full justify-start">
                                                                 <select class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_2_1" id="csMantenimiento_2_1" onchange="valida_selects_inps(this.id);">
                                                                     <option value="0">Seleccionar</option>
-                                                                    <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
+                                                                    <option value="ASHRAE 180">ASHRAE 180</option>
                                                                     <option value="Deficiente">Deficiente</option>
                                                                     <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                                 </select>
@@ -1257,7 +1257,7 @@ span{
                                                                 <option value="5">PTAC</option>
                                                                 <option value="6">WSHP</option>
                                                                 <option value="7">Minisplit Inverter</option>
-                                                                <option value="8">Chiller</option>
+                                                              {{--   <option value="8">Chiller</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -1382,7 +1382,7 @@ span{
                                                         <div class="flex w-full justify-start">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_2_2" id="cheMantenimiento_2_2" onchange="valida_selects_inps(this.id);">
                                                                 <option value="">Seleccionar</option>
-                                                                <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
+                                                                <option value="ASHRAE 180">ASHRAE 180</option>
                                                                 <option value="Deficiente">Deficiente</option>
                                                                 <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                             </select>
@@ -1436,7 +1436,7 @@ span{
                                                                 <option value="5">PTAC</option>
                                                                 <option value="6">WSHP</option>
                                                                 <option value="7">Minisplit Inverter</option>
-                                                                <option value="8">Chiller</option>
+                                                              {{--   <option value="8">Chiller</option> --}}
                                                             </select>
                                                     </div>
                                                     </div>
@@ -1547,7 +1547,7 @@ span{
                                                         </div>
                                                         <div class="flex w-full justify-start">
                                                             <select class="w-full py-1 border-2 border-blue-600 rounded-md" name="cheMantenimiento_2_3" id="cheMantenimiento_2_3">
-                                                                <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
+                                                                <option value="ASHRAE 180">ASHRAE 180</option>
                                                                 <option value="Deficiente">Deficiente</option>
                                                                 <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                             </select>
@@ -1726,7 +1726,7 @@ span{
                                                                     <option value="5">PTAC</option>
                                                                     <option value="6">WSHP</option>
                                                                     <option value="7">Minisplit Inverter</option>
-                                                                    <option value="8">Chiller</option>
+                                                                   {{--  <option value="8">Chiller</option> --}}
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -1852,7 +1852,7 @@ span{
                                                             <div class="flex w-full justify-start">
                                                                 <select onchange="valida_selects_inps(this.id);" class="w-full py-2 border-2 border-blue-600 rounded-md" name="cheMantenimiento_3_1" id="cheMantenimiento_3_1">
                                                                     <option value="0">Seleccionar</option>
-                                                                    <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
+                                                                    <option value="ASHRAE 180">ASHRAE 180</option>
                                                                     <option value="Deficiente">Deficiente</option>
                                                                     <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                                 </select>
@@ -1902,7 +1902,7 @@ span{
                                                                 <option value="5">PTAC</option>
                                                                 <option value="6">WSHP</option>
                                                                 <option value="7">Minisplit Inverter</option>
-                                                                <option value="8">Chiller</option>
+                                                               {{--  <option value="8">Chiller</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -2029,7 +2029,7 @@ span{
                                                         <div class="flex w-full justify-start">
                                                             <select onchange="valida_selects_inps(this.id);" class="w-full py-2 border-2 border-blue-600 rounded-md" name="cheMantenimiento_3_2" id="cheMantenimiento_3_2">
                                                                 <option value="">Seleccionar</option>
-                                                                <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
+                                                                <option value="ASHRAE 180">ASHRAE 180</option>
                                                                 <option value="Deficiente">Deficiente</option>
                                                                 <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                             </select>
@@ -2084,7 +2084,7 @@ span{
                                                                 <option value="5">PTAC</option>
                                                                 <option value="6">WSHP</option>
                                                                 <option value="7">Minisplit Inverter</option>
-                                                                <option value="8">Chiller</option>
+                                                               {{--  <option value="8">Chiller</option> --}}
                                                             </select>
                                                         </div>
                                                     </div>
@@ -2194,7 +2194,7 @@ span{
                                                         <div class="flex w-full justify-start">
                                                                 <select class="w-full py-2 border-2 border-blue-600 rounded-md" name="cheMantenimiento_3_3" id="cheMantenimiento_3_3">
                                                                     <option value="0">Seleccionar</option>
-                                                                    <option value="ASHRAE 180 Proactivo">ASHRAE 180 Proactivo</option>
+                                                                    <option value="ASHRAE 180">ASHRAE 180</option>
                                                                     <option value="Deficiente">Deficiente</option>
                                                                     <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                                 </select>

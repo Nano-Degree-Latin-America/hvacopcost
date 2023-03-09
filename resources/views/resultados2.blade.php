@@ -269,7 +269,7 @@ span{
                                         </div>
                                         <div class="flex w-1/3  justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región: </label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
@@ -2165,7 +2165,7 @@ span{
                                         </div>
                                         <div class="flex w-1/3  justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región: </label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
@@ -2597,7 +2597,7 @@ span{
                                         </div>
                                         <div class="flex w-1/3  justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región: </label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
@@ -3427,7 +3427,7 @@ span{
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_3)}}%</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_2 < 0)
+                                                    @if ($roi_inv_tot_3 < 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
                                                     @endif
 
@@ -3620,7 +3620,7 @@ span{
                                     </div>
                                     <div class="flex w-1/3  justify-start">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región: </label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
@@ -4293,7 +4293,7 @@ span{
                                     </div>
                                     <div class="flex w-1/3  justify-start">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región: </label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
