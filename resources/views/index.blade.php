@@ -270,10 +270,10 @@ span{
 
                                                 <div class="grid  md:w-2/5 xl:w-2/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>País:</b></label><label class="text-red-500">*</label>
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Región:</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select onchange="check_input(this.value,this.id,'paises_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises" id="paises">
-                                                        <option value="0">-Selecciona tu país-</option>
+                                                        <option value="0">-Selecciona tu región-</option>
                                                     </select>
                                                     <span id="paises_warning" name="paises_warning" class="text-red-500"></span>
                                                 </div>
@@ -371,8 +371,8 @@ span{
                                                 <input type="text" class="hidden" value="2" id="cont_sol_1" name="cont_sol_1">
                                                 <input type="text" class="hidden" value="1" id="set_sol_1" name="set_sol_1">
                                             </div>
-                                            <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex  2xl:justify-start xl:justify-center lg:justify-center  py-1">
-                                                <h2 class="text-white font-bold text-3xl mr-8">Solucion Base</h2>
+                                            <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex  2xl:justify-center xl:justify-center lg:justify-center  py-1">
+                                                <h2 style="margin-right: 75px;" class="text-white font-bold text-3xl">Solución Base</h2>
                                             </div>
                                           {{--   <div cslass="w-1/2 flex justify-start">
                                                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
@@ -1055,8 +1055,8 @@ span{
                                                 </a>
                                             <input type="number" class="hidden" value="2" id="cont_sol_2" name="cont_sol_2">
                                             </div>
-                                            <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex 2xl:justify-start xl:justify-center lg:justify-center py-1">
-                                                <h2 class="text-white font-bold justify-start text-3xl mr-10">Solución A</h2>
+                                            <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
+                                                <h2 style="margin-right: 75px;" class="text-white font-bold justify-start text-3xl">Solución A</h2>
                                             </div>
                                           {{--   <div cslass="w-1/2 flex justify-start">
                                                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
@@ -1696,8 +1696,8 @@ span{
                                                 </a>
                                                 <input type="number" class="hidden" value="2" id="cont_sol_3" name="cont_sol_3">
                                             </div>
-                                            <div class="2xl:ml-0 xl:ml-0 lg:ml-10 w-full flex 2xl:justify-start xl:justify-center lg:justify-center py-1">
-                                                <h2 class="text-white font-bold  text-3xl mr-10">Solución B</h2>
+                                            <div class="2xl:ml-0 xl:ml-0 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
+                                                <h2 style="margin-right: 75px;" class="text-white font-bold  text-3xl ">Solución B</h2>
                                             </div>
                                           {{--   <div cslass="w-1/2 flex justify-start">
                                                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
@@ -2256,7 +2256,7 @@ span{
     </div>
 
     <!-- Bottom Navigation -->
-    <div class="fixed bottom-0 left-0 right-0 py-5 bg-white shadow-md" x-show="step != 'complete'">
+    <div class="fixed bottom-0 left-0 right-0 py-2 bg-white shadow-md" x-show="step != 'complete'">
         <div class="max-w-3xl mx-auto px-4">
             <div class="flex justify-between">
                 <div class="w-1/2">
@@ -2409,25 +2409,25 @@ span{
 
 @media (min-width: 1024px) {
     .mapa_img{
-        width: 600px; height:700px;
+        width: 600px; height:800px;
         float: center;
 }
  }
 
 @media (min-width: 1280px) {
     .mapa_img{
-        width: 520px; height:700px;
+        width: 520px; height:800px;
  }
 }
 @media (min-width: 1536px) {
     .mapa_img{
-        width: 550px; height:700px;
+        width: 550px; height:800px;
     }
  }
 
  @media (min-width: 1780px) {
     .mapa_img{
-        width: 600px; height:700px;
+        width: 600px; height:800px;
  }
  }
 

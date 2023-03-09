@@ -22,19 +22,25 @@ class IndexController extends Controller
 
     public function check_user(Request $request)
     {
-        if (Auth::user()->tipo_user==5 && Auth::user()->status==1) {
-            return view('index');
-        }else if(Auth::user()->tipo_user==1 && Auth::user()->status==1){
-            return view('index');
-        }else if(Auth::user()->tipo_user==2 && Auth::user()->status==1){
-            return view('index');
-        }else if(Auth::user()->tipo_user==3 && Auth::user()->status==2){
-            Auth::logout();
-            return redirect('/');
+
+        if(Auth::check()){
+            if (Auth::user()->tipo_user==5 && Auth::user()->status==1) {
+                return view('index');
+            }else if(Auth::user()->tipo_user==1 && Auth::user()->status==1){
+                return view('index');
+            }else if(Auth::user()->tipo_user==2 && Auth::user()->status==1){
+                return view('index');
+            }else if(Auth::user()->tipo_user==3 && Auth::user()->status==2){
+                Auth::logout();
+                return redirect('/');
+            }else{
+                Auth::logout();
+                return redirect('/');
+            }
         }else{
             Auth::logout();
-            return redirect('/');
         }
+
     }
 
     public function getPaises(Request $request)
