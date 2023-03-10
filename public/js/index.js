@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     getPaises();
     traer_categorias_edif();
-    $('#div_next').addClass("hidden");
+    $('#div_next_h').addClass("hidden");
     $('#calcular').attr('disabled', true);
     $('#calcular').css('background-color','gray');
  /*    $('#next').attr('disabled', true); */
