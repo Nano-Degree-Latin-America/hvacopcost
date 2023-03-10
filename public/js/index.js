@@ -709,7 +709,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
                         var arry_control = '{ "arry_control" : [' +
                           '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                          '{"text":"Termostatos en Zona de Confort" , "value":1},'
+                          '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
                           '{"text":"Termostato Programable Inteligente" , "value":0.95 } ]}';
 
                           var arry_dr = '{ "arry_dr" : [' +
@@ -978,7 +978,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
         var arry_control = '{ "arry_control" : [' +
           '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-          '{"text":"Termostatos en Zona de Confort" , "value":1},'
+          '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
           '{"text":"Termostato Programable Inteligente" , "value":0.95 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
@@ -1205,7 +1205,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
                         var arry_control = '{ "arry_control" : [' +
                           '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                          '{"text":"Termostatos en Zona de Confort" , "value":1},'
+                          '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
                           '{"text":"Termostato Programable Inteligente" , "value":0.95 } ]}';
 
                           var arry_dr = '{ "arry_dr" : [' +
