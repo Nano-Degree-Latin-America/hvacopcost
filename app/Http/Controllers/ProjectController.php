@@ -61,6 +61,7 @@ class ProjectController extends Controller
                     ->join('tipo_edificio','tipo_edificio.id','=','projects.id_tipo_edificio')
                     ->where('id_empresa','=',$id_empresa)
                     ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
+                    ->orderby('created_at','desc')
                     ->paginate(10);
                 }
 
@@ -73,6 +74,7 @@ class ProjectController extends Controller
                     ->orwhere('projects.region','=',$query)
                     ->orwhere('projects.ciudad','=',$query)
                     ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
+                    ->orderby('created_at','desc')
                     ->paginate(10);
                 }
             }
@@ -85,6 +87,7 @@ class ProjectController extends Controller
                 ->where('projects.id_empresa','=',$id_empresa)
                 ->where('projects.id_user','=',Auth::user()->id)
                 ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
+                ->orderby('created_at','desc')
                 ->paginate(10);
                 }
 
@@ -98,6 +101,7 @@ class ProjectController extends Controller
                     ->where('projects.id_empresa','=',$id_empresa)
                     ->where('projects.id_user','=',Auth::user()->id)
                     ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
+                    ->orderby('created_at','desc')
                     ->paginate(10);
                 }
             }
@@ -168,6 +172,7 @@ class ProjectController extends Controller
         $update_project= ProjectsModel::find($id);
         $update_project->name=$request->get('name_pro');
         $update_project->id_tipo_edificio=$request->get('tipo_edificio_edit');
+        $update_project->hrs_tiempo=$request->get('tiempo_porcent');
         $update_project->id_cat_edifico=$request->get('cat_ed_edit');
 
         $aux = explode(",",   $request->get('ar_project'));
@@ -373,17 +378,35 @@ class ProjectController extends Controller
                 $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
 
                 $res_res =  $res_parent_1 *  $factor_c;
-                if($factor_m==='ASHRAE 180'){
-                    $factor_m = 0.99;
+
+
+                if($solution_enf1->tipo_equipo === "ca_pi_te"){
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 1.2;
+                    }
+
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.15;
+                    }
+
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.2;
+                    }
+                }else{
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 0.99;
+                    }
+
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.11;
+                    }
+
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.18;
+                    }
                 }
 
-                if($factor_m==='Deficiente'){
-                    $factor_m = 1.11;
-                }
 
-                if($factor_m==='Sin Mantenimiento'){
-                    $factor_m = 1.18;
-                }
                 $res_res_fact_m =  $res_res * $factor_m;
                 $solution_enf1->cost_op_an = floatval(number_format($res_res_fact_m,2, '.', ''));
 
@@ -415,16 +438,30 @@ class ProjectController extends Controller
    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($factor_m==='ASHRAE 180'){
-                    $factor_m = 0.99;
-                }
+                if($solution_enf1->tipo_equipo === "ca_pi_te"){
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 1.2;
+                    }
 
-                if($factor_m==='Deficiente'){
-                    $factor_m = 1.11;
-                }
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.15;
+                    }
 
-                if($factor_m==='Sin Mantenimiento'){
-                    $factor_m = 1.18;
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.2;
+                    }
+                }else{
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 0.99;
+                    }
+
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.11;
+                    }
+
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.18;
+                    }
                 }
                 $res_res_fact_m =  $res_res * $factor_m;
 
@@ -598,16 +635,30 @@ class ProjectController extends Controller
 
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($factor_m==='ASHRAE 180'){
-                    $factor_m = 0.99;
-                }
+                if($solution_enf1_2->tipo_equipo === "ca_pi_te"){
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 1.2;
+                    }
 
-                if($factor_m==='Deficiente'){
-                    $factor_m = 1.11;
-                }
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.15;
+                    }
 
-                if($factor_m==='Sin Mantenimiento'){
-                    $factor_m = 1.18;
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.2;
+                    }
+                }else{
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 0.99;
+                    }
+
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.11;
+                    }
+
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.18;
+                    }
                 }
                 $res_res_fact_m =  $res_res * $factor_m;
 
@@ -640,16 +691,30 @@ class ProjectController extends Controller
    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($factor_m==='ASHRAE 180'){
-                    $factor_m = 0.99;
-                }
+                if($solution_enf1_2->tipo_equipo === "ca_pi_te"){
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 1.2;
+                    }
 
-                if($factor_m==='Deficiente'){
-                    $factor_m = 1.11;
-                }
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.15;
+                    }
 
-                if($factor_m==='Sin Mantenimiento'){
-                    $factor_m = 1.18;
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.2;
+                    }
+                }else{
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 0.99;
+                    }
+
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.11;
+                    }
+
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.18;
+                    }
                 }
                 $res_res_fact_m =  $res_res * $factor_m;
 
@@ -840,16 +905,30 @@ class ProjectController extends Controller
 
                     $res_res =  $res_parent_1 *  $factor_c;
 
-                    if($factor_m==='ASHRAE 180'){
-                        $factor_m = 0.99;
-                    }
+                    if($solution_enf1_3->tipo_equipo === "ca_pi_te"){
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 1.2;
+                        }
 
-                    if($factor_m==='Deficiente'){
-                        $factor_m = 1.11;
-                    }
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.15;
+                        }
 
-                    if($factor_m==='Sin Mantenimiento'){
-                        $factor_m = 1.18;
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.2;
+                        }
+                    }else{
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 0.99;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.11;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.18;
+                        }
                     }
                     $res_res_fact_m =  $res_res * $factor_m;
 
@@ -880,16 +959,30 @@ class ProjectController extends Controller
                 $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                 $res_res =  $res_parent_1 *  $factor_c;
-                if($factor_m==='ASHRAE 180'){
-                    $factor_m = 0.99;
-                }
+                if($solution_enf1_3->tipo_equipo === "ca_pi_te"){
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 1.2;
+                    }
 
-                if($factor_m==='Deficiente'){
-                    $factor_m = 1.11;
-                }
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.15;
+                    }
 
-                if($factor_m==='Sin Mantenimiento'){
-                    $factor_m = 1.18;
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.2;
+                    }
+                }else{
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 0.99;
+                    }
+
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.11;
+                    }
+
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.18;
+                    }
                 }
                 $res_res_fact_m =  $res_res * $factor_m;
                 $solution_enf1_3->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
@@ -1114,16 +1207,30 @@ class ProjectController extends Controller
                         $res_res =  $res_parent_1 *  $factor_c;
 
 
-                        if($factor_m==='ASHRAE 180'){
-                            $factor_m = 0.99;
-                        }
+                        if($solution_enf2_1->tipo_equipo === "ca_pi_te"){
+                            if($factor_m==='ASHRAE 180'){
+                                $factor_m = 1.2;
+                            }
 
-                        if($factor_m==='Deficiente'){
-                            $factor_m = 1.11;
-                        }
+                            if($factor_m==='Deficiente'){
+                                $factor_m = 1.15;
+                            }
 
-                        if($factor_m==='Sin Mantenimiento'){
-                            $factor_m = 1.18;
+                            if($factor_m==='Sin Mantenimiento'){
+                                $factor_m = 1.2;
+                            }
+                        }else{
+                            if($factor_m==='ASHRAE 180'){
+                                $factor_m = 0.99;
+                            }
+
+                            if($factor_m==='Deficiente'){
+                                $factor_m = 1.11;
+                            }
+
+                            if($factor_m==='Sin Mantenimiento'){
+                                $factor_m = 1.18;
+                            }
                         }
                         $res_res_fact_m =  $res_res * $factor_m;
 
@@ -1155,16 +1262,30 @@ class ProjectController extends Controller
                     //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                                 $res_res =  $res_parent_1 *  $factor_c;
 
-                                if($factor_m==='ASHRAE 180'){
-                                    $factor_m = 0.99;
-                                }
+                                if($solution_enf2_1->tipo_equipo === "ca_pi_te"){
+                                    if($factor_m==='ASHRAE 180'){
+                                        $factor_m = 1.2;
+                                    }
 
-                                if($factor_m==='Deficiente'){
-                                    $factor_m = 1.11;
-                                }
+                                    if($factor_m==='Deficiente'){
+                                        $factor_m = 1.15;
+                                    }
 
-                                if($factor_m==='Sin Mantenimiento'){
-                                    $factor_m = 1.18;
+                                    if($factor_m==='Sin Mantenimiento'){
+                                        $factor_m = 1.2;
+                                    }
+                                }else{
+                                    if($factor_m==='ASHRAE 180'){
+                                        $factor_m = 0.99;
+                                    }
+
+                                    if($factor_m==='Deficiente'){
+                                        $factor_m = 1.11;
+                                    }
+
+                                    if($factor_m==='Sin Mantenimiento'){
+                                        $factor_m = 1.18;
+                                    }
                                 }
                                 $res_res_fact_m =  $res_res * $factor_m;
                                 $solution_enf2_1->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
@@ -1359,16 +1480,30 @@ class ProjectController extends Controller
 
                         $res_res =  $res_parent_1 *  $factor_c;
 
-                        if($factor_m==='ASHRAE 180'){
-                            $factor_m = 0.99;
-                        }
+                        if($solution_enf2_2->tipo_equipo === "ca_pi_te"){
+                            if($factor_m==='ASHRAE 180'){
+                                $factor_m = 1.2;
+                            }
 
-                        if($factor_m==='Deficiente'){
-                            $factor_m = 1.11;
-                        }
+                            if($factor_m==='Deficiente'){
+                                $factor_m = 1.15;
+                            }
 
-                        if($factor_m==='Sin Mantenimiento'){
-                            $factor_m = 1.18;
+                            if($factor_m==='Sin Mantenimiento'){
+                                $factor_m = 1.2;
+                            }
+                        }else{
+                            if($factor_m==='ASHRAE 180'){
+                                $factor_m = 0.99;
+                            }
+
+                            if($factor_m==='Deficiente'){
+                                $factor_m = 1.11;
+                            }
+
+                            if($factor_m==='Sin Mantenimiento'){
+                                $factor_m = 1.18;
+                            }
                         }
                         $res_res_fact_m =  $res_res * $factor_m;
 
@@ -1398,16 +1533,30 @@ class ProjectController extends Controller
                            $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
                //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                            $res_res =  $res_parent_1 *  $factor_c;
-                           if($factor_m==='ASHRAE 180'){
-                            $factor_m = 0.99;
-                        }
+                           if($solution_enf2_2->tipo_equipo === "ca_pi_te"){
+                            if($factor_m==='ASHRAE 180'){
+                                $factor_m = 1.2;
+                            }
 
-                        if($factor_m==='Deficiente'){
-                            $factor_m = 1.11;
-                        }
+                            if($factor_m==='Deficiente'){
+                                $factor_m = 1.15;
+                            }
 
-                        if($factor_m==='Sin Mantenimiento'){
-                            $factor_m = 1.18;
+                            if($factor_m==='Sin Mantenimiento'){
+                                $factor_m = 1.2;
+                            }
+                        }else{
+                            if($factor_m==='ASHRAE 180'){
+                                $factor_m = 0.99;
+                            }
+
+                            if($factor_m==='Deficiente'){
+                                $factor_m = 1.11;
+                            }
+
+                            if($factor_m==='Sin Mantenimiento'){
+                                $factor_m = 1.18;
+                            }
                         }
                             $res_res_fact_m =  $res_res * $factor_m;
                            $solution_enf2_2->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
@@ -1591,16 +1740,30 @@ class ProjectController extends Controller
 
                         $res_res =  $res_parent_1 *  $factor_c;
 
-                        if($factor_m==='ASHRAE 180'){
-                            $factor_m = 0.99;
-                        }
+                        if($solution_enf2_3->tipo_equipo === "ca_pi_te"){
+                            if($factor_m==='ASHRAE 180'){
+                                $factor_m = 1.2;
+                            }
 
-                        if($factor_m==='Deficiente'){
-                            $factor_m = 1.11;
-                        }
+                            if($factor_m==='Deficiente'){
+                                $factor_m = 1.15;
+                            }
 
-                        if($factor_m==='Sin Mantenimiento'){
-                            $factor_m = 1.18;
+                            if($factor_m==='Sin Mantenimiento'){
+                                $factor_m = 1.2;
+                            }
+                        }else{
+                            if($factor_m==='ASHRAE 180'){
+                                $factor_m = 0.99;
+                            }
+
+                            if($factor_m==='Deficiente'){
+                                $factor_m = 1.11;
+                            }
+
+                            if($factor_m==='Sin Mantenimiento'){
+                                $factor_m = 1.18;
+                            }
                         }
                             $res_res_fact_m =  $res_res * $factor_m;
                              $solution_enf2_3->cost_op_an = $res_res_fact_m;
@@ -1629,16 +1792,30 @@ class ProjectController extends Controller
                        $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
            //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                        $res_res =  $res_parent_1 *  $factor_c;
-                       if($factor_m==='ASHRAE 180'){
-                        $factor_m = 0.99;
-                    }
+                       if($solution_enf2_3->tipo_equipo === "ca_pi_te"){
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 1.2;
+                        }
 
-                    if($factor_m==='Deficiente'){
-                        $factor_m = 1.11;
-                    }
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.15;
+                        }
 
-                    if($factor_m==='Sin Mantenimiento'){
-                        $factor_m = 1.18;
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.2;
+                        }
+                    }else{
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 0.99;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.11;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.18;
+                        }
                     }
                         $res_res_fact_m =  $res_res * $factor_m;
                        $solution_enf2_3->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
@@ -1867,16 +2044,30 @@ class ProjectController extends Controller
                  $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
 
                  $res_res =  $res_parent_1 *  $factor_c;
-                 if($factor_m==='ASHRAE 180'){
-                    $factor_m = 0.99;
-                }
+                 if($solution_enf3_1->tipo_equipo === "ca_pi_te"){
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 1.2;
+                    }
 
-                if($factor_m==='Deficiente'){
-                    $factor_m = 1.11;
-                }
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.15;
+                    }
 
-                if($factor_m==='Sin Mantenimiento'){
-                    $factor_m = 1.18;
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.2;
+                    }
+                }else{
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 0.99;
+                    }
+
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.11;
+                    }
+
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.18;
+                    }
                 }
                     $res_res_fact_m =  $res_res * $factor_m;
 
@@ -1906,16 +2097,30 @@ class ProjectController extends Controller
                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
        //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                    $res_res =  $res_parent_1 *  $factor_c;
-                   if($factor_m==='ASHRAE 180'){
-                    $factor_m = 0.99;
-                }
+                   if($solution_enf3_1->tipo_equipo === "ca_pi_te"){
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 1.2;
+                    }
 
-                if($factor_m==='Deficiente'){
-                    $factor_m = 1.11;
-                }
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.15;
+                    }
 
-                if($factor_m==='Sin Mantenimiento'){
-                    $factor_m = 1.18;
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.2;
+                    }
+                }else{
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 0.99;
+                    }
+
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.11;
+                    }
+
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.18;
+                    }
                 }
                     $res_res_fact_m =  $res_res * $factor_m;
                    $solution_enf3_1->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
@@ -2102,16 +2307,30 @@ class ProjectController extends Controller
 
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($factor_m==='ASHRAE 180'){
-                    $factor_m = 0.99;
-                }
+                if($solution_enf3_2->tipo_equipo === "ca_pi_te"){
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 1.2;
+                    }
 
-                if($factor_m==='Deficiente'){
-                    $factor_m = 1.11;
-                }
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.15;
+                    }
 
-                if($factor_m==='Sin Mantenimiento'){
-                    $factor_m = 1.18;
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.2;
+                    }
+                }else{
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 0.99;
+                    }
+
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.11;
+                    }
+
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.18;
+                    }
                 }
                    $res_res_fact_m =  $res_res * $factor_m;
 
@@ -2141,16 +2360,30 @@ class ProjectController extends Controller
                   $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
       //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                   $res_res =  $res_parent_1 *  $factor_c;
-                  if($factor_m==='ASHRAE 180'){
-                    $factor_m = 0.99;
-                }
+                  if($solution_enf3_2->tipo_equipo === "ca_pi_te"){
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 1.2;
+                    }
 
-                if($factor_m==='Deficiente'){
-                    $factor_m = 1.11;
-                }
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.15;
+                    }
 
-                if($factor_m==='Sin Mantenimiento'){
-                    $factor_m = 1.18;
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.2;
+                    }
+                }else{
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 0.99;
+                    }
+
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.11;
+                    }
+
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.18;
+                    }
                 }
                    $res_res_fact_m =  $res_res * $factor_m;
                   $solution_enf3_2->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
@@ -2330,16 +2563,30 @@ class ProjectController extends Controller
                 $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
 
                 $res_res =  $res_parent_1 *  $factor_c;
-                if($factor_m==='ASHRAE 180'){
-                    $factor_m = 0.99;
-                }
+                if($solution_enf3_3->tipo_equipo === "ca_pi_te"){
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 1.2;
+                    }
 
-                if($factor_m==='Deficiente'){
-                    $factor_m = 1.11;
-                }
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.15;
+                    }
 
-                if($factor_m==='Sin Mantenimiento'){
-                    $factor_m = 1.18;
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.2;
+                    }
+                }else{
+                    if($factor_m==='ASHRAE 180'){
+                        $factor_m = 0.99;
+                    }
+
+                    if($factor_m==='Deficiente'){
+                        $factor_m = 1.11;
+                    }
+
+                    if($factor_m==='Sin Mantenimiento'){
+                        $factor_m = 1.18;
+                    }
                 }
                    $res_res_fact_m =  $res_res * $factor_m;
                 $solution_enf3_3->cost_op_an = $res_res_fact_m;
@@ -2368,16 +2615,30 @@ class ProjectController extends Controller
               $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
   //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
               $res_res =  $res_parent_1 *  $factor_c;
-              if($factor_m==='ASHRAE 180'){
-                $factor_m = 0.99;
-            }
+              if($solution_enf3_3->tipo_equipo === "ca_pi_te"){
+                if($factor_m==='ASHRAE 180'){
+                    $factor_m = 1.2;
+                }
 
-            if($factor_m==='Deficiente'){
-                $factor_m = 1.11;
-            }
+                if($factor_m==='Deficiente'){
+                    $factor_m = 1.15;
+                }
 
-            if($factor_m==='Sin Mantenimiento'){
-                $factor_m = 1.18;
+                if($factor_m==='Sin Mantenimiento'){
+                    $factor_m = 1.2;
+                }
+            }else{
+                if($factor_m==='ASHRAE 180'){
+                    $factor_m = 0.99;
+                }
+
+                if($factor_m==='Deficiente'){
+                    $factor_m = 1.11;
+                }
+
+                if($factor_m==='Sin Mantenimiento'){
+                    $factor_m = 1.18;
+                }
             }
                $res_res_fact_m =  $res_res * $factor_m;
               $solution_enf3_3->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));

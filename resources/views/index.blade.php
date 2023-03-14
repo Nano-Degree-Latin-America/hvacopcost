@@ -207,96 +207,116 @@ span{
                                      <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
 
 
-                                        <div class="grid gap-y-2 my-2 mx-1 justify-items-center">
+                                        <div class="flex w-full gap-x-6 my-2 mx-1 justify-center">
 
-                                            <div class="grid md:w-2/5 xl:w-2/5 lg:w-1/2 justify-items-start ">
-                                                    <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Nombre Projecto</b></label><label class="text-red-500">*</label>
+                                            <div class="grid justify-items-end h-full gap-y-3 w-1/2">
+
+                                                    <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                            <div class="flex w-full">
+                                                                <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Nombre Projecto</b></label><label class="text-red-500">*</label>
+                                                            </div>
+                                                        <input onchange="check_input(this.value,this.id,'name_warning');" name="name_pro" id="name_pro" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                        <span id="name_warning" name="name_warning" class="text-red-500"></span>
                                                     </div>
-                                                <input onchange="check_input(this.value,this.id,'name_warning');" name="name_pro" id="name_pro" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
-                                                <span id="name_warning" name="name_warning" class="text-red-500"></span>
+
+
+                                                     <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                        <div class="flex w-full">
+                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Región:</b></label><label class="text-red-500">*</label>
+                                                        </div>
+                                                        <select onchange="check_input(this.value,this.id,'paises_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises" id="paises">
+                                                            <option value="0">-Selecciona tu región-</option>
+                                                        </select>
+                                                        <span id="paises_warning" name="paises_warning" class="text-red-500"></span>
+                                                    </div>
+
+                                                    <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                        <div class="flex w-full">
+                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Ciudad:</b></label><label class="text-red-500">*</label>
+                                                        </div>
+                                                        <select onchange="check_input(this.value,this.id,'ciudad_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades" id="ciudades">
+                                                            <option value="0">-Selecciona tu ciudad-</option>
+                                                        </select>
+                                                        <span id="ciudad_warning" name="ciudad_warning" class="text-red-500"></span>
+                                                    </div>
+
+
+
                                             </div>
 
-                                            <div class="grid  md:w-2/5 xl:w-2/5 lg:w-1/2 justify-items-start ">
-                                                <div class="flex w-full">
-                                                    <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Categoria Edificio</b></label></label><label class="text-red-500">*</label>
-                                                </div>
-                                                <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1"></select>
-                                                <span id="cat_ed_warning" name="cat_ed_warning" class="text-red-500"></span>
-                                            </div>
+                                            <div class="grid justify-items-start h-full gap-y-3 w-1/2">
 
-                                            <div class="grid  md:w-2/5 xl:w-2/5 lg:w-1/2 justify-items-start ">
-                                              <div class="flex w-full">
-                                                <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
-                                              </div>
-                                                <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio"></select>
-                                                   <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
-                                            </div>
-
-                                            <div class="flex  md:w-2/5 xl:w-2/5 lg:w-1/2 justify-start gap-x-3">
-                                               <div class="grid w-1/2 justify-items-start">
+                                                <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Aréa:</b></label><label class="text-red-500">*</label>
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Categoria Edificio</b></label></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);"  name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
-                                                    <span id="ar_project_warning" name="ar_project_warning" class="text-red-500"></span>
-                                               </div>
-
-                                               <div class="grid  md:w-2/5 xl:w-2/5 lg:w-1/2 justify-items-start">
-                                              <div class="flex">
-                                               <div>
-                                                <div class="flex w-full">
-                                                    <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Unidad:</b></label><label class="text-red-500">*</label>
+                                                    <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1"></select>
+                                                    <span id="cat_ed_warning" name="cat_ed_warning" class="text-red-500"></span>
                                                 </div>
-                                                <div class="flex gap-x-3 mt-3">
-                                                   <div class="flex">
-                                                    <input  id="check_mc"  onclick="check_unidad('mc');" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="check_mc" class="ml-2 text-xl font-medium text-gray-900 dark:text-gray-300 font-roboto">m²</label>
-                                                   </div>
-
-                                                   <div class="flex">
-                                                    <input  id="check_ft"  onclick="check_unidad('ft');" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                    <label for="check_ft"   class="ml-2 text-xl font-medium text-gray-900 dark:text-gray-300 font-roboto">ft²</label>
-                                                   </div>
-                                                </div>
-                                               </div>
-                                              </div>
-
-                                                {{-- <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-xl"  name="nombre_projecto" id="nombre_projecto"> --}}
-                                                </div>
-                                            </div>
-
-                                            <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-blue-600 rounded-xl"  name="unidad" id="unidad">
-
-                                                <div class="grid  md:w-2/5 xl:w-2/5 lg:w-1/2 justify-items-start">
+{{--  --}}
+                                                <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Región:</b></label><label class="text-red-500">*</label>
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select onchange="check_input(this.value,this.id,'paises_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises" id="paises">
-                                                        <option value="0">-Selecciona tu región-</option>
-                                                    </select>
-                                                    <span id="paises_warning" name="paises_warning" class="text-red-500"></span>
+                                                        <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio"></select>
+                                                        <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
                                                 </div>
 
-                                                <div class="grid  md:w-2/5 xl:w-2/5 lg:w-1/2 justify-items-start">
-                                                    <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Ciudad:</b></label><label class="text-red-500">*</label>
+                                                <div class="flex  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-start gap-x-3">
+                                                    <div class="grid w-1/2 justify-items-start">
+                                                            <div class="flex w-full">
+                                                                <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Aréa:</b></label><label class="text-red-500">*</label>
+                                                            </div>
+                                                            <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);"  name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
+                                                            <span id="ar_project_warning" name="ar_project_warning" class="text-red-500"></span>
                                                     </div>
-                                                    <select onchange="check_input(this.value,this.id,'ciudad_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades" id="ciudades">
-                                                        <option value="0">-Selecciona tu ciudad-</option>
-                                                    </select>
-                                                    <span id="ciudad_warning" name="ciudad_warning" class="text-red-500"></span>
+
+                                                <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                        <div class="flex">
+                                                            <div>
+                                                                    <div class="flex w-full">
+                                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Unidad:</b></label><label class="text-red-500">*</label>
+                                                                    </div>
+                                                                    <div class="flex gap-x-3 mt-3">
+                                                                    <div class="flex">
+                                                                        <input  id="check_mc"  onclick="check_unidad('mc');" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                                        <label for="check_mc" class="ml-2 text-xl font-medium text-gray-900 dark:text-gray-300 font-roboto">m²</label>
+                                                                    </div>
+
+                                                                    <div class="flex">
+                                                                        <input  id="check_ft"  onclick="check_unidad('ft');" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                                        <label for="check_ft"   class="ml-2 text-xl font-medium text-gray-900 dark:text-gray-300 font-roboto">ft²</label>
+                                                                    </div>
+                                                                    </div>
+                                                            </div>
+                                                        </div>
+
+                                                    {{-- <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-xl"  name="nombre_projecto" id="nombre_projecto"> --}}
+                                                    </div>
                                                 </div>
 
-                                                <div class="grid  md:w-2/5 xl:w-2/5 lg:w-1/2 justify-items-start">
+                                                <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-blue-600 rounded-xl"  name="unidad" id="unidad">
+
+                                                <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                        <div class="flex w-full">
+                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Ocupación Semanal </b></label><label class="text-red-500">*</label>
+                                                        </div>
+                                                    <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');"  name="tiempo_porcent"  id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                    <span id="tiempo_porcent_warning" name="tiempo_porcent_warning" class="text-red-500"></span>
+                                                </div>
+
+                                                <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>% HVAC en el Edificio:</b></label><label class="text-red-500">*</label>
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Energía HVAC (Edificio):</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select onchange="buton_check();check_input(this.value,this.id,'por_hvac_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                                         <option value="0">-Selecciona porcentaje-</option>
                                                     </select>
                                                     <span id="por_hvac_warning" name="por_hvac_warning" class="text-red-500"></span>
                                                 </div>
+
+                                            </div>
+
 
                                         </div>
                                     </div>
@@ -2230,7 +2250,7 @@ span{
 
                             <div class="clearfix">
                                 <div class="my-5 gap-x-3">
-                                    {{--   <input type="file" id="file" name="file"> --}}
+                                 {{--      <input type="file" id="file" name="file"> --}}
 {{--                                       <a class="btn btn-secondary font-roboto" id="btn-reset">Reset</a>
  --}}                                  </div>
                             </div>

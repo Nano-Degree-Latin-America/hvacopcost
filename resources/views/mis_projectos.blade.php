@@ -179,7 +179,7 @@ span{
                             <th class="p-3 text-left">Tipo Edificio</th>
                             {{-- <th class="p-3 text-left">Área</th>
                             <th class="p-3 text-left">Unidad</th> --}}
-                            <th class="p-3 text-left">País</th>
+                            <th class="p-3 text-left">Región</th>
                             <th class="p-3 text-left">Ciudad</th>
                             <th class="p-3 text-left">Status</th>
                             <th class="p-3 text-left" width="110px">Acciones</th>

@@ -590,7 +590,7 @@ function unidadHvac(value,num_div,id_select){
 
 function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_value){
     /*  var set_sol_1 =  $('#set_sol_1').val(); */
-    console.log(value);
+    //console.log(value);
       if( num_div == 1){
 
          $('#'+id_select).empty();
@@ -702,7 +702,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
                       case "ca_pi_te":
                         var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Sin Unidad DOA)" , "value":0.18},' +
+                        '{ "text":"Sin Unidad DOA" , "value":0.18},' +
                         '{ "text":"Con Unidad DOA y MERV" , "value":0},' +
                         '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.11 } ]}';
 
@@ -782,10 +782,10 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                         '{"text":"Espalda con Espalda" , "value":0.05 } ]}';
 
                         var arry_control = '{ "arry_control" : [' +
-                        '{"text":"Termostato Interno" , "value":1.08 } ]}';
+                        '{"text":"Termostato Interno" , "value":1.1 } ]}';
 
                         var arry_dr = '{ "arry_dr" : [' +
-                        '{"text":"No Aplica" , "value":0.08 } ]}';
+                        '{"text":"No Aplica" , "value":0.15 } ]}';
 
                         $('#'+equipo_value).val(1.15);
 
@@ -971,7 +971,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
       case "ca_pi_te":
         var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Sin Unidad DOA)" , "value":0.18},' +
+        '{ "text":"Sin Unidad DOA" , "value":0.18},' +
         '{ "text":"Con Unidad DOA y MERV" , "value":0},' +
         '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.11 } ]}';
 
@@ -1198,7 +1198,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
                       case "ca_pi_te":
                         var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Sin Unidad DOA)" , "value":0.18},' +
+                        '{ "text":"Sin Unidad DOA" , "value":0.18},' +
                         '{ "text":"Con Unidad DOA y MERV" , "value":0},' +
                         '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.11 } ]}';
 
@@ -1619,11 +1619,21 @@ function buton_check(){
         document.getElementById('ciudad_warning').innerHTML = "Campo Obligatorio";
         return false;
     }
+
+
+    var porcent_tiempo = $("#tiempo_porcent");
+    if (porcent_tiempo.val() == '') {
+        document.getElementById('tiempo_porcent_warning').innerHTML = "Campo Obligatorio";
+        return false;
+    }
+
     var porcent_hvac = $("#porcent_hvac");
     if (porcent_hvac.val() == '0') {
         document.getElementById('por_hvac_warning').innerHTML = "Campo Obligatorio";
         return false;
     }
+
+
 
     var check_mc = $("#check_mc");
     var check_ft = $("#check_ft");
@@ -1637,7 +1647,7 @@ function buton_check(){
     }
 
 
-    if (name.val() !== '' && cat_ed.val() !== '0' && tipo_edificio.val() !== '0' && ar_project.val() !== '' && paises.val() !== '0' && ciudades.val() !== '0' && porcent_hvac.val() !== '0') {
+    if (name.val() !== '' && cat_ed.val() !== '0' && tipo_edificio.val() !== '0' && ar_project.val() !== '' && paises.val() !== '0' && ciudades.val() !== '0' && porcent_hvac.val() !== '0' && porcent_tiempo.val() !== '') {
        /*  $('#next').attr('disabled', false); */
        $('#div_next').addClass("hidden");
        $('#div_next_h').removeClass("hidden");
