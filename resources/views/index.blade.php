@@ -185,7 +185,7 @@ span{
                                     <li>Calculo de Ahorro Financiero Acumulado del Sistema Propuesto</li>
                                     <li>Análisis de ROI por Sistema Propuesto  de HVAC</li>
                                 </ul> --}}
-                                <div class="contenedor pb-15">
+                                {{-- <div class="contenedor pb-15">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
@@ -198,7 +198,7 @@ span{
                                     </form>
 
 
-                                     </div>
+                                     </div> --}}
                                      <form action="{{route('resultados')}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
                                         @csrf
                                         <div class="my-8">
@@ -207,7 +207,7 @@ span{
                                      <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
 
 
-                                        <div class="flex w-full gap-x-6 my-2 mx-1 justify-center">
+                                        <div class="flex w-full gap-x-10 my-2 mx-1 justify-center">
 
                                             <div class="grid justify-items-end h-full gap-y-3 w-1/2">
 
@@ -301,8 +301,17 @@ span{
                                                         <div class="flex w-full">
                                                             <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Ocupación Semanal </b></label><label class="text-red-500">*</label>
                                                         </div>
-                                                    <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');"  name="tiempo_porcent"  id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
-                                                    <span id="tiempo_porcent_warning" name="tiempo_porcent_warning" class="text-red-500"></span>
+{{--                                                     <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');"  name="tiempo_porcent"  id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+ --}}
+
+                                                                <select {{-- onchange="check_input(this.value,this.id,'paises_warning');"  --}}class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
+                                                                    <option value="">-Seleccionar ocupación-</option>
+                                                                    <option value="m_50">Menos de 50</option>
+                                                                    <option value="51_167 ">51 a 167</option>
+                                                                    <option value="168">168</option>
+                                                                </select>
+
+                                                        <span id="tiempo_porcent_warning" name="tiempo_porcent_warning" class="text-red-500"></span>
                                                 </div>
 
                                                 <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
@@ -315,6 +324,23 @@ span{
                                                     <span id="por_hvac_warning" name="por_hvac_warning" class="text-red-500"></span>
                                                 </div>
 
+                                                <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                    <div id="div_next" name="div_next" class="w-1/2 text-right">
+                                                        <button type="button"  id="next" name="next"
+                                                            onclick="buton_check();"
+                                                            class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
+                                                        >Siguiente</button>
+                                                    </div>
+                                                    <div id="div_next_h" name="div_next_h" class="w-1/2 text-right">
+                                                            <button  type="button"  id="next_h" name="next_h"
+                                                                x-show="step < 2"
+                                                                @click="step++"
+                                                                class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
+                                                            >Siguiente</button>
+
+
+                                                    </div>
+                                                </div>
                                             </div>
 
 
@@ -2286,23 +2312,12 @@ span{
                         class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
                     >Atrás</button>
                 </div>
-
-                <div id="div_next" name="div_next" class="w-1/2 text-right">
-                    <button  id="next" name="next"
-                        onclick="buton_check();"
-                        class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
-                    >Siguiente</button>
+                <div  x-show="step < 2" class="w-1/2 flex" style=" justify-content: right;">
+                <label  class="text-xl text-gray-300 font-montserrat"  for="">Basado en Ashrae</label>
                 </div>
-                <div id="div_next_h" name="div_next_h" class="w-1/2 text-right">
-                        <button  id="next_h" name="next_h"
-                            x-show="step < 2"
-                            @click="step++"
-                            class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
-                        >Siguiente</button>
+                <button  x-show="step > 1" type="button" name="calcular" id="calcular" onclick="check_form_submit();"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">Calcular</button>
 
-                        <button  x-show="step > 1" type="button" name="calcular" id="calcular" onclick="check_form_submit();"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">Calcular</button>
 
-                </div>
 
             </div>
         </div>

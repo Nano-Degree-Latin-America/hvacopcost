@@ -59,7 +59,27 @@ class ResultadosController extends Controller
         $mew_project->name=$request->get('name_pro');
         $mew_project->id_tipo_edificio=$request->get('tipo_edificio');
         $mew_project->id_cat_edifico=$request->get('cat_ed');
-        $mew_project->hrs_tiempo=$request->get('tiempo_porcent');
+        $hrs_tiempo = $request->get('tiempo_porcent');
+        //horas tiempo
+        switch ($hrs_tiempo) {
+            case 'm_50':
+                //si llega m_50 el valor es igual a 30 que es menor que 50 Nota! puede ser cualquier numero menor que 50
+                $mew_project->hrs_tiempo=30;
+
+                break;
+            case '51_167':
+                //si es de 51 a 157 , 80 esta entre el rango
+                $mew_project->hrs_tiempo=80;
+
+                break;
+            case '168':
+                 //si es igual a 168
+                $mew_project->hrs_tiempo=168;
+
+                break;
+        }
+
+
         $aux = explode(",",   $request->get('ar_project'));
         if(count($aux) == 1){
             $mew_project->area =  $aux[0];

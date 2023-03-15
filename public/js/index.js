@@ -1419,7 +1419,7 @@ function traer_categorias_edif() {
         success: function (response) {
             $('#cat_ed').append($('<option>', {
                 value: 0,
-                text: 'Seleccionar'
+                text: '-Seleccionar-'
             }));
 
             response.map((cat_ed, i) => {

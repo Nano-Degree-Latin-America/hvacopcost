@@ -31,7 +31,7 @@
     		/* background-image: url("{{asset('assets/images/backgrond_login.PNG')}}"); */
     	}
     </style>
-    <title>Acceso</title>
+    <title>Desprosoft Hvacopcost</title>
 </head>
 <body>
 
@@ -75,7 +75,7 @@
                         <input type="button" class="bg-gray-100 text-[14px] text-black cursor-pointer font-bold p-3 rounded-xl hover:text-white hover:bg-gray-500" style="" value="Registro Demo">
                        </a>
                     </div>
-
+                    <label for="">Desprosoft Hvacopcost</label>
                     <div>
                         <input type="button"class="bg-gray-100 text-[14px] text-black cursor-pointer font-bold py-3 px-4 rounded-xl hover:text-white hover:bg-gray-500" style="" value="Comprar">
                     </div>

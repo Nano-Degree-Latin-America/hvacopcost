@@ -24,6 +24,17 @@
 
     <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 "><a class="mx-1" href="/home">Nuevo Projecto</a></button>
 
+    <a class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('logout') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+                <button>
+                    Cerrar Sesión
+                    </button>
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
     </div>
 </div>
     {{-- <div id="divSettings">
@@ -201,20 +212,7 @@ span{
                                     <li>Calculo de Ahorro Financiero Acumulado del Sistema Propuesto</li>
                                     <li>Análisis de ROI por Sistema Propuesto  de HVAC</li>
                                 </ul> --}}
-                                <div class="contenedor pb-15">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                  document.getElementById('logout-form').submit();">
-                                        <button class="botonF1 mt-8">
-                                            Cerrar Sesión
-                                            </button>
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
 
-
-                                     </div>
 
                                      <form action="{{url('/edit_project', [$id_project])}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
                                         @csrf
@@ -224,7 +222,7 @@ span{
                                      <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
 
 
-                                        <div class="flex w-full gap-x-6 my-2 mx-1 justify-center">
+                                        <div class="flex w-full gap-x-10 my-2 mx-1 justify-center">
 
                                             <div class="grid justify-items-end h-full gap-y-3 w-1/2">
                                                 <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
@@ -348,20 +346,62 @@ span{
 
                                                  <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                         <div class="flex w-full">
-                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Tiempo(Hrs)</b></label><label class="text-red-500">*</label>
+                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Ocupación Semanal</b></label><label class="text-red-500">*</label>
                                                         </div>
-                                                    <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');" value="{{$project_edit->hrs_tiempo}}"  name="tiempo_porcent" id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+{{--                                                     <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');" value="{{$project_edit->hrs_tiempo}}"  name="tiempo_porcent" id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+ --}}                                               <select {{-- onchange="check_input(this.value,this.id,'paises_warning');"  --}}class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
+                                                        @switch($project_edit->hrs_tiempo)
+                                                            @case(30)
+                                                            <option selected value="m_50">Menos de 50</option>
+                                                            <option value="51_167 ">51 a 167</option>
+                                                            <option value="168">168</option>
+                                                            @break
+
+                                                            @case(80)
+                                                            <option  value="m_50">Menos de 50</option>
+                                                            <option selected value="51_167 ">51 a 167</option>
+                                                            <option value="168">168</option>
+                                                            @break
+
+                                                            @case(168)
+                                                            <option value="m_50">Menos de 50</option>
+                                                            <option value="51_167 ">51 a 167</option>
+                                                            <option selected value="168">168</option>
+                                                            @break
+
+                                                            @default
+
+                                                        @endswitch
+
+
+                                                    </select>
                                                     <span id="tiempo_porcent_warning" name="tiempo_porcent_warning" class="text-red-500"></span>
                                                 </div>
 
                                                 <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>% Consumo Energía HVAC (Edificio):</b></label><label class="text-red-500">*</label>
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Energía HVAC (Edificio):</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select onchange="buton_check();check_input(this.value,this.id,'por_hvac_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                                         <option value="0">-Selecciona porcentaje-</option>
                                                     </select>
                                                     <span id="por_hvac_warning" name="por_hvac_warning" class="text-red-500"></span>
+                                                </div>
+
+                                                <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                    <div id="div_next" name="div_next" class="w-1/2 text-right">
+                                                        <button type="button" id="next" name="next"
+                                                            onclick="buton_check();"
+                                                            class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
+                                                        >Siguiente</button>
+                                                    </div>
+                                                    <div id="div_next_h" name="div_next_h" class="w-1/2 text-right">
+                                                            <button type="button" id="next_h" name="next_h"
+                                                                x-show="step < 2"
+                                                                @click="step++"
+                                                                class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
+                                                            >Siguiente</button>
+                                                    </div>
                                                 </div>
 
                                             </div>
@@ -2359,27 +2399,11 @@ span{
                     >Resultado</button>
                     </a>
                 </div>
+                <button  x-show="step === 2" type="button" name="guardar" id="guardar" onclick="check_form_submit();"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">Guardar</button>
 
-                <div id="div_next" name="div_next" class="w-1/2 text-right">
-                    <button  id="next" name="next"
-                        onclick="buton_check();"
-                        class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
-                    >Siguiente</button>
-                </div>
-                <div id="div_next_h" name="div_next_h" class="w-1/2 text-right">
-                        <button  id="next_h" name="next_h"
-                            x-show="step < 2"
-                            @click="step++"
-                            class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
-                        >Siguiente</button>
-                        <button  x-show="step === 2" type="button" name="guardar" id="guardar" onclick="check_form_submit();"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">Guardar</button>
-
-                    {{-- <button
-                        @click="step = 'complete'"
-                        x-show="step === 2"
-                        class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 font-medium"
-                    >Complete</button> --}}
-                </div>
+                <div  x-show="step < 2" class="w-1/2 flex" style=" justify-content: right;">
+                    <label  class="text-xl text-gray-300 font-montserrat"  for="">Basado en Ashrae</label>
+                    </div>
             </div>
         </div>
     </div>

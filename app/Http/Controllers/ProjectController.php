@@ -172,7 +172,28 @@ class ProjectController extends Controller
         $update_project= ProjectsModel::find($id);
         $update_project->name=$request->get('name_pro');
         $update_project->id_tipo_edificio=$request->get('tipo_edificio_edit');
-        $update_project->hrs_tiempo=$request->get('tiempo_porcent');
+        $hrs_tiempo = $request->get('tiempo_porcent');
+
+        switch ($hrs_tiempo) {
+            case 'm_50':
+                //si llega m_50 el valor es igual a 30 que es menor que 50 Nota! puede ser cualquier numero menor que 50
+                $update_project->hrs_tiempo=30;
+
+                break;
+            case '51_167':
+                //si es de 51 a 157 , 80 esta entre el rango
+                $update_project->hrs_tiempo=80;
+
+                break;
+            case '168':
+                 //si es igual a 168
+                $update_project->hrs_tiempo=168;
+
+                break;
+        }
+
+
+
         $update_project->id_cat_edifico=$request->get('cat_ed_edit');
 
         $aux = explode(",",   $request->get('ar_project'));
