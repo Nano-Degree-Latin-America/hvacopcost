@@ -352,21 +352,21 @@ span{
  --}}                                               <select {{-- onchange="check_input(this.value,this.id,'paises_warning');"  --}}class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
                                                         @switch($project_edit->hrs_tiempo)
                                                             @case(30)
-                                                            <option selected value="m_50">Menos de 50</option>
-                                                            <option value="51_167 ">51 a 167</option>
-                                                            <option value="168">168</option>
+                                                            <option selected value="m_50">Menos de 50 Hrs.</option>
+                                                            <option value="51_167 ">51 a 167 Hrs.</option>
+                                                            <option value="168">168 Hrs.</option>
                                                             @break
 
                                                             @case(80)
-                                                            <option  value="m_50">Menos de 50</option>
-                                                            <option selected value="51_167 ">51 a 167</option>
-                                                            <option value="168">168</option>
+                                                            <option  value="m_50">Menos de 50 Hrs.</option>
+                                                            <option selected value="51_167 ">51 a 167 Hrs.</option>
+                                                            <option value="168">168 Hrs.</option>
                                                             @break
 
                                                             @case(168)
-                                                            <option value="m_50">Menos de 50</option>
-                                                            <option value="51_167 ">51 a 167</option>
-                                                            <option selected value="168">168</option>
+                                                            <option value="m_50">Menos de 50 Hrs.</option>
+                                                            <option value="51_167 ">51 a 167 Hrs.</option>
+                                                            <option selected value="168">168 Hrs.</option>
                                                             @break
 
                                                             @default
@@ -388,7 +388,7 @@ span{
                                                     <span id="por_hvac_warning" name="por_hvac_warning" class="text-red-500"></span>
                                                 </div>
 
-                                                <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-startmt-5 ">
                                                     <div id="div_next" name="div_next" class="w-1/2 text-right">
                                                         <button type="button" id="next" name="next"
                                                             onclick="buton_check();"
@@ -2402,7 +2402,7 @@ span{
                 <button  x-show="step === 2" type="button" name="guardar" id="guardar" onclick="check_form_submit();"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">Guardar</button>
 
                 <div  x-show="step < 2" class="w-1/2 flex" style=" justify-content: right;">
-                    <label  class="text-xl text-gray-300 font-montserrat"  for="">Basado en Ashrae</label>
+                    <label  class="text-xl text-gray-500 font-montserrat"  for="">Basado en Ashrae</label>
                     </div>
             </div>
         </div>
