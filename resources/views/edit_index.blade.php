@@ -2383,8 +2383,8 @@ span{
 
     <!-- Bottom Navigation -->
     <div class="fixed bottom-0 left-0 right-0 py-2 bg-white shadow-md" x-show="step != 'complete'">
-        <div class="max-w-3xl mx-auto px-4">
-            <div class="flex justify-between">
+        <div class="w-full mx-auto px-4">
+            <div class="flex  w-full">
                 <div class="w-1/2">
                     <button
                         x-show="step > 1"
@@ -2399,11 +2399,31 @@ span{
                     >Resultado</button>
                     </a>
                 </div>
-                <button  x-show="step === 2" type="button" name="guardar" id="guardar" onclick="check_form_submit();"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">Guardar</button>
 
-                <div  x-show="step < 2" class="w-1/2 flex" style=" justify-content: right;">
-                    <label  class="text-xl text-gray-500 font-montserrat"  for="">Basado en Ashrae</label>
-                    </div>
+
+                <div  x-show="step < 2" class="w-1/2 flex" style=" justify-content: left;">
+                    <div  x-show="step < 2" class="w-full flex" style=" justify-content: left;">
+                        <label style="font-size:10px;" class=" text-gray-500 font-montserrat"  for="">
+                            De acuerdo a:
+                        </label>
+                        <ul class="mt-3">
+                            <li class="flex items-center w-full">
+                              <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
+                              <p style="font-size:9px;" class="text-gray-500">ASHRAE Standard 100–2018,  ASHRAE Standard 169–2021, ASHRAE Standard 90.1–2019 , ASHRAE Standard 70–2006, ASHRAE Standard 180–2018, ASHRAE Standard 55–2020 y ASHRAE Standard 62.1-2019.</p>
+                            </li>
+
+                            <li class="flex items-center w-full">
+                              <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
+                              <p style="font-size:9px;" class="text-gray-500">1-100 Energy Star Score,  Energy Star Portfolio Manager ,EIA – CBECS–2018 Cooling Degree Days por Degreedays.net y NOAA.gov.</p>
+                            </li>
+
+                          </ul>
+                        </div>
+                </div>
+                <div  x-show="step === 2" class="w-1/2 flex" style=" justify-content: center;">
+
+                <button x type="button" name="guardar" id="guardar" onclick="check_form_submit();"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">Guardar</button>
+            </div>
             </div>
         </div>
     </div>

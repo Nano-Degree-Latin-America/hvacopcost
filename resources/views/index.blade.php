@@ -155,7 +155,7 @@ span{
                     <div id="mapa-div">
                             <div class=" xl:ml-5 col-6">
                                 <h2 id="lblMapa">{{-- Da Clic en el Mapa --}}</h2>
-                            <img  class="mapa_img mt-5" src="{{asset('assets\images\Mapa-Hvacopcost_azul-sombra.png')}}" alt="" usemap="#mapa" {{-- onClick="cambiarLblMapa('Mapa')" --}}>
+                            <img  class="mapa_img" src="{{asset('assets\images\Mapa-Hvacopcost_azul-sombra.png')}}" alt="" usemap="#mapa" {{-- onClick="cambiarLblMapa('Mapa')" --}}>
                             <map class="w-full" name="mapa">
                                 {{-- <area shape="polygon" coords="2,3, 67,5, 98,19, 121,43, 129,81, 174,65, 150,91, 139,112, 78,93, 29,54, 8,27" onclick="getCiudades(17); cambiarLblMapa('México')" alt="México">
                                 <area shape="polygon" coords="144,108, 155,96, 155,89, 175,84, 232,133, 216,150, 179,131, 171,117" onclick="getCiudades(28); cambiarLblMapa('Centro América')" alt="Centro América">
@@ -2302,22 +2302,45 @@ span{
     </div>
 
     <!-- Bottom Navigation -->
-    <div class="fixed bottom-0 left-0 right-0 py-2 bg-white shadow-md" x-show="step != 'complete'">
-        <div class="max-w-3xl mx-auto px-4">
-            <div class="flex justify-between">
+    <div class="fixed bottom-0 w-full left-0 right-0 py-2 bg-white shadow-md" x-show="step != 'complete'">
+        <div class=" w-full mx-auto px-4 pb-2">
+            <div class="flex w-full">
                 <div class="w-1/2">
                     <button
                         x-show="step > 1"
                         @click="step--"
                         class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
                     >Atrás</button>
+                    <div x-show="step == 1"  class="w-5/6">
+                        <p  style="font-size:10px;" class="text-gray-500 text-left ">*Descargo de responsabilidad: los costos reales variarán según las condiciones climáticas y el uso. Esta información está destinada únicamente a fines comparativos. Este software no debe usarse para determinar la capacidad de una nueva unidad HVAC, está diseñada solo para fines de comparación de costos.
+                        </p>
+                    </div>
+
+
                 </div>
-                <div  x-show="step < 2" class="w-1/2 flex" style=" justify-content: right;">
-                <label  class="text-xl text-gray-500 font-montserrat"  for="">Basado en Ashrae</label>
+
+                <div class="w-1/2">
+                <div  x-show="step < 2" class="w-full flex" style=" justify-content: left;">
+                <label style="font-size:10px;" class=" text-gray-500 font-montserrat"  for="">
+                    De acuerdo a:
+                </label>
+                <ul class="mt-3">
+                    <li class="flex items-center w-full">
+                      <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
+                      <p style="font-size:9px;" class="text-gray-500">ASHRAE Standard 100–2018,  ASHRAE Standard 169–2021, ASHRAE Standard 90.1–2019 , ASHRAE Standard 70–2006, ASHRAE Standard 180–2018, ASHRAE Standard 55–2020 y ASHRAE Standard 62.1-2019.</p>
+                    </li>
+
+                    <li class="flex items-center w-full">
+                      <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
+                      <p style="font-size:9px;" class="text-gray-500">1-100 Energy Star Score,  Energy Star Portfolio Manager ,EIA – CBECS–2018 Cooling Degree Days por Degreedays.net y NOAA.gov.</p>
+                    </li>
+
+                  </ul>
                 </div>
+
                 <button  x-show="step > 1" type="button" name="calcular" id="calcular" onclick="check_form_submit();"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">Calcular</button>
 
-
+            </div>
 
             </div>
         </div>
