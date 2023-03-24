@@ -2752,14 +2752,14 @@ function traer_porcent_ini(val,porcent) {
                 if(parseInt(porcent) === cat_ed){
                     $('#porcent_hvac').append($('<option>', {
                     value: cat_ed,
-                    text: cat_ed
+                    text: cat_ed + '%',
                 }));
 
                     $("#porcent_hvac").find('option[value="' + cat_ed + '"]').attr("selected", "selected");
                     }else if(parseInt(porcent) != cat_ed){
                         $('#porcent_hvac').append($('<option>', {
                             value: cat_ed,
-                    text: cat_ed
+                    text: cat_ed + '%',
                     }));
                     }
 

@@ -1574,7 +1574,7 @@ function set_porcent_hvac(value){
             response.map((cat_ed, i) => {
                 $('#porcent_hvac').append($('<option>', {
                     value: cat_ed,
-                    text: cat_ed
+                    text: cat_ed + '%',
                 }));
             });
 

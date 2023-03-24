@@ -55,7 +55,7 @@ class ResultadosController extends Controller
         $enfriamiento2 = intval($request->get('cUnidad_2_1'));
         $enfriamiento3 =intval($request->get('cUnidad_3_1'));
 
-        $mew_project=new ProjectsModel;
+        $mew_project = new ProjectsModel;
         $mew_project->name=$request->get('name_pro');
         $mew_project->id_tipo_edificio=$request->get('tipo_edificio');
         $mew_project->id_cat_edifico=$request->get('cat_ed');
