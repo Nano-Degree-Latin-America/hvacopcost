@@ -59,6 +59,7 @@ class ResultadosController extends Controller
         $mew_project->name=$request->get('name_pro');
         $mew_project->id_tipo_edificio=$request->get('tipo_edificio');
         $mew_project->id_cat_edifico=$request->get('cat_ed');
+        $mew_project->inflacion=intval($request->get('inc_ene'));
         $hrs_tiempo = $request->get('tiempo_porcent');
         //horas tiempo
         switch ($hrs_tiempo) {
@@ -2872,6 +2873,599 @@ $dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
 // Output the generated PDF to Browser
  return $dompdf->stream(); */
+    }
+
+    public function cap_op_3($id_projecto){
+
+        $num_enfs = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->select('solutions_project.num_enf')
+        ->distinct()
+        ->get();
+
+        $suma_enf_base = 0;
+        $suma_enf_base_aux = 0;
+        $sumaopex_base = 0;
+        $suma_enf_a = 0;
+        $sumaopex_a = 0;
+        $suma_enf_a_aux=0;
+        $suma_enf_b = 0;
+        $sumaopex_b = 0;
+        $suma_enf_b_aux = 0;
+        $array_tot = [];
+        $array_base = [0,0];
+        $array_a = [0,0];
+        $array_b = [0,0];
+        $inflacion_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+        $inflacion =  $inflacion_aux/100 + 1;
+        foreach( $num_enfs as $num_enf){
+           if($num_enf->num_enf === 1){
+            //capex
+            $array_base = [];
+            $inv_ini = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.val_aprox')
+            ->get();
+
+            foreach($inv_ini as $inv){
+                $suma_enf_base = $suma_enf_base + $inv->val_aprox;
+            }
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $res_enf_base =  $suma_enf_base/$area;
+            //opex
+            $solutions = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions as $sol){
+                $sumaopex_base = $sumaopex_base + $sol->cost_op_an;
+            }
+
+             $res_opex_enf_base = $sumaopex_base/$area;
+             $suma_enf_base_aux = $res_opex_enf_base;
+             for ($i = 2; $i <= 3; $i++) {
+                 $suma_enf_base_aux = $suma_enf_base_aux +  $res_opex_enf_base;
+                $res_opex_enf_base = $res_opex_enf_base * $inflacion;
+            }
+
+            array_push( $array_base,number_format($res_enf_base,1),number_format($suma_enf_base_aux,1));
+        }
+
+           if($num_enf->num_enf === 2){
+            $array_a = [];
+            //capex
+            $inv_ini = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.val_aprox')
+            ->get();
+
+            foreach($inv_ini as $inv){
+                $suma_enf_a = $suma_enf_a + $inv->val_aprox;
+            }
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $res_enf_a =  $suma_enf_a/$area;
+            //opex
+            $solutions_a = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions_a as $sol){
+                $sumaopex_a = $sumaopex_a + $sol->cost_op_an;
+            }
+
+             $res_opex_enf_a = $sumaopex_a/$area;
+             $suma_enf_a_aux = $res_opex_enf_a;
+             for ($i = 2; $i <= 3; $i++) {
+                $suma_enf_a_aux = $suma_enf_a_aux +  $res_opex_enf_a;
+                $res_opex_enf_a = $res_opex_enf_a * $inflacion;
+            }
+
+            array_push( $array_a,number_format($res_enf_a,1),number_format($suma_enf_a_aux,1));
+           }
+
+           if($num_enf->num_enf === 3){
+            $array_b = [];
+            //capex
+            $inv_ini = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.val_aprox')
+            ->get();
+
+            foreach($inv_ini as $inv){
+                $suma_enf_b = $suma_enf_b + $inv->val_aprox;
+            }
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $res_enf_b =  $suma_enf_b/$area;
+            //opex
+            $solutions_b = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions_b as $sol){
+                $sumaopex_b = $sumaopex_b + $sol->cost_op_an;
+            }
+
+             $res_opex_enf_b = $sumaopex_b/$area;
+             $suma_enf_b_aux = $res_opex_enf_b;
+             for ($i = 2; $i <= 3; $i++) {
+                $suma_enf_b_aux = $suma_enf_b_aux +  $res_opex_enf_b;
+                $res_opex_enf_b = $res_opex_enf_b * $inflacion;
+            }
+
+            array_push( $array_b,number_format($res_enf_b,1),number_format($suma_enf_b_aux,1));
+           }
+        }
+
+  array_push( $array_tot,$array_base,$array_a,$array_b);
+       return response()->json($array_tot);
+    }
+
+
+    public function cap_op_5($id_projecto){
+
+        $num_enfs = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->select('solutions_project.num_enf')
+        ->distinct()
+        ->get();
+
+        $suma_enf_base = 0;
+        $suma_enf_base_aux = 0;
+        $sumaopex_base = 0;
+        $suma_enf_a = 0;
+        $sumaopex_a = 0;
+        $suma_enf_a_aux=0;
+        $suma_enf_b = 0;
+        $sumaopex_b = 0;
+        $suma_enf_b_aux = 0;
+        $array_tot = [];
+        $array_base = [0,0];
+        $array_a = [0,0];
+        $array_b = [0,0];
+        $inflacion_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+        $inflacion =  $inflacion_aux/100 + 1;
+        foreach( $num_enfs as $num_enf){
+           if($num_enf->num_enf === 1){
+            //capex
+            $array_base = [];
+            $inv_ini = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.val_aprox')
+            ->get();
+
+            foreach($inv_ini as $inv){
+                $suma_enf_base = $suma_enf_base + $inv->val_aprox;
+            }
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $res_enf_base =  $suma_enf_base/$area;
+            //opex
+            $solutions = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions as $sol){
+                $sumaopex_base = $sumaopex_base + $sol->cost_op_an;
+            }
+
+             $res_opex_enf_base = $sumaopex_base/$area;
+             $suma_enf_base_aux = $res_opex_enf_base;
+             for ($i = 2; $i <= 5; $i++) {
+                 $suma_enf_base_aux = $suma_enf_base_aux +  $res_opex_enf_base;
+                $res_opex_enf_base = $res_opex_enf_base * $inflacion;
+            }
+
+            array_push( $array_base,number_format($res_enf_base,1),number_format($suma_enf_base_aux,1));
+        }
+
+           if($num_enf->num_enf === 2){
+            $array_a = [];
+            //capex
+            $inv_ini = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.val_aprox')
+            ->get();
+
+            foreach($inv_ini as $inv){
+                $suma_enf_a = $suma_enf_a + $inv->val_aprox;
+            }
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $res_enf_a =  $suma_enf_a/$area;
+            //opex
+            $solutions_a = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions_a as $sol){
+                $sumaopex_a = $sumaopex_a + $sol->cost_op_an;
+            }
+
+             $res_opex_enf_a = $sumaopex_a/$area;
+             $suma_enf_a_aux = $res_opex_enf_a;
+             for ($i = 2; $i <= 5; $i++) {
+                $suma_enf_a_aux = $suma_enf_a_aux +  $res_opex_enf_a;
+                $res_opex_enf_a = $res_opex_enf_a * $inflacion;
+            }
+
+            array_push( $array_a,number_format($res_enf_a,1),number_format($suma_enf_a_aux,1));
+           }
+
+           if($num_enf->num_enf === 3){
+            $array_b = [];
+            //capex
+            $inv_ini = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.val_aprox')
+            ->get();
+
+            foreach($inv_ini as $inv){
+                $suma_enf_b = $suma_enf_b + $inv->val_aprox;
+            }
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $res_enf_b =  $suma_enf_b/$area;
+            //opex
+            $solutions_b = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions_b as $sol){
+                $sumaopex_b = $sumaopex_b + $sol->cost_op_an;
+            }
+
+             $res_opex_enf_b = $sumaopex_b/$area;
+             $suma_enf_b_aux = $res_opex_enf_b;
+             for ($i = 2; $i <= 5; $i++) {
+                $suma_enf_b_aux = $suma_enf_b_aux +  $res_opex_enf_b;
+                $res_opex_enf_b = $res_opex_enf_b * $inflacion;
+            }
+
+            array_push( $array_b,number_format($res_enf_b,1),number_format($suma_enf_b_aux,1));
+           }
+        }
+
+  array_push( $array_tot,$array_base,$array_a,$array_b);
+       return response()->json($array_tot);
+    }
+
+    public function cap_op_10($id_projecto){
+
+        $num_enfs = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->select('solutions_project.num_enf')
+        ->distinct()
+        ->get();
+
+        $suma_enf_base = 0;
+        $suma_enf_base_aux = 0;
+        $sumaopex_base = 0;
+        $suma_enf_a = 0;
+        $sumaopex_a = 0;
+        $suma_enf_a_aux=0;
+        $suma_enf_b = 0;
+        $sumaopex_b = 0;
+        $suma_enf_b_aux = 0;
+        $array_tot = [];
+        $array_base = [0,0];
+        $array_a = [0,0];
+        $array_b = [0,0];
+        $inflacion_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+        $inflacion =  $inflacion_aux/100 + 1;
+        foreach( $num_enfs as $num_enf){
+           if($num_enf->num_enf === 1){
+            //capex
+            $array_base = [];
+            $inv_ini = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.val_aprox')
+            ->get();
+
+            foreach($inv_ini as $inv){
+                $suma_enf_base = $suma_enf_base + $inv->val_aprox;
+            }
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $res_enf_base =  $suma_enf_base/$area;
+            //opex
+            $solutions = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions as $sol){
+                $sumaopex_base = $sumaopex_base + $sol->cost_op_an;
+            }
+
+             $res_opex_enf_base = $sumaopex_base/$area;
+             $suma_enf_base_aux = $res_opex_enf_base;
+             for ($i = 2; $i <= 10; $i++) {
+                 $suma_enf_base_aux = $suma_enf_base_aux +  $res_opex_enf_base;
+                $res_opex_enf_base = $res_opex_enf_base * $inflacion;
+            }
+
+            array_push( $array_base,number_format($res_enf_base,1),number_format($suma_enf_base_aux,1));
+        }
+
+           if($num_enf->num_enf === 2){
+            $array_a = [];
+            //capex
+            $inv_ini = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.val_aprox')
+            ->get();
+
+            foreach($inv_ini as $inv){
+                $suma_enf_a = $suma_enf_a + $inv->val_aprox;
+            }
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $res_enf_a =  $suma_enf_a/$area;
+            //opex
+            $solutions_a = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions_a as $sol){
+                $sumaopex_a = $sumaopex_a + $sol->cost_op_an;
+            }
+
+             $res_opex_enf_a = $sumaopex_a/$area;
+             $suma_enf_a_aux = $res_opex_enf_a;
+             for ($i = 2; $i <= 10; $i++) {
+                $suma_enf_a_aux = $suma_enf_a_aux +  $res_opex_enf_a;
+                $res_opex_enf_a = $res_opex_enf_a * $inflacion;
+            }
+
+            array_push( $array_a,number_format($res_enf_a,1),number_format($suma_enf_a_aux,1));
+           }
+
+           if($num_enf->num_enf === 3){
+            $array_b = [];
+            //capex
+            $inv_ini = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.val_aprox')
+            ->get();
+
+            foreach($inv_ini as $inv){
+                $suma_enf_b = $suma_enf_b + $inv->val_aprox;
+            }
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $res_enf_b =  $suma_enf_b/$area;
+            //opex
+            $solutions_b = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions_b as $sol){
+                $sumaopex_b = $sumaopex_b + $sol->cost_op_an;
+            }
+
+             $res_opex_enf_b = $sumaopex_b/$area;
+             $suma_enf_b_aux = $res_opex_enf_b;
+             for ($i = 2; $i <= 10; $i++) {
+                $suma_enf_b_aux = $suma_enf_b_aux +  $res_opex_enf_b;
+                $res_opex_enf_b = $res_opex_enf_b * $inflacion;
+            }
+
+            array_push( $array_b,number_format($res_enf_b,1),number_format($suma_enf_b_aux,1));
+           }
+        }
+
+  array_push( $array_tot,$array_base,$array_a,$array_b);
+       return response()->json($array_tot);
+    }
+
+    public function cap_op_15($id_projecto){
+
+        $num_enfs = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->select('solutions_project.num_enf')
+        ->distinct()
+        ->get();
+
+        $suma_enf_base = 0;
+        $suma_enf_base_aux = 0;
+        $sumaopex_base = 0;
+        $suma_enf_a = 0;
+        $sumaopex_a = 0;
+        $suma_enf_a_aux=0;
+        $suma_enf_b = 0;
+        $sumaopex_b = 0;
+        $suma_enf_b_aux = 0;
+        $array_tot = [];
+        $array_base = [0,0];
+        $array_a = [0,0];
+        $array_b = [0,0];
+        $inflacion_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+        $inflacion =  $inflacion_aux/100 + 1;
+        foreach( $num_enfs as $num_enf){
+           if($num_enf->num_enf === 1){
+            //capex
+            $array_base = [];
+            $inv_ini = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.val_aprox')
+            ->get();
+
+            foreach($inv_ini as $inv){
+                $suma_enf_base = $suma_enf_base + $inv->val_aprox;
+            }
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $res_enf_base =  $suma_enf_base/$area;
+            //opex
+            $solutions = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions as $sol){
+                $sumaopex_base = $sumaopex_base + $sol->cost_op_an;
+            }
+
+             $res_opex_enf_base = $sumaopex_base/$area;
+             $suma_enf_base_aux = $res_opex_enf_base;
+             for ($i = 2; $i <= 15; $i++) {
+                 $suma_enf_base_aux = $suma_enf_base_aux +  $res_opex_enf_base;
+                $res_opex_enf_base = $res_opex_enf_base * $inflacion;
+            }
+
+            array_push( $array_base,number_format($res_enf_base,1),number_format($suma_enf_base_aux,1));
+        }
+
+           if($num_enf->num_enf === 2){
+            $array_a = [];
+            //capex
+            $inv_ini = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.val_aprox')
+            ->get();
+
+            foreach($inv_ini as $inv){
+                $suma_enf_a = $suma_enf_a + $inv->val_aprox;
+            }
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $res_enf_a =  $suma_enf_a/$area;
+            //opex
+            $solutions_a = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions_a as $sol){
+                $sumaopex_a = $sumaopex_a + $sol->cost_op_an;
+            }
+
+             $res_opex_enf_a = $sumaopex_a/$area;
+             $suma_enf_a_aux = $res_opex_enf_a;
+             for ($i = 2; $i <= 15; $i++) {
+                $suma_enf_a_aux = $suma_enf_a_aux +  $res_opex_enf_a;
+                $res_opex_enf_a = $res_opex_enf_a * $inflacion;
+            }
+
+            array_push( $array_a,number_format($res_enf_a,1),number_format($suma_enf_a_aux,1));
+           }
+
+           if($num_enf->num_enf === 3){
+            $array_b = [];
+            //capex
+            $inv_ini = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.val_aprox')
+            ->get();
+
+            foreach($inv_ini as $inv){
+                $suma_enf_b = $suma_enf_b + $inv->val_aprox;
+            }
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $res_enf_b =  $suma_enf_b/$area;
+            //opex
+            $solutions_b = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions_b as $sol){
+                $sumaopex_b = $sumaopex_b + $sol->cost_op_an;
+            }
+
+             $res_opex_enf_b = $sumaopex_b/$area;
+             $suma_enf_b_aux = $res_opex_enf_b;
+             for ($i = 2; $i <= 15; $i++) {
+                $suma_enf_b_aux = $suma_enf_b_aux +  $res_opex_enf_b;
+                $res_opex_enf_b = $res_opex_enf_b * $inflacion;
+            }
+
+            array_push( $array_b,number_format($res_enf_b,1),number_format($suma_enf_b_aux,1));
+           }
+        }
+
+  array_push( $array_tot,$array_base,$array_a,$array_b);
+       return response()->json($array_tot);
     }
 
 }

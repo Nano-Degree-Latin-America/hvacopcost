@@ -1620,6 +1620,12 @@ function buton_check(){
         return false;
     }
 
+    var inflacion = $("#inc_ene");
+    if (inflacion.val() == '') {
+        document.getElementById('inc_ene_warning').innerHTML = "Campo Obligatorio";
+        return false;
+    }
+
 
     var porcent_tiempo = $("#tiempo_porcent");
     if (porcent_tiempo.val() == '') {
@@ -1647,7 +1653,7 @@ function buton_check(){
     }
 
 
-    if (name.val() !== '' && cat_ed.val() !== '0' && tipo_edificio.val() !== '0' && ar_project.val() !== '' && paises.val() !== '0' && ciudades.val() !== '0' && porcent_hvac.val() !== '0' && porcent_tiempo.val() !== '') {
+    if (name.val() !== '' && cat_ed.val() !== '0' && tipo_edificio.val() !== '0' && ar_project.val() !== '' && paises.val() !== '0' && ciudades.val() !== '0' && porcent_hvac.val() !== '0' && porcent_tiempo.val() !== '',inflacion.val() !== '') {
        /*  $('#next').attr('disabled', false); */
        $('#div_next').addClass("hidden");
        $('#div_next_h').removeClass("hidden");

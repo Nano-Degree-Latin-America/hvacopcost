@@ -13,6 +13,7 @@
 @inject('sumacap_term','app\Http\Controllers\ResultadosController')
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GXCVJ80B4N"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -2819,7 +2820,7 @@ span{
 
                                     </div>
 
-                                    <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
+{{--                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
                                             <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Inversión Inicial (CAPEX) por Área <b class="text-orange-500">($/{{$uni_med1 = ($unidad_area == 'mc') ? 'm²' : 'ft²'}})</b></label>
                                         </div>
@@ -2886,9 +2887,9 @@ span{
 
                                         </div>
 
-                                    </div>
+                                    </div> --}}
 
-                                    <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
+                                    {{-- <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
                                             <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Consumo de Energía (OPEX) por Área <b class="text-orange-500">($/{{$uni_med1 = ($unidad_area == 'mc') ? 'm²' : 'ft²'}})</b></label>
                                         </div>
@@ -2955,9 +2956,37 @@ span{
 
                                         </div>
 
-                                    </div>
+                                    </div> --}}
 
 {{--  --}}
+
+<div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
+    <div class="flex w-full justify-center mb-5">
+        <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Análisis CAPEX v/s OPEX</label>
+    </div>
+
+    <div class="w-full flex">
+        <div class="w-1/2 grid">
+            <div>
+                <div id="chart" name="chart"></div>
+            </div>
+
+            <div>
+                <div id="chart_10" name="chart_10"></div>
+            </div>
+        </div>
+        <div class="w-1/2 grid">
+            <div>
+                <div id="chart_5" name="chart_5"></div>
+            </div>
+
+            <div>
+                <div id="chart_15" name="chart_15"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
                                             <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Ahorro Anual de Costo Energético – Entre Soluciones</label>
@@ -4635,6 +4664,13 @@ span{
 	</div>
 
 <script>
+window.onload = function() {
+    cap_op_3('{{$id_project}}');
+    cap_op_5('{{$id_project}}');
+    cap_op_10('{{$id_project}}');
+    cap_op_15('{{$id_project}}');
+};
+
      javascript:history.forward(1)
 function app() {
 			return {
@@ -4662,122 +4698,280 @@ function app() {
 				}
 			}
 		}
-
-        var options = {
+//grafica capex_vx_opex 3 años
+function cap_op_3(id_project){
+    $.ajax({
+        type: 'get',
+        url: "/cap_op_3/" + id_project,
+        success: function (res) {
+            console.log(res);
+            var options = {
           series: [{
-          data: [400, 430, 448]
+          name: 'CAPEX',
+          data: [res[2][0], res[1][0], res[0][0]]
+        }, {
+          name: 'OPEX',
+          data: [res[2][1], res[1][1], res[0][1]]
         }],
           chart: {
           type: 'bar',
-          height: 250,
-          fontFamily: 'Helvetica, sans-serif'
+          height: 350,
+          stacked: true,
+          stackType: 'normal'
         },
         plotOptions: {
           bar: {
-            borderRadius: 4,
             horizontal: true,
-          }
+          },
         },
-        dataLabels: {
-          enabled: false
+        stroke: {
+          width: 1,
+          colors: ['#fff']
+        },
+        title: {
+          text: 'CAPEX v/s OPEX $/m2 - 3 Años',
+          align: 'center',
+          style: {
+            fontWeight:  'bold',
+          },
         },
         xaxis: {
-          categories: [['Capacidad','Termica','TR/pie2'],['Consumo','Energía','$/pie2'],['Consumo',' Energía','Kw/h /pie2']],
+          categories: ['Solución B', 'Solución A', 'Solución Base'],
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + "$/m²"
+            }
+          }
+        },
+        fill: {
+          opacity: 1
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'left',
+          offsetX: 40
         }
         };
 
-
-        var chart = new ApexCharts(document.querySelector("#chart_example"), options);
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
 
-        var chart1 = new ApexCharts(document.querySelector("#chart_example1"), options);
-        chart1.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
 
-        var chart2 = new ApexCharts(document.querySelector("#chart_example2"), options);
-        chart2.render();
-        /* caharts lines */
-        const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-  ];
+}
 
-  const data = {
-    labels: labels,
-    datasets: [{
-      label: 'My First dataset',
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [0, 10, 5, 2, 20, 30, 45],
-    }]
-  };
-
-  const config = {
-    type: 'line',
-    data: data,
-    options: {}
-  };
-
-  const myChart = new Chart(
-    document.getElementById('myChartline1'),
-    config
-  );
-
-  const myChart1 = new Chart(
-    document.getElementById('myChartline2'),
-    config
-  );
-
-  const myChart2 = new Chart(
-    document.getElementById('myChartline3'),
-    config
-  );
-
-  const myChar3 = new Chart(
-    document.getElementById('myChartline4'),
-    config
-  );
-
-  const myChart4 = new Chart(
-    document.getElementById('myChartline5'),
-    config
-  );
-
-  const myChart5 = new Chart(
-    document.getElementById('myChartline6'),
-    config
-  );
-    /* caharts lines */
-
-    /* dona charts */
-    var options_dona = {
-          series: [70],
+function cap_op_5(id_project){
+    $.ajax({
+        type: 'get',
+        url: "/cap_op_5/" + id_project,
+        success: function (res) {
+            console.log(res);
+            var options = {
+          series: [{
+          name: 'CAPEX',
+          data: [res[2][0], res[1][0], res[0][0]]
+        }, {
+          name: 'OPEX',
+          data: [res[2][1], res[1][1], res[0][1]]
+        }],
           chart: {
+          type: 'bar',
           height: 350,
-          type: 'radialBar',
+          stacked: true,
+          stackType: 'normal'
         },
         plotOptions: {
-          radialBar: {
-            hollow: {
-              size: '70%',
-            }
+          bar: {
+            horizontal: true,
           },
         },
-        labels: ['Cricket'],
+        stroke: {
+          width: 1,
+          colors: ['#fff']
+        },
+        title: {
+            text: 'CAPEX v/s OPEX $/m2 - 5 Años',
+            align: 'center',
+          style: {
+            fontWeight:  'bold',
+          },
+        },
+        xaxis: {
+          categories: ['Solución B', 'Solución A', 'Solución Base'],
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + "$/m²"
+            }
+          }
+        },
+        fill: {
+          opacity: 1
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'left',
+          offsetX: 40
+        }
         };
 
-        var chartDona1= new ApexCharts(document.querySelector("#donachart1"), options_dona);
-        chartDona1.render();
+        var chart = new ApexCharts(document.querySelector("#chart_5"), options);
+        chart.render();
 
-        var chartDona2 = new ApexCharts(document.querySelector("#donachart2"), options_dona);
-        chartDona2.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
 
-        var chartDona3 = new ApexCharts(document.querySelector("#donachart3"), options_dona);
-        chartDona3.render();
-    /* dona charrts */
+}
+
+//grafica 10 años
+function cap_op_10(id_project){
+    $.ajax({
+        type: 'get',
+        url: "/cap_op_10/" + id_project,
+        success: function (res) {
+            console.log(res);
+            var options = {
+          series: [{
+          name: 'CAPEX',
+          data: [res[2][0], res[1][0], res[0][0]]
+        }, {
+          name: 'OPEX',
+          data: [res[2][1], res[1][1], res[0][1]]
+        }],
+          chart: {
+          type: 'bar',
+          height: 350,
+          stacked: true,
+          stackType: 'normal'
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+          },
+        },
+        stroke: {
+          width: 1,
+          colors: ['#fff']
+        },
+        title: {
+          text: 'CAPEX v/s OPEX $/m2 - 10 Años',
+          align: 'center',
+          style: {
+            fontWeight:  'bold',
+          },
+        },
+        xaxis: {
+          categories: ['Solución B', 'Solución A', 'Solución Base'],
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + "$/m²"
+            }
+          }
+        },
+        fill: {
+          opacity: 1
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'left',
+          offsetX: 40
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_10"), options);
+        chart.render();
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+
+}
+
+//grafica 15 años
+function cap_op_15(id_project){
+    $.ajax({
+        type: 'get',
+        url: "/cap_op_15/" + id_project,
+        success: function (res) {
+            console.log(res);
+            var options = {
+          series: [{
+          name: 'CAPEX',
+          data: [res[2][0], res[1][0], res[0][0]]
+        }, {
+          name: 'OPEX',
+          data: [res[2][1], res[1][1], res[0][1]]
+        }],
+          chart: {
+          type: 'bar',
+          height: 350,
+          stacked: true,
+          stackType: 'normal'
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+          },
+        },
+        stroke: {
+          width: 1,
+          colors: ['#fff']
+        },
+        title: {
+            text: 'CAPEX v/s OPEX $/m2 - 15 Años',
+          align: 'center',
+          style: {
+            fontWeight:  'bold',
+          },
+        },
+        xaxis: {
+          categories: ['Solución B', 'Solución A', 'Solución Base'],
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + "$/m²"
+            }
+          }
+        },
+        fill: {
+          opacity: 1
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'left',
+          offsetX: 40
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_15"), options);
+        chart.render();
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+
+}
 </script>
 
 @section('js')

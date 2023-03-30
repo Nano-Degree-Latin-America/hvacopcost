@@ -172,6 +172,7 @@ class ProjectController extends Controller
         $update_project= ProjectsModel::find($id);
         $update_project->name=$request->get('name_pro');
         $update_project->id_tipo_edificio=$request->get('tipo_edificio_edit');
+        $update_project->inflacion=intval($request->get('inc_ene'));
         $hrs_tiempo = $request->get('tiempo_porcent');
 
         switch ($hrs_tiempo) {

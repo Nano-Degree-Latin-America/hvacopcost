@@ -115,3 +115,10 @@ Route::get('generatePDF/{id_project}', 'ResultadosController@generatePDF');
 Route::get('clean_solution/{id_project}/{num_sol}/{num_enf}', 'ProjectController@clean_solution');
 Route::get('del_solution/{id_project}/{num_sol}/{num_enf}', 'ProjectController@del_solution');
 Route::get('/del_project/{id}', 'ProjectController@del_project')->name('del_project');
+//resultados_graficas
+Route::get('cap_op_3/{id_project}', 'ResultadosController@cap_op_3');
+Route::get('cap_op_5/{id_project}', 'ResultadosController@cap_op_5');
+Route::get('cap_op_10/{id_project}', 'ResultadosController@cap_op_10');
+Route::get('cap_op_15/{id_project}', 'ResultadosController@cap_op_15');
+
+

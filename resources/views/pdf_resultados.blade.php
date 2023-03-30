@@ -2144,7 +2144,7 @@
 {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
 <div style="margin-top:5px; height:14%;" class="tarjet">
     <div align="center" class="title_tarjet_no_bg">
-        <p  class="title_style_no_bg">Ahorro Anual de Costo Energético – Entre Soluciones<b style="color:#ed8936;">(Kw/hr año)</b></p>
+        <p  class="title_style_no_bg">Ahorro Anual de Costo Energético – Entre Soluciones</p>
     </div>
     @if (count($results)>1)
     <div style="margin-left:15px; margin-right:15px;">
