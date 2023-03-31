@@ -242,9 +242,14 @@ span{
 
                                                     <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                         <div class="flex w-full">
-                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Incremento Energía</b></label><label class="text-red-500">*</label>
+                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Incremento Energía Anual</b></label><label class="text-red-500">*</label>
                                                         </div>
-                                                    <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+{{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+ --}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inc_ene" id="inc_ene">
+                                                                @for ($i = 0; $i <= 15; $i++)
+                                                                <option value="{{$i}}">{{$i}}%</option>
+                                                                @endfor
+                                                            </select>
                                                     <span id="inc_ene_warning" name="inc_ene_warning" class="text-red-500"></span>
                                                     </div>
 

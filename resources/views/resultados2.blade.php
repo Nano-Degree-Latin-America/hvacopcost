@@ -2960,33 +2960,6 @@ span{
 
 {{--  --}}
 
-<div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
-    <div class="flex w-full justify-center mb-5">
-        <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Análisis CAPEX v/s OPEX</label>
-    </div>
-
-    <div class="w-full flex">
-        <div class="w-1/2 grid">
-            <div>
-                <div id="chart" name="chart"></div>
-            </div>
-
-            <div>
-                <div id="chart_10" name="chart_10"></div>
-            </div>
-        </div>
-        <div class="w-1/2 grid">
-            <div>
-                <div id="chart_5" name="chart_5"></div>
-            </div>
-
-            <div>
-                <div id="chart_15" name="chart_15"></div>
-            </div>
-        </div>
-    </div>
-
-</div>
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
                                             <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Ahorro Anual de Costo Energético – Entre Soluciones</label>
@@ -3612,8 +3585,39 @@ span{
                                         </div>
                                     </div>
 
+
+                                    <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
+                                        <div class="flex w-full justify-center mb-5">
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Análisis CAPEX v/s OPEX</label>
+                                        </div>
+
+                                        <div class="w-full flex">
+                                            <div class="w-1/2 grid">
+                                                <div>
+                                                    <div id="chart" name="chart"></div>
+                                                </div>
+
+                                                <div>
+                                                    <div id="chart_10" name="chart_10"></div>
+                                                </div>
+                                            </div>
+                                            <div class="w-1/2 grid">
+                                                <div>
+                                                    <div id="chart_5" name="chart_5"></div>
+                                                </div>
+
+                                                <div>
+                                                    <div id="chart_15" name="chart_15"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
                                 </div>
                             </div>
+
+
                             {{-- espacio --}}
                             <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
 
@@ -4717,27 +4721,57 @@ function cap_op_3(id_project){
           type: 'bar',
           height: 350,
           stacked: true,
-          stackType: 'normal'
+          stackType: 'normal',
+          dropShadow: {
+            enabled: true,
+            enabledOnSeries: undefined,
+         },
+         toolbar: {
+            show: false,
+        },
         },
         plotOptions: {
           bar: {
             horizontal: true,
           },
         },
-        stroke: {
-          width: 1,
-          colors: ['#fff']
-        },
+
         title: {
           text: 'CAPEX v/s OPEX $/m2 - 3 Años',
           align: 'center',
           style: {
             fontWeight:  'bold',
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
           },
         },
         xaxis: {
           categories: ['Solución B', 'Solución A', 'Solución Base'],
+          labels: {
+                style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            },
         },
+        yaxis: {
+            labels: {
+                style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            },
+        },
+
         tooltip: {
           y: {
             formatter: function (val) {
@@ -4746,13 +4780,28 @@ function cap_op_3(id_project){
           }
         },
         fill: {
-          opacity: 1
-
+          opacity: 1,
+          colors: ['rgb(0, 143, 251)', '#7668af']
         },
         legend: {
           position: 'top',
           horizontalAlign: 'left',
-          offsetX: 40
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['rgb(0, 143, 251)', '#7668af'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
         }
         };
 
@@ -4785,26 +4834,55 @@ function cap_op_5(id_project){
           type: 'bar',
           height: 350,
           stacked: true,
-          stackType: 'normal'
+          stackType: 'normal',
+          dropShadow: {
+            enabled: true,
+            enabledOnSeries: undefined,
+            },
+          toolbar: {
+            show: false,
+            },
         },
         plotOptions: {
           bar: {
             horizontal: true,
           },
         },
-        stroke: {
-          width: 1,
-          colors: ['#fff']
-        },
+
         title: {
             text: 'CAPEX v/s OPEX $/m2 - 5 Años',
             align: 'center',
-          style: {
-            fontWeight:  'bold',
+            style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
           },
         },
         xaxis: {
           categories: ['Solución B', 'Solución A', 'Solución Base'],
+          labels: {
+                style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            },
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+
+                },
+            },
         },
         tooltip: {
           y: {
@@ -4814,13 +4892,28 @@ function cap_op_5(id_project){
           }
         },
         fill: {
-          opacity: 1
-
+          opacity: 1,
+          colors: ['rgb(0, 143, 251)', '#7668af']
         },
         legend: {
           position: 'top',
           horizontalAlign: 'left',
-          offsetX: 40
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['rgb(0, 143, 251)', '#7668af'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
         }
         };
 
@@ -4854,26 +4947,55 @@ function cap_op_10(id_project){
           type: 'bar',
           height: 350,
           stacked: true,
-          stackType: 'normal'
+          stackType: 'normal',
+          dropShadow: {
+                enabled: true,
+                enabledOnSeries: undefined,
+            },
+        toolbar: {
+            show: false,
+            },
         },
         plotOptions: {
           bar: {
             horizontal: true,
           },
         },
-        stroke: {
-          width: 1,
-          colors: ['#fff']
-        },
+
         title: {
           text: 'CAPEX v/s OPEX $/m2 - 10 Años',
           align: 'center',
           style: {
             fontWeight:  'bold',
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
           },
         },
         xaxis: {
           categories: ['Solución B', 'Solución A', 'Solución Base'],
+          labels: {
+                style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            },
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            },
         },
         tooltip: {
           y: {
@@ -4883,13 +5005,28 @@ function cap_op_10(id_project){
           }
         },
         fill: {
-          opacity: 1
-
+          opacity: 1,
+          colors: ['rgb(0, 143, 251)', '#7668af']
         },
         legend: {
           position: 'top',
           horizontalAlign: 'left',
-          offsetX: 40
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['rgb(0, 143, 251)', '#7668af'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
         }
         };
 
@@ -4914,7 +5051,8 @@ function cap_op_15(id_project){
             var options = {
           series: [{
           name: 'CAPEX',
-          data: [res[2][0], res[1][0], res[0][0]]
+          data: [res[2][0], res[1][0], res[0][0]],
+
         }, {
           name: 'OPEX',
           data: [res[2][1], res[1][1], res[0][1]]
@@ -4923,26 +5061,54 @@ function cap_op_15(id_project){
           type: 'bar',
           height: 350,
           stacked: true,
-          stackType: 'normal'
+          stackType: 'normal',
+          dropShadow: {
+            enabled: true,
+            enabledOnSeries: undefined,
+            },
+            toolbar: {
+            show: false,
+            },
         },
         plotOptions: {
           bar: {
             horizontal: true,
           },
         },
-        stroke: {
-          width: 1,
-          colors: ['#fff']
-        },
+
         title: {
             text: 'CAPEX v/s OPEX $/m2 - 15 Años',
           align: 'center',
           style: {
-            fontWeight:  'bold',
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
           },
         },
         xaxis: {
           categories: ['Solución B', 'Solución A', 'Solución Base'],
+          labels: {
+                style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            },
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            },
         },
         tooltip: {
           y: {
@@ -4952,13 +5118,29 @@ function cap_op_15(id_project){
           }
         },
         fill: {
-          opacity: 1
-
+          opacity: 1,
+          colors: ['rgb(0, 143, 251)', '#7668af']
         },
         legend: {
           position: 'top',
           horizontalAlign: 'left',
-          offsetX: 40
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['rgb(0, 143, 251)', '#7668af'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
         }
         };
 
