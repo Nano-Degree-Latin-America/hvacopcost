@@ -2376,6 +2376,92 @@ span{
                                         </div>
                                     </div>
 
+
+
+                                    <?php  $results_aux=$results->results($id_project) ?>
+                                    <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
+                                        <div class="flex w-full justify-center mb-3">
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Ahorro Anual Energía – Diferencia entre Soluciones <b class="text-orange-500">(Kw/hr año)</b> </label>
+                                        </div>
+                                        <div class="flex w-full justify-center bg-gray-200 gap-x-3">
+                                            @if (count($results_aux)>1)
+
+                                            <div class="flex justify-center w-full">
+                                            @foreach ($results_aux as $solution)
+                                                @if (count($results_aux) == 1)
+
+                                                @endif
+
+                                                @if (count($results_aux) == 2)
+                                                @if ($solution->num_enf == 1)
+                                                <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
+                                                <div class="grid w-1/2 justify-center text-[24px] gap-x-4">
+                                                    <div class="grid w-full  justify-center">
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
+                                                    </div>
+                                                    <div class="flex justify-center w-full">
+                                                    <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}} </b>
+                                                    </div>
+                                                </div>
+
+                                                <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
+                                                    <div class="grid w-full  justify-center">
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s B </b>
+                                                    <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl text-center">0 </b>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                                @endif
+
+
+
+                                                @if (count($results_aux) == 3)
+                                                    @if ($solution->num_enf == 1)
+                                                    <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
+                                                    <div class="w-1/2 grid w-full justify-center text-[24px] gap-x-4">
+                                                        <div class="flex justify-center w-full">
+                                                            <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
+                                                            </div>
+                                                        <div class="flex justify-center w-full">
+                                                            <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b> <b class="text-3xl mt-3 font-roboto ml-1"></b>
+                                                        </div>
+                                                    </div>
+                                                    @endif
+                                                    @if ($solution->num_enf == 2)
+                                                    <?php  $dif_2=$smasolutions->dif_2($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
+                                                    <div class="w-1/2 grid w-full justify-center text-[24px]  gap-x-4">
+                                                        <div class="flex w-full justify-center">
+                                                        <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s B </b>
+                                                        </div>
+                                                        <div class="flex w-full justify-center">
+                                                            <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_2)}}</b> <b class="text-3xl mt-3 font-roboto ml-1"></b>
+                                                        </div>
+                                                    </div>
+                                                    @endif
+                                                @endif
+                                                @endforeach
+                                            </div>
+                                            @endif
+
+                                            @if (count($results_aux)==1)
+
+                                            @foreach ($results_aux as $solution)
+                                            <div class="flex justify-center w-full">
+
+
+                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
+                                                <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b><b style="color:#33cc33;"   class="text-[24px] font-roboto text-5xl">0 Kw/hr año</b>
+                                                </div>
+
+                                                    <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
+                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b><b  style="color:#33cc33;"  class="text-[24px] font-roboto text-5xl">0 Kw/hr año</b>
+                                                    </div>
+                                            </div>
+                                             @endforeach
+                                            @endif
+
+                                        </div>
+                                    </div>
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <?php  $unidad_area=$results->unidad_area($id_project,1,$sumaopex_1,$tar_ele->costo_elec) ?>
                                         <div class="flex w-full justify-center">
@@ -2477,90 +2563,8 @@ span{
                                         </div>
 
                                     </div>
-                                    <?php  $results=$results->results($id_project) ?>
-                                    <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
-                                        <div class="flex w-full justify-center mb-3">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Ahorro Anual Energía – Diferencia entre Soluciones <b class="text-orange-500">(Kw/hr año)</b> </label>
-                                        </div>
-                                        <div class="flex w-full justify-center bg-gray-200 gap-x-3">
-                                            @if (count($results)>1)
-
-                                            <div class="flex justify-center w-full">
-                                            @foreach ($results as $solution)
-                                                @if (count($results) == 1)
-
-                                                @endif
-
-                                                @if (count($results) == 2)
-                                                @if ($solution->num_enf == 1)
-                                                <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results),$tar_ele->costo_elec) ?>
-                                                <div class="grid w-1/2 justify-center text-[24px] gap-x-4">
-                                                    <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
-                                                    </div>
-                                                    <div class="flex justify-center w-full">
-                                                    <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}} </b>
-                                                    </div>
-                                                </div>
-
-                                                <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
-                                                    <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s B </b>
-                                                    <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl text-center">0 </b>
-                                                    </div>
-                                                </div>
-                                                @endif
-                                                @endif
 
 
-
-                                                @if (count($results) == 3)
-                                                    @if ($solution->num_enf == 1)
-                                                    <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results),$tar_ele->costo_elec) ?>
-                                                    <div class="w-1/2 grid w-full justify-center text-[24px] gap-x-4">
-                                                        <div class="flex justify-center w-full">
-                                                            <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
-                                                            </div>
-                                                        <div class="flex justify-center w-full">
-                                                            <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b> <b class="text-3xl mt-3 font-roboto ml-1"></b>
-                                                        </div>
-                                                    </div>
-                                                    @endif
-                                                    @if ($solution->num_enf == 2)
-                                                    <?php  $dif_2=$smasolutions->dif_2($solution->id_project,count($results),$tar_ele->costo_elec) ?>
-                                                    <div class="w-1/2 grid w-full justify-center text-[24px]  gap-x-4">
-                                                        <div class="flex w-full justify-center">
-                                                        <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s B </b>
-                                                        </div>
-                                                        <div class="flex w-full justify-center">
-                                                            <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_2)}}</b> <b class="text-3xl mt-3 font-roboto ml-1"></b>
-                                                        </div>
-                                                    </div>
-                                                    @endif
-                                                @endif
-                                                @endforeach
-                                            </div>
-                                            @endif
-
-                                            @if (count($results)==1)
-
-                                            @foreach ($results as $solution)
-                                            <div class="flex justify-center w-full">
-
-
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b><b style="color:#33cc33;"   class="text-[24px] font-roboto text-5xl">0 Kw/hr año</b>
-                                                </div>
-
-                                                    <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b><b  style="color:#33cc33;"  class="text-[24px] font-roboto text-5xl">0 Kw/hr año</b>
-                                                    </div>
-                                            </div>
-                                             @endforeach
-                                            @endif
-
-                                        </div>
-                                    </div>
 
                                 </div>
                             </div>
@@ -2966,17 +2970,17 @@ span{
                                         </div>
 
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
-                                            @if (count($results)>1)
+                                            @if (count($results_aux)>1)
 
                                             <div class="flex justify-center w-full">
-                                            @foreach ($results as $solution)
-                                                @if (count($results) == 1)
+                                            @foreach ($results_aux as $solution)
+                                                @if (count($results_aux) == 1)
 
                                                 @endif
 
-                                                @if (count($results) == 2)
+                                                @if (count($results_aux) == 2)
                                                 @if ($solution->num_enf == 1)
-                                                <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+                                                <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
                                                     <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b>
@@ -2997,9 +3001,9 @@ span{
 
 
 
-                                                @if (count($results) == 3)
+                                                @if (count($results_aux) == 3)
                                                     @if ($solution->num_enf == 1)
-                                                    <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+                                                    <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                     <div class="w-1/2 grid w-full justify-center text-[24px] m-1 gap-x-4">
                                                         <div class="flex justify-center w-full">
                                                             <b class="text-blue-800 mr-1 font-roboto text-2xl mt-3">Solución  Base v/s A </b>
@@ -3010,7 +3014,7 @@ span{
                                                     </div>
                                                     @endif
                                                     @if ($solution->num_enf == 2)
-                                                    <?php  $dif_2_cost=$smasolutions->dif_2_cost($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+                                                    <?php  $dif_2_cost=$smasolutions->dif_2_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                     <div class="w-1/2 grid w-full justify-center text-[24px] m-1 gap-x-4">
                                                         <div class="flex w-full justify-center">
                                                         <b class="text-blue-800 mr-1 font-roboto text-2xl mt-3">Solución  Base v/s B </b>
@@ -3025,9 +3029,9 @@ span{
                                             </div>
                                             @endif
 
-                                            @if (count($results)==1)
+                                            @if (count($results_aux)==1)
 
-                                            @foreach ($results as $solution)
+                                            @foreach ($results_aux as $solution)
                                             <div class="flex justify-center w-full">
 
 
