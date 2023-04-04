@@ -48,6 +48,8 @@
    <script src="{{asset('plugins/chartjs/dist/Chart.js')}}"></script>
    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+   {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+
     <style>
 
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa&family=Dongle&family=Montserrat:wght@500;600&family=Rubik:wght@300&display=swap');
@@ -374,7 +376,7 @@ span{
                                                             <div class="w-2/5 flex justify-start">
                                                                 <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
                                                             </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
+                                                            <div class="ml-2 w-auto flex justify-start">
                                                                 <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
                                                             </div>
                                                         </div>
@@ -383,7 +385,7 @@ span{
                                                             <div class="w-2/5 flex justify-start">
                                                                 <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
                                                             </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
+                                                            <div class="ml-2 w-auto flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
                                                             </div>
                                                         </div>
@@ -399,7 +401,7 @@ span{
                                                             <div class="w-2/5 flex ">
                                                                 <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
                                                             </div>
-                                                            <div class="ml-2 w-2/5">
+                                                            <div class="ml-2 w-auto">
                                                                 <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
                                                                     @if ($solution->unidad_hvac == 1)
                                                                     Paquetes (RTU)
@@ -434,7 +436,7 @@ span{
                                                             <div class="w-2/5 flex ">
                                                                 <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
                                                             </div>
-                                                            <div class="ml-2 w-2/5">
+                                                            <div class="ml-2 w-auto">
                                                                 <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
                                                                     @if ($solution->tipo_equipo == 'basico')
                                                                     Básico
@@ -588,7 +590,7 @@ span{
                                                                     <div class="w-2/5 flex justify-start">
                                                                         <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
                                                                     </div>
-                                                                    <div class="ml-2 w-2/5 flex justify-start">
+                                                                    <div class="ml-2 w-auto flex justify-start">
                                                                         <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
                                                                     </div>
                                                                 </div>
@@ -597,7 +599,7 @@ span{
                                                                     <div class="w-2/5 flex justify-start">
                                                                         <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
                                                                     </div>
-                                                                    <div class="ml-2 w-2/5 flex justify-start">
+                                                                    <div class="ml-2 w-auto flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
                                                                     </div>
                                                                 </div>
@@ -613,7 +615,7 @@ span{
                                                                     <div class="w-2/5 flex ">
                                                                         <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
                                                                     </div>
-                                                                    <div class="ml-2 w-2/5">
+                                                                    <div class="ml-2 w-auto">
                                                                         <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
                                                                             @if ($solution->unidad_hvac == 1)
                                                                             Paquetes (RTU)
@@ -648,7 +650,7 @@ span{
                                                                     <div class="w-2/5 flex ">
                                                                         <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
                                                                     </div>
-                                                                    <div class="ml-2 w-2/5">
+                                                                    <div class="ml-2 w-auto">
                                                                         <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
                                                                             @if ($solution->tipo_equipo == 'basico')
                                                                             Básico
@@ -802,7 +804,7 @@ span{
                                                                             <div class="w-2/5 flex justify-start">
                                                                                 <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
                                                                             </div>
-                                                                            <div class="ml-2 w-2/5 flex justify-start">
+                                                                            <div class="ml-2 w-auto flex justify-start">
                                                                                 <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
                                                                             </div>
                                                                         </div>
@@ -811,7 +813,7 @@ span{
                                                                             <div class="w-2/5 flex justify-start">
                                                                                 <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
                                                                             </div>
-                                                                            <div class="ml-2 w-2/5 flex justify-start">
+                                                                            <div class="ml-2 w-auto flex justify-start">
                                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
                                                                             </div>
                                                                         </div>
@@ -827,7 +829,7 @@ span{
                                                                             <div class="w-2/5 flex ">
                                                                                 <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
                                                                             </div>
-                                                                            <div class="ml-2 w-2/5">
+                                                                            <div class="ml-2 w-auto">
                                                                                 <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
                                                                                     @if ($solution->unidad_hvac == 1)
                                                                                     Paquetes (RTU)
@@ -862,7 +864,7 @@ span{
                                                                             <div class="w-2/5 flex ">
                                                                                 <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
                                                                             </div>
-                                                                            <div class="ml-2 w-2/5">
+                                                                            <div class="ml-2 w-auto">
                                                                                 <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
                                                                                     @if ($solution->tipo_equipo == 'basico')
                                                                                     Básico
@@ -2965,7 +2967,7 @@ span{
 {{--  --}}
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
-                                        <div class="flex w-full justify-center mb-5">
+                                        <div class="flex w-full justify-center">
                                             <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Ahorro Anual de Costo Energético – Entre Soluciones</label>
                                         </div>
 
@@ -2983,7 +2985,7 @@ span{
                                                 <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s A </b>
                                                     </div>
                                                     <div class="flex justify-center w-full">
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">${{number_format($dif_1_cost)}}</b>
@@ -2992,7 +2994,7 @@ span{
 
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s B </b>
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
                                                     </div>
                                                 </div>
@@ -3006,7 +3008,7 @@ span{
                                                     <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                     <div class="w-1/2 grid w-full justify-center text-[24px] m-1 gap-x-4">
                                                         <div class="flex justify-center w-full">
-                                                            <b class="text-blue-800 mr-1 font-roboto text-2xl mt-3">Solución  Base v/s A </b>
+                                                            <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">Solución  Base v/s A </b>
                                                             </div>
                                                         <div class="flex justify-center w-full">
                                                             <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">$ {{number_format($dif_1_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
@@ -3017,7 +3019,7 @@ span{
                                                     <?php  $dif_2_cost=$smasolutions->dif_2_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                     <div class="w-1/2 grid w-full justify-center text-[24px] m-1 gap-x-4">
                                                         <div class="flex w-full justify-center">
-                                                        <b class="text-blue-800 mr-1 font-roboto text-2xl mt-3">Solución  Base v/s B </b>
+                                                        <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">Solución  Base v/s B </b>
                                                         </div>
                                                         <div class="flex w-full justify-center">
                                                             <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">$ {{number_format($dif_2_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
@@ -3036,11 +3038,11 @@ span{
 
 
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b><b class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
+                                                <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s A </b><b class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
                                                 </div>
 
                                                     <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b><b class="text-[24px]  font-roboto text-6xl text-center">$ 0</b>
+                                                    <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s B </b><b class="text-[24px]  font-roboto text-6xl text-center">$ 0</b>
                                                     </div>
                                             </div>
                                              @endforeach
@@ -4730,16 +4732,26 @@ function cap_op_3(id_project){
             enabled: true,
             enabledOnSeries: undefined,
          },
+
          toolbar: {
             show: false,
         },
+
         },
         plotOptions: {
           bar: {
             horizontal: true,
+
           },
         },
-
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
         title: {
           text: 'CAPEX v/s OPEX $/m2 - 3 Años',
           align: 'center',
@@ -4785,7 +4797,8 @@ function cap_op_3(id_project){
         },
         fill: {
           opacity: 1,
-          colors: ['rgb(0, 143, 251)', '#7668af']
+          colors: ['rgb(0, 143, 251)', '#7668af'],
+
         },
         legend: {
           position: 'top',
@@ -4852,7 +4865,14 @@ function cap_op_5(id_project){
             horizontal: true,
           },
         },
-
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
         title: {
             text: 'CAPEX v/s OPEX $/m2 - 5 Años',
             align: 'center',
@@ -4965,7 +4985,14 @@ function cap_op_10(id_project){
             horizontal: true,
           },
         },
-
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
         title: {
           text: 'CAPEX v/s OPEX $/m2 - 10 Años',
           align: 'center',
@@ -5079,7 +5106,14 @@ function cap_op_15(id_project){
             horizontal: true,
           },
         },
-
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
         title: {
             text: 'CAPEX v/s OPEX $/m2 - 15 Años',
           align: 'center',
