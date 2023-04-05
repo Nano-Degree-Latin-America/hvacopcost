@@ -5402,7 +5402,7 @@ function roi_base_b(id_project){
           curve: 'smooth'
         },
         title: {
-          text: 'ROI Solución A v/s MARR',
+          text: 'ROI Solución B v/s MARR',
           align: 'center',
           style: {
             fontSize: '24px',
