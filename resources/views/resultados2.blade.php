@@ -2402,7 +2402,7 @@ span{
                                                     <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
                                                     </div>
                                                     <div class="flex justify-center w-full">
-                                                    <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}} </b>
+                                                    <b style="color:#33cc33;" id="dif_1"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b>
                                                     </div>
                                                 </div>
 
@@ -2767,6 +2767,7 @@ span{
 
                                                                     <div class="grid justify-items-center text-center">
                                                                         <label class="font-bold font-roboto text-2xl mt-3">Inversión Inicial</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($inv_ini_2)}}</p>
+                                                                        <input type="number" class="hidden" id="inv_ini_2" name="inv_ini_2" value="{{$inv_ini_2}}">
                                                                     </div>
 
                                                                     <div class="grid justify-items-center">
@@ -2812,6 +2813,7 @@ span{
 
                                                                     <div class="grid justify-center">
                                                                         <label class="font-bold font-roboto text-2xl mt-3 text-center">Inversión Inicial</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($inv_ini_3)}}</p>
+                                                                        <input type="number" class="hidden" id="inv_ini_3" name="inv_ini_3" value="{{$inv_ini_3}}">
                                                                     </div>
 
                                                                     <div class="grid justify-center">
@@ -2988,7 +2990,8 @@ span{
                                                     <b class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s A </b>
                                                     </div>
                                                     <div class="flex justify-center w-full">
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">${{number_format($dif_1_cost)}}</b>
+                                                        <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">${{number_format($dif_1_cost)}}</b>
+                                                        <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$dif_1_cost}}">
                                                     </div>
                                                 </div>
 
@@ -3012,6 +3015,8 @@ span{
                                                             </div>
                                                         <div class="flex justify-center w-full">
                                                             <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">$ {{number_format($dif_1_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
+                                                            <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$dif_1_cost}}">
+
                                                         </div>
                                                     </div>
                                                     @endif
@@ -3023,6 +3028,8 @@ span{
                                                         </div>
                                                         <div class="flex w-full justify-center">
                                                             <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">$ {{number_format($dif_2_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
+                                                            <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$dif_2_cost}}">
+
                                                         </div>
                                                     </div>
                                                     @endif
@@ -3088,13 +3095,16 @@ span{
                                         </div>
                                     </div>
 
-                                    <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
+
+                                    {{--
+                                        Roi invercion total respaldo
+                                        <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
                                             <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">ROI Diferencia de Inversión</label>
                                         </div>
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             <div class="grid justify-center w-1/4">
-                                                    {{-- espacio --}}
+
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
@@ -3115,14 +3125,13 @@ span{
                                         </div>
 
 
-                                        {{--  --}}
+
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             <div class="grid justify-center w-1/4">
                                                 <b class="text-[24px] text-blue-600 font-roboto text-3xl">Solución A</b>
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
-                                               {{--  <b class="text-[24px] text-blue-900 font-roboto text-4xl">3 Años</b> --}}
                                                @if ($result2 !== null)
                                                <?php  $roi_ent_dif_inv=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,3,$dif_1_cost) ?>
                                                     @if ($roi_ent_dif_inv == 0)
@@ -3148,7 +3157,7 @@ span{
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
-                                                {{-- <b class="text-[24px] text-blue-900 font-roboto text-4xl">5 Años</b> --}}
+
                                                 @if ($result2 !== null)
                                                 <?php  $roi_ent_dif_inv_5=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,5,$dif_1_cost) ?>
                                                     @if ($roi_ent_dif_inv_5 == 0)
@@ -3174,7 +3183,6 @@ span{
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
-                                               {{--  <b class="text-[24px] text-blue-900 font-roboto text-4xl">10 Años</b> --}}
                                                @if ($result2 !== null)
                                                <?php  $roi_ent_dif_inv_10=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,10,$dif_1_cost) ?>
                                                     @if ($roi_ent_dif_inv_10 == 0)
@@ -3200,7 +3208,6 @@ span{
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
-                                               {{--  <b class="text-[24px] text-blue-900 font-roboto text-4xl">15 Años</b> --}}
                                                @if ($result2 !== null)
                                                <?php  $roi_ent_dif_inv_15=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,15,$dif_1_cost) ?>
 
@@ -3227,14 +3234,13 @@ span{
                                                @endif
                                             </div>
                                         </div>
-                                        {{--  --}}
+
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             <div class="grid justify-center w-1/4">
                                                 <b class="text-[24px] text-blue-600 font-roboto text-3xl">Solución B</b>
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
-                                              {{--   <b class="text-[24px] text-blue-900 font-roboto text-4xl">3 Años</b> --}}
                                               @if ($result3 !== null)
                                               <?php  $roi_ent_dif_inv_b_1=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,3,$dif_2_cost) ?>
                                                     @if ($roi_ent_dif_inv_b_1 == 0)
@@ -3260,7 +3266,6 @@ span{
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
-                                               {{--  <b class="text-[24px] text-blue-900 font-roboto text-4xl">5 Años</b> --}}
                                                @if ($result3 !== null)
                                                <?php  $roi_ent_dif_inv_b_2=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,5,$dif_2_cost) ?>
                                                     @if ($roi_ent_dif_inv_b_2 == 0)
@@ -3286,7 +3291,6 @@ span{
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
-                                              {{--   <b class="text-[24px] text-blue-900 font-roboto text-4xl">10 Años</b> --}}
                                               @if ($result3 !== null)
                                               <?php  $roi_ent_dif_inv_b_3=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,10,$dif_2_cost) ?>
                                                     @if ($roi_ent_dif_inv_b_3 == 0)
@@ -3312,7 +3316,6 @@ span{
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
-                                              {{--   <b class="text-[24px] text-blue-900 font-roboto text-4xl">15 Años</b> --}}
                                               @if ($result3 !== null)
                                               <?php  $roi_ent_dif_inv_b_4=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,15,$dif_2_cost) ?>
                                                      @if ($roi_ent_dif_inv_b_4 == 0)
@@ -3339,7 +3342,7 @@ span{
                                         </div>
 
 
-                                    </div>
+                                    </div> --}}
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
@@ -3591,6 +3594,20 @@ span{
                                         </div>
                                     </div>
 
+                                    <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
+                                        <div class="flex w-full justify-center mb-5">
+                                            <div class="w-1/2">
+                                                <div id="chart_roi_base_a" name="chart_roi_base_a"></div>
+
+                                            </div>
+
+                                            <div class="w-1/2">
+                                                <div id="chart_roi_base_b" name="chart_roi_base_b"></div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
@@ -4679,6 +4696,8 @@ window.onload = function() {
     cap_op_5('{{$id_project}}');
     cap_op_10('{{$id_project}}');
     cap_op_15('{{$id_project}}');
+    roi_base_a('{{$id_project}}');
+    roi_base_b('{{$id_project}}');
 };
 
      javascript:history.forward(1)
@@ -4714,7 +4733,7 @@ function cap_op_3(id_project){
         type: 'get',
         url: "/cap_op_3/" + id_project,
         success: function (res) {
-            console.log(res);
+
             var options = {
           series: [{
           name: 'CAPEX',
@@ -4838,7 +4857,7 @@ function cap_op_5(id_project){
         type: 'get',
         url: "/cap_op_5/" + id_project,
         success: function (res) {
-            console.log(res);
+
             var options = {
           series: [{
           name: 'CAPEX',
@@ -4958,7 +4977,7 @@ function cap_op_10(id_project){
         type: 'get',
         url: "/cap_op_10/" + id_project,
         success: function (res) {
-            console.log(res);
+
             var options = {
           series: [{
           name: 'CAPEX',
@@ -5078,7 +5097,7 @@ function cap_op_15(id_project){
         type: 'get',
         url: "/cap_op_15/" + id_project,
         success: function (res) {
-            console.log(res);
+
             var options = {
           series: [{
           name: 'CAPEX',
@@ -5192,6 +5211,291 @@ function cap_op_15(id_project){
     });
 
 }
+
+function roi_base_a(id_project){
+    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+
+    $.ajax({
+        type: 'get',
+        url: "/roi_base_a/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
+        success: function (res) {
+            console.log(res);
+    var options = {
+          series: [
+          {
+            name: "ROI - A",
+            data: [res[0], res[1], res[2], res[3]]
+          },
+          {
+            name: "MARR",
+            data: [15, 15, 15, 15]
+          }
+        ],
+          chart: {
+          height: 350,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#77B6EA', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+          text: 'ROI Solución A v/s MARR',
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [3,5,10,15],
+           range:4,
+          title: {
+            text: 'Años'
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          title: {
+            text: '%',
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#77B6EA', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_a"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function roi_base_b(id_project){
+    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+
+    $.ajax({
+        type: 'get',
+        url: "/roi_base_a/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
+        success: function (res) {
+            console.log(res);
+    var options = {
+          series: [
+          {
+            name: "ROI - B",
+            data: [res[0], res[1], res[2], res[3]]
+          },
+          {
+            name: "MARR",
+            data: [15, 15, 15, 15]
+          }
+        ],
+          chart: {
+          height: 350,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#ed8936', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+          text: 'ROI Solución A v/s MARR',
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [3,5,10,15],
+           range:4,
+          title: {
+            text: 'Años'
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          title: {
+            text: '%',
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#ed8936', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_b"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+
 </script>
 
 @section('js')

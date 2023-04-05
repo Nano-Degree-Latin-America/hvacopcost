@@ -3468,4 +3468,74 @@ $dompdf->render();
        return response()->json($array_tot);
     }
 
+
+    public function roi_base_a($id_projecto,$dif_cost,$inv_ini){
+        $array_res = [];
+        $año_3 = 0;
+        $año_3_res = 0;
+        $año_3_suma = 0;
+        $año_3_res_suma = 0;
+        $año_5 = 0;
+        $año_5_res = 0;
+        $año_5_suma = 0;
+        $año_5_res_suma = 0;
+        $año_10 = 0;
+        $año_10_res = 0;
+        $año_10_suma = 0;
+        $año_10_res_suma = 0;
+        $año_15 = 0;
+        $año_15_res = 0;
+        $año_15_suma = 0;
+        $año_15_res_suma = 0;
+        $inflacion_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+        $inflacion =  $inflacion_aux/100 + 1;
+        $dif_cost_aux = $dif_cost;
+        for ($i = 1; $i <= 15; $i++) {
+            if($i == 1){
+                $año_3_suma =  $dif_cost + $año_3_suma;
+                $año_5_suma =  $dif_cost + $año_5_suma;
+                $año_10_suma =  $dif_cost + $año_10_suma;
+                $año_15_suma =  $dif_cost + $año_15_suma;
+            }else{
+
+                $dif_cost = $dif_cost * $inflacion;
+                $año_3_suma =  $dif_cost + $año_3_suma;
+                $año_5_suma =  $dif_cost + $año_5_suma;
+                $año_10_suma =  $dif_cost + $año_10_suma;
+                $año_15_suma =  $dif_cost + $año_15_suma;
+
+                if($i === 3){
+                    $año_3_res =  $dif_cost;
+                    $año_3_res_suma = $año_3_suma ;
+                    $año_3 = number_format($año_3_res_suma/$inv_ini * 100);
+                    array_push($array_res,$año_3);
+                }
+
+                if($i === 5){
+                    $año_5_res =  $dif_cost;
+                    $año_5_res_suma = $año_5_suma ;
+                    $año_5 = number_format($año_5_res_suma/$inv_ini * 100);
+                    array_push($array_res,$año_5);
+                }
+
+                if($i === 10){
+                    $año_10_res =  $dif_cost;
+                    $año_10_res_suma = $año_10_suma ;
+                    $año_10 = number_format($año_10_res_suma/$inv_ini * 100);
+                    array_push($array_res,$año_10);
+                }
+
+                if($i === 15){
+                    $año_15_res =  $dif_cost;
+                    $año_15_res_suma = $año_15_suma ;
+                    $año_15 = number_format($año_15_res_suma/$inv_ini * 100);
+                    array_push($array_res,$año_15);
+                }
+            }
+        }
+        return response()->json($array_res);
+    }
+
 }
