@@ -2698,8 +2698,10 @@ class ResultadosController extends Controller
        $inflacion_aux = DB::table('projects')
         ->where('id','=',$id_projecto)
         ->first()->inflacion;
-        $inflacion =  $inflacion_aux/100 + 1;
-        $dif_cost_aux = $dif_cost;
+
+        if( $inflacion_aux > 0){
+            $inflacion =  $inflacion_aux/100 + 1;
+            $dif_cost_aux = $dif_cost;
 
         for ($i = 1; $i <= 15; $i++) {
             if($i == 1){
@@ -2710,14 +2712,33 @@ class ResultadosController extends Controller
                 $dif_cost = $dif_cost * $inflacion;
                 $año_3_suma =  $dif_cost + $año_3_suma;
 
+                if($i === $yrs){
+                    $año_3_res =  $dif_cost;
+                    $año_3_res_suma = $año_3_suma ;
+                    $año_3 = number_format($año_3_res_suma/$inv_ini * 100);
+                }
+            }
+          }
+        }else if($inflacion_aux <= 0){
+            $inflacion = 1;
+            $dif_cost_aux = $dif_cost;
+
+        for ($i = 1; $i <= 15; $i++) {
+            if($i == 1){
+                $año_3_suma =  $dif_cost + $año_3_suma;
+
+            }else{
+
+                $dif_cost = $dif_cost * $inflacion;
+                $año_3_suma =  $dif_cost + $año_3_suma;
 
                 if($i === $yrs){
                     $año_3_res =  $dif_cost;
                     $año_3_res_suma = $año_3_suma ;
                     $año_3 = number_format($año_3_res_suma/$inv_ini * 100);
-
                 }
             }
+          }
         }
     }
        return $año_3;
@@ -3519,8 +3540,14 @@ $dompdf->render();
         $inflacion_aux = DB::table('projects')
         ->where('id','=',$id_projecto)
         ->first()->inflacion;
-        $inflacion =  $inflacion_aux/100 + 1;
+        /* $inflacion =  $inflacion_aux/100 + 1; */
         $dif_cost_aux = $dif_cost;
+
+        if( $inflacion_aux > 0){
+            $inflacion =  $inflacion_aux/100 + 1;
+        }else if( $inflacion_aux <= 0){
+            $inflacion = 1;
+        }
         for ($i = 1; $i <= 15; $i++) {
             if($i == 1){
                 $año_3_suma =  $dif_cost + $año_3_suma;

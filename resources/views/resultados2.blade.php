@@ -3389,11 +3389,11 @@ span{
                                                 @endif
 
                                                 @if ($roi_inv_tot_1 < 0)
-                                                <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
+                                                <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_1)}}%</b>
                                                 @endif
 
                                                 @if ($roi_inv_tot_1 > 0 && $roi_inv_tot_1 < 20)
-                                                <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_1)}}%</b>
+                                                <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{($roi_inv_tot_1)}}%</b>
                                                 @endif
 
                                                 @if ($roi_inv_tot_1 > 20)
@@ -3410,19 +3410,19 @@ span{
                                                 @if ($result2 !== null)
                                               <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(5,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_2 == 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_2)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_2}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_2 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_2}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_2 > 0 && $roi_inv_tot_2 < 15)
-                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_2)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_2}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_2 > 15)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_2)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_2}}%</b>
                                                     @endif
                                               @endif
 
@@ -3436,19 +3436,19 @@ span{
                                                 @if ($result2 !== null)
                                                 <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(10,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_3 == 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_3)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_3}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_3 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_3}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_3 > 0 && $roi_inv_tot_3 < 15)
-                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_3)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_3}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_3 > 15)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_3)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_3}}%</b>
                                                     @endif
                                                 @endif
 
@@ -3462,19 +3462,19 @@ span{
                                                 @if ($result2 !== null)
                                                 <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(15,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_4 == 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_4)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_4 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_4 > 0 && $roi_inv_tot_4 < 15)
-                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_4)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_4 > 15)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_4)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
                                                     @endif
                                                 @endif
 
@@ -3499,7 +3499,7 @@ span{
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_1 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_1)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_1 > 0 && $roi_inv_tot_b_1 < 15)
@@ -3525,7 +3525,7 @@ span{
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_2 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_2)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_2 > 0 && $roi_inv_tot_b_2 < 15)
@@ -3550,7 +3550,7 @@ span{
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_3 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_3)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_3 > 0 && $roi_inv_tot_b_3 < 15)
@@ -3577,7 +3577,7 @@ span{
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_4 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_4 > 0 && $roi_inv_tot_b_4 < 15)
