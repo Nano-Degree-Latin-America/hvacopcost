@@ -3346,7 +3346,7 @@ span{
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">ROI Inversión Total</label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">ROI Entre Soluciónes</label>
                                         </div>
 
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
@@ -3382,7 +3382,8 @@ span{
 
                                             <div class="grid justify-center w-1/5">
                                               @if ($result2 !== null)
-                                              <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(3,$dif_1_cost,$inv_ini_2) ?>
+                                              <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(3,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                                              <?php  /* $roi_inv_tot_1=$smasolutions->roi_inv_tot(3,$dif_1_cost,$inv_ini_2,) */ ?>
                                                 @if ($roi_inv_tot_1 == 0)
                                                 <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_1)}}%</b>
                                                 @endif
@@ -3407,7 +3408,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result2 !== null)
-                                              <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(5,$dif_1_cost,$inv_ini_2) ?>
+                                              <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(5,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_2 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_2)}}%</b>
                                                     @endif
@@ -3416,11 +3417,11 @@ span{
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_2 > 0 && $roi_inv_tot_2 < 20)
+                                                    @if ($roi_inv_tot_2 > 0 && $roi_inv_tot_2 < 15)
                                                     <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_2)}}%</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_2 > 20)
+                                                    @if ($roi_inv_tot_2 > 15)
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_2)}}%</b>
                                                     @endif
                                               @endif
@@ -3433,7 +3434,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result2 !== null)
-                                                <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(10,$dif_1_cost,$inv_ini_2) ?>
+                                                <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(10,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_3 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_3)}}%</b>
                                                     @endif
@@ -3442,11 +3443,11 @@ span{
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_3 > 0 && $roi_inv_tot_3 < 20)
+                                                    @if ($roi_inv_tot_3 > 0 && $roi_inv_tot_3 < 15)
                                                     <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_3)}}%</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_3 > 20)
+                                                    @if ($roi_inv_tot_3 > 15)
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_3)}}%</b>
                                                     @endif
                                                 @endif
@@ -3459,7 +3460,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result2 !== null)
-                                                <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(15,$dif_1_cost,$inv_ini_2) ?>
+                                                <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(15,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_4 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_4)}}%</b>
                                                     @endif
@@ -3468,11 +3469,11 @@ span{
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_4 > 0 && $roi_inv_tot_4 < 20)
+                                                    @if ($roi_inv_tot_4 > 0 && $roi_inv_tot_4 < 15)
                                                     <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_4)}}%</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_4 > 20)
+                                                    @if ($roi_inv_tot_4 > 15)
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_4)}}%</b>
                                                     @endif
                                                 @endif
@@ -3491,7 +3492,8 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result3 !== null)
-                                                <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(3,$dif_2_cost,$inv_ini_3) ?>
+                                                <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(3,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                                                <?php  /* $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(3,$dif_2_cost,$inv_ini_3)  */?>
                                                     @if ($roi_inv_tot_b_1 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_1)}}%</b>
                                                     @endif
@@ -3500,11 +3502,11 @@ span{
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_b_1 > 0 && $roi_inv_tot_b_1 < 20)
+                                                    @if ($roi_inv_tot_b_1 > 0 && $roi_inv_tot_b_1 < 15)
                                                     <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_1)}}%</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_b_1 > 20)
+                                                    @if ($roi_inv_tot_b_1 > 15)
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_1)}}%</b>
                                                     @endif
                                                 @endif
@@ -3517,7 +3519,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result3 !== null)
-                                                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(5,$dif_2_cost,$inv_ini_3) ?>
+                                                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(5,$id_project,$dif_2_cost,$inv_ini_3) ?>
                                                     @if ($roi_inv_tot_b_2 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_2)}}%</b>
                                                     @endif
@@ -3526,11 +3528,11 @@ span{
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_b_2 > 0 && $roi_inv_tot_b_2 < 20)
+                                                    @if ($roi_inv_tot_b_2 > 0 && $roi_inv_tot_b_2 < 15)
                                                     <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_2)}}%</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_b_2 > 20)
+                                                    @if ($roi_inv_tot_b_2 > 15)
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_2)}}%</b>
                                                     @endif
                                                 @endif
@@ -3542,7 +3544,7 @@ span{
 
                                             <div class="grid justify-center w-1/5">
                                                 @if ($result3 !== null)
-                                                <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot(10,$dif_2_cost,$inv_ini_3) ?>
+                                                <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot(10,$id_project,$dif_2_cost,$inv_ini_3) ?>
                                                     @if ($roi_inv_tot_b_3 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_3)}}%</b>
                                                     @endif
@@ -3551,11 +3553,11 @@ span{
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_b_3 > 0 && $roi_inv_tot_b_3 < 20)
+                                                    @if ($roi_inv_tot_b_3 > 0 && $roi_inv_tot_b_3 < 15)
                                                     <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_3)}}%</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_b_3 > 20)
+                                                    @if ($roi_inv_tot_b_3 > 15)
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_3)}}%</b>
                                                     @endif
                                                 @endif
@@ -3568,7 +3570,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                     @if ($result3 !== null)
-                                                    <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(15,$dif_2_cost,$inv_ini_3) ?>
+                                                    <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(15,$id_project,$dif_2_cost,$inv_ini_3) ?>
 
                                                     @if ($roi_inv_tot_b_4 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
@@ -3578,11 +3580,11 @@ span{
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_b_4 > 0 && $roi_inv_tot_b_4 < 20)
+                                                    @if ($roi_inv_tot_b_4 > 0 && $roi_inv_tot_b_4 < 15)
                                                     <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_b_4 > 20)
+                                                    @if ($roi_inv_tot_b_4 > 15)
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
                                                     @endif
                                                 @endif
@@ -3594,7 +3596,7 @@ span{
                                         </div>
                                     </div>
 
-                                    <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
+                                    <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl py-10">
                                         <div class="flex w-full justify-center mb-5">
                                             <div class="w-1/2">
                                                 <div id="chart_roi_base_a" name="chart_roi_base_a"></div>
@@ -3611,7 +3613,13 @@ span{
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Análisis CAPEX v/s OPEX</label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Análisis CAPEX v/s OPEX(
+                                                @if ($tar_ele->unidad == 'mc')$/m²)
+                                            @endif
+
+                                            @if ($tar_ele->unidad == 'ft')$/ft²)
+                                            @endif
+                                            </label>
                                         </div>
 
                                         <div class="w-full flex">
@@ -4772,7 +4780,7 @@ function cap_op_3(id_project){
             },
         },
         title: {
-          text: 'CAPEX v/s OPEX $/m2 - 3 Años',
+          text: '3 Años',
           align: 'center',
           style: {
             fontWeight:  'bold',
@@ -4843,7 +4851,6 @@ function cap_op_3(id_project){
 
         var chart = new ApexCharts(document.querySelector("#chart"), options);
         chart.render();
-
         },
         error: function (responsetext) {
             console.log(responsetext);
@@ -4893,7 +4900,7 @@ function cap_op_5(id_project){
             },
         },
         title: {
-            text: 'CAPEX v/s OPEX $/m2 - 5 Años',
+            text: '5 Años',
             align: 'center',
             style: {
             fontSize: '24px',
@@ -5013,7 +5020,7 @@ function cap_op_10(id_project){
             },
         },
         title: {
-          text: 'CAPEX v/s OPEX $/m2 - 10 Años',
+          text: '10 Años',
           align: 'center',
           style: {
             fontWeight:  'bold',
@@ -5134,7 +5141,7 @@ function cap_op_15(id_project){
             },
         },
         title: {
-            text: 'CAPEX v/s OPEX $/m2 - 15 Años',
+            text: '15 Años',
           align: 'center',
           style: {
             fontSize: '24px',
@@ -5247,7 +5254,7 @@ function roi_base_a(id_project){
             show: false
           }
         },
-        colors: ['#77B6EA', '#545454'],
+        colors: ['#ff00ff', '#545454'],
         dataLabels: {
                 enabled: true,
                 style: {
@@ -5285,7 +5292,14 @@ function roi_base_a(id_project){
            categories: [3,5,10,15],
            range:4,
           title: {
-            text: 'Años'
+            text: 'Años',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
           },
           labels: {
             style: {
@@ -5298,16 +5312,6 @@ function roi_base_a(id_project){
           },
         },
         yaxis: {
-          title: {
-            text: '%',
-            style: {
-                    colors: [],
-                    fontSize: '14px',
-                    fontFamily: 'ABeeZee, sans-serif',
-                    fontWeight: "bold",
-                    cssClass: 'apexcharts-yaxis-label',
-                },
-          },
           labels:{
             style: {
                     colors: [],
@@ -5334,7 +5338,7 @@ function roi_base_a(id_project){
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['#77B6EA', '#545454'],
+          fillColors: ['#ff00ff', '#545454'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
@@ -5389,7 +5393,7 @@ function roi_base_b(id_project){
             show: false
           }
         },
-        colors: ['#ed8936', '#545454'],
+        colors: ['#2be6ee', '#545454'],
         dataLabels: {
                 enabled: true,
                 style: {
@@ -5427,7 +5431,14 @@ function roi_base_b(id_project){
            categories: [3,5,10,15],
            range:4,
           title: {
-            text: 'Años'
+            text: 'Años',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
           },
           labels: {
             style: {
@@ -5440,16 +5451,6 @@ function roi_base_b(id_project){
           },
         },
         yaxis: {
-          title: {
-            text: '%',
-            style: {
-                    colors: [],
-                    fontSize: '14px',
-                    fontFamily: 'ABeeZee, sans-serif',
-                    fontWeight: "bold",
-                    cssClass: 'apexcharts-yaxis-label',
-                },
-          },
           labels:{
             style: {
                     colors: [],
@@ -5475,7 +5476,7 @@ function roi_base_b(id_project){
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['#ed8936', '#545454'],
+          fillColors: ['#2be6ee', '#545454'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,

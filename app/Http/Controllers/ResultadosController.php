@@ -2676,22 +2676,51 @@ class ResultadosController extends Controller
         return $roi_res;
     }
 
-    public function roi_inv_tot($yrs,$dif,$inv_ini){
-        if($inv_ini == 0){
+    public function roi_inv_tot($yrs,$id_projecto,$dif_cost,$inv_ini){
+        if($id_projecto == 0){
             return false;
         }else{
         /* (((dif_1 * yrs) – inv_ini )/ inv_ini) *100 */
         /* (dif_1 * yrs) */
-        $dif_yrs = $dif * $yrs;
+       // $dif_yrs = $dif * $yrs;
         /* (dif_1 * yrs) */
-        $dif_yrs_rest_inv_ini = $dif_yrs - $inv_ini;
+        //$dif_yrs_rest_inv_ini = $dif_yrs - $inv_ini;
             /* ((dif_1 * yrs) – inv_ini ) */
-        $dif_yrs_rest_inv_ini_div__inv_div = $dif_yrs_rest_inv_ini / $inv_ini;
+       // $dif_yrs_rest_inv_ini_div__inv_div = $dif_yrs_rest_inv_ini / $inv_ini;
             /* ((dif_1 * yrs) – inv_ini )/ inv_ini) */
-        $res =   $dif_yrs_rest_inv_ini_div__inv_div * 100;
+       // $res =   $dif_yrs_rest_inv_ini_div__inv_div * 100;
            /*  (((dif_1 * yrs) – inv_ini )/ inv_ini) *100 */
-        return $res;
+       // return $res;
+       $año_3 = 0;
+       $año_3_res = 0;
+       $año_3_suma = 0;
+       $año_3_res_suma = 0;
+       $inflacion_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+        $inflacion =  $inflacion_aux/100 + 1;
+        $dif_cost_aux = $dif_cost;
+
+        for ($i = 1; $i <= 15; $i++) {
+            if($i == 1){
+                $año_3_suma =  $dif_cost + $año_3_suma;
+
+            }else{
+
+                $dif_cost = $dif_cost * $inflacion;
+                $año_3_suma =  $dif_cost + $año_3_suma;
+
+
+                if($i === $yrs){
+                    $año_3_res =  $dif_cost;
+                    $año_3_res_suma = $año_3_suma ;
+                    $año_3 = number_format($año_3_res_suma/$inv_ini * 100);
+
+                }
+            }
         }
+    }
+       return $año_3;
 
     }
 
