@@ -4694,7 +4694,7 @@ span{
 		<!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
 	</div>
 
-<script>
+<script type="text/javascript">
 window.onload = function() {
     cap_op_3('{{$id_project}}');
     cap_op_5('{{$id_project}}');

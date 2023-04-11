@@ -1668,74 +1668,25 @@
             </div>
         </div>
     </div>
-    {{-- Consumo de Energía HVAC por Área (Kwh/ m² )
- --}}
-{{-- title_style_no_bg --}}
-    <div style="margin-top:5px; height:11%;" class="tarjet">
-        <?php  $unidad_area=$results->unidad_area($id_project,1,$sumaopex_1,$tar_ele->costo_elec) ?>
-        <div align="center" class="title_tarjet_no_bg">
-            <p  class="title_style_no_bg">Consumo de Energía HVAC por Área <b style="color:#ed8936;">(Kwh/ @if ($unidad_area == 'mc')
-                m²
-                @endif
-                @if ($unidad_area == 'ft')
-                ft²
-                @endif )</b></p>
-        </div>
-
-        <div style="margin-left:15px; margin-right:15px;">
-            <div>
-                <div style="margin-right:5px;margin-top:5px;" class="column" >
-                    <div style="width:100%;">
-                        @if ($result1 ==! null)
-                        <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
-                        <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_1, 2)}}</label>
-                        @else
-                        <label style="margin-left:60px;" class="cant_green">0</label>
-                        @endif
-                    </div>
-                </div>
-                <div style="margin-right:5px;margin-top:5px;" class="column" >
-                    <div style="width:100%;">
-                        @if ($result2 ==! null)
-                        <?php  $result_area_2=$results->result_area($id_project,$sumaopex_2) ?>
-                        <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_2, 2)}}</label>
-                        @else
-                        <label style="margin-left:60px;" class="cant_green">0</label>
-                        @endif
-                    </div>
-                </div>
-                <div style="margin-right:5px;margin-top:5px;" class="column" >
-                    <div style="width:100%;">
-                        @if ($result3 ==! null)
-                        <?php  $result_area_3=$results->result_area($id_project,$sumaopex_3) ?>
-                        <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_3, 2)}}</label>
-                        @else
-                        <label style="margin-left:60px;" class="cant_green">0</label>
-                        @endif
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
+    <?php  $unidad_area=$results->unidad_area($id_project,1,$sumaopex_1,$tar_ele->costo_elec) ?>
 
     {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
     <div style="margin-top:5px; height:13%;" class="tarjet">
         <div align="center" class="title_tarjet_no_bg">
             <p  class="title_style_no_bg">Ahorro Anual Energía – Diferencia entre Soluciones<b style="color:#ed8936;">(Kw/hr año)</b></p>
         </div>
-        <?php  $results=$results->results($id_project) ?>
+        <?php  $results_aux=$results->results($id_project) ?>
 
         <div style="margin-left:15px; margin-right:15px;">
             <div>
-                @foreach ($results as $solution)
-                @if (count($results) == 1)
+                @foreach ($results_aux as $solution)
+                @if (count($results_aux) == 1)
 
                 @endif
 
-                @if (count($results) == 2)
+                @if (count($results_aux) == 2)
                 @if ($solution->num_enf == 1)
-                <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+                <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
                         <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
@@ -1755,9 +1706,9 @@
                 @endif
                 @endif
 
-                @if (count($results) == 3)
+                @if (count($results_aux) == 3)
                 @if ($solution->num_enf == 1)
-                <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+                <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
                         <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
@@ -1768,7 +1719,7 @@
                 </div>
                 @endif
                 @if ($solution->num_enf == 2)
-                <?php  $dif_2=$smasolutions->dif_2($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+                <?php  $dif_2=$smasolutions->dif_2($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
                         <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Base v/s B</label>
@@ -1785,6 +1736,49 @@
 
     </div>
 
+        {{-- Consumo de Energía HVAC por Área (Kwh/ m² )
+ --}}
+{{-- title_style_no_bg --}}
+<div style="margin-top:9px; height:11%;" class="tarjet">
+    <div align="center"  class="title_tarjet_no_bg">
+        <p  class="title_style_no_bg">Consumo de Energía HVAC por Área <b style="color:#ed8936;">(Kwh/@if($unidad_area == 'mc')m²@endif @if($unidad_area == 'ft')ft²@endif)</b></p>
+    </div>
+    <div style="margin-left:15px; margin-right:15px;">
+        <div>
+            <div style="margin-right:5px;margin-top:5px;" class="column" >
+                <div style="width:100%;">
+                    @if ($result1 ==! null)
+                    <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
+                    <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_1, 2)}}</label>
+                    @else
+                    <label style="margin-left:60px;" class="cant_green">0</label>
+                    @endif
+                </div>
+            </div>
+            <div style="margin-right:5px;margin-top:5px;" class="column" >
+                <div style="width:100%;">
+                    @if ($result2 ==! null)
+                    <?php  $result_area_2=$results->result_area($id_project,$sumaopex_2) ?>
+                    <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_2, 2)}}</label>
+                    @else
+                    <label style="margin-left:60px;" class="cant_green">0</label>
+                    @endif
+                </div>
+            </div>
+            <div style="margin-right:5px;margin-top:5px;" class="column" >
+                <div style="width:100%;">
+                    @if ($result3 ==! null)
+                    <?php  $result_area_3=$results->result_area($id_project,$sumaopex_3) ?>
+                    <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_3, 2)}}</label>
+                    @else
+                    <label style="margin-left:60px;" class="cant_green">0</label>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
      {{-- 3 --}}
      <div style="page-break-after:always;"></div>
      <div class="tarjet">
@@ -2059,7 +2053,7 @@
         </div>
     </div>
     {{-- nversión Inicial (CAPEX) por Área ($/m²) --}}
-    <div style="margin-top:5px; height:11%;" class="tarjet">
+    {{-- <div style="margin-top:5px; height:11%;" class="tarjet">
         <div align="center" class="title_tarjet_no_bg">
             <p  class="title_style_no_bg">Inversión Inicial (CAPEX) por Área<b style="color:#ed8936;">($/{{$uni_med1 = ($unidad_area == 'mc') ? 'm²' : 'ft²'}})</b></p>
         </div>
@@ -2099,9 +2093,9 @@
             </div>
         </div>
 
-    </div>
+    </div> --}}
 {{-- Consumo de Energía (OPEX) por Área --}}
-    <div style="margin-top:5px; height:11%;" class="tarjet">
+    {{-- <div style="margin-top:5px; height:11%;" class="tarjet">
         <div align="center" class="title_tarjet_no_bg">
             <p  class="title_style_no_bg">Consumo de Energía (OPEX) por Área<b style="color:#ed8936;">($/m²)</b></p>
         </div>
@@ -2137,7 +2131,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
 
@@ -2146,17 +2140,17 @@
     <div align="center" class="title_tarjet_no_bg">
         <p  class="title_style_no_bg">Ahorro Anual de Costo Energético – Entre Soluciones</p>
     </div>
-    @if (count($results)>1)
+    @if (count($results_aux)>1)
     <div style="margin-left:15px; margin-right:15px;">
         <div>
-            @foreach ($results as $solution)
-            @if (count($results) == 1)
+            @foreach ($results_aux as $solution)
+            @if (count($results_aux) == 1)
 
             @endif
 
-            @if (count($results) == 2)
+            @if (count($results_aux) == 2)
             @if ($solution->num_enf == 1)
-            <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+            <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
 
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                 <div style="width:100%;">
@@ -2177,9 +2171,9 @@
             @endif
             @endif
 
-            @if (count($results) == 3)
+            @if (count($results_aux) == 3)
             @if ($solution->num_enf == 1)
-            <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+            <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
 
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                 <div style="width:100%;">
@@ -2191,7 +2185,7 @@
             </div>
             @endif
             @if ($solution->num_enf == 2)
-            <?php  $dif_2_cost=$smasolutions->dif_2_cost($solution->id_project,count($results),$tar_ele->costo_elec) ?>
+            <?php  $dif_2_cost=$smasolutions->dif_2_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                 <div style="width:100%;">
                     <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Base v/s B</label>
@@ -2207,9 +2201,9 @@
     </div>
     @endif
 
-    @if (count($results)==1)
+    @if (count($results_aux)==1)
 
-    @foreach ($results as $solution)
+    @foreach ($results_aux as $solution)
     <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
         <div style="width:100%;">
             <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
@@ -2268,10 +2262,183 @@
     </div>
 </div>
 
+<div style="margin-top:5px; height:20%;" class="tarjet">
+    <div align="center" class="title_tarjet_no_bg">
+        <p  class="title_style_no_bg">ROI Entre Soluciónes</p>
+    </div>
+
+    <div style="margin-left:15px; margin-right:15px;">
+        <table style="width: 100%">
+            <tr>
+            <th></th>
+            <th class="yrs_style">3 Años</th>
+            <th class="yrs_style">5 Años</th>
+            <th class="yrs_style">10 Años</th>
+            <th class="yrs_style">15 Años</th>
+            </tr>
+            <tr>
+            <td class="sol_ab_yrs_style">Solución A</td>
+            @if ($result2 !== null)
+                <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(3,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                @if ($roi_inv_tot_1 <= 0)
+                <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_1)}}%</td>
+                @endif
+
+                @if ($roi_inv_tot_1 > 0 && $roi_inv_tot_1 < 15)
+                <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_1)}}%</td>
+                @endif
+
+                @if ($roi_inv_tot_1 > 15)
+                <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_1)}}%</td>
+                @endif
+            @endif
+            @if ($result2 === null)
+                <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+            @endif
+
+            @if ($result2 !== null)
+            <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(5,$id_project,$dif_1_cost,$inv_ini_2) ?>
+            @if ($roi_inv_tot_2 <= 0)
+                <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_2)}}%</td>
+                @endif
+
+                @if ($roi_inv_tot_2 > 0 && $roi_inv_tot_2 < 15)
+                <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_2)}}%</td>
+                @endif
+
+                @if ($roi_inv_tot_2 > 15)
+                <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_2)}}%</td>
+                @endif
+            @endif
+            @if ($result2 === null)
+                <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+            @endif
+
+            @if ($result2 !== null)
+            <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(10,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                 @if ($roi_inv_tot_3 <= 0)
+                 <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_3)}}%</td>
+                 @endif
+
+                 @if ($roi_inv_tot_3 > 0 && $roi_inv_tot_3 < 15)
+                 <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_3)}}%</td>
+                 @endif
+
+                @if ($roi_inv_tot_3 > 15)
+                <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_3)}}%</td>
+                @endif
+            @endif
+            @if ($result2 === null)
+            <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+            @endif
+
+            @if ($result2 !== null)
+            <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(15,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                @if ($roi_inv_tot_4 <= 0)
+                <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
+                @endif
+
+                @if ($roi_inv_tot_4 > 0 && $roi_inv_tot_4 < 15)
+                <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
+                @endif
+
+                @if ($roi_inv_tot_4 > 15)
+                <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
+                @endif
+            @endif
+            @if ($result2 === null)
+            <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+            @endif
+            </tr>
+            <tr>
+                <td class="sol_ab_yrs_style">Solución B</td>
+
+                @if ($result3 !== null)
+                <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(3,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                    @if ($roi_inv_tot_b_1 <= 0)
+                    <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_1)}}%</td>
+                    @endif
+
+                    @if ($roi_inv_tot_b_1 > 0 && $roi_inv_tot_b_1 < 15)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_1)}}%</td>
+                    @endif
+
+                    @if ($roi_inv_tot_b_1 > 15)
+                    <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_1)}}%</td>
+                    @endif
+                @endif
+
+                @if ($result3 === null)
+                <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                @endif
+
+
+                @if ($result3 !== null)
+                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(5,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                     @if ($roi_inv_tot_b_2 <= 0)
+                     <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_2)}}%</td>
+                     @endif
+
+                     @if ($roi_inv_tot_b_2 > 0 && $roi_inv_tot_b_2 < 15)
+                     <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_2)}}%</td>
+                     @endif
+
+                    @if ($roi_inv_tot_b_2 > 15)
+                    <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_2)}}%</td>
+                    @endif
+                 @endif
+
+                @if ($result3 === null)
+                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                 @endif
+
+                 @if ($result3 !== null)
+                 <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot(10,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                     @if ($roi_inv_tot_b_3 <= 0)
+                     <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_3)}}%</td>
+                     @endif
+
+                      @if ($roi_inv_tot_b_3 > 0 && $roi_inv_tot_b_3 < 15)
+                      <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_3)}}%</td>
+                      @endif
+
+                     @if ($roi_inv_tot_b_3 > 15)
+                     <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_3)}}%</td>
+                     @endif
+                 @endif
+
+                  @if ($result3 === null)
+                  <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                  @endif
+
+                  @if ($result3 !== null)
+                     <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(15,$id_project,$dif_2_cost,$inv_ini_3) ?>
+
+                     @if ($roi_inv_tot_b_4 <= 0)
+                     <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_4)}}%</td>
+                     @endif
+
+                     @if ($roi_inv_tot_b_4 > 0 && $roi_inv_tot_b_4 < 15)
+                     <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_4)}}%</td>
+                     @endif
+
+                     @if ($roi_inv_tot_b_4 > 15)
+                     <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_4)}}%</td>
+                     @endif
+                 @endif
+
+                 @if ($result3 === null)
+                 <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+                 @endif
+            </tr>
+        </table>
+    </div>
+
+</div>
 {{-- ROI Diferencia de Inversión --}}
-     <div style="page-break-after:always;"></div>
+    {{--  <div style="page-break-after:always;"></div> --}}
 {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
-    <div style="margin-top:5px; height:20%;" class="tarjet">
+   {{--  <div style="margin-top:5px; height:20%;" class="tarjet">
         <div align="center" class="title_tarjet_no_bg">
             <p  class="title_style_no_bg">ROI Diferencia de Inversión</p>
         </div>
@@ -2305,7 +2472,7 @@
                 @if ($result2 === null)
                 <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
                 @endif
-                {{-- 5años --}}
+
                 @if ($result2 !== null)
                 <?php  $roi_ent_dif_inv_5=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,5,$dif_1_cost) ?>
                     @if ($roi_ent_dif_inv_5 <= 0)
@@ -2445,182 +2612,10 @@
             </table>
         </div>
 
-    </div>
+    </div> --}}
 
     {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
-    {{-- <div style="margin-top:5px; height:20%;" class="tarjet">
-        <div align="center" class="title_tarjet_no_bg">
-            <p  class="title_style_no_bg">ROI Inversión Total</p>
-        </div>
 
-        <div style="margin-left:15px; margin-right:15px;">
-            <table style="width: 100%">
-                <tr>
-                <th></th>
-                <th class="yrs_style">3 Años</th>
-                <th class="yrs_style">5 Años</th>
-                <th class="yrs_style">10 Años</th>
-                <th class="yrs_style">15 Años</th>
-                </tr>
-                <tr>
-                <td class="sol_ab_yrs_style">Solución A</td>
-                @if ($result2 !== null)
-                    <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(3,$dif_1_cost,$inv_ini_2) ?>
-                    @if ($roi_inv_tot_1 <= 0)
-                    <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_1)}}%</td>
-                    @endif
-
-                    @if ($roi_inv_tot_1 > 0 && $roi_inv_tot_1 < 20)
-                    <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_1)}}%</td>
-                    @endif
-
-                    @if ($roi_inv_tot_1 > 20)
-                    <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_1)}}%</td>
-                    @endif
-                @endif
-                @if ($result2 === null)
-                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
-                @endif
-
-                @if ($result2 !== null)
-                <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(5,$dif_1_cost,$inv_ini_2) ?>
-                @if ($roi_inv_tot_2 <= 0)
-                    <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_2)}}%</td>
-                    @endif
-
-                    @if ($roi_inv_tot_2 > 0 && $roi_inv_tot_2 < 20)
-                    <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_2)}}%</td>
-                    @endif
-
-                    @if ($roi_inv_tot_2 > 20)
-                    <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_2)}}%</td>
-                    @endif
-                @endif
-                @if ($result2 === null)
-                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
-                @endif
-
-                @if ($result2 !== null)
-                <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(10,$dif_1_cost,$inv_ini_2) ?>
-                     @if ($roi_inv_tot_3 <= 0)
-                     <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_3)}}%</td>
-                     @endif
-
-                     @if ($roi_inv_tot_3 > 0 && $roi_inv_tot_3 < 20)
-                     <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_3)}}%</td>
-                     @endif
-
-                    @if ($roi_inv_tot_3 > 20)
-                    <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_3)}}%</td>
-                    @endif
-                @endif
-                @if ($result2 === null)
-                <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
-                @endif
-
-                @if ($result2 !== null)
-                <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(15,$dif_1_cost,$inv_ini_2) ?>
-                    @if ($roi_inv_tot_4 <= 0)
-                    <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
-                    @endif
-
-                    @if ($roi_inv_tot_4 > 0 && $roi_inv_tot_4 < 20)
-                    <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
-                    @endif
-
-                    @if ($roi_inv_tot_4 > 20)
-                    <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
-                    @endif
-                @endif
-                @if ($result2 === null)
-                <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
-                @endif
-                </tr>
-                <tr>
-                    <td class="sol_ab_yrs_style">Solución B</td>
-
-                    @if ($result3 !== null)
-                    <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(3,$dif_2_cost,$inv_ini_3) ?>
-                        @if ($roi_inv_tot_b_1 <= 0)
-                        <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_1)}}%</td>
-                        @endif
-
-                        @if ($roi_inv_tot_b_1 > 0 && $roi_inv_tot_b_1 < 20)
-                        <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_1)}}%</td>
-                        @endif
-
-                        @if ($roi_inv_tot_b_1 > 20)
-                        <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_1)}}%</td>
-                        @endif
-                    @endif
-
-                    @if ($result3 === null)
-                    <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
-                    @endif
-
-
-                    @if ($result3 !== null)
-                    <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(5,$dif_2_cost,$inv_ini_3) ?>
-                         @if ($roi_inv_tot_b_2 <= 0)
-                         <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_2)}}%</td>
-                         @endif
-
-                         @if ($roi_inv_tot_b_2 > 0 && $roi_inv_tot_b_2 < 20)
-                         <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_2)}}%</td>
-                         @endif
-
-                        @if ($roi_inv_tot_b_2 > 20)
-                        <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_2)}}%</td>
-                        @endif
-                     @endif
-
-                    @if ($result3 === null)
-                        <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
-                     @endif
-
-                     @if ($result3 !== null)
-                     <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot(10,$dif_2_cost,$inv_ini_3) ?>
-                         @if ($roi_inv_tot_b_3 <= 0)
-                         <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_3)}}%</td>
-                         @endif
-
-                          @if ($roi_inv_tot_b_3 > 0 && $roi_inv_tot_b_3 < 20)
-                          <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_3)}}%</td>
-                          @endif
-
-                         @if ($roi_inv_tot_b_3 > 20)
-                         <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_3)}}%</td>
-                         @endif
-                     @endif
-
-                      @if ($result3 === null)
-                      <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
-                      @endif
-
-                      @if ($result3 !== null)
-                         <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(15,$dif_2_cost,$inv_ini_3) ?>
-
-                         @if ($roi_inv_tot_b_4 <= 0)
-                         <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_4)}}%</td>
-                         @endif
-
-                         @if ($roi_inv_tot_b_4 > 0 && $roi_inv_tot_b_4 < 20)
-                         <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_4)}}%</td>
-                         @endif
-
-                         @if ($roi_inv_tot_b_4 > 20)
-                         <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_4)}}%</td>
-                         @endif
-                     @endif
-
-                     @if ($result3 === null)
-                     <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
-                     @endif
-                </tr>
-            </table>
-        </div>
-
-    </div> --}}
 
 {{-- RESULTADOS ANÁLISIS SUSTENTABLE --}}
     <div style="page-break-after:always;"></div>
@@ -3369,14 +3364,14 @@
                     <div style="width:100%;">
                         @if ($result3 ==! null)
                         <?php  $valor_eui_b=$smasolutions->valor_eui_aux($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                            @if ($valor_eui_b <= $ashrae)
+                            @if (floatval($valor_eui_b) <= floatval($ashrae))
                             <label style="margin-left:80px;color:#33cc33;" class="cant_green">{{number_format($valor_eui_b,1)}}</label>
-                            @elseif ($valor_eui_b <= $energy_star && $valor_eui_a > $ashrae)
+                            @elseif ($valor_eui_b <= $energy_star && $valor_eui_b > $ashrae)
                             <label style="margin-left:80px;color:#ed8936;" class="cant_green">{{number_format($valor_eui_b,1)}}</label>
-                            @elseif ($valor_eui_b > $energy_star)
+                            @elseif (floatval($valor_eui_b) >> floatval($energy_star))
                             <label style="margin-left:80px;color:#ea0000;" class="cant_green">{{number_format($valor_eui_b,1)}}</label>
                             @else
-                            <label style="margin-left:80px;color:#2c5282;" class="cant_green">{{number_format($valor_eui_b,1)}}</label>
+                            <label style="margin-left:80px;color:#2c5282;" class="cant_green">{{number_format($ashrae,1)}}</label>
                             @endif
                         @endif
 
@@ -3388,6 +3383,8 @@
             </div>
         </div>
     </div>
-
+    <script type="text/javascript">
+        alert('dasdsa');
+    </script>
 </body>
 </html>
