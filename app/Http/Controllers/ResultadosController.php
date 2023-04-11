@@ -2821,6 +2821,36 @@ class ResultadosController extends Controller
         return $res_eui_ashrae;
     }
 
+
+    public function valor_eui_aux($sumaopex,$costo_elec,$area,$porcent_hvac,$energy_star,$unidad){
+       /*  ((378857*100%/50%)*3.412)/(2000*10.764) */
+       $ConsumoAnualOPEX = $sumaopex/$costo_elec;
+        /* ((378857*100%/50%)*3.412) */
+
+        /* (378857*100%/50%) */
+
+        $porcent= $porcent_hvac / 100;
+        /* 378857*100%/50% */
+        $div_porcent =  $ConsumoAnualOPEX / $porcent;
+
+        $mult_rers_1erapt =  $div_porcent * 3.412;
+       /*  (2000*10.764) */
+
+       //validar area mc y ft
+        if($unidad == 'mc'){
+            $area_res=$area*10.764;
+            /* (52.9 * (10,000 * 10.764)) */
+          /*   $area_x_e_star = $energy_star *  $area_x_fact_fts; */
+        }
+
+        if($unidad == 'ft'){
+            $area_res = 10.764 *  $area;
+        }
+
+        $res =  $mult_rers_1erapt/$area_res;
+       return $res;
+    }
+
     public function valor_eui($sumaopex,$costo_elec,$area,$porcent_hvac,$energy_star,$unidad){
 
        /* Factor Consumo energia ////////////////////
