@@ -3377,7 +3377,7 @@ span{
                                         {{--  --}}
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             <div class="grid justify-center w-1/4">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl">Solución A</b>
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl mt-3">Solución A</b>
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
@@ -3486,7 +3486,7 @@ span{
                                         {{--  --}}
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             <div class="grid justify-center w-1/4">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl">Solución B</b>
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl mt-3">Solución B</b>
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
@@ -3613,12 +3613,8 @@ span{
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Análisis CAPEX v/s OPEX(
-                                                @if ($tar_ele->unidad == 'mc')$/m²)
-                                            @endif
-
-                                            @if ($tar_ele->unidad == 'ft')$/ft²)
-                                            @endif
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Análisis CAPEX v/s OPEX (@if($tar_ele->unidad == 'mc')$/m²)@endif
+                                            @if($tar_ele->unidad == 'ft')$/ft²)@endif
                                             </label>
                                         </div>
 
@@ -4782,6 +4778,7 @@ function cap_op_3(id_project){
         title: {
           text: '3 Años',
           align: 'center',
+          offsetY:25,
           style: {
             fontWeight:  'bold',
             fontSize: '24px',
@@ -4796,7 +4793,7 @@ function cap_op_3(id_project){
           labels: {
                 style: {
                     colors: [],
-                    fontSize: '12px',
+                    fontSize: '14px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4807,7 +4804,7 @@ function cap_op_3(id_project){
             labels: {
                 style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '16px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4902,6 +4899,7 @@ function cap_op_5(id_project){
         title: {
             text: '5 Años',
             align: 'center',
+            offsetY:25,
             style: {
             fontSize: '24px',
             fontFamily: 'ABeeZee, sans-serif',
@@ -4915,7 +4913,7 @@ function cap_op_5(id_project){
           labels: {
                 style: {
                     colors: [],
-                    fontSize: '12px',
+                    fontSize: '14px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4926,7 +4924,7 @@ function cap_op_5(id_project){
             labels: {
                 style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '16px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -5022,6 +5020,7 @@ function cap_op_10(id_project){
         title: {
           text: '10 Años',
           align: 'center',
+          offsetY:25,
           style: {
             fontWeight:  'bold',
             fontSize: '24px',
@@ -5036,7 +5035,7 @@ function cap_op_10(id_project){
           labels: {
                 style: {
                     colors: [],
-                    fontSize: '12px',
+                    fontSize: '14px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -5047,7 +5046,7 @@ function cap_op_10(id_project){
             labels: {
                 style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '16px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -5143,6 +5142,7 @@ function cap_op_15(id_project){
         title: {
             text: '15 Años',
           align: 'center',
+          offsetY:25,
           style: {
             fontSize: '24px',
             fontFamily: 'ABeeZee, sans-serif',
@@ -5156,7 +5156,7 @@ function cap_op_15(id_project){
           labels: {
                 style: {
                     colors: [],
-                    fontSize: '12px',
+                    fontSize: '14px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -5167,7 +5167,7 @@ function cap_op_15(id_project){
             labels: {
                 style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '16px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
