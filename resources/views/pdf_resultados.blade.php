@@ -2448,7 +2448,7 @@
     </div>
 
     {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
-    <div style="margin-top:5px; height:20%;" class="tarjet">
+    {{-- <div style="margin-top:5px; height:20%;" class="tarjet">
         <div align="center" class="title_tarjet_no_bg">
             <p  class="title_style_no_bg">ROI Inversión Total</p>
         </div>
@@ -2620,7 +2620,7 @@
             </table>
         </div>
 
-    </div>
+    </div> --}}
 
 {{-- RESULTADOS ANÁLISIS SUSTENTABLE --}}
     <div style="page-break-after:always;"></div>
