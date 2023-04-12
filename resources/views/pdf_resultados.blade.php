@@ -2436,8 +2436,10 @@
 
 </div>
 {{-- ROI Diferencia de Inversión --}}
-    {{--  <div style="page-break-after:always;"></div> --}}
-{{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
+     {{-- <div style="page-break-after:always;"></div>
+
+     <img style="width:400px; height:300px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [5, 5, 5]}, {name: 'OPEX',data: [5, 5, 5]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Base'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},        yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, }"> --}}
+     {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
    {{--  <div style="margin-top:5px; height:20%;" class="tarjet">
         <div align="center" class="title_tarjet_no_bg">
             <p  class="title_style_no_bg">ROI Diferencia de Inversión</p>
@@ -3384,7 +3386,9 @@
         </div>
     </div>
     <script type="text/javascript">
-        alert('dasdsa');
+   $(document).ready(function() {
+    alert('Page is loaded');
+})
     </script>
 </body>
 </html>

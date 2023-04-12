@@ -5227,7 +5227,7 @@ function roi_base_a(id_project){
         type: 'get',
         url: "/roi_base_a/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
         success: function (res) {
-            console.log(res);
+
     var options = {
           series: [
           {

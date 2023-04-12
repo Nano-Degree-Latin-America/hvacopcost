@@ -2941,6 +2941,8 @@ class ResultadosController extends Controller
 
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
+        $pdf->setOption('enable-javascript', true);
+        $pdf->setOption('javascript-delay', 1000);
         return $pdf->stream('Portada.pdf');
         //ini_set('max_execution_time', 1500);
         set_time_limit(6000);
@@ -3017,7 +3019,7 @@ $dompdf->render();
                 $res_opex_enf_base = $res_opex_enf_base * $inflacion;
             }
 
-            array_push( $array_base,number_format($res_enf_base,1),number_format($suma_enf_base_aux,1));
+            array_push( $array_base,intval($res_enf_base,1),intval($suma_enf_base_aux,1));
         }
 
            if($num_enf->num_enf === 2){
@@ -3056,7 +3058,7 @@ $dompdf->render();
                 $res_opex_enf_a = $res_opex_enf_a * $inflacion;
             }
 
-            array_push( $array_a,number_format($res_enf_a,1),number_format($suma_enf_a_aux,1));
+            array_push( $array_a,intval($res_enf_a,1),intval($suma_enf_a_aux,1));
            }
 
            if($num_enf->num_enf === 3){
@@ -3095,7 +3097,7 @@ $dompdf->render();
                 $res_opex_enf_b = $res_opex_enf_b * $inflacion;
             }
 
-            array_push( $array_b,number_format($res_enf_b,1),number_format($suma_enf_b_aux,1));
+            array_push( $array_b,intval($res_enf_b,1),intval($suma_enf_b_aux,1));
            }
         }
 
@@ -3166,7 +3168,7 @@ $dompdf->render();
                 $res_opex_enf_base = $res_opex_enf_base * $inflacion;
             }
 
-            array_push( $array_base,number_format($res_enf_base,1),number_format($suma_enf_base_aux,1));
+            array_push( $array_base,intval($res_enf_base,1),intval($suma_enf_base_aux,1));
         }
 
            if($num_enf->num_enf === 2){
@@ -3205,7 +3207,7 @@ $dompdf->render();
                 $res_opex_enf_a = $res_opex_enf_a * $inflacion;
             }
 
-            array_push( $array_a,number_format($res_enf_a,1),number_format($suma_enf_a_aux,1));
+            array_push( $array_a,intval($res_enf_a,1),intval($suma_enf_a_aux,1));
            }
 
            if($num_enf->num_enf === 3){
@@ -3244,7 +3246,7 @@ $dompdf->render();
                 $res_opex_enf_b = $res_opex_enf_b * $inflacion;
             }
 
-            array_push( $array_b,number_format($res_enf_b,1),number_format($suma_enf_b_aux,1));
+            array_push( $array_b,intval($res_enf_b,1),intval($suma_enf_b_aux,1));
            }
         }
 
@@ -3314,7 +3316,7 @@ $dompdf->render();
                 $res_opex_enf_base = $res_opex_enf_base * $inflacion;
             }
 
-            array_push( $array_base,number_format($res_enf_base,1),number_format($suma_enf_base_aux,1));
+            array_push( $array_base,intval($res_enf_base,1),intval($suma_enf_base_aux,1));
         }
 
            if($num_enf->num_enf === 2){
@@ -3353,7 +3355,7 @@ $dompdf->render();
                 $res_opex_enf_a = $res_opex_enf_a * $inflacion;
             }
 
-            array_push( $array_a,number_format($res_enf_a,1),number_format($suma_enf_a_aux,1));
+            array_push( $array_a,intval($res_enf_a,1),intval($suma_enf_a_aux,1));
            }
 
            if($num_enf->num_enf === 3){
@@ -3392,7 +3394,7 @@ $dompdf->render();
                 $res_opex_enf_b = $res_opex_enf_b * $inflacion;
             }
 
-            array_push( $array_b,number_format($res_enf_b,1),number_format($suma_enf_b_aux,1));
+            array_push( $array_b,intval($res_enf_b,1),intval($suma_enf_b_aux,1));
            }
         }
 
@@ -3462,7 +3464,7 @@ $dompdf->render();
                 $res_opex_enf_base = $res_opex_enf_base * $inflacion;
             }
 
-            array_push( $array_base,number_format($res_enf_base,1),number_format($suma_enf_base_aux,1));
+            array_push( $array_base,intval($res_enf_base,1),intval($suma_enf_base_aux,1));
         }
 
            if($num_enf->num_enf === 2){
@@ -3501,7 +3503,7 @@ $dompdf->render();
                 $res_opex_enf_a = $res_opex_enf_a * $inflacion;
             }
 
-            array_push( $array_a,number_format($res_enf_a,1),number_format($suma_enf_a_aux,1));
+            array_push( $array_a,intval($res_enf_a,1),intval($suma_enf_a_aux,1));
            }
 
            if($num_enf->num_enf === 3){
@@ -3540,7 +3542,7 @@ $dompdf->render();
                 $res_opex_enf_b = $res_opex_enf_b * $inflacion;
             }
 
-            array_push( $array_b,number_format($res_enf_b,1),number_format($suma_enf_b_aux,1));
+            array_push( $array_b,intval($res_enf_b,1),intval($suma_enf_b_aux,1));
            }
         }
 
@@ -3595,28 +3597,28 @@ $dompdf->render();
                 if($i === 3){
                     $año_3_res =  $dif_cost;
                     $año_3_res_suma = $año_3_suma ;
-                    $año_3 = number_format($año_3_res_suma/$inv_ini * 100);
+                    $año_3 = intval($año_3_res_suma/$inv_ini * 100);
                     array_push($array_res,$año_3);
                 }
 
                 if($i === 5){
                     $año_5_res =  $dif_cost;
                     $año_5_res_suma = $año_5_suma ;
-                    $año_5 = number_format($año_5_res_suma/$inv_ini * 100);
+                    $año_5 = intval($año_5_res_suma/$inv_ini * 100);
                     array_push($array_res,$año_5);
                 }
 
                 if($i === 10){
                     $año_10_res =  $dif_cost;
                     $año_10_res_suma = $año_10_suma ;
-                    $año_10 = number_format($año_10_res_suma/$inv_ini * 100);
+                    $año_10 = intval($año_10_res_suma/$inv_ini * 100);
                     array_push($array_res,$año_10);
                 }
 
                 if($i === 15){
                     $año_15_res =  $dif_cost;
                     $año_15_res_suma = $año_15_suma ;
-                    $año_15 = number_format($año_15_res_suma/$inv_ini * 100);
+                    $año_15 = intval($año_15_res_suma/$inv_ini * 100);
                     array_push($array_res,$año_15);
                 }
             }
