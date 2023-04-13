@@ -3,6 +3,7 @@
 @inject('results','app\Http\Controllers\ResultadosController')
 @inject('smasolutions','app\Http\Controllers\ResultadosController')
 @inject('sumacap_term','app\Http\Controllers\ResultadosController')
+@inject('graficas_capex_opex','app\Http\Controllers\ResultadosController')
 <html lang="es">
 
    <head>
@@ -2436,10 +2437,87 @@
 
 </div>
 {{-- ROI Diferencia de Inversión --}}
-     {{-- <div style="page-break-after:always;"></div>
+     <div style="page-break-after:always;"></div>
 
-     <img style="width:400px; height:300px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [5, 5, 5]}, {name: 'OPEX',data: [5, 5, 5]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Base'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},        yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, }"> --}}
-     {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
+     <div style="margin-top:5px; height:30%;" class="tarjet">
+        <div style="margin-left:15px; margin-right:15px;">
+            <?php  $roi_base_a=$graficas_capex_opex->roi_base_a_pdf($id_project,$dif_1_cost,$inv_ini_2);?>
+                <div style="margin-right:5px;margin-top:3px;" class="column_x_2" >
+
+                    <div style="width:100%;">
+                        <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}}]},{name: 'MARR',data: [15, 15, 15, 15]}],dataLabels: {enabled: true,style: {fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
+                    </div>
+                </div>
+                @if ($result3 !== null)
+                <?php  $roi_base_b=$graficas_capex_opex->roi_base_a_pdf($id_project,$dif_2_cost,$inv_ini_3);?>
+
+                <div style="margin-right:5px;margin-top:3px;" class="column_x_2" >
+
+                    <div style="width:100%;">
+                        <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - B',data: [{{$roi_base_b[0]}}, {{$roi_base_b[1]}}, {{$roi_base_b[2]}}, {{$roi_base_b[3]}}]},{name: 'MARR',data: [15, 15, 15, 15]}],dataLabels: {enabled: true,style: {fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución B v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
+                    </div>
+                </div>
+                @endif
+         </div>
+    </div>
+
+        <div style="margin-top:5px; height:65%;" class="tarjet">
+                <div align="center" class="title_tarjet_no_bg">
+                    <p  class="title_style_no_bg">Análisis CAPEX v/s OPEX @if($unidad_area == 'mc')($/m²)@endif @if($unidad_area == 'ft')($/ft²)@endif</p>
+                </div>
+                <div style="margin-left:15px; margin-right:15px;">
+                    <?php  $cap_op_3=$graficas_capex_opex->cap_op_3_pdf($id_project);?>
+                        <div style="margin-right:5px;" class="column_x_2" >
+
+                            <div style="width:100%;">
+                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_3[2][0]}}, {{$cap_op_3[1][0]}}, {{$cap_op_3[0][0]}}]}, {name: 'OPEX',data: [{{$cap_op_3[2][1]}}, {{$cap_op_3[1][1]}}, {{$cap_op_3[0][1]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Base'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',fillColors:undefined,horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '3 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+                            </div>
+                        </div>
+                        <?php  $cap_op_5=$graficas_capex_opex->cap_op_5_pdf($id_project);?>
+
+                        <div style="margin-right:5px;" class="column_x_2" >
+
+                            <div style="width:100%;">
+                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_5[2][0]}}, {{$cap_op_5[1][0]}}, {{$cap_op_5[0][0]}}]}, {name: 'OPEX',data: [{{$cap_op_5[2][1]}}, {{$cap_op_5[1][1]}}, {{$cap_op_5[0][1]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Base'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '5 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+                            </div>
+                        </div>
+                 </div>
+                 <br>
+                 <br>
+                 <br>
+                 <br>
+                 <br>
+                 <br>
+                 <br>
+                 <br>
+                 <br>
+                 <br>
+                 <br>
+                 <br>
+                 <div style="margin-left:15px; margin-right:15px;">
+                    <?php  $cap_op_10=$graficas_capex_opex->cap_op_10_pdf($id_project);?>
+
+                    <div style="margin-right:5px;" class="column_x_2" >
+
+                        <div style="width:100%;">
+                            <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_10[2][0]}}, {{$cap_op_10[1][0]}}, {{$cap_op_10[0][0]}}]}, {name: 'OPEX',data: [{{$cap_op_10[2][1]}}, {{$cap_op_10[1][1]}}, {{$cap_op_10[0][1]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Base'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',fillColors:undefined,horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '10 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+                        </div>
+                    </div>
+
+                    <div style="margin-right:5px;" class="column_x_2" >
+                        <?php  $cap_op_15=$graficas_capex_opex->cap_op_15_pdf($id_project);?>
+
+                        <div style="width:100%;">
+                            <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_15[2][0]}}, {{$cap_op_15[1][0]}}, {{$cap_op_15[0][0]}}]}, {name: 'OPEX',data: [{{$cap_op_15[2][1]}}, {{$cap_op_15[1][1]}}, {{$cap_op_15[0][1]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Base'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '15 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+                        </div>
+                    </div>
+             </div>
+            </div>
+        </div>
+                    {{--  example chartts <img style="width:350px; height:300px;" src="https://quickchart.io/chart?c={type:'bar',data:{labels:[2012,2013,2014,2015, 2016],datasets:[{label:'Users',data:[120,60,50,180,120]}]},options: {indexAxis: 'y',}}">
+                    --}}
+{{--      <img style="width:400px; height:300px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_3[2][0]}}, {{$cap_op_3[1][0]}}, {{$cap_op_3[0][0]}}]}, {name: 'OPEX',data: [{{$cap_op_3[2][1]}}, {{$cap_op_3[1][1]}}, {{$cap_op_3[0][1]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Base'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1},        title: {text: '5 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},}, }">
+ --}}     {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
    {{--  <div style="margin-top:5px; height:20%;" class="tarjet">
         <div align="center" class="title_tarjet_no_bg">
             <p  class="title_style_no_bg">ROI Diferencia de Inversión</p>
