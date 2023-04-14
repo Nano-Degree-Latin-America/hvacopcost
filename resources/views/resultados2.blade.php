@@ -4641,6 +4641,10 @@ span{
                                                 @endif
                                             </div>
                                     </div>
+
+                                   {{--  <div>
+                                        <div id="chart_eui" class="w-1/2"></div>
+                                    </div> --}}
                                 </div>
      {{-- espacio --}}
      <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
@@ -4702,6 +4706,7 @@ window.onload = function() {
     cap_op_15('{{$id_project}}');
     roi_base_a('{{$id_project}}');
     roi_base_b('{{$id_project}}');
+    eui_grafic('{{$id_project}}');
 };
 
      javascript:history.forward(1)
@@ -5496,6 +5501,132 @@ function roi_base_b(id_project){
     });
 }
 
+
+//grafica capex_vx_opex 3 años
+function eui_grafic(id_project){
+ /*    $.ajax({
+        type: 'get',
+        url: "/cap_op_3/" + id_project,
+        success: function (res) { */
+
+            var options = {
+          series: [{
+          name: 'Energy',
+          data: [26.5,26.5,26.5]
+        }, {
+          name: 'ASHRAE',
+          data: [23,23,23]
+        }],
+          chart: {
+          type: 'line',
+          height: 350,
+          stacked: true,
+          stackType: 'normal',
+          dropShadow: {
+            enabled: true,
+            enabledOnSeries: undefined,
+         },
+
+         toolbar: {
+            show: false,
+        },
+
+        },
+        plotOptions: {
+          bar: {
+            vertical: true,
+
+          },
+        },
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        title: {
+          text: '3 Años',
+          align: 'center',
+          offsetY:25,
+          style: {
+            fontWeight:  'bold',
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        xaxis: {
+          categories: ['Base','A','B'],
+          labels: {
+                style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            },
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    colors: [],
+                    fontSize: '16px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            },
+        },
+
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + "$/m²"
+            }
+          }
+        },
+        fill: {
+          opacity: 1,
+          colors: ['rgb(0, 143, 251)', '#7668af'],
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'left',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['rgb(0, 143, 251)', '#7668af'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+        }
+        };
+        var chart = new ApexCharts(document.querySelector("#chart_eui"), options);
+        chart.render();
+       /*  var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+ */
+}
 
 </script>
 

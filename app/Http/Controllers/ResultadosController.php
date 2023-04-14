@@ -2943,6 +2943,7 @@ class ResultadosController extends Controller
         $pdf->loadHTML($view);
         $pdf->setOption('enable-javascript', true);
         $pdf->setOption('javascript-delay', 1000);
+        $pdf->setPaper("A4", "portrait");
         return $pdf->stream('Portada.pdf');
         //ini_set('max_execution_time', 1500);
         set_time_limit(6000);
