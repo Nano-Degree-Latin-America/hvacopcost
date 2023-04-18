@@ -8,6 +8,7 @@ use Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\EmpresasModel;
+use App\PaisesEmpresasModel;
 use App\SucursalesModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
@@ -166,7 +167,20 @@ class EmpresasController extends Controller
         }else{
             return false;
         }
+    }
 
+    public function name_empresa($id){
+        $empresa_name= EmpresasModel::find($id);
 
+        return $empresa_name->name;
+    }
+
+    public function paises_empresa($id,$pais){
+        $pais_empresa = DB::table('paises_empresas')
+        ->where('id_empresa','=',$id)
+        ->where('pais','=',$pais)
+        ->first();
+
+        return $pais_empresa;
     }
 }

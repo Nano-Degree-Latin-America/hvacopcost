@@ -171,20 +171,22 @@ span{
                                     <span class="icon"><i class="mdi mdi-pencil"></i></span>
                                   </button>
 
-                                 {{--  <button onclick="redirect_urs_suc({{$empresa->id}});" class="button small green --jb-modal"  data-target="sample-modal-2" type="button">
-                                    <span class="icon"><i class="mdi mdi-account-group"></i></span>
-                                  </button> --}}
-                              <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                              <button  onclick="inactivar('{{$empresa->id}}','empresas');" class="button small red --jb-modal" data-target="sample-modal" type="button">
-                                <span class="icon"><i class="mdi mdi-trash-can"></i></span>
-                              </button>
+                                  <button title="Paises" onclick="mostrar_modal_paises('modal_paises_empresa_{{$empresa->id}}')" class="button small green" type="button">
+                                  <span class="icon"><i class="mdi mdi-flag"></i></span>
+                                </button>
 
-                              <button onclick="change_empresa({{$empresa->id}});" class="button small bg-orange-500 --jb-modal"  data-target="sample-modal-2" type="button">
-                                <span class="icon"><i class="text-white mdi mdi-factory"></i></span>
-                              </button>
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                                <button  onclick="inactivar('{{$empresa->id}}','empresas');" class="button small red --jb-modal" data-target="sample-modal" type="button">
+                                    <span class="icon"><i class="mdi mdi-trash-can"></i></span>
+                                </button>
+
+                                <button onclick="change_empresa({{$empresa->id}});" class="button small bg-orange-500 --jb-modal"  data-target="sample-modal-2" type="button">
+                                    <span class="icon"><i class="text-white mdi mdi-factory"></i></span>
+                                </button>
                             </div>
-                          </td>
-                        </tr>
+                        </td>
+                    </tr>
+                    @include('empresas.modal_paises_empresa')
                         @endforeach
                     </tbody>
                   </table>
@@ -208,6 +210,18 @@ function redirect_edit(id){
 
 function redirect_urs_suc(id){
     window.location.href = "/users_sucs"+"/"+id;
+}
+
+function mostrar_modal_paises(id){
+    $("#"+id).removeClass("hidden");
+}
+
+function ocultar_modal(id){
+    $("#"+id).addClass("hidden");
+}
+
+function alta_pais(id_empresa,pais){
+            alert(pais);
 }
 
 function change_empresa(id_empresa){

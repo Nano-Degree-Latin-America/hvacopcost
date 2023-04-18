@@ -2844,7 +2844,7 @@ class ResultadosController extends Controller
         }
 
         if($unidad == 'ft'){
-            $area_res = 10.764 *  $area;
+            $area_res = $area;
         }
 
         $res =  $mult_rers_1erapt/$area_res;
