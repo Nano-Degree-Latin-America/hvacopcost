@@ -19,17 +19,17 @@
                         <div class="w-full flex gap-x-2">
                             <?php  $Argentina=$pais_empresa->paises_empresa($empresa->id,'Argentina') ?>
                               @if ($Argentina === null)
-                                <input type="checkbox" onclick="alta_pais({{$empresa->id}},'Argentina')"><p class="mt-1">Argentina</p>
+                                <input type="checkbox" onclick="change_pais({{$empresa->id}},'Argentina')"><label class="mt-1">Argentina</label>
                                     @elseif($Argentina !== null)
-                                <input type="checkbox" checked><label for="" class="mt-1">Argentina</label>
+                                <input type="checkbox" onclick="change_pais({{$empresa->id}},'Argentina')" checked><label for="" class="mt-1">Argentina</label>
                               @endif
                         </div>
                          <div class="w-full flex gap-x-2">
                             <?php  $Bolivia=$pais_empresa->paises_empresa($empresa->id,'Bolivia') ?>
                             @if ($Bolivia === null)
-                              <input type="checkbox" onclick="alta_pais({{$empresa->id}},'Bolivia')"><label class="mt-1">Bolivia</label>
+                              <input type="checkbox" onclick="change_pais({{$empresa->id}},'Bolivia')"><label class="mt-1">Bolivia</label>
                                   @elseif($Bolivia !== null)
-                              <input type="checkbox" checked><label for="" class="mt-1">Bolivia</label>
+                              <input type="checkbox" onclick="change_pais({{$empresa->id}},'Bolivia')" checked><label for="" class="mt-1">Bolivia</label>
                             @endif
 
                         </div>
@@ -85,7 +85,4 @@
         </div>
       </div>
     </div>
-    <script>
-
-    </script>
   </div>

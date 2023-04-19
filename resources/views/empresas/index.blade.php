@@ -220,8 +220,18 @@ function ocultar_modal(id){
     $("#"+id).addClass("hidden");
 }
 
-function alta_pais(id_empresa,pais){
-            alert(pais);
+function change_pais(id_empresa,pais){
+
+    $.ajax({
+                type: 'get',
+                url: '/change_pais/'+ id_empresa+'/'+pais,
+                success: function (response) {
+                  /*   alert(response); */
+                },
+                error: function (responsetext) {
+
+                }
+            });
 }
 
 function change_empresa(id_empresa){

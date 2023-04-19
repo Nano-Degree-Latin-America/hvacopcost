@@ -94,6 +94,7 @@ Route::resource('empresas', 'EmpresasController');
 Route::get('create_empresa', 'EmpresasController@create');
 Route::get('edit_empresa/{id}', 'EmpresasController@edit');
 Route::get('change_empresa/{id}', 'EmpresasController@change_empresa');
+Route::get('change_pais/{id_empresa}/{pais}', 'EmpresasController@change_pais');
 //sucursales
 Route::get('sucursales_emp/{id}', 'SucursalesController@sucursales_empresa');
 Route::resource('sucursales', 'SucursalesController');

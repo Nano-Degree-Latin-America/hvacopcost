@@ -183,4 +183,20 @@ class EmpresasController extends Controller
 
         return $pais_empresa;
     }
+
+    public function change_pais($id_empresa,$pais)
+    {
+       $check_empresa_pais = DB::table('paises_empresas')
+       ->where('id_empresa','=',$id_empresa)
+       ->where('pais','=',$pais)
+       ->first();
+
+       if($check_empresa_pais == null){
+
+            }else if($check_empresa_pais != null){
+                return $check_empresa_pais->pais;
+        }
+
+
+    }
 }
