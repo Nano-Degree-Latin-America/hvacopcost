@@ -182,7 +182,7 @@ span{
                     <div id="mapa-div">
                             <div class="xl:ml-5 col-6">
                                 <h2 id="lblMapa">{{-- Da Clic en el Mapa --}}</h2>
-                            <img class="mapa_img mt-5" src="{{asset('assets\images\Mapa-Hvacopcost-2.png')}}" alt="" usemap="#mapa"{{--  onClick="cambiarLblMapa('Mapa') --}}">
+                            <img class="mapa_img mt-5" src="{{asset('assets\images\Mapa-Hvacopcost-3.png')}}" alt="" usemap="#mapa"{{--  onClick="cambiarLblMapa('Mapa') --}}">
                             <map class="w-full" name="mapa">
                                 {{-- <area shape="polygon" coords="2,3, 67,5, 98,19, 121,43, 129,81, 174,65, 150,91, 139,112, 78,93, 29,54, 8,27" onclick="traer_ciudad_edit(17); cambiarLblMapa_Edit('México');change_option(17);" alt="México">
                                 <area shape="polygon" coords="144,108, 155,96, 155,89, 175,84, 232,133, 216,150, 179,131, 171,117" onclick="traer_ciudad_edit(28); cambiarLblMapa_Edit('Centro América');change_option(28);" alt="Centro América">
@@ -2563,24 +2563,24 @@ span{
 
 @media (min-width: 1024px) {
     .mapa_img{
-        width: 600px; height:750px;
+        width: 600px; height:850px;
 }
  }
 
 @media (min-width: 1280px) {
     .mapa_img{
-        width: 520px; height:750px;
+        width: 520px; height:850px;
  }
 }
 @media (min-width: 1536px) {
     .mapa_img{
-        width: 550px; height:750px;
+        width: 550px; height:850px;
     }
  }
 
  @media (min-width: 1780px) {
     .mapa_img{
-        width: 600px; height:750px;
+        width: 600px; height:850px;
  }
  }
 
