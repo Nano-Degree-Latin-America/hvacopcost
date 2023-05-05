@@ -2,11 +2,9 @@
 
 $(document).ready(function () {
     cap_term_change('TR');
-
-
     getPaises();
     traer_categorias_edif();
-    $('#div_next_h').addClass("hidden");
+    $('#div_next').addClass("hidden");
     $('#calcular').attr('disabled', true);
     $('#calcular').css('background-color','gray');
  /*    $('#next').attr('disabled', true); */
@@ -3032,7 +3030,7 @@ function valida_form_calc(){
 
 function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,tipo_control,dr
     ,Mantenimiento,lblCsTipo,capacidad_total,costo_elec,csStd_cant
-    ,cheValorS,num_solu,action_submit,csStd) {
+    ,cheValorS,num_solu,action_submit,csStd,maintenance_cost) {
     $.ajax({
         type: 'get',
         url: "/traer_unidad_hvac/" + id_project + "/" + num_sol + "/" +num_enf,
@@ -3046,6 +3044,7 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 $("#"+cheValorS).val('$'+dollarUSLocale.format(res.val_unidad.val_aprox));
 
                 $("#"+csStd).find('option[value="' + res.val_unidad.eficencia_ene + '"]').attr("selected", "selected");
+                $("#"+maintenance_cost).val('$'+dollarUSLocale.format(res.val_unidad.costo_mantenimiento));
 
                 $("#"+cUnidad).find('option[value="' + res.val_unidad.unidad_hvac + '"]').attr("selected", "selected");
                 unidadHvac(res.val_unidad.unidad_hvac,1,csTipo,csDisenio);

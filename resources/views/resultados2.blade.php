@@ -11,9 +11,12 @@
 @inject('results','app\Http\Controllers\ResultadosController')
 @inject('smasolutions','app\Http\Controllers\ResultadosController')
 @inject('sumacap_term','app\Http\Controllers\ResultadosController')
+@inject('desperdicio','app\Http\Controllers\ResultadosController')
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-GXCVJ80B4N"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -4585,7 +4588,7 @@ span{
                                     </div>
 
                                     <div class="flex w-full justify-center">
-                                            <div class="w-1/3 flex justify-center">
+                                            <div class="w-1/3 grid justify-items-center">
                                                 @if ($result1 ==! null)
                                                 <?php  $valor_eui_base=$smasolutions->valor_eui_aux($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
                                                     @if ($valor_eui_base <= $ashrae)
@@ -4597,6 +4600,7 @@ span{
                                                     @else
                                                     <label class="text-blue-800  font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
                                                     @endif
+                                                    <div id="eui_sol_base"></div>
                                                 @endif
 
                                                 @if ($result1 === null)
@@ -4605,7 +4609,7 @@ span{
                                             </div>
                                             {{-- sumaopex_2
                                             sumaopex_3 --}}
-                                            <div class="w-1/3 flex justify-center">
+                                            <div class="w-1/3 grid justify-items-center">
                                                 @if ($result2 ==! null)
                                                 <?php  $valor_eui_a=$smasolutions->valor_eui_aux($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
                                                     @if ($valor_eui_a <= $ashrae)
@@ -4617,13 +4621,14 @@ span{
                                                     @else
                                                     <label class="text-blue-800  font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
                                                     @endif
+                                                    <div id="eui_sol_a"></div>
                                                 @endif
 
                                                 @if ($result2 === null)
                                                 <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
                                                 @endif
                                             </div>
-                                            <div class="w-1/3 flex justify-center">
+                                            <div class="w-1/3 grid justify-items-center">
                                                 @if ($result3 ==! null)
                                                 <?php  $valor_eui_b=$smasolutions->valor_eui_aux($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
                                                     @if ($valor_eui_b <= $ashrae)
@@ -4635,9 +4640,11 @@ span{
                                                     @else
                                                     <label class="text-blue-800  font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
                                                     @endif
+                                                    <div id="eui_sol_b"></div>
                                                 @endif
 
                                                 @if ($result3 === null)
+                                                <?php $valor_eui_b = 0; ?>
                                                 <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
                                                 @endif
                                             </div>
@@ -4646,6 +4653,127 @@ span{
                                    {{--  <div>
                                         <div id="chart_eui" class="w-1/2"></div>
                                     </div> --}}
+                                </div>
+                                <div class="grid bg-gray-200 rounded-md shadow-xl my-3 w-full">
+
+                                    <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
+                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Desperdicio de Energía Eléctrica</label>
+                                    </div>
+
+                                    <div class="flex w-full justify-center mt-5">
+                                        <div id="chart_desp_energy" class="w-1/2"></div>
+                                    </div>
+                                    <div class="w-full grid">
+                                        <div class="w-full flex">
+                                            <div class="w-1/3 flex">
+
+                                            </div>
+
+                                            <div class="w-1/3 flex justify-center">
+                                                <label class="font-bold text-blue-800 font-roboto text-4xl">Energy Star</label>
+                                            </div>
+
+                                            <div class="w-1/3 flex justify-center">
+                                                <label class="font-bold text-blue-800 font-roboto text-4xl">ASHRAE</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="w-full flex mt-5">
+                                            <div class="w-1/3 flex">
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Base Solution</b>
+                                            </div>
+                                            <?php  $energy_base=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
+                                            <div class="w-1/3 flex justify-center">
+                                                @if ($energy_base > 0)
+                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_base,1)}}</b>
+                                                @endif
+
+                                                @if ($energy_base < 0)
+                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_base,1)}}</b>
+                                                @endif
+
+                                            </div>
+
+                                            <?php  $ashrae_base=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
+                                            <div class="w-1/3 flex justify-center">
+                                                @if ($ashrae_base > 0)
+                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_base,1)}}</b>
+                                                @endif
+
+                                                @if ($ashrae_base < 0)
+                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_base,1)}}</b>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="w-full flex">
+                                            <div class="w-1/3 flex">
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solution A</b>
+                                            </div>
+                                            <?php  $energy_a=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
+                                            <div class="w-1/3 flex justify-center">
+                                                @if ($energy_a > 0)
+                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_a,1)}}</b>
+                                                @endif
+
+                                                @if ($energy_a < 0)
+                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_a,1)}}</b>
+                                                @endif
+
+                                            </div>
+
+                                            <div class="w-1/3 flex justify-center">
+                                                <?php  $ashrae_a=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
+                                                @if ($ashrae_a > 0)
+                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_a,1)}}</b>
+                                                @endif
+
+                                                @if ($ashrae_a < 0)
+                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_a,1)}}</b>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="w-full flex">
+                                            <div class="w-1/3 flex">
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solution B</b>
+                                            </div>
+                                            <?php  $energy_b=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
+                                            <div class="w-1/3 flex justify-center">
+                                                @if ($result3 ==! null)
+                                                    @if ($energy_b > 0)
+                                                    <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_b,1)}}</b>
+                                                    @endif
+
+                                                    @if ($energy_b < 0)
+                                                    <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_b,1)}}</b>
+                                                    @endif
+                                                @endif
+
+                                                @if ($result3 === null)
+                                                <b class="text-blue-800 font-bold text-5xl font-roboto">$0</b>
+                                                @endif
+                                            </div>
+
+                                            <div class="w-1/3 flex justify-center">
+                                                <?php  $ashrae_b=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
+                                                @if ($result3 ==! null)
+                                                    @if ($ashrae_b > 0)
+                                                    <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_b,1)}}</b>
+                                                    @endif
+
+                                                    @if ($ashrae_b < 0)
+                                                    <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_b,1)}}</b>
+                                                    @endif
+                                                @endif
+
+                                                @if ($result3 === null)
+                                                <b class="text-blue-800 font-bold text-5xl font-roboto">$0</b>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
      {{-- espacio --}}
      <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
@@ -5242,7 +5370,7 @@ function roi_base_a(id_project){
           },
           {
             name: "MARR",
-            data: [15, 15, 15, 15]
+            data: [15, 45, 150, 225]
           }
         ],
           chart: {
@@ -5381,7 +5509,7 @@ function roi_base_b(id_project){
           },
           {
             name: "MARR",
-            data: [15, 15, 15, 15]
+            data: [15, 45, 150, 225]
           }
         ],
           chart: {
@@ -5629,6 +5757,177 @@ function eui_grafic(id_project){
  */
 }
 
+
+      google.charts.load('current', {'packages':['gauge']});
+      google.charts.setOnLoadCallback(chart_base_eui);
+      google.charts.setOnLoadCallback(chart_a_eui);
+      google.charts.setOnLoadCallback(chart_b_eui);
+
+      function chart_base_eui() {
+        var eui_base =  Math.floor('{{$valor_eui_base}}' * 1) / 1 ;
+        let energy = '{{$energy_star}}';
+        let ashrae = '{{$ashrae}}';
+      /*   alert('{{$energy_star}}','{{$ashrae}}');
+      $valor_eui_a
+      $valor_eui_b
+      */
+        var eui_basa_check_cant = '{{$valor_eui_base}}';
+        var eui_a_check_cant = '{{$valor_eui_a}}';
+        var eui_b_check_cant = '{{$valor_eui_b}}';
+
+        if(eui_basa_check_cant > eui_a_check_cant && eui_basa_check_cant > eui_b_check_cant){
+            var max_cant_timer = parseInt(eui_basa_check_cant * 2);
+        }
+
+        if(eui_a_check_cant > eui_basa_check_cant && eui_a_check_cant > eui_b_check_cant){
+            var max_cant_timer = parseInt(eui_a_check_cant * 2);
+        }
+
+        if(eui_b_check_cant > eui_basa_check_cant && eui_b_check_cant > eui_a_check_cant){
+            var max_cant_timer = parseInt(eui_b_check_cant * 2);
+        }
+
+        var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['EUI Base', eui_base],
+        ]);
+
+        if(energy > ashrae){
+            var options = {
+          width: 650, height: 320,
+          greenFrom:0,greenTo:ashrae,
+          redFrom: energy, redTo: 200,
+          yellowFrom:ashrae, yellowTo: energy,
+          minorTicks: 5,
+          max:200,
+        };
+        }
+
+        if(energy < ashrae){
+            var options = {
+          width: 650, height: 320,
+          greenFrom:0,greenTo:energy,
+          redFrom: ashrae, redTo: 200,
+          yellowFrom:energy, yellowTo: ashrae,
+          minorTicks: 5,
+          max:200,
+        };
+        }
+
+
+        var chart = new google.visualization.Gauge(document.getElementById('eui_sol_base'));
+
+        chart.draw(data, options);
+      }
+
+      function chart_a_eui() {
+        var eui_a =  Math.floor('{{$valor_eui_a}}' * 1) / 1 ;
+        let energy = '{{$energy_star}}';
+        let ashrae = '{{$ashrae}}';
+        var data = google.visualization.arrayToDataTable([
+        ['Label', 'Value'],
+        ['EUI A', eui_a],
+        ]);
+
+        var eui_basa_check_cant = '{{$valor_eui_base}}';
+        var eui_a_check_cant = '{{$valor_eui_a}}';
+        var eui_b_check_cant = '{{$valor_eui_b}}';
+
+        if(eui_basa_check_cant > eui_a_check_cant && eui_basa_check_cant > eui_b_check_cant){
+            var max_cant_timer = parseInt(eui_basa_check_cant * 2);
+        }
+
+        if(eui_a_check_cant > eui_basa_check_cant && eui_a_check_cant > eui_b_check_cant){
+            var max_cant_timer = parseInt(eui_a_check_cant * 2);
+        }
+
+        if(eui_b_check_cant > eui_basa_check_cant && eui_b_check_cant > eui_a_check_cant){
+            var max_cant_timer = parseInt(eui_b_check_cant * 2);
+        }
+
+        if(energy > ashrae){
+            var options = {
+          width: 650, height: 320,
+          greenFrom:0,greenTo:ashrae,
+          redFrom: energy, redTo: 200,
+          yellowFrom:ashrae, yellowTo: energy,
+          minorTicks: 5,
+          max:200,
+        };
+        }
+
+        if(energy < ashrae){
+            var options = {
+          width: 650, height: 320,
+          greenFrom:0,greenTo:energy,
+          redFrom: ashrae, redTo: 200,
+          yellowFrom:energy, yellowTo: ashrae,
+          minorTicks: 5,
+          max:200,
+        };
+        }
+
+        var chart = new google.visualization.Gauge(document.getElementById('eui_sol_a'));
+
+        chart.draw(data, options);
+}
+
+    function chart_b_eui() {
+        let check_eui_b = '{{$valor_eui_b}}';
+        if (check_eui_b > 0){
+            var eui_b =  Math.floor('{{$valor_eui_b}}' * 1) / 1 ;
+            var data = google.visualization.arrayToDataTable([
+            ['Label', 'Value'],
+            ['EUI B', eui_b],
+            ]);
+            let energy = '{{$energy_star}}';
+            let ashrae = '{{$ashrae}}';
+
+            var eui_basa_check_cant = '{{$valor_eui_base}}';
+            var eui_a_check_cant = '{{$valor_eui_a}}';
+            var eui_b_check_cant = '{{$valor_eui_b}}';
+
+            if(eui_basa_check_cant > eui_a_check_cant && eui_basa_check_cant > eui_b_check_cant){
+                var max_cant_timer = parseInt(eui_basa_check_cant * 2);
+            }
+
+            if(eui_a_check_cant > eui_basa_check_cant && eui_a_check_cant > eui_b_check_cant){
+                var max_cant_timer = parseInt(eui_a_check_cant * 2);
+            }
+
+            if(eui_b_check_cant > eui_basa_check_cant && eui_b_check_cant > eui_a_check_cant){
+                var max_cant_timer = parseInt(eui_b_check_cant * 2);
+            }
+
+            if(energy > ashrae){
+                    var options = {
+                width: 650, height: 320,
+                greenFrom:0,greenTo:ashrae,
+                redFrom: energy, redTo: 200,
+                yellowFrom:ashrae, yellowTo: energy,
+                minorTicks: 5,
+                max:200,
+                };
+                }
+
+                if(energy < ashrae){
+                    var options = {
+                width: 650, height: 320,
+                greenFrom:0,greenTo:energy,
+                redFrom: ashrae, redTo: 200,
+                yellowFrom:energy, yellowTo: ashrae,
+                minorTicks: 5,
+                max:200,
+                };
+                }
+
+            var chart = new google.visualization.Gauge(document.getElementById('eui_sol_b'));
+
+            chart.draw(data, options);
+        }
+
+
+    }
 </script>
 
 @section('js')

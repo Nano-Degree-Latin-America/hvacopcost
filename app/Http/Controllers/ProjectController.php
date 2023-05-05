@@ -173,6 +173,7 @@ class ProjectController extends Controller
         $update_project->name=$request->get('name_pro');
         $update_project->id_tipo_edificio=$request->get('tipo_edificio_edit');
         $update_project->inflacion=intval($request->get('inc_ene'));
+        $update_project->inflacion_rate=intval($request->get('inflation_rate'));
         $hrs_tiempo = $request->get('tiempo_porcent');
 
         switch ($hrs_tiempo) {
@@ -358,9 +359,34 @@ class ProjectController extends Controller
                     $val_aprox_aux = 0;
                 }
 
+                if($request->get('maintenance_cost_1_1') != null){
+                    $aux_cost_mant = explode("$",   $request->get('maintenance_cost_1_1'));
+                    $aux_cost_mant_a = explode(",",    $aux_cost_mant[1]);
 
+                    if(count($aux_cost_mant_a) == 1){
+                        $aux_cost_mant =  $aux_cost_mant_a[0];
+                    }
+                    if(count($aux_cost_mant_a) == 2){
+                        $aux_cost_mant=  $aux_cost_mant_a[0].$aux_cost_mant_a[1];
+                    }
+                    if(count($aux_cost_mant_a) == 3){
+                        $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2];
+                    }
+                    if(count($aux_cost_mant_a) == 4){
+                        $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2].$aux_cost_mant_a[3];
+                    }
+                    if(count($aux_cost_mant_a) == 5){
+                        $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2].$aux_cost_mant_a[3].$aux_cost_mant_a[4];
+                    }
+
+
+                }else  if($request->get('maintenance_cost_1_1') == null){
+                    $aux_cost_mant = 0;
+
+                }
 
                 $solution_enf1->val_aprox=floatval( $val_aprox_aux);
+                $solution_enf1->costo_mantenimiento=floatval($aux_cost_mant);
                 $solution_enf1->status=1;
                 $solution_enf1->id_empresa=Auth::user()->id_empresa;
                 $solution_enf1->id_user=Auth::user()->id;
@@ -1182,8 +1208,33 @@ class ProjectController extends Controller
                                 $val_aprox_aux_2_1 = 0;
                         }
 
+                        if($request->get('maintenance_cost_2_1') != null){
+                            $aux_cost_mant_2_1 = explode("$",   $request->get('maintenance_cost_2_1'));
+                            $aux_cost_mant_a_2_1 = explode(",",    $aux_cost_mant_2_1[1]);
+
+                            if(count($aux_cost_mant_a_2_1) == 1){
+                                $aux_cost_mant_2_1 =  $aux_cost_mant_a_2_1[0];
+                            }
+                            if(count($aux_cost_mant_a_2_1) == 2){
+                                $aux_cost_mant_2_1=  $aux_cost_mant_a_2_1[0].$aux_cost_mant_a_2_1[1];
+                            }
+                            if(count($aux_cost_mant_a_2_1) == 3){
+                                $aux_cost_mant_2_1 =  $aux_cost_mant_a_2_1[0].$aux_cost_mant_a_2_1[1].$aux_cost_mant_a_2_1[2];
+                            }
+                            if(count($aux_cost_mant_a_2_1) == 4){
+                                $aux_cost_mant_2_1 =  $aux_cost_mant_a_2_1[0].$aux_cost_mant_a_2_1[1].$aux_cost_mant_a_2_1[2].$aux_cost_mant_a_2_1[3];
+                            }
+                            if(count($aux_cost_mant_a_2_1) == 5){
+                                $aux_cost_mant_2_1 =  $aux_cost_mant_a_2_1[0].$aux_cost_mant_a_2_1[1].$aux_cost_mant_a_2_1[2].$aux_cost_mant_a_2_1[3].$aux_cost_mant_a_2_1[4];
+                            }
+
+                        }else  if($request->get('maintenance_cost_2_1') == null){
+                            $aux_cost_mant_2_1 = 0;
+                        }
+
 
                         $solution_enf2_1->val_aprox	=floatval($val_aprox_aux_2_1);
+                        $solution_enf2_1->costo_mantenimiento=floatval($aux_cost_mant_2_1);
                         $solution_enf2_1->status=1;
                         $solution_enf2_1->id_empresa=Auth::user()->id_empresa;
                         $solution_enf2_1->id_user=Auth::user()->id;
@@ -2020,10 +2071,33 @@ class ProjectController extends Controller
                         $val_aprox_aux_3_1 = 0;
                 }
 
+                if($request->get('maintenance_cost_3_1') != null){
+                    $aux_cost_mant_3_1 = explode("$",   $request->get('maintenance_cost_3_1'));
+                    $aux_cost_mant_a_3_1 = explode(",",    $aux_cost_mant_3_1[1]);
 
+                    if(count($aux_cost_mant_a_3_1) == 1){
+                        $aux_cost_mant_3_1 =  $aux_cost_mant_a_3_1[0];
+                    }
+                    if(count($aux_cost_mant_a_3_1) == 2){
+                        $aux_cost_mant_3_1=  $aux_cost_mant_a_3_1[0].$aux_cost_mant_a_3_1[1];
+                    }
+                    if(count($aux_cost_mant_a_3_1) == 3){
+                        $aux_cost_mant_3_1 =  $aux_cost_mant_a_3_1[0].$aux_cost_mant_a_3_1[1].$aux_cost_mant_a_3_1[2];
+                    }
+                    if(count($aux_cost_mant_a_3_1) == 4){
+                        $aux_cost_mant_3_1 =  $aux_cost_mant_a_3_1[0].$aux_cost_mant_a_3_1[1].$aux_cost_mant_a_3_1[2].$aux_cost_mant_a_3_1[3];
+                    }
+                    if(count($aux_cost_mant_a_3_1) == 5){
+                        $aux_cost_mant_3_1 =  $aux_cost_mant_a_3_1[0].$aux_cost_mant_a_3_1[1].$aux_cost_mant_a_3_1[2].$aux_cost_mant_a_3_1[3].$aux_cost_mant_a_3_1[4];
+                    }
+
+                }else  if($request->get('maintenance_cost_3_1') == null){
+                    $aux_cost_mant_3_1 = 0;
+                }
 
 
                  $solution_enf3_1->val_aprox=floatval($val_aprox_aux_3_1);
+                 $solution_enf3_1->costo_mantenimiento=floatval($aux_cost_mant_3_1);
                  $solution_enf3_1->status=1;
                  $solution_enf3_1->id_empresa=Auth::user()->id_empresa;
                  $solution_enf3_1->id_user=Auth::user()->id;

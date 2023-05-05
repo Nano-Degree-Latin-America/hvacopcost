@@ -59,6 +59,7 @@ class ResultadosController extends Controller
         $mew_project->name=$request->get('name_pro');
         $mew_project->id_tipo_edificio=$request->get('tipo_edificio');
         $mew_project->id_cat_edifico=$request->get('cat_ed');
+        $mew_project->inflacion_rate=intval($request->get('inflation_rate'));
         $mew_project->inflacion=intval($request->get('inc_ene'));
         $hrs_tiempo = $request->get('tiempo_porcent');
         //horas tiempo
@@ -228,9 +229,34 @@ class ResultadosController extends Controller
                     $val_aprox_aux = 0;
                 }
 
+                if($request->get('maintenance_cost_1_1') != null){
+                    $aux_cost_mant = explode("$",   $request->get('maintenance_cost_1_1'));
+                    $aux_cost_mant_a = explode(",",    $aux_cost_mant[1]);
 
+                    if(count($aux_cost_mant_a) == 1){
+                        $aux_cost_mant =  $aux_cost_mant_a[0];
+                    }
+                    if(count($aux_cost_mant_a) == 2){
+                        $aux_cost_mant=  $aux_cost_mant_a[0].$aux_cost_mant_a[1];
+                    }
+                    if(count($aux_cost_mant_a) == 3){
+                        $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2];
+                    }
+                    if(count($aux_cost_mant_a) == 4){
+                        $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2].$aux_cost_mant_a[3];
+                    }
+                    if(count($aux_cost_mant_a) == 5){
+                        $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2].$aux_cost_mant_a[3].$aux_cost_mant_a[4];
+                    }
+
+
+                }else  if($request->get('maintenance_cost_1_1') == null){
+                    $aux_cost_mant = 0;
+
+                }
 
                 $solution_enf1->val_aprox=floatval( $val_aprox_aux);
+                $solution_enf1->costo_mantenimiento=floatval($aux_cost_mant);
                 $solution_enf1->status=1;
                 $solution_enf1->id_empresa=Auth::user()->id_empresa;
                 $solution_enf1->id_user=Auth::user()->id;
@@ -967,8 +993,32 @@ class ResultadosController extends Controller
                         $val_aprox_aux_2_1 = 0;
                 }
 
+                if($request->get('maintenance_cost_2_1') != null){
+                    $aux_cost_mant_2_1 = explode("$",   $request->get('maintenance_cost_2_1'));
+                    $aux_cost_mant_a_2_1 = explode(",",    $aux_cost_mant_2_1[1]);
+
+                    if(count($aux_cost_mant_a_2_1) == 1){
+                        $aux_cost_mant_2_1 =  $aux_cost_mant_a_2_1[0];
+                    }
+                    if(count($aux_cost_mant_a_2_1) == 2){
+                        $aux_cost_mant_2_1=  $aux_cost_mant_a_2_1[0].$aux_cost_mant_a_2_1[1];
+                    }
+                    if(count($aux_cost_mant_a_2_1) == 3){
+                        $aux_cost_mant_2_1 =  $aux_cost_mant_a_2_1[0].$aux_cost_mant_a_2_1[1].$aux_cost_mant_a_2_1[2];
+                    }
+                    if(count($aux_cost_mant_a_2_1) == 4){
+                        $aux_cost_mant_2_1 =  $aux_cost_mant_a_2_1[0].$aux_cost_mant_a_2_1[1].$aux_cost_mant_a_2_1[2].$aux_cost_mant_a_2_1[3];
+                    }
+                    if(count($aux_cost_mant_a_2_1) == 5){
+                        $aux_cost_mant_2_1 =  $aux_cost_mant_a_2_1[0].$aux_cost_mant_a_2_1[1].$aux_cost_mant_a_2_1[2].$aux_cost_mant_a_2_1[3].$aux_cost_mant_a_2_1[4];
+                    }
+
+                }else  if($request->get('maintenance_cost_2_1') == null){
+                    $aux_cost_mant_2_1 = 0;
+                }
 
                 $solution_enf2_1->val_aprox	=floatval($val_aprox_aux_2_1);
+                $solution_enf2_1->costo_mantenimiento=floatval($aux_cost_mant_2_1);
                 $solution_enf2_1->status=1;
                 $solution_enf2_1->id_empresa=Auth::user()->id_empresa;
                 $solution_enf2_1->id_user=Auth::user()->id;
@@ -1700,9 +1750,32 @@ class ResultadosController extends Controller
                 }
 
 
+                if($request->get('maintenance_cost_3_1') != null){
+                    $aux_cost_mant_3_1 = explode("$",   $request->get('maintenance_cost_3_1'));
+                    $aux_cost_mant_a_3_1 = explode(",",    $aux_cost_mant_3_1[1]);
 
+                    if(count($aux_cost_mant_a_3_1) == 1){
+                        $aux_cost_mant_3_1 =  $aux_cost_mant_a_3_1[0];
+                    }
+                    if(count($aux_cost_mant_a_3_1) == 2){
+                        $aux_cost_mant_3_1=  $aux_cost_mant_a_3_1[0].$aux_cost_mant_a_3_1[1];
+                    }
+                    if(count($aux_cost_mant_a_3_1) == 3){
+                        $aux_cost_mant_3_1 =  $aux_cost_mant_a_3_1[0].$aux_cost_mant_a_3_1[1].$aux_cost_mant_a_3_1[2];
+                    }
+                    if(count($aux_cost_mant_a_3_1) == 4){
+                        $aux_cost_mant_3_1 =  $aux_cost_mant_a_3_1[0].$aux_cost_mant_a_3_1[1].$aux_cost_mant_a_3_1[2].$aux_cost_mant_a_3_1[3];
+                    }
+                    if(count($aux_cost_mant_a_3_1) == 5){
+                        $aux_cost_mant_3_1 =  $aux_cost_mant_a_3_1[0].$aux_cost_mant_a_3_1[1].$aux_cost_mant_a_3_1[2].$aux_cost_mant_a_3_1[3].$aux_cost_mant_a_3_1[4];
+                    }
+
+                }else  if($request->get('maintenance_cost_3_1') == null){
+                    $aux_cost_mant_3_1 = 0;
+                }
 
                  $solution_enf3_1->val_aprox=floatval($val_aprox_aux_3_1);
+                 $solution_enf3_1->costo_mantenimiento=floatval($aux_cost_mant_3_1);
                  $solution_enf3_1->status=1;
                  $solution_enf3_1->id_empresa=Auth::user()->id_empresa;
                  $solution_enf3_1->id_user=Auth::user()->id;
@@ -2969,12 +3042,18 @@ $dompdf->render();
         $suma_enf_base = 0;
         $suma_enf_base_aux = 0;
         $sumaopex_base = 0;
+        $suma_cost_mant_base = 0;
+        $res_opex_base = 0;
         $suma_enf_a = 0;
         $sumaopex_a = 0;
         $suma_enf_a_aux=0;
+        $suma_cost_mant_a = 0;
+        $res_opex_a = 0;
         $suma_enf_b = 0;
         $sumaopex_b = 0;
         $suma_enf_b_aux = 0;
+        $suma_cost_mant_b = 0;
+        $res_opex_b = 0;
         $array_tot = [];
         $array_base = [0,0];
         $array_a = [0,0];
@@ -2983,6 +3062,12 @@ $dompdf->render();
         ->where('id','=',$id_projecto)
         ->first()->inflacion;
         $inflacion =  $inflacion_aux/100 + 1;
+
+        $inflacion_rate_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion_rate;
+        $inflacion_rate =  $inflacion_rate_aux/100 + 1;
+
         foreach( $num_enfs as $num_enf){
            if($num_enf->num_enf === 1){
             //capex
@@ -3020,7 +3105,28 @@ $dompdf->render();
                 $res_opex_enf_base = $res_opex_enf_base * $inflacion;
             }
 
-            array_push( $array_base,intval($res_enf_base,1),intval($suma_enf_base_aux,1));
+            //incremento inflacion
+            $cost_mant_base = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.costo_mantenimiento')
+            ->get();
+
+            foreach($cost_mant_base as $cost){
+                $suma_cost_mant_base = $suma_cost_mant_base + $cost->costo_mantenimiento;
+            }
+            //costo_mantenimiento / area solucoin base
+            $suma_cost_mant_base_div_area = $suma_cost_mant_base/$area;
+            $res_opex_base = $suma_cost_mant_base_div_area;
+
+            for ($i = 2; $i <= 3; $i++) {
+                $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
+                $suma_cost_mant_base_div_area = $suma_cost_mant_base_div_area * $inflacion_rate;
+           }
+
+           $total_opex_base = $suma_enf_base_aux + $res_opex_base;
+
+            array_push($array_base,intval($res_enf_base,1),intval($total_opex_base,1));
         }
 
            if($num_enf->num_enf === 2){
@@ -3059,7 +3165,28 @@ $dompdf->render();
                 $res_opex_enf_a = $res_opex_enf_a * $inflacion;
             }
 
-            array_push( $array_a,intval($res_enf_a,1),intval($suma_enf_a_aux,1));
+            //incremento inflacion
+            $cost_mant_a = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.costo_mantenimiento')
+            ->get();
+
+            foreach($cost_mant_a as $cost){
+                $suma_cost_mant_a = $suma_cost_mant_a + $cost->costo_mantenimiento;
+            }
+            //costo_mantenimiento / area solucoin base
+            $suma_cost_mant_a_div_area = $suma_cost_mant_a/$area;
+            $res_opex_a = $suma_cost_mant_a_div_area;
+
+            for ($i = 2; $i <= 3; $i++) {
+                $res_opex_a = $res_opex_a +  $suma_cost_mant_a_div_area;
+                $suma_cost_mant_a_div_area = $suma_cost_mant_a_div_area * $inflacion_rate;
+           }
+
+           $total_opex_a = $suma_enf_a_aux + $res_opex_a;
+
+            array_push( $array_a,intval($res_enf_a,1),intval($total_opex_a,1));
            }
 
            if($num_enf->num_enf === 3){
@@ -3098,7 +3225,28 @@ $dompdf->render();
                 $res_opex_enf_b = $res_opex_enf_b * $inflacion;
             }
 
-            array_push( $array_b,intval($res_enf_b,1),intval($suma_enf_b_aux,1));
+             //incremento inflacion
+             $cost_mant_b = DB::table('solutions_project')
+             ->where('solutions_project.id_project','=',$id_projecto)
+             ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+             ->select('solutions_project.costo_mantenimiento')
+             ->get();
+
+             foreach($cost_mant_b as $cost){
+                 $suma_cost_mant_b = $suma_cost_mant_b + $cost->costo_mantenimiento;
+             }
+             //costo_mantenimiento / area solucoin base
+             $suma_cost_mant_b_div_area = $suma_cost_mant_b/$area;
+             $res_opex_b = $suma_cost_mant_b_div_area;
+
+             for ($i = 2; $i <= 3; $i++) {
+                 $res_opex_b = $res_opex_b +  $suma_cost_mant_b_div_area;
+                 $suma_cost_mant_b_div_area = $suma_cost_mant_b_div_area * $inflacion_rate;
+            }
+
+            $total_opex_b = $suma_enf_b_aux + $res_opex_b;
+
+             array_push( $array_b,intval($res_enf_b,1),intval($total_opex_b,1));
            }
         }
 
@@ -3266,12 +3414,18 @@ $dompdf->render();
         $suma_enf_base = 0;
         $suma_enf_base_aux = 0;
         $sumaopex_base = 0;
+        $suma_cost_mant_base = 0;
+        $res_opex_base = 0;
         $suma_enf_a = 0;
         $sumaopex_a = 0;
         $suma_enf_a_aux=0;
+        $suma_cost_mant_a = 0;
+        $res_opex_a = 0;
         $suma_enf_b = 0;
         $sumaopex_b = 0;
         $suma_enf_b_aux = 0;
+        $suma_cost_mant_b = 0;
+        $res_opex_b = 0;
         $array_tot = [];
         $array_base = [0,0];
         $array_a = [0,0];
@@ -3280,6 +3434,12 @@ $dompdf->render();
         ->where('id','=',$id_projecto)
         ->first()->inflacion;
         $inflacion =  $inflacion_aux/100 + 1;
+
+        $inflacion_rate_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion_rate;
+        $inflacion_rate =  $inflacion_rate_aux/100 + 1;
+
         foreach( $num_enfs as $num_enf){
            if($num_enf->num_enf === 1){
             //capex
@@ -3317,7 +3477,28 @@ $dompdf->render();
                 $res_opex_enf_base = $res_opex_enf_base * $inflacion;
             }
 
-            array_push( $array_base,intval($res_enf_base,1),intval($suma_enf_base_aux,1));
+            //incremento inflacion
+            $cost_mant_base = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.costo_mantenimiento')
+            ->get();
+
+            foreach($cost_mant_base as $cost){
+                $suma_cost_mant_base = $suma_cost_mant_base + $cost->costo_mantenimiento;
+            }
+            //costo_mantenimiento / area solucoin base
+            $suma_cost_mant_base_div_area = $suma_cost_mant_base/$area;
+            $res_opex_base = $suma_cost_mant_base_div_area;
+
+            for ($i = 2; $i <= 5; $i++) {
+                $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
+                $suma_cost_mant_base_div_area = $suma_cost_mant_base_div_area * $inflacion_rate;
+           }
+
+           $total_opex_base = $suma_enf_base_aux + $res_opex_base;
+
+            array_push( $array_base,intval($res_enf_base,1),intval($total_opex_base,1));
         }
 
            if($num_enf->num_enf === 2){
@@ -3356,7 +3537,28 @@ $dompdf->render();
                 $res_opex_enf_a = $res_opex_enf_a * $inflacion;
             }
 
-            array_push( $array_a,intval($res_enf_a,1),intval($suma_enf_a_aux,1));
+            //incremento inflacion
+            $cost_mant_a = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.costo_mantenimiento')
+            ->get();
+
+            foreach($cost_mant_a as $cost){
+                $suma_cost_mant_a = $suma_cost_mant_a + $cost->costo_mantenimiento;
+            }
+            //costo_mantenimiento / area solucoin base
+            $suma_cost_mant_a_div_area = $suma_cost_mant_a/$area;
+            $res_opex_a = $suma_cost_mant_a_div_area;
+
+            for ($i = 2; $i <= 5; $i++) {
+                $res_opex_a = $res_opex_a +  $suma_cost_mant_a_div_area;
+                $suma_cost_mant_a_div_area = $suma_cost_mant_a_div_area * $inflacion_rate;
+           }
+
+           $total_opex_a = $suma_enf_a_aux + $res_opex_a;
+
+           array_push($array_a,intval($res_enf_a,1),intval($total_opex_a,1));
            }
 
            if($num_enf->num_enf === 3){
@@ -3395,7 +3597,28 @@ $dompdf->render();
                 $res_opex_enf_b = $res_opex_enf_b * $inflacion;
             }
 
-            array_push( $array_b,intval($res_enf_b,1),intval($suma_enf_b_aux,1));
+            //incremento inflacion
+            $cost_mant_b = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.costo_mantenimiento')
+            ->get();
+
+            foreach($cost_mant_b as $cost){
+                $suma_cost_mant_b = $suma_cost_mant_b + $cost->costo_mantenimiento;
+            }
+            //costo_mantenimiento / area solucoin base
+            $suma_cost_mant_b_div_area = $suma_cost_mant_b/$area;
+            $res_opex_b = $suma_cost_mant_b_div_area;
+
+            for ($i = 2; $i <= 5; $i++) {
+                $res_opex_b = $res_opex_b + $suma_cost_mant_b_div_area;
+                $suma_cost_mant_b_div_area = $suma_cost_mant_b_div_area * $inflacion_rate;
+           }
+
+           $total_opex_b = $suma_enf_b_aux + $res_opex_b;
+
+           array_push( $array_b,intval($res_enf_b,1),intval($total_opex_b,1));
            }
         }
 
@@ -3562,12 +3785,18 @@ $dompdf->render();
         $suma_enf_base = 0;
         $suma_enf_base_aux = 0;
         $sumaopex_base = 0;
+        $suma_cost_mant_base = 0;
+        $res_opex_base = 0;
         $suma_enf_a = 0;
         $sumaopex_a = 0;
         $suma_enf_a_aux=0;
+        $suma_cost_mant_a = 0;
+        $res_opex_a = 0;
         $suma_enf_b = 0;
         $sumaopex_b = 0;
         $suma_enf_b_aux = 0;
+        $suma_cost_mant_b = 0;
+        $res_opex_b = 0;
         $array_tot = [];
         $array_base = [0,0];
         $array_a = [0,0];
@@ -3576,6 +3805,12 @@ $dompdf->render();
         ->where('id','=',$id_projecto)
         ->first()->inflacion;
         $inflacion =  $inflacion_aux/100 + 1;
+
+        $inflacion_rate_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion_rate;
+        $inflacion_rate =  $inflacion_rate_aux/100 + 1;
+
         foreach( $num_enfs as $num_enf){
            if($num_enf->num_enf === 1){
             //capex
@@ -3613,7 +3848,28 @@ $dompdf->render();
                 $res_opex_enf_base = $res_opex_enf_base * $inflacion;
             }
 
-            array_push( $array_base,intval($res_enf_base,1),intval($suma_enf_base_aux,1));
+             //incremento inflacion
+             $cost_mant_base = DB::table('solutions_project')
+             ->where('solutions_project.id_project','=',$id_projecto)
+             ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+             ->select('solutions_project.costo_mantenimiento')
+             ->get();
+
+             foreach($cost_mant_base as $cost){
+                 $suma_cost_mant_base = $suma_cost_mant_base + $cost->costo_mantenimiento;
+             }
+             //costo_mantenimiento / area solucoin base
+             $suma_cost_mant_base_div_area = $suma_cost_mant_base/$area;
+             $res_opex_base = $suma_cost_mant_base_div_area;
+
+             for ($i = 2; $i <= 10; $i++) {
+                 $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
+                 $suma_cost_mant_base_div_area = $suma_cost_mant_base_div_area * $inflacion_rate;
+             }
+
+             $total_opex_base = $suma_enf_base_aux + $res_opex_base;
+
+             array_push( $array_base,intval($res_enf_base,1),intval($total_opex_base,1));
         }
 
            if($num_enf->num_enf === 2){
@@ -3652,7 +3908,28 @@ $dompdf->render();
                 $res_opex_enf_a = $res_opex_enf_a * $inflacion;
             }
 
-            array_push( $array_a,intval($res_enf_a,1),intval($suma_enf_a_aux,1));
+             //incremento inflacion
+             $cost_mant_a = DB::table('solutions_project')
+             ->where('solutions_project.id_project','=',$id_projecto)
+             ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+             ->select('solutions_project.costo_mantenimiento')
+             ->get();
+
+             foreach($cost_mant_a as $cost){
+                 $suma_cost_mant_a = $suma_cost_mant_a + $cost->costo_mantenimiento;
+             }
+             //costo_mantenimiento / area solucoin base
+             $suma_cost_mant_a_div_area = $suma_cost_mant_a/$area;
+             $res_opex_a = $suma_cost_mant_a_div_area;
+
+             for ($i = 2; $i <= 10; $i++) {
+                 $res_opex_a = $res_opex_a +  $suma_cost_mant_a_div_area;
+                 $suma_cost_mant_a_div_area = $suma_cost_mant_a_div_area * $inflacion_rate;
+            }
+
+            $total_opex_a = $suma_enf_a_aux + $res_opex_a;
+
+             array_push( $array_a,intval($res_enf_a,1),intval($total_opex_a,1));
            }
 
            if($num_enf->num_enf === 3){
@@ -3690,6 +3967,27 @@ $dompdf->render();
                 $suma_enf_b_aux = $suma_enf_b_aux +  $res_opex_enf_b;
                 $res_opex_enf_b = $res_opex_enf_b * $inflacion;
             }
+
+            //incremento inflacion
+            $cost_mant_b = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.costo_mantenimiento')
+            ->get();
+
+            foreach($cost_mant_b as $cost){
+                $suma_cost_mant_b = $suma_cost_mant_b + $cost->costo_mantenimiento;
+            }
+            //costo_mantenimiento / area solucoin base
+            $suma_cost_mant_b_div_area = $suma_cost_mant_b/$area;
+            $res_opex_b = $suma_cost_mant_b_div_area;
+
+            for ($i = 2; $i <= 5; $i++) {
+                $res_opex_b = $res_opex_b + $suma_cost_mant_b_div_area;
+                $suma_cost_mant_b_div_area = $suma_cost_mant_b_div_area * $inflacion_rate;
+           }
+
+           $total_opex_b = $suma_enf_b_aux + $res_opex_b;
 
             array_push( $array_b,intval($res_enf_b,1),intval($suma_enf_b_aux,1));
            }
@@ -3858,12 +4156,18 @@ $dompdf->render();
         $suma_enf_base = 0;
         $suma_enf_base_aux = 0;
         $sumaopex_base = 0;
+        $suma_cost_mant_base = 0;
+        $res_opex_base = 0;
         $suma_enf_a = 0;
         $sumaopex_a = 0;
         $suma_enf_a_aux=0;
+        $suma_cost_mant_a = 0;
+        $res_opex_a = 0;
         $suma_enf_b = 0;
         $sumaopex_b = 0;
         $suma_enf_b_aux = 0;
+        $suma_cost_mant_b = 0;
+        $res_opex_b = 0;
         $array_tot = [];
         $array_base = [0,0];
         $array_a = [0,0];
@@ -3872,6 +4176,12 @@ $dompdf->render();
         ->where('id','=',$id_projecto)
         ->first()->inflacion;
         $inflacion =  $inflacion_aux/100 + 1;
+
+        $inflacion_rate_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion_rate;
+        $inflacion_rate =  $inflacion_rate_aux/100 + 1;
+
         foreach( $num_enfs as $num_enf){
            if($num_enf->num_enf === 1){
             //capex
@@ -3909,7 +4219,28 @@ $dompdf->render();
                 $res_opex_enf_base = $res_opex_enf_base * $inflacion;
             }
 
-            array_push( $array_base,intval($res_enf_base,1),intval($suma_enf_base_aux,1));
+           //incremento inflacion
+           $cost_mant_base = DB::table('solutions_project')
+           ->where('solutions_project.id_project','=',$id_projecto)
+           ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+           ->select('solutions_project.costo_mantenimiento')
+           ->get();
+
+           foreach($cost_mant_base as $cost){
+               $suma_cost_mant_base = $suma_cost_mant_base + $cost->costo_mantenimiento;
+           }
+           //costo_mantenimiento / area solucoin base
+           $suma_cost_mant_base_div_area = $suma_cost_mant_base/$area;
+           $res_opex_base = $suma_cost_mant_base_div_area;
+
+           for ($i = 2; $i <= 15; $i++) {
+               $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
+               $suma_cost_mant_base_div_area = $suma_cost_mant_base_div_area * $inflacion_rate;
+           }
+
+           $total_opex_base = $suma_enf_base_aux + $res_opex_base;
+
+           array_push( $array_base,intval($res_enf_base,1),intval($total_opex_base,1));
         }
 
            if($num_enf->num_enf === 2){
@@ -3948,7 +4279,28 @@ $dompdf->render();
                 $res_opex_enf_a = $res_opex_enf_a * $inflacion;
             }
 
-            array_push( $array_a,intval($res_enf_a,1),intval($suma_enf_a_aux,1));
+            //incremento inflacion
+            $cost_mant_a = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.costo_mantenimiento')
+            ->get();
+
+            foreach($cost_mant_a as $cost){
+                $suma_cost_mant_a = $suma_cost_mant_a + $cost->costo_mantenimiento;
+            }
+            //costo_mantenimiento / area solucoin base
+            $suma_cost_mant_a_div_area = $suma_cost_mant_a/$area;
+            $res_opex_a = $suma_cost_mant_a_div_area;
+
+            for ($i = 2; $i <= 15; $i++) {
+                $res_opex_a = $res_opex_a +  $suma_cost_mant_a_div_area;
+                $suma_cost_mant_a_div_area = $suma_cost_mant_a_div_area * $inflacion_rate;
+           }
+
+           $total_opex_a = $suma_enf_a_aux + $res_opex_a;
+
+            array_push( $array_a,intval($res_enf_a,1),intval($total_opex_a,1));
            }
 
            if($num_enf->num_enf === 3){
@@ -3987,7 +4339,28 @@ $dompdf->render();
                 $res_opex_enf_b = $res_opex_enf_b * $inflacion;
             }
 
-            array_push( $array_b,intval($res_enf_b,1),intval($suma_enf_b_aux,1));
+            //incremento inflacion
+            $cost_mant_b = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->select('solutions_project.costo_mantenimiento')
+            ->get();
+
+            foreach($cost_mant_b as $cost){
+                $suma_cost_mant_b = $suma_cost_mant_b + $cost->costo_mantenimiento;
+            }
+            //costo_mantenimiento / area solucoin base
+            $suma_cost_mant_b_div_area = $suma_cost_mant_b/$area;
+            $res_opex_b = $suma_cost_mant_b_div_area;
+
+            for ($i = 2; $i <= 5; $i++) {
+                $res_opex_b = $res_opex_b + $suma_cost_mant_b_div_area;
+                $suma_cost_mant_b_div_area = $suma_cost_mant_b_div_area * $inflacion_rate;
+            }
+
+            $total_opex_b = $suma_enf_b_aux + $res_opex_b;
+
+            array_push( $array_b,intval($res_enf_b,1),intval($total_opex_b,1));
            }
         }
 
@@ -4292,6 +4665,43 @@ $dompdf->render();
             }
         }
         return $array_res;
+    }
+
+    public function desp_energy($id_project,$energy_star,$ashrae,$eui_base,$electricidad){
+
+
+        $area = DB::table('projects')
+            ->where('projects.id','=',$id_project)
+            ->first()->area;
+
+
+        $energy_star_base = $eui_base - $energy_star ;
+       /*  (energy_star_base*2000*10.764/3.412)*0.12 */
+        /* energy_star_base*2000*10.764 */
+        //vallidar pies cuadrados
+         $mult_res = $energy_star_base * $area * 10.764;
+         $div_res_base_parent_1 = $mult_res / 3.412;
+         $res_base = $div_res_base_parent_1 * $electricidad;
+
+
+        return $res_base;
+    }
+
+    public function desp_ashrae($id_project,$energy_star,$ashrae,$eui_base,$electricidad){
+
+        $area = DB::table('projects')
+            ->where('projects.id','=',$id_project)
+            ->first()->area;
+
+        $ashrae_sol = $eui_base - $ashrae;
+       /*  (ashrae*2000*10.764/3.412)*0.12 */
+        /* ashrae*2000*10.764 */
+         $mult_res = $ashrae_sol * $area * 10.764;
+         $div_res_base_parent_1 = $mult_res / 3.412;
+         $res_base = $div_res_base_parent_1 * $electricidad;
+
+
+        return $res_base;
     }
 
 }

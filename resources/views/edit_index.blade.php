@@ -275,7 +275,25 @@ span{
                                                         <option value="{{$i}}">{{$i}}%</option>
                                                         @endif
                                                         @endfor
-                                                    </select>                                                <span id="inc_ene_warning" name="inc_ene_warning" class="text-red-500"></span>
+                                                    </select>
+                                                    <span id="inc_ene_warning" name="inc_ene_warning" class="text-red-500"></span>
+                                                </div>
+
+                                                <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                    <div class="flex w-full">
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Inflation Rate:</b></label><label class="text-red-500">*</label>
+                                                    </div>
+{{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+--}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inflation_rate" id="inflation_rate">
+                                                            @for ($i = 0; $i <= 15; $i++)
+                                                            @if ($i == $project_edit->inflacion_rate)
+                                                            <option selected value="{{$i}}">{{$i}}%</option>
+                                                            @else
+                                                            <option value="{{$i}}">{{$i}}%</option>
+                                                            @endif
+                                                            @endfor
+                                                        </select>
+                                                <span id="inflation_rate_warning" name="inflation_rate_warning" class="text-red-500"></span>
                                                 </div>
 
 
@@ -533,7 +551,7 @@ span{
                                                             <script>
                                                             $(document).ready(function () {
                                                                 traer_unidad_hvac('{{$id_project}}',1,1,'cUnidad_1_1','csTipo','csDisenio_1_1','tipo_control_1_1','dr_1_1','csMantenimiento','lblCsTipo_1_1'
-                                                                ,'capacidad_total','costo_elec','csStd_cant_1_1','cheValorS_1_1','','','csStd');
+                                                                ,'capacidad_total','costo_elec','csStd_cant_1_1','cheValorS_1_1','','','csStd','maintenance_cost_1_1');
                                                             });
                                                             </script>
 
@@ -688,7 +706,15 @@ span{
                                                     </div>
                                                 </div>
 
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                    <div class="w-1/3 flex justify-start text-left">
+                                                        <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                    </div>
 
+                                                    <div class="w-1/2 flex justify-start">
+                                                        <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="maintenance_cost_1_1" id="maintenance_cost_1_1" >
+                                                    </div>
+                                                </div>
 
 
                                             </div>
@@ -1207,7 +1233,7 @@ span{
 
                                                                         traer_unidad_hvac('{{$id_project}}',1,2,'cUnidad_2_1','cheTipo_2_1','cheDisenio_2_1'
                                                                         ,'tipo_control_2_1','dr_2_1','csMantenimiento_2_1','lblCsTipo_2_1','capacidad_total_2_1'
-                                                                        ,'costo_elec_2_1','csStd_cant_2_1','cheValorS_2_1','2_1','action_submit_2_1');
+                                                                        ,'costo_elec_2_1','csStd_cant_2_1','cheValorS_2_1','2_1','action_submit_2_1','csStd','maintenance_cost_2_1');
 
 
 
@@ -1344,10 +1370,23 @@ span{
                                                                 <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md text-center"  step="0.01" step="0.01" name="cheValorS_2_1" id="cheValorS_2_1" >
                                                             </div>
                                                         </div>
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                            <div class="w-1/3 flex justify-start text-left">
+                                                                <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                            </div>
 
-                                                        <div class="flex gap-x-3 w-1/2 justify-end">
-                                                            <button onclick="inactive_display_sol_edit('sol_2_1','{{$id_project}}',2,1,'A')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                            <div class="w-full flex gap-x-2 justify-start">
+                                                                <div class="flex">
+                                                                    <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_2_1" id="maintenance_cost_2_1" >
+                                                                </div>
+                                                                <div class="flex justify-end">
+                                                                    <button onclick="inactive_display_sol_edit('sol_2_1','{{$id_project}}',2,1,'A')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                                </div>
+                                                            </div>
                                                         </div>
+                                                        {{-- <div class="flex gap-x-3 w-1/2 justify-end">
+                                                            <button onclick="inactive_display_sol_edit('sol_2_1','{{$id_project}}',2,1,'A')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                        </div> --}}
                                                     </div>
                                                   </div>
                                                 </div>
@@ -1872,7 +1911,7 @@ span{
                                                                     $(document).ready(function () {
                                                                         traer_unidad_hvac('{{$id_project}}',1,3,'cUnidad_3_1','cheTipo_3_1','cheDisenio_3_1'
                                                                         ,'tipo_control_3_1','dr_3_1','cheMantenimiento_3_1','lblCsTipo_3_1','capacidad_total_3_1'
-                                                                        ,'costo_elec_3_1','cheStd_3_1','cheValorS_3_1','3_1','action_submit_3_1');
+                                                                        ,'costo_elec_3_1','cheStd_3_1','cheValorS_3_1','3_1','action_submit_3_1','csStd','maintenance_cost_3_1');
                                                                     });
                                                                     </script>
 
@@ -2010,8 +2049,25 @@ span{
                                                                 </div>
                                                         </div>
 
-                                                        <div class="flex gap-x-3 w-1/2 justify-end">
-                                                            <button  onclick="inactive_display_sol_edit('sol_3_1','{{$id_project}}',3,1,'B')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                            <div class="w-1/3 flex justify-start text-left">
+                                                                <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                            </div>
+
+                                                          {{--   <div class="w-1/2 flex justify-start">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="maintenance_cost_3_1" id="maintenance_cost_3_1" >
+                                                                <button  onclick="inactive_display_sol_edit('sol_3_1','{{$id_project}}',3,1,'B')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+
+                                                            </div> --}}
+
+                                                            <div class="w-full flex gap-x-2 justify-start">
+                                                                <div class="flex">
+                                                                    <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="maintenance_cost_3_1" id="maintenance_cost_3_1" >
+                                                                </div>
+                                                                <div class="flex justify-end">
+                                                                    <button  onclick="inactive_display_sol_edit('sol_3_1','{{$id_project}}',3,1,'B')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                                </div>
+                                                            </div>
                                                         </div>
 
                                                     </div>

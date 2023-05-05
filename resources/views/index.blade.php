@@ -250,7 +250,20 @@ span{
                                                                 <option value="{{$i}}">{{$i}}%</option>
                                                                 @endfor
                                                             </select>
-                                                    <span id="inc_ene_warning" name="inc_ene_warning" class="text-red-500"></span>
+                                                        <span id="inc_ene_warning" name="inc_ene_warning" class="text-red-500"></span>
+                                                    </div>
+
+                                                    <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                        <div class="flex w-full">
+                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Inflación:</b></label><label class="text-red-500">*</label>
+                                                        </div>
+{{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+ --}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inflation_rate" id="inflation_rate">
+                                                                @for ($i = 0; $i <= 15; $i++)
+                                                                <option value="{{$i}}">{{$i}}%</option>
+                                                                @endfor
+                                                            </select>
+                                                    <span id="inflation_rate_warning" name="inflation_rate_warning" class="text-red-500"></span>
                                                     </div>
 
 
@@ -619,6 +632,16 @@ span{
 
                                                     <div class="w-1/2 flex justify-start">
                                                         <input onchange="format_num(this.value,this.id);" type="text" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_1" id="cheValorS_1_1" >
+                                                    </div>
+                                                </div>
+
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                    <div class="w-1/3 flex justify-start text-left">
+                                                        <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                    </div>
+
+                                                    <div class="w-1/2 flex justify-start">
+                                                        <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="maintenance_cost_1_1" id="maintenance_cost_1_1" >
                                                     </div>
                                                 </div>
 
@@ -1286,6 +1309,16 @@ span{
                                                             </div>
                                                         </div>
 
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                            <div class="w-1/3 flex justify-start text-left">
+                                                                <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                            </div>
+
+                                                            <div class="w-1/2 flex justify-start">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="maintenance_cost_2_1" id="maintenance_cost_2_1" >
+                                                            </div>
+                                                        </div>
+
 
                                                     </div>
                                                   </div>
@@ -1929,6 +1962,16 @@ span{
                                                             <div class="w-1/2 flex justify-start">
                                                                  <input onchange="format_num(this.value,this.id);"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1  text-center"  step="0.01" step="0.01" name="cheValorS_3_1" id="cheValorS_3_1" >
                                                                 </div>
+                                                        </div>
+
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                            <div class="w-1/3 flex justify-start text-left">
+                                                                <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                            </div>
+
+                                                            <div class="w-1/2 flex justify-start">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="maintenance_cost_3_1" id="maintenance_cost_3_1" >
+                                                            </div>
                                                         </div>
 
 
