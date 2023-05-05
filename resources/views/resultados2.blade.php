@@ -2282,7 +2282,7 @@ span{
                                                             <div class="grid justify-items-center">
                                                                 <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
                                                                <div class="flex w-full justify-center">
-                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_1/$tar_ele->costo_elec)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kw/hr</b>
+                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_1/$tar_ele->costo_elec)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kwh</b>
                                                                </div>
                                                             </div>
 
@@ -2327,7 +2327,7 @@ span{
                                                             <div class="grid justify-items-center">
                                                                 <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
                                                                <div class="flex w-full justify-center">
-                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_2/$tar_ele->costo_elec)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kw/hr</b>
+                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_2/$tar_ele->costo_elec)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kwh</b>
                                                                </div>
                                                             </div>
 
@@ -2369,7 +2369,7 @@ span{
                                                             <div class="grid justify-items-center">
                                                                 <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
                                                                <div class="flex w-full justify-center">
-                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_3/$tar_ele->costo_elec)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kw/hr</b>
+                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_3/$tar_ele->costo_elec)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kwh</b>
                                                                </div>
                                                             </div>
                                                         </div>
@@ -2383,7 +2383,7 @@ span{
                                     <?php  $results_aux=$results->results($id_project) ?>
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-3">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Ahorro Anual Energía – Diferencia entre Soluciones <b class="text-orange-500">(Kw/hr año)</b> </label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Ahorro Anual Energía – Diferencia entre Soluciones <b class="text-orange-500">(Kwh año)</b> </label>
                                         </div>
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             @if (count($results_aux)>1)
@@ -2452,11 +2452,11 @@ span{
 
 
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b><b style="color:#33cc33;"   class="text-[24px] font-roboto text-5xl">0 Kw/hr año</b>
+                                                <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b><b style="color:#33cc33;"   class="text-[24px] font-roboto text-5xl">0 Kwh año</b>
                                                 </div>
 
                                                     <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b><b  style="color:#33cc33;"  class="text-[24px] font-roboto text-5xl">0 Kw/hr año</b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b><b  style="color:#33cc33;"  class="text-[24px] font-roboto text-5xl">0 Kwh año</b>
                                                     </div>
                                             </div>
                                              @endforeach
