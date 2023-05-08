@@ -4680,7 +4680,7 @@ span{
 
                                         <div class="w-full flex mt-5">
                                             <div class="w-1/3 flex">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Base Solution</b>
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución Base</b>
                                             </div>
                                             <?php  $energy_base=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
                                             <div class="w-1/3 flex justify-center">
@@ -4708,7 +4708,7 @@ span{
 
                                         <div class="w-full flex">
                                             <div class="w-1/3 flex">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solution A</b>
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución A</b>
                                             </div>
                                             <?php  $energy_a=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
                                             <div class="w-1/3 flex justify-center">
@@ -4736,7 +4736,7 @@ span{
 
                                         <div class="w-full flex">
                                             <div class="w-1/3 flex">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solution B</b>
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución B</b>
                                             </div>
                                             <?php  $energy_b=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
                                             <div class="w-1/3 flex justify-center">
