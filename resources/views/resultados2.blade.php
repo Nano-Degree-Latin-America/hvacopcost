@@ -3048,11 +3048,11 @@ span{
 
 
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s A </b><b class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
+                                                <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s A </b><b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
                                                 </div>
 
                                                     <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s B </b><b class="text-[24px]  font-roboto text-6xl text-center">$ 0</b>
+                                                    <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s B </b><b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
                                                     </div>
                                             </div>
                                              @endforeach
@@ -4626,6 +4626,7 @@ span{
 
                                                 @if ($result2 === null)
                                                 <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
+                                                <?php  $valor_eui_a=0; ?>
                                                 @endif
                                             </div>
                                             <div class="w-1/3 grid justify-items-center">
