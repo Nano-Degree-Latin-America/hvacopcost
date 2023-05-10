@@ -152,7 +152,7 @@ span{
 @inject('num_tarjets','app\Http\Controllers\ResultadosController')
 @inject('num_tarjets_2','app\Http\Controllers\ResultadosController')
 @inject('num_tarjets_3','app\Http\Controllers\ResultadosController')
-<div class="bg-white h-full" x-data="app()" x-cloak>
+<div class="bg-white" x-data="app()" x-cloak>
     <div class="w-full px-4">
 
         <div x-show.transition="step === 'complete'">
@@ -182,7 +182,7 @@ span{
                     <div id="mapa-div">
                             <div class="xl:ml-5 col-6">
                                 <h2 id="lblMapa">{{-- Da Clic en el Mapa --}}</h2>
-                            <img class="mapa_img mt-5" src="{{asset('assets\images\Mapa-Hvacopcost-3.png')}}" alt="" usemap="#mapa"{{--  onClick="cambiarLblMapa('Mapa') --}}">
+                            <img class="mapa_img" style="margin-top:100px;" src="{{asset('assets\images\Mapa-Hvacopcost-3.png')}}" alt="" usemap="#mapa"{{--  onClick="cambiarLblMapa('Mapa') --}}">
                             <map class="w-full" name="mapa">
                                 {{-- <area shape="polygon" coords="2,3, 67,5, 98,19, 121,43, 129,81, 174,65, 150,91, 139,112, 78,93, 29,54, 8,27" onclick="traer_ciudad_edit(17); cambiarLblMapa_Edit('México');change_option(17);" alt="México">
                                 <area shape="polygon" coords="144,108, 155,96, 155,89, 175,84, 232,133, 216,150, 179,131, 171,117" onclick="traer_ciudad_edit(28); cambiarLblMapa_Edit('Centro América');change_option(28);" alt="Centro América">
@@ -265,7 +265,7 @@ span{
 
                                                 <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Incremento Costo Energía</b></label><label class="text-red-500">*</label>
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Incremento Anual Energía</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inc_ene" id="inc_ene">
                                                         @for ($i = 0; $i <= 15; $i++)
@@ -281,7 +281,7 @@ span{
 
                                                 <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Inflation Rate:</b></label><label class="text-red-500">*</label>
+                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Inflación:</b></label><label class="text-red-500">*</label>
                                                     </div>
 {{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
 --}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inflation_rate" id="inflation_rate">
@@ -2433,8 +2433,8 @@ span{
                                   </div>
                             </div>
                             <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
-                                    {{-- espacio --}}
-                            </div>
+                                {{-- espacio --}}
+                        </div>
                            {{--  <div class="banner banner-giga" style="width: 80%">
                                 <a href="https://www.desprosoft.com/" target="_blank"><img src="{{asset('assets/images/banners/desprosoft.jpg')}}" alt="Desprosoft"></a>
                                 <span class="lbl-banner hidden">Visitar</span>
@@ -2630,13 +2630,13 @@ span{
 }
 @media (min-width: 1536px) {
     .mapa_img{
-        width: 550px; height:850px;
-    }
+        width: 500px; height:650px;
  }
+}
 
  @media (min-width: 1780px) {
     .mapa_img{
-        width: 600px; height:850px;
+        width: 500px; height:650px;
  }
  }
 

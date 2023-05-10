@@ -52,7 +52,7 @@
     proyecto hvac, aire acondicionado, diferencia de costos, incremento de energía, ahorro energía,
     calcular, calculadora hvac, hvac calculadora">
 </head>
-<body>
+<body class="bg-white">
    {{--  <div id="loader" class="">
         <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
     </div> --}}

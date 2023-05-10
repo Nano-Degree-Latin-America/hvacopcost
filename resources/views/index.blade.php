@@ -125,7 +125,7 @@ span{
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
-<div class="bg-white h-full" x-data="app()" x-cloak>
+<div class="bg-white" x-data="app()" x-cloak>
     <div class="w-full px-4">
 
         <div x-show.transition="step === 'complete'">
@@ -155,7 +155,7 @@ span{
                     <div id="mapa-div">
                             <div class=" xl:ml-5 col-6">
                                 <h2 id="lblMapa">{{-- Da Clic en el Mapa --}}</h2>
-                            <img  class="mapa_img" src="{{asset('assets\images\Mapa-Hvacopcost-3.png')}}" alt="" usemap="#mapa" {{-- onClick="cambiarLblMapa('Mapa')" --}}>
+                            <img  class="mapa_img" style="margin-top:100px;" src="{{asset('assets\images\Mapa-Hvacopcost-3.png')}}" alt="" usemap="#mapa" {{-- onClick="cambiarLblMapa('Mapa')" --}}>
                             <map class="w-full" name="mapa">
                                 {{-- <area shape="polygon" coords="2,3, 67,5, 98,19, 121,43, 129,81, 174,65, 150,91, 139,112, 78,93, 29,54, 8,27" onclick="getCiudades(17); cambiarLblMapa('México')" alt="México">
                                 <area shape="polygon" coords="144,108, 155,96, 155,89, 175,84, 232,133, 216,150, 179,131, 171,117" onclick="getCiudades(28); cambiarLblMapa('Centro América')" alt="Centro América">
@@ -242,7 +242,7 @@ span{
 
                                                     <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                         <div class="flex w-full">
-                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Incremento Costo Energía</b></label><label class="text-red-500">*</label>
+                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Incremento Anual Energía</b></label><label class="text-red-500">*</label>
                                                         </div>
 {{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
  --}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inc_ene" id="inc_ene">
@@ -2535,13 +2535,13 @@ span{
 }
 @media (min-width: 1536px) {
     .mapa_img{
-        width: 550px; height:850px;
-    }
+        width: 500px; height:650px;
  }
+}
 
  @media (min-width: 1780px) {
     .mapa_img{
-        width: 600px; height:850px;
+        width: 500px; height:650px;
  }
  }
 

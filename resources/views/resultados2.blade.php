@@ -995,7 +995,7 @@ span{
                                                 @if ($solution->num_sol == 2 && $solution->num_enf == 1)
                                                     {{-- cuerpo --}}
                                                     <div class="mx-5 border-t-2">
-                                                        <div class="w-full flex">
+                                                        <div class="w-full flex  mt-2">
                                                             <div class="w-2/5 flex justify-start">
                                                                 <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
                                                             </div>
@@ -1182,7 +1182,7 @@ span{
                                                 @if ($solution->num_sol == 2 && $solution->num_enf == 2)
                                                     {{-- cuerpo --}}
                                                     <div class="mx-5 border-t-2">
-                                                        <div class="w-full flex">
+                                                        <div class="w-full flex  mt-2">
                                                             <div class="w-2/5 flex justify-start">
                                                                 <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
                                                             </div>
@@ -1369,7 +1369,7 @@ span{
                                                 @if ($solution->num_sol == 2 && $solution->num_enf == 3)
                                                     {{-- cuerpo --}}
                                                     <div class="mx-5 border-t-2">
-                                                        <div class="w-full flex">
+                                                        <div class="w-full flex  mt-2">
                                                             <div class="w-2/5 flex justify-start">
                                                                 <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
                                                             </div>
@@ -1564,7 +1564,7 @@ span{
 
                                                     {{-- cuerpo --}}
                                                     <div class="mx-5  border-t-2">
-                                                        <div class="w-full flex">
+                                                        <div class="w-full flex  mt-2">
                                                             <div class="w-2/5 flex justify-start">
                                                                 <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
                                                             </div>
@@ -1754,7 +1754,7 @@ span{
 
                                                             {{-- cuerpo --}}
                                                             <div class="mx-5  border-t-2">
-                                                                <div class="w-full flex">
+                                                                <div class="w-full flex  mt-2">
                                                                     <div class="w-2/5 flex justify-start">
                                                                         <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
                                                                     </div>
@@ -1944,7 +1944,7 @@ span{
 
                                                                     {{-- cuerpo --}}
                                                                     <div class="mx-5  border-t-2">
-                                                                        <div class="w-full flex">
+                                                                        <div class="w-full flex  mt-2">
                                                                             <div class="w-2/5 flex justify-start">
                                                                                 <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
                                                                             </div>
@@ -4658,7 +4658,7 @@ span{
                                 <div class="grid bg-gray-200 rounded-md shadow-xl my-3 w-full">
 
                                     <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
-                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Desperdicio de Energía Eléctrica</label>
+                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Desperdicio de Energía Eléctrica del Edificio (Año)</label>
                                     </div>
 
                                     <div class="flex w-full justify-center mt-5">
@@ -4686,11 +4686,11 @@ span{
                                             <?php  $energy_base=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
                                             <div class="w-1/3 flex justify-center">
                                                 @if ($energy_base > 0)
-                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_base,1)}}</b>
+                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_base)}}</b>
                                                 @endif
 
                                                 @if ($energy_base < 0)
-                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_base,1)}}</b>
+                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_base)}}</b>
                                                 @endif
 
                                             </div>
@@ -4698,11 +4698,11 @@ span{
                                             <?php  $ashrae_base=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
                                             <div class="w-1/3 flex justify-center">
                                                 @if ($ashrae_base > 0)
-                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_base,1)}}</b>
+                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_base)}}</b>
                                                 @endif
 
                                                 @if ($ashrae_base < 0)
-                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_base,1)}}</b>
+                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_base)}}</b>
                                                 @endif
                                             </div>
                                         </div>
@@ -4714,11 +4714,11 @@ span{
                                             <?php  $energy_a=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
                                             <div class="w-1/3 flex justify-center">
                                                 @if ($energy_a > 0)
-                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_a,1)}}</b>
+                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_a)}}</b>
                                                 @endif
 
                                                 @if ($energy_a < 0)
-                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_a,1)}}</b>
+                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_a)}}</b>
                                                 @endif
 
                                             </div>
@@ -4726,11 +4726,11 @@ span{
                                             <div class="w-1/3 flex justify-center">
                                                 <?php  $ashrae_a=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
                                                 @if ($ashrae_a > 0)
-                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_a,1)}}</b>
+                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_a)}}</b>
                                                 @endif
 
                                                 @if ($ashrae_a < 0)
-                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_a,1)}}</b>
+                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_a)}}</b>
                                                 @endif
                                             </div>
                                         </div>
@@ -4743,11 +4743,11 @@ span{
                                             <div class="w-1/3 flex justify-center">
                                                 @if ($result3 ==! null)
                                                     @if ($energy_b > 0)
-                                                    <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_b,1)}}</b>
+                                                    <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_b)}}</b>
                                                     @endif
 
                                                     @if ($energy_b < 0)
-                                                    <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_b,1)}}</b>
+                                                    <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_b)}}</b>
                                                     @endif
                                                 @endif
 
@@ -4760,11 +4760,11 @@ span{
                                                 <?php  $ashrae_b=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
                                                 @if ($result3 ==! null)
                                                     @if ($ashrae_b > 0)
-                                                    <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_b,1)}}</b>
+                                                    <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_b)}}</b>
                                                     @endif
 
                                                     @if ($ashrae_b < 0)
-                                                    <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_b,1)}}</b>
+                                                    <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_b)}}</b>
                                                     @endif
                                                 @endif
 
@@ -4877,9 +4877,12 @@ function cap_op_3(id_project){
           series: [{
           name: 'CAPEX',
           data: [res[2][0], res[1][0], res[0][0]]
-        }, {
-          name: 'OPEX',
+        },{
+          name: 'OPEX Energy',
           data: [res[2][1], res[1][1], res[0][1]]
+        },{
+          name: 'OPEX Maintenance',
+          data: [res[2][2], res[1][2], res[0][2]]
         }],
           chart: {
           type: 'bar',
@@ -4956,7 +4959,7 @@ function cap_op_3(id_project){
         },
         fill: {
           opacity: 1,
-          colors: ['rgb(0, 143, 251)', '#7668af'],
+          colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
 
         },
         legend: {
@@ -4971,7 +4974,7 @@ function cap_op_3(id_project){
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['rgb(0, 143, 251)', '#7668af'],
+          fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
@@ -5001,9 +5004,12 @@ function cap_op_5(id_project){
           series: [{
           name: 'CAPEX',
           data: [res[2][0], res[1][0], res[0][0]]
-        }, {
-          name: 'OPEX',
+        },{
+          name: 'OPEX Energy',
           data: [res[2][1], res[1][1], res[0][1]]
+        },{
+          name: 'OPEX Maintenance',
+          data: [res[2][2], res[1][2], res[0][2]]
         }],
           chart: {
           type: 'bar',
@@ -5076,7 +5082,7 @@ function cap_op_5(id_project){
         },
         fill: {
           opacity: 1,
-          colors: ['rgb(0, 143, 251)', '#7668af']
+          colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)']
         },
         legend: {
           position: 'top',
@@ -5090,7 +5096,7 @@ function cap_op_5(id_project){
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['rgb(0, 143, 251)', '#7668af'],
+          fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
@@ -5123,8 +5129,11 @@ function cap_op_10(id_project){
           name: 'CAPEX',
           data: [res[2][0], res[1][0], res[0][0]]
         }, {
-          name: 'OPEX',
+          name: 'OPEX Energy',
           data: [res[2][1], res[1][1], res[0][1]]
+        },{
+          name: 'OPEX Maintenance',
+          data: [res[2][2], res[1][2], res[0][2]]
         }],
           chart: {
           type: 'bar',
@@ -5197,7 +5206,7 @@ function cap_op_10(id_project){
         },
         fill: {
           opacity: 1,
-          colors: ['rgb(0, 143, 251)', '#7668af']
+          colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)']
         },
         legend: {
           position: 'top',
@@ -5211,7 +5220,7 @@ function cap_op_10(id_project){
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['rgb(0, 143, 251)', '#7668af'],
+          fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
@@ -5244,9 +5253,12 @@ function cap_op_15(id_project){
           name: 'CAPEX',
           data: [res[2][0], res[1][0], res[0][0]],
 
-        }, {
-          name: 'OPEX',
+        },{
+          name: 'OPEX Energy',
           data: [res[2][1], res[1][1], res[0][1]]
+        },{
+          name: 'OPEX Maintenance',
+          data: [res[2][2], res[1][2], res[0][2]]
         }],
           chart: {
           type: 'bar',
@@ -5318,7 +5330,7 @@ function cap_op_15(id_project){
         },
         fill: {
           opacity: 1,
-          colors: ['rgb(0, 143, 251)', '#7668af']
+          colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)']
         },
         legend: {
           position: 'top',
@@ -5332,7 +5344,7 @@ function cap_op_15(id_project){
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['rgb(0, 143, 251)', '#7668af'],
+          fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
@@ -5371,7 +5383,7 @@ function roi_base_a(id_project){
           },
           {
             name: "MARR",
-            data: [15, 45, 150, 225]
+            data: [45, 75, 150, 225]
           }
         ],
           chart: {
@@ -5510,7 +5522,7 @@ function roi_base_b(id_project){
           },
           {
             name: "MARR",
-            data: [15, 45, 150, 225]
+            data: [45, 75, 150, 225]
           }
         ],
           chart: {
