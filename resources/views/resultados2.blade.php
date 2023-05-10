@@ -4878,10 +4878,10 @@ function cap_op_3(id_project){
           name: 'CAPEX',
           data: [res[2][0], res[1][0], res[0][0]]
         },{
-          name: 'OPEX Energy',
+          name: 'Energía OPEX',
           data: [res[2][1], res[1][1], res[0][1]]
         },{
-          name: 'OPEX Maintenance',
+          name: 'Mantenimiento OPEX',
           data: [res[2][2], res[1][2], res[0][2]]
         }],
           chart: {
@@ -5005,10 +5005,10 @@ function cap_op_5(id_project){
           name: 'CAPEX',
           data: [res[2][0], res[1][0], res[0][0]]
         },{
-          name: 'OPEX Energy',
+          name: 'Energía OPEX',
           data: [res[2][1], res[1][1], res[0][1]]
         },{
-          name: 'OPEX Maintenance',
+          name: 'Mantenimiento OPEX',
           data: [res[2][2], res[1][2], res[0][2]]
         }],
           chart: {
@@ -5129,10 +5129,10 @@ function cap_op_10(id_project){
           name: 'CAPEX',
           data: [res[2][0], res[1][0], res[0][0]]
         }, {
-          name: 'OPEX Energy',
+          name: 'Energía OPEX',
           data: [res[2][1], res[1][1], res[0][1]]
         },{
-          name: 'OPEX Maintenance',
+          name: 'Mantenimiento OPEX',
           data: [res[2][2], res[1][2], res[0][2]]
         }],
           chart: {
@@ -5254,10 +5254,10 @@ function cap_op_15(id_project){
           data: [res[2][0], res[1][0], res[0][0]],
 
         },{
-          name: 'OPEX Energy',
+          name: 'Energía OPEX',
           data: [res[2][1], res[1][1], res[0][1]]
         },{
-          name: 'OPEX Maintenance',
+          name: 'Mantenimiento OPEX',
           data: [res[2][2], res[1][2], res[0][2]]
         }],
           chart: {
