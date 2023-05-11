@@ -1343,7 +1343,7 @@ span{
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="unidadHvac(this.value,2,'cheTipo_2_2');"  name="cUnidad_2_2" id="cUnidad_2_2" >
                                                                 <option value="0">Seleccionar</option>
                                                                 <option value="1">Paquetes (RTU)</option>
-                                                                <option value="2">Split</option>
+                                                                <option value="2">Split DX</option>
                                                                 <option value="3">VRF No Ductados</option>
                                                                 <option value="4">VRF Ductados</option>
                                                                 <option value="5">PTAC</option>
@@ -1522,7 +1522,7 @@ span{
                                                         <div class="w-1/2 flex justify-start">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,3,'cheTipo_2_3');" name="cUnidad_2_3" id="cUnidad_2_3" >
                                                                 <option value="0">Seleccionar</option><option value="1">Paquetes (RTU)</option>
-                                                                <option value="2">Split</option>
+                                                                <option value="2">Split DX</option>
                                                                 <option value="3">VRF No Ductados</option>
                                                                 <option value="4">VRF Ductados</option>
                                                                 <option value="5">PTAC</option>
@@ -1812,7 +1812,7 @@ span{
                                                                 <select class="w-full py-1 border-2 border-blue-600 rounded-md"  onchange="unidadHvac(this.value,1,'cheTipo_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
                                                                     <option value="0">Seleccionar</option>
                                                                     <option value="1">Paquetes (RTU)</option>
-                                                                    <option value="2">Split</option>
+                                                                    <option value="2">Split DX</option>
                                                                     <option value="3">VRF No Ductados</option>
                                                                     <option value="4">VRF Ductados</option>
                                                                     <option value="5">PTAC</option>
@@ -1998,7 +1998,7 @@ span{
                                                             <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="unidadHvac(this.value,1,'cheTipo_3_2');" name="cUnidad_3_2" id="cUnidad_3_2" >
                                                                 <option value="0">Seleccionar</option>
                                                                 <option value="1">Paquetes (RTU)</option>
-                                                                <option value="2">Split</option>
+                                                                <option value="2">Split DX</option>
                                                                 <option value="3">VRF No Ductados</option>
                                                                 <option value="4">VRF Ductados</option>
                                                                 <option value="5">PTAC</option>
@@ -2180,7 +2180,7 @@ span{
                                                             <select class="w-full py-1 border-2 border-blue-600 rounded-md"  onchange="unidadHvac(this.value,1,'cheTipo_3_3');" name="cUnidad_3_3" id="cUnidad_3_3" >
                                                                 <option value="0">Seleccionar</option>
                                                                 <option value="1">Paquetes (RTU)</option>
-                                                                <option value="2">Split</option>
+                                                                <option value="2">Split DX</option>
                                                                 <option value="3">VRF No Ductados</option>
                                                                 <option value="4">VRF Ductados</option>
                                                                 <option value="5">PTAC</option>
