@@ -4686,7 +4686,8 @@ $dompdf->render();
         /* energy_star_base*2000*10.764 */
         //vallidar pies cuadrados
         if($unidad == 'mc'){
-            $mult_res = $energy_star_base * $area * 10.764;
+            $area_mc = $area * 10.764;
+            $mult_res = $energy_star_base * $area_mc;
         }
 
         if($unidad == 'ft'){
@@ -4696,7 +4697,7 @@ $dompdf->render();
          $res_base = $div_res_base_parent_1 * $electricidad;
 
 
-        return $res_base;
+        return $energy_star_base;
     }
 
     public function desp_ashrae($id_project,$energy_star,$ashrae,$eui_base,$electricidad){
@@ -4713,7 +4714,8 @@ $dompdf->render();
        /*  (ashrae*2000*10.764/3.412)*0.12 */
         /* ashrae*2000*10.764 */
         if($unidad == 'mc'){
-            $mult_res = $ashrae_sol * $area * 10.764;
+            $area_mc = $area * 10.764;
+            $mult_res = $ashrae_sol * $area_mc;
         }
 
         if($unidad == 'ft'){
