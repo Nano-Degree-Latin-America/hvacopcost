@@ -296,7 +296,7 @@ class ResultadosController extends Controller
                 $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
 
                 $res_res =  $res_parent_1 *  $factor_c;
-                if($solution_enf1->tipo_equipo === "ca_pi_te"){
+                if($solution_enf1->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -351,7 +351,7 @@ class ResultadosController extends Controller
    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($solution_enf1->tipo_equipo === "ca_pi_te"){
+                if($solution_enf1->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -534,7 +534,7 @@ class ResultadosController extends Controller
 
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($solution_enf2_2->tipo_equipo === "ca_pi_te"){
+                if($solution_enf2_2->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -590,7 +590,7 @@ class ResultadosController extends Controller
    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($solution_enf2_2->tipo_equipo === "ca_pi_te"){
+                if($solution_enf2_2->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -775,7 +775,7 @@ class ResultadosController extends Controller
 
                     $res_res =  $res_parent_1 *  $factor_c;
 
-                    if($solution_enf1_3->tipo_equipo === "ca_pi_te"){
+                    if($solution_enf1_3->tipo_equipo === "pa_pi_te"){
                         if($factor_m==='ASHRAE 180'){
                             $factor_m = 1.2;
                         }
@@ -829,7 +829,7 @@ class ResultadosController extends Controller
                 $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                 $res_res =  $res_parent_1 *  $factor_c;
-                if($solution_enf1_3->tipo_equipo === "ca_pi_te"){
+                if($solution_enf1_3->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -1062,7 +1062,7 @@ class ResultadosController extends Controller
 
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($solution_enf2_1->tipo_equipo === "ca_pi_te"){
+                if($solution_enf2_1->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -1116,7 +1116,7 @@ class ResultadosController extends Controller
                         $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
             //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                         $res_res =  $res_parent_1 *  $factor_c;
-                        if($solution_enf2_1->tipo_equipo === "ca_pi_te"){
+                        if($solution_enf2_1->tipo_equipo === "pa_pi_te"){
                             if($factor_m==='ASHRAE 180'){
                                 $factor_m = 1.2;
                             }
@@ -1297,7 +1297,7 @@ class ResultadosController extends Controller
 
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($solution_enf2_2->tipo_equipo === "ca_pi_te"){
+                if($solution_enf2_2->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -1350,7 +1350,7 @@ class ResultadosController extends Controller
                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
        //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                    $res_res =  $res_parent_1 *  $factor_c;
-                   if($solution_enf2_2->tipo_equipo === "ca_pi_te"){
+                   if($solution_enf2_2->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -1534,7 +1534,7 @@ class ResultadosController extends Controller
 
                     $res_res =  $res_parent_1 *  $factor_c;
 
-                    if($solution_enf2_3->tipo_equipo === "ca_pi_te"){
+                    if($solution_enf2_3->tipo_equipo === "pa_pi_te"){
                         if($factor_m==='ASHRAE 180'){
                             $factor_m = 1.2;
                         }
@@ -1586,7 +1586,7 @@ class ResultadosController extends Controller
                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
        //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                    $res_res =  $res_parent_1 *  $factor_c;
-                   if($solution_enf2_3->tipo_equipo === "ca_pi_te"){
+                   if($solution_enf2_3->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -1818,7 +1818,7 @@ class ResultadosController extends Controller
                  $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
 
                  $res_res =  $res_parent_1 *  $factor_c;
-                 if($solution_enf3_1->tipo_equipo === "ca_pi_te"){
+                 if($solution_enf3_1->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -1871,7 +1871,7 @@ class ResultadosController extends Controller
                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
        //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                    $res_res =  $res_parent_1 *  $factor_c;
-                   if($solution_enf3_1->tipo_equipo === "ca_pi_te"){
+                   if($solution_enf3_1->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -2053,7 +2053,7 @@ class ResultadosController extends Controller
 
                  $res_res =  $res_parent_1 *  $factor_c;
 
-                 if($solution_enf3_2->tipo_equipo === "ca_pi_te"){
+                 if($solution_enf3_2->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -2106,7 +2106,7 @@ class ResultadosController extends Controller
                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
        //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                    $res_res =  $res_parent_1 *  $factor_c;
-                   if($solution_enf3_2->tipo_equipo === "ca_pi_te"){
+                   if($solution_enf3_2->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -2287,7 +2287,7 @@ class ResultadosController extends Controller
                      $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
 
                      $res_res =  $res_parent_1 *  $factor_c;
-                     if($solution_enf3_3->tipo_equipo === "ca_pi_te"){
+                     if($solution_enf3_3->tipo_equipo === "pa_pi_te"){
                         if($factor_m==='ASHRAE 180'){
                             $factor_m = 1.2;
                         }
@@ -2339,7 +2339,7 @@ class ResultadosController extends Controller
                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
        //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                    $res_res =  $res_parent_1 *  $factor_c;
-                   if($solution_enf3_3->tipo_equipo === "ca_pi_te"){
+                   if($solution_enf3_3->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
