@@ -4697,7 +4697,7 @@ $dompdf->render();
          $res_base = $div_res_base_parent_1 * $electricidad;
 
 
-        return $energy_star_base;
+        return $res_base;
     }
 
     public function desp_ashrae($id_project,$energy_star,$ashrae,$eui_base,$electricidad){
