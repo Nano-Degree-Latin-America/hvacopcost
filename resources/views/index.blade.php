@@ -421,9 +421,7 @@ span{
                                     <span class="lbl-banner">Visitar</span>
                                 </div> --}}
                             </div>
-                            <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
-                                {{-- espacio --}}
-                        </div>
+
                     </div>
 
 
@@ -832,8 +830,19 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="flex gap-x-3 w-1/2 justify-end">
-                                                    <button onclick="inactive_display('sol_1')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                    <div class="w-1/3 flex justify-start text-left">
+                                                        <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                    </div>
+
+                                                    <div class="w-full flex gap-x-2 justify-start">
+                                                        <div class="flex">
+                                                            <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_1_2" id="maintenance_cost_1_2" >
+                                                        </div>
+                                                        <div class="flex justify-end">
+                                                            <button onclick="inactive_display('sol_1')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                           </div>
@@ -1021,9 +1030,20 @@ span{
                                                                 <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_3" id="cheValorS_1_3" >
                                                            </div>
                                                        </div>
-                                                       <div class="flex gap-x-3 w-1/2 justify-end">
-                                                           <button onclick="inactive_display('sol_1')"  type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
-                                                       </div>
+                                                       <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                        </div>
+
+                                                        <div class="w-full flex gap-x-2 justify-start">
+                                                            <div class="flex">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_1_3" id="maintenance_cost_1_3" >
+                                                            </div>
+                                                            <div class="flex justify-end">
+                                                                <button onclick="inactive_display('sol_1')"  type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     </div>
 
                                            </div>
@@ -1496,8 +1516,19 @@ span{
                                                                 <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
                                                             </div>
                                                     </div>
-                                                    <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                        </div>
+
+                                                        <div class="w-full flex gap-x-2 justify-start">
+                                                            <div class="flex">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_2_2" id="maintenance_cost_2_2" >
+                                                            </div>
+                                                            <div class="flex justify-end">
+                                                                <button onclick="inactive_display('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                               </div>
@@ -1657,8 +1688,19 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                        </div>
+
+                                                        <div class="w-full flex gap-x-2 justify-start">
+                                                            <div class="flex">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_2_3" id="maintenance_cost_2_3" >
+                                                            </div>
+                                                            <div class="flex justify-end">
+                                                                <button onclick="inactive_display('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                               </div>
@@ -2153,8 +2195,19 @@ span{
                                                              <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS2_3_2" id="cheValorS2_3_2" >
                                                         </div>
                                                     </div>
-                                                    <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display('sol_3')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                        </div>
+
+                                                        <div class="w-full flex gap-x-2 justify-start">
+                                                            <div class="flex">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_3_2" id="maintenance_cost_3_2" >
+                                                            </div>
+                                                            <div class="flex justify-end">
+                                                                <button onclick="inactive_display('sol_3')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                               </div>
@@ -2313,8 +2366,19 @@ span{
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_3_3" id="cheValorS_3_3" >
                                                         </div>
                                                     </div>
-                                                    <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display('sol_3')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                        </div>
+
+                                                        <div class="w-full flex gap-x-2 justify-start">
+                                                            <div class="flex">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_3_3" id="maintenance_cost_3_3" >
+                                                            </div>
+                                                            <div class="flex justify-end">
+                                                                <button onclick="inactive_display('sol_3')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                               </div>
@@ -2350,8 +2414,10 @@ span{
                 </div>
 
             </div>
-            <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+            <div class="grid w-full justify-items-center rounded-md">
                 {{-- espacio --}}
+                <br>
+                <br>
         </div>
             <!-- / Step Content -->
         </div>

@@ -4,7 +4,7 @@ $(document).ready(function () {
     cap_term_change('TR');
     getPaises();
     traer_categorias_edif();
-    $('#div_next_h').addClass("hidden");
+    $('#div_next').addClass("hidden");
     $('#calcular').attr('disabled', true);
     $('#calcular').css('background-color','gray');
  /*    $('#next').attr('disabled', true); */

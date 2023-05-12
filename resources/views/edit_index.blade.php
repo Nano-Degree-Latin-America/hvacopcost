@@ -761,7 +761,7 @@ span{
 
                                                                 traer_unidad_hvac('{{$id_project}}',2,1,'cUnidad_1_2','csTipo_1_2','csDisenio_1_2'
                                                                 ,'tipo_control_1_2','dr_1_2','csMantenimiento_1_2','lblCsTipo_1_2','capacidad_total_1_2'
-                                                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2','action_submit_1_2');
+                                                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2','action_submit_1_2','csStd','maintenance_cost_1_2');
 
                                                             });
                                                             </script>
@@ -899,9 +899,23 @@ span{
                                                          <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_2" id="cheValorS_1_2" >
                                                     </div>
                                                 </div>
-                                                <div class="flex gap-x-3 w-1/2 justify-end">
-                                                    <button onclick="inactive_display_edit('sol_1','{{$id_project}}',1,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                    <div class="w-1/3 flex justify-start text-left">
+                                                        <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                    </div>
+
+                                                    <div class="w-full flex gap-x-2 justify-start">
+                                                        <div class="flex">
+                                                            <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_1_2" id="maintenance_cost_1_2" >
+                                                        </div>
+                                                        <div class="flex justify-end">
+                                                            <button onclick="inactive_display_edit('sol_1','{{$id_project}}',1,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                {{-- <div class="flex gap-x-3 w-1/2 justify-end">
+                                                </div> --}}
                                             </div>
                                           </div>
                                         </div>
@@ -940,7 +954,7 @@ span{
 
                                                                            traer_unidad_hvac('{{$id_project}}',3,1,'cUnidad_1_3','csTipo_1_3','csDisenio_1_3'
                                                                            ,'tipo_control_1_3','dr_1_3','csMantenimiento_1_3','lblCsTipo_1_3','capacidad_total_1_3'
-                                                                           ,'costo_elec_1_3','csStd_cant_1_3','cheValorS_1_3','sol_1_3','action_submit_1_3');
+                                                                           ,'costo_elec_1_3','csStd_cant_1_3','cheValorS_1_3','sol_1_3','action_submit_1_3','csStd','maintenance_cost_1_3');
                                                                        });
                                                                        </script>
                                                                </select>
@@ -1079,9 +1093,25 @@ span{
                                                                 <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_3" id="cheValorS_1_3" >
                                                            </div>
                                                        </div>
-                                                       <div class="flex gap-x-3 w-1/2 justify-end">
+
+                                                       <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                        </div>
+
+                                                        <div class="w-full flex gap-x-2 justify-start">
+                                                            <div class="flex">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_1_3" id="maintenance_cost_1_3" >
+                                                            </div>
+                                                            <div class="flex justify-end">
+                                                                <button onclick="inactive_display_edit('sol_1','{{$id_project}}',1,3)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                       {{-- <div class="flex gap-x-3 w-1/2 justify-end">
                                                            <button onclick="inactive_display_edit('sol_1','{{$id_project}}',1,3)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
-                                                       </div>
+                                                       </div> --}}
                                                     </div>
                                                 </div>
                                             </div>
@@ -1426,7 +1456,7 @@ span{
                                                                     traer_unidad_hvac('{{$id_project}}',2,2,'cUnidad_2_2','cheTipo_2_2','cheDisenio_2_2'
                                                                     ,'tipo_control_2_2','dr_2_2','cheMantenimiento_2_2','lblCsTipo_2_2',
                                                                     'capacidad_total_2_2','costo_elec_2_2','csStd_cant_2_2','cheValorS_2_2'
-                                                                    ,'sol_2_2','action_submit_2_2');
+                                                                    ,'sol_2_2','action_submit_2_2','csStd','maintenance_cost_2_2');
 
 
                                                                 });
@@ -1565,9 +1595,24 @@ span{
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
                                                         </div>
                                                     </div>
-                                                    <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display_edit('sol_2','{{$id_project}}',2,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                        </div>
+
+                                                        <div class="w-full flex gap-x-2 justify-start">
+                                                            <div class="flex">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_2_2" id="maintenance_cost_2_2" >
+                                                            </div>
+                                                            <div class="flex justify-end">
+                                                                <button onclick="inactive_display_edit('sol_2','{{$id_project}}',2,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                   {{--  <div class="flex gap-x-3 w-1/2 justify-end">
+                                                        <button onclick="inactive_display_edit('sol_2','{{$id_project}}',2,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    </div> --}}
                                                 </div>
                                               </div>
                                             </div>
@@ -1606,7 +1651,7 @@ span{
 
                                                                         traer_unidad_hvac('{{$id_project}}',3,2,'cUnidad_2_3','cheTipo_2_3','cheDisenio_2_3'
                                                                         ,'tipo_control_2_3','dr_2_3','cheMantenimiento_2_3','lblCsTipo_2_3','capacidad_total_2_3'
-                                                                        ,'costo_elec_2_3','csStd_cant_2_3','cheValorS_2_3','sol_2_3','action_submit_2_3');
+                                                                        ,'costo_elec_2_3','csStd_cant_2_3','cheValorS_2_3','sol_2_3','action_submit_2_3','csStd','maintenance_cost_2_3');
                                                                     });
 
 
@@ -1742,9 +1787,24 @@ span{
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1  text-center" name="cheValorS_2_3" id="cheValorS_2_3" >
                                                         </div>
                                                     </div>
-                                                    <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display_edit('sol_2','{{$id_project}}',2,3)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                        </div>
+
+                                                        <div class="w-full flex gap-x-2 justify-start">
+                                                            <div class="flex">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_2_3" id="maintenance_cost_2_3" >
+                                                            </div>
+                                                            <div class="flex justify-end">
+                                                                <button onclick="inactive_display_edit('sol_2','{{$id_project}}',2,3)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    {{-- <div class="flex gap-x-3 w-1/2 justify-end">
+                                                        <button onclick="inactive_display_edit('sol_2','{{$id_project}}',2,3)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    </div> --}}
                                                 </div>
                                               </div>
                                             </div>
@@ -2106,7 +2166,7 @@ span{
                                                                 $(document).ready(function () {
                                                                     traer_unidad_hvac('{{$id_project}}',2,3,'cUnidad_3_2','cheTipo_3_2','cheDisenio_3_2'
                                                                     ,'tipo_control_3_2','dr_3_2','cheMantenimiento_3_2','lblCsTipo_3_2','capacidad_total_3_2'
-                                                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2','action_submit_3_2');
+                                                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2','action_submit_3_2','csStd','maintenance_cost_3_2');
                                                                 });
                                                                 </script>
                                                             </select>
@@ -2240,9 +2300,24 @@ span{
                                                              <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS2_3_2" id="cheValorS2_3_2" >
                                                         </div>
                                                     </div>
-                                                    <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display_edit('sol_3','{{$id_project}}',3,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                        </div>
+
+                                                        <div class="w-full flex gap-x-2 justify-start">
+                                                            <div class="flex">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_3_2" id="maintenance_cost_3_2" >
+                                                            </div>
+                                                            <div class="flex justify-end">
+                                                                <button onclick="inactive_display_edit('sol_3','{{$id_project}}',3,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    {{-- <div class="flex gap-x-3 w-1/2 justify-end">
+                                                        <button onclick="inactive_display_edit('sol_3','{{$id_project}}',3,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    </div> --}}
                                                 </div>
                                               </div>
                                             </div>
@@ -2281,7 +2356,7 @@ span{
                                                                 $(document).ready(function () {
                                                                     traer_unidad_hvac('{{$id_project}}',3,3,'cUnidad_3_3','cheTipo_3_3','cheDisenio_3_3'
                                                                     ,'tipo_control_3_3','dr_3_3','cheMantenimiento_3_3','lblCsTipo_3_3','capacidad_total_3_3'
-                                                                    ,'costo_elec_3_3','cheStd_3_3','cheValorS_3_3','sol_3_3','action_submit_3_3');
+                                                                    ,'costo_elec_3_3','cheStd_3_3','cheValorS_3_3','sol_3_3','action_submit_3_3','csStd','maintenance_cost_3_3');
                                                                 });
                                                                 </script>
                                                             </select>
@@ -2410,9 +2485,24 @@ span{
                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_3_3" id="cheValorS_3_3" >
                                                         </div>
                                                     </div>
-                                                    <div class="flex gap-x-3 w-1/2 justify-end">
-                                                        <button onclick="inactive_display_edit('sol_3','{{$id_project}}',3,3)" type="button"class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                                        </div>
+
+                                                        <div class="w-full flex gap-x-2 justify-start">
+                                                            <div class="flex">
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_3_3" id="maintenance_cost_3_3" >
+                                                            </div>
+                                                            <div class="flex justify-end">
+                                                                <button onclick="inactive_display_edit('sol_3','{{$id_project}}',3,3)" type="button"class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    {{-- <div class="flex gap-x-3 w-1/2 justify-end">
+                                                        <button onclick="inactive_display_edit('sol_3','{{$id_project}}',3,3)" type="button"class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                                    </div> --}}
                                                 </div>
                                               </div>
                                             </div>

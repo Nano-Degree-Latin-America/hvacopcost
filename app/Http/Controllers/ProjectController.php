@@ -519,6 +519,395 @@ class ProjectController extends Controller
 
             }
 
+            //niveles de confort
+            $unidad_conf_1_1 = $solution_enf1->unidad_hvac;
+            $equipo_conf_1_1 = $solution_enf1->tipo_equipo;
+            $diseno_conf_1_1 = $solution_enf1->name_disenio;
+            $t_control_conf_1_1 = $solution_enf1->name_t_control;
+            $dr_conf_1_1 = $solution_enf1->dr_name;
+            $mant_conf_1_1 = $solution_enf1->mantenimiento;
+
+            if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp' || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+                $val_conf_equipo_1_1 = 4.5;
+
+                if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'VAV y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                           break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                        case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'manejadora'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Descarga Directa Sin Ductar':
+                            $val_conf_dis_1_1 = 2;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'Ducto Flex y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'No Aplica':
+                            $val_conf_dr_1_1 = 2;
+                          break;
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                          case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'fancoil'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Retorno Ductado':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+                        case 'Ducto Flex y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Baja Presión Estática':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'No Aplica':
+                            $val_conf_dr_1_1 = 2;
+                          break;
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                          case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'man'){
+
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                        case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'fancoil_hsp'){
+
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                        case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+                        case 'Inyección y Retorno Flexible':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+                        case 'Inyección Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'No Aplica':
+                            $val_conf_dr_1_1 = 2;
+                          break;
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                          case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+                //control
+                switch ($t_control_conf_1_1) {
+                    case 'Termostatos Fuera Zona de Confort':
+                        $val_conf_crtl_1_1 = 2.5;
+                      break;
+                    case 'Termostatos en Zona de Confort':
+                        $val_conf_crtl_1_1 = 4;
+                      break;
+                    case 'Termostato Inteligente en Zona':
+                        $val_conf_crtl_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+                  //mant
+                  switch ($mant_conf_1_1) {
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+
+            }
+
+            if($equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'fancoil_lsp'){
+                $val_conf_equipo_1_1 = 4;
+
+                if($equipo_conf_1_1 === 'ca_pi_te'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Sin Ventilación':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+
+                        case 'Con Ventilación DOA':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        default:
+                      }
+
+                }
+
+                if($equipo_conf_1_1 === 'fancoil_lsp'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Sin Ventilación':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        default:
+                      }
+                }
+
+                switch ($t_control_conf_1_1) {
+                    case 'Termostatos Fuera Zona de Confort':
+                        $val_conf_crtl_1_1 = 2.5;
+                      break;
+                    case 'Termostatos en Zona de Confort':
+                        $val_conf_crtl_1_1 = 4;
+                      break;
+                    case 'Termostato Inteligente en Zona':
+                        $val_conf_crtl_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+
+                  switch ($dr_conf_1_1) {
+                    case 'No Aplica':
+                        $val_conf_dr_1_1 = 2;
+                      break;
+
+                    default:
+                  }
+
+                  switch ($mant_conf_1_1) {
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+            }
+
+            if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
+                $val_conf_equipo_1_1 = 3.5;
+                if($equipo_conf_1_1 === 'est_ptac'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Sin Filración MERV 8':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'Con Filtración MERV 8':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                    default:
+                      }
+
+                      switch ($t_control_conf_1_1) {
+                        case 'Termostatos Fuera Zona de Confort':
+                            $val_conf_crtl_1_1 = 3;
+                          break;
+                        case 'Termostatos en Zona de Confort':
+                            $val_conf_crtl_1_1 = 4;
+                          break;
+                        case 'Termostato Inteligente en Zona':
+                            $val_conf_crtl_1_1 = 5;
+                          break;
+
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'pa_pi_te'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Condensador Arriba':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'Condensador Abajo':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'Espalda con Espalda':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                    default:
+                      }
+
+                      switch ($t_control_conf_1_1) {
+                        case 'Termostato Interno':
+                            $val_conf_crtl_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+
+                switch ($dr_conf_1_1) {
+                    case 'No Aplica':
+                        $val_conf_dr_1_1 = 2;
+                      break;
+
+                    default:
+                  }
+
+                  switch ($mant_conf_1_1) {
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 4.5;
+                      break;
+
+                    default:
+                  }
+            }
+
+            $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
+            $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
+            $solution_enf1->confort = $nivel_confotr_1_1;
+            //flata regilla y mantenimiento
             $update_project->update();
             if( $update_project->update()){
                 $solution_enf1->id_project = $update_project->id;
@@ -639,8 +1028,33 @@ class ProjectController extends Controller
                                     $val_aprox_aux_1_2 = 0;
                 }
 
+                if($request->get('maintenance_cost_1_2') != null){
+                    $aux_cost_mant_1_2 = explode("$",   $request->get('maintenance_cost_1_2'));
+                    $aux_cost_mant_a_1_2 = explode(",",    $aux_cost_mant_1_2[1]);
+
+                    if(count($aux_cost_mant_a_1_2) == 1){
+                        $aux_cost_mant_1_2 =  $aux_cost_mant_a_1_2[0];
+                    }
+                    if(count($aux_cost_mant_a_1_2) == 2){
+                        $aux_cost_mant_1_2=  $aux_cost_mant_a_1_2[0].$aux_cost_mant_a_1_2[1];
+                    }
+                    if(count($aux_cost_mant_a_1_2) == 3){
+                        $aux_cost_mant_1_2 =  $aux_cost_mant_a_1_2[0].$aux_cost_mant_a_1_2[1].$aux_cost_mant_a_1_2[2];
+                    }
+                    if(count($aux_cost_mant_a_1_2) == 4){
+                        $aux_cost_mant_1_2 =  $aux_cost_mant_a_1_2[0].$aux_cost_mant_a_1_2[1].$aux_cost_mant_a_1_2[2].$aux_cost_mant_a_1_2[3];
+                    }
+                    if(count($aux_cost_mant_a_1_2) == 5){
+                        $aux_cost_mant_1_2 =  $aux_cost_mant_a_1_2[0].$aux_cost_mant_a_1_2[1].$aux_cost_mant_a_1_2[2].$aux_cost_mant_a_1_2[3].$aux_cost_mant_a_1_2[4];
+                    }
 
 
+                }else  if($request->get('maintenance_cost_1_2') == null){
+                    $aux_cost_mant_1_2 = 0;
+
+                }
+
+                $solution_enf1_2->costo_mantenimiento=floatval($aux_cost_mant_1_2);
                 $solution_enf1_2->val_aprox = floatval($val_aprox_aux_1_2);
                 $solution_enf1_2->status = 1;
                 $solution_enf1_2->id_empresa=Auth::user()->id_empresa;
@@ -769,6 +1183,395 @@ class ProjectController extends Controller
                 $solution_enf1_2->cost_op_an =floatval(number_format($factor_m,2, '.', ''));
 
                 }
+
+                //niveles de confort
+            $unidad_conf_1_1 = $solution_enf1_2->unidad_hvac;
+            $equipo_conf_1_1 = $solution_enf1_2->tipo_equipo;
+            $diseno_conf_1_1 = $solution_enf1_2->name_disenio;
+            $t_control_conf_1_1 = $solution_enf1_2->name_t_control;
+            $dr_conf_1_1 = $solution_enf1_2->dr_name;
+            $mant_conf_1_1 = $solution_enf1_2->mantenimiento;
+
+            if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp' || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+                $val_conf_equipo_1_1 = 4.5;
+
+                if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'VAV y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                           break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                        case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'manejadora'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Descarga Directa Sin Ductar':
+                            $val_conf_dis_1_1 = 2;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'Ducto Flex y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'No Aplica':
+                            $val_conf_dr_1_1 = 2;
+                          break;
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                          case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'fancoil'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Retorno Ductado':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+                        case 'Ducto Flex y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Baja Presión Estática':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'No Aplica':
+                            $val_conf_dr_1_1 = 2;
+                          break;
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                          case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'man'){
+
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                        case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'fancoil_hsp'){
+
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                        case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+                        case 'Inyección y Retorno Flexible':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+                        case 'Inyección Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'No Aplica':
+                            $val_conf_dr_1_1 = 2;
+                          break;
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                          case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+                //control
+                switch ($t_control_conf_1_1) {
+                    case 'Termostatos Fuera Zona de Confort':
+                        $val_conf_crtl_1_1 = 2.5;
+                      break;
+                    case 'Termostatos en Zona de Confort':
+                        $val_conf_crtl_1_1 = 4;
+                      break;
+                    case 'Termostato Inteligente en Zona':
+                        $val_conf_crtl_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+                  //mant
+                  switch ($mant_conf_1_1) {
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+
+            }
+
+            if($equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'fancoil_lsp'){
+                $val_conf_equipo_1_1 = 4;
+
+                if($equipo_conf_1_1 === 'ca_pi_te'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Sin Ventilación':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+
+                        case 'Con Ventilación DOA':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        default:
+                      }
+
+                }
+
+                if($equipo_conf_1_1 === 'fancoil_lsp'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Sin Ventilación':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        default:
+                      }
+                }
+
+                switch ($t_control_conf_1_1) {
+                    case 'Termostatos Fuera Zona de Confort':
+                        $val_conf_crtl_1_1 = 2.5;
+                      break;
+                    case 'Termostatos en Zona de Confort':
+                        $val_conf_crtl_1_1 = 4;
+                      break;
+                    case 'Termostato Inteligente en Zona':
+                        $val_conf_crtl_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+
+                  switch ($dr_conf_1_1) {
+                    case 'No Aplica':
+                        $val_conf_dr_1_1 = 2;
+                      break;
+
+                    default:
+                  }
+
+                  switch ($mant_conf_1_1) {
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+            }
+
+            if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
+                $val_conf_equipo_1_1 = 3.5;
+                if($equipo_conf_1_1 === 'est_ptac'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Sin Filración MERV 8':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'Con Filtración MERV 8':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                    default:
+                      }
+
+                      switch ($t_control_conf_1_1) {
+                        case 'Termostatos Fuera Zona de Confort':
+                            $val_conf_crtl_1_1 = 3;
+                          break;
+                        case 'Termostatos en Zona de Confort':
+                            $val_conf_crtl_1_1 = 4;
+                          break;
+                        case 'Termostato Inteligente en Zona':
+                            $val_conf_crtl_1_1 = 5;
+                          break;
+
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'pa_pi_te'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Condensador Arriba':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'Condensador Abajo':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'Espalda con Espalda':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                    default:
+                      }
+
+                      switch ($t_control_conf_1_1) {
+                        case 'Termostato Interno':
+                            $val_conf_crtl_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+
+                switch ($dr_conf_1_1) {
+                    case 'No Aplica':
+                        $val_conf_dr_1_1 = 2;
+                      break;
+
+                    default:
+                  }
+
+                  switch ($mant_conf_1_1) {
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 4.5;
+                      break;
+
+                    default:
+                  }
+            }
+
+            $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
+            $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
+            $solution_enf1_2->confort = $nivel_confotr_1_1;
 
                 $update_project->update();
 
@@ -908,8 +1711,32 @@ class ProjectController extends Controller
                             $val_aprox_aux_1_3 = 0;
                     }
 
+                    if($request->get('maintenance_cost_1_3') != null){
+                        $aux_cost_mant_1_3 = explode("$",   $request->get('maintenance_cost_1_3'));
+                        $aux_cost_mant_b_1_3 = explode(",",    $aux_cost_mant_1_3[1]);
+
+                        if(count($aux_cost_mant_b_1_3) == 1){
+                            $aux_cost_mant_1_3 =  $aux_cost_mant_b_1_3[0];
+                        }
+                        if(count($aux_cost_mant_b_1_3) == 2){
+                            $aux_cost_mant_1_3=  $aux_cost_mant_b_1_3[0].$aux_cost_mant_b_1_3[1];
+                        }
+                        if(count($aux_cost_mant_b_1_3) == 3){
+                            $aux_cost_mant_1_3 =  $aux_cost_mant_b_1_3[0].$aux_cost_mant_b_1_3[1].$aux_cost_mant_b_1_3[2];
+                        }
+                        if(count($aux_cost_mant_b_1_3) == 4){
+                            $aux_cost_mant_1_3 =  $aux_cost_mant_b_1_3[0].$aux_cost_mant_b_1_3[1].$aux_cost_mant_b_1_3[2].$aux_cost_mant_b_1_3[3];
+                        }
+                        if(count($aux_cost_mant_b_1_3) == 5){
+                            $aux_cost_mant_1_3 =  $aux_cost_mant_b_1_3[0].$aux_cost_mant_b_1_3[1].$aux_cost_mant_b_1_3[2].$aux_cost_mant_b_1_3[3].$aux_cost_mant_b_1_3[4];
+                        }
 
 
+                    }else  if($request->get('maintenance_cost_1_3') == null){
+                        $aux_cost_mant_1_3 = 0;
+
+                    }
+                    $solution_enf1_3->costo_mantenimiento=floatval($aux_cost_mant_1_3);
                     $solution_enf1_3->val_aprox = floatval($val_aprox_aux_1_3);
                     $solution_enf1_3->status = 1;
                     $solution_enf1_3->id_empresa=Auth::user()->id_empresa;
@@ -1036,7 +1863,397 @@ class ProjectController extends Controller
                 $solution_enf1_3->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
                 }
 
+
                 $update_project->update();
+
+ //niveles de confort
+ $unidad_conf_1_1 = $solution_enf1_3->unidad_hvac;
+ $equipo_conf_1_1 = $solution_enf1_3->tipo_equipo;
+ $diseno_conf_1_1 = $solution_enf1_3->name_disenio;
+ $t_control_conf_1_1 = $solution_enf1_3->name_t_control;
+ $dr_conf_1_1 = $solution_enf1_3->dr_name;
+ $mant_conf_1_1 = $solution_enf1_3->mantenimiento;
+
+ if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp' || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+     $val_conf_equipo_1_1 = 4.5;
+
+     if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'){
+         switch ($diseno_conf_1_1) {
+             case 'Ducto Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'VAV y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+                break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+             case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'manejadora'){
+         switch ($diseno_conf_1_1) {
+             case 'Descarga Directa Sin Ductar':
+                 $val_conf_dis_1_1 = 2;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'Ducto Flex y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'No Aplica':
+                 $val_conf_dr_1_1 = 2;
+               break;
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+               case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'fancoil'){
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'Ducto Flex. y Retorno Ductado':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+             case 'Ducto Flex y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Baja Presión Estática':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'No Aplica':
+                 $val_conf_dr_1_1 = 2;
+               break;
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+               case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'man'){
+
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'Ducto Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+             case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'fancoil_hsp'){
+
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'Ducto Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+             case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+             case 'Inyección y Retorno Flexible':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+             case 'Inyección Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'No Aplica':
+                 $val_conf_dr_1_1 = 2;
+               break;
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+               case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+     //control
+     switch ($t_control_conf_1_1) {
+         case 'Termostatos Fuera Zona de Confort':
+             $val_conf_crtl_1_1 = 2.5;
+           break;
+         case 'Termostatos en Zona de Confort':
+             $val_conf_crtl_1_1 = 4;
+           break;
+         case 'Termostato Inteligente en Zona':
+             $val_conf_crtl_1_1 = 5;
+           break;
+
+         default:
+       }
+       //mant
+       switch ($mant_conf_1_1) {
+         case 'ASHRAE 180':
+             $val_conf_mant_1_1 = 2.5;
+           break;
+         case 'Deficiente':
+             $val_conf_mant_1_1 = 3.5;
+           break;
+           case 'Sin Mantenimiento':
+             $val_conf_mant_1_1 = 5;
+           break;
+
+         default:
+       }
+
+ }
+
+ if($equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'fancoil_lsp'){
+     $val_conf_equipo_1_1 = 4;
+
+     if($equipo_conf_1_1 === 'ca_pi_te'){
+         switch ($diseno_conf_1_1) {
+             case 'Sin Ventilación':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+
+             case 'Con Ventilación DOA':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             default:
+           }
+
+     }
+
+     if($equipo_conf_1_1 === 'fancoil_lsp'){
+         switch ($diseno_conf_1_1) {
+             case 'Sin Ventilación':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             default:
+           }
+     }
+
+     switch ($t_control_conf_1_1) {
+         case 'Termostatos Fuera Zona de Confort':
+             $val_conf_crtl_1_1 = 2.5;
+           break;
+         case 'Termostatos en Zona de Confort':
+             $val_conf_crtl_1_1 = 4;
+           break;
+         case 'Termostato Inteligente en Zona':
+             $val_conf_crtl_1_1 = 5;
+           break;
+
+         default:
+       }
+
+       switch ($dr_conf_1_1) {
+         case 'No Aplica':
+             $val_conf_dr_1_1 = 2;
+           break;
+
+         default:
+       }
+
+       switch ($mant_conf_1_1) {
+         case 'ASHRAE 180':
+             $val_conf_mant_1_1 = 2.5;
+           break;
+         case 'Deficiente':
+             $val_conf_mant_1_1 = 3.5;
+           break;
+           case 'Sin Mantenimiento':
+             $val_conf_mant_1_1 = 5;
+           break;
+
+         default:
+       }
+ }
+
+ if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
+     $val_conf_equipo_1_1 = 3.5;
+     if($equipo_conf_1_1 === 'est_ptac'){
+         switch ($diseno_conf_1_1) {
+             case 'Sin Filración MERV 8':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'Con Filtración MERV 8':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+         default:
+           }
+
+           switch ($t_control_conf_1_1) {
+             case 'Termostatos Fuera Zona de Confort':
+                 $val_conf_crtl_1_1 = 3;
+               break;
+             case 'Termostatos en Zona de Confort':
+                 $val_conf_crtl_1_1 = 4;
+               break;
+             case 'Termostato Inteligente en Zona':
+                 $val_conf_crtl_1_1 = 5;
+               break;
+
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'pa_pi_te'){
+         switch ($diseno_conf_1_1) {
+             case 'Condensador Arriba':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'Condensador Abajo':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'Espalda con Espalda':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+         default:
+           }
+
+           switch ($t_control_conf_1_1) {
+             case 'Termostato Interno':
+                 $val_conf_crtl_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+
+     switch ($dr_conf_1_1) {
+         case 'No Aplica':
+             $val_conf_dr_1_1 = 2;
+           break;
+
+         default:
+       }
+
+       switch ($mant_conf_1_1) {
+         case 'ASHRAE 180':
+             $val_conf_mant_1_1 = 2.5;
+           break;
+         case 'Deficiente':
+             $val_conf_mant_1_1 = 3.5;
+           break;
+           case 'Sin Mantenimiento':
+             $val_conf_mant_1_1 = 4.5;
+           break;
+
+         default:
+       }
+ }
+
+ $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
+ $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
+ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
                 if($action_submit == 'store'){
 
@@ -1367,6 +2584,395 @@ class ProjectController extends Controller
 
                             $update_project->update();
 
+                             //niveles de confort
+ $unidad_conf_1_1 = $solution_enf2_1->unidad_hvac;
+ $equipo_conf_1_1 = $solution_enf2_1->tipo_equipo;
+ $diseno_conf_1_1 = $solution_enf2_1->name_disenio;
+ $t_control_conf_1_1 = $solution_enf2_1->name_t_control;
+ $dr_conf_1_1 = $solution_enf2_1->dr_name;
+ $mant_conf_1_1 = $solution_enf2_1->mantenimiento;
+
+ if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp' || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+     $val_conf_equipo_1_1 = 4.5;
+
+     if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'){
+         switch ($diseno_conf_1_1) {
+             case 'Ducto Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'VAV y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+                break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+             case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'manejadora'){
+         switch ($diseno_conf_1_1) {
+             case 'Descarga Directa Sin Ductar':
+                 $val_conf_dis_1_1 = 2;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'Ducto Flex y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'No Aplica':
+                 $val_conf_dr_1_1 = 2;
+               break;
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+               case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'fancoil'){
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'Ducto Flex. y Retorno Ductado':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+             case 'Ducto Flex y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Baja Presión Estática':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'No Aplica':
+                 $val_conf_dr_1_1 = 2;
+               break;
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+               case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'man'){
+
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'Ducto Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+             case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'fancoil_hsp'){
+
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'Ducto Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+             case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+             case 'Inyección y Retorno Flexible':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+             case 'Inyección Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'No Aplica':
+                 $val_conf_dr_1_1 = 2;
+               break;
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+               case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+     //control
+     switch ($t_control_conf_1_1) {
+         case 'Termostatos Fuera Zona de Confort':
+             $val_conf_crtl_1_1 = 2.5;
+           break;
+         case 'Termostatos en Zona de Confort':
+             $val_conf_crtl_1_1 = 4;
+           break;
+         case 'Termostato Inteligente en Zona':
+             $val_conf_crtl_1_1 = 5;
+           break;
+
+         default:
+       }
+       //mant
+       switch ($mant_conf_1_1) {
+         case 'ASHRAE 180':
+             $val_conf_mant_1_1 = 2.5;
+           break;
+         case 'Deficiente':
+             $val_conf_mant_1_1 = 3.5;
+           break;
+           case 'Sin Mantenimiento':
+             $val_conf_mant_1_1 = 5;
+           break;
+
+         default:
+       }
+
+ }
+
+ if($equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'fancoil_lsp'){
+     $val_conf_equipo_1_1 = 4;
+
+     if($equipo_conf_1_1 === 'ca_pi_te'){
+         switch ($diseno_conf_1_1) {
+             case 'Sin Ventilación':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+
+             case 'Con Ventilación DOA':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             default:
+           }
+
+     }
+
+     if($equipo_conf_1_1 === 'fancoil_lsp'){
+         switch ($diseno_conf_1_1) {
+             case 'Sin Ventilación':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             default:
+           }
+     }
+
+     switch ($t_control_conf_1_1) {
+         case 'Termostatos Fuera Zona de Confort':
+             $val_conf_crtl_1_1 = 2.5;
+           break;
+         case 'Termostatos en Zona de Confort':
+             $val_conf_crtl_1_1 = 4;
+           break;
+         case 'Termostato Inteligente en Zona':
+             $val_conf_crtl_1_1 = 5;
+           break;
+
+         default:
+       }
+
+       switch ($dr_conf_1_1) {
+         case 'No Aplica':
+             $val_conf_dr_1_1 = 2;
+           break;
+
+         default:
+       }
+
+       switch ($mant_conf_1_1) {
+         case 'ASHRAE 180':
+             $val_conf_mant_1_1 = 2.5;
+           break;
+         case 'Deficiente':
+             $val_conf_mant_1_1 = 3.5;
+           break;
+           case 'Sin Mantenimiento':
+             $val_conf_mant_1_1 = 5;
+           break;
+
+         default:
+       }
+ }
+
+ if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
+     $val_conf_equipo_1_1 = 3.5;
+     if($equipo_conf_1_1 === 'est_ptac'){
+         switch ($diseno_conf_1_1) {
+             case 'Sin Filración MERV 8':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'Con Filtración MERV 8':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+         default:
+           }
+
+           switch ($t_control_conf_1_1) {
+             case 'Termostatos Fuera Zona de Confort':
+                 $val_conf_crtl_1_1 = 3;
+               break;
+             case 'Termostatos en Zona de Confort':
+                 $val_conf_crtl_1_1 = 4;
+               break;
+             case 'Termostato Inteligente en Zona':
+                 $val_conf_crtl_1_1 = 5;
+               break;
+
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'pa_pi_te'){
+         switch ($diseno_conf_1_1) {
+             case 'Condensador Arriba':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'Condensador Abajo':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'Espalda con Espalda':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+         default:
+           }
+
+           switch ($t_control_conf_1_1) {
+             case 'Termostato Interno':
+                 $val_conf_crtl_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+
+     switch ($dr_conf_1_1) {
+         case 'No Aplica':
+             $val_conf_dr_1_1 = 2;
+           break;
+
+         default:
+       }
+
+       switch ($mant_conf_1_1) {
+         case 'ASHRAE 180':
+             $val_conf_mant_1_1 = 2.5;
+           break;
+         case 'Deficiente':
+             $val_conf_mant_1_1 = 3.5;
+           break;
+           case 'Sin Mantenimiento':
+             $val_conf_mant_1_1 = 4.5;
+           break;
+
+         default:
+       }
+ }
+
+ $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
+ $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
+ $solution_enf2_1->confort = $nivel_confotr_1_1;
+
                     if($action_submit == 'store'){
 
                         if( $update_project->update()){
@@ -1508,8 +3114,34 @@ class ProjectController extends Controller
                                 $val_aprox_aux_2_2 = 0;
                         }
 
+                        if($request->get('maintenance_cost_2_2') != null){
+                            $aux_cost_mant_2_2 = explode("$",   $request->get('maintenance_cost_2_2'));
+                            $aux_cost_mant_a_2_2 = explode(",",    $aux_cost_mant_2_2[1]);
+
+                            if(count($aux_cost_mant_a_2_2) == 1){
+                                $aux_cost_mant_2_2 =  $aux_cost_mant_a_2_2[0];
+                            }
+                            if(count($aux_cost_mant_a_2_2) == 2){
+                                $aux_cost_mant_2_2=  $aux_cost_mant_a_2_2[0].$aux_cost_mant_a_2_2[1];
+                            }
+                            if(count($aux_cost_mant_a_2_2) == 3){
+                                $aux_cost_mant_2_2 =  $aux_cost_mant_a_2_2[0].$aux_cost_mant_a_2_2[1].$aux_cost_mant_a_2_2[2];
+                            }
+                            if(count($aux_cost_mant_a_2_2) == 4){
+                                $aux_cost_mant_2_2 =  $aux_cost_mant_a_2_2[0].$aux_cost_mant_a_2_2[1].$aux_cost_mant_a_2_2[2].$aux_cost_mant_a_2_2[3];
+                            }
+                            if(count($aux_cost_mant_a_2_2) == 5){
+                                $aux_cost_mant_2_2 =  $aux_cost_mant_a_2_2[0].$aux_cost_mant_a_2_2[1].$aux_cost_mant_a_2_2[2].$aux_cost_mant_a_2_2[3].$aux_cost_mant_a_2_2[4];
+                            }
 
 
+                        }else  if($request->get('maintenance_cost_2_2') == null){
+                            $aux_cost_mant_2_2 = 0;
+
+                        }
+
+
+                        $solution_enf2_2->costo_mantenimiento=floatval($aux_cost_mant_2_2);
                         $solution_enf2_2->val_aprox = floatval($val_aprox_aux_2_2);
                         $solution_enf2_2->status = 1;
                         $solution_enf2_2->id_empresa=Auth::user()->id_empresa;
@@ -1634,6 +3266,398 @@ class ProjectController extends Controller
                             $res_res_fact_m =  $res_res * $factor_m;
                            $solution_enf2_2->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
                     }
+
+
+                                              //niveles de confort
+ $unidad_conf_1_1 = $solution_enf2_2->unidad_hvac;
+ $equipo_conf_1_1 = $solution_enf2_2->tipo_equipo;
+ $diseno_conf_1_1 = $solution_enf2_2->name_disenio;
+ $t_control_conf_1_1 = $solution_enf2_2->name_t_control;
+ $dr_conf_1_1 = $solution_enf2_2->dr_name;
+ $mant_conf_1_1 = $solution_enf2_2->mantenimiento;
+
+ if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp' || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+     $val_conf_equipo_1_1 = 4.5;
+
+     if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'){
+         switch ($diseno_conf_1_1) {
+             case 'Ducto Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'VAV y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+                break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+             case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'manejadora'){
+         switch ($diseno_conf_1_1) {
+             case 'Descarga Directa Sin Ductar':
+                 $val_conf_dis_1_1 = 2;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'Ducto Flex y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'No Aplica':
+                 $val_conf_dr_1_1 = 2;
+               break;
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+               case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'fancoil'){
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'Ducto Flex. y Retorno Ductado':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+             case 'Ducto Flex y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Baja Presión Estática':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'No Aplica':
+                 $val_conf_dr_1_1 = 2;
+               break;
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+               case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'man'){
+
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'Ducto Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+             case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'fancoil_hsp'){
+
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'Ducto Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+             case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+             case 'Inyección y Retorno Flexible':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+             case 'Inyección Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'No Aplica':
+                 $val_conf_dr_1_1 = 2;
+               break;
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+               case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+     //control
+     switch ($t_control_conf_1_1) {
+         case 'Termostatos Fuera Zona de Confort':
+             $val_conf_crtl_1_1 = 2.5;
+           break;
+         case 'Termostatos en Zona de Confort':
+             $val_conf_crtl_1_1 = 4;
+           break;
+         case 'Termostato Inteligente en Zona':
+             $val_conf_crtl_1_1 = 5;
+           break;
+
+         default:
+       }
+       //mant
+       switch ($mant_conf_1_1) {
+         case 'ASHRAE 180':
+             $val_conf_mant_1_1 = 2.5;
+           break;
+         case 'Deficiente':
+             $val_conf_mant_1_1 = 3.5;
+           break;
+           case 'Sin Mantenimiento':
+             $val_conf_mant_1_1 = 5;
+           break;
+
+         default:
+       }
+
+ }
+
+ if($equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'fancoil_lsp'){
+     $val_conf_equipo_1_1 = 4;
+
+     if($equipo_conf_1_1 === 'ca_pi_te'){
+         switch ($diseno_conf_1_1) {
+             case 'Sin Ventilación':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+
+             case 'Con Ventilación DOA':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             default:
+           }
+
+     }
+
+     if($equipo_conf_1_1 === 'fancoil_lsp'){
+         switch ($diseno_conf_1_1) {
+             case 'Sin Ventilación':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             default:
+           }
+     }
+
+     switch ($t_control_conf_1_1) {
+         case 'Termostatos Fuera Zona de Confort':
+             $val_conf_crtl_1_1 = 2.5;
+           break;
+         case 'Termostatos en Zona de Confort':
+             $val_conf_crtl_1_1 = 4;
+           break;
+         case 'Termostato Inteligente en Zona':
+             $val_conf_crtl_1_1 = 5;
+           break;
+
+         default:
+       }
+
+       switch ($dr_conf_1_1) {
+         case 'No Aplica':
+             $val_conf_dr_1_1 = 2;
+           break;
+
+         default:
+       }
+
+       switch ($mant_conf_1_1) {
+         case 'ASHRAE 180':
+             $val_conf_mant_1_1 = 2.5;
+           break;
+         case 'Deficiente':
+             $val_conf_mant_1_1 = 3.5;
+           break;
+           case 'Sin Mantenimiento':
+             $val_conf_mant_1_1 = 5;
+           break;
+
+         default:
+       }
+ }
+
+ if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
+     $val_conf_equipo_1_1 = 3.5;
+     if($equipo_conf_1_1 === 'est_ptac'){
+         switch ($diseno_conf_1_1) {
+             case 'Sin Filración MERV 8':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'Con Filtración MERV 8':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+         default:
+           }
+
+           switch ($t_control_conf_1_1) {
+             case 'Termostatos Fuera Zona de Confort':
+                 $val_conf_crtl_1_1 = 3;
+               break;
+             case 'Termostatos en Zona de Confort':
+                 $val_conf_crtl_1_1 = 4;
+               break;
+             case 'Termostato Inteligente en Zona':
+                 $val_conf_crtl_1_1 = 5;
+               break;
+
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'pa_pi_te'){
+         switch ($diseno_conf_1_1) {
+             case 'Condensador Arriba':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'Condensador Abajo':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'Espalda con Espalda':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+         default:
+           }
+
+           switch ($t_control_conf_1_1) {
+             case 'Termostato Interno':
+                 $val_conf_crtl_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+
+     switch ($dr_conf_1_1) {
+         case 'No Aplica':
+             $val_conf_dr_1_1 = 2;
+           break;
+
+         default:
+       }
+
+       switch ($mant_conf_1_1) {
+         case 'ASHRAE 180':
+             $val_conf_mant_1_1 = 2.5;
+           break;
+         case 'Deficiente':
+             $val_conf_mant_1_1 = 3.5;
+           break;
+           case 'Sin Mantenimiento':
+             $val_conf_mant_1_1 = 4.5;
+           break;
+
+         default:
+       }
+ }
+
+ $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
+ $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
+ $solution_enf2_2->confort = $nivel_confotr_1_1;
+
+
                     $update_project->update();
 
                     if($action_submit == 'store'){
@@ -1768,10 +3792,35 @@ class ProjectController extends Controller
                                 $val_aprox_aux_2_3 = 0;
                         }
 
+                        if($request->get('maintenance_cost_2_3') != null){
+                            $aux_cost_mant_2_3 = explode("$",   $request->get('maintenance_cost_2_3'));
+                            $aux_cost_mant_b_2_3 = explode(",",    $aux_cost_mant_2_3[1]);
 
+                            if(count($aux_cost_mant_b_2_3) == 1){
+                                $aux_cost_mant_2_3 =  $aux_cost_mant_b_2_3[0];
+                            }
+                            if(count($aux_cost_mant_b_2_3) == 2){
+                                $aux_cost_mant_2_3=  $aux_cost_mant_b_2_3[0].$aux_cost_mant_b_2_3[1];
+                            }
+                            if(count($aux_cost_mant_b_2_3) == 3){
+                                $aux_cost_mant_2_3 =  $aux_cost_mant_b_2_3[0].$aux_cost_mant_b_2_3[1].$aux_cost_mant_b_2_3[2];
+                            }
+                            if(count($aux_cost_mant_b_2_3) == 4){
+                                $aux_cost_mant_2_3 =  $aux_cost_mant_b_2_3[0].$aux_cost_mant_b_2_3[1].$aux_cost_mant_b_2_3[2].$aux_cost_mant_b_2_3[3];
+                            }
+                            if(count($aux_cost_mant_b_2_3) == 5){
+                                $aux_cost_mant_2_3 =  $aux_cost_mant_b_2_3[0].$aux_cost_mant_b_2_3[1].$aux_cost_mant_b_2_3[2].$aux_cost_mant_b_2_3[3].$aux_cost_mant_b_2_3[4];
+                            }
+
+
+                        }else  if($request->get('maintenance_cost_2_3') == null){
+                            $aux_cost_mant_2_3 = 0;
+
+                        }
 
                         $solution_enf2_3->val_aprox = floatval($val_aprox_aux_2_3);
                         $solution_enf2_3->status = 1;
+                        $solution_enf2_3->costo_mantenimiento=floatval($aux_cost_mant_2_3);
                         $solution_enf2_3->id_empresa=Auth::user()->id_empresa;
                         $solution_enf2_3->id_user=Auth::user()->id;
 
@@ -1894,6 +3943,394 @@ class ProjectController extends Controller
                        $solution_enf2_3->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
                     }
 
+
+                    $unidad_conf_1_1 = $solution_enf2_3->unidad_hvac;
+ $equipo_conf_1_1 = $solution_enf2_3->tipo_equipo;
+ $diseno_conf_1_1 = $solution_enf2_3->name_disenio;
+ $t_control_conf_1_1 = $solution_enf2_3->name_t_control;
+ $dr_conf_1_1 = $solution_enf2_3->dr_name;
+ $mant_conf_1_1 = $solution_enf2_3->mantenimiento;
+
+ if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp' || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+     $val_conf_equipo_1_1 = 4.5;
+
+     if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'){
+         switch ($diseno_conf_1_1) {
+             case 'Ducto Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'VAV y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+                break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+             case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'manejadora'){
+         switch ($diseno_conf_1_1) {
+             case 'Descarga Directa Sin Ductar':
+                 $val_conf_dis_1_1 = 2;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'Ducto Flex y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'No Aplica':
+                 $val_conf_dr_1_1 = 2;
+               break;
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+               case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'fancoil'){
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'Ducto Flex. y Retorno Ductado':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+             case 'Ducto Flex y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Baja Presión Estática':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'No Aplica':
+                 $val_conf_dr_1_1 = 2;
+               break;
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+               case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'man'){
+
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'Ducto Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+             case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'fancoil_hsp'){
+
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             case 'Ducto Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+             case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+
+         switch ($diseno_conf_1_1) {
+             case 'Inyección y Retorno Ductado':
+                 $val_conf_dis_1_1 = 4.5;
+               break;
+             case 'Inyección y Retorno Flexible':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+             case 'Inyección Flex. y Plenum Retorno':
+                 $val_conf_dis_1_1 = 3;
+               break;
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 5;
+               break;
+             default:
+           }
+
+           switch ($dr_conf_1_1) {
+             case 'No Aplica':
+                 $val_conf_dr_1_1 = 2;
+               break;
+             case 'Cumple ASHRAE  Standard 70':
+                 $val_conf_dr_1_1 = 5;
+               break;
+               case 'No Cumple ASHRAE Standard 70':
+                 $val_conf_dr_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+     //control
+     switch ($t_control_conf_1_1) {
+         case 'Termostatos Fuera Zona de Confort':
+             $val_conf_crtl_1_1 = 2.5;
+           break;
+         case 'Termostatos en Zona de Confort':
+             $val_conf_crtl_1_1 = 4;
+           break;
+         case 'Termostato Inteligente en Zona':
+             $val_conf_crtl_1_1 = 5;
+           break;
+
+         default:
+       }
+       //mant
+       switch ($mant_conf_1_1) {
+         case 'ASHRAE 180':
+             $val_conf_mant_1_1 = 2.5;
+           break;
+         case 'Deficiente':
+             $val_conf_mant_1_1 = 3.5;
+           break;
+           case 'Sin Mantenimiento':
+             $val_conf_mant_1_1 = 5;
+           break;
+
+         default:
+       }
+
+ }
+
+ if($equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'fancoil_lsp'){
+     $val_conf_equipo_1_1 = 4;
+
+     if($equipo_conf_1_1 === 'ca_pi_te'){
+         switch ($diseno_conf_1_1) {
+             case 'Sin Ventilación':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+
+             case 'Con Ventilación DOA':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             default:
+           }
+
+     }
+
+     if($equipo_conf_1_1 === 'fancoil_lsp'){
+         switch ($diseno_conf_1_1) {
+             case 'Sin Ventilación':
+                 $val_conf_dis_1_1 = 2.5;
+               break;
+
+             case 'Descarga Directa Ductada':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'ASHRAE 55/62.1/90.1':
+                 $val_conf_dis_1_1 = 4;
+               break;
+             default:
+           }
+     }
+
+     switch ($t_control_conf_1_1) {
+         case 'Termostatos Fuera Zona de Confort':
+             $val_conf_crtl_1_1 = 2.5;
+           break;
+         case 'Termostatos en Zona de Confort':
+             $val_conf_crtl_1_1 = 4;
+           break;
+         case 'Termostato Inteligente en Zona':
+             $val_conf_crtl_1_1 = 5;
+           break;
+
+         default:
+       }
+
+       switch ($dr_conf_1_1) {
+         case 'No Aplica':
+             $val_conf_dr_1_1 = 2;
+           break;
+
+         default:
+       }
+
+       switch ($mant_conf_1_1) {
+         case 'ASHRAE 180':
+             $val_conf_mant_1_1 = 2.5;
+           break;
+         case 'Deficiente':
+             $val_conf_mant_1_1 = 3.5;
+           break;
+           case 'Sin Mantenimiento':
+             $val_conf_mant_1_1 = 5;
+           break;
+
+         default:
+       }
+ }
+
+ if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
+     $val_conf_equipo_1_1 = 3.5;
+     if($equipo_conf_1_1 === 'est_ptac'){
+         switch ($diseno_conf_1_1) {
+             case 'Sin Filración MERV 8':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'Con Filtración MERV 8':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+         default:
+           }
+
+           switch ($t_control_conf_1_1) {
+             case 'Termostatos Fuera Zona de Confort':
+                 $val_conf_crtl_1_1 = 3;
+               break;
+             case 'Termostatos en Zona de Confort':
+                 $val_conf_crtl_1_1 = 4;
+               break;
+             case 'Termostato Inteligente en Zona':
+                 $val_conf_crtl_1_1 = 5;
+               break;
+
+             default:
+           }
+     }
+
+     if($equipo_conf_1_1 === 'pa_pi_te'){
+         switch ($diseno_conf_1_1) {
+             case 'Condensador Arriba':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'Condensador Abajo':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+             case 'Espalda con Espalda':
+                 $val_conf_dis_1_1 = 3.5;
+               break;
+
+         default:
+           }
+
+           switch ($t_control_conf_1_1) {
+             case 'Termostato Interno':
+                 $val_conf_crtl_1_1 = 3;
+               break;
+
+             default:
+           }
+     }
+
+     switch ($dr_conf_1_1) {
+         case 'No Aplica':
+             $val_conf_dr_1_1 = 2;
+           break;
+
+         default:
+       }
+
+       switch ($mant_conf_1_1) {
+         case 'ASHRAE 180':
+             $val_conf_mant_1_1 = 2.5;
+           break;
+         case 'Deficiente':
+             $val_conf_mant_1_1 = 3.5;
+           break;
+           case 'Sin Mantenimiento':
+             $val_conf_mant_1_1 = 4.5;
+           break;
+
+         default:
+       }
+ }
+
+ $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
+ $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
+ $solution_enf2_3->confort = $nivel_confotr_1_1;
 
                     $update_project->update();
 
@@ -2221,7 +4658,397 @@ class ProjectController extends Controller
                     $res_res_fact_m =  $res_res * $factor_m;
                    $solution_enf3_1->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
              }
+             //confort
+             $unidad_conf_1_1 = $solution_enf3_1->unidad_hvac;
+             $equipo_conf_1_1 = $solution_enf3_1->tipo_equipo;
+             $diseno_conf_1_1 = $solution_enf3_1->name_disenio;
+             $t_control_conf_1_1 = $solution_enf3_1->name_t_control;
+             $dr_conf_1_1 = $solution_enf3_1->dr_name;
+             $mant_conf_1_1 = $solution_enf3_1->mantenimiento;
+
+             if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp' || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+                 $val_conf_equipo_1_1 = 4.5;
+
+                 if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'){
+                     switch ($diseno_conf_1_1) {
+                         case 'Ducto Flex. y Plenum Retorno':
+                             $val_conf_dis_1_1 = 3;
+                           break;
+                         case 'Descarga Directa Ductada':
+                             $val_conf_dis_1_1 = 2.5;
+                           break;
+                         case 'Inyección y Retorno Ductado':
+                             $val_conf_dis_1_1 = 4;
+                           break;
+                         case 'VAV y Retorno Ductado':
+                             $val_conf_dis_1_1 = 4.5;
+                           break;
+                         case 'ASHRAE 55/62.1/90.1':
+                             $val_conf_dis_1_1 = 5;
+                            break;
+                         default:
+                       }
+
+                       switch ($dr_conf_1_1) {
+                         case 'Cumple ASHRAE  Standard 70':
+                             $val_conf_dr_1_1 = 5;
+                           break;
+                         case 'No Cumple ASHRAE Standard 70':
+                             $val_conf_dr_1_1 = 3;
+                           break;
+                         default:
+                       }
+                 }
+
+                 if($equipo_conf_1_1 === 'manejadora'){
+                     switch ($diseno_conf_1_1) {
+                         case 'Descarga Directa Sin Ductar':
+                             $val_conf_dis_1_1 = 2;
+                           break;
+                         case 'Descarga Directa Ductada':
+                             $val_conf_dis_1_1 = 2.5;
+                           break;
+                         case 'Ducto Flex y Plenum Retorno':
+                             $val_conf_dis_1_1 = 3;
+                           break;
+                         case 'ASHRAE 55/62.1/90.1':
+                             $val_conf_dis_1_1 = 4.5;
+                           break;
+                         default:
+                       }
+
+                       switch ($dr_conf_1_1) {
+                         case 'No Aplica':
+                             $val_conf_dr_1_1 = 2;
+                           break;
+                         case 'Cumple ASHRAE  Standard 70':
+                             $val_conf_dr_1_1 = 5;
+                           break;
+                           case 'No Cumple ASHRAE Standard 70':
+                             $val_conf_dr_1_1 = 3;
+                           break;
+
+                         default:
+                       }
+                 }
+
+                 if($equipo_conf_1_1 === 'fancoil'){
+                     switch ($diseno_conf_1_1) {
+                         case 'Inyección y Retorno Ductado':
+                             $val_conf_dis_1_1 = 4;
+                           break;
+                         case 'Ducto Flex. y Retorno Ductado':
+                             $val_conf_dis_1_1 = 3.5;
+                           break;
+                         case 'Ducto Flex y Plenum Retorno':
+                             $val_conf_dis_1_1 = 3;
+                           break;
+                         case 'Baja Presión Estática':
+                             $val_conf_dis_1_1 = 2.5;
+                           break;
+                         case 'ASHRAE 55/62.1/90.1':
+                             $val_conf_dis_1_1 = 4.5;
+                           break;
+
+                         default:
+                       }
+
+                       switch ($dr_conf_1_1) {
+                         case 'No Aplica':
+                             $val_conf_dr_1_1 = 2;
+                           break;
+                         case 'Cumple ASHRAE  Standard 70':
+                             $val_conf_dr_1_1 = 5;
+                           break;
+                           case 'No Cumple ASHRAE Standard 70':
+                             $val_conf_dr_1_1 = 3;
+                           break;
+
+                         default:
+                       }
+                 }
+
+                 if($equipo_conf_1_1 === 'man'){
+
+                     switch ($diseno_conf_1_1) {
+                         case 'Inyección y Retorno Ductado':
+                             $val_conf_dis_1_1 = 4;
+                           break;
+                         case 'Ducto Flex. y Plenum Retorno':
+                             $val_conf_dis_1_1 = 3;
+                           break;
+                         case 'Descarga Directa Ductada':
+                             $val_conf_dis_1_1 = 2.5;
+                           break;
+                         case 'ASHRAE 55/62.1/90.1':
+                             $val_conf_dis_1_1 = 5;
+                           break;
+                         default:
+                       }
+
+                       switch ($dr_conf_1_1) {
+                         case 'Cumple ASHRAE  Standard 70':
+                             $val_conf_dr_1_1 = 5;
+                           break;
+                         case 'No Cumple ASHRAE Standard 70':
+                             $val_conf_dr_1_1 = 3;
+                           break;
+                         default:
+                       }
+                 }
+
+                 if($equipo_conf_1_1 === 'fancoil_hsp'){
+
+                     switch ($diseno_conf_1_1) {
+                         case 'Inyección y Retorno Ductado':
+                             $val_conf_dis_1_1 = 4;
+                           break;
+                         case 'Ducto Flex. y Plenum Retorno':
+                             $val_conf_dis_1_1 = 3;
+                           break;
+                         case 'Descarga Directa Ductada':
+                             $val_conf_dis_1_1 = 2.5;
+                           break;
+                         case 'ASHRAE 55/62.1/90.1':
+                             $val_conf_dis_1_1 = 5;
+                           break;
+                         default:
+                       }
+
+                       switch ($dr_conf_1_1) {
+                         case 'Cumple ASHRAE  Standard 70':
+                             $val_conf_dr_1_1 = 5;
+                           break;
+                         case 'No Cumple ASHRAE Standard 70':
+                             $val_conf_dr_1_1 = 3;
+                           break;
+                         default:
+                       }
+                 }
+
+                 if($equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+
+                     switch ($diseno_conf_1_1) {
+                         case 'Inyección y Retorno Ductado':
+                             $val_conf_dis_1_1 = 4.5;
+                           break;
+                         case 'Inyección y Retorno Flexible':
+                             $val_conf_dis_1_1 = 3.5;
+                           break;
+                         case 'Inyección Flex. y Plenum Retorno':
+                             $val_conf_dis_1_1 = 3;
+                           break;
+                         case 'ASHRAE 55/62.1/90.1':
+                             $val_conf_dis_1_1 = 5;
+                           break;
+                         default:
+                       }
+
+                       switch ($dr_conf_1_1) {
+                         case 'No Aplica':
+                             $val_conf_dr_1_1 = 2;
+                           break;
+                         case 'Cumple ASHRAE  Standard 70':
+                             $val_conf_dr_1_1 = 5;
+                           break;
+                           case 'No Cumple ASHRAE Standard 70':
+                             $val_conf_dr_1_1 = 3;
+                           break;
+
+                         default:
+                       }
+                 }
+                 //control
+                 switch ($t_control_conf_1_1) {
+                     case 'Termostatos Fuera Zona de Confort':
+                         $val_conf_crtl_1_1 = 2.5;
+                       break;
+                     case 'Termostatos en Zona de Confort':
+                         $val_conf_crtl_1_1 = 4;
+                       break;
+                     case 'Termostato Inteligente en Zona':
+                         $val_conf_crtl_1_1 = 5;
+                       break;
+
+                     default:
+                   }
+                   //mant
+                   switch ($mant_conf_1_1) {
+                     case 'ASHRAE 180':
+                         $val_conf_mant_1_1 = 2.5;
+                       break;
+                     case 'Deficiente':
+                         $val_conf_mant_1_1 = 3.5;
+                       break;
+                       case 'Sin Mantenimiento':
+                         $val_conf_mant_1_1 = 5;
+                       break;
+
+                     default:
+                   }
+
+             }
+
+             if($equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'fancoil_lsp'){
+                 $val_conf_equipo_1_1 = 4;
+
+                 if($equipo_conf_1_1 === 'ca_pi_te'){
+                     switch ($diseno_conf_1_1) {
+                         case 'Sin Ventilación':
+                             $val_conf_dis_1_1 = 2.5;
+                           break;
+
+                         case 'Con Ventilación DOA':
+                             $val_conf_dis_1_1 = 3.5;
+                           break;
+
+                         case 'ASHRAE 55/62.1/90.1':
+                             $val_conf_dis_1_1 = 4;
+                           break;
+                         default:
+                       }
+
+                 }
+
+                 if($equipo_conf_1_1 === 'fancoil_lsp'){
+                     switch ($diseno_conf_1_1) {
+                         case 'Sin Ventilación':
+                             $val_conf_dis_1_1 = 2.5;
+                           break;
+
+                         case 'Descarga Directa Ductada':
+                             $val_conf_dis_1_1 = 3.5;
+                           break;
+
+                         case 'ASHRAE 55/62.1/90.1':
+                             $val_conf_dis_1_1 = 4;
+                           break;
+                         default:
+                       }
+                 }
+
+                 switch ($t_control_conf_1_1) {
+                     case 'Termostatos Fuera Zona de Confort':
+                         $val_conf_crtl_1_1 = 2.5;
+                       break;
+                     case 'Termostatos en Zona de Confort':
+                         $val_conf_crtl_1_1 = 4;
+                       break;
+                     case 'Termostato Inteligente en Zona':
+                         $val_conf_crtl_1_1 = 5;
+                       break;
+
+                     default:
+                   }
+
+                   switch ($dr_conf_1_1) {
+                     case 'No Aplica':
+                         $val_conf_dr_1_1 = 2;
+                       break;
+
+                     default:
+                   }
+
+                   switch ($mant_conf_1_1) {
+                     case 'ASHRAE 180':
+                         $val_conf_mant_1_1 = 2.5;
+                       break;
+                     case 'Deficiente':
+                         $val_conf_mant_1_1 = 3.5;
+                       break;
+                       case 'Sin Mantenimiento':
+                         $val_conf_mant_1_1 = 5;
+                       break;
+
+                     default:
+                   }
+             }
+
+             if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
+                 $val_conf_equipo_1_1 = 3.5;
+                 if($equipo_conf_1_1 === 'est_ptac'){
+                     switch ($diseno_conf_1_1) {
+                         case 'Sin Filración MERV 8':
+                             $val_conf_dis_1_1 = 3.5;
+                           break;
+
+                         case 'Con Filtración MERV 8':
+                             $val_conf_dis_1_1 = 3.5;
+                           break;
+
+                     default:
+                       }
+
+                       switch ($t_control_conf_1_1) {
+                         case 'Termostatos Fuera Zona de Confort':
+                             $val_conf_crtl_1_1 = 3;
+                           break;
+                         case 'Termostatos en Zona de Confort':
+                             $val_conf_crtl_1_1 = 4;
+                           break;
+                         case 'Termostato Inteligente en Zona':
+                             $val_conf_crtl_1_1 = 5;
+                           break;
+
+                         default:
+                       }
+                 }
+
+                 if($equipo_conf_1_1 === 'pa_pi_te'){
+                     switch ($diseno_conf_1_1) {
+                         case 'Condensador Arriba':
+                             $val_conf_dis_1_1 = 3.5;
+                           break;
+
+                         case 'Condensador Abajo':
+                             $val_conf_dis_1_1 = 3.5;
+                           break;
+
+                         case 'Espalda con Espalda':
+                             $val_conf_dis_1_1 = 3.5;
+                           break;
+
+                     default:
+                       }
+
+                       switch ($t_control_conf_1_1) {
+                         case 'Termostato Interno':
+                             $val_conf_crtl_1_1 = 3;
+                           break;
+
+                         default:
+                       }
+                 }
+
+                 switch ($dr_conf_1_1) {
+                     case 'No Aplica':
+                         $val_conf_dr_1_1 = 2;
+                       break;
+
+                     default:
+                   }
+
+                   switch ($mant_conf_1_1) {
+                     case 'ASHRAE 180':
+                         $val_conf_mant_1_1 = 2.5;
+                       break;
+                     case 'Deficiente':
+                         $val_conf_mant_1_1 = 3.5;
+                       break;
+                       case 'Sin Mantenimiento':
+                         $val_conf_mant_1_1 = 4.5;
+                       break;
+
+                     default:
+                   }
+             }
+
+             $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
+             $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
+             $solution_enf3_1->confort = $nivel_confotr_1_1;
+
              $update_project->update();
+
              if($action_submit == 'store'){
 
                 if( $update_project->update()){
@@ -2359,8 +5186,32 @@ class ProjectController extends Controller
                }
 
 
+               if($request->get('maintenance_cost_3_2') != null){
+                $aux_cost_mant_3_2 = explode("$",   $request->get('maintenance_cost_3_2'));
+                $aux_cost_mant_a_3_2 = explode(",",    $aux_cost_mant_3_2[1]);
+
+                if(count($aux_cost_mant_a_3_2) == 1){
+                    $aux_cost_mant_3_2 =  $aux_cost_mant_a_3_2[0];
+                }
+                if(count($aux_cost_mant_a_3_2) == 2){
+                    $aux_cost_mant_3_2=  $aux_cost_mant_a_3_2[0].$aux_cost_mant_a_3_2[1];
+                }
+                if(count($aux_cost_mant_a_3_2) == 3){
+                    $aux_cost_mant_3_2 =  $aux_cost_mant_a_3_2[0].$aux_cost_mant_a_3_2[1].$aux_cost_mant_a_3_2[2];
+                }
+                if(count($aux_cost_mant_a_3_2) == 4){
+                    $aux_cost_mant_3_2 =  $aux_cost_mant_a_3_2[0].$aux_cost_mant_a_3_2[1].$aux_cost_mant_a_3_2[2].$aux_cost_mant_a_3_2[3];
+                }
+                if(count($aux_cost_mant_a_3_2) == 5){
+                    $aux_cost_mant_3_2 =  $aux_cost_mant_a_3_2[0].$aux_cost_mant_a_3_2[1].$aux_cost_mant_a_3_2[2].$aux_cost_mant_a_3_2[3].$aux_cost_mant_a_3_2[4];
+                }
 
 
+            }else  if($request->get('maintenance_cost_3_2') == null){
+                $aux_cost_mant_3_2 = 0;
+
+            }
+                $solution_enf3_2->costo_mantenimiento=floatval($aux_cost_mant_3_2);
                 $solution_enf3_2->val_aprox = floatval($val_aprox_aux_3_2);
                 $solution_enf3_2->status = 1;
                 $solution_enf3_2->id_empresa=Auth::user()->id_empresa;
@@ -2484,6 +5335,395 @@ class ProjectController extends Controller
                    $res_res_fact_m =  $res_res * $factor_m;
                   $solution_enf3_2->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
             }
+
+            //confort
+            $unidad_conf_1_1 = $solution_enf3_2->unidad_hvac;
+            $equipo_conf_1_1 = $solution_enf3_2->tipo_equipo;
+            $diseno_conf_1_1 = $solution_enf3_2->name_disenio;
+            $t_control_conf_1_1 = $solution_enf3_2->name_t_control;
+            $dr_conf_1_1 = $solution_enf3_2->dr_name;
+            $mant_conf_1_1 = $solution_enf3_2->mantenimiento;
+
+            if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp' || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+                $val_conf_equipo_1_1 = 4.5;
+
+                if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'VAV y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                           break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                        case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'manejadora'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Descarga Directa Sin Ductar':
+                            $val_conf_dis_1_1 = 2;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'Ducto Flex y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'No Aplica':
+                            $val_conf_dr_1_1 = 2;
+                          break;
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                          case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'fancoil'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Retorno Ductado':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+                        case 'Ducto Flex y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Baja Presión Estática':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'No Aplica':
+                            $val_conf_dr_1_1 = 2;
+                          break;
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                          case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'man'){
+
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                        case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'fancoil_hsp'){
+
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                        case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+                        case 'Inyección y Retorno Flexible':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+                        case 'Inyección Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'No Aplica':
+                            $val_conf_dr_1_1 = 2;
+                          break;
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                          case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+                //control
+                switch ($t_control_conf_1_1) {
+                    case 'Termostatos Fuera Zona de Confort':
+                        $val_conf_crtl_1_1 = 2.5;
+                      break;
+                    case 'Termostatos en Zona de Confort':
+                        $val_conf_crtl_1_1 = 4;
+                      break;
+                    case 'Termostato Inteligente en Zona':
+                        $val_conf_crtl_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+                  //mant
+                  switch ($mant_conf_1_1) {
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+
+            }
+
+            if($equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'fancoil_lsp'){
+                $val_conf_equipo_1_1 = 4;
+
+                if($equipo_conf_1_1 === 'ca_pi_te'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Sin Ventilación':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+
+                        case 'Con Ventilación DOA':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        default:
+                      }
+
+                }
+
+                if($equipo_conf_1_1 === 'fancoil_lsp'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Sin Ventilación':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        default:
+                      }
+                }
+
+                switch ($t_control_conf_1_1) {
+                    case 'Termostatos Fuera Zona de Confort':
+                        $val_conf_crtl_1_1 = 2.5;
+                      break;
+                    case 'Termostatos en Zona de Confort':
+                        $val_conf_crtl_1_1 = 4;
+                      break;
+                    case 'Termostato Inteligente en Zona':
+                        $val_conf_crtl_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+
+                  switch ($dr_conf_1_1) {
+                    case 'No Aplica':
+                        $val_conf_dr_1_1 = 2;
+                      break;
+
+                    default:
+                  }
+
+                  switch ($mant_conf_1_1) {
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+            }
+
+            if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
+                $val_conf_equipo_1_1 = 3.5;
+                if($equipo_conf_1_1 === 'est_ptac'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Sin Filración MERV 8':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'Con Filtración MERV 8':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                    default:
+                      }
+
+                      switch ($t_control_conf_1_1) {
+                        case 'Termostatos Fuera Zona de Confort':
+                            $val_conf_crtl_1_1 = 3;
+                          break;
+                        case 'Termostatos en Zona de Confort':
+                            $val_conf_crtl_1_1 = 4;
+                          break;
+                        case 'Termostato Inteligente en Zona':
+                            $val_conf_crtl_1_1 = 5;
+                          break;
+
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'pa_pi_te'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Condensador Arriba':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'Condensador Abajo':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'Espalda con Espalda':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                    default:
+                      }
+
+                      switch ($t_control_conf_1_1) {
+                        case 'Termostato Interno':
+                            $val_conf_crtl_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+
+                switch ($dr_conf_1_1) {
+                    case 'No Aplica':
+                        $val_conf_dr_1_1 = 2;
+                      break;
+
+                    default:
+                  }
+
+                  switch ($mant_conf_1_1) {
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 4.5;
+                      break;
+
+                    default:
+                  }
+            }
+
+            $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
+            $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
+            $solution_enf3_2->confort = $nivel_confotr_1_1;
 
             $update_project->update();
 
@@ -2616,8 +5856,32 @@ class ProjectController extends Controller
                        $val_aprox_aux_3_3 = 0;
                }
 
+               if($request->get('maintenance_cost_3_3') != null){
+                $aux_cost_mant_3_3 = explode("$",   $request->get('maintenance_cost_3_3'));
+                $aux_cost_mant_b_3_2 = explode(",",    $aux_cost_mant_3_3[1]);
+
+                if(count($aux_cost_mant_b_3_2) == 1){
+                    $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_2[0];
+                }
+                if(count($aux_cost_mant_b_3_2) == 2){
+                    $aux_cost_mant_3_3=  $aux_cost_mant_b_3_2[0].$aux_cost_mant_b_3_2[1];
+                }
+                if(count($aux_cost_mant_b_3_2) == 3){
+                    $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_2[0].$aux_cost_mant_b_3_2[1].$aux_cost_mant_b_3_2[2];
+                }
+                if(count($aux_cost_mant_b_3_2) == 4){
+                    $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_2[0].$aux_cost_mant_b_3_2[1].$aux_cost_mant_b_3_2[2].$aux_cost_mant_b_3_2[3];
+                }
+                if(count($aux_cost_mant_b_3_2) == 5){
+                    $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_2[0].$aux_cost_mant_b_3_2[1].$aux_cost_mant_b_3_2[2].$aux_cost_mant_b_3_2[3].$aux_cost_mant_b_3_2[4];
+                }
 
 
+            }else  if($request->get('maintenance_cost_3_3') == null){
+                $aux_cost_mant_3_3 = 0;
+
+            }
+                $solution_enf3_3->costo_mantenimiento=floatval($aux_cost_mant_3_3);
                 $solution_enf3_3->val_aprox = floatval($val_aprox_aux_3_3);
                 $solution_enf3_3->status = 1;
                 $solution_enf3_3->id_empresa=Auth::user()->id_empresa;
@@ -2740,6 +6004,394 @@ class ProjectController extends Controller
               $solution_enf3_3->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
             }
 
+            //confort
+            $unidad_conf_1_1 = $solution_enf3_3->unidad_hvac;
+            $equipo_conf_1_1 = $solution_enf3_3->tipo_equipo;
+            $diseno_conf_1_1 = $solution_enf3_3->name_disenio;
+            $t_control_conf_1_1 = $solution_enf3_3->name_t_control;
+            $dr_conf_1_1 = $solution_enf3_3->dr_name;
+            $mant_conf_1_1 = $solution_enf3_3->mantenimiento;
+
+            if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp' || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+                $val_conf_equipo_1_1 = 4.5;
+
+                if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'VAV y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                           break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                        case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'manejadora'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Descarga Directa Sin Ductar':
+                            $val_conf_dis_1_1 = 2;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'Ducto Flex y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'No Aplica':
+                            $val_conf_dr_1_1 = 2;
+                          break;
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                          case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'fancoil'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Retorno Ductado':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+                        case 'Ducto Flex y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Baja Presión Estática':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'No Aplica':
+                            $val_conf_dr_1_1 = 2;
+                          break;
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                          case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'man'){
+
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                        case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'fancoil_hsp'){
+
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                        case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4.5;
+                          break;
+                        case 'Inyección y Retorno Flexible':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+                        case 'Inyección Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
+
+                      switch ($dr_conf_1_1) {
+                        case 'No Aplica':
+                            $val_conf_dr_1_1 = 2;
+                          break;
+                        case 'Cumple ASHRAE  Standard 70':
+                            $val_conf_dr_1_1 = 5;
+                          break;
+                          case 'No Cumple ASHRAE Standard 70':
+                            $val_conf_dr_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+                //control
+                switch ($t_control_conf_1_1) {
+                    case 'Termostatos Fuera Zona de Confort':
+                        $val_conf_crtl_1_1 = 2.5;
+                      break;
+                    case 'Termostatos en Zona de Confort':
+                        $val_conf_crtl_1_1 = 4;
+                      break;
+                    case 'Termostato Inteligente en Zona':
+                        $val_conf_crtl_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+                  //mant
+                  switch ($mant_conf_1_1) {
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+
+            }
+
+            if($equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'fancoil_lsp'){
+                $val_conf_equipo_1_1 = 4;
+
+                if($equipo_conf_1_1 === 'ca_pi_te'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Sin Ventilación':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+
+                        case 'Con Ventilación DOA':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        default:
+                      }
+
+                }
+
+                if($equipo_conf_1_1 === 'fancoil_lsp'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Sin Ventilación':
+                            $val_conf_dis_1_1 = 2.5;
+                          break;
+
+                        case 'Descarga Directa Ductada':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        default:
+                      }
+                }
+
+                switch ($t_control_conf_1_1) {
+                    case 'Termostatos Fuera Zona de Confort':
+                        $val_conf_crtl_1_1 = 2.5;
+                      break;
+                    case 'Termostatos en Zona de Confort':
+                        $val_conf_crtl_1_1 = 4;
+                      break;
+                    case 'Termostato Inteligente en Zona':
+                        $val_conf_crtl_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+
+                  switch ($dr_conf_1_1) {
+                    case 'No Aplica':
+                        $val_conf_dr_1_1 = 2;
+                      break;
+
+                    default:
+                  }
+
+                  switch ($mant_conf_1_1) {
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 5;
+                      break;
+
+                    default:
+                  }
+            }
+
+            if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
+                $val_conf_equipo_1_1 = 3.5;
+                if($equipo_conf_1_1 === 'est_ptac'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Sin Filración MERV 8':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'Con Filtración MERV 8':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                    default:
+                      }
+
+                      switch ($t_control_conf_1_1) {
+                        case 'Termostatos Fuera Zona de Confort':
+                            $val_conf_crtl_1_1 = 3;
+                          break;
+                        case 'Termostatos en Zona de Confort':
+                            $val_conf_crtl_1_1 = 4;
+                          break;
+                        case 'Termostato Inteligente en Zona':
+                            $val_conf_crtl_1_1 = 5;
+                          break;
+
+                        default:
+                      }
+                }
+
+                if($equipo_conf_1_1 === 'pa_pi_te'){
+                    switch ($diseno_conf_1_1) {
+                        case 'Condensador Arriba':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'Condensador Abajo':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                        case 'Espalda con Espalda':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+
+                    default:
+                      }
+
+                      switch ($t_control_conf_1_1) {
+                        case 'Termostato Interno':
+                            $val_conf_crtl_1_1 = 3;
+                          break;
+
+                        default:
+                      }
+                }
+
+                switch ($dr_conf_1_1) {
+                    case 'No Aplica':
+                        $val_conf_dr_1_1 = 2;
+                      break;
+
+                    default:
+                  }
+
+                  switch ($mant_conf_1_1) {
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 4.5;
+                      break;
+
+                    default:
+                  }
+            }
+
+            $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
+            $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
+            $solution_enf3_3->confort = $nivel_confotr_1_1;
 
             $update_project->update();
 
