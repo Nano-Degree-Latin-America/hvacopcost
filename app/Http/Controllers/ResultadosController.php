@@ -8414,7 +8414,7 @@ $dompdf->render();
 
         $arry_tots=[];
 
-        if(count($sols_enf) == 1){
+        if(count($sols_enf) === 1){
             $sol = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id)
             ->where('solutions_project.num_enf','=',$enf)
@@ -8423,7 +8423,7 @@ $dompdf->render();
             return $sol;
         }
 
-        if(count($sols_enf) == 2 || count($sols_enf) == 3 ){
+        if(count($sols_enf) === 2 || count($sols_enf) === 3 ){
 
 
             for ($i = 1; $i <= count($sols_enf); $i++) {
