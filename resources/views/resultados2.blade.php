@@ -5734,12 +5734,12 @@ function confort_a(val_conf_a){
 
     if(val_conf_a >= 1 && val_conf_a < 1.125){
        $("#term_1_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_1_a").prepend(val_conf);
+       $("#val_base_1_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 1.125 && val_conf_a < 1.25){
        $("#term_2_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_1125_a").prepend(val_conf);
+       $("#val_base_1125_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 1.25 && val_conf_a < 1.375){
@@ -5903,12 +5903,12 @@ function confort_b(val_conf_b){
 
     if(val_conf_b >= 1 && val_conf_b < 1.125){
        $("#term_1_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_1_b").prepend(val_conf);
+       $("#val_base_1_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 1.125 && val_conf_b < 1.25){
        $("#term_2_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_1125_b").prepend(val_conf);
+       $("#val_base_1125_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 1.25 && val_conf_b < 1.375){
@@ -5953,12 +5953,12 @@ function confort_b(val_conf_b){
 
     if(val_conf_b >= 2.25 && val_conf_b < 2.375){
        $("#term_11_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_225_b").prepend(val_conf);
+       $("#val_base_225_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 2.375 && val_conf_b < 2.5){
        $("#term_12_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_2375_b").prepend(val_conf);
+       $("#val_base_2375_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 2.5 && val_conf_b < 2.625){

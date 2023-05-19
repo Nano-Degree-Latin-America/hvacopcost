@@ -736,13 +736,13 @@ class ProjectController extends Controller
                   //mant
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -812,13 +812,13 @@ class ProjectController extends Controller
 
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -891,13 +891,13 @@ class ProjectController extends Controller
 
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 4.5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 4.5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -907,6 +907,7 @@ class ProjectController extends Controller
             $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
             $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
             $solution_enf1->confort = $nivel_confotr_1_1;
+
             //flata regilla y mantenimiento
             $update_project->update();
             if( $update_project->update()){
@@ -1401,13 +1402,13 @@ class ProjectController extends Controller
                   //mant
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -1477,13 +1478,13 @@ class ProjectController extends Controller
 
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -1556,13 +1557,13 @@ class ProjectController extends Controller
 
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 4.5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 4.5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -2082,18 +2083,18 @@ class ProjectController extends Controller
        }
        //mant
        switch ($mant_conf_1_1) {
-         case 'ASHRAE 180':
-             $val_conf_mant_1_1 = 2.5;
-           break;
-         case 'Deficiente':
-             $val_conf_mant_1_1 = 3.5;
-           break;
-           case 'Sin Mantenimiento':
-             $val_conf_mant_1_1 = 5;
-           break;
+        case 'ASHRAE 180':
+            $val_conf_mant_1_1 = 5;
+          break;
+        case 'Deficiente':
+            $val_conf_mant_1_1 = 3.5;
+          break;
+          case 'Sin Mantenimiento':
+            $val_conf_mant_1_1 = 2.5;
+          break;
 
-         default:
-       }
+        default:
+      }
 
  }
 
@@ -2158,18 +2159,18 @@ class ProjectController extends Controller
        }
 
        switch ($mant_conf_1_1) {
-         case 'ASHRAE 180':
-             $val_conf_mant_1_1 = 2.5;
-           break;
-         case 'Deficiente':
-             $val_conf_mant_1_1 = 3.5;
-           break;
-           case 'Sin Mantenimiento':
-             $val_conf_mant_1_1 = 5;
-           break;
+        case 'ASHRAE 180':
+            $val_conf_mant_1_1 = 5;
+          break;
+        case 'Deficiente':
+            $val_conf_mant_1_1 = 3.5;
+          break;
+          case 'Sin Mantenimiento':
+            $val_conf_mant_1_1 = 2.5;
+          break;
 
-         default:
-       }
+        default:
+      }
  }
 
  if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
@@ -2238,13 +2239,13 @@ class ProjectController extends Controller
 
        switch ($mant_conf_1_1) {
          case 'ASHRAE 180':
-             $val_conf_mant_1_1 = 2.5;
+             $val_conf_mant_1_1 = 4.5;
            break;
          case 'Deficiente':
              $val_conf_mant_1_1 = 3.5;
            break;
            case 'Sin Mantenimiento':
-             $val_conf_mant_1_1 = 4.5;
+             $val_conf_mant_1_1 = 2.5;
            break;
 
          default:
@@ -2800,18 +2801,18 @@ class ProjectController extends Controller
        }
        //mant
        switch ($mant_conf_1_1) {
-         case 'ASHRAE 180':
-             $val_conf_mant_1_1 = 2.5;
-           break;
-         case 'Deficiente':
-             $val_conf_mant_1_1 = 3.5;
-           break;
-           case 'Sin Mantenimiento':
-             $val_conf_mant_1_1 = 5;
-           break;
+        case 'ASHRAE 180':
+            $val_conf_mant_1_1 = 5;
+          break;
+        case 'Deficiente':
+            $val_conf_mant_1_1 = 3.5;
+          break;
+          case 'Sin Mantenimiento':
+            $val_conf_mant_1_1 = 2.5;
+          break;
 
-         default:
-       }
+        default:
+      }
 
  }
 
@@ -2876,18 +2877,18 @@ class ProjectController extends Controller
        }
 
        switch ($mant_conf_1_1) {
-         case 'ASHRAE 180':
-             $val_conf_mant_1_1 = 2.5;
-           break;
-         case 'Deficiente':
-             $val_conf_mant_1_1 = 3.5;
-           break;
-           case 'Sin Mantenimiento':
-             $val_conf_mant_1_1 = 5;
-           break;
+        case 'ASHRAE 180':
+            $val_conf_mant_1_1 = 5;
+          break;
+        case 'Deficiente':
+            $val_conf_mant_1_1 = 3.5;
+          break;
+          case 'Sin Mantenimiento':
+            $val_conf_mant_1_1 = 2.5;
+          break;
 
-         default:
-       }
+        default:
+      }
  }
 
  if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
@@ -2956,13 +2957,13 @@ class ProjectController extends Controller
 
        switch ($mant_conf_1_1) {
          case 'ASHRAE 180':
-             $val_conf_mant_1_1 = 2.5;
+             $val_conf_mant_1_1 = 4.5;
            break;
          case 'Deficiente':
              $val_conf_mant_1_1 = 3.5;
            break;
            case 'Sin Mantenimiento':
-             $val_conf_mant_1_1 = 4.5;
+             $val_conf_mant_1_1 = 2.5;
            break;
 
          default:
@@ -3484,18 +3485,18 @@ class ProjectController extends Controller
        }
        //mant
        switch ($mant_conf_1_1) {
-         case 'ASHRAE 180':
-             $val_conf_mant_1_1 = 2.5;
-           break;
-         case 'Deficiente':
-             $val_conf_mant_1_1 = 3.5;
-           break;
-           case 'Sin Mantenimiento':
-             $val_conf_mant_1_1 = 5;
-           break;
+        case 'ASHRAE 180':
+            $val_conf_mant_1_1 = 5;
+          break;
+        case 'Deficiente':
+            $val_conf_mant_1_1 = 3.5;
+          break;
+          case 'Sin Mantenimiento':
+            $val_conf_mant_1_1 = 2.5;
+          break;
 
-         default:
-       }
+        default:
+      }
 
  }
 
@@ -3560,18 +3561,18 @@ class ProjectController extends Controller
        }
 
        switch ($mant_conf_1_1) {
-         case 'ASHRAE 180':
-             $val_conf_mant_1_1 = 2.5;
-           break;
-         case 'Deficiente':
-             $val_conf_mant_1_1 = 3.5;
-           break;
-           case 'Sin Mantenimiento':
-             $val_conf_mant_1_1 = 5;
-           break;
+        case 'ASHRAE 180':
+            $val_conf_mant_1_1 = 5;
+          break;
+        case 'Deficiente':
+            $val_conf_mant_1_1 = 3.5;
+          break;
+          case 'Sin Mantenimiento':
+            $val_conf_mant_1_1 = 2.5;
+          break;
 
-         default:
-       }
+        default:
+      }
  }
 
  if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
@@ -3640,13 +3641,13 @@ class ProjectController extends Controller
 
        switch ($mant_conf_1_1) {
          case 'ASHRAE 180':
-             $val_conf_mant_1_1 = 2.5;
+             $val_conf_mant_1_1 = 4.5;
            break;
          case 'Deficiente':
              $val_conf_mant_1_1 = 3.5;
            break;
            case 'Sin Mantenimiento':
-             $val_conf_mant_1_1 = 4.5;
+             $val_conf_mant_1_1 = 2.5;
            break;
 
          default:
@@ -4159,18 +4160,18 @@ class ProjectController extends Controller
        }
        //mant
        switch ($mant_conf_1_1) {
-         case 'ASHRAE 180':
-             $val_conf_mant_1_1 = 2.5;
-           break;
-         case 'Deficiente':
-             $val_conf_mant_1_1 = 3.5;
-           break;
-           case 'Sin Mantenimiento':
-             $val_conf_mant_1_1 = 5;
-           break;
+        case 'ASHRAE 180':
+            $val_conf_mant_1_1 = 5;
+          break;
+        case 'Deficiente':
+            $val_conf_mant_1_1 = 3.5;
+          break;
+          case 'Sin Mantenimiento':
+            $val_conf_mant_1_1 = 2.5;
+          break;
 
-         default:
-       }
+        default:
+      }
 
  }
 
@@ -4235,18 +4236,18 @@ class ProjectController extends Controller
        }
 
        switch ($mant_conf_1_1) {
-         case 'ASHRAE 180':
-             $val_conf_mant_1_1 = 2.5;
-           break;
-         case 'Deficiente':
-             $val_conf_mant_1_1 = 3.5;
-           break;
-           case 'Sin Mantenimiento':
-             $val_conf_mant_1_1 = 5;
-           break;
+        case 'ASHRAE 180':
+            $val_conf_mant_1_1 = 5;
+          break;
+        case 'Deficiente':
+            $val_conf_mant_1_1 = 3.5;
+          break;
+          case 'Sin Mantenimiento':
+            $val_conf_mant_1_1 = 2.5;
+          break;
 
-         default:
-       }
+        default:
+      }
  }
 
  if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
@@ -4315,13 +4316,13 @@ class ProjectController extends Controller
 
        switch ($mant_conf_1_1) {
          case 'ASHRAE 180':
-             $val_conf_mant_1_1 = 2.5;
+             $val_conf_mant_1_1 = 4.5;
            break;
          case 'Deficiente':
              $val_conf_mant_1_1 = 3.5;
            break;
            case 'Sin Mantenimiento':
-             $val_conf_mant_1_1 = 4.5;
+             $val_conf_mant_1_1 = 2.5;
            break;
 
          default:
@@ -4874,18 +4875,18 @@ class ProjectController extends Controller
                    }
                    //mant
                    switch ($mant_conf_1_1) {
-                     case 'ASHRAE 180':
-                         $val_conf_mant_1_1 = 2.5;
-                       break;
-                     case 'Deficiente':
-                         $val_conf_mant_1_1 = 3.5;
-                       break;
-                       case 'Sin Mantenimiento':
-                         $val_conf_mant_1_1 = 5;
-                       break;
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
 
-                     default:
-                   }
+                    default:
+                  }
 
              }
 
@@ -4950,18 +4951,18 @@ class ProjectController extends Controller
                    }
 
                    switch ($mant_conf_1_1) {
-                     case 'ASHRAE 180':
-                         $val_conf_mant_1_1 = 2.5;
-                       break;
-                     case 'Deficiente':
-                         $val_conf_mant_1_1 = 3.5;
-                       break;
-                       case 'Sin Mantenimiento':
-                         $val_conf_mant_1_1 = 5;
-                       break;
+                    case 'ASHRAE 180':
+                        $val_conf_mant_1_1 = 5;
+                      break;
+                    case 'Deficiente':
+                        $val_conf_mant_1_1 = 3.5;
+                      break;
+                      case 'Sin Mantenimiento':
+                        $val_conf_mant_1_1 = 2.5;
+                      break;
 
-                     default:
-                   }
+                    default:
+                  }
              }
 
              if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
@@ -5030,13 +5031,13 @@ class ProjectController extends Controller
 
                    switch ($mant_conf_1_1) {
                      case 'ASHRAE 180':
-                         $val_conf_mant_1_1 = 2.5;
+                         $val_conf_mant_1_1 = 4.5;
                        break;
                      case 'Deficiente':
                          $val_conf_mant_1_1 = 3.5;
                        break;
                        case 'Sin Mantenimiento':
-                         $val_conf_mant_1_1 = 4.5;
+                         $val_conf_mant_1_1 = 2.5;
                        break;
 
                      default:
@@ -5553,13 +5554,13 @@ class ProjectController extends Controller
                   //mant
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -5629,13 +5630,13 @@ class ProjectController extends Controller
 
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -5708,13 +5709,13 @@ class ProjectController extends Controller
 
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 4.5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 4.5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -6221,13 +6222,13 @@ class ProjectController extends Controller
                   //mant
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -6297,13 +6298,13 @@ class ProjectController extends Controller
 
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -6376,13 +6377,13 @@ class ProjectController extends Controller
 
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 4.5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 4.5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
