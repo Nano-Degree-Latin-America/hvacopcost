@@ -8452,7 +8452,7 @@ $dompdf->render();
                 $indice_conf = $res_100_x_tr / $sumacapterm;
 
                 $tota_conft_sol = $indice_conf * $confort_sol;
-arror
+
                 array_push($arry_tots,number_format($tota_conft_sol,1));
 
               }
