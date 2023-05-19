@@ -177,6 +177,7 @@ span{
 
 .ancho_rang{
     width:1.25rem;
+    height:3rem;
 }
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
@@ -5555,168 +5556,168 @@ window.onload = function() {
 function confort_base(val_conf){
 
     if(val_conf >= 1 && val_conf < 1.125){
-       $("#term_1").css('border-left', '3px solid #4299e1');
-       $("#val_base_1").prepend(val_conf);
+       $("#term_1").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1").prepend(val_conf);
     }
 
     if(val_conf >= 1.125 && val_conf < 1.25){
-       $("#term_2").css('border-left', '3px solid #4299e1');
-       $("#val_base_1125").prepend(val_conf);
+       $("#term_2").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1125").prepend(val_conf);
     }
 
     if(val_conf >= 1.25 && val_conf < 1.375){
-       $("#term_3").css('border-left', '3px solid #4299e1');
-       $("#val_base_125").prepend(val_conf);
+       $("#term_3").css('border-left', '5px solid #4299e1');
+       //$("#val_base_125").prepend(val_conf);
     }
 
     if(val_conf >= 1.375 && val_conf < 1.5){
-       $("#term_4").css('border-left', '3px solid #4299e1');
-       $("#val_base_1375").prepend(val_conf);
+       $("#term_4").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1375").prepend(val_conf);
     }
 
     if(val_conf >= 1.5 && val_conf < 1.625){
-       $("#term_5").css('border-left', '3px solid #4299e1');
-       $("#val_base_15").prepend(val_conf);
+       $("#term_5").css('border-left', '5px solid #4299e1');
+       //$("#val_base_15").prepend(val_conf);
     }
 
     if(val_conf >= 1.625 && val_conf < 1.75){
-       $("#term_6").css('border-left', '3px solid #4299e1');
-       $("#val_base_1625").prepend(val_conf);
+       $("#term_6").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1625").prepend(val_conf);
     }
 
     if(val_conf >= 1.75 && val_conf < 1.875){
-       $("#term_7").css('border-left', '3px solid #4299e1');
-       $("#val_base_175").prepend(val_conf);
+       $("#term_7").css('border-left', '5px solid #4299e1');
+       //$("#val_base_175").prepend(val_conf);
     }
 
     if(val_conf >= 1.875 && val_conf < 2){
-       $("#term_8").css('border-left', '3px solid #4299e1');
-       $("#val_base_1875").prepend(val_conf);
+       $("#term_8").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1875").prepend(val_conf);
     }
 
     if(val_conf >= 2 && val_conf < 2.125){
-       $("#term_9").css('border-left', '3px solid #4299e1');
-       $("#val_base_2").prepend(val_conf);
+       $("#term_9").css('border-left', '5px solid #4299e1');
+       //$("#val_base_2").prepend(val_conf);
     }
 
     if(val_conf >= 2.125 && val_conf < 2.25){
-       $("#term_10").css('border-left', '3px solid #4299e1');
-       $("#val_base_2125").prepend(val_conf);
+       $("#term_10").css('border-left', '5px solid #4299e1');
+       //$("#val_base_2125").prepend(val_conf);
     }
 
     if(val_conf >= 2.25 && val_conf < 2.375){
-       $("#term_11").css('border-left', '3px solid #4299e1');
-       $("#val_base_225").prepend(val_conf);
+       $("#term_11").css('border-left', '5px solid #4299e1');
+      // $("#val_base_225").prepend(val_conf);
     }
 
     if(val_conf >= 2.375 && val_conf < 2.5){
-       $("#term_12").css('border-left', '3px solid #4299e1');
-       $("#val_base_2375").prepend(val_conf);
+       $("#term_12").css('border-left', '5px solid #4299e1');
+       //$("#val_base_2375").prepend(val_conf);
     }
 
     if(val_conf >= 2.5 && val_conf < 2.625){
-       $("#term_13").css('border-left', '3px solid #4299e1');
-       $("#val_base_25").prepend(val_conf);
+       $("#term_13").css('border-left', '5px solid #4299e1');
+       //$("#val_base_25").prepend(val_conf);
     }
 
     if(val_conf >= 2.625 && val_conf < 2.75){
-       $("#term_14").css('border-left', '3px solid #4299e1');
-       $("#val_base_2625").prepend(val_conf);
+       $("#term_14").css('border-left', '5px solid #4299e1');
+       //$("#val_base_2625").prepend(val_conf);
     }
 
     if(val_conf >= 2.75 && val_conf < 2.875){
-       $("#term_15").css('border-left', '3px solid #4299e1');
-       $("#val_base_275").prepend(val_conf);
+       $("#term_15").css('border-left', '5px solid #4299e1');
+       //$("#val_base_275").prepend(val_conf);
     }
 
     if(val_conf >= 2.875 && val_conf < 3){
-       $("#term_16").css('border-left', '3px solid #4299e1');
-       $("#val_base_2875").prepend(val_conf);
+       $("#term_16").css('border-left', '5px solid #4299e1');
+       //$("#val_base_2875").prepend(val_conf);
     }
 
     if(val_conf >= 3 && val_conf < 3.125){
-       $("#term_17").css('border-left', '3px solid #4299e1');
-       $("#val_base_3").prepend(val_conf);
+       $("#term_17").css('border-left', '5px solid #4299e1');
+       //$("#val_base_3").prepend(val_conf);
     }
 
     if(val_conf >= 3.125 && val_conf < 3.25){
-       $("#term_18").css('border-left', '3px solid #4299e1');
-       $("#val_base_3125").prepend(val_conf);
+       $("#term_18").css('border-left', '5px solid #4299e1');
+       //$("#val_base_3125").prepend(val_conf);
     }
 
     if(val_conf >= 3.25 && val_conf < 3.375){
-       $("#term_19").css('border-left', '3px solid #4299e1');
-       $("#val_base_325").prepend(val_conf);
+       $("#term_19").css('border-left', '5px solid #4299e1');
+       //$("#val_base_325").prepend(val_conf);
     }
 
     if(val_conf >= 3.375 && val_conf < 3.5){
-       $("#term_20").css('border-left', '3px solid #4299e1');
-       $("#val_base_3375").prepend(val_conf);
+       $("#term_20").css('border-left', '5px solid #4299e1');
+       //$("#val_base_3375").prepend(val_conf);
     }
 
     if(val_conf >= 3.5 && val_conf < 3.625){
-       $("#term_21").css('border-left', '3px solid #4299e1');
-       $("#val_base_35").prepend(val_conf);
+       $("#term_21").css('border-left', '5px solid #4299e1');
+      // $("#val_base_35").prepend(val_conf);
     }
 
     if(val_conf >= 3.625 && val_conf < 3.75){
-       $("#term_22").css('border-left', '3px solid #4299e1');
-       $("#val_base_3625").prepend(val_conf);
+       $("#term_22").css('border-left', '5px solid #4299e1');
+      // $("#val_base_3625").prepend(val_conf);
     }
 
     if(val_conf >= 3.75 && val_conf < 3.875){
-       $("#term_23").css('border-left', '3px solid #4299e1');
-       $("#val_base_375").prepend(val_conf);
+       $("#term_23").css('border-left', '5px solid #4299e1');
+      // $("#val_base_375").prepend(val_conf);
     }
 
     if(val_conf >= 3.875 && val_conf < 4){
-       $("#term_24").css('border-left', '3px solid #4299e1');
-       $("#val_base_3875").prepend(val_conf);
+       $("#term_24").css('border-left', '5px solid #4299e1');
+      // $("#val_base_3875").prepend(val_conf);
     }
 
     if(val_conf >= 4 && val_conf < 4.125){
-       $("#term_25").css('border-left', '3px solid #4299e1');
-       $("#val_base_4").prepend(val_conf);
+       $("#term_25").css('border-left', '5px solid #4299e1');
+       //$("#val_base_4").prepend(val_conf);
     }
 
     if(val_conf >= 4.125 && val_conf < 4.25){
-       $("#term_26").css('border-left', '3px solid #4299e1');
-       $("#val_base_4125").prepend(val_conf);
+       $("#term_26").css('border-left', '5px solid #4299e1');
+      // $("#val_base_4125").prepend(val_conf);
     }
 
     if(val_conf >= 4.25 && val_conf < 4.375){
-       $("#term_27").css('border-left', '3px solid #4299e1');
-       $("#val_base_425").prepend(val_conf);
+       $("#term_27").css('border-left', '5px solid #4299e1');
+      // $("#val_base_425").prepend(val_conf);
     }
 
     if(val_conf >= 4.375 && val_conf < 4.5){
-       $("#term_28").css('border-left', '3px solid #4299e1');
-       $("#val_base_4375").prepend(val_conf);
+       $("#term_28").css('border-left', '5px solid #4299e1');
+       //$("#val_base_4375").prepend(val_conf);
     }
 
     if(val_conf >= 4.5 && val_conf < 4.625){
-       $("#term_29").css('border-left', '3px solid #4299e1');
-       $("#val_base_45").prepend(val_conf);
+       $("#term_29").css('border-left', '5px solid #4299e1');
+      // $("#val_base_45").prepend(val_conf);
     }
 
     if(val_conf >= 4.625 && val_conf < 4.75){
-       $("#term_30").css('border-left', '3px solid #4299e1');
-       $("#val_base_4625").prepend(val_conf);
+       $("#term_30").css('border-left', '5px solid #4299e1');
+      // $("#val_base_4625").prepend(val_conf);
     }
 
     if(val_conf >= 4.75 && val_conf < 4.875){
-       $("#term_31").css('border-left', '3px solid #4299e1');
-       $("#val_base_475").prepend(val_conf);
+       $("#term_31").css('border-left', '5px solid #4299e1');
+      // $("#val_base_475").prepend(val_conf);
     }
 
     if(val_conf >= 4.875 && val_conf < 5){
-       $("#term_32").css('border-left', '3px solid #4299e1');
-       $("#val_base_4875").prepend(val_conf);
+       $("#term_32").css('border-left', '5px solid #4299e1');
+      // $("#val_base_4875").prepend(val_conf);
     }
 
     if(val_conf >= 5){
-       $("#term_33").css('border-right', '3px solid #4299e1');
-       $("#val_base_5").prepend(val_conf);
+       $("#term_33").css('border-right', '5px solid #4299e1');
+       //$("#val_base_5").prepend(val_conf);
     }
 
 
@@ -5733,168 +5734,168 @@ function confort_base(val_conf){
 function confort_a(val_conf_a){
 
     if(val_conf_a >= 1 && val_conf_a < 1.125){
-       $("#term_1_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_1_a").prepend(val_conf_a);
+       $("#term_1_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 1.125 && val_conf_a < 1.25){
-       $("#term_2_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_1125_a").prepend(val_conf_a);
+       $("#term_2_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1125_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 1.25 && val_conf_a < 1.375){
-       $("#term_3_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_125_a").prepend(val_conf_a);
+       $("#term_3_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_125_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 1.375 && val_conf_a < 1.5){
-       $("#term_4_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_1375_a").prepend(val_conf_a);
+       $("#term_4_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1375_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 1.5 && val_conf_a < 1.625){
-       $("#term_5_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_15_a").prepend(val_conf_a);
+       $("#term_5_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_15_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 1.625 && val_conf_a < 1.75){
-       $("#term_6_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_1625_a").prepend(val_conf_a);
+       $("#term_6_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1625_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 1.75 && val_conf_a < 1.875){
-       $("#term_7_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_175_a").prepend(val_conf_a);
+       $("#term_7_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_175_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 1.875 && val_conf_a < 2){
-       $("#term_8_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_1875_a").prepend(val_conf_a);
+       $("#term_8_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1875_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 2 && val_conf_a < 2.125){
-       $("#term_9_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_2_a").prepend(val_conf_a);
+       $("#term_9_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_2_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 2.125 && val_conf_a < 2.25){
-       $("#term_10_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_2125_a").prepend(val_conf_a);
+       $("#term_10_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_2125_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 2.25 && val_conf_a < 2.375){
-       $("#term_11_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_225_a").prepend(val_conf_a);
+       $("#term_11_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_225_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 2.375 && val_conf_a < 2.5){
-       $("#term_12_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_2375_a").prepend(val_conf_a);
+       $("#term_12_a").css('border-left', '5px solid #4299e1');
+      // $("#val_base_2375_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 2.5 && val_conf_a < 2.625){
-       $("#term_13_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_25_a").prepend(val_conf_a);
+       $("#term_13_a").css('border-left', '5px solid #4299e1');
+      // $("#val_base_25_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 2.625 && val_conf_a < 2.75){
-       $("#term_14_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_2625_a").prepend(val_conf_a);
+       $("#term_14_a").css('border-left', '5px solid #4299e1');
+      // $("#val_base_2625_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 2.75 && val_conf_a < 2.875){
-       $("#term_15_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_275_a").prepend(val_conf_a);
+       $("#term_15_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_275_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 2.875 && val_conf_a < 3){
-       $("#term_16_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_2875_a").prepend(val_conf_a);
+       $("#term_16_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_2875_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 3 && val_conf_a < 3.125){
-       $("#term_17_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_3_a").prepend(val_conf_a);
+       $("#term_17_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_3_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 3.125 && val_conf_a < 3.25){
-       $("#term_18_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_3125_a").prepend(val_conf_a);
+       $("#term_18_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_3125_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 3.25 && val_conf_a < 3.375){
-       $("#term_19_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_325_a").prepend(val_conf_a);
+       $("#term_19_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_325_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 3.375 && val_conf_a < 3.5){
-       $("#term_20_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_3375_a").prepend(val_conf_a);
+       $("#term_20_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_3375_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 3.5 && val_conf_a < 3.625){
-       $("#term_21_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_35_a").prepend(val_conf_a);
+       $("#term_21_a").css('border-left', '5px solid #4299e1');
+      // $("#val_base_35_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 3.625 && val_conf_a < 3.75){
-       $("#term_22_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_3625_a").prepend(val_conf_a);
+       $("#term_22_a").css('border-left', '5px solid #4299e1');
+      // $("#val_base_3625_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 3.75 && val_conf_a < 3.875){
-       $("#term_23_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_375_a").prepend(val_conf_a);
+       $("#term_23_a").css('border-left', '5px solid #4299e1');
+      // $("#val_base_375_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 3.875 && val_conf_a < 4){
-       $("#term_24_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_3875_a").prepend(val_conf_a);
+       $("#term_24_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_3875_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 4 && val_conf_a < 4.125){
-       $("#term_25_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_4_a").prepend(val_conf_a);
+       $("#term_25_a").css('border-left', '5px solid #4299e1');
+      // $("#val_base_4_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 4.125 && val_conf_a < 4.25){
-       $("#term_26_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_4125_a").prepend(val_conf_a);
+       $("#term_26_a").css('border-left', '5px solid #4299e1');
+      // $("#val_base_4125_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 4.25 && val_conf_a < 4.375){
-       $("#term_27_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_425_a").prepend(val_conf_a);
+       $("#term_27_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_425_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 4.375 && val_conf_a < 4.5){
-       $("#term_28_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_4375_a").prepend(val_conf_a);
+       $("#term_28_a").css('border-left', '5px solid #4299e1');
+      // $("#val_base_4375_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 4.5 && val_conf_a < 4.625){
-       $("#term_29_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_45_a").prepend(val_conf_a);
+       $("#term_29_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_45_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 4.625 && val_conf_a < 4.75){
-       $("#term_30_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_4625_a").prepend(val_conf_a);
+       $("#term_30_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_4625_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 4.75 && val_conf_a < 4.875){
-       $("#term_31_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_475_a").prepend(val_conf_a);
+       $("#term_31_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_475_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 4.875 && val_conf_a < 5){
-       $("#term_32_a").css('border-left', '3px solid #4299e1');
-       $("#val_base_4875_a").prepend(val_conf_a);
+       $("#term_32_a").css('border-left', '5px solid #4299e1');
+       //$("#val_base_4875_a").prepend(val_conf_a);
     }
 
     if(val_conf_a >= 5){
-       $("#term_33_a").css('border-right', '3px solid #4299e1');
-       $("#val_base_5_a").prepend(val_conf_a);
+       $("#term_33_a").css('border-right', '5px solid #4299e1');
+      // $("#val_base_5_a").prepend(val_conf_a);
     }
 
 }
@@ -5902,168 +5903,168 @@ function confort_a(val_conf_a){
 function confort_b(val_conf_b){
 
     if(val_conf_b >= 1 && val_conf_b < 1.125){
-       $("#term_1_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_1_b").prepend(val_conf_b);
+       $("#term_1_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 1.125 && val_conf_b < 1.25){
-       $("#term_2_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_1125_b").prepend(val_conf_b);
+       $("#term_2_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1125_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 1.25 && val_conf_b < 1.375){
-       $("#term_3_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_125_b").prepend(val_conf_b);
+       $("#term_3_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_125_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 1.375 && val_conf_b < 1.5){
-       $("#term_4_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_1375_b").prepend(val_conf_b);
+       $("#term_4_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_1375_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 1.5 && val_conf_b < 1.625){
-       $("#term_5_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_15_b").prepend(val_conf_b);
+       $("#term_5_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_15_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 1.625 && val_conf_b < 1.75){
-       $("#term_6_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_1625_b").prepend(val_conf_b);
+       $("#term_6_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_1625_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 1.75 && val_conf_b < 1.875){
-       $("#term_7_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_175_b").prepend(val_conf_b);
+       $("#term_7_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_175_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 1.875 && val_conf_b < 2){
-       $("#term_8_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_1875_b").prepend(val_conf_b);
+       $("#term_8_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_1875_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 2 && val_conf_b < 2.125){
-       $("#term_9_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_2_b").prepend(val_conf_b);
+       $("#term_9_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_2_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 2.125 && val_conf_b < 2.25){
-       $("#term_10_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_2125_b").prepend(val_conf_b);
+       $("#term_10_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_2125_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 2.25 && val_conf_b < 2.375){
-       $("#term_11_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_225_b").prepend(val_conf_b);
+       $("#term_11_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_225_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 2.375 && val_conf_b < 2.5){
-       $("#term_12_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_2375_b").prepend(val_conf_b);
+       $("#term_12_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_2375_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 2.5 && val_conf_b < 2.625){
-       $("#term_13_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_25_b").prepend(val_conf_b);
+       $("#term_13_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_25_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 2.625 && val_conf_b < 2.75){
-       $("#term_14_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_2625_b").prepend(val_conf_b);
+       $("#term_14_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_2625_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 2.75 && val_conf_b < 2.875){
-       $("#term_15_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_275_b").prepend(val_conf_b);
+       $("#term_15_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_275_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 2.875 && val_conf_b < 3){
-       $("#term_16_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_2875_b").prepend(val_conf_b);
+       $("#term_16_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_2875_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 3 && val_conf_b < 3.125){
-       $("#term_17_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_3_b").prepend(val_conf_b);
+       $("#term_17_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_3_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 3.125 && val_conf_b < 3.25){
-       $("#term_18_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_3125_b").prepend(val_conf_b);
+       $("#term_18_b").css('border-left', '5px solid #4299e1');
+     //  $("#val_base_3125_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 3.25 && val_conf_b < 3.375){
-       $("#term_19_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_325_b").prepend(val_conf_b);
+       $("#term_19_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_325_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 3.375 && val_conf_b < 3.5){
-       $("#term_20_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_3375_b").prepend(val_conf_b);
+       $("#term_20_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_3375_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 3.5 && val_conf_b < 3.625){
-       $("#term_21_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_35_b").prepend(val_conf_b);
+       $("#term_21_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_35_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 3.625 && val_conf_b < 3.75){
-       $("#term_22_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_3625_b").prepend(val_conf_b);
+       $("#term_22_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_3625_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 3.75 && val_conf_b < 3.875){
-       $("#term_23_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_375_b").prepend(val_conf_b);
+       $("#term_23_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_375_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 3.875 && val_conf_b < 4){
-       $("#term_24_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_3875_b").prepend(val_conf_b);
+       $("#term_24_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_3875_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 4 && val_conf_b < 4.125){
-       $("#term_25_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_4_b").prepend(val_conf_b);
+       $("#term_25_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_4_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 4.125 && val_conf_b < 4.25){
-       $("#term_26_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_4125_b").prepend(val_conf_b);
+       $("#term_26_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_4125_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 4.25 && val_conf_b < 4.375){
-       $("#term_27_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_425_b").prepend(val_conf_b);
+       $("#term_27_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_425_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 4.375 && val_conf_b < 4.5){
-       $("#term_28_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_4375_b").prepend(val_conf_b);
+       $("#term_28_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_4375_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 4.5 && val_conf_b < 4.625){
-       $("#term_29_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_45_b").prepend(val_conf_b);
+       $("#term_29_b").css('border-left', '5px solid #4299e1');
+      // $("#val_base_45_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 4.625 && val_conf_b < 4.75){
-       $("#term_30_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_4625_b").prepend(val_conf_b);
+       $("#term_30_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_4625_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 4.75 && val_conf_b < 4.875){
-       $("#term_31_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_475_b").prepend(val_conf_b);
+       $("#term_31_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_475_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 4.875 && val_conf_b < 5){
-       $("#term_32_b").css('border-left', '3px solid #4299e1');
-       $("#val_base_4875_b").prepend(val_conf_b);
+       $("#term_32_b").css('border-left', '5px solid #4299e1');
+       //$("#val_base_4875_b").prepend(val_conf_b);
     }
 
     if(val_conf_b >= 5){
-       $("#term_33_b").css('border-right', '3px solid #4299e1');
-       $("#val_base_5_b").prepend(val_conf_b);
+       $("#term_33_b").css('border-right', '5px solid #4299e1');
+       //$("#val_base_5_b").prepend(val_conf_b);
     }
 
 /* alert(val_conf_b); */
