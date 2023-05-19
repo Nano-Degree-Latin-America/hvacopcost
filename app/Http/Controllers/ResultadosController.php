@@ -54,7 +54,6 @@ class ResultadosController extends Controller
         $enfriamiento1 = intval($request->get('cUnidad_1_1'));
         $enfriamiento2 = intval($request->get('cUnidad_2_1'));
         $enfriamiento3 =intval($request->get('cUnidad_3_1'));
-
         $mew_project = new ProjectsModel;
         $mew_project->name=$request->get('name_pro');
         $mew_project->id_tipo_edificio=$request->get('tipo_edificio');
@@ -525,21 +524,21 @@ class ResultadosController extends Controller
 
       if($equipo_conf_1_1 === 'fancoil_hsp'){
 
-          switch ($diseno_conf_1_1) {
-              case 'Inyección y Retorno Ductado':
-                  $val_conf_dis_1_1 = 4;
-                break;
-              case 'Ducto Flex. y Plenum Retorno':
-                  $val_conf_dis_1_1 = 3;
-                break;
-              case 'Descarga Directa Ductada':
-                  $val_conf_dis_1_1 = 2.5;
-                break;
-              case 'ASHRAE 55/62.1/90.1':
-                  $val_conf_dis_1_1 = 5;
-                break;
-              default:
-            }
+        switch ($diseno_conf_1_1) {
+            case 'Inyección y Retorno Ductado':
+                $val_conf_dis_1_1 = 4;
+              break;
+            case 'Ducto Flex. y Retorno Ductado':
+                $val_conf_dis_1_1 = 3.5;
+              break;
+            case 'Ducto Flex. y Plenum Retorno':
+                $val_conf_dis_1_1 = 3;
+              break;
+            case 'ASHRAE 55/62.1/90.1':
+                $val_conf_dis_1_1 = 5;
+              break;
+            default:
+          }
 
             switch ($dr_conf_1_1) {
               case 'Cumple ASHRAE  Standard 70':
@@ -1176,21 +1175,21 @@ class ResultadosController extends Controller
 
       if($equipo_conf_1_1 === 'fancoil_hsp'){
 
-          switch ($diseno_conf_1_1) {
-              case 'Inyección y Retorno Ductado':
-                  $val_conf_dis_1_1 = 4;
-                break;
-              case 'Ducto Flex. y Plenum Retorno':
-                  $val_conf_dis_1_1 = 3;
-                break;
-              case 'Descarga Directa Ductada':
-                  $val_conf_dis_1_1 = 2.5;
-                break;
-              case 'ASHRAE 55/62.1/90.1':
-                  $val_conf_dis_1_1 = 5;
-                break;
-              default:
-            }
+        switch ($diseno_conf_1_1) {
+            case 'Inyección y Retorno Ductado':
+                $val_conf_dis_1_1 = 4;
+              break;
+            case 'Ducto Flex. y Retorno Ductado':
+                $val_conf_dis_1_1 = 3.5;
+              break;
+            case 'Ducto Flex. y Plenum Retorno':
+                $val_conf_dis_1_1 = 3;
+              break;
+            case 'ASHRAE 55/62.1/90.1':
+                $val_conf_dis_1_1 = 5;
+              break;
+            default:
+          }
 
             switch ($dr_conf_1_1) {
               case 'Cumple ASHRAE  Standard 70':
@@ -1832,11 +1831,11 @@ if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $eq
             case 'Inyección y Retorno Ductado':
                 $val_conf_dis_1_1 = 4;
               break;
+            case 'Ducto Flex. y Retorno Ductado':
+                $val_conf_dis_1_1 = 3.5;
+              break;
             case 'Ducto Flex. y Plenum Retorno':
                 $val_conf_dis_1_1 = 3;
-              break;
-            case 'Descarga Directa Ductada':
-                $val_conf_dis_1_1 = 2.5;
               break;
             case 'ASHRAE 55/62.1/90.1':
                 $val_conf_dis_1_1 = 5;
@@ -2505,21 +2504,21 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
      if($equipo_conf_1_1 === 'fancoil_hsp'){
 
-         switch ($diseno_conf_1_1) {
-             case 'Inyección y Retorno Ductado':
-                 $val_conf_dis_1_1 = 4;
-               break;
-             case 'Ducto Flex. y Plenum Retorno':
-                 $val_conf_dis_1_1 = 3;
-               break;
-             case 'Descarga Directa Ductada':
-                 $val_conf_dis_1_1 = 2.5;
-               break;
-             case 'ASHRAE 55/62.1/90.1':
-                 $val_conf_dis_1_1 = 5;
-               break;
-             default:
-           }
+        switch ($diseno_conf_1_1) {
+            case 'Inyección y Retorno Ductado':
+                $val_conf_dis_1_1 = 4;
+              break;
+            case 'Ducto Flex. y Retorno Ductado':
+                $val_conf_dis_1_1 = 3.5;
+              break;
+            case 'Ducto Flex. y Plenum Retorno':
+                $val_conf_dis_1_1 = 3;
+              break;
+            case 'ASHRAE 55/62.1/90.1':
+                $val_conf_dis_1_1 = 5;
+              break;
+            default:
+          }
 
            switch ($dr_conf_1_1) {
              case 'Cumple ASHRAE  Standard 70':
@@ -3155,21 +3154,21 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
      if($equipo_conf_1_1 === 'fancoil_hsp'){
 
-         switch ($diseno_conf_1_1) {
-             case 'Inyección y Retorno Ductado':
-                 $val_conf_dis_1_1 = 4;
-               break;
-             case 'Ducto Flex. y Plenum Retorno':
-                 $val_conf_dis_1_1 = 3;
-               break;
-             case 'Descarga Directa Ductada':
-                 $val_conf_dis_1_1 = 2.5;
-               break;
-             case 'ASHRAE 55/62.1/90.1':
-                 $val_conf_dis_1_1 = 5;
-               break;
-             default:
-           }
+        switch ($diseno_conf_1_1) {
+            case 'Inyección y Retorno Ductado':
+                $val_conf_dis_1_1 = 4;
+              break;
+            case 'Ducto Flex. y Retorno Ductado':
+                $val_conf_dis_1_1 = 3.5;
+              break;
+            case 'Ducto Flex. y Plenum Retorno':
+                $val_conf_dis_1_1 = 3;
+              break;
+            case 'ASHRAE 55/62.1/90.1':
+                $val_conf_dis_1_1 = 5;
+              break;
+            default:
+          }
 
            switch ($dr_conf_1_1) {
              case 'Cumple ASHRAE  Standard 70':
@@ -3809,11 +3808,11 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                             case 'Inyección y Retorno Ductado':
                                 $val_conf_dis_1_1 = 4;
                               break;
+                            case 'Ducto Flex. y Retorno Ductado':
+                                $val_conf_dis_1_1 = 3.5;
+                              break;
                             case 'Ducto Flex. y Plenum Retorno':
                                 $val_conf_dis_1_1 = 3;
-                              break;
-                            case 'Descarga Directa Ductada':
-                                $val_conf_dis_1_1 = 2.5;
                               break;
                             case 'ASHRAE 55/62.1/90.1':
                                 $val_conf_dis_1_1 = 5;
@@ -4480,21 +4479,21 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
                   if($equipo_conf_1_1 === 'fancoil_hsp'){
 
-                      switch ($diseno_conf_1_1) {
-                          case 'Inyección y Retorno Ductado':
-                              $val_conf_dis_1_1 = 4;
-                            break;
-                          case 'Ducto Flex. y Plenum Retorno':
-                              $val_conf_dis_1_1 = 3;
-                            break;
-                          case 'Descarga Directa Ductada':
-                              $val_conf_dis_1_1 = 2.5;
-                            break;
-                          case 'ASHRAE 55/62.1/90.1':
-                              $val_conf_dis_1_1 = 5;
-                            break;
-                          default:
-                        }
+                    switch ($diseno_conf_1_1) {
+                        case 'Inyección y Retorno Ductado':
+                            $val_conf_dis_1_1 = 4;
+                          break;
+                        case 'Ducto Flex. y Retorno Ductado':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
+                        case 'Ducto Flex. y Plenum Retorno':
+                            $val_conf_dis_1_1 = 3;
+                          break;
+                        case 'ASHRAE 55/62.1/90.1':
+                            $val_conf_dis_1_1 = 5;
+                          break;
+                        default:
+                      }
 
                         switch ($dr_conf_1_1) {
                           case 'Cumple ASHRAE  Standard 70':
@@ -5134,11 +5133,11 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                         case 'Inyección y Retorno Ductado':
                             $val_conf_dis_1_1 = 4;
                           break;
+                        case 'Ducto Flex. y Retorno Ductado':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
                         case 'Ducto Flex. y Plenum Retorno':
                             $val_conf_dis_1_1 = 3;
-                          break;
-                        case 'Descarga Directa Ductada':
-                            $val_conf_dis_1_1 = 2.5;
                           break;
                         case 'ASHRAE 55/62.1/90.1':
                             $val_conf_dis_1_1 = 5;
@@ -5782,11 +5781,11 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                         case 'Inyección y Retorno Ductado':
                             $val_conf_dis_1_1 = 4;
                           break;
+                        case 'Ducto Flex. y Retorno Ductado':
+                            $val_conf_dis_1_1 = 3.5;
+                          break;
                         case 'Ducto Flex. y Plenum Retorno':
                             $val_conf_dis_1_1 = 3;
-                          break;
-                        case 'Descarga Directa Ductada':
-                            $val_conf_dis_1_1 = 2.5;
                           break;
                         case 'ASHRAE 55/62.1/90.1':
                             $val_conf_dis_1_1 = 5;
@@ -6078,6 +6077,25 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
         ->first()->idCiudad;
 
         return view('edit_index',['id_project'=>$id,'project_edit'=>$project_edit,
+                        'cate_edificio'=>$cate_edificio,'paises'=>$paises,'id_ciudad_ini'=>$id_ciudad_ini,
+
+        ]);
+    }
+
+    public function edit_project_copy($id){
+        $project_edit = DB::table('projects')
+        ->where('projects.id','=',$id)
+        ->first();
+
+        $cate_edificio = DB::table('categorias_edificios')->get();
+
+        $paises = DB::table('pais')->get();
+
+        $id_ciudad_ini = DB::table('ciudad')
+        ->where('ciudad','=',$project_edit->ciudad)
+        ->first()->idCiudad;
+
+        return view('edit_copy',['id_project'=>$id,'project_edit'=>$project_edit,
                         'cate_edificio'=>$cate_edificio,'paises'=>$paises,'id_ciudad_ini'=>$id_ciudad_ini,
 
         ]);
@@ -8385,6 +8403,74 @@ $dompdf->render();
 
 
         return $res_base;
+    }
+
+    public function conf_val($id,$enf,$num_sol,$sumacapterm){
+
+        $sols_enf = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id)
+        ->where('solutions_project.num_enf','=',$enf)
+        ->get();
+
+        $arry_tots=[];
+
+        if(count($sols_enf) == 1){
+            $sol = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id)
+            ->where('solutions_project.num_enf','=',$enf)
+            ->where('solutions_project.num_sol','=',$num_sol)
+            ->first()->confort;
+            return $sol;
+        }
+
+        if(count($sols_enf) == 2 || count($sols_enf) == 3 ){
+
+
+            for ($i = 1; $i <= count($sols_enf); $i++) {
+                $suma_tr = 0;
+                $indi_confort = 0;
+                $total_base = 0;
+                $tr_sol = DB::table('solutions_project')
+                ->where('solutions_project.id_project','=',$id)
+                ->where('solutions_project.num_enf','=',$enf)
+                ->where('solutions_project.num_sol','=',$i)
+                ->first()->capacidad_tot;
+
+                foreach($sols_enf as $sol){
+                    $suma_tr = $suma_tr + $sol->capacidad_tot;
+                }
+
+                $confort_sol = DB::table('solutions_project')
+                ->where('solutions_project.id_project','=',$id)
+                ->where('solutions_project.num_enf','=',$enf)
+                ->where('solutions_project.num_sol','=',$i)
+                ->first()->confort;
+
+                //x = (1 * Tr / tr_total_sols );
+
+                $res_100_x_tr = 1 * $tr_sol;
+                $indice_conf = $res_100_x_tr / $sumacapterm;
+
+                $tota_conft_sol = $indice_conf * $confort_sol;
+
+                array_push($arry_tots,number_format($tota_conft_sol,1));
+
+              }
+              if(count($sols_enf) == 3){
+                $val_text = $arry_tots[0].'_'.$arry_tots[1].'_'.$arry_tots[2];
+                $val_res = $arry_tots[0] + $arry_tots[1] + $arry_tots[2];
+                return $val_res;
+              }
+
+              if(count($sols_enf) == 2){
+                $val_text = $arry_tots[0].'_'.$arry_tots[1];
+                $val_res = $arry_tots[0] + $arry_tots[1];
+                return $val_res;
+            }
+
+        }
+
+
     }
 
 }

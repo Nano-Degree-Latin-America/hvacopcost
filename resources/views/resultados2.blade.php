@@ -12,6 +12,7 @@
 @inject('smasolutions','app\Http\Controllers\ResultadosController')
 @inject('sumacap_term','app\Http\Controllers\ResultadosController')
 @inject('desperdicio','app\Http\Controllers\ResultadosController')
+@inject('conf_val','app\Http\Controllers\ResultadosController')
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -174,7 +175,9 @@ span{
         padding:1px;
 }
 
-
+.ancho_rang{
+    width:1.25rem;
+}
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
@@ -189,6 +192,8 @@ span{
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
+{{--     <button class="bg-orange-500  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 "><a class="mx-1" href="/edit_project_copy/{{$id_project}}">Editar Projecto</a></button>
+ --}}
     <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2"><a class="mx-1" href="/generatePDF/{{$id_project}}" target="_blank"><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></a></button>
 
     <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 "><a class="mx-1" href="/home">Nuevo Projecto</a></button>
@@ -3656,8 +3661,1163 @@ span{
                              {{-- espacio --}}
 				</div>
 				<!-- / Step Content -->
-
                 <div x-show.transition.in="step === 4">
+                    <div class="w-full flex justify-center">
+                        <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
+                            <div class="grid bg-gray-200 rounded-md shadow-xl">
+                                <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
+                                    <label class="font-bold text-white text-2xl font-roboto text-4xl">ANÁLISIS DE LA INTENSIDAD DEL USO DE LA ENERGÍA (EUI)</label>
+                                </div>
+
+                                <div class="w-full flex justify-center m-1 " >
+                                    <div class="flex w-1/3 justify-start">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-1/4  justify-start">
+                                        <div class="mr-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->region}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-1/3  justify-start">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-1/3  justify-start">
+                                        <div class="mr-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Categoría Edificio:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->cad_edi}}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-1/5 justify-start">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Área:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{number_format($tar_ele->area)}}
+                                                @if ($tar_ele->unidad == 'mc')
+                                                    m²
+                                                @endif
+
+                                                @if ($tar_ele->unidad == 'ft')
+                                                ft²
+                                                @endif
+                                        </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="w-full flex justify-start m-1" >
+                                    <div class="flex w-2/5  justify-start">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tipo Edificio:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->tipo_edi}}</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="flex w-auto justify-start">
+                                        <div class="ml-3">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Horas Enfriamiento Anual:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">&nbsp;{{number_format($tar_ele->coolings_hours)}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-1/4 justify-start ml-10 pl-1">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
+                                    <div class="flex w-full justify-center">
+                                        <label class="font-bold text-blue-900 text-2xl font-roboto text-4xl" for="">{{$tar_ele->tipo_edi}} (KBTU/sqf)</label>
+                                    </div>
+
+
+
+                                    <div class="flex w-full justify-center gap-x-3">
+                                            <div class="flex w-1/2 justify-center text-[24px] m-1">
+                                                <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
+                                                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}" style="width:120px; height:75px;" class="mx-2 mt-6" alt="Nano Degree">
+                                                <b class="text-blue-800 mr-1 font-roboto text-4xl mt-8">EUI - Energy Star</b><b style="color:#33cc33;" class="text-[24px] font-roboto mt-3 text-6xl">&nbsp;{{number_format($energy_star,1)}}</b>
+                                            </div>
+
+                                            <div class="flex w-1/2 justify-center text-[24px] m-1">
+                                                <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
+                                                <img src="{{asset('/assets/images/Logo-ASHRAE-png.png')}}" style="width:115px; height:75px;" class="mx-2 mt-6" alt="Nano Degree">
+                                                <b class="text-blue-800 mr-1 font-roboto text-4xl mt-8">EUI - ASHRAE</b><b style="color:#33cc33;" class="text-[24px] font-roboto mt-3 text-6xl">&nbsp;{{$ashrae}}</b>
+                                            </div>
+                                    </div>
+
+                                    {{--  --}}
+                                    <div class="w-full flex justify-center my-3 " >
+                                        {{-- @foreach ($results as $solution)
+
+
+                                        @if ($solution->num_enf == 1) --}}
+                                            <div class="grid w-1/3">
+
+                                            <div class="flex w-full ">
+                                                    <div class="grid w-full mx-3">
+
+                                                        <div class="flex justify-center w-full bg-blue-800 rounded-md p-2">
+                                                            <label class="text-white font-bold text-4xl font-roboto">Solución Base</label>
+                                                        </div>
+
+                                                        <div class="grid justify-center">
+
+                                                            @if ($result1 ==! null)
+                                                            <?php  $sumaopex_1=$smasolutions->sumaopex($id_project,$result1->num_enf) ?>
+                                                            <?php  $sumacap_term_1=$smasolutions->sumacap_term($id_project,$result1->num_enf) ?>
+                                                            <?php  $unid_med_1=$smasolutions->unid_med($id_project,$result1->num_enf) ?>
+                                                            @elseif($result1 === null)
+                                                            <?php $sumaopex_1=0?>
+                                                           <?php $sumacap_term_1=0?>
+                                                           <?php $unid_med_1=""?>
+                                                            @endif
+
+                                                            @if ($unid_med_1 !== "")
+                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label>
+                                                                @if (strlen($sumacap_term_1) >= 15)
+                                                                <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
+                                                                @endif
+
+                                                                @if (strlen($sumacap_term_1) < 15)
+                                                                <p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_1}}  <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
+                                                                @endif
+
+                                                            @endif
+
+                                                            @if ($unid_med_1 === "")
+                                                             <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1}}</b>  </p>
+                                                            @endif
+
+                                                            <div class="grid justify-center">
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_1)}}</p>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                            </div>
+                                        </div>
+                                        {{-- @endif
+                                        @endforeach --}}
+
+
+                                        <div class="grid w-1/3">
+
+                                            <div class="flex w-full ">
+                                                    <div class="grid w-full mx-3">
+
+                                                        <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                            <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
+                                                        </div>
+
+
+                                                        <div class="grid justify-center text-center">
+                                                            @if ($result2 ==! null)
+                                                            <?php  $sumaopex_2=$smasolutions->sumaopex($id_project,$result2->num_enf) ?>
+                                                            <?php  $sumacap_term_2=$smasolutions->sumacap_term($id_project,$result2->num_enf) ?>
+                                                            <?php  $unid_med_2=$smasolutions->unid_med($id_project,$result2->num_enf) ?>
+                                                            @elseif($result2 === null)
+                                                            <?php $sumaopex_2=0?>
+                                                           <?php $sumacap_term_2=0?>
+                                                           <?php $unid_med_2=""?>
+                                                            @endif
+
+                                                            @if ($unid_med_2 !== "")
+                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2->unid_med}} </b></p>
+                                                            @endif
+
+                                                            @if ($unid_med_2 === "")
+                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2}}</b></p>
+                                                            @endif
+
+                                                            <div class="grid justify-center">
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_2)}}</p>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                    </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid w-1/3">
+
+                                            <div class="flex w-full ">
+                                                    <div class="grid w-full mx-3">
+
+                                                        <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                            <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
+                                                        </div>
+
+
+                                                        <div class="grid justify-center text-center">
+
+                                                            @if ($result3 ==! null)
+                                                            <?php  $sumaopex_3=$smasolutions->sumaopex($id_project,$result3->num_enf) ?>
+                                                            <?php  $sumacap_term_3=$smasolutions->sumacap_term($id_project,$result3->num_enf) ?>
+                                                            <?php  $unid_med_3=$smasolutions->unid_med($id_project,$result3->num_enf) ?>
+                                                            @elseif($result3 === null)
+                                                            <?php $sumaopex_3=0?>
+                                                           <?php $sumacap_term_3=0?>
+                                                           <?php $unid_med_3=""?>
+                                                            @endif
+
+                                                            @if ($unid_med_3 !== "")
+                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}}  <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b></p>
+                                                            @endif
+
+                                                            @if ($unid_med_3 === "")
+                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3}}</b>  </p>
+                                                            @endif
+
+                                                            <div class="grid justify-center">
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_3)}}</p>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{--  --}}
+
+                                </div>
+                                <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
+
+
+                                    <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
+                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Valores EUI</label>
+                                    </div>
+
+                                    <div class="flex w-full justify-center">
+                                            <div class="w-1/3 grid justify-items-center">
+                                                @if ($result1 ==! null)
+                                                <?php  $valor_eui_base=$smasolutions->valor_eui_aux($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                                                    @if ($valor_eui_base <= $ashrae)
+                                                    <label style="color:#33cc33;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
+                                                    @elseif ($valor_eui_base <= $energy_star && $valor_eui_base > $ashrae)
+                                                        <label  class=" text-orange-500 font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
+                                                    @elseif ($valor_eui_base > $energy_star)
+                                                    <label  style="color:#ea0000;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
+                                                    @else
+                                                    <label class="text-blue-800  font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
+                                                    @endif
+                                                    <div id="eui_sol_base"></div>
+                                                @endif
+
+                                                @if ($result1 === null)
+                                                <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
+                                                @endif
+                                            </div>
+                                            {{-- sumaopex_2
+                                            sumaopex_3 --}}
+                                            <div class="w-1/3 grid justify-items-center">
+                                                @if ($result2 ==! null)
+                                                <?php  $valor_eui_a=$smasolutions->valor_eui_aux($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                                                    @if ($valor_eui_a <= $ashrae)
+                                                    <label style="color:#33cc33;"  class=" font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
+                                                    @elseif ($valor_eui_a <= $energy_star && $valor_eui_a > $ashrae)
+                                                    <label class=" text-orange-500 font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
+                                                    @elseif ($valor_eui_a > $energy_star)
+                                                    <label  style="color:#ea0000;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
+                                                    @else
+                                                    <label class="text-blue-800  font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
+                                                    @endif
+                                                    <div id="eui_sol_a"></div>
+                                                @endif
+
+                                                @if ($result2 === null)
+                                                <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
+                                                <?php  $valor_eui_a=0; ?>
+                                                @endif
+                                            </div>
+                                            <div class="w-1/3 grid justify-items-center">
+                                                @if ($result3 ==! null)
+                                                <?php  $valor_eui_b=$smasolutions->valor_eui_aux($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                                                    @if ($valor_eui_b <= $ashrae)
+                                                    <label style="color:#33cc33;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
+                                                    @elseif ($valor_eui_b <= $energy_star && $valor_eui_b > $ashrae)
+                                                    <label  class="text-orange-500 font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
+                                                    @elseif ($valor_eui_b > $energy_star)
+                                                    <label  style="color:#ea0000;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
+                                                    @else
+                                                    <label class="text-blue-800  font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
+                                                    @endif
+                                                    <div id="eui_sol_b"></div>
+                                                @endif
+
+                                                @if ($result3 === null)
+                                                <?php $valor_eui_b = 0; ?>
+                                                <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
+                                                @endif
+                                            </div>
+                                    </div>
+
+                                   {{--  <div>
+                                        <div id="chart_eui" class="w-1/2"></div>
+                                    </div> --}}
+                                </div>
+                                <div class="grid bg-gray-200 rounded-md shadow-xl my-3 w-full">
+
+                                    <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
+                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Desperdicio de Energía Eléctrica del Edificio (Año)</label>
+                                    </div>
+
+                                    <div class="flex w-full justify-center mt-5">
+                                        <div id="chart_desp_energy" class="w-1/2"></div>
+                                    </div>
+                                    <div class="w-full grid">
+                                        <div class="w-full flex">
+                                            <div class="w-1/3 flex">
+
+                                            </div>
+
+                                            <div class="w-1/3 flex justify-center">
+                                                <label class="font-bold text-blue-800 font-roboto text-4xl">Energy Star</label>
+                                            </div>
+
+                                            <div class="w-1/3 flex justify-center">
+                                                <label class="font-bold text-blue-800 font-roboto text-4xl">ASHRAE</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="w-full flex mt-5">
+                                            <div class="w-1/3 flex">
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución Base</b>
+                                            </div>
+                                            <?php  $energy_base=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
+                                            <div class="w-1/3 flex justify-center">
+                                                @if ($energy_base > 0)
+                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_base)}}</b>
+                                                @endif
+
+                                                @if ($energy_base < 0)
+                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_base)}}</b>
+                                                @endif
+
+                                            </div>
+
+                                            <?php  $ashrae_base=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
+                                            <div class="w-1/3 flex justify-center">
+                                                @if ($ashrae_base > 0)
+                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_base)}}</b>
+                                                @endif
+
+                                                @if ($ashrae_base < 0)
+                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_base)}}</b>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="w-full flex">
+                                            <div class="w-1/3 flex">
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución A</b>
+                                            </div>
+                                            <?php  $energy_a=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
+                                            <div class="w-1/3 flex justify-center">
+                                            @if ($result2 ==! null)
+                                                @if ($energy_a > 0)
+                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_a)}}</b>
+                                                @endif
+
+                                                @if ($energy_a < 0)
+                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_a)}}</b>
+                                                @endif
+                                            @endif
+
+                                            @if ($result2 === null)
+                                                <b class="text-blue-800 font-bold text-5xl font-roboto">$0</b>
+                                                @endif
+                                            </div>
+
+                                            <div class="w-1/3 flex justify-center">
+                                                <?php  $ashrae_a=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
+                                                @if ($result2 ==! null)
+                                                @if ($ashrae_a > 0)
+                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_a)}}</b>
+                                                @endif
+                                                @if ($ashrae_a < 0)
+                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_a)}}</b>
+                                                @endif
+                                                @endif
+                                                @if ($result2 === null)
+                                                <b class="text-blue-800 font-bold text-5xl font-roboto">$0</b>
+                                                @endif
+                                            </div>
+                                        </div>
+
+                                        <div class="w-full flex">
+                                            <div class="w-1/3 flex">
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución B</b>
+                                            </div>
+                                            <?php  $energy_b=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
+                                            <div class="w-1/3 flex justify-center">
+                                                @if ($result3 ==! null)
+                                                    @if ($energy_b > 0)
+                                                    <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_b)}}</b>
+                                                    @endif
+
+                                                    @if ($energy_b < 0)
+                                                    <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_b)}}</b>
+                                                    @endif
+                                                @endif
+
+                                                @if ($result3 === null)
+                                                <b class="text-blue-800 font-bold text-5xl font-roboto">$0</b>
+                                                @endif
+                                            </div>
+
+                                            <div class="w-1/3 flex justify-center">
+                                                <?php  $ashrae_b=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
+                                                @if ($result3 ==! null)
+                                                    @if ($ashrae_b > 0)
+                                                    <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_b)}}</b>
+                                                    @endif
+
+                                                    @if ($ashrae_b < 0)
+                                                    <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_b)}}</b>
+                                                    @endif
+                                                @endif
+
+                                                @if ($result3 === null)
+                                                <b class="text-blue-800 font-bold text-5xl font-roboto">$0</b>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+     {{-- espacio --}}
+     <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+
+     </div>
+      {{-- espacio --}}
+                            </div>
+                        </div>
+                </div>
+
+                 {{-- step 6 --}}
+                 <div x-show.transition.in="step === 5">
+                    <div class="w-full flex justify-center">
+                        <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
+                            <div class="grid bg-gray-200 rounded-md shadow-xl">
+                                <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
+                                    <label class="font-bold text-white text-2xl font-roboto text-4xl">Analisis de Confort y Productividad</label>
+                                </div>
+
+                                <div class="w-full flex justify-center m-1 " >
+                                    <div class="flex w-1/3 justify-start">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-1/4  justify-start">
+                                        <div class="mr-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->region}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-1/3  justify-start">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-1/3  justify-start">
+                                        <div class="mr-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Categoría Edificio:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->cad_edi}}</label>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-1/5 justify-start">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Área:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{number_format($tar_ele->area)}}
+                                                @if ($tar_ele->unidad == 'mc')
+                                                    m²
+                                                @endif
+
+                                                @if ($tar_ele->unidad == 'ft')
+                                                ft²
+                                                @endif
+                                        </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="w-full flex justify-start m-1" >
+                                    <div class="flex w-2/5  justify-start">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tipo Edificio:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->tipo_edi}}</label>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="flex w-auto justify-start">
+                                        <div class="ml-3">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Horas Enfriamiento Anual:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">&nbsp;{{number_format($tar_ele->coolings_hours)}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-1/4 justify-start ml-10 pl-1">
+                                        <div class="mx-1">
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
+                                        </div>
+                                        <div>
+                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+
+                                {{-- confotr --}}
+                                <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
+                                    <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
+                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Nivel de Confort</label>
+                                    </div>
+
+                                    <div class="w-full grid mb-2 gap-y-2">
+
+                                        <?php  $conf_val_base=$conf_val->conf_val($id_project,1,1,$sumacap_term_1); ?>
+                                        <div class="ml-10 flex w-full mt-5">
+                                            <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución Base</p>
+                                        </div>
+
+                                        <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+
+                                            <div class="w-1/6">
+
+                                            </div>
+
+                                          <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                                          background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+
+
+                                            {{-- 0 --}}
+                                           {{--  <div id="term_0" name="term_0" class="px-2 py-5 rounded-l-lg">
+
+                                            </div>
+                                                {{-- 1 --} --}}
+                                            <div id="term_1" name="term_1" class="grid ancho_rang">
+                                                <p id="val_base_1" name="val_base_1" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 1.125 --}}
+                                            <div id="term_2" name="term_2" class="ancho_rang">
+                                                <p id="val_base_1125" name="val_base_1125" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 1.25 --}}
+                                            <div id="term_3" name="term_3" class="ancho_rang">
+                                                <p id="val_base_125" name="val_base_125" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 1.375 --}}
+                                            <div id="term_4" name="term_4" class="ancho_rang">
+                                                <p id="val_base_1375" name="val_base_1375" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 1.5 --}}
+                                            <div id="term_5" name="term_5" class="ancho_rang">
+                                                <p id="val_base_15" name="val_base_15" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 1.625 --}}
+                                            <div id="term_6" name="term_6" class="ancho_rang">
+                                                <p id="val_base_1625" name="val_base_1625" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 1.75 --}}
+                                            <div id="term_7" name="term_7" class="ancho_rang">
+                                                <p id="val_base_175" name="val_base_175" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 1.875 --}}
+                                            <div id="term_8" name="term_8" class="ancho_rang">
+                                                <p id="val_base_1875" name="val_base_1875" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 2 --}}
+                                            <div id="term_9" name="term_9" class="ancho_rang">
+                                                <p id="val_base_2" name="val_base_2" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                              {{-- 2.125 --} --}}
+                                              <div id="term_10" name="term_10" class="grid ancho_rang">
+                                                <p id="val_base_2125" name="val_base_2125" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 2.25 --}}
+                                            <div id="term_11" name="term_11" class="ancho_rang">
+                                                <p id="val_base_225" name="val_base_225" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 2.375 --}}
+                                            <div id="term_12" name="term_12" class="ancho_rang">
+                                                <p id="val_base_2375" name="val_base_2375" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 2.5 --}}
+                                            <div id="term_13" name="term_13" class="ancho_rang">
+                                                <p id="val_base_25" name="val_base_25" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 2.625 --}}
+                                            <div id="term_14" name="term_14" class="ancho_rang">
+                                                <p id="val_base_2625" name="val_base_2625" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 2.75 --}}
+                                            <div id="term_15" name="term_15" class="ancho_rang">
+                                                <p id="val_base_275" name="val_base_275" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 2.875 --}}
+                                            <div id="term_16" name="term_16" class="ancho_rang">
+                                                <p id="val_base_2875" name="val_base_2875" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 3 --}}
+                                            <div id="term_17" name="term_17" class="ancho_rang">
+                                                <p id="val_base_3" name="val_base_3" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                              {{-- 3.125 --} --}}
+                                              <div id="term_18" name="term_18" class="grid ancho_rang">
+                                                <p id="val_base_3125" name="val_base_3125" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 3.25 --}}
+                                            <div id="term_19" name="term_19" class="ancho_rang">
+                                                <p id="val_base_325" name="val_base_325" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 3.375 --}}
+                                            <div id="term_20" name="term_20" class="ancho_rang">
+                                                <p id="val_base_3375" name="val_base_3375" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 3.5 --}}
+                                            <div id="term_21" name="term_21" class="ancho_rang">
+                                                <p id="val_base_35" name="val_base_35" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 3.625 --}}
+                                            <div id="term_22" name="term_22" class="ancho_rang">
+                                                <p id="val_base_3625" name="val_base_3625" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 3.75 --}}
+                                            <div id="term_23" name="term_23" class="ancho_rang">
+                                                <p id="val_base_375" name="val_base_375" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{--3.875 --}}
+                                            <div id="term_24" name="term_24" class="ancho_rang">
+                                                <p id="val_base_3875" name="val_base_3875" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 4 --}}
+                                            <div id="term_25" name="term_25" class="ancho_rang">
+                                                <p id="val_base_4" name="val_base_4" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 4.125 --} --}}
+                                            <div id="term_26" name="term_26" class="grid ancho_rang">
+                                                <p id="val_base_4125" name="val_base_4125" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 4.25 --}}
+                                            <div id="term_27" name="term_27" class="ancho_rang">
+                                                <p id="val_base_425" name="val_base_425" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 4.375 --}}
+                                            <div id="term_28" name="term_28" class="ancho_rang">
+                                                <p id="val_base_4375" name="val_base_4375" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 4.5 --}}
+                                            <div id="term_29" name="term_29" class="ancho_rang">
+                                                <p id="val_base_45" name="val_base_45" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 4.625 --}}
+                                            <div id="term_30" name="term_30" class="ancho_rang">
+                                                <p id="val_base_4625" name="val_base_4625" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 4.75 --}}
+                                            <div id="term_31" name="term_31" class="ancho_rang">
+                                                <p id="val_base_475" name="val_base_475" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{--4.875 --}}
+                                            <div id="term_32" name="term_32" class="ancho_rang">
+                                                <p id="val_base_4875" name="val_base_4875" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+                                            {{-- 5 --}}
+                                            <div id="term_33" name="term_33" class="ancho_rang">
+                                                <p id="val_base_5" name="val_base_5" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                            </div>
+
+
+
+
+                                            </div>
+                                        </div>
+
+                                </div>
+                                {{-- @if ($result2 === null)
+                                <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
+                                <?php  /* $valor_eui_a=0; */ ?>
+                                @endif --}}
+
+                                @if ($result2 !== null)
+                                <div class="w-full grid mb-2 gap-y-2">
+
+
+                                    <?php  $conf_val_a=$conf_val->conf_val($id_project,2,1,$sumacap_term_2);?>
+                                    <div class="ml-10 flex w-full">
+                                        <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución A</p>
+                                    </div>
+
+                                    <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+
+                                        <div class="w-1/6">
+
+                                        </div>
+
+                                      <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                                      background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+
+
+                                         {{-- 1 --} --}}
+                                         <div id="term_1_a" name="term_1_a" class="grid ancho_rang">
+                                            <p id="val_base_1_a" name="val_base_1_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.125 --}}
+                                        <div id="term_2_a" name="term_2_a" class="ancho_rang">
+                                            <p id="val_base_1125_a" name="val_base_1125_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.25 --}}
+                                        <div id="term_3_a" name="term_3_a" class="ancho_rang">
+                                            <p id="val_base_125_a" name="val_base_125_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.375 --}}
+                                        <div id="term_4_a" name="term_4_a" class="ancho_rang">
+                                            <p id="val_base_1375_a" name="val_base_1375_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.5 --}}
+                                        <div id="term_5_a" name="term_5_a" class="ancho_rang">
+                                            <p id="val_base_15_a" name="val_base_15_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.625 --}}
+                                        <div id="term_6_a" name="term_6_a" class="ancho_rang">
+                                            <p id="val_base_1625_a" name="val_base_1625_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.75 --}}
+                                        <div id="term_7_a" name="term_7_a" class="ancho_rang">
+                                            <p id="val_base_175_a" name="val_base_175_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.875 --}}
+                                        <div id="term_8_a" name="term_8_a" class="ancho_rang">
+                                            <p id="val_base_1875_a" name="val_base_1875_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2 --}}
+                                        <div id="term_9_a" name="term_9_a" class="ancho_rang">
+                                            <p id="val_base_2_a" name="val_base_2_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                          {{-- 2.125 --} --}}
+                                          <div id="term_10_a" name="term_10_a" class="grid ancho_rang">
+                                            <p id="val_base_2125_a" name="val_base_2125_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2.25 --}}
+                                        <div id="term_11_a" name="term_11_a" class="ancho_rang">
+                                            <p id="val_base_225_a" name="val_base_225_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2.375 --}}
+                                        <div id="term_12_a" name="term_12_a" class="ancho_rang">
+                                            <p id="val_base_2375_a" name="val_base_2375_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2.5 --}}
+                                        <div id="term_13_a" name="term_13_a" class="ancho_rang">
+                                            <p id="val_base_25_a" name="val_base_25_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2.625 --}}
+                                        <div id="term_14_a" name="term_14_a" class="ancho_rang">
+                                            <p id="val_base_2625_a" name="val_base_2625_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2.75 --}}
+                                        <div id="term_15_a" name="term_15_a" class="ancho_rang">
+                                            <p id="val_base_275_a" name="val_base_275_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2.875 --}}
+                                        <div id="term_16_a" name="term_16_a" class="ancho_rang">
+                                            <p id="val_base_2875_a" name="val_base_2875_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 3 --}}
+                                        <div id="term_17_a" name="term_17_a" class="ancho_rang">
+                                            <p id="val_base_3_a" name="val_base_3_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                          {{-- 3.125 --} --}}
+                                          <div id="term_18_a" name="term_18_a" class="grid ancho_rang">
+                                            <p id="val_base_3125_a" name="val_base_3125_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 3.25 --}}
+                                        <div id="term_19_a" name="term_19_a" class="ancho_rang">
+                                            <p id="val_base_325_a" name="val_base_325_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 3.375 --}}
+                                        <div id="term_20_a" name="term_20_a" class="ancho_rang">
+                                            <p id="val_base_3375_a" name="val_base_3375_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 3.5 --}}
+                                        <div id="term_21_a" name="term_21_a" class="ancho_rang">
+                                            <p id="val_base_35_a" name="val_base_35_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 3.625 --}}
+                                        <div id="term_22_a" name="term_22_a" class="ancho_rang">
+                                            <p id="val_base_3625_a" name="val_base_3625_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 3.75 --}}
+                                        <div id="term_23_a" name="term_23_a" class="ancho_rang">
+                                            <p id="val_base_375_a" name="val_base_375_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{--3.875 --}}
+                                        <div id="term_24_a" name="term_24_a" class="ancho_rang">
+                                            <p id="val_base_3875_a" name="val_base_3875_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4 --}}
+                                        <div id="term_25_a" name="term_25_a" class="ancho_rang">
+                                            <p id="val_base_4_a" name="val_base_4_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4.125 --} --}}
+                                        <div id="term_26_a" name="term_26_a" class="grid ancho_rang">
+                                            <p id="val_base_4125_a" name="val_base_4125_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4.25 --}}
+                                        <div id="term_27_a" name="term_27_a" class="ancho_rang">
+                                            <p id="val_base_425_a" name="val_base_425_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4.375 --}}
+                                        <div id="term_28_a" name="term_28_a" class="ancho_rang">
+                                            <p id="val_base_4375_a" name="val_base_4375_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4.5 --}}
+                                        <div id="term_29_a" name="term_29_a" class="ancho_rang">
+                                            <p id="val_base_45_a" name="val_base_45_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4.625 --}}
+                                        <div id="term_30_a" name="term_30_a" class="ancho_rang">
+                                            <p id="val_base_4625_a" name="val_base_4625_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4.75 --}}
+                                        <div id="term_31_a" name="term_31_a" class="ancho_rang">
+                                            <p id="val_base_475_a" name="val_base_475_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{--4.875 --}}
+                                        <div id="term_32_a" name="term_32_a" class="ancho_rang">
+                                            <p id="val_base_4875_a" name="val_base_4875_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 5 --}}
+                                        <div id="term_33_a" name="term_33_a" class="ancho_rang">
+                                            <p id="val_base_5_a" name="val_base_5_a" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+
+
+                                        </div>
+                                    </div>
+
+                            </div>
+                                @endif
+
+                                @if ($result2 === null)
+                                <?php  $conf_val_a=0; ?>
+                                @endif
+
+                                @if ($result3 !== null)
+                                <div class="w-full grid mb-5 gap-y-2">
+
+                                    <?php  $conf_val_b=$conf_val->conf_val($id_project,3,1,$sumacap_term_3) ?>
+                                    <div class="ml-10 flex w-full">
+                                        <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución B</p>
+                                    </div>
+
+                                    <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+                                        <div class="w-1/6">
+
+                                        </div>
+                                      <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                                      background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+
+
+                                        {{-- 1 --} --}}
+                                        <div id="term_1_b" name="term_1_b" class="grid ancho_rang">
+                                            <p id="val_base_1_b" name="val_base_1_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.125 --}}
+                                        <div id="term_2_b" name="term_2_b" class="ancho_rang">
+                                            <p id="val_base_1125_b" name="val_base_1125_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.25 --}}
+                                        <div id="term_3_b" name="term_3_b" class="ancho_rang">
+                                            <p id="val_base_125_b" name="val_base_125_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.375 --}}
+                                        <div id="term_4_b" name="term_4_b" class="ancho_rang">
+                                            <p id="val_base_1375_b" name="val_base_1375_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.5 --}}
+                                        <div id="term_5_b" name="term_5_b" class="ancho_rang">
+                                            <p id="val_base_15_b" name="val_base_15_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.625 --}}
+                                        <div id="term_6_b" name="term_6_b" class="ancho_rang">
+                                            <p id="val_base_1625_b" name="val_base_1625_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.75 --}}
+                                        <div id="term_7_b" name="term_7_b" class="ancho_rang">
+                                            <p id="val_base_175_b" name="val_base_175_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 1.875 --}}
+                                        <div id="term_8_b" name="term_8_b" class="ancho_rang">
+                                            <p id="val_base_1875_b" name="val_base_1875_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2 --}}
+                                        <div id="term_9_b" name="term_9_b" class="ancho_rang">
+                                            <p id="val_base_2_b" name="val_base_2_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                          {{-- 2.125 --} --}}
+                                          <div id="term_10_b" name="term_10_b" class="grid ancho_rang">
+                                            <p id="val_base_2125_b" name="val_base_2125_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2.25 --}}
+                                        <div id="term_11_b" name="term_11_b" class="ancho_rang">
+                                            <p id="val_base_225_b" name="val_base_225_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2.375 --}}
+                                        <div id="term_12_b" name="term_12_b" class="ancho_rang">
+                                            <p id="val_base_2375_b" name="val_base_2375_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2.5 --}}
+                                        <div id="term_13_b" name="term_13_b" class="ancho_rang">
+                                            <p id="val_base_25_b" name="val_base_25_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2.625 --}}
+                                        <div id="term_14_b" name="term_14_b" class="ancho_rang">
+                                            <p id="val_base_2625_b" name="val_base_2625_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2.75 --}}
+                                        <div id="term_15_b" name="term_15_b" class="ancho_rang">
+                                            <p id="val_base_275_b" name="val_base_275_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 2.875 --}}
+                                        <div id="term_16_b" name="term_16_b" class="ancho_rang">
+                                            <p id="val_base_2875_b" name="val_base_2875_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 3 --}}
+                                        <div id="term_17_b" name="term_17_b" class="ancho_rang">
+                                            <p id="val_base_3_b" name="val_base_3_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                          {{-- 3.125 --} --}}
+                                          <div id="term_18_b" name="term_18_b" class="grid ancho_rang">
+                                            <p id="val_base_3125_b" name="val_base_3125_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 3.25 --}}
+                                        <div id="term_19_b" name="term_19_b" class="ancho_rang">
+                                            <p id="val_base_325_b" name="val_base_325_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 3.375 --}}
+                                        <div id="term_20_b" name="term_20_b" class="ancho_rang">
+                                            <p id="val_base_3375_b" name="val_base_3375_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 3.5 --}}
+                                        <div id="term_21_b" name="term_21_b" class="ancho_rang">
+                                            <p id="val_base_35_b" name="val_base_35_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 3.625 --}}
+                                        <div id="term_22_b" name="term_22_b" class="ancho_rang">
+                                            <p id="val_base_3625_b" name="val_base_3625_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 3.75 --}}
+                                        <div id="term_23_b" name="term_23_b" class="ancho_rang">
+                                            <p id="val_base_375_b" name="val_base_375_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{--3.875 --}}
+                                        <div id="term_24_b" name="term_24_b" class="ancho_rang">
+                                            <p id="val_base_3875_b" name="val_base_3875_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4 --}}
+                                        <div id="term_25_b" name="term_25_b" class="ancho_rang">
+                                            <p id="val_base_4_b" name="val_base_4_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4.125 --} --}}
+                                        <div id="term_26_b" name="term_26_b" class="grid ancho_rang">
+                                            <p id="val_base_4125_b" name="val_base_4125_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4.25 --}}
+                                        <div id="term_27_b" name="term_27_b" class="ancho_rang">
+                                            <p id="val_base_425_b" name="val_base_425_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4.375 --}}
+                                        <div id="term_28_b" name="term_28_b" class="ancho_rang">
+                                            <p id="val_base_4375_b" name="val_base_4375_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4.5 --}}
+                                        <div id="term_29_b" name="term_29_b" class="ancho_rang">
+                                            <p id="val_base_45_b" name="val_base_45_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4.625 --}}
+                                        <div id="term_30_b" name="term_30_b" class="ancho_rang">
+                                            <p id="val_base_4625_b" name="val_base_4625_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 4.75 --}}
+                                        <div id="term_31_b" name="term_31_b" class="ancho_rang">
+                                            <p id="val_base_475_b" name="val_base_475_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{--4.875 --}}
+                                        <div id="term_32_b" name="term_32_b" class="ancho_rang">
+                                            <p id="val_base_4875_b" name="val_base_4875_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+                                        {{-- 5 --}}
+                                        <div id="term_33_b" name="term_33_b" class="ancho_rang">
+                                            <p id="val_base_5_b" name="val_base_5_b" class="mt-1 text-blue-500 font-bold font-roboto text-2xl"></p>
+                                        </div>
+
+
+                                        </div>
+                                    </div>
+
+                            </div>
+                                @endif
+
+                                @if ($result3 === null)
+                                <?php  $conf_val_b=0; ?>
+                                @endif
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                <div x-show.transition.in="step === 6">
                     <div class="w-full flex justify-center">
                         <div class="2xl:w-3/4 xl:w-3/4 my-3 lg:w-full ">
                             <div class="grid bg-gray-200 rounded-md shadow-xl">
@@ -4330,461 +5490,10 @@ span{
                          {{-- espacio --}}
             </div>
 
-                <div x-show.transition.in="step === 5">
-                    <div class="w-full flex justify-center">
-                        <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
-                            <div class="grid bg-gray-200 rounded-md shadow-xl">
-                                <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
-                                    <label class="font-bold text-white text-2xl font-roboto text-4xl">ANÁLISIS DE LA INTENSIDAD DEL USO DE LA ENERGÍA (EUI)</label>
-                                </div>
 
-                                <div class="w-full flex justify-center m-1 " >
-                                    <div class="flex w-1/3 justify-start">
-                                        <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
-                                        </div>
-                                    </div>
-                                    <div class="flex w-1/4  justify-start">
-                                        <div class="mr-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->region}}</label>
-                                        </div>
-                                    </div>
-                                    <div class="flex w-1/3  justify-start">
-                                        <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
-                                        </div>
-                                    </div>
-                                    <div class="flex w-1/3  justify-start">
-                                        <div class="mr-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Categoría Edificio:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->cad_edi}}</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex w-1/5 justify-start">
-                                        <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Área:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{number_format($tar_ele->area)}}
-                                                @if ($tar_ele->unidad == 'mc')
-                                                    m²
-                                                @endif
-
-                                                @if ($tar_ele->unidad == 'ft')
-                                                ft²
-                                                @endif
-                                        </label>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="w-full flex justify-start m-1" >
-                                    <div class="flex w-2/5  justify-start">
-                                        <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tipo Edificio:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->tipo_edi}}</label>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="flex w-auto justify-start">
-                                        <div class="ml-3">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Horas Enfriamiento Anual:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">&nbsp;{{number_format($tar_ele->coolings_hours)}}</label>
-                                        </div>
-                                    </div>
-                                    <div class="flex w-1/4 justify-start ml-10 pl-1">
-                                        <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
-                                    <div class="flex w-full justify-center">
-                                        <label class="font-bold text-blue-900 text-2xl font-roboto text-4xl" for="">{{$tar_ele->tipo_edi}} (KBTU/sqf)</label>
-                                    </div>
-
-
-
-                                    <div class="flex w-full justify-center gap-x-3">
-                                            <div class="flex w-1/2 justify-center text-[24px] m-1">
-                                                <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
-                                                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}" style="width:120px; height:75px;" class="mx-2 mt-6" alt="Nano Degree">
-                                                <b class="text-blue-800 mr-1 font-roboto text-4xl mt-8">EUI - Energy Star</b><b style="color:#33cc33;" class="text-[24px] font-roboto mt-3 text-6xl">&nbsp;{{number_format($energy_star,1)}}</b>
-                                            </div>
-
-                                            <div class="flex w-1/2 justify-center text-[24px] m-1">
-                                                <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
-                                                <img src="{{asset('/assets/images/Logo-ASHRAE-png.png')}}" style="width:115px; height:75px;" class="mx-2 mt-6" alt="Nano Degree">
-                                                <b class="text-blue-800 mr-1 font-roboto text-4xl mt-8">EUI - ASHRAE</b><b style="color:#33cc33;" class="text-[24px] font-roboto mt-3 text-6xl">&nbsp;{{$ashrae}}</b>
-                                            </div>
-                                    </div>
-
-                                    {{--  --}}
-                                    <div class="w-full flex justify-center my-3 " >
-                                        {{-- @foreach ($results as $solution)
-
-
-                                        @if ($solution->num_enf == 1) --}}
-                                            <div class="grid w-1/3">
-
-                                            <div class="flex w-full ">
-                                                    <div class="grid w-full mx-3">
-
-                                                        <div class="flex justify-center w-full bg-blue-800 rounded-md p-2">
-                                                            <label class="text-white font-bold text-4xl font-roboto">Solución Base</label>
-                                                        </div>
-
-                                                        <div class="grid justify-center">
-
-                                                            @if ($result1 ==! null)
-                                                            <?php  $sumaopex_1=$smasolutions->sumaopex($id_project,$result1->num_enf) ?>
-                                                            <?php  $sumacap_term_1=$smasolutions->sumacap_term($id_project,$result1->num_enf) ?>
-                                                            <?php  $unid_med_1=$smasolutions->unid_med($id_project,$result1->num_enf) ?>
-                                                            @elseif($result1 === null)
-                                                            <?php $sumaopex_1=0?>
-                                                           <?php $sumacap_term_1=0?>
-                                                           <?php $unid_med_1=""?>
-                                                            @endif
-
-                                                            @if ($unid_med_1 !== "")
-                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label>
-                                                                @if (strlen($sumacap_term_1) >= 15)
-                                                                <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
-                                                                @endif
-
-                                                                @if (strlen($sumacap_term_1) < 15)
-                                                                <p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_1}}  <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
-                                                                @endif
-
-                                                            @endif
-
-                                                            @if ($unid_med_1 === "")
-                                                             <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1}}</b>  </p>
-                                                            @endif
-
-                                                            <div class="grid justify-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_1)}}</p>
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
-                                            </div>
-                                        </div>
-                                        {{-- @endif
-                                        @endforeach --}}
-
-
-                                        <div class="grid w-1/3">
-
-                                            <div class="flex w-full ">
-                                                    <div class="grid w-full mx-3">
-
-                                                        <div class="w-full bg-blue-500 rounded-md p-2 text-center">
-                                                            <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
-                                                        </div>
-
-
-                                                        <div class="grid justify-center text-center">
-                                                            @if ($result2 ==! null)
-                                                            <?php  $sumaopex_2=$smasolutions->sumaopex($id_project,$result2->num_enf) ?>
-                                                            <?php  $sumacap_term_2=$smasolutions->sumacap_term($id_project,$result2->num_enf) ?>
-                                                            <?php  $unid_med_2=$smasolutions->unid_med($id_project,$result2->num_enf) ?>
-                                                            @elseif($result2 === null)
-                                                            <?php $sumaopex_2=0?>
-                                                           <?php $sumacap_term_2=0?>
-                                                           <?php $unid_med_2=""?>
-                                                            @endif
-
-                                                            @if ($unid_med_2 !== "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2->unid_med}} </b></p>
-                                                            @endif
-
-                                                            @if ($unid_med_2 === "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2}}</b></p>
-                                                            @endif
-
-                                                            <div class="grid justify-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_2)}}</p>
-                                                            </div>
-                                                        </div>
-
-
-
-                                                    </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="grid w-1/3">
-
-                                            <div class="flex w-full ">
-                                                    <div class="grid w-full mx-3">
-
-                                                        <div class="w-full bg-blue-500 rounded-md p-2 text-center">
-                                                            <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
-                                                        </div>
-
-
-                                                        <div class="grid justify-center text-center">
-
-                                                            @if ($result3 ==! null)
-                                                            <?php  $sumaopex_3=$smasolutions->sumaopex($id_project,$result3->num_enf) ?>
-                                                            <?php  $sumacap_term_3=$smasolutions->sumacap_term($id_project,$result3->num_enf) ?>
-                                                            <?php  $unid_med_3=$smasolutions->unid_med($id_project,$result3->num_enf) ?>
-                                                            @elseif($result3 === null)
-                                                            <?php $sumaopex_3=0?>
-                                                           <?php $sumacap_term_3=0?>
-                                                           <?php $unid_med_3=""?>
-                                                            @endif
-
-                                                            @if ($unid_med_3 !== "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}}  <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b></p>
-                                                            @endif
-
-                                                            @if ($unid_med_3 === "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3}}</b>  </p>
-                                                            @endif
-
-                                                            <div class="grid justify-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_3)}}</p>
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {{--  --}}
-
-                                </div>
-                                <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
-
-
-                                    <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
-                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Valores EUI</label>
-                                    </div>
-
-                                    <div class="flex w-full justify-center">
-                                            <div class="w-1/3 grid justify-items-center">
-                                                @if ($result1 ==! null)
-                                                <?php  $valor_eui_base=$smasolutions->valor_eui_aux($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                                                    @if ($valor_eui_base <= $ashrae)
-                                                    <label style="color:#33cc33;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
-                                                    @elseif ($valor_eui_base <= $energy_star && $valor_eui_base > $ashrae)
-                                                        <label  class=" text-orange-500 font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
-                                                    @elseif ($valor_eui_base > $energy_star)
-                                                    <label  style="color:#ea0000;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
-                                                    @else
-                                                    <label class="text-blue-800  font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_base,1)}}</label>
-                                                    @endif
-                                                    <div id="eui_sol_base"></div>
-                                                @endif
-
-                                                @if ($result1 === null)
-                                                <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
-                                                @endif
-                                            </div>
-                                            {{-- sumaopex_2
-                                            sumaopex_3 --}}
-                                            <div class="w-1/3 grid justify-items-center">
-                                                @if ($result2 ==! null)
-                                                <?php  $valor_eui_a=$smasolutions->valor_eui_aux($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                                                    @if ($valor_eui_a <= $ashrae)
-                                                    <label style="color:#33cc33;"  class=" font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
-                                                    @elseif ($valor_eui_a <= $energy_star && $valor_eui_a > $ashrae)
-                                                    <label class=" text-orange-500 font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
-                                                    @elseif ($valor_eui_a > $energy_star)
-                                                    <label  style="color:#ea0000;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
-                                                    @else
-                                                    <label class="text-blue-800  font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_a,1)}}</label>
-                                                    @endif
-                                                    <div id="eui_sol_a"></div>
-                                                @endif
-
-                                                @if ($result2 === null)
-                                                <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
-                                                <?php  $valor_eui_a=0; ?>
-                                                @endif
-                                            </div>
-                                            <div class="w-1/3 grid justify-items-center">
-                                                @if ($result3 ==! null)
-                                                <?php  $valor_eui_b=$smasolutions->valor_eui_aux($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                                                    @if ($valor_eui_b <= $ashrae)
-                                                    <label style="color:#33cc33;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
-                                                    @elseif ($valor_eui_b <= $energy_star && $valor_eui_b > $ashrae)
-                                                    <label  class="text-orange-500 font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
-                                                    @elseif ($valor_eui_b > $energy_star)
-                                                    <label  style="color:#ea0000;" class="font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
-                                                    @else
-                                                    <label class="text-blue-800  font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
-                                                    @endif
-                                                    <div id="eui_sol_b"></div>
-                                                @endif
-
-                                                @if ($result3 === null)
-                                                <?php $valor_eui_b = 0; ?>
-                                                <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
-                                                @endif
-                                            </div>
-                                    </div>
-
-                                   {{--  <div>
-                                        <div id="chart_eui" class="w-1/2"></div>
-                                    </div> --}}
-                                </div>
-                                <div class="grid bg-gray-200 rounded-md shadow-xl my-3 w-full">
-
-                                    <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
-                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Desperdicio de Energía Eléctrica del Edificio (Año)</label>
-                                    </div>
-
-                                    <div class="flex w-full justify-center mt-5">
-                                        <div id="chart_desp_energy" class="w-1/2"></div>
-                                    </div>
-                                    <div class="w-full grid">
-                                        <div class="w-full flex">
-                                            <div class="w-1/3 flex">
-
-                                            </div>
-
-                                            <div class="w-1/3 flex justify-center">
-                                                <label class="font-bold text-blue-800 font-roboto text-4xl">Energy Star</label>
-                                            </div>
-
-                                            <div class="w-1/3 flex justify-center">
-                                                <label class="font-bold text-blue-800 font-roboto text-4xl">ASHRAE</label>
-                                            </div>
-                                        </div>
-
-                                        <div class="w-full flex mt-5">
-                                            <div class="w-1/3 flex">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución Base</b>
-                                            </div>
-                                            <?php  $energy_base=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
-                                            <div class="w-1/3 flex justify-center">
-                                                @if ($energy_base > 0)
-                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_base)}}</b>
-                                                @endif
-
-                                                @if ($energy_base < 0)
-                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_base)}}</b>
-                                                @endif
-
-                                            </div>
-
-                                            <?php  $ashrae_base=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
-                                            <div class="w-1/3 flex justify-center">
-                                                @if ($ashrae_base > 0)
-                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_base)}}</b>
-                                                @endif
-
-                                                @if ($ashrae_base < 0)
-                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_base)}}</b>
-                                                @endif
-                                            </div>
-                                        </div>
-
-                                        <div class="w-full flex">
-                                            <div class="w-1/3 flex">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución A</b>
-                                            </div>
-                                            <?php  $energy_a=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
-                                            <div class="w-1/3 flex justify-center">
-                                                @if ($energy_a > 0)
-                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_a)}}</b>
-                                                @endif
-
-                                                @if ($energy_a < 0)
-                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_a)}}</b>
-                                                @endif
-
-                                            </div>
-
-                                            <div class="w-1/3 flex justify-center">
-                                                <?php  $ashrae_a=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
-                                                @if ($ashrae_a > 0)
-                                                <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_a)}}</b>
-                                                @endif
-
-                                                @if ($ashrae_a < 0)
-                                                <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_a)}}</b>
-                                                @endif
-                                            </div>
-                                        </div>
-
-                                        <div class="w-full flex">
-                                            <div class="w-1/3 flex">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución B</b>
-                                            </div>
-                                            <?php  $energy_b=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
-                                            <div class="w-1/3 flex justify-center">
-                                                @if ($result3 ==! null)
-                                                    @if ($energy_b > 0)
-                                                    <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($energy_b)}}</b>
-                                                    @endif
-
-                                                    @if ($energy_b < 0)
-                                                    <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($energy_b)}}</b>
-                                                    @endif
-                                                @endif
-
-                                                @if ($result3 === null)
-                                                <b class="text-blue-800 font-bold text-5xl font-roboto">$0</b>
-                                                @endif
-                                            </div>
-
-                                            <div class="w-1/3 flex justify-center">
-                                                <?php  $ashrae_b=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
-                                                @if ($result3 ==! null)
-                                                    @if ($ashrae_b > 0)
-                                                    <b style="color:#ea0000;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_b)}}</b>
-                                                    @endif
-
-                                                    @if ($ashrae_b < 0)
-                                                    <b style="color:#33cc33;" class="font-bold text-5xl font-roboto">${{number_format($ashrae_b)}}</b>
-                                                    @endif
-                                                @endif
-
-                                                @if ($result3 === null)
-                                                <b class="text-blue-800 font-bold text-5xl font-roboto">$0</b>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-     {{-- espacio --}}
-     <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
-
-     </div>
-      {{-- espacio --}}
-                            </div>
-                        </div>
-                </div>
                 {{-- step 4 --}}
+
+
 			</div>
 		</div>
 
@@ -4811,7 +5520,7 @@ span{
 
 					<div class="w-1/2 text-right">
 						<button
-							x-show="step < 5"
+							x-show="step < 6"
 							@click="step++"
 							class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-xl text-center text-white bg-blue-500 hover:bg-blue-600 font-medium font-roboto"
 						>Siguiente</button>
@@ -4834,10 +5543,531 @@ window.onload = function() {
     cap_op_5('{{$id_project}}');
     cap_op_10('{{$id_project}}');
     cap_op_15('{{$id_project}}');
+    confort_base('{{$conf_val_base}}');
+    confort_a('{{$conf_val_a}}')
+    confort_b('{{$conf_val_b}}')
     roi_base_a('{{$id_project}}');
     roi_base_b('{{$id_project}}');
     eui_grafic('{{$id_project}}');
+
 };
+
+function confort_base(val_conf){
+
+    if(val_conf >= 1 && val_conf < 1.125){
+       $("#term_1").css('border-left', '3px solid #4299e1');
+       $("#val_base_1").prepend(val_conf);
+    }
+
+    if(val_conf >= 1.125 && val_conf < 1.25){
+       $("#term_2").css('border-left', '3px solid #4299e1');
+       $("#val_base_1125").prepend(val_conf);
+    }
+
+    if(val_conf >= 1.25 && val_conf < 1.375){
+       $("#term_3").css('border-left', '3px solid #4299e1');
+       $("#val_base_125").prepend(val_conf);
+    }
+
+    if(val_conf >= 1.375 && val_conf < 1.5){
+       $("#term_4").css('border-left', '3px solid #4299e1');
+       $("#val_base_1375").prepend(val_conf);
+    }
+
+    if(val_conf >= 1.5 && val_conf < 1.625){
+       $("#term_5").css('border-left', '3px solid #4299e1');
+       $("#val_base_15").prepend(val_conf);
+    }
+
+    if(val_conf >= 1.625 && val_conf < 1.75){
+       $("#term_6").css('border-left', '3px solid #4299e1');
+       $("#val_base_1625").prepend(val_conf);
+    }
+
+    if(val_conf >= 1.75 && val_conf < 1.875){
+       $("#term_7").css('border-left', '3px solid #4299e1');
+       $("#val_base_175").prepend(val_conf);
+    }
+
+    if(val_conf >= 1.875 && val_conf < 2){
+       $("#term_8").css('border-left', '3px solid #4299e1');
+       $("#val_base_1875").prepend(val_conf);
+    }
+
+    if(val_conf >= 2 && val_conf < 2.125){
+       $("#term_9").css('border-left', '3px solid #4299e1');
+       $("#val_base_2").prepend(val_conf);
+    }
+
+    if(val_conf >= 2.125 && val_conf < 2.25){
+       $("#term_10").css('border-left', '3px solid #4299e1');
+       $("#val_base_2125").prepend(val_conf);
+    }
+
+    if(val_conf >= 2.25 && val_conf < 2.375){
+       $("#term_11").css('border-left', '3px solid #4299e1');
+       $("#val_base_225").prepend(val_conf);
+    }
+
+    if(val_conf >= 2.375 && val_conf < 2.5){
+       $("#term_12").css('border-left', '3px solid #4299e1');
+       $("#val_base_2375").prepend(val_conf);
+    }
+
+    if(val_conf >= 2.5 && val_conf < 2.625){
+       $("#term_13").css('border-left', '3px solid #4299e1');
+       $("#val_base_25").prepend(val_conf);
+    }
+
+    if(val_conf >= 2.625 && val_conf < 2.75){
+       $("#term_14").css('border-left', '3px solid #4299e1');
+       $("#val_base_2625").prepend(val_conf);
+    }
+
+    if(val_conf >= 2.75 && val_conf < 2.875){
+       $("#term_15").css('border-left', '3px solid #4299e1');
+       $("#val_base_275").prepend(val_conf);
+    }
+
+    if(val_conf >= 2.875 && val_conf < 3){
+       $("#term_16").css('border-left', '3px solid #4299e1');
+       $("#val_base_2875").prepend(val_conf);
+    }
+
+    if(val_conf >= 3 && val_conf < 3.125){
+       $("#term_17").css('border-left', '3px solid #4299e1');
+       $("#val_base_3").prepend(val_conf);
+    }
+
+    if(val_conf >= 3.125 && val_conf < 3.25){
+       $("#term_18").css('border-left', '3px solid #4299e1');
+       $("#val_base_3125").prepend(val_conf);
+    }
+
+    if(val_conf >= 3.25 && val_conf < 3.375){
+       $("#term_19").css('border-left', '3px solid #4299e1');
+       $("#val_base_325").prepend(val_conf);
+    }
+
+    if(val_conf >= 3.375 && val_conf < 3.5){
+       $("#term_20").css('border-left', '3px solid #4299e1');
+       $("#val_base_3375").prepend(val_conf);
+    }
+
+    if(val_conf >= 3.5 && val_conf < 3.625){
+       $("#term_21").css('border-left', '3px solid #4299e1');
+       $("#val_base_35").prepend(val_conf);
+    }
+
+    if(val_conf >= 3.625 && val_conf < 3.75){
+       $("#term_22").css('border-left', '3px solid #4299e1');
+       $("#val_base_3625").prepend(val_conf);
+    }
+
+    if(val_conf >= 3.75 && val_conf < 3.875){
+       $("#term_23").css('border-left', '3px solid #4299e1');
+       $("#val_base_375").prepend(val_conf);
+    }
+
+    if(val_conf >= 3.875 && val_conf < 4){
+       $("#term_24").css('border-left', '3px solid #4299e1');
+       $("#val_base_3875").prepend(val_conf);
+    }
+
+    if(val_conf >= 4 && val_conf < 4.125){
+       $("#term_25").css('border-left', '3px solid #4299e1');
+       $("#val_base_4").prepend(val_conf);
+    }
+
+    if(val_conf >= 4.125 && val_conf < 4.25){
+       $("#term_26").css('border-left', '3px solid #4299e1');
+       $("#val_base_4125").prepend(val_conf);
+    }
+
+    if(val_conf >= 4.25 && val_conf < 4.375){
+       $("#term_27").css('border-left', '3px solid #4299e1');
+       $("#val_base_425").prepend(val_conf);
+    }
+
+    if(val_conf >= 4.375 && val_conf < 4.5){
+       $("#term_28").css('border-left', '3px solid #4299e1');
+       $("#val_base_4375").prepend(val_conf);
+    }
+
+    if(val_conf >= 4.5 && val_conf < 4.625){
+       $("#term_29").css('border-left', '3px solid #4299e1');
+       $("#val_base_45").prepend(val_conf);
+    }
+
+    if(val_conf >= 4.625 && val_conf < 4.75){
+       $("#term_30").css('border-left', '3px solid #4299e1');
+       $("#val_base_4625").prepend(val_conf);
+    }
+
+    if(val_conf >= 4.75 && val_conf < 4.875){
+       $("#term_31").css('border-left', '3px solid #4299e1');
+       $("#val_base_475").prepend(val_conf);
+    }
+
+    if(val_conf >= 4.875 && val_conf < 5){
+       $("#term_32").css('border-left', '3px solid #4299e1');
+       $("#val_base_4875").prepend(val_conf);
+    }
+
+    if(val_conf >= 5){
+       $("#term_33").css('border-right', '3px solid #4299e1');
+       $("#val_base_5").prepend(val_conf);
+    }
+
+
+/* alert(val_conf); */
+
+
+
+   /*  if(val_conf >= 5){
+       $("#term_17").css('border-right', '3px solid #4299e1')
+    } */
+
+}
+
+function confort_a(val_conf_a){
+
+    if(val_conf_a >= 1 && val_conf_a < 1.125){
+       $("#term_1_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_1_a").prepend(val_conf);
+    }
+
+    if(val_conf_a >= 1.125 && val_conf_a < 1.25){
+       $("#term_2_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_1125_a").prepend(val_conf);
+    }
+
+    if(val_conf_a >= 1.25 && val_conf_a < 1.375){
+       $("#term_3_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_125_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 1.375 && val_conf_a < 1.5){
+       $("#term_4_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_1375_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 1.5 && val_conf_a < 1.625){
+       $("#term_5_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_15_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 1.625 && val_conf_a < 1.75){
+       $("#term_6_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_1625_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 1.75 && val_conf_a < 1.875){
+       $("#term_7_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_175_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 1.875 && val_conf_a < 2){
+       $("#term_8_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_1875_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 2 && val_conf_a < 2.125){
+       $("#term_9_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_2_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 2.125 && val_conf_a < 2.25){
+       $("#term_10_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_2125_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 2.25 && val_conf_a < 2.375){
+       $("#term_11_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_225_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 2.375 && val_conf_a < 2.5){
+       $("#term_12_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_2375_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 2.5 && val_conf_a < 2.625){
+       $("#term_13_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_25_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 2.625 && val_conf_a < 2.75){
+       $("#term_14_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_2625_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 2.75 && val_conf_a < 2.875){
+       $("#term_15_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_275_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 2.875 && val_conf_a < 3){
+       $("#term_16_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_2875_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 3 && val_conf_a < 3.125){
+       $("#term_17_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_3_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 3.125 && val_conf_a < 3.25){
+       $("#term_18_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_3125_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 3.25 && val_conf_a < 3.375){
+       $("#term_19_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_325_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 3.375 && val_conf_a < 3.5){
+       $("#term_20_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_3375_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 3.5 && val_conf_a < 3.625){
+       $("#term_21_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_35_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 3.625 && val_conf_a < 3.75){
+       $("#term_22_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_3625_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 3.75 && val_conf_a < 3.875){
+       $("#term_23_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_375_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 3.875 && val_conf_a < 4){
+       $("#term_24_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_3875_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 4 && val_conf_a < 4.125){
+       $("#term_25_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_4_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 4.125 && val_conf_a < 4.25){
+       $("#term_26_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_4125_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 4.25 && val_conf_a < 4.375){
+       $("#term_27_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_425_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 4.375 && val_conf_a < 4.5){
+       $("#term_28_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_4375_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 4.5 && val_conf_a < 4.625){
+       $("#term_29_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_45_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 4.625 && val_conf_a < 4.75){
+       $("#term_30_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_4625_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 4.75 && val_conf_a < 4.875){
+       $("#term_31_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_475_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 4.875 && val_conf_a < 5){
+       $("#term_32_a").css('border-left', '3px solid #4299e1');
+       $("#val_base_4875_a").prepend(val_conf_a);
+    }
+
+    if(val_conf_a >= 5){
+       $("#term_33_a").css('border-right', '3px solid #4299e1');
+       $("#val_base_5_a").prepend(val_conf_a);
+    }
+
+}
+
+function confort_b(val_conf_b){
+
+    if(val_conf_b >= 1 && val_conf_b < 1.125){
+       $("#term_1_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_1_b").prepend(val_conf);
+    }
+
+    if(val_conf_b >= 1.125 && val_conf_b < 1.25){
+       $("#term_2_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_1125_b").prepend(val_conf);
+    }
+
+    if(val_conf_b >= 1.25 && val_conf_b < 1.375){
+       $("#term_3_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_125_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 1.375 && val_conf_b < 1.5){
+       $("#term_4_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_1375_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 1.5 && val_conf_b < 1.625){
+       $("#term_5_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_15_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 1.625 && val_conf_b < 1.75){
+       $("#term_6_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_1625_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 1.75 && val_conf_b < 1.875){
+       $("#term_7_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_175_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 1.875 && val_conf_b < 2){
+       $("#term_8_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_1875_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 2 && val_conf_b < 2.125){
+       $("#term_9_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_2_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 2.125 && val_conf_b < 2.25){
+       $("#term_10_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_2125_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 2.25 && val_conf_b < 2.375){
+       $("#term_11_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_225_b").prepend(val_conf);
+    }
+
+    if(val_conf_b >= 2.375 && val_conf_b < 2.5){
+       $("#term_12_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_2375_b").prepend(val_conf);
+    }
+
+    if(val_conf_b >= 2.5 && val_conf_b < 2.625){
+       $("#term_13_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_25_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 2.625 && val_conf_b < 2.75){
+       $("#term_14_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_2625_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 2.75 && val_conf_b < 2.875){
+       $("#term_15_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_275_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 2.875 && val_conf_b < 3){
+       $("#term_16_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_2875_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 3 && val_conf_b < 3.125){
+       $("#term_17_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_3_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 3.125 && val_conf_b < 3.25){
+       $("#term_18_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_3125_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 3.25 && val_conf_b < 3.375){
+       $("#term_19_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_325_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 3.375 && val_conf_b < 3.5){
+       $("#term_20_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_3375_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 3.5 && val_conf_b < 3.625){
+       $("#term_21_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_35_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 3.625 && val_conf_b < 3.75){
+       $("#term_22_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_3625_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 3.75 && val_conf_b < 3.875){
+       $("#term_23_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_375_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 3.875 && val_conf_b < 4){
+       $("#term_24_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_3875_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 4 && val_conf_b < 4.125){
+       $("#term_25_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_4_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 4.125 && val_conf_b < 4.25){
+       $("#term_26_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_4125_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 4.25 && val_conf_b < 4.375){
+       $("#term_27_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_425_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 4.375 && val_conf_b < 4.5){
+       $("#term_28_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_4375_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 4.5 && val_conf_b < 4.625){
+       $("#term_29_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_45_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 4.625 && val_conf_b < 4.75){
+       $("#term_30_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_4625_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 4.75 && val_conf_b < 4.875){
+       $("#term_31_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_475_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 4.875 && val_conf_b < 5){
+       $("#term_32_b").css('border-left', '3px solid #4299e1');
+       $("#val_base_4875_b").prepend(val_conf_b);
+    }
+
+    if(val_conf_b >= 5){
+       $("#term_33_b").css('border-right', '3px solid #4299e1');
+       $("#val_base_5_b").prepend(val_conf_b);
+    }
+
+/* alert(val_conf_b); */
+}
 
      javascript:history.forward(1)
 function app() {
@@ -5809,10 +7039,10 @@ function eui_grafic(id_project){
             var options = {
           width: 650, height: 320,
           greenFrom:0,greenTo:ashrae,
-          redFrom: energy, redTo: 200,
+          redFrom: energy, redTo: 300,
           yellowFrom:ashrae, yellowTo: energy,
           minorTicks: 5,
-          max:200,
+          max:300,
         };
         }
 
@@ -5820,10 +7050,10 @@ function eui_grafic(id_project){
             var options = {
           width: 650, height: 320,
           greenFrom:0,greenTo:energy,
-          redFrom: ashrae, redTo: 200,
+          redFrom: ashrae, redTo: 300,
           yellowFrom:energy, yellowTo: ashrae,
           minorTicks: 5,
-          max:200,
+          max:300,
         };
         }
 
@@ -5862,10 +7092,10 @@ function eui_grafic(id_project){
             var options = {
           width: 650, height: 320,
           greenFrom:0,greenTo:ashrae,
-          redFrom: energy, redTo: 200,
+          redFrom: energy, redTo: 300,
           yellowFrom:ashrae, yellowTo: energy,
           minorTicks: 5,
-          max:200,
+          max:300,
         };
         }
 
@@ -5873,10 +7103,10 @@ function eui_grafic(id_project){
             var options = {
           width: 650, height: 320,
           greenFrom:0,greenTo:energy,
-          redFrom: ashrae, redTo: 200,
+          redFrom: ashrae, redTo: 300,
           yellowFrom:energy, yellowTo: ashrae,
           minorTicks: 5,
-          max:200,
+          max:300,
         };
         }
 
@@ -5916,10 +7146,10 @@ function eui_grafic(id_project){
                     var options = {
                 width: 650, height: 320,
                 greenFrom:0,greenTo:ashrae,
-                redFrom: energy, redTo: 200,
+                redFrom: energy, redTo: 300,
                 yellowFrom:ashrae, yellowTo: energy,
                 minorTicks: 5,
-                max:200,
+                max:300,
                 };
                 }
 
@@ -5927,10 +7157,10 @@ function eui_grafic(id_project){
                     var options = {
                 width: 650, height: 320,
                 greenFrom:0,greenTo:energy,
-                redFrom: ashrae, redTo: 200,
+                redFrom: ashrae, redTo: 300,
                 yellowFrom:energy, yellowTo: ashrae,
                 minorTicks: 5,
-                max:200,
+                max:300,
                 };
                 }
 
@@ -5941,6 +7171,8 @@ function eui_grafic(id_project){
 
 
     }
+
+
 </script>
 
 @section('js')
