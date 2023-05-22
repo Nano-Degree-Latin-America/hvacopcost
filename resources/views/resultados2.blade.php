@@ -181,8 +181,8 @@ span{
 }
 
 .puntero_medidas{
-    width: 85px; height:45px;
-    margin-top:20px;
+    width: 85px; height:65px;
+    margin-top:5px;
 }
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
@@ -4246,7 +4246,7 @@ span{
                                           <div class="flex rounded-lg" style="background: rgb(255,0,56);
                                           background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
                                                 {{-- 1 --} --}}
-                                            @for ($i = 1; $i <= 33; $i++)
+                                            @for ($i = 1; $i <= 32; $i++)
                                             <div id="term_{{$i}}" name="term_{{$i}}" class="grid ancho_rang">
                                                 <img  id="val_base_{{$i}}" name="val_base_{{$i}}" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
                                              </div>
@@ -4278,7 +4278,7 @@ span{
                                       <div class="flex rounded-lg" style="background: rgb(255,0,56);
                                       background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
 
-                                                    @for ($i = 1; $i <= 33; $i++)
+                                                    @for ($i = 1; $i <= 32; $i++)
                                                     <div id="term_{{$i}}_a" name="term_{{$i}}_a" class="grid ancho_rang">
                                                         <img  id="val_base_{{$i}}_a" name="val_base_{{$i}}_a" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
                                                     </div>
@@ -4308,7 +4308,7 @@ span{
                                       <div class="flex rounded-lg" style="background: rgb(255,0,56);
                                       background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
 
-                                                @for ($i = 1; $i <= 33; $i++)
+                                                @for ($i = 1; $i <= 32; $i++)
                                                 <div id="term_{{$i}}_b" name="term_{{$i}}_b" class="grid ancho_rang">
                                                     <img  id="val_base_{{$i}}_b" name="val_base_{{$i}}_b" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
                                                 </div>
@@ -5068,7 +5068,7 @@ window.onload = function() {
 function confort_base(val_conf){
     $val_ini = 1;
     $val_fin = 1.125;
-    for (let i = 1; i <= 33; i++) {
+    for (let i = 1; i <= 32; i++) {
         if(val_conf >= $val_ini && val_conf < $val_fin){
 
             $("#val_base_"+i).removeClass('hidden');
@@ -5082,7 +5082,7 @@ function confort_a(val_conf_a){
 
     $val_ini_a = 1;
     $val_fin_a = 1.125;
-    for (let i = 1; i <= 33; i++) {
+    for (let i = 1; i <= 32; i++) {
         if(val_conf_a >= $val_ini_a && val_conf_a < $val_fin_a){
 
             $("#val_base_"+i+"_a").removeClass('hidden');
@@ -6079,22 +6079,24 @@ function eui_grafic(id_project){
         if(energy > ashrae){
             var options = {
           width: 650, height: 320,
-          greenFrom:0,greenTo:ashrae,
+          greenFrom:1,greenTo:ashrae,
           redFrom: energy, redTo: 300,
           yellowFrom:ashrae, yellowTo: energy,
           minorTicks: 5,
           max:300,
+          min:1,
         };
         }
 
         if(energy < ashrae){
             var options = {
           width: 650, height: 320,
-          greenFrom:0,greenTo:energy,
+          greenFrom:1,greenTo:energy,
           redFrom: ashrae, redTo: 300,
           yellowFrom:energy, yellowTo: ashrae,
           minorTicks: 5,
           max:300,
+          min:1,
         };
         }
 
@@ -6132,22 +6134,24 @@ function eui_grafic(id_project){
         if(energy > ashrae){
             var options = {
           width: 650, height: 320,
-          greenFrom:0,greenTo:ashrae,
+          greenFrom:1,greenTo:ashrae,
           redFrom: energy, redTo: 300,
           yellowFrom:ashrae, yellowTo: energy,
           minorTicks: 5,
           max:300,
+          min:1,
         };
         }
 
         if(energy < ashrae){
             var options = {
           width: 650, height: 320,
-          greenFrom:0,greenTo:energy,
+          greenFrom:1,greenTo:energy,
           redFrom: ashrae, redTo: 300,
           yellowFrom:energy, yellowTo: ashrae,
           minorTicks: 5,
           max:300,
+          min:1,
         };
         }
 
@@ -6186,22 +6190,24 @@ function eui_grafic(id_project){
             if(energy > ashrae){
                     var options = {
                 width: 650, height: 320,
-                greenFrom:0,greenTo:ashrae,
+                greenFrom:1,greenTo:ashrae,
                 redFrom: energy, redTo: 300,
                 yellowFrom:ashrae, yellowTo: energy,
                 minorTicks: 5,
                 max:300,
+                min:1,
                 };
                 }
 
                 if(energy < ashrae){
                     var options = {
                 width: 650, height: 320,
-                greenFrom:0,greenTo:energy,
+                greenFrom:1,greenTo:energy,
                 redFrom: ashrae, redTo: 300,
                 yellowFrom:energy, yellowTo: ashrae,
                 minorTicks: 5,
                 max:300,
+                min:1,
                 };
                 }
 
