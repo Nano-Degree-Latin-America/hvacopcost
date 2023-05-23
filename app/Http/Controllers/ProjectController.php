@@ -399,15 +399,16 @@ class ProjectController extends Controller
                if ($solution_enf1->unid_med == 'TR') {
 
                 $tr =  $solution_enf1->capacidad_tot;
-                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
+                 //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
                 //((TR x 12000)
                 $res_trx_12000 = $tr * 12000;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
+                //((TR x 12000) x (Cooling Hours)
+                $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                //((TR x 12000) x (Cooling Hours)  / (SEER) )
                 $tot_1er_res = $res_1er_parent / $seer;
                 $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
+
+                //((TR x 12000) x (Cooling Hours) / (SEER) ) / 1000)
                 /* $res_ene_apl_tot_enf_1 */
 
 
@@ -417,18 +418,19 @@ class ProjectController extends Controller
                 //(Fórmula Energía x Factor S)
 
 /* (((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C) x Factor M */
-                $res_1_parent1= $res_ene_apl_tot_enf_1 * $factor_s;
+                $res_1_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_s);
 
-                $res_2_parent1= $res_ene_apl_tot_enf_1 * $factor_d;
+                $res_2_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_d);
 
-                $res_3_parent1= $res_ene_apl_tot_enf_1 * $factor_t;
+                $res_3_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_t);
 
                 $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
 
                 $res_res =  $res_parent_1 *  $factor_c;
 
 
-                if($solution_enf1->tipo_equipo === "ca_pi_te"){
+
+                if($solution_enf1->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -456,6 +458,7 @@ class ProjectController extends Controller
 
 
                 $res_res_fact_m =  $res_res * $factor_m;
+
                 $solution_enf1->cost_op_an = floatval(number_format($res_res_fact_m,2, '.', ''));
 
             }else if($solution_enf1->unid_med == 'KW'){
@@ -465,12 +468,12 @@ class ProjectController extends Controller
                 $kw_3_5 = $kw / 3.5;
                 //(((Kw / 3.5) x 12000 )
                 $kw_a = $kw_3_5 * 12000;
-                $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
-                //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
+                $res_dividiendo = $kw_a * $cooling_hrs;
+                //(((Kw / 3.5) x 12000 )x (Cooling Hours)
                 $res_div_seer = $res_dividiendo / $seer;
-                //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
+                //(((Kw / 3.5) x 12000 )x (Cooling Hours)  / SEER
                 $res_div_seer_a = $res_div_seer / 1000;
-                //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+                //(((Kw / 3.5) x 12000 )x (Cooling Hours)  / SEER ) / 1000
 
  //energia aplicada proccess
                 //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
@@ -486,7 +489,7 @@ class ProjectController extends Controller
    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($solution_enf1->tipo_equipo === "ca_pi_te"){
+                if($solution_enf1->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -1068,14 +1071,15 @@ class ProjectController extends Controller
 
                if ($solution_enf1_2->unid_med == 'TR') {
 
-                $tr =  $solution_enf1->capacidad_tot;
-                //((TR x 12000)
-                $res_trx_12000 = $tr * 12000;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                $tot_1er_res = $res_1er_parent / $seer;
-                $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                $tr =  $solution_enf1_2->capacidad_tot;
+                //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+               //((TR x 12000)
+               $res_trx_12000 = $tr * 12000;
+               //((TR x 12000) x (Cooling Hours)
+               $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+               //((TR x 12000) x (Cooling Hours)  / (SEER) )
+               $tot_1er_res = $res_1er_parent / $seer;
+               $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
 
 
@@ -1098,7 +1102,7 @@ class ProjectController extends Controller
 
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($solution_enf1_2->tipo_equipo === "ca_pi_te"){
+                if($solution_enf1_2->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -1133,12 +1137,12 @@ class ProjectController extends Controller
                   $kw_3_5 = $kw / 3.5;
                   //(((Kw / 3.5) x 12000 )
                   $kw_a = $kw_3_5 * 12000;
-                  $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
-                  //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
+                  $res_dividiendo = $kw_a * $cooling_hrs;
+                  //(((Kw / 3.5) x 12000 )x (Cooling Hours)
                   $res_div_seer = $res_dividiendo / $seer;
-                  //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
+                  //(((Kw / 3.5) x 12000 )x (Cooling Hours)  ) / SEER
                   $res_div_seer_a = $res_div_seer / 1000;
-                  //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+                  //(((Kw / 3.5) x 12000 )x (Cooling Hours) / SEER ) / 1000
 
                   //energia aplicada proccess
                 //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
@@ -1154,7 +1158,7 @@ class ProjectController extends Controller
    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($solution_enf1_2->tipo_equipo === "ca_pi_te"){
+                if($solution_enf1_2->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -1614,14 +1618,14 @@ class ProjectController extends Controller
                         $solution_enf1_3= SolutionsProjectModel::find($id_solution_1_3->id);
                     }
 
-                    $solution_enf1_3=new SolutionsProjectModel;
+
                     $solution_enf1_3->num_sol = 3;
                     $solution_enf1_3->num_enf = 1;
                     $solution_enf1_3->unidad_hvac = $request->get('cUnidad_1_3');
                     $solution_enf1_3->tipo_equipo	= $request->get('csTipo_1_3');
                     $solution_enf1_3->tipo_diseño	= $request->get('csDisenio_1_3');
 
-                    $aux_cap_tot_1_3 = explode(",",   $request->get('capacidad_total'));
+                    $aux_cap_tot_1_3 = explode(",",   $request->get('capacidad_total_1_3'));
                     if(count($aux_cap_tot_1_3) == 1){
                         $cap_tot_aux_1_3 =  $aux_cap_tot_1_3[0];
                     }
@@ -1637,8 +1641,8 @@ class ProjectController extends Controller
                     if(count($aux_cap_tot_1_3) == 5){
                         $cap_tot_aux_1_3 =  $aux_cap_tot_1_3[0].$aux_cap_tot_1_3[1].$aux_cap_tot_1_3[2].$aux_cap_tot_1_3[3].$aux_cap_tot_1_3[4];
                     }
-
                     $solution_enf1_3->capacidad_tot =floatval($cap_tot_aux_1_3);
+
                     $solution_enf1_3->unid_med = $request->get('unidad_capacidad_tot_1_3');
 
                     $solution_enf1_3->name_disenio=$request->get('name_diseno_1_3');
@@ -1750,14 +1754,15 @@ class ProjectController extends Controller
 
                 if ($solution_enf1_3->unid_med == 'TR') {
 
-                $tr =  $solution_enf1->capacidad_tot;
-                //((TR x 12000)
-                $res_trx_12000 = $tr * 12000;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                $tot_1er_res = $res_1er_parent / $seer;
-                $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                    $tr =  $solution_enf1_3->capacidad_tot;
+                    //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+                   //((TR x 12000)
+                   $res_trx_12000 = $tr * 12000;
+                   //((TR x 12000) x (Cooling Hours)
+                   $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                   //((TR x 12000) x (Cooling Hours)  / (SEER) )
+                   $tot_1er_res = $res_1er_parent / $seer;
+                   $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
 
 
@@ -1781,7 +1786,7 @@ class ProjectController extends Controller
 
                     $res_res =  $res_parent_1 *  $factor_c;
 
-                    if($solution_enf1_3->tipo_equipo === "ca_pi_te"){
+                    if($solution_enf1_3->tipo_equipo === "pa_pi_te"){
                         if($factor_m==='ASHRAE 180'){
                             $factor_m = 1.2;
                         }
@@ -1815,12 +1820,12 @@ class ProjectController extends Controller
                   $kw_3_5 = $kw / 3.5;
                   //(((Kw / 3.5) x 12000 )
                   $kw_a = $kw_3_5 * 12000;
-                  $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
-                  //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
+                  $res_dividiendo = $kw_a * $cooling_hrs;
+                  //(((Kw / 3.5) x 12000 )x (Cooling Hours)
                   $res_div_seer = $res_dividiendo / $seer;
-                  //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
+                  //(((Kw / 3.5) x 12000 )x (Cooling Hours)  ) / SEER
                   $res_div_seer_a = $res_div_seer / 1000;
-                  //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+                  //(((Kw / 3.5) x 12000 )x (Cooling Hours)  ) / SEER ) / 1000
 
                   //energia aplicada proccess
                 //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
@@ -1835,7 +1840,7 @@ class ProjectController extends Controller
                 $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                 $res_res =  $res_parent_1 *  $factor_c;
-                if($solution_enf1_3->tipo_equipo === "ca_pi_te"){
+                if($solution_enf1_3->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -2465,11 +2470,12 @@ class ProjectController extends Controller
                        if ($solution_enf2_1->unid_med == 'TR') {
 
                         $tr =  $solution_enf2_1->capacidad_tot;
+                            //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
                         //((TR x 12000)
                         $res_trx_12000 = $tr * 12000;
-                        //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                        $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                        //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
+                        //((TR x 12000) x (Cooling Hours)
+                        $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                        //((TR x 12000) x (Cooling Hours)  / (SEER) )
                         $tot_1er_res = $res_1er_parent / $seer;
                         $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
 
@@ -2498,7 +2504,7 @@ class ProjectController extends Controller
                         $res_res =  $res_parent_1 *  $factor_c;
 
 
-                        if($solution_enf2_1->tipo_equipo === "ca_pi_te"){
+                        if($solution_enf2_1->tipo_equipo === "pa_pi_te"){
                             if($factor_m==='ASHRAE 180'){
                                 $factor_m = 1.2;
                             }
@@ -2532,7 +2538,7 @@ class ProjectController extends Controller
                              $kw_3_5 = $kw / 3.5;
                              //(((Kw / 3.5) x 12000 )
                              $kw_a = $kw_3_5 * 12000;
-                             $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                             $res_dividiendo = $kw_a * $cooling_hrs;
                              //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                              $res_div_seer = $res_dividiendo / $seer;
                              //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -2553,7 +2559,7 @@ class ProjectController extends Controller
                     //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                                 $res_res =  $res_parent_1 *  $factor_c;
 
-                                if($solution_enf2_1->tipo_equipo === "ca_pi_te"){
+                                if($solution_enf2_1->tipo_equipo === "pa_pi_te"){
                                     if($factor_m==='ASHRAE 180'){
                                         $factor_m = 1.2;
                                     }
@@ -3156,11 +3162,12 @@ class ProjectController extends Controller
                        if ($solution_enf2_2->unid_med == 'TR') {
 
                         $tr =  $solution_enf2_2->capacidad_tot;
+                            //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
                         //((TR x 12000)
                         $res_trx_12000 = $tr * 12000;
-                        //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                        $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                        //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
+                        //((TR x 12000) x (Cooling Hours)
+                        $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                        //((TR x 12000) x (Cooling Hours)  / (SEER) )
                         $tot_1er_res = $res_1er_parent / $seer;
                         $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                         //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
@@ -3186,7 +3193,7 @@ class ProjectController extends Controller
 
                         $res_res =  $res_parent_1 *  $factor_c;
 
-                        if($solution_enf2_2->tipo_equipo === "ca_pi_te"){
+                        if($solution_enf2_2->tipo_equipo === "pa_pi_te"){
                             if($factor_m==='ASHRAE 180'){
                                 $factor_m = 1.2;
                             }
@@ -3219,7 +3226,7 @@ class ProjectController extends Controller
                         $kw_3_5 = $kw / 3.5;
                         //(((Kw / 3.5) x 12000 )
                         $kw_a = $kw_3_5 * 12000;
-                        $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                        $res_dividiendo = $kw_a * $cooling_hrs;
                         //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                         $res_div_seer = $res_dividiendo / $seer;
                         //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -3239,7 +3246,7 @@ class ProjectController extends Controller
                            $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
                //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                            $res_res =  $res_parent_1 *  $factor_c;
-                           if($solution_enf2_2->tipo_equipo === "ca_pi_te"){
+                           if($solution_enf2_2->tipo_equipo === "pa_pi_te"){
                             if($factor_m==='ASHRAE 180'){
                                 $factor_m = 1.2;
                             }
@@ -3832,14 +3839,15 @@ class ProjectController extends Controller
 
                     if ($solution_enf2_3->unid_med == 'TR') {
 
-                    $tr =  $solution_enf2_3->capacidad_tot;
-                    //((TR x 12000)
-                    $res_trx_12000 = $tr * 12000;
-                    //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                    $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                    //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                    $tot_1er_res = $res_1er_parent / $seer;
-                    $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                        $tr =  $solution_enf2_3->capacidad_tot;
+                        //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+                       //((TR x 12000)
+                       $res_trx_12000 = $tr * 12000;
+                       //((TR x 12000) x (Cooling Hours)
+                       $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                       //((TR x 12000) x (Cooling Hours)  / (SEER) )
+                       $tot_1er_res = $res_1er_parent / $seer;
+                       $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                     //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
 
 
@@ -3863,7 +3871,7 @@ class ProjectController extends Controller
 
                         $res_res =  $res_parent_1 *  $factor_c;
 
-                        if($solution_enf2_3->tipo_equipo === "ca_pi_te"){
+                        if($solution_enf2_3->tipo_equipo === "pa_pi_te"){
                             if($factor_m==='ASHRAE 180'){
                                 $factor_m = 1.2;
                             }
@@ -3915,7 +3923,7 @@ class ProjectController extends Controller
                        $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
            //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                        $res_res =  $res_parent_1 *  $factor_c;
-                       if($solution_enf2_3->tipo_equipo === "ca_pi_te"){
+                       if($solution_enf2_3->tipo_equipo === "pa_pi_te"){
                         if($factor_m==='ASHRAE 180'){
                             $factor_m = 1.2;
                         }
@@ -4547,14 +4555,15 @@ class ProjectController extends Controller
 
                 if ($solution_enf3_1->unid_med == 'TR') {
 
-                 $tr =  $solution_enf3_1->capacidad_tot;
-                 //((TR x 12000)
-                 $res_trx_12000 = $tr * 12000;
-                 //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                 $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                 $tot_1er_res = $res_1er_parent / $seer;
-                 $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                    $tr =  $solution_enf3_1->capacidad_tot;
+                    //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+                   //((TR x 12000)
+                   $res_trx_12000 = $tr * 12000;
+                   //((TR x 12000) x (Cooling Hours)
+                   $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                   //((TR x 12000) x (Cooling Hours)  / (SEER) )
+                   $tot_1er_res = $res_1er_parent / $seer;
+                   $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                  //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
                  /* $res_ene_apl_tot_enf_1 */
 
@@ -4578,7 +4587,7 @@ class ProjectController extends Controller
                  $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
 
                  $res_res =  $res_parent_1 *  $factor_c;
-                 if($solution_enf3_1->tipo_equipo === "ca_pi_te"){
+                 if($solution_enf3_1->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -4611,7 +4620,7 @@ class ProjectController extends Controller
                 $kw_3_5 = $kw / 3.5;
                 //(((Kw / 3.5) x 12000 )
                 $kw_a = $kw_3_5 * 12000;
-                $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                $res_dividiendo = $kw_a * $cooling_hrs;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                 $res_div_seer = $res_dividiendo / $seer;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -4631,7 +4640,7 @@ class ProjectController extends Controller
                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
        //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                    $res_res =  $res_parent_1 *  $factor_c;
-                   if($solution_enf3_1->tipo_equipo === "ca_pi_te"){
+                   if($solution_enf3_1->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -5226,13 +5235,14 @@ class ProjectController extends Controller
                if ($solution_enf3_2->unid_med == 'TR') {
 
                 $tr =  $solution_enf3_2->capacidad_tot;
-                //((TR x 12000)
-                $res_trx_12000 = $tr * 12000;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                $tot_1er_res = $res_1er_parent / $seer;
-                $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+               //((TR x 12000)
+               $res_trx_12000 = $tr * 12000;
+               //((TR x 12000) x (Cooling Hours)
+               $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+               //((TR x 12000) x (Cooling Hours)  / (SEER) )
+               $tot_1er_res = $res_1er_parent / $seer;
+               $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
 
 
@@ -5255,7 +5265,7 @@ class ProjectController extends Controller
 
                 $res_res =  $res_parent_1 *  $factor_c;
 
-                if($solution_enf3_2->tipo_equipo === "ca_pi_te"){
+                if($solution_enf3_2->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -5288,7 +5298,7 @@ class ProjectController extends Controller
                $kw_3_5 = $kw / 3.5;
                //(((Kw / 3.5) x 12000 )
                $kw_a = $kw_3_5 * 12000;
-               $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+               $res_dividiendo = $kw_a * $cooling_hrs;
                //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                $res_div_seer = $res_dividiendo / $seer;
                //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -5308,7 +5318,7 @@ class ProjectController extends Controller
                   $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
       //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                   $res_res =  $res_parent_1 *  $factor_c;
-                  if($solution_enf3_2->tipo_equipo === "ca_pi_te"){
+                  if($solution_enf3_2->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -5895,14 +5905,15 @@ class ProjectController extends Controller
 
             if ($solution_enf3_3->unid_med == 'TR') {
 
-            $tr =  $solution_enf3_3->capacidad_tot;
-            //((TR x 12000)
-            $res_trx_12000 = $tr * 12000;
-            //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-            $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-            //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-            $tot_1er_res = $res_1er_parent / $seer;
-            $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                $tr =  $solution_enf3_3->capacidad_tot;
+                //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+               //((TR x 12000)
+               $res_trx_12000 = $tr * 12000;
+               //((TR x 12000) x (Cooling Hours)
+               $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+               //((TR x 12000) x (Cooling Hours)  / (SEER) )
+               $tot_1er_res = $res_1er_parent / $seer;
+               $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
             //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
 
 
@@ -5924,7 +5935,7 @@ class ProjectController extends Controller
                 $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
 
                 $res_res =  $res_parent_1 *  $factor_c;
-                if($solution_enf3_3->tipo_equipo === "ca_pi_te"){
+                if($solution_enf3_3->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
                     }
@@ -5956,7 +5967,7 @@ class ProjectController extends Controller
            $kw_3_5 = $kw / 3.5;
            //(((Kw / 3.5) x 12000 )
            $kw_a = $kw_3_5 * 12000;
-           $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+           $res_dividiendo = $kw_a * $cooling_hrs;
            //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
            $res_div_seer = $res_dividiendo / $seer;
            //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -5976,7 +5987,7 @@ class ProjectController extends Controller
               $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
   //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
               $res_res =  $res_parent_1 *  $factor_c;
-              if($solution_enf3_3->tipo_equipo === "ca_pi_te"){
+              if($solution_enf3_3->tipo_equipo === "pa_pi_te"){
                 if($factor_m==='ASHRAE 180'){
                     $factor_m = 1.2;
                 }

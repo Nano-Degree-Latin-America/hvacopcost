@@ -404,12 +404,7 @@ span{
                                                             </div>
                                                         </div>
 
-                                                        <div class="w-full flex">
-                                                            <div class="">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Sistemas HVAC</label>
-                                                            </div>
 
-                                                        </div>
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
@@ -618,12 +613,7 @@ span{
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="w-full flex">
-                                                                    <div class="">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Sistemas HVAC</label>
-                                                                    </div>
 
-                                                                </div>
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
@@ -832,12 +822,6 @@ span{
                                                                             </div>
                                                                         </div>
 
-                                                                        <div class="w-full flex">
-                                                                            <div class="">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Sistemas HVAC</label>
-                                                                            </div>
-
-                                                                        </div>
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex ">
@@ -1024,12 +1008,6 @@ span{
                                                             </div>
                                                         </div>
 
-                                                        <div class="w-full flex">
-                                                            <div class="">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Sistemas HVAC</label>
-                                                            </div>
-
-                                                        </div>
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
@@ -1212,13 +1190,6 @@ span{
                                                         </div>
 
                                                         <div class="w-full flex">
-                                                            <div class="">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Sistemas HVAC</label>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
                                                                 <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
                                                             </div>
@@ -1396,13 +1367,6 @@ span{
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
                                                             </div>
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Sistemas HVAC</label>
-                                                            </div>
-
                                                         </div>
 
                                                         <div class="w-full flex">
@@ -1593,12 +1557,6 @@ span{
                                                             </div>
                                                         </div>
 
-                                                        <div class="w-full flex">
-                                                            <div class="">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Sistemas HVAC</label>
-                                                            </div>
-
-                                                        </div>
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
@@ -1783,13 +1741,7 @@ span{
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="w-full flex">
-                                                                    <div class="">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Sistemas HVAC</label>
-                                                                    </div>
-
-                                                                </div>
-
+                                                            
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
                                                                         <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>

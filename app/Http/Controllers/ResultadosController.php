@@ -268,14 +268,14 @@ class ResultadosController extends Controller
                if ($solution_enf1->unid_med == 'TR') {
 
                 $tr =  $solution_enf1->capacidad_tot;
-                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
-                //((TR x 12000)
-                $res_trx_12000 = $tr * 12000;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                $tot_1er_res = $res_1er_parent / $seer;
-                $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+               //((TR x 12000)
+               $res_trx_12000 = $tr * 12000;
+               //((TR x 12000) x (Cooling Hours)
+               $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+               //((TR x 12000) x (Cooling Hours)  / (SEER) )
+               $tot_1er_res = $res_1er_parent / $seer;
+               $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
                 /* $res_ene_apl_tot_enf_1 */
 
@@ -329,7 +329,7 @@ class ResultadosController extends Controller
                 $kw_3_5 = $kw / 3.5;
                 //(((Kw / 3.5) x 12000 )
                 $kw_a = $kw_3_5 * 12000;
-                $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                $res_dividiendo = $kw_a * $cooling_hrs;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                 $res_div_seer = $res_dividiendo / $seer;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -917,14 +917,15 @@ class ResultadosController extends Controller
 
                if ($solution_enf2_2->unid_med == 'TR') {
 
-                $tr =  $solution_enf1->capacidad_tot;
-                //((TR x 12000)
-                $res_trx_12000 = $tr * 12000;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                $tot_1er_res = $res_1er_parent / $seer;
-                $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                $tr =  $solution_enf2_2->capacidad_tot;
+                //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+               //((TR x 12000)
+               $res_trx_12000 = $tr * 12000;
+               //((TR x 12000) x (Cooling Hours)
+               $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+               //((TR x 12000) x (Cooling Hours)  / (SEER) )
+               $tot_1er_res = $res_1er_parent / $seer;
+               $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
 
 
@@ -982,7 +983,7 @@ class ResultadosController extends Controller
                   $kw_3_5 = $kw / 3.5;
                   //(((Kw / 3.5) x 12000 )
                   $kw_a = $kw_3_5 * 12000;
-                  $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                  $res_dividiendo = $kw_a * $cooling_hrs;
                   //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                   $res_div_seer = $res_dividiendo / $seer;
                   //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -1572,14 +1573,15 @@ class ResultadosController extends Controller
 
                 if ($solution_enf1_3->unid_med == 'TR') {
 
-                $tr =  $solution_enf1->capacidad_tot;
-                //((TR x 12000)
-                $res_trx_12000 = $tr * 12000;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                $tot_1er_res = $res_1er_parent / $seer;
-                $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                    $tr =  $solution_enf1_3->capacidad_tot;
+                    //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+                   //((TR x 12000)
+                   $res_trx_12000 = $tr * 12000;
+                   //((TR x 12000) x (Cooling Hours)
+                   $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                   //((TR x 12000) x (Cooling Hours)  / (SEER) )
+                   $tot_1er_res = $res_1er_parent / $seer;
+                   $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
 
 
@@ -1637,7 +1639,7 @@ class ResultadosController extends Controller
                   $kw_3_5 = $kw / 3.5;
                   //(((Kw / 3.5) x 12000 )
                   $kw_a = $kw_3_5 * 12000;
-                  $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                  $res_dividiendo = $kw_a * $cooling_hrs;
                   //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                   $res_div_seer = $res_dividiendo / $seer;
                   //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -2249,13 +2251,14 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                if ($solution_enf2_1->unid_med == 'TR') {
 
                 $tr =  $solution_enf2_1->capacidad_tot;
-                //((TR x 12000)
-                $res_trx_12000 = $tr * 12000;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                $tot_1er_res = $res_1er_parent / $seer;
-                $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+               //((TR x 12000)
+               $res_trx_12000 = $tr * 12000;
+               //((TR x 12000) x (Cooling Hours)
+               $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+               //((TR x 12000) x (Cooling Hours)  / (SEER) )
+               $tot_1er_res = $res_1er_parent / $seer;
+               $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
                 /* $res_ene_apl_tot_enf_1 */
 
@@ -2314,7 +2317,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                      $kw_3_5 = $kw / 3.5;
                      //(((Kw / 3.5) x 12000 )
                      $kw_a = $kw_3_5 * 12000;
-                     $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                     $res_dividiendo = $kw_a * $cooling_hrs;
                      //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                      $res_div_seer = $res_dividiendo / $seer;
                      //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -2901,13 +2904,14 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                if ($solution_enf2_2->unid_med == 'TR') {
 
                 $tr =  $solution_enf2_2->capacidad_tot;
-                //((TR x 12000)
-                $res_trx_12000 = $tr * 12000;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                $tot_1er_res = $res_1er_parent / $seer;
-                $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+               //((TR x 12000)
+               $res_trx_12000 = $tr * 12000;
+               //((TR x 12000) x (Cooling Hours)
+               $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+               //((TR x 12000) x (Cooling Hours)  / (SEER) )
+               $tot_1er_res = $res_1er_parent / $seer;
+               $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
 
 
@@ -2964,7 +2968,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                 $kw_3_5 = $kw / 3.5;
                 //(((Kw / 3.5) x 12000 )
                 $kw_a = $kw_3_5 * 12000;
-                $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                $res_dividiendo = $kw_a * $cooling_hrs;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                 $res_div_seer = $res_dividiendo / $seer;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -3552,14 +3556,15 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
                 if ($solution_enf2_3->unid_med == 'TR') {
 
-                $tr =  $solution_enf2_3->capacidad_tot;
-                //((TR x 12000)
-                $res_trx_12000 = $tr * 12000;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                $tot_1er_res = $res_1er_parent / $seer;
-                $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                    $tr =  $solution_enf2_3->capacidad_tot;
+                    //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+                   //((TR x 12000)
+                   $res_trx_12000 = $tr * 12000;
+                   //((TR x 12000) x (Cooling Hours)
+                   $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                   //((TR x 12000) x (Cooling Hours)  / (SEER) )
+                   $tot_1er_res = $res_1er_parent / $seer;
+                   $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
 
 
@@ -3615,7 +3620,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                 $kw_3_5 = $kw / 3.5;
                 //(((Kw / 3.5) x 12000 )
                 $kw_a = $kw_3_5 * 12000;
-                $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                $res_dividiendo = $kw_a * $cooling_hrs;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                 $res_div_seer = $res_dividiendo / $seer;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -4225,14 +4230,15 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
                 if ($solution_enf3_1->unid_med == 'TR') {
 
-                 $tr =  $solution_enf3_1->capacidad_tot;
-                 //((TR x 12000)
-                 $res_trx_12000 = $tr * 12000;
-                 //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                 $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                 $tot_1er_res = $res_1er_parent / $seer;
-                 $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                    $tr =  $solution_enf3_1->capacidad_tot;
+                    //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+                   //((TR x 12000)
+                   $res_trx_12000 = $tr * 12000;
+                   //((TR x 12000) x (Cooling Hours)
+                   $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                   //((TR x 12000) x (Cooling Hours)  / (SEER) )
+                   $tot_1er_res = $res_1er_parent / $seer;
+                   $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                  //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
                  /* $res_ene_apl_tot_enf_1 */
 
@@ -4289,7 +4295,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                 $kw_3_5 = $kw / 3.5;
                 //(((Kw / 3.5) x 12000 )
                 $kw_a = $kw_3_5 * 12000;
-                $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                $res_dividiendo = $kw_a * $cooling_hrs;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                 $res_div_seer = $res_dividiendo / $seer;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -4876,14 +4882,15 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
                 if ($solution_enf3_2->unid_med == 'TR') {
 
-                 $tr =  $solution_enf3_2->capacidad_tot;
-                 //((TR x 12000)
-                 $res_trx_12000 = $tr * 12000;
-                 //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                 $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                 $tot_1er_res = $res_1er_parent / $seer;
-                 $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                    $tr =  $solution_enf3_2->capacidad_tot;
+                    //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+                   //((TR x 12000)
+                   $res_trx_12000 = $tr * 12000;
+                   //((TR x 12000) x (Cooling Hours)
+                   $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                   //((TR x 12000) x (Cooling Hours)  / (SEER) )
+                   $tot_1er_res = $res_1er_parent / $seer;
+                   $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                  //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
 
 
@@ -4939,7 +4946,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                 $kw_3_5 = $kw / 3.5;
                 //(((Kw / 3.5) x 12000 )
                 $kw_a = $kw_3_5 * 12000;
-                $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                $res_dividiendo = $kw_a * $cooling_hrs;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                 $res_div_seer = $res_dividiendo / $seer;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
@@ -5526,14 +5533,15 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
                  if ($solution_enf3_3->unid_med == 'TR') {
 
-                 $tr =  $solution_enf3_3->capacidad_tot;
-                 //((TR x 12000)
-                 $res_trx_12000 = $tr * 12000;
-                 //((TR x 12000) x (Cooling Hours) x (Costo Energía)
-                 $res_1er_parent = $res_trx_12000 * $cooling_hrs * $cost_energ;
-                 //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) )
-                 $tot_1er_res = $res_1er_parent / $seer;
-                 $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                    $tr =  $solution_enf3_3->capacidad_tot;
+                    //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+                   //((TR x 12000)
+                   $res_trx_12000 = $tr * 12000;
+                   //((TR x 12000) x (Cooling Hours)
+                   $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                   //((TR x 12000) x (Cooling Hours)  / (SEER) )
+                   $tot_1er_res = $res_1er_parent / $seer;
+                   $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
                  //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
 
 
@@ -5587,7 +5595,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                 $kw_3_5 = $kw / 3.5;
                 //(((Kw / 3.5) x 12000 )
                 $kw_a = $kw_3_5 * 12000;
-                $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
+                $res_dividiendo = $kw_a * $cooling_hrs;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
                 $res_div_seer = $res_dividiendo / $seer;
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
