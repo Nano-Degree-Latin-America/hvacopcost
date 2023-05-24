@@ -6225,7 +6225,8 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
                     }
                     $res = $num_1 - $num_2;
-                    $dif = $res / $cost_elec;
+                   /*  $dif = $res / $cost_elec; */
+                    $dif = $res;
                     return $dif;
                 }
     }
@@ -6293,7 +6294,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
                     }
                     $res = $num_1 - $num_3;
-                    $dif = $res / $cost_elec;
+                    $dif = $res;
                     return $dif;
                 }
     }
