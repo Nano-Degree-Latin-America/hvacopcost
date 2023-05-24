@@ -1741,7 +1741,7 @@ span{
                                                                     </div>
                                                                 </div>
 
-                                                            
+
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
                                                                         <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
@@ -2248,7 +2248,7 @@ span{
                                                             <div class="grid justify-items-center">
                                                                 <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
                                                                <div class="flex w-full justify-center">
-                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_1/$tar_ele->costo_elec)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kwh</b>
+                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_1)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kwh</b>
                                                                </div>
                                                             </div>
 
@@ -2293,7 +2293,7 @@ span{
                                                             <div class="grid justify-items-center">
                                                                 <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
                                                                <div class="flex w-full justify-center">
-                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_2/$tar_ele->costo_elec)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kwh</b>
+                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_2)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kwh</b>
                                                                </div>
                                                             </div>
 
@@ -2335,7 +2335,7 @@ span{
                                                             <div class="grid justify-items-center">
                                                                 <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
                                                                <div class="flex w-full justify-center">
-                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_3/$tar_ele->costo_elec)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kwh</b>
+                                                                <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_3)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kwh</b>
                                                                </div>
                                                             </div>
                                                         </div>
@@ -2688,7 +2688,7 @@ span{
                                                                     </div>
 
                                                                     <div class="grid justify-center">
-                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($sumaopex_1)}}</p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
                                                                     </div>
 
                                                                 </div>
@@ -2737,7 +2737,7 @@ span{
                                                                     </div>
 
                                                                     <div class="grid justify-items-center">
-                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto  text-center">$ {{number_format($sumaopex_2)}}</p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto  text-center">$ {{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
                                                                     </div>
 
                                                                 </div>
@@ -2783,7 +2783,7 @@ span{
                                                                     </div>
 
                                                                     <div class="grid justify-center">
-                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($sumaopex_3)}}</p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
                                                                     </div>
                                                                 </div>
                                                         </div>
