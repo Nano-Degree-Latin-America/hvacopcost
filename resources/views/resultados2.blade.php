@@ -3774,8 +3774,8 @@ span{
                                                              <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1}}</b>  </p>
                                                             @endif
 
-                                                            <div class="grid justify-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_1)}}</p>
+                                                            <div class="grid justify-items-center">
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
                                                             </div>
                                                         </div>
 
@@ -3816,8 +3816,8 @@ span{
                                                             <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2}}</b></p>
                                                             @endif
 
-                                                            <div class="grid justify-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_2)}}</p>
+                                                            <div class="grid justify-items-center">
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
                                                             </div>
                                                         </div>
 
@@ -3857,8 +3857,8 @@ span{
                                                             <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3}}</b>  </p>
                                                             @endif
 
-                                                            <div class="grid justify-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_3)}}</p>
+                                                            <div class="grid justify-items-center">
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
                                                             </div>
                                                         </div>
 
