@@ -6237,8 +6237,6 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
         ->select('solutions_project.*')
         ->get();
 
-
-
                 $num_1 = 0;
                 $num_2 = 0;
                 $num_3 = 0;
@@ -6261,7 +6259,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
                     }
                     $res = $num_1 - $num_2;
-                    return $res;
+                    return $res * $cost_elec;
                 }
     }
 
@@ -6329,7 +6327,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                     }
                     $res = $num_1 - $num_3;
 
-                    return $res;
+                    return $res * $cost_elec;
                 }
     }
 
