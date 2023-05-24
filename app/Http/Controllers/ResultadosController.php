@@ -6256,10 +6256,10 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                             $res_2 = $res_2 + $sols[$i]->cost_op_an;
                             $num_2 = $res_2;
                         }
-
+                        $costo_e = $sols[$i]->costo_elec;
                     }
                     $res = $num_1 - $num_2;
-                    return $res * $cost_elec;
+                    return  $res*$cost_elec;
                 }
     }
 
@@ -6327,7 +6327,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
                     }
                     $res = $num_1 - $num_3;
 
-                    return $res * $cost_elec;
+                    return  $res * $cost_elec;
                 }
     }
 
