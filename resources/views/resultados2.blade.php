@@ -3624,7 +3624,7 @@ span{
                         <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
                             <div class="grid bg-gray-200 rounded-md shadow-xl">
                                 <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
-                                    <label class="font-bold text-white text-2xl font-roboto text-4xl">ANÁLISIS DE LA INTENSIDAD DEL USO DE LA ENERGÍA (EUI)</label>
+                                    <label class="font-bold text-white text-2xl font-roboto text-4xl">ANÁLISIS DE INTENSIDAD DEL USO DE LA ENERGÍA (EUI)</label>
                                 </div>
 
                                 <div class="w-full flex justify-center m-1 " >
@@ -3752,10 +3752,12 @@ span{
                                                             <?php  $sumaopex_1=$smasolutions->sumaopex($id_project,$result1->num_enf) ?>
                                                             <?php  $sumacap_term_1=$smasolutions->sumacap_term($id_project,$result1->num_enf) ?>
                                                             <?php  $unid_med_1=$smasolutions->unid_med($id_project,$result1->num_enf) ?>
+                                                            <?php  $consumo_anual_opex_base=$smasolutions->consumo_anual_opex($sumaopex_1,$tar_ele->porcent_hvac,$tar_ele->costo_elec) ?>
                                                             @elseif($result1 === null)
                                                             <?php $sumaopex_1=0?>
                                                            <?php $sumacap_term_1=0?>
                                                            <?php $unid_med_1=""?>
+                                                           <?php  $consumo_anual_opex_base=0?>
                                                             @endif
 
                                                             @if ($unid_med_1 !== "")
@@ -3775,7 +3777,7 @@ span{
                                                             @endif
 
                                                             <div class="grid justify-items-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual del Edificio</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_opex_base)}}</p>
                                                             </div>
                                                         </div>
 
@@ -3802,10 +3804,12 @@ span{
                                                             <?php  $sumaopex_2=$smasolutions->sumaopex($id_project,$result2->num_enf) ?>
                                                             <?php  $sumacap_term_2=$smasolutions->sumacap_term($id_project,$result2->num_enf) ?>
                                                             <?php  $unid_med_2=$smasolutions->unid_med($id_project,$result2->num_enf) ?>
+                                                            <?php  $consumo_anual_opex_a=$smasolutions->consumo_anual_opex($sumaopex_2,$tar_ele->porcent_hvac,$tar_ele->costo_elec) ?>
                                                             @elseif($result2 === null)
                                                             <?php $sumaopex_2=0?>
                                                            <?php $sumacap_term_2=0?>
                                                            <?php $unid_med_2=""?>
+                                                           <?php  $consumo_anual_opex_a=0?>
                                                             @endif
 
                                                             @if ($unid_med_2 !== "")
@@ -3817,7 +3821,7 @@ span{
                                                             @endif
 
                                                             <div class="grid justify-items-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual del Edificio</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_opex_a)}}</p>
                                                             </div>
                                                         </div>
 
@@ -3843,10 +3847,12 @@ span{
                                                             <?php  $sumaopex_3=$smasolutions->sumaopex($id_project,$result3->num_enf) ?>
                                                             <?php  $sumacap_term_3=$smasolutions->sumacap_term($id_project,$result3->num_enf) ?>
                                                             <?php  $unid_med_3=$smasolutions->unid_med($id_project,$result3->num_enf) ?>
+                                                            <?php  $consumo_anual_opex_b=$smasolutions->consumo_anual_opex($sumaopex_3,$tar_ele->porcent_hvac,$tar_ele->costo_elec) ?>
                                                             @elseif($result3 === null)
                                                             <?php $sumaopex_3=0?>
                                                            <?php $sumacap_term_3=0?>
                                                            <?php $unid_med_3=""?>
+                                                           <?php $consumo_anual_opex_b=""?>
                                                             @endif
 
                                                             @if ($unid_med_3 !== "")
@@ -3858,7 +3864,7 @@ span{
                                                             @endif
 
                                                             <div class="grid justify-items-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual del Edificio</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_opex_b)}}</p>
                                                             </div>
                                                         </div>
 
