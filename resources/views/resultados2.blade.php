@@ -3821,7 +3821,7 @@ span{
                                                             @endif
 
                                                             <div class="grid justify-items-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_edi_a)}}</p>
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual del Edificio</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_edi_a)}}</p>
                                                             </div>
                                                         </div>
 
@@ -3864,7 +3864,7 @@ span{
                                                             @endif
 
                                                             <div class="grid justify-items-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_edi_b)}}</p>
+                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual del Edificio</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_edi_b)}}</p>
                                                             </div>
                                                         </div>
 
