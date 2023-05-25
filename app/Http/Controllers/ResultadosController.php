@@ -6581,7 +6581,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
     public function valor_eui_aux($sumaopex,$costo_elec,$area,$porcent_hvac,$energy_star,$unidad){
        /*  ((378857*100%/50%)*3.412)/(2000*10.764) */
-       $ConsumoAnualOPEX = $sumaopex/$costo_elec;
+       $ConsumoAnualOPEX = $sumaopex;
         /* ((378857*100%/50%)*3.412) */
 
         /* (378857*100%/50%) */
@@ -6596,8 +6596,6 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
        //validar area mc y ft
         if($unidad == 'mc'){
             $area_res=$area*10.764;
-            /* (52.9 * (10,000 * 10.764)) */
-          /*   $area_x_e_star = $energy_star *  $area_x_fact_fts; */
         }
 
         if($unidad == 'ft'){
