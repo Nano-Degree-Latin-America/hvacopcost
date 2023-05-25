@@ -6154,6 +6154,15 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
         return $sumaopex;
     }
 
+    public function consumo_anual_opex($consumo,$porecent,$const_elec){
+       // ((sumaopex*100%/porcent)
+        $primer = $consumo * $const_elec;
+        $porcent_1 = $porecent / 100;
+        $res = $primer / $porcent_1;
+
+       return intval($res);
+    }
+
     public function sumacap_term($id,$num_enf){
         $solutions = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id)
@@ -6580,14 +6589,17 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
 
     public function valor_eui_aux($sumaopex,$costo_elec,$area,$porcent_hvac,$energy_star,$unidad){
-       /*  ((378857*100%/50%)*3.412)/(2000*10.764) */
-       $ConsumoAnualOPEX = $sumaopex/$costo_elec;
-        /* ((378857*100%/50%)*3.412) */
+       /*  ((sumaopex*100%/50%)*3.412)/(area*10.764) */
 
-        /* (378857*100%/50%) */
+        $val = $sumaopex * $costo_elec;
+
+       $ConsumoAnualOPEX = $val/$costo_elec;
+        /* ((sumaopex*100%/50%)*3.412) */
+
+        /* (sumaopex*100%/50%) */
 
         $porcent= $porcent_hvac / 100;
-        /* 378857*100%/50% */
+        /* sumaopex*100%/50% */
         $div_porcent =  $ConsumoAnualOPEX / $porcent;
 
         $mult_rers_1erapt =  $div_porcent * 3.412;
