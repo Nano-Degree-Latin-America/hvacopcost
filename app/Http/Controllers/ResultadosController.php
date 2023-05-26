@@ -8490,4 +8490,24 @@ $dompdf->render();
 
     }
 
+    public function prod_lab($id,$enf,$num_sol,$sumacapterm){
+
+        $sols_enf = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id)
+        ->where('solutions_project.num_enf','=',$enf)
+        ->get();
+
+        $arry_tots=[];
+
+        if(count($sols_enf) === 1){
+            $sol = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id)
+            ->where('solutions_project.num_enf','=',$enf)
+            ->where('solutions_project.num_sol','=',$num_sol)
+            ->first()->confort;
+
+            return floatval($sol);
+        }
+    }
+
 }

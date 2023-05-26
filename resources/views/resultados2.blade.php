@@ -4210,7 +4210,7 @@ span{
                                              </div>
                                             @endfor
                                             </div>
-                                        </div>
+                                     </div>
 
                                 </div>
                                 {{-- @if ($result2 === null)
@@ -4282,8 +4282,50 @@ span{
                                 @endif
 
 
+
                                 </div>
 
+                               {{--  <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
+                                    <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
+                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Productividad Laboral</label>
+                                    </div>
+
+                                    <div class="flex w-full justify-center">
+                                        @if ($result1 !== null)
+                                        <?php /*  $prod_lab=$conf_val->prod_lab($id_project,1,1,$sumacap_term_1) */ ?>
+                                        @endif
+                                        @if ($result1 === null)
+                                        <?php /*  $prod_lab=0;  */?>
+                                        @endif
+                                        <div class="w-1/3 grid justify-items-center">
+                                            <div id="chart_prod_base"></div>
+                                        </div>
+                                        @if ($result1 !== null)
+                                        <?php /*  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) */ ?>
+                                        @endif
+                                        @if ($result1 === null)
+                                        <?php  /* $prod_lab_a=0; */ ?>
+                                        @endif
+                                        <div class="w-1/3 grid justify-items-center">
+                                            <div id="chart_prod_a"></div>
+                                        </div>
+                                        @if ($result1 !== null)
+                                        <?php /*  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) */ ?>
+                                        @endif
+                                        @if ($result1 === null)
+                                        <?php  /* $prod_lab_b=0; */ ?>
+                                        @endif
+                                        <div class="w-1/3 grid justify-items-center">
+                                            <div id="chart_prod_b"></div>
+                                        </div>
+                                    </div>
+
+                                </div> --}}
+{{-- espacio --}}
+<div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+
+</div>
+ {{-- espacio --}}
                             </div>
                         </div>
                     </div>
@@ -5010,17 +5052,16 @@ span{
 
 <script type="text/javascript">
 window.onload = function() {
-    cap_op_3('{{$id_project}}');
-    cap_op_5('{{$id_project}}');
-    cap_op_10('{{$id_project}}');
-    cap_op_15('{{$id_project}}');
+    cap_op_3('{{$id_project}}','{{$tar_ele->unidad}}');
+    cap_op_5('{{$id_project}}','{{$tar_ele->unidad}}');
+    cap_op_10('{{$id_project}}','{{$tar_ele->unidad}}');
+    cap_op_15('{{$id_project}}','{{$tar_ele->unidad}}');
     confort_base('{{$conf_val_base}}');
     confort_a('{{$conf_val_a}}')
     confort_b('{{$conf_val_b}}')
     roi_base_a('{{$id_project}}');
     roi_base_b('{{$id_project}}');
     eui_grafic('{{$id_project}}');
-
 };
 
 function confort_base(val_conf){
@@ -5096,7 +5137,8 @@ function app() {
 			}
 		}
 //grafica capex_vx_opex 3 años
-function cap_op_3(id_project){
+function cap_op_3(id_project,unidad){
+
     $.ajax({
         type: 'get',
         url: "/cap_op_3/" + id_project,
@@ -5182,7 +5224,14 @@ function cap_op_3(id_project){
         tooltip: {
           y: {
             formatter: function (val) {
-              return val + "$/m²"
+                if(unidad == 'mc'){
+                    return val + "$/m²"
+                }
+
+                if(unidad == 'ft'){
+                    return val + "$/ft²"
+                }
+
             }
           }
         },
@@ -5223,7 +5272,7 @@ function cap_op_3(id_project){
 
 }
 
-function cap_op_5(id_project){
+function cap_op_5(id_project,unidad){
     $.ajax({
         type: 'get',
         url: "/cap_op_5/" + id_project,
@@ -5305,7 +5354,13 @@ function cap_op_5(id_project){
         tooltip: {
           y: {
             formatter: function (val) {
-              return val + "$/m²"
+                if(unidad == 'mc'){
+                    return val + "$/m²"
+                }
+
+                if(unidad == 'ft'){
+                    return val + "$/ft²"
+                }
             }
           }
         },
@@ -5347,7 +5402,7 @@ function cap_op_5(id_project){
 }
 
 //grafica 10 años
-function cap_op_10(id_project){
+function cap_op_10(id_project,unidad){
     $.ajax({
         type: 'get',
         url: "/cap_op_10/" + id_project,
@@ -5429,7 +5484,13 @@ function cap_op_10(id_project){
         tooltip: {
           y: {
             formatter: function (val) {
-              return val + "$/m²"
+                if(unidad == 'mc'){
+                    return val + "$/m²"
+                }
+
+                if(unidad == 'ft'){
+                    return val + "$/ft²"
+                }
             }
           }
         },
@@ -5471,7 +5532,7 @@ function cap_op_10(id_project){
 }
 
 //grafica 15 años
-function cap_op_15(id_project){
+function cap_op_15(id_project,unidad){
     $.ajax({
         type: 'get',
         url: "/cap_op_15/" + id_project,
@@ -5553,7 +5614,13 @@ function cap_op_15(id_project){
         tooltip: {
           y: {
             formatter: function (val) {
-              return val + "$/m²"
+                if(unidad == 'mc'){
+                    return val + "$/m²"
+                }
+
+                if(unidad == 'ft'){
+                    return val + "$/ft²"
+                }
             }
           }
         },
