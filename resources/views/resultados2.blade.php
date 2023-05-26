@@ -185,7 +185,6 @@ span{
     margin-top:5px;
 }
     </style>
-
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 <div class="bg-blue-900 w-full flex justify-center" style="background-image: radial-gradient(rgb(10,19,59) 0%,rgb(5,1,25) 100%);">
@@ -4286,42 +4285,7 @@ span{
 
                                 </div>
 
-                               {{--  <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
-                                    <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
-                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Productividad Laboral</label>
-                                    </div>
 
-                                    <div class="flex w-full justify-center">
-                                        @if ($result1 !== null)
-                                        <?php /*  $prod_lab=$conf_val->prod_lab($id_project,1,1,$sumacap_term_1) */ ?>
-                                        @endif
-                                        @if ($result1 === null)
-                                        <?php /*  $prod_lab=0;  */?>
-                                        @endif
-                                        <div class="w-1/3 grid justify-items-center">
-                                            <div id="chart_prod_base"></div>
-                                        </div>
-                                        @if ($result1 !== null)
-                                        <?php /*  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) */ ?>
-                                        @endif
-                                        @if ($result1 === null)
-                                        <?php  /* $prod_lab_a=0; */ ?>
-                                        @endif
-                                        <div class="w-1/3 grid justify-items-center">
-                                            <div id="chart_prod_a"></div>
-                                        </div>
-                                        @if ($result1 !== null)
-                                        <?php /*  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) */ ?>
-                                        @endif
-                                        @if ($result1 === null)
-                                        <?php  /* $prod_lab_b=0; */ ?>
-                                        @endif
-                                        <div class="w-1/3 grid justify-items-center">
-                                            <div id="chart_prod_b"></div>
-                                        </div>
-                                    </div>
-
-                                </div> --}}
 {{-- espacio --}}
 <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
 
@@ -5232,7 +5196,6 @@ function cap_op_3(id_project,unidad){
                 if(unidad == 'ft'){
                     return val + "$/ft²"
                 }
-
             }
           }
         },
@@ -6245,7 +6208,7 @@ function eui_grafic(id_project){
 
     }
 
-
+     
 </script>
 
 @section('js')

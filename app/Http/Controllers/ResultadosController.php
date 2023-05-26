@@ -294,7 +294,7 @@ class ResultadosController extends Controller
 
                 $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
 
-                $res_res =  $res_parent_1 *  $factor_c;
+                $res_res =  $res_parent_1 * $factor_c;
                 if($solution_enf1->tipo_equipo === "pa_pi_te"){
                     if($factor_m==='ASHRAE 180'){
                         $factor_m = 1.2;
