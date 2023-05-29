@@ -1646,69 +1646,17 @@ $t_e = $solution_enf1->tipo_equipo;
                     $cooling_hrs =  $solution_enf1_3->coolings_hours;
                     $cost_energ =  $solution_enf1_3->costo_elec;
                     $seer = $solution_enf1_3->eficencia_ene_cant;
-
-                if ($solution_enf1_3->unid_med == 'TR') {
-
-                    $tr =  $solution_enf1_3->capacidad_tot;
-                    //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
-                   //((TR x 12000)
-                   $res_trx_12000 = $tr * 12000;
-                   //((TR x 12000) x (Cooling Hours)
-                   $res_1er_parent = $res_trx_12000 * $cooling_hrs;
-                   //((TR x 12000) x (Cooling Hours)  / (SEER) )
-                   $tot_1er_res = $res_1er_parent / $seer;
-                   $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
-                //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
-
-
-                    //energia aplicada proccess
-                    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-
-                    //(Fórmula Energía x Factor S)
                     $factor_s = $request->get('lblCsTipo_1_3');
                     $factor_d = floatval($request->get('csDisenio_1_3'));
                     $factor_c = $request->get('tipo_control_1_3');
                     $factor_t =floatval($request->get('dr_1_3'));
                     $factor_m =$request->get('csMantenimiento_1_3');
+                    $t_e = $solution_enf1->tipo_equipo;
+                if ($solution_enf1_3->unid_med == 'TR') {
+                    $tr = $solution_enf1_3->capacidad_tot;
+                    $res_1_3 = ProjectController::cost_op_an_form($tr,$cooling_hrs,$seer,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
 
-                    $res_1_parent1= $res_ene_apl_tot_enf_1 * $factor_s;
-
-                    $res_2_parent1= $res_ene_apl_tot_enf_1 * $factor_d;
-
-                    $res_3_parent1= $res_ene_apl_tot_enf_1 * $factor_t;
-
-                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
-
-                    $res_res =  $res_parent_1 *  $factor_c;
-
-                    if($solution_enf1_3->tipo_equipo === "pa_pi_te"){
-                        if($factor_m==='ASHRAE 180'){
-                            $factor_m = 1.2;
-                        }
-
-                        if($factor_m==='Deficiente'){
-                            $factor_m = 1.15;
-                        }
-
-                        if($factor_m==='Sin Mantenimiento'){
-                            $factor_m = 1.2;
-                        }
-                    }else{
-                        if($factor_m==='ASHRAE 180'){
-                            $factor_m = 0.99;
-                        }
-
-                        if($factor_m==='Deficiente'){
-                            $factor_m = 1.11;
-                        }
-
-                        if($factor_m==='Sin Mantenimiento'){
-                            $factor_m = 1.18;
-                        }
-                    }
-                    $res_res_fact_m =  $res_res * $factor_m;
-
-                    $solution_enf1_3->cost_op_an = $res_res_fact_m;
+                    $solution_enf1_3->cost_op_an = $res_1_3;
                 }else if($solution_enf1_3->unid_med == 'KW'){
                       //(((Kw / 3.5)
                   $kw =  $solution_enf1_3->capacidad_tot;

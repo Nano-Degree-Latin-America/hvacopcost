@@ -214,7 +214,7 @@ span{
                                 </ul> --}}
 
 
-                                     <form action="{{route('resultados')}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
+                                     <form action="{{url('/edit_project', [$id_project])}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
                                         @csrf
                                         <div class="my-8">
                                             <label class="text-5xl font-roboto text-blue-800 font-bold leading-tight" for="">Análisis Energético y Financiero <br> de Sistemas HVAC</label>
@@ -234,7 +234,7 @@ span{
                                                 </div>
 
 
-                                                <input type="text" id="name_copy" value="{{$project_edit->name}}" name="name_copy">
+                                                <input type="text" id="name_copy" value="{{$project_edit->name}}" class="hidden" name="name_copy">
 
                                                 <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">

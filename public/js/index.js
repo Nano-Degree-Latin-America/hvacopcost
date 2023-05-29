@@ -849,9 +849,9 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
                       case "pa_pi_te":
                         var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Condensador Arriba" , "value":0.14},' +
-                        '{ "text":"Condensador Abajo" , "value":0.19},' +
-                        '{"text":"Espalda con Espalda" , "value":0.05 } ]}';
+                        '{ "text":"Condensador Arriba" , "value":0.06},' +
+                        '{ "text":"Condensador Abajo" , "value":0.08},' +
+                        '{"text":"Espalda con Espalda" , "value":0 } ]}';
 
                         var arry_control = '{ "arry_control" : [' +
                         '{"text":"Termostato Interno" , "value":1.1 } ]}';
@@ -1179,9 +1179,9 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
       case "pa_pi_te":
         var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Condensador Arriba" , "value":0.14},' +
-        '{ "text":"Condensador Abajo" , "value":0.19},' +
-        '{"text":"Espalda con Espalda" , "value":0.05 } ]}';
+        '{ "text":"Condensador Arriba" , "value":0.06},' +
+        '{ "text":"Condensador Abajo" , "value":0.08},' +
+        '{"text":"Espalda con Espalda" , "value":0 } ]}';
 
         var arry_control = '{ "arry_control" : [' +
         '{"text":"Termostato Interno" , "value":1.1 } ]}';
@@ -1468,9 +1468,9 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
       case "pa_pi_te":
         var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Condensador Arriba" , "value":0.14},' +
-        '{ "text":"Condensador Abajo" , "value":0.19},' +
-        '{"text":"Espalda con Espalda" , "value":0.05 } ]}';
+        '{ "text":"Condensador Arriba" , "value":0.06},' +
+        '{ "text":"Condensador Abajo" , "value":0.08},' +
+        '{"text":"Espalda con Espalda" , "value":0 } ]}';
 
         var arry_control = '{ "arry_control" : [' +
         '{"text":"Termostato Interno" , "value":1.1 } ]}';

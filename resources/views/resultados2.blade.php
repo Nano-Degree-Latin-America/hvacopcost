@@ -198,8 +198,8 @@ span{
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
-{{--     <button class="bg-orange-500  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 "><a class="mx-1" href="/edit_project_copy/{{$id_project}}">Editar Projecto</a></button>
- --}}
+    <button class="bg-orange-500  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 "><a class="mx-1" href="/edit_project_copy/{{$id_project}}">Editar Projecto</a></button>
+
     <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2"><a class="mx-1" href="/generatePDF/{{$id_project}}" target="_blank"><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></a></button>
 
     <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 "><a class="mx-1" href="/home">Nuevo Projecto</a></button>
@@ -416,7 +416,7 @@ span{
                                                                     Paquetes (RTU)
                                                                     @endif
                                                                     @if ($solution->unidad_hvac == 2)
-                                                                    Split
+                                                                    Split DX
                                                                     @endif
                                                                     @if ($solution->unidad_hvac == 3)
                                                                     VRF No Ductados
@@ -467,28 +467,32 @@ span{
                                                                     Cassette y Piso Techo
                                                                     @endif
 
-                                                                    @if ($solution->tipo_equipo == 'fa_man')
-                                                                    Fancoils y Manejadoras
+                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                                    Fancoil (LSP)
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'man')
+                                                                    Manejadoras
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                                    Fancoil (HSP)
                                                                     @endif
 
                                                                     @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Estándar
+                                                                    Unidad Estándar
                                                                     @endif
 
-                                                                    @if ($solution->tipo_equipo == 'est_wshp')
-                                                                    Estándar
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                                    Agua Circuito Cerrado
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                                    Agua Circuito Cerrado
                                                                     @endif
 
                                                                     @if ($solution->tipo_equipo == 'pa_pi_te')
                                                                     Pared - Piso - Techo
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'enf_agu')
-                                                                    Enfriado por Agua
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'enf_air')
-                                                                    Enfriado por Aire
                                                                     @endif
                                                                 </p>
                                                             </div>
@@ -556,6 +560,15 @@ span{
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="w-full flex">
+                                                            <div class="w-2/5 flex justify-start">
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
+                                                            </div>
+                                                            <div class="ml-2 w-2/5 flex justify-start">
+                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -625,7 +638,7 @@ span{
                                                                             Paquetes (RTU)
                                                                             @endif
                                                                             @if ($solution->unidad_hvac == 2)
-                                                                            Split
+                                                                            Split DX
                                                                             @endif
                                                                             @if ($solution->unidad_hvac == 3)
                                                                             VRF No Ductados
@@ -657,48 +670,53 @@ span{
                                                                     <div class="ml-2 w-auto">
                                                                         <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
                                                                             @if ($solution->tipo_equipo == 'basico')
-                                                                            Básico
-                                                                            @endif
+                                                                    Básico
+                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'c_economizador')
-                                                                            c/ Economizador
-                                                                            @endif
+                                                                    @if ($solution->tipo_equipo == 'c_economizador')
+                                                                    c/ Economizador
+                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'manejadora')
-                                                                            Manejadora
-                                                                            @endif
+                                                                    @if ($solution->tipo_equipo == 'manejadora')
+                                                                    Manejadora
+                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'fancoil')
-                                                                            Fancoil
-                                                                            @endif
+                                                                    @if ($solution->tipo_equipo == 'fancoil')
+                                                                    Fancoil
+                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                            Cassette y Piso Techo
-                                                                            @endif
+                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                                    Cassette y Piso Techo
+                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'fa_man')
-                                                                            Fancoils y Manejadoras
-                                                                            @endif
+                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                                    Fancoil (LSP)
+                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'est_ptac')
-                                                                            Estándar
-                                                                            @endif
+                                                                    @if ($solution->tipo_equipo == 'man')
+                                                                    Manejadoras
+                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'est_wshp')
-                                                                            Estándar
-                                                                            @endif
+                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                                    Fancoil (HSP)
+                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                            Pared - Piso - Techo
-                                                                            @endif
+                                                                    @if ($solution->tipo_equipo == 'est_ptac')
+                                                                    Unidad Estándar
+                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'enf_agu')
-                                                                            Enfriado por Agua
-                                                                            @endif
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                                    Agua Circuito Cerrado
+                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'enf_air')
-                                                                            Enfriado por Aire
-                                                                            @endif
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                                    Agua Circuito Cerrado
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                                    Pared - Piso - Techo
+                                                                    @endif
+
                                                                         </p>
                                                                     </div>
 
@@ -767,6 +785,15 @@ span{
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
                                                                     </div>
                                                                 </div>
+
+                                                                <div class="w-full flex">
+                                                                    <div class="w-2/5 flex justify-start">
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
+                                                                    </div>
+                                                                    <div class="ml-2 w-2/5 flex justify-start">
+                                                                        <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             {{-- cuerpo --}}
                                                             @endif
@@ -833,7 +860,7 @@ span{
                                                                                     Paquetes (RTU)
                                                                                     @endif
                                                                                     @if ($solution->unidad_hvac == 2)
-                                                                                    Split
+                                                                                    Split DX
                                                                                     @endif
                                                                                     @if ($solution->unidad_hvac == 3)
                                                                                     VRF No Ductados
@@ -865,49 +892,53 @@ span{
                                                                             <div class="ml-2 w-auto">
                                                                                 <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
                                                                                     @if ($solution->tipo_equipo == 'basico')
-                                                                                    Básico
-                                                                                    @endif
+                                                                    Básico
+                                                                    @endif
 
-                                                                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                                                                    c/ Economizador
-                                                                                    @endif
+                                                                    @if ($solution->tipo_equipo == 'c_economizador')
+                                                                    c/ Economizador
+                                                                    @endif
 
-                                                                                    @if ($solution->tipo_equipo == 'manejadora')
-                                                                                    Manejadora
-                                                                                    @endif
+                                                                    @if ($solution->tipo_equipo == 'manejadora')
+                                                                    Manejadora
+                                                                    @endif
 
-                                                                                    @if ($solution->tipo_equipo == 'fancoil')
-                                                                                    Fancoil
-                                                                                    @endif
+                                                                    @if ($solution->tipo_equipo == 'fancoil')
+                                                                    Fancoil
+                                                                    @endif
 
-                                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                                    Cassette y Piso Techo
-                                                                                    @endif
+                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                                    Cassette y Piso Techo
+                                                                    @endif
 
-                                                                                    @if ($solution->tipo_equipo == 'fa_man')
-                                                                                    Fancoils y Manejadoras
-                                                                                    @endif
+                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                                    Fancoil (LSP)
+                                                                    @endif
 
-                                                                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                                                                    Estándar
-                                                                                    @endif
+                                                                    @if ($solution->tipo_equipo == 'man')
+                                                                    Manejadoras
+                                                                    @endif
 
-                                                                                    @if ($solution->tipo_equipo == 'est_wshp')
-                                                                                    Estándar
-                                                                                    @endif
+                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                                    Fancoil (HSP)
+                                                                    @endif
 
-                                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                                    Pared - Piso - Techo
-                                                                                    @endif
+                                                                    @if ($solution->tipo_equipo == 'est_ptac')
+                                                                    Unidad Estándar
+                                                                    @endif
 
-                                                                                    @if ($solution->tipo_equipo == 'enf_agu')
-                                                                                    Enfriado por Agua
-                                                                                    @endif
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                                    Agua Circuito Cerrado
+                                                                    @endif
 
-                                                                                    @if ($solution->tipo_equipo == 'enf_air')
-                                                                                    Enfriado por Aire
-                                                                                    @endif
-                                                                                </p>
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                                    Agua Circuito Cerrado
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                                    Pared - Piso - Techo
+                                                                    @endif
+                                                                        </p>
                                                                             </div>
 
                                                                         </div>
@@ -975,6 +1006,15 @@ span{
                                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
                                                                             </div>
                                                                         </div>
+
+                                                                        <div class="w-full flex">
+                                                                            <div class="w-2/5 flex justify-start">
+                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
+                                                                            </div>
+                                                                            <div class="ml-2 w-2/5 flex justify-start">
+                                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                     {{-- cuerpo --}}
                                                                     @endif
@@ -1019,7 +1059,7 @@ span{
                                                                     Paquetes (RTU)
                                                                     @endif
                                                                     @if ($solution->unidad_hvac == 2)
-                                                                    Split
+                                                                    Split DX
                                                                     @endif
                                                                     @if ($solution->unidad_hvac == 3)
                                                                     VRF No Ductados
@@ -1070,28 +1110,34 @@ span{
                                                                     Cassette y Piso Techo
                                                                     @endif
 
-                                                                    @if ($solution->tipo_equipo == 'fa_man')
-                                                                    Fancoils y Manejadoras
+                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                                    Fancoil (LSP)
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'man')
+                                                                    Manejadoras
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                                    Fancoil (HSP)
                                                                     @endif
 
                                                                     @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Estándar
+                                                                    Unidad Estándar
                                                                     @endif
 
-                                                                    @if ($solution->tipo_equipo == 'est_wshp')
-                                                                    Estándar
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                                    Agua Circuito Cerrado
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                                    Agua Circuito Cerrado
                                                                     @endif
 
                                                                     @if ($solution->tipo_equipo == 'pa_pi_te')
                                                                     Pared - Piso - Techo
                                                                     @endif
-                                                                    @if ($solution->tipo_equipo == 'enf_agu')
-                                                                    Enfriado por Agua
-                                                                    @endif
 
-                                                                    @if ($solution->tipo_equipo == 'enf_air')
-                                                                    Enfriado por Aire
-                                                                    @endif
                                                                 </p>
                                                             </div>
 
@@ -1158,6 +1204,15 @@ span{
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="w-full flex">
+                                                            <div class="w-2/5 flex justify-start">
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
+                                                            </div>
+                                                            <div class="ml-2 w-2/5 flex justify-start">
+                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1199,7 +1254,7 @@ span{
                                                                     Paquetes (RTU)
                                                                     @endif
                                                                     @if ($solution->unidad_hvac == 2)
-                                                                    Split
+                                                                    Split DX
                                                                     @endif
                                                                     @if ($solution->unidad_hvac == 3)
                                                                     VRF No Ductados
@@ -1250,28 +1305,34 @@ span{
                                                                     Cassette y Piso Techo
                                                                     @endif
 
-                                                                    @if ($solution->tipo_equipo == 'fa_man')
-                                                                    Fancoils y Manejadoras
+                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                                    Fancoil (LSP)
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'man')
+                                                                    Manejadoras
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                                    Fancoil (HSP)
                                                                     @endif
 
                                                                     @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Estándar
+                                                                    Unidad Estándar
                                                                     @endif
 
-                                                                    @if ($solution->tipo_equipo == 'est_wshp')
-                                                                    Estándar
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                                    Agua Circuito Cerrado
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                                    Agua Circuito Cerrado
                                                                     @endif
 
                                                                     @if ($solution->tipo_equipo == 'pa_pi_te')
                                                                     Pared - Piso - Techo
                                                                     @endif
-                                                                    @if ($solution->tipo_equipo == 'enf_agu')
-                                                                    Enfriado por Agua
-                                                                    @endif
 
-                                                                    @if ($solution->tipo_equipo == 'enf_air')
-                                                                    Enfriado por Aire
-                                                                    @endif
                                                                 </p>
                                                             </div>
 
@@ -1338,6 +1399,15 @@ span{
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="w-full flex">
+                                                            <div class="w-2/5 flex justify-start">
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
+                                                            </div>
+                                                            <div class="ml-2 w-2/5 flex justify-start">
+                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1379,7 +1449,7 @@ span{
                                                                     Paquetes (RTU)
                                                                     @endif
                                                                     @if ($solution->unidad_hvac == 2)
-                                                                    Split
+                                                                    Split DX
                                                                     @endif
                                                                     @if ($solution->unidad_hvac == 3)
                                                                     VRF No Ductados
@@ -1430,28 +1500,34 @@ span{
                                                                     Cassette y Piso Techo
                                                                     @endif
 
-                                                                    @if ($solution->tipo_equipo == 'fa_man')
-                                                                    Fancoils y Manejadoras
+                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                                    Fancoil (LSP)
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'man')
+                                                                    Manejadoras
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                                    Fancoil (HSP)
                                                                     @endif
 
                                                                     @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Estándar
+                                                                    Unidad Estándar
                                                                     @endif
 
-                                                                    @if ($solution->tipo_equipo == 'est_wshp')
-                                                                    Estándar
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                                    Agua Circuito Cerrado
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                                    Agua Circuito Cerrado
                                                                     @endif
 
                                                                     @if ($solution->tipo_equipo == 'pa_pi_te')
                                                                     Pared - Piso - Techo
                                                                     @endif
-                                                                    @if ($solution->tipo_equipo == 'enf_agu')
-                                                                    Enfriado por Agua
-                                                                    @endif
 
-                                                                    @if ($solution->tipo_equipo == 'enf_air')
-                                                                    Enfriado por Aire
-                                                                    @endif
                                                                 </p>
                                                             </div>
 
@@ -1518,6 +1594,15 @@ span{
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="w-full flex">
+                                                            <div class="w-2/5 flex justify-start">
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
+                                                            </div>
+                                                            <div class="ml-2 w-2/5 flex justify-start">
+                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1568,7 +1653,7 @@ span{
                                                                     Paquetes (RTU)
                                                                     @endif
                                                                     @if ($solution->unidad_hvac == 2)
-                                                                    Split
+                                                                    Split DX
                                                                     @endif
                                                                     @if ($solution->unidad_hvac == 3)
                                                                     VRF No Ductados
@@ -1619,28 +1704,34 @@ span{
                                                                     Cassette y Piso Techo
                                                                     @endif
 
-                                                                    @if ($solution->tipo_equipo == 'fa_man')
-                                                                    Fancoils y Manejadoras
+                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                                    Fancoil (LSP)
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'man')
+                                                                    Manejadoras
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                                    Fancoil (HSP)
                                                                     @endif
 
                                                                     @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Estándar
+                                                                    Unidad Estándar
                                                                     @endif
 
-                                                                    @if ($solution->tipo_equipo == 'est_wshp')
-                                                                    Estándar
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                                    Agua Circuito Cerrado
+                                                                    @endif
+
+                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                                    Agua Circuito Cerrado
                                                                     @endif
 
                                                                     @if ($solution->tipo_equipo == 'pa_pi_te')
                                                                     Pared - Piso - Techo
                                                                     @endif
-                                                                    @if ($solution->tipo_equipo == 'enf_agu')
-                                                                    Enfriado por Agua
-                                                                    @endif
 
-                                                                    @if ($solution->tipo_equipo == 'enf_air')
-                                                                    Enfriado por Aire
-                                                                    @endif
                                                                 </p>
                                                             </div>
 
@@ -1709,6 +1800,15 @@ span{
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
                                                             </div>
                                                         </div>
+
+                                                        <div class="w-full flex">
+                                                            <div class="w-2/5 flex justify-start">
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
+                                                            </div>
+                                                            <div class="ml-2 w-2/5 flex justify-start">
+                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                     {{-- cuerpo --}}
                                                     @endif
@@ -1752,7 +1852,7 @@ span{
                                                                             Paquetes (RTU)
                                                                             @endif
                                                                             @if ($solution->unidad_hvac == 2)
-                                                                            Split
+                                                                            Split DX
                                                                             @endif
                                                                             @if ($solution->unidad_hvac == 3)
                                                                             VRF No Ductados
@@ -1803,28 +1903,34 @@ span{
                                                                             Cassette y Piso Techo
                                                                             @endif
 
-                                                                            @if ($solution->tipo_equipo == 'fa_man')
-                                                                            Fancoils y Manejadoras
+                                                                            @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                                            Fancoil (LSP)
+                                                                            @endif
+
+                                                                            @if ($solution->tipo_equipo == 'man')
+                                                                            Manejadoras
+                                                                            @endif
+
+                                                                            @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                                            Fancoil (HSP)
                                                                             @endif
 
                                                                             @if ($solution->tipo_equipo == 'est_ptac')
-                                                                            Estándar
+                                                                            Unidad Estándar
                                                                             @endif
 
-                                                                            @if ($solution->tipo_equipo == 'est_wshp')
-                                                                            Estándar
+                                                                            @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                                            Agua Circuito Cerrado
+                                                                            @endif
+
+                                                                            @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                                            Agua Circuito Cerrado
                                                                             @endif
 
                                                                             @if ($solution->tipo_equipo == 'pa_pi_te')
                                                                             Pared - Piso - Techo
                                                                             @endif
-                                                                            @if ($solution->tipo_equipo == 'enf_agu')
-                                                                            Enfriado por Agua
-                                                                            @endif
 
-                                                                            @if ($solution->tipo_equipo == 'enf_air')
-                                                                            Enfriado por Aire
-                                                                            @endif
                                                                         </p>
                                                                     </div>
 
@@ -1893,6 +1999,15 @@ span{
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
                                                                     </div>
                                                                 </div>
+
+                                                                <div class="w-full flex">
+                                                                    <div class="w-2/5 flex justify-start">
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
+                                                                    </div>
+                                                                    <div class="ml-2 w-2/5 flex justify-start">
+                                                                        <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             {{-- cuerpo --}}
                                                             @endif
@@ -1942,7 +2057,7 @@ span{
                                                                                     Paquetes (RTU)
                                                                                     @endif
                                                                                     @if ($solution->unidad_hvac == 2)
-                                                                                    Split
+                                                                                    Split DX
                                                                                     @endif
                                                                                     @if ($solution->unidad_hvac == 3)
                                                                                     VRF No Ductados
@@ -1993,27 +2108,32 @@ span{
                                                                                     Cassette y Piso Techo
                                                                                     @endif
 
-                                                                                    @if ($solution->tipo_equipo == 'fa_man')
-                                                                                    Fancoils y Manejadoras
+                                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                                                    Fancoil (LSP)
+                                                                                    @endif
+
+                                                                                    @if ($solution->tipo_equipo == 'man')
+                                                                                    Manejadoras
+                                                                                    @endif
+
+                                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                                                    Fancoil (HSP)
                                                                                     @endif
 
                                                                                     @if ($solution->tipo_equipo == 'est_ptac')
-                                                                                    Estándar
+                                                                                    Unidad Estándar
                                                                                     @endif
 
-                                                                                    @if ($solution->tipo_equipo == 'est_wshp')
-                                                                                    Estándar
+                                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                                                    Agua Circuito Cerrado
+                                                                                    @endif
+
+                                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                                                    Agua Circuito Cerrado
                                                                                     @endif
 
                                                                                     @if ($solution->tipo_equipo == 'pa_pi_te')
                                                                                     Pared - Piso - Techo
-                                                                                    @endif
-                                                                                    @if ($solution->tipo_equipo == 'enf_agu')
-                                                                                    Enfriado por Agua
-                                                                                    @endif
-
-                                                                                    @if ($solution->tipo_equipo == 'enf_air')
-                                                                                    Enfriado por Aire
                                                                                     @endif
                                                                                 </p>
                                                                             </div>
@@ -2081,6 +2201,15 @@ span{
                                                                             </div>
                                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="w-full flex">
+                                                                            <div class="w-2/5 flex justify-start">
+                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
+                                                                            </div>
+                                                                            <div class="ml-2 w-2/5 flex justify-start">
+                                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -4090,212 +4219,8 @@ span{
                         </div>
                 </div>
 
-                 {{-- step 6 --}}
-                 <div x-show.transition.in="step === 5">
-                    <div class="w-full flex justify-center">
-                        <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
-                            <div class="grid bg-gray-200 rounded-md shadow-xl">
-                                <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
-                                    <label class="font-bold text-white text-2xl font-roboto text-4xl">Analisis de Confort y Productividad</label>
-                                </div>
 
-                                <div class="w-full flex justify-center m-1 " >
-                                    <div class="flex w-1/3 justify-start">
-                                        <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
-                                        </div>
-                                    </div>
-                                    <div class="flex w-1/4  justify-start">
-                                        <div class="mr-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->region}}</label>
-                                        </div>
-                                    </div>
-                                    <div class="flex w-1/3  justify-start">
-                                        <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
-                                        </div>
-                                    </div>
-                                    <div class="flex w-1/3  justify-start">
-                                        <div class="mr-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Categoría Edificio:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->cad_edi}}</label>
-                                        </div>
-                                    </div>
-
-                                    <div class="flex w-1/5 justify-start">
-                                        <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Área:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{number_format($tar_ele->area)}}
-                                                @if ($tar_ele->unidad == 'mc')
-                                                    m²
-                                                @endif
-
-                                                @if ($tar_ele->unidad == 'ft')
-                                                ft²
-                                                @endif
-                                        </label>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="w-full flex justify-start m-1" >
-                                    <div class="flex w-2/5  justify-start">
-                                        <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tipo Edificio:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->tipo_edi}}</label>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="flex w-auto justify-start">
-                                        <div class="ml-3">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Horas Enfriamiento Anual:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">&nbsp;{{number_format($tar_ele->coolings_hours)}}</label>
-                                        </div>
-                                    </div>
-                                    <div class="flex w-1/4 justify-start ml-10 pl-1">
-                                        <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
-                                        </div>
-                                        <div>
-                                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                </div>
-
-                                {{-- confotr --}}
-                                <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
-                                    <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
-                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Nivel de Confort</label>
-                                    </div>
-
-                                    <div class="w-full grid mb-2 gap-y-2">
-
-                                        <?php  $conf_val_base=$conf_val->conf_val($id_project,1,1,$sumacap_term_1); ?>
-                                        <div class="ml-10 flex w-full mt-5">
-                                            <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución Base</p>
-                                        </div>
-
-                                        <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
-
-                                            <div class="w-1/6">
-
-                                            </div>
-
-                                          <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                                          background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
-                                                {{-- 1 --} --}}
-                                            @for ($i = 1; $i <= 32; $i++)
-                                            <div id="term_{{$i}}" name="term_{{$i}}" class="grid ancho_rang">
-                                                <img  id="val_base_{{$i}}" name="val_base_{{$i}}" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
-                                             </div>
-                                            @endfor
-                                            </div>
-                                     </div>
-
-                                </div>
-                                {{-- @if ($result2 === null)
-                                <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
-                                <?php  /* $valor_eui_a=0; */ ?>
-                                @endif --}}
-
-                                @if ($result2 !== null)
-                                <div class="w-full grid mb-2 gap-y-2">
-
-
-                                    <?php  $conf_val_a=$conf_val->conf_val($id_project,2,1,$sumacap_term_2);?>
-                                    <div class="ml-10 flex w-full">
-                                        <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución A</p>
-                                    </div>
-
-                                    <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
-
-                                        <div class="w-1/6">
-
-                                        </div>
-
-                                      <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                                      background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
-
-                                                    @for ($i = 1; $i <= 32; $i++)
-                                                    <div id="term_{{$i}}_a" name="term_{{$i}}_a" class="grid ancho_rang">
-                                                        <img  id="val_base_{{$i}}_a" name="val_base_{{$i}}_a" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
-                                                    </div>
-                                                    @endfor
-                                        </div>
-                                    </div>
-
-                            </div>
-                                @endif
-
-                                @if ($result2 === null)
-                                <?php  $conf_val_a=0; ?>
-                                @endif
-
-                                @if ($result3 !== null)
-                                <div class="w-full grid mb-5 gap-y-2">
-
-                                    <?php  $conf_val_b=$conf_val->conf_val($id_project,3,1,$sumacap_term_3) ?>
-                                    <div class="ml-10 flex w-full">
-                                        <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución B</p>
-                                    </div>
-
-                                    <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
-                                        <div class="w-1/6">
-
-                                        </div>
-                                      <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                                      background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
-
-                                                @for ($i = 1; $i <= 32; $i++)
-                                                <div id="term_{{$i}}_b" name="term_{{$i}}_b" class="grid ancho_rang">
-                                                    <img  id="val_base_{{$i}}_b" name="val_base_{{$i}}_b" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
-                                                </div>
-                                                @endfor
-                                        </div>
-                                    </div>
-
-                            </div>
-                                @endif
-
-                                @if ($result3 === null)
-                                <?php  $conf_val_b=0; ?>
-                                @endif
-
-
-
-                                </div>
-
-
-{{-- espacio --}}
-<div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
-
-</div>
- {{-- espacio --}}
-                            </div>
-                        </div>
-                    </div>
-
-                <div x-show.transition.in="step === 6">
+                <div x-show.transition.in="step === 5">
                     <div class="w-full flex justify-center">
                         <div class="2xl:w-3/4 xl:w-3/4 my-3 lg:w-full ">
                             <div class="grid bg-gray-200 rounded-md shadow-xl">
@@ -4968,6 +4893,245 @@ span{
                          {{-- espacio --}}
             </div>
 
+ {{-- step 6 --}}
+ <div x-show.transition.in="step === 6">
+    <div class="w-full flex justify-center">
+        <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
+            <div class="grid bg-gray-200 rounded-md shadow-xl">
+                <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
+                    <label class="font-bold text-white text-2xl font-roboto text-4xl">Analisis de Confort y Productividad</label>
+                </div>
+
+                <div class="w-full flex justify-center m-1 " >
+                    <div class="flex w-1/3 justify-start">
+                        <div class="mx-1">
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
+                        </div>
+                        <div>
+                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
+                        </div>
+                    </div>
+                    <div class="flex w-1/4  justify-start">
+                        <div class="mr-1">
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región:</label>
+                        </div>
+                        <div>
+                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->region}}</label>
+                        </div>
+                    </div>
+                    <div class="flex w-1/3  justify-start">
+                        <div class="mx-1">
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                        </div>
+                        <div>
+                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
+                        </div>
+                    </div>
+                    <div class="flex w-1/3  justify-start">
+                        <div class="mr-1">
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Categoría Edificio:</label>
+                        </div>
+                        <div>
+                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->cad_edi}}</label>
+                        </div>
+                    </div>
+
+                    <div class="flex w-1/5 justify-start">
+                        <div class="mx-1">
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Área:</label>
+                        </div>
+                        <div>
+                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{number_format($tar_ele->area)}}
+                                @if ($tar_ele->unidad == 'mc')
+                                    m²
+                                @endif
+
+                                @if ($tar_ele->unidad == 'ft')
+                                ft²
+                                @endif
+                        </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="w-full flex justify-start m-1" >
+                    <div class="flex w-2/5  justify-start">
+                        <div class="mx-1">
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tipo Edificio:</label>
+                        </div>
+                        <div>
+                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->tipo_edi}}</label>
+                        </div>
+                    </div>
+
+
+                    <div class="flex w-auto justify-start">
+                        <div class="ml-3">
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Horas Enfriamiento Anual:</label>
+                        </div>
+                        <div>
+                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">&nbsp;{{number_format($tar_ele->coolings_hours)}}</label>
+                        </div>
+                    </div>
+                    <div class="flex w-1/4 justify-start ml-10 pl-1">
+                        <div class="mx-1">
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
+                        </div>
+                        <div>
+                            <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                {{-- confotr --}}
+                <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
+                    <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
+                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Nivel de Confort</label>
+                    </div>
+
+                    <div class="w-full grid mb-2 gap-y-2">
+
+                        <?php  $conf_val_base=$conf_val->conf_val($id_project,1,1,$sumacap_term_1); ?>
+                        <div class="ml-10 flex w-full mt-5">
+                            <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución Base</p>
+                        </div>
+
+                        <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+
+                            <div class="w-1/6">
+
+                            </div>
+
+                          <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                          background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+                                {{-- 1 --} --}}
+                            @for ($i = 1; $i <= 32; $i++)
+                            <div id="term_{{$i}}" name="term_{{$i}}" class="grid ancho_rang">
+                                <img  id="val_base_{{$i}}" name="val_base_{{$i}}" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                             </div>
+                            @endfor
+                            </div>
+                     </div>
+
+                </div>
+                {{-- @if ($result2 === null)
+                <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
+                <?php  /* $valor_eui_a=0; */ ?>
+                @endif --}}
+
+                @if ($result2 !== null)
+                <div class="w-full grid mb-2 gap-y-2">
+
+
+                    <?php  $conf_val_a=$conf_val->conf_val($id_project,2,1,$sumacap_term_2);?>
+                    <div class="ml-10 flex w-full">
+                        <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución A</p>
+                    </div>
+
+                    <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+
+                        <div class="w-1/6">
+
+                        </div>
+
+                      <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                      background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+
+                                    @for ($i = 1; $i <= 32; $i++)
+                                    <div id="term_{{$i}}_a" name="term_{{$i}}_a" class="grid ancho_rang">
+                                        <img  id="val_base_{{$i}}_a" name="val_base_{{$i}}_a" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                                    </div>
+                                    @endfor
+                        </div>
+                    </div>
+
+            </div>
+                @endif
+
+                @if ($result2 === null)
+                <?php  $conf_val_a=0; ?>
+                @endif
+
+                @if ($result3 !== null)
+                <div class="w-full grid mb-5 gap-y-2">
+
+                    <?php  $conf_val_b=$conf_val->conf_val($id_project,3,1,$sumacap_term_3) ?>
+                    <div class="ml-10 flex w-full">
+                        <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución B</p>
+                    </div>
+
+                    <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+                        <div class="w-1/6">
+
+                        </div>
+                      <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                      background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+
+                                @for ($i = 1; $i <= 32; $i++)
+                                <div id="term_{{$i}}_b" name="term_{{$i}}_b" class="grid ancho_rang">
+                                    <img  id="val_base_{{$i}}_b" name="val_base_{{$i}}_b" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                                </div>
+                                @endfor
+                        </div>
+                    </div>
+
+            </div>
+                @endif
+
+                @if ($result3 === null)
+                <?php  $conf_val_b=0; ?>
+                @endif
+
+
+
+                </div>
+
+                <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
+                    <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
+                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Productividad Laboral</label>
+                    </div>
+
+                    <div class="flex w-full justify-center">
+                        @if ($result1 !== null)
+                        <?php  $prod_lab=$conf_val->prod_lab($id_project,1,1,$sumacap_term_1) ?>
+                        @endif
+                        @if ($result1 === null)
+                        <?php  $prod_lab=0; ?>
+                        @endif
+                        <div class="w-1/3 grid justify-items-center">
+                            <div id="chart_prod_base"></div>
+                        </div>
+                        @if ($result1 !== null)
+                        <?php  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) ?>
+                        @endif
+                        @if ($result1 === null)
+                        <?php  $prod_lab_a=0; ?>
+                        @endif
+                        <div class="w-1/3 grid justify-items-center">
+                            <div id="chart_prod_a"></div>
+                        </div>
+                        @if ($result1 !== null)
+                        <?php  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) ?>
+                        @endif
+                        @if ($result1 === null)
+                        <?php  $prod_lab_b=0; ?>
+                        @endif
+                        <div class="w-1/3 grid justify-items-center">
+                            <div id="chart_prod_b"></div>
+                        </div>
+                    </div>
+
+                </div>
+{{-- espacio --}}
+<div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+
+</div>
+{{-- espacio --}}
+            </div>
+        </div>
+    </div>
 
                 {{-- step 4 --}}
 
@@ -6208,7 +6372,79 @@ function eui_grafic(id_project){
 
     }
 
-     
+      google.charts.setOnLoadCallback(chart_prod_base);
+      google.charts.setOnLoadCallback(chart_prod_a);
+      google.charts.setOnLoadCallback(chart_prod_b);
+
+      function chart_prod_base() {
+        var check_prod = '{{$prod_lab}}';
+
+        var datax = google.visualization.arrayToDataTable([
+          ['Label','Value'],
+          ['Base',parseFloat(check_prod)],
+        ]);
+
+        var options = {
+  width: 650, height: 320,
+  greenFrom:3.8,greenTo:5,
+  redFrom: 1, redTo: 2.2,
+  yellowFrom:2.2, yellowTo: 3.8,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_prod_base'));
+
+        chart.draw(datax, options);
+
+      }
+
+      function chart_prod_a() {
+        var check_prod_a = '{{$prod_lab_a}}';
+        var data = google.visualization.arrayToDataTable([
+        ['Label', 'Value'],
+        ['A', parseFloat(check_prod_a)],
+        ]);
+
+
+        var options = {
+  width: 650, height: 320,
+  greenFrom:3.8,greenTo:5,
+  redFrom: 1, redTo: 2.2,
+  yellowFrom:2.2, yellowTo: 3.8,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+var chart = new google.visualization.Gauge(document.getElementById('chart_prod_a'));
+
+chart.draw(data, options);
+}
+
+function chart_prod_b() {
+    var check_prod_b = '{{$prod_lab_b}}';
+var data = google.visualization.arrayToDataTable([
+  ['Label', 'Value'],
+  ['B', parseFloat(check_prod_b)],
+]);
+
+
+    var options = {
+  width: 650, height: 320,
+  greenFrom:3.8,greenTo:5,
+  redFrom: 1, redTo: 2.2,
+  yellowFrom:2.2, yellowTo: 3.8,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+var chart = new google.visualization.Gauge(document.getElementById('chart_prod_b'));
+
+chart.draw(data, options);
+}
 </script>
 
 @section('js')
