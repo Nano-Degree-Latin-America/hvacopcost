@@ -8484,10 +8484,7 @@ $dompdf->render();
                 $val_res = $arry_tots[0] + $arry_tots[1];
                 return $val_res;
             }
-
         }
-
-
     }
 
     public function prod_lab($id,$enf,$num_sol,$sumacapterm){

@@ -25,11 +25,11 @@
 
          {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
          @if (Request::path() == 'home')
-         <button class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="mis_projectos">Mis Projectos</a></button>
+         <button class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="mis_projectos">Mis Proyectos</a></button>
          @endif
 
          @if (Request::path() == 'mis_projectos' || Request::path() == 'resultados')
-         <button class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="home">Nuevo Projecto</a></button>
+         <button class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="home">Nuevo Proyecto</a></button>
          @endif
 
          <a class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('logout') }}"
