@@ -2023,9 +2023,11 @@ function inactive_display(value){
 
     var sol_2_1 = $('#cUnidad_2_1');
     var sol_2_2 = $('#cUnidad_2_2');
+    var sol_2_3 = $('#cUnidad_2_3');
 
     var sol_3_1 = $('#cUnidad_3_1');
     var sol_3_2 = $('#cUnidad_3_2');
+    var sol_3_3 = $('#cUnidad_3_3');
 
 
     /* alert(sol_1_2.val()); */
@@ -2179,7 +2181,25 @@ function inactive_display(value){
 
         }
 
-       var count_inps_1_1 = tipo_equipo_1_1_count + capacidad_total_1_1_count + costo_elec_1_1_count + dr_1_1_count + csStd_cant_1_1_count + tipo_control_1_count + csMantenimiento_1_1_count + csDisenio_1_1_count + hrsEnfriado_1_1_count;
+        var cheValorS_1_1 =$('#cheValorS_1_1');
+        var cheValorS_1_1_count = $('#cheValorS_1_1_count').val();
+        const myArray_chevalor_1_1 = cheValorS_1_1.val().split('$');
+        var var_chevalor_1_1 =  myArray_chevalor_1_1[1];
+
+        if(var_chevalor_1_1 <= 0 || cheValorS_1_1.val() == ""){
+
+            cheValorS_1_1.css("border-color", "red")
+            cheValorS_1_1_count = 1;
+
+            $('#cheValorS_1_1_count').val(cheValorS_1_1_count);
+           }else if (var_chevalor_1_1 > 0 || cheValorS_1_1.val() != null) {
+
+            cheValorS_1_1_count = 0;
+           $('#cheValorS_1_1_count').val(cheValorS_1_1_count);
+
+        }
+
+       var count_inps_1_1 = tipo_equipo_1_1_count + capacidad_total_1_1_count + costo_elec_1_1_count + dr_1_1_count + csStd_cant_1_1_count + tipo_control_1_count + csMantenimiento_1_1_count + csDisenio_1_1_count + hrsEnfriado_1_1_count + cheValorS_1_1_count;
 
        if(count_inps_1_1>0){
             Swal.fire({
@@ -2334,12 +2354,29 @@ function inactive_display(value){
 
         }
 
+        var cheValorS_1_2 =$('#cheValorS_1_2');
+        var cheValorS_1_2_count = $('#cheValorS_1_2_count').val();
+        const myArray_chevalor_1_1 = cheValorS_1_2.val().split('$');
+        var var_chevalor_1_2 =  myArray_chevalor_1_1[1];
+
+        if(var_chevalor_1_2 <= 0 || cheValorS_1_2.val() == ""){
+
+            cheValorS_1_2.css("border-color", "red")
+            cheValorS_1_2_count = 1;
+
+            $('#cheValorS_1_2_count').val(cheValorS_1_2_count);
+           }else if (var_chevalor_1_2 > 0 || cheValorS_1_2.val() != null) {
+
+            cheValorS_1_2_count = 0;
+           $('#cheValorS_1_2_count').val(cheValorS_1_2_count);
+
+        }
 
             var count_inps_1_2 = csTipo_1_2_count +
             capacidad_tota_1_2_count + costo_elec_1_2_count
             + dr_1_2_count + csStd_1_2_count +
             tipo_control_1_2_count + csMantenimiento_1_2_count +
-            csDisenio_1_2_count + hrsEnfriado_1_2_count;
+            csDisenio_1_2_count + hrsEnfriado_1_2_count + cheValorS_1_2_count;
             if(count_inps_1_2>0){
                 Swal.fire({
                             title: '¡Atención!',
@@ -2431,7 +2468,7 @@ function inactive_display(value){
             var dr_1_3 =$('#dr_1_3');
             var dr_1_3_count = $('#dr_1_3_count').val();
 
-            if(dr_1_3.val() == '' || dr_1_3.val() == null){
+            if(dr_1_3.val() == 0 || dr_1_3.val() == null){
                 dr_1_3.css("border-color", "red")
                 dr_1_3_count = 1;
                 $('#dr_1_3_count').val(dr_1_3_count);
@@ -2485,20 +2522,29 @@ function inactive_display(value){
             }
 
 
+            var cheValorS_1_3 =$('#cheValorS_1_3');
+            var cheValorS_1_3_count = $('#cheValorS_1_3_count').val();
+            const myArray_chevalor_1_1 = cheValorS_1_3.val().split('$');
+            var var_chevalor_1_3 =  myArray_chevalor_1_1[1];
 
+            if(var_chevalor_1_3 <= 0 || cheValorS_1_3.val() == ""){
 
+                cheValorS_1_3.css("border-color", "red")
+                cheValorS_1_3_count = 1;
 
+                $('#cheValorS_1_3_count').val(cheValorS_1_3_count);
+               }else if (var_chevalor_1_3 > 0 || cheValorS_1_3.val() != null) {
 
+                cheValorS_1_3_count = 0;
+               $('#cheValorS_1_3_count').val(cheValorS_1_3_count);
 
-
-
-
+            }
 
             var count_inps_1_3 = csTipo_1_3_count +
             capacidad_total_1_3_count + costo_elec_1_3_count
             + dr_1_3_count + csStd_cant_1_3_count +
             tipo_control_1_3_count + csMantenimiento_1_3_count +
-            csDisenio_1_3_count + hrsEnfriado_1_3_count;
+            csDisenio_1_3_count + hrsEnfriado_1_3_count + cheValorS_1_3_count;
 
             if(count_inps_1_3>0){
                 Swal.fire({
@@ -2662,7 +2708,25 @@ function inactive_display(value){
 
                     }
 
-                var count_inps_2_1 = cheTipo_2_1_count + capacidad_total_2_1_count + costo_elec_2_1_count + dr_2_1_count + csStd_cant_2_1_count + tipo_control_2_1_count + csMantenimiento_2_1_count + cheDisenio_2_1_count + hrsEnfriado_2_1_count;
+                    var cheValorS_2_1 =$('#cheValorS_2_1');
+                    var cheValorS_2_1_count = $('#cheValorS_2_1_count').val();
+                    const myArray_chevalor_1_1 = cheValorS_2_1.val().split('$');
+                    var var_chevalor_2_1 =  myArray_chevalor_1_1[1];
+
+                    if(var_chevalor_2_1 <= 0 || cheValorS_2_1.val() == ""){
+
+                        cheValorS_2_1.css("border-color", "red")
+                        cheValorS_2_1_count = 1;
+
+                        $('#cheValorS_2_1_count').val(cheValorS_2_1_count);
+                       }else if (var_chevalor_2_1 > 0 || cheValorS_2_1.val() != null) {
+
+                        cheValorS_2_1_count = 0;
+                       $('#cheValorS_2_1_count').val(cheValorS_2_1_count);
+
+                    }
+
+                var count_inps_2_1 = cheTipo_2_1_count + capacidad_total_2_1_count + costo_elec_2_1_count + dr_2_1_count + csStd_cant_2_1_count + tipo_control_2_1_count + csMantenimiento_2_1_count + cheDisenio_2_1_count + hrsEnfriado_2_1_count + cheValorS_2_1_count;
               /*       alert(count_inps_2_1); */
                 if(count_inps_2_1>0){
                         Swal.fire({
@@ -2829,13 +2893,31 @@ function inactive_display(value){
 
                     }
 
+                    var cheValorS_2_2 =$('#cheValorS_2_2');
+                    var cheValorS_2_2_count = $('#cheValorS_2_2_count').val();
+                    const myArray_chevalor_2_2 = cheValorS_2_2.val().split('$');
+                    var var_chevalor_2_2 =  myArray_chevalor_2_2[1];
+
+                    if(var_chevalor_2_2 <= 0 || cheValorS_2_2.val() == ""){
+
+                        cheValorS_2_2.css("border-color", "red")
+                        cheValorS_2_2_count = 1;
+
+                        $('#cheValorS_2_2_count').val(cheValorS_2_2_count);
+                       }else if (var_chevalor_2_2 > 0 || cheValorS_2_2.val() != null) {
+
+                        cheValorS_2_2_count = 0;
+                       $('#cheValorS_2_2_count').val(cheValorS_2_2_count);
+
+                    }
+
                     /*       alert(count_inps_2_1); */
                 var count_inps_2_2 = cheTipo_2_2_count
                 + capacidad_total_2_2_count
                 + costo_elec_2_2_count
                 + dr_2_2_count + csStd_cant_2_2_count
                  + tipo_control_2_2_count + cheMantenimiento_2_2_count
-                 + cheDisenio_2_2_count + hrsEnfriado_2_2_count;
+                 + cheDisenio_2_2_count + hrsEnfriado_2_2_count + cheValorS_2_2_count;
 
                 if(count_inps_2_2>0){
                         Swal.fire({
@@ -2848,6 +2930,172 @@ function inactive_display(value){
                                 }
 
                 }
+
+                if (sol_2_3.val() != '0'){
+                    var tipo_equipo_2_3 =$('#cheTipo_2_3');
+                    var cheTipo_2_3_count = $('#cheTipo_2_3_count').val();
+                    if(tipo_equipo_2_3.val() == 0  || tipo_equipo_2_3.val() == null){
+
+                        tipo_equipo_2_3.css("border-color", "red")
+                        cheTipo_2_3_count = 1;
+                        $('#cheTipo_2_3_count').val(cheTipo_2_3_count);
+                    }else if (cheTipo_2_3_count.val() != 0) {
+
+                        cheTipo_2_3_count = 0;
+                        $('#cheTipo_2_3_count').val(cheTipo_2_3_count);
+
+                    }
+
+                    var  capacidad_total_2_3=$('#capacidad_total_2_3');
+                    var capacidad_total_2_3_count = $('#capacidad_total_2_3_count').val();
+
+                    if(capacidad_total_2_3.val() == 0){
+
+                        capacidad_total_2_3.css("border-color", "red")
+                        capacidad_total_2_3_count = 1;
+                        $('#capacidad_total_2_3_count').val(capacidad_total_2_3_count);
+                    }else if (capacidad_total_2_3.val() != 0) {
+
+                        capacidad_total_2_3_count = 0;
+                        $('#capacidad_total_2_3_count').val(capacidad_total_2_3_count);
+
+                    }
+
+                    var costo_elec_2_3 =$('#costo_elec_2_3');
+                    var costo_elec_2_3_count = $('#costo_elec_2_3_count').val();
+
+                    if(costo_elec_2_3.val() == 0){
+
+                        costo_elec_2_3.css("border-color", "red")
+                        costo_elec_2_3_count = 1;
+                        $('#costo_elec_2_3_count').val(costo_elec_2_3_count);
+
+                    }else if (costo_elec_2_3.val() != 0) {
+
+                        costo_elec_2_3_count = 0;
+                    $('#costo_elec_2_3_count').val(costo_elec_2_3_count);
+
+                    }
+
+                    var csStd_cant_2_3 =$('#csStd_cant_2_3');
+                    var csStd_cant_2_3_count = $('#csStd_cant_2_3_count').val();
+
+                    if(csStd_cant_2_3.val() == 0){
+                        csStd_cant_2_3.css("border-color", "red")
+                        csStd_cant_2_3_count = 1;
+                        $('#csStd_cant_2_3_count').val(csStd_cant_2_3_count);
+                    }else if (csStd_cant_1_1.val() != 0) {
+
+                        csStd_cant_2_3_count = 0;
+                    $('#csStd_cant_2_3_count').val(csStd_cant_2_3_count);
+
+                    }
+
+                    var tipo_control_2_3 =$('#tipo_control_2_3');
+                    var tipo_control_2_3_count = $('#tipo_control_2_3_count').val();
+
+                    if(tipo_control_2_3.val() == 0 || tipo_control_2_3.val() == null){
+                        tipo_control_2_3.css("border-color", "red")
+                        tipo_control_2_3_count = 1;
+                        $('#tipo_control_2_3_count').val(tipo_control_2_3_count);
+                    }else if (tipo_control_2_3.val() != 0) {
+
+                        tipo_control_2_3_count = 0;
+                    $('#tipo_control_2_3_count').val(tipo_control_2_3_count);
+
+                    }
+
+                    var dr_2_3 =$('#dr_2_3');
+                    var dr_2_3_count = $('#dr_2_3_count').val();
+
+                    if(dr_2_3.val() == '' || dr_2_3.val() == null){
+                        dr_2_3.css("border-color", "red")
+                        dr_2_3_count = 1;
+                        $('#dr_2_3_count').val(dr_2_3_count);
+                    }else if (dr_2_3.val() != '' || dr_2_3.val() != null) {
+
+                        dr_2_3_count = 0;
+                    $('#dr_2_3_count').val(dr_2_3_count);
+
+                    }
+
+                    var cheMantenimiento_2_3 =$('#cheMantenimiento_2_3');
+                    var cheMantenimiento_2_3_count = $('#cheMantenimiento_2_3_count').val();
+
+                    if(cheMantenimiento_2_3.val() == 0){
+                        cheMantenimiento_2_3.css("border-color", "red")
+                        cheMantenimiento_2_3_count = 1;
+                        $('#cheMantenimiento_2_3_count').val(cheMantenimiento_2_3_count);
+                    }else if (cheMantenimiento_2_3.val() != 0) {
+
+                        cheMantenimiento_2_3_count = 0;
+                    $('#cheMantenimiento_2_3_count').val(cheMantenimiento_2_3_count);
+
+                    }
+
+                    var cheDisenio_2_3 =$('#cheDisenio_2_3');
+                    var cheDisenio_2_3_count = $('#cheDisenio_2_3_count').val();
+
+                    if(cheDisenio_2_3.val() == 0 || cheDisenio_2_3.val() == null){
+                        cheDisenio_2_3.css("border-color", "red")
+                        cheDisenio_2_3_count = 1;
+                        $('#cheDisenio_2_3_count').val(cheDisenio_2_3_count);
+                    }else if (cheDisenio_2_3.val() != 0) {
+
+                        cheDisenio_2_3_count = 0;
+                    $('#cheDisenio_2_3_count').val(cheDisenio_2_3_count);
+
+                    }
+
+                    var hrsEnfriado_2_3 =$('#hrsEnfriado_2_3');
+                    var hrsEnfriado_2_3_count = $('#hrsEnfriado_2_3_count').val();
+
+                    if(hrsEnfriado_2_3.val() == 0 || hrsEnfriado_2_3.val() == ""){
+                        hrsEnfriado_2_3.css("border-color", "red")
+                        hrsEnfriado_2_3_count = 1;
+                        $('#hrsEnfriado_2_3_count').val(hrsEnfriado_2_3_count);
+                    }else if (hrsEnfriado_2_3.val() != 0) {
+
+                        hrsEnfriado_2_3_count = 0;
+                    $('#hrsEnfriado_2_3_count').val(hrsEnfriado_2_3_count);
+
+                    }
+
+
+                    var cheValorS_2_3 =$('#cheValorS_2_3');
+                    var cheValorS_2_3_count = $('#cheValorS_2_3_count').val();
+                    const myArray_chevalor_1_1 = cheValorS_2_3.val().split('$');
+                    var var_chevalor_1_3 =  myArray_chevalor_1_1[1];
+
+                    if(var_chevalor_1_3 <= 0 || cheValorS_2_3.val() == ""){
+
+                        cheValorS_2_3.css("border-color", "red")
+                        cheValorS_2_3_count = 1;
+
+                        $('#cheValorS_2_3_count').val(cheValorS_2_3_count);
+                       }else if (var_chevalor_1_3 > 0 || cheValorS_2_3.val() != null) {
+
+                        cheValorS_2_3_count = 0;
+                       $('#cheValorS_2_3_count').val(cheValorS_2_3_count);
+
+                    }
+
+                    var count_inps_2_3 = cheTipo_2_3_count +
+                    capacidad_total_2_3_count + costo_elec_2_3_count
+                    + csStd_cant_2_3_count + tipo_control_2_3_count +
+                    dr_2_3_count + cheMantenimiento_2_3_count +
+                    cheDisenio_2_3_count + hrsEnfriado_2_3_count + cheValorS_2_3_count;
+
+                    if(count_inps_2_3>0){
+                        Swal.fire({
+                                    title: '¡Atención!',
+                                    icon: 'warning',
+                                    text:'Faltan campos por completar en la Solucion A'
+
+                                })
+                                return false;
+                                }
+                    }
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -3005,7 +3253,25 @@ function inactive_display(value){
                     }
 
 
-                var count_inps_3_1 = cheTipo_3_1_count + capacidad_total_3_1_count + costo_elec_3_1_count + dr_3_1_count + cheStd_3_1_count + tipo_control_3_1_count + cheMantenimiento_3_1_count + cheDisenio_3_1_count + hrsEnfriado_3_1_count;
+                    var cheValorS_3_1 =$('#cheValorS_3_1');
+                    var cheValorS_3_1_count = $('#cheValorS_3_1_count').val();
+                    const myArray_chevalor_3_1 = cheValorS_3_1.val().split('$');
+                    var var_chevalor_3_1 =  myArray_chevalor_3_1[1];
+
+                    if(var_chevalor_3_1 <= 0 || cheValorS_3_1.val() == ""){
+
+                        cheValorS_3_1.css("border-color", "red")
+                        cheValorS_3_1_count = 1;
+
+                        $('#cheValorS_3_1_count').val(cheValorS_3_1_count);
+                       }else if (var_chevalor_3_1 > 0 || cheValorS_3_1.val() != null) {
+
+                        cheValorS_3_1_count = 0;
+                       $('#cheValorS_3_1_count').val(cheValorS_3_1_count);
+
+                    }
+
+                var count_inps_3_1 = cheTipo_3_1_count + capacidad_total_3_1_count + costo_elec_3_1_count + dr_3_1_count + cheStd_3_1_count + tipo_control_3_1_count + cheMantenimiento_3_1_count + cheDisenio_3_1_count + hrsEnfriado_3_1_count + cheValorS_3_1_count;
               /*       alert(count_inps_2_1); */
                 if(count_inps_3_1>0){
                         Swal.fire({
@@ -3173,7 +3439,23 @@ function inactive_display(value){
 
 
 
+                    var cheValorS2_3_2 =$('#cheValorS2_3_2');
+                    var cheValorS2_3_2_count = $('#cheValorS2_3_2_count').val();
+                    const myArray_chevalor_1_1 = cheValorS2_3_2.val().split('$');
+                    var var_chevalor_3_2 =  myArray_chevalor_1_1[1];
 
+                    if(var_chevalor_3_2 <= 0 || cheValorS2_3_2.val() == ""){
+
+                        cheValorS2_3_2.css("border-color", "red")
+                        cheValorS2_3_2_count = 1;
+
+                        $('#cheValorS2_3_2_count').val(cheValorS2_3_2_count);
+                       }else if (var_chevalor_3_2 > 0 || cheValorS2_3_2.val() != null) {
+
+                        cheValorS2_3_2_count = 0;
+                       $('#cheValorS2_3_2_count').val(cheValorS2_3_2_count);
+
+                    }
 
 
 
@@ -3184,7 +3466,7 @@ function inactive_display(value){
                 capacidad_total_3_2_count + costo_elec_3_2_count +
                 dr_3_2_count + csStd_cant_3_2_count + tipo_control_3_2_count +
                 cheMantenimiento_3_2_count + cheDisenio_3_2_count +
-                hrsEnfriado_3_2_count;
+                hrsEnfriado_3_2_count + cheValorS2_3_2_count;
               /*       alert(count_inps_2_1); */
                 if(count_inps_3_2>0){
                         Swal.fire({
@@ -3197,6 +3479,172 @@ function inactive_display(value){
                                 }
 
                 }
+
+                if (sol_3_3.val() != '0'){
+                    var cheTipo_3_3 =$('#cheTipo_3_3');
+                    var cheTipo_3_3_count = $('#cheTipo_3_3_count').val();
+                    if(cheTipo_3_3.val() == 0  || cheTipo_3_3.val() == null){
+
+                        cheTipo_3_3.css("border-color", "red")
+                        cheTipo_3_3_count = 1;
+                        $('#cheTipo_3_3_count').val(cheTipo_3_3_count);
+                    }else if (cheTipo_3_3_count.val() != 0) {
+
+                        cheTipo_3_3_count = 0;
+                        $('#cheTipo_3_3_count').val(cheTipo_3_3_count);
+
+                    }
+
+                    var  capacidad_total_3_3=$('#capacidad_total_3_3');
+                    var capacidad_total_3_3_count = $('#capacidad_total_3_3_count').val();
+
+                    if(capacidad_total_3_3.val() == 0){
+
+                        capacidad_total_3_3.css("border-color", "red")
+                        capacidad_total_3_3_count = 1;
+                        $('#capacidad_total_3_3_count').val(capacidad_total_3_3_count);
+                    }else if (capacidad_total_3_3.val() != 0) {
+
+                        capacidad_total_3_3_count = 0;
+                        $('#capacidad_total_3_3_count').val(capacidad_total_3_3_count);
+
+                    }
+
+                    var costo_elec_3_3 =$('#costo_elec_3_3');
+                    var costo_elec_3_3_count = $('#costo_elec_3_3_count').val();
+
+                    if(costo_elec_3_3.val() == 0){
+
+                        costo_elec_3_3.css("border-color", "red")
+                        costo_elec_3_3_count = 1;
+                        $('#costo_elec_3_3_count').val(costo_elec_3_3_count);
+
+                    }else if (costo_elec_3_3.val() != 0) {
+
+                        costo_elec_3_3_count = 0;
+                    $('#costo_elec_3_3_count').val(costo_elec_3_3_count);
+
+                    }
+
+                    var cheStd_3_3 =$('#csStd_cant_2_3');
+                    var cheStd_3_3_count = $('#cheStd_3_3_count').val();
+
+                    if(cheStd_3_3.val() == 0){
+                        cheStd_3_3.css("border-color", "red")
+                        cheStd_3_3_count = 1;
+                        $('#cheStd_3_3_count').val(cheStd_3_3_count);
+                    }else if (cheStd_3_3.val() != 0) {
+
+                        cheStd_3_3_count = 0;
+                    $('#cheStd_3_3_count').val(cheStd_3_3_count);
+
+                    }
+
+                    var tipo_control_3_3 =$('#tipo_control_3_3');
+                    var tipo_control_3_3_count = $('#tipo_control_3_3_count').val();
+
+                    if(tipo_control_3_3.val() == 0 || tipo_control_3_3.val() == null){
+                        tipo_control_3_3.css("border-color", "red")
+                        tipo_control_3_3_count = 1;
+                        $('#tipo_control_3_3_count').val(tipo_control_3_3_count);
+                    }else if (tipo_control_3_3.val() != 0) {
+
+                        tipo_control_3_3_count = 0;
+                    $('#tipo_control_3_3_count').val(tipo_control_3_3_count);
+
+                    }
+
+                    var dr_3_3 =$('#dr_3_3');
+                    var dr_3_3_count = $('#dr_3_3_count').val();
+
+                    if(dr_3_3.val() == '' || dr_3_3.val() == null){
+                        dr_3_3.css("border-color", "red")
+                        dr_3_3_count = 1;
+                        $('#dr_3_3_count').val(dr_3_3_count);
+                    }else if (dr_3_3.val() != '' || dr_3_3.val() != null) {
+
+                        dr_3_3_count = 0;
+                    $('#dr_3_3_count').val(dr_3_3_count);
+
+                    }
+
+                    var cheMantenimiento_3_3 =$('#cheMantenimiento_3_3');
+                    var cheMantenimiento_3_3_count = $('#cheMantenimiento_3_3_count').val();
+
+                    if(cheMantenimiento_3_3.val() == 0){
+                        cheMantenimiento_3_3.css("border-color", "red")
+                        cheMantenimiento_3_3_count = 1;
+                        $('#cheMantenimiento_3_3_count').val(cheMantenimiento_3_3_count);
+                    }else if (cheMantenimiento_3_3.val() != 0) {
+
+                        cheMantenimiento_3_3_count = 0;
+                    $('#cheMantenimiento_3_3_count').val(cheMantenimiento_3_3_count);
+
+                    }
+
+                    var cheDisenio_3_3 =$('#cheDisenio_3_3');
+                    var cheDisenio_3_3_count = $('#cheDisenio_3_3_count').val();
+
+                    if(cheDisenio_3_3.val() == 0 || cheDisenio_3_3.val() == null){
+                        cheDisenio_3_3.css("border-color", "red")
+                        cheDisenio_3_3_count = 1;
+                        $('#cheDisenio_3_3_count').val(cheDisenio_3_3_count);
+                    }else if (cheDisenio_3_3.val() != 0) {
+
+                        cheDisenio_3_3_count = 0;
+                    $('#cheDisenio_3_3_count').val(cheDisenio_3_3_count);
+
+                    }
+
+                    var hrsEnfriado_3_3 =$('#hrsEnfriado_3_3');
+                    var hrsEnfriado_3_3_count = $('#hrsEnfriado_3_3_count').val();
+
+                    if(hrsEnfriado_3_3.val() == 0 || hrsEnfriado_3_3.val() == ""){
+                        hrsEnfriado_3_3.css("border-color", "red")
+                        hrsEnfriado_3_3_count = 1;
+                        $('#hrsEnfriado_3_3_count').val(hrsEnfriado_3_3_count);
+                    }else if (hrsEnfriado_3_3.val() != 0) {
+
+                        hrsEnfriado_3_3_count = 0;
+                    $('#hrsEnfriado_3_3_count').val(hrsEnfriado_3_3_count);
+
+                    }
+
+
+                    var cheValorS_3_3 =$('#cheValorS_3_3');
+                    var cheValorS_3_3_count = $('#cheValorS_3_3_count').val();
+                    const myArray_chevalor_1_1 = cheValorS_3_3.val().split('$');
+                    var var_chevalor_3_3 =  myArray_chevalor_1_1[1];
+
+                    if(var_chevalor_3_3 <= 0 || cheValorS_3_3.val() == ""){
+
+                        cheValorS_3_3.css("border-color", "red")
+                        cheValorS_3_3_count = 1;
+
+                        $('#cheValorS_3_3_count').val(cheValorS_3_3_count);
+                       }else if (var_chevalor_3_3 > 0 || cheValorS_3_3.val() != null) {
+
+                        cheValorS_3_3_count = 0;
+                       $('#cheValorS_3_3_count').val(cheValorS_3_3_count);
+
+                    }
+
+                    var count_inps_3_3 = cheTipo_3_3_count +
+                    capacidad_total_3_3_count + costo_elec_3_3_count
+                    + cheStd_3_3_count + tipo_control_3_3_count +
+                    dr_3_3_count + cheMantenimiento_3_3_count +
+                    cheDisenio_3_3_count + hrsEnfriado_3_3_count + cheValorS_3_3_count;
+
+                    if(count_inps_3_3>0){
+                        Swal.fire({
+                                    title: '¡Atención!',
+                                    icon: 'warning',
+                                    text:'Faltan campos por completar en la Solucion B'
+
+                                })
+                                return false;
+                                }
+                    }
                 /////////////////////////////////////////////////////////
                 formulario = document.getElementById('formulario');
                 formulario.submit();

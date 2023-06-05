@@ -630,6 +630,7 @@ span{
 
                                                     <div class="w-1/2 flex justify-start">
                                                         <input onchange="format_num(this.value,this.id);" type="text" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_1" id="cheValorS_1_1" >
+                                                        <input  id="cheValorS_1_1_count" name="cheValorS_1_1_count" type="number" class="hidden" value="1">
                                                     </div>
                                                 </div>
 
@@ -827,7 +828,9 @@ span{
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                          <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_2" id="cheValorS_1_2" >
-                                                    </div>
+                                                         <input  id="cheValorS_1_2_count" name="cheValorS_1_2_count" type="number" class="hidden" value="1">
+
+                                                        </div>
                                                 </div>
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
@@ -1326,6 +1329,8 @@ span{
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <input onchange="format_num(this.value,this.id);"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md text-center py-1"  step="0.01" step="0.01" name="cheValorS_2_1" id="cheValorS_2_1" >
+                                                                <input  id="cheValorS_2_1_count" name="cheValorS_2_1_count" type="number" class="hidden" value="1">
+
                                                             </div>
                                                         </div>
 
@@ -1514,6 +1519,8 @@ span{
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
+                                                                <input  id="cheValorS_2_2_count" name="cheValorS_2_2_count" type="number" class="hidden" value="1">
+
                                                             </div>
                                                     </div>
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
@@ -2003,6 +2010,8 @@ span{
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                  <input onchange="format_num(this.value,this.id);"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1  text-center"  step="0.01" step="0.01" name="cheValorS_3_1" id="cheValorS_3_1" >
+                                                                 <input  id="cheValorS_3_1_count" name="cheValorS_3_1_count" type="number" class="hidden" value="1">
+
                                                                 </div>
                                                         </div>
 
