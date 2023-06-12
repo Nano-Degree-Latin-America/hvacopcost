@@ -5712,22 +5712,22 @@ $t_e = $solution_enf1->tipo_equipo;
 
                if($request->get('maintenance_cost_3_3') != null){
                 $aux_cost_mant_3_3 = explode("$",   $request->get('maintenance_cost_3_3'));
-                $aux_cost_mant_b_3_2 = explode(",",    $aux_cost_mant_3_3[1]);
+                $aux_cost_mant_b_3_3 = explode(",",    $aux_cost_mant_3_3[1]);
 
-                if(count($aux_cost_mant_b_3_2) == 1){
+                if(count($aux_cost_mant_b_3_3) == 1){
                     $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_2[0];
                 }
-                if(count($aux_cost_mant_b_3_2) == 2){
-                    $aux_cost_mant_3_3=  $aux_cost_mant_b_3_2[0].$aux_cost_mant_b_3_2[1];
+                if(count($aux_cost_mant_b_3_3) == 2){
+                    $aux_cost_mant_3_3=  $aux_cost_mant_b_3_3[0].$aux_cost_mant_b_3_3[1];
                 }
-                if(count($aux_cost_mant_b_3_2) == 3){
-                    $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_2[0].$aux_cost_mant_b_3_2[1].$aux_cost_mant_b_3_2[2];
+                if(count($aux_cost_mant_b_3_3) == 3){
+                    $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_3[0].$aux_cost_mant_b_3_3[1].$aux_cost_mant_b_3_3[2];
                 }
-                if(count($aux_cost_mant_b_3_2) == 4){
-                    $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_2[0].$aux_cost_mant_b_3_2[1].$aux_cost_mant_b_3_2[2].$aux_cost_mant_b_3_2[3];
+                if(count($aux_cost_mant_b_3_3) == 4){
+                    $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_3[0].$aux_cost_mant_b_3_3[1].$aux_cost_mant_b_3_3[2].$aux_cost_mant_b_3_3[3];
                 }
-                if(count($aux_cost_mant_b_3_2) == 5){
-                    $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_2[0].$aux_cost_mant_b_3_2[1].$aux_cost_mant_b_3_2[2].$aux_cost_mant_b_3_2[3].$aux_cost_mant_b_3_2[4];
+                if(count($aux_cost_mant_b_3_3) == 5){
+                    $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_3[0].$aux_cost_mant_b_3_3[1].$aux_cost_mant_b_3_3[2].$aux_cost_mant_b_3_3[3].$aux_cost_mant_b_3_3[4];
                 }
 
 

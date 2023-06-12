@@ -4052,6 +4052,7 @@ span{
                                                 @if ($result2 === null)
                                                 <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
                                                 <?php  $valor_eui_a=0; ?>
+                                                <div id="eui_sol_a"></div>
                                                 @endif
                                             </div>
                                             <div class="w-1/3 grid justify-items-center">
@@ -4066,13 +4067,15 @@ span{
                                                     @else
                                                     <label class="text-blue-800  font-bold text-6xl font-roboto" for="">{{number_format($valor_eui_b,1)}}</label>
                                                     @endif
-                                                    <div id="eui_sol_b"></div>
+
                                                 @endif
 
                                                 @if ($result3 === null)
                                                 <?php $valor_eui_b = 0; ?>
                                                 <label class="text-red-500 font-bold text-6xl font-roboto" for="">0</label>
+
                                                 @endif
+                                                <div id="eui_sol_b"></div>
                                             </div>
                                     </div>
 
@@ -4991,29 +4994,29 @@ span{
                         <label class="font-bold text-white text-2xl font-roboto text-4xl">Nivel de Confort</label>
                     </div>
 
-                    <div class="w-full grid mb-2 gap-y-2">
+                    <div class="w-full grid mb-5 gap-y-2">
 
                         <?php  $conf_val_base=$conf_val->conf_val($id_project,1,1,$sumacap_term_1); ?>
-                        <div class="ml-10 flex w-full mt-5">
-                            <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución Base</p>
-                        </div>
 
-                        <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
 
-                            <div class="w-1/6">
+                            <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg" style="margin-top:1.8rem;">
 
+                                <div class="w-1/5 flex justify-start">
+                                {{--  <div class="ml-10 flex w-full mt-5"> --}}
+                                        <p class="text-3xl text-blue-600 font-roboto  font-bold text-left">Solución Base</p>
+                                    {{-- </div> --}}
+                                </div>
+
+                            <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                            background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+                                    {{-- 1 --} --}}
+                                @for ($i = 1; $i <= 32; $i++)
+                                <div id="term_{{$i}}" name="term_{{$i}}" class="grid ancho_rang">
+                                    <img  id="val_base_{{$i}}" name="val_base_{{$i}}" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                                </div>
+                                @endfor
                             </div>
-
-                          <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                          background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
-                                {{-- 1 --} --}}
-                            @for ($i = 1; $i <= 32; $i++)
-                            <div id="term_{{$i}}" name="term_{{$i}}" class="grid ancho_rang">
-                                <img  id="val_base_{{$i}}" name="val_base_{{$i}}" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
-                             </div>
-                            @endfor
-                            </div>
-                     </div>
+                    </div>
 
                 </div>
                 {{-- @if ($result2 === null)
@@ -5022,17 +5025,17 @@ span{
                 @endif --}}
 
                 @if ($result2 !== null)
-                <div class="w-full grid mb-2 gap-y-2">
+                <div class="w-full grid mb-5 gap-y-2">
 
 
                     <?php  $conf_val_a=$conf_val->conf_val($id_project,2,1,$sumacap_term_2);?>
-                    <div class="ml-10 flex w-full">
-                        <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución A</p>
-                    </div>
+
 
                     <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
 
-                        <div class="w-1/6">
+                        <div class="w-1/5 flex justify-start">
+
+                                <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold text-left">Solución A</p>
 
                         </div>
 
@@ -5052,18 +5055,37 @@ span{
 
                 @if ($result2 === null)
                 <?php  $conf_val_a=0; ?>
+                <div class="w-full grid mb-5 gap-y-2">
+                    <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+
+                        <div class="w-1/5 flex justify-start">
+
+                                <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold text-left">Solución A</p>
+
+                        </div>
+
+                      <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                      background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+
+                                    @for ($i = 1; $i <= 32; $i++)
+                                    <div id="term_{{$i}}_a" name="term_{{$i}}_a" class="grid ancho_rang">
+                                        <img  id="val_base_{{$i}}_a" name="val_base_{{$i}}_a" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                                    </div>
+                                    @endfor
+                        </div>
+                    </div>
                 @endif
 
                 @if ($result3 !== null)
                 <div class="w-full grid mb-5 gap-y-2">
 
                     <?php  $conf_val_b=$conf_val->conf_val($id_project,3,1,$sumacap_term_3) ?>
-                    <div class="ml-10 flex w-full">
-                        <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución B</p>
-                    </div>
+
 
                     <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
-                        <div class="w-1/6">
+                        <div class="w-1/5 flex justify-start">
+
+                                <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold text-left">Solución B</p>
 
                         </div>
                       <div class="flex rounded-lg" style="background: rgb(255,0,56);
@@ -5082,6 +5104,23 @@ span{
 
                 @if ($result3 === null)
                 <?php  $conf_val_b=0; ?>
+                <div class="w-full grid mb-5 gap-y-2">
+                    <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+                        <div class="w-1/5 flex justify-start">
+
+                                <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución B</p>
+
+                        </div>
+                      <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                      background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+
+                                @for ($i = 1; $i <= 32; $i++)
+                                <div id="term_{{$i}}_b" name="term_{{$i}}_b" class="grid ancho_rang">
+                                    <img  id="val_base_{{$i}}_b" name="val_base_{{$i}}_b" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                                </div>
+                                @endfor
+                        </div>
+                    </div>
                 @endif
 
 
@@ -6260,6 +6299,8 @@ function eui_grafic(id_project){
       }
 
       function chart_a_eui() {
+        let check_eui_a = '{{$valor_eui_a}}';
+        if (check_eui_a >= 0){
         var eui_a =  Math.floor('{{$valor_eui_a}}' * 1) / 1 ;
         let energy = '{{$energy_star}}';
         let ashrae = '{{$ashrae}}';
@@ -6311,11 +6352,12 @@ function eui_grafic(id_project){
         var chart = new google.visualization.Gauge(document.getElementById('eui_sol_a'));
 
         chart.draw(data, options);
+    }
 }
 
     function chart_b_eui() {
         let check_eui_b = '{{$valor_eui_b}}';
-        if (check_eui_b > 0){
+        if (check_eui_b >= 0){
             var eui_b =  Math.floor('{{$valor_eui_b}}' * 1) / 1 ;
             var data = google.visualization.arrayToDataTable([
             ['Label', 'Value'],
@@ -6377,22 +6419,24 @@ function eui_grafic(id_project){
       google.charts.setOnLoadCallback(chart_prod_b);
 
       function chart_prod_base() {
-        var check_prod = '{{$prod_lab}}';
+        var check_prod = '{{$conf_val_base}}';
+        var mult_cels_val = check_prod * 5;
+        var val_res = mult_cels_val / 5;
 
         var datax = google.visualization.arrayToDataTable([
           ['Label','Value'],
           ['Base',parseFloat(check_prod)],
         ]);
 
-        var options = {
-  width: 650, height: 320,
-  greenFrom:3.8,greenTo:5,
-  redFrom: 1, redTo: 2.2,
-  yellowFrom:2.2, yellowTo: 3.8,
-  minorTicks: 5,
-  max:5,
-  min:1,
-};
+                    var options = {
+            width: 650, height: 320,
+            greenFrom:3.8,greenTo:5,
+            redFrom: 1, redTo: 2.2,
+            yellowFrom:2.2, yellowTo: 3.8,
+            minorTicks: 5,
+            max:5,
+            min:1,
+            };
 
         var chart = new google.visualization.Gauge(document.getElementById('chart_prod_base'));
 
@@ -6401,7 +6445,7 @@ function eui_grafic(id_project){
       }
 
       function chart_prod_a() {
-        var check_prod_a = '{{$prod_lab_a}}';
+        var check_prod_a = '{{$conf_val_a}}';
         var data = google.visualization.arrayToDataTable([
         ['Label', 'Value'],
         ['A', parseFloat(check_prod_a)],
@@ -6424,7 +6468,7 @@ chart.draw(data, options);
 }
 
 function chart_prod_b() {
-    var check_prod_b = '{{$prod_lab_b}}';
+    var check_prod_b = '{{$conf_val_b}}';
 var data = google.visualization.arrayToDataTable([
   ['Label', 'Value'],
   ['B', parseFloat(check_prod_b)],
