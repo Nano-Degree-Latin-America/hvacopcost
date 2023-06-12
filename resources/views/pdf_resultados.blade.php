@@ -278,7 +278,7 @@
                     <td class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
                     <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
                     <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                    <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}@if ($tar_ele->unidad == 'mc')m² @endif @if ($tar_ele->unidad == 'ft')ft² @endif</label></td></td>
+                    <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}@if($tar_ele->unidad == 'mc')m²@endif @if($tar_ele->unidad == 'ft')ft²@endif</label></td></td>
                   </tr>
 
                 </tbody>
@@ -1529,7 +1529,7 @@
                     <td class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
                     <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
                     <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                    <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}@if ($tar_ele->unidad == 'mc')m² @endif @if ($tar_ele->unidad == 'ft')ft² @endif</label></td></td>
+                    <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}@if($tar_ele->unidad == 'mc')m²@endif @if($tar_ele->unidad == 'ft')ft²@endif</label></td></td>
                   </tr>
 
                 </tbody>
@@ -1861,7 +1861,7 @@
                     <td class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
                     <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
                     <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                    <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}@if ($tar_ele->unidad == 'mc')m² @endif @if ($tar_ele->unidad == 'ft')ft² @endif</label></td></td>
+                    <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}@if($tar_ele->unidad == 'mc')m²@endif @if($tar_ele->unidad == 'ft')ft²@endif</label></td></td>
                   </tr>
 
                 </tbody>
@@ -2782,7 +2782,7 @@
                     <td class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
                     <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
                     <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                    <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}@if ($tar_ele->unidad == 'mc')m² @endif @if ($tar_ele->unidad == 'ft')ft² @endif</label></td></td>
+                    <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}@if($tar_ele->unidad == 'mc')m²@endif @if($tar_ele->unidad == 'ft')ft²@endif</label></td></td>
                   </tr>
 
                 </tbody>
@@ -3240,7 +3240,7 @@
                 <td class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
                 <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
                 <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}@if ($tar_ele->unidad == 'mc')m² @endif @if ($tar_ele->unidad == 'ft')ft² @endif</label></td></td>
+                <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}@if($tar_ele->unidad == 'mc')m²@endif @if($tar_ele->unidad == 'ft')ft²@endif</label></td></td>
               </tr>
 
             </tbody>
@@ -3689,7 +3689,7 @@
                 <td class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
                 <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
                 <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}@if ($tar_ele->unidad == 'mc')m² @endif @if ($tar_ele->unidad == 'ft')ft² @endif</label></td></td>
+                <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}@if($tar_ele->unidad == 'mc')m²@endif @if($tar_ele->unidad == 'ft')ft²@endif</label></td></td>
               </tr>
 
             </tbody>
