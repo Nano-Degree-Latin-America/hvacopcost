@@ -17,26 +17,26 @@
 
              </div>
 
-         <div class="col-4 mt-3 flex justify-end gap-x-3">
+         <div class="col-4 flex justify-end gap-x-3">
 
             @if (Auth::user()->tipo_user == 5)
-            <button class="ml-5 p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="empresas">Admin</a></button>
+            <button class="text_butons_top ml-5 mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='empresas'"><p class="text_butons_top">Admin</p></button>
             @endif
 
          {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
          @if (Request::path() == 'home')
-         <button class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="mis_projectos">Mis Proyectos</a></button>
+         <button class="text_butons_top mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='mis_projectos'"><p class="text_butons_top">Mis Proyectos</p></button>
          @endif
 
          @if (Request::path() == 'mis_projectos' || Request::path() == 'resultados')
-         <button class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="home">Nuevo Proyecto</a></button>
+         <button class="text_butons_top mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='home'"><p class="text_butons_top">Nuevo Proyecto</p></button>
          @endif
 
-         <a class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('logout') }}"
+         <a class="text_butons_top mt-2 button-size bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('logout') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-                <button>
-                    Cerrar Sesión
+                <button class="">
+                    Log Out
                     </button>
             </a>
 
@@ -45,4 +45,96 @@
             </form>
          </div>
      </div>
+     <style>
+
+
+@media (min-width: 380px) {
+            .text_butons_top{
+                font-size: 10px;
+            }
+            .button-size{
+                padding: .52rem;
+            }
+ }
+
+ @media (min-width: 400px) {
+            .text_butons_top{
+                font-size: 80%;
+            }
+            .button-size{
+                padding: .55rem
+            }
+
+ }
+
+ @media (min-width: 750px) {
+            .text_butons_top{
+                font-size: 80%;
+            }
+            .button-size{
+                padding: .55rem
+            }
+
+ }
+
+ @media (min-width: 780px) {
+            .text_butons_top{
+                font-size: 80%;
+            }
+            .button-size{
+                padding: .55rem
+            }
+
+ }
+
+ @media (min-width: 790px) {
+            .text_butons_top{
+                font-size: 80%;
+            }
+            .button-size{
+                padding: .55rem
+            }
+
+ }
+
+ @media (min-width: 800px) {
+            .text_butons_top{
+                font-size: 85%;
+            }
+            .button-size{
+                padding: .58rem
+            }
+
+ }
+
+ @media (min-width: 850px) {
+            .text_butons_top{
+                font-size: 85%;
+            }
+            .button-size{
+                padding: .58rem
+            }
+
+ }
+
+ @media (min-width: 880px) {
+            .text_butons_top{
+                font-size: 85%;
+            }
+            .button-size{
+                padding: .58rem
+            }
+
+ }
+
+ @media (min-width: 1020px) {
+            .text_butons_top{
+                font-size: 100%;
+            }
+            .button-size{
+                padding: .65rem
+            }
+
+ }
+     </style>
  </header>

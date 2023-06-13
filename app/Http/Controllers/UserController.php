@@ -32,7 +32,9 @@ class UserController extends Controller
 
 
     public function index(Request $request, $id){
-        $users = DB::table('users')->get();
+        $users = DB::table('users')
+        ->orderBy('created_at','desc')
+        ->paginate(10);
 
         return view('users.index', ['users' => $users]);
     }
@@ -46,11 +48,13 @@ class UserController extends Controller
         if($query != ""){
             $users = DB::table('users')
             ->where('users.id_empresa','=',$query)
+             ->orderBy('created_at','desc')
             ->paginate(10);
         }
 
         if($query == ""){
             $users = DB::table('users')
+             ->orderBy('created_at','desc')
             ->paginate(10);
         }
 

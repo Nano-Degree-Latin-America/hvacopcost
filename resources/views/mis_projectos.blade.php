@@ -160,7 +160,7 @@ span{
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
         {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
-        <button class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 "><a class="mx-1" href="/home">Nuevo Proyecto</a></button>
+        <button class="bg-blue-600 mx-1 p-3 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='home'"><p>Nuevo Proyecto</p></button>
 
     </div>
 

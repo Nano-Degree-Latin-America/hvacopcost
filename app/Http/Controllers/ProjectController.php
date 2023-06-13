@@ -148,6 +148,7 @@ class ProjectController extends Controller
 
         $ciudades = DB::table('ciudad')
         ->where('ciudad.idPais','=',$id_pais)
+        ->orderBy('ciudad', 'asc')
         ->get();
 
         return $ciudades;
@@ -159,6 +160,7 @@ class ProjectController extends Controller
         $ciudades = DB::table('ciudad')
         ->where('ciudad.idPais','=',$id)
         ->where('ciudad.ashrae','!=',"")
+        ->orderBy('ciudad', 'asc')
         ->get();
 
         return $ciudades;

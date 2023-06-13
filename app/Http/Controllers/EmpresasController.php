@@ -32,7 +32,8 @@ class EmpresasController extends Controller
         $empresas = DB::table('empresas')
         ->join('users','users.id','=','empresas.id_user')
         ->select('empresas.*','users.name as name_user')
-        ->get();
+        ->orderBy('created_at','desc')
+        ->paginate(10);
 
         return view('empresas.index',["empresas"=>$empresas]);
     }
