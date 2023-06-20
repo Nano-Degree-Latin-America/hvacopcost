@@ -656,7 +656,7 @@ span{
                                       {{-- 1.1 --}}
 
                                       {{-- 1.2 --}}
-                                      <div class="grid w-full "  id="sol_1_2" name="sol_1_2">
+                                      <div class="grid w-full hidden"  id="sol_1_2" name="sol_1_2">
                                        <div class="mx-2">
                                         <hr>
                                        </div>
