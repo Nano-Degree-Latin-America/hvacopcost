@@ -2934,12 +2934,13 @@ function inactive_display(value){
                 if (sol_2_3.val() != '0'){
                     var tipo_equipo_2_3 =$('#cheTipo_2_3');
                     var cheTipo_2_3_count = $('#cheTipo_2_3_count').val();
+
                     if(tipo_equipo_2_3.val() == 0  || tipo_equipo_2_3.val() == null){
 
                         tipo_equipo_2_3.css("border-color", "red")
                         cheTipo_2_3_count = 1;
                         $('#cheTipo_2_3_count').val(cheTipo_2_3_count);
-                    }else if (cheTipo_2_3_count.val() != 0) {
+                    }else if (tipo_equipo_2_3 != 0) {
 
                         cheTipo_2_3_count = 0;
                         $('#cheTipo_2_3_count').val(cheTipo_2_3_count);
@@ -3488,7 +3489,7 @@ function inactive_display(value){
                         cheTipo_3_3.css("border-color", "red")
                         cheTipo_3_3_count = 1;
                         $('#cheTipo_3_3_count').val(cheTipo_3_3_count);
-                    }else if (cheTipo_3_3_count.val() != 0) {
+                    }else if (cheTipo_3_3.val() != 0) {
 
                         cheTipo_3_3_count = 0;
                         $('#cheTipo_3_3_count').val(cheTipo_3_3_count);
@@ -3526,7 +3527,7 @@ function inactive_display(value){
 
                     }
 
-                    var cheStd_3_3 =$('#csStd_cant_2_3');
+                    var cheStd_3_3 =$('#cheStd_3_3');
                     var cheStd_3_3_count = $('#cheStd_3_3_count').val();
 
                     if(cheStd_3_3.val() == 0){
