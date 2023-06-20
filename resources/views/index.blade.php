@@ -460,9 +460,9 @@ span{
                                           <div class="grid gap-y-2 my-2 ">
                                             <div class="flex w-full">
 
-                                                <div class="lg:grid 2xl:flex xl:flex  gap-x-2 w-1/2 ">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2 ">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                        <label class="labels" for=""><b>Unidad HVAC</b> </label>
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start">
@@ -495,7 +495,7 @@ span{
                                             </div>
 
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
 
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
@@ -532,7 +532,7 @@ span{
                                             </div>
 
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
+                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                                                     <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                        {{--  <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico</b><b style="font-size: 10px;"> $/Kwh</b> </label> --}}
                                                         <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
@@ -555,7 +555,7 @@ span{
                                             </div>
 
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
+                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                                                     <div class="flex justify-start w-1/3">
                                                         <select name="csStd" id="csStd" style="padding-top: 0.425rem;padding-bottom: 0.425rem;" onchange="set_ser_to_sers(this.value);" class="w-full border-2 border-blue-600 rounded-md">
                                                             <option value="SEER">SEER</option>
@@ -588,12 +588,12 @@ span{
                                             </div>
 
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                     </div>
                                                     <div class="w-full flex justify-start">
-                                                        <select style="width: 77%;" class="border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_1_1" id="dr_1_1" >
+                                                        <select style="width: 77%;margin-left:1.5px;" class="border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_1_1" id="dr_1_1" >
                                                         </select>
                                                     </div>
                                                     <input  id="dr_1_1_count" name="dr_1_1_count" type="number" class="hidden" value="1">
@@ -629,7 +629,7 @@ span{
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start text-left">
-                                                        <input style="margin-left: 2px;" onchange="format_num(this.value,this.id);valida_selects_inps(this.id)" type="text" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" type="text" name="cheValorS_1_1" id="cheValorS_1_1" >
+                                                        <input style="margin-left: 0px;" onchange="format_num(this.value,this.id);valida_selects_inps(this.id)" type="text" class="2xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" type="text" name="cheValorS_1_1" id="cheValorS_1_1" >
                                                         <input  id="cheValorS_1_1_count" name="cheValorS_1_1_count" type="number" class="hidden" value="1">
                                                     </div>
                                                 </div>
@@ -656,7 +656,7 @@ span{
                                       {{-- 1.1 --}}
 
                                       {{-- 1.2 --}}
-                                      <div class="grid w-full hidden"  id="sol_1_2" name="sol_1_2">
+                                      <div class="grid w-full "  id="sol_1_2" name="sol_1_2">
                                        <div class="mx-2">
                                         <hr>
                                        </div>
@@ -667,11 +667,11 @@ span{
                                             <div class="flex w-full">
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                        <label  class="labels" for=""><b>Unidad HVAC</b> </label>
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start">
-                                                        <select style="margin-left:1.5px;" class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2');" name="cUnidad_1_2" id="cUnidad_1_2" >
+                                                        <select  class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2');" name="cUnidad_1_2" id="cUnidad_1_2" >
                                                             <option value="0">Seleccionar</option>
                                                             <option value="1">Paquetes (RTU)</option>
                                                             <option value="2">Split DX</option>
@@ -705,7 +705,7 @@ span{
                                                         <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
-                                                        <select style="margin-left:1.5px;" class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="valida_selects_inps(this.id);send_name(this.id);" name="csDisenio_1_2" id="csDisenio_1_2">
+                                                        <select  class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="valida_selects_inps(this.id);send_name(this.id);" name="csDisenio_1_2" id="csDisenio_1_2">
                                                         </select>
                                                     </div>
                                                     <input  id="csDisenio_1_2_count" name="csDisenio_1_2_count" type="number" class="hidden" value="1">
@@ -736,7 +736,7 @@ span{
                                                         <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
-                                                        <input style="margin-left:1.5px;" id="costo_elec_1_2" name="costo_elec_1_2" readonly onchange="valida_selects_inps(this.id);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
+                                                        <input  id="costo_elec_1_2" name="costo_elec_1_2" readonly onchange="valida_selects_inps(this.id);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
                                                      </div>
                                                      <input  id="costo_elec_1_2_count" name="costo_elec_1_2_count" type="number" class="hidden" value="1">
 
@@ -764,7 +764,7 @@ span{
                                                         </div>
 
                                                         <div class="flex justify-start w-1/4">
-                                                            <input style="margin-left:1.5px;" id="csStd_cant_1_2" onchange="valida_selects_inps(this.id);" name="csStd_cant_1_2" type="number"  style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
+                                                            <input  id="csStd_cant_1_2" onchange="valida_selects_inps(this.id);" name="csStd_cant_1_2" type="number"  style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                         </div>
                                                         <input  id="csStd_cant_1_2_count" name="csStd_cant_1_2_count" type="number" class="hidden" value="1">
 
@@ -788,12 +788,12 @@ span{
                                             </div>
 
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                     </div>
                                                     <div class="w-full flex justify-start text-left">
-                                                    <select  style="width: 77%;margin-left:0px;" class="border-2 border-blue-600 rounded-md py-1"  onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_1_2" id="dr_1_2" >
+                                                    <select  style="width: 75%;margin-left:3.5px;" class="border-2 border-blue-600 rounded-md py-1"  onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_1_2" id="dr_1_2" >
                                                         <option value="">Seleccionar</option>
                                                     </select>
                                                     <input  id="dr_1_2_count" name="dr_1_2_count" type="number" class="hidden" value="1">
@@ -827,7 +827,7 @@ span{
                                                         <label class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start text-left">
-                                                         <input  style="margin-left:0px;" onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_1_2" id="cheValorS_1_2" >
+                                                         <input onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="w-full 2xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_1_2" id="cheValorS_1_2" >
                                                          <input  id="cheValorS_1_2_count" name="cheValorS_1_2_count" type="number" class="hidden" value="1">
 
                                                         </div>
@@ -2544,7 +2544,7 @@ span{
 
 @media (min-width: 1090px) {
     .labels{
-        font-size:11px;
+        font-size:14px;
     }
     .ancho{
         width:100%;
@@ -2553,7 +2553,7 @@ span{
 
 @media (min-width: 1230px) {
     .labels{
-        font-size:11px;
+        font-size:14px;
     }
     .ancho{
         width:100%;
@@ -2562,7 +2562,7 @@ span{
 /* xl	1280px */
 @media (min-width: 1280px) {
     .labels{
-        font-size:11px;
+        font-size:14px;
     }
     .ancho{
         width:100%;
@@ -2571,7 +2571,7 @@ span{
 
 @media (min-width: 1540px) {
     .labels{
-        font-size:11px;
+        font-size:14px;
     }
     .ancho{
         width:100%;
@@ -2580,7 +2580,7 @@ span{
 
 @media (min-width: 1640px) {
     .labels{
-        font-size:11px;
+        font-size:14px;
     }
     .ancho{
         width:100%;
@@ -2589,7 +2589,7 @@ span{
 
 @media (min-width: 1760px) {
     .labels{
-        font-size:13px;
+        font-size:14px;
     }
     .ancho{
         width:100%;
@@ -2649,7 +2649,7 @@ span{
 
 function app() {
 			return {
-				step: 1,
+				step: 2,
 				passwordStrengthText: '',
 				togglePassword: false,
 
