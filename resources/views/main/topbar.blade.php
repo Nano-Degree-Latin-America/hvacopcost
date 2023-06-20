@@ -36,7 +36,7 @@
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
                 <button class="">
-                    Log Out
+                    Cerrar Sesión
                     </button>
             </a>
 
