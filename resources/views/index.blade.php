@@ -1518,7 +1518,7 @@ span{
                                                                 <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start text-left">
-                                                                <input onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
+                                                                <input onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:w-full xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
                                                                 <input  id="cheValorS_2_2_count" name="cheValorS_2_2_count" type="number" class="hidden" value="1">
 
                                                             </div>
@@ -1530,7 +1530,7 @@ span{
 
                                                         <div class="w-full flex gap-x-2 justify-start">
                                                             <div class="flex">
-                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_2_2" id="maintenance_cost_2_2" >
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:w-full xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_2_2" id="maintenance_cost_2_2" >
                                                             </div>
                                                             <div class="flex justify-end">
                                                                 <button onclick="inactive_display('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
@@ -2082,7 +2082,7 @@ span{
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label " class="labels" for=""><b>Tipo Diseño</b> </label>
+                                                            <label class="labels" for=""><b>Tipo Diseño</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);" name="cheDisenio_3_2" id="cheDisenio_3_2">
@@ -2144,7 +2144,7 @@ span{
                                                         </div>
 
                                                         <div class="flex justify-start w-1/4">
-                                                            <input onchange="valida_selects_inps(this.id);"  name="csStd_cant_3_2" id="csStd_cant_3_2" type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
+                                                            <input onchange="valida_selects_inps(this.id);"  name="csStd_cant_3_2" id="csStd_cant_3_2" type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md  text-center">
                                                             <input  id="csStd_cant_3_2_count" name="csStd_cant_3_2_count" type="number" class="hidden" value="1">
 
                                                         </div>
@@ -2185,7 +2185,7 @@ span{
                                                             <label  class="labels" for=""><b>Mantenimiento</b> </label>
                                                         </div>
                                                         <div class="flex w-full justify-start">
-                                                            <select onchange="valida_selects_inps(this.id);"style="margin-left: 2px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_3_2" id="cheMantenimiento_3_2">
+                                                            <select onchange="valida_selects_inps(this.id);" style="margin-left: 2px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_3_2" id="cheMantenimiento_3_2">
                                                                 <option value="">Seleccionar</option>
                                                                 <option value="ASHRAE 180">ASHRAE 180</option>
                                                                 <option value="Deficiente">Deficiente</option>
@@ -2216,7 +2216,7 @@ span{
 
                                                         <div class="w-full flex gap-x-2 justify-start">
                                                             <div class="flex">
-                                                                <input type="text" style="margin-left: 2.5px;" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="maintenance_cost_3_2" id="maintenance_cost_3_2" >
+                                                                <input type="text" style="margin-left: 2.5px;" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_3_2" id="maintenance_cost_3_2" >
                                                             </div>
                                                             <div class="flex justify-end">
                                                                 <button onclick="inactive_display('sol_3')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>

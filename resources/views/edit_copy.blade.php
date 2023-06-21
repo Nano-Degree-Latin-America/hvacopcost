@@ -22,7 +22,7 @@
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
     <button class="p-2 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/mis_projectos'"><p>Mis Proyectos</p></button>
 
-    <button class="p-2 bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'"><p>Nuevo Proyecto</p></button>
+    <button class="p-2 bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'"><p>Nuevo Projecto</p></button>
 
     <a class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('logout') }}"
             onclick="event.preventDefault();
@@ -234,7 +234,7 @@ span{
                                                 </div>
 
 
-                                                <input type="text" id="name_copy" value="{{$project_edit->name}}" class="hidden" name="name_copy">
+
 
                                                 <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
@@ -533,12 +533,12 @@ span{
                                             <div class="flex w-full  gap-x-1">
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                                                    <div class="w-1/3 flex justify-start">
+                                                    <div class="w-1/3 flex justify-start text-left">
                                                         <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start">
-                                                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 border-blue-600 rounded-md p-1" onchange="unidadHvac(this.value,1,'csTipo','csDisenio_1_1');"  >
+                                                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="unidadHvac(this.value,1,'csTipo','csDisenio_1_1');"  >
                                                             <option value="0">Seleccionar</option>
                                                             <option value="1">Paquetes (RTU)</option>
                                                             <option value="2">Split DX</option>
@@ -560,46 +560,49 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                    <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                    <div class="flex justify-start w-1/2 text-left">
+                                                        <label class="labels" for=""><b>Tipo Equipo</b> </label>
                                                     </div>
                                                     <div class="w-full flex justify-start">
-                                                        <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="change_diseño(this.value,1,'csDisenio_1_1','tipo_control_1_1','dr_1_1','lblCsTipo_1_1');"  name="csTipo" id="csTipo">
+                                                        <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="change_diseño(this.value,1,'csDisenio_1_1','tipo_control_1_1','dr_1_1','lblCsTipo_1_1');"  name="csTipo" id="csTipo">
 
                                                         </select>
                                                     </div>
 
                                                     <input type="text" style="display: none" id="lblCsTipo_1_1" name="lblCsTipo_1_1">
+                                                    <input  id="tipo_equipo_1_1_count" name="tipo_equipo_1_1_count" type="number" class="hidden" value="1">
 
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
 
-                                                    <div class="w-1/3 flex justify-start">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                    <div class="w-1/3 flex justify-start text-left">
+                                                        <label class="labels" for=""><b>Tipo Diseño</b> </label>
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start">
-                                                        <select onchange="send_name(this.id);" name="csDisenio_1_1" id="csDisenio_1_1" class="w-full border-2 border-blue-600 rounded-md  py-1">
+                                                        <select onchange="send_name(this.id);" name="csDisenio_1_1" id="csDisenio_1_1" class="w-full border-2 border-blue-600 rounded-md py-2">
                                                         </select>
                                                     </div>
                                                     <input type="text" style="display: none" id="lblCsDisenio" name="lblCsDisenio" value="ASHRAE 55/62.1/90.1">
                                                     <input type="text" style="display: none" id="name_diseno_1_1" name="name_diseno_1_1">
+                                                    <input  id="csDisenio_1_1_count" name="csDisenio_1_1_count" type="number" class="hidden" value="1">
+
                                                 </div>
 
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                    <div class="flex w-1/3 justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                    <div class="flex justify-start w-1/2 text-left">
+                                                        <label class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                     </div>
                                                     <div class="flex w-full justify-start gap-x-2">
                                                         <div class="w-full">
                                                             <input type="text" {{-- value="{{$unidad_hvac_val->capacidad_tot}}" --}} onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" name="capacidad_total" id="capacidad_total" >
                                                         </div>
                                                         <div class="w-full">
-                                                        <select class="w-full  border-2 border-blue-600 rounded-md py-2 text-center" onchange="cap_term_change(this.value);"  id="unidad_capacidad_tot" name="unidad_capacidad_tot">
+                                                        <select class="w-full  border-2 border-blue-600 rounded-md h-full text-center" onchange="cap_term_change(this.value);"  id="unidad_capacidad_tot" name="unidad_capacidad_tot">
                                                             <option value="TR">TR</option>
                                                             <option value="KW">KW</option>
                                                         </select>
@@ -611,31 +614,33 @@ span{
                                             </div>
 
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
+                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                                                     <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                        {{--  <label style="font-size: 14px;" class="" for=""><b>Costo Eléctrico</b><b style="font-size: 10px;"> $/Kwh</b> </label> --}}
                                                         <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                         <input id="costo_elec" name="costo_elec"{{--  value="${{$unidad_hvac_val->costo_elec}}" --}} onchange="asign_cos_ele(this.value);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
+                                                        <input  id="costo_elec_1_1_count" name="costo_elec_1_1_count" type="number" class="hidden" value="1">
                                                     </div>
 
                                                 </div>
 
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
-                                                    <div class="flex justify-start w-1/3">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                    <div class="flex justify-start w-1/3 text-left">
                                                         <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
                                                     </div>
                                                     <div class="flex justify-start w-1/3">
-                                                        <input type="text" style="font-size: 14px;" onchange="hrs_enfs_inps(this.value);format_nums_no_$(this.value,this.id);"onkeypress="return soloNumeros(event)" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado" id="hrsEnfriado" >
+                                                        <input type="text" style="font-size: 14px;" onchange="hrs_enfs_inps(this.value);format_nums_no_$(this.value,this.id);"onkeypress="return soloNumeros(event)" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado" id="hrsEnfriado" >
+                                                        <input  id="hrsEnfriado_1_1_count" name="hrsEnfriado_1_1_count" type="number" class="hidden" value="1">
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
-                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                                                     <div class="flex justify-start w-1/3">
-                                                        <select name="csStd" id="csStd"  onchange="set_ser_to_sers(this.value);" class="w-full py-1  border-2 border-blue-600 rounded-md">
+                                                        <select name="csStd" id="csStd" style="padding-top: 0.528rem;padding-bottom: 0.528rem;" onchange="set_ser_to_sers(this.value);" class="w-full border-2 border-blue-600 rounded-md">
                                                             <option value="SEER">SEER</option>
                                                             <option value="SEER2">SEER2</option>
                                                             <option value="IEER">IEER</option>
@@ -644,12 +649,13 @@ span{
                                                     </div>
                                                     <div class="flex justify-start w-1/4">
                                                         <input name="csStd_cant_1_1" id="csStd_cant_1_1" {{-- value="{{number_format($unidad_hvac_val->eficencia_ene_cant)}}" --}} type="text" class="text-center w-full border-2 border-blue-600 rounded-md">
+                                                        <input  id="csStd_cant_1_1_count" name="csStd_cant_1_1_count" type="number" class="hidden" value="1">
                                                     </div>
                                                 </div>
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="flex justify-start w-1/2">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                        <label  class="labels" for=""><b>Tipo Control</b> </label>
                                                     </div>
 
                                                     <div class="flex justify-start w-full">
@@ -657,36 +663,37 @@ span{
 
                                                         </select>
                                                     </div>
-
+                                                    <input  id="tipo_control_1_1_count" name="tipo_control_1_1_count" type="number" class="hidden" value="1">
                                                     <input type="text" style="display: none" id="name_t_control_1_1" name="name_t_control_1_1">
                                                 </div>
                                             </div>
 
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                    <div class="w-1/3 flex justify-start">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                    <div class="w-1/3 flex justify-start text-left">
+                                                        <label class="labels" for=""><b>Difusor/Rejilla</b> </label>
                                                     </div>
                                                     <div class="w-full flex justify-start">
-                                                        <select style="width: 80%;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);" name="dr_1_1" id="dr_1_1" >
+                                                        <select style="width: 77%;margin-left:1.5px;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);" name="dr_1_1" id="dr_1_1" >
                                                         </select>
                                                     </div>
-
+                                                    <input  id="dr_1_1_count" name="dr_1_1_count" type="number" class="hidden" value="1">
                                                     <input type="text" style="display: none" id="dr_name_1_1" name="dr_name_1_1">
                                                 </div>
 
 
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <div class="flex w-1/3 justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                        <label class="labels" for=""><b>Mantenimiento</b> </label>
                                                     </div>
                                                     <div class="flex w-full justify-start">
-                                                        <select class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento" id="csMantenimiento">
+                                                        <select class="w-full border-2 border-blue-600 rounded-md py-2" style="margin-left: 2px;" name="csMantenimiento" id="csMantenimiento">
                                                             <option selected value="0">Seleccionar</option>
                                                             <option value="ASHRAE 180">ASHRAE 180</option>
                                                             <option value="Deficiente">Deficiente</option>
                                                             <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                         </select>
+                                                        <input  id="csMantenimiento_1_1_count" name="csMantenimiento_1_1_count" type="number" class="hidden" value="1">
                                                     </div>
 
 
@@ -695,24 +702,25 @@ span{
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 mb-2">
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label style="" class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                     </div>
 
-                                                    <div class="w-1/2 flex justify-start">
-                                                        <input onchange="format_num(this.value,this.id);" {{-- value="${{number_format($unidad_hvac_val->val_aprox)}}" --}} type="text" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_1" id="cheValorS_1_1" >
+                                                    <div class="w-1/2 flex justify-start text-left">
+                                                        <input onchange="format_num(this.value,this.id);" {{-- value="${{number_format($unidad_hvac_val->val_aprox)}}" --}} type="text" class="2xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_1" id="cheValorS_1_1" >
+                                                        <input  id="cheValorS_1_1_count" name="cheValorS_1_1_count" type="number" class="hidden" value="1">
                                                     </div>
                                                 </div>
 
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start">
-                                                        <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="maintenance_cost_1_1" id="maintenance_cost_1_1" >
+                                                        <input type="text"  style="margin-left: 2px;" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="maintenance_cost_1_1" id="maintenance_cost_1_1" >
                                                     </div>
                                                 </div>
 
@@ -735,17 +743,16 @@ span{
                                         <div class="flex">
                                         <div class="rounded-xl mt-2 bg-gray-200 rounded-md shadow-md mx-2">
                                           <div class="grid gap-y-2 my-2">
-                                            <div class="flex w-full gap-x-1 mt-3">
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-
+                                            <div class="flex w-full">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <input type="text" value="" class="hidden" id="action_submit_1_2" name="action_submit_1_2">
-                                                    <div class="w-1/3 flex justify-start">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                    <div class="w-1/3 flex justify-start text-left">
+                                                        <label  class="labels" for=""><b>Unidad HVAC</b> </label>
                                                     </div>
 
 
                                                     <div class="w-1/2 flex justify-start">
-                                                        <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,2,'csTipo_1_2','csDisenio_1_2');" name="cUnidad_1_2" id="cUnidad_1_2" >
+                                                        <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2','csDisenio_1_2');" name="cUnidad_1_2" id="cUnidad_1_2" >
                                                             <option value="0">Seleccionar</option>
                                                             <option value="1">Paquetes (RTU)</option>
                                                             <option value="2">Split DX</option>
@@ -770,112 +777,123 @@ span{
                                                     </div>
                                                 </div>
 
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                    <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                    <div class="flex justify-start w-1/2 text-left">
+                                                        <label class="labels" for=""><b>Tipo Equipo</b> </label>
                                                     </div>
 
                                                     <div class="w-full flex justify-start">
-                                                        <select style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="change_diseño(this.value,2,'csDisenio_1_2','tipo_control_1_2','dr_1_2','lblCsTipo_1_2');"  name="csTipo_1_2" id="csTipo_1_2">
+                                                        <select style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="change_diseño(this.value,2,'csDisenio_1_2','tipo_control_1_2','dr_1_2','lblCsTipo_1_2');"  name="csTipo_1_2" id="csTipo_1_2">
                                                         </select>
                                                     </div>
+                                                    <input  id="csTipo_1_2_count" name="csTipo_1_2_count" type="number" class="hidden" value="1">
                                                     <input type="text" style="display: none" id="lblCsTipo_1_2" name="lblCsTipo_1_2">
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
-                                                    <div class="w-1/3 flex justify-start">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                    <div class="w-1/3 flex justify-start text-left">
+                                                        <label  class="labels" for=""><b>Tipo Diseño</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
-                                                        <select class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="send_name(this.id);" name="csDisenio_1_2" id="csDisenio_1_2">
+                                                        <select class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="send_name(this.id);" name="csDisenio_1_2" id="csDisenio_1_2">
                                                         </select>
                                                     </div>
+                                                    <input  id="csDisenio_1_2_count" name="csDisenio_1_2_count" type="number" class="hidden" value="1">
+
                                                     <input type="text" style="display: none" id="lblCsDisenio_1_2" name="lblCsDisenio_1_2">
                                                     <input type="text" style="display: none" id="name_diseno_1_2" name="name_diseno_1_2">
                                                 </div>
 
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                    <div class="flex w-1/3 justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                    <div class="flex justify-start w-1/2 text-left">
+                                                        <label class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                     </div>
                                                     <div class="flex w-full justify-start gap-x-2">
                                                     <div class="w-full">
                                                         <input name="capacidad_total_1_2" id="capacidad_total_1_2"   onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
                                                     </div>
+                                                     <input  id="capacidad_total_1_2_count" name="capacidad_total_1_2_count" type="number" class="hidden" value="1">
+
                                                     <div class="w-full">
-                                                        <input class="w-full h-full border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_1_2" id="unidad_capacidad_tot_1_2" >
+                                                        <input class="w-full  border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_1_2" id="unidad_capacidad_tot_1_2" >
                                                     </div>
                                                 </div>
                                                 </div>
                                             </div>
 
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
+                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                                                     <div class="w-1/3 flex justify-start text-left">
                                                         <label class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                         <input id="costo_elec_1_2" name="costo_elec_1_2"  readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                      </div>
-                                                </div>
+                                                     <input  id="costo_elec_1_2_count" name="costo_elec_1_2_count" type="number" class="hidden" value="1">
 
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
-                                                    <div class="flex justify-start w-1/3">
-                                                        <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                    </div>
+
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                    <div class="flex justify-start w-1/3 text-left ">
+                                                        <label class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                     </div>
 
                                                     <div class="flex justify-start w-1/3">
-                                                        <input type="text" style="font-size: 14px;" readonly class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_1_2" id="hrsEnfriado_1_2">
+                                                        <input type="text" style="font-size: 14px;" readonly class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_1_2" id="hrsEnfriado_1_2">
+                                                         <input  id="hrsEnfriado_1_2_count" name="hrsEnfriado_1_2_count" type="number" class="hidden" value="1">
+
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
-                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
+                                            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
 
                                                         <div class="flex justify-start w-1/3">
-                                                        <input type="text" readonly name="csStd_1_2" id="csStd_1_2" class="w-full py-1  border-2 border-blue-600 rounded-md">
+                                                        <input type="text" style="padding-top: 0.425rem;padding-bottom: 0.425rem;" readonly name="csStd_1_2" id="csStd_1_2" class="w-full border-2 border-blue-600 rounded-md">
                                                         </div>
 
                                                         <div class="flex justify-start w-1/4">
                                                             <input id="csStd_cant_1_2" name="csStd_cant_1_2" type="number"  step="0.5" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                                                         </div>
-
-
-
+                                                        <input  id="csStd_cant_1_2_count" name="csStd_cant_1_2_count" type="number" class="hidden" value="1">
                                                 </div>
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="flex justify-start w-1/2">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                        <label class="labels" for=""><b>Tipo Control</b> </label>
                                                     </div>
 
                                                     <div class="flex justify-start w-full">
-                                                        <select class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="send_name_t_c(this.id);"  name="tipo_control_1_2" id="tipo_control_1_2">
+                                                        <select class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="send_name_t_c(this.id);"  name="tipo_control_1_2" id="tipo_control_1_2">
                                                         </select>
                                                     </div>
+                                                    <input  id="tipo_control_1_2_count" name="tipo_control_1_2_count" type="number" class="hidden" value="1">
+
                                                     <input type="text" style="display: none" id="name_t_control_1_2" name="name_t_control_1_2">
                                                 </div>
                                             </div>
 
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                    <div class="w-1/3 flex justify-start">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                    <div class="w-1/3 flex justify-start text-left">
+                                                        <label class="labels" for=""><b>Difusor/Rejilla</b> </label>
                                                     </div>
                                                     <div class="w-full flex justify-start text-left">
-                                                    <select  style="width: 80%;" class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="send_name_dr(this.id);" name="dr_1_2" id="dr_1_2" >
+                                                    <select style="width: 75%;margin-left:3.5px;" class="border-2 border-blue-600 rounded-md py-1"  onchange="send_name_dr(this.id);" name="dr_1_2" id="dr_1_2" >
                                                         <option value="">Seleccionar</option>
                                                     </select>
-                                                    </div>
+                                                   <input  id="dr_1_2_count" name="dr_1_2_count" type="number" class="hidden" value="1">
+
+                                                </div>
                                                     <input type="text" style="display: none" id="dr_name_1_2" name="dr_name_1_2">
                                                 </div>
 
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
-                                                    <div class="flex w-1/3 justify-start ">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                    <div class="flex w-1/3 justify-start text-left">
+                                                        <label class="labels" for=""><b>Mantenimiento</b> </label>
                                                     </div>
                                                     <div class="flex w-full justify-start">
                                                         <select class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_1_2" id="csMantenimiento_1_2">
@@ -884,6 +902,7 @@ span{
                                                             <option value="Deficiente">Deficiente</option>
                                                             <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                         </select>
+                                                        <input  id="csMantenimiento_1_2_count" name="csMantenimiento_1_2_count" type="number" class="hidden" value="1">
                                                     </div>
                                                     <input type="text" style="display: none" id="lblCsMantenimiento_1_2" name="lblCsMantenimiento_1_2" value="ASHRAE 180 Proactivo">
 
@@ -891,23 +910,25 @@ span{
                                             </div>
 
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="¿" class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                        <label class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                          <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_2" id="cheValorS_1_2" >
+                                                         <input  id="cheValorS_1_2_count" name="cheValorS_1_2_count" type="number" class="hidden" value="1">
+
                                                     </div>
                                                 </div>
 
-                                                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                    <div class="w-1/3 flex justify-start text-left">
+                                                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                    <div class="w-3/6 flex justify-start text-left">
                                                         <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
                                                     </div>
 
                                                     <div class="w-full flex gap-x-2 justify-start">
                                                         <div class="flex">
-                                                            <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_1_2" id="maintenance_cost_1_2" >
+                                                            <input type="text"  style="margin-left: 2.5px;" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_1_2" id="maintenance_cost_1_2" >
                                                         </div>
                                                         <div class="flex justify-end">
                                                             <button onclick="inactive_display_edit('sol_1','{{$id_project}}',1,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
@@ -1091,7 +1112,8 @@ span{
                                                            </div>
                                                            <div class="w-1/2 flex justify-start">
                                                                 <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="cheValorS_1_3" id="cheValorS_1_3" >
-                                                           </div>
+                                                                <input  id="cheValorS_1_3_count" name="cheValorS_1_3_count" type="number" class="hidden" value="1">
+                                                            </div>
                                                        </div>
 
                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
@@ -1240,15 +1262,15 @@ span{
 
                                             <div class="flex">
                                                 <div class="w-full mx-2 mt-2 bg-gray-200 rounded-md shadow-md">
-                                                  <div class="grid gap-y-2 my-1">
-                                                    <div class="flex w-full gap-x-1 mt-2">
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2 ">
+                                                  <div class="grid gap-y-2 my-2">
+                                                    <div class="flex w-full gap-x-1">
+                                                        <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2">
                                                             <input type="text" value="" class="hidden" id="action_submit_2_1" name="action_submit_2_1">
-                                                            <div class="w-1/3 flex justify-start">
+                                                            <div class="w-1/3 flex justify-start text-left">
                                                                 <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="unidadHvac(this.value,1,'cheTipo_2_1');valida_update_store_solution('action_submit_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
+                                                                <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1');valida_update_store_solution('action_submit_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
                                                                     <option value="0">Seleccionar</option>
                                                                     <option value="1">Paquetes (RTU)</option>
                                                                     <option value="2">Split DX</option>
@@ -1275,42 +1297,48 @@ span{
                                                             </div>
                                                         </div>
 
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                            <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                            <div class="flex justify-start w-1/2 text-left">
+                                                                <label class="labels" for=""><b>Tipo Equipo</b> </label>
                                                             </div>
                                                             <div class="w-full flex justify-start">
-                                                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="change_diseño(this.value,1,'cheDisenio_2_1','tipo_control_2_1','dr_2_1','lblCsTipo_2_1','');"  name="cheTipo_2_1" id="cheTipo_2_1">
+                                                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="change_diseño(this.value,1,'cheDisenio_2_1','tipo_control_2_1','dr_2_1','lblCsTipo_2_1','');"  name="cheTipo_2_1" id="cheTipo_2_1">
 
                                                                 </select>
                                                              </div>
-                                                            <input type="text" style="display: none" id="lblCsTipo_2_1" name="lblCsTipo_2_1">
+                                                                   <input  id="cheTipo_2_1_count" name="cheTipo_2_1_count" type="number" class="hidden" value="1">
+
+                                                             <input type="text" style="display: none" id="lblCsTipo_2_1" name="lblCsTipo_2_1">
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                            <div class="w-1/3 flex justify-start">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                            <div class="w-1/3 flex justify-start text-left">
+                                                                <label  class="labels" for=""><b>Tipo Diseño</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="send_name(this.id);" name="cheDisenio_2_1" id="cheDisenio_2_1">
+                                                                <select class="w-full border-2 border-blue-600 rounded-md py-2" onchange="send_name(this.id);" name="cheDisenio_2_1" id="cheDisenio_2_1">
 
                                                                 </select>
                                                             </div>
+                                                                  <input  id="cheDisenio_2_1_count" name="cheDisenio_2_1_count" type="number" class="hidden" value="1">
+
                                                             <input type="text" style="display: none" id="name_diseno_2_1" name="name_diseno_2_1">
                                                         </div>
 
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                            <div class="flex w-1/3 justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                            <div class="flex justify-start w-1/2 text-left">
+                                                                <label  class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                             </div>
                                                             <div class="flex w-full justify-start gap-x-2">
                                                                 <div class="w-full">
-                                                                    <input name="capacidad_total_2_1" id="capacidad_total_2_1"   onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-2" >
+                                                                    <input name="capacidad_total_2_1" id="capacidad_total_2_1" style="margin-left: 2.3px;"  onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
                                                                 </div>
+                                                                          <input  id="capacidad_total_2_1_count" name="capacidad_total_2_1_count" type="number" class="hidden" value="1">
+
                                                                 <div class="w-full">
-                                                                    <input type="text" class="text-center w-full h-full border-2 border-blue-600 rounded-md py-2" readonly name="unidad_capacidad_tot_2_1" id="unidad_capacidad_tot_2_1" >
+                                                                    <input type="text" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" readonly name="unidad_capacidad_tot_2_1" id="unidad_capacidad_tot_2_1" >
 
                                                                  </div>
                                                              </div>
@@ -1318,67 +1346,77 @@ span{
                                                     </div>
 
                                                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                        <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
+                                                        <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                                                             <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                                 <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                             <input name="costo_elec_2_1" id="costo_elec_2_1"  readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
-                                                             </div>
+                                                              <input  id="costo_elec_2_1_count" name="costo_elec_2_1_count" type="number" class="hidden" value="1">
+
+                                                        </div>
                                                         </div>
 
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
-                                                            <div class="flex justify-start w-1/3">
-                                                                <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                            <div class="flex justify-start w-1/3 text-left">
+                                                                <label class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-1/3">
-                                                                <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  step="0.01" name="hrsEnfriado_2_1" id="hrsEnfriado_2_1" readonly>
+                                                                <input type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_2_1" id="hrsEnfriado_2_1" readonly>
+                                                                <input  id="hrsEnfriado_2_1_count" name="hrsEnfriado_2_1_count" type="number" class="hidden" value="1">
+
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
-                                                        <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                                                             <div class="flex justify-start w-1/3">
-                                                                <input readonly type="text" name="csStd_2_1" id="csStd_2_1" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                                                <input readonly type="text" style="padding-top: 0.425rem;padding-bottom: 0.248rem;" name="csStd_2_1" id="csStd_2_1" class="w-full border-2 border-blue-600 rounded-md py-1">
 
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
-                                                            <input step="0.5" name="csStd_cant_2_1" id="csStd_cant_2_1"  type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1">
-                                                            </div>
+                                                            <input name="csStd_cant_2_1" id="csStd_cant_2_1"  type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md">
+                                                            <input  id="csStd_cant_2_1_count" name="csStd_cant_2_1_count" type="number" class="hidden" value="1">
+
+                                                        </div>
 
                                                         </div>
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="flex justify-start w-1/2">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                                <label class="labels" for=""><b>Tipo Control</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-full">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="send_name_t_c(this.id);"  name="tipo_control_2_1" id="tipo_control_2_1">
 
                                                             </select>
-                                                            </div>
+                                                              <input  id="tipo_control_2_1_count" name="tipo_control_2_1_count" type="number" class="hidden" value="1">
+
+                                                        </div>
                                                             <input type="text" style="display: none" id="name_t_control_2_1" name="name_t_control_2_1">
                                                         </div>
                                                     </div>
 
                                                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
-                                                            <div class="w-1/3 flex justify-start">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                            <div class="w-1/3 flex justify-start text-left">
+                                                                <label style="margin-left:2.5px;" class="labels" for=""><b>Difusor/Rejilla</b> </label>
                                                             </div>
                                                             <div class="w-full flex justify-start">
-                                                            <select  style="width: 80%;" class="w-full border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);" name="dr_2_1" id="dr_2_1" >
+                                                            <select style="width: 77%;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);" name="dr_2_1" id="dr_2_1" >
 
 
                                                             </select>
                                                             </div>
                                                             <input type="text" style="display: none" id="dr_name_2_1"   name="dr_name_2_1">
+                                                              <input  id="dr_2_1_count" name="dr_2_1_count" type="number" class="hidden" value="1">
+
                                                         </div>
 
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
-                                                            <div class="flex w-1/3 justify-start">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                            <div class="flex w-1/3 justify-start text-left">
+                                                                <label class="labels" for=""><b>Mantenimiento</b> </label>
                                                             </div>
                                                             <div class="flex w-full justify-start">
                                                                 <select class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_2_1" id="csMantenimiento_2_1">
@@ -1387,20 +1425,24 @@ span{
                                                                     <option value="Deficiente">Deficiente</option>
                                                                     <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                                 </select>
+                                                                      <input  id="csMantenimiento_2_1_count" name="csMantenimiento_2_1_count" type="number" class="hidden" value="1">
+
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 ">
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="" class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                                <label class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                             </div>
-                                                            <div class="w-1/2 flex justify-start">
-                                                                <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md text-center"  step="0.01" step="0.01" name="cheValorS_2_1" id="cheValorS_2_1" >
+                                                            <div class="w-1/2 flex justify-start text-left">
+                                                                <input onchange="format_num(this.value,this.id);"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_2_1" id="cheValorS_2_1" >
+                                                                <input  id="cheValorS_2_1_count" name="cheValorS_2_1_count" type="number" class="hidden" value="1">
+
                                                             </div>
                                                         </div>
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
                                                                 <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
                                                             </div>
@@ -1433,14 +1475,14 @@ span{
                                         <div class="flex">
                                             <div class=" mt-2  mx-2 bg-gray-200 rounded-md shadow-md">
                                               <div class="grid gap-y-2 my-2">
-                                                <div class="flex w-full gap-x-1 mt-3">
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                <div class="flex w-full gap-x-1">
+                                                    <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2">
                                                         <input type="text" value="" class="hidden" id="action_submit_2_2" name="action_submit_2_2">
-                                                        <div class="w-1/3 flex justify-start">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                            <select class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="unidadHvac(this.value,2,'cheTipo_2_2');"  name="cUnidad_2_2" id="cUnidad_2_2" >
+                                                            <select style="margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,2,'cheTipo_2_2');"  name="cUnidad_2_2" id="cUnidad_2_2" >
                                                                 <option value="0">Seleccionar</option>
                                                                 <option value="1">Paquetes (RTU)</option>
                                                                 <option value="2">Split DX</option>
@@ -1466,42 +1508,48 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
-                                                        <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                        <div class="w-1/2 flex justify-start text-left">
+                                                        <label class="labels" for=""><b>Tipo Equipo</b> </label>
                                                         </div>
                                                         <div class="w-full flex justify-start">
-                                                        <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="change_diseño(this.value,2,'cheDisenio_2_2','tipo_control_2_2','dr_2_2','lblCsTipo_2_2');"  name="cheTipo_2_2" id="cheTipo_2_2">
+                                                        <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="change_diseño(this.value,2,'cheDisenio_2_2','tipo_control_2_2','dr_2_2','lblCsTipo_2_2');"  name="cheTipo_2_2" id="cheTipo_2_2">
 
                                                         </select>
                                                         </div>
+                                                             <input  id="cheTipo_2_1_count" name="cheTipo_2_1_count" type="number" class="hidden" value="1">
+
                                                         <input type="text" style="display: none" id="lblCsTipo_2_2" name="lblCsTipo_2_2">
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
-                                                        <div class="w-1/3 flex justify-start">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Tipo Diseño</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                            <select class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="send_name(this.id);" name="cheDisenio_2_2" id="cheDisenio_2_2">
+                                                            <select class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="send_name(this.id);" name="cheDisenio_2_2" id="cheDisenio_2_2">
 
                                                             </select>
+                                                            <input  id="cheDisenio_2_1_count" name="cheDisenio_2_1_count" type="number" class="hidden" value="1">
+
                                                         </div>
                                                         <input type="text" style="display: none" id="name_diseno_2_2" name="name_diseno_2_2">
                                                     </div>
 
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                        <div class="flex w-1/3 justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                        <div class="flex w-1/2 justify-start text-left">
+                                                            <label class="labels" class="" for=""><b>Capacidad Térmica</b> </label>
                                                         </div>
                                                         <div class="flex w-full justify-start gap-x-2">
                                                             <div class="w-full">
-                                                                <input id="capacidad_total_2_2" name="capacidad_total_2_2"  onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
+                                                                <input style="margin-left: 2.3px;" id="capacidad_total_2_2" name="capacidad_total_2_2"  onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
                                                              </div>
                                                              <div class="w-full">
-                                                                <input class="w-full border-2 h-full border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_2_2" id="unidad_capacidad_tot_2_2" >
+                                                                <input class="w-full border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_2_2" id="unidad_capacidad_tot_2_2" >
+                                                                <input  id="capacidad_total_2_1_count" name="capacidad_total_2_1_count" type="number" class="hidden" value="1">
+
                                                             </div>
                                                         </div>
 
@@ -1509,40 +1557,46 @@ span{
                                                 </div>
 
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
+                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                                                         <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
                                                             <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                         <input name="costo_elec_2_2" id="costo_elec_2_2" readonly  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1">
-                                                          </div>
+                                                            <input  id="costo_elec_2_1_count" name="costo_elec_2_1_count" type="number" class="hidden" value="1">
+
+                                                    </div>
                                                     </div>
 
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
 
-                                                        <div class="flex justify-start w-1/3">
-                                                            <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                        <div class="flex justify-start w-1/3 text-left">
+                                                            <label class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-1/3">
-                                                            <input type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md py-1"  step="0.01" name="hrsEnfriado_2_2" id="hrsEnfriado_2_2" readonly>
+                                                            <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_2_2" id="hrsEnfriado_2_2" readonly>
+                                                                <input  id="hrsEnfriado_2_1_count" name="hrsEnfriado_2_1_count" type="number" class="hidden" value="1">
+
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
-                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 w-1/2 gap-x-2 gap-y-1">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                                                         <div class="flex justify-start w-1/3">
                                                             <input type="text" readonly name="csStd_2_2" id="csStd_2_2" class="w-full border-2 border-blue-600 rounded-md py-1">
 
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
-                                                            <input  name="csStd_cant_2_2" id="csStd_cant_2_2" type="text" style="font-size: 14px;"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
+                                                            <input  name="csStd_cant_2_2" id="csStd_cant_2_2" type="text"style="padding-top: 0.425rem;padding-bottom: 0.42rem;"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
+                                                            <input  id="csStd_cant_2_1_count" name="csStd_cant_2_1_count" type="number" class="hidden" value="1">
+
                                                         </div>
                                                     </div>
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex justify-start w-1/2">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                            <label  class="labels" for=""><b>Tipo Control</b> </label>
                                                         </div>
 
                                                         <div class="flex justify-start w-full">
@@ -1550,36 +1604,42 @@ span{
 
                                                             </select>
                                                         </div>
+                                                            <input  id="tipo_control_2_1_count" name="tipo_control_2_1_count" type="number" class="hidden" value="1">
+
                                                         <input type="text" style="display: none" id="name_t_control_2_2" name="name_t_control_2_2">
                                                     </div>
                                                 </div>
 
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
-                                                        <div class="w-1/3 flex justify-start">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                         </div>
                                                         <div class="w-full flex justify-start">
-                                                        <select style="width: 80%;" class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="send_name_dr(this.id);" name="dr_2_2" id="dr_2_2" >
+                                                        <select style="width: 77%;" class="border-2 border-blue-600 rounded-md py-1"  onchange="send_name_dr(this.id);" name="dr_2_2" id="dr_2_2" >
 
 
                                                         </select>
-                                                        </div>
+                                                            <input  id="dr_2_1_count" name="dr_2_1_count" type="number" class="hidden" value="1">
+
+                                                    </div>
                                                         <input type="text" style="display: none" id="dr_name_2_2" name="dr_name_2_2">
                                                     </div>
 
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                        <div class="flex w-1/3 justify-start">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                        <div class="flex w-1/3 justify-start text-left">
+                                                            <label  class="labels" class="" for=""><b>Mantenimiento</b> </label>
                                                         </div>
                                                         <div class="flex w-full justify-start">
-                                                            <select class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_2_2" id="cheMantenimiento_2_2">
+                                                            <select style="margin-left: 1px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_2_2" id="cheMantenimiento_2_2">
                                                                 <option value="0">Seleccionar</option>
                                                                 <option value="ASHRAE 180">ASHRAE 180</option>
                                                                 <option value="Deficiente">Deficiente</option>
                                                                 <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                             </select>
                                                         </div>
+                                                        <input  id="csMantenimiento_2_1_count" name="csMantenimiento_2_1_count" type="number" class="hidden" value="1">
+
 
 
 
@@ -1587,12 +1647,14 @@ span{
                                                 </div>
 
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                                                         <div class="w-1/3 flex justify-start text-left">
                                                             <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                         </div>
-                                                        <div class="w-1/2 flex justify-start">
-                                                            <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
+                                                        <div class="w-1/2 flex justify-start text-left">
+                                                            <input onchange="format_num(this.value,this.id);"  class="2xl:w-full xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"   name="cheValorS_2_2" id="cheValorS_2_2" >
+                                                            <input  id="cheValorS_2_2_count" name="cheValorS_2_2_count" type="number" class="hidden" value="1">
+
                                                         </div>
                                                     </div>
 
@@ -1603,7 +1665,7 @@ span{
 
                                                         <div class="w-full flex gap-x-2 justify-start">
                                                             <div class="flex">
-                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_2_2" id="maintenance_cost_2_2" >
+                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:w-full xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_2_2" id="maintenance_cost_2_2" >
                                                             </div>
                                                             <div class="flex justify-end">
                                                                 <button onclick="inactive_display_edit('sol_2','{{$id_project}}',2,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
@@ -1948,16 +2010,16 @@ span{
 
                                             <div class="flex">
                                                 <div class="w-full mx-2 mt-2 bg-gray-200 rounded-md shadow-md">
-                                                  <div class="grid gap-y-2 my-1">
-                                                    <div class="flex w-full mt-2  gap-x-1">
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                  <div class="grid gap-y-2 my-2">
+                                                    <div class="flex w-full">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <input type="text" value="" class="hidden" id="action_submit_3_1" name="action_submit_3_1">
 
-                                                            <div class="w-1/3 flex justify-start">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                            <div class="w-1/3 flex justify-start text-left">
+                                                                <label class="labels" for=""><b>Unidad HVAC</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <select class="w-full py-1 border-2 border-blue-600 rounded-md"  onchange="unidadHvac(this.value,1,'cheTipo_3_1');valida_update_store_solution('action_submit_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
+                                                                <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1');valida_update_store_solution('action_submit_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
                                                                     <option value="0">Seleccionar</option>
                                                                     <option value="1">Paquetes (RTU)</option>
                                                                     <option value="2">Split DX</option>
@@ -1979,44 +2041,49 @@ span{
                                                             </div>
                                                         </div>
 
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                            <div class="w-1/3 flex justify-start text-left">
-                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                            <div class="flex justify-start w-1/2 text-left">
+                                                                 <label class="labels" for=""><b>Tipo Equipo</b> </label>
                                                              </div>
                                                              <div class="w-full flex justify-start">
-                                                                    <select style="font-size: 14px" class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="change_diseño(this.value,1,'cheDisenio_3_1','tipo_control_3_1','dr_3_1','lblCsTipo_3_1');"  name="cheTipo_3_1" id="cheTipo_3_1">
+                                                                    <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="change_diseño(this.value,1,'cheDisenio_3_1','tipo_control_3_1','dr_3_1','lblCsTipo_3_1');"  name="cheTipo_3_1" id="cheTipo_3_1">
 
                                                                     </select>
                                                             </div>
                                                             <input type="text" style="display: none" id="lblCsTipo_3_1" name="lblCsTipo_3_1">
+                                                            <input  id="cheTipo_3_1_count" name="cheTipo_3_1_count" type="number" class="hidden" value="1">
+
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                            <div class="w-1/3 flex justify-start">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                            <div class="w-1/3 flex justify-start text-left">
+                                                                <label class="labels" for=""><b>Tipo Diseño</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="send_name(this.id);" name="cheDisenio_3_1" id="cheDisenio_3_1">
+                                                                <select class="w-full border-2 border-blue-600 rounded-md py-2" onchange="send_name(this.id);" name="cheDisenio_3_1" id="cheDisenio_3_1">
 
                                                                 </select>
                                                             </div>
+                                                            <input  id="cheDisenio_3_1_count" name="cheDisenio_3_1_count" type="number" class="hidden" value="1">
                                                             <input type="text" style="display: none" id="name_diseno_3_1" name="name_diseno_3_1">
                                                         </div>
 
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                            <div class="flex w-1/3 justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                            <div class="flex justify-start w-1/2 text-left">
+                                                                <label class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                             </div>
 
                                                             <div class="flex w-full justify-start gap-x-2">
                                                                 <div class="w-full">
 
-                                                                    <input id="capacidad_total_3_1" name="capacidad_total_3_1" type="text" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md  text-center" >
+                                                                    <input id="capacidad_total_3_1" name="capacidad_total_3_1" type="text" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
+                                                                    <input  id="capacidad_total_3_1_count" name="capacidad_total_3_1_count" type="number" class="hidden" value="1">
+
                                                                 </div>
                                                                 <div class="w-full">
-                                                                    <input class="w-full h-full py-2 border-2 border-blue-600 rounded-md text-center"  type="text" readonly name="unidad_capacidad_tot_3_1" id="unidad_capacidad_tot_3_1" >
+                                                                    <input class="w-full  border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_3_1" id="unidad_capacidad_tot_3_1" >
 
                                                                 </div>
                                                             </div>
@@ -2030,86 +2097,99 @@ span{
                                                                 <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
-                                                                <input name="costo_elec_3_1" id="costo_elec_3_1"  readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0  text-center">
+                                                                <input name="costo_elec_3_1" id="costo_elec_3_1"  readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
                                                             </div>
+                                                                   <input  id="costo_elec_3_1_count" name="costo_elec_3_1_count" type="number" class="hidden" value="1">
+
                                                         </div>
 
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
-                                                            <div class="flex justify-start w-1/3">
-                                                                <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                            <div class="flex justify-start w-1/3 text-left">
+                                                                <label class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-1/3">
                                                                 <input type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md  text-center"  step="0.01" name="hrsEnfriado_3_1" id="hrsEnfriado_3_1" readonly>
 
                                                             </div>
+                                                                   <input  id="hrsEnfriado_3_1_count" name="hrsEnfriado_3_1_count" type="number" class="hidden" value="1">
+
                                                         </div>
                                                     </div>
 
-                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                                                             <div class="flex justify-start w-1/3">
-                                                                <input readonly type="text" name="csStd2_3_1" id="csStd2_3_1" class="w-full py-1 border-2 border-blue-600 rounded-md">
+                                                                <input readonly type="text"  name="csStd2_3_1" id="csStd2_3_1" class="w-full border-2 border-blue-600 rounded-md py-1">
 
                                                             </div>
                                                             <div class="flex justify-start w-1/4">
                                                              <input  name="cheStd_3_1" id="cheStd_3_1" type="text"  style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
                                                             </div>
+                                                            <input  id="cheStd_3_1_count" name="cheStd_3_1_count" type="number" class="hidden" value="1">
+
                                                         </div>
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="flex justify-start w-1/2">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                                <label class="labels" for=""><b>Tipo Control</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-full">
-                                                                <select class="w-full py-1 border-2 border-blue-600 rounded-md ml-0"  onchange="send_name_t_c(this.id);"  name="tipo_control_3_1" id="tipo_control_3_1">
+                                                                <select class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="send_name_t_c(this.id);"  name="tipo_control_3_1" id="tipo_control_3_1">
 
                                                                 </select>
                                                             </div>
                                                             <input type="text" style="display: none" id="name_t_control_3_1" name="name_t_control_3_1">
-                                                        </div>
-                                                    </div>
+                                                                          <input  id="tipo_control_3_1_count" name="tipo_control_3_1_count" type="number" class="hidden" value="1">
 
-                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
-                                                            <div class="w-1/3 flex justify-start">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
-                                                            </div>
-                                                            <div class="w-full flex justify-start">
-                                                                <select  style="width: 80%;" class="w-full py-2 border-2 border-blue-600 rounded-md" onchange="send_name_dr(this.id);" name="dr_3_1" id="dr_3_1" >
-
-
-                                                                </select>
-                                                            </div>
-                                                            <input type="text" style="display: none" id="dr_name_3_1" name="dr_name_3_1">
-
-                                                        </div>
-
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
-                                                            <div class="flex w-1/3 justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
-                                                            </div>
-                                                            <div class="flex w-full justify-start">
-                                                                <select class="w-full py-2 border-2 border-blue-600 rounded-md" name="cheMantenimiento_3_1" id="cheMantenimiento_3_1">
-                                                                    <option value="0">Seleccionar</option>
-                                                                    <option value="ASHRAE 180">ASHRAE 180</option>
-                                                                    <option value="Deficiente">Deficiente</option>
-                                                                    <option value="Sin Mantenimiento">Sin Mantenimiento</option>
-                                                                </select>
-                                                            </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                                <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                             </div>
-                                                            <div class="w-1/2 flex justify-start">
-                                                                 <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1  text-center"  step="0.01" step="0.01" name="cheValorS_3_1" id="cheValorS_3_1" >
-                                                                </div>
+                                                            <div class="w-full flex justify-start">
+                                                                <select  style="width: 77%;margin-left:2.5px;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);" name="dr_3_1" id="dr_3_1" >
+
+
+                                                                </select>
+                                                            </div>
+                                                            <input type="text" style="display: none" id="dr_name_3_1" name="dr_name_3_1">
+
+                                                              <input  id="dr_3_1_count" name="dr_3_1_count" type="number" class="hidden" value="1">
+
                                                         </div>
 
-                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                            <div class="flex w-1/3 justify-start text-left">
+                                                                <label class="labels" for=""><b>Mantenimiento</b> </label>
+                                                            </div>
+                                                            <div class="flex w-full justify-start">
+                                                                <select style="margin-left: 2px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_3_1" id="cheMantenimiento_3_1">
+                                                                    <option value="0">Seleccionar</option>
+                                                                    <option value="ASHRAE 180">ASHRAE 180</option>
+                                                                    <option value="Deficiente">Deficiente</option>
+                                                                    <option value="Sin Mantenimiento">Sin Mantenimiento</option>
+                                                                </select>
+                                                                      <input  id="cheMantenimiento_3_1_count" name="cheMantenimiento_3_1_count" type="number" class="hidden" value="1">
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                                                        <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
+                                                            <div class="w-1/3 flex justify-start text-left">
+                                                                <label   class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                                            </div>
+                                                            <div class="w-1/2 flex justify-start">
+                                                                 <input onchange="format_num(this.value,this.id);"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_3_1" id="cheValorS_3_1" >
+                                                                 <input  id="cheValorS_3_1_count" name="cheValorS_3_1_count" type="number" class="hidden" value="1">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
                                                                 <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
                                                             </div>
@@ -2142,13 +2222,13 @@ span{
                                             <hr>
                                         </div>
                                         <div class="flex w-full">
-                                            <div class=" mx-2 bg-gray-200 rounded-md shadow-md w-full  mt-2">
+                                            <div class="mx-2 bg-gray-200 rounded-md shadow-md w-full  mt-2">
                                               <div class="grid gap-y-2 my-2">
-                                                <div class="flex w-full mt-3  gap-x-1">
+                                                <div class="flex w-full">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <input type="text" value="" class="hidden" id="action_submit_3_2" name="action_submit_3_2">
-                                                        <div class="w-1/3 flex justify-start">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" class="" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="unidadHvac(this.value,1,'cheTipo_3_2');" name="cUnidad_3_2" id="cUnidad_3_2" >
@@ -2173,42 +2253,48 @@ span{
                                                         </div>
                                                     </div>
 
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
-                                                         <div class="w-1/3 flex justify-start text-left">
-                                                              <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                         <div class="flex justify-start w-1/2 text-left">
+                                                              <label class="labels" for=""><b>Tipo Equipo</b> </label>
                                                         </div>
                                                         <div class="w-full flex justify-start">
-                                                            <select style="font-size: 14px" class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="change_diseño(this.value,2,'cheDisenio_3_2','tipo_control_3_2','dr_3_2','lblCsTipo_3_2');" name="cheTipo_3_2" id="cheTipo_3_2">
+                                                            <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="change_diseño(this.value,2,'cheDisenio_3_2','tipo_control_3_2','dr_3_2','lblCsTipo_3_2');" name="cheTipo_3_2" id="cheTipo_3_2">
 
                                                             </select>
                                                         </div>
+                                                        <input  id="cheTipo_3_2_count" name="cheTipo_3_2_count" type="number" class="hidden" value="1">
+
                                                         <input type="text" style="display: none" id="lblCsTipo_3_2" name="lblCsTipo_3_2">
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                        <div class="w-1/3 flex justify-start">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" for=""><b>Tipo Diseño</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                            <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="send_name(this.id);" name="cheDisenio_3_2" id="cheDisenio_3_2">
+                                                            <select class="w-full border-2 border-blue-600 rounded-md py-2" onchange="send_name(this.id);" name="cheDisenio_3_2" id="cheDisenio_3_2">
 
                                                             </select>
                                                         </div>
+                                                       <input  id="cheDisenio_3_2_count" name="cheDisenio_3_2_count" type="number" class="hidden" value="1">
+
                                                         <input type="text" id="name_diseno_3_2" name="name_diseno_3_2" style="display: none" >
                                                     </div>
 
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                        <div class="flex w-1/3 justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                        <div class="flex w-1/2 justify-start text-left">
+                                                            <label class="labels" class="" for=""><b>Capacidad Térmica</b> </label>
                                                         </div>
                                                         <div class="flex w-full justify-start gap-x-2">
                                                             <div class="w-full">
-                                                                <input id="capacidad_total_3_2" name="capacidad_total_3_2" type="text" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full py-2 border-2 border-blue-600 rounded-md  text-center" >
+                                                                <input id="capacidad_total_3_2" name="capacidad_total_3_2" type="text" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md h-full text-center" >
+
                                                             </div>
                                                             <div class="w-full">
-                                                                <input class="w-full py-2 h-full border-2 border-blue-600 rounded-md  text-center"  type="text" readonly name="unidad_capacidad_tot_3_2" id="unidad_capacidad_tot_3_2" >
+                                                                <input class="w-full  border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_3_2" id="unidad_capacidad_tot_3_2" >
+                                                               <input  id="capacidad_total_3_2_count" name="capacidad_total_3_2_count" type="number" class="hidden" value="1">
 
                                                             </div>
                                                         </div>
@@ -2222,28 +2308,34 @@ span{
                                                             <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                            <input name="costo_elec_3_2" id="costo_elec_3_2" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md mr-0  text-center">
+                                                            <input name="costo_elec_3_2" id="costo_elec_3_2" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
+                                                               <input  id="costo_elec_3_2_count" name="costo_elec_3_2_count" type="number" class="hidden" value="1">
+
                                                         </div>
                                                     </div>
 
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 ml-3">
-                                                        <div class="flex justify-start w-1/3">
-                                                            <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                        <div class="flex justify-start w-1/3 text-left">
+                                                            <label  class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-1/3">
-                                                            <input type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md  text-center"  step="0.01" name="hrsEnfriado_3_2" id="hrsEnfriado_3_2" readonly>
+                                                            <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_3_2" id="hrsEnfriado_3_2" readonly>
                                                         </div>
+                                                        <input  id="hrsEnfriado_3_2_count" name="hrsEnfriado_3_2_count" type="number" class="hidden" value="1">
+
                                                     </div>
                                                 </div>
 
-                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
+                                                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                                                         <div class="flex justify-start w-1/3">
-                                                            <input readonly type="text" name="csStd_3_2" id="csStd_3_2" class="w-full py-1 border-2 border-blue-600 rounded-md">
+                                                            <input readonly style="padding-top: 0.49rem;padding-bottom: 0.49rem;" type="text" name="csStd_3_2" id="csStd_3_2" class="w-full py-1 border-2 border-blue-600 rounded-md">
 
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
                                                             <input step="0.5" name="csStd_cant_3_2" id="csStd_cant_3_2" type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md  text-center">
+                                                            <input  id="csStd_cant_3_2_count" name="csStd_cant_3_2_count" type="number" class="hidden" value="1">
+
                                                         </div>
                                                     </div>
 
@@ -2252,39 +2344,45 @@ span{
                                                             <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-full">
-                                                            <select class="w-full py-1 border-2 border-blue-600 rounded-md ml-0" onchange="send_name_t_c(this.id);" name="tipo_control_3_2" id="tipo_control_3_2">
+                                                            <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="send_name_t_c(this.id);" name="tipo_control_3_2" id="tipo_control_3_2">
 
                                                             </select>
                                                         </div>
-                                                         <input type="text" id="name_t_control_3_2" name="name_t_control_3_2" style="display:none;">
+                                                            <input type="text" id="name_t_control_3_2" name="name_t_control_3_2" style="display:none;">
+
+                                                        <input type="text" id="name_t_control_3_2" name="name_t_control_3_2" style="display:none;">
                                                     </div>
                                                 </div>
 
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                                                        <div class="w-1/3 flex justify-start">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
+                                                        <div class="w-1/3 flex justify-start text-left">
+                                                            <label class="labels" class="" for=""><b>Difusor/Rejilla</b> </label>
                                                         </div>
                                                         <div class="w-full flex justify-start">
-                                                            <select  style="width: 80%;"  class="w-full py-2 border-2 border-blue-600 rounded-md"  onchange="send_name_dr(this.id);" name="dr_3_2" id="dr_3_2" >
+                                                            <select  style="width: 77%;margin-left:2.5px;"  class="border-2 border-blue-600 rounded-md py-1"  onchange="send_name_dr(this.id);" name="dr_3_2" id="dr_3_2" >
 
                                                             </select>
                                                         </div>
+                                                        <input  id="dr_3_2_count" name="dr_3_2_count" type="number" class="hidden" value="1">
+
                                                         <input type="text" id="dr_name_3_2" name="dr_name_3_2" style="display:none;">
                                                     </div>
 
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
-                                                        <div class="flex w-1/3 justify-start">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                                                        <div class="flex w-1/3 justify-start text-left">
+                                                            <label  class="labels" class="" for=""><b>Mantenimiento</b> </label>
                                                         </div>
                                                         <div class="flex w-full justify-start">
-                                                            <select class="w-full py-2 border-2 border-blue-600 rounded-md" name="cheMantenimiento_3_2" id="cheMantenimiento_3_2">
+                                                            <select  style="margin-left: 2px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_3_2" id="cheMantenimiento_3_2">
                                                                 <option value="">Seleccionar</option>
                                                                 <option value="ASHRAE 180">ASHRAE 180</option>
                                                                 <option value="Deficiente">Deficiente</option>
                                                                 <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                                                             </select>
                                                         </div>
+                                                        <input  id="cheMantenimiento_3_2_count" name="cheMantenimiento_3_2_count" type="number" class="hidden" value="1">
+
                                                         <input type="text" style="display: none" id="lblCheMantenimiento_3_2" name="lblCheMantenimiento_3_2" value="ASHRAE 180 Proactivo">
 
 
@@ -2292,13 +2390,15 @@ span{
                                                 </div>
 
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                                                    <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
+                                                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
                                                         <div class="w-1/3 flex justify-start text-left">
                                                             <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                             <input onchange="format_num(this.value,this.id);"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS2_3_2" id="cheValorS2_3_2" >
-                                                        </div>
+                                                             <input onchange="format_num(this.value,this.id);"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS2_3_2" id="cheValorS2_3_2" >
+                                                             <input  id="cheValorS2_3_2_count" name="cheValorS2_3_2_count" type="number" class="hidden" value="1">
+
+                                                            </div>
                                                     </div>
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
@@ -2308,7 +2408,7 @@ span{
 
                                                         <div class="w-full flex gap-x-2 justify-start">
                                                             <div class="flex">
-                                                                <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_3_2" id="maintenance_cost_3_2" >
+                                                                <input type="text"  style="margin-left: 2.5px;" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="maintenance_cost_3_2" id="maintenance_cost_3_2" >
                                                             </div>
                                                             <div class="flex justify-end">
                                                                 <button onclick="inactive_display_edit('sol_3','{{$id_project}}',3,2)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
@@ -2670,7 +2770,7 @@ span{
 
 @media (min-width: 1640px) {
     .labels{
-        font-size:11px;
+        font-size:13px;
     }
     .ancho{
         width:100%;
@@ -2679,7 +2779,7 @@ span{
 
 @media (min-width: 1760px) {
     .labels{
-        font-size:13px;
+        font-size:14px;
     }
     .ancho{
         width:100%;
