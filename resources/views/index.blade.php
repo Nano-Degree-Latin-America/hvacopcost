@@ -482,7 +482,7 @@ span{
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <div class="flex justify-start w-1/2 text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                        <label class="labels" for=""><b>Tipo Equipo</b> </label>
                                                     </div>
                                                     <div class="w-full flex justify-start">
                                                         <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);change_diseño(this.value,1,'csDisenio_1_1','tipo_control_1_1','dr_1_1','lblCsTipo_1_1');"  name="csTipo" id="csTipo">
@@ -498,7 +498,7 @@ span{
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
 
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                        <label class="labels" for=""><b>Tipo Diseño</b> </label>
                                                     </div>
 
                                                     <div class="w-1/2 flex justify-start">
@@ -512,7 +512,7 @@ span{
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <div class="flex justify-start w-1/2 text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                        <label  class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                     </div>
                                                     <div class="flex w-full justify-start gap-x-2">
                                                         <div class="w-full">
@@ -544,8 +544,8 @@ span{
                                                 </div>
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                                                    <div class="flex justify-start w-1/3">
-                                                        <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                    <div class="flex justify-start w-1/3 text-left">
+                                                        <label  class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                     </div>
                                                     <div class="flex justify-start w-1/3">
                                                         <input  type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado" onkeypress="return soloNumeros(event)" id="hrsEnfriado" onchange="hrs_enfs_inps(this.value);valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);">
@@ -557,7 +557,7 @@ span{
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                                                     <div class="flex justify-start w-1/3">
-                                                        <select name="csStd" id="csStd" style="padding-top: 0.425rem;padding-bottom: 0.425rem;" onchange="set_ser_to_sers(this.value);" class="w-full border-2 border-blue-600 rounded-md">
+                                                        <select name="csStd" id="csStd" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="set_ser_to_sers(this.value);" class="w-full border-2 border-blue-600 rounded-md">
                                                             <option value="SEER">SEER</option>
                                                             <option value="SEER2">SEER2</option>
                                                             <option value="IEER">IEER</option>
@@ -572,7 +572,7 @@ span{
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="flex justify-start w-1/2">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                        <label  class="labels" for=""><b>Tipo Control</b> </label>
                                                     </div>
 
                                                     <div class="flex justify-start w-full">
@@ -590,7 +590,7 @@ span{
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                        <label class="labels" for=""><b>Difusor/Rejilla</b> </label>
                                                     </div>
                                                     <div class="w-full flex justify-start">
                                                         <select style="width: 77%;margin-left:1.5px;" class="border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_1_1" id="dr_1_1" >
@@ -603,7 +603,7 @@ span{
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <div class="flex w-1/3 justify-start text-left">
-                                                        <label style="font-size: 14px;" for=""><b>Mantenimiento</b> </label>
+                                                        <label class="labels" for=""><b>Mantenimiento</b></label>
                                                     </div>
                                                     <div class="flex w-full justify-start">
                                                         <select onchange="valida_selects_inps(this.id);"  style="margin-left: 2px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento" id="csMantenimiento">
@@ -687,7 +687,7 @@ span{
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <div class="flex justify-start w-1/2 text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b></label>
+                                                        <label  class="labels" for=""><b>Tipo Equipo</b></label>
                                                     </div>
 
                                                     <div class="w-full flex justify-start">
@@ -702,7 +702,7 @@ span{
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                        <label  class="labels" for=""><b>Tipo Diseño</b> </label>
                                                     </div>
                                                     <div class="w-1/2 flex justify-start">
                                                         <select  class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="valida_selects_inps(this.id);send_name(this.id);" name="csDisenio_1_2" id="csDisenio_1_2">
@@ -715,7 +715,7 @@ span{
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <div class="flex justify-start w-1/2 text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                        <label class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                     </div>
 
                                                     <div class="flex w-full justify-start gap-x-2">
@@ -743,8 +743,8 @@ span{
                                                 </div>
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                                                    <div class="flex justify-start w-1/3">
-                                                        <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                    <div class="flex justify-start w-1/3 text-left ">
+                                                        <label  class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                     </div>
 
                                                     <div class="flex justify-start w-1/3">
@@ -774,7 +774,7 @@ span{
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                     <div class="flex justify-start w-1/2">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                        <label  class="labels" for=""><b>Tipo Control</b> </label>
                                                     </div>
 
                                                     <div class="flex justify-start w-full">
@@ -790,7 +790,7 @@ span{
                                             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <div class="w-1/3 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                        <label  class="labels" for=""><b>Difusor/Rejilla</b> </label>
                                                     </div>
                                                     <div class="w-full flex justify-start text-left">
                                                     <select  style="width: 75%;margin-left:3.5px;" class="border-2 border-blue-600 rounded-md py-1"  onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_1_2" id="dr_1_2" >
@@ -804,7 +804,7 @@ span{
 
                                                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                     <div class="flex w-1/3 justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b></label>
+                                                        <label class="labels" for=""><b>Mantenimiento</b></label>
                                                     </div>
                                                     <div class="flex w-full justify-start">
                                                         <select onchange="valida_selects_inps(this.id);"  style="margin-left: 2px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_1_2" id="csMantenimiento_1_2">
@@ -886,7 +886,7 @@ span{
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                            <div class="w-1/2 flex justify-start text-left">
-                                                               <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                               <label  class="labels" for=""><b>Tipo Equipo</b> </label>
                                                            </div>
                                                            <div class="w-full flex justify-start">
                                                             <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="valida_selects_inps(this.id);change_diseño(this.value,3,'csDisenio_1_3','tipo_control_1_3','dr_1_3','lblCsTipo_1_3');"   name="csTipo_1_3" id="csTipo_1_3">
@@ -901,7 +901,7 @@ span{
                                                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                            <div class="w-1/3 flex justify-start text-left">
-                                                               <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                               <label  class="labels" for=""><b>Tipo Diseño</b> </label>
                                                            </div>
                                                            <div class="w-1/2 flex justify-start">
                                                             <select  onchange="valida_selects_inps(this.id);send_name(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2" name="csDisenio_1_3" id="csDisenio_1_3">
@@ -916,7 +916,7 @@ span{
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                            <div class="flex w-1/2 justify-start text-left">
-                                                               <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                               <label  class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                            </div>
                                                            <div class="flex w-full justify-start gap-x-2">
                                                                <div class="w-full">
@@ -946,8 +946,8 @@ span{
                                                         </div>
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                                                           <div class="flex justify-start w-1/3">
-                                                               <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                           <div class="flex text-left justify-start w-1/3">
+                                                               <label class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                            </div>
                                                            <div class="flex justify-start w-1/3">
                                                                <input type="text" style="font-size: 14px;" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_1_3" id="hrsEnfriado_1_3">
@@ -971,7 +971,7 @@ span{
 
                                                            <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                                <div class="flex justify-start w-1/2">
-                                                                   <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                                   <label  class="labels" for=""><b>Tipo Control</b> </label>
                                                                </div>
 
                                                                <div class="flex justify-start w-full">
@@ -992,7 +992,7 @@ span{
                                                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                            <div class="w-1/3 flex justify-start text-left">
-                                                               <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                               <label  class="labels" for=""><b>Difusor/Rejilla</b> </label>
                                                            </div>
                                                            <div class="w-full flex justify-start text-left">
                                                             <select style="width: 77%;" class="border-2 border-blue-600 rounded-md py-1"  onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_1_3" id="dr_1_3" >
@@ -1007,7 +1007,7 @@ span{
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                            <div class="flex w-1/3 justify-start text-left">
-                                                               <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                               <label  class="labels" for=""><b>Mantenimiento</b> </label>
                                                            </div>
                                                            <div class="flex w-full justify-start">
                                                             <select  style="margin-left: 2px;" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);" name="csMantenimiento_1_3" id="csMantenimiento_1_3">
@@ -1178,7 +1178,7 @@ span{
                                                     <div class="flex w-full gap-x-1">
                                                         <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                                <label class="labels" for=""><b>Unidad HVAC</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
@@ -1197,7 +1197,7 @@ span{
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                             <div class="flex justify-start w-1/2 text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                                <label class="labels" for=""><b>Tipo Equipo</b> </label>
                                                             </div>
                                                             <div class="w-full flex justify-start">
                                                                 <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);change_diseño(this.value,1,'cheDisenio_2_1','tipo_control_2_1','dr_2_1','lblCsTipo_2_1');"  name="cheTipo_2_1" id="cheTipo_2_1">
@@ -1212,7 +1212,7 @@ span{
                                                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                                <label  class="labels" for=""><b>Tipo Diseño</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <select class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);" name="cheDisenio_2_1" id="cheDisenio_2_1">
@@ -1225,7 +1225,7 @@ span{
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                             <div class="flex justify-start w-1/2 text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                                <label  class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                             </div>
                                                             <div class="flex w-full justify-start gap-x-2">
                                                                 <div class="w-full">
@@ -1233,7 +1233,7 @@ span{
                                                                 </div>
                                                                 <input  id="capacidad_total_2_1_count" name="capacidad_total_2_1_count" type="number" class="hidden" value="1">
                                                                 <div class="w-full">
-                                                                    <input type="text" class="w-full  border-2 border-blue-600 rounded-md py-2 text-center" readonly name="unidad_capacidad_tot_2_1" id="unidad_capacidad_tot_2_1" >
+                                                                    <input type="text" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" readonly name="unidad_capacidad_tot_2_1" id="unidad_capacidad_tot_2_1" >
 
                                                                  </div>
                                                              </div>
@@ -1253,8 +1253,8 @@ span{
                                                         </div>
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                                                            <div class="flex justify-start w-1/3">
-                                                                <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                            <div class="flex justify-start w-1/3 text-left">
+                                                                <label class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-1/3">
                                                                 <input type="text" style="font-size: 14px;margin-left:1px;" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_2_1" id="hrsEnfriado_2_1" readonly>
@@ -1277,7 +1277,7 @@ span{
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="flex justify-start w-1/2">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                                <label class="labels" for=""><b>Tipo Control</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-full">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="valida_selects_inps(this.id);send_name_t_c(this.id);"  name="tipo_control_2_1" id="tipo_control_2_1">
@@ -1293,7 +1293,7 @@ span{
                                                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="font-size: 14px;margin-left:2.5px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                                <label style="margin-left:2.5px;" class="labels" for=""><b>Difusor/Rejilla</b> </label>
                                                             </div>
                                                             <div class="w-full flex justify-start">
                                                             <select  style="width: 77%;" class="border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_2_1" id="dr_2_1" >
@@ -1307,7 +1307,7 @@ span{
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="flex w-1/3 justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                                <label class="labels" for=""><b>Mantenimiento</b> </label>
                                                             </div>
                                                             <div class="flex w-full justify-start">
                                                                 <select style="margin-left: 0px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_2_1" id="csMantenimiento_2_1" onchange="valida_selects_inps(this.id);">
@@ -1362,7 +1362,7 @@ span{
                                                 <div class="flex w-full gap-x-1">
                                                     <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                            <label class="labels" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <select style="margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,2,'cheTipo_2_2');"  name="cUnidad_2_2" id="cUnidad_2_2" >
@@ -1381,7 +1381,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                         <div class="w-1/2 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                        <label class="labels" for=""><b>Tipo Equipo</b> </label>
                                                         </div>
                                                         <div class="w-full flex justify-start">
                                                         <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="valida_selects_inps(this.id);change_diseño(this.value,2,'cheDisenio_2_2','tipo_control_2_2','dr_2_2','lblCsTipo_2_2');"  name="cheTipo_2_2" id="cheTipo_2_2">
@@ -1396,7 +1396,7 @@ span{
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                            <label class="labels" for=""><b>Tipo Diseño</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="valida_selects_inps(this.id);send_name(this.id);" name="cheDisenio_2_2" id="cheDisenio_2_2">
@@ -1410,7 +1410,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                         <div class="flex w-1/2 justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                            <label class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                         </div>
                                                         <div class="flex w-full justify-start gap-x-2">
                                                             <div class="w-full">
@@ -1440,8 +1440,8 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
 
-                                                        <div class="flex justify-start w-1/3">
-                                                            <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                        <div class="flex justify-start w-1/3 text-left">
+                                                            <label class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-1/3">
                                                             <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" onchange="valida_selects_inps(this.id);"  step="0.01" name="hrsEnfriado_2_2" id="hrsEnfriado_2_2" readonly>
@@ -1465,7 +1465,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex justify-start w-1/2">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                            <label class="labels" for=""><b>Tipo Control</b> </label>
                                                         </div>
 
                                                         <div class="flex justify-start w-full">
@@ -1481,7 +1481,7 @@ span{
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                            <label class="labels" for=""><b>Difusor/Rejilla</b> </label>
                                                         </div>
                                                         <div class="w-full flex justify-start">
                                                         <select style="width: 77%;" class="border-2 border-blue-600 rounded-md py-1"  onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_2_2" id="dr_2_2" >
@@ -1494,7 +1494,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                         <div class="flex w-1/3 justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                            <label  class="labels" for=""><b>Mantenimiento</b> </label>
                                                         </div>
                                                         <div class="flex w-full justify-start">
                                                             <select style="margin-left: 1px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_2_2" id="cheMantenimiento_2_2" onchange="valida_selects_inps(this.id);">
@@ -1555,7 +1555,7 @@ span{
                                                 <div class="flex w-full gap-x-1">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                            <label  class="labels" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,3,'cheTipo_2_3');" name="cUnidad_2_3" id="cUnidad_2_3" >
@@ -1573,7 +1573,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                          <div class="w-1/2 flex justify-start text-left">
-                                                        <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                        <label  class="labels" for=""><b>Tipo Equipo</b> </label>
                                                          </div>
                                                          <div class="w-full flex justify-start">
                                                         <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);change_diseño(this.value,3,'cheDisenio_2_3','tipo_control_2_3','dr_2_3','lblCsTipo_2_3');"  name="cheTipo_2_3" id="cheTipo_2_3">
@@ -1588,7 +1588,7 @@ span{
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                            <label class="labels" for=""><b>Tipo Diseño</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="send_name(this.id);" name="cheDisenio_2_3" id="cheDisenio_2_3">
@@ -1600,7 +1600,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                         <div class="flex w-1/2 justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                            <label class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                         </div>
 
                                                         <div class="flex w-full justify-start gap-x-2">
@@ -1626,8 +1626,8 @@ span{
                                                     </div>
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                                                        <div class="flex justify-start w-1/3">
-                                                            <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                        <div class="flex justify-start w-1/3 text-left">
+                                                            <label class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-1/3">
                                                         <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center"  name="hrsEnfriado_2_3" id="hrsEnfriado_2_3" readonly>
@@ -1648,7 +1648,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex justify-start w-1/2">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                            <label class=" labels" for=""><b>Tipo Control</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-full">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="send_name_t_c(this.id);"  name="tipo_control_2_3" id="tipo_control_2_3">
@@ -1662,7 +1662,7 @@ span{
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                            <label class="labels" for=""><b>Difusor/Rejilla</b> </label>
                                                         </div>
                                                         <div class="w-full flex justify-start">
                                                         <select style="width: 77%;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);" name="dr_2_3" id="dr_2_3" >
@@ -1674,7 +1674,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                         <div class="flex w-1/3 justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                            <label class="labels" for=""><b>Mantenimiento</b> </label>
                                                         </div>
                                                         <div class="flex w-full justify-start">
                                                             <select style="margin-left: 1px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_2_3" id="cheMantenimiento_2_3">
@@ -1857,7 +1857,7 @@ span{
                                                     <div class="flex w-full">
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                                <label  class="labels" for=""><b>Unidad HVAC</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
@@ -1876,7 +1876,7 @@ span{
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                             <div class="flex justify-start w-1/2 text-left">
-                                                                 <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                                 <label  class="labels" for=""><b>Tipo Equipo</b> </label>
                                                              </div>
                                                              <div class="w-full flex justify-start">
                                                                     <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);change_diseño(this.value,1,'cheDisenio_3_1','tipo_control_3_1','dr_3_1','lblCsTipo_3_1');"  name="cheTipo_3_1" id="cheTipo_3_1">
@@ -1892,7 +1892,7 @@ span{
                                                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                                <label  class="labels" for=""><b>Tipo Diseño</b> </label>
                                                             </div>
                                                             <div class="w-1/2 flex justify-start">
                                                                 <select class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);" name="cheDisenio_3_1" id="cheDisenio_3_1">
@@ -1905,7 +1905,7 @@ span{
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                             <div class="flex justify-start w-1/2 text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                                <label class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                             </div>
 
                                                             <div class="flex w-full justify-start gap-x-2">
@@ -1938,8 +1938,8 @@ span{
                                                         </div>
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                                                            <div class="flex justify-start w-1/3">
-                                                                <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                            <div class="flex justify-start w-1/3 text-left">
+                                                                <label  class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-1/3">
                                                                 <input onchange="valida_selects_inps(this.id);" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_3_1" id="hrsEnfriado_3_1" readonly>
@@ -1963,7 +1963,7 @@ span{
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                             <div class="flex justify-start w-1/2">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                                <label  class="labels" for=""><b>Tipo Control</b> </label>
                                                             </div>
                                                             <div class="flex justify-start w-full">
                                                                 <select class="w-full border-2 border-blue-600 rounded-md py-1"  onchange="valida_selects_inps(this.id);send_name_t_c(this.id);"  name="tipo_control_3_1" id="tipo_control_3_1">
@@ -1979,7 +1979,7 @@ span{
                                                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                             <div class="w-1/3 flex justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                                <label  class="labels" for=""><b>Difusor/Rejilla</b> </label>
                                                             </div>
                                                             <div class="w-full flex justify-start">
                                                                 <select style="width: 77%;margin-left:2.5px;" class="border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_3_1" id="dr_3_1" >
@@ -1993,7 +1993,7 @@ span{
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                             <div class="flex w-1/3 justify-start text-left">
-                                                                <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                                <label  class="labels" for=""><b>Mantenimiento</b> </label>
                                                             </div>
                                                             <div class="flex w-full justify-start">
                                                                 <select onchange="valida_selects_inps(this.id);" style="margin-left: 2px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_3_1" id="cheMantenimiento_3_1">
@@ -2048,7 +2048,7 @@ span{
                                                 <div class="flex w-full">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                            <label  class="labels" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_3_2');" name="cUnidad_3_2" id="cUnidad_3_2" >
@@ -2067,7 +2067,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                          <div class="flex justify-start w-1/2 text-left">
-                                                              <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                              <label  class="labels" for=""><b>Tipo Equipo</b> </label>
                                                         </div>
                                                         <div class="w-full flex justify-start">
                                                             <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);change_diseño(this.value,2,'cheDisenio_3_2','tipo_control_3_2','dr_3_2','lblCsTipo_3_2');" name="cheTipo_3_2" id="cheTipo_3_2">
@@ -2082,7 +2082,7 @@ span{
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                            <label " class="labels" for=""><b>Tipo Diseño</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);" name="cheDisenio_3_2" id="cheDisenio_3_2">
@@ -2095,7 +2095,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                         <div class="flex w-1/2 justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                            <label  class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                         </div>
                                                         <div class="flex w-full justify-start gap-x-2">
                                                             <div class="w-full">
@@ -2125,8 +2125,8 @@ span{
                                                     </div>
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                                                        <div class="flex justify-start w-1/3">
-                                                            <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                        <div class="flex justify-start w-1/3 text-left">
+                                                            <label  class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-1/3">
                                                             <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_3_2" id="hrsEnfriado_3_2" onchange="valida_selects_inps(this.id);" readonly>
@@ -2152,7 +2152,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex justify-start w-1/2">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                            <label  class="labels" for=""><b>Tipo Control</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-full">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);send_name_t_c(this.id);" name="tipo_control_3_2" id="tipo_control_3_2">
@@ -2168,7 +2168,7 @@ span{
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                            <label  class="labels" for=""><b>Difusor/Rejilla</b> </label>
                                                         </div>
                                                         <div class="w-full flex justify-start">
                                                             <select style="width: 77%;margin-left:2.5px;"  class="border-2 border-blue-600 rounded-md py-1"  onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_3_2" id="dr_3_2" >
@@ -2182,7 +2182,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                         <div class="flex w-1/3 justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                            <label  class="labels" for=""><b>Mantenimiento</b> </label>
                                                         </div>
                                                         <div class="flex w-full justify-start">
                                                             <select onchange="valida_selects_inps(this.id);"style="margin-left: 2px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_3_2" id="cheMantenimiento_3_2">
@@ -2241,7 +2241,7 @@ span{
                                                 <div class="flex w-full">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Unidad HVAC</b> </label>
+                                                            <label class="labels" for=""><b>Unidad HVAC</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_3');" name="cUnidad_3_3" id="cUnidad_3_3" >
@@ -2260,7 +2260,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                       <div class="w-1/2 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Equipo</b> </label>
+                                                            <label class="labels" for=""><b>Tipo Equipo</b> </label>
                                                       </div>
                                                       <div class="w-full flex justify-start">
                                                             <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="change_diseño(this.value,3,'cheDisenio_3_3','tipo_control_3_3','dr_3_3','lblCsTipo_3_3');" name="cheTipo_3_3" id="cheTipo_3_3">
@@ -2276,7 +2276,7 @@ span{
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Diseño</b> </label>
+                                                            <label class="labels" for=""><b>Tipo Diseño</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="send_name(this.id);" name="cheDisenio_3_3" id="cheDisenio_3_3">
@@ -2290,7 +2290,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                         <div class="flex w-1/2 justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Capacidad Térmica</b> </label>
+                                                            <label class="labels" for=""><b>Capacidad Térmica</b> </label>
                                                         </div>
                                                         <div class="flex w-full justify-start gap-x-2">
                                                         <div class="w-full">
@@ -2317,8 +2317,8 @@ span{
                                                     </div>
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                                                        <div class="flex justify-start w-1/3">
-                                                            <label style="font-size: 14px;" class="text-left" for=""><b>Horas Enfriamiento</b> </label>
+                                                        <div class="flex justify-start w-1/3 text-left">
+                                                            <label  class="labels" for=""><b>Horas Enfriamiento</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-1/3">
                                                             <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_3_3" id="hrsEnfriado_3_3" readonly>
@@ -2343,7 +2343,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex justify-start w-1/2">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Tipo Control</b> </label>
+                                                            <label class="labels" for=""><b>Tipo Control</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-full">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="send_name_t_c(this.id);"  name="tipo_control_3_3" id="tipo_control_3_3">
@@ -2359,7 +2359,7 @@ span{
                                                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-3 w-1/2">
                                                         <div class="w-1/3 flex justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Difusor/Rejilla</b> </label>
+                                                            <label class="labels" for=""><b>Difusor/Rejilla</b> </label>
                                                         </div>
                                                         <div class="w-full flex justify-start">
                                                             <select style="width: 77%;margin-left:2.5px;"  class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_t_c(this.id);"  name="dr_3_3" id="dr_3_3" >
@@ -2372,7 +2372,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                         <div class="flex w-1/3 justify-start text-left">
-                                                            <label style="font-size: 14px;" class="" for=""><b>Mantenimiento</b> </label>
+                                                            <label class="labels" for=""><b>Mantenimiento</b> </label>
                                                         </div>
                                                         <div class="flex w-full justify-start">
                                                                 <select style="margin-left: 2px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_3_3" id="cheMantenimiento_3_3">
@@ -2649,7 +2649,7 @@ span{
 
 function app() {
 			return {
-				step: 2,
+				step: 1,
 				passwordStrengthText: '',
 				togglePassword: false,
 
