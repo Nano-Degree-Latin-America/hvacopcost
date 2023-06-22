@@ -936,7 +936,7 @@ span{
                                                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                                                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                                                            <div class="w-1/3 flex justify-start text-left">
-                                                               <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                                               <label class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
                                                            </div>
                                                            <div class="w-1/2 flex justify-start">
                                                             <input id="costo_elec_1_3" name="costo_elec_1_3" readonly onchange="valida_selects_inps(this.id);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1"><p style="font-size: 12px; margin:0px;"></p>
@@ -1007,7 +1007,7 @@ span{
 
                                                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                            <div class="flex w-1/3 justify-start text-left">
-                                                               <label  class="labels" for=""><b>Mantenimiento</b> </label>
+                                                               <label class="labels" for=""><b>Mantenimiento</b> </label>
                                                            </div>
                                                            <div class="flex w-full justify-start">
                                                             <select  style="margin-left: 2px;" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);" name="csMantenimiento_1_3" id="csMantenimiento_1_3">
@@ -1573,7 +1573,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                                                          <div class="w-1/2 flex justify-start text-left">
-                                                        <label  class="labels" for=""><b>Tipo Equipo</b> </label>
+                                                        <label class="labels" for=""><b>Tipo Equipo</b> </label>
                                                          </div>
                                                          <div class="w-full flex justify-start">
                                                         <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);change_diseño(this.value,3,'cheDisenio_2_3','tipo_control_2_3','dr_2_3','lblCsTipo_2_3');"  name="cheTipo_2_3" id="cheTipo_2_3">
@@ -1608,7 +1608,7 @@ span{
                                                                 <input style="margin-left: 2.3px;" name="capacidad_total_2_3" id="capacidad_total_2_3" onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
                                                             </div>
                                                             <div class="w-full">
-                                                                <input class="w-full border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_2_3" id="unidad_capacidad_tot_2_3" >
+                                                                <input class="w-full h-full border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_2_3" id="unidad_capacidad_tot_2_3" >
                                                             </div>
                                                         </div>
 
@@ -1648,7 +1648,7 @@ span{
 
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                                         <div class="flex justify-start w-1/2">
-                                                            <label class=" labels" for=""><b>Tipo Control</b> </label>
+                                                            <label class="labels" for=""><b>Tipo Control</b> </label>
                                                         </div>
                                                         <div class="flex justify-start w-full">
                                                             <select class="w-full border-2 border-blue-600 rounded-md py-1" onchange="send_name_t_c(this.id);"  name="tipo_control_2_3" id="tipo_control_2_3">
@@ -1693,7 +1693,7 @@ span{
                                                             <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start text-left">
-                                                            <input onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_2_3" id="cheValorS_2_3" >
+                                                            <input onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:w-full xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_2_3" id="cheValorS_2_3" >
                                                         </div>
                                                     </div>
 
@@ -2298,7 +2298,7 @@ span{
                                                         </div>
                                                         <input  id="capacidad_total_3_3_count" name="capacidad_total_3_3_count" type="number" class="hidden" value="1">
                                                         <div class="w-full">
-                                                            <input readonly  type="text" class="w-full  border-2 border-blue-600 rounded-md py-2 text-center" name="unidad_capacidad_tot_3_3" id="unidad_capacidad_tot_3_3" >
+                                                            <input readonly  type="text" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" name="unidad_capacidad_tot_3_3" id="unidad_capacidad_tot_3_3" >
                                                         </div>
                                                     </div>
                                                     </div>
@@ -2336,7 +2336,7 @@ span{
 
                                                         </div>
                                                         <div class="flex justify-start w-1/4">
-                                                            <input step="0.5" name="cheStd_3_3" id="cheStd_3_3" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
+                                                            <input name="cheStd_3_3" id="cheStd_3_3" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
                                                             <input  id="cheStd_3_3_count" name="cheStd_3_3_count" type="number" class="hidden" value="1">
                                                         </div>
                                                     </div>
@@ -2393,7 +2393,7 @@ span{
                                                             <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
                                                         </div>
                                                         <div class="w-1/2 flex justify-start">
-                                                            <input onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_3_3" id="cheValorS_3_3" >
+                                                            <input onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="cheValorS_3_3" id="cheValorS_3_3" >
                                                         </div>
                                                     </div>
                                                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
