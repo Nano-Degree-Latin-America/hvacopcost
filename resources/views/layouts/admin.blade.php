@@ -26,9 +26,9 @@
     gtag('config', 'UA-130795909-1');
   </script>
   <script src="{{asset("js/script.js")}}"></script>
+
 </head>
 <body>
-
 <div id="app">
 
 <nav id="navbar-main" class="navbar is-fixed-top">
@@ -79,6 +79,7 @@
 <aside class="aside is-placed-left is-expanded">
   <div class="aside-tools">
     <div>
+
      <b>Admin</b>
     </div>
   </div>

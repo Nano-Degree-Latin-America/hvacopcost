@@ -34,41 +34,96 @@
 
                         </div>
                        <div class="w-full flex gap-x-2">
-                                <input type="checkbox"><label for="" class="mt-1">Brasil</label>
-                        </div>
+                        <?php  $Brasil=$pais_empresa->paises_empresa($empresa->id,'Brasil') ?>
+                                @if ($Brasil === null)
+                                <input type="checkbox" onclick="change_pais({{$empresa->id}},'Brasil')"><label class="mt-1">Brasil</label>
+                                    @elseif($Brasil !== null)
+                                <input type="checkbox" onclick="change_pais({{$empresa->id}},'Brasil')" checked><label for="" class="mt-1">Brasil</label>
+                                @endif
+                            </div>
                         <div class="w-full flex gap-x-2">
-                                <input type="checkbox"><label for="" class="mt-1">Chile</label>
+                            <?php  $Chile=$pais_empresa->paises_empresa($empresa->id,'Chile') ?>
+                            @if ($Chile === null)
+                            <input type="checkbox" onclick="change_pais({{$empresa->id}},'Chile')"><label class="mt-1">Chile</label>
+                                @elseif($Chile !== null)
+                            <input type="checkbox" onclick="change_pais({{$empresa->id}},'Chile')" checked><label for="" class="mt-1">Chile</label>
+                            @endif
                         </div>
                        <div class="w-full flex gap-x-2">
-                             <input type="checkbox"><label for="" class="mt-1">Colombia</label>
+                        <?php  $Colombia=$pais_empresa->paises_empresa($empresa->id,'Colombia') ?>
+                            @if ($Colombia === null)
+                            <input type="checkbox" onclick="change_pais({{$empresa->id}},'Colombia')"><label class="mt-1">Colombia</label>
+                                @elseif($Colombia !== null)
+                            <input type="checkbox" onclick="change_pais({{$empresa->id}},'Colombia')" checked><label for="" class="mt-1">Colombia</label>
+                            @endif
                         </div>
                        <div class="w-full flex gap-x-2">
-                                <input type="checkbox"><label for="" class="mt-1">Caribe</label>
+                        <?php  $Caribe=$pais_empresa->paises_empresa($empresa->id,'Caribe') ?>
+                        @if ($Caribe === null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Caribe')"><label class="mt-1">Caribe</label>
+                            @elseif($Caribe !== null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Caribe')" checked><label for="" class="mt-1">Caribe</label>
+                        @endif
                         </div>
                        <div class="w-full flex gap-x-2">
-                             <input type="checkbox"><label for="" class="mt-1">Centro América</label>
+                        <?php  $Centro_a=$pais_empresa->paises_empresa($empresa->id,'Centro América') ?>
+                        @if ($Centro_a === null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Centro América')"><label class="mt-1">Centro América</label>
+                            @elseif($Centro_a !== null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Centro América')" checked><label for="" class="mt-1">Centro América</label>
+                        @endif
                         </div>
 
                 </div>
                 <div class="grid w-1/2">
 
                     <div class="w-full flex gap-x-2">
-                    <input type="checkbox"><label for="" class="mt-1">Ecuador</label>
+                        <?php  $Ecuador=$pais_empresa->paises_empresa($empresa->id,'Ecuador') ?>
+                        @if ($Ecuador === null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Ecuador')"><label class="mt-1">Ecuador</label>
+                            @elseif($Ecuador !== null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Ecuador')" checked><label for="" class="mt-1">Ecuador</label>
+                        @endif
                      </div>
                     <div class="w-full flex gap-x-2">
-                    <input type="checkbox"><label for="" class="mt-1">México</label>
+                        <?php  $México=$pais_empresa->paises_empresa($empresa->id,'México') ?>
+                        @if ($México === null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'México')"><label class="mt-1">México</label>
+                            @elseif($México !== null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'México')" checked><label for="" class="mt-1">México</label>
+                        @endif
                      </div>
                     <div class="w-full flex gap-x-2">
-                    <input type="checkbox"><label for="" class="mt-1">Paraguay</label>
+                        <?php  $Paraguay=$pais_empresa->paises_empresa($empresa->id,'Paraguay') ?>
+                        @if ($Paraguay === null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Paraguay')"><label class="mt-1">Paraguay</label>
+                            @elseif($Paraguay !== null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Paraguay')" checked><label for="" class="mt-1">Paraguay</label>
+                        @endif
                      </div>
                     <div class="w-full flex gap-x-2">
-                    <input type="checkbox"><label for="" class="mt-1">Perú</label>
+                        <?php  $Perú=$pais_empresa->paises_empresa($empresa->id,'Perú') ?>
+                        @if ($Perú === null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Perú')"><label class="mt-1">Perú</label>
+                            @elseif($Perú !== null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Perú')" checked><label for="" class="mt-1">Perú</label>
+                        @endif
                      </div>
                     <div class="w-full flex gap-x-2">
-                    <input type="checkbox"><label for="" class="mt-1">Uruguay</label>
+                        <?php  $Uruguay=$pais_empresa->paises_empresa($empresa->id,'Uruguay') ?>
+                        @if ($Uruguay === null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Uruguay')"><label class="mt-1">Uruguay</label>
+                            @elseif($Uruguay !== null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Uruguay')" checked><label for="" class="mt-1">Uruguay</label>
+                        @endif
                      </div>
                     <div class="w-full flex gap-x-2">
-                    <input type="checkbox"><label for="" class="mt-1">Venezuela</label>
+                        <?php  $Venezuela=$pais_empresa->paises_empresa($empresa->id,'Venezuela') ?>
+                        @if ($Venezuela === null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Venezuela')"><label class="mt-1">Venezuela</label>
+                            @elseif($Venezuela !== null)
+                        <input type="checkbox" onclick="change_pais({{$empresa->id}},'Venezuela')" checked><label for="" class="mt-1">Venezuela</label>
+                        @endif
                      </div>
 
                 </div>

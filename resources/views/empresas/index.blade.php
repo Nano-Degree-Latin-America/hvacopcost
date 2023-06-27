@@ -86,7 +86,7 @@ span{
                 <header class="card-header">
                   <p class="card-header-title">
                     <span class="icon"><i class="mdi mdi-account-multiple"></i></span>
-                    Empresas
+                    Empresa Admin : {{$empresa_admin}}
                   </p>
 
                 </header>
@@ -176,9 +176,16 @@ span{
                                 </button>
 
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                                @if (Auth::user()->id_empresa == $empresa->id)
+                                <button disabled onclick="inactivar('{{$empresa->id}}','empresas');" class="button small red --jb-modal" data-target="sample-modal" type="button">
+                                    <span class="icon"><i class="mdi mdi-trash-can"></i></span>
+                                </button>
+                                @else
                                 <button  onclick="inactivar('{{$empresa->id}}','empresas');" class="button small red --jb-modal" data-target="sample-modal" type="button">
                                     <span class="icon"><i class="mdi mdi-trash-can"></i></span>
                                 </button>
+                                @endif
+
 
                                 <button onclick="change_empresa({{$empresa->id}});" class="button small bg-orange-500 --jb-modal"  data-target="sample-modal-2" type="button">
                                     <span class="icon"><i class="text-white mdi mdi-factory"></i></span>
@@ -226,7 +233,7 @@ function change_pais(id_empresa,pais){
                 type: 'get',
                 url: '/change_pais/'+ id_empresa+'/'+pais,
                 success: function (response) {
-                  /*   alert(response); */
+
                 },
                 error: function (responsetext) {
 
@@ -263,7 +270,7 @@ function change_empresa(id_empresa){
                 }
             });
 
-            setTimeout(function () { location.reload() }, 1000);
+            setTimeout(function () { window.location.href='mis_projectos' }, 1000);
 
             //location.reload();
         }

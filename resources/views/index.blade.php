@@ -146,6 +146,8 @@ span{
                 </div>
             </div>
         </div>
+        @inject('paises_empresa','app\Http\Controllers\IndexController')
+        @inject('all_paises','app\Http\Controllers\IndexController')
 
         <div x-show.transition="step != 'complete'">
             <div class="">
@@ -224,8 +226,10 @@ span{
                                                         <div class="flex w-full">
                                                             <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Región:</b></label><label class="text-red-500">*</label>
                                                         </div>
+
                                                         <select onchange="check_input(this.value,this.id,'paises_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises" id="paises">
                                                             <option value="0">-Selecciona tu región-</option>
+
                                                         </select>
                                                         <span id="paises_warning" name="paises_warning" class="text-red-500"></span>
                                                     </div>
@@ -255,7 +259,7 @@ span{
 
                                                     <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                         <div class="flex w-full">
-                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Inflación:</b></label><label class="text-red-500">*</label>
+                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Inflación Anual:</b></label><label class="text-red-500">*</label>
                                                         </div>
 {{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
  --}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inflation_rate" id="inflation_rate">
@@ -342,7 +346,7 @@ span{
 
                                                 <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Energía HVAC (Edificio):</b></label><label class="text-red-500">*</label>
+                                                        <label style="font-size: 18px; color:#2c5282 !important;" class="font-roboto text-left" for=""><b>Energía HVAC en el Edificio:</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select onchange="buton_check();check_input(this.value,this.id,'por_hvac_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                                         <option value="0">-Selecciona porcentaje-</option>

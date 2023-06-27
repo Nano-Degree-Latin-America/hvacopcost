@@ -43,14 +43,44 @@ class IndexController extends Controller
 
     }
 
-    public function getPaises(Request $request)
+    public function getPaises_aux()
     {
-        $submit = DB::table('pais')
-        ->orderBy('pais', 'asc')
+        $submit = DB::table('paises_empresas')
+        ->join('pais','pais.pais','=','paises_empresas.pais')
+        ->where('id_empresa','=',Auth::user()->id_empresa)
+        ->select('pais.*')
+        ->orderBy('pais.pais', 'asc')
         ->get();
 
-        return response()->json($submit);
+        return $submit;
     }
+
+    public function getPaises()
+    {
+        $submit = DB::table('pais')
+        ->orderBy('pais.pais', 'asc')
+        ->get();
+
+        return $submit;
+    }
+
+    public function all_paises(){
+        $all_paises = DB::table('pais')
+        ->orderBy('pais.pais', 'asc')
+        ->get();
+
+        return $all_paises;
+    }
+
+    public function check_pais($pais){
+        $pais = DB::table('paises_empresas')
+        ->where('paises_empresas.pais','=',$pais)
+        ->where('paises_empresas.id_empresa','=',Auth::user()->id_empresa)
+        ->first();
+
+        return $pais;
+    }
+
     public function getCiudades(Request $request)
     {
         $submit = DB::table('ciudad')

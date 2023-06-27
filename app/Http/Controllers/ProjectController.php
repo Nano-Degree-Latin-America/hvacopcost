@@ -49,6 +49,10 @@ class ProjectController extends Controller
     public function mis_projectos(Request $request){
         $id_empresa = Auth::user()->id_empresa;
 
+        $empresa_name = DB::table('empresas')
+        ->where('empresas.id','=',Auth::user()->id_empresa)
+        ->first()->name;
+
         $tipo_user= DB::table('users')
         ->where('users.id','=',Auth::user()->id)
         ->first()->tipo_user;
@@ -110,7 +114,7 @@ class ProjectController extends Controller
 
 
 
-        return view('mis_projectos',['id_empresa'=>$id_empresa,'mis_projectos'=>$mis_projectos,"searchText"=>$query]);
+        return view('mis_projectos',['id_empresa'=>$id_empresa,'mis_projectos'=>$mis_projectos,"searchText"=>$query,"empresa_name"=>$empresa_name]);
     }
 
     public function porcents_aux($id){

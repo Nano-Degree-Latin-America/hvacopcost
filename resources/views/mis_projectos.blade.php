@@ -169,6 +169,9 @@ span{
 
 <div class="w-full flex justify-center">
     <div class="w-3/4">
+        <div style="color: #2c5282;" class="w-full flex justify-center mt-3 text-4xl font-roboto font-bold">
+            <p>Mis Proyectos : {{$empresa_name}}</p>
+        </div>
         @include('search')
         <div class="grid my-3 rounded-md shadow-xl w-full">
             <div class="w-full">

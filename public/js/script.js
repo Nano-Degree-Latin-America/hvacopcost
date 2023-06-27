@@ -1,16 +1,18 @@
 //FUNCION PARA INACTIVAR REGISTROS// AUX ES LA RUTA QUE RECIBE
 function inactivar(id, aux) {
     Swal.fire({
-        title: 'Estás seguro?',
-        text: "Se inactivará el registro!",
+        title: 'Seleccione una opción',
+        text: "",
+        showDenyButton: true,
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, inactivar!'
+        cancelButtonColor: '#FF6600',
+        confirmButtonText: 'Inactivar',
+        denyButtonText: `Eliminar`,
     }).then((result) => {
         if (result.isConfirmed) {
-            // var route = ruta_global + "/" + aux + "/" + id + "";
+
             var token = $("#token").val();
             $.ajax({
                 url: "/" + aux + "/" + id + "",
@@ -28,9 +30,32 @@ function inactivar(id, aux) {
             });
 
             setTimeout(function () { location.reload() }, 1000);
+        } else if (result.isDenied) {
+            var token = $("#token").val();
 
-            //location.reload();
-        }
+            $.ajax({
+                url: '/delete_empresa/'+ id,
+                method: 'get',
+                dataType: 'json',
+                success: function () {
+                    Swal.fire(
+                        'Eliminado!',
+                        'El registro se ha eliminado.',
+                        'success'
+                    )
+                    setTimeout(function () { location.reload() }, 1000);
+                },
+                error: function () {
+                    Swal.fire(
+                        'Atencion!',
+                        'El usuario administrador pertenece a la empresa que desea eliminar, cambie de empresa para eliminar.',
+                        'warning'
+                    )
+                }
+            });
+
+
+          }
     })
 }
 

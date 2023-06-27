@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\EmpresasModel;
 use App\PaisesEmpresasModel;
+use App\ResultsProjectModel;
+use App\SolutionsProjectModel;
+use App\ProjectsModel;
 use App\SucursalesModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
@@ -35,7 +38,11 @@ class EmpresasController extends Controller
         ->orderBy('created_at','desc')
         ->paginate(10);
 
-        return view('empresas.index',["empresas"=>$empresas]);
+        $empresa_admin  = DB::table('empresas')
+        ->where('empresas.id','=',Auth::user()->id_empresa)
+        ->first()->name;
+
+        return view('empresas.index',["empresas"=>$empresas,"empresa_admin"=>$empresa_admin]);
     }
 
     /**
@@ -157,6 +164,41 @@ class EmpresasController extends Controller
 
     }
 
+    public function delete_empresa($id)
+    {
+
+
+        $projects = ProjectsModel::where('id_empresa','=',$id)->get();
+
+        foreach($projects as $project){
+            //delete results
+            $results = ResultsProjectModel::where('id_project','=',$project->id)->get();
+
+            foreach($results as $result){
+                $res= ResultsProjectModel::find($result->id);
+                $res->delete();
+            }
+
+            $solutions = SolutionsProjectModel::where('id_project','=',$project->id)->get();
+            foreach($solutions as $solution){
+                $sol= SolutionsProjectModel::find($solution->id);
+                $sol->delete();
+            }
+
+            $proy= ProjectsModel::find($project->id);
+            $proy->delete();
+
+            $users = User::where('id_empresa','=',$id)->get();
+            foreach($users as $user){
+                $proy= User::find($user->id);
+                $proy->delete();
+            }
+
+        }
+        $empresa_p= EmpresasModel::find($id);
+        $empresa_p->delete();
+    }
+
     public function change_empresa($id)
     {
         $id_admin = Auth::user()->id;
@@ -194,10 +236,28 @@ class EmpresasController extends Controller
 
        if($check_empresa_pais == null){
 
-            }else if($check_empresa_pais != null){
-                return $check_empresa_pais->pais;
+            $new_pais= new PaisesEmpresasModel;
+            $new_pais->pais = $pais;
+            $new_pais->id_empresa = $id_empresa;
+            $new_pais->save();
+
+        }else if($check_empresa_pais != null){
+            $del_pais= PaisesEmpresasModel::find($check_empresa_pais->id);
+            $del_pais->delete();
         }
 
 
+    }
+
+    public function getPaises(Request $request)
+    {
+        $submit = DB::table('paises_empresas')
+        ->join('pais','pais.pais','=','paises_empresas.pais')
+        ->where('id_empresa','=',Auth::user()->id_empresa)
+        ->select('pais.*')
+        ->orderBy('pais.pais', 'asc')
+        ->get();
+
+        return $submit;
     }
 }
