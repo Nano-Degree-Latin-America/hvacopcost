@@ -44,13 +44,6 @@ function inactivar(id, aux) {
                         'success'
                     )
                     setTimeout(function () { location.reload() }, 1000);
-                },
-                error: function () {
-                    Swal.fire(
-                        'Atencion!',
-                        'El usuario administrador pertenece a la empresa que desea eliminar, cambie de empresa para eliminar.',
-                        'warning'
-                    )
                 }
             });
 

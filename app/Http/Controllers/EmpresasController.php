@@ -197,6 +197,8 @@ class EmpresasController extends Controller
         }
         $empresa_p= EmpresasModel::find($id);
         $empresa_p->delete();
+
+        return true;
     }
 
     public function change_empresa($id)
