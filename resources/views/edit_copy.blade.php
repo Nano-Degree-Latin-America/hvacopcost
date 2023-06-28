@@ -24,7 +24,7 @@
 
     <button class="p-2 bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'"><p>Nuevo Projecto</p></button>
 
-    <a class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('logout') }}"
+    <a class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('cerrar_session') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
                 <button>
@@ -32,7 +32,7 @@
                     </button>
             </a>
 
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            <form id="logout-form" action="{{ route('cerrar_session') }}" method="POST" class="d-none">
                 @csrf
             </form>
     </div>
@@ -152,6 +152,8 @@ span{
 @inject('num_tarjets','app\Http\Controllers\ResultadosController')
 @inject('num_tarjets_2','app\Http\Controllers\ResultadosController')
 @inject('num_tarjets_3','app\Http\Controllers\ResultadosController')
+@inject('paises_empresa','app\Http\Controllers\ResultadosController')
+@inject('all_paises','app\Http\Controllers\ResultadosController')
 <div class="bg-white" x-data="app()" x-cloak>
     <div class="w-full px-4">
 
@@ -241,14 +243,216 @@ span{
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Región:</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select onchange="check_input(this.value,this.id,'paises_warning');traer_ciudad_edit(this.value)" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises_edit" id="paises_edit">
-                                                        @foreach ($paises as $pais)
+                                                       {{--  @foreach ($paises as $pais)
                                                         @if ($project_edit->region == $pais->pais)
                                                         <option selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
                                                         @endif
                                                         @if ($project_edit->region != $pais->pais)
                                                         <option value="{{$pais->idPais}}">{{$pais->pais}}</option>
                                                         @endif
-                                                        @endforeach
+                                                        @endforeach --}}
+                                                        <option value="0">-Selecciona tu región-</option>
+                                                        <?php  $all_paises=$all_paises->all_paises(); ?>
+                                                            @foreach ($all_paises as $pais)
+
+                                                            @if($pais->pais === 'Argentina')
+                                                            <?php  $check_pais=$paises_empresa->check_pais('Argentina'); ?>
+                                                                @if ($check_pais)
+                                                                    @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                    @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+                                                            @if($pais->pais === 'Bolivia')
+                                                                <?php  $check_pais=$paises_empresa->check_pais('Bolivia'); ?>
+                                                                @if ($check_pais)
+                                                                        @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif                                                                        @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+                                                            @if($pais->pais === 'Brasil')
+                                                                <?php  $check_pais=$paises_empresa->check_pais('Brasil'); ?>
+                                                                @if ($check_pais)
+                                                                        @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif                                                                        @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+                                                            @if($pais->pais === 'Chile')
+                                                                <?php  $check_pais=$paises_empresa->check_pais('Chile'); ?>
+                                                                @if ($check_pais)
+                                                                        @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif                                                                        @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+
+                                                            @if($pais->pais === 'Colombia')
+                                                                <?php  $check_pais=$paises_empresa->check_pais('Colombia'); ?>
+                                                                @if ($check_pais)
+                                                                        @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif                                                                        @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+                                                            @if($pais->pais === 'Ecuador')
+                                                                <?php  $check_pais=$paises_empresa->check_pais('Ecuador'); ?>
+                                                                @if ($check_pais)
+                                                                        @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif                                                                        @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+                                                            @if($pais->pais === 'México')
+                                                                <?php  $check_pais=$paises_empresa->check_pais('México'); ?>
+                                                                @if ($check_pais)
+                                                                        @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                        <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif                                                                         @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+                                                            @if($pais->pais === 'Paraguay')
+                                                                <?php  $check_pais=$paises_empresa->check_pais('Paraguay'); ?>
+                                                                @if ($check_pais)
+                                                                        @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif                                                                        @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+                                                            @if($pais->pais === 'Perú')
+                                                                <?php  $check_pais=$paises_empresa->check_pais('Perú'); ?>
+                                                                @if ($check_pais)
+                                                                        @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif                                                                        @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+                                                            @if($pais->pais === 'Uruguay')
+                                                                <?php  $check_pais=$paises_empresa->check_pais('Uruguay'); ?>
+                                                                @if ($check_pais)
+                                                                        @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif                                                                        @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+                                                            @if($pais->pais === 'Venezuela')
+                                                                <?php  $check_pais=$paises_empresa->check_pais('Venezuela'); ?>
+                                                                @if ($check_pais)
+                                                                        @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif                                                                        @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+                                                            @if($pais->pais === 'Caribe')
+                                                                <?php  $check_pais=$paises_empresa->check_pais('Caribe'); ?>
+                                                                @if ($check_pais)
+                                                                        @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif                                                                        @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+                                                            @if($pais->pais === 'Centro América')
+                                                                <?php  $check_pais=$paises_empresa->check_pais('Centro América'); ?>
+                                                                @if ($check_pais)
+                                                                        @if($check_pais->pais === $pais->pais)
+                                                                            @if ($project_edit->region == $pais->pais)
+                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                            @endif
+                                                                            @if ($project_edit->region != $pais->pais)
+                                                                                <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                            @endif                                                                        @endif
+                                                                @else
+                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                @endif
+                                                            @endif
+
+                                                            @endforeach
                                                     </select>
                                                     <span id="paises_warning" name="paises_warning" class="text-red-500"></span>
                                                 </div>
@@ -415,7 +619,7 @@ span{
                                                     <div class="flex w-full">
                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Energía HVAC (Edificio):</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select onchange="buton_check();check_input(this.value,this.id,'por_hvac_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
+                                                    <select onchange="buton_check_edit();check_input(this.value,this.id,'por_hvac_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                                         <option value="0">-Selecciona porcentaje-</option>
                                                     </select>
                                                     <span id="por_hvac_warning" name="por_hvac_warning" class="text-red-500"></span>
@@ -424,7 +628,7 @@ span{
                                                 <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-startmt-5 ">
                                                     <div id="div_next" name="div_next" class="w-1/2 text-right">
                                                         <button type="button" id="next" name="next"
-                                                            onclick="buton_check();"
+                                                            onclick="buton_check_edit();"
                                                             class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
                                                         >Siguiente</button>
                                                     </div>
@@ -2851,8 +3055,19 @@ function prueba(val){
 }
 
 function app() {
+
+    var val_pais = $('select[name="paises_edit"] option:selected').val();
+
+    if(parseInt(val_pais) === 0){
+
+        var page = 1;
+    }else if(parseInt(val_pais) > 0){
+
+        var page = 2;
+    }
+
 			return {
-				step: 2,
+				step: page,
 				passwordStrengthText: '',
 				togglePassword: false,
 
@@ -2941,12 +3156,13 @@ function traer_t_edif_edd(id_cat) {
 
 
 function traer_ciudad(pais,id_ciudad) {
+   var pais_text = $('select[name="paises_edit"] option:selected').text();
     $('#ciudades_edit').trigger('click');
     $("#paises_edit").find('option[value="' + pais + '"]').attr("selected", "selected");
     $('#pais').val($('#paises option:selected').text());
     $.ajax({
         type: 'get',
-        url: '/get_ciudades/'+ pais,
+        url: '/get_ciudades/'+ pais_text,
         success: function (response) {
 
             response.map((ciudades, i) => {

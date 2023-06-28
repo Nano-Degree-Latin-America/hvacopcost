@@ -176,7 +176,7 @@ span{
                                 </button>
 
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-                                @if (Auth::user()->id_empresa == $empresa->id)
+                                @if (Auth::user()->id_empresa == $empresa->id || $empresa->id == 11)
                                 <button disabled onclick="inactivar('{{$empresa->id}}','empresas');" class="button small red --jb-modal" data-target="sample-modal" type="button">
                                     <span class="icon"><i class="mdi mdi-trash-can"></i></span>
                                 </button>

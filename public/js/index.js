@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     cap_term_change('TR');
-    getPaises();
+    //getPaises();
     traer_categorias_edif();
     $('#div_next_h').addClass("hidden");
     $('#calcular').attr('disabled', true);
@@ -1811,6 +1811,79 @@ function buton_check(){
         return false;
     }
     var ciudades = $("#ciudades");
+    if (ciudades.val() == '0') {
+        document.getElementById('ciudad_warning').innerHTML = "Campo Obligatorio";
+        return false;
+    }
+
+    var inflacion = $("#inc_ene");
+    if (inflacion.val() == '') {
+        document.getElementById('inc_ene_warning').innerHTML = "Campo Obligatorio";
+        return false;
+    }
+
+
+    var porcent_tiempo = $("#tiempo_porcent");
+    if (porcent_tiempo.val() == '') {
+        document.getElementById('tiempo_porcent_warning').innerHTML = "Campo Obligatorio";
+        return false;
+    }
+
+    var porcent_hvac = $("#porcent_hvac");
+    if (porcent_hvac.val() == '0') {
+        document.getElementById('por_hvac_warning').innerHTML = "Campo Obligatorio";
+        return false;
+    }
+
+
+
+    var check_mc = $("#check_mc");
+    var check_ft = $("#check_ft");
+    if (check_mc.prop('checked') === false && check_ft.prop('checked') === false) {
+        Swal.fire(
+            'Atención',
+            "Seleccionar Unidad",
+            'warning'
+        )
+        return false;
+    }
+
+
+    if (name.val() !== '' && cat_ed.val() !== '0' && tipo_edificio.val() !== '0' && ar_project.val() !== '' && paises.val() !== '0' && ciudades.val() !== '0' && porcent_hvac.val() !== '0' && porcent_tiempo.val() !== '',inflacion.val() !== '') {
+       /*  $('#next').attr('disabled', false); */
+       $('#div_next').addClass("hidden");
+       $('#div_next_h').removeClass("hidden");
+    }
+}
+
+function buton_check_edit(){
+    var name = $("#name_pro");
+    if (name.val() == '') {
+        document.getElementById('name_warning').innerHTML = "Campo Obligatorio";
+        return false;
+    }
+    var cat_ed = $("#cat_ed");
+    if (cat_ed.val() == '0') {
+        document.getElementById('cat_ed_warning').innerHTML = "Campo Obligatorio";
+        return false;
+    }
+    var tipo_edificio = $("#tipo_edificio");
+    if (tipo_edificio.val() == '0') {
+        document.getElementById('tipo_Edificio_warning').innerHTML = "Campo Obligatorio";
+        return false;
+    }
+    var ar_project = $("#ar_project");
+    if (ar_project.val() == '') {
+        document.getElementById('ar_project_warning').innerHTML = "Campo Obligatorio";
+        return false;
+    }
+    var paises = $("#paises_edit");
+
+    if (paises.val() == '0') {
+        document.getElementById('paises_warning').innerHTML = "Campo Obligatorio";
+        return false;
+    }
+    var ciudades = $("#ciudades_edit");
     if (ciudades.val() == '0') {
         document.getElementById('ciudad_warning').innerHTML = "Campo Obligatorio";
         return false;

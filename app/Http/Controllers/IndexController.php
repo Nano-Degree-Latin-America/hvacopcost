@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use Illuminate\Support\Facades\Storage;
 use Input;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 class IndexController extends Controller
 {
@@ -25,6 +26,12 @@ class IndexController extends Controller
 
         if(Auth::check()){
             if (Auth::user()->tipo_user==5 && Auth::user()->status==1) {
+
+                /* $user_update= User::find(Auth::user()->id);
+                $user_update->id_empresa=11;
+                $user_update->status=1;
+                $user_update->update(); */
+
                 return view('index');
             }else if(Auth::user()->tipo_user==1 && Auth::user()->status==1){
                 return view('index');
@@ -43,7 +50,23 @@ class IndexController extends Controller
 
     }
 
-    public function getPaises_aux()
+    public function cerrar_session(){
+        $user = Auth::user()->tipo_user;
+        if($user === 5){
+            $user_update= User::find(Auth::user()->id);
+            $user_update->id_empresa=11;
+            $user_update->update();
+
+            Auth::logout();
+            return redirect('/');
+        }else{
+            Auth::logout();
+            return redirect('/');
+        }
+
+    }
+
+    public function getPaises()
     {
         $submit = DB::table('paises_empresas')
         ->join('pais','pais.pais','=','paises_empresas.pais')
@@ -55,7 +78,7 @@ class IndexController extends Controller
         return $submit;
     }
 
-    public function getPaises()
+    public function getPaises_aux()
     {
         $submit = DB::table('pais')
         ->orderBy('pais.pais', 'asc')

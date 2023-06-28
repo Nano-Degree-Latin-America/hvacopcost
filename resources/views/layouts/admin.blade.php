@@ -54,14 +54,14 @@
           </a>
           <hr class="navbar-divider">
 
-          <a class="navbar-item" href="{{ route('logout') }}"
+          <a class="navbar-item" href="{{ route('cerrar_session') }}"
           onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
               <button class="">
                   Cerrar Sesión
                   </button>
           </a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+          <form id="logout-form" action="{{ route('cerrar_session') }}" method="POST" class="d-none">
               @csrf
           </form>
 
