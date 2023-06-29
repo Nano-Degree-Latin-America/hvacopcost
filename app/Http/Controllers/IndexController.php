@@ -66,7 +66,7 @@ class IndexController extends Controller
 
     }
 
-    public function getPaises()
+    public function getPaises_aux()
     {
         $submit = DB::table('paises_empresas')
         ->join('pais','pais.pais','=','paises_empresas.pais')
@@ -78,7 +78,7 @@ class IndexController extends Controller
         return $submit;
     }
 
-    public function getPaises_aux()
+    public function getPaises()
     {
         $submit = DB::table('pais')
         ->orderBy('pais.pais', 'asc')

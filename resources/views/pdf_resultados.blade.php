@@ -86,8 +86,8 @@
     color:#2c5282;
     font-family: 'ABeeZee', sans-serif;
     font-weight: bold;
-    padding-top:10px;
-    padding-bottom:10px;
+  /*   padding-top:10px; */
+    /* padding-bottom:3px; */
     padding-right:15px;
     padding-left:15px;
 }
@@ -215,6 +215,13 @@
             padding:5px;
         }
 
+.desp_elect_style{
+            font-size:30px;
+            font-family: 'ABeeZee', sans-serif;
+            font-weight: bold;
+            padding:3px;
+}
+
         .sol_ab_yrs_style{
             font-size:20px;
             font-family: 'ABeeZee', sans-serif;
@@ -274,11 +281,11 @@
             <table class="">
                 <tbody>
                   <tr>
-                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
-                    <td class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
-                    <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
-                    <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                    <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
+                    <td style="padding-top:10px;"  class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
                   </tr>
 
                 </tbody>
@@ -311,12 +318,6 @@
                         <tbody style="width: 100%;">
                             @foreach ($solutions as $solution)
                             @if ($solution->num_sol == 1 && $solution->num_enf == 1)
-                            <tr class="tr_style">
-                                {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                                 <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for="">SISTEMA HVAC 1</label> </td>
-                                {{--  @endif --}}
-                               </tr>
-
                             <tr class="tr_style">
                                     <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
                                     <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
@@ -362,53 +363,53 @@
                         <tr class="tr_style">
                              <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Equipo</label> </td>
                              <td class="td_style style_sol_elem_value">
-                                                                    @if ($solution->tipo_equipo == 'basico')
-                                                                    Básico
-                                                                    @endif
+                                @if ($solution->tipo_equipo == 'basico')
+                                Básico
+                                @endif
 
-                                                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                                                    c/ Economizador
-                                                                    @endif
+                                @if ($solution->tipo_equipo == 'c_economizador')
+                                c/ Economizador
+                                @endif
 
-                                                                    @if ($solution->tipo_equipo == 'manejadora')
-                                                                    Manejadora
-                                                                    @endif
+                                @if ($solution->tipo_equipo == 'manejadora')
+                                Manejadora
+                                @endif
 
-                                                                    @if ($solution->tipo_equipo == 'fancoil')
-                                                                    Fancoil
-                                                                    @endif
+                                @if ($solution->tipo_equipo == 'fancoil')
+                                Fancoil
+                                @endif
 
-                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                    Cassette y Piso Techo
-                                                                    @endif
+                                @if ($solution->tipo_equipo == 'ca_pi_te')
+                                Cassette y Piso Techo
+                                    @endif
 
-                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                    Fancoil (LSP)
-                                                                    @endif
+                                @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                Fancoil (LSP)
+                                @endif
 
-                                                                    @if ($solution->tipo_equipo == 'man')
-                                                                    Manejadoras
-                                                                    @endif
+                                @if ($solution->tipo_equipo == 'man')
+                                Manejadoras
+                                @endif
 
-                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                    Fancoil (HSP)
-                                                                    @endif
+                                @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                Fancoil (HSP)
+                                @endif
 
-                                                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Unidad Estándar
-                                                                    @endif
+                                @if ($solution->tipo_equipo == 'est_ptac')
+                                Unidad Estándar
+                                @endif
 
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
+                                @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                Agua Circuito Cerrado
+                                @endif
 
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
+                                @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                Agua Circuito Cerrado
+                                @endif
 
-                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                    Pared - Piso - Techo
-                                                                    @endif
+                                @if ($solution->tipo_equipo == 'pa_pi_te')
+                                Pared - Piso - Techo
+                                @endif
                                </td>
 
                            </tr>
@@ -437,17 +438,17 @@
                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
                             <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
                           </tr>
+
+                          <tr class="tr_style">
+                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
+                            <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
+                          </tr>
                             @endif
                             {{--1-2--}}
 
                            @if ($solution->num_sol == 2 && $solution->num_enf == 1)
-                           <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
-                            {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                             <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for="">SISTEMA HVAC 2</label> </td>
-                             <td class="td_style style_sol_elem_value"><label class="label_style_sol_val"></label></td>
-                             {{--  @endif --}}
-                           </tr>
-                            <tr  class="tr_style">
+
+                            <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
                                     <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
                                     <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
                               {{--   @endif --}}
@@ -566,18 +567,16 @@
                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
                             <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
                           </tr>
+
+                          <tr class="tr_style">
+                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
+                            <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
+                          </tr>
                             @endif
                             {{-- 1-3 --}}
                           @if ($solution->num_sol == 3 && $solution->num_enf == 1)
 
-                          <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
-                            {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                             <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for="">SISTEMA HVAC 3</label> </td>
-                             <td class="td_style style_sol_elem_value"><label class="label_style_sol_val"></label></td>
-                             {{--  @endif --}}
-                           </tr>
-
-                            <tr class="tr_style">
+                            <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
                                     <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
                                     <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
                               {{--   @endif --}}
@@ -695,6 +694,11 @@
                           <tr class="tr_style">
                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
                             <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
+                          </tr>
+
+                          <tr class="tr_style">
+                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
+                            <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
                           </tr>
                             @endif
                           @endforeach
@@ -713,11 +717,7 @@
                         <tbody style="width: 100%;">
                             @foreach ($solutions as $solution)
                             @if ($solution->num_sol == 1 && $solution->num_enf == 2)
-                            <tr class="tr_style">
-                                {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                                 <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for="">SISTEMA HVAC 1</label> </td>
-                                {{--  @endif --}}
-                            </tr>
+
                             <tr class="tr_style">
                                     <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
                                     <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
@@ -837,17 +837,17 @@
                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
                             <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
                           </tr>
+
+                          <tr class="tr_style">
+                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
+                            <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
+                          </tr>
                             @endif
 
                                       {{--2-2--}}
                            @if ($solution->num_sol == 2 && $solution->num_enf == 2)
+
                            <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
-                            {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                             <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for="">SISTEMA HVAC 2</label> </td>
-                             <td class="td_style style_sol_elem_value"><label class="label_style_sol_val"></label></td>
-                             {{--  @endif --}}
-                           </tr>
-                           <tr class="tr_style">
                                    <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
                                    <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
                              {{--   @endif --}}
@@ -967,19 +967,16 @@
                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
                            <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
                          </tr>
+
+                         <tr class="tr_style">
+                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
+                            <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
+                          </tr>
                            @endif
 
                                      {{--2-3--}}
                                      @if ($solution->num_sol == 3 && $solution->num_enf == 2)
-
                                      <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
-                                        {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                                         <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for="">SISTEMA HVAC 3</label> </td>
-                                         <td class="td_style style_sol_elem_value"><label class="label_style_sol_val"></label></td>
-                                         {{--  @endif --}}
-                                       </tr>
-
-                                     <tr class="tr_style">
                                              <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
                                              <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
                                        {{--   @endif --}}
@@ -1098,6 +1095,11 @@
                                      <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
                                      <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
                                    </tr>
+
+                                   <tr class="tr_style">
+                                    <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
+                                    <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
+                                  </tr>
                                      @endif
                           @endforeach
                         </tbody>
@@ -1114,11 +1116,7 @@
                         <tbody style="width: 100%;">
                             @foreach ($solutions as $solution)
                             @if ($solution->num_sol == 1 && $solution->num_enf == 3)
-                            <tr class="tr_style">
-                                {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                                 <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for="">SISTEMA HVAC 1</label> </td>
-                                {{--  @endif --}}
-                               </tr>
+
 
                             <tr class="tr_style">
                                     <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
@@ -1239,17 +1237,17 @@
                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
                             <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
                           </tr>
+
+                          <tr class="tr_style">
+                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
+                            <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
+                          </tr>
                             @endif
 
                                {{--3-2--}}
                                @if ($solution->num_sol == 2 && $solution->num_enf == 3)
+
                                <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
-                                {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                                 <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for="">SISTEMA HVAC 2</label> </td>
-                                 <td class="td_style style_sol_elem_value"><label class="label_style_sol_val"></label></td>
-                                 {{--  @endif --}}
-                               </tr>
-                               <tr  class="tr_style">
                                        <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
                                        <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
                                  {{--   @endif --}}
@@ -1368,20 +1366,19 @@
                                <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
                                <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
                              </tr>
+
+                             <tr class="tr_style">
+                                <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
+                                <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
+                              </tr>
                                @endif
 
 
                               {{--3-3--}}
                               @if ($solution->num_sol == 3 && $solution->num_enf == 3)
 
-                              <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
-                                {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                                 <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for="">SISTEMA HVAC 3</label> </td>
-                                 <td class="td_style style_sol_elem_value"><label class="label_style_sol_val"></label></td>
-                                 {{--  @endif --}}
-                               </tr>
 
-                              <tr class="tr_style">
+                              <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
                                       <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
                                       <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
                                 {{--   @endif --}}
@@ -1500,6 +1497,11 @@
                               <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
                               <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
                             </tr>
+
+                            <tr class="tr_style">
+                                <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
+                                <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
+                              </tr>
                               @endif
 
                           @endforeach
@@ -1525,11 +1527,11 @@
             <table class="">
                 <tbody>
                   <tr>
-                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
-                    <td class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
-                    <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
-                    <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                    <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
                   </tr>
 
                 </tbody>
@@ -1857,11 +1859,11 @@
             <table class="">
                 <tbody>
                   <tr>
-                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
-                    <td class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
-                    <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
-                    <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                    <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
                   </tr>
 
                 </tbody>
@@ -2778,11 +2780,11 @@
             <table class="">
                 <tbody>
                   <tr>
-                    <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
-                    <td class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
-                    <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
-                    <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                    <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
                   </tr>
 
                 </tbody>
@@ -3135,8 +3137,8 @@
             </div>
         </div>
     </div>
-    <div style="page-break-after:always;"></div>
-    <div  style="margin-top:6px; height:24%;" class="tarjet">
+    {{-- <div style="page-break-after:always;"></div> --}}
+    <div  style="margin-top:6px; height:22%;" class="tarjet">
         <div align="center" class="title_tarjet_blue">
             <label  class="title_style">Desperdicio de Energía Eléctrica del Edificio<b style="color:#ed8936;"> (Año)</b></label>
         </div>
@@ -3151,42 +3153,43 @@
                     <td class="sol_ab_yrs_style">Base Solution</td>
                     <?php  $energy_base=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
                     @if ($energy_base > 0)
-                    <td style="color:#ea0000;" class="porcent_yrs_style">${{number_format($energy_base)}}</td>
+                    <td style="color:#ea0000;" class="desp_elect_style">${{number_format($energy_base)}}</td>
                     @endif
 
                     @if ($energy_base < 0)
-                    <td style="color:#33cc33;" class="porcent_yrs_style">${{number_format($energy_base)}}</td>
+                    <td style="color:#33cc33;" class="desp_elect_style">${{number_format($energy_base)}}</td>
                     @endif
                     <?php  $ashrae_base=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
 
                     @if ($ashrae_base > 0)
-                    <td style="color:#ea0000;" class="porcent_yrs_style">${{number_format($ashrae_base)}}</td>
+                    <td style="color:#ea0000;" class="desp_elect_style">${{number_format($ashrae_base)}}</td>
                     @endif
 
                     @if ($ashrae_base < 0)
-                    <td style="color:#33cc33;" class="porcent_yrs_style">${{number_format($ashrae_base)}}</td>
+                    <td style="color:#33cc33;" class="desp_elect_style">${{number_format($ashrae_base)}}</td>
                     @endif
                     </tr>
                 <tr>
+
                 <td class="sol_ab_yrs_style">Solution A</td>
 
             <?php  $energy_a=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
 
                 @if ($energy_a > 0)
-                <td style="color:#ea0000;" class="porcent_yrs_style">${{number_format($energy_a)}}</td>
+                <td style="color:#ea0000;" class="desp_elect_style">${{number_format($energy_a)}}</td>
                 @endif
 
                 @if ($energy_a < 0)
-                <td style="color:#33cc33;" class="porcent_yrs_style">${{number_format($energy_a)}}</td>
+                <td style="color:#33cc33;" class="desp_elect_style">${{number_format($energy_a)}}</td>
                 @endif
                 <?php  $ashrae_a=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
 
                 @if ($ashrae_a > 0)
-                <td style="color:#ea0000;" class="porcent_yrs_style">${{number_format($ashrae_a)}}</td>
+                <td style="color:#ea0000;" class="desp_elect_style">${{number_format($ashrae_a)}}</td>
                 @endif
 
                 @if ($ashrae_a < 0)
-                <td style="color:#33cc33;" class="porcent_yrs_style">${{number_format($ashrae_a)}}</td>
+                <td style="color:#33cc33;" class="desp_elect_style">${{number_format($ashrae_a)}}</td>
                 @endif
                 </tr>
                 <tr>
@@ -3195,30 +3198,30 @@
                         <?php  $energy_b=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
 
                         @if ($energy_b > 0)
-                        <td style="color:#ea0000;" class="porcent_yrs_style">${{number_format($energy_b)}}</td>
+                        <td style="color:#ea0000;" class="desp_elect_style">${{number_format($energy_b)}}</td>
                         @endif
 
                         @if ($energy_b < 0)
-                        <td style="color:#33cc33;" class="porcent_yrs_style">${{number_format($energy_b)}}</td>
+                        <td style="color:#33cc33;" class="desp_elect_style">${{number_format($energy_b)}}</td>
                         @endif
                     @endif
                     @if ($result3 === null)
-                    <td style="color:#2c5282;" class="porcent_yrs_style">$0</td>
+                    <td style="color:#2c5282;" class="desp_elect_style">$0</td>
                     @endif
                     @if ($result3 ==! null)
                         <?php  $ashrae_b=$desperdicio->desp_ashrae($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
 
                         @if ($ashrae_b > 0)
-                        <td style="color:#ea0000;" class="porcent_yrs_style">${{number_format($ashrae_b)}}</td>
+                        <td style="color:#ea0000;" class="desp_elect_style">${{number_format($ashrae_b)}}</td>
                         @endif
 
                         @if ($ashrae_b < 0)
-                        <td style="color:#33cc33;" class="porcent_yrs_style">${{number_format($ashrae_b)}}</td>
+                        <td style="color:#33cc33;" class="desp_elect_style">${{number_format($ashrae_b)}}</td>
                         @endif
                     @endif
 
                     @if ($result3 === null)
-                    <td style="color:#2c5282;" class="porcent_yrs_style">$0</td>
+                    <td style="color:#2c5282;" class="desp_elect_style">$0</td>
                     @endif
                     </tr>
                 </tr>
@@ -3236,11 +3239,11 @@
         <table class="">
             <tbody>
               <tr>
-                <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
-                <td class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
-                <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
-                <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
               </tr>
 
             </tbody>
@@ -3685,11 +3688,11 @@
         <table class="">
             <tbody>
               <tr>
-                <td class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
-                <td class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
-                <td class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
-                <td class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                <td class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
               </tr>
 
             </tbody>

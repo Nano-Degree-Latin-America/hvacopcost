@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     cap_term_change('TR');
-    //getPaises();
+    getPaises();
     traer_categorias_edif();
     $('#div_next_h').addClass("hidden");
     $('#calcular').attr('disabled', true);
@@ -4310,6 +4310,15 @@ function hrs_enfs_inps(value){
        $('#hrsEnfriado_3_1').val(num_aux);
        $('#hrsEnfriado_3_2').val(num_aux);
        $('#hrsEnfriado_3_3').val(num_aux);
+}
+
+function mostrar_modal_energia_hvac(id){
+
+    $("#"+id).removeClass("hidden");
+}
+
+function ocultar_modal(id){
+    $("#"+id).addClass("hidden");
 }
 
 
