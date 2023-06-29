@@ -3154,7 +3154,7 @@
                     <?php  $energy_base=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
                     @if ($energy_base > 0)
                     <td style="color:#ea0000;" class="desp_elect_style">${{number_format($energy_base)}}</td>
-                    @endiff
+                    @endif
 
                     @if ($energy_base < 0)
                     <td style="color:#33cc33;" class="desp_elect_style">${{number_format($energy_base)}}</td>
