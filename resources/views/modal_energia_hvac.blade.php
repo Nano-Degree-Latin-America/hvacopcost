@@ -5,7 +5,7 @@
         <div class="absolute"></div>
       </div>
       <!-- Contenedor del modal -->
-      <div class="border-2 border-blue-600 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all w-1/5" style="margin-top:410px;margin-left:1130px;" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+      <div class="border-2 border-blue-600 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all w-1/6" style="margin-top:410px;margin-left:1130px;" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
         <div class="bg-white px-3 pt-5">
             <div class="grid w-full" >
                 <div class="flex w-full justify-center">
