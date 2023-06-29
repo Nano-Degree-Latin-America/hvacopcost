@@ -2,7 +2,7 @@
 
 $(document).ready(function () {
     cap_term_change('TR');
-    getPaises();
+    //getPaises();
     traer_categorias_edif();
     $('#div_next_h').addClass("hidden");
     $('#calcular').attr('disabled', true);
