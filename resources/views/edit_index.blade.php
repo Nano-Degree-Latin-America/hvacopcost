@@ -1314,7 +1314,7 @@ align-items: center;
                                                            </div>
                                                            <div class="w-full flex justify-startw-full flex justify-start text-left">
                                                             <select style="width: 77%;" class="border-2 border-blue-600 rounded-md py-1"  onchange="send_name_dr(this.id);" name="dr_1_3" id="dr_1_3" >
-                                                                <option value="0">Seleccionar</option>
+                                                                <option value="">Seleccionar</option>
 
                                                             </select>
                                                            </div>
@@ -2384,7 +2384,7 @@ align-items: center;
                                                             </div>
                                                             <div class="w-full flex justify-start">
                                                                 <select  style="width: 77%;margin-left:2.5px;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);" name="dr_3_1" id="dr_3_1" >
-
+                                                                    <option value="">Seleccionar</option>
 
                                                                 </select>
                                                             </div>

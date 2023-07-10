@@ -908,6 +908,7 @@ align-items: center;
                                                     </div>
                                                     <div class="w-full flex justify-start">
                                                         <select style="width: 77%;margin-left:1.5px;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);" name="dr_1_1" id="dr_1_1" >
+                                                            <option value="">Seleccionar</option>
                                                         </select>
                                                     </div>
                                                     <input  id="dr_1_1_count" name="dr_1_1_count" type="number" class="hidden" value="1">
@@ -1314,7 +1315,7 @@ align-items: center;
                                                            </div>
                                                            <div class="w-full flex justify-startw-full flex justify-start text-left">
                                                             <select style="width: 77%;" class="border-2 border-blue-600 rounded-md py-1"  onchange="send_name_dr(this.id);" name="dr_1_3" id="dr_1_3" >
-                                                                <option value="0">Seleccionar</option>
+                                                                <option value="">Seleccionar</option>
 
                                                             </select>
                                                            </div>
@@ -1638,7 +1639,7 @@ align-items: center;
                                                             </div>
                                                             <div class="w-full flex justify-start">
                                                             <select style="width: 77%;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);" name="dr_2_1" id="dr_2_1" >
-
+                                                                <option value="">Seleccionar</option>
 
                                                             </select>
                                                             </div>
@@ -1850,7 +1851,7 @@ align-items: center;
                                                         </div>
                                                         <div class="w-full flex justify-start">
                                                         <select style="width: 77%;" class="border-2 border-blue-600 rounded-md py-1"  onchange="send_name_dr(this.id);" name="dr_2_2" id="dr_2_2" >
-
+                                                            <option value="">Seleccionar</option>
 
                                                         </select>
                                                             <input  id="dr_2_1_count" name="dr_2_1_count" type="number" class="hidden" value="1">
@@ -2384,7 +2385,7 @@ align-items: center;
                                                             </div>
                                                             <div class="w-full flex justify-start">
                                                                 <select  style="width: 77%;margin-left:2.5px;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);" name="dr_3_1" id="dr_3_1" >
-
+                                                                    <option value="">Seleccionar</option>
 
                                                                 </select>
                                                             </div>
@@ -2594,7 +2595,7 @@ align-items: center;
                                                         </div>
                                                         <div class="w-full flex justify-start">
                                                             <select  style="width: 77%;margin-left:2.5px;"  class="border-2 border-blue-600 rounded-md py-1"  onchange="send_name_dr(this.id);" name="dr_3_2" id="dr_3_2" >
-
+                                                                <option value="">Seleccionar</option>
                                                             </select>
                                                         </div>
                                                         <input  id="dr_3_2_count" name="dr_3_2_count" type="number" class="hidden" value="1">
@@ -2789,6 +2790,7 @@ align-items: center;
                                                         </div>
                                                         <div class="w-full flex justify-start">
                                                             <select  style="width: 77%;margin-left:2.5px;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_t_c(this.id);"  name="dr_3_3" id="dr_3_3" >
+                                                                <option value="">Seleccionar</option>
                                                             </select>
                                                         </div>
                                                         <input type="text" style="display: none" id="dr_name_3_3" name="dr_name_3_3">

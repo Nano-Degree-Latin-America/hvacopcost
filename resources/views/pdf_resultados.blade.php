@@ -57,6 +57,12 @@
   border:1px solid;
 }
 
+.tarjet_sols {
+ /*  background-color:#ffff; */
+  width: 100%;
+  display: grid;
+}
+
 .title_tarjet {
   background-color:#ed8936;
   width: 100%;
@@ -119,6 +125,7 @@
 .td_style{
     width:50% !important;
     font-size:10px;
+    margin: 0%;
 }
 
 .style_sol_elem_name{
@@ -259,6 +266,12 @@
     margin-top:5px;
     z-index: -1;
     }
+
+    .tarjet_anal_ene {
+  background-color:#ffff;
+  width: 100%;
+  display: grid;
+}
 	</style>
 </head>
 
@@ -306,1216 +319,1699 @@
         </div>
     </div>
 
-    <div style="margin-top:5px; height:83%;" class="tarjet">
-        <?php  $solutions=$solutions->solutions($id_project) ?>
+    <?php  $solutions=$solutions->solutions($id_project) ?>
+    <div style="border-radius: 1% 1% 1% 1%;
+    border:1px solid;margin-top:8px;">
+    <div  style="margin-top:5px; height:30%;" class="tarjet_sols">
         <div style="margin-left:15px; margin-right:15px;">
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
-                    <div class="sol_base">
+                    <div class="sol_base" style="width:100%;">
                         <label style="margin-left:40px;" class="title_style">Solución Base</label>
                     </div>
-                    <table class="">
-                        <tbody style="width: 100%;">
-                            @foreach ($solutions as $solution)
-                            @if ($solution->num_sol == 1 && $solution->num_enf == 1)
-                            <tr class="tr_style">
-                                    <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
-                                    <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
-                              {{--   @endif --}}
-                            </tr>
-                          <tr class="tr_style">
-                           {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">{{$solution->eficencia_ene}}</label></td>
-                            <td class="td_style style_sol_elem_value">{{$solution->eficencia_ene_cant}}</td>
-                           {{--  @endif --}}
-                          </tr>
+                    @foreach ($solutions as $solution)
+                        @if ($solution->num_enf == 1 && $solution->num_sol == 1  )
+                            <div style="width:94%;">
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
+                                    </div>
+                                </div>
 
-                          <tr class="tr_style">
-                           {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                            <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for=""> Equipos HVAC</label></td>
-                            <td class="td_style style_sol_elem_value">
-                                @if ($solution->unidad_hvac == 1)
-                                Paquetes (RTU)
-                                @endif
-                                @if ($solution->unidad_hvac == 2)
-                                Split DX
-                                @endif
-                                @if ($solution->unidad_hvac == 3)
-                                VRF No Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 4)
-                                VRF Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 5)
-                                PTAC
-                                @endif
-                                @if ($solution->unidad_hvac == 6)
-                                WSHP
-                                @endif
-                                @if ($solution->unidad_hvac == 7)
-                                Minisplit Inverter
-                                @endif
-                                @if ($solution->unidad_hvac == 8)
-                               Chiller
-                                @endif
-                            </td>
-                        </tr>
-                        <tr class="tr_style">
-                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Equipo</label> </td>
-                             <td class="td_style style_sol_elem_value">
-                                @if ($solution->tipo_equipo == 'basico')
-                                Básico
-                                @endif
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{$solution->eficencia_ene}}</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene_cant}}</div>
+                                    </div>
+                                </div>
 
-                                @if ($solution->tipo_equipo == 'c_economizador')
-                                c/ Economizador
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                            @if ($solution->unidad_hvac == 1)
+                                            Paquetes (RTU)
+                                            @endif
+                                            @if ($solution->unidad_hvac == 2)
+                                            Split DX
+                                            @endif
+                                            @if ($solution->unidad_hvac == 3)
+                                            VRF No Ductados
+                                            @endif
+                                            @if ($solution->unidad_hvac == 4)
+                                            VRF Ductados
+                                            @endif
+                                            @if ($solution->unidad_hvac == 5)
+                                            PTAC
+                                            @endif
+                                            @if ($solution->unidad_hvac == 6)
+                                            WSHP
+                                            @endif
+                                            @if ($solution->unidad_hvac == 7)
+                                            Minisplit Inverter
+                                            @endif
+                                            @if ($solution->unidad_hvac == 8)
+                                           Chiller
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                            @if ($solution->tipo_equipo == 'basico')
+                                            Básico
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'c_economizador')
+                                            c/ Economizador
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'manejadora')
+                                            Manejadora
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil')
+                                            Fancoil
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'ca_pi_te')
+                                            Cassette y Piso Techo
+                                                @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                            Fancoil (LSP)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'man')
+                                            Manejadoras
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                            Fancoil (HSP)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'est_ptac')
+                                            Unidad Estándar
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                            Agua Circuito Cerrado
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                            Agua Circuito Cerrado
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'pa_pi_te')
+                                            Pared - Piso - Techo
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->name_disenio)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
                                 @endif
-
-                                @if ($solution->tipo_equipo == 'manejadora')
-                                Manejadora
+                                @if (strlen($solution->name_disenio)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
                                 @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
+                                    </div>
+                                </div>
 
-                                @if ($solution->tipo_equipo == 'fancoil')
-                                Fancoil
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->name_t_control)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
                                 @endif
-
-                                @if ($solution->tipo_equipo == 'ca_pi_te')
-                                Cassette y Piso Techo
-                                    @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                Fancoil (LSP)
+                                @if (strlen($solution->name_t_control)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
                                 @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
+                                    </div>
+                                </div>
 
-                                @if ($solution->tipo_equipo == 'man')
-                                Manejadoras
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->dr_name)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
                                 @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                Fancoil (HSP)
+                                @if (strlen($solution->dr_name)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
                                 @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
+                                    </div>
+                                </div>
 
-                                @if ($solution->tipo_equipo == 'est_ptac')
-                                Unidad Estándar
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->mantenimiento)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
                                 @endif
-
-                                @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                Agua Circuito Cerrado
+                                @if (strlen($solution->mantenimiento)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
                                 @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
+                                    </div>
+                                </div>
 
-                                @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                Agua Circuito Cerrado
-                                @endif
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
+                                    </div>
+                                </div>
 
-                                @if ($solution->tipo_equipo == 'pa_pi_te')
-                                Pared - Piso - Techo
-                                @endif
-                               </td>
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
+                                    </div>
+                                </div>
 
-                           </tr>
-
-                           <tr class="tr_style">
-                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Diseño</label></td>
-                             <td class="td_style style_sol_elem_value">{{$solution->name_disenio}}</td>
-                           </tr>
-
-                           <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Control</label></td>
-                            <td class="td_style style_sol_elem_value">{{$solution->name_t_control}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Difusor o Rejilla</label>                             </td>
-                            <td class="td_style style_sol_elem_value">{{$solution->dr_name}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Mantenimiento</label> </td>
-                            <td class="td_style style_sol_elem_value">{{$solution->mantenimiento}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
-                            <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
-                            <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
-                          </tr>
+                            </div>
                             @endif
-                            {{--1-2--}}
-
-                           @if ($solution->num_sol == 2 && $solution->num_enf == 1)
-
-                            <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
-                                    <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
-                                    <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
-                              {{--   @endif --}}
-                            </tr>
-                          <tr class="tr_style">
-                           {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">{{$solution->eficencia_ene}}</label></td>
-                            <td class="td_style style_sol_elem_value">{{$solution->eficencia_ene_cant}}</td>
-                           {{--  @endif --}}
-                          </tr>
-
-                          <tr class="tr_style">
-                           {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                            <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for=""> Equipos HVAC</label></td>
-                            <td class="td_style style_sol_elem_value">
-                                @if ($solution->unidad_hvac == 1)
-                                Paquetes (RTU)
-                                @endif
-                                @if ($solution->unidad_hvac == 2)
-                                Split DX
-                                @endif
-                                @if ($solution->unidad_hvac == 3)
-                                VRF No Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 4)
-                                VRF Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 5)
-                                PTAC
-                                @endif
-                                @if ($solution->unidad_hvac == 6)
-                                WSHP
-                                @endif
-                                @if ($solution->unidad_hvac == 7)
-                                Minisplit Inverter
-                                @endif
-                                @if ($solution->unidad_hvac == 8)
-                               Chiller
-                                @endif</td>
-                        </tr>
-                        <tr class="tr_style">
-                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Equipo</label> </td>
-                             <td class="td_style style_sol_elem_value">
-                                @if ($solution->tipo_equipo == 'basico')
-                                                                    Básico
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                                                    c/ Economizador
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'manejadora')
-                                                                    Manejadora
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil')
-                                                                    Fancoil
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                    Cassette y Piso Techo
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                    Fancoil (LSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'man')
-                                                                    Manejadoras
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                    Fancoil (HSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Unidad Estándar
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                    Pared - Piso - Techo
-                                                                    @endif
-                                                                </td>
-
-                           </tr>
-
-                           <tr class="tr_style">
-                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Diseño</label></td>
-                             <td class="td_style style_sol_elem_value">{{$solution->name_disenio}}</td>
-                           </tr>
-
-                           <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Control</label></td>
-                            <td class="td_style style_sol_elem_value">{{$solution->name_t_control}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Difusor o Rejilla</label>                             </td>
-                            <td class="td_style style_sol_elem_value">{{$solution->dr_name}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Mantenimiento</label> </td>
-                            <td class="td_style style_sol_elem_value">{{$solution->mantenimiento}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
-                            <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
-                            <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
-                          </tr>
-                            @endif
-                            {{-- 1-3 --}}
-                          @if ($solution->num_sol == 3 && $solution->num_enf == 1)
-
-                            <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
-                                    <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
-                                    <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
-                              {{--   @endif --}}
-                            </tr>
-                          <tr class="tr_style">
-                           {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">{{$solution->eficencia_ene}}</label></td>
-                            <td class="td_style style_sol_elem_value">{{$solution->eficencia_ene_cant}}</td>
-                           {{--  @endif --}}
-                          </tr>
-
-                          <tr class="tr_style">
-                           {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                            <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for=""> Equipos HVAC</label></td>
-                            <td class="td_style style_sol_elem_value">
-                                @if ($solution->unidad_hvac == 1)
-                                Paquetes (RTU)
-                                @endif
-                                @if ($solution->unidad_hvac == 2)
-                                Split DX
-                                @endif
-                                @if ($solution->unidad_hvac == 3)
-                                VRF No Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 4)
-                                VRF Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 5)
-                                PTAC
-                                @endif
-                                @if ($solution->unidad_hvac == 6)
-                                WSHP
-                                @endif
-                                @if ($solution->unidad_hvac == 7)
-                                Minisplit Inverter
-                                @endif
-                                @if ($solution->unidad_hvac == 8)
-                               Chiller
-                                @endif</td>
-                        </tr>
-                        <tr class="tr_style">
-                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Equipo</label> </td>
-                             <td class="td_style style_sol_elem_value">
-                                @if ($solution->tipo_equipo == 'basico')
-                                Básico
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'c_economizador')
-                                c/ Economizador
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'manejadora')
-                                Manejadora
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil')
-                                Fancoil
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'ca_pi_te')
-                                Cassette y Piso Techo
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                Fancoil (LSP)
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'man')
-                                Manejadoras
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                Fancoil (HSP)
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'est_ptac')
-                                Unidad Estándar
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                Agua Circuito Cerrado
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                Agua Circuito Cerrado
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'pa_pi_te')
-                                Pared - Piso - Techo
-                                @endif
-                            </td>
-
-                           </tr>
-
-                           <tr class="tr_style">
-                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Diseño</label></td>
-                             <td class="td_style style_sol_elem_value">{{$solution->name_disenio}}</td>
-                           </tr>
-
-                           <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Control</label></td>
-                            <td class="td_style style_sol_elem_value">{{$solution->name_t_control}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Difusor o Rejilla</label>                             </td>
-                            <td class="td_style style_sol_elem_value">{{$solution->dr_name}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Mantenimiento</label> </td>
-                            <td class="td_style style_sol_elem_value">{{$solution->mantenimiento}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
-                            <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
-                            <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
-                          </tr>
-                            @endif
-                          @endforeach
-                        </tbody>
-                      </table>
-                </div>
-
-            </div>
-
-            <div>
-                <div style="margin-top:5px;" class="column" >
-                    <div style="background-color: #4299e1;width:100%; border_radius:5px;">
-                        <label style="margin-left:60px;" class="title_style">Solución A</label>
+                            @endforeach
+                        </div>
                     </div>
-                    <table class="">
-                        <tbody style="width: 100%;">
-                            @foreach ($solutions as $solution)
-                            @if ($solution->num_sol == 1 && $solution->num_enf == 2)
-
-                            <tr class="tr_style">
-                                    <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
-                                    <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
-                              {{--   @endif --}}
-                            </tr>
-                          <tr class="tr_style">
-                           {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">{{$solution->eficencia_ene}}</label></td>
-                            <td class="td_style style_sol_elem_value">{{$solution->eficencia_ene_cant}}</td>
-                           {{--  @endif --}}
-                          </tr>
-
-                          <tr class="tr_style">
-                           {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                            <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for=""> Equipos HVAC</label></td>
-                            <td class="td_style style_sol_elem_value">
-                                @if ($solution->unidad_hvac == 1)
-                                Paquetes (RTU)
-                                @endif
-                                @if ($solution->unidad_hvac == 2)
-                                Split DX
-                                @endif
-                                @if ($solution->unidad_hvac == 3)
-                                VRF No Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 4)
-                                VRF Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 5)
-                                PTAC
-                                @endif
-                                @if ($solution->unidad_hvac == 6)
-                                WSHP
-                                @endif
-                                @if ($solution->unidad_hvac == 7)
-                                Minisplit Inverter
-                                @endif
-                                @if ($solution->unidad_hvac == 8)
-                               Chiller
-                                @endif</td>
-                        </tr>
-                        <tr class="tr_style">
-                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Equipo</label> </td>
-                             <td class="td_style style_sol_elem_value">
-                                @if ($solution->tipo_equipo == 'basico')
-                                Básico
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'c_economizador')
-                                c/ Economizador
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'manejadora')
-                                Manejadora
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil')
-                                Fancoil
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'ca_pi_te')
-                                Cassette y Piso Techo
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                Fancoil (LSP)
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'man')
-                                Manejadoras
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                Fancoil (HSP)
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'est_ptac')
-                                Unidad Estándar
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                Agua Circuito Cerrado
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                Agua Circuito Cerrado
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'pa_pi_te')
-                                Pared - Piso - Techo
-                                @endif
-                            </td>
-
-                           </tr>
-
-                           <tr class="tr_style">
-                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Diseño</label></td>
-                             <td class="td_style style_sol_elem_value">{{$solution->name_disenio}}</td>
-                           </tr>
-
-                           <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Control</label></td>
-                            <td class="td_style style_sol_elem_value">{{$solution->name_t_control}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Difusor o Rejilla</label>                             </td>
-                            <td class="td_style style_sol_elem_value">{{$solution->dr_name}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Mantenimiento</label> </td>
-                            <td class="td_style style_sol_elem_value">{{$solution->mantenimiento}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
-                            <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
-                            <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
-                          </tr>
-                            @endif
-
-                                      {{--2-2--}}
-                           @if ($solution->num_sol == 2 && $solution->num_enf == 2)
-
-                           <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
-                                   <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
-                                   <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
-                             {{--   @endif --}}
-                           </tr>
-                         <tr class="tr_style">
-                          {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                           <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">{{$solution->eficencia_ene}}</label></td>
-                           <td class="td_style style_sol_elem_value">{{$solution->eficencia_ene_cant}}</td>
-                          {{--  @endif --}}
-                         </tr>
-
-                         <tr class="tr_style">
-                          {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                           <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for=""> Equipos HVAC</label></td>
-                           <td class="td_style style_sol_elem_value">
-                            @if ($solution->unidad_hvac == 1)
-                            Paquetes (RTU)
-                            @endif
-                            @if ($solution->unidad_hvac == 2)
-                            Split DX
-                            @endif
-                            @if ($solution->unidad_hvac == 3)
-                            VRF No Ductados
-                            @endif
-                            @if ($solution->unidad_hvac == 4)
-                            VRF Ductados
-                            @endif
-                            @if ($solution->unidad_hvac == 5)
-                            PTAC
-                            @endif
-                            @if ($solution->unidad_hvac == 6)
-                            WSHP
-                            @endif
-                            @if ($solution->unidad_hvac == 7)
-                            Minisplit Inverter
-                            @endif
-                            @if ($solution->unidad_hvac == 8)
-                           Chiller
-                            @endif</td>
-                       </tr>
-                       <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Equipo</label> </td>
-                            <td class="td_style style_sol_elem_value">
-                                @if ($solution->tipo_equipo == 'basico')
-                                Básico
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'c_economizador')
-                                c/ Economizador
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'manejadora')
-                                Manejadora
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil')
-                                Fancoil
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'ca_pi_te')
-                                Cassette y Piso Techo
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                Fancoil (LSP)
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'man')
-                                Manejadoras
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                Fancoil (HSP)
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'est_ptac')
-                                Unidad Estándar
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                Agua Circuito Cerrado
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                Agua Circuito Cerrado
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'pa_pi_te')
-                                Pared - Piso - Techo
-                                @endif
-
-                            </td>
-
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Diseño</label></td>
-                            <td class="td_style style_sol_elem_value">{{$solution->name_disenio}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                           <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Control</label></td>
-                           <td class="td_style style_sol_elem_value">{{$solution->name_t_control}}</td>
-                         </tr>
-
-                         <tr class="tr_style">
-                           <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Difusor o Rejilla</label>                             </td>
-                           <td class="td_style style_sol_elem_value">{{$solution->dr_name}}</td>
-                         </tr>
-
-                         <tr class="tr_style">
-                           <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Mantenimiento</label> </td>
-                           <td class="td_style style_sol_elem_value">{{$solution->mantenimiento}}</td>
-                         </tr>
-
-                         <tr class="tr_style">
-                           <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
-                           <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
-                         </tr>
-
-                         <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
-                            <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
-                          </tr>
-                           @endif
-
-                                     {{--2-3--}}
-                                     @if ($solution->num_sol == 3 && $solution->num_enf == 2)
-                                     <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
-                                             <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
-                                             <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
-                                       {{--   @endif --}}
-                                     </tr>
-                                   <tr class="tr_style">
-                                    {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                                     <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">{{$solution->eficencia_ene}}</label></td>
-                                     <td class="td_style style_sol_elem_value">{{$solution->eficencia_ene_cant}}</td>
-                                    {{--  @endif --}}
-                                   </tr>
-
-                                   <tr class="tr_style">
-                                    {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                                     <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for=""> Equipos HVAC</label></td>
-                                     <td class="td_style style_sol_elem_value">
-                                        @if ($solution->unidad_hvac == 1)
-                                Paquetes (RTU)
-                                @endif
-                                @if ($solution->unidad_hvac == 2)
-                                Split DX
-                                @endif
-                                @if ($solution->unidad_hvac == 3)
-                                VRF No Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 4)
-                                VRF Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 5)
-                                PTAC
-                                @endif
-                                @if ($solution->unidad_hvac == 6)
-                                WSHP
-                                @endif
-                                @if ($solution->unidad_hvac == 7)
-                                Minisplit Inverter
-                                @endif
-                                @if ($solution->unidad_hvac == 8)
-                               Chiller
-                                @endif</td>
-                                 </tr>
-                                 <tr class="tr_style">
-                                      <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Equipo</label> </td>
-                                      <td class="td_style style_sol_elem_value">
-                                        @if ($solution->tipo_equipo == 'basico')
-                                                                    Básico
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                                                    c/ Economizador
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'manejadora')
-                                                                    Manejadora
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil')
-                                                                    Fancoil
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                    Cassette y Piso Techo
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                    Fancoil (LSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'man')
-                                                                    Manejadoras
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                    Fancoil (HSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Unidad Estándar
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                    Pared - Piso - Techo
-                                                                    @endif
-                                                                </td>
-
-                                    </tr>
-
-                                    <tr class="tr_style">
-                                      <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Diseño</label></td>
-                                      <td class="td_style style_sol_elem_value">{{$solution->name_disenio}}</td>
-                                    </tr>
-
-                                    <tr class="tr_style">
-                                     <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Control</label></td>
-                                     <td class="td_style style_sol_elem_value">{{$solution->name_t_control}}</td>
-                                   </tr>
-
-                                   <tr class="tr_style">
-                                     <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Difusor o Rejilla</label>                             </td>
-                                     <td class="td_style style_sol_elem_value">{{$solution->dr_name}}</td>
-                                   </tr>
-
-                                   <tr class="tr_style">
-                                     <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Mantenimiento</label> </td>
-                                     <td class="td_style style_sol_elem_value">{{$solution->mantenimiento}}</td>
-                                   </tr>
-
-                                   <tr class="tr_style">
-                                     <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
-                                     <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
-                                   </tr>
-
-                                   <tr class="tr_style">
-                                    <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
-                                    <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
-                                  </tr>
-                                     @endif
-                          @endforeach
-                        </tbody>
-                      </table>
                 </div>
-            </div>
 
-            <div>
-                <div style="margin-left:5px;margin-top:5px;" class="column" >
-                    <div style="width:100%;background-color:#4299e1;border_radius:5px;">
-                        <label style="margin-left:60px;" class="title_style">Solución B</label>
+
+
+                <div style="margin-left:15px; margin-right:15px;">
+                    <div>
+                        <div style="margin-right:5px;margin-top:5px;" class="column" >
+                            <div style="background-color: #4299e1;width:100%; border_radius:5px;">
+                                <label style="margin-left:60px;" class="title_style">Solución A</label>
+                            </div>
+                            @foreach ($solutions as $solution)
+                            @if ($solution->num_enf == 2 && $solution->num_sol == 1  )
+                            <div style="width:94%;">
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{$solution->eficencia_ene}}</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene_cant}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                            @if ($solution->unidad_hvac == 1)
+                                            Paquetes (RTU)
+                                            @endif
+                                            @if ($solution->unidad_hvac == 2)
+                                            Split DX
+                                            @endif
+                                            @if ($solution->unidad_hvac == 3)
+                                            VRF No Ductados
+                                            @endif
+                                            @if ($solution->unidad_hvac == 4)
+                                            VRF Ductados
+                                            @endif
+                                            @if ($solution->unidad_hvac == 5)
+                                            PTAC
+                                            @endif
+                                            @if ($solution->unidad_hvac == 6)
+                                            WSHP
+                                            @endif
+                                            @if ($solution->unidad_hvac == 7)
+                                            Minisplit Inverter
+                                            @endif
+                                            @if ($solution->unidad_hvac == 8)
+                                           Chiller
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                            @if ($solution->tipo_equipo == 'basico')
+                                            Básico
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'c_economizador')
+                                            c/ Economizador
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'manejadora')
+                                            Manejadora
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil')
+                                            Fancoil
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'ca_pi_te')
+                                            Cassette y Piso Techo
+                                                @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                            Fancoil (LSP)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'man')
+                                            Manejadoras
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                            Fancoil (HSP)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'est_ptac')
+                                            Unidad Estándar
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                            Agua Circuito Cerrado
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                            Agua Circuito Cerrado
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'pa_pi_te')
+                                            Pared - Piso - Techo
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->name_disenio)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->name_disenio)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->name_t_control)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->name_t_control)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->dr_name)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->dr_name)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->mantenimiento)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->mantenimiento)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            @endif
+                            @endforeach
+                        </div>
                     </div>
-                    <table class="">
-                        <tbody style="width: 100%;">
+                </div>
+
+
+
+                <div style="margin-left:15px; margin-right:15px; ">
+                    <div>
+                        <div style="margin-right:5px;margin-top:5px;" class="column" >
+                            <div style="width:100%;background-color:#4299e1;border_radius:5px;">
+                                <label style="margin-left:60px;" class="title_style">Solución B</label>
+                            </div>
                             @foreach ($solutions as $solution)
-                            @if ($solution->num_sol == 1 && $solution->num_enf == 3)
+                                @if ($solution->num_enf == 3 && $solution->num_sol == 1  )
+                            <div style="width:94%;">
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
+                                    </div>
+                                </div>
 
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{$solution->eficencia_ene}}</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene_cant}}</div>
+                                    </div>
+                                </div>
 
-                            <tr class="tr_style">
-                                    <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
-                                    <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
-                              {{--   @endif --}}
-                            </tr>
-                          <tr class="tr_style">
-                           {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">{{$solution->eficencia_ene}}</label></td>
-                            <td class="td_style style_sol_elem_value">{{$solution->eficencia_ene_cant}}</td>
-                           {{--  @endif --}}
-                          </tr>
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                            @if ($solution->unidad_hvac == 1)
+                                            Paquetes (RTU)
+                                            @endif
+                                            @if ($solution->unidad_hvac == 2)
+                                            Split DX
+                                            @endif
+                                            @if ($solution->unidad_hvac == 3)
+                                            VRF No Ductados
+                                            @endif
+                                            @if ($solution->unidad_hvac == 4)
+                                            VRF Ductados
+                                            @endif
+                                            @if ($solution->unidad_hvac == 5)
+                                            PTAC
+                                            @endif
+                                            @if ($solution->unidad_hvac == 6)
+                                            WSHP
+                                            @endif
+                                            @if ($solution->unidad_hvac == 7)
+                                            Minisplit Inverter
+                                            @endif
+                                            @if ($solution->unidad_hvac == 8)
+                                           Chiller
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
 
-                          <tr class="tr_style">
-                           {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                            <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for=""> Equipos HVAC</label></td>
-                            <td class="td_style style_sol_elem_value">
-                                @if ($solution->unidad_hvac == 1)
-                                Paquetes (RTU)
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                            @if ($solution->tipo_equipo == 'basico')
+                                            Básico
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'c_economizador')
+                                            c/ Economizador
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'manejadora')
+                                            Manejadora
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil')
+                                            Fancoil
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'ca_pi_te')
+                                            Cassette y Piso Techo
+                                                @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                            Fancoil (LSP)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'man')
+                                            Manejadoras
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                            Fancoil (HSP)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'est_ptac')
+                                            Unidad Estándar
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                            Agua Circuito Cerrado
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                            Agua Circuito Cerrado
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'pa_pi_te')
+                                            Pared - Piso - Techo
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->name_disenio)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
                                 @endif
-                                @if ($solution->unidad_hvac == 2)
-                                Split DX
+                                @if (strlen($solution->name_disenio)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
                                 @endif
-                                @if ($solution->unidad_hvac == 3)
-                                VRF No Ductados
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->name_t_control)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
                                 @endif
-                                @if ($solution->unidad_hvac == 4)
-                                VRF Ductados
+                                @if (strlen($solution->name_t_control)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
                                 @endif
-                                @if ($solution->unidad_hvac == 5)
-                                PTAC
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->dr_name)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
                                 @endif
-                                @if ($solution->unidad_hvac == 6)
-                                WSHP
+                                @if (strlen($solution->dr_name)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
                                 @endif
-                                @if ($solution->unidad_hvac == 7)
-                                Minisplit Inverter
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->mantenimiento)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
                                 @endif
-                                @if ($solution->unidad_hvac == 8)
-                               Chiller
-                                @endif</td>
-                        </tr>
-                        <tr class="tr_style">
-                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Equipo</label> </td>
-                             <td class="td_style style_sol_elem_value">
-                                @if ($solution->tipo_equipo == 'basico')
-                                                                    Básico
-                                                                    @endif
+                                @if (strlen($solution->mantenimiento)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
+                                    </div>
+                                </div>
 
-                                                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                                                    c/ Economizador
-                                                                    @endif
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                    </div>
+                                </div>
 
-                                                                    @if ($solution->tipo_equipo == 'manejadora')
-                                                                    Manejadora
-                                                                    @endif
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
+                                    </div>
+                                </div>
 
-                                                                    @if ($solution->tipo_equipo == 'fancoil')
-                                                                    Fancoil
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                    Cassette y Piso Techo
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                    Fancoil (LSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'man')
-                                                                    Manejadoras
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                    Fancoil (HSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Unidad Estándar
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                    Pared - Piso - Techo
-                                                                    @endif
-                                                                </td>
-
-                           </tr>
-
-                           <tr class="tr_style">
-                             <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Diseño</label></td>
-                             <td class="td_style style_sol_elem_value">{{$solution->name_disenio}}</td>
-                           </tr>
-
-                           <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Control</label></td>
-                            <td class="td_style style_sol_elem_value">{{$solution->name_t_control}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Difusor o Rejilla</label>                             </td>
-                            <td class="td_style style_sol_elem_value">{{$solution->dr_name}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Mantenimiento</label> </td>
-                            <td class="td_style style_sol_elem_value">{{$solution->mantenimiento}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
-                            <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
-                          </tr>
-
-                          <tr class="tr_style">
-                            <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
-                            <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
-                          </tr>
+                            </div>
                             @endif
-
-                               {{--3-2--}}
-                               @if ($solution->num_sol == 2 && $solution->num_enf == 3)
-
-                               <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
-                                       <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
-                                       <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
-                                 {{--   @endif --}}
-                               </tr>
-                             <tr class="tr_style">
-                              {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                               <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">{{$solution->eficencia_ene}}</label></td>
-                               <td class="td_style style_sol_elem_value">{{$solution->eficencia_ene_cant}}</td>
-                              {{--  @endif --}}
-                             </tr>
-
-                             <tr class="tr_style">
-                              {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                               <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for=""> Equipos HVAC</label></td>
-                               <td class="td_style style_sol_elem_value">
-                                @if ($solution->unidad_hvac == 1)
-                                Paquetes (RTU)
-                                @endif
-                                @if ($solution->unidad_hvac == 2)
-                                Split DX
-                                @endif
-                                @if ($solution->unidad_hvac == 3)
-                                VRF No Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 4)
-                                VRF Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 5)
-                                PTAC
-                                @endif
-                                @if ($solution->unidad_hvac == 6)
-                                WSHP
-                                @endif
-                                @if ($solution->unidad_hvac == 7)
-                                Minisplit Inverter
-                                @endif
-                                @if ($solution->unidad_hvac == 8)
-                               Chiller
-                                @endif</td>
-                           </tr>
-                           <tr class="tr_style">
-                                <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Equipo</label> </td>
-                                <td class="td_style style_sol_elem_value">
-                                    @if ($solution->tipo_equipo == 'basico')
-                                    Básico
-                                    @endif
-
-                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                    c/ Economizador
-                                    @endif
-
-                                    @if ($solution->tipo_equipo == 'manejadora')
-                                    Manejadora
-                                    @endif
-
-                                    @if ($solution->tipo_equipo == 'fancoil')
-                                    Fancoil
-                                    @endif
-
-                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                    Cassette y Piso Techo
-                                    @endif
-
-                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                    Fancoil (LSP)
-                                    @endif
-
-                                    @if ($solution->tipo_equipo == 'man')
-                                    Manejadoras
-                                    @endif
-
-                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                    Fancoil (HSP)
-                                    @endif
-
-                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                    Unidad Estándar
-                                    @endif
-
-                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                    Agua Circuito Cerrado
-                                    @endif
-
-                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                    Agua Circuito Cerrado
-                                    @endif
-
-                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                    Pared - Piso - Techo
-                                    @endif</td>
-
-
-                              </tr>
-
-                              <tr class="tr_style">
-                                <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Diseño</label></td>
-                                <td class="td_style style_sol_elem_value">{{$solution->name_disenio}}</td>
-                              </tr>
-
-                              <tr class="tr_style">
-                               <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Control</label></td>
-                               <td class="td_style style_sol_elem_value">{{$solution->name_t_control}}</td>
-                             </tr>
-
-                             <tr class="tr_style">
-                               <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Difusor o Rejilla</label>                             </td>
-                               <td class="td_style style_sol_elem_value">{{$solution->dr_name}}</td>
-                             </tr>
-
-                             <tr class="tr_style">
-                               <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Mantenimiento</label> </td>
-                               <td class="td_style style_sol_elem_value">{{$solution->mantenimiento}}</td>
-                             </tr>
-
-                             <tr class="tr_style">
-                               <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
-                               <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
-                             </tr>
-
-                             <tr class="tr_style">
-                                <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
-                                <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
-                              </tr>
-                               @endif
-
-
-                              {{--3-3--}}
-                              @if ($solution->num_sol == 3 && $solution->num_enf == 3)
-
-
-                              <tr style="border-top:1px solid;border-color:#e2e8f0;" class="tr_style">
-                                      <td class="td_style style_sol_elem_name"><label class="label_style_sol">Capacidad Térmica</label></td>
-                                      <td class="td_style style_sol_elem_value"><label class="label_style_sol_val">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label></td>
-                                {{--   @endif --}}
-                              </tr>
-                            <tr class="tr_style">
-                             {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                              <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">{{$solution->eficencia_ene}}</label></td>
-                              <td class="td_style style_sol_elem_value">{{$solution->eficencia_ene_cant}}</td>
-                             {{--  @endif --}}
-                            </tr>
-
-                            <tr class="tr_style">
-                             {{--  @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                              <td class="td_style style_sol_elem_name"><label  class="label_style_sol" for=""> Equipos HVAC</label></td>
-                              <td class="td_style style_sol_elem_value">
-                                @if ($solution->unidad_hvac == 1)
-                                Paquetes (RTU)
-                                @endif
-                                @if ($solution->unidad_hvac == 2)
-                                Split DX
-                                @endif
-                                @if ($solution->unidad_hvac == 3)
-                                VRF No Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 4)
-                                VRF Ductados
-                                @endif
-                                @if ($solution->unidad_hvac == 5)
-                                PTAC
-                                @endif
-                                @if ($solution->unidad_hvac == 6)
-                                WSHP
-                                @endif
-                                @if ($solution->unidad_hvac == 7)
-                                Minisplit Inverter
-                                @endif
-                                @if ($solution->unidad_hvac == 8)
-                               Chiller
-                                @endif</td>
-                          </tr>
-                          <tr class="tr_style">
-                               <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Equipo</label> </td>
-                               <td class="td_style style_sol_elem_value">
-                                @if ($solution->tipo_equipo == 'basico')
-                                Básico
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'c_economizador')
-                                c/ Economizador
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'manejadora')
-                                Manejadora
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil')
-                                Fancoil
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'ca_pi_te')
-                                Cassette y Piso Techo
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                Fancoil (LSP)
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'man')
-                                Manejadoras
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                Fancoil (HSP)
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'est_ptac')
-                                Unidad Estándar
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                Agua Circuito Cerrado
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                Agua Circuito Cerrado
-                                @endif
-
-                                @if ($solution->tipo_equipo == 'pa_pi_te')
-                                Pared - Piso - Techo
-                                @endif
-                            </td>
-
-                             </tr>
-
-                             <tr class="tr_style">
-                               <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Diseño</label></td>
-                               <td class="td_style style_sol_elem_value">{{$solution->name_disenio}}</td>
-                             </tr>
-
-                             <tr class="tr_style">
-                              <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Tipo Control</label></td>
-                              <td class="td_style style_sol_elem_value">{{$solution->name_t_control}}</td>
-                            </tr>
-
-                            <tr class="tr_style">
-                              <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Difusor o Rejilla</label>                             </td>
-                              <td class="td_style style_sol_elem_value">{{$solution->dr_name}}</td>
-                            </tr>
-
-                            <tr class="tr_style">
-                              <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Mantenimiento</label> </td>
-                              <td class="td_style style_sol_elem_value">{{$solution->mantenimiento}}</td>
-                            </tr>
-
-                            <tr class="tr_style">
-                              <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Inversión Inicial (CAPEX)</label></td>
-                              <td class="td_style style_sol_elem_value">${{number_format($solution->val_aprox)}}</td>
-                            </tr>
-
-                            <tr class="tr_style">
-                                <td class="td_style style_sol_elem_name"><label class="label_style_sol" for="">Costo Mantenimiento</label></td>
-                                <td class="td_style style_sol_elem_value">${{number_format($solution->costo_mantenimiento)}}</td>
-                              </tr>
-                              @endif
-
-                          @endforeach
-                        </tbody>
-                      </table>
+                        @endforeach
+                        </div>
+                    </div>
                 </div>
             </div>
+            {{-- 2 --}}
+            <div style="margin-top:8px; height:30%;" class="tarjet_sols">
+                <div style="margin-left:15px; margin-right:15px;">
+                    <div>
+                        <div style="margin-right:5px;margin-top:5px;" class="column" >
+
+                            @foreach ($solutions as $solution)
+                                @if ($solution->num_enf == 1 && $solution->num_sol == 2  )
+                                    <div style="width:94%;border-top:1px solid;border-color:#e2e8f0;">
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{$solution->eficencia_ene}}</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene_cant}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                                    @if ($solution->unidad_hvac == 1)
+                                                    Paquetes (RTU)
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 2)
+                                                    Split DX
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 3)
+                                                    VRF No Ductados
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 4)
+                                                    VRF Ductados
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 5)
+                                                    PTAC
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 6)
+                                                    WSHP
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 7)
+                                                    Minisplit Inverter
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 8)
+                                                   Chiller
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                                    @if ($solution->tipo_equipo == 'basico')
+                                                    Básico
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'c_economizador')
+                                                    c/ Economizador
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'manejadora')
+                                                    Manejadora
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil')
+                                                    Fancoil
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                    Cassette y Piso Techo
+                                                        @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                    Fancoil (LSP)
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'man')
+                                                    Manejadoras
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                    Fancoil (HSP)
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'est_ptac')
+                                                    Unidad Estándar
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                    Agua Circuito Cerrado
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                    Agua Circuito Cerrado
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                    Pared - Piso - Techo
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->name_disenio)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->name_disenio)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->name_t_control)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->name_t_control)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->dr_name)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->dr_name)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->mantenimiento)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->mantenimiento)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
 
 
+
+                        <div style="margin-left:15px; margin-right:15px;">
+                            <div>
+                                <div style="margin-right:5px;margin-top:5px;" class="column" >
+
+                                    @foreach ($solutions as $solution)
+                                    @if ($solution->num_enf == 2 && $solution->num_sol == 2  )
+                                    <div style="width:94%;border-top:1px solid;border-color:#e2e8f0;">
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{$solution->eficencia_ene}}</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene_cant}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                                    @if ($solution->unidad_hvac == 1)
+                                                    Paquetes (RTU)
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 2)
+                                                    Split DX
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 3)
+                                                    VRF No Ductados
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 4)
+                                                    VRF Ductados
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 5)
+                                                    PTAC
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 6)
+                                                    WSHP
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 7)
+                                                    Minisplit Inverter
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 8)
+                                                   Chiller
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                                    @if ($solution->tipo_equipo == 'basico')
+                                                    Básico
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'c_economizador')
+                                                    c/ Economizador
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'manejadora')
+                                                    Manejadora
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil')
+                                                    Fancoil
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                    Cassette y Piso Techo
+                                                        @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                    Fancoil (LSP)
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'man')
+                                                    Manejadoras
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                    Fancoil (HSP)
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'est_ptac')
+                                                    Unidad Estándar
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                    Agua Circuito Cerrado
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                    Agua Circuito Cerrado
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                    Pared - Piso - Techo
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->name_disenio)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->name_disenio)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->name_t_control)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->name_t_control)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->dr_name)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->dr_name)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->mantenimiento)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->mantenimiento)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div style="margin-left:15px; margin-right:15px;">
+                            <div>
+                                <div style="margin-right:5px;margin-top:5px;" class="column" >
+
+                                    @foreach ($solutions as $solution)
+                                        @if ($solution->num_enf == 3 && $solution->num_sol == 2  )
+                                    <div style="width:94%; border-top:1px solid;border-color:#e2e8f0;">
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{$solution->eficencia_ene}}</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene_cant}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                                    @if ($solution->unidad_hvac == 1)
+                                                    Paquetes (RTU)
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 2)
+                                                    Split DX
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 3)
+                                                    VRF No Ductados
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 4)
+                                                    VRF Ductados
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 5)
+                                                    PTAC
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 6)
+                                                    WSHP
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 7)
+                                                    Minisplit Inverter
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 8)
+                                                   Chiller
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                                    @if ($solution->tipo_equipo == 'basico')
+                                                    Básico
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'c_economizador')
+                                                    c/ Economizador
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'manejadora')
+                                                    Manejadora
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil')
+                                                    Fancoil
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                    Cassette y Piso Techo
+                                                        @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                    Fancoil (LSP)
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'man')
+                                                    Manejadoras
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                    Fancoil (HSP)
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'est_ptac')
+                                                    Unidad Estándar
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                    Agua Circuito Cerrado
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                    Agua Circuito Cerrado
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                    Pared - Piso - Techo
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->name_disenio)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->name_disenio)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->name_t_control)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->name_t_control)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->dr_name)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->dr_name)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->mantenimiento)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->mantenimiento)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    @endif
+                                @endforeach
+                                </div>
+                            </div>
+                        </div>
+            </div>
+
+            {{-- 3 --}}
+            <div style="margin-top:8px; height:30%;" class="tarjet_sols">
+                <div style="margin-left:15px; margin-right:15px;">
+                    <div>
+                        <div style="margin-right:5px;margin-top:0px;" class="column" >
+
+                            @foreach ($solutions as $solution)
+                                @if ($solution->num_enf == 1 && $solution->num_sol == 3  )
+                                    <div style="width:94%;border-top:1px solid;border-color:#e2e8f0;">
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{$solution->eficencia_ene}}</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene_cant}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                                    @if ($solution->unidad_hvac == 1)
+                                                    Paquetes (RTU)
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 2)
+                                                    Split DX
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 3)
+                                                    VRF No Ductados
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 4)
+                                                    VRF Ductados
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 5)
+                                                    PTAC
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 6)
+                                                    WSHP
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 7)
+                                                    Minisplit Inverter
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 8)
+                                                   Chiller
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                                    @if ($solution->tipo_equipo == 'basico')
+                                                    Básico
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'c_economizador')
+                                                    c/ Economizador
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'manejadora')
+                                                    Manejadora
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil')
+                                                    Fancoil
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                    Cassette y Piso Techo
+                                                        @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                    Fancoil (LSP)
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'man')
+                                                    Manejadoras
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                    Fancoil (HSP)
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'est_ptac')
+                                                    Unidad Estándar
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                    Agua Circuito Cerrado
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                    Agua Circuito Cerrado
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                    Pared - Piso - Techo
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->name_disenio)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->name_disenio)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->name_t_control)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->name_t_control)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->dr_name)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->dr_name)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->mantenimiento)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->mantenimiento)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div style="margin-left:15px; margin-right:15px;">
+                            <div>
+                                <div style="margin-right:5px;margin-top:0px;" class="column" >
+
+                                    @foreach ($solutions as $solution)
+                                    @if ($solution->num_enf == 2 && $solution->num_sol == 3  )
+                                    <div style="width:94%;border-top:1px solid;border-color:#e2e8f0;">
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{$solution->eficencia_ene}}</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene_cant}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                                    @if ($solution->unidad_hvac == 1)
+                                                    Paquetes (RTU)
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 2)
+                                                    Split DX
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 3)
+                                                    VRF No Ductados
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 4)
+                                                    VRF Ductados
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 5)
+                                                    PTAC
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 6)
+                                                    WSHP
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 7)
+                                                    Minisplit Inverter
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 8)
+                                                   Chiller
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                                    @if ($solution->tipo_equipo == 'basico')
+                                                    Básico
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'c_economizador')
+                                                    c/ Economizador
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'manejadora')
+                                                    Manejadora
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil')
+                                                    Fancoil
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                    Cassette y Piso Techo
+                                                        @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                    Fancoil (LSP)
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'man')
+                                                    Manejadoras
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                    Fancoil (HSP)
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'est_ptac')
+                                                    Unidad Estándar
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                    Agua Circuito Cerrado
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                    Agua Circuito Cerrado
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                    Pared - Piso - Techo
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->name_disenio)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->name_disenio)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->name_t_control)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->name_t_control)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->dr_name)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->dr_name)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->mantenimiento)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->mantenimiento)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div style="margin-left:15px; margin-right:15px;">
+                            <div>
+                                <div style="margin-right:5px;margin-top:0px;" class="column" >
+
+                                    @foreach ($solutions as $solution)
+                                        @if ($solution->num_enf == 3 && $solution->num_sol == 3  )
+                                    <div style="width:94%; border-top:1px solid;border-color:#e2e8f0;">
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{$solution->eficencia_ene}}</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene_cant}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                                    @if ($solution->unidad_hvac == 1)
+                                                    Paquetes (RTU)
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 2)
+                                                    Split DX
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 3)
+                                                    VRF No Ductados
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 4)
+                                                    VRF Ductados
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 5)
+                                                    PTAC
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 6)
+                                                    WSHP
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 7)
+                                                    Minisplit Inverter
+                                                    @endif
+                                                    @if ($solution->unidad_hvac == 8)
+                                                   Chiller
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
+                                                    @if ($solution->tipo_equipo == 'basico')
+                                                    Básico
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'c_economizador')
+                                                    c/ Economizador
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'manejadora')
+                                                    Manejadora
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil')
+                                                    Fancoil
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                    Cassette y Piso Techo
+                                                        @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                    Fancoil (LSP)
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'man')
+                                                    Manejadoras
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                    Fancoil (HSP)
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'est_ptac')
+                                                    Unidad Estándar
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                    Agua Circuito Cerrado
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                    Agua Circuito Cerrado
+                                                    @endif
+
+                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                    Pared - Piso - Techo
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->name_disenio)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->name_disenio)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->name_t_control)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->name_t_control)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->dr_name)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->dr_name)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene"
+                                        @if (strlen($solution->mantenimiento)<=20)
+                                        style="margin-left: 5px;margin-top:15px;"
+                                        @endif
+                                        @if (strlen($solution->mantenimiento)>20)
+                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                        @endif
+                                        >
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                            <div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    @endif
+                                @endforeach
+                                </div>
+                            </div>
+                        </div>
+            </div>
         </div>
-
-
-    </div>
-    {{-- 2 --}}
     <div style="page-break-after:always;"></div>
 
     <div class="tarjet">

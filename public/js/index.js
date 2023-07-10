@@ -2541,7 +2541,7 @@ function inactive_display(value){
             var dr_1_3 =$('#dr_1_3');
             var dr_1_3_count = $('#dr_1_3_count').val();
 
-            if(dr_1_3.val() == 0 || dr_1_3.val() == null){
+            if(dr_1_3.val() == "" || dr_1_3.val() == null){
                 dr_1_3.css("border-color", "red")
                 dr_1_3_count = 1;
                 $('#dr_1_3_count').val(dr_1_3_count);
