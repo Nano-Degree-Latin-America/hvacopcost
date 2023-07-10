@@ -3646,7 +3646,7 @@
                 <th class="yrs_style">ASHRAE</th>
                 </tr>
                 <tr>
-                    <td class="sol_ab_yrs_style">Base Solution</td>
+                    <td class="sol_ab_yrs_style">Solución Base</td>
                     <?php  $energy_base=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
                     @if ($energy_base > 0)
                     <td style="color:#ea0000;" class="desp_elect_style">${{number_format($energy_base)}}</td>
@@ -3667,7 +3667,7 @@
                     </tr>
                 <tr>
 
-                <td class="sol_ab_yrs_style">Solution A</td>
+                <td class="sol_ab_yrs_style">Solución A</td>
 
             <?php  $energy_a=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
 
@@ -3689,7 +3689,7 @@
                 @endif
                 </tr>
                 <tr>
-                    <td class="sol_ab_yrs_style">Solution B</td>
+                    <td class="sol_ab_yrs_style">Solución B</td>
                     @if ($result3 ==! null)
                         <?php  $energy_b=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
 
