@@ -3312,7 +3312,7 @@
                     <div style="width:100%;">
                         <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
                         <img  src="../public/assets/images/Energy-Star-Logo.png" width="115px" height="60px"/>
-                        <label style="margin-left:px;" class="dif_sols_subtitle">EUI - Energy Star <b style="color:#33cc33;" class="dif_sols_subtitle">&nbsp;{{number_format($energy_star,1)}}</b></label>
+                        <label style="margin-left:px;" class="dif_sols_subtitle">EUI - Energy Star <b style="color:#33cc33;font-size:25px;" class="">&nbsp;{{number_format($energy_star,1)}}</b></label>
                     </div>
 
                 </div>
@@ -3320,7 +3320,7 @@
                     <div style="width:100%;">
                         <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
                         <img  src="../public/assets/images/Logo-ASHRAE-png.png" width="90px" height="60px"/>
-                        <label style="margin-left:px;" class="dif_sols_subtitle">EUI - ASHRAE <b style="color:#33cc33;" class="dif_sols_subtitle">&nbsp;{{$ashrae}}</b></label>
+                        <label style="margin-left:px;" class="dif_sols_subtitle">EUI - ASHRAE <b style="color:#33cc33;font-size:25px;" class="">&nbsp;{{$ashrae}}</b></label>
                     </div>
 
                 </div>
