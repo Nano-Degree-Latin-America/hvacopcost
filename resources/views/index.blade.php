@@ -446,12 +446,27 @@ span{
                                                     <span id="cat_ed_warning" name="cat_ed_warning" class="text-red-500"></span>
                                                 </div>
 {{--  --}}
-                                                <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
-                                                    <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
+                                                <div class="flex w-full gap-x-4">
+                                                    <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                        <div class="flex w-full">
+                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
+                                                        </div>
+                                                            <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio"></select>
+                                                            <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
                                                     </div>
-                                                        <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio"></select>
-                                                        <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
+
+                                                    <div class="grid">
+                                                        <div class="flex">
+                                                            <input  id="pn" type="checkbox" disabled checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                            <label for="pn" class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 font-roboto">Projecto Nuevo</label>
+                                                        </div>
+
+                                                        <div class="flex">
+                                                            <input  id="pr" type="checkbox" disabled  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                            <label for="pn"   class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 font-roboto">Projecto Retail</label>
+                                                        </div>
+                                                        </div>
+
                                                 </div>
 
                                                 <div class="flex  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-start gap-x-3">

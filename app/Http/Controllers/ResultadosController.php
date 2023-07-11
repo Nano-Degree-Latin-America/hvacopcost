@@ -8306,8 +8306,8 @@ $dompdf->render();
              $res_opex_enf_base = $consumo_anual_opex_base/$area;
              $suma_enf_base_aux = $res_opex_enf_base;
              for ($i = 2; $i <= 15; $i++) {
+                 $res_opex_enf_base = $res_opex_enf_base * $inflacion;
                  $suma_enf_base_aux = $suma_enf_base_aux +  $res_opex_enf_base;
-                $res_opex_enf_base = $res_opex_enf_base * $inflacion;
             }
 
             //incremento inflacion
@@ -8375,7 +8375,7 @@ $dompdf->render();
              $suma_enf_a_aux = $res_opex_enf_a;
              for ($i = 2; $i <= 15; $i++) {
                  $res_opex_enf_a = $res_opex_enf_a * $inflacion;
-                $suma_enf_a_aux = $suma_enf_a_aux +  $res_opex_enf_a;
+                 $suma_enf_a_aux = $suma_enf_a_aux +  $res_opex_enf_a;
             }
 
             //incremento inflacion
@@ -8426,9 +8426,9 @@ $dompdf->render();
             ->where('solutions_project.num_enf','=',$num_enf->num_enf)
             ->select('solutions_project.cost_op_an')
             ->get();
-
+            $sumaopex_b_15 = 0;
             foreach($solutions_b as $sol){
-                $sumaopex_b = $sumaopex_b + $sol->cost_op_an;
+                $sumaopex_b_15 = $sumaopex_b_15 + $sol->cost_op_an;
             }
 
             $costo_electrico_b = DB::table('solutions_project')
@@ -8437,13 +8437,13 @@ $dompdf->render();
             ->select('solutions_project.costo_elec')
             ->first()->costo_elec;
 
-            $consumo_anual_opex_b = $sumaopex_b * $costo_electrico_b;
+            $consumo_anual_opex_b = $sumaopex_b_15 * $costo_electrico_b;
 
-             $res_opex_enf_b = $sumaopex_b/$area;
+             $res_opex_enf_b = $consumo_anual_opex_b/$area;
              $suma_enf_b_aux = $res_opex_enf_b;
              for ($i = 2; $i <= 15; $i++) {
                  $res_opex_enf_b = $res_opex_enf_b * $inflacion;
-                $suma_enf_b_aux = $suma_enf_b_aux +  $res_opex_enf_b;
+                 $suma_enf_b_aux = $suma_enf_b_aux +  $res_opex_enf_b;
             }
 
             //incremento inflacion
@@ -8462,7 +8462,7 @@ $dompdf->render();
 
             for ($i = 2; $i <= 15; $i++) {
                 $suma_cost_mant_b_div_area = $suma_cost_mant_b_div_area * $inflacion_rate;
-                $res_opex_b = $res_opex_b + $suma_cost_mant_b_div_area;
+                 $res_opex_b = $res_opex_b + $suma_cost_mant_b_div_area;
             }
 
             $total_opex_b = $suma_enf_b_aux + $res_opex_b;

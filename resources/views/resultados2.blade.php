@@ -5701,11 +5701,11 @@ function cap_op_10(id_project,unidad){
 
 //grafica 15 años
 function cap_op_15(id_project,unidad){
+
     $.ajax({
         type: 'get',
         url: "/cap_op_15/" + id_project,
         success: function (res) {
-
             var options = {
           series: [{
           name: 'CAPEX',

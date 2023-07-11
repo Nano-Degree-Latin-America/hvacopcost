@@ -681,7 +681,7 @@
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                     <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
-                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                     </div>
                                 </div>
 
@@ -870,7 +870,7 @@
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                     <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
-                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                     </div>
                                 </div>
 
@@ -1057,7 +1057,7 @@
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
                                                 <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
-                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                             </div>
                                         </div>
 
@@ -1244,7 +1244,7 @@
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
                                                 <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
-                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                             </div>
                                         </div>
 
@@ -1431,7 +1431,7 @@
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
                                                 <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
-                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                             </div>
                                         </div>
 
@@ -1619,7 +1619,7 @@
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
                                                 <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
-                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                             </div>
                                         </div>
 
@@ -1806,7 +1806,7 @@
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
                                                 <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
-                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                             </div>
                                         </div>
 
@@ -1993,7 +1993,7 @@
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
                                                 <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
-                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->val_aprox}}</div>
+                                                <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                             </div>
                                         </div>
 
