@@ -123,7 +123,7 @@ class ProjectController extends Controller
         ->first();
 
         $arry = [];
-        for ($i=0; $i <= 4; $i++) {
+        for ($i=0; $i <= 6; $i++) {
             if ($i==1) {
                 array_push($arry,$porcent_hvac->porcent_1);
             }
@@ -138,6 +138,14 @@ class ProjectController extends Controller
 
             if ($i==4) {
                 array_push($arry,$porcent_hvac->porcent_4);
+            }
+
+            if ($i==5) {
+                array_push($arry,$porcent_hvac->porcent_5);
+            }
+
+            if ($i==6) {
+                array_push($arry,$porcent_hvac->porcent_6);
             }
         }
 

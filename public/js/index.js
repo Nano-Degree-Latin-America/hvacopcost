@@ -5,8 +5,12 @@ $(document).ready(function () {
     //getPaises();
     traer_categorias_edif();
     $('#div_next_h').addClass("hidden");
-    $('#calcular').attr('disabled', true);
-    $('#calcular').css('background-color','gray');
+    $('#calcular_p_n').attr('disabled', true);
+    $('#calcular_p_n').css('background-color','gray');
+    $('#calcular_p_r').attr('disabled', true);
+    $('#calcular_p_r').css('background-color','gray');
+
+
  /*    $('#next').attr('disabled', true); */
     //selecciona pais -> pinta ciudades de ese pais en el select
     $('#paises').on('change', function () {
@@ -100,9 +104,11 @@ $(document).ready(function () {
 
       $("#paises").on('change', () => {
         $('#pais').val($('#paises option:selected').text());
+        $('#pais_retro').val($('#paises option:selected').text());
       });
       $("#ciudades").on('change', () => {
         $('#ciudad').val($('#ciudades option:selected').text());
+        $('#ciudad_retro').val($('#paises option:selected').text());
       });
 
       $('area').mouseover(function() {
@@ -209,6 +215,7 @@ function getCiudades(idPais) {
     $('#ciudades').trigger('click');
     $("#paises").val(idPais);
     $('#pais').val($('#paises option:selected').text());
+    $('#pais_retro').val($('#paises option:selected').text());
    // $('#ciudad').val($('#ciudades option:selected').text());
     //$('#paises').trigger('change');
     $.ajax({
@@ -273,7 +280,17 @@ function getDegreeHrs(pais, cd) {
             $('#hrsEnfriado_3_1').val(num_aux);
             $('#hrsEnfriado_3_2').val(num_aux);
             $('#hrsEnfriado_3_3').val(num_aux);
-            $('#dDays').val(heating);
+
+            $('#hrsEnfriado_1_1_retro').val(num_aux);
+            $('#hrsEnfriado_1_2_retro').val(num_aux);
+           // $('#hrsEnfriado_1_1_retro').val(num_aux);
+
+            $('#hrsEnfriado_2_1_retro').val(num_aux);
+            $('#hrsEnfriado_2_2_retro').val(num_aux);
+           // $('#hrsEnfriado_2_3').val(num_aux);
+
+            $('#hrsEnfriado_3_1_retro').val(num_aux);
+            $('#hrsEnfriado_3_1_retro').val(num_aux);
 
         },
         error: function (responsetext) {
@@ -594,7 +611,7 @@ function unidadHvac(value,num_div,id_select){
    $('#costo_elec_2_1').val(costo_elec.val());
    $('#costo_elec_3_1').val(costo_elec.val());
 
-   console.log(costo_elec);
+
 
 
 }
@@ -1532,6 +1549,149 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
     }
   }
 
+  function check_form_proy(value,id_empresa){
+    var pn = document.getElementById("pn");
+    var pr = document.getElementById("pr");
+    var type_p = document.getElementById("type_p");
+    if(value == 'pn'){
+        pn.checked = true;
+        pr.checked = false;
+        type_p.value = 1;
+        $('#display_nuevo_retrofit').addClass("hidden");
+        $('#display_nuevo_project').removeClass("hidden");
+    }else if(value == 'pr'){
+        type_p.value = 2;
+        pn.checked = false;
+        pr.checked = true;
+        $('#display_nuevo_retrofit').removeClass("hidden");
+        $('#display_nuevo_project').addClass("hidden");
+
+       send_marcas();
+    }
+  }
+
+  function send_marcas(){
+        $.ajax({
+            type: 'get',
+            url: '/send_marcas',
+            success: function (response) {
+                //retro_1_1
+                $('#marca_1_1_retro').empty();
+                $('#marca_1_1_retro').append($('<option>', {
+                    value: '',
+                    text: 'Seleccionar'
+                }));
+
+                response.map((marca, i) => {
+                    $('#marca_1_1_retro').append($('<option>', {
+                        value: marca.id,
+                        text: marca.marca,
+                    }));
+                });
+                 //retro_1_1
+                 $('#marcas_modal').empty();
+                 $('#marcas_modal').append($('<option>', {
+                     value: '',
+                     text: 'Seleccionar'
+                 }));
+
+                 response.map((marca, i) => {
+                     $('#marcas_modal').append($('<option>', {
+                         value: marca.id,
+                         text: marca.marca,
+                     }));
+                 });
+
+
+
+            },
+            error: function (responsetext) {
+
+            }
+        });
+  }
+
+  function send_marca_to_modal(value){
+    $("#marcas_modal").find('option[value="'+value+'"]').attr("selected", "selected");
+  }
+
+  function new_marc_add(id) {
+    var value = $('#'+id).val();
+    $.ajax({
+        type: 'POST',
+        url: '/store_new_marc/'+ value,
+        dataType: 'json',
+        data: {
+            "_token": $("meta[name='csrf-token']").attr("content")
+        },
+        success: function (response) {
+            Swal.fire({
+                title: '¡Exito!',
+                icon: 'success',
+                text:'Nueva Marca Guardada'
+
+            })
+            send_marcas();
+            $("#marcas_modal").find('option[value="'+response.id+'"]').attr("selected", "selected");
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function new_model_add(id) {
+    var value = $('#'+id).val();
+    var marca = $('#marcas_modal').val();
+    var token = $("._token").val();
+    $.ajax({
+        type: 'GET',
+        url: '/store_new_model/'+ value +'/'+ marca,
+        success: function (response) {
+            Swal.fire({
+                title: '¡Exito!',
+                icon: 'success',
+                text:'Nuevo Modelo Guardado'
+
+            })
+            $('#nuevo_modelo_modal').val('');
+            send_marcas();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+  function send_modelos(value){
+    $.ajax({
+        type: 'get',
+        url: '/send_modelos/'+value,
+        success: function (response) {
+            $('#modelo_1_1_retro').empty();
+            $('#modelo_1_1_retro').append($('<option>', {
+                value: '',
+                text: 'Seleccionar'
+            }));
+
+            response.map((marca, i) => {
+                $('#modelo_1_1_retro').append($('<option>', {
+                    value: marca.id,
+                    text: marca.modelo,
+                }));
+            });
+
+
+
+        },
+        error: function (responsetext) {
+
+        }
+    });
+}
+
+
 
 
   //FUNCION PARA PERMITIR SOLO NUMEROS
@@ -1581,6 +1741,8 @@ function send_name(value){
    var text = $('#'+value+' option:selected').text();
    var inp_text =  $('#name_diseno_'+myArray[1]+'_'+myArray[2]);
    inp_text.val(text);
+   var inp_text_retro =  $('#name_diseno_'+myArray[1]+'_'+myArray[2]+'_retro');
+   inp_text_retro.val(text);
 
 }
 
@@ -1590,6 +1752,8 @@ function send_name_t_c(value){
     var text_t_c = $('#'+value+' option:selected').text();
     var inp_text_t_C =  $('#name_t_control_'+myArray[2]+'_'+myArray[3]);
     inp_text_t_C.val(text_t_c);
+    var inp_text_t_C_retro =  $('#name_t_control_'+myArray[2]+'_'+myArray[3]+'_retro');
+    inp_text_t_C_retro.val(text_t_c);
 
 
 }
@@ -1600,6 +1764,8 @@ function send_name_dr(value){
     var text_dr = $('#'+value+' option:selected').text();
     var inp_text_dr =  $('#dr_name_'+myArray[1]+'_'+myArray[2]);
     inp_text_dr.val(text_dr);
+    var inp_text_dr_retro =  $('#dr_name_'+myArray[1]+'_'+myArray[2]+'_retro');
+    inp_text_dr_retro.val(text_dr);
 
 
 }
@@ -1700,6 +1866,15 @@ function asign_cos_ele(value){
         $('#costo_elec_3_1').val('');
         $('#costo_elec_3_2').val('');
         $('#costo_elec_3_3').val('');
+        //retrofit
+        $('#costo_elec_1_2_retro').val('');
+
+        $('#costo_elec_2_1_retro').val('');
+        $('#costo_elec_2_2_retro').val('');
+
+        $('#costo_elec_3_1_retro').val('');
+        $('#costo_elec_3_2_retro').val('');
+
     }
 
     if(value !== '0'){
@@ -1752,6 +1927,16 @@ function asign_cos_ele(value){
         $('#costo_elec_3_1').val('$'+num_aux);
         $('#costo_elec_3_2').val('$'+num_aux);
         $('#costo_elec_3_3').val('$'+num_aux);
+
+         //retrofit
+         $('#costo_elec_1_1_retro').val('$'+num_aux);
+         $('#costo_elec_1_2_retro').val('$'+num_aux);
+
+         $('#costo_elec_2_1_retro').val('$'+num_aux);
+         $('#costo_elec_2_2_retro').val('$'+num_aux);
+
+         $('#costo_elec_3_1_retro').val('$'+num_aux);
+         $('#costo_elec_3_2_retro').val('$'+num_aux);
     }
 
 }
@@ -2089,7 +2274,9 @@ function inactive_display(value){
 
 }
 
- function check_form_submit(){
+ function check_form_submit(p_type){
+    if(p_type == 1){
+
     var sol_1_1 = $('#cUnidad_1_1');
     var sol_1_2 = $('#cUnidad_1_2');
     var sol_1_3 = $('#cUnidad_1_3');
@@ -3723,7 +3910,334 @@ function inactive_display(value){
                 formulario = document.getElementById('formulario');
                 formulario.submit();
 
-  }
+     }
+
+     if(p_type == 2){
+        check_form_retro();
+     }
+    }
+
+function check_form_retro(){
+    var sol_1_1_retro = $('#cUnidad_1_1_retro');
+    var sol_1_2_retro = $('#cUnidad_1_2');
+    //var sol_1_3 = $('#cUnidad_1_3');
+
+    var sol_2_1_retro = $('#cUnidad_2_1');
+    var sol_2_2_retro = $('#cUnidad_2_2');
+    //var sol_2_3 = $('#cUnidad_2_3');
+
+    var sol_3_1_retro = $('#cUnidad_3_1');
+    var sol_3_2_retro = $('#cUnidad_3_2');
+    //var sol_3_3 = $('#cUnidad_3_3');
+
+
+                if (sol_1_1_retro.val() != '0'){
+
+                    /////////////////////////////////////
+                var tipo_equipo_1_1 =$('#csTipo_1_1_retro');
+                var tipo_equipo_1_1_count = $('#tipo_equipo_1_1_count_retro').val();
+
+                if(tipo_equipo_1_1.val() == 0){
+
+                    tipo_equipo_1_1.css("border-color", "red")
+                    tipo_equipo_1_1_count = 1;
+                    $('#tipo_equipo_1_1_count').val(tipo_equipo_1_1_count);
+
+                }else if (tipo_equipo_1_1.val() != 0) {
+
+                    tipo_equipo_1_1_count = 0;
+                    $('#tipo_equipo_1_1_count').val(tipo_equipo_1_1_count);
+
+                }
+
+                 /////////////////////////////////////
+                 var  marca_1_1_retro=$('#marca_1_1_retro');
+                 var marca_1_1_retro_count = $('#marca_1_1_retro_count').val();
+
+                 if(marca_1_1_retro.val() == '' || marca_1_1_retro.val() == null){
+
+                    marca_1_1_retro.css("border-color", "red")
+                     marca_1_1_retro_count = 1;
+                     $('#marca_1_1_retro_count').val(marca_1_1_retro_count);
+
+                 }else if (marca_1_1_retro.val() != '') {
+
+                     marca_1_1_retro_count = 0;
+                     $('#marca_1_1_retro_count').val(marca_1_1_retro_count);
+
+                 }
+
+                  /////////////////////////////////////
+                var  modelo_1_1_retro=$('#modelo_1_1_retro');
+                var modelo_1_1_retro_count = $('#modelo_1_1_retro_count').val();
+
+                if(modelo_1_1_retro.val() == '' || modelo_1_1_retro.val() == null){
+
+                    modelo_1_1_retro.css("border-color", "red")
+                    modelo_1_1_retro_count = 1;
+                    $('#modelo_1_1_retro_count').val(modelo_1_1_retro_count);
+
+                }else if (modelo_1_1_retro.val() != '') {
+
+                    modelo_1_1_retro_count = 0;
+                    $('#modelo_1_1_retro_count').val(modelo_1_1_retro_count);
+
+                }
+                /////////////////////////////////////
+                var  yrs_vida_1_1_retro=$('#yrs_vida_1_1_retro');
+                var yrs_vida_1_1_retro_count = $('#yrs_vida_1_1_retro_count').val();
+
+                if(yrs_vida_1_1_retro.val() == '' || yrs_vida_1_1_retro.val() == null){
+
+                    yrs_vida_1_1_retro.css("border-color", "red")
+                    yrs_vida_1_1_retro_count = 1;
+                    $('#yrs_vida_1_1_retro_count').val(yrs_vida_1_1_retro_count);
+
+                }else if (yrs_vida_1_1_retro.val() != '') {
+
+                    yrs_vida_1_1_retro_count = 0;
+                    $('#yrs_vida_1_1_retro_count').val(yrs_vida_1_1_retro_count);
+
+                }
+                /////////////////////////////////////
+                var csStd_retro_1_1_cant =$('#csStd_retro_1_1_cant');
+                var csStd_retro_1_1_count = $('#csStd_retro_1_1_count').val();
+
+                if(csStd_retro_1_1_cant.val() == ''){
+
+                    csStd_retro_1_1_cant.css("border-color", "red");
+                    csStd_retro_1_1_count = 1;
+                    $('#csStd_retro_1_1_count').val(csStd_retro_1_1_count);
+
+                }else if (csStd_retro_1_1_cant.val() != '') {
+
+                    csStd_retro_1_1_count = 0;
+                    $('#csStd_retro_1_1_count').val(csStd_retro_1_1_count);
+
+                }
+
+                /////////////////////////////////////
+                var  capacidad_total_1_1_retro=$('#capacidad_total_1_1_retro');
+                var capacidad_total_1_1_retro_count = $('#capacidad_total_1_1_retro_count').val();
+
+                if(capacidad_total_1_1_retro.val() == 0){
+
+                    capacidad_total_1_1_retro.css("border-color", "red")
+                    capacidad_total_1_1_retro_count = 1;
+                    $('#capacidad_total_1_1_retro_count').val(capacidad_total_1_1_retro_count);
+
+                }else if (capacidad_total_1_1_retro.val() != 0) {
+
+                    capacidad_total_1_1_retro_count = 0;
+                    $('#capacidad_total_1_1_retro_count').val(capacidad_total_1_1_retro_count);
+
+                }
+
+                    /////////////////////////////////////
+                    var csDisenio_1_1_retro =$('#csDisenio_1_1_retro');
+                    var csDisenio_1_1_retro_count = $('#csDisenio_1_1_retro_count').val();
+
+                    if(csDisenio_1_1_retro.val() == '' || csDisenio_1_1_retro.val() == null){
+
+                        csDisenio_1_1_retro.css("border-color", "red")
+                        csDisenio_1_1_retro_count = 1;
+                        $('#csDisenio_1_1_retro_count').val(csDisenio_1_1_retro_count);
+
+                    }else if (csDisenio_1_1_retro.val() != '' || csDisenio_1_1_retro.val() != null) {
+
+                            csDisenio_1_1_retro_count = 0;
+                        $('#csDisenio_1_1_retro_count').val(csDisenio_1_1_retro_count);
+
+
+                    }
+                        /////////////////////////////////////
+                var costo_elec_1_1_retro =$('#costo_elec_1_1_retro');
+                var costo_elec_1_1_retro_count = $('#costo_elec_1_1_retro_count').val();
+
+                if(costo_elec_1_1_retro.val() == 0){
+
+                    costo_elec_1_1_retro.css("border-color", "red")
+                    costo_elec_1_1_retro_count = 1;
+                    $('#costo_elec_1_1_retro_count').val(costo_elec_1_1_retro_count);
+
+                }else if (costo_elec_1_1_retro.val() != 0) {
+
+                    costo_elec_1_1_retro_count = 0;
+                    $('#costo_elec_1_1_retro_count').val(costo_elec_1_1_retro_count);
+
+                }
+                    /////////////////////////////////////
+                    var hrsEnfriado_1_1_retro =$('#hrsEnfriado_1_1_retro');
+                var hrsEnfriado_1_1_retro_count = $('#hrsEnfriado_1_1_retro_count').val();
+
+                if(hrsEnfriado_1_1_retro.val() == 0 || hrsEnfriado_1_1_retro.val() == ""){
+
+                    hrsEnfriado_1_1_retro.css("border-color", "red")
+                    hrsEnfriado_1_1_retro_count = 1;
+
+                    $('#hrsEnfriado_1_1_retro_count').val(hrsEnfriado_1_1_retro_count);
+                }else if (hrsEnfriado_1_1_retro.val() != 0 || hrsEnfriado_1_1_retro.val() != null) {
+
+                    hrsEnfriado_1_1_retro_count = 0;
+                $('#hrsEnfriado_1_1_retro_count').val(hrsEnfriado_1_1_retro_count);
+
+                    }
+
+
+                var tipo_control_1_1_retro =$('#tipo_control_1_1_retro');
+                var tipo_control_1_1_retro_count = $('#tipo_control_1_1_retro_count').val();
+
+                if(tipo_control_1_1_retro.val() == 0 || tipo_control_1_1_retro.val() == null){
+
+                    tipo_control_1_1_retro.css("border-color", "red")
+                    tipo_control_1_1_retro_count = 1;
+                    $('#tipo_control_1_1_retro_count').val(tipo_control_1_1_retro_count);
+
+                }else if (tipo_control_1_1_retro.val() != 0) {
+
+                    tipo_control_1_1_retro_count = 0;
+                    $('#tipo_control_1_1_retro_count').val(tipo_control_1_1_retro_count);
+
+                }
+                    /////////////////////////////////////
+                var dr_1_1_retro =$('#dr_1_1_retro');
+                var dr_1_1_retro_count = $('#dr_1_1_retro_count').val();
+
+                if(dr_1_1_retro.val() == "" || dr_1_1_retro.val() == null){
+
+                    dr_1_1_retro.css("border-color", "red")
+                    dr_1_1_retro_count = 1;
+                    $('#dr_1_1_retro_count').val(dr_1_1_retro_count);
+
+                }else if (dr_1_1_retro.val() != "" || dr_1_1_retro.val() != null) {
+
+                    dr_1_1_retro_count = 0;
+                    $('#dr_1_1_retro_count').val(dr_1_1_retro_count);
+
+                }
+                    /////////////////////////////////////
+                var csMantenimiento_1_1_retro =$('#csMantenimiento_1_1_retro');
+                var csMantenimiento_1_1_retro_count = $('#csMantenimiento_1_1_retro_count').val();
+
+                if(csMantenimiento_1_1_retro.val() == 0){
+
+                    csMantenimiento_1_1_retro.css("border-color", "red")
+                    csMantenimiento_1_1_retro_count = 1;
+                    $('#csMantenimiento_1_1_retro_count').val(csMantenimiento_1_1_retro_count);
+
+                }else if (csMantenimiento_1_1_retro.val() != 0) {
+
+                    csMantenimiento_1_1_retro_count = 0;
+                    $('#csMantenimiento_1_1_retro_count').val(csMantenimiento_1_1_retro_count);
+
+                }
+                /////////////////////////////////////
+                /* var csDisenio_1_1 =$('#csDisenio_1_1');
+                var csDisenio_1_1_count = $('#csDisenio_1_1_count').val();
+
+                if(csDisenio_1_1.val() == '' || csDisenio_1_1.val() == null){
+
+                    csDisenio_1_1.css("border-color", "red")
+                    csDisenio_1_1_count = 1;
+                    $('#csDisenio_1_1_count').val(csDisenio_1_1_count);
+
+                }else if (csDisenio_1_1.val() != '' || csDisenio_1_1.val() != null) {
+
+                        csDisenio_1_1_count = 0;
+                    $('#csDisenio_1_1_count').val(csDisenio_1_1_count);
+
+
+                } */
+                    /////////////////////////////////////
+                var costo_recu_1_1_retro =$('#costo_recu_1_1_retro');
+                var costo_recu_1_1_retro_count = $('#costo_recu_1_1_retro_count').val();
+
+                if(costo_recu_1_1_retro.val() == 0 || costo_recu_1_1_retro.val() == ""){
+
+                    costo_recu_1_1_retro.css("border-color", "red")
+                    costo_recu_1_1_retro_count = 1;
+
+                    $('#costo_recu_1_1_retro_count').val(costo_recu_1_1_retro_count);
+                }else if (costo_recu_1_1_retro.val() != 0 || costo_recu_1_1_retro.val() != null) {
+
+                    costo_recu_1_1_retro_count = 0;
+                $('#costo_recu_1_1_retro_count').val(costo_recu_1_1_retro_count);
+
+                    }
+                            /////////////////////////////////////
+                /*     var maintenance_cost_1_1_retro =$('#maintenance_cost_1_1_retro');
+                    var maintenance_cost_1_1_retro_count = $('#maintenance_cost_1_1_retro_count').val();
+                    const myArray_chevalor_1_1 = maintenance_cost_1_1_retro.val().split('$');
+                    var var_chevalor_1_1 =  myArray_chevalor_1_1[1];
+
+                    if(var_chevalor_1_1 <= 0 || maintenance_cost_1_1_retro.val() == ""){
+
+                        maintenance_cost_1_1_retro.css("border-color", "red")
+                        maintenance_cost_1_1_retro_count = 1;
+
+                        $('#maintenance_cost_1_1_retro_count').val(maintenance_cost_1_1_retro_count);
+                    }else if (var_chevalor_1_1 > 0 || maintenance_cost_1_1_retro.val() != null) {
+
+                        maintenance_cost_1_1_retro_count = 0;
+                    $('#maintenance_cost_1_1_retro_count').val(maintenance_cost_1_1_retro_count);
+
+                    } */
+                    /////////////////////////////////////
+                    var maintenance_cost_1_1_retro =$('#maintenance_cost_1_1_retro');
+                    var maintenance_cost_1_1_retro_count = $('#maintenance_cost_1_1_retro_count').val();
+                    const myArray_maintenance_cost_1_1 = maintenance_cost_1_1_retro.val().split('$');
+                    var var_maintenance_cost_1_1_retro =  myArray_maintenance_cost_1_1[1];
+
+                    if(var_maintenance_cost_1_1_retro <= 0 || maintenance_cost_1_1_retro.val() == ""){
+
+                        maintenance_cost_1_1_retro.css("border-color", "red")
+                        maintenance_cost_1_1_retro_count = 1;
+
+                        $('#maintenance_cost_1_1_retro_count').val(maintenance_cost_1_1_retro_count);
+                    }else if (var_maintenance_cost_1_1_retro > 0 || maintenance_cost_1_1_retro.val() != null) {
+
+                        maintenance_cost_1_1_retro_count = 0;
+                    $('#maintenance_cost_1_1_retro_count').val(maintenance_cost_1_1_retro_count);
+
+                    }
+
+                    /////////////////////////////////////
+                    var const_an_rep_1_1 =$('#const_an_rep_1_1');
+                    var const_an_rep_1_1_count = $('#const_an_rep_1_1_count').val();
+                    const myArray_const_an_rep_1_1 = maintenance_cost_1_1_retro.val().split('$');
+                    var var_const_an_rep_1_1 =  myArray_const_an_rep_1_1[1];
+
+                    if(var_const_an_rep_1_1 <= 0 || maintenance_cost_1_1_retro.val() == ""){
+
+                        const_an_rep_1_1.css("border-color", "red")
+                        const_an_rep_1_1_count = 1;
+
+                        $('#const_an_rep_1_1_count').val(const_an_rep_1_1_count);
+                    }else if (const_an_rep_1_1 > 0 || const_an_rep_1_1.val() != null) {
+
+                        const_an_rep_1_1_count = 0;
+                    $('#const_an_rep_1_1_count').val(const_an_rep_1_1_count);
+
+                    }
+
+                var count_inps_1_1 = tipo_equipo_1_1_count + marca_1_1_retro_count + modelo_1_1_retro_count + yrs_vida_1_1_retro_count + csStd_retro_1_1_count + capacidad_total_1_1_retro_count + csDisenio_1_1_retro_count + costo_elec_1_1_retro_count + hrsEnfriado_1_1_retro_count + tipo_control_1_1_retro_count + dr_1_1_retro_count + csMantenimiento_1_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_1_1_retro_count + const_an_rep_1_1_count ;
+
+                if(count_inps_1_1>0){
+                        Swal.fire({
+                                    title: '¡Atención!',
+                                    icon: 'warning',
+                                    text:'Faltan campos por completar en la Solucion Base'
+
+                                })
+                                return false;
+                                }
+
+                }
+
+                formulario = document.getElementById('formulario');
+                formulario.submit();
+
+}
 
 function valida_selects_inps(id_input){
    input_select = $('#'+id_input);
@@ -3734,16 +4248,32 @@ function valida_selects_inps(id_input){
    }
 }
 
-function valida_form_calc(){
-    var sol_1_1 = $('#cUnidad_1_1');
-    var sol_1_2 = $('#cUnidad_1_2');
-    var sol_1_3 = $('#cUnidad_1_3');
-    if (sol_1_1.val() != '0'){
-        $('#calcular').attr('disabled', false);
-        $('#calcular').css('background-color','#3c6382');
-    }else if (sol_1_1.val() == '0'){
-        $('#calcular').attr('disabled', true);
-        $('#calcular').css('background-color','gray');7
+function valida_form_calc(p_type){
+
+    if(p_type == 1){
+        var sol_1_1 = $('#cUnidad_1_1');
+        var sol_1_2 = $('#cUnidad_1_2');
+        var sol_1_3 = $('#cUnidad_1_3');
+
+        if (sol_1_1.val() != 0){
+            $('#calcular_p_n').attr('disabled', false);
+            $('#calcular_p_n').css('background-color','#3c6382');
+        }else if (sol_1_1.val() == 0){
+            $('#calcular_p_n').attr('disabled', true);
+            $('#calcular_p_n').css('background-color','gray');
+        }
+    }
+
+    if(p_type == 2){
+        var sol_1_1 = $('#cUnidad_1_1_retro');
+
+        if (sol_1_1.val() != 0){
+            $('#calcular_p_r').attr('disabled', false);
+            $('#calcular_p_r').css('background-color','#3c6382');
+        }else if (sol_1_1.val() == 0){
+            $('#calcular_p_r').attr('disabled', true);
+            $('#calcular_p_r').css('background-color','gray');
+        }
     }
 }
 
@@ -4129,6 +4659,15 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
         $('#csStd2_3_1').val('');
         $('#csStd_3_2').val('');
         $('#csStd_3_3').val('');
+        //retrofit
+        $('#csStd_1_1_retro').val('');
+        $('#csStd_1_2_retro').val('');
+
+        $('#csStd_2_1_retro').val('');
+        $('#csStd_2_2_retro').val('');
+
+        $('#csStd_3_1_retro').val('');
+        $('#csStd_3_2_retro').val('');
     }
 
     if(value !== ''){
@@ -4143,6 +4682,16 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
         $('#csStd2_3_1').val(efi);
         $('#csStd_3_2').val(efi);
         $('#csStd_3_3').val(efi);
+
+         //retrofit
+         $('#csStd_1_1_retro').val(efi);
+         $('#csStd_1_2_retro').val(efi);
+
+         $('#csStd_2_1_retro').val(efi);
+         $('#csStd_2_2_retro').val(efi);
+
+         $('#csStd_3_1_retro').val(efi);
+         $('#csStd_3_2_retro').val(efi);
     }
 
 
@@ -4321,4 +4870,7 @@ function ocultar_modal(id){
     $("#"+id).addClass("hidden");
 }
 
+function mostrar_modal_marcas_modelos(id){
+     $("#"+id).removeClass("hidden");
+ }
 

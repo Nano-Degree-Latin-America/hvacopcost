@@ -125,6 +125,7 @@ class ResultadosController extends Controller
 
             if ($sol_1_1 !== 0) {
                 $solution_enf1=new SolutionsProjectModel;
+                $solution_enf1->type_p=1;
                 $solution_enf1->num_sol=1;
                 $solution_enf1->num_enf	=1;
                 $solution_enf1->unidad_hvac=$request->get('cUnidad_1_1');
@@ -782,6 +783,7 @@ class ResultadosController extends Controller
 
             if ($sol_1_2 !== 0) {
                 $solution_enf2_2=new SolutionsProjectModel;
+                $solution_enf2_2->type_p=1;
                 $solution_enf2_2->num_sol = 2;
                 $solution_enf2_2->num_enf = 1;
                 $solution_enf2_2->unidad_hvac = $request->get('cUnidad_1_2');
@@ -1437,6 +1439,7 @@ class ResultadosController extends Controller
 //////////////sol 1 3
                 if ($sol_1_3 !== 0) {
                     $solution_enf1_3=new SolutionsProjectModel;
+                    $solution_enf1_3->type_p=1;
                     $solution_enf1_3->num_sol = 3;
                     $solution_enf1_3->num_enf = 1;
                     $solution_enf1_3->unidad_hvac = $request->get('cUnidad_1_3');
@@ -2115,6 +2118,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
             if ($sol_2_1 !== 0) {
                 $solution_enf2_1=new SolutionsProjectModel;
+                $solution_enf2_1->type_p=1;
                 $solution_enf2_1->num_sol=1;
                 $solution_enf2_1->num_enf = 2;
                 $solution_enf2_1->unidad_hvac=$request->get('cUnidad_2_1');
@@ -2765,6 +2769,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
             if ($sol_2_2 !== 0) {
                 $solution_enf2_2=new SolutionsProjectModel;
+                $solution_enf2_2->type_p=1;
                 $solution_enf2_2->num_sol = 2;
                 $solution_enf2_2->num_enf = 2;
                 $solution_enf2_2->unidad_hvac = $request->get('cUnidad_2_2');
@@ -3419,6 +3424,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 //////////////sol 2 3
                 if ($sol_2_3 !== 0) {
                     $solution_enf2_3=new SolutionsProjectModel;
+                    $solution_enf2_3->type_p=1;
                     $solution_enf2_3->num_sol = 3;
                     $solution_enf2_3->num_enf = 2;
                     $solution_enf2_3->unidad_hvac = $request->get('cUnidad_2_3');
@@ -4095,6 +4101,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
              if ($sol_3_1 !== 0) {
                  $solution_enf3_1=new SolutionsProjectModel;
+                 $solution_enf3_1->type_p=1;
                  $solution_enf3_1->num_sol=1;
                  $solution_enf3_1->num_enf = 3;
                  $solution_enf3_1->unidad_hvac=$request->get('cUnidad_3_1');
@@ -4743,6 +4750,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
 
              if ($sol_3_2 !== 0) {
                  $solution_enf3_2=new SolutionsProjectModel;
+                 $solution_enf3_2->type_p=1;
                  $solution_enf3_2->num_sol = 2;
                  $solution_enf3_2->num_enf = 3;
                  $solution_enf3_2->unidad_hvac = $request->get('cUnidad_3_2');
@@ -5397,6 +5405,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
  //////////////sol 3 3
                  if ($sol_3_3 !== 0) {
                      $solution_enf3_3=new SolutionsProjectModel;
+                     $solution_enf3_3->type_p=1;
                      $solution_enf3_3->num_sol = 3;
                      $solution_enf3_3->num_enf = 3;
                      $solution_enf3_3->unidad_hvac = $request->get('cUnidad_3_3');
@@ -9034,10 +9043,41 @@ $dompdf->render();
         return $pais;
     }
 
-    public function pais_text(){
+    public function send_marcas(){
+        $marcas = DB::table('marcas_empresa')
+        ->where('marcas_empresa.id_empresa','=',Auth::user()->id_empresa)
+        ->get();
+
+        return response()->json($marcas);
+    }
+
+    public function send_modelos($value){
+        $marcas = DB::table('modelos_empresa')
+        ->where('modelos_empresa.id_empresa','=',Auth::user()->id_empresa)
+        ->where('modelos_empresa.id_marca','=',$value)
+        ->get();
+
+        return response()->json($marcas);
+    }
+
+    public function store_new_marc($value){
+        $new_marc = new MarcasEmpresaModel;
+        $new_marc->marca = $value;
+        $new_marc->id_empresa = Auth::user()->id_empresa;
+        $new_marc->save();
 
 
-        return $pais;
+        return $new_marc;
+    }
+
+    public function store_new_model($value,$marca){
+        $new_marc = new ModelosEmpresaModel;
+        $new_marc->modelo = $value;
+        $new_marc->id_empresa = Auth::user()->id_empresa;
+        $new_marc->id_marca = $marca;
+        $new_marc->save();
+
+        return $new_marc;
     }
 
 }

@@ -126,3 +126,10 @@ Route::get('cap_op_15/{id_project}', 'ResultadosController@cap_op_15');
 Route::get('roi_base_a/{id_project}/{dif_cost}/{inv_ini}', 'ResultadosController@roi_base_a');
 
 Route::post('cerrar_session', 'IndexController@cerrar_session')->name('cerrar_session');
+//marcas
+
+Route::get('send_marcas', 'ResultadosController@send_marcas');
+Route::get('send_modelos/{value}', 'ResultadosController@send_modelos');
+Route::post('store_new_marc/{value}', 'ResultadosController@store_new_marc');
+Route::get('store_new_model/{value}/{marca}', 'ResultadosController@store_new_model');
+
