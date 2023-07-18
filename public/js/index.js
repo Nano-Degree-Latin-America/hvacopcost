@@ -1559,13 +1559,16 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
         type_p.value = 1;
         $('#display_nuevo_retrofit').addClass("hidden");
         $('#display_nuevo_project').removeClass("hidden");
+        $('#calcular_p_n').removeClass("hidden");
+        $('#calcular_p_r').addClass("hidden");
     }else if(value == 'pr'){
         type_p.value = 2;
         pn.checked = false;
         pr.checked = true;
         $('#display_nuevo_retrofit').removeClass("hidden");
         $('#display_nuevo_project').addClass("hidden");
-
+        $('#calcular_p_r').removeClass("hidden");
+        $('#calcular_p_n').addClass("hidden");
        send_marcas();
     }
   }
@@ -1632,6 +1635,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
             })
             send_marcas();
+            $("#nueva_marca_1_1").val('');
             $("#marcas_modal").find('option[value="'+response.id+'"]').attr("selected", "selected");
 
         },

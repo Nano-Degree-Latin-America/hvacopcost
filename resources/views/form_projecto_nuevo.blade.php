@@ -126,7 +126,7 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                     <div class="flex justify-start w-1/3">
-                        <select name="csStd" id="csStd" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="set_ser_to_sers(this.value);" class="w-full border-2 border-blue-600 rounded-md">
+                        <select name="csStd" id="csStd" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="set_ser_to_sers(this.value);" class="w-full border-2 border-blue-600 rounded-md text-center">
                             <option value="SEER">SEER</option>
                             <option value="SEER2">SEER2</option>
                             <option value="IEER">IEER</option>
@@ -331,7 +331,7 @@
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
 
                         <div class="flex justify-start w-1/3">
-                        <input type="text"  style="padding-top: 0.425rem;padding-bottom: 0.425rem;" readonly name="csStd_1_2" id="csStd_1_2" class="w-full border-2 border-blue-600 rounded-md">
+                        <input type="text"  style="padding-top: 0.425rem;padding-bottom: 0.425rem;" readonly name="csStd_1_2" id="csStd_1_2" class="w-full border-2 border-blue-600 rounded-md text-center">
 
                         </div>
 
@@ -532,7 +532,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                            <div class="flex justify-start w-1/3">
-                                <input type="text" readonly name="csStd_1_3" id="csStd_1_3" style="padding-top: 0.425rem;padding-bottom: 0.425rem;" class="w-full border-2 border-blue-600 rounded-md">
+                                <input type="text" readonly name="csStd_1_3" id="csStd_1_3" style="padding-top: 0.425rem;padding-bottom: 0.425rem;" class="w-full border-2 border-blue-600 rounded-md text-center">
                            </div>
                            <div class="flex justify-start w-1/4">
                                <input type="number" onchange="valida_selects_inps(this.id);" id="csStd_cant_1_3" name="csStd_cant_1_3" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -838,7 +838,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                             <div class="flex justify-start w-1/3">
-                                <input name="csStd_2_1" readonly id="csStd_2_1" style="padding-top: 0.425rem;padding-bottom: 0.248rem;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                                <input name="csStd_2_1" readonly id="csStd_2_1" style="padding-top: 0.425rem;padding-bottom: 0.248rem;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
                             </div>
                             <div class="flex justify-start w-1/4">
                             <input onchange="valida_selects_inps(this.id);"  name="csStd_cant_2_1" id="csStd_cant_2_1" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md">
@@ -1025,7 +1025,7 @@
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                         <div class="flex justify-start w-1/3">
-                            <input type="text" readonly name="csStd_2_2" id="csStd_2_2" style="padding-top: 0.425rem;padding-bottom: 0.42rem;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                            <input type="text" readonly name="csStd_2_2" id="csStd_2_2" style="padding-top: 0.425rem;padding-bottom: 0.42rem;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
 
                         </div>
                         <div class="flex justify-start w-1/4">
@@ -1210,7 +1210,7 @@
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                         <div class="flex justify-start w-1/3">
-                            <input readonly name="csStd_2_3" id="csStd_2_3"  style="padding-top: 0.425rem;padding-bottom: 0.42rem;" class="w-full border-2 border-blue-600 rounded-md py-1">
+                            <input readonly name="csStd_2_3" id="csStd_2_3"  style="padding-top: 0.425rem;padding-bottom: 0.42rem;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
 
                         </div>
                         <div class="flex justify-start w-1/4">
@@ -1525,7 +1525,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                             <div class="flex justify-start w-1/3">
-                                <input readonly style="padding-top: 0.425rem;padding-bottom: 0.248rem;" type="text" name="csStd2_3_1" id="csStd2_3_1" class="w-full py-1 border-2 border-blue-600 rounded-md">
+                                <input readonly style="padding-top: 0.425rem;padding-bottom: 0.248rem;" type="text" name="csStd2_3_1" id="csStd2_3_1" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
                             </div>
                             <div class="flex justify-start w-1/4">
                              <input  name="cheStd_3_1" id="cheStd_3_1" onchange="valida_selects_inps(this.id);" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
@@ -1711,7 +1711,7 @@
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                         <div class="flex justify-start w-1/3">
-                            <input style="padding-top: 0.425rem;padding-bottom: 0.248rem;" type="text" name="csStd_3_2" id="csStd_3_2" class="w-full py-1 border-2 border-blue-600 rounded-md">
+                            <input style="padding-top: 0.425rem;padding-bottom: 0.248rem;" type="text" name="csStd_3_2" id="csStd_3_2" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
 
                         </div>
 
@@ -1904,7 +1904,7 @@
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                         <div class="flex justify-start w-1/3">
-                            <input readonly style="padding-top: 0.425rem;padding-bottom: 0.4rem;" type="text" name="csStd_3_3" id="csStd_3_3" class="w-full py-1 border-2 border-blue-600 rounded-md">
+                            <input readonly style="padding-top: 0.425rem;padding-bottom: 0.4rem;" type="text" name="csStd_3_3" id="csStd_3_3" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
 
                         </div>
                         <div class="flex justify-start w-1/4">

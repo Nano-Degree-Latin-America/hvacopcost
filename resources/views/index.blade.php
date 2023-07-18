@@ -474,13 +474,28 @@ cursor: pointer;
 
                                                     <div class="grid">
                                                         <div class="flex">
-                                                            <input  id="pn" disabled onclick="check_form_proy('pn');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                            <label for="pn" class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 font-roboto">Proyecto Nuevo</label>
+                                                        @if (Auth::user()->tipo_user == 5)
+                                                        <input  id="pn" onclick="check_form_proy('pn');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        @endif
+
+                                                        @if (Auth::user()->tipo_user != 5)
+                                                        <input  id="pn" disabled onclick="check_form_proy('pn');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        @endif
+
+                                                            <label for="pn"  class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 font-roboto">Proyecto Nuevo</label>
                                                         </div>
 
                                                         <div class="flex">
+
+                                                        @if (Auth::user()->tipo_user == 5)
+                                                            <input  id="pr" type="checkbox"  onclick="check_form_proy('pr');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                                        @endif
+
+                                                        @if (Auth::user()->tipo_user != 5)
                                                             <input  id="pr" disabled type="checkbox"  onclick="check_form_proy('pr');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                            <label for="pn"   class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 font-roboto">Proyecto Retrofit</label>
+                                                        @endif
+
+                                                            <label for="pr"   class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 font-roboto">Proyecto Retrofit</label>
                                                         </div>
                                                         </div>
 

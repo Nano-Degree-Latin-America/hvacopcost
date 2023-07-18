@@ -8,6 +8,8 @@ use DB;
 use App\SolutionsProjectModel;
 use App\ProjectsModel;
 use App\ResultsProjectModel;
+use App\MarcasEmpresaModel;
+use App\ModelosEmpresaModel;
 use App\TipoEdificioModel;
 use Illuminate\Support\Facades\Redirect;
 use Excel;
@@ -51,6 +53,10 @@ class ResultadosController extends Controller
         }
         dd($cities);
         exit(); */
+/* dd('guardando'); */
+        //terminar tipos
+
+
         $enfriamiento1 = intval($request->get('cUnidad_1_1'));
         $enfriamiento2 = intval($request->get('cUnidad_2_1'));
         $enfriamiento3 =intval($request->get('cUnidad_3_1'));
@@ -110,20 +116,26 @@ class ResultadosController extends Controller
 
 
         //guardar soluciones
+        $type_p = intval($request->get('type_p'));
+        if($type_p === 1){
+
+
         $sol_1_1 = intval($request->get('cUnidad_1_1'));
         $sol_1_2 = intval($request->get('cUnidad_1_2'));
         $sol_1_3 = intval($request->get('cUnidad_1_3'));
 
-        //vars_ forms
-        $factor_s = $request->get('lblCsTipo_1_1');
-        $factor_d = floatval($request->get('csDisenio_1_1'));
-        $factor_c = $request->get('tipo_control_1_1');
-        $factor_t =floatval($request->get('dr_1_1'));
-        $factor_m =$request->get('csMantenimiento');
+
 
         if ($enfriamiento1 !== 0) {
 
             if ($sol_1_1 !== 0) {
+                //vars_ forms
+                $factor_s = $request->get('lblCsTipo_1_1');
+                $factor_d = floatval($request->get('csDisenio_1_1'));
+                $factor_c = $request->get('tipo_control_1_1');
+                $factor_t =floatval($request->get('dr_1_1'));
+                $factor_m =$request->get('csMantenimiento');
+
                 $solution_enf1=new SolutionsProjectModel;
                 $solution_enf1->type_p=1;
                 $solution_enf1->num_sol=1;
@@ -6078,6 +6090,11 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
             return Redirect::to('/project/' . $id_project);
             /* return view('results',['id_project'=>$id_project]); */
          }
+        }
+
+        if($type_p === 2){
+            dd('Guardando...');
+        }
     }
 
     public function edit_project($id){

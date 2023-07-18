@@ -98,7 +98,7 @@
                     </div>
 
                     <div class="flex justify-start w-1/3">
-                        <input name="yrs_vida_1_1_retro" id="yrs_vida_1_1_retro" onchange="valida_selects_inps(this.id);"  type="number" class="text-center w-full border-2 border-blue-600 rounded-md">
+                        <input name="yrs_vida_1_1_retro" id="yrs_vida_1_1_retro" onchange="valida_selects_inps(this.id);" onkeypress="return soloNumeros(event)"  type="text" class="text-center w-full border-2 border-blue-600 rounded-md">
 
                         <input  id="yrs_vida_1_1_retro_count" name="yrs_vida_1_1_retro_count" type="number" class="hidden" value="1">
 
@@ -878,7 +878,7 @@
                             </div>
 
                             <div class="flex justify-start w-1/3">
-                                <input name="yrs_vida_2_1_retro" id="yrs_vida_2_1_retro"  type="number" class="text-center w-full border-2 border-blue-600 rounded-md">
+                                <input name="yrs_vida_2_1_retro" id="yrs_vida_2_1_retro"  type="text" onkeypress="return soloNumeros(event)" class="text-center w-full border-2 border-blue-600 rounded-md">
 
                                 <input  id="yrs_vida_2_1_retro_count" name="yrs_vida_2_1_retro_count" type="number" class="hidden" value="1">
 
@@ -1657,7 +1657,7 @@
                             </div>
 
                             <div class="flex justify-start w-1/3">
-                                <input name="yrs_vida_2_1_retro" id="yrs_vida_2_1_retro"  type="number" class="text-center w-full border-2 border-blue-600 rounded-md">
+                                <input name="yrs_vida_2_1_retro" id="yrs_vida_2_1_retro"  type="text" onkeypress="return soloNumeros(event)" class="text-center w-full border-2 border-blue-600 rounded-md">
 
                                 <input  id="yrs_vida_2_1_retro_count" name="yrs_vida_2_1_retro_count" type="number" class="hidden" value="1">
 
