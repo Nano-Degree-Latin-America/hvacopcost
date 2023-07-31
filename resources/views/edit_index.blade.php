@@ -833,7 +833,7 @@ cursor: pointer;
                     >Atrás</button>
 
 
-                    @if ($type_p == 1)
+                    @if ($type_p == 1 || $type_p == 0)
                     <a href="/project/{{$id_project}}">
                     @endif
 

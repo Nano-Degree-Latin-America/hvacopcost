@@ -832,7 +832,7 @@ cursor: pointer;
                         class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
                     >Atrás</button>
 
-                    @if ($type_p == 1)
+                    @if ($type_p == 1 || $type_p == 0)
                     <a href="/project/{{$id_project}}">
                     @endif
 
