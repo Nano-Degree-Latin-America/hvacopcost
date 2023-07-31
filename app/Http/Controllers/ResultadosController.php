@@ -6093,7 +6093,2182 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
         }
 
         if($type_p === 2){
-            dd('Guardando...');
+
+            $mew_project->save();
+
+            $enfriamiento1_retro = intval($request->get('cUnidad_1_1_retro'));
+            $enfriamiento2_retro = intval($request->get('cUnidad_2_1_retro'));
+            $enfriamiento3_retro =intval($request->get('cUnidad_3_1_retro'));
+
+            //guardar soluciones
+
+            if ($enfriamiento1_retro !== 0) {
+                $sol_1_1_retro = intval($request->get('cUnidad_1_1_retro'));
+                $sol_1_2_retro = intval($request->get('cUnidad_1_2'));
+                $sol_1_3_retro = intval($request->get('cUnidad_1_3'));
+                if ($sol_1_1_retro !== 0) {
+
+                    $solution_enf1=new SolutionsProjectModel;
+                    $solution_enf1->type_p=2;
+                    $solution_enf1->num_sol=1;
+                    $solution_enf1->num_enf	=1;
+                    $solution_enf1->unidad_hvac=$request->get('cUnidad_1_1_retro');
+                    $solution_enf1->tipo_equipo	=$request->get('csTipo_1_1_retro');
+                    $solution_enf1->id_marca=$request->get('marca_1_1_retro');
+                    $solution_enf1->id_modelo=$request->get('modelo_1_1_retro');
+                    $solution_enf1->id_modelo=$request->get('modelo_1_1_retro');
+                    $solution_enf1->yrs_vida=$request->get('yrs_vida_1_1_retro');
+                    $solution_enf1->eficencia_ene=$request->get('csStd_1_1_retro');
+                    $solution_enf1->eficencia_ene_cant=$request->get('csStd_retro_1_1_cant');
+                    $solution_enf1->name_disenio=$request->get('name_diseno_1_1_retro');
+                    $solution_enf1->tipo_diseño= $request->get('csDisenio_1_1_retro');
+                    $aux = explode(",",   $request->get('capacidad_total_1_1_retro'));
+                            if(count($aux) == 1){
+                                $cap_tot_aux =  $aux[0];
+                            }
+                            if(count($aux) == 2){
+                                $cap_tot_aux=  $aux[0].$aux[1];
+                            }
+                            if(count($aux) == 3){
+                                $cap_tot_aux =  $aux[0].$aux[1].$aux[2];
+                            }
+                            if(count($aux) == 4){
+                                $cap_tot_aux =  $aux[0].$aux[1].$aux[2].$aux[3];
+                            }
+                            if(count($aux) == 5){
+                                $cap_tot_aux =  $aux[0].$aux[1].$aux[2].$aux[3].$aux[4];
+                            }
+
+                    $solution_enf1->capacidad_tot=floatval($cap_tot_aux);
+                    $solution_enf1->unid_med=$request->get('unidad_capacidad_tot_1_1_retro');
+    //separa cadena
+                    $aux_costo_elec = explode("$",   $request->get('costo_elec_1_1_retro'));
+                            $aux_costo_elec_a = explode(",",    $aux_costo_elec[1]);
+                            if(count($aux_costo_elec_a) == 1){
+                                $costo_elec_aux =  $aux_costo_elec_a[0];
+                            }
+                            if(count($aux_costo_elec_a) == 2){
+                                $costo_elec_aux=  $aux_costo_elec_a[0].$aux_costo_elec_a[1];
+                            }
+                            if(count($aux_costo_elec_a) == 3){
+                                $costo_elec_aux =  $aux_costo_elec_a[0].$aux_costo_elec_a[1].$aux_costo_elec_a[2];
+                            }
+                            if(count($aux_costo_elec_a) == 4){
+                                $costo_elec_aux =  $aux_costo_elec_a[0].$aux_costo_elec_a[1].$aux_costo_elec_a[2].$aux_costo_elec_a[3];
+                            }
+                            if(count($aux_costo_elec_a) == 5){
+                                $costo_elec_aux =  $aux_costo_elec_a[0].$aux_costo_elec_a[1].$aux_costo_elec_a[2].$aux_costo_elec_a[3].$aux_costo_elec_a[4];
+                            }
+    //separa cadena
+                    $solution_enf1->costo_elec=floatval($costo_elec_aux);
+     //separa cadena
+                    $aux_cooling_hours = explode(",",$request->get('hrsEnfriado_1_1_retro'));
+
+                    if(count($aux_cooling_hours) == 1){
+                        $cooling_hours_aux =  $aux_cooling_hours[0];
+                    }
+                    if(count($aux_cooling_hours) == 2){
+                        $cooling_hours_aux=  $aux_cooling_hours[0].$aux_cooling_hours[1];
+                    }
+                    if(count($aux_cooling_hours) == 3){
+                        $cooling_hours_aux =  $aux_cooling_hours[0].$aux_cooling_hours[1].$aux_cooling_hours[2];
+                    }
+                    if(count($aux_cooling_hours) == 4){
+                        $cooling_hours_aux =  $aux_cooling_hours[0].$aux_cooling_hours[1].$aux_cooling_hours[2].$aux_cooling_hours[3];
+                    }
+                    if(count($aux_cooling_hours) == 5){
+                        $cooling_hours_aux =  $aux_cooling_hours[0].$aux_cooling_hours[1].$aux_cooling_hours[2].$aux_cooling_hours[3].$aux_cooling_hours[4];
+                    }
+
+                    $solution_enf1->coolings_hours=intval($cooling_hours_aux);
+
+                    $solution_enf1->tipo_control=$request->get('tipo_control_1_1_retro');
+
+
+                    $solution_enf1->name_t_control=$request->get('name_t_control_1_1_retro');
+                    $solution_enf1->dr_name=$request->get('dr_name_1_1_retro');
+
+                    $solution_enf1->dr = $request->get('dr_1_1_retro');
+                    $solution_enf1->mantenimiento = $request->get('csMantenimiento_1_1_retro');
+
+                    if($request->get('costo_recu_1_1_retro') != null){
+
+                        $aux_val_aprox = explode("$",   $request->get('costo_recu_1_1_retro'));
+                        $aux_val_aprox_a = explode(",",    $aux_val_aprox[1]);
+
+                        if(count($aux_val_aprox_a) == 1){
+                            $val_aprox_aux =  $aux_val_aprox_a[0];
+                        }
+                        if(count($aux_val_aprox_a) == 2){
+                            $val_aprox_aux=  $aux_val_aprox_a[0].$aux_val_aprox_a[1];
+                        }
+                        if(count($aux_val_aprox_a) == 3){
+                            $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2];
+                        }
+                        if(count($aux_val_aprox_a) == 4){
+                            $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2].$aux_val_aprox_a[3];
+                        }
+                        if(count($aux_val_aprox_a) == 5){
+                            $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2].$aux_val_aprox_a[3].$aux_val_aprox_a[4];
+                        }
+
+                    }else  if($request->get('costo_recu_1_1_retro') == null){
+                        $val_aprox_aux = 0;
+                    }
+
+                    if($request->get('maintenance_cost_1_1_retro') != null){
+                        $aux_cost_mant = explode("$",   $request->get('maintenance_cost_1_1_retro'));
+                        $aux_cost_mant_a = explode(",",    $aux_cost_mant[1]);
+
+                        if(count($aux_cost_mant_a) == 1){
+                            $aux_cost_mant =  $aux_cost_mant_a[0];
+                        }
+                        if(count($aux_cost_mant_a) == 2){
+                            $aux_cost_mant=  $aux_cost_mant_a[0].$aux_cost_mant_a[1];
+                        }
+                        if(count($aux_cost_mant_a) == 3){
+                            $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2];
+                        }
+                        if(count($aux_cost_mant_a) == 4){
+                            $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2].$aux_cost_mant_a[3];
+                        }
+                        if(count($aux_cost_mant_a) == 5){
+                            $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2].$aux_cost_mant_a[3].$aux_cost_mant_a[4];
+                        }
+
+
+                    }else  if($request->get('maintenance_cost_1_1_retro') == null){
+                        $aux_cost_mant = 0;
+
+                    }
+
+                    if($request->get('const_an_rep_1_1') != null){
+                        $aux__cost_an_rep_1_1 = explode("$",   $request->get('const_an_rep_1_1'));
+                        $const_an_rep_1_1 = explode(",",    $aux__cost_an_rep_1_1[1]);
+
+                        if(count($const_an_rep_1_1) == 1){
+                            $aux__cost_an_rep_1_1 =  $const_an_rep_1_1[0];
+                        }
+                        if(count($const_an_rep_1_1) == 2){
+                            $aux__cost_an_rep_1_1=  $const_an_rep_1_1[0].$const_an_rep_1_1[1];
+                        }
+                        if(count($const_an_rep_1_1) == 3){
+                            $aux__cost_an_rep_1_1 =  $const_an_rep_1_1[0].$const_an_rep_1_1[1].$const_an_rep_1_1[2];
+                        }
+                        if(count($const_an_rep_1_1) == 4){
+                            $aux__cost_an_rep_1_1 =  $const_an_rep_1_1[0].$const_an_rep_1_1[1].$const_an_rep_1_1[2].$const_an_rep_1_1[3];
+                        }
+                        if(count($const_an_rep_1_1) == 5){
+                            $aux__cost_an_rep_1_1 =  $const_an_rep_1_1[0].$const_an_rep_1_1[1].$const_an_rep_1_1[2].$const_an_rep_1_1[3].$const_an_rep_1_1[4];
+                        }
+
+
+                    }else  if($request->get('const_an_rep_1_1') == null){
+                        $aux__cost_an_rep_1_1 = 0;
+
+                    }
+
+                    $solution_enf1->val_aprox=floatval($val_aprox_aux);
+                    $solution_enf1->costo_mantenimiento=floatval($aux_cost_mant);
+                    $solution_enf1->cost_an_re=floatval($aux__cost_an_rep_1_1);
+                    $solution_enf1->status=1;
+                    $solution_enf1->id_empresa=Auth::user()->id_empresa;
+                    $solution_enf1->id_user=Auth::user()->id;
+
+
+                    $cooling_hrs =  $solution_enf1->coolings_hours;
+                    $cost_energ =  $solution_enf1->costo_elec;
+                    $seer = floatval($request->get('csStd_retro_1_1_cant'));
+
+
+                    $factor_s = $request->get('lblCsTipo_1_1_retro');
+                    $factor_d = floatval($request->get('csDisenio_1_1_retro'));
+                    $factor_c = $request->get('tipo_control_1_1_retro');
+                    $factor_t =floatval($request->get('dr_1_1_retro'));
+                    $factor_m =$request->get('csMantenimiento_1_1_retro');
+                   if ($solution_enf1->unid_med == 'TR') {
+
+                    $tr =  $solution_enf1->capacidad_tot;
+                    //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+                   //((TR x 12000)
+                   $res_trx_12000 = $tr * 12000;
+                   //((TR x 12000) x (Cooling Hours)
+                   $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                   //((TR x 12000) x (Cooling Hours)  / (SEER) )
+                   $tot_1er_res = $res_1er_parent / $seer;
+                   $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                    //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
+                    /* $res_ene_apl_tot_enf_1 */
+
+
+                    //energia aplicada proccess
+                    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                    //(Fórmula Energía x Factor S)
+
+    /* (((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C) x Factor M */
+                    $res_1_parent1= $res_ene_apl_tot_enf_1 * $factor_s;
+
+                    $res_2_parent1= $res_ene_apl_tot_enf_1 * $factor_d;
+
+                    $res_3_parent1= $res_ene_apl_tot_enf_1 * $factor_t;
+
+                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+
+                    $res_res =  $res_parent_1 * $factor_c;
+                    if($solution_enf1->tipo_equipo === "pa_pi_te"){
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 1.2;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.15;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.2;
+                        }
+                    }else{
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 0.99;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.11;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.18;
+                        }
+                    }
+                    $res_res_fact_m =  $res_res * $factor_m;
+                    $solution_enf1->cost_op_an = $res_res_fact_m;
+                }else if($solution_enf1->unid_med == 'KW'){
+                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+                      //(((Kw / 3.5)
+                    $kw =  $solution_enf1->capacidad_tot;
+                    $kw_3_5 = $kw / 3.5;
+                    //(((Kw / 3.5) x 12000 )
+                    $kw_a = $kw_3_5 * 12000;
+                    $res_dividiendo = $kw_a * $cooling_hrs;
+                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
+                    $res_div_seer = $res_dividiendo / $seer;
+                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
+                    $res_div_seer_a = $res_div_seer / 1000;
+                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+
+     //energia aplicada proccess
+                    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                    //(Fórmula Energía x Factor S)
+                    $res_1_parent1= $res_div_seer_a * $factor_s;
+                    // (Fórmula Energía x Factor D)
+                    $res_2_parent1= $res_div_seer_a * $factor_d;
+                        //(Fórmula Energía x Factor T)
+                    $res_3_parent1= $res_div_seer_a * $factor_t;
+    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
+                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+       //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+                    $res_res =  $res_parent_1 *  $factor_c;
+
+                    if($solution_enf1->tipo_equipo === "pa_pi_te"){
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 1.2;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.15;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.2;
+                        }
+                    }else{
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 0.99;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.11;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.18;
+                        }
+                    }
+                    $res_res_fact_m =  $res_res * $factor_m;
+
+                    $solution_enf1->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
+
+                    //$solution_enf1->cost_op_an = floatval(number_format($res_div_seer_a,2, '.', ''));
+
+                }
+
+      //niveles de confort
+      $unidad_conf_1_1 = $solution_enf1->unidad_hvac;
+      $equipo_conf_1_1 = $solution_enf1->tipo_equipo;
+      $diseno_conf_1_1 = $solution_enf1->name_disenio;
+      $t_control_conf_1_1 = $solution_enf1->name_t_control;
+      $dr_conf_1_1 = $solution_enf1->dr_name;
+      $mant_conf_1_1 = $solution_enf1->mantenimiento;
+
+      if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp' || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+          $val_conf_equipo_1_1 = 4.5;
+
+          if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'){
+              switch ($diseno_conf_1_1) {
+                  case 'Ducto Flex. y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'Descarga Directa Ductada':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+                  case 'Inyección y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  case 'VAV y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4.5;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 5;
+                     break;
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                  case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'manejadora'){
+              switch ($diseno_conf_1_1) {
+                  case 'Descarga Directa Sin Ductar':
+                      $val_conf_dis_1_1 = 2;
+                    break;
+                  case 'Descarga Directa Ductada':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+                  case 'Ducto Flex y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 4.5;
+                    break;
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'No Aplica':
+                      $val_conf_dr_1_1 = 2;
+                    break;
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                    case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'fancoil'){
+              switch ($diseno_conf_1_1) {
+                  case 'Inyección y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  case 'Ducto Flex. y Retorno Ductado':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+                  case 'Ducto Flex y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'Baja Presión Estática':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 4.5;
+                    break;
+
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'No Aplica':
+                      $val_conf_dr_1_1 = 2;
+                    break;
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                    case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'man'){
+
+              switch ($diseno_conf_1_1) {
+                  case 'Inyección y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  case 'Ducto Flex. y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'Descarga Directa Ductada':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 5;
+                    break;
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                  case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'fancoil_hsp'){
+
+            switch ($diseno_conf_1_1) {
+                case 'Inyección y Retorno Ductado':
+                    $val_conf_dis_1_1 = 4;
+                  break;
+                case 'Ducto Flex. y Retorno Ductado':
+                    $val_conf_dis_1_1 = 3.5;
+                  break;
+                case 'Ducto Flex. y Plenum Retorno':
+                    $val_conf_dis_1_1 = 3;
+                  break;
+                case 'ASHRAE 55/62.1/90.1':
+                    $val_conf_dis_1_1 = 5;
+                  break;
+                default:
+              }
+
+                switch ($dr_conf_1_1) {
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                  case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+
+              switch ($diseno_conf_1_1) {
+                  case 'Inyección y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4.5;
+                    break;
+                  case 'Inyección y Retorno Flexible':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+                  case 'Inyección Flex. y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 5;
+                    break;
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'No Aplica':
+                      $val_conf_dr_1_1 = 2;
+                    break;
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                    case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+
+                  default:
+                }
+          }
+          //control
+          switch ($t_control_conf_1_1) {
+              case 'Termostatos Fuera Zona de Confort':
+                  $val_conf_crtl_1_1 = 2.5;
+                break;
+              case 'Termostatos en Zona de Confort':
+                  $val_conf_crtl_1_1 = 4;
+                break;
+              case 'Termostato Inteligente en Zona':
+                  $val_conf_crtl_1_1 = 5;
+                break;
+
+              default:
+            }
+            //mant
+            switch ($mant_conf_1_1) {
+              case 'ASHRAE 180':
+                  $val_conf_mant_1_1 = 2.5;
+                break;
+              case 'Deficiente':
+                  $val_conf_mant_1_1 = 3.5;
+                break;
+                case 'Sin Mantenimiento':
+                  $val_conf_mant_1_1 = 5;
+                break;
+
+              default:
+            }
+
+      }
+
+      if($equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'fancoil_lsp'){
+          $val_conf_equipo_1_1 = 4;
+
+          if($equipo_conf_1_1 === 'ca_pi_te'){
+              switch ($diseno_conf_1_1) {
+                  case 'Sin Ventilación':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+
+                  case 'Con Ventilación DOA':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  default:
+                }
+
+          }
+
+          if($equipo_conf_1_1 === 'fancoil_lsp'){
+              switch ($diseno_conf_1_1) {
+                  case 'Sin Ventilación':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+
+                  case 'Descarga Directa Ductada':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  default:
+                }
+          }
+
+          switch ($t_control_conf_1_1) {
+              case 'Termostatos Fuera Zona de Confort':
+                  $val_conf_crtl_1_1 = 2.5;
+                break;
+              case 'Termostatos en Zona de Confort':
+                  $val_conf_crtl_1_1 = 4;
+                break;
+              case 'Termostato Inteligente en Zona':
+                  $val_conf_crtl_1_1 = 5;
+                break;
+
+              default:
+            }
+
+            switch ($dr_conf_1_1) {
+              case 'No Aplica':
+                  $val_conf_dr_1_1 = 2;
+                break;
+
+              default:
+            }
+
+            switch ($mant_conf_1_1) {
+              case 'ASHRAE 180':
+                  $val_conf_mant_1_1 = 2.5;
+                break;
+              case 'Deficiente':
+                  $val_conf_mant_1_1 = 3.5;
+                break;
+                case 'Sin Mantenimiento':
+                  $val_conf_mant_1_1 = 5;
+                break;
+
+              default:
+            }
+      }
+
+      if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
+          $val_conf_equipo_1_1 = 3.5;
+          if($equipo_conf_1_1 === 'est_ptac'){
+              switch ($diseno_conf_1_1) {
+                  case 'Sin Filración MERV 8':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'Con Filtración MERV 8':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+              default:
+                }
+
+                switch ($t_control_conf_1_1) {
+                  case 'Termostatos Fuera Zona de Confort':
+                      $val_conf_crtl_1_1 = 3;
+                    break;
+                  case 'Termostatos en Zona de Confort':
+                      $val_conf_crtl_1_1 = 4;
+                    break;
+                  case 'Termostato Inteligente en Zona':
+                      $val_conf_crtl_1_1 = 5;
+                    break;
+
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'pa_pi_te'){
+              switch ($diseno_conf_1_1) {
+                  case 'Condensador Arriba':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'Condensador Abajo':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'Espalda con Espalda':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+              default:
+                }
+
+                switch ($t_control_conf_1_1) {
+                  case 'Termostato Interno':
+                      $val_conf_crtl_1_1 = 3;
+                    break;
+
+                  default:
+                }
+          }
+
+          switch ($dr_conf_1_1) {
+              case 'No Aplica':
+                  $val_conf_dr_1_1 = 2;
+                break;
+
+              default:
+            }
+
+            switch ($mant_conf_1_1) {
+              case 'ASHRAE 180':
+                  $val_conf_mant_1_1 = 2.5;
+                break;
+              case 'Deficiente':
+                  $val_conf_mant_1_1 = 3.5;
+                break;
+                case 'Sin Mantenimiento':
+                  $val_conf_mant_1_1 = 4.5;
+                break;
+
+              default:
+            }
+      }
+
+      $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
+      $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
+      $solution_enf1->confort = $nivel_confotr_1_1;
+
+
+                    $solution_enf1->id_project = $mew_project->id;
+                    $solution_enf1->save();
+
+                }
+
+                if($mew_project->save()){
+                    $res_sum = 0;
+                    $cants = DB::table('solutions_project')
+                    ->where('id_project','=',$mew_project->id)
+                    ->get();
+
+                    foreach($cants as $cant){
+                        $res_sum = $res_sum + $cant->cost_op_an;
+                    }
+
+                   $new_result = new ResultsProjectModel;
+                   $new_result->num_enf = 1;
+                   $new_result->cost_op_an = $res_sum;
+                   $new_result->id_project = $mew_project->id;
+                   $new_result->id_empresa=Auth::user()->id_empresa;
+                   $new_result->id_user=Auth::user()->id;
+                   $new_result->save();
+                }
+
+            }
+
+
+
+            //solucionn A
+            if ($enfriamiento2_retro !== 0) {
+
+                $sol_2_1_retro = intval($request->get('cUnidad_2_1_retro'));
+
+                if ($sol_2_1_retro !== 0) {
+
+                    $solution_enf_2_1_retro=new SolutionsProjectModel;
+                    $solution_enf_2_1_retro->type_p=2;
+                    $solution_enf_2_1_retro->num_sol=1;
+                    $solution_enf_2_1_retro->num_enf=2;
+                    $solution_enf_2_1_retro->unidad_hvac=$request->get('cUnidad_2_1_retro');
+                    $solution_enf_2_1_retro->tipo_equipo	=$request->get('cheTipo_2_1_retro');
+                    $solution_enf_2_1_retro->id_marca=$request->get('marca_2_1_retro');
+                    $solution_enf_2_1_retro->id_modelo=$request->get('modelo_2_1_retro');
+                    $solution_enf_2_1_retro->yrs_vida=$request->get('yrs_vida_2_1_retro');
+                    $solution_enf_2_1_retro->eficencia_ene=$request->get('csStd_2_1_retro');
+                    $solution_enf_2_1_retro->eficencia_ene_cant=$request->get('csStd_cant_2_1_retro');
+                    $solution_enf_2_1_retro->name_disenio=$request->get('name_diseno_2_1_retro');
+                    $solution_enf_2_1_retro->tipo_diseño= $request->get('cheDisenio_2_1_retro');
+                    $aux = explode(",",   $request->get('capacidad_total_2_1_retro'));
+                            if(count($aux) == 1){
+                                $cap_tot_aux =  $aux[0];
+                            }
+                            if(count($aux) == 2){
+                                $cap_tot_aux=  $aux[0].$aux[1];
+                            }
+                            if(count($aux) == 3){
+                                $cap_tot_aux =  $aux[0].$aux[1].$aux[2];
+                            }
+                            if(count($aux) == 4){
+                                $cap_tot_aux =  $aux[0].$aux[1].$aux[2].$aux[3];
+                            }
+                            if(count($aux) == 5){
+                                $cap_tot_aux =  $aux[0].$aux[1].$aux[2].$aux[3].$aux[4];
+                            }
+
+                    $solution_enf_2_1_retro->capacidad_tot=floatval($cap_tot_aux);
+                    $solution_enf_2_1_retro->unid_med=$request->get('unidad_capacidad_tot_2_1_retro');
+    //separa cadena
+                    $aux_costo_elec = explode("$",   $request->get('costo_elec_2_1_retro'));
+                            $aux_costo_elec_a = explode(",",    $aux_costo_elec[1]);
+                            if(count($aux_costo_elec_a) == 1){
+                                $costo_elec_aux =  $aux_costo_elec_a[0];
+                            }
+                            if(count($aux_costo_elec_a) == 2){
+                                $costo_elec_aux=  $aux_costo_elec_a[0].$aux_costo_elec_a[1];
+                            }
+                            if(count($aux_costo_elec_a) == 3){
+                                $costo_elec_aux =  $aux_costo_elec_a[0].$aux_costo_elec_a[1].$aux_costo_elec_a[2];
+                            }
+                            if(count($aux_costo_elec_a) == 4){
+                                $costo_elec_aux =  $aux_costo_elec_a[0].$aux_costo_elec_a[1].$aux_costo_elec_a[2].$aux_costo_elec_a[3];
+                            }
+                            if(count($aux_costo_elec_a) == 5){
+                                $costo_elec_aux =  $aux_costo_elec_a[0].$aux_costo_elec_a[1].$aux_costo_elec_a[2].$aux_costo_elec_a[3].$aux_costo_elec_a[4];
+                            }
+    //separa cadena
+                    $solution_enf_2_1_retro->costo_elec=floatval($costo_elec_aux);
+     //separa cadena
+                    $aux_cooling_hours = explode(",",$request->get('hrsEnfriado_2_1_retro'));
+
+                    if(count($aux_cooling_hours) == 1){
+                        $cooling_hours_aux =  $aux_cooling_hours[0];
+                    }
+                    if(count($aux_cooling_hours) == 2){
+                        $cooling_hours_aux=  $aux_cooling_hours[0].$aux_cooling_hours[1];
+                    }
+                    if(count($aux_cooling_hours) == 3){
+                        $cooling_hours_aux =  $aux_cooling_hours[0].$aux_cooling_hours[1].$aux_cooling_hours[2];
+                    }
+                    if(count($aux_cooling_hours) == 4){
+                        $cooling_hours_aux =  $aux_cooling_hours[0].$aux_cooling_hours[1].$aux_cooling_hours[2].$aux_cooling_hours[3];
+                    }
+                    if(count($aux_cooling_hours) == 5){
+                        $cooling_hours_aux =  $aux_cooling_hours[0].$aux_cooling_hours[1].$aux_cooling_hours[2].$aux_cooling_hours[3].$aux_cooling_hours[4];
+                    }
+
+                    $solution_enf_2_1_retro->coolings_hours=intval($cooling_hours_aux);
+
+                    $solution_enf_2_1_retro->tipo_control=$request->get('tipo_control_2_1_retro');
+
+
+                    $solution_enf_2_1_retro->name_t_control=$request->get('name_t_control_2_1_retro');
+                    $solution_enf_2_1_retro->dr_name=$request->get('dr_name_2_1_retro');
+
+                    $solution_enf_2_1_retro->dr = $request->get('dr_2_1_retro');
+                    $solution_enf_2_1_retro->mantenimiento = $request->get('csMantenimiento_2_1_retro');
+
+                    if($request->get('costo_recu_2_1_retro') != null){
+
+                        $aux_val_aprox = explode("$",   $request->get('costo_recu_2_1_retro'));
+                        $aux_val_aprox_a = explode(",",    $aux_val_aprox[1]);
+
+                        if(count($aux_val_aprox_a) == 1){
+                            $val_aprox_aux =  $aux_val_aprox_a[0];
+                        }
+                        if(count($aux_val_aprox_a) == 2){
+                            $val_aprox_aux=  $aux_val_aprox_a[0].$aux_val_aprox_a[1];
+                        }
+                        if(count($aux_val_aprox_a) == 3){
+                            $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2];
+                        }
+                        if(count($aux_val_aprox_a) == 4){
+                            $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2].$aux_val_aprox_a[3];
+                        }
+                        if(count($aux_val_aprox_a) == 5){
+                            $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2].$aux_val_aprox_a[3].$aux_val_aprox_a[4];
+                        }
+
+                    }else  if($request->get('costo_recu_2_1_retro') == null){
+                        $val_aprox_aux = 0;
+                    }
+
+                    if($request->get('maintenance_cost_2_1_retro') != null){
+                        $aux_cost_mant = explode("$",   $request->get('maintenance_cost_2_1_retro'));
+                        $aux_cost_mant_a = explode(",",    $aux_cost_mant[1]);
+
+                        if(count($aux_cost_mant_a) == 1){
+                            $aux_cost_mant =  $aux_cost_mant_a[0];
+                        }
+                        if(count($aux_cost_mant_a) == 2){
+                            $aux_cost_mant=  $aux_cost_mant_a[0].$aux_cost_mant_a[1];
+                        }
+                        if(count($aux_cost_mant_a) == 3){
+                            $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2];
+                        }
+                        if(count($aux_cost_mant_a) == 4){
+                            $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2].$aux_cost_mant_a[3];
+                        }
+                        if(count($aux_cost_mant_a) == 5){
+                            $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2].$aux_cost_mant_a[3].$aux_cost_mant_a[4];
+                        }
+
+
+                    }else  if($request->get('maintenance_cost_2_1_retro') == null){
+                        $aux_cost_mant = 0;
+
+                    }
+
+                    if($request->get('const_an_rep_2_1') != null){
+                        $aux__cost_an_rep_1_1 = explode("$",$request->get('const_an_rep_2_1'));
+                        $const_an_rep_1_1 = explode(",",$aux__cost_an_rep_1_1[1]);
+
+                        if(count($const_an_rep_1_1) == 1){
+                            $aux__cost_an_rep_1_1 =  $const_an_rep_1_1[0];
+                        }
+                        if(count($const_an_rep_1_1) == 2){
+                            $aux__cost_an_rep_1_1=  $const_an_rep_1_1[0].$const_an_rep_1_1[1];
+                        }
+                        if(count($const_an_rep_1_1) == 3){
+                            $aux__cost_an_rep_1_1 =  $const_an_rep_1_1[0].$const_an_rep_1_1[1].$const_an_rep_1_1[2];
+                        }
+                        if(count($const_an_rep_1_1) == 4){
+                            $aux__cost_an_rep_1_1 =  $const_an_rep_1_1[0].$const_an_rep_1_1[1].$const_an_rep_1_1[2].$const_an_rep_1_1[3];
+                        }
+                        if(count($const_an_rep_1_1) == 5){
+                            $aux__cost_an_rep_1_1 =  $const_an_rep_1_1[0].$const_an_rep_1_1[1].$const_an_rep_1_1[2].$const_an_rep_1_1[3].$const_an_rep_1_1[4];
+                        }
+
+
+                    }else  if($request->get('const_an_rep_2_1') == null){
+                        $aux__cost_an_rep_1_1 = 0;
+
+                    }
+
+                    $solution_enf_2_1_retro->val_aprox=floatval($val_aprox_aux);
+                    $solution_enf_2_1_retro->costo_mantenimiento=floatval($aux_cost_mant);
+                    $solution_enf_2_1_retro->cost_an_re=floatval($aux__cost_an_rep_1_1);
+                    $solution_enf_2_1_retro->status=1;
+                    $solution_enf_2_1_retro->id_empresa=Auth::user()->id_empresa;
+                    $solution_enf_2_1_retro->id_user=Auth::user()->id;
+
+
+                    $cooling_hrs =  $solution_enf_2_1_retro->coolings_hours;
+                    $cost_energ =  $solution_enf_2_1_retro->costo_elec;
+                    $seer = floatval($request->get('csStd_cant_2_1_retro'));
+
+
+                    $factor_s = $request->get('lblCsTipo_2_1_retro');
+                    $factor_d = floatval($request->get('cheDisenio_2_1_retro'));
+                    $factor_c = $request->get('tipo_control_2_1_retro');
+                    $factor_t =floatval($request->get('dr_2_1_retro'));
+                    $factor_m =$request->get('csMantenimiento_2_1_retro');
+
+                   if ($solution_enf_2_1_retro->unid_med == 'TR') {
+
+                    $tr =  $solution_enf_2_1_retro->capacidad_tot;
+                    //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+                   //((TR x 12000)
+                   $res_trx_12000 = $tr * 12000;
+                   //((TR x 12000) x (Cooling Hours)
+                   $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                   //((TR x 12000) x (Cooling Hours)  / (SEER) )
+                   $tot_1er_res = $res_1er_parent / $seer;
+                   $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                    //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
+                    /* $res_ene_apl_tot_enf_1 */
+
+
+                    //energia aplicada proccess
+                    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                    //(Fórmula Energía x Factor S)
+
+    /* (((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C) x Factor M */
+                    $res_1_parent1= $res_ene_apl_tot_enf_1 * $factor_s;
+
+                    $res_2_parent1= $res_ene_apl_tot_enf_1 * $factor_d;
+
+                    $res_3_parent1= $res_ene_apl_tot_enf_1 * $factor_t;
+
+                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+
+                    $res_res =  $res_parent_1 * $factor_c;
+                    if($solution_enf_2_1_retro->tipo_equipo === "pa_pi_te"){
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 1.2;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.15;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.2;
+                        }
+                    }else{
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 0.99;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.11;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.18;
+                        }
+                    }
+                    $res_res_fact_m =  $res_res * $factor_m;
+                    $solution_enf_2_1_retro->cost_op_an = $res_res_fact_m;
+                }else if($solution_enf_2_1_retro->unid_med == 'KW'){
+                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+                      //(((Kw / 3.5)
+                    $kw =  $solution_enf_2_1_retro->capacidad_tot;
+                    $kw_3_5 = $kw / 3.5;
+                    //(((Kw / 3.5) x 12000 )
+                    $kw_a = $kw_3_5 * 12000;
+                    $res_dividiendo = $kw_a * $cooling_hrs;
+                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
+                    $res_div_seer = $res_dividiendo / $seer;
+                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
+                    $res_div_seer_a = $res_div_seer / 1000;
+                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+
+     //energia aplicada proccess
+                    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                    //(Fórmula Energía x Factor S)
+                    $res_1_parent1= $res_div_seer_a * $factor_s;
+                    // (Fórmula Energía x Factor D)
+                    $res_2_parent1= $res_div_seer_a * $factor_d;
+                        //(Fórmula Energía x Factor T)
+                    $res_3_parent1= $res_div_seer_a * $factor_t;
+    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
+                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+       //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+                    $res_res =  $res_parent_1 *  $factor_c;
+
+                    if($solution_enf_2_1_retro->tipo_equipo === "pa_pi_te"){
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 1.2;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.15;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.2;
+                        }
+                    }else{
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 0.99;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.11;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.18;
+                        }
+                    }
+                    $res_res_fact_m =  $res_res * $factor_m;
+
+                    $solution_enf_2_1_retro->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
+
+                    //$solution_enf1->cost_op_an = floatval(number_format($res_div_seer_a,2, '.', ''));
+
+                }
+
+      //niveles de confort
+      $unidad_conf_1_1 = $solution_enf_2_1_retro->unidad_hvac;
+      $equipo_conf_1_1 = $solution_enf_2_1_retro->tipo_equipo;
+      $diseno_conf_1_1 = $solution_enf_2_1_retro->name_disenio;
+      $t_control_conf_1_1 = $solution_enf_2_1_retro->name_t_control;
+      $dr_conf_1_1 = $solution_enf_2_1_retro->dr_name;
+      $mant_conf_1_1 = $solution_enf_2_1_retro->mantenimiento;
+
+      if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp' || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+          $val_conf_equipo_1_1 = 4.5;
+
+          if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'){
+              switch ($diseno_conf_1_1) {
+                  case 'Ducto Flex. y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'Descarga Directa Ductada':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+                  case 'Inyección y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  case 'VAV y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4.5;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 5;
+                     break;
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                  case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'manejadora'){
+              switch ($diseno_conf_1_1) {
+                  case 'Descarga Directa Sin Ductar':
+                      $val_conf_dis_1_1 = 2;
+                    break;
+                  case 'Descarga Directa Ductada':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+                  case 'Ducto Flex y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 4.5;
+                    break;
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'No Aplica':
+                      $val_conf_dr_1_1 = 2;
+                    break;
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                    case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'fancoil'){
+              switch ($diseno_conf_1_1) {
+                  case 'Inyección y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  case 'Ducto Flex. y Retorno Ductado':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+                  case 'Ducto Flex y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'Baja Presión Estática':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 4.5;
+                    break;
+
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'No Aplica':
+                      $val_conf_dr_1_1 = 2;
+                    break;
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                    case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'man'){
+
+              switch ($diseno_conf_1_1) {
+                  case 'Inyección y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  case 'Ducto Flex. y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'Descarga Directa Ductada':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 5;
+                    break;
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                  case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'fancoil_hsp'){
+
+            switch ($diseno_conf_1_1) {
+                case 'Inyección y Retorno Ductado':
+                    $val_conf_dis_1_1 = 4;
+                  break;
+                case 'Ducto Flex. y Retorno Ductado':
+                    $val_conf_dis_1_1 = 3.5;
+                  break;
+                case 'Ducto Flex. y Plenum Retorno':
+                    $val_conf_dis_1_1 = 3;
+                  break;
+                case 'ASHRAE 55/62.1/90.1':
+                    $val_conf_dis_1_1 = 5;
+                  break;
+                default:
+              }
+
+                switch ($dr_conf_1_1) {
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                  case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+
+              switch ($diseno_conf_1_1) {
+                  case 'Inyección y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4.5;
+                    break;
+                  case 'Inyección y Retorno Flexible':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+                  case 'Inyección Flex. y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 5;
+                    break;
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'No Aplica':
+                      $val_conf_dr_1_1 = 2;
+                    break;
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                    case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+
+                  default:
+                }
+          }
+          //control
+          switch ($t_control_conf_1_1) {
+              case 'Termostatos Fuera Zona de Confort':
+                  $val_conf_crtl_1_1 = 2.5;
+                break;
+              case 'Termostatos en Zona de Confort':
+                  $val_conf_crtl_1_1 = 4;
+                break;
+              case 'Termostato Inteligente en Zona':
+                  $val_conf_crtl_1_1 = 5;
+                break;
+
+              default:
+            }
+            //mant
+            switch ($mant_conf_1_1) {
+              case 'ASHRAE 180':
+                  $val_conf_mant_1_1 = 2.5;
+                break;
+              case 'Deficiente':
+                  $val_conf_mant_1_1 = 3.5;
+                break;
+                case 'Sin Mantenimiento':
+                  $val_conf_mant_1_1 = 5;
+                break;
+
+              default:
+            }
+
+      }
+
+      if($equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'fancoil_lsp'){
+          $val_conf_equipo_1_1 = 4;
+
+          if($equipo_conf_1_1 === 'ca_pi_te'){
+              switch ($diseno_conf_1_1) {
+                  case 'Sin Ventilación':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+
+                  case 'Con Ventilación DOA':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  default:
+                }
+
+          }
+
+          if($equipo_conf_1_1 === 'fancoil_lsp'){
+              switch ($diseno_conf_1_1) {
+                  case 'Sin Ventilación':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+
+                  case 'Descarga Directa Ductada':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  default:
+                }
+          }
+
+          switch ($t_control_conf_1_1) {
+              case 'Termostatos Fuera Zona de Confort':
+                  $val_conf_crtl_1_1 = 2.5;
+                break;
+              case 'Termostatos en Zona de Confort':
+                  $val_conf_crtl_1_1 = 4;
+                break;
+              case 'Termostato Inteligente en Zona':
+                  $val_conf_crtl_1_1 = 5;
+                break;
+
+              default:
+            }
+
+            switch ($dr_conf_1_1) {
+              case 'No Aplica':
+                  $val_conf_dr_1_1 = 2;
+                break;
+
+              default:
+            }
+
+            switch ($mant_conf_1_1) {
+              case 'ASHRAE 180':
+                  $val_conf_mant_1_1 = 2.5;
+                break;
+              case 'Deficiente':
+                  $val_conf_mant_1_1 = 3.5;
+                break;
+                case 'Sin Mantenimiento':
+                  $val_conf_mant_1_1 = 5;
+                break;
+
+              default:
+            }
+      }
+
+      if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
+          $val_conf_equipo_1_1 = 3.5;
+          if($equipo_conf_1_1 === 'est_ptac'){
+              switch ($diseno_conf_1_1) {
+                  case 'Sin Filración MERV 8':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'Con Filtración MERV 8':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+              default:
+                }
+
+                switch ($t_control_conf_1_1) {
+                  case 'Termostatos Fuera Zona de Confort':
+                      $val_conf_crtl_1_1 = 3;
+                    break;
+                  case 'Termostatos en Zona de Confort':
+                      $val_conf_crtl_1_1 = 4;
+                    break;
+                  case 'Termostato Inteligente en Zona':
+                      $val_conf_crtl_1_1 = 5;
+                    break;
+
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'pa_pi_te'){
+              switch ($diseno_conf_1_1) {
+                  case 'Condensador Arriba':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'Condensador Abajo':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'Espalda con Espalda':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+              default:
+                }
+
+                switch ($t_control_conf_1_1) {
+                  case 'Termostato Interno':
+                      $val_conf_crtl_1_1 = 3;
+                    break;
+
+                  default:
+                }
+          }
+
+          switch ($dr_conf_1_1) {
+              case 'No Aplica':
+                  $val_conf_dr_1_1 = 2;
+                break;
+
+              default:
+            }
+
+            switch ($mant_conf_1_1) {
+              case 'ASHRAE 180':
+                  $val_conf_mant_1_1 = 2.5;
+                break;
+              case 'Deficiente':
+                  $val_conf_mant_1_1 = 3.5;
+                break;
+                case 'Sin Mantenimiento':
+                  $val_conf_mant_1_1 = 4.5;
+                break;
+
+              default:
+            }
+      }
+
+      $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
+      $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
+      $solution_enf_2_1_retro->confort = $nivel_confotr_1_1;
+
+
+                    $solution_enf_2_1_retro->id_project = $mew_project->id;
+                    $solution_enf_2_1_retro->save();
+
+                }
+
+                if($mew_project->save()){
+                    $res_sum = 0;
+                    $cants = DB::table('solutions_project')
+                    ->where('id_project','=',$mew_project->id)
+                    ->get();
+
+                    foreach($cants as $cant){
+                        $res_sum = $res_sum + $cant->cost_op_an;
+                    }
+
+                   $new_result = new ResultsProjectModel;
+                   $new_result->num_enf = 2;
+                   $new_result->cost_op_an = $res_sum;
+                   $new_result->id_project = $mew_project->id;
+                   $new_result->id_empresa=Auth::user()->id_empresa;
+                   $new_result->id_user=Auth::user()->id;
+                   $new_result->save();
+                }
+
+            }
+
+            //solucionn B
+            if ($enfriamiento3_retro !== 0) {
+
+                $sol_3_1_retro = intval($request->get('cUnidad_3_1_retro'));
+
+                if ($sol_3_1_retro !== 0) {
+
+                    $solution_enf_3_1_retro=new SolutionsProjectModel;
+                    $solution_enf_3_1_retro->type_p=2;
+                    $solution_enf_3_1_retro->num_sol=1;
+                    $solution_enf_3_1_retro->num_enf=3;
+                    $solution_enf_3_1_retro->unidad_hvac=$request->get('cUnidad_3_1_retro');
+                    $solution_enf_3_1_retro->tipo_equipo=$request->get('cheTipo_3_1_retro');
+                    $solution_enf_3_1_retro->id_marca=$request->get('marca_3_1_retro');
+                    $solution_enf_3_1_retro->id_modelo=$request->get('modelo_3_1_retro');
+                    $solution_enf_3_1_retro->yrs_vida=$request->get('yrs_vida_3_1_retro');
+                    $solution_enf_3_1_retro->eficencia_ene=$request->get('csStd_3_1_retro');
+                    $solution_enf_3_1_retro->eficencia_ene_cant=$request->get('csStd_cant_3_1_retro');
+                    $solution_enf_3_1_retro->name_disenio=$request->get('name_diseno_3_1_retro');
+                    $solution_enf_3_1_retro->tipo_diseño= $request->get('cheDisenio_3_1_retro');
+                    $aux = explode(",",   $request->get('capacidad_total_3_1_retro'));
+                            if(count($aux) == 1){
+                                $cap_tot_aux =  $aux[0];
+                            }
+                            if(count($aux) == 2){
+                                $cap_tot_aux=  $aux[0].$aux[1];
+                            }
+                            if(count($aux) == 3){
+                                $cap_tot_aux =  $aux[0].$aux[1].$aux[2];
+                            }
+                            if(count($aux) == 4){
+                                $cap_tot_aux =  $aux[0].$aux[1].$aux[2].$aux[3];
+                            }
+                            if(count($aux) == 5){
+                                $cap_tot_aux =  $aux[0].$aux[1].$aux[2].$aux[3].$aux[4];
+                            }
+
+                    $solution_enf_3_1_retro->capacidad_tot=floatval($cap_tot_aux);
+                    $solution_enf_3_1_retro->unid_med=$request->get('unidad_capacidad_tot_3_1_retro');
+    //separa cadena
+                    $aux_costo_elec = explode("$",   $request->get('costo_elec_3_1_retro'));
+                            $aux_costo_elec_a = explode(",",    $aux_costo_elec[1]);
+                            if(count($aux_costo_elec_a) == 1){
+                                $costo_elec_aux =  $aux_costo_elec_a[0];
+                            }
+                            if(count($aux_costo_elec_a) == 2){
+                                $costo_elec_aux=  $aux_costo_elec_a[0].$aux_costo_elec_a[1];
+                            }
+                            if(count($aux_costo_elec_a) == 3){
+                                $costo_elec_aux =  $aux_costo_elec_a[0].$aux_costo_elec_a[1].$aux_costo_elec_a[2];
+                            }
+                            if(count($aux_costo_elec_a) == 4){
+                                $costo_elec_aux =  $aux_costo_elec_a[0].$aux_costo_elec_a[1].$aux_costo_elec_a[2].$aux_costo_elec_a[3];
+                            }
+                            if(count($aux_costo_elec_a) == 5){
+                                $costo_elec_aux =  $aux_costo_elec_a[0].$aux_costo_elec_a[1].$aux_costo_elec_a[2].$aux_costo_elec_a[3].$aux_costo_elec_a[4];
+                            }
+    //separa cadena
+                    $solution_enf_3_1_retro->costo_elec=floatval($costo_elec_aux);
+     //separa cadena
+                    $aux_cooling_hours = explode(",",$request->get('hrsEnfriado_3_1_retro'));
+
+                    if(count($aux_cooling_hours) == 1){
+                        $cooling_hours_aux =  $aux_cooling_hours[0];
+                    }
+                    if(count($aux_cooling_hours) == 2){
+                        $cooling_hours_aux=  $aux_cooling_hours[0].$aux_cooling_hours[1];
+                    }
+                    if(count($aux_cooling_hours) == 3){
+                        $cooling_hours_aux =  $aux_cooling_hours[0].$aux_cooling_hours[1].$aux_cooling_hours[2];
+                    }
+                    if(count($aux_cooling_hours) == 4){
+                        $cooling_hours_aux =  $aux_cooling_hours[0].$aux_cooling_hours[1].$aux_cooling_hours[2].$aux_cooling_hours[3];
+                    }
+                    if(count($aux_cooling_hours) == 5){
+                        $cooling_hours_aux =  $aux_cooling_hours[0].$aux_cooling_hours[1].$aux_cooling_hours[2].$aux_cooling_hours[3].$aux_cooling_hours[4];
+                    }
+
+                    $solution_enf_3_1_retro->coolings_hours=intval($cooling_hours_aux);
+
+                    $solution_enf_3_1_retro->tipo_control=$request->get('tipo_control_3_1_retro');
+
+
+                    $solution_enf_3_1_retro->name_t_control=$request->get('name_t_control_3_1_retro');
+                    $solution_enf_3_1_retro->dr_name=$request->get('dr_name_3_1_retro');
+
+                    $solution_enf_3_1_retro->dr = $request->get('dr_3_1_retro');
+                    $solution_enf_3_1_retro->mantenimiento = $request->get('cheMantenimiento_3_1_retro');
+
+                    if($request->get('costo_recu_3_1_retro') != null){
+
+                        $aux_val_aprox = explode("$",   $request->get('costo_recu_3_1_retro'));
+                        $aux_val_aprox_a = explode(",",    $aux_val_aprox[1]);
+
+                        if(count($aux_val_aprox_a) == 1){
+                            $val_aprox_aux =  $aux_val_aprox_a[0];
+                        }
+                        if(count($aux_val_aprox_a) == 2){
+                            $val_aprox_aux=  $aux_val_aprox_a[0].$aux_val_aprox_a[1];
+                        }
+                        if(count($aux_val_aprox_a) == 3){
+                            $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2];
+                        }
+                        if(count($aux_val_aprox_a) == 4){
+                            $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2].$aux_val_aprox_a[3];
+                        }
+                        if(count($aux_val_aprox_a) == 5){
+                            $val_aprox_aux =  $aux_val_aprox_a[0].$aux_val_aprox_a[1].$aux_val_aprox_a[2].$aux_val_aprox_a[3].$aux_val_aprox_a[4];
+                        }
+
+                    }else  if($request->get('costo_recu_3_1_retro') == null){
+                        $val_aprox_aux = 0;
+                    }
+
+                    if($request->get('maintenance_cost_3_1_retro') != null){
+                        $aux_cost_mant = explode("$",   $request->get('maintenance_cost_3_1_retro'));
+                        $aux_cost_mant_a = explode(",",    $aux_cost_mant[1]);
+
+                        if(count($aux_cost_mant_a) == 1){
+                            $aux_cost_mant =  $aux_cost_mant_a[0];
+                        }
+                        if(count($aux_cost_mant_a) == 2){
+                            $aux_cost_mant=  $aux_cost_mant_a[0].$aux_cost_mant_a[1];
+                        }
+                        if(count($aux_cost_mant_a) == 3){
+                            $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2];
+                        }
+                        if(count($aux_cost_mant_a) == 4){
+                            $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2].$aux_cost_mant_a[3];
+                        }
+                        if(count($aux_cost_mant_a) == 5){
+                            $aux_cost_mant =  $aux_cost_mant_a[0].$aux_cost_mant_a[1].$aux_cost_mant_a[2].$aux_cost_mant_a[3].$aux_cost_mant_a[4];
+                        }
+
+
+                    }else  if($request->get('maintenance_cost_3_1_retro') == null){
+                        $aux_cost_mant = 0;
+
+                    }
+
+                    if($request->get('const_an_rep_3_1') != null){
+                        $aux__cost_an_rep_1_1 = explode("$",   $request->get('const_an_rep_3_1'));
+                        $const_an_rep_1_1 = explode(",",    $aux__cost_an_rep_1_1[1]);
+
+                        if(count($const_an_rep_1_1) == 1){
+                            $aux__cost_an_rep_1_1 =  $const_an_rep_1_1[0];
+                        }
+                        if(count($const_an_rep_1_1) == 2){
+                            $aux__cost_an_rep_1_1=  $const_an_rep_1_1[0].$const_an_rep_1_1[1];
+                        }
+                        if(count($const_an_rep_1_1) == 3){
+                            $aux__cost_an_rep_1_1 =  $const_an_rep_1_1[0].$const_an_rep_1_1[1].$const_an_rep_1_1[2];
+                        }
+                        if(count($const_an_rep_1_1) == 4){
+                            $aux__cost_an_rep_1_1 =  $const_an_rep_1_1[0].$const_an_rep_1_1[1].$const_an_rep_1_1[2].$const_an_rep_1_1[3];
+                        }
+                        if(count($const_an_rep_1_1) == 5){
+                            $aux__cost_an_rep_1_1 =  $const_an_rep_1_1[0].$const_an_rep_1_1[1].$const_an_rep_1_1[2].$const_an_rep_1_1[3].$const_an_rep_1_1[4];
+                        }
+
+
+                    }else  if($request->get('const_an_rep_3_1') == null){
+                        $aux__cost_an_rep_1_1 = 0;
+
+                    }
+
+                    $solution_enf_3_1_retro->val_aprox=floatval($val_aprox_aux);
+                    $solution_enf_3_1_retro->costo_mantenimiento=floatval($aux_cost_mant);
+                    $solution_enf_3_1_retro->cost_an_re=floatval($aux__cost_an_rep_1_1);
+                    $solution_enf_3_1_retro->status=1;
+                    $solution_enf_3_1_retro->id_empresa=Auth::user()->id_empresa;
+                    $solution_enf_3_1_retro->id_user=Auth::user()->id;
+
+
+                    $cooling_hrs =  $solution_enf_3_1_retro->coolings_hours;
+                    $cost_energ =  $solution_enf_3_1_retro->costo_elec;
+                    $seer = floatval($request->get('csStd_cant_3_1_retro'));
+
+
+                    $factor_s = $request->get('lblCsTipo_3_1_retro');
+                    $factor_d = floatval($request->get('cheDisenio_3_1_retro'));
+                    $factor_c = $request->get('tipo_control_3_1_retro');
+                    $factor_t =floatval($request->get('dr_3_1_retro'));
+                    $factor_m =$request->get('cheMantenimiento_3_1_retro');
+                   if ($solution_enf_3_1_retro->unid_med == 'TR') {
+
+                    $tr =  $solution_enf_3_1_retro->capacidad_tot;
+                    //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
+                   //((TR x 12000)
+                   $res_trx_12000 = $tr * 12000;
+                   //((TR x 12000) x (Cooling Hours)
+                   $res_1er_parent = $res_trx_12000 * $cooling_hrs;
+                   //((TR x 12000) x (Cooling Hours)  / (SEER) )
+                   $tot_1er_res = $res_1er_parent / $seer;
+                   $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+                    //((TR x 12000) x (Cooling Hours) x (Costo Energía) / (SEER) ) / 1000)
+                    /* $res_ene_apl_tot_enf_1 */
+
+
+                    //energia aplicada proccess
+                    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                    //(Fórmula Energía x Factor S)
+
+    /* (((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C) x Factor M */
+                    $res_1_parent1= $res_ene_apl_tot_enf_1 * $factor_s;
+
+                    $res_2_parent1= $res_ene_apl_tot_enf_1 * $factor_d;
+
+                    $res_3_parent1= $res_ene_apl_tot_enf_1 * $factor_t;
+
+                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+
+                    $res_res =  $res_parent_1 * $factor_c;
+                    if($solution_enf_3_1_retro->tipo_equipo === "pa_pi_te"){
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 1.2;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.15;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.2;
+                        }
+                    }else{
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 0.99;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.11;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.18;
+                        }
+                    }
+                    $res_res_fact_m =  $res_res * $factor_m;
+                    $solution_enf_3_1_retro->cost_op_an = $res_res_fact_m;
+                }else if($solution_enf_3_1_retro->unid_med == 'KW'){
+                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+                      //(((Kw / 3.5)
+                    $kw =  $solution_enf_3_1_retro->capacidad_tot;
+                    $kw_3_5 = $kw / 3.5;
+                    //(((Kw / 3.5) x 12000 )
+                    $kw_a = $kw_3_5 * 12000;
+                    $res_dividiendo = $kw_a * $cooling_hrs;
+                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
+                    $res_div_seer = $res_dividiendo / $seer;
+                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
+                    $res_div_seer_a = $res_div_seer / 1000;
+                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+
+     //energia aplicada proccess
+                    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                    //(Fórmula Energía x Factor S)
+                    $res_1_parent1= $res_div_seer_a * $factor_s;
+                    // (Fórmula Energía x Factor D)
+                    $res_2_parent1= $res_div_seer_a * $factor_d;
+                        //(Fórmula Energía x Factor T)
+                    $res_3_parent1= $res_div_seer_a * $factor_t;
+    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
+                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+       //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+                    $res_res =  $res_parent_1 *  $factor_c;
+
+                    if($solution_enf_3_1_retro->tipo_equipo === "pa_pi_te"){
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 1.2;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.15;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.2;
+                        }
+                    }else{
+                        if($factor_m==='ASHRAE 180'){
+                            $factor_m = 0.99;
+                        }
+
+                        if($factor_m==='Deficiente'){
+                            $factor_m = 1.11;
+                        }
+
+                        if($factor_m==='Sin Mantenimiento'){
+                            $factor_m = 1.18;
+                        }
+                    }
+                    $res_res_fact_m =  $res_res * $factor_m;
+
+                    $solution_enf_3_1_retro->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
+
+                    //$solution_enf1->cost_op_an = floatval(number_format($res_div_seer_a,2, '.', ''));
+
+                }
+
+      //niveles de confort
+      $unidad_conf_1_1 = $solution_enf_3_1_retro->unidad_hvac;
+      $equipo_conf_1_1 = $solution_enf_3_1_retro->tipo_equipo;
+      $diseno_conf_1_1 = $solution_enf_3_1_retro->name_disenio;
+      $t_control_conf_1_1 = $solution_enf_3_1_retro->name_t_control;
+      $dr_conf_1_1 = $solution_enf_3_1_retro->dr_name;
+      $mant_conf_1_1 = $solution_enf_3_1_retro->mantenimiento;
+
+      if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador' || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp' || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+          $val_conf_equipo_1_1 = 4.5;
+
+          if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'){
+              switch ($diseno_conf_1_1) {
+                  case 'Ducto Flex. y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'Descarga Directa Ductada':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+                  case 'Inyección y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  case 'VAV y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4.5;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 5;
+                     break;
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                  case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'manejadora'){
+              switch ($diseno_conf_1_1) {
+                  case 'Descarga Directa Sin Ductar':
+                      $val_conf_dis_1_1 = 2;
+                    break;
+                  case 'Descarga Directa Ductada':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+                  case 'Ducto Flex y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 4.5;
+                    break;
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'No Aplica':
+                      $val_conf_dr_1_1 = 2;
+                    break;
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                    case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'fancoil'){
+              switch ($diseno_conf_1_1) {
+                  case 'Inyección y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  case 'Ducto Flex. y Retorno Ductado':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+                  case 'Ducto Flex y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'Baja Presión Estática':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 4.5;
+                    break;
+
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'No Aplica':
+                      $val_conf_dr_1_1 = 2;
+                    break;
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                    case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'man'){
+
+              switch ($diseno_conf_1_1) {
+                  case 'Inyección y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  case 'Ducto Flex. y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'Descarga Directa Ductada':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 5;
+                    break;
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                  case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'fancoil_hsp'){
+
+            switch ($diseno_conf_1_1) {
+                case 'Inyección y Retorno Ductado':
+                    $val_conf_dis_1_1 = 4;
+                  break;
+                case 'Ducto Flex. y Retorno Ductado':
+                    $val_conf_dis_1_1 = 3.5;
+                  break;
+                case 'Ducto Flex. y Plenum Retorno':
+                    $val_conf_dis_1_1 = 3;
+                  break;
+                case 'ASHRAE 55/62.1/90.1':
+                    $val_conf_dis_1_1 = 5;
+                  break;
+                default:
+              }
+
+                switch ($dr_conf_1_1) {
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                  case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'){
+
+              switch ($diseno_conf_1_1) {
+                  case 'Inyección y Retorno Ductado':
+                      $val_conf_dis_1_1 = 4.5;
+                    break;
+                  case 'Inyección y Retorno Flexible':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+                  case 'Inyección Flex. y Plenum Retorno':
+                      $val_conf_dis_1_1 = 3;
+                    break;
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 5;
+                    break;
+                  default:
+                }
+
+                switch ($dr_conf_1_1) {
+                  case 'No Aplica':
+                      $val_conf_dr_1_1 = 2;
+                    break;
+                  case 'Cumple ASHRAE  Standard 70':
+                      $val_conf_dr_1_1 = 5;
+                    break;
+                    case 'No Cumple ASHRAE Standard 70':
+                      $val_conf_dr_1_1 = 3;
+                    break;
+
+                  default:
+                }
+          }
+          //control
+          switch ($t_control_conf_1_1) {
+              case 'Termostatos Fuera Zona de Confort':
+                  $val_conf_crtl_1_1 = 2.5;
+                break;
+              case 'Termostatos en Zona de Confort':
+                  $val_conf_crtl_1_1 = 4;
+                break;
+              case 'Termostato Inteligente en Zona':
+                  $val_conf_crtl_1_1 = 5;
+                break;
+
+              default:
+            }
+            //mant
+            switch ($mant_conf_1_1) {
+              case 'ASHRAE 180':
+                  $val_conf_mant_1_1 = 2.5;
+                break;
+              case 'Deficiente':
+                  $val_conf_mant_1_1 = 3.5;
+                break;
+                case 'Sin Mantenimiento':
+                  $val_conf_mant_1_1 = 5;
+                break;
+
+              default:
+            }
+
+      }
+
+      if($equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'fancoil_lsp'){
+          $val_conf_equipo_1_1 = 4;
+
+          if($equipo_conf_1_1 === 'ca_pi_te'){
+              switch ($diseno_conf_1_1) {
+                  case 'Sin Ventilación':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+
+                  case 'Con Ventilación DOA':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  default:
+                }
+
+          }
+
+          if($equipo_conf_1_1 === 'fancoil_lsp'){
+              switch ($diseno_conf_1_1) {
+                  case 'Sin Ventilación':
+                      $val_conf_dis_1_1 = 2.5;
+                    break;
+
+                  case 'Descarga Directa Ductada':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'ASHRAE 55/62.1/90.1':
+                      $val_conf_dis_1_1 = 4;
+                    break;
+                  default:
+                }
+          }
+
+          switch ($t_control_conf_1_1) {
+              case 'Termostatos Fuera Zona de Confort':
+                  $val_conf_crtl_1_1 = 2.5;
+                break;
+              case 'Termostatos en Zona de Confort':
+                  $val_conf_crtl_1_1 = 4;
+                break;
+              case 'Termostato Inteligente en Zona':
+                  $val_conf_crtl_1_1 = 5;
+                break;
+
+              default:
+            }
+
+            switch ($dr_conf_1_1) {
+              case 'No Aplica':
+                  $val_conf_dr_1_1 = 2;
+                break;
+
+              default:
+            }
+
+            switch ($mant_conf_1_1) {
+              case 'ASHRAE 180':
+                  $val_conf_mant_1_1 = 2.5;
+                break;
+              case 'Deficiente':
+                  $val_conf_mant_1_1 = 3.5;
+                break;
+                case 'Sin Mantenimiento':
+                  $val_conf_mant_1_1 = 5;
+                break;
+
+              default:
+            }
+      }
+
+      if($equipo_conf_1_1 === 'est_ptac' || $equipo_conf_1_1 === 'pa_pi_te'){
+          $val_conf_equipo_1_1 = 3.5;
+          if($equipo_conf_1_1 === 'est_ptac'){
+              switch ($diseno_conf_1_1) {
+                  case 'Sin Filración MERV 8':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'Con Filtración MERV 8':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+              default:
+                }
+
+                switch ($t_control_conf_1_1) {
+                  case 'Termostatos Fuera Zona de Confort':
+                      $val_conf_crtl_1_1 = 3;
+                    break;
+                  case 'Termostatos en Zona de Confort':
+                      $val_conf_crtl_1_1 = 4;
+                    break;
+                  case 'Termostato Inteligente en Zona':
+                      $val_conf_crtl_1_1 = 5;
+                    break;
+
+                  default:
+                }
+          }
+
+          if($equipo_conf_1_1 === 'pa_pi_te'){
+              switch ($diseno_conf_1_1) {
+                  case 'Condensador Arriba':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'Condensador Abajo':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+                  case 'Espalda con Espalda':
+                      $val_conf_dis_1_1 = 3.5;
+                    break;
+
+              default:
+                }
+
+                switch ($t_control_conf_1_1) {
+                  case 'Termostato Interno':
+                      $val_conf_crtl_1_1 = 3;
+                    break;
+
+                  default:
+                }
+          }
+
+          switch ($dr_conf_1_1) {
+              case 'No Aplica':
+                  $val_conf_dr_1_1 = 2;
+                break;
+
+              default:
+            }
+
+            switch ($mant_conf_1_1) {
+              case 'ASHRAE 180':
+                  $val_conf_mant_1_1 = 2.5;
+                break;
+              case 'Deficiente':
+                  $val_conf_mant_1_1 = 3.5;
+                break;
+                case 'Sin Mantenimiento':
+                  $val_conf_mant_1_1 = 4.5;
+                break;
+
+              default:
+            }
+      }
+
+      $suma_nivel_confort_1_1 = $val_conf_equipo_1_1 + $val_conf_dis_1_1 + $val_conf_dr_1_1 + $val_conf_crtl_1_1 + $val_conf_mant_1_1;
+      $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
+      $solution_enf_3_1_retro->confort = $nivel_confotr_1_1;
+
+
+                    $solution_enf_3_1_retro->id_project = $mew_project->id;
+                    $solution_enf_3_1_retro->save();
+
+                }
+
+                if($mew_project->save()){
+                    $res_sum = 0;
+                    $cants = DB::table('solutions_project')
+                    ->where('id_project','=',$mew_project->id)
+                    ->get();
+
+                    foreach($cants as $cant){
+                        $res_sum = $res_sum + $cant->cost_op_an;
+                    }
+
+                   $new_result = new ResultsProjectModel;
+                   $new_result->num_enf = 3;
+                   $new_result->cost_op_an = $res_sum;
+                   $new_result->id_project = $mew_project->id;
+                   $new_result->id_empresa=Auth::user()->id_empresa;
+                   $new_result->id_user=Auth::user()->id;
+                   $new_result->save();
+                }
+
+
+            }
+            $solutions =DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$mew_project->id)
+            ->get();
+
+            if($mew_project->save()){
+                $id_project = $mew_project->id;
+
+                return Redirect::to('/resultados_retrofit/' . $id_project);
+
+             }
         }
     }
 
@@ -6110,9 +8285,18 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
         ->where('ciudad','=',$project_edit->ciudad)
         ->first()->idCiudad;
 
+        $type_p = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id)
+        ->first()->type_p;
+
+        $marcas = DB::table('marcas_empresa')
+        ->where('id_empresa','=',Auth::user()->id_empresa)
+        ->get();
+
+
         return view('edit_index',['id_project'=>$id,'project_edit'=>$project_edit,
                         'cate_edificio'=>$cate_edificio,'paises'=>$paises,'id_ciudad_ini'=>$id_ciudad_ini,
-
+                         'type_p'=> $type_p,'marcas'=>$marcas
         ]);
     }
 
@@ -6129,15 +8313,36 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
         ->where('ciudad','=',$project_edit->ciudad)
         ->first()->idCiudad;
 
+        $type_p = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id)
+        ->first()->type_p;
+
+        $marcas = DB::table('marcas_empresa')
+        ->where('id_empresa','=',Auth::user()->id_empresa)
+        ->get();
+
+
         return view('edit_copy',['id_project'=>$id,'project_edit'=>$project_edit,
                         'cate_edificio'=>$cate_edificio,'paises'=>$paises,'id_ciudad_ini'=>$id_ciudad_ini,
-
+                         'type_p'=> $type_p,'marcas'=>$marcas
         ]);
     }
 
     public function solutions($id){
         $solutions = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id)
+        ->get();
+
+        return $solutions;
+    }
+
+    public function solutions_retrofit($id){
+        $solutions = DB::table('solutions_project')
+        ->join('marcas_empresa','marcas_empresa.id','=','solutions_project.id_marca')
+        ->join('modelos_empresa','modelos_empresa.id','=','solutions_project.id_modelo')
+        ->where('marcas_empresa.id_empresa','=',Auth::user()->id_empresa)
+        ->where('solutions_project.id_project','=',$id)
+        ->select('solutions_project.*','marcas_empresa.marca','modelos_empresa.modelo')
         ->get();
 
         return $solutions;
@@ -6388,6 +8593,11 @@ $solution_enf1_3->confort = $nivel_confotr_1_1;
     public function project(Request $request,$id_project){
 
         return view('resultados2',['id_project'=>$id_project]);
+    }
+
+    public function resultados_retrofit(Request $request,$id_project){
+
+        return view('resultados_retrofit',['id_project'=>$id_project]);
     }
 
     public function unidad_area($id){
@@ -9077,6 +11287,22 @@ $dompdf->render();
         return response()->json($marcas);
     }
 
+    public function send_modelos_datalist($value){
+        $id_marca = DB::table('marcas_empresa')
+        ->where('marcas_empresa.marca','=',$value)
+        ->where('marcas_empresa.id_empresa','=',Auth::user()->id_empresa)
+        ->first();
+
+        $modelos = DB::table('modelos_empresa')
+        ->where('modelos_empresa.id_empresa','=',Auth::user()->id_empresa)
+        ->where('modelos_empresa.id_marca','=',$id_marca->id)
+        ->get();
+
+        return response()->json($modelos);
+    }
+
+
+
     public function store_new_marc($value){
         $new_marc = new MarcasEmpresaModel;
         $new_marc->marca = $value;
@@ -9087,14 +11313,72 @@ $dompdf->render();
         return $new_marc;
     }
 
-    public function store_new_model($value,$marca){
-        $new_marc = new ModelosEmpresaModel;
-        $new_marc->modelo = $value;
-        $new_marc->id_empresa = Auth::user()->id_empresa;
-        $new_marc->id_marca = $marca;
-        $new_marc->save();
+    public function store_new_model($marca,$modelo){
+        if($marca == 'empty'){
+            $value = 'vacio marca';
+            return false;
+        }
 
-        return $new_marc;
+        if($marca !== 'empty'){ //si marca es diferente a vacio
+            //buscar marca
+            $check_m = DB::table('marcas_empresa')
+            ->where('marcas_empresa.id_empresa','=',Auth::user()->id_empresa)
+            ->where('marcas_empresa.marca','=',$marca)
+            ->first();
+
+            if($check_m){ //si encontro marca
+                //check_modelo
+                if($modelo == 'empty'){
+                    return false;
+                }
+
+                if($modelo !== 'empty'){
+                    $check_modelo = DB::table('modelos_empresa')
+                    ->where('modelos_empresa.id_empresa','=',Auth::user()->id_empresa)
+                    ->where('modelos_empresa.modelo','=',$modelo)
+                    ->first();
+
+                    if($check_modelo){
+                        return false;
+                    }else{
+                        $new_model = new ModelosEmpresaModel;
+                        $new_model->modelo = $modelo;
+                        $new_model->id_empresa = Auth::user()->id_empresa;
+                        $new_model->id_marca = $check_m->id;
+                        $new_model->save();
+                    }
+                }
+            }else{ // si no eocntro marca
+                $new_marc = new MarcasEmpresaModel; //nueva marca
+                $new_marc->marca = $marca;
+                $new_marc->id_empresa = Auth::user()->id_empresa;
+                $new_marc->save();
+                //check_modelo
+                if($modelo == 'empty'){
+                    return false;
+                }
+
+                if($modelo !== 'empty'){
+                    $check_modelo = DB::table('modelos_empresa')
+                    ->where('modelos_empresa.id_empresa','=',Auth::user()->id_empresa)
+                    ->where('modelos_empresa.modelo','=',$modelo)
+                    ->first();
+
+                    if($check_modelo){
+                        return false;
+                    }else{
+                        $new_model = new ModelosEmpresaModel;
+                        $new_model->modelo = $modelo;
+                        $new_model->id_empresa = Auth::user()->id_empresa;
+                        $new_model->id_marca = $new_marc->id;
+                        $new_model->save();
+                    }
+                }
+            }
+            return 'si';
+        }
+
+
     }
 
 }

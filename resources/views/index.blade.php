@@ -472,32 +472,7 @@ cursor: pointer;
                                                             <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
                                                     </div>
 
-                                                    <div class="grid">
-                                                        <div class="flex">
-                                                        @if (Auth::user()->tipo_user == 5)
-                                                        <input  id="pn" onclick="check_form_proy('pn');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        @endif
 
-                                                        @if (Auth::user()->tipo_user != 5)
-                                                        <input  id="pn" disabled onclick="check_form_proy('pn');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        @endif
-
-                                                            <label for="pn"  class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 font-roboto">Proyecto Nuevo</label>
-                                                        </div>
-
-                                                        <div class="flex">
-
-                                                        @if (Auth::user()->tipo_user == 5)
-                                                            <input  id="pr" type="checkbox"  onclick="check_form_proy('pr');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        @endif
-
-                                                        @if (Auth::user()->tipo_user != 5)
-                                                            <input  id="pr" disabled type="checkbox"  onclick="check_form_proy('pr');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                                        @endif
-
-                                                            <label for="pr"   class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 font-roboto">Proyecto Retrofit</label>
-                                                        </div>
-                                                        </div>
 
                                                 </div>
 
@@ -640,6 +615,34 @@ cursor: pointer;
                                     <a href="https://www.universidadhvac.com/" target="_blank"><img src="{{asset('assets/images/banners/universidad.jpg')}}" alt="Universidad hvac"></a>
                                     <span class="lbl-banner">Visitar</span>
                                 </div> --}}
+                            </div>
+                            <div class="ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
+                                <div style="margin-top:300px;" class="grid">
+                                    <div class="flex">
+                                    @if (Auth::user()->tipo_user == 5)
+                                    <input  id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    @endif
+
+                                    @if (Auth::user()->tipo_user != 5)
+                                    <input  id="pn" disabled onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    @endif
+
+                                        <label for="pn"  class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 font-roboto">Proyecto Nuevo</label>
+                                    </div>
+
+                                    <div class="flex">
+
+                                    @if (Auth::user()->tipo_user == 5)
+                                        <input  id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    @endif
+
+                                    @if (Auth::user()->tipo_user != 5)
+                                        <input  id="pr" disabled type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    @endif
+
+                                        <label for="pr"   class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 font-roboto">Proyecto Retrofit</label>
+                                    </div>
+                                    </div>
                             </div>
 
                     </div>

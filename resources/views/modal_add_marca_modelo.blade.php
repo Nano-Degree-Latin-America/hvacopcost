@@ -1,5 +1,7 @@
 <div id="modal_add_marca_modelo" name="modal_add_marca_modelo" class="fixed z-10 inset-0 overflow-y-auto mt-10 hidden">
+<style>
 
+</style>
     <div class="flex  items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
       <!-- Fondo oscuro -->
       <div class="fixed inset-0 transition-opacity">
@@ -18,20 +20,6 @@
                 </div>
               </div>
 
-              <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                <div class="lg:grid 2xl:grid xl:grid w-1/2 gap-x-1">
-                    <div class="w-full flex justify-start text-left">
-                        <label  class="labels" for=""><b>Nueva Marca</b> </label>
-                    </div>
-
-                    <div class="w-full flex justify-start gap-x-2">
-                        <input type="text" style="margin-left: 2px;" type="text" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="nueva_marca_1_1" id="nueva_marca_1_1" >
-                        <div class="mt-1">
-                            <a onclick="new_marc_add('nueva_marca_1_1');" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-x-2">
                 <div class="lg:grid 2xl:grid xl:grid w-1/2 gap-x-2">
@@ -39,23 +27,38 @@
                         <label  class="labels" for=""><b>Marca</b> </label>
                     </div>
                     <div class="w-full flex justify-start">
-                        <select  class="w-full border-2 border-blue-600 rounded-md py-2 text-black" name="marcas_modal" id="marcas_modal">
-                        </select>
+                        <input type="text" list="browsers" id="marca_modal" onchange="send_modelos_to_datalist(value,'modelos_datalist')" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center">
+                        <datalist id="browsers">
+
+                        </datalist>
                     </div>
+
+                    {{-- <div class="dropdown ">
+
+                        <div id="myDropdown" class="dropdown-content text-black grid hidden">
+
+
+                        </div>
+                      </div> --}}
                 </div>
 
                 <div class="lg:grid 2xl:grid xl:grid gap-x-1 w-1/2">
-                    <div class="w-full flex justify-start text-left">
-                        <label class="labels" for=""><b>Nuevo Modelo</b></label>
-                    </div>
+                    <div>
+                        <div class="w-full flex justify-start text-left">
+                            <label class="labels" for=""><b>Nuevo Modelo</b></label>
+                        </div>
 
-                    <div class="w-full flex justify-start text-left gap-x-2">
-                                <div>
-                                    <input type="text"  type="text" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="nuevo_modelo_modal" id="nuevo_modelo_modal" >
-                                </div>
-                                <div class="mt-1">
-                                    <a onclick="new_model_add('nuevo_modelo_modal');" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
-                                </div>
+                        <div class="w-full flex justify-start text-left gap-x-2">
+                                    <div>
+                                        <input type="text"list="modelos_datalist"  type="text" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="nuevo_modelo_modal" id="nuevo_modelo_modal" >
+                                        <datalist id="modelos_datalist">
+
+                                        </datalist>
+                                    </div>
+                                    <div class="mt-1">
+                                        <a onclick="new_model_or_marck_add('nuevo_modelo_modal','marca_modal');" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
+                                    </div>
+                        </div>
                     </div>
                 </div>
             </div>

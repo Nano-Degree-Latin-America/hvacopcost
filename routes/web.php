@@ -118,6 +118,8 @@ Route::get('clean_solution/{id_project}/{num_sol}/{num_enf}', 'ProjectController
 Route::get('del_solution/{id_project}/{num_sol}/{num_enf}', 'ProjectController@del_solution');
 Route::get('/del_project/{id}', 'ProjectController@del_project')->name('del_project');
 Route::get('edit_project_copy/{id_project}', 'ResultadosController@edit_project_copy');
+Route::get('resultados_retrofit/{id_project}', 'ResultadosController@resultados_retrofit');
+
 //resultados_graficas
 Route::get('cap_op_3/{id_project}', 'ResultadosController@cap_op_3');
 Route::get('cap_op_5/{id_project}', 'ResultadosController@cap_op_5');
@@ -132,4 +134,6 @@ Route::get('send_marcas', 'ResultadosController@send_marcas');
 Route::get('send_modelos/{value}', 'ResultadosController@send_modelos');
 Route::post('store_new_marc/{value}', 'ResultadosController@store_new_marc');
 Route::get('store_new_model/{value}/{marca}', 'ResultadosController@store_new_model');
+Route::get('send_modelos_datalist/{value}', 'ResultadosController@send_modelos_datalist');
+
 

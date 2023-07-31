@@ -32,6 +32,10 @@
     <link rel="stylesheet" href="{{asset("assets/css/styles.css")}}">
     {{-- <link href="assets/css/styles.css?v=<?php echo time(); ?>" rel="stylesheet"> --}}
     <link rel=»canonical» href=»https://hvacopcostla.sarsoftware.com/»/>
+    {{-- select 2  --}}
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    {{--  --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" integrity="sha256-+8RZJua0aEWg+QVVKg4LEzEEm/8RFez5Tb4JBNiV5xA=" crossorigin="anonymous"></script>
     <style>
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa&family=Dongle&family=Montserrat:wght@500;600&family=Rubik:wght@300&display=swap');
@@ -39,6 +43,21 @@
         .font-roboto{
             font-family: 'ABeeZee', sans-serif;
         }
+
+        .select2-selection__rendered {
+    line-height: 35px !important;
+
+}
+
+.select2-selection--multiple {
+    border: solid #3182ce 2px !important;
+}
+.select2-container .select2-selection--single {
+    height: 35px !important;
+}
+.select2-selection__arrow {
+    height: 34px !important;
+}
     </style>
     @section('css')
 
@@ -62,10 +81,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- <script src="{{asset('plugins/requirejs/require.js')}}"></script> --}}
    {{--  <script src="{{asset('plugins/jquery/jquery-3.6.0.min.js')}}"></script> --}}
-   <script
-  src="https://code.jquery.com/jquery-3.6.1.js"
-  integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
-  crossorigin="anonymous"></script>
+
    <script src="{{asset('plugins/chartjs/dist/Chart.js')}}"></script>
     {{-- <script src="{{asset('plugins/rwdImageMaps/jquery.rwdImageMaps.min.js')}}" type="module"></script> --}}
     <script src="{{asset('js/resources.js?v=1.1')}}"></script>

@@ -165,7 +165,7 @@ span{
     </div>
 
 </div>
-
+@inject('type_project','app\Http\Controllers\ProjectController')
 
 <div class="w-full flex justify-center">
     <div class="w-3/4">
@@ -189,7 +189,9 @@ span{
                         </tr>
                     </thead>
                     <tbody class="flex-1 sm:flex-none">
+
                         @foreach ($mis_projectos as $project)
+                        <?php  $type_p=$type_project->type_project($project->id) ?>
                         <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                                {{$project->name}}
@@ -225,7 +227,14 @@ span{
                               @endif
                             </td>
                             <td class="border-grey-light border flex hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer gap-x-2">
+                                @if ($type_p->type_p < 2 )
                                 <button title="Ver Resultados" class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="far fa-eye"></i></a></button>
+                                @endif
+
+                                @if ($type_p->type_p == 2 )
+                                <button title="Ver Resultados" class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="resultados_retrofit/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="far fa-eye"></i></a></button>
+                                @endif
+
                                 <button title="Editar" class="p-1 bg-blue-400 rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="edit_project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-pen-to-square"></i></a></button>
                                 <button title="Ver PDF" class="p-1 bg-red-600  rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="generatePDF/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i></a></button>
                                 <button  onclick="elimiinar_project('{{$project->id}}','del_project');" class="p-1  bg-orange-400 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a><i class="fas fa-trash"></i></a></button>

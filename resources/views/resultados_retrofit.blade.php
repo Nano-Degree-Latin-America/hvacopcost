@@ -231,31 +231,7 @@ span{
 
 			<div x-show.transition="step != 'complete'">
 				<!-- Top Navigation -->
-				{{-- <div class="border-b-2 py-4">
-					<div class="uppercase tracking-wide text-xs font-bold text-gray-500 mb-1 leading-tight" x-text="`Step: ${step} of 3`"></div>
-					<div class="flex flex-col md:flex-row md:items-center md:justify-between">
-						<div class="flex-1">
-							<div x-show="step === 1">
-								<div class="text-lg font-bold text-gray-700 leading-tight">Your Profile</div>
-							</div>
 
-							<div x-show="step === 2">
-								<div class="text-lg font-bold text-gray-700 leading-tight">Your Password</div>
-							</div>
-
-							<div x-show="step === 3">
-								<div class="text-lg font-bold text-gray-700 leading-tight">Tell me about yourself</div>
-							</div>
-						</div>
-
-						<div class="flex items-center md:w-64">
-							<div class="w-full bg-white rounded-full mr-2">
-								<div class="rounded-full bg-green-500 text-xs leading-none h-2 text-center text-white" :style="'width: '+ parseInt(step / 3 * 100) +'%'"></div>
-							</div>
-							<div class="text-xs w-10 text-gray-600" x-text="parseInt(step / 3 * 100) +'%'"></div>
-						</div>
-					</div>
-				</div> --}}
 				<!-- /Top Navigation -->
 
 				<!-- Step Content -->
@@ -264,7 +240,7 @@ span{
                         <div class="w-full flex justify-center">
                             <div class="2xl:w-3/4 xl:w-3/4 lg:w-full">
                                 <div class="grid my-3 bg-gray-200 rounded-md shadow-xl">
-                                    <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
+                                    <div style="background-color: #233064;" class="w-full flex justify-center text-white rounded-md p-3">
                                         <label  class="font-bold text-white text-3xl font-roboto">ANÁLISIS ENERGÉTICO - ENFRIAMIENTO</label>
                                     </div>
                                     <?php  $tar_ele=$solutions->tar_elec($id_project) ?>
@@ -351,25 +327,269 @@ span{
                                     </div>
                                      </div>
                                     <div class="grid my-3 bg-gray-200 rounded-md shadow-xl">
-                                    <?php  $solutions=$solutions->solutions($id_project) ?>
+                                    <?php  $solutions=$solutions->solutions_retrofit($id_project) ?>
 
                                     <div class="grid my-2">
                                         {{-- 1 --}}
                                         <div class="w-full flex justify-center">
                                             <div class="grid w-1/3 mx-1 ">
-                                            @foreach ($solutions as $solution)
-                                                @if ($solution->num_sol == 1 && $solution->num_enf == 1)
-                                                <div>
+                                                @foreach ($solutions as $solution)
+                                                    @if ($solution->num_sol == 1 && $solution->num_enf == 1 && $solution->type_p == 2)
+                                                    <div>
                                                         <div class="flex w-full">
-                                                                    <div class="w-full">
-                                                                            <div class="w-full bg-blue-800 rounded-md p-2 text-center">
-                                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl md:text-4xl  font-roboto" for="">Solución Base</label>
-                                                                            </div>
+                                                            <div class="w-full">
+                                                                <div class="w-full bg-orange-500 rounded-md p-2 text-center">
+                                                                    <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl md:text-4xl  font-roboto" for="">Sistema Existente</label>
+                                                                </div>
+
+                                                                <div class="mx-5 mb-3">
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex justify-start">
+                                                                            <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
+                                                                        </div>
+                                                                        <div class="ml-2 w-auto flex justify-start">
+                                                                            <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex ">
+                                                                            <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
+                                                                        </div>
+                                                                        <div class="ml-2 w-auto">
+                                                                            <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
+                                                                                @if ($solution->unidad_hvac == 1)
+                                                                                Paquetes (RTU)
+                                                                                @endif
+                                                                                @if ($solution->unidad_hvac == 2)
+                                                                                Split DX
+                                                                                @endif
+                                                                                @if ($solution->unidad_hvac == 3)
+                                                                                VRF No Ductados
+                                                                                @endif
+                                                                                @if ($solution->unidad_hvac == 4)
+                                                                                VRF Ductados
+                                                                                @endif
+                                                                                @if ($solution->unidad_hvac == 5)
+                                                                                PTAC
+                                                                                @endif
+                                                                                @if ($solution->unidad_hvac == 6)
+                                                                                WSHP
+                                                                                @endif
+                                                                                @if ($solution->unidad_hvac == 7)
+                                                                                Minisplit Inverter
+                                                                                @endif
+                                                                                @if ($solution->unidad_hvac == 8)
+                                                                            Chiller
+                                                                                @endif
+                                                                            </p>
+                                                                        </div>
 
                                                                     </div>
-                                                        </div>
 
-                                                            {{-- cuerpo --}}
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex ">
+                                                                            <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                        </div>
+                                                                        <div class="ml-2 w-auto">
+                                                                            <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
+                                                                                @if ($solution->tipo_equipo == 'basico')
+                                                                                Básico
+                                                                                @endif
+
+                                                                                @if ($solution->tipo_equipo == 'c_economizador')
+                                                                                c/ Economizador
+                                                                                @endif
+
+                                                                                @if ($solution->tipo_equipo == 'manejadora')
+                                                                                Manejadora
+                                                                                @endif
+
+                                                                                @if ($solution->tipo_equipo == 'fancoil')
+                                                                                Fancoil
+                                                                                @endif
+
+                                                                                @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                                                Cassette y Piso Techo
+                                                                                @endif
+
+                                                                                @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                                                Fancoil (LSP)
+                                                                                @endif
+
+                                                                                @if ($solution->tipo_equipo == 'man')
+                                                                                Manejadoras
+                                                                                @endif
+
+                                                                                @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                                                Fancoil (HSP)
+                                                                                @endif
+
+                                                                                @if ($solution->tipo_equipo == 'est_ptac')
+                                                                                Unidad Estándar
+                                                                                @endif
+
+                                                                                @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                                                Agua Circuito Cerrado
+                                                                                @endif
+
+                                                                                @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                                                Agua Circuito Cerrado
+                                                                                @endif
+
+                                                                                @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                                                Pared - Piso - Techo
+                                                                                @endif
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex ">
+                                                                            <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
+                                                                        </div>
+                                                                        <div class="ml-2 w-2/5">
+                                                                            <p class="text-blue-600 text-left font-bold font-roboto" for="">
+                                                                                {{$solution->name_disenio}}
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex ">
+                                                                            <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Marca</p>
+                                                                        </div>
+                                                                        <div class="ml-2 w-2/5">
+                                                                            <p class="text-blue-600 text-left font-bold font-roboto" for="">
+                                                                                {{$solution->marca}}
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex ">
+                                                                            <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Modelo</p>
+                                                                        </div>
+                                                                        <div class="ml-2 w-2/5">
+                                                                            <p class="text-blue-600 text-left font-bold font-roboto" for="">
+                                                                                {{$solution->modelo}}
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex ">
+                                                                            <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Años de vida</p>
+                                                                        </div>
+                                                                        <div class="ml-2 w-2/5">
+                                                                            <p class="text-blue-600 text-left font-bold font-roboto" for="">
+                                                                                {{$solution->yrs_vida}}
+                                                                            </p>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex ">
+                                                                            <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Eficiencia Original</p>
+                                                                        </div>
+                                                                        <div class="ml-2 w-auto flex justify-start">
+                                                                            <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene}} {{$solution->eficencia_ene_cant}}  </label>
+                                                                        </div>
+                                                                    </div>
+
+
+
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex ">
+                                                                            <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
+                                                                        </div>
+                                                                        <div class="ml-2 w-1/2">
+                                                                            <p class="text-blue-600 text-left font-bold  font-roboto" for="">
+                                                                                {{$solution->name_t_control}}
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div> <div class="w-full flex">
+                                                                        <div class="w-2/5 flex ">
+                                                                            <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
+                                                                        </div>
+                                                                        <div class="ml-2 w-2/5">
+                                                                            <p class="text-blue-600  text-left font-bold  font-roboto" for="">
+                                                                                {{$solution->dr_name}}
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    {{-- <div class="w-full flex">
+                                                                        <div class="w-1/2 flex ">
+                                                                            <p class="text-blue-900 font-bold   text-justify mr-10" for="">Costo Eléctrico</p>
+                                                                        </div>
+                                                                        <div class="w-1/2">
+                                                                            <p class="text-blue-400  text-justify" for="">
+                                                                                {{$solution->costo_elec}} $/KW
+                                                                            </p>
+                                                                        </div>
+
+                                                                    </div> --}}
+
+
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex justify-start">
+                                                                            <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
+                                                                        </div>
+                                                                        <div class="ml-2 w-2/5 flex justify-start text-left">
+                                                                            <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex justify-start">
+                                                                            <label class="text-blue-900 font-bold font-roboto" for="">Costo de Recuperación</label>
+                                                                        </div>
+                                                                        <div class="ml-2 w-2/5 flex justify-start">
+                                                                            <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex justify-start">
+                                                                            <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
+                                                                        </div>
+                                                                        <div class="ml-2 w-2/5 flex justify-start">
+                                                                            <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="w-full flex">
+                                                                        <div class="w-2/5 flex justify-start">
+                                                                            <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Reparaciónes</label>
+                                                                        </div>
+                                                                        <div class="ml-2 w-2/5 flex justify-start">
+                                                                            <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->cost_an_re)}}</label>
+                                                                        </div>
+                                                                    </div>
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+
+                                            <div class="grid w-1/3 mx-1 ">
+                                                @foreach ($solutions as $solution)
+                                                @if ($solution->num_sol == 1 && $solution->num_enf == 2 && $solution->type_p == 2)
+                                                <div>
+                                                    <div class="flex w-full">
+                                                        <div class="w-full">
+                                                            <div class="w-full bg-blue-800 rounded-md p-2 text-center">
+                                                                <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl md:text-4xl  font-roboto" for="">Solución A</label>
+                                                            </div>
+
                                                             <div class="mx-5 mb-3">
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
@@ -379,17 +599,6 @@ span{
                                                                         <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
                                                                     </div>
                                                                 </div>
-
-                                                                <div class="w-full flex justify-start">
-                                                                    <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
-                                                                    </div>
-                                                                    <div class="ml-2 w-auto flex justify-start">
-                                                                        <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
-                                                                    </div>
-                                                                </div>
-
-
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
@@ -498,6 +707,52 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Marca</p>
+                                                                    </div>
+                                                                    <div class="ml-2 w-2/5">
+                                                                        <p class="text-blue-600 text-left font-bold font-roboto" for="">
+                                                                            {{$solution->marca}}
+                                                                        </p>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="w-full flex">
+                                                                    <div class="w-2/5 flex ">
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Modelo</p>
+                                                                    </div>
+                                                                    <div class="ml-2 w-2/5">
+                                                                        <p class="text-blue-600 text-left font-bold font-roboto" for="">
+                                                                            {{$solution->modelo}}
+                                                                        </p>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="w-full flex">
+                                                                    <div class="w-2/5 flex ">
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Años de vida</p>
+                                                                    </div>
+                                                                    <div class="ml-2 w-2/5">
+                                                                        <p class="text-blue-600 text-left font-bold font-roboto" for="">
+                                                                            {{$solution->yrs_vida}}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="w-full flex">
+                                                                    <div class="w-2/5 flex ">
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Eficiencia Original</p>
+                                                                    </div>
+                                                                    <div class="ml-2 w-auto flex justify-start">
+                                                                        <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene}} {{$solution->eficencia_ene_cant}}  </label>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                                <div class="w-full flex">
+                                                                    <div class="w-2/5 flex ">
                                                                         <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
                                                                     </div>
                                                                     <div class="ml-2 w-1/2">
@@ -517,18 +772,6 @@ span{
                                                                     </div>
 
                                                                 </div>
-                                                                {{-- <div class="w-full flex">
-                                                                    <div class="w-1/2 flex ">
-                                                                        <p class="text-blue-900 font-bold   text-justify mr-10" for="">Costo Eléctrico</p>
-                                                                    </div>
-                                                                    <div class="w-1/2">
-                                                                        <p class="text-blue-400  text-justify" for="">
-                                                                            {{$solution->costo_elec}} $/KW
-                                                                        </p>
-                                                                    </div>
-
-                                                                </div> --}}
-
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
@@ -541,7 +784,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Costo de Recuperación</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -556,43 +799,33 @@ span{
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                </div>
-                                                    {{-- cuerpo --}}
-                                                    @endif
-                                                    @endforeach
-                                                </div>
 
-                                                <div class="grid w-1/3 mx-1 ">
-                                                    @foreach ($solutions as $solution)
-                                                        @if ($solution->num_sol == 1 && $solution->num_enf == 2)
-                                                        <div>
-                                                                <div class="flex">
-                                                                    <div class="w-full">
-
-                                                        {{-- ----DIV --}}
-                                                                @if ($solution->num_enf == 1)
-                                                                <div class="w-full bg-blue-800 rounded-md p-2 text-center">
-                                                                <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución Base</label>
-                                                                @endif
-
-                                                                @if ($solution->num_enf == 2 || $solution->num_enf == 3)
-                                                                <div class="w-full bg-blue-500 rounded-md p-2 text-center">
-                                                                    @if ($solution->num_enf == 2 )
-                                                                    <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución A</label>
-                                                                    @endif
-
-                                                                    @if ($solution->num_enf == 3 )
-                                                                    <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución B</label>
-                                                                    @endif
-                                                                @endif
-
-                                                                  </div>
-                                                        {{-- ----DIV --}}
+                                                                <div class="w-full flex">
+                                                                    <div class="w-2/5 flex justify-start">
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Reparaciónes</label>
+                                                                    </div>
+                                                                    <div class="ml-2 w-2/5 flex justify-start">
+                                                                        <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->cost_an_re)}}</label>
+                                                                    </div>
                                                                 </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                            @endforeach
+                                            </div>
+
+                                            <div class="grid w-1/3 mx-1 ">
+                                                @foreach ($solutions as $solution)
+                                                @if ($solution->num_sol == 1 && $solution->num_enf == 3 && $solution->type_p == 2)
+                                                <div>
+                                                    <div class="flex w-full">
+                                                        <div class="w-full">
+                                                            <div class="w-full bg-blue-800 rounded-md p-2 text-center">
+                                                                <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl md:text-4xl  font-roboto" for="">Solución B</label>
                                                             </div>
 
-                                                            {{-- cuerpo --}}
                                                             <div class="mx-5 mb-3">
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
@@ -603,17 +836,6 @@ span{
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="w-full flex justify-start">
-                                                                    <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
-                                                                    </div>
-                                                                    <div class="ml-2 w-auto flex justify-start">
-                                                                        <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
-                                                                    </div>
-                                                                </div>
-
-
-
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
                                                                         <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
@@ -642,7 +864,7 @@ span{
                                                                             Minisplit Inverter
                                                                             @endif
                                                                             @if ($solution->unidad_hvac == 8)
-                                                                           Chiller
+                                                                        Chiller
                                                                             @endif
                                                                         </p>
                                                                     </div>
@@ -654,1222 +876,6 @@ span{
                                                                         <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
                                                                     </div>
                                                                     <div class="ml-2 w-auto">
-                                                                        <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
-                                                                            @if ($solution->tipo_equipo == 'basico')
-                                                                    Básico
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                                                    c/ Economizador
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'manejadora')
-                                                                    Manejadora
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil')
-                                                                    Fancoil
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                    Cassette y Piso Techo
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                    Fancoil (LSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'man')
-                                                                    Manejadoras
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                    Fancoil (HSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Unidad Estándar
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                    Pared - Piso - Techo
-                                                                    @endif
-
-                                                                        </p>
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="w-full flex">
-                                                                    <div class="w-2/5 flex ">
-                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
-                                                                    </div>
-                                                                    <div class="ml-2 w-2/5">
-                                                                        <p class="text-blue-600 text-left font-bold font-roboto" for="">
-                                                                            {{$solution->name_disenio}}
-                                                                        </p>
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="w-full flex">
-                                                                    <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
-                                                                    </div>
-                                                                    <div class="ml-2 w-1/2">
-                                                                        <p class="text-blue-600 text-left font-bold  font-roboto" for="">
-                                                                            {{$solution->name_t_control}}
-                                                                        </p>
-                                                                    </div>
-
-                                                                </div> <div class="w-full flex">
-                                                                    <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
-                                                                    </div>
-                                                                    <div class="ml-2 w-2/5">
-                                                                        <p class="text-blue-600  text-left font-bold  font-roboto" for="">
-                                                                            {{$solution->dr_name}}
-                                                                        </p>
-                                                                    </div>
-
-                                                                </div>
-                                                                {{-- <div class="w-full flex">
-                                                                    <div class="w-1/2 flex ">
-                                                                        <p class="text-blue-900 font-bold   text-justify mr-10" for="">Costo Eléctrico</p>
-                                                                    </div>
-                                                                    <div class="w-1/2">
-                                                                        <p class="text-blue-400  text-justify" for="">
-                                                                            {{$solution->costo_elec}} $/KW
-                                                                        </p>
-                                                                    </div>
-
-                                                                </div> --}}
-
-
-                                                                <div class="w-full flex">
-                                                                    <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
-                                                                    </div>
-                                                                    <div class="ml-2 w-2/5 flex justify-start text-left">
-                                                                        <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="w-full flex">
-                                                                    <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
-                                                                    </div>
-                                                                    <div class="ml-2 w-2/5 flex justify-start">
-                                                                        <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="w-full flex">
-                                                                    <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
-                                                                    </div>
-                                                                    <div class="ml-2 w-2/5 flex justify-start">
-                                                                        <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                            {{-- cuerpo --}}
-                                                            @endif
-                                                            @endforeach
-                                                        </div>
-
-                                                        <div class="grid w-1/3 mx-1 ">
-                                                            @foreach ($solutions as $solution)
-                                                                @if ($solution->num_sol == 1 && $solution->num_enf == 3)
-                                                                <div>
-                                                                        <div class="flex">
-                                                                            <div class="w-full">
-
-                                                                {{-- ----DIV --}}
-                                                                        @if ($solution->num_enf == 1)
-                                                                        <div class="w-full bg-blue-800 rounded-md p-2 text-center">
-                                                                        <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución Base</label>
-                                                                        @endif
-
-                                                                        @if ($solution->num_enf == 2 || $solution->num_enf == 3)
-                                                                        <div class="w-full bg-blue-500 rounded-md p-2 text-center">
-                                                                            @if ($solution->num_enf == 2 )
-                                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución A</label>
-                                                                            @endif
-
-                                                                            @if ($solution->num_enf == 3 )
-                                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución B</label>
-                                                                            @endif
-                                                                        @endif
-
-                                                                          </div>
-                                                                {{-- ----DIV --}}
-                                                                        </div>
-                                                                    </div>
-
-                                                                    {{-- cuerpo --}}
-                                                                    <div class="mx-5 mb-3">
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
-                                                                            </div>
-                                                                            <div class="ml-2 w-auto flex justify-start">
-                                                                                <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="w-full flex justify-start">
-                                                                            <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
-                                                                            </div>
-                                                                            <div class="ml-2 w-auto flex justify-start">
-                                                                                <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
-                                                                            </div>
-                                                                        </div>
-
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
-                                                                            </div>
-                                                                            <div class="ml-2 w-auto">
-                                                                                <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
-                                                                                    @if ($solution->unidad_hvac == 1)
-                                                                                    Paquetes (RTU)
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 2)
-                                                                                    Split DX
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 3)
-                                                                                    VRF No Ductados
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 4)
-                                                                                    VRF Ductados
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 5)
-                                                                                    PTAC
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 6)
-                                                                                    WSHP
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 7)
-                                                                                    Minisplit Inverter
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 8)
-                                                                                   Chiller
-                                                                                    @endif
-                                                                                </p>
-                                                                            </div>
-
-                                                                        </div>
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
-                                                                            </div>
-                                                                            <div class="ml-2 w-auto">
-                                                                                <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
-                                                                                    @if ($solution->tipo_equipo == 'basico')
-                                                                    Básico
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                                                    c/ Economizador
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'manejadora')
-                                                                    Manejadora
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil')
-                                                                    Fancoil
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                    Cassette y Piso Techo
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                    Fancoil (LSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'man')
-                                                                    Manejadoras
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                    Fancoil (HSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Unidad Estándar
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                    Pared - Piso - Techo
-                                                                    @endif
-                                                                        </p>
-                                                                            </div>
-
-                                                                        </div>
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex ">
-                                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5">
-                                                                                <p class="text-blue-600 text-left font-bold font-roboto" for="">
-                                                                                    {{$solution->name_disenio}}
-                                                                                </p>
-                                                                            </div>
-
-                                                                        </div>
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
-                                                                            </div>
-                                                                            <div class="ml-2 w-1/2">
-                                                                                <p class="text-blue-600 text-left font-bold  font-roboto" for="">
-                                                                                    {{$solution->name_t_control}}
-                                                                                </p>
-                                                                            </div>
-
-                                                                        </div> <div class="w-full flex">
-                                                                            <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5">
-                                                                                <p class="text-blue-600  text-left font-bold  font-roboto" for="">
-                                                                                    {{$solution->dr_name}}
-                                                                                </p>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        {{-- <div class="w-full flex">
-                                                                            <div class="w-1/2 flex ">
-                                                                                <p class="text-blue-900 font-bold   text-justify mr-10" for="">Costo Eléctrico</p>
-                                                                            </div>
-                                                                            <div class="w-1/2">
-                                                                                <p class="text-blue-400  text-justify" for="">
-                                                                                    {{$solution->costo_elec}} $/KW
-                                                                                </p>
-                                                                            </div>
-
-                                                                        </div> --}}
-
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5 flex justify-start text-left">
-                                                                                <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                    {{-- cuerpo --}}
-                                                                    @endif
-                                                                    @endforeach
-                                                                </div>
-                                        </div>
-                                            {{-- 1 --}}
-
-                                             {{-- 1 --}}
-                                        <div class="w-full flex justify-start">
-                                            <div class="grid w-1/3 mx-1">
-                                                @foreach ($solutions as $solution)
-                                                @if ($solution->num_sol == 2 && $solution->num_enf == 1)
-                                                    {{-- cuerpo --}}
-                                                    <div class="mx-5 border-t-2">
-                                                        <div class="w-full flex  mt-2">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex justify-start">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
-                                                                    @if ($solution->unidad_hvac == 1)
-                                                                    Paquetes (RTU)
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 2)
-                                                                    Split DX
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 3)
-                                                                    VRF No Ductados
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 4)
-                                                                    VRF Ductados
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 5)
-                                                                    PTAC
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 6)
-                                                                    WSHP
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 7)
-                                                                    Minisplit Inverter
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 8)
-                                                                    Chiller
-                                                                    @endif
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
-                                                                    @if ($solution->tipo_equipo == 'basico')
-                                                                    Básico
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                                                    c/ Economizador
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'manejadora')
-                                                                    Manejadora
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil')
-                                                                    Fancoil
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                    Cassette y Piso Techo
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                    Fancoil (LSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'man')
-                                                                    Manejadoras
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                    Fancoil (HSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Unidad Estándar
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                    Pared - Piso - Techo
-                                                                    @endif
-
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="text-blue-600 text-left font-bold font-roboto" for="">
-                                                                    {{$solution->name_disenio}}
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
-                                                            </div>
-                                                            <div class="ml-2 w-1/2">
-                                                                <p class="text-blue-600 text-left font-bold  font-roboto" for="">
-                                                                    {{$solution->name_t_control}}
-                                                                </p>
-                                                            </div>
-
-                                                        </div> <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="text-blue-600  text-left font-bold  font-roboto" for="">
-                                                                    {{$solution->dr_name}}
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-                                                        {{-- <div class="w-full flex">
-                                                            <div class="w-1/2 flex ">
-                                                                <p class="text-blue-900 font-bold   text-justify mr-10" for="">Costo Eléctrico</p>
-                                                            </div>
-                                                            <div class="w-1/2">
-                                                                <p class="text-blue-400  text-justify" for="">
-                                                                    {{$solution->costo_elec}} $/KW
-                                                                </p>
-                                                            </div>
-
-                                                        </div> --}}
-
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start text-left">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {{-- cuerpo --}}
-
-                                                @endif
-                                            @endforeach
-                                            </div>
-                                            <div class="grid w-1/3 mx-1">
-                                                @foreach ($solutions as $solution)
-                                                @if ($solution->num_sol == 2 && $solution->num_enf == 2)
-                                                    {{-- cuerpo --}}
-                                                    <div class="mx-5 border-t-2">
-                                                        <div class="w-full flex  mt-2">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex justify-start">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
-                                                                    @if ($solution->unidad_hvac == 1)
-                                                                    Paquetes (RTU)
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 2)
-                                                                    Split DX
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 3)
-                                                                    VRF No Ductados
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 4)
-                                                                    VRF Ductados
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 5)
-                                                                    PTAC
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 6)
-                                                                    WSHP
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 7)
-                                                                    Minisplit Inverter
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 8)
-                                                                    Chiller
-                                                                    @endif
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
-                                                                    @if ($solution->tipo_equipo == 'basico')
-                                                                    Básico
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                                                    c/ Economizador
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'manejadora')
-                                                                    Manejadora
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil')
-                                                                    Fancoil
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                    Cassette y Piso Techo
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                    Fancoil (LSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'man')
-                                                                    Manejadoras
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                    Fancoil (HSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Unidad Estándar
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                    Pared - Piso - Techo
-                                                                    @endif
-
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="text-blue-600 text-left font-bold font-roboto" for="">
-                                                                    {{$solution->name_disenio}}
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
-                                                            </div>
-                                                            <div class="ml-2 w-1/2">
-                                                                <p class="text-blue-600 text-left font-bold  font-roboto" for="">
-                                                                    {{$solution->name_t_control}}
-                                                                </p>
-                                                            </div>
-
-                                                        </div> <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="text-blue-600  text-left font-bold  font-roboto" for="">
-                                                                    {{$solution->dr_name}}
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-                                                        {{-- <div class="w-full flex">
-                                                            <div class="w-1/2 flex ">
-                                                                <p class="text-blue-900 font-bold   text-justify mr-10" for="">Costo Eléctrico</p>
-                                                            </div>
-                                                            <div class="w-1/2">
-                                                                <p class="text-blue-400  text-justify" for="">
-                                                                    {{$solution->costo_elec}} $/KW
-                                                                </p>
-                                                            </div>
-
-                                                        </div> --}}
-
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start text-left">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {{-- cuerpo --}}
-
-                                                @endif
-                                            @endforeach
-                                            </div>
-                                            <div class="grid w-1/3 mx-1">
-                                                @foreach ($solutions as $solution)
-                                                @if ($solution->num_sol == 2 && $solution->num_enf == 3)
-                                                    {{-- cuerpo --}}
-                                                    <div class="mx-5 border-t-2">
-                                                        <div class="w-full flex  mt-2">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex justify-start">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
-                                                                    @if ($solution->unidad_hvac == 1)
-                                                                    Paquetes (RTU)
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 2)
-                                                                    Split DX
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 3)
-                                                                    VRF No Ductados
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 4)
-                                                                    VRF Ductados
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 5)
-                                                                    PTAC
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 6)
-                                                                    WSHP
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 7)
-                                                                    Minisplit Inverter
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 8)
-                                                                    Chiller
-                                                                    @endif
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
-                                                                    @if ($solution->tipo_equipo == 'basico')
-                                                                    Básico
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                                                    c/ Economizador
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'manejadora')
-                                                                    Manejadora
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil')
-                                                                    Fancoil
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                    Cassette y Piso Techo
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                    Fancoil (LSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'man')
-                                                                    Manejadoras
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                    Fancoil (HSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Unidad Estándar
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                    Pared - Piso - Techo
-                                                                    @endif
-
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="text-blue-600 text-left font-bold font-roboto" for="">
-                                                                    {{$solution->name_disenio}}
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
-                                                            </div>
-                                                            <div class="ml-2 w-1/2">
-                                                                <p class="text-blue-600 text-left font-bold  font-roboto" for="">
-                                                                    {{$solution->name_t_control}}
-                                                                </p>
-                                                            </div>
-
-                                                        </div> <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="text-blue-600  text-left font-bold  font-roboto" for="">
-                                                                    {{$solution->dr_name}}
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-                                                        {{-- <div class="w-full flex">
-                                                            <div class="w-1/2 flex ">
-                                                                <p class="text-blue-900 font-bold   text-justify mr-10" for="">Costo Eléctrico</p>
-                                                            </div>
-                                                            <div class="w-1/2">
-                                                                <p class="text-blue-400  text-justify" for="">
-                                                                    {{$solution->costo_elec}} $/KW
-                                                                </p>
-                                                            </div>
-
-                                                        </div> --}}
-
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start text-left">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {{-- cuerpo --}}
-
-                                                @endif
-                                            @endforeach
-                                            </div>
-                                        </div>
-                                            {{-- 1 --}}
-
-                                             {{-- 1 --}}
-                                        <div class="w-full flex justify-start">
-                                            <div class="grid w-1/3 mx-1">
-                                            @foreach ($solutions as $solution)
-                                                @if ($solution->num_sol == 3 && $solution->num_enf == 1)
-
-
-
-                                                    {{-- cuerpo --}}
-                                                    <div class="mx-5  border-t-2">
-                                                        <div class="w-full flex  mt-2">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex justify-start">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
-                                                            </div>
-                                                        </div>
-
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
-                                                                    @if ($solution->unidad_hvac == 1)
-                                                                    Paquetes (RTU)
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 2)
-                                                                    Split DX
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 3)
-                                                                    VRF No Ductados
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 4)
-                                                                    VRF Ductados
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 5)
-                                                                    PTAC
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 6)
-                                                                    WSHP
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 7)
-                                                                    Minisplit Inverter
-                                                                    @endif
-                                                                    @if ($solution->unidad_hvac == 8)
-                                                                    Chiller
-                                                                    @endif
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
-                                                                    @if ($solution->tipo_equipo == 'basico')
-                                                                    Básico
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                                                    c/ Economizador
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'manejadora')
-                                                                    Manejadora
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil')
-                                                                    Fancoil
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                    Cassette y Piso Techo
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                    Fancoil (LSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'man')
-                                                                    Manejadoras
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                    Fancoil (HSP)
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                                                    Unidad Estándar
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                    Agua Circuito Cerrado
-                                                                    @endif
-
-                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                    Pared - Piso - Techo
-                                                                    @endif
-
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="text-blue-600 text-left font-bold font-roboto" for="">
-                                                                    {{$solution->name_disenio}}
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
-                                                            </div>
-                                                            <div class="ml-2 w-1/2">
-                                                                <p class="text-blue-600 text-left font-bold  font-roboto" for="">
-                                                                    {{$solution->name_t_control}}
-                                                                </p>
-                                                            </div>
-
-                                                        </div> <div class="w-full flex">
-                                                            <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5">
-                                                                <p class="text-blue-600  text-left font-bold  font-roboto" for="">
-                                                                    {{$solution->dr_name}}
-                                                                </p>
-                                                            </div>
-
-                                                        </div>
-                                                        {{-- <div class="w-full flex">
-                                                            <div class="w-1/2 flex ">
-                                                                <p class="text-blue-900 font-bold   text-justify mr-10" for="">Costo Eléctrico</p>
-                                                            </div>
-                                                            <div class="w-1/2">
-                                                                <p class="text-blue-400  text-justify" for="">
-                                                                    {{$solution->costo_elec}} $/KW
-                                                                </p>
-                                                            </div>
-
-                                                        </div> --}}
-
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex justify-start text-left">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="w-full flex">
-                                                            <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
-                                                            </div>
-                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    {{-- cuerpo --}}
-                                                    @endif
-                                                    @endforeach
-                                                </div>
-
-                                                <div class="grid w-1/3 mx-1">
-                                                    @foreach ($solutions as $solution)
-                                                        @if ($solution->num_sol == 3 && $solution->num_enf == 2)
-
-
-
-                                                            {{-- cuerpo --}}
-                                                            <div class="mx-5  border-t-2">
-                                                                <div class="w-full flex  mt-2">
-                                                                    <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
-                                                                    </div>
-                                                                    <div class="ml-2 w-2/5 flex justify-start">
-                                                                        <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="w-full flex justify-start">
-                                                                    <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
-                                                                    </div>
-                                                                    <div class="ml-2 w-2/5 flex justify-start">
-                                                                        <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <div class="w-full flex">
-                                                                    <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
-                                                                    </div>
-                                                                    <div class="ml-2 w-2/5">
-                                                                        <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
-                                                                            @if ($solution->unidad_hvac == 1)
-                                                                            Paquetes (RTU)
-                                                                            @endif
-                                                                            @if ($solution->unidad_hvac == 2)
-                                                                            Split DX
-                                                                            @endif
-                                                                            @if ($solution->unidad_hvac == 3)
-                                                                            VRF No Ductados
-                                                                            @endif
-                                                                            @if ($solution->unidad_hvac == 4)
-                                                                            VRF Ductados
-                                                                            @endif
-                                                                            @if ($solution->unidad_hvac == 5)
-                                                                            PTAC
-                                                                            @endif
-                                                                            @if ($solution->unidad_hvac == 6)
-                                                                            WSHP
-                                                                            @endif
-                                                                            @if ($solution->unidad_hvac == 7)
-                                                                            Minisplit Inverter
-                                                                            @endif
-                                                                            @if ($solution->unidad_hvac == 8)
-                                                                            Chiller
-                                                                            @endif
-                                                                        </p>
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="w-full flex">
-                                                                    <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
-                                                                    </div>
-                                                                    <div class="ml-2 w-2/5">
                                                                         <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
                                                                             @if ($solution->tipo_equipo == 'basico')
                                                                             Básico
@@ -1918,7 +924,6 @@ span{
                                                                             @if ($solution->tipo_equipo == 'pa_pi_te')
                                                                             Pared - Piso - Techo
                                                                             @endif
-
                                                                         </p>
                                                                     </div>
 
@@ -1935,6 +940,52 @@ span{
                                                                     </div>
 
                                                                 </div>
+
+                                                                <div class="w-full flex">
+                                                                    <div class="w-2/5 flex ">
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Marca</p>
+                                                                    </div>
+                                                                    <div class="ml-2 w-2/5">
+                                                                        <p class="text-blue-600 text-left font-bold font-roboto" for="">
+                                                                            {{$solution->marca}}
+                                                                        </p>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="w-full flex">
+                                                                    <div class="w-2/5 flex ">
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Modelo</p>
+                                                                    </div>
+                                                                    <div class="ml-2 w-2/5">
+                                                                        <p class="text-blue-600 text-left font-bold font-roboto" for="">
+                                                                            {{$solution->modelo}}
+                                                                        </p>
+                                                                    </div>
+
+                                                                </div>
+
+                                                                <div class="w-full flex">
+                                                                    <div class="w-2/5 flex ">
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Años de vida</p>
+                                                                    </div>
+                                                                    <div class="ml-2 w-2/5">
+                                                                        <p class="text-blue-600 text-left font-bold font-roboto" for="">
+                                                                            {{$solution->yrs_vida}}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="w-full flex">
+                                                                    <div class="w-2/5 flex ">
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Eficiencia Original</p>
+                                                                    </div>
+                                                                    <div class="ml-2 w-auto flex justify-start">
+                                                                        <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene}} {{$solution->eficencia_ene_cant}}  </label>
+                                                                    </div>
+                                                                </div>
+
+
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
@@ -1971,17 +1022,17 @@ span{
 
 
                                                                 <div class="w-full flex">
-                                                                    <div class="w-2/5 flex justify-start text-left">
+                                                                    <div class="w-2/5 flex justify-start">
                                                                         <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
                                                                     </div>
-                                                                    <div class="ml-2 w-2/5 flex justify-start">
+                                                                    <div class="ml-2 w-2/5 flex justify-start text-left">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Costo de Recuperación</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -1996,215 +1047,52 @@ span{
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            {{-- cuerpo --}}
-                                                            @endif
-                                                            @endforeach
-                                                        </div>
 
-                                                        <div class="grid w-1/3 mx-1">
-                                                            @foreach ($solutions as $solution)
-                                                                @if ($solution->num_sol == 3 && $solution->num_enf == 3)
-
-
-
-                                                                    {{-- cuerpo --}}
-                                                                    <div class="mx-5  border-t-2">
-                                                                        <div class="w-full flex  mt-2">
-                                                                            <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                                <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="w-full flex justify-start">
-                                                                            <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{$solution->eficencia_ene}}</label>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                                <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene_cant}}  </label>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Sistemas HVAC</label>
-                                                                            </div>
-
-                                                                        </div>
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5">
-                                                                                <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
-                                                                                    @if ($solution->unidad_hvac == 1)
-                                                                                    Paquetes (RTU)
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 2)
-                                                                                    Split DX
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 3)
-                                                                                    VRF No Ductados
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 4)
-                                                                                    VRF Ductados
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 5)
-                                                                                    PTAC
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 6)
-                                                                                    WSHP
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 7)
-                                                                                    Minisplit Inverter
-                                                                                    @endif
-                                                                                    @if ($solution->unidad_hvac == 8)
-                                                                                    Chiller
-                                                                                    @endif
-                                                                                </p>
-                                                                            </div>
-
-                                                                        </div>
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5">
-                                                                                <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
-                                                                                    @if ($solution->tipo_equipo == 'basico')
-                                                                                    Básico
-                                                                                    @endif
-
-                                                                                    @if ($solution->tipo_equipo == 'c_economizador')
-                                                                                    c/ Economizador
-                                                                                    @endif
-
-                                                                                    @if ($solution->tipo_equipo == 'manejadora')
-                                                                                    Manejadora
-                                                                                    @endif
-
-                                                                                    @if ($solution->tipo_equipo == 'fancoil')
-                                                                                    Fancoil
-                                                                                    @endif
-
-                                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                                    Cassette y Piso Techo
-                                                                                    @endif
-
-                                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                                    Fancoil (LSP)
-                                                                                    @endif
-
-                                                                                    @if ($solution->tipo_equipo == 'man')
-                                                                                    Manejadoras
-                                                                                    @endif
-
-                                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                                    Fancoil (HSP)
-                                                                                    @endif
-
-                                                                                    @if ($solution->tipo_equipo == 'est_ptac')
-                                                                                    Unidad Estándar
-                                                                                    @endif
-
-                                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                                    Agua Circuito Cerrado
-                                                                                    @endif
-
-                                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                                    Agua Circuito Cerrado
-                                                                                    @endif
-
-                                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                                    Pared - Piso - Techo
-                                                                                    @endif
-                                                                                </p>
-                                                                            </div>
-
-                                                                        </div>
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex ">
-                                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5">
-                                                                                <p class="text-blue-600 text-left font-bold font-roboto" for="">
-                                                                                    {{$solution->name_disenio}}
-                                                                                </p>
-                                                                            </div>
-
-                                                                        </div>
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
-                                                                            </div>
-                                                                            <div class="ml-2 w-1/2">
-                                                                                <p class="text-blue-600 text-left font-bold  font-roboto" for="">
-                                                                                    {{$solution->name_t_control}}
-                                                                                </p>
-                                                                            </div>
-
-                                                                        </div> <div class="w-full flex">
-                                                                            <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5">
-                                                                                <p class="text-blue-600  text-left font-bold  font-roboto" for="">
-                                                                                    {{$solution->dr_name}}
-                                                                                </p>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        {{-- <div class="w-full flex">
-                                                                            <div class="w-1/2 flex ">
-                                                                                <p class="text-blue-900 font-bold   text-justify mr-10" for="">Costo Eléctrico</p>
-                                                                            </div>
-                                                                            <div class="w-1/2">
-                                                                                <p class="text-blue-400  text-justify" for="">
-                                                                                    {{$solution->costo_elec}} $/KW
-                                                                                </p>
-                                                                            </div>
-
-                                                                        </div> --}}
-
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex justify-start text-left">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                                <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="w-full flex">
-                                                                            <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Mantenimiento</label>
-                                                                            </div>
-                                                                            <div class="ml-2 w-2/5 flex justify-start">
-                                                                                <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
-                                                                            </div>
-                                                                        </div>
+                                                                <div class="w-full flex">
+                                                                    <div class="w-2/5 flex justify-start">
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Reparaciónes</label>
                                                                     </div>
-                                                                    {{-- cuerpo --}}
-                                                                    @endif
-                                                                    @endforeach
+                                                                    <div class="ml-2 w-2/5 flex justify-start">
+                                                                        <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->cost_an_re)}}</label>
+                                                                    </div>
                                                                 </div>
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                @endif
+                                            @endforeach
+                                            </div>
+                                        </div>
+                                            {{-- 1 --}}
+
+                                             {{-- 1 --}}
+                                        <div class="w-full flex justify-start">
+                                            <div class="grid w-1/3 mx-1">
+
+                                            </div>
+                                            <div class="grid w-1/3 mx-1">
+                                                    {{-- 2_2 --}}
+                                            </div>
+                                            <div class="grid w-1/3 mx-1">
+                                                    {{-- 2_3 --}}
+                                            </div>
+                                        </div>
+                                            {{-- 1 --}}
+
+                                             {{-- 1 --}}
+                                        <div class="w-full flex justify-start">
+                                                <div class="grid w-1/3 mx-1">
+                                                    {{-- 3_1 --}}
+                                                </div>
+
+                                                <div class="grid w-1/3 mx-1">
+                                                    {{-- 3_2 --}}
+                                                </div>
+
+                                                <div class="grid w-1/3 mx-1">
+                                                    {{-- 3_3 --}}
+                                                </div>
                                         </div>
 
                                                                 {{-- espacio --}}
@@ -2222,12 +1110,11 @@ span{
 
 					</div>
 
-
-					<div x-show.transition.in="step === 2">
+                    <div x-show.transition.in="step === 2">
                         <div class="w-full flex justify-center">
                             <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
                                 <div class="grid bg-gray-200 rounded-md shadow-xl">
-                                    <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
+                                    <div style="background-color: #233064;" class="w-full flex justify-center text-white rounded-md p-3">
                                         <label class="font-bold text-white text-2xl font-roboto text-3xl">RESULTADOS ANÁLISIS ENERGÉTICO</label>
                                     </div>
 
@@ -2329,8 +1216,8 @@ span{
                                                 <div class="flex w-full ">
                                                         <div class="grid w-full mx-3">
 
-                                                            <div class="flex justify-center w-full bg-blue-800 rounded-md p-2">
-                                                                <label class="text-white font-bold text-4xl font-roboto">Solución Base</label>
+                                                            <div class="flex justify-center w-full bg-orange-500 rounded-md p-2">
+                                                                <label class="text-white font-bold text-4xl font-roboto">Sistema Existente</label>
                                                             </div>
 
                                                             <div class="grid justify-center">
@@ -2381,7 +1268,7 @@ span{
                                                 <div class="flex w-full ">
                                                         <div class="grid w-full mx-3">
 
-                                                            <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                            <div class="w-full bg-blue-800 rounded-md p-2 text-center">
                                                                 <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
                                                             </div>
 
@@ -2423,7 +1310,7 @@ span{
                                                 <div class="flex w-full ">
                                                         <div class="grid w-full mx-3">
 
-                                                            <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                            <div class="w-full bg-blue-800 rounded-md p-2 text-center">
                                                                 <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
                                                             </div>
 
@@ -2660,11 +1547,12 @@ span{
                              {{-- espacio --}}
 
 					</div>
+
 					<div x-show.transition.in="step === 3">
                         <div class="w-full flex justify-center">
                             <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
                                 <div class="grid bg-gray-200 rounded-md shadow-xl">
-                                    <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
+                                    <div style="background-color: #233064;" class="w-full flex justify-center text-white rounded-md p-3">
                                         <label class="font-bold text-white text-2xl font-roboto text-4xl">RESULTADOS ANÁLISIS FINANCIERO</label>
                                     </div>
 
@@ -2765,8 +1653,8 @@ span{
                                                         <div class="flex w-full ">
                                                                 <div class="grid w-full mx-3">
 
-                                                                    <div class="flex justify-center w-full bg-blue-800 rounded-md p-2">
-                                                                        <label class="text-white font-bold text-4xl font-roboto">Solución Base</label>
+                                                                    <div class="flex justify-center w-full bg-orange-500 rounded-md p-2">
+                                                                        <label class="text-white font-bold text-4xl font-roboto">Sistema Existente</label>
                                                                     </div>
 
                                                                     <div class="grid justify-center">
@@ -2820,7 +1708,7 @@ span{
                                                         <div class="flex w-full ">
                                                                 <div class="grid w-full mx-3">
 
-                                                                    <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                                    <div class="w-full bg-blue-800 rounded-md p-2 text-center">
                                                                         <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
                                                                     </div>
 
@@ -2866,7 +1754,7 @@ span{
                                                         <div class="flex w-full ">
                                                                 <div class="grid w-full mx-3">
 
-                                                                    <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                                    <div class="w-full bg-blue-800 rounded-md p-2 text-center">
                                                                         <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
                                                                     </div>
 
@@ -2910,146 +1798,6 @@ span{
 
 
                                     </div>
-
-{{--                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
-                                        <div class="flex w-full justify-center mb-5">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Inversión Inicial (CAPEX) por Área <b class="text-orange-500">($/{{$uni_med1 = ($unidad_area == 'mc') ? 'm²' : 'ft²'}})</b></label>
-                                        </div>
-
-
-
-                                        <div class="flex w-full justify-center bg-gray-200 gap-x-3">
-
-
-
-                                            <div class="flex justify-center w-1/3">
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <?php  $inv_ini_ca_ar_1=$smasolutions->inv_ini_ca_ar($id_project,$result1->num_enf) ?>
-                                                <div class="w-full flex justify-center">
-                                                    <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">{{number_format($inv_ini_ca_ar_1,1)}}</b>
-                                                </div>
-
-
-
-                                            </div>
-                                            </div>
-
-
-
-                                            <div class="flex justify-center w-1/3">
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    @if ($result2!==null)
-                                                    <?php  $inv_ini_ca_ar_2=$smasolutions->inv_ini_ca_ar($id_project,$result2->num_enf) ?>
-                                                    <div class="w-full flex justify-center">
-                                                        <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($inv_ini_ca_ar_2,1)}} </b>
-
-                                                    </div>
-
-
-                                                    @endif
-
-                                                    @if ($result2===null)
-                                                    <b  style="color:#33cc33;" class="text-[24px]  font-roboto text-5xl">0</b>
-                                                    @endif
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="flex justify-center w-1/3">
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    @if ($result3!==null)
-                                                    <?php  $inv_ini_ca_ar_3=$smasolutions->inv_ini_ca_ar($id_project,$result3->num_enf) ?>
-
-
-                                                    <div class="w-full flex justify-center">
-                                                        <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($inv_ini_ca_ar_3,1)}}</b>
-
-                                                    </div>
-
-                                                    @endif
-
-                                                    @if ($result3===null)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">0</b>
-                                                    @endif
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div> --}}
-
-                                    {{-- <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
-                                        <div class="flex w-full justify-center mb-5">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Consumo de Energía (OPEX) por Área <b class="text-orange-500">($/{{$uni_med1 = ($unidad_area == 'mc') ? 'm²' : 'ft²'}})</b></label>
-                                        </div>
-
-
-
-                                        <div class="flex w-full justify-center bg-gray-200 gap-x-3">
-
-
-
-                                            <div class="flex justify-center w-1/3">
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-
-                                                <div class="w-full flex justify-center">
-                                                    <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">{{number_format($sumaopex_1/$tar_ele->area,1)}}</b>
-                                                </div>
-
-
-
-                                            </div>
-                                            </div>
-
-
-
-                                            <div class="flex justify-center w-1/3">
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    @if ($result2!==null)
-                                                    <?php  $inv_ini_ca_ar_2=$smasolutions->inv_ini_ca_ar($id_project,$result2->num_enf) ?>
-                                                    <div class="w-full flex justify-center">
-                                                        <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($sumaopex_2/$tar_ele->area,1)}} </b>
-
-                                                    </div>
-
-
-                                                    @endif
-
-                                                    @if ($result2===null)
-                                                    <b  style="color:#33cc33;" class="text-[24px]  font-roboto text-5xl">0</b>
-                                                    @endif
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="flex justify-center w-1/3">
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    @if ($result3!==null)
-                                                    <?php  $inv_ini_ca_ar_3=$smasolutions->inv_ini_ca_ar($id_project,$result3->num_enf) ?>
-
-
-                                                    <div class="w-full flex justify-center">
-                                                        <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($sumaopex_3/$tar_ele->area,1)}}</b>
-
-                                                    </div>
-
-                                                    @endif
-
-                                                    @if ($result3===null)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">0</b>
-                                                    @endif
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-                                    </div> --}}
-
-{{--  --}}
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center">
@@ -3177,255 +1925,6 @@ span{
 
                                         </div>
                                     </div>
-
-
-                                    {{--
-                                        Roi invercion total respaldo
-                                        <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
-                                        <div class="flex w-full justify-center mb-5">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">ROI Diferencia de Inversión</label>
-                                        </div>
-                                        <div class="flex w-full justify-center bg-gray-200 gap-x-3">
-                                            <div class="grid justify-center w-1/4">
-
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 Años</b>
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 Años</b>
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 Años</b>
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 Años</b>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="flex w-full justify-center bg-gray-200 gap-x-3">
-                                            <div class="grid justify-center w-1/4">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl">Solución A</b>
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                               @if ($result2 !== null)
-                                               <?php  $roi_ent_dif_inv=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,3,$dif_1_cost) ?>
-                                                    @if ($roi_ent_dif_inv == 0)
-                                                    <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv > 0 && $roi_ent_dif_inv < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv)}}%</b>
-                                                    @endif
-                                               @endif
-
-                                               @if ($result2 === null)
-                                               <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
-                                               @endif
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-
-                                                @if ($result2 !== null)
-                                                <?php  $roi_ent_dif_inv_5=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,5,$dif_1_cost) ?>
-                                                    @if ($roi_ent_dif_inv_5 == 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_5)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_5 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_5 > 0 && $roi_ent_dif_inv_5 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_5)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_5 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_5)}}%</b>
-                                                    @endif
-                                                @endif
-
-                                                @if ($result2 === null)
-                                                <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
-                                                @endif
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                               @if ($result2 !== null)
-                                               <?php  $roi_ent_dif_inv_10=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,10,$dif_1_cost) ?>
-                                                    @if ($roi_ent_dif_inv_10 == 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_10)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_10 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_10 > 0 && $roi_ent_dif_inv_10 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_10)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_10 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_10)}}%</b>
-                                                    @endif
-                                               @endif
-
-                                               @if ($result2 === null)
-                                               <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
-                                               @endif
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                               @if ($result2 !== null)
-                                               <?php  $roi_ent_dif_inv_15=$smasolutions->roi_ent_dif_inv($id_project,$result2->num_enf,15,$dif_1_cost) ?>
-
-                                                    @if ($roi_ent_dif_inv_15 == 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_15)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_15 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_15 > 0 && $roi_ent_dif_inv_15 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_15)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_15 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_15)}}%</b>
-                                                    @endif
-
-                                                    @endif
-
-                                               @if ($result2 === null)
-                                               <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
-                                               @endif
-                                            </div>
-                                        </div>
-
-                                        <div class="flex w-full justify-center bg-gray-200 gap-x-3">
-                                            <div class="grid justify-center w-1/4">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl">Solución B</b>
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                              @if ($result3 !== null)
-                                              <?php  $roi_ent_dif_inv_b_1=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,3,$dif_2_cost) ?>
-                                                    @if ($roi_ent_dif_inv_b_1 == 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_1)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_b_1 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_b_1 > 0 && $roi_ent_dif_inv_b_1 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_1)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_b_1 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_1)}}%</b>
-                                                    @endif
-                                              @endif
-
-                                              @if ($result3 === null)
-                                              <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
-                                              @endif
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                               @if ($result3 !== null)
-                                               <?php  $roi_ent_dif_inv_b_2=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,5,$dif_2_cost) ?>
-                                                    @if ($roi_ent_dif_inv_b_2 == 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_2)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_b_2 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_b_2 > 0 && $roi_ent_dif_inv_b_2 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_2)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_b_2 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_2)}}%</b>
-                                                    @endif
-                                               @endif
-
-                                               @if ($result3 === null)
-                                               <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
-                                               @endif
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                              @if ($result3 !== null)
-                                              <?php  $roi_ent_dif_inv_b_3=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,10,$dif_2_cost) ?>
-                                                    @if ($roi_ent_dif_inv_b_3 == 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_3)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_b_3 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_b_3 > 0 && $roi_ent_dif_inv_b_3 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_3)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_b_3 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_3)}}%</b>
-                                                    @endif
-                                              @endif
-
-                                              @if ($result3 === null)
-                                              <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
-                                              @endif
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                              @if ($result3 !== null)
-                                              <?php  $roi_ent_dif_inv_b_4=$smasolutions->roi_ent_dif_inv($id_project,$result3->num_enf,15,$dif_2_cost) ?>
-                                                     @if ($roi_ent_dif_inv_b_4 == 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_4)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_b_4 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_b_4 > 0 && $roi_ent_dif_inv_b_4 < 20)
-                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_4)}}%</b>
-                                                    @endif
-
-                                                    @if ($roi_ent_dif_inv_b_4 > 20)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_ent_dif_inv_b_4)}}%</b>
-                                                    @endif
-                                              @endif
-
-                                              @if ($result3 === null)
-                                              <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
-                                              @endif
-                                            </div>
-                                        </div>
-
-
-                                    </div> --}}
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
@@ -3740,7 +2239,7 @@ span{
                     <div class="w-full flex justify-center">
                         <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
                             <div class="grid bg-gray-200 rounded-md shadow-xl">
-                                <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
+                                <div style="background-color: #233064;" class="w-full flex justify-center text-white rounded-md p-3">
                                     <label class="font-bold text-white text-2xl font-roboto text-4xl">ANÁLISIS DE INTENSIDAD DEL USO DE LA ENERGÍA (EUI)</label>
                                 </div>
 
@@ -3859,8 +2358,8 @@ span{
                                             <div class="flex w-full ">
                                                     <div class="grid w-full mx-3">
 
-                                                        <div class="flex justify-center w-full bg-blue-800 rounded-md p-2">
-                                                            <label class="text-white font-bold text-4xl font-roboto">Solución Base</label>
+                                                        <div class="flex justify-center w-full bg-orange-500 rounded-md p-2">
+                                                            <label class="text-white font-bold text-4xl font-roboto">Sistema Existente</label>
                                                         </div>
 
                                                         <div class="grid justify-center">
@@ -3911,7 +2410,7 @@ span{
                                             <div class="flex w-full ">
                                                     <div class="grid w-full mx-3">
 
-                                                        <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                        <div class="w-full bg-blue-800 rounded-md p-2 text-center">
                                                             <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
                                                         </div>
 
@@ -3953,7 +2452,7 @@ span{
                                             <div class="flex w-full ">
                                                     <div class="grid w-full mx-3">
 
-                                                        <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                        <div class="w-full bg-blue-800 rounded-md p-2 text-center">
                                                             <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
                                                         </div>
 
@@ -4097,7 +2596,7 @@ span{
 
                                         <div class="w-full flex mt-5">
                                             <div class="w-1/3 flex">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución Base</b>
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Sistema Existente</b>
                                             </div>
                                             <?php  $energy_base=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
                                             <div class="w-1/3 flex justify-center">
@@ -4215,7 +2714,7 @@ span{
                     <div class="w-full flex justify-center">
                         <div class="2xl:w-3/4 xl:w-3/4 my-3 lg:w-full ">
                             <div class="grid bg-gray-200 rounded-md shadow-xl">
-                                <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
+                                <div style="background-color: #233064;" class="w-full flex justify-center text-white rounded-md p-3">
                                     <label class="font-bold text-white text-2xl font-roboto text-4xl">RESULTADOS ANÁLISIS SUSTENTABLE</label>
                                 </div>
 
@@ -4314,8 +2813,8 @@ span{
                                         <div class="flex w-full ">
                                                 <div class="grid w-full mx-3">
 
-                                                    <div class="flex justify-center w-full bg-blue-800 rounded-md p-2">
-                                                        <label class="text-white font-bold text-4xl font-roboto">Solución Base</label>
+                                                    <div class="flex justify-center w-full bg-orange-500 rounded-md p-2">
+                                                        <label class="text-white font-bold text-4xl font-roboto">Sistema Existente</label>
                                                     </div>
 
                                                     <div class="grid justify-center">
@@ -4363,7 +2862,7 @@ span{
                                         <div class="flex w-full ">
                                                 <div class="grid w-full mx-3">
 
-                                                    <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                    <div class="w-full bg-blue-800 rounded-md p-2 text-center">
                                                         <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
                                                     </div>
 
@@ -4402,7 +2901,7 @@ span{
                                         <div class="flex w-full ">
                                                 <div class="grid w-full mx-3">
 
-                                                    <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                    <div class="w-full bg-blue-800 rounded-md p-2 text-center">
                                                         <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
                                                     </div>
 
@@ -4889,7 +3388,7 @@ span{
     <div class="w-full flex justify-center">
         <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
             <div class="grid bg-gray-200 rounded-md shadow-xl">
-                <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
+                <div style="background-color: #233064;" class="w-full flex justify-center text-white rounded-md p-3">
                     <label class="font-bold text-white text-2xl font-roboto text-4xl">Analisis de Confort y Productividad</label>
                 </div>
 
@@ -4991,7 +3490,7 @@ span{
 
                                 <div class="w-1/5 flex justify-start">
                                 {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                                        <p class="text-3xl text-blue-600 font-roboto  font-bold text-left">Solución Base</p>
+                                        <p class="text-3xl text-blue-600 font-roboto  font-bold text-left">Sistema Existente</p>
                                     {{-- </div> --}}
                                 </div>
 
@@ -5354,7 +3853,7 @@ function cap_op_3(id_project,unidad){
           },
         },
         xaxis: {
-          categories: ['Solución B', 'Solución A', 'Solución Base'],
+          categories: ['Solución B', 'Solución A', 'Sistema Existente'],
           labels: {
                 style: {
                     colors: [],
@@ -5483,7 +3982,7 @@ function cap_op_5(id_project,unidad){
           },
         },
         xaxis: {
-          categories: ['Solución B', 'Solución A', 'Solución Base'],
+          categories: ['Solución B', 'Solución A', 'Sistema Existente'],
           labels: {
                 style: {
                     colors: [],
@@ -5614,7 +4113,7 @@ function cap_op_10(id_project,unidad){
           },
         },
         xaxis: {
-          categories: ['Solución B', 'Solución A', 'Solución Base'],
+          categories: ['Solución B', 'Solución A', 'Sistema Existente'],
           labels: {
                 style: {
                     colors: [],
@@ -5744,7 +4243,7 @@ function cap_op_15(id_project,unidad){
           },
         },
         xaxis: {
-          categories: ['Solución B', 'Solución A', 'Solución Base'],
+          categories: ['Solución B', 'Solución A', 'Sistema Existente'],
           labels: {
                 style: {
                     colors: [],
