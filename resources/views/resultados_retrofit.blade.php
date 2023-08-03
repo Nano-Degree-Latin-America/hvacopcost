@@ -371,7 +371,7 @@ span{
                                                                                 VRF Ductados
                                                                                 @endif
                                                                                 @if ($solution->unidad_hvac == 5)
-                                                                                PTAC
+                                                                                PTAC/VTAC
                                                                                 @endif
                                                                                 @if ($solution->unidad_hvac == 6)
                                                                                 WSHP
@@ -394,52 +394,60 @@ span{
                                                                         <div class="ml-2 w-auto">
                                                                             <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
                                                                                 @if ($solution->tipo_equipo == 'basico')
-                                                                                Básico
-                                                                                @endif
+                                                                                    Básico
+                                                                                    @endif
 
-                                                                                @if ($solution->tipo_equipo == 'c_economizador')
-                                                                                c/ Economizador
-                                                                                @endif
+                                                                                    @if ($solution->tipo_equipo == 'c_economizador')
+                                                                                    c/ Economizador
+                                                                                    @endif
 
-                                                                                @if ($solution->tipo_equipo == 'manejadora')
-                                                                                Manejadora
-                                                                                @endif
+                                                                                    @if ($solution->tipo_equipo == 'manejadora')
+                                                                                    Manejadora
+                                                                                    @endif
 
-                                                                                @if ($solution->tipo_equipo == 'fancoil')
-                                                                                Fancoil
-                                                                                @endif
+                                                                                    @if ($solution->tipo_equipo == 'fancoil')
+                                                                                    Fancoil
+                                                                                    @endif
 
-                                                                                @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                                Cassette y Piso Techo
-                                                                                @endif
+                                                                                    @if ($solution->tipo_equipo == 'unid_pred')
+                                                                                    Unidad de Presición
+                                                                                    @endif
 
-                                                                                @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                                Fancoil (LSP)
-                                                                                @endif
+                                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                                                    Cassette y Piso Techo
+                                                                                    @endif
 
-                                                                                @if ($solution->tipo_equipo == 'man')
-                                                                                Manejadoras
-                                                                                @endif
+                                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                                                    Fancoil (LSP)
+                                                                                    @endif
 
-                                                                                @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                                Fancoil (HSP)
-                                                                                @endif
+                                                                                    @if ($solution->tipo_equipo == 'man')
+                                                                                    Manejadoras
+                                                                                    @endif
 
-                                                                                @if ($solution->tipo_equipo == 'est_ptac')
-                                                                                Unidad Estándar
-                                                                                @endif
+                                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                                                    Fancoil (HSP)
+                                                                                    @endif
 
-                                                                                @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                                Agua Circuito Cerrado
-                                                                                @endif
+                                                                                    @if ($solution->tipo_equipo == 'vert')
+                                                                                    Vertical
+                                                                                    @endif
 
-                                                                                @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                                Agua Circuito Cerrado
-                                                                                @endif
+                                                                                    @if ($solution->tipo_equipo == 'horz')
+                                                                                    Horizontal
+                                                                                    @endif
 
-                                                                                @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                                Pared - Piso - Techo
-                                                                                @endif
+                                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                                                    Agua Circuito Cerrado
+                                                                                    @endif
+
+                                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                                                    Agua Circuito Cerrado
+                                                                                    @endif
+
+                                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                                                    Pared - Piso - Techo
+                                                                                    @endif
                                                                             </p>
                                                                         </div>
 
@@ -619,7 +627,7 @@ span{
                                                                             VRF Ductados
                                                                             @endif
                                                                             @if ($solution->unidad_hvac == 5)
-                                                                            PTAC
+                                                                            PTAC/VTAC
                                                                             @endif
                                                                             @if ($solution->unidad_hvac == 6)
                                                                             WSHP
@@ -657,6 +665,10 @@ span{
                                                                             Fancoil
                                                                             @endif
 
+                                                                            @if ($solution->tipo_equipo == 'unid_pred')
+                                                                            Unidad de Presición
+                                                                            @endif
+
                                                                             @if ($solution->tipo_equipo == 'ca_pi_te')
                                                                             Cassette y Piso Techo
                                                                             @endif
@@ -673,8 +685,12 @@ span{
                                                                             Fancoil (HSP)
                                                                             @endif
 
-                                                                            @if ($solution->tipo_equipo == 'est_ptac')
-                                                                            Unidad Estándar
+                                                                            @if ($solution->tipo_equipo == 'vert')
+                                                                            Vertical
+                                                                            @endif
+
+                                                                            @if ($solution->tipo_equipo == 'horz')
+                                                                            Horizontal
                                                                             @endif
 
                                                                             @if ($solution->tipo_equipo == 'agu_cir_cer')
@@ -855,7 +871,7 @@ span{
                                                                             VRF Ductados
                                                                             @endif
                                                                             @if ($solution->unidad_hvac == 5)
-                                                                            PTAC
+                                                                            PTAC/VTAC
                                                                             @endif
                                                                             @if ($solution->unidad_hvac == 6)
                                                                             WSHP
@@ -878,52 +894,60 @@ span{
                                                                     <div class="ml-2 w-auto">
                                                                         <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
                                                                             @if ($solution->tipo_equipo == 'basico')
-                                                                            Básico
-                                                                            @endif
+                                                                                    Básico
+                                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'c_economizador')
-                                                                            c/ Economizador
-                                                                            @endif
+                                                                                    @if ($solution->tipo_equipo == 'c_economizador')
+                                                                                    c/ Economizador
+                                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'manejadora')
-                                                                            Manejadora
-                                                                            @endif
+                                                                                    @if ($solution->tipo_equipo == 'manejadora')
+                                                                                    Manejadora
+                                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'fancoil')
-                                                                            Fancoil
-                                                                            @endif
+                                                                                    @if ($solution->tipo_equipo == 'fancoil')
+                                                                                    Fancoil
+                                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                                            Cassette y Piso Techo
-                                                                            @endif
+                                                                                    @if ($solution->tipo_equipo == 'unid_pred')
+                                                                                    Unidad de Presición
+                                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'fancoil_lsp')
-                                                                            Fancoil (LSP)
-                                                                            @endif
+                                                                                    @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                                                    Cassette y Piso Techo
+                                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'man')
-                                                                            Manejadoras
-                                                                            @endif
+                                                                                    @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                                                    Fancoil (LSP)
+                                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'fancoil_hsp')
-                                                                            Fancoil (HSP)
-                                                                            @endif
+                                                                                    @if ($solution->tipo_equipo == 'man')
+                                                                                    Manejadoras
+                                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'est_ptac')
-                                                                            Unidad Estándar
-                                                                            @endif
+                                                                                    @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                                                    Fancoil (HSP)
+                                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'agu_cir_cer')
-                                                                            Agua Circuito Cerrado
-                                                                            @endif
+                                                                                    @if ($solution->tipo_equipo == 'vert')
+                                                                                    Vertical
+                                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'agu_cir_abr')
-                                                                            Agua Circuito Cerrado
-                                                                            @endif
+                                                                                    @if ($solution->tipo_equipo == 'horz')
+                                                                                    Horizontal
+                                                                                    @endif
 
-                                                                            @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                                            Pared - Piso - Techo
-                                                                            @endif
+                                                                                    @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                                                    Agua Circuito Cerrado
+                                                                                    @endif
+
+                                                                                    @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                                                    Agua Circuito Cerrado
+                                                                                    @endif
+
+                                                                                    @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                                                    Pared - Piso - Techo
+                                                                                    @endif
                                                                         </p>
                                                                     </div>
 

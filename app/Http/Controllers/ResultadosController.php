@@ -812,7 +812,7 @@ if($equipo_conf_1_1 === 'man' || $equipo_conf_1_1 === 'fancoil_hsp'){
               case 'Termostato Interno':
                   $val_conf_crtl_1_1 = 3;
                 break;
-              case 'Termostatos en Zona de Confort':
+              case 'Termostato en Zona de Confort':
                   $val_conf_crtl_1_1 = 4;
                 break;
               case 'Termostato Inteligente en Zona':
@@ -1618,7 +1618,7 @@ if($equipo_conf_1_1 === 'horz' || $equipo_conf_1_1 === 'pa_pi_te'){
             case 'Termostato Interno':
                 $val_conf_crtl_1_1 = 3;
               break;
-            case 'Termostatos en Zona de Confort':
+            case 'Termostato en Zona de Confort':
                 $val_conf_crtl_1_1 = 4;
               break;
             case 'Termostato Inteligente en Zona':
@@ -2424,7 +2424,7 @@ if($equipo_conf_1_1 === 'horz' || $equipo_conf_1_1 === 'pa_pi_te'){
             case 'Termostato Interno':
                 $val_conf_crtl_1_1 = 3;
               break;
-            case 'Termostatos en Zona de Confort':
+            case 'Termostato en Zona de Confort':
                 $val_conf_crtl_1_1 = 4;
               break;
             case 'Termostato Inteligente en Zona':
@@ -3255,7 +3255,7 @@ if($equipo_conf_1_1 === 'horz' || $equipo_conf_1_1 === 'pa_pi_te'){
             case 'Termostato Interno':
                 $val_conf_crtl_1_1 = 3;
               break;
-            case 'Termostatos en Zona de Confort':
+            case 'Termostato en Zona de Confort':
                 $val_conf_crtl_1_1 = 4;
               break;
             case 'Termostato Inteligente en Zona':
@@ -4059,7 +4059,7 @@ if($equipo_conf_1_1 === 'horz' || $equipo_conf_1_1 === 'pa_pi_te'){
             case 'Termostato Interno':
                 $val_conf_crtl_1_1 = 3;
               break;
-            case 'Termostatos en Zona de Confort':
+            case 'Termostato en Zona de Confort':
                 $val_conf_crtl_1_1 = 4;
               break;
             case 'Termostato Inteligente en Zona':
@@ -4864,7 +4864,7 @@ if($equipo_conf_1_1 === 'horz' || $equipo_conf_1_1 === 'pa_pi_te'){
             case 'Termostato Interno':
                 $val_conf_crtl_1_1 = 3;
               break;
-            case 'Termostatos en Zona de Confort':
+            case 'Termostato en Zona de Confort':
                 $val_conf_crtl_1_1 = 4;
               break;
             case 'Termostato Inteligente en Zona':
@@ -5693,7 +5693,7 @@ if($equipo_conf_1_1 === 'unid_pred'){
                         case 'Termostato Interno':
                             $val_conf_crtl_1_1 = 3;
                           break;
-                        case 'Termostatos en Zona de Confort':
+                        case 'Termostato en Zona de Confort':
                             $val_conf_crtl_1_1 = 4;
                           break;
                         case 'Termostato Inteligente en Zona':
@@ -6497,7 +6497,7 @@ if($equipo_conf_1_1 === 'unid_pred'){
                         case 'Termostato Interno':
                             $val_conf_crtl_1_1 = 3;
                           break;
-                        case 'Termostatos en Zona de Confort':
+                        case 'Termostato en Zona de Confort':
                             $val_conf_crtl_1_1 = 4;
                           break;
                         case 'Termostato Inteligente en Zona':
@@ -7299,7 +7299,7 @@ if($equipo_conf_1_1 === 'unid_pred'){
                         case 'Termostato Interno':
                             $val_conf_crtl_1_1 = 3;
                           break;
-                        case 'Termostatos en Zona de Confort':
+                        case 'Termostato en Zona de Confort':
                             $val_conf_crtl_1_1 = 4;
                           break;
                         case 'Termostato Inteligente en Zona':
@@ -8089,7 +8089,7 @@ if($equipo_conf_1_1 === 'unid_pred'){
                 case 'Termostato Interno':
                     $val_conf_crtl_1_1 = 3;
                   break;
-                case 'Termostatos en Zona de Confort':
+                case 'Termostato en Zona de Confort':
                     $val_conf_crtl_1_1 = 4;
                   break;
                 case 'Termostato Inteligente en Zona':
@@ -8854,7 +8854,7 @@ if($equipo_conf_1_1 === 'unid_pred'){
                 case 'Termostato Interno':
                     $val_conf_crtl_1_1 = 3;
                   break;
-                case 'Termostatos en Zona de Confort':
+                case 'Termostato en Zona de Confort':
                     $val_conf_crtl_1_1 = 4;
                   break;
                 case 'Termostato Inteligente en Zona':
@@ -9616,7 +9616,7 @@ if($equipo_conf_1_1 === 'unid_pred'){
                 case 'Termostato Interno':
                     $val_conf_crtl_1_1 = 3;
                   break;
-                case 'Termostatos en Zona de Confort':
+                case 'Termostato en Zona de Confort':
                     $val_conf_crtl_1_1 = 4;
                   break;
                 case 'Termostato Inteligente en Zona':
