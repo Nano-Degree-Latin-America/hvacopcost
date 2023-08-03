@@ -6913,7 +6913,7 @@ if($equipo_conf_1_1 === 'unid_pred'){
                 $aux_cost_mant_b_3_3 = explode(",",    $aux_cost_mant_3_3[1]);
 
                 if(count($aux_cost_mant_b_3_3) == 1){
-                    $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_2[0];
+                    $aux_cost_mant_3_3 =  $aux_cost_mant_b_3_3[0];
                 }
                 if(count($aux_cost_mant_b_3_3) == 2){
                     $aux_cost_mant_3_3=  $aux_cost_mant_b_3_3[0].$aux_cost_mant_b_3_3[1];
