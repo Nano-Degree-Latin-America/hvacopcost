@@ -201,7 +201,7 @@ span{
     <button class="bg-orange-500  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/edit_project_copy/{{$id_project}}'"><p class="mx-1">Editar Proyecto</p></button>
 
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
-    <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" onclick="window.open('/generatePDF/{{$id_project}}', '_blank');" ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
+    <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" {{-- onclick="window.open('/generatePDF/{{$id_project}}', '_blank');" --}} ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
 
     <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'">Nuevo Proyecto</button>
 
@@ -1369,7 +1369,7 @@ span{
                                                 <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                 <div class="grid w-1/2 justify-center text-[24px] gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Existente v/s A </b>
                                                     </div>
                                                     <div class="flex justify-center w-full">
                                                     <b style="color:#33cc33;" id="dif_1"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b>
@@ -1378,7 +1378,7 @@ span{
 
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s B </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Existente v/s B </b>
                                                     <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl text-center">0 </b>
                                                     </div>
                                                 </div>
@@ -1392,7 +1392,7 @@ span{
                                                     <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                     <div class="w-1/2 grid w-full justify-center text-[24px] gap-x-4">
                                                         <div class="flex justify-center w-full">
-                                                            <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
+                                                            <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Existente v/s A </b>
                                                             </div>
                                                         <div class="flex justify-center w-full">
                                                             <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b> <b class="text-3xl mt-3 font-roboto ml-1"></b>
@@ -1403,7 +1403,7 @@ span{
                                                     <?php  $dif_2=$smasolutions->dif_2($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                     <div class="w-1/2 grid w-full justify-center text-[24px]  gap-x-4">
                                                         <div class="flex w-full justify-center">
-                                                        <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s B </b>
+                                                        <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Existente v/s B </b>
                                                         </div>
                                                         <div class="flex w-full justify-center">
                                                             <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_2)}}</b> <b class="text-3xl mt-3 font-roboto ml-1"></b>
@@ -1422,11 +1422,11 @@ span{
 
 
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b><b style="color:#33cc33;"   class="text-[24px] font-roboto text-5xl">0 Kwh año</b>
+                                                <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Existente v/s A </b><b style="color:#33cc33;"   class="text-[24px] font-roboto text-5xl">0 Kwh año</b>
                                                 </div>
 
                                                     <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b><b  style="color:#33cc33;"  class="text-[24px] font-roboto text-5xl">0 Kwh año</b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Existente v/s B </b><b  style="color:#33cc33;"  class="text-[24px] font-roboto text-5xl">0 Kwh año</b>
                                                     </div>
                                             </div>
                                              @endforeach
@@ -1818,7 +1818,7 @@ span{
                                                 <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s A </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Existente v/s A </b>
                                                     </div>
                                                     <div class="flex justify-center w-full">
                                                         <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">${{number_format($dif_1_cost)}}</b>
@@ -1828,7 +1828,7 @@ span{
 
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s B </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Existente v/s B </b>
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
                                                     </div>
                                                 </div>
@@ -1842,7 +1842,7 @@ span{
                                                     <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                     <div class="w-1/2 grid w-full justify-center text-[24px] m-1 gap-x-4">
                                                         <div class="flex justify-center w-full">
-                                                            <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">Solución  Base v/s A </b>
+                                                            <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">Solución  Existente v/s A </b>
                                                             </div>
                                                         <div class="flex justify-center w-full">
                                                             <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">$ {{number_format($dif_1_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
@@ -1855,7 +1855,7 @@ span{
                                                     <?php  $dif_2_cost=$smasolutions->dif_2_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                     <div class="w-1/2 grid w-full justify-center text-[24px] m-1 gap-x-4">
                                                         <div class="flex w-full justify-center">
-                                                        <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">Solución  Base v/s B </b>
+                                                        <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">Solución  Existente v/s B </b>
                                                         </div>
                                                         <div class="flex w-full justify-center">
                                                             <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">$ {{number_format($dif_2_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
@@ -1876,11 +1876,11 @@ span{
 
 
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s A </b><b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
+                                                <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Existente v/s A </b><b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
                                                 </div>
 
                                                     <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s B </b><b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
+                                                    <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Existente v/s B </b><b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
                                                     </div>
                                             </div>
                                              @endforeach
@@ -1937,22 +1937,27 @@ span{
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
+                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">1 Años</b>
+
+                                            </div>
+
+                                            <div class="grid justify-center w-1/5">
+                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">2 Años</b>
+
+                                            </div>
+
+                                            <div class="grid justify-center w-1/5">
                                                 <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 Años</b>
 
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
+                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">4 Años</b>
+
+                                            </div>
+
+                                            <div class="grid justify-center w-1/5">
                                                 <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 Años</b>
-
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 Años</b>
-
-                                            </div>
-
-                                            <div class="grid justify-center w-1/5">
-                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 Años</b>
 
                                             </div>
                                         </div>
@@ -1964,7 +1969,7 @@ span{
 
                                             <div class="grid justify-center w-1/5">
                                               @if ($result2 !== null)
-                                              <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(3,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                                              <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(1,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                               <?php  /* $roi_inv_tot_1=$smasolutions->roi_inv_tot(3,$dif_1_cost,$inv_ini_2,) */ ?>
 
                                               @if ($roi_inv_tot_1 == 0)
@@ -1991,7 +1996,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result2 !== null)
-                                              <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(5,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                                              <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(2,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_2 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_2}}%</b>
                                                     @endif
@@ -2017,7 +2022,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result2 !== null)
-                                                <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(10,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                                                <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(3,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_3 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_3}}%</b>
                                                     @endif
@@ -2043,7 +2048,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result2 !== null)
-                                                <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(15,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                                                <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(4,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_4 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
                                                     @endif
@@ -2052,7 +2057,33 @@ span{
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
                                                     @endif
 
-                                                    @if ($roi_inv_tot_4 > 0 && $roi_inv_tot_4 <= 15)
+                                                    @if ($roi_inv_tot_4 > 0 && $roi_inv_tot_4 <= 5)
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
+                                                    @endif
+
+                                                    @if ($roi_inv_tot_4 > 15)
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
+                                                    @endif
+                                                @endif
+
+                                                @if ($result2 === null)
+                                                <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
+                                                @endif
+                                            </div>
+
+                                            <div class="grid justify-center w-1/5">
+
+                                                @if ($result2 !== null)
+                                                <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(5,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                                                    @if ($roi_inv_tot_4 == 0)
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
+                                                    @endif
+
+                                                    @if ($roi_inv_tot_4 < 0)
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
+                                                    @endif
+
+                                                    @if ($roi_inv_tot_4 > 0 && $roi_inv_tot_4 <= 5)
                                                     <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
                                                     @endif
 
@@ -2075,7 +2106,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result3 !== null)
-                                                <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(3,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                                                <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(1,$id_project,$dif_2_cost,$inv_ini_3) ?>
                                                 <?php  /* $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(3,$dif_2_cost,$inv_ini_3)  */?>
                                                     @if ($roi_inv_tot_b_1 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_1)}}%</b>
@@ -2102,7 +2133,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result3 !== null)
-                                                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(5,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                                                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(2,$id_project,$dif_2_cost,$inv_ini_3) ?>
                                                     @if ($roi_inv_tot_b_2 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_2)}}%</b>
                                                     @endif
@@ -2127,7 +2158,7 @@ span{
 
                                             <div class="grid justify-center w-1/5">
                                                 @if ($result3 !== null)
-                                                <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot(10,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                                                <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot(3,$id_project,$dif_2_cost,$inv_ini_3) ?>
                                                     @if ($roi_inv_tot_b_3 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_3)}}%</b>
                                                     @endif
@@ -2153,7 +2184,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                     @if ($result3 !== null)
-                                                    <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(15,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                                                    <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(4,$id_project,$dif_2_cost,$inv_ini_3) ?>
 
                                                     @if ($roi_inv_tot_b_4 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
@@ -2176,6 +2207,33 @@ span{
                                                 <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
                                                 @endif
                                             </div>
+
+                                            <div class="grid justify-center w-1/5">
+
+                                                @if ($result3 !== null)
+                                                <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(5,$id_project,$dif_2_cost,$inv_ini_3) ?>
+
+                                                @if ($roi_inv_tot_b_4 == 0)
+                                                <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
+                                                @endif
+
+                                                @if ($roi_inv_tot_b_4 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
+                                                @endif
+
+                                                @if ($roi_inv_tot_b_4 > 0 && $roi_inv_tot_b_4 <= 15)
+                                                <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
+                                                @endif
+
+                                                @if ($roi_inv_tot_b_4 > 15)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
+                                                @endif
+                                            @endif
+
+                                            @if ($result3 === null)
+                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
+                                            @endif
+                                        </div>
                                         </div>
                                     </div>
 
@@ -2957,19 +3015,23 @@ span{
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">1 Años</b>
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">2 Años</b>
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
                                             <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 Años</b>
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">4 Años</b>
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
                                             <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 Años</b>
-                                        </div>
-
-                                        <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 Años</b>
-                                        </div>
-
-                                        <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 Años</b>
                                         </div>
                                     </div>
 
@@ -2983,7 +3045,7 @@ span{
                                         <div class="grid justify-center w-1/5">
                                            {{--  <b class="text-[24px] text-blue-900 font-roboto text-4xl">3 Años</b> --}}
                                            @if ($result2 !== null)
-                                           <?php  $red_en_mw_a_1=$smasolutions->red_en_mw(3,$dif_1) ?>
+                                           <?php  $red_en_mw_a_1=$smasolutions->red_en_mw(1,$dif_1) ?>
                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_1)}}</b>
                                            @endif
 
@@ -2994,7 +3056,7 @@ span{
 
                                         <div class="grid justify-center w-1/5">
                                             @if ($result2 !== null)
-                                            <?php  $red_en_mw_a_2=$smasolutions->red_en_mw(5,$dif_1) ?>
+                                            <?php  $red_en_mw_a_2=$smasolutions->red_en_mw(2,$dif_1) ?>
                                             <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_2)}}</b>
                                             @endif
 
@@ -3006,7 +3068,7 @@ span{
                                         <div class="grid justify-center w-1/5">
                                            {{--  <b class="text-[24px] text-blue-900 font-roboto text-4xl">10 Años</b> --}}
                                            @if ($result2 !== null)
-                                           <?php  $red_en_mw_a_3=$smasolutions->red_en_mw(10,$dif_1) ?>
+                                           <?php  $red_en_mw_a_3=$smasolutions->red_en_mw(3,$dif_1) ?>
                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_3)}}</b>
                                            @endif
 
@@ -3017,7 +3079,18 @@ span{
 
                                         <div class="grid justify-center w-1/5">
                                             @if ($result2 !== null)
-                                            <?php  $red_en_mw_a_4=$smasolutions->red_en_mw(15,$dif_1) ?>
+                                            <?php  $red_en_mw_a_4=$smasolutions->red_en_mw(4,$dif_1) ?>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_4)}}</b>
+                                            @endif
+
+                                            @if ($result2 === null)
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">N/A</b>
+                                            @endif
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
+                                            @if ($result2 !== null)
+                                            <?php  $red_en_mw_a_4=$smasolutions->red_en_mw(5,$dif_1) ?>
                                             <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_4)}}</b>
                                             @endif
 
@@ -3034,7 +3107,7 @@ span{
 
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
-                                            <?php  $red_en_mw_b_1=$smasolutions->red_en_mw(3,$dif_2) ?>
+                                            <?php  $red_en_mw_b_1=$smasolutions->red_en_mw(1,$dif_2) ?>
                                             <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_1)}}</b>
                                             @endif
 
@@ -3045,7 +3118,7 @@ span{
 
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
-                                            <?php  $red_en_mw_b_2=$smasolutions->red_en_mw(5,$dif_2) ?>
+                                            <?php  $red_en_mw_b_2=$smasolutions->red_en_mw(2,$dif_2) ?>
                                             <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_2)}}</b>
                                             @endif
 
@@ -3056,7 +3129,7 @@ span{
 
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
-                                            <?php  $red_en_mw_b_3=$smasolutions->red_en_mw(10,$dif_2) ?>
+                                            <?php  $red_en_mw_b_3=$smasolutions->red_en_mw(3,$dif_2) ?>
                                             <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_3)}}</b>
                                             @endif
 
@@ -3067,7 +3140,18 @@ span{
 
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
-                                            <?php  $red_en_mw_b_4=$smasolutions->red_en_mw(15,$dif_2) ?>
+                                            <?php  $red_en_mw_b_4=$smasolutions->red_en_mw(4,$dif_2) ?>
+                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_4)}}</b>
+                                            @endif
+
+                                            @if ($result3 === null)
+                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
+                                            @endif
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
+                                            @if ($result3 !== null)
+                                            <?php  $red_en_mw_b_4=$smasolutions->red_en_mw(5,$dif_2) ?>
                                             <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_4)}}</b>
                                             @endif
 
@@ -3097,22 +3181,27 @@ span{
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">1 Años</b>
+
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">2 Años</b>
+
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
                                             <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 Años</b>
 
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">4 Años</b>
+
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
                                             <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 Años</b>
-
-                                        </div>
-
-                                        <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 Años</b>
-
-                                        </div>
-
-                                        <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 Años</b>
 
                                         </div>
                                     </div>
@@ -3124,7 +3213,7 @@ span{
 
                                         <div class="grid justify-center w-1/5">
                                           @if ($result2 !== null)
-                                          <?php  $red_hu_carb_a_1=$smasolutions->red_hu_carb(3,$dif_1) ?>
+                                          <?php  $red_hu_carb_a_1=$smasolutions->red_hu_carb(1,$dif_1) ?>
                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_1)}}</b>
                                           @endif
 
@@ -3136,7 +3225,7 @@ span{
                                         <div class="grid justify-center w-1/5">
 
                                             @if ($result2 !== null)
-                                          <?php  $red_hu_carb_a_2=$smasolutions->red_hu_carb(5,$dif_1) ?>
+                                          <?php  $red_hu_carb_a_2=$smasolutions->red_hu_carb(2,$dif_1) ?>
                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_2)}}</b>
                                           @endif
 
@@ -3148,7 +3237,7 @@ span{
                                         <div class="grid justify-center w-1/5">
 
                                             @if ($result2 !== null)
-                                          <?php  $red_hu_carb_a_3=$smasolutions->red_hu_carb(10,$dif_1) ?>
+                                          <?php  $red_hu_carb_a_3=$smasolutions->red_hu_carb(3,$dif_1) ?>
                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_3)}}</b>
                                           @endif
 
@@ -3160,7 +3249,19 @@ span{
                                         <div class="grid justify-center w-1/5">
 
                                             @if ($result2 !== null)
-                                          <?php  $red_hu_carb_a_4=$smasolutions->red_hu_carb(15,$dif_1) ?>
+                                          <?php  $red_hu_carb_a_4=$smasolutions->red_hu_carb(4,$dif_1) ?>
+                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_4)}}</b>
+                                          @endif
+
+                                          @if ($result2 === null)
+                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
+                                          @endif
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
+
+                                            @if ($result2 !== null)
+                                          <?php  $red_hu_carb_a_4=$smasolutions->red_hu_carb(5,$dif_1) ?>
                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_4)}}</b>
                                           @endif
 
@@ -3178,7 +3279,7 @@ span{
                                         <div class="grid justify-center w-1/5">
 
                                              @if ($result3 !== null)
-                                            <?php  $red_hu_carb_b_1=$smasolutions->red_hu_carb(3,$dif_2) ?>
+                                            <?php  $red_hu_carb_b_1=$smasolutions->red_hu_carb(1,$dif_2) ?>
                                             <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_1)}}</b>
                                             @endif
 
@@ -3190,7 +3291,7 @@ span{
                                         <div class="grid justify-center w-1/5">
 
                                              @if ($result3 !== null)
-                                            <?php  $red_hu_carb_b_2=$smasolutions->red_hu_carb(5,$dif_2) ?>
+                                            <?php  $red_hu_carb_b_2=$smasolutions->red_hu_carb(2,$dif_2) ?>
                                             <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_2)}}</b>
                                             @endif
 
@@ -3201,7 +3302,7 @@ span{
 
                                         <div class="grid justify-center w-1/5">
                                              @if ($result3 !== null)
-                                            <?php  $red_hu_carb_b_3=$smasolutions->red_hu_carb(10,$dif_2) ?>
+                                            <?php  $red_hu_carb_b_3=$smasolutions->red_hu_carb(3,$dif_2) ?>
                                             <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_3)}}</b>
                                             @endif
 
@@ -3213,7 +3314,7 @@ span{
                                         <div class="grid justify-center w-1/5">
 
                                              @if ($result3 !== null)
-                                          <?php  $red_hu_carb_b_4=$smasolutions->red_hu_carb(15,$dif_2) ?>
+                                          <?php  $red_hu_carb_b_4=$smasolutions->red_hu_carb(4,$dif_2) ?>
                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_4)}}</b>
                                           @endif
 
@@ -3221,6 +3322,18 @@ span{
                                           <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
                                           @endif
                                         </div>
+
+                                        <div class="grid justify-center w-1/5">
+
+                                            @if ($result3 !== null)
+                                         <?php  $red_hu_carb_b_4=$smasolutions->red_hu_carb(5,$dif_2) ?>
+                                         <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_4)}}</b>
+                                         @endif
+
+                                         @if ($result3 === null)
+                                         <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
+                                         @endif
+                                       </div>
                                     </div>
                                 </div>
                         {{--  --}}
@@ -3244,22 +3357,27 @@ span{
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">1 Años</b>
+
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">2 Años</b>
+
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
                                             <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 Años</b>
 
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">4 Años</b>
+
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
                                             <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 Años</b>
-
-                                        </div>
-
-                                        <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 Años</b>
-
-                                        </div>
-
-                                        <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 Años</b>
 
                                         </div>
                                     </div>
@@ -3271,7 +3389,7 @@ span{
 
                                         <div class="grid justify-center w-1/5">
                                           @if ($result2 !== null)
-                                          <?php  $red_bol_ba_a_1=$smasolutions->red_bol_ba(3,$dif_1) ?>
+                                          <?php  $red_bol_ba_a_1=$smasolutions->red_bol_ba(1,$dif_1) ?>
                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_1)}}</b>
                                           @endif
 
@@ -3283,7 +3401,7 @@ span{
                                         <div class="grid justify-center w-1/5">
 
                                             @if ($result2 !== null)
-                                          <?php  $red_bol_ba_a_2=$smasolutions->red_bol_ba(5,$dif_1) ?>
+                                          <?php  $red_bol_ba_a_2=$smasolutions->red_bol_ba(2,$dif_1) ?>
                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_2)}}</b>
                                           @endif
 
@@ -3295,7 +3413,7 @@ span{
                                         <div class="grid justify-center w-1/5">
 
                                             @if ($result2 !== null)
-                                          <?php  $red_bol_ba_a_3=$smasolutions->red_bol_ba(10,$dif_1) ?>
+                                          <?php  $red_bol_ba_a_3=$smasolutions->red_bol_ba(3,$dif_1) ?>
                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_3)}}</b>
                                           @endif
 
@@ -3307,7 +3425,19 @@ span{
                                         <div class="grid justify-center w-1/5">
 
                                             @if ($result2 !== null)
-                                          <?php  $red_bol_ba_a_4=$smasolutions->red_bol_ba(15,$dif_1) ?>
+                                          <?php  $red_bol_ba_a_4=$smasolutions->red_bol_ba(4,$dif_1) ?>
+                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_4)}}</b>
+                                          @endif
+
+                                          @if ($result2 === null)
+                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
+                                          @endif
+                                        </div>
+
+                                        <div class="grid justify-center w-1/5">
+
+                                            @if ($result2 !== null)
+                                          <?php  $red_bol_ba_a_4=$smasolutions->red_bol_ba(5,$dif_1) ?>
                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_4)}}</b>
                                           @endif
 
@@ -3325,7 +3455,7 @@ span{
                                         <div class="grid justify-center w-1/5">
 
                                              @if ($result3 !== null)
-                                            <?php  $red_bol_ba_b_1=$smasolutions->red_bol_ba(3,$dif_2) ?>
+                                            <?php  $red_bol_ba_b_1=$smasolutions->red_bol_ba(1,$dif_2) ?>
                                             <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_1)}}</b>
                                             @endif
 
@@ -3337,7 +3467,7 @@ span{
                                         <div class="grid justify-center w-1/5">
 
                                              @if ($result3 !== null)
-                                            <?php  $red_bol_ba_b_2=$smasolutions->red_bol_ba(5,$dif_2) ?>
+                                            <?php  $red_bol_ba_b_2=$smasolutions->red_bol_ba(2,$dif_2) ?>
                                             <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_2)}}</b>
                                             @endif
 
@@ -3348,7 +3478,7 @@ span{
 
                                         <div class="grid justify-center w-1/5">
                                              @if ($result3 !== null)
-                                            <?php  $red_bol_ba_b_3=$smasolutions->red_bol_ba(10,$dif_2) ?>
+                                            <?php  $red_bol_ba_b_3=$smasolutions->red_bol_ba(3,$dif_2) ?>
                                             <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_3)}}</b>
                                             @endif
 
@@ -3360,7 +3490,7 @@ span{
                                         <div class="grid justify-center w-1/5">
 
                                              @if ($result3 !== null)
-                                          <?php  $red_bol_ba_b_4=$smasolutions->red_bol_ba(15,$dif_2) ?>
+                                          <?php  $red_bol_ba_b_4=$smasolutions->red_bol_ba(4,$dif_2) ?>
                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_4)}}</b>
                                           @endif
 
@@ -3368,6 +3498,18 @@ span{
                                           <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
                                           @endif
                                         </div>
+
+                                        <div class="grid justify-center w-1/5">
+
+                                            @if ($result3 !== null)
+                                         <?php  $red_bol_ba_b_4=$smasolutions->red_bol_ba(5,$dif_2) ?>
+                                         <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_4)}}</b>
+                                         @endif
+
+                                         @if ($result3 === null)
+                                         <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
+                                         @endif
+                                       </div>
                                     </div>
                                 </div>
                                 {{--  --}}
@@ -3709,8 +3851,8 @@ span{
 window.onload = function() {
     cap_op_3('{{$id_project}}','{{$tar_ele->unidad}}');
     cap_op_5('{{$id_project}}','{{$tar_ele->unidad}}');
-    cap_op_10('{{$id_project}}','{{$tar_ele->unidad}}');
-    cap_op_15('{{$id_project}}','{{$tar_ele->unidad}}');
+   /*  cap_op_10('{{$id_project}}','{{$tar_ele->unidad}}');
+    cap_op_15('{{$id_project}}','{{$tar_ele->unidad}}'); */
     confort_base('{{$conf_val_base}}');
     confort_a('{{$conf_val_a}}')
     confort_b('{{$conf_val_b}}')
@@ -4319,21 +4461,21 @@ function cap_op_15(id_project,unidad){
 function roi_base_a(id_project){
     var dif_1_cost = document.getElementById('dif_cost_base_a').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
-
     $.ajax({
         type: 'get',
-        url: "/roi_base_a/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
+        url: "/roi_base_a_retro/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
         success: function (res) {
 
+            console.log(res);
     var options = {
           series: [
           {
             name: "ROI - A",
-            data: [res[0], res[1], res[2], res[3]]
+            data: [res[0], res[1], res[2], res[3], res[4]]
           },
           {
             name: "MARR",
-            data: [45, 75, 150, 225]
+            data: [45, 75, 150, 225, 300]
           }
         ],
           chart: {
@@ -4386,7 +4528,7 @@ function roi_base_a(id_project){
         },
         xaxis: {
             tickPlacement: 'between',
-           categories: [3,5,10,15],
+           categories: [1,2,3,4,5],
            range:4,
           title: {
             text: 'Años',
@@ -4461,18 +4603,18 @@ function roi_base_b(id_project){
 
     $.ajax({
         type: 'get',
-        url: "/roi_base_a/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
+        url: "/roi_base_a_retro/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
         success: function (res) {
-            console.log(res);
+
     var options = {
           series: [
           {
             name: "ROI - B",
-            data: [res[0], res[1], res[2], res[3]]
+            data: [res[0], res[1], res[2], res[3], res[4]]
           },
           {
             name: "MARR",
-            data: [45, 75, 150, 225]
+            data: [45, 75, 150, 225,300]
           }
         ],
           chart: {
@@ -4525,7 +4667,7 @@ function roi_base_b(id_project){
         },
         xaxis: {
             tickPlacement: 'between',
-           categories: [3,5,10,15],
+           categories: [1,2,3,4,5],
            range:4,
           title: {
             text: 'Años',
@@ -4652,7 +4794,7 @@ function eui_grafic(id_project){
           },
         },
         xaxis: {
-          categories: ['Base','A','B'],
+          categories: ['Existente','A','B'],
           labels: {
                 style: {
                     colors: [],
@@ -4752,7 +4894,7 @@ function eui_grafic(id_project){
 
         var data = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
-          ['EUI Base', eui_base],
+          ['EUI Existente', eui_base],
         ]);
 
         if(energy > ashrae){
@@ -4912,7 +5054,7 @@ function eui_grafic(id_project){
 
         var datax = google.visualization.arrayToDataTable([
           ['Label','Value'],
-          ['Base',parseFloat(check_prod)],
+          ['Existente',parseFloat(check_prod)],
         ]);
 
                     var options = {

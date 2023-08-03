@@ -38,7 +38,7 @@
                             <option value="2">Split DX</option>
                             <option value="3">VRF No Ductados</option>
                             <option value="4">VRF Ductados</option>
-                            <option value="5">PTAC</option>
+                            <option value="5">PTAC/VTAC</option>
                             <option value="6">WSHP</option>
                             <option value="7">Minisplit Inverter</option>
                            {{--  <option value="8">Chiller</option> --}}
@@ -146,7 +146,7 @@
                             <option value="SEER">SEER</option>
                             <option value="SEER2">SEER2</option>
                             <option value="IEER">IEER</option>
-                            <option value="IPVL" disabled>IPVL</option>
+                            <option value="IPVL">IPVL</option>
                         </select>
                     </div>
                     <div class="flex justify-start w-1/4">
@@ -263,7 +263,7 @@
                             <option value="2">Split DX</option>
                             <option value="3">VRF No Ductados</option>
                             <option value="4">VRF Ductados</option>
-                            <option value="5">PTAC</option>
+                            <option value="5">PTAC/VTAC</option>
                             <option value="6">WSHP</option>
                             <option value="7">Minisplit Inverter</option>
                            {{--  <option value="8">Chiller</option> --}}
@@ -473,7 +473,7 @@
                                    <option value="2">Split DX</option>
                                    <option value="3">VRF No Ductados</option>
                                    <option value="4">VRF Ductados</option>
-                                   <option value="5">PTAC</option>
+                                   <option value="5">PTAC/VTAC</option>
                                    <option value="6">WSHP</option>
                                    <option value="7">Minisplit Inverter</option>
                                 {{--    <option value="8">Chiller</option> --}}
@@ -785,7 +785,7 @@
                                     <option value="2">Split DX</option>
                                     <option value="3">VRF No Ductados</option>
                                     <option value="4">VRF Ductados</option>
-                                    <option value="5">PTAC</option>
+                                    <option value="5">PTAC/VTAC</option>
                                     <option value="6">WSHP</option>
                                     <option value="7">Minisplit Inverter</option>
                                   {{--   <option value="8">Chiller</option> --}}
@@ -995,7 +995,7 @@
                                 <option value="2">Split DX</option>
                                 <option value="3">VRF No Ductados</option>
                                 <option value="4">VRF Ductados</option>
-                                <option value="5">PTAC</option>
+                                <option value="5">PTAC/VTAC</option>
                                 <option value="6">WSHP</option>
                                 <option value="7">Minisplit Inverter</option>
                             {{--     <option value="8">Chiller</option> --}}
@@ -1211,7 +1211,7 @@
                                 <option value="2">Split DX</option>
                                 <option value="3">VRF No Ductados</option>
                                 <option value="4">VRF Ductados</option>
-                                <option value="5">PTAC</option>
+                                <option value="5">PTAC/VTAC</option>
                                 <option value="6">WSHP</option>
                                 <option value="7">Minisplit Inverter</option>
                              {{--    <option value="8">Chiller</option> --}}
@@ -1534,7 +1534,7 @@
                                     <option value="2">Split DX</option>
                                     <option value="3">VRF No Ductados</option>
                                     <option value="4">VRF Ductados</option>
-                                    <option value="5">PTAC</option>
+                                    <option value="5">PTAC/VTAC</option>
                                     <option value="6">WSHP</option>
                                     <option value="7">Minisplit Inverter</option>
                                    {{--  <option value="8">Chiller</option> --}}
@@ -1749,7 +1749,7 @@
                                 <option value="2">Split DX</option>
                                 <option value="3">VRF No Ductados</option>
                                 <option value="4">VRF Ductados</option>
-                                <option value="5">PTAC</option>
+                                <option value="5">PTAC/VTAC</option>
                                 <option value="6">WSHP</option>
                                 <option value="7">Minisplit Inverter</option>
                                {{--  <option value="8">Chiller</option> --}}
@@ -1962,7 +1962,7 @@
                                 <option value="2">Split DX</option>
                                 <option value="3">VRF No Ductados</option>
                                 <option value="4">VRF Ductados</option>
-                                <option value="5">PTAC</option>
+                                <option value="5">PTAC/VTAC</option>
                                 <option value="6">WSHP</option>
                                 <option value="7">Minisplit Inverter</option>
                                {{--  <option value="8">Chiller</option> --}}

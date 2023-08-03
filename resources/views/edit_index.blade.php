@@ -736,43 +736,43 @@ cursor: pointer;
                                 </div> --}}
                             </div>
                             <div class="ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
-                                <div style="margin-top:300px;" class="grid">
+                                <div style="margin-top:215px;" class="grid gap-y-3">
                                     <div class="flex">
                                     @if (Auth::user()->tipo_user == 5)
                                         @if ($type_p == 1 || $type_p == 0)
-                                        <input  id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','','','edit','{{$type_p}}');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <input style=" width: 30px;height: 30px;" id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','','','edit','{{$type_p}}');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
 
                                         @if ($type_p == 2)
-                                        <input  id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','','','edit','{{$type_p}}');" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <input style=" width: 30px;height: 30px;" id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','','','edit','{{$type_p}}');" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
 
                                     @endif
 
                                     @if (Auth::user()->tipo_user != 5)
-                                    <input  id="pn" disabled onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','','','edit','{{$type_p}}');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                    <input style=" width: 30px;height: 30px;" id="pn" disabled onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','','','edit','{{$type_p}}');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     @endif
 
-                                        <label for="pn"  class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 font-roboto">Proyecto Nuevo</label>
+                                        <label style="font-size:20px;" for="pn"  class="ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Nuevo</label>
                                     </div>
 
                                     <div class="flex">
 
                                     @if (Auth::user()->tipo_user == 5)
                                         @if ($type_p == 2)
-                                            <input  id="pr" type="checkbox" checked onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','','','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <input style=" width: 30px;height: 30px;" id="pr" type="checkbox" checked onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','','','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
 
                                         @if ($type_p == 1 || $type_p == 0)
-                                            <input  id="pr" type="checkbox" onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','','','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <input style=" width: 30px;height: 30px;" id="pr" type="checkbox" onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','','','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
                                     @endif
 
                                     @if (Auth::user()->tipo_user != 5)
-                                        <input  id="pr" disabled type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','','','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <input style=" width: 30px;height: 30px;" id="pr" disabled type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','','','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     @endif
 
-                                        <label for="pr"   class="ml-2 text-md font-medium text-gray-900 dark:text-gray-300 font-roboto">Proyecto Retrofit</label>
+                                        <label  style="font-size:20px;"for="pr"   class="ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
                                     </div>
                                     </div>
                             </div>
