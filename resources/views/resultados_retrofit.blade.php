@@ -201,7 +201,7 @@ span{
     <button class="bg-orange-500  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/edit_project_copy/{{$id_project}}'"><p class="mx-1">Editar Proyecto</p></button>
 
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
-    <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" {{-- onclick="window.open('/generatePDF/{{$id_project}}', '_blank');" --}} ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
+    <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" onclick="window.open('/generatePDF/{{$id_project}}', '_blank');" ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
 
     <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'">Nuevo Proyecto</button>
 
@@ -800,7 +800,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Costo de Recuperación</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -1056,7 +1056,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Costo de Recuperación</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -1987,11 +1987,11 @@ span{
                                         </div>
                                         {{--  --}}
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
-                                            <div class="grid justify-center w-1/4">
+                                            <div class="grid justify-items-center w-1/4">
                                                 <b class="text-[24px] text-blue-600 font-roboto text-3xl mt-3">Solución A</b>
                                             </div>
 
-                                            <div class="grid justify-center w-1/5">
+                                            <div class="grid justify-items-center w-1/5">
                                               @if ($result2 !== null)
                                               <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(1,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                               <?php  /* $roi_inv_tot_1=$smasolutions->roi_inv_tot(3,$dif_1_cost,$inv_ini_2,) */ ?>
@@ -2123,29 +2123,29 @@ span{
                                         </div>
                                         {{--  --}}
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
-                                            <div class="grid justify-center w-1/4">
+                                            <div class="grid justify-items-center w-1/4">
                                                 <b class="text-[24px] text-blue-600 font-roboto text-3xl mt-3">Solución B</b>
                                             </div>
 
-                                            <div class="grid justify-center w-1/5">
+                                            <div class="grid justify-items-center w-1/5">
 
                                                 @if ($result3 !== null)
                                                 <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(1,$id_project,$dif_2_cost,$inv_ini_3) ?>
                                                 <?php  /* $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(3,$dif_2_cost,$inv_ini_3)  */?>
                                                     @if ($roi_inv_tot_b_1 == 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_1)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl text-center">{{number_format($roi_inv_tot_b_1)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_1 < 0)
-                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_1)}}%</b>
+                                                    <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl text-center">{{number_format($roi_inv_tot_b_1)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_1 > 0 && $roi_inv_tot_b_1 <= 15)
-                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_1)}}%</b>
+                                                    <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl text-center">{{number_format($roi_inv_tot_b_1)}}%</b>
                                                     @endif
 
                                                     @if ($roi_inv_tot_b_1 > 15)
-                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_1)}}%</b>
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl text-center">{{number_format($roi_inv_tot_b_1)}}%</b>
                                                     @endif
                                                 @endif
 
@@ -3975,6 +3975,9 @@ function cap_op_3(id_project,unidad){
         },{
           name: 'Mantenimiento OPEX',
           data: [res[2][2], res[1][2], res[0][2]]
+        },{
+          name: 'Costo de Recuperación',
+          data: [res[2][3], res[1][3], res[0][3]]
         }],
           chart: {
           type: 'bar',
@@ -4057,7 +4060,7 @@ function cap_op_3(id_project,unidad){
         },
         fill: {
           opacity: 1,
-          colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+          colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C'],
 
         },
         legend: {
@@ -4072,7 +4075,7 @@ function cap_op_3(id_project,unidad){
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+          fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
@@ -4108,6 +4111,9 @@ function cap_op_5(id_project,unidad){
         },{
           name: 'Mantenimiento OPEX',
           data: [res[2][2], res[1][2], res[0][2]]
+        },{
+          name: 'Costo de Recuperación',
+          data: [res[2][3], res[1][3], res[0][3]]
         }],
           chart: {
           type: 'bar',
@@ -4186,7 +4192,7 @@ function cap_op_5(id_project,unidad){
         },
         fill: {
           opacity: 1,
-          colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)']
+          colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C']
         },
         legend: {
           position: 'top',
@@ -4200,7 +4206,7 @@ function cap_op_5(id_project,unidad){
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+          fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
@@ -4499,7 +4505,7 @@ function roi_base_a(id_project){
           },
           {
             name: "MARR",
-            data: [45, 75, 150, 225, 300]
+            data: [15, 30, 45, 60, 75]
           }
         ],
           chart: {
@@ -4638,7 +4644,7 @@ function roi_base_b(id_project){
           },
           {
             name: "MARR",
-            data: [45, 75, 150, 225,300]
+            data:  [15, 30, 45, 60, 75]
           }
         ],
           chart: {

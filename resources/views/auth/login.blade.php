@@ -75,7 +75,7 @@
 
                     </form>
                 </div>
-                <div class="w-full flex justify-between mt-3">
+{{--                 <div class="w-full flex justify-between mt-3">
                     <div>
                        <a href="#">
                         <input type="button" class="bg-gray-100 text-[14px] text-black cursor-pointer font-bold p-3 rounded-xl hover:text-white hover:bg-gray-500" style="" value="Registro Demo">
@@ -85,7 +85,7 @@
                     <div>
                         <input type="button"class="bg-gray-100 text-[14px] text-black cursor-pointer font-bold py-3 px-4 rounded-xl hover:text-white hover:bg-gray-500" style="" value="Comprar">
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

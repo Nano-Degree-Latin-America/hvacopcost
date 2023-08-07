@@ -64,7 +64,7 @@
 }
 
 .title_tarjet {
-  background-color:#ed8936;
+  background-color:#233064;
   width: 100%;
   border-radius: 1% 1% 0% 0%;
 }
@@ -162,12 +162,12 @@
 }
 
 .sol_base{
-    width:100%;background-color: #2c5282;
+    width:100%;background-color: #ed8936;
     border_radius:5px;
 }
 
 .sol_ab{
-    background-color: #4299e1;
+    background-color: #2c5282;
     width:100%;
     border_radius:5px;
 }
@@ -216,7 +216,7 @@
 }
 
 .porcent_yrs_style{
-            font-size:30px;
+            font-size:25px;
             font-family: 'ABeeZee', sans-serif;
             font-weight: bold;
             padding:5px;
@@ -231,6 +231,13 @@
 
         .sol_ab_yrs_style{
             font-size:20px;
+            font-family: 'ABeeZee', sans-serif;
+            font-weight: bold;
+            color:#3182ce;
+        }
+
+        .sol_ab_yrs_style_confort{
+            font-size:18px;
             font-family: 'ABeeZee', sans-serif;
             font-weight: bold;
             color:#3182ce;
@@ -327,7 +334,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_base" style="width:100%;">
-                        <label style="margin-left:40px;" class="title_style">Solución Base</label>
+                        <label style="margin-left:28px;" class="title_style">Solución Existente</label>
                     </div>
                     @foreach ($solutions as $solution)
                         @if ($solution->num_enf == 1 && $solution->num_sol == 1  )
@@ -336,13 +343,6 @@
                                     <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
-                                    </div>
-                                </div>
-
-                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
-                                    <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{$solution->eficencia_ene}}</div>
-                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene_cant}}</div>
                                     </div>
                                 </div>
 
@@ -442,16 +442,65 @@
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene"
-                                @if (strlen($solution->name_disenio)<=20)
+                                @if (strlen($solution->name_disenio)<=21)
                                 style="margin-left: 5px;margin-top:15px;"
                                 @endif
-                                @if (strlen($solution->name_disenio)>20)
+                                @if (strlen($solution->name_disenio)>21)
                                 style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
                                 @endif
                                 >
                                     <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->marca)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->marca)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Marca</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->marca}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->modelo)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->modelo)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Modelo</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->modelo}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->yrs_vida)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->yrs_vida)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Años de vida</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->yrs_vida}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Eficiencia Original</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene}} {{$solution->eficencia_ene_cant}}</div>
                                     </div>
                                 </div>
 
@@ -497,9 +546,9 @@
                                     </div>
                                 </div>
 
-                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Recuperación</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                     </div>
                                 </div>
@@ -510,6 +559,15 @@
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
                                     </div>
                                 </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Anual Reparaciónes</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->cost_an_re)}}</div>
+                                    </div>
+                                </div>
+
+
 
                             </div>
                             @endif
@@ -523,7 +581,7 @@
                 <div style="margin-left:15px; margin-right:15px;">
                     <div>
                         <div style="margin-right:5px;margin-top:5px;" class="column" >
-                            <div style="background-color: #4299e1;width:100%; border_radius:5px;">
+                            <div style="background-color: #2c5282;width:100%; border_radius:5px;">
                                 <label style="margin-left:60px;" class="title_style">Solución A</label>
                             </div>
                             @foreach ($solutions as $solution)
@@ -538,13 +596,6 @@
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{$solution->eficencia_ene}}</div>
-                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene_cant}}</div>
-                                    </div>
-                                </div>
-
-                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
-                                    <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                             @if ($solution->unidad_hvac == 1)
@@ -639,16 +690,65 @@
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene"
-                                @if (strlen($solution->name_disenio)<=20)
+                                @if (strlen($solution->name_disenio)<=21)
                                 style="margin-left: 5px;margin-top:15px;"
                                 @endif
-                                @if (strlen($solution->name_disenio)>20)
+                                @if (strlen($solution->name_disenio)>21)
                                 style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
                                 @endif
                                 >
                                     <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->marca)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->marca)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Marca</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->marca}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->modelo)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->modelo)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Modelo</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->modelo}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->yrs_vida)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->yrs_vida)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Años de vida</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->yrs_vida}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Eficiencia Original</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene}} {{$solution->eficencia_ene_cant}}</div>
                                     </div>
                                 </div>
 
@@ -708,6 +808,14 @@
                                     </div>
                                 </div>
 
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Anual Reparaciónes</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->cost_an_re)}}</div>
+                                    </div>
+                                </div>
+
+
                             </div>
                             @endif
                             @endforeach
@@ -720,7 +828,7 @@
                 <div style="margin-left:15px; margin-right:15px; ">
                     <div>
                         <div style="margin-right:5px;margin-top:5px;" class="column" >
-                            <div style="width:100%;background-color:#4299e1;border_radius:5px;">
+                            <div style="width:100%;background-color:#2c5282;border_radius:5px;">
                                 <label style="margin-left:60px;" class="title_style">Solución B</label>
                             </div>
                             @foreach ($solutions as $solution)
@@ -735,13 +843,6 @@
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{$solution->eficencia_ene}}</div>
-                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene_cant}}</div>
-                                    </div>
-                                </div>
-
-                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
-                                    <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                             @if ($solution->unidad_hvac == 1)
@@ -836,16 +937,65 @@
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene"
-                                @if (strlen($solution->name_disenio)<=20)
+                                @if (strlen($solution->name_disenio)<=21)
                                 style="margin-left: 5px;margin-top:15px;"
                                 @endif
-                                @if (strlen($solution->name_disenio)>20)
+                                @if (strlen($solution->name_disenio)>21)
                                 style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
                                 @endif
                                 >
                                     <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->marca)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->marca)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Marca</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->marca}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->modelo)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->modelo)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Modelo</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->modelo}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene"
+                                @if (strlen($solution->yrs_vida)<=20)
+                                style="margin-left: 5px;margin-top:15px;"
+                                @endif
+                                @if (strlen($solution->yrs_vida)>20)
+                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
+                                @endif
+                                >
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Años de vida</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->yrs_vida}}</div>
+                                    </div>
+                                </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Eficiencia Original</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene}} {{$solution->eficencia_ene_cant}}</div>
                                     </div>
                                 </div>
 
@@ -904,6 +1054,14 @@
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
                                     </div>
                                 </div>
+
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                    <div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Anual Reparaciónes</div>
+                                        <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->cost_an_re)}}</div>
+                                    </div>
+                                </div>
+
 
                             </div>
                             @endif
@@ -2125,7 +2283,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_base" style="width:100%;">
-                        <label style="margin-left:40px;" class="title_style">Solución Base</label>
+                        <label style="margin-left:28px;" class="title_style">Solución Existente</label>
                     </div>
                     <?php  $result1=$results->result_1($id_project,1) ?>
                     @if ($result1 ==! null)
@@ -2326,7 +2484,7 @@
                 <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
-                        <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
+                        <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Existente v/s A</label>
                     </div>
                     <div style="width:100%;">
                         <label style="margin-left:150px;" class="cant_green">{{number_format($dif_1)}}</label>
@@ -2334,7 +2492,7 @@
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
-                        <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Base v/s B</label>
+                        <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Existente v/s B</label>
                     </div>
                     <div style="width:100%;">
                         <label style="margin-left:150px;" class="cant_green">0</label>
@@ -2348,7 +2506,7 @@
                 <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
-                        <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
+                        <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Existente v/s A</label>
                     </div>
                     <div style="width:100%;">
                         <label style="margin-left:150px;" class="cant_green">{{number_format($dif_1)}}</label>
@@ -2359,7 +2517,7 @@
                 <?php  $dif_2=$smasolutions->dif_2($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
-                        <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Base v/s B</label>
+                        <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Existente v/s B</label>
                     </div>
                     <div style="width:100%;">
                         <label style="margin-left:90px;" class="cant_green">{{number_format($dif_2)}}</label>
@@ -2457,7 +2615,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_base" style="width:100%;">
-                        <label style="margin-left:40px;" class="title_style">Solución Base</label>
+                        <label style="margin-left:28px;" class="title_style">Solución Existente</label>
                     </div>
                         {{-- Capacidad Total --}}
                         @if ($result1 ==! null)
@@ -2791,7 +2949,7 @@
 
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                 <div style="width:100%;">
-                    <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
+                    <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Existente v/s A</label>
                 </div>
                 <div style="width:100%;">
                     <label style="margin-left:150px;" class="cant_green">${{number_format($dif_1_cost)}}</label>
@@ -2799,7 +2957,7 @@
             </div>
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                 <div style="width:100%;">
-                    <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Base v/s B</label>
+                    <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Existente v/s B</label>
                 </div>
                 <div style="width:100%;">
                     <label style="margin-left:90;" class="cant_green">$ 0</label>
@@ -2814,7 +2972,7 @@
 
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                 <div style="width:100%;">
-                    <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
+                    <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Existente v/s A</label>
                 </div>
                 <div style="width:100%;">
                     <label style="margin-left:150px;" class="cant_green">$ {{number_format($dif_1_cost)}}</label>
@@ -2825,7 +2983,7 @@
             <?php  $dif_2_cost=$smasolutions->dif_2_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                 <div style="width:100%;">
-                    <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Base v/s B</label>
+                    <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Existente v/s B</label>
                 </div>
                 <div style="width:100%;">
                     <label style="margin-left:90px;" class="cant_green">$ {{number_format($dif_2_cost)}}</label>
@@ -2843,7 +3001,7 @@
     @foreach ($results_aux as $solution)
     <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
         <div style="width:100%;">
-            <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Base v/s A</label>
+            <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Existente v/s A</label>
         </div>
         <div style="width:100%;">
             <label style="margin-left:150px;" class="cant_green">$ 0</label>
@@ -2851,7 +3009,7 @@
     </div>
     <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
         <div style="width:100%;">
-            <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Base v/s B</label>
+            <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Existente v/s B</label>
         </div>
         <div style="width:100%;">
             <label style="margin-left:90px;" class="cant_green">$ 0</label>
@@ -2908,15 +3066,16 @@
         <table style="width: 100%">
             <tr>
             <th></th>
+            <th class="yrs_style">1 Años</th>
+            <th class="yrs_style">2 Años</th>
             <th class="yrs_style">3 Años</th>
+            <th class="yrs_style">4 Años</th>
             <th class="yrs_style">5 Años</th>
-            <th class="yrs_style">10 Años</th>
-            <th class="yrs_style">15 Años</th>
             </tr>
             <tr>
             <td class="sol_ab_yrs_style">Solución A</td>
             @if ($result2 !== null)
-                <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(3,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(1,$id_project,$dif_1_cost,$inv_ini_2) ?>
                 @if ($roi_inv_tot_1 <= 0)
                 <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_1)}}%</td>
                 @endif
@@ -2934,7 +3093,7 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(5,$id_project,$dif_1_cost,$inv_ini_2) ?>
+            <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(2,$id_project,$dif_1_cost,$inv_ini_2) ?>
             @if ($roi_inv_tot_2 <= 0)
                 <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_2)}}%</td>
                 @endif
@@ -2952,7 +3111,7 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(10,$id_project,$dif_1_cost,$inv_ini_2) ?>
+            <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(3,$id_project,$dif_1_cost,$inv_ini_2) ?>
                  @if ($roi_inv_tot_3 <= 0)
                  <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_3)}}%</td>
                  @endif
@@ -2970,7 +3129,25 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(15,$id_project,$dif_1_cost,$inv_ini_2) ?>
+            <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(4,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                @if ($roi_inv_tot_4 <= 0)
+                <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
+                @endif
+
+                @if ($roi_inv_tot_4 > 0 && $roi_inv_tot_4 < 15)
+                <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
+                @endif
+
+                @if ($roi_inv_tot_4 > 15)
+                <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
+                @endif
+            @endif
+            @if ($result2 === null)
+            <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+            @endif
+
+            @if ($result2 !== null)
+            <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(5,$id_project,$dif_1_cost,$inv_ini_2) ?>
                 @if ($roi_inv_tot_4 <= 0)
                 <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
                 @endif
@@ -2991,7 +3168,7 @@
                 <td class="sol_ab_yrs_style">Solución B</td>
 
                 @if ($result3 !== null)
-                <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(3,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(1,$id_project,$dif_2_cost,$inv_ini_3) ?>
                     @if ($roi_inv_tot_b_1 <= 0)
                     <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_1)}}%</td>
                     @endif
@@ -3011,7 +3188,7 @@
 
 
                 @if ($result3 !== null)
-                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(5,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(2,$id_project,$dif_2_cost,$inv_ini_3) ?>
                      @if ($roi_inv_tot_b_2 <= 0)
                      <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_2)}}%</td>
                      @endif
@@ -3030,7 +3207,7 @@
                  @endif
 
                  @if ($result3 !== null)
-                 <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot(10,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                 <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot(3,$id_project,$dif_2_cost,$inv_ini_3) ?>
                      @if ($roi_inv_tot_b_3 <= 0)
                      <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_3)}}%</td>
                      @endif
@@ -3049,7 +3226,7 @@
                   @endif
 
                   @if ($result3 !== null)
-                     <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(15,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                     <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(4,$id_project,$dif_2_cost,$inv_ini_3) ?>
 
                      @if ($roi_inv_tot_b_4 <= 0)
                      <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_4)}}%</td>
@@ -3067,6 +3244,24 @@
                  @if ($result3 === null)
                  <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
                  @endif
+
+                 @if ($result2 !== null)
+            <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(5,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                @if ($roi_inv_tot_4 <= 0)
+                <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
+                @endif
+
+                @if ($roi_inv_tot_4 > 0 && $roi_inv_tot_4 < 15)
+                <td style="color:#ed8936;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
+                @endif
+
+                @if ($roi_inv_tot_4 > 15)
+                <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
+                @endif
+            @endif
+            @if ($result2 === null)
+            <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
+            @endif
             </tr>
         </table>
     </div>
@@ -3077,23 +3272,23 @@
 
      <div style="margin-top:5px; height:30%;" class="tarjet">
         <div style="margin-left:15px; margin-right:15px;">
-            <?php  $roi_base_a=$graficas_capex_opex->roi_base_a_pdf($id_project,$dif_1_cost,$inv_ini_2);?>
+            <?php  $roi_base_a=$graficas_capex_opex->roi_base_a_pdf_retro($id_project,$dif_1_cost,$inv_ini_2);?>
            {{--  <div style="margin-right:5px;margin-top:3px;" class="" >
                 <img style="width:110px; height:20px;" src="../public/assets/images/roi_marr.png">
              </div> --}}
 
             <div style="margin-right:5px;margin-top:3px;" class="column_x_2" >
                     <div style="width:100%;">
-                        <img style="width:350px; height:270px;" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}}]},{name: 'MARR',data: [45, 75, 150, 225]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
+                        <img style="width:350px; height:270px;" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
                     </div>
                 </div>
                 @if ($result3 !== null)
-                <?php  $roi_base_b=$graficas_capex_opex->roi_base_a_pdf($id_project,$dif_2_cost,$inv_ini_3);?>
+                <?php  $roi_base_b=$graficas_capex_opex->roi_base_a_pdf_retro($id_project,$dif_2_cost,$inv_ini_3);?>
 
                 <div style="margin-right:5px;margin-top:3px;" class="column_x_2" >
 
                     <div style="width:100%;">
-                        <img style="width:350px; height:270px;" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - B',data: [{{$roi_base_b[0]}}, {{$roi_base_b[1]}}, {{$roi_base_b[2]}}, {{$roi_base_b[3]}}]},{name: 'MARR',data: [45, 75, 150, 225]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución B v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
+                        <img style="width:350px; height:270px;" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - B',data: [{{$roi_base_b[0]}}, {{$roi_base_b[1]}}, {{$roi_base_b[2]}}, {{$roi_base_b[3]}}, {{$roi_base_b[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución B v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
                     </div>
                 </div>
                 @endif
@@ -3105,11 +3300,14 @@
                     <p  class="title_style_no_bg">Análisis CAPEX v/s OPEX @if($unidad_area == 'mc')($/m²)@endif @if($unidad_area == 'ft')($/ft²)@endif</p>
                 </div>
                 <div style="margin-left:15px; margin-right:15px;">
+                    <img style="width:110px; height:30px;" src="../public/assets/images/capex_opex.png">
+                </div>
+                <div style="margin-left:15px; margin-right:15px;">
                     <?php  $cap_op_3=$graficas_capex_opex->cap_op_3_pdf($id_project);?>
                         <div style="margin-right:5px;" class="column_x_2" >
 
                             <div style="width:100%;">
-                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_3[2][0]}}, {{$cap_op_3[1][0]}}, {{$cap_op_3[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_3[2][1]}}, {{$cap_op_3[1][1]}}, {{$cap_op_3[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_3[2][2]}}, {{$cap_op_3[1][2]}}, {{$cap_op_3[0][2]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Base'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',fillColors:undefined,horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '3 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_3[2][0]}}, {{$cap_op_3[1][0]}}, {{$cap_op_3[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_3[2][1]}}, {{$cap_op_3[1][1]}}, {{$cap_op_3[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_3[2][2]}}, {{$cap_op_3[1][2]}}, {{$cap_op_3[0][2]}}]}, {name: 'Costo de Recuperación',data: [{{$cap_op_3[2][3]}}, {{$cap_op_3[1][3]}}, {{$cap_op_3[0][3]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',fillColors:undefined,horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '3 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
                             </div>
                         </div>
                         <?php  $cap_op_5=$graficas_capex_opex->cap_op_5_pdf($id_project);?>
@@ -3117,11 +3315,11 @@
                         <div style="margin-right:5px;" class="column_x_2" >
 
                             <div style="width:100%;">
-                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_5[2][0]}}, {{$cap_op_5[1][0]}}, {{$cap_op_5[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_5[2][1]}}, {{$cap_op_5[1][1]}}, {{$cap_op_5[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_5[2][2]}}, {{$cap_op_5[1][2]}}, {{$cap_op_5[0][2]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Base'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '5 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_5[2][0]}}, {{$cap_op_5[1][0]}}, {{$cap_op_5[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_5[2][1]}}, {{$cap_op_5[1][1]}}, {{$cap_op_5[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_5[2][2]}}, {{$cap_op_5[1][2]}}, {{$cap_op_5[0][2]}}]}, {name: 'Costo de Recuperación',data: [{{$cap_op_5[2][3]}}, {{$cap_op_5[1][3]}}, {{$cap_op_5[0][3]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '5 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
                             </div>
                         </div>
                  </div>
-                 <br>
+                 {{-- <br>
                  <br>
                  <br>
                  <br>
@@ -3134,22 +3332,22 @@
                  <br>
                  <br>
                  <div style="margin-left:15px; margin-right:15px;">
-                    <?php  $cap_op_10=$graficas_capex_opex->cap_op_10_pdf($id_project);?>
+                    <?php  /* $cap_op_10=$graficas_capex_opex->cap_op_10_pdf($id_project); */?>
 
                     <div style="margin-right:5px;" class="column_x_2" >
 
                         <div style="width:100%;">
-                            <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_10[2][0]}}, {{$cap_op_10[1][0]}}, {{$cap_op_10[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_10[2][1]}}, {{$cap_op_10[1][1]}}, {{$cap_op_10[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_10[2][2]}}, {{$cap_op_10[1][2]}}, {{$cap_op_10[0][2]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Base'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',fillColors:undefined,horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '10 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+                            <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_10[2][0]}}, {{$cap_op_10[1][0]}}, {{$cap_op_10[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_10[2][1]}}, {{$cap_op_10[1][1]}}, {{$cap_op_10[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_10[2][2]}}, {{$cap_op_10[0][2]}}, {{$cap_op_10[0][2]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',fillColors:undefined,horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '10 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
                         </div>
                     </div>
 
                     <div style="margin-right:5px;" class="column_x_2" >
-                        <?php  $cap_op_15=$graficas_capex_opex->cap_op_15_pdf($id_project);?>
+                        <?php  /* $cap_op_15=$graficas_capex_opex->cap_op_15_pdf($id_project); */?>
 
                         <div style="width:100%;">
-                            <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_15[2][0]}}, {{$cap_op_15[1][0]}}, {{$cap_op_15[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_15[2][1]}}, {{$cap_op_15[1][1]}}, {{$cap_op_15[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_15[2][2]}}, {{$cap_op_15[1][2]}}, {{$cap_op_15[0][2]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Base'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '15 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+                            <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_15[2][0]}}, {{$cap_op_15[1][0]}}, {{$cap_op_15[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_15[2][1]}}, {{$cap_op_15[1][1]}}, {{$cap_op_15[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_15[2][2]}}, {{$cap_op_15[0][2]}}, {{$cap_op_15[0][2]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '15 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
                         </div>
-                    </div>
+                    </div> --}}
              </div>
             </div>
         </div>
@@ -3403,7 +3601,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_base" style="width:100%;">
-                        <label style="margin-left:40px;" class="title_style">Solución Base</label>
+                        <label style="margin-left:28px;" class="title_style">Solución Existente</label>
                     </div>
                     {{-- Capacidad Total --}}
                     <table class="">
@@ -3626,7 +3824,7 @@
                         ?>
 
                         <img style="width: 200px;height:150px; margin-left:15px;" src="https://quickchart.io/chart?v=2.9.4&c={ type: 'gauge', data: { datasets: [ { value: {{$val_graphic_base}}, data: [{{$energy_star}}, {{$ashrae}}, 300], backgroundColor: ['green','orange','red'], borderWidth: 2, }, ], }, options: { valueLabel: { display: false, }, }, }">
-                         <label for="" style="margin-left:88px; font-size:24px; font-family: 'ABeeZee', sans-serif;color:#2c5282;">Base</label>
+                         <label for="" style="margin-left:58px; font-size:24px; font-family: 'ABeeZee', sans-serif;color:#2c5282;">Existente</label>
                     </div>
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
@@ -3715,7 +3913,7 @@
                 <th class="yrs_style">ASHRAE</th>
                 </tr>
                 <tr>
-                    <td class="sol_ab_yrs_style">Solución Base</td>
+                    <td class="sol_ab_yrs_style">Solución Existente</td>
                     <?php  $energy_base=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
                     @if ($energy_base > 0)
                     <td style="color:#ea0000;" class="desp_elect_style">${{number_format($energy_base)}}</td>
@@ -3834,7 +4032,7 @@
         <div>
             <div style="margin-right:5px;margin-top:5px;" class="column" >
                 <div class="sol_base" style="width:100%;">
-                    <label style="margin-left:40px;" class="title_style">Solución Base</label>
+                    <label style="margin-left:28px;" class="title_style">Solución Existente</label>
                 </div>
                 {{-- Capacidad Total --}}
                 <table class="">
@@ -3986,15 +4184,16 @@
             <tr>
             <th><img style="margin-left:30px;"  src="../public/assets/images/watts.png" width="50px" height="50"/>
             </th>
+            <th class="yrs_style">1 Años</th>
+            <th class="yrs_style">2 Años</th>
             <th class="yrs_style">3 Años</th>
+            <th class="yrs_style">4 Años</th>
             <th class="yrs_style">5 Años</th>
-            <th class="yrs_style">10 Años</th>
-            <th class="yrs_style">15 Años</th>
             </tr>
             <tr>
             <td class="sol_ab_yrs_style">Solución A</td>
             @if ($result2 !== null)
-            <?php  $red_en_mw_a_1=$smasolutions->red_en_mw(3,$dif_1) ?>
+            <?php  $red_en_mw_a_1=$smasolutions->red_en_mw(1,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_1)}}</td>
             @endif
             @if ($result2 === null)
@@ -4002,7 +4201,7 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $red_en_mw_a_2=$smasolutions->red_en_mw(5,$dif_1) ?>
+            <?php  $red_en_mw_a_2=$smasolutions->red_en_mw(2,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_2)}}</td>
             @endif
             @if ($result2 === null)
@@ -4010,7 +4209,7 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $red_en_mw_a_3=$smasolutions->red_en_mw(10,$dif_1) ?>
+            <?php  $red_en_mw_a_3=$smasolutions->red_en_mw(3,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_3)}}</td>
             @endif
             @if ($result2 === null)
@@ -4018,7 +4217,16 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $red_en_mw_a_4=$smasolutions->red_en_mw(15,$dif_1) ?>
+            <?php  $red_en_mw_a_4=$smasolutions->red_en_mw(4,$dif_1) ?>
+            <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_4)}}</td>
+            @endif
+
+            @if ($result2 === null)
+            <td class="porcent_analis_sus_yrs_style">N/A</td>
+            @endif
+
+            @if ($result2 !== null)
+            <?php  $red_en_mw_a_4=$smasolutions->red_en_mw(5,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_4)}}</td>
             @endif
 
@@ -4029,7 +4237,7 @@
             <tr>
                 <td class="sol_ab_yrs_style">Solución B</td>
                 @if ($result3 !== null)
-                <?php  $red_en_mw_b_1=$smasolutions->red_en_mw(3,$dif_2) ?>
+                <?php  $red_en_mw_b_1=$smasolutions->red_en_mw(1,$dif_2) ?>
                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_1)}}</td>
                 @endif
                  @if ($result3 === null)
@@ -4037,7 +4245,7 @@
                  @endif
 
                  @if ($result3 !== null)
-                 <?php  $red_en_mw_b_2=$smasolutions->red_en_mw(5,$dif_2) ?>
+                 <?php  $red_en_mw_b_2=$smasolutions->red_en_mw(2,$dif_2) ?>
                  <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_2)}}</td>
                 @endif
                 @if ($result3 === null)
@@ -4045,7 +4253,7 @@
                 @endif
 
                  @if ($result3 !== null)
-                 <?php  $red_en_mw_b_3=$smasolutions->red_en_mw(10,$dif_2) ?>
+                 <?php  $red_en_mw_b_3=$smasolutions->red_en_mw(3,$dif_2) ?>
                  <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_3)}}</td>
                  @endif
                  @if ($result3 === null)
@@ -4053,7 +4261,15 @@
                  @endif
 
                  @if ($result3 !== null)
-                 <?php  $red_en_mw_b_4=$smasolutions->red_en_mw(15,$dif_2) ?>
+                 <?php  $red_en_mw_b_4=$smasolutions->red_en_mw(4,$dif_2) ?>
+                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_4)}}</td>
+                 @endif
+                 @if ($result3 === null)
+                 <td class="porcent_analis_sus_yrs_style">N/A</td>
+                 @endif
+
+                 @if ($result3 !== null)
+                 <?php  $red_en_mw_b_4=$smasolutions->red_en_mw(5,$dif_2) ?>
                  <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_4)}}</td>
                  @endif
                  @if ($result3 === null)
@@ -4075,15 +4291,16 @@
         <table style="width: 100%">
             <tr>
             <th><img style="margin-left:30px;"  src="../public/assets/images/Huella.png" width="55px" height="55"/></th>
+            <th class="yrs_style">1 Años</th>
+            <th class="yrs_style">2 Años</th>
             <th class="yrs_style">3 Años</th>
+            <th class="yrs_style">4 Años</th>
             <th class="yrs_style">5 Años</th>
-            <th class="yrs_style">10 Años</th>
-            <th class="yrs_style">15 Años</th>
             </tr>
             <tr>
             <td class="sol_ab_yrs_style">Solución A</td>
             @if ($result2 !== null)
-            <?php  $red_hu_carb_a_1=$smasolutions->red_hu_carb(3,$dif_1) ?>
+            <?php  $red_hu_carb_a_1=$smasolutions->red_hu_carb(1,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_1)}}</td>
             @endif
             @if ($result2 === null)
@@ -4091,7 +4308,7 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $red_hu_carb_a_2=$smasolutions->red_hu_carb(5,$dif_1) ?>
+            <?php  $red_hu_carb_a_2=$smasolutions->red_hu_carb(2,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_2)}}</td>
             @endif
             @if ($result2 === null)
@@ -4099,7 +4316,7 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $red_hu_carb_a_3=$smasolutions->red_hu_carb(10,$dif_1) ?>
+            <?php  $red_hu_carb_a_3=$smasolutions->red_hu_carb(3,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_3)}}</td>
             @endif
             @if ($result2 === null)
@@ -4107,7 +4324,15 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $red_hu_carb_a_4=$smasolutions->red_hu_carb(15,$dif_1) ?>
+            <?php  $red_hu_carb_a_4=$smasolutions->red_hu_carb(4,$dif_1) ?>
+            <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_4)}}</td>
+            @endif
+            @if ($result2 === null)
+            <td class="porcent_analis_sus_yrs_style">N/A</td>
+            @endif
+
+            @if ($result2 !== null)
+            <?php  $red_hu_carb_a_4=$smasolutions->red_hu_carb(5,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_4)}}</td>
             @endif
             @if ($result2 === null)
@@ -4117,7 +4342,7 @@
             <tr>
                 <td class="sol_ab_yrs_style">Solución B</td>
                 @if ($result3 !== null)
-                <?php  $red_hu_carb_b_1=$smasolutions->red_hu_carb(3,$dif_2) ?>
+                <?php  $red_hu_carb_b_1=$smasolutions->red_hu_carb(1,$dif_2) ?>
                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_1)}}</td>
                 @endif
                 @if ($result3 === null)
@@ -4125,7 +4350,7 @@
                 @endif
 
                 @if ($result3 !== null)
-                <?php  $red_hu_carb_b_2=$smasolutions->red_hu_carb(5,$dif_2) ?>
+                <?php  $red_hu_carb_b_2=$smasolutions->red_hu_carb(2,$dif_2) ?>
                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_2)}}</td>
                 @endif
                 @if ($result3 === null)
@@ -4133,7 +4358,7 @@
                 @endif
 
                 @if ($result3 !== null)
-                 <?php  $red_hu_carb_b_3=$smasolutions->red_hu_carb(10,$dif_2) ?>
+                 <?php  $red_hu_carb_b_3=$smasolutions->red_hu_carb(3,$dif_2) ?>
                  <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_3)}}</td>
                  @endif
 
@@ -4142,7 +4367,16 @@
                  @endif
 
                  @if ($result3 !== null)
-                  <?php  $red_hu_carb_b_4=$smasolutions->red_hu_carb(15,$dif_2) ?>
+                  <?php  $red_hu_carb_b_4=$smasolutions->red_hu_carb(4,$dif_2) ?>
+                  <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_4)}}</td>
+                  @endif
+
+                  @if ($result3 === null)
+                  <td class="porcent_analis_sus_yrs_style">N/A</td>
+                  @endif
+
+                  @if ($result3 !== null)
+                  <?php  $red_hu_carb_b_4=$smasolutions->red_hu_carb(5,$dif_2) ?>
                   <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_4)}}</td>
                   @endif
 
@@ -4165,15 +4399,16 @@
         <table style="width: 100%">
             <tr>
             <th><img style="margin-left:30px;"  src="../public/assets/images/reducción-bolsas.png" width="50px" height="50"/></th>
+            <th class="yrs_style">1 Años</th>
+            <th class="yrs_style">2 Años</th>
             <th class="yrs_style">3 Años</th>
+            <th class="yrs_style">4 Años</th>
             <th class="yrs_style">5 Años</th>
-            <th class="yrs_style">10 Años</th>
-            <th class="yrs_style">15 Años</th>
             </tr>
             <tr>
             <td class="sol_ab_yrs_style">Solución A</td>
             @if ($result2 !== null)
-            <?php  $red_bol_ba_a_1=$smasolutions->red_bol_ba(3,$dif_1) ?>
+            <?php  $red_bol_ba_a_1=$smasolutions->red_bol_ba(1,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_1)}}</td>
             @endif
 
@@ -4182,7 +4417,7 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $red_bol_ba_a_2=$smasolutions->red_bol_ba(5,$dif_1) ?>
+            <?php  $red_bol_ba_a_2=$smasolutions->red_bol_ba(2,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_2)}}</td>
             @endif
             @if ($result2 === null)
@@ -4190,7 +4425,7 @@
             @endif
 
             @if ($result2 !== null)
-             <?php  $red_bol_ba_a_3=$smasolutions->red_bol_ba(10,$dif_1) ?>
+             <?php  $red_bol_ba_a_3=$smasolutions->red_bol_ba(3,$dif_1) ?>
              <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_3)}}</td>
              @endif
             @if ($result2 === null)
@@ -4198,7 +4433,15 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $red_bol_ba_a_4=$smasolutions->red_bol_ba(15,$dif_1) ?>
+            <?php  $red_bol_ba_a_4=$smasolutions->red_bol_ba(4,$dif_1) ?>
+            <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_4)}}</td>
+            @endif
+            @if ($result2 === null)
+            <td class="porcent_analis_sus_yrs_style">N/A</td>
+            @endif
+
+            @if ($result2 !== null)
+            <?php  $red_bol_ba_a_4=$smasolutions->red_bol_ba(5,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_4)}}</td>
             @endif
             @if ($result2 === null)
@@ -4208,7 +4451,7 @@
             <tr>
                 <td class="sol_ab_yrs_style">Solución B</td>
                 @if ($result3 !== null)
-                <?php  $red_bol_ba_b_1=$smasolutions->red_bol_ba(3,$dif_2) ?>
+                <?php  $red_bol_ba_b_1=$smasolutions->red_bol_ba(1,$dif_2) ?>
                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_1)}}</td>
                 @endif
                 @if ($result3 === null)
@@ -4216,7 +4459,7 @@
                 @endif
 
                 @if ($result3 !== null)
-                <?php  $red_bol_ba_b_2=$smasolutions->red_bol_ba(5,$dif_2) ?>
+                <?php  $red_bol_ba_b_2=$smasolutions->red_bol_ba(2,$dif_2) ?>
                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_2)}}</td>
                 @endif
                 @if ($result3 === null)
@@ -4224,7 +4467,7 @@
                 @endif
 
                 @if ($result3 !== null)
-                <?php  $red_bol_ba_b_3=$smasolutions->red_bol_ba(10,$dif_2) ?>
+                <?php  $red_bol_ba_b_3=$smasolutions->red_bol_ba(3,$dif_2) ?>
                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_3)}}</td>
                 @endif
                 @if ($result3 === null)
@@ -4232,7 +4475,15 @@
                  @endif
 
                  @if ($result3 !== null)
-                 <?php  $red_bol_ba_b_4=$smasolutions->red_bol_ba(15,$dif_2) ?>
+                 <?php  $red_bol_ba_b_4=$smasolutions->red_bol_ba(4,$dif_2) ?>
+                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_4)}}</td>
+                 @endif
+                 @if ($result3 === null)
+                 <td class="porcent_analis_sus_yrs_style">N/A</td>
+                 @endif
+
+                 @if ($result3 !== null)
+                 <?php  $red_bol_ba_b_4=$smasolutions->red_bol_ba(5,$dif_2) ?>
                  <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_4)}}</td>
                  @endif
                  @if ($result3 === null)
@@ -4285,7 +4536,7 @@
     <div style="margin-left:15px; margin-right:15px;margin-bottom:10px;">
         <table style="width: 100%; margin-top:20px;">
             <tr style="">
-            <th class="sol_ab_yrs_style" style="width:170px;">Solución Base</th>
+            <th class="sol_ab_yrs_style_confort" style="width:170px;">Solución Existente</th>
             <?php  $conf_val_base=$conf_val->conf_val($id_project,1,1,$sumacap_term_1); ?>
 
                     <?php
@@ -4324,7 +4575,7 @@
                 @endfor
             </tr>{{-- espacio --}}
             <tr>
-                <th class="sol_ab_yrs_style" style="width:170px;">Solución A</th>
+                <th class="sol_ab_yrs_style_confort" style="width:170px;">Solución A</th>
 
                 @if ($result2 !== null)
                 <?php  $conf_val_a=$conf_val->conf_val($id_project,2,1,$sumacap_term_2);?>
@@ -4371,7 +4622,7 @@
                 @endfor
             </tr>{{-- espacio --}}
             <tr>
-                <td class="sol_ab_yrs_style" style="width:170px;">Solución B</td>
+                <td class="sol_ab_yrs_style_confort" style="width:170px;">Solución B</td>
 
                 @if ($result3 !== null)
                 <?php  $conf_val_b=$conf_val->conf_val($id_project,3,1,$sumacap_term_3) ?>
@@ -4426,7 +4677,7 @@
             <div style="width:95%;border:3px solid #2c5282;margin-left:4px; border-radius:5px;">
                 <?php  $conf_val_base=$conf_val->conf_val($id_project,1,1,$sumacap_term_1);?>
                 <img style="width: 200px;height:150px; margin-left:15px;" src="https://quickchart.io/chart?v=2.9.4&c={ type: 'gauge', data: { datasets: [ { value: {{$conf_val_base}}, data: [2, 4, 6], backgroundColor: ['red','yellow','green'], borderWidth: 2, }, ], }, options: { valueLabel: { display: false, }, }, }">
-                 <label for="" style="margin-left:88px; font-size:24px; font-family: 'ABeeZee', sans-serif;color:#2c5282;">Base</label>
+                 <label for="" style="margin-left:60px; font-size:24px; font-family: 'ABeeZee', sans-serif;color:#2c5282;">Existente</label>
             </div>
         </div>
         <div style="margin-right:5px;margin-top:10px;" class="column" >
