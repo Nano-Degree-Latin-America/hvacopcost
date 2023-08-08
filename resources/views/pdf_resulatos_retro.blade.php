@@ -3245,7 +3245,7 @@
                  <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
                  @endif
 
-                 @if ($result2 !== null)
+                 @if ($result3 !== null)
             <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(5,$id_project,$dif_2_cost,$inv_ini_3) ?>
                 @if ($roi_inv_tot_4 <= 0)
                 <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
@@ -3259,7 +3259,7 @@
                 <td style="color:#33cc33;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
                 @endif
             @endif
-            @if ($result2 === null)
+            @if ($result3 === null)
             <td style="color:#ed8936;" class="porcent_yrs_style">N/A</td>
             @endif
             </tr>
@@ -3307,7 +3307,13 @@
                         <div style="margin-right:5px;" class="column_x_2" >
 
                             <div style="width:100%;">
+                                @if ($result3 !== null)
                                 <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_3[2][0]}}, {{$cap_op_3[1][0]}}, {{$cap_op_3[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_3[2][1]}}, {{$cap_op_3[1][1]}}, {{$cap_op_3[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_3[2][2]}}, {{$cap_op_3[1][2]}}, {{$cap_op_3[0][2]}}]}, {name: 'Costo de Recuperación',data: [{{$cap_op_3[2][3]}}, {{$cap_op_3[1][3]}}, {{$cap_op_3[0][3]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',fillColors:undefined,horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '3 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+                                @endif
+
+                                @if ($result3 === null)
+                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_3[2][0]}}, {{$cap_op_3[1][0]}}, {{$cap_op_3[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_3[2][1]}}, {{$cap_op_3[1][1]}}, {{$cap_op_3[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_3[2][2]}}, {{$cap_op_3[1][2]}}, {{$cap_op_3[0][2]}}]}, {name: 'Costo de Recuperación',data: [0, {{$cap_op_3[1][3]}}, {{$cap_op_3[0][3]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',fillColors:undefined,horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '3 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+                                @endif
                             </div>
                         </div>
                         <?php  $cap_op_5=$graficas_capex_opex->cap_op_5_pdf($id_project);?>
@@ -3315,7 +3321,13 @@
                         <div style="margin-right:5px;" class="column_x_2" >
 
                             <div style="width:100%;">
+                                @if ($result3 !== null)
                                 <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_5[2][0]}}, {{$cap_op_5[1][0]}}, {{$cap_op_5[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_5[2][1]}}, {{$cap_op_5[1][1]}}, {{$cap_op_5[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_5[2][2]}}, {{$cap_op_5[1][2]}}, {{$cap_op_5[0][2]}}]}, {name: 'Costo de Recuperación',data: [{{$cap_op_5[2][3]}}, {{$cap_op_5[1][3]}}, {{$cap_op_5[0][3]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '5 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+                                @endif
+
+                                @if ($result3 === null)
+                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_5[2][0]}}, {{$cap_op_5[1][0]}}, {{$cap_op_5[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_5[2][1]}}, {{$cap_op_5[1][1]}}, {{$cap_op_5[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_5[2][2]}}, {{$cap_op_5[1][2]}}, {{$cap_op_5[0][2]}}]}, {name: 'Costo de Recuperación',data: [0, {{$cap_op_5[1][3]}}, {{$cap_op_5[0][3]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '5 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+                                @endif
                             </div>
                         </div>
                  </div>

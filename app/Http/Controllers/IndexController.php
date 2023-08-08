@@ -54,7 +54,7 @@ class IndexController extends Controller
         $user = Auth::user()->tipo_user;
         if($user === 5){
             $user_update= User::find(Auth::user()->id);
-            $user_update->id_empresa=11;
+            $user_update->id_empresa=9;
             $user_update->update();
 
             Auth::logout();
