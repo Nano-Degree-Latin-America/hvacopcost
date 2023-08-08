@@ -1838,16 +1838,24 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
   }
 
   function check_form_proy_edit(type_p){
+    calcular_p_n = $('#calcular_p_n_Edit');
+    calcular_p_r = $('#calcular_p_r_Edit');
     if(type_p == 1 || type_p == 0){
         $('#display_nuevo_project_edit').removeClass("hidden");
         $('#display_nuevo_retrofit_edit').addClass("hidden");
         $('#type_p').val(1);
+        calcular_p_n.removeClass("hidden");
+        calcular_p_r.addClass("hidden");
+
     }
 
     if(type_p == 2){
         $('#display_nuevo_retrofit_edit').removeClass("hidden");
         $('#display_nuevo_project_edit').addClass("hidden");
         $('#type_p').val(2);
+        calcular_p_n.addClass("hidden");
+        calcular_p_r.removeClass("hidden");
+
     }
   }
 
