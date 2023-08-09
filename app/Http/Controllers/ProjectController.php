@@ -9332,9 +9332,9 @@ if($equipo_conf_1_1 === 'unid_pred'){
                 $action_submit =  $request->get('action_submit_3_1_retro');
                 if ($sol_3_1_retro !== 0) {
 
-                    if($action_submit_send == 'store'){
+                    if($action_submit == 'store'){
                         $solution_enf_3_1_retro=new SolutionsProjectModel;
-                    }else if($action_submit_send == 'update'){
+                    }else if($action_submit == 'update'){
                         $id_solution_3_1 = DB::table('solutions_project')
                         ->where('solutions_project.id_project','=',$id)
                         ->where('solutions_project.num_enf','=',3)
@@ -10079,9 +10079,9 @@ if($equipo_conf_1_1 === 'unid_pred'){
                     $solution_enf_3_1_retro->id_project = $id;
 
 
-                    if($action_submit_send == 'store'){
+                    if($action_submit == 'store'){
                         $solution_enf_3_1_retro->save();
-                    }else if($action_submit_send == 'update'){
+                    }else if($action_submit == 'update'){
                         $solution_enf_3_1_retro->update();
                     }
 
@@ -10103,9 +10103,9 @@ if($equipo_conf_1_1 === 'unid_pred'){
                     ->first();
 
 
-                    if($action_submit_send == 'store'){
+                    if($action_submit == 'store'){
                         $new_result = new ResultsProjectModel;
-                    }else if($action_submit_send == 'update'){
+                    }else if($action_submit == 'update'){
                         $new_result = ResultsProjectModel::find($id_result->id);
                     }
 
@@ -10115,9 +10115,9 @@ if($equipo_conf_1_1 === 'unid_pred'){
                    $new_result->id_empresa=Auth::user()->id_empresa;
                    $new_result->id_user=Auth::user()->id;
 
-                   if($action_submit_send == 'store'){
+                   if($action_submit == 'store'){
                         $new_result->save();
-                    }else if($action_submit_send == 'update'){
+                    }else if($action_submit == 'update'){
                          $new_result->update();
                     }
 
