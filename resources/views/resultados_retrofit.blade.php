@@ -4918,7 +4918,7 @@ function eui_grafic(id_project){
 
         var data = google.visualization.arrayToDataTable([
           ['Label', 'Value'],
-          ['EUI Existente', eui_base],
+          ['EUI E', eui_base],
         ]);
 
         if(energy > ashrae){
