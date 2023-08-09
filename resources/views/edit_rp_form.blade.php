@@ -52,7 +52,7 @@
                                             if(type_p_edit != 1 && type_p_edit != 0){
                                                 traer_unidad_hvac_edit('{{$id_project}}',1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
                                                 ,'capacidad_total_1_1_retro','costo_elec_1_1_retro','csStd_retro_1_1_cant','costo_recu_1_1_retro','csStd_1_1_retro'
-                                                ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1');
+                                                ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','');
                                             }
                                             });
 
@@ -332,8 +332,10 @@
                         <div class="w-1/3 flex justify-start text-left">
                             <label class="labels" for=""><b>Unidad HVAC</b> </label>
                         </div>
+                        <input type="text" value="" class="hidden" id="action_submit_2_1_retro" name="action_submit_2_1_retro">
+
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro');"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
+                            <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro');valida_update_store_solution('action_submit_2_1_retro');"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
                                 <option value="0">Seleccionar</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -344,12 +346,12 @@
                                 <option value="7">Minisplit Inverter</option>
                                 <script>
                                     $(document).ready(function () {
-                                        let type_p_edit_2_1 = '{{$type_p}}'
+                                        var type_p_edit_2_1 = '{{$type_p}}';
                                             //valida type_p para traer_unidad_edit
                                             if(type_p_edit_2_1 != 1 && type_p_edit_2_1 != 0){
                                         traer_unidad_hvac_edit('{{$id_project}}',1,2,'cUnidad_2_1_retro','cheTipo_2_1_retro','cheDisenio_2_1_retro','tipo_control_2_1_retro','dr_2_1_retro','csMantenimiento_2_1_retro','lblCsTipo_2_1_retro'
                                         ,'capacidad_total_2_1_retro','costo_elec_2_1_retro','csStd_cant_2_1_retro','costo_recu_2_1_retro','csStd_2_1_retro'
-                                        ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1');
+                                        ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1','action_submit_2_1_retro');
                                         }
                                     });
                                     </script>
@@ -538,6 +540,17 @@
                         <input type="text" style="display: none" id="lblCsTipo" name="lblCsTipo" value="Tipo paquete">
                     </div>
 
+                   {{--  <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                        <div class="w-1/3 flex justify-start text-left">
+                            <label class="labels" for=""><b>Costo Anual Reparaciónes</b></label>
+                        </div>
+                        <div class="w-1/2 flex justify-start text-left">
+                            <input type="text"  onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_2_1" id="const_an_rep_2_1" >
+                            <input  id="const_an_rep_2_1_retro_count" name="const_an_rep_2_1_retro_count" type="number" class="hidden" value="1">
+
+                        </div>
+                    </div>
+ --}}
                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                         <div class="w-1/3 flex justify-start text-left">
                             <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
@@ -565,18 +578,10 @@
                         <input  id="maintenance_cost_2_1_retro_count" name="maintenance_cost_2_1_retro_count" type="number" class="hidden" value="1">
 
                     </div>
-
-                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                        <div class="w-1/3 flex justify-start text-left">
-                            <label class="labels" for=""><b>Costo Anual Reparaciónes</b></label>
-                        </div>
-                        <div class="w-1/2 flex justify-start text-left">
-                            <input type="text"  onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_2_1" id="const_an_rep_2_1" >
-                            <input  id="const_an_rep_2_1_retro_count" name="const_an_rep_2_1_retro_count" type="number" class="hidden" value="1">
-
-                        </div>
-
+                    <div class="flex w-1/2 justify-end">
+                        <button onclick="inactive_display_sol_edit('sol_2_1_retro','{{$id_project}}',2,1,'A')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                     </div>
+
 
 
                 </div>
@@ -618,12 +623,14 @@
            <div class="w-full mx-2 mt-2 bg-gray-200 rounded-md shadow-md">
              <div class="grid gap-y-2 my-2">
                <div class="flex w-full">
+                <input type="text" value="" class="hidden" id="action_submit_3_1_retro" name="action_submit_3_1_retro">
+
                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                        <div class="w-1/3 flex justify-start text-left">
                            <label  class="labels" for=""><b>Unidad HVAC</b> </label>
                        </div>
                        <div class="w-1/2 flex justify-start">
-                           <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro');" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
+                           <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro');valida_update_store_solution('action_submit_3_1_retro');" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
                                <option value="0">Seleccionar</option>
                                <option value="1">Paquetes (RTU)</option>
                                <option value="2">Split DX</option>
@@ -639,7 +646,7 @@
                                             if(type_p_edit_3_1 != 1 && type_p_edit_3_1 != 0){
                                     traer_unidad_hvac_edit('{{$id_project}}',1,3,'cUnidad_3_1_retro','cheTipo_3_1_retro','cheDisenio_3_1_retro','tipo_control_3_1_retro','dr_3_1_retro','cheMantenimiento_3_1_retro','lblCsTipo_3_1_retro'
                                     ,'capacidad_total_3_1_retro','costo_elec_3_1_retro','csStd_cant_3_1_retro','costo_recu_3_1_retro','csStd_3_1_retro'
-                                    ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1');
+                                    ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro');
                                     }
                                 });
                                 </script>
@@ -832,17 +839,27 @@
                        </div>
                    </div>
 
+                   {{-- <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                    <div class="w-1/3 flex justify-start text-left">
+                        <label  class="labels" for=""><b>Costo Anual Reparaciónes</b> </label>
+                    </div>
+                    <div class="w-1/2 flex justify-start text-left">
+                         <input style="margin-left: 1px;" onchange="format_num(this.value,this.id);valida_selects_inps(this.id)" type="text" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_3_1" id="const_an_rep_3_1" >
+                         <input  id="cheValorS_3_1_retro_count" name="const_an_rep_3_1_retro_count" type="number" class="hidden" value="1">
+
+                    </div>
+                   </div> --}}
                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                       <div class="w-1/3 flex justify-start text-left">
-                           <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
-                       </div>
+                    <div class="w-1/3 flex justify-start text-left">
+                        <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                    </div>
 
-                       <div class="w-1/2 flex justify-start">
-                           <input type="text" style="margin-left: 2px;"  onchange="format_num(this.value,this.id);valida_selects_inps(this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="costo_recu_3_1_retro" id="costo_recu_3_1_retro" >
-                       </div>
-                       <input  id="costo_recu_3_1_retro_count" name="costo_recu_3_1_retro_count" type="number" class="hidden" value="1">
+                    <div class="w-1/2 flex justify-start">
+                        <input type="text" style="margin-left: 2px;" onchange="format_num(this.value,this.id);valida_selects_inps(this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="costo_recu_3_1_retro" id="costo_recu_3_1_retro" >
+                    </div>
+                    <input  id="costo_recu_3_1_retro_count" name="costo_recu_3_1_retro_count" type="number" class="hidden" value="1">
 
-                   </div>
+                </div>
                </div>
 
                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
@@ -857,20 +874,11 @@
                            <input  id="maintenance_cost_3_1_retro_count" name="maintenance_cost_3_1_retro_count" type="number" class="hidden" value="1">
 
                    </div>
-
-                   <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                       <div class="w-1/3 flex justify-start text-left">
-                           <label  class="labels" for=""><b>Costo Anual Reparaciónes</b> </label>
-                       </div>
-                       <div class="w-1/2 flex justify-start text-left">
-                            <input style="margin-left: 1px;" onchange="format_num(this.value,this.id);valida_selects_inps(this.id)" type="text" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_3_1" id="const_an_rep_3_1" >
-                            <input  id="cheValorS_3_1_retro_count" name="const_an_rep_3_1_retro_count" type="number" class="hidden" value="1">
-
-                           </div>
-                   </div>
-
-
+                   <div class="flex w-1/2 justify-end">
+                     <button onclick="inactive_display_sol_edit('sol_3_1_retro','{{$id_project}}',3,1,'B')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                    </div>
                </div>
+
              </div>
            </div>
           </div>

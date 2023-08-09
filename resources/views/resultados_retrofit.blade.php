@@ -1993,7 +1993,7 @@ span{
 
                                             <div class="grid justify-items-center w-1/5">
                                               @if ($result2 !== null)
-                                              <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(1,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                                              <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot_retro(1,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                               <?php  /* $roi_inv_tot_1=$smasolutions->roi_inv_tot(3,$dif_1_cost,$inv_ini_2,) */ ?>
 
                                               @if ($roi_inv_tot_1 == 0)
@@ -2020,7 +2020,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result2 !== null)
-                                              <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(2,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                                              <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot_retro(2,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_2 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_2}}%</b>
                                                     @endif
@@ -2046,7 +2046,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result2 !== null)
-                                                <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(3,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                                                <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot_retro(3,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_3 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_3}}%</b>
                                                     @endif
@@ -2072,7 +2072,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result2 !== null)
-                                                <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(4,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                                                <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot_retro(4,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_4 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
                                                     @endif
@@ -2098,7 +2098,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result2 !== null)
-                                                <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(5,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                                                <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot_retro(5,$id_project,$dif_1_cost,$inv_ini_2) ?>
                                                     @if ($roi_inv_tot_4 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{$roi_inv_tot_4}}%</b>
                                                     @endif
@@ -2130,7 +2130,7 @@ span{
                                             <div class="grid justify-items-center w-1/5">
 
                                                 @if ($result3 !== null)
-                                                <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(1,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                                                <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot_retro(1,$id_project,$dif_2_cost,$inv_ini_3) ?>
                                                 <?php  /* $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(3,$dif_2_cost,$inv_ini_3)  */?>
                                                     @if ($roi_inv_tot_b_1 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl text-center">{{number_format($roi_inv_tot_b_1)}}%</b>
@@ -2157,7 +2157,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result3 !== null)
-                                                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(2,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                                                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot_retro(2,$id_project,$dif_2_cost,$inv_ini_3) ?>
                                                     @if ($roi_inv_tot_b_2 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_2)}}%</b>
                                                     @endif
@@ -2182,7 +2182,7 @@ span{
 
                                             <div class="grid justify-center w-1/5">
                                                 @if ($result3 !== null)
-                                                <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot(3,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                                                <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot_retro(3,$id_project,$dif_2_cost,$inv_ini_3) ?>
                                                     @if ($roi_inv_tot_b_3 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_3)}}%</b>
                                                     @endif
@@ -2208,7 +2208,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                     @if ($result3 !== null)
-                                                    <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(4,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                                                    <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot_retro(4,$id_project,$dif_2_cost,$inv_ini_3) ?>
 
                                                     @if ($roi_inv_tot_b_4 == 0)
                                                     <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
@@ -2235,7 +2235,7 @@ span{
                                             <div class="grid justify-center w-1/5">
 
                                                 @if ($result3 !== null)
-                                                <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(5,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                                                <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot_retro(5,$id_project,$dif_2_cost,$inv_ini_3) ?>
 
                                                 @if ($roi_inv_tot_b_4 == 0)
                                                 <b style="color:#ea0000;" class="text-[24px]  font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($roi_inv_tot_b_4)}}%</b>
@@ -3873,8 +3873,8 @@ span{
 
 <script type="text/javascript">
 window.onload = function() {
-    cap_op_3('{{$id_project}}','{{$tar_ele->unidad}}');
-    cap_op_5('{{$id_project}}','{{$tar_ele->unidad}}');
+    cap_op_1_retro('{{$id_project}}','{{$tar_ele->unidad}}');
+    cap_op_3_retro('{{$id_project}}','{{$tar_ele->unidad}}');
    /*  cap_op_10('{{$id_project}}','{{$tar_ele->unidad}}');
     cap_op_15('{{$id_project}}','{{$tar_ele->unidad}}'); */
     confort_base('{{$conf_val_base}}');
@@ -3958,13 +3958,12 @@ function app() {
 			}
 		}
 //grafica capex_vx_opex 3 años
-function cap_op_3(id_project,unidad){
+function cap_op_1_retro(id_project,unidad){
 
     $.ajax({
         type: 'get',
-        url: "/cap_op_3/" + id_project,
+        url: "/cap_op_1_retro/" + id_project,
         success: function (res) {
-
             var options = {
           series: [{
           name: 'CAPEX',
@@ -3975,9 +3974,6 @@ function cap_op_3(id_project,unidad){
         },{
           name: 'Mantenimiento OPEX',
           data: [res[2][2], res[1][2], res[0][2]]
-        },{
-          name: 'Costo de Recuperación',
-          data: [res[2][3], res[1][3], res[0][3]]
         }],
           chart: {
           type: 'bar',
@@ -4009,7 +4005,7 @@ function cap_op_3(id_project,unidad){
             },
         },
         title: {
-          text: '3 Años',
+          text: '1 Año',
           align: 'center',
           offsetY:25,
           style: {
@@ -4095,10 +4091,10 @@ function cap_op_3(id_project,unidad){
 
 }
 
-function cap_op_5(id_project,unidad){
+function cap_op_3_retro(id_project,unidad){
     $.ajax({
         type: 'get',
-        url: "/cap_op_5/" + id_project,
+        url: "/cap_op_3_retro/" + id_project,
         success: function (res) {
 
             var options = {
@@ -4111,9 +4107,6 @@ function cap_op_5(id_project,unidad){
         },{
           name: 'Mantenimiento OPEX',
           data: [res[2][2], res[1][2], res[0][2]]
-        },{
-          name: 'Costo de Recuperación',
-          data: [res[2][3], res[1][3], res[0][3]]
         }],
           chart: {
           type: 'bar',
@@ -4142,7 +4135,7 @@ function cap_op_5(id_project,unidad){
             },
         },
         title: {
-            text: '5 Años',
+            text: '3 Años',
             align: 'center',
             offsetY:25,
             style: {
@@ -4496,7 +4489,8 @@ function roi_base_a(id_project){
         url: "/roi_base_a_retro/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
         success: function (res) {
 
-            console.log(res);
+
+            //console.log(res);
     var options = {
           series: [
           {

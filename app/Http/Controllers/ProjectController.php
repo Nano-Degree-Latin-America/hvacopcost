@@ -8522,14 +8522,14 @@ if($equipo_conf_1_1 === 'unid_pred'){
 
             //solucionn A
             if ($enfriamiento2_retro !== 0) {
-
+                $action_submit =  $request->get('action_submit_2_1_retro');
                 $sol_2_1_retro = intval($request->get('cUnidad_2_1_retro'));
 
                 if ($sol_2_1_retro !== 0) {
 
-                    if($action_submit_send == 'store'){
+                    if($action_submit == 'store'){
                         $solution_enf_2_1_retro=new SolutionsProjectModel;
-                    }else if($action_submit_send == 'update'){
+                    }else if($action_submit == 'update'){
                         $id_solution_2_1 = DB::table('solutions_project')
                     ->where('solutions_project.id_project','=',$id)
                     ->where('solutions_project.num_enf','=',2)
@@ -9278,9 +9278,9 @@ if($equipo_conf_1_1 === 'unid_pred'){
                     $solution_enf_2_1_retro->id_project = $id;
 
 
-                    if($action_submit_send == 'store'){
+                    if($action_submit == 'store'){
                         $solution_enf_2_1_retro->save();
-                    }else if($action_submit_send == 'update'){
+                    }else if($action_submit == 'update'){
                         $solution_enf_2_1_retro->update();
                     }
 
@@ -9301,9 +9301,9 @@ if($equipo_conf_1_1 === 'unid_pred'){
                     ->first();
 
 
-                    if($action_submit_send == 'store'){
+                    if($action_submit == 'store'){
                         $new_result = new ResultsProjectModel;
-                    }else if($action_submit_send == 'update'){
+                    }else if($action_submit == 'update'){
                         $new_result = ResultsProjectModel::find($id_result->id);
                     }
 
@@ -9312,9 +9312,9 @@ if($equipo_conf_1_1 === 'unid_pred'){
                    $new_result->id_project = $id;
                    $new_result->id_empresa=Auth::user()->id_empresa;
                    $new_result->id_user=Auth::user()->id;
-                   if($action_submit_send == 'store'){
+                   if($action_submit == 'store'){
                     $new_result->save();
-                        }else if($action_submit_send == 'update'){
+                        }else if($action_submit == 'update'){
                     $new_result->update();
                     }
 
@@ -9329,7 +9329,7 @@ if($equipo_conf_1_1 === 'unid_pred'){
             if ($enfriamiento3_retro !== 0) {
 
                 $sol_3_1_retro = intval($request->get('cUnidad_3_1_retro'));
-
+                $action_submit =  $request->get('action_submit_3_1_retro');
                 if ($sol_3_1_retro !== 0) {
 
                     if($action_submit_send == 'store'){
@@ -10433,7 +10433,7 @@ if($equipo_conf_1_1 === 'unid_pred'){
                             $uno_m_zeta = 1-$z;
 
                             //(1-Z)^Años de vida)
-                            $uno_m_zeta_yrs_life = $uno_m_zeta ^ $yrs_l;
+                            $uno_m_zeta_yrs_life = pow($uno_m_zeta,floatval($yrs_l));
                             //(SEER x (1-Z)^Años de vida) )
                             $efi_z_yrs_l = $eficiencia_cant * $uno_m_zeta_yrs_life;
 
@@ -10502,6 +10502,7 @@ if($equipo_conf_1_1 === 'unid_pred'){
        $res_trx_cant = $tr * $cant_aux;
        //((TR x cant) x (Cooling Hours)
        $res_1er_parent = $res_trx_cant * $cooling_hrs;
+
        //((TR x 12000) x (Cooling Hours)  / (SEER x (1-Z)^Años de vida) ) )
        //(SEER x (1-Z)^Años de vida) )
        //valor de Z
@@ -10521,11 +10522,12 @@ if($equipo_conf_1_1 === 'unid_pred'){
        $uno_m_zeta = 1-$z;
 
        //(1-Z)^Años de vida)
-       $uno_m_zeta_yrs_life = $uno_m_zeta ^ $yrs_l;
+       $uno_m_zeta_yrs_life = pow($uno_m_zeta,floatval($yrs_l));
        //(SEER x (1-Z)^Años de vida) )
        $efi_z_yrs_l = $eficiencia_cant * $uno_m_zeta_yrs_life;
        $tot_1er_res = $res_1er_parent / $efi_z_yrs_l;
        $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
+
        //((TR x cant) x (Cooling Hours) / (SEER) ) / 1000)
        /* $res_ene_apl_tot_enf_1 */
 

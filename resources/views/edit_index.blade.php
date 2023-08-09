@@ -1035,6 +1035,8 @@ window.onload = function() {
     traer_porcent_ini(val,porcent);
     id_ciudad_ini =  '{{ $id_ciudad_ini }}';
     traer_horas_enf_edit('{{ $project_edit->id }}');
+    //let cost_ele = $('#costo_elec_1_1_retro').val();
+   /*  asign_cos_ele(cost_ele); */
 
 };
 

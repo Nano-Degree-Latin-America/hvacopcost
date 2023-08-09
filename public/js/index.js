@@ -742,6 +742,9 @@ function unidadHvac(value,num_div,id_select){
     var costo_elec = $('#costo_elec');
    $('#costo_elec_2_1').val(costo_elec.val());
    $('#costo_elec_3_1').val(costo_elec.val());
+   var costo_elec = $('#costo_elec_1_1_retro');
+   $('#costo_elec_2_1_retro').val(costo_elec.val());
+   $('#costo_elec_3_1_retro').val(costo_elec.val());
 
 
 
@@ -4840,7 +4843,7 @@ function check_form_retro(){
 
                     }
                     /////////////////////////////////////
-                    var const_an_rep_2_1 =$('#const_an_rep_2_1');
+                    /* var const_an_rep_2_1 =$('#const_an_rep_2_1');
                     var const_an_rep_2_1_retro_count = $('#const_an_rep_2_1_retro_count').val();
                     const myArray_const_an_rep_2_1 = const_an_rep_2_1.val().split('$');
                     var var_const_an_rep_2_1 =  myArray_const_an_rep_2_1[1];
@@ -4856,9 +4859,9 @@ function check_form_retro(){
                         const_an_rep_2_1_retro_count = 0;
                     $('#const_an_rep_2_1_retro_count').val(const_an_rep_2_1_retro_count);
 
-                    }
+                    } */
 
-                var count_inps_2_1 = cheTipo_2_1_count_retro + marca_2_1_retro_count + modelo_2_1_retro_count + yrs_vida_2_1_retro_count + csStd_2_1_retro_count + capacidad_total_2_1_retro_count + cheDisenio_2_1_retro_count + costo_elec_2_1_retro_count + hrsEnfriado_2_1_retro_count + tipo_control_2_1_retro_count + dr_2_1_retro_count + csMantenimiento_2_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_2_1_retro_count + const_an_rep_2_1_retro_count ;
+                var count_inps_2_1 = cheTipo_2_1_count_retro + marca_2_1_retro_count + modelo_2_1_retro_count + yrs_vida_2_1_retro_count + csStd_2_1_retro_count + capacidad_total_2_1_retro_count + cheDisenio_2_1_retro_count + costo_elec_2_1_retro_count + hrsEnfriado_2_1_retro_count + tipo_control_2_1_retro_count + dr_2_1_retro_count + csMantenimiento_2_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_2_1_retro_count ;
 
                 if(count_inps_2_1>0){
                         Swal.fire({
@@ -5111,7 +5114,7 @@ function check_form_retro(){
 
                     }
                     /////////////////////////////////////
-                    var const_an_rep_3_1 =$('#const_an_rep_3_1');
+                   /*  var const_an_rep_3_1 =$('#const_an_rep_3_1');
                     var const_an_rep_3_1_retro_count = $('#const_an_rep_3_1_retro_count').val();
                     const myArray_const_an_rep_2_1 = const_an_rep_3_1.val().split('$');
                     var var_const_an_rep_2_1 =  myArray_const_an_rep_2_1[1];
@@ -5127,9 +5130,9 @@ function check_form_retro(){
                         const_an_rep_3_1_retro_count = 0;
                     $('#const_an_rep_3_1_retro_count').val(const_an_rep_3_1_retro_count);
 
-                    }
+                    } */
 
-                var count_inps_3_1 = cheTipo_3_1_retro_count + marca_3_1_retro_count + modelo_3_1_retro_count + yrs_vida_3_1_retro_count + cheStd_3_1_retro_count + capacidad_total_3_1_retro_count + cheDisenio_3_1_retro_count + costo_elec_3_1_retro_count + hrsEnfriado_3_1_retro_count + tipo_control_3_1_retro_count + dr_3_1_retro_count + cheMantenimiento_3_1_retro_count + costo_recu_3_1_retro_count + maintenance_cost_3_1_retro_count + const_an_rep_3_1_retro_count ;
+                var count_inps_3_1 = cheTipo_3_1_retro_count + marca_3_1_retro_count + modelo_3_1_retro_count + yrs_vida_3_1_retro_count + cheStd_3_1_retro_count + capacidad_total_3_1_retro_count + cheDisenio_3_1_retro_count + costo_elec_3_1_retro_count + hrsEnfriado_3_1_retro_count + tipo_control_3_1_retro_count + dr_3_1_retro_count + cheMantenimiento_3_1_retro_count + costo_recu_3_1_retro_count + maintenance_cost_3_1_retro_count;
 
                 if(count_inps_3_1>0){
                         Swal.fire({
@@ -5255,7 +5258,7 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
 
 function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,tipo_control,dr
     ,Mantenimiento,lblCsTipo,capacidad_total,costo_elec,csStd_cant
-    ,costo_recu,csStd,maintenance_cost,marca,modelo,yrs_vida,const_an_rep) {
+    ,costo_recu,csStd,maintenance_cost,marca,modelo,yrs_vida,const_an_rep,action_submit) {
     $.ajax({
         type: 'get',
         url: "/traer_unidad_hvac/" + id_project + "/" + num_sol + "/" +num_enf,
@@ -5285,7 +5288,12 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 send_name_dr(dr);
                 send_modelo_edit(res.val_unidad.id_marca,modelo,res.val_unidad.id_modelo);
                 set_ser_to_sers(res.val_unidad.eficencia_ene);
-
+                $("#"+action_submit).val('update');
+                /* if (cont_sol !== '' || cont_sol !== null){
+                    var cont_val = parseInt($('#'+cont_sol).val());
+                    var sum_cont = cont_val + 1;
+                    $('#'+cont_sol).val(sum_cont);
+                } */
 
 
             }else{
@@ -5686,6 +5694,17 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
                 $("#cheValorS_2_1").val('');
             }
 
+            if (value == 'sol_2_1_retro') {
+                $("#cheTipo_2_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#cheDisenio_2_1_retro").find('option[value=""]').attr("selected", "selected");
+                $("#tipo_control_2_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#dr_2_1_retro").find('option[value=""]').attr("selected", "selected");
+                $("#csMantenimiento_2_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#capacidad_total_2_1_retro").val('');
+                $("#csStd_cant_2_2_retro").val('');
+                $("#cheValorS_2_2_retro").val('');
+            }
+
             if (value == 'sol_3_1') {
                 $("#cheTipo_3_1").find('option[value="0"]').attr("selected", "selected");
                 $("#cheDisenio_3_1").find('option[value=""]').attr("selected", "selected");
@@ -5695,6 +5714,17 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
                 $("#capacidad_total_3_1").val('');
                 $("#cheStd_3_1").val('');
                 $("#cheValorS_3_1").val('');
+            }
+
+            if (value == 'sol_3_1_retro') {
+                $("#cheTipo_3_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#cheDisenio_3_1_retro").find('option[value=""]').attr("selected", "selected");
+                $("#tipo_control_3_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#dr_3_1_retro").find('option[value=""]').attr("selected", "selected");
+                $("#cheMantenimiento_3_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#capacidad_total_3_1_retro").val('');
+                $("#cheStd_3_1_retro").val('');
+                $("#cheValorS_3_1_retro").val('');
             }
         } else if (result.isDenied) {
 
@@ -5731,6 +5761,39 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
 
             }
 
+            if (value == 'sol_2_1_retro') {
+                $("#cUnidad_2_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#cheTipo_2_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#cheDisenio_2_1_retro").find('option[value=""]').attr("selected", "selected");
+                $("#tipo_control_2_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#dr_2_1_retro").find('option[value=""]').attr("selected", "selected");
+                $("#csMantenimiento_2_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#capacidad_total_2_1_retro").val('');
+                $("#csStd_cant_2_2_retro").val('');
+                $("#cheValorS_2_2_retro").val('');
+
+                $.ajax({
+                    type: 'get',
+                    url: '/del_solution/'+ id_project +'/'+ num_enf + '/' +num_sol,
+                    success: function (response) {
+                    $("#action_submit_2_1_retro").val('store');
+                    ////sol b disp 1
+
+                    ////sol b disp 2
+                    $( "#sol_2_2_retro" ).addClass( "hidden" );
+                    $("#cUnidad_2_2_retro").find('option[value="0"]').attr("selected", "selected");
+                    ////sol b disp 3
+                    $( "#sol_2_3_retro" ).addClass( "hidden" );
+                    $("#cUnidad_2_3_retro").find('option[value="0"]').attr("selected", "selected");
+                    $("#cont_sol_2_retro").val(0);
+                    },
+                    error: function (responsetext) {
+
+                    }
+                });
+
+            }
+
             if (value == 'sol_3_1') {
                 $("#cUnidad_3_1").find('option[value="0"]').attr("selected", "selected");
                 $("#cheTipo_3_1").find('option[value="0"]').attr("selected", "selected");
@@ -5758,6 +5821,42 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
                     $( "#sol_3_3" ).addClass( "hidden" );
                     $("#cUnidad_3_3").find('option[value="0"]').attr("selected", "selected");
                     $("#cont_sol_3").val(0);
+
+
+                    },
+                    error: function (responsetext) {
+
+                    }
+                });
+            }
+
+            if (value == 'sol_3_1_retro') {
+                $("#cUnidad_3_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#cheTipo_3_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#cheDisenio_3_1_retro").find('option[value=""]').attr("selected", "selected");
+                $("#tipo_control_3_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#dr_3_1_retro").find('option[value=""]').attr("selected", "selected");
+                $("#cheMantenimiento_3_1_retro").find('option[value="0"]').attr("selected", "selected");
+                $("#capacidad_total_3_1_retro").val('');
+                $("#cheStd_3_1_retro").val('');
+                $("#cheValorS_3_1_retro").val('');
+
+                $.ajax({
+                    type: 'get',
+                    url: '/del_solution/'+ id_project +'/'+ num_enf + '/' +num_sol,
+                    success: function (response) {
+
+                    $("#action_submit_3_1_retro").val('store');
+
+                    ////sol b disp 1
+
+                    ////sol b disp 2
+                    $( "#sol_3_2_retro" ).addClass( "hidden" );
+                    $("#cUnidad_3_2_retro").find('option[value="0"]').attr("selected", "selected");
+                    ////sol b disp 3
+                    $( "#sol_3_3_retro" ).addClass( "hidden" );
+                    $("#cUnidad_3_3_retro").find('option[value="0"]').attr("selected", "selected");
+                    $("#cont_sol_3_retro").val(0);
 
 
                     },
