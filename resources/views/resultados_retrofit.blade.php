@@ -816,14 +816,14 @@ span{
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="w-full flex">
+                                                                {{-- <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
                                                                         <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Reparaciónes</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->cost_an_re)}}</label>
                                                                     </div>
-                                                                </div>
+                                                                </div> --}}
                                                         </div>
                                                         </div>
                                                     </div>
@@ -1072,14 +1072,14 @@ span{
                                                                     </div>
                                                                 </div>
 
-                                                                <div class="w-full flex">
+                                                               {{--  <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
                                                                         <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Reparaciónes</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->cost_an_re)}}</label>
                                                                     </div>
-                                                                </div>
+                                                                </div> --}}
                                                         </div>
                                                         </div>
                                                     </div>

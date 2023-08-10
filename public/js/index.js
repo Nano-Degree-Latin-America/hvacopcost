@@ -5703,6 +5703,13 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
                 $("#capacidad_total_2_1_retro").val('');
                 $("#csStd_cant_2_2_retro").val('');
                 $("#cheValorS_2_2_retro").val('');
+                $("#modelo_2_1_retro").find('option[value=""]').attr("selected", "selected");
+                $("#marca_2_1_retro").find('option[value=""]').attr("selected", "selected");
+                $("#costo_recu_2_1_retro").val('');
+                $("#yrs_vida_2_1_retro").val('');
+                $("#maintenance_cost_2_1_retro").val('');
+
+
             }
 
             if (value == 'sol_3_1') {
@@ -5725,6 +5732,11 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
                 $("#capacidad_total_3_1_retro").val('');
                 $("#cheStd_3_1_retro").val('');
                 $("#cheValorS_3_1_retro").val('');
+                $("#modelo_3_1_retro").find('option[value=""]').attr("selected", "selected");
+                $("#marca_3_1_retro").find('option[value=""]').attr("selected", "selected");
+                $("#costo_recu_3_1_retro").val('');
+                $("#yrs_vida_3_1_retro").val('');
+                $("#maintenance_cost_3_1_retro").val('');
             }
         } else if (result.isDenied) {
 

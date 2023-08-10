@@ -808,12 +808,12 @@
                                     </div>
                                 </div>
 
-                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                {{-- <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                     <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Anual Reparaciónes</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->cost_an_re)}}</div>
                                     </div>
-                                </div>
+                                </div> --}}
 
 
                             </div>
@@ -1055,12 +1055,12 @@
                                     </div>
                                 </div>
 
-                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
+                                {{-- <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                     <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Anual Reparaciónes</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->cost_an_re)}}</div>
                                     </div>
-                                </div>
+                                </div> --}}
 
 
                             </div>
@@ -3075,7 +3075,7 @@
             <tr>
             <td class="sol_ab_yrs_style">Solución A</td>
             @if ($result2 !== null)
-                <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot(1,$id_project,$dif_1_cost,$inv_ini_2) ?>
+                <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot_retro(1,$id_project,$dif_1_cost,$inv_ini_2) ?>
                 @if ($roi_inv_tot_1 <= 0)
                 <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_1)}}%</td>
                 @endif
@@ -3093,7 +3093,7 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot(2,$id_project,$dif_1_cost,$inv_ini_2) ?>
+            <?php  $roi_inv_tot_2=$smasolutions->roi_inv_tot_retro(2,$id_project,$dif_1_cost,$inv_ini_2) ?>
             @if ($roi_inv_tot_2 <= 0)
                 <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_2)}}%</td>
                 @endif
@@ -3111,7 +3111,7 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot(3,$id_project,$dif_1_cost,$inv_ini_2) ?>
+            <?php  $roi_inv_tot_3=$smasolutions->roi_inv_tot_retro(3,$id_project,$dif_1_cost,$inv_ini_2) ?>
                  @if ($roi_inv_tot_3 <= 0)
                  <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_3)}}%</td>
                  @endif
@@ -3129,7 +3129,7 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(4,$id_project,$dif_1_cost,$inv_ini_2) ?>
+            <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot_retro(4,$id_project,$dif_1_cost,$inv_ini_2) ?>
                 @if ($roi_inv_tot_4 <= 0)
                 <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
                 @endif
@@ -3147,7 +3147,7 @@
             @endif
 
             @if ($result2 !== null)
-            <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(5,$id_project,$dif_1_cost,$inv_ini_2) ?>
+            <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot_retro(5,$id_project,$dif_1_cost,$inv_ini_2) ?>
                 @if ($roi_inv_tot_4 <= 0)
                 <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
                 @endif
@@ -3168,7 +3168,7 @@
                 <td class="sol_ab_yrs_style">Solución B</td>
 
                 @if ($result3 !== null)
-                <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot(1,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot_retro(1,$id_project,$dif_2_cost,$inv_ini_3) ?>
                     @if ($roi_inv_tot_b_1 <= 0)
                     <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_1)}}%</td>
                     @endif
@@ -3188,7 +3188,7 @@
 
 
                 @if ($result3 !== null)
-                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot(2,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                <?php  $roi_inv_tot_b_2=$smasolutions->roi_inv_tot_retro(2,$id_project,$dif_2_cost,$inv_ini_3) ?>
                      @if ($roi_inv_tot_b_2 <= 0)
                      <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_2)}}%</td>
                      @endif
@@ -3207,7 +3207,7 @@
                  @endif
 
                  @if ($result3 !== null)
-                 <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot(3,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                 <?php  $roi_inv_tot_b_3=$smasolutions->roi_inv_tot_retro(3,$id_project,$dif_2_cost,$inv_ini_3) ?>
                      @if ($roi_inv_tot_b_3 <= 0)
                      <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_3)}}%</td>
                      @endif
@@ -3226,7 +3226,7 @@
                   @endif
 
                   @if ($result3 !== null)
-                     <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot(4,$id_project,$dif_2_cost,$inv_ini_3) ?>
+                     <?php  $roi_inv_tot_b_4=$smasolutions->roi_inv_tot_retro(4,$id_project,$dif_2_cost,$inv_ini_3) ?>
 
                      @if ($roi_inv_tot_b_4 <= 0)
                      <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_b_4)}}%</td>
@@ -3246,7 +3246,7 @@
                  @endif
 
                  @if ($result3 !== null)
-            <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot(5,$id_project,$dif_2_cost,$inv_ini_3) ?>
+            <?php  $roi_inv_tot_4=$smasolutions->roi_inv_tot_retro(5,$id_project,$dif_2_cost,$inv_ini_3) ?>
                 @if ($roi_inv_tot_4 <= 0)
                 <td style="color:#ea0000;" class="porcent_yrs_style">{{number_format($roi_inv_tot_4)}}%</td>
                 @endif
@@ -3303,31 +3303,23 @@
                     <img style="width:110px; height:30px;" src="../public/assets/images/capex_opex.png">
                 </div>
                 <div style="margin-left:15px; margin-right:15px;">
-                    <?php  $cap_op_3=$graficas_capex_opex->cap_op_3_pdf($id_project);?>
+                    <?php  $cap_op_3=$graficas_capex_opex->cap_op_1_retro_pdf($id_project);?>
                         <div style="margin-right:5px;" class="column_x_2" >
 
                             <div style="width:100%;">
-                                @if ($result3 !== null)
-                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_3[2][0]}}, {{$cap_op_3[1][0]}}, {{$cap_op_3[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_3[2][1]}}, {{$cap_op_3[1][1]}}, {{$cap_op_3[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_3[2][2]}}, {{$cap_op_3[1][2]}}, {{$cap_op_3[0][2]}}]}, {name: 'Costo de Recuperación',data: [{{$cap_op_3[2][3]}}, {{$cap_op_3[1][3]}}, {{$cap_op_3[0][3]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',fillColors:undefined,horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '3 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
-                                @endif
 
-                                @if ($result3 === null)
-                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_3[2][0]}}, {{$cap_op_3[1][0]}}, {{$cap_op_3[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_3[2][1]}}, {{$cap_op_3[1][1]}}, {{$cap_op_3[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_3[2][2]}}, {{$cap_op_3[1][2]}}, {{$cap_op_3[0][2]}}]}, {name: 'Costo de Recuperación',data: [0, {{$cap_op_3[1][3]}}, {{$cap_op_3[0][3]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',fillColors:undefined,horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '3 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
-                                @endif
+                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_3[2][0]}}, {{$cap_op_3[1][0]}}, {{$cap_op_3[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_3[2][1]}}, {{$cap_op_3[1][1]}}, {{$cap_op_3[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_3[2][2]}}, {{$cap_op_3[1][2]}}, {{$cap_op_3[0][2]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',fillColors:undefined,horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '1 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+
                             </div>
                         </div>
-                        <?php  $cap_op_5=$graficas_capex_opex->cap_op_5_pdf($id_project);?>
+                        <?php  $cap_op_5=$graficas_capex_opex->cap_op_3_pdf($id_project);?>
 
                         <div style="margin-right:5px;" class="column_x_2" >
 
                             <div style="width:100%;">
-                                @if ($result3 !== null)
-                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_5[2][0]}}, {{$cap_op_5[1][0]}}, {{$cap_op_5[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_5[2][1]}}, {{$cap_op_5[1][1]}}, {{$cap_op_5[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_5[2][2]}}, {{$cap_op_5[1][2]}}, {{$cap_op_5[0][2]}}]}, {name: 'Costo de Recuperación',data: [{{$cap_op_5[2][3]}}, {{$cap_op_5[1][3]}}, {{$cap_op_5[0][3]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '5 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
-                                @endif
 
-                                @if ($result3 === null)
-                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_5[2][0]}}, {{$cap_op_5[1][0]}}, {{$cap_op_5[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_5[2][1]}}, {{$cap_op_5[1][1]}}, {{$cap_op_5[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_5[2][2]}}, {{$cap_op_5[1][2]}}, {{$cap_op_5[0][2]}}]}, {name: 'Costo de Recuperación',data: [0, {{$cap_op_5[1][3]}}, {{$cap_op_5[0][3]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '5 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
-                                @endif
+                                <img style="width:350px; height:280px;" src="https://quickchart.io/apex-charts/render?config={ chart: {type: 'bar',height: 350,stacked: true,stackType: 'normal',dropShadow: {enabled: true,enabledOnSeries: undefined,},toolbar: {show: false,},}, series: [{name: 'CAPEX',data: [{{$cap_op_5[2][0]}}, {{$cap_op_5[1][0]}}, {{$cap_op_5[0][0]}}]}, {name: 'Energía OPEX',data: [{{$cap_op_5[2][1]}}, {{$cap_op_5[1][1]}}, {{$cap_op_5[0][1]}}]}, {name: 'OPEX Mantenimiento',data: [{{$cap_op_5[2][2]}}, {{$cap_op_5[1][2]}}, {{$cap_op_5[0][2]}}]}], plotOptions: {bar: {horizontal: true,},}, xaxis: {categories: ['Solución B', 'Solución A', 'Solución Existente'],labels: {style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},}, yaxis: { labels: {style: {colors: [],fontSize: '16px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'left',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,customHTML: undefined,onClick: undefined,offsetX: 0,offsetY: 0,},},fill: {opacity: 1,},title: {text: '5 Años',align: 'center',offsetY:25,style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},}, }">
+
                             </div>
                         </div>
                  </div>
