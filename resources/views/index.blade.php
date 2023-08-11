@@ -136,7 +136,6 @@ span{
 
 
   .btn_roundf_retro{
-
 border:1px solid #3182ce;
 background: #3182ce;
 color:#ffff;
@@ -151,7 +150,37 @@ text-align: center;
 align-items: center;
 cursor: pointer;
 }
+.btn_roundf_retro:hover {
+    border:1px solid #4299e1;
+background: #4299e1;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
 
+.btn_roundf_retro:active {
+    border:1px solid #3182ce;
+background: #3182ce;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
 
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
@@ -619,27 +648,12 @@ cursor: pointer;
                             <div class="ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
                                 <div style="margin-top:215px;" class="grid gap-y-3">
                                     <div class="flex">
-                                    @if (Auth::user()->tipo_user == 5)
-                                    <input style=" width: 30px;height: 30px;" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    @endif
-
-                                    @if (Auth::user()->tipo_user != 5)
-                                    <input style=" width: 30px;height: 30px;" id="pn" disabled onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    @endif
-
+                                        <input style=" width: 30px;height: 30px;" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         <label style="font-size:20px;" for="pn"  class="ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Nuevo</label>
                                     </div>
 
                                     <div class="flex">
-
-                                    @if (Auth::user()->tipo_user == 5)
                                         <input style=" width: 30px;height: 30px;" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    @endif
-
-                                    @if (Auth::user()->tipo_user != 5)
-                                        <input style=" width: 30px;height: 30px;" id="pr" disabled type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    @endif
-
                                         <label  style="font-size:20px;"for="pr"   class="ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
                                     </div>
                                     </div>

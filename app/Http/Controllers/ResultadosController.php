@@ -10360,7 +10360,12 @@ if($equipo_conf_1_1 === 'unid_pred'){
 
         for ($i = 1; $i <= 5; $i++) {
             if($i == 1){
+                $dif_cost = $dif_cost * $inflacion;
                 $año_3_suma =  $dif_cost + $año_3_suma;
+               /*  $año_3_suma =  $dif_cost + $año_3_suma; */
+               $año_3_res =  $dif_cost;
+               $año_3_res_suma = $año_3_suma ;
+               $año_3 = intval($año_3_res_suma/$inv_ini * 100);
 
             }else{
 
