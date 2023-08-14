@@ -285,7 +285,7 @@ cursor: pointer;
                                      <form action="{{url('/edit_project', [$id_project])}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
                                         @csrf
                                         <div class="my-8">
-                                            <label class="text-5xl font-roboto text-blue-800 font-bold leading-tight" for="">Análisis Energético y Financiero <br> de Sistemas HVAC</label>
+                                            <label class="title_index font-roboto text-blue-800 font-bold leading-tight" for="">Análisis Energético y Financiero <br> de Sistemas HVAC</label>
                                         </div>
                                      <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
                                         <input type="number" class="hidden" id="type_p" name="type_p">
@@ -293,9 +293,9 @@ cursor: pointer;
                                         <div class="flex w-full gap-x-10 my-2 mx-1 justify-center">
 
                                             <div class="grid justify-items-end h-full gap-y-3 w-1/2">
-                                                <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Nombre Projecto</b></label><label class="text-red-500">*</label>
+                                                        <label  class="labels_index font-roboto font-bold" for=""><b>Nombre Projecto</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                 <input onchange="check_input(this.value,this.id,'name_warning');" name="name_pro" id="name_pro" value="{{$project_edit->name}}" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
                                                 <span id="name_warning" name="name_warning" class="text-red-500"></span>
@@ -304,9 +304,9 @@ cursor: pointer;
 
 
 
-                                                <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Región:</b></label><label class="text-red-500">*</label>
+                                                        <label  class="labels_index font-roboto" for=""><b>Región:</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select onchange="check_input(this.value,this.id,'paises_warning');traer_ciudad_edit(this.value)" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises_edit" id="paises_edit">
                                                        {{--  @foreach ($paises as $pais)
@@ -523,9 +523,9 @@ cursor: pointer;
                                                     <span id="paises_warning" name="paises_warning" class="text-red-500"></span>
                                                 </div>
 
-                                                <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Ciudad:</b></label><label class="text-red-500">*</label>
+                                                        <label  class="labels_index font-roboto" for=""><b>Ciudad:</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select onchange="check_input(this.value,this.id,'ciudad_warning');getDegreeHrs_edd($('#paises_edit').val(),this.value)"  class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades_edit" id="ciudades_edit">
 
@@ -533,9 +533,9 @@ cursor: pointer;
                                                     <span id="ciudad_warning" name="ciudad_warning" class="text-red-500"></span>
                                                 </div>
 
-                                                <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold text-left" for=""><b>Incremento Anual Energía</b></label><label class="text-red-500"></label>
+                                                        <label  class="labels_index font-roboto font-bold text-left" for=""><b>Incremento Anual Energía</b></label><label class="text-red-500"></label>
                                                     </div>
                                                     <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inc_ene" id="inc_ene">
                                                         @for ($i = 0; $i <= 15; $i++)
@@ -549,9 +549,9 @@ cursor: pointer;
                                                     <span id="inc_ene_warning" name="inc_ene_warning" class="text-red-500"></span>
                                                 </div>
 
-                                                <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Inflación:</b></label><label class="text-red-500">*</label>
+                                                        <label  class="labels_index font-roboto font-bold" for=""><b>Inflación:</b></label><label class="text-red-500">*</label>
                                                     </div>
 {{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
 --}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inflation_rate" id="inflation_rate">
@@ -570,9 +570,9 @@ cursor: pointer;
                                             </div>
 
                                             <div class="grid justify-items-start h-full gap-y-3 w-1/2">
-                                                <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Categoria Edificio</b></label></label><label class="text-red-500">*</label>
+                                                        <label class="labels_index font-roboto" for=""><b>Categoria Edificio</b></label></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select  name="cat_ed_edit" id="cat_ed_edit"onchange="traer_t_edif_edd(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1">
                                                         @foreach ($cate_edificio as $cat_edi)
@@ -587,28 +587,28 @@ cursor: pointer;
                                                     <span id="cat_ed_warning" name="cat_ed_warning" class="text-red-500"></span>
                                                 </div>
 
-                                                <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                   <div class="flex w-full">
-                                                    <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
+                                                    <label  class="labels_index font-roboto" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
                                                   </div>
                                                     <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio_edit"  id="tipo_edificio_edit"></select>
                                                        <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
                                                 </div>
 
-                                                <div class="flex md:w-2/5 xl:w-3/5 lg:w-1/2 justify-start gap-x-3">
+                                                <div class="flex md:w-3/5 xl:w-3/5 lg:w-1/2 justify-start gap-x-3">
                                                     <div class="grid w-1/2 justify-items-start">
                                                          <div class="flex w-full">
-                                                             <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Aréa:</b></label><label class="text-red-500">*</label>
+                                                             <label  class="labels_index font-roboto" for=""><b>Aréa:</b></label><label class="text-red-500">*</label>
                                                          </div>
                                                          <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);"  value="{{number_format($project_edit->area)}}" name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
                                                          <span id="ar_project_warning" name="ar_project_warning" class="text-red-500"></span>
                                                     </div>
 
-                                                    <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                      <div class="flex">
                                                      <div>
                                                      <div class="flex w-full">
-                                                         <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Unidad:</b></label><label class="text-red-500">*</label>
+                                                         <label  class="labels_index font-roboto" for=""><b>Unidad:</b></label><label class="text-red-500">*</label>
                                                      </div>
                                                      <div class="flex gap-x-3 mt-3">
                                                          @if($project_edit->unidad == 'mc' )
@@ -647,9 +647,9 @@ cursor: pointer;
 
                                                  <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-blue-600 rounded-xl" value="{{$project_edit->unidad}}" name="unidad" id="unidad">
 
-                                                 <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                 <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                         <div class="flex w-full">
-                                                            <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto font-bold" for=""><b>Ocupación Semanal</b></label><label class="text-red-500">*</label>
+                                                            <label  class="labels_index font-roboto font-bold" for=""><b>Ocupación Semanal</b></label><label class="text-red-500">*</label>
                                                         </div>
 {{--                                                     <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');" value="{{$project_edit->hrs_tiempo}}"  name="tiempo_porcent" id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
  --}}                                               <select {{-- onchange="check_input(this.value,this.id,'paises_warning');"  --}}class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
@@ -681,9 +681,9 @@ cursor: pointer;
                                                     <span id="tiempo_porcent_warning" name="tiempo_porcent_warning" class="text-red-500"></span>
                                                 </div>
                                                 @include('modal_energia_hvac')
-                                                <div class="grid md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
-                                                        <label style="font-size: 20px; color:#2c5282 !important;" class="font-roboto" for=""><b>Energía HVAC (Edificio):</b></label><label class="text-red-500">*</label>
+                                                        <label  class="labels_index font-roboto" for=""><b>Energía HVAC (Edificio):</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <div class="flex w-full">
                                                         <select onchange="buton_check_edit();check_input(this.value,this.id,'por_hvac_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
@@ -696,7 +696,7 @@ cursor: pointer;
                                                     <span id="por_hvac_warning" name="por_hvac_warning" class="text-red-500"></span>
                                                 </div>
 
-                                                <div class="grid  md:w-2/5 xl:w-3/5 lg:w-1/2 justify-items-startmt-5 ">
+                                                <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-startmt-5 ">
                                                     <div id="div_next" name="div_next" class="w-1/2 text-right">
                                                         <button type="button" id="next" name="next"
                                                             onclick="buton_check_edit();"
@@ -768,26 +768,26 @@ cursor: pointer;
                                 </div> --}}
                             </div>
                             <div class="ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
-                                <div style="margin-top:215px;" class="grid gap-y-3">
+                                <div  class="grid gap-y-3 type_proy_pos">
                                     <div class="flex">
                                         @if ($type_p == 1 || $type_p == 0)
-                                        <input style=" width: 30px;height: 30px;" id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <input  class="check_style"  id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
                                         @if ($type_p == 2)
-                                        <input style=" width: 30px;height: 30px;" id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        <input class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
-                                        <label style="font-size:20px;" for="pn"  class="ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Nuevo</label>
+                                        <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Nuevo</label>
                                     </div>
 
                                     <div class="flex">
                                         @if ($type_p == 2)
-                                            <input style=" width: 30px;height: 30px;" id="pr" type="checkbox" checked onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <input class="check_style"  id="pr" type="checkbox" checked onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
 
                                         @if ($type_p == 1 || $type_p == 0)
-                                            <input style=" width: 30px;height: 30px;" id="pr" type="checkbox" onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <input class="check_style"  id="pr" type="checkbox" onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
-                                        <label  style="font-size:20px;"for="pr"   class="ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
+                                        <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
                                     </div>
                                     </div>
                             </div>
@@ -890,8 +890,7 @@ cursor: pointer;
     </div>
     <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
 </div>
-<style>
-   @media (min-width: 640px) {
+<style>@media (min-width: 640px) {
     .labels{
         font-size:11px;
     }
@@ -900,6 +899,11 @@ cursor: pointer;
 @media (min-width: 768px) {
     .labels{
         font-size:11px;
+    }
+
+    labels_index{
+    font-size: 10px;
+    color:#2c5282 !important;"
     }
 }
 /* lg	1024px */
@@ -912,6 +916,67 @@ cursor: pointer;
         margin-left:20%;
     }
 
+    .labels_index{
+    font-size: 12px;
+    color:#2c5282 !important;"
+    }
+
+    .type_proyect_label{
+    font-size:13px;
+ }
+
+ .mapa_img{
+        width: 320px; height:520px;
+ }
+ .type_proyect_label{
+    font-size:13px;
+ }
+ .title_index{
+    font-size: 2rem;
+  }
+
+  .unit_style{
+    font-size: 1rem;
+  }
+
+  .check_style{
+        width: 20px;height: 20px;
+    }
+
+}
+
+@media (max-width: 1081px) {
+    .labels{
+        font-size:10px;
+    }
+    .ancho{
+        width:60%;
+        margin-left:20%;
+    }
+
+    .mapa_img{
+        width: 300px; height:500px;
+ }
+ .type_proyect_label{
+    font-size:12px;
+ }
+ .title_index{
+    font-size: 1.8rem;
+  }
+
+  .unit_style{
+    font-size: 1rem;
+  }
+
+  .check_style{
+        width: 20px;height: 20px;
+    }
+
+    .type_proy_pos{
+        margin-top:215px;
+    }
+
+
 }
 
 @media (max-width: 1082px) {
@@ -922,7 +987,32 @@ cursor: pointer;
         width:60%;
         margin-left:20%;
     }
+
+    .mapa_img{
+        width: 400px; height:600px;
+ }
+ .type_proyect_label{
+    font-size:15px;
+ }
+ .title_index{
+    font-size: 2rem;
+  }
+
+  .unit_style{
+    font-size: 1rem;
+  }
+
+  .check_style{
+        width: 25px;height: 25px;
+    }
+
+    .type_proy_pos{
+        margin-top:300px;
+        margin-left:600px;
+    }
+
 }
+
 @media (min-width: 1085px) {
     .labels{
         font-size:11px;
@@ -930,105 +1020,439 @@ cursor: pointer;
     .ancho{
         width:100%;
     }
+    .labels_index{
+    font-size: 11px;
+    color:#2c5282 !important;"
+    }
+    .mapa_img{
+        width: 320px; height:520px;
+ }
+ .type_proyect_label{
+    font-size:13px;
+ }
+ .title_index{
+    font-size: 2rem;
+  }
+
+  .unit_style{
+    font-size: 1rem;
+  }
+
+  .check_style{
+        width: 20px;height: 20px;
+    }
+
+    .type_proy_pos{
+        margin-top:215px;
+    }
 }
 
 @media (min-width: 1090px) {
     .labels{
-        font-size:11px;
+        font-size:14px;
     }
     .ancho{
         width:100%;
+    }
+    .labels_index{
+    font-size: 13px;
+    color:#2c5282 !important;"
+    }
+
+    .mapa_img{
+        width: 320px; height:520px;
+ }
+ .type_proyect_label{
+    font-size:16px;
+ }
+ .title_index{
+    font-size: 2rem;
+  }
+
+  .unit_style{
+    font-size: 1rem;
+  }
+
+  .check_style{
+        width: 20px;height: 20px;
+    }
+
+    .type_proy_pos{
+        margin-top:215px;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    .labels{
+        font-size:14px;
+    }
+    .ancho{
+        width:100%;
+    }
+    .labels_index{
+    font-size: 14px;
+    color:#2c5282 !important;"
+    }
+
+    .mapa_img{
+        width: 350px; height:550px;
+ }
+ .type_proyect_label{
+    font-size:16px;
+ }
+ .title_index{
+    font-size: 2rem;
+  }
+
+  .unit_style{
+    font-size: 1rem;
+  }
+
+  .check_style{
+        width: 20px;height: 20px;
+    }
+
+    .type_proy_pos{
+        margin-top:215px;
+    }
+}
+
+@media (min-width: 1215px) {
+    .labels{
+        font-size:14px;
+    }
+    .ancho{
+        width:100%;
+    }
+    .labels_index{
+    font-size: 14px;
+    color:#2c5282 !important;"
+    }
+
+    .mapa_img{
+        width: 350px; height:550px;
+ }
+ .type_proyect_label{
+    font-size:16px;
+ }
+ .title_index{
+    font-size: 2rem;
+  }
+
+  .unit_style{
+    font-size: 1rem;
+  }
+
+  .check_style{
+        width: 20px;height: 20px;
+    }
+
+    .type_proy_pos{
+        margin-top:215px;
     }
 }
 
 @media (min-width: 1230px) {
     .labels{
-        font-size:11px;
+        font-size:14px;
     }
     .ancho{
         width:100%;
     }
+    .labels_index{
+    font-size: 14px;
+    color:#2c5282 !important;"
+    }
+
+    .mapa_img{
+        width: 350px; height:550px;
+ }
+ .type_proyect_label{
+    font-size:16px;
+ }
+ .title_index{
+    font-size: 2rem;
+  }
+
+  .unit_style{
+    font-size: 1rem;
+  }
+
+  .check_style{
+        width: 20px;height: 20px;
+    }
+
+    .type_proy_pos{
+        margin-top:215px;
+    }
 }
+
+@media (min-width: 1250px) {
+    .labels{
+        font-size:14px;
+    }
+    .ancho{
+        width:100%;
+    }
+    .labels_index{
+    font-size: 14px;
+    color:#2c5282 !important;"
+    }
+
+    .mapa_img{
+        width: 350px; height:550px;
+ }
+ .type_proyect_label{
+    font-size:16px;
+ }
+ .title_index{
+    font-size: 2rem;
+  }
+
+  .unit_style{
+    font-size: 1rem;
+  }
+
+  .check_style{
+        width: 20px;height: 20px;
+    }
+   .type_proy_pos{
+       margin-top:215px;
+   }
+}
+
+@media (min-width: 1270px) {
+    .labels{
+        font-size:14px;
+    }
+    .ancho{
+        width:100%;
+    }
+
+    .labels_index{
+    font-size: 12px;
+    color:#2c5282 !important;"
+    }
+     .mapa_img{
+        width: 350px; height:550px;
+ }
+ .type_proyect_label{
+    font-size:16px;
+ }
+ .title_index{
+    font-size: 2rem;
+  }
+
+  .unit_style{
+    font-size: 1rem;
+  }
+
+  .check_style{
+        width: 20px;height: 20px;
+    }
+
+    .type_proy_pos{
+       margin-top:215px;
+   }
+
+}
+
+@media (min-width: 1275px) {
+    .labels{
+        font-size:14px;
+    }
+    .ancho{
+        width:100%;
+    }
+
+    .labels_index{
+    font-size: 18px;
+    color:#2c5282 !important;"
+    }
+
+    .mapa_img{
+        width: 400px; height:600px;
+ }
+ .type_proyect_label{
+    font-size:16px;
+ }
+ .title_index{
+    font-size: 3rem;
+  }
+
+  .unit_style{
+    font-size: 1.25rem;
+  }
+
+  .check_style{
+        width: 25px;height: 25px;
+    }
+
+    .type_proy_pos{
+       margin-top:215px;
+   }
+}
+
 /* xl	1280px */
 @media (min-width: 1280px) {
     .labels{
-        font-size:11px;
+        font-size:14px;
     }
     .ancho{
         width:100%;
     }
+
+    .labels_index{
+    font-size: 20px;
+    color:#2c5282 !important;"
+    }
+
+    .mapa_img{
+        width: 450px; height:650px;
+ }
+ .type_proyect_label{
+    font-size:18px;
+ }
+
+ .check_style{
+        width: 25px;height: 25px;
+    }
+    .title_index{
+    font-size: 3rem;
+  }
+
+  .unit_style{
+    font-size: 1.25rem;
+  }
+
+  .type_proy_pos{
+       margin-top:215px;
+   }
 }
 
 @media (min-width: 1540px) {
     .labels{
-        font-size:11px;
+        font-size:14px;
     }
     .ancho{
         width:100%;
     }
+    .labels_index{
+    font-size: 20px;
+    color:#2c5282 !important;"
+    }
+    .mapa_img{
+        width: 480px; height:630px;
+ }
+
+ .type_proyect_label{
+    font-size:18px;
+ }
+
+ .check_style{
+        width: 30px;height: 30px;
+    }
+    .title_index{
+    font-size: 3rem;
+  }
+
+  .unit_style{
+    font-size: 1.25rem;
+  }
+
+  .type_proy_pos{
+       margin-top:215px;
+   }
 }
 
 @media (min-width: 1640px) {
     .labels{
-        font-size:13px;
+        font-size:14px;
     }
     .ancho{
         width:100%;
     }
+    .labels_index{
+    font-size: 20px;
+    color:#2c5282 !important;"
+    }
+    .mapa_img{
+        width: 500px; height:650px;
+ }
+
+ .type_proyect_label{
+    font-size:18px;
+ }
+
+ .check_style{
+        width: 30px;height: 30px;
+    }
+    .title_index{
+    font-size: 3rem;
+  }
+
+  .unit_style{
+    font-size: 1.25rem;
+  }
+
+  .type_proy_pos{
+       margin-top:215px;
+   }
 }
 
 @media (min-width: 1760px) {
-    .labels{
-        font-size:14px;
-    }
-    .ancho{
-        width:100%;
-    }
+            .labels{
+                font-size:14px;
+            }
+            .ancho{
+                width:100%;
+            }
+            .labels_index{
+            font-size: 20px;
+            color:#2c5282 !important;"
+            }
+
+            .mapa_img{
+                width: 500px; height:650px;
+        }
+        .type_proyect_label{
+            font-size:20px;
+        }
+
+        .check_style{
+                width: 30px;height: 30px;
+            }
+        .title_index{
+            font-size: 3rem;
+        }
+
+        .unit_style{
+            font-size: 1.25rem;
+        }
+
+        .type_proy_pos{
+       margin-top:215px;
+   }
 }
 /* 2xl	1536px */
 @media (min-width: 1940px) {
+    .labels_index{
+    font-size: 20px;
+    color:#2c5282 !important;"
+    }
     .labels{
         font-size:14px;
     }
     .ancho{
         width:100%;
     }
-}
 
-@media (min-width: 640px) {
-    .mapa_img{
-        width: 600px; height:600px;
-}
- }
+    .type_proy_pos{
+       margin-top:215px;
+   }
 
-@media (min-width: 768px) {
-    .mapa_img{
-        width: 600px; height:600px;
 }
- }
-
-@media (min-width: 1024px) {
-    .mapa_img{
-        width: 600px; height:850px;
-}
- }
-
-@media (min-width: 1280px) {
-    .mapa_img{
-        width: 520px; height:850px;
- }
-}
-@media (min-width: 1536px) {
-    .mapa_img{
-        width: 500px; height:650px;
- }
-}
-
- @media (min-width: 1780px) {
-    .mapa_img{
-        width: 500px; height:650px;
- }
- }
 
     </style>
 <script>

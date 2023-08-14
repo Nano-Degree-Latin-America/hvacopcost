@@ -524,10 +524,23 @@ img[usemap] {
         display: block !important;
     }
     #mapa-div .col-7, #mapa-div .col-4{
-        width: 100%;
-        height:100%;
-        padding-left: 0%;
-        padding-right: 0%;
+       width: 40%!important;
+        height:50%!important;
+        padding-left: 0%!important;
+        padding-right: 0%!important;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    /* se ejecutaran estos estilos */
+    #content{
+        display: block !important;
+    }
+    #mapa-div .col-7, #mapa-div .col-4{
+       width: 100%!important;
+        height:100%!important;
+        padding-left: 0%!important;
+        padding-right: 0%!important;
     }
 }
 

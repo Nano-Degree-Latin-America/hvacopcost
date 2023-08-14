@@ -127,12 +127,22 @@
 
  }
 
+ @media (min-width: 1016px) {
+            .text_butons_top{
+                font-size: 100%;
+            }
+            .button-size{
+                padding: .60rem
+            }
+
+ }
+
  @media (min-width: 1020px) {
             .text_butons_top{
                 font-size: 100%;
             }
             .button-size{
-                padding: .65rem
+                padding: .60rem
             }
 
  }

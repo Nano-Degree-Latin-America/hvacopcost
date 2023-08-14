@@ -14392,7 +14392,7 @@ if($equipo_conf_1_1 === 'unid_pred'){
                 //(1-Z)^Años de vida)
                 $uno_m_zeta_yrs_life = pow($uno_m_zeta,floatval($solution->yrs_vida));
 
-                $sol_Res = $sol *  $uno_m_zeta_yrs_life;
+                $sol_Res = $sol * 1.5 *  $uno_m_zeta_yrs_life;
                 return $sol_Res;
             }
 
