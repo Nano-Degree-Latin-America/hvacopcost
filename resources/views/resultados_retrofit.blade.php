@@ -3907,6 +3907,12 @@ function confort_a(val_conf_a){
 
             $("#val_base_"+i+"_a").removeClass('hidden');
         }
+
+        if(val_conf_a > 5){
+
+            $("#val_base_32_a").removeClass('hidden');
+        }
+
         $val_ini_a = $val_ini_a + 0.125;
         $val_fin_a = $val_fin_a + 0.125;
     }
@@ -3921,6 +3927,11 @@ function confort_b(val_conf_b){
         if(val_conf_b >= $val_ini_b && val_conf_b < $val_fin_b){
 
             $("#val_base_"+i+"_b").removeClass('hidden');
+        }
+
+        if(val_conf_b > 5){
+
+            $("#val_base_32_b").removeClass('hidden');
         }
         $val_ini_b = $val_ini_b + 0.125;
         $val_fin_b = $val_fin_b + 0.125;
