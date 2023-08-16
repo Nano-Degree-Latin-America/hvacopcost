@@ -95,6 +95,8 @@ Route::get('create_empresa', 'EmpresasController@create');
 Route::get('edit_empresa/{id}', 'EmpresasController@edit');
 Route::get('change_empresa/{id}', 'EmpresasController@change_empresa');
 Route::get('change_pais/{id_empresa}/{pais}', 'EmpresasController@change_pais');
+Route::get('change_type_project/{id_empresa}/{tyoe_p}', 'EmpresasController@change_type_project');
+
 Route::get('delete_empresa/{id}', 'EmpresasController@delete_empresa');
 //sucursales
 Route::get('sucursales_emp/{id}', 'SucursalesController@sucursales_empresa');

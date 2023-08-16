@@ -259,7 +259,7 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label  class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                        <label  class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                     </div>
 
                     <div class="w-1/2 flex justify-start">
@@ -270,7 +270,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label class="labels" for=""><b>Costo Anual Reparaciónes</b></label>
+                        <label class="labels" for=""><b>Costo Anual Reparaciones</b></label>
                     </div>
 
                     <div class="w-1/2 flex justify-start text-left">
@@ -467,7 +467,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-3/6 flex justify-start text-left">
-                        <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                        <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                     </div>
 
                     <div class="w-full flex gap-x-2 justify-start">
@@ -726,7 +726,7 @@
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
 
                             <div class="w-1/3 flex justify-start text-left">
-                                <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
@@ -739,7 +739,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                            {{--  <div class="w-1/3 flex justify-start text-left">
-                                <label class="labels" for=""><b>Costo Anual Reparaciónes</b></label>
+                                <label class="labels" for=""><b>Costo Anual Reparaciones</b></label>
                             </div>
                             <div class="w-1/2 flex justify-start text-left">
                                 <input type="text"  onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_2_1" id="const_an_rep_2_1" >
@@ -1006,7 +1006,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
                                 <div class="w-1/3 flex justify-start text-left">
-                                    <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                    <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                                 </div>
 
                                 <div class="w-1/2 flex justify-start">
@@ -1018,7 +1018,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             {{-- <div class="w-1/3 flex justify-start text-left">
-                                <label  class="labels" for=""><b>Costo Anual Reparaciónes</b> </label>
+                                <label  class="labels" for=""><b>Costo Anual Reparaciones</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start text-left">
                                  <input style="margin-left: 1px;" onchange="format_num(this.value,this.id);valida_selects_inps(this.id)" type="text" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_3_1" id="const_an_rep_3_1" >

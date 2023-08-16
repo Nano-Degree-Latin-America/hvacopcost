@@ -141,4 +141,26 @@ class IndexController extends Controller
 
        /*  */
     }
+
+    public function check_p_type_pn($id){
+        $type_check = DB::table('type_project_empresas')
+        ->where('id_empresa','=',$id)
+        ->first();
+        if($type_check){
+            return $type_check->p_n;
+        }else{
+            return false;
+        }
+    }
+
+    public function check_p_type_pr($id){
+        $type_check = DB::table('type_project_empresas')
+        ->where('id_empresa','=',$id)
+        ->first();
+        if($type_check){
+            return $type_check->p_r;
+        }else{
+            return false;
+        }
+    }
 }

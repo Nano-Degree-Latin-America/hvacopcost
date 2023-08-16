@@ -208,7 +208,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label  class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                        <label  class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                     </div>
 
                     <div class="w-1/2 flex justify-start">
@@ -407,7 +407,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-3/6 flex justify-start text-left">
-                        <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                        <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                     </div>
 
                     <div class="w-full flex gap-x-2 justify-start">
@@ -607,7 +607,7 @@
                        </div>
                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                         <div class="w-3/6 flex justify-start text-left">
-                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                            <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                         </div>
 
                         <div class="w-full flex gap-x-2 justify-start">
@@ -908,7 +908,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="w-1/3 flex justify-start text-left">
-                                <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
@@ -1097,7 +1097,7 @@
                     </div>
                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                         <div class="w-3/6 flex justify-start text-left">
-                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                            <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                         </div>
 
                         <div class="w-full flex gap-x-2 justify-start">
@@ -1271,7 +1271,7 @@
 
                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                         <div class="w-3/6 flex justify-start text-left">
-                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                            <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                         </div>
 
                         <div class="w-full flex gap-x-2 justify-start">
@@ -1594,7 +1594,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="w-1/3 flex justify-start text-left">
-                                <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                                <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
@@ -1783,7 +1783,7 @@
                     </div>
                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                         <div class="w-3/6 flex justify-start text-left">
-                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                            <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                         </div>
 
                         <div class="w-full flex gap-x-2 justify-start">
@@ -1970,7 +1970,7 @@
                     </div>
                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                         <div class="w-3/6 flex justify-start text-left">
-                            <label class="labels" for=""><b>Costo Mantenimiento</b> </label>
+                            <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
                         </div>
 
                         <div class="w-full flex gap-x-2 justify-start">

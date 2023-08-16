@@ -11,6 +11,7 @@ use App\EmpresasModel;
 use App\PaisesEmpresasModel;
 use App\ResultsProjectModel;
 use App\SolutionsProjectModel;
+use App\TypeProjectModel;
 use App\ProjectsModel;
 use App\SucursalesModel;
 use Illuminate\Support\Facades\Hash;
@@ -249,6 +250,89 @@ class EmpresasController extends Controller
         }
 
 
+    }
+
+    public function change_type_project($id_empresa,$type_p)
+    {
+       $check_type_pais = DB::table('type_project_empresas')
+       ->where('id_empresa','=',$id_empresa)
+       ->first();
+
+
+        if($check_type_pais){
+            $update_type= TypeProjectModel::find($check_type_pais->id);
+            $type_p_aux_pn = $update_type->p_n;
+            $type_p_aux_pr = $update_type->p_r;
+            if($type_p == 'p_n'){
+                if($type_p_aux_pn == 1){
+                    $update_type->p_n = 0;
+                }
+
+                if($type_p_aux_pn == 0){
+                    $update_type->p_n = 1;
+                }
+            }
+
+            if($type_p == 'p_r'){
+                if($type_p_aux_pr == 1){
+                    $update_type->p_r = 0;
+                }
+
+                if($type_p_aux_pr == 0){
+                    $update_type->p_r = 1;
+                }
+            }
+
+            $update_type->id_empresa = $id_empresa;
+            $update_type->update();
+        }else{
+            if($type_p == 'p_n'){
+                $new_type= new TypeProjectModel;
+                $new_type->p_n = 1;
+                $new_type->p_r = 0;
+                $new_type->id_empresa = $id_empresa;
+                $new_type->save();
+                return $new_type;
+            }
+
+            if($type_p == 'p_r'){
+                $new_type= new TypeProjectModel;
+                $new_type->p_n = 0;
+                $new_type->p_r = 1;
+                $new_type->id_empresa = $id_empresa;
+                $new_type->save();
+                return $new_type;
+            }
+
+
+        }
+
+
+
+    }
+
+
+    public function check_p_type_pn($id){
+        $type_check = DB::table('type_project_empresas')
+        ->where('id_empresa','=',$id)
+        ->first();
+        if($type_check){
+            return $type_check->p_n;
+
+        }else{
+            return false;
+        }
+    }
+
+    public function check_p_type_pr($id){
+        $type_check = DB::table('type_project_empresas')
+        ->where('id_empresa','=',$id)
+        ->first();
+        if($type_check){
+            return $type_check->p_r;
+        }else{
+            return false;
+        }
     }
 
     public function getPaises(Request $request)

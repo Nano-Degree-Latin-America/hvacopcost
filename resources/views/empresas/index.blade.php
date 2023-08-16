@@ -169,10 +169,14 @@ span{
 
                                 <button onclick="redirect_edit({{$empresa->id}});" class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
                                     <span class="icon"><i class="mdi mdi-pencil"></i></span>
-                                  </button>
+                                </button>
 
-                                  <button title="Paises" onclick="mostrar_modal_paises('modal_paises_empresa_{{$empresa->id}}')" class="button small green" type="button">
-                                  <span class="icon"><i class="mdi mdi-flag"></i></span>
+                                <button title="Paises" onclick="mostrar_modal_paises('modal_paises_empresa_{{$empresa->id}}')" class="button small green" type="button">
+                                    <span class="icon"><i class="mdi mdi-flag"></i></span>
+                                </button>
+
+                                <button title="Tipo Proyecto Activar/Desactivar" onclick="mostrar_modal_type_p('modal_type_p_empresas_{{$empresa->id}}')" class="button small bg-orange-800" type="button">
+                                    <span class="icon"><i class="text-white mdi mdi-checkbox-multiple-marked"></i></span>
                                 </button>
 
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
@@ -194,6 +198,7 @@ span{
                         </td>
                     </tr>
                     @include('empresas.modal_paises_empresa')
+                    @include('empresas.modal_type_p_empresas')
                         @endforeach
                     </tbody>
                   </table>
@@ -223,6 +228,10 @@ function mostrar_modal_paises(id){
     $("#"+id).removeClass("hidden");
 }
 
+function mostrar_modal_type_p(id){
+    $("#"+id).removeClass("hidden");
+}
+
 function ocultar_modal(id){
     $("#"+id).addClass("hidden");
 }
@@ -239,6 +248,20 @@ function change_pais(id_empresa,pais){
 
                 }
             });
+}
+
+function change_type_project(id_empresa,type_p){
+
+$.ajax({
+            type: 'get',
+            url: '/change_type_project/'+ id_empresa+'/'+type_p,
+            success: function (response) {
+
+            },
+            error: function (responsetext) {
+
+            }
+        });
 }
 
 function change_empresa(id_empresa){
