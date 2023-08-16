@@ -261,7 +261,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="w-1/3 flex justify-start text-left">
-                                <label  class="labels" for=""><b>Costo de Recuperación</b> </label>
+                                <label  class="labels" for=""><b>Costo de Recuperacion</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
