@@ -98,6 +98,7 @@ Route::get('change_pais/{id_empresa}/{pais}', 'EmpresasController@change_pais');
 Route::get('change_type_project/{id_empresa}/{tyoe_p}', 'EmpresasController@change_type_project');
 
 Route::get('delete_empresa/{id}', 'EmpresasController@delete_empresa');
+
 //sucursales
 Route::get('sucursales_emp/{id}', 'SucursalesController@sucursales_empresa');
 Route::resource('sucursales', 'SucursalesController');
@@ -123,6 +124,9 @@ Route::get('/del_project/{id}', 'ProjectController@del_project')->name('del_proj
 Route::get('edit_project_copy/{id_project}', 'ResultadosController@edit_project_copy');
 Route::get('resultados_retrofit/{id_project}', 'ResultadosController@resultados_retrofit');
 
+///asigna tipo, existente
+Route::get('asigna_tipos', 'ResultadosController@asiga_typos');
+Route::get('asigna_empresas_tipo', 'ResultadosController@asigna_empresas_tipo');
 //resultados_graficas
 
 Route::get('cap_op_1_retro/{id_project}', 'ResultadosController@cap_op_1_retro');

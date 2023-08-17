@@ -237,7 +237,7 @@ class ProjectController extends Controller
         $region = DB::table('ciudad')
         ->where('ciudad.idCiudad','=',$request->get('ciudades_edit'))
         ->first()->ciudad;
-
+        $update_project->type_p= $request->get('type_p');
         $update_project->ciudad=$region;
         $update_project->porcent_hvac=$request->get('porcent_hvac');
         $update_project->status=1;
@@ -10587,6 +10587,28 @@ if($equipo_conf_1_1 === 'unid_pred'){
         ->first();
 
         return $type_proy;
+    }
+
+    public function check_p_type_pn($id){
+        $type_check = DB::table('type_project_empresas')
+        ->where('id_empresa','=',$id)
+        ->first();
+        if($type_check){
+            return $type_check->p_n;
+        }else{
+            return false;
+        }
+    }
+
+    public function check_p_type_pr($id){
+        $type_check = DB::table('type_project_empresas')
+        ->where('id_empresa','=',$id)
+        ->first();
+        if($type_check){
+            return $type_check->p_r;
+        }else{
+            return false;
+        }
     }
 
 }

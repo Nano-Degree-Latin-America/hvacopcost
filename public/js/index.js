@@ -234,6 +234,8 @@ function getCiudades(idPais) {
                 value: 0,
                 text: '-Selecciona tu ciudad-'
             }));
+            $('#count_ciudad').val(0);
+            checksuma();
             response.map((ciudad, i) => {
                 $('#ciudades').append($('<option>', {
                     value: ciudad.idCiudad,
@@ -1782,11 +1784,15 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
         ft.checked = true;
         mc.checked = false;
         unidad.value = value;
+         $('#count_unidad').val(1);
     }else if(value == 'mc'){
         ft.checked = false;
         mc.checked = true;
         unidad.value = value;
+         $('#count_unidad').val(1);
     }
+
+    checksuma();
   }
 
   function check_form_proy(value,new_p,retro_p,button_np,button_rp,action,type_p_aux){
@@ -2193,7 +2199,8 @@ function traer_t_edif(id_cat) {
                 value: 0,
                 text: 'Seleccionar'
             }));
-
+            $('#count_tipo_edificio').val(0);
+            checksuma();
             response.map((cat_ed, i) => {
                 $('#tipo_edificio').append($('<option>', {
                     value: cat_ed.id,
@@ -2356,7 +2363,8 @@ function set_porcent_hvac(value){
                 value: 0,
                 text: 'Seleccionar'
             }));
-
+            $('#count_porcent_hvac').val(0);
+            checksuma();
             response.map((cat_ed, i) => {
                 $('#porcent_hvac').append($('<option>', {
                     value: cat_ed,
@@ -2523,8 +2531,10 @@ function check_input(value,id,id_warning){
     var inpt = $("#"+id);
     if (inpt.val() == '' || inpt.val() == '0') {
         document.getElementById(id_warning).innerHTML = "Campo Obligatorio";
+
     }else{
         document.getElementById(id_warning).innerHTML = "";
+
     }
 }
 
@@ -5992,3 +6002,82 @@ function send_marcas_to_datalist() {
         }
     });
   }
+
+  function mostrar_type_p(check_types_pn,check_types_pr){
+    var type_p_pn = check_types_pn;
+    var type_p_pr = check_types_pr;
+    var p_n_div = $("#display_nuevo_project");
+    var p_r_div = $("#display_nuevo_retrofit");
+    var type_value = $("#type_p");
+
+        if(type_p_pn == 0 && type_p_pr == 0){
+            return false;
+        }
+
+        if(type_p_pn == 1 && type_p_pr == 0){
+            p_n_div.removeClass( "hidden" );
+            p_r_div.addClass( "hidden" );
+            $("#type_p").val(1);
+        }
+
+        if(type_p_pn == 0 && type_p_pr == 1){
+            p_n_div.addClass( "hidden" );
+            p_r_div.removeClass( "hidden" );
+            $("#type_p").val(2);
+        }
+
+        if(type_p_pn == 1 && type_p_pr == 1){
+            p_n_div.removeClass( "hidden" );
+            p_r_div.addClass( "hidden" );
+            $("#type_p").val(1);        }
+
+
+
+    }
+
+    function check_inp_count(count_id,id){
+       var inp = $("#"+id).val();
+       var inp_cont = $("#"+count_id);
+       var suma_inps = 0;
+
+
+       if(inp == "" || inp == 0){
+            if(id == 'paises'){
+                $('#count_ciudad').val(0);
+            }
+        inp_cont.val(0);
+       }
+
+       if(inp != "" && inp != 0){
+            inp_cont.val(1);
+       }
+
+       checksuma();
+
+    }
+
+    function checksuma(){
+        count_name_pro = $('#count_name_pro').val();
+        count_paises = $('#count_paises').val();
+        count_ciudad = $('#count_ciudad').val();
+        count_cat_ed = $('#count_cat_ed').val();
+        count_tipo_edificio = $('#count_tipo_edificio').val();
+        count_ar_project = $('#count_ar_project').val();
+        count_unidad = $('#count_unidad').val();
+        count_tiempo_porcent = $('#count_tiempo_porcent').val();
+        count_porcent_hvac = $('#count_porcent_hvac').val();
+
+       suma_inps = parseInt(count_name_pro) + parseInt(count_paises) + parseInt(count_ciudad) + parseInt(count_cat_ed) + parseInt(count_tipo_edificio)
+       + parseInt(count_ar_project) + parseInt(count_unidad) + parseInt(count_tiempo_porcent) + parseInt(count_porcent_hvac);
+
+       if(suma_inps == 9){
+        $('#div_next').addClass("hidden");
+        $('#div_next_h').removeClass("hidden");
+       }
+
+       if(suma_inps < 9){
+        $('#div_next').removeClass("hidden");
+        $('#div_next_h').addClass("hidden");
+       }
+
+    }

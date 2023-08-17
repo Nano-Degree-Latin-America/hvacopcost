@@ -220,6 +220,7 @@ cursor: pointer;
 @inject('num_tarjets_3','app\Http\Controllers\ResultadosController')
 @inject('paises_empresa','app\Http\Controllers\ResultadosController')
 @inject('all_paises','app\Http\Controllers\ResultadosController')
+@inject('check_types_p','app\Http\Controllers\ResultadosController')
 <div class="bg-white" x-data="app()" x-cloak>
     <div class="w-full px-4">
 
@@ -297,7 +298,8 @@ cursor: pointer;
                                                     <div class="flex w-full">
                                                         <label  class="labels_index font-roboto font-bold" for=""><b>Nombre Projecto</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                <input onchange="check_input(this.value,this.id,'name_warning');" name="name_pro" id="name_pro" value="{{$project_edit->name}}" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                <input onchange="check_input(this.value,this.id,'name_warning');check_inp_count('count_name_pro','name_pro');"" name="name_pro" id="name_pro" value="{{$project_edit->name}}" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                <input id="count_name_pro" name="count_name_pro" type="number" class="hidden" value="1">
                                                 <span id="name_warning" name="name_warning" class="text-red-500"></span>
                                                 </div>
 
@@ -308,7 +310,7 @@ cursor: pointer;
                                                     <div class="flex w-full">
                                                         <label  class="labels_index font-roboto" for=""><b>Región:</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select onchange="check_input(this.value,this.id,'paises_warning');traer_ciudad_edit(this.value)" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises_edit" id="paises_edit">
+                                                    <select onchange="check_input(this.value,this.id,'paises_warning');traer_ciudad_edit(this.value);check_inp_count('count_paises','paises_edit');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises_edit" id="paises_edit">
                                                        {{--  @foreach ($paises as $pais)
                                                         @if ($project_edit->region == $pais->pais)
                                                         <option selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
@@ -520,6 +522,7 @@ cursor: pointer;
 
                                                             @endforeach
                                                     </select>
+                                                    <input id="count_paises" name="count_paises" type="number" class="hidden" value="1">
                                                     <span id="paises_warning" name="paises_warning" class="text-red-500"></span>
                                                 </div>
 
@@ -527,9 +530,9 @@ cursor: pointer;
                                                     <div class="flex w-full">
                                                         <label  class="labels_index font-roboto" for=""><b>Ciudad:</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select onchange="check_input(this.value,this.id,'ciudad_warning');getDegreeHrs_edd($('#paises_edit').val(),this.value)"  class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades_edit" id="ciudades_edit">
-
+                                                    <select onchange="check_input(this.value,this.id,'ciudad_warning');getDegreeHrs_edd($('#paises_edit').val(),this.value);check_inp_count('count_ciudad','ciudades_edit');"  class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades_edit" id="ciudades_edit">
                                                     </select>
+                                                    <input id="count_ciudad" name="count_ciudad" type="number" class="hidden" value="1" >
                                                     <span id="ciudad_warning" name="ciudad_warning" class="text-red-500"></span>
                                                 </div>
 
@@ -574,7 +577,7 @@ cursor: pointer;
                                                     <div class="flex w-full">
                                                         <label class="labels_index font-roboto" for=""><b>Categoria Edificio</b></label></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select  name="cat_ed_edit" id="cat_ed_edit"onchange="traer_t_edif_edd(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1">
+                                                    <select  name="cat_ed_edit" id="cat_ed_edit"onchange="traer_t_edif_edd(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');check_inp_count('count_cat_ed','cat_ed_edit');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1">
                                                         @foreach ($cate_edificio as $cat_edi)
                                                         @if ($project_edit->id_cat_edifico == $cat_edi->id)
                                                         <option selected value="{{$cat_edi->id}}">{{$cat_edi->name}}</option>
@@ -584,6 +587,7 @@ cursor: pointer;
                                                         @endif
                                                         @endforeach
                                                     </select>
+                                                    <input id="count_cat_ed" name="count_cat_ed" type="number" class="hidden" value="1">
                                                     <span id="cat_ed_warning" name="cat_ed_warning" class="text-red-500"></span>
                                                 </div>
 
@@ -591,8 +595,9 @@ cursor: pointer;
                                                   <div class="flex w-full">
                                                     <label class="labels_index font-roboto" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
                                                   </div>
-                                                    <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio_edit"  id="tipo_edificio_edit"></select>
-                                                       <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
+                                                    <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');check_inp_count('count_tipo_edificio','tipo_edificio_edit');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio_edit"  id="tipo_edificio_edit"></select>
+                                                    <input id="count_tipo_edificio" name="count_tipo_edificio" type="number" class="hidden" value="1">
+                                                    <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
                                                 </div>
 
                                                 <div class="flex md:w-3/5 xl:w-3/5 lg:w-1/2 justify-start gap-x-3">
@@ -600,7 +605,8 @@ cursor: pointer;
                                                          <div class="flex w-full">
                                                              <label class="labels_index font-roboto" for=""><b>Aréa:</b></label><label class="text-red-500">*</label>
                                                          </div>
-                                                         <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);"  value="{{number_format($project_edit->area)}}" name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
+                                                         <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);check_inp_count('count_ar_project','ar_project');"  value="{{number_format($project_edit->area)}}" name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
+                                                         <input id="count_ar_project" name="count_ar_project" type="number" class="hidden" value="1">
                                                          <span id="ar_project_warning" name="ar_project_warning" class="text-red-500"></span>
                                                     </div>
 
@@ -636,6 +642,8 @@ cursor: pointer;
                                                             </div>
 
                                                          @endif
+                                                         <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-blue-600 rounded-xl" value="{{$project_edit->unidad}}" name="unidad" id="unidad">
+                                                         <input id="count_unidad" name="count_unidad" type="number" class="hidden" value="1">
 
                                                      </div>
                                                     </div>
@@ -645,14 +653,13 @@ cursor: pointer;
                                                      </div>
                                                  </div>
 
-                                                 <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-blue-600 rounded-xl" value="{{$project_edit->unidad}}" name="unidad" id="unidad">
 
                                                  <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                         <div class="flex w-full">
                                                             <label  class="labels_index font-roboto font-bold" for=""><b>Ocupación Semanal</b></label><label class="text-red-500">*</label>
                                                         </div>
 {{--                                                     <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');" value="{{$project_edit->hrs_tiempo}}"  name="tiempo_porcent" id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
- --}}                                               <select {{-- onchange="check_input(this.value,this.id,'paises_warning');"  --}}class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
+ --}}                                               <select onchange="check_inp_count('count_tiempo_porcent','tiempo_porcent');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
                                                         @switch($project_edit->hrs_tiempo)
                                                             @case(30)
                                                             <option selected value="m_50">Menos de 50 Hrs.</option>
@@ -678,6 +685,8 @@ cursor: pointer;
 
 
                                                     </select>
+                                                    <input id="count_tiempo_porcent" name="count_tiempo_porcent" type="number" class="hidden" value="1">
+
                                                     <span id="tiempo_porcent_warning" name="tiempo_porcent_warning" class="text-red-500"></span>
                                                 </div>
                                                 @include('modal_energia_hvac')
@@ -686,9 +695,11 @@ cursor: pointer;
                                                         <label class="labels_index font-roboto" for=""><b>Energía HVAC (Edificio):</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <div class="flex w-full">
-                                                        <select onchange="buton_check_edit();check_input(this.value,this.id,'por_hvac_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
+                                                        <select onchange="buton_check_edit();check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                                             <option value="0">-Selecciona porcentaje-</option>
                                                         </select>
+                                                        <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="1">
+
                                                         <div class="ml-2" style="margin-top: 5.5px;">
                                                             <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                                                         </div>
@@ -704,7 +715,7 @@ cursor: pointer;
                                                         >Siguiente</button>
                                                     </div>
                                                     <div id="div_next_h" name="div_next_h" class="w-1/2 text-right">
-                                                            <button type="button" id="next_h" name="next_h"
+                                                            <button  type="button" id="next_h" name="next_h"
                                                                 x-show="step < 2"
                                                                 @click="step++"
                                                                 class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
@@ -769,6 +780,10 @@ cursor: pointer;
                             </div>
                             <div class="ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
                                 <div  class="grid gap-y-3 type_proy_pos">
+                                    <?php  $check_types_pn=$check_types_p->check_p_type_pn(Auth::user()->id_empresa); ?>
+                                    <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
+
+                                    @if ( $check_types_pn == 1 &&  $check_types_pr == 1)
                                     <div class="flex">
                                         @if ($type_p == 1 || $type_p == 0)
                                         <input class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -789,6 +804,76 @@ cursor: pointer;
                                         @endif
                                         <label for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
                                     </div>
+                                    @endif
+
+                                    @if ( $check_types_pn == 1 &&  $check_types_pr == 0)
+                                    <div class="flex">
+                                        @if ($type_p == 1 || $type_p == 0)
+                                        <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        @endif
+                                        @if ($type_p == 2)
+                                        <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        @endif
+                                        <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Nuevo</label>
+                                    </div>
+
+                                    <div class="flex">
+                                        @if ($type_p == 2)
+                                            <input disabled class="check_style" id="pr" type="checkbox" checked onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        @endif
+
+                                        @if ($type_p == 1 || $type_p == 0)
+                                            <input disabled class="check_style" id="pr" type="checkbox" onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        @endif
+                                        <label for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
+                                    </div>
+                                    @endif
+
+                                    @if ( $check_types_pn == 0 &&  $check_types_pr == 1)
+                                    <div class="flex">
+                                        @if ($type_p == 1 || $type_p == 0)
+                                        <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" type="checkbox"  checked class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        @endif
+                                        @if ($type_p == 2)
+                                        <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        @endif
+                                        <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Nuevo</label>
+                                    </div>
+
+                                    <div class="flex">
+                                        @if ($type_p == 2)
+                                            <input disabled class="check_style" id="pr" type="checkbox" checked onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        @endif
+
+                                        @if ($type_p == 1 || $type_p == 0)
+                                            <input disabled class="check_style" id="pr" type="checkbox" onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        @endif
+                                        <label for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
+                                    </div>
+                                    @endif
+
+                                    @if ( !$check_types_pn &&  !$check_types_pr)
+                                    <div class="flex">
+                                        @if ($type_p == 1 || $type_p == 0)
+                                        <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" type="checkbox"   class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        @endif
+                                        @if ($type_p == 2)
+                                        <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        @endif
+                                        <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Nuevo</label>
+                                    </div>
+
+                                    <div class="flex">
+                                        @if ($type_p == 2)
+                                            <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        @endif
+
+                                        @if ($type_p == 1 || $type_p == 0)
+                                            <input disabled class="check_style" id="pr" type="checkbox" onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                        @endif
+                                        <label for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
+                                    </div>
+                                    @endif
                                     </div>
 
                             </div>
@@ -1461,6 +1546,7 @@ cursor: pointer;
 <script>
 
 window.onload = function() {
+
     check_form_proy_edit('{{$type_p}}');
     val = '{{ $project_edit->id_cat_edifico }}';
     id_tipo_edi = '{{ $project_edit->id_tipo_edificio }}';
@@ -1476,6 +1562,9 @@ window.onload = function() {
     //let cost_ele = $('#costo_elec_1_1_retro').val();
    /*  asign_cos_ele(cost_ele); */
 
+   setTimeout(function() {
+    checksuma();
+}, 1000);
 };
 
 
@@ -1549,7 +1638,8 @@ function traer_t_edif_edd(id_cat) {
                 value: 0,
                 text: 'Seleccionar'
             }));
-
+            $('#count_tipo_edificio').val(0);
+            checksuma();
             response.map((cat_ed, i) => {
                 $('#tipo_edificio_edit').append($('<option>', {
                     value: cat_ed.id,
@@ -1585,6 +1675,7 @@ function traer_ciudad(pais,id_ciudad) {
                         value: ciudades.idCiudad,
                         text: ciudades.ciudad
                     }));
+
                     $("#ciudades_edit").find('option[value="' + ciudades.idCiudad + '"]').attr("selected", "selected");;
                     }else if(id_ciudad != ciudades.ciudad){
                         $('#ciudades_edit').append($('<option>', {
@@ -1614,6 +1705,8 @@ function traer_ciudad_edit(pais) {
                 value: 0,
                 text: 'Seleccionar'
             }));
+            $('#count_ciudad').val(0);
+            checksuma();
             response.map((ciudades, i) => {
                 $('#ciudades_edit').append($('<option>', {
                     value: ciudades.idCiudad,

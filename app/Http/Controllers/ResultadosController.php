@@ -11,6 +11,7 @@ use App\ResultsProjectModel;
 use App\MarcasEmpresaModel;
 use App\ModelosEmpresaModel;
 use App\TipoEdificioModel;
+use App\TypeProjectModel;
 use Illuminate\Support\Facades\Redirect;
 use Excel;
 use Dompdf\Dompdf;
@@ -62,6 +63,7 @@ class ResultadosController extends Controller
         $enfriamiento3 =intval($request->get('cUnidad_3_1'));
         $mew_project = new ProjectsModel;
         $mew_project->name=$request->get('name_pro');
+        $mew_project->type_p= $request->get('type_p');
         $mew_project->id_tipo_edificio=$request->get('tipo_edificio');
         $mew_project->id_cat_edifico=$request->get('cat_ed');
         $mew_project->inflacion_rate=intval($request->get('inflation_rate'));
@@ -14904,6 +14906,67 @@ if($equipo_conf_1_1 === 'unid_pred'){
        $res_res_fact_m =  $res_res * $factor_m;
 
        return $res_res_fact_m;
+    }
+
+    public function check_p_type_pn($id){
+        $type_check = DB::table('type_project_empresas')
+        ->where('id_empresa','=',$id)
+        ->first();
+        if($type_check){
+            return $type_check->p_n;
+        }else{
+            return false;
+        }
+    }
+
+    public function check_p_type_pr($id){
+        $type_check = DB::table('type_project_empresas')
+        ->where('id_empresa','=',$id)
+        ->first();
+        if($type_check){
+            return $type_check->p_r;
+        }else{
+            return false;
+        }
+    }
+
+    public function asiga_typos(){
+        $projects = DB::table('projects')
+        ->get();
+
+        foreach($projects as $project){
+            $check_type = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$project->id)
+            ->first();
+
+            if($check_type){
+                $update_project= ProjectsModel::find($project->id);
+                if($check_type->type_p == 0){
+                    $update_project->type_p= 1;
+                }else{
+                    $update_project->type_p= $check_type->type_p;
+                }
+
+                $update_project->update();
+            }
+
+        }
+
+    }
+
+    public function asigna_empresas_tipo(){
+        $empresas = DB::table('empresas')
+        ->get();
+
+        foreach($empresas as $empresa){
+
+                $new_permiso = new TypeProjectModel;
+                $new_permiso->p_n = 1;
+                $new_permiso->p_r = 1;
+                $new_permiso->id_empresa = $empresa->id;
+                $new_permiso->save();
+
+        }
     }
 
 
