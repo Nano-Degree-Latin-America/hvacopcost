@@ -5949,7 +5949,6 @@ function hrs_enfs_inps(value){
 }
 
 function mostrar_modal_energia_hvac(id){
-
     $("#"+id).removeClass("hidden");
 }
 

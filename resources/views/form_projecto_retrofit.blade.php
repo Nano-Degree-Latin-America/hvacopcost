@@ -90,7 +90,7 @@
                 </div>
             </div>
 
-            @include('modal_seer')
+
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="flex justify-start w-1/3 ">
@@ -106,7 +106,7 @@
 
 
                 </div>
-
+                @include('modal_seer_retro')
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                     <div class="flex justify-start w-1/3 text-left">
                         <label  class="labels" for=""><b>Eficiencia Original</b> </label>
@@ -124,7 +124,7 @@
                         <input  id="csStd_retro_1_1_count" name="csStd_retro_1_1_count" type="number" class="hidden" value="1">
                     </div>
                     <div class="mt-1">
-                        <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                        <a onclick="mostrar_modal_energia_hvac('modal_seer_retro');" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                     </div>
                 </div>
             </div>
@@ -176,7 +176,7 @@
                     </div>
                     <input  id="costo_elec_1_1_retro_count" name="costo_elec_1_1_retro_count" type="number" class="hidden" value="1">
                 </div>
-
+                @include('modal_coolinghours_retro')
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="flex justify-start w-1/3 text-left">
                         <label  class="labels" for=""><b>Horas Enfriamiento</b> </label>
@@ -185,9 +185,9 @@
                         <input  type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_1_1_retro" onkeypress="return soloNumeros(event)" id="hrsEnfriado_1_1_retro" onchange="hrs_enfs_inps(this.value);valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);">
                         <input  id="hrsEnfriado_1_1_retro_count" name="hrsEnfriado_1_1_retro_count" type="number" class="hidden" value="1">
                     </div>
-                    @include('modal_coolinghours')
+
                     <div class="mt-1">
-                        <a onclick="mostrar_modal_energia_hvac('modal_coolinghours');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                        <a onclick="mostrar_modal_energia_hvac('modal_coolinghours_retro');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                     </div>
                 </div>
             </div>

@@ -106,7 +106,7 @@
                         </div>
                     </div>
 
-                    @include('modal_seer')
+                    @include('modal_seer_retro')
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="flex justify-start w-1/3 ">
@@ -140,7 +140,7 @@
                                 <input  id="csStd_retro_1_1_count" name="csStd_retro_1_1_count" type="number" class="hidden" value="1">
                             </div>
                             <div class="mt-1">
-                                <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                                <a onclick="mostrar_modal_energia_hvac('modal_seer_retro');" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                             </div>
                         </div>
                     </div>
@@ -201,9 +201,9 @@
                                 <input  type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_1_1_retro" onkeypress="return soloNumeros(event)" id="hrsEnfriado_1_1_retro" onchange="hrs_enfs_inps(this.value);valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);">
                                 <input  id="hrsEnfriado_1_1_retro_count" name="hrsEnfriado_1_1_retro_count" type="number" class="hidden" value="1">
                             </div>
-                            @include('modal_coolinghours')
+                            @include('modal_coolinghours_retro')
                             <div class="mt-1">
-                                <a onclick="mostrar_modal_energia_hvac('modal_coolinghours');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                                <a onclick="mostrar_modal_energia_hvac('modal_coolinghours_retro');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                             </div>
                         </div>
                     </div>
@@ -253,8 +253,6 @@
                                 <input  id="csMantenimiento_1_1_retro_count" name="csMantenimiento_1_1_retro_count" type="number" class="hidden" value="1">
 
                             </div>
-
-
                             <input type="text" style="display: none" id="lblCsMantenimiento_1_1_retro" name="lblCsMantenimiento_1_1_retro" value="ASHRAE 180 Proactivo">
                             <input type="text" style="display: none" id="lblCsTipo" name="lblCsTipo" value="Tipo paquete">
                         </div>

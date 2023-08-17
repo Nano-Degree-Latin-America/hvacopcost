@@ -568,7 +568,6 @@ cursor: pointer;
                                                 </div>
                                                 @include('modal_energia_hvac')
 
-
                                                 <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
                                                         <label  class="font-roboto text-left labels_index" for=""><b>Energía HVAC en el Edificio:</b></label><label class="text-red-500">*</label>
@@ -1390,7 +1389,7 @@ cursor: pointer;
 
 function app() {
 			return {
-				step: 1,
+				step: 2,
 				passwordStrengthText: '',
 				togglePassword: false,
 
