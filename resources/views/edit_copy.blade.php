@@ -298,7 +298,8 @@ cursor: pointer;
                                                     <div class="flex w-full">
                                                         <label  class="labels_index font-roboto font-bold" for=""><b>Nombre Projecto</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                <input onchange="check_input(this.value,this.id,'name_warning');" name="name_pro" id="name_pro" value="{{$project_edit->name}}" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                <input id="count_name_pro" name="count_name_pro" type="number" class="hidden" value="1">
+                                                <input onchange="check_input(this.value,this.id,'name_warning');check_inp_count('count_name_pro','name_pro');" name="name_pro" id="name_pro" value="{{$project_edit->name}}" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
                                                 <span id="name_warning" name="name_warning" class="text-red-500"></span>
                                                 </div>
 
@@ -309,7 +310,7 @@ cursor: pointer;
                                                     <div class="flex w-full">
                                                         <label  class="labels_index font-roboto" for=""><b>Región:</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select onchange="check_input(this.value,this.id,'paises_warning');traer_ciudad_edit(this.value)" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises_edit" id="paises_edit">
+                                                    <select onchange="check_input(this.value,this.id,'paises_warning');traer_ciudad_edit(this.value);check_inp_count('count_paises','paises_edit');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises_edit" id="paises_edit">
                                                        {{--  @foreach ($paises as $pais)
                                                         @if ($project_edit->region == $pais->pais)
                                                         <option selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
@@ -521,6 +522,8 @@ cursor: pointer;
 
                                                             @endforeach
                                                     </select>
+                                                    <input id="count_paises" name="count_paises" type="number" class="hidden" value="1">
+
                                                     <span id="paises_warning" name="paises_warning" class="text-red-500"></span>
                                                 </div>
 
@@ -528,9 +531,10 @@ cursor: pointer;
                                                     <div class="flex w-full">
                                                         <label  class="labels_index font-roboto" for=""><b>Ciudad:</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select onchange="check_input(this.value,this.id,'ciudad_warning');getDegreeHrs_edd($('#paises_edit').val(),this.value)"  class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades_edit" id="ciudades_edit">
+                                                    <select onchange="check_input(this.value,this.id,'ciudad_warning');getDegreeHrs_edd($('#paises_edit').val(),this.value);check_inp_count('count_ciudad','ciudades_edit');"  class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades_edit" id="ciudades_edit">
 
                                                     </select>
+                                                    <input id="count_ciudad" name="count_ciudad" type="number" class="hidden" value="1" >
                                                     <span id="ciudad_warning" name="ciudad_warning" class="text-red-500"></span>
                                                 </div>
 
@@ -585,6 +589,7 @@ cursor: pointer;
                                                         @endif
                                                         @endforeach
                                                     </select>
+                                                    <input id="count_cat_ed" name="count_cat_ed" type="number" class="hidden" value="1">
                                                     <span id="cat_ed_warning" name="cat_ed_warning" class="text-red-500"></span>
                                                 </div>
 
@@ -592,8 +597,9 @@ cursor: pointer;
                                                   <div class="flex w-full">
                                                     <label  class="labels_index font-roboto" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
                                                   </div>
-                                                    <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio_edit"  id="tipo_edificio_edit"></select>
-                                                       <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
+                                                    <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');check_inp_count('count_tipo_edificio','tipo_edificio_edit');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio_edit"  id="tipo_edificio_edit"></select>
+                                                    <input id="count_tipo_edificio" name="count_tipo_edificio" type="number" class="hidden" value="1">
+                                                    <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
                                                 </div>
 
                                                 <div class="flex md:w-3/5 xl:w-3/5 lg:w-1/2 justify-start gap-x-3">
@@ -601,7 +607,8 @@ cursor: pointer;
                                                          <div class="flex w-full">
                                                              <label  class="labels_index font-roboto" for=""><b>Aréa:</b></label><label class="text-red-500">*</label>
                                                          </div>
-                                                         <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);"  value="{{number_format($project_edit->area)}}" name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
+                                                         <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);check_inp_count('count_ar_project','ar_project');"  value="{{number_format($project_edit->area)}}" name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
+                                                         <input id="count_ar_project" name="count_ar_project" type="number" class="hidden" value="1">
                                                          <span id="ar_project_warning" name="ar_project_warning" class="text-red-500"></span>
                                                     </div>
 
@@ -637,6 +644,8 @@ cursor: pointer;
                                                             </div>
 
                                                          @endif
+                                                         <input id="count_unidad" name="count_unidad" type="number" class="hidden" value="1">
+                                                         <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-blue-600 rounded-xl" value="{{$project_edit->unidad}}" name="unidad" id="unidad">
 
                                                      </div>
                                                     </div>
@@ -646,14 +655,13 @@ cursor: pointer;
                                                      </div>
                                                  </div>
 
-                                                 <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-blue-600 rounded-xl" value="{{$project_edit->unidad}}" name="unidad" id="unidad">
 
                                                  <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                         <div class="flex w-full">
                                                             <label  class="labels_index font-roboto font-bold" for=""><b>Ocupación Semanal</b></label><label class="text-red-500">*</label>
                                                         </div>
 {{--                                                     <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');" value="{{$project_edit->hrs_tiempo}}"  name="tiempo_porcent" id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
- --}}                                               <select {{-- onchange="check_input(this.value,this.id,'paises_warning');"  --}}class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
+ --}}                                               <select onchange="check_inp_count('count_tiempo_porcent','tiempo_porcent');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
                                                         @switch($project_edit->hrs_tiempo)
                                                             @case(30)
                                                             <option selected value="m_50">Menos de 50 Hrs.</option>
@@ -679,6 +687,8 @@ cursor: pointer;
 
 
                                                     </select>
+                                                    <input id="count_tiempo_porcent" name="count_tiempo_porcent" type="number" class="hidden" value="1">
+
                                                     <span id="tiempo_porcent_warning" name="tiempo_porcent_warning" class="text-red-500"></span>
                                                 </div>
                                                 @include('modal_energia_hvac')
@@ -687,9 +697,10 @@ cursor: pointer;
                                                         <label  class="labels_index font-roboto" for=""><b>Energía HVAC (Edificio):</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <div class="flex w-full">
-                                                        <select onchange="buton_check_edit();check_input(this.value,this.id,'por_hvac_warning');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
+                                                        <select onchange="buton_check_edit();check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                                             <option value="0">-Selecciona porcentaje-</option>
                                                         </select>
+                                                        <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="1">
                                                         <div class="ml-2" style="margin-top: 5.5px;">
                                                             <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                                                         </div>
@@ -1545,7 +1556,9 @@ window.onload = function() {
     traer_porcent_ini(val,porcent);
     id_ciudad_ini =  '{{ $id_ciudad_ini }}';
     traer_horas_enf_edit('{{ $project_edit->id }}');
-
+    setTimeout(function() {
+    checksuma();
+}, 1000);
 };
 
 
@@ -1562,7 +1575,7 @@ if(parseInt(val_pais) === 0){
 }
 
         return {
-            step: page,
+            step: 1,
             passwordStrengthText: '',
             togglePassword: false,
             password: '',
@@ -1628,7 +1641,8 @@ function traer_t_edif_edd(id_cat) {
                 value: 0,
                 text: 'Seleccionar'
             }));
-
+            $('#count_tipo_edificio').val(0);
+            checksuma();
             response.map((cat_ed, i) => {
                 $('#tipo_edificio_edit').append($('<option>', {
                     value: cat_ed.id,
@@ -1693,6 +1707,8 @@ function traer_ciudad_edit(pais) {
                 value: 0,
                 text: 'Seleccionar'
             }));
+            $('#count_ciudad').val(0);
+            checksuma();
             response.map((ciudades, i) => {
                 $('#ciudades_edit').append($('<option>', {
                     value: ciudades.idCiudad,

@@ -298,7 +298,7 @@ cursor: pointer;
                                                     <div class="flex w-full">
                                                         <label  class="labels_index font-roboto font-bold" for=""><b>Nombre Projecto</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                <input onchange="check_input(this.value,this.id,'name_warning');check_inp_count('count_name_pro','name_pro');"" name="name_pro" id="name_pro" value="{{$project_edit->name}}" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                                                <input onchange="check_input(this.value,this.id,'name_warning');check_inp_count('count_name_pro','name_pro');" name="name_pro" id="name_pro" value="{{$project_edit->name}}" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
                                                 <input id="count_name_pro" name="count_name_pro" type="number" class="hidden" value="1">
                                                 <span id="name_warning" name="name_warning" class="text-red-500"></span>
                                                 </div>
