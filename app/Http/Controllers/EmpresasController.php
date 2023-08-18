@@ -79,7 +79,11 @@ class EmpresasController extends Controller
         $empresa_p->status = 1;
         $empresa_p->save();
         if ($empresa_p->save()){
-
+                $new_permiso = new TypeProjectModel;
+                $new_permiso->p_n = 1;
+                $new_permiso->p_r = 1;
+                $new_permiso->id_empresa = $empresa_p->id;
+                $new_permiso->save();
                 return redirect('/empresas');
 
 
