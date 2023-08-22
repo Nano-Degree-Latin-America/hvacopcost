@@ -182,6 +182,47 @@ align-items: center;
 cursor: pointer;
 }
 
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: .60rem;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: .5rem;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
@@ -265,7 +306,7 @@ cursor: pointer;
                                      <form action="{{route('resultados')}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
                                         @csrf
                                         <div class="my-8">
-                                            <label class="title_index font-roboto text-blue-800 font-bold leading-tight" for="">Análisis Energético y Financiero <br> de Sistemas HVAC</label>
+                                            <label class="title_index font-roboto text-blue-800 font-bold leading-tight" for="">{{ __('index.análisis energético y financiero') }} <br> {{ __('index.de sistemas HVAC') }}</label>
                                         </div>
                                      <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
 
@@ -276,7 +317,7 @@ cursor: pointer;
 
                                                     <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                             <div class="flex w-full">
-                                                                <label  class="labels_index font-roboto font-bold text-left" for=""><b>Nombre Projecto</b></label><label class="text-red-500">*</label>
+                                                                <label  class="labels_index font-roboto font-bold text-left" for=""><b>{{ __('index.nombre projecto') }}</b></label><label class="text-red-500">*</label>
                                                             </div>
                                                         <input onchange="check_input(this.value,this.id,'name_warning');check_inp_count('count_name_pro','name_pro');" name="name_pro" id="name_pro" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
                                                         <input id="count_name_pro" name="count_name_pro" type="number" class="hidden" value="0">
@@ -286,11 +327,11 @@ cursor: pointer;
 
                                                      <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                         <div class="flex w-full">
-                                                            <label class="labels_index font-roboto text-left" for=""><b>Región:</b></label><label class="text-red-500">*</label>
+                                                            <label class="labels_index font-roboto text-left" for=""><b>{{ __('index.region') }}</b></label><label class="text-red-500">*</label>
                                                         </div>
 
                                                         <select onchange="check_input(this.value,this.id,'paises_warning');check_inp_count('count_paises','paises');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises" id="paises">
-                                                            <option value="0">-Selecciona tu región-</option>
+                                                            <option value="0">-{{ __('index.selecciona tu region') }}-</option>
                                                             <?php  $all_paises=$all_paises->all_paises(); ?>
                                                             @foreach ($all_paises as $pais)
 
@@ -447,10 +488,10 @@ cursor: pointer;
 
                                                     <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                         <div class="flex w-full">
-                                                            <label  class="labels_index text-left font-roboto" for=""><b>Ciudad:</b></label><label class="text-red-500">*</label>
+                                                            <label  class="labels_index text-left font-roboto" for=""><b>{{ __('index.ciudad') }}</b></label><label class="text-red-500">*</label>
                                                         </div>
                                                         <select onchange="check_input(this.value,this.id,'ciudad_warning');check_inp_count('count_ciudad','ciudades');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades" id="ciudades">
-                                                            <option value="0">-Selecciona tu ciudad-</option>
+                                                            <option value="0">-{{ __('index.selecciona tu ciudad') }}-</option>
                                                         </select>
                                                         <input id="count_ciudad" name="count_ciudad" type="number" class="hidden" value="0" >
                                                         <span id="ciudad_warning" name="ciudad_warning" class="text-red-500"></span>
@@ -458,7 +499,7 @@ cursor: pointer;
 
                                                     <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                         <div class="flex w-full">
-                                                            <label  class="labels_index text-left font-roboto font-bold text-left" for=""><b>Incremento Anual Energía</b></label><label class="text-red-500 text-left"></label>
+                                                            <label  class="labels_index text-left font-roboto font-bold text-left" for=""><b>{{ __('index.incremento anual energia') }}</b></label><label class="text-red-500 text-left"></label>
                                                         </div>
 {{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
  --}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inc_ene" id="inc_ene">
@@ -471,7 +512,7 @@ cursor: pointer;
 
                                                     <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                         <div class="flex w-full">
-                                                            <label  class="labels_index font-roboto font-bold text-left" for=""><b>Inflación Anual:</b></label><label class="text-red-500">*</label>
+                                                            <label  class="labels_index font-roboto font-bold text-left" for=""><b>{{ __('index.inflacion anual') }}:</b></label><label class="text-red-500">*</label>
                                                         </div>
 {{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
  --}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inflation_rate" id="inflation_rate">
@@ -490,7 +531,7 @@ cursor: pointer;
 
                                                 <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label  class="font-roboto labels_index  text-left" for=""><b>Categoria Edificio</b></label></label><label class="text-red-500">*</label>
+                                                        <label  class="font-roboto labels_index  text-left" for=""><b>{{ __('index.categoria edificio') }}</b></label></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');check_inp_count('count_cat_ed','cat_ed');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1"></select>
                                                     <input id="count_cat_ed" name="count_cat_ed" type="number" class="hidden" value="0">
@@ -500,7 +541,7 @@ cursor: pointer;
                                                 <div class="flex w-full gap-x-4">
                                                     <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                         <div class="flex w-full">
-                                                            <label  class="font-roboto labels_index" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
+                                                            <label  class="font-roboto labels_index" for=""><b>{{ __('index.tipo edificio') }}:</b></label><label class="text-red-500">*</label>
                                                         </div>
                                                             <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');check_inp_count('count_tipo_edificio','tipo_edificio');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio"></select>
                                                             <input id="count_tipo_edificio" name="count_tipo_edificio" type="number" class="hidden" value="0">
@@ -514,7 +555,7 @@ cursor: pointer;
                                                 <div class="flex  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-start gap-x-3">
                                                     <div class="grid w-1/2 justify-items-start">
                                                             <div class="flex w-full">
-                                                                <label  class="font-roboto labels_index" for=""><b>Aréa:</b></label><label class="text-red-500">*</label>
+                                                                <label  class="font-roboto labels_index" for=""><b>{{ __('index.area') }}:</b></label><label class="text-red-500">*</label>
                                                             </div>
                                                             <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);check_inp_count('count_ar_project','ar_project');"  name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
                                                             <input id="count_ar_project" name="count_ar_project" type="number" class="hidden" value="0">
@@ -525,7 +566,7 @@ cursor: pointer;
                                                         <div class="flex">
                                                             <div>
                                                                     <div class="flex w-full">
-                                                                        <label  class="font-roboto labels_index" for=""><b>Unidad:</b></label><label class="text-red-500">*</label>
+                                                                        <label  class="font-roboto labels_index" for=""><b>{{ __('index.unidad') }}:</b></label><label class="text-red-500">*</label>
                                                                     </div>
                                                                     <div class="flex gap-x-3 mt-3">
                                                                     <div class="flex">
@@ -551,16 +592,16 @@ cursor: pointer;
 
                                                 <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                         <div class="flex w-full justify-start">
-                                                            <label  class="font-roboto font-bold text-left labels_index" for=""><b>Ocupación Semanal</b></label><label class="text-red-500">*</label>
+                                                            <label  class="font-roboto font-bold text-left labels_index" for=""><b>{{ __('index.ocupacion semanal') }}</b></label><label class="text-red-500">*</label>
                                                         </div>
 {{--                                                     <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');"  name="tiempo_porcent"  id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
  --}}
 
                                                                 <select onchange="check_input(this.value,this.id,'tiempo_porcent_warning');check_inp_count('count_tiempo_porcent','tiempo_porcent');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
-                                                                    <option value="">-Seleccionar horas-</option>
-                                                                    <option value="m_50">Menos de 50 Hrs.</option>
-                                                                    <option value="51_167 ">51 a 167 Hrs.</option>
-                                                                    <option value="168">168 Hrs.</option>
+                                                                    <option value="">-{{ __('index.seleccionar horas') }}-</option>
+                                                                    <option value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
+                                                                    <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
+                                                                    <option value="168">{{ __('index.168 hrs') }}.</option>
                                                                 </select>
 
                                                         <input id="count_tiempo_porcent" name="count_tiempo_porcent" type="number" class="hidden" value="0">
@@ -570,11 +611,11 @@ cursor: pointer;
 
                                                 <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
-                                                        <label  class="font-roboto text-left labels_index" for=""><b>Energía HVAC en el Edificio:</b></label><label class="text-red-500">*</label>
+                                                        <label  class="font-roboto text-left labels_index" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <div class="flex w-full">
                                                         <select onchange="buton_check();check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
-                                                            <option value="0">-Selecciona porcentaje-</option>
+                                                            <option value="0">-{{ __('index.selecciona porcentaje') }}-</option>
                                                         </select>
                                                         <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="0">
                                                         <div class="ml-2" style="margin-top: 5.5px;">
@@ -589,14 +630,14 @@ cursor: pointer;
                                                         <button type="button"  id="next" name="next"
                                                             onclick="buton_check();"
                                                             class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
-                                                        >Siguiente</button>
+                                                        >{{ __('index.siguiente') }}</button>
                                                     </div>
                                                     <div id="div_next_h" name="div_next_h" class="w-1/2 text-right">
                                                             <button  type="button"  id="next_h" name="next_h"
                                                                 x-show="step < 2"
                                                                 @click="step++"
                                                                 class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
-                                                            >Siguiente</button>
+                                                            >{{ __('index.siguiente') }}</button>
 
 
                                                     </div>
@@ -664,36 +705,36 @@ cursor: pointer;
                                     @if ( $check_types_pn == 1 &&  $check_types_pr == 1)
                                     <div class="flex">
                                         <input class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">Proyecto Nuevo</label>
+                                        <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
                                     </div>
 
                                     <div class="flex">
                                         <input class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">Proyecto Retrofit</label>
+                                        <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
                                     </div>
                                     @endif
 
                                     @if ( $check_types_pn == 1 &&  $check_types_pr == 0)
                                     <div class="flex">
                                         <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">Proyecto Nuevo</label>
+                                        <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
                                     </div>
 
                                     <div class="flex">
                                         <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">Proyecto Retrofit</label>
+                                        <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
                                     </div>
                                     @endif
 
                                     @if ( $check_types_pn == 0 &&  $check_types_pr == 1)
                                     <div class="flex">
                                         <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"   class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">Proyecto Nuevo</label>
+                                        <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
                                     </div>
 
                                     <div class="flex">
                                         <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">Proyecto Retrofit</label>
+                                        <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
                                     </div>
                                     @endif
 
@@ -702,12 +743,12 @@ cursor: pointer;
                                     <?php  $check_types_pr = 0?>
                                     <div class="flex">
                                         <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">Proyecto Nuevo</label>
+                                        <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
                                     </div>
 
                                     <div class="flex">
                                         <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                        <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">Proyecto Retrofit</label>
+                                        <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
                                     </div>
                                     @endif
 
@@ -773,9 +814,9 @@ cursor: pointer;
                         x-show="step > 1"
                         @click="step--"
                         class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
-                    >Atrás</button>
+                    >{{ __('index.atras') }}</button>
                     <div x-show="step == 1"  class="w-5/6">
-                        <p  style="font-size:10px;" class="text-gray-500 text-left ">*Descargo de responsabilidad: los costos reales variarán según las condiciones climáticas y el uso. Esta información está destinada únicamente a fines comparativos. Este software no debe usarse para determinar la capacidad de una nueva unidad HVAC, está diseñada solo para fines de comparación de costos.
+                        <p  style="font-size:10px;" class="text-gray-500 text-left ">*{{ __('index.descargo de responsabilidad') }}.
                         </p>
                     </div>
 
@@ -785,17 +826,17 @@ cursor: pointer;
                 <div class="w-1/2">
                 <div  x-show="step < 2" class="w-full flex" style=" justify-content: left;">
                 <label style="font-size:10px;" class=" text-gray-500 font-montserrat"  for="">
-                    De acuerdo a:
+                    {{ __('index.de acuerdo a')}}:
                 </label>
                 <ul class="mt-3">
                     <li class="flex items-center w-full">
                       <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
-                      <p style="font-size:9px;" class="text-gray-500">ASHRAE Standard 100–2018,  ASHRAE Standard 169–2021, ASHRAE Standard 90.1–2019 , ASHRAE Standard 70–2006, ASHRAE Standard 180–2018, ASHRAE Standard 55–2020 y ASHRAE Standard 62.1-2019.</p>
+                      <p style="font-size:9px;" class="text-gray-500">{{ __('index.ASHRAE Standard')}}.</p>
                     </li>
 
                     <li class="flex items-center w-full">
                       <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
-                      <p style="font-size:9px;" class="text-gray-500">1-100 Energy Star Score,  Energy Star Portfolio Manager ,EIA – CBECS–2018 Cooling Degree Days por Degreedays.net y NOAA.gov.</p>
+                      <p style="font-size:9px;" class="text-gray-500">{{ __('index.1-100 Energy Star Score')}}.</p>
                     </li>
 
                   </ul>
@@ -1385,7 +1426,25 @@ cursor: pointer;
         mostrar_type_p('{{$check_types_pn}}','{{$check_types_pr}}');
     });
 
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
 
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
 
 function app() {
 			return {

@@ -40,7 +40,15 @@
                     </button>
             </a>
 
-            <form id="logout-form" action="{{ route('cerrar_session') }}" method="POST" class="d-none">
+
+            {{-- <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn font-roboto">Lang</button>
+                <div id="myDropdown" class="dropdown-content">
+                  <a href="{{ url('locale/es')}}" class="font-roboto">Es</a>
+                  <a href="{{ url('locale/port')}}" class="font-roboto">Port</a>
+                </div>
+              </div> --}}
+              <form id="logout-form" action="{{ route('cerrar_session') }}" method="POST" class="d-none">
                 @csrf
             </form>
          </div>

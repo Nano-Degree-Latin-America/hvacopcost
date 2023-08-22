@@ -1575,7 +1575,7 @@ if(parseInt(val_pais) === 0){
 }
 
         return {
-            step: 1,
+            step: 2,
             passwordStrengthText: '',
             togglePassword: false,
             password: '',

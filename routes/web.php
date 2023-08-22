@@ -1,7 +1,7 @@
 <?php
-
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Redirect;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -147,4 +147,9 @@ Route::post('store_new_marc/{value}', 'ResultadosController@store_new_marc');
 Route::get('store_new_model/{value}/{marca}', 'ResultadosController@store_new_model');
 Route::get('send_modelos_datalist/{value}', 'ResultadosController@send_modelos_datalist');
 
+//lang
+Route::get('locale/{locale}', function($locale){
+   session()->put('locale',$locale);
+   return Redirect::back();
+});
 
