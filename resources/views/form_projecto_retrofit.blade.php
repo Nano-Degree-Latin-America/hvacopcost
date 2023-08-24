@@ -245,7 +245,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label  class="labels" for=""><b>Costo de Recuperación</b> </label>
+                        <label  class="labels" for=""><b>Valor por Depreciar</b> </label>
                     </div>
 
                     <div class="w-1/2 flex justify-start">
@@ -592,7 +592,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                             <div class="flex justify-start w-1/3 text-left">
-                                <label  class="labels" for=""><b>Eficiencia Original</b> </label>
+                                <label  class="labels" for=""><b>Eficiencia</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
                                 <input name="csStd_2_1_retro" readonly id="csStd_2_1_retro" style="padding-top: 0.425rem;padding-bottom: 0.248rem;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -867,7 +867,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                             <div class="flex justify-start w-1/3 text-left">
-                                <label  class="labels" for=""><b>Eficiencia Original</b> </label>
+                                <label  class="labels" for=""><b>Eficiencia</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
                                 <input readonly style="padding-top: 0.425rem;padding-bottom: 0.248rem;" type="text" name="csStd_3_1_retro" id="csStd_3_1_retro" class="text-center w-full py-1 border-2 border-blue-600 rounded-md">

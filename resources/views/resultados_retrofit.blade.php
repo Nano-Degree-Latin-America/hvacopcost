@@ -556,7 +556,7 @@ span{
 
                                                                     <div class="w-full flex">
                                                                         <div class="w-2/5 flex justify-start">
-                                                                            <label class="text-blue-900 font-bold font-roboto" for="">Costo de Recuperación</label>
+                                                                            <label class="text-blue-900 font-bold font-roboto" for="">Valor por Depreciar</label>
                                                                         </div>
                                                                         <div class="ml-2 w-2/5 flex justify-start">
                                                                             <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -758,7 +758,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Eficiencia Original</p>
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Eficiencia</p>
                                                                     </div>
                                                                     <div class="ml-2 w-auto flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene}} {{$solution->eficencia_ene_cant}}  </label>
@@ -1002,7 +1002,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Eficiencia Original</p>
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Eficiencia</p>
                                                                     </div>
                                                                     <div class="ml-2 w-auto flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene}} {{$solution->eficencia_ene_cant}}  </label>
