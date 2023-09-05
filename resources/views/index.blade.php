@@ -772,7 +772,7 @@ cursor: pointer;
                                     @include('form_projecto_nuevo')
                                 </div>
 
-                                <div id="display_nuevo_retrofit" class="">
+                                <div id="display_nuevo_retrofit" class="hidden">
                                     @include('form_projecto_retrofit')
                                 </div>
 
@@ -1436,7 +1436,7 @@ cursor: pointer;
 <script>
     $(document).ready(function () {
         set_ser_to_sers('SEER');
-       /*  mostrar_type_p('{{$check_types_pn}}','{{$check_types_pr}}'); */
+        mostrar_type_p('{{$check_types_pn}}','{{$check_types_pr}}');
     });
 
 /* When the user clicks on the button,
