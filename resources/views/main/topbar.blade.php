@@ -25,29 +25,40 @@
 
          {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
          @if (Request::path() == 'home')
-         <button class="text_butons_top mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='mis_projectos'"><p class="text_butons_top">Mis Proyectos</p></button>
+         <button class="text_butons_top mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='mis_projectos'"><p class="text_butons_top">{{ __('index.mis proyectos') }}</p></button>
          @endif
 
          @if (Request::path() == 'mis_projectos' || Request::path() == 'resultados')
-         <button class="text_butons_top mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='home'"><p class="text_butons_top">Nuevo Proyecto</p></button>
+         <button class="text_butons_top mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='home'"><p class="text_butons_top">{{ __('index.nuevo_projecto') }}</p></button>
          @endif
 
          <a class="text_butons_top mt-2 button-size bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('cerrar_session') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
                 <button class="">
-                    Cerrar Sesión
+                    {{ __('index.logout') }}
                     </button>
             </a>
 
-
-            {{-- <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn font-roboto">Lang</button>
+            @if (Auth::user()->tipo_user == 5)
+            <div class="dropdown">
+                <button onclick="myFunction()" class="dropbtn font-roboto">{{ __('index.idioma') }}</button>
                 <div id="myDropdown" class="dropdown-content">
-                  <a href="{{ url('locale/es')}}" class="font-roboto">Es</a>
+                  {{--   {{ App::getLocale() }} --}}
+                  @if (App::getLocale() == 'es')
                   <a href="{{ url('locale/port')}}" class="font-roboto">Port</a>
+                  @endif
+
+                  @if (App::getLocale() == 'port')
+                  <a href="{{ url('locale/es')}}" class="font-roboto">Es</a>
+                  @endif
+
+
                 </div>
-              </div> --}}
+              </div>
+            @endif
+
+
               <form id="logout-form" action="{{ route('cerrar_session') }}" method="POST" class="d-none">
                 @csrf
             </form>

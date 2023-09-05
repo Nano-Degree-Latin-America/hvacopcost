@@ -20,15 +20,15 @@
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3 gap-x-3">
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
-    <button class="p-2 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/mis_projectos'"><p>Mis Proyectos</p></button>
+    <button class="p-2 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/mis_projectos'"><p>{{ __('index.mis proyectos') }}</p></button>
 
-    <button class="p-2 bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'"><p>Nuevo Proyecto</p></button>
+    <button class="p-2 bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'"><p>{{ __('index.proyecto nuevo') }}</p></button>
 
     <a class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('cerrar_session') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
                 <button>
-                    Cerrar Sesión
+                    {{ __('index.logout') }}
                     </button>
             </a>
 
@@ -286,7 +286,7 @@ cursor: pointer;
                                      <form action="{{url('/edit_project', [$id_project])}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
                                         @csrf
                                         <div class="my-8">
-                                            <label class="title_index font-roboto text-blue-800 font-bold leading-tight" for="">Análisis Energético y Financiero <br> de Sistemas HVAC</label>
+                                            <label class="title_index font-roboto text-blue-800 font-bold leading-tight" for="">{{ __('index.análisis energético y financiero') }}<br> {{ __('index.de sistemas HVAC') }}</label>
                                         </div>
                                      <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
                                         <input type="number" class="hidden" id="type_p" name="type_p">
@@ -296,7 +296,7 @@ cursor: pointer;
                                             <div class="grid justify-items-end h-full gap-y-3 w-1/2">
                                                 <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label  class="labels_index font-roboto font-bold" for=""><b>Nombre Projecto</b></label><label class="text-red-500">*</label>
+                                                        <label  class="labels_index font-roboto font-bold" for=""><b>{{ __('index.nombre projecto') }}</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                 <input id="count_name_pro" name="count_name_pro" type="number" class="hidden" value="1">
                                                 <input onchange="check_input(this.value,this.id,'name_warning');check_inp_count('count_name_pro','name_pro');" name="name_pro" id="name_pro" value="{{$project_edit->name}}" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
@@ -308,7 +308,7 @@ cursor: pointer;
 
                                                 <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
-                                                        <label  class="labels_index font-roboto" for=""><b>Región:</b></label><label class="text-red-500">*</label>
+                                                        <label  class="labels_index font-roboto" for=""><b>{{ __('index.region') }}:</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select onchange="check_input(this.value,this.id,'paises_warning');traer_ciudad_edit(this.value);check_inp_count('count_paises','paises_edit');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises_edit" id="paises_edit">
                                                        {{--  @foreach ($paises as $pais)
@@ -319,7 +319,7 @@ cursor: pointer;
                                                         <option value="{{$pais->idPais}}">{{$pais->pais}}</option>
                                                         @endif
                                                         @endforeach --}}
-                                                        <option value="0">-Selecciona tu región-</option>
+                                                        <option value="0">-{{ __('index.selecciona tu region') }}-</option>
                                                         <?php  $all_paises=$all_paises->all_paises(); ?>
                                                             @foreach ($all_paises as $pais)
 
@@ -529,7 +529,7 @@ cursor: pointer;
 
                                                 <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
-                                                        <label  class="labels_index font-roboto" for=""><b>Ciudad:</b></label><label class="text-red-500">*</label>
+                                                        <label  class="labels_index font-roboto" for=""><b>{{ __('index.ciudad') }}:</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select onchange="check_input(this.value,this.id,'ciudad_warning');getDegreeHrs_edd($('#paises_edit').val(),this.value);check_inp_count('count_ciudad','ciudades_edit');"  class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades_edit" id="ciudades_edit">
 
@@ -540,7 +540,7 @@ cursor: pointer;
 
                                                 <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label  class="labels_index font-roboto font-bold text-left" for=""><b>Incremento Anual Energía</b></label><label class="text-red-500"></label>
+                                                        <label  class="labels_index font-roboto font-bold text-left" for=""><b>{{ __('index.incremento anual energia') }}</b></label><label class="text-red-500"></label>
                                                     </div>
                                                     <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inc_ene" id="inc_ene">
                                                         @for ($i = 0; $i <= 15; $i++)
@@ -556,7 +556,7 @@ cursor: pointer;
 
                                                 <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label  class="labels_index font-roboto font-bold" for=""><b>Inflación:</b></label><label class="text-red-500">*</label>
+                                                        <label  class="labels_index font-roboto font-bold" for=""><b>{{ __('index.inflacion anual') }}:</b></label><label class="text-red-500">*</label>
                                                     </div>
 {{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
 --}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inflation_rate" id="inflation_rate">
@@ -577,7 +577,7 @@ cursor: pointer;
                                             <div class="grid justify-items-start h-full gap-y-3 w-1/2">
                                                 <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
-                                                        <label class="labels_index font-roboto" for=""><b>Categoria Edificio</b></label></label><label class="text-red-500">*</label>
+                                                        <label class="labels_index font-roboto" for=""><b>{{ __('index.categoria edificio') }}</b></label></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <select  name="cat_ed_edit" id="cat_ed_edit"onchange="traer_t_edif_edd(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1">
                                                         @foreach ($cate_edificio as $cat_edi)
@@ -595,7 +595,7 @@ cursor: pointer;
 
                                                 <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                   <div class="flex w-full">
-                                                    <label  class="labels_index font-roboto" for=""><b>Tipo Edificio:</b></label><label class="text-red-500">*</label>
+                                                    <label  class="labels_index font-roboto" for=""><b>{{ __('index.tipo edificio') }}:</b></label><label class="text-red-500">*</label>
                                                   </div>
                                                     <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');check_inp_count('count_tipo_edificio','tipo_edificio_edit');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio_edit"  id="tipo_edificio_edit"></select>
                                                     <input id="count_tipo_edificio" name="count_tipo_edificio" type="number" class="hidden" value="1">
@@ -605,7 +605,7 @@ cursor: pointer;
                                                 <div class="flex md:w-3/5 xl:w-3/5 lg:w-1/2 justify-start gap-x-3">
                                                     <div class="grid w-1/2 justify-items-start">
                                                          <div class="flex w-full">
-                                                             <label  class="labels_index font-roboto" for=""><b>Aréa:</b></label><label class="text-red-500">*</label>
+                                                             <label  class="labels_index font-roboto" for=""><b>{{ __('index.area') }}:</b></label><label class="text-red-500">*</label>
                                                          </div>
                                                          <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);check_inp_count('count_ar_project','ar_project');"  value="{{number_format($project_edit->area)}}" name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
                                                          <input id="count_ar_project" name="count_ar_project" type="number" class="hidden" value="1">
@@ -616,7 +616,7 @@ cursor: pointer;
                                                      <div class="flex">
                                                      <div>
                                                      <div class="flex w-full">
-                                                         <label  class="labels_index font-roboto" for=""><b>Unidad:</b></label><label class="text-red-500">*</label>
+                                                         <label  class="labels_index font-roboto" for=""><b>{{ __('index.unidad') }}:</b></label><label class="text-red-500">*</label>
                                                      </div>
                                                      <div class="flex gap-x-3 mt-3">
                                                          @if($project_edit->unidad == 'mc' )
@@ -658,26 +658,26 @@ cursor: pointer;
 
                                                  <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                         <div class="flex w-full">
-                                                            <label  class="labels_index font-roboto font-bold" for=""><b>Ocupación Semanal</b></label><label class="text-red-500">*</label>
+                                                            <label  class="labels_index font-roboto font-bold" for=""><b>{{ __('index.ocupacion semanal') }}</b></label><label class="text-red-500">*</label>
                                                         </div>
 {{--                                                     <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');" value="{{$project_edit->hrs_tiempo}}"  name="tiempo_porcent" id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
  --}}                                               <select onchange="check_inp_count('count_tiempo_porcent','tiempo_porcent');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
                                                         @switch($project_edit->hrs_tiempo)
                                                             @case(30)
-                                                            <option selected value="m_50">Menos de 50 Hrs.</option>
-                                                            <option value="51_167 ">51 a 167 Hrs.</option>
+                                                            <option selected value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
+                                                            <option value="51_167 ">{{ __('index.menos de 50 hrs') }}.</option>
                                                             <option value="168">168 Hrs.</option>
                                                             @break
 
                                                             @case(80)
-                                                            <option  value="m_50">Menos de 50 Hrs.</option>
-                                                            <option selected value="51_167 ">51 a 167 Hrs.</option>
+                                                            <option  value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
+                                                            <option selected value="51_167 ">{{ __('index.menos de 50 hrs') }}.</option>
                                                             <option value="168">168 Hrs.</option>
                                                             @break
 
                                                             @case(168)
-                                                            <option value="m_50">Menos de 50 Hrs.</option>
-                                                            <option value="51_167 ">51 a 167 Hrs.</option>
+                                                            <option value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
+                                                            <option value="51_167 ">{{ __('index.menos de 50 hrs') }}.</option>
                                                             <option selected value="168">168 Hrs.</option>
                                                             @break
 
@@ -694,11 +694,11 @@ cursor: pointer;
                                                 @include('modal_energia_hvac')
                                                 <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                                                     <div class="flex w-full">
-                                                        <label  class="labels_index font-roboto" for=""><b>Energía HVAC (Edificio):</b></label><label class="text-red-500">*</label>
+                                                        <label  class="labels_index font-roboto" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <div class="flex w-full">
                                                         <select onchange="buton_check_edit();check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
-                                                            <option value="0">-Selecciona porcentaje-</option>
+                                                            <option value="0">-{{ __('index.selecciona porcentaje') }}-</option>
                                                         </select>
                                                         <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="1">
                                                         <div class="ml-2" style="margin-top: 5.5px;">
@@ -713,14 +713,14 @@ cursor: pointer;
                                                         <button type="button" id="next" name="next"
                                                             onclick="buton_check_edit();"
                                                             class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
-                                                        >Siguiente</button>
+                                                        >{{ __('index.siguiente') }}</button>
                                                     </div>
                                                     <div id="div_next_h" name="div_next_h" class="w-1/2 text-right">
                                                             <button type="button" id="next_h" name="next_h"
                                                                 x-show="step < 2"
                                                                 @click="step++"
                                                                 class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
-                                                            >Siguiente</button>
+                                                            >{{ __('index.siguiente') }}</button>
                                                     </div>
                                                 </div>
 
@@ -927,11 +927,23 @@ cursor: pointer;
         <div class="w-full mx-auto px-4">
             <div class="flex  w-full">
                 <div class="w-1/2">
+                    @if (strlen(__('index.atras')) > 6)
                     <button
-                        x-show="step > 1"
-                        @click="step--"
-                        class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
-                    >Atrás</button>
+                    x-show="step > 1"
+                    @click="step--"
+                        class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-md border font-roboto">
+                        {{__('index.atras') }}
+                    </button>
+                    @endif
+
+                    @if (strlen(__('index.atras')) == 6)
+                    <button
+                    x-show="step > 1"
+                    @click="step--"
+                        class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto">
+                        {{__('index.atras') }}
+                    </button>
+                    @endif
 
                     @if ($type_p == 1 || $type_p == 0)
                     <a href="/project/{{$id_project}}">
@@ -943,7 +955,7 @@ cursor: pointer;
                         <button
                         x-show="step == 1"
                         class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
-                    >Resultado</button>
+                    >{{ __('index.resultado') }}</button>
                     </a>
                 </div>
 
@@ -969,8 +981,8 @@ cursor: pointer;
                 </div>
                 <div  x-show="step === 2" class="w-1/2 flex" style=" justify-content: center;">
 
-                    <button x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1);"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">Guardar</button>
-                    <button x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2);"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">Guardar</button>            </div>
+                    <button x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1);"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
+                    <button x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2);"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>            </div>
             </div>
         </div>
     </div>

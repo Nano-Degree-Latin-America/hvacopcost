@@ -2506,6 +2506,14 @@ function buton_check_edit(){
         return false;
     }
 
+    var tipo_edificio_edit = $("#tipo_edificio_edit");
+    if (tipo_edificio_edit.val() == '0') {
+        document.getElementById('tipo_Edificio_warning').innerHTML = "Campo Obligatorio";
+        return false;
+    }
+
+
+
 
 
     var check_mc = $("#check_mc");

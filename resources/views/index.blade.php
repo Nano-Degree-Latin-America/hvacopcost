@@ -600,7 +600,7 @@ cursor: pointer;
                                                                 <select onchange="check_input(this.value,this.id,'tiempo_porcent_warning');check_inp_count('count_tiempo_porcent','tiempo_porcent');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
                                                                     <option value="">-{{ __('index.seleccionar horas') }}-</option>
                                                                     <option value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                                    <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
+                                                                    <option value="51_167 ">{{ __('index.menos de 50 hrs') }}.</option>
                                                                     <option value="168">{{ __('index.168 hrs') }}.</option>
                                                                 </select>
 
@@ -772,7 +772,7 @@ cursor: pointer;
                                     @include('form_projecto_nuevo')
                                 </div>
 
-                                <div id="display_nuevo_retrofit" class="hidden">
+                                <div id="display_nuevo_retrofit" class="">
                                     @include('form_projecto_retrofit')
                                 </div>
 
@@ -810,11 +810,24 @@ cursor: pointer;
         <div class=" w-full mx-auto px-4 pb-2">
             <div class="flex w-full">
                 <div class="w-1/2">
+                    @if (strlen(__('index.atras')) > 6)
                     <button
-                        x-show="step > 1"
-                        @click="step--"
-                        class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
-                    >{{ __('index.atras') }}</button>
+                    x-show="step > 1"
+                    @click="step--"
+                        class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-md border font-roboto">
+                        {{__('index.atras') }}
+                    </button>
+                    @endif
+
+                    @if (strlen(__('index.atras')) == 6)
+                    <button
+                    x-show="step > 1"
+                    @click="step--"
+                        class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto">
+                        {{__('index.atras') }}
+                    </button>
+                    @endif
+
                     <div x-show="step == 1"  class="w-5/6">
                         <p  style="font-size:10px;" class="text-gray-500 text-left ">*{{ __('index.descargo de responsabilidad') }}.
                         </p>
@@ -842,8 +855,8 @@ cursor: pointer;
                   </ul>
                 </div>
 
-                <button  x-show="step > 1" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1);"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto ">Calcular</button>
-                <button  x-show="step > 1" type="button" name="calcular_p_r" id="calcular_p_r" onclick="check_form_submit(2);"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto hidden">Calcular</button>
+                <button  x-show="step > 1" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1);"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
+                <button  x-show="step > 1" type="button" name="calcular_p_r" id="calcular_p_r" onclick="check_form_submit(2);"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto hidden">{{ __('index.calcular') }}</button>
 
 
 
@@ -1423,7 +1436,7 @@ cursor: pointer;
 <script>
     $(document).ready(function () {
         set_ser_to_sers('SEER');
-        mostrar_type_p('{{$check_types_pn}}','{{$check_types_pr}}');
+       /*  mostrar_type_p('{{$check_types_pn}}','{{$check_types_pr}}'); */
     });
 
 /* When the user clicks on the button,

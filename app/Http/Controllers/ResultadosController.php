@@ -14337,12 +14337,12 @@ if($equipo_conf_1_1 === 'unid_pred'){
        /*  (ashrae*2000*10.764/3.412)*0.12 */
         /* ashrae*2000*10.764 */
         if($unidad == 'mc'){
-            $area_mc = $area * 10.764;
+            $area_mc = floatval($area) * 10.764;
             $mult_res = $ashrae_sol * $area_mc;
         }
 
         if($unidad == 'ft'){
-            $mult_res = $ashrae_sol * $area;
+            $mult_res = $ashrae_sol * floatval($area);
         }
          $div_res_base_parent_1 = $mult_res / 3.412;
          $res_base = $div_res_base_parent_1 * $electricidad;

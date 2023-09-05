@@ -160,7 +160,7 @@ span{
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
         {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
-        <button class="bg-blue-600 mx-1 p-3 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='home'"><p>Nuevo Proyecto</p></button>
+        <button class="bg-blue-600 mx-1 p-3 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='home'"><p>{{ __('index.proyecto nuevo') }}</p></button>
 
     </div>
 
@@ -170,7 +170,7 @@ span{
 <div class="w-full flex justify-center">
     <div class="w-3/4">
         <div style="color: #2c5282;" class="w-full flex justify-center mt-3 text-4xl font-roboto font-bold">
-            <p>Mis Proyectos : {{$empresa_name}}</p>
+            <p>{{ __('index.mis proyectos') }} : {{$empresa_name}}</p>
         </div>
         @include('search')
         <div class="grid my-3 rounded-md shadow-xl w-full">
@@ -178,15 +178,15 @@ span{
                 <table class="font-roboto w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg">
                     <thead class="text-white">
                         <tr class="bg-blue-700 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
-                            <th class="p-3 text-left">Nombre</th>
-                            <th class="p-3 text-left">Tipo Edificio</th>
+                            <th class="p-3 text-left">{{ __('index.nombre') }}</th>
+                            <th class="p-3 text-left">{{ __('index.tipo edificio') }}</th>
                             {{-- <th class="p-3 text-left">Área</th>
                             <th class="p-3 text-left">Unidad</th> --}}
-                            <th class="p-3 text-left">Región</th>
-                            <th class="p-3 text-left">Ciudad</th>
-                            <th class="p-3 text-left">Tipo Proyecto</th>
+                            <th class="p-3 text-left">{{ __('index.region') }}</th>
+                            <th class="p-3 text-left">{{ __('index.ciudad') }}</th>
+                            <th class="p-3 text-left">{{ __('index.tipo_p') }}</th>
                             <th class="p-3 text-left">Status</th>
-                            <th class="p-3 text-left" width="110px">Acciones</th>
+                            <th class="p-3 text-left" width="110px">{{ __('index.actions') }}</th>
                         </tr>
                     </thead>
                     <tbody class="flex-1 sm:flex-none">
@@ -225,20 +225,20 @@ span{
 
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                                 @if ($project->type_p == 2 )
-                                Proyecto Retrofit
+                                {{ __('index.proyecto retrofit') }}
                                 @endif
 
                                 @if ($project->type_p == 1 ||  $project->type_p == 0)
-                                Proyecto Nuevo
+                                {{ __('index.proyecto nuevo') }}
                                 @endif
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                               @if ($project->status == 1)
-                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-green-500 text-white"> Activo </span>
+                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-green-500 text-white">{{ __('index.activo') }}</span>
                               @endif
 
                               @if ($project->status == 2)
-                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-red-500 text-white"> Inactivo </span>
+                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-red-500 text-white">{{ __('index.inactivo') }}</span>
                               @endif
                             </td>
                             <td class="border-grey-light border flex hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer gap-x-2">
@@ -290,20 +290,20 @@ span{
 
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                                 @if ($project->type_p == 2 )
-                                Proyecto Retrofit
+                                {{ __('index.proyecto retrofit') }}
                                 @endif
 
                                 @if ($project->type_p == 1 ||  $project->type_p == 0)
-                                Proyecto Nuevo
+                                {{ __('index.proyecto nuevo') }}
                                 @endif
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                               @if ($project->status == 1)
-                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-green-500 text-white"> Activo </span>
+                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-green-500 text-white">{{ __('index.activo') }}</span>
                               @endif
 
                               @if ($project->status == 2)
-                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-red-500 text-white"> Inactivo </span>
+                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-red-500 text-white">{{ __('index.inactivo') }} </span>
                               @endif
                             </td>
                             <td class="border-grey-light border flex hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer gap-x-2">
@@ -354,20 +354,20 @@ span{
 
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                                 @if ($project->type_p == 2 )
-                                Proyecto Retrofit
+                                {{ __('index.proyecto retrofit') }}
                                 @endif
 
                                 @if ($project->type_p == 1 ||  $project->type_p == 0)
-                                Proyecto Nuevo
+                                {{ __('index.proyecto nuevo') }}
                                 @endif
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                               @if ($project->status == 1)
-                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-green-500 text-white"> Activo </span>
+                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-green-500 text-white">{{ __('index.activo') }}</span>
                               @endif
 
                               @if ($project->status == 2)
-                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-red-500 text-white"> Inactivo </span>
+                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-red-500 text-white">{{ __('index.inactivo') }}</span>
                               @endif
                             </td>
                             <td class="border-grey-light border flex hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer gap-x-2">

@@ -198,12 +198,12 @@ span{
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
-    <button class="bg-orange-500  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/edit_project_copy/{{$id_project}}'"><p class="mx-1">Editar Proyecto</p></button>
+    <button class="bg-orange-500  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/edit_project_copy/{{$id_project}}'"><p class="mx-1">{{ __('results.edit_proy') }}</p></button>
 
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
     <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" onclick="window.open('/generatePDF/{{$id_project}}', '_blank');" ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
 
-    <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'">Nuevo Proyecto</button>
+    <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'">{{ __('index.nuevo projecto') }}</button>
 
     </div>
 </div>
@@ -265,13 +265,13 @@ span{
                             <div class="2xl:w-3/4 xl:w-3/4 lg:w-full">
                                 <div class="grid my-3 bg-gray-200 rounded-md shadow-xl">
                                     <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
-                                        <label  class="font-bold text-white text-3xl font-roboto">ANÁLISIS ENERGÉTICO - ENFRIAMIENTO</label>
+                                        <label  class="font-bold text-white text-3xl font-roboto">{{ __('results.anal_ene') }} - {{ __('results.enfi') }}</label>
                                     </div>
                                     <?php  $tar_ele=$solutions->tar_elec($id_project) ?>
                                     <div class="w-full flex justify-center m-1 " >
                                         <div class="flex w-1/3 justify-start">
                                             <div class="mx-1 ">
-                                                <label style="font-size: 18px;"   class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
+                                                <label style="font-size: 18px;"   class="text-blue-800 font-bold font-roboto" for="">{{ __('index.nombre') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0,25)}} </label>
@@ -279,7 +279,7 @@ span{
                                         </div>
                                         <div class="flex w-1/4  justify-start">
                                             <div class="mr-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.region') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->region}}</label>
@@ -287,7 +287,7 @@ span{
                                         </div>
                                         <div class="flex w-1/3  justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.ciudad') }}: </label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
@@ -295,7 +295,7 @@ span{
                                         </div>
                                         <div class="flex w-1/3  justify-start">
                                             <div class="mr-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Categoría Edificio:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.categoria edificio') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->cad_edi}}</label>
@@ -304,7 +304,7 @@ span{
 
                                         <div class="flex w-1/5 justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Área:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.area') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{number_format($tar_ele->area)}}
@@ -324,7 +324,7 @@ span{
                                     <div class="w-full flex justify-start m-1" >
                                         <div class="flex w-2/5  justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tipo Edificio:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.tipo edificio') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->tipo_edi}}</label>
@@ -334,7 +334,7 @@ span{
 
                                         <div class="flex w-auto justify-start">
                                             <div class="ml-3">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Horas Enfriamiento Anual:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.hors_enft_anual') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">&nbsp;{{number_format($tar_ele->coolings_hours)}}</label>
@@ -342,7 +342,7 @@ span{
                                         </div>
                                         <div class="flex w-1/4 justify-start ml-10 pl-1">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.tar_ele') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
@@ -363,7 +363,7 @@ span{
                                                         <div class="flex w-full">
                                                                     <div class="w-full">
                                                                             <div class="w-full bg-blue-800 rounded-md p-2 text-center">
-                                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl md:text-4xl  font-roboto" for="">Solución Base</label>
+                                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl md:text-4xl  font-roboto" for="">{{ __('index.solucion') }} Base</label>
                                                                             </div>
 
                                                                     </div>
@@ -373,7 +373,7 @@ span{
                                                             <div class="mx-5 mb-3">
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.capacidad termica') }}</label>
                                                                     </div>
                                                                     <div class="ml-2 w-auto flex justify-start">
                                                                         <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
@@ -393,7 +393,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
+                                                                        <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">{{ __('results.equipos_hvac') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-auto">
                                                                         <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
@@ -428,7 +428,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo equipo') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-auto">
                                                                         <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
@@ -494,7 +494,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.tipo diseño') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5">
                                                                         <p class="text-blue-600 text-left font-bold font-roboto" for="">
@@ -506,7 +506,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
+                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-1/2">
                                                                         <p class="text-blue-600 text-left font-bold  font-roboto" for="">
@@ -516,7 +516,7 @@ span{
 
                                                                 </div> <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
+                                                                        <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5">
                                                                         <p class="text-blue-600  text-left font-bold  font-roboto" for="">
@@ -540,7 +540,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.mantenimiento') }}</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start text-left">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
@@ -549,7 +549,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.inversion inicial') }} (CAPEX)</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -558,7 +558,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Mantenimiento</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('results.costo anual') }}</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
@@ -581,17 +581,17 @@ span{
                                                         {{-- ----DIV --}}
                                                                 @if ($solution->num_enf == 1)
                                                                 <div class="w-full bg-blue-800 rounded-md p-2 text-center">
-                                                                <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución Base</label>
+                                                                <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">{{ __('index.solucion') }} Base</label>
                                                                 @endif
 
                                                                 @if ($solution->num_enf == 2 || $solution->num_enf == 3)
                                                                 <div class="w-full bg-blue-500 rounded-md p-2 text-center">
                                                                     @if ($solution->num_enf == 2 )
-                                                                    <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución A</label>
+                                                                    <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">{{ __('index.solucion') }} A</label>
                                                                     @endif
 
                                                                     @if ($solution->num_enf == 3 )
-                                                                    <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución B</label>
+                                                                    <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">{{ __('index.solucion') }} B</label>
                                                                     @endif
                                                                 @endif
 
@@ -604,7 +604,7 @@ span{
                                                             <div class="mx-5 mb-3">
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.capacidad termica') }}</label>
                                                                     </div>
                                                                     <div class="ml-2 w-auto flex justify-start">
                                                                         <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
@@ -624,7 +624,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
+                                                                        <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">{{ __('results.equipos_hvac') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-auto">
                                                                         <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
@@ -659,7 +659,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo equipo') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-auto">
                                                                         <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
@@ -726,7 +726,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.tipo diseño') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5">
                                                                         <p class="text-blue-600 text-left font-bold font-roboto" for="">
@@ -738,7 +738,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
+                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-1/2">
                                                                         <p class="text-blue-600 text-left font-bold  font-roboto" for="">
@@ -748,7 +748,7 @@ span{
 
                                                                 </div> <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
+                                                                        <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5">
                                                                         <p class="text-blue-600  text-left font-bold  font-roboto" for="">
@@ -772,7 +772,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.mantenimiento') }}</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start text-left">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
@@ -781,7 +781,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.inversion inicial') }} (CAPEX)</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -790,7 +790,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Mantenimiento</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('results.costo anual') }}</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
@@ -813,17 +813,17 @@ span{
                                                                 {{-- ----DIV --}}
                                                                         @if ($solution->num_enf == 1)
                                                                         <div class="w-full bg-blue-800 rounded-md p-2 text-center">
-                                                                        <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución Base</label>
+                                                                        <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">{{ __('index.solucion') }} Base</label>
                                                                         @endif
 
                                                                         @if ($solution->num_enf == 2 || $solution->num_enf == 3)
                                                                         <div class="w-full bg-blue-500 rounded-md p-2 text-center">
                                                                             @if ($solution->num_enf == 2 )
-                                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución A</label>
+                                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">{{ __('index.solucion') }} A</label>
                                                                             @endif
 
                                                                             @if ($solution->num_enf == 3 )
-                                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">Solución B</label>
+                                                                            <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">{{ __('index.solucion') }} B</label>
                                                                             @endif
                                                                         @endif
 
@@ -836,7 +836,7 @@ span{
                                                                     <div class="mx-5 mb-3">
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
+                                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.capacidad termica') }}</label>
                                                                             </div>
                                                                             <div class="ml-2 w-auto flex justify-start">
                                                                                 <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
@@ -855,7 +855,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
+                                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">{{ __('results.equipos_hvac') }}</p>
                                                                             </div>
                                                                             <div class="ml-2 w-auto">
                                                                                 <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
@@ -890,7 +890,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo equipo') }}</p>
                                                                             </div>
                                                                             <div class="ml-2 w-auto">
                                                                                 <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
@@ -956,7 +956,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex ">
-                                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
+                                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.tipo diseño') }}</p>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5">
                                                                                 <p class="text-blue-600 text-left font-bold font-roboto" for="">
@@ -968,7 +968,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
+                                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
                                                                             </div>
                                                                             <div class="ml-2 w-1/2">
                                                                                 <p class="text-blue-600 text-left font-bold  font-roboto" for="">
@@ -978,7 +978,7 @@ span{
 
                                                                         </div> <div class="w-full flex">
                                                                             <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
+                                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5">
                                                                                 <p class="text-blue-600  text-left font-bold  font-roboto" for="">
@@ -1002,7 +1002,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
+                                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.mantenimiento') }}</label>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5 flex justify-start text-left">
                                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
@@ -1011,7 +1011,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
+                                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.inversion inicial') }} (CAPEX)</label>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -1020,7 +1020,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Mantenimiento</label>
+                                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('results.costo anual') }}</label>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
@@ -1044,7 +1044,7 @@ span{
                                                     <div class="mx-5 border-t-2">
                                                         <div class="w-full flex  mt-2">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.capacidad termica') }}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
@@ -1063,7 +1063,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
+                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">{{ __('results.equipos_hvac') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
@@ -1098,7 +1098,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo equipo') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
@@ -1165,7 +1165,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
+                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.tipo diseño') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="text-blue-600 text-left font-bold font-roboto" for="">
@@ -1177,7 +1177,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
+                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-1/2">
                                                                 <p class="text-blue-600 text-left font-bold  font-roboto" for="">
@@ -1187,7 +1187,7 @@ span{
 
                                                         </div> <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
+                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="text-blue-600  text-left font-bold  font-roboto" for="">
@@ -1211,7 +1211,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.mantenimiento') }}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start text-left">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
@@ -1220,7 +1220,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.inversion inicial') }} (CAPEX)</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -1229,7 +1229,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Mantenimiento</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('results.costo anual') }}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
@@ -1248,7 +1248,7 @@ span{
                                                     <div class="mx-5 border-t-2">
                                                         <div class="w-full flex  mt-2">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.capacidad termica') }}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
@@ -1266,7 +1266,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
+                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">{{ __('results.equipos_hvac') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
@@ -1301,7 +1301,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo equipo') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
@@ -1368,7 +1368,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
+                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.tipo diseño') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="text-blue-600 text-left font-bold font-roboto" for="">
@@ -1380,7 +1380,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
+                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-1/2">
                                                                 <p class="text-blue-600 text-left font-bold  font-roboto" for="">
@@ -1414,7 +1414,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.mantenimiento') }}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start text-left">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
@@ -1423,7 +1423,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.inversion inicial') }} (CAPEX)</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -1432,7 +1432,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Mantenimiento</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('results.costo anual') }}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
@@ -1451,7 +1451,7 @@ span{
                                                     <div class="mx-5 border-t-2">
                                                         <div class="w-full flex  mt-2">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.capacidad termica') }}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
@@ -1469,7 +1469,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
+                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">{{ __('results.equipos_hvac') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
@@ -1504,7 +1504,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo equipo') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
@@ -1571,7 +1571,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
+                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.tipo diseño') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="text-blue-600 text-left font-bold font-roboto" for="">
@@ -1583,7 +1583,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
+                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-1/2">
                                                                 <p class="text-blue-600 text-left font-bold  font-roboto" for="">
@@ -1593,7 +1593,7 @@ span{
 
                                                         </div> <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
+                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="text-blue-600  text-left font-bold  font-roboto" for="">
@@ -1617,7 +1617,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.mantenimiento') }}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start text-left">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
@@ -1626,7 +1626,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.inversion inicial') }} (CAPEX)</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -1635,7 +1635,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Mantenimiento</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('results.costo anual') }}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
@@ -1662,7 +1662,7 @@ span{
                                                     <div class="mx-5  border-t-2">
                                                         <div class="w-full flex  mt-2">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.capacidad termica') }}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
@@ -1681,7 +1681,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
+                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">{{ __('results.equipos_hvac') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
@@ -1716,7 +1716,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo equipo') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
@@ -1783,7 +1783,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
+                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.tipo diseño') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="text-blue-600 text-left font-bold font-roboto" for="">
@@ -1795,7 +1795,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
+                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-1/2">
                                                                 <p class="text-blue-600 text-left font-bold  font-roboto" for="">
@@ -1805,7 +1805,7 @@ span{
 
                                                         </div> <div class="w-full flex">
                                                             <div class="w-2/5 flex ">
-                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
+                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
                                                             </div>
                                                             <div class="ml-2 w-2/5">
                                                                 <p class="text-blue-600  text-left font-bold  font-roboto" for="">
@@ -1829,7 +1829,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start text-left">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.mantenimiento') }}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
@@ -1838,7 +1838,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.inversion inicial') }} (CAPEX)</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -1847,7 +1847,7 @@ span{
 
                                                         <div class="w-full flex">
                                                             <div class="w-2/5 flex justify-start">
-                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Mantenimiento</label>
+                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('results.costo anual') }}</label>
                                                             </div>
                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
@@ -1869,7 +1869,7 @@ span{
                                                             <div class="mx-5  border-t-2">
                                                                 <div class="w-full flex  mt-2">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.capacidad termica') }}</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
@@ -1888,7 +1888,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
+                                                                        <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">{{ __('results.equipos_hvac') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5">
                                                                         <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
@@ -1923,7 +1923,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo equipo') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5">
                                                                         <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
@@ -1990,7 +1990,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.tipo diseño') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5">
                                                                         <p class="text-blue-600 text-left font-bold font-roboto" for="">
@@ -2002,7 +2002,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
+                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-1/2">
                                                                         <p class="text-blue-600 text-left font-bold  font-roboto" for="">
@@ -2012,7 +2012,7 @@ span{
 
                                                                 </div> <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
+                                                                        <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5">
                                                                         <p class="text-blue-600  text-left font-bold  font-roboto" for="">
@@ -2036,7 +2036,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start text-left">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.mantenimiento') }}</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
@@ -2045,7 +2045,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.inversion inicial') }} (CAPEX)</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -2054,7 +2054,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
-                                                                        <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Mantenimiento</label>
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('results.costo anual') }}</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
@@ -2076,7 +2076,7 @@ span{
                                                                     <div class="mx-5  border-t-2">
                                                                         <div class="w-full flex  mt-2">
                                                                             <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Capacidad Térmica</label>
+                                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.capacidad termica') }}</label>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                                 <label  class="uppercase font-roboto text-blue-600 font-bold" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</label>
@@ -2094,7 +2094,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">Equipos HVAC</p>
+                                                                                <p class="text-blue-900  text-justify mr-10 font-roboto font-bold" for="">{{ __('results.equipos_hvac') }}</p>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5">
                                                                                 <p class="flex text-blue-600 justify-start font-roboto font-bold" for="">
@@ -2129,7 +2129,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo equipo') }}</p>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5">
                                                                                 <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
@@ -2195,7 +2195,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex ">
-                                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">Tipo Diseño</p>
+                                                                                <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.tipo diseño') }}</p>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5">
                                                                                 <p class="text-blue-600 text-left font-bold font-roboto" for="">
@@ -2207,7 +2207,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Control</p>
+                                                                                <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
                                                                             </div>
                                                                             <div class="ml-2 w-1/2">
                                                                                 <p class="text-blue-600 text-left font-bold  font-roboto" for="">
@@ -2217,7 +2217,7 @@ span{
 
                                                                         </div> <div class="w-full flex">
                                                                             <div class="w-2/5 flex ">
-                                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">Difusor o Rejilla</p>
+                                                                                <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5">
                                                                                 <p class="text-blue-600  text-left font-bold  font-roboto" for="">
@@ -2241,7 +2241,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex justify-start text-left">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Mantenimiento</label>
+                                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.mantenimiento') }}</label>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                                 <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->mantenimiento}}</label>
@@ -2250,7 +2250,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Inversión Inicial (CAPEX)</label>
+                                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.inversion inicial') }} (CAPEX)</label>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -2259,7 +2259,7 @@ span{
 
                                                                         <div class="w-full flex">
                                                                             <div class="w-2/5 flex justify-start">
-                                                                                <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Mantenimiento</label>
+                                                                                <label class="text-blue-900 font-bold font-roboto" for="">{{ __('results.costo anual') }}</label>
                                                                             </div>
                                                                             <div class="ml-2 w-2/5 flex justify-start">
                                                                                 <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->costo_mantenimiento)}}</label>
@@ -2293,14 +2293,14 @@ span{
                             <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
                                 <div class="grid bg-gray-200 rounded-md shadow-xl">
                                     <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
-                                        <label class="font-bold text-white text-2xl font-roboto text-3xl">RESULTADOS ANÁLISIS ENERGÉTICO</label>
+                                        <label class="font-bold text-white text-2xl font-roboto text-3xl">{{ __('results.res_ans_ene') }}</label>
                                     </div>
 
 
                                     <div class="w-full flex justify-center m-1 " >
                                         <div class="flex w-1/3 justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.nombre') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
@@ -2308,7 +2308,7 @@ span{
                                         </div>
                                         <div class="flex w-1/4  justify-start">
                                             <div class="mr-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.region') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->region}}</label>
@@ -2316,7 +2316,7 @@ span{
                                         </div>
                                         <div class="flex w-1/3  justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.ciudad') }}: </label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
@@ -2324,7 +2324,7 @@ span{
                                         </div>
                                         <div class="flex w-1/3  justify-start">
                                             <div class="mr-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Categoría Edificio:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.categoria edificio') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->cad_edi}}</label>
@@ -2333,7 +2333,7 @@ span{
 
                                         <div class="flex w-1/5 justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Área:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.area') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{number_format($tar_ele->area)}}
@@ -2353,7 +2353,7 @@ span{
                                     <div class="w-full flex justify-start m-1" >
                                         <div class="flex w-2/5  justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tipo Edificio:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.tipo edificio') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->tipo_edi}}</label>
@@ -2363,7 +2363,7 @@ span{
 
                                         <div class="flex w-auto justify-start">
                                             <div class="ml-3">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Horas Enfriamiento Anual:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.hors_enft_anual') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">&nbsp;{{number_format($tar_ele->coolings_hours)}}</label>
@@ -2371,7 +2371,7 @@ span{
                                         </div>
                                         <div class="flex w-1/4 justify-start ml-10 pl-1">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.tar_ele') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
@@ -2395,7 +2395,7 @@ span{
                                                         <div class="grid w-full mx-3">
 
                                                             <div class="flex justify-center w-full bg-blue-800 rounded-md p-2">
-                                                                <label class="text-white font-bold text-4xl font-roboto">Solución Base</label>
+                                                                <label class="text-white font-bold text-4xl font-roboto">{{ __('index.solucion') }} Base</label>
                                                             </div>
 
                                                             <div class="grid justify-center">
@@ -2411,7 +2411,7 @@ span{
                                                                 @endif
 
                                                                 @if ($unid_med_1 !== "")
-                                                                    <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label>
+                                                                    <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label>
                                                                     @if (strlen($sumacap_term_1) >= 15)
                                                                     <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
                                                                     @endif
@@ -2423,12 +2423,12 @@ span{
                                                                 @endif
 
                                                                 @if ($unid_med_1 === "")
-                                                                 <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
+                                                                 <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
                                                                 @endif
                                                             </div>
 
                                                             <div class="grid justify-items-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
+                                                                <label class="font-bold font-roboto text-2xl mt-3">{{ __('results.consumo_anual') }} (OPEX)</label>
                                                                <div class="flex w-full justify-center">
                                                                 <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_1)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kwh</b>
                                                                </div>
@@ -2447,7 +2447,7 @@ span{
                                                         <div class="grid w-full mx-3">
 
                                                             <div class="w-full bg-blue-500 rounded-md p-2 text-center">
-                                                                <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
+                                                                <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} A</label>
                                                             </div>
 
 
@@ -2464,16 +2464,16 @@ span{
                                                                 @endif
 
                                                                 @if ($unid_med_2 !== "")
-                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}} <b class="text-black text-3xl" >{{$unid_med_2->unid_med}}</b></p>
+                                                                <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}} <b class="text-black text-3xl" >{{$unid_med_2->unid_med}}</b></p>
                                                                 @endif
 
                                                                 @if ($unid_med_2 === "")
-                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl" >{{$unid_med_2}}</b> </p>
+                                                                <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl" >{{$unid_med_2}}</b> </p>
                                                                 @endif
                                                             </div>
 
                                                             <div class="grid justify-items-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
+                                                                <label class="font-bold font-roboto text-2xl mt-3">{{ __('results.consumo_anual') }} (OPEX)</label>
                                                                <div class="flex w-full justify-center">
                                                                 <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_2)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kwh</b>
                                                                </div>
@@ -2489,7 +2489,7 @@ span{
                                                         <div class="grid w-full mx-3">
 
                                                             <div class="w-full bg-blue-500 rounded-md p-2 text-center">
-                                                                <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
+                                                                <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} B</label>
                                                             </div>
 
 
@@ -2506,16 +2506,16 @@ span{
                                                                 @endif
 
                                                                 @if ($unid_med_3 !== "")
-                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b>  </p>
+                                                                <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b>  </p>
                                                                 @endif
 
                                                                 @if ($unid_med_3 === "")
-                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3}}</b> </p>
+                                                                <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3}}</b> </p>
                                                                 @endif
                                                             </div>
 
                                                             <div class="grid justify-items-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual (OPEX)</label>
+                                                                <label class="font-bold font-roboto text-2xl mt-3">{{ __('results.consumo_anual') }} (OPEX)</label>
                                                                <div class="flex w-full justify-center">
                                                                 <p class="text-blue-800 font-bold text-5xl font-roboto">{{number_format($sumaopex_3)}}</p><b class="text-black font-bold text-3xl font-roboto mt-5 ml-2">Kwh</b>
                                                                </div>
@@ -2531,7 +2531,7 @@ span{
                                     <?php  $results_aux=$results->results($id_project) ?>
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-3">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Ahorro Anual Energía – Diferencia entre Soluciones <b class="text-orange-500">(Kwh año)</b> </label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.eco_an_en') }} – {{ __('results.dif_ent_sol') }} <b class="text-orange-500">(Kwh año)</b> </label>
                                         </div>
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             @if (count($results_aux)>1)
@@ -2547,7 +2547,7 @@ span{
                                                 <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                 <div class="grid w-1/2 justify-center text-[24px] gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">{{ __('index.solucion') }}  Base v/s A </b>
                                                     </div>
                                                     <div class="flex justify-center w-full">
                                                     <b style="color:#33cc33;" id="dif_1"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b>
@@ -2556,7 +2556,7 @@ span{
 
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s B </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl">{{ __('index.solucion') }}  Base v/s B </b>
                                                     <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl text-center">0 </b>
                                                     </div>
                                                 </div>
@@ -2570,7 +2570,7 @@ span{
                                                     <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                     <div class="w-1/2 grid w-full justify-center text-[24px] gap-x-4">
                                                         <div class="flex justify-center w-full">
-                                                            <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s A </b>
+                                                            <b class="text-blue-800 mr-1 font-roboto text-3xl">{{ __('index.solucion') }}  Base v/s A </b>
                                                             </div>
                                                         <div class="flex justify-center w-full">
                                                             <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b> <b class="text-3xl mt-3 font-roboto ml-1"></b>
@@ -2581,7 +2581,7 @@ span{
                                                     <?php  $dif_2=$smasolutions->dif_2($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                     <div class="w-1/2 grid w-full justify-center text-[24px]  gap-x-4">
                                                         <div class="flex w-full justify-center">
-                                                        <b class="text-blue-800 mr-1 font-roboto text-3xl">Solución  Base v/s B </b>
+                                                        <b class="text-blue-800 mr-1 font-roboto text-3xl">{{ __('index.solucion') }}  Base v/s B </b>
                                                         </div>
                                                         <div class="flex w-full justify-center">
                                                             <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_2)}}</b> <b class="text-3xl mt-3 font-roboto ml-1"></b>
@@ -2600,11 +2600,11 @@ span{
 
 
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s A </b><b style="color:#33cc33;"   class="text-[24px] font-roboto text-5xl">0 Kwh año</b>
+                                                <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">{{ __('index.solucion') }}  Base v/s A </b><b style="color:#33cc33;"   class="text-[24px] font-roboto text-5xl">0 Kwh año</b>
                                                 </div>
 
                                                     <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">Solución  Base v/s B </b><b  style="color:#33cc33;"  class="text-[24px] font-roboto text-5xl">0 Kwh año</b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-2xl mt-5">{{ __('index.solucion') }}  Base v/s B </b><b  style="color:#33cc33;"  class="text-[24px] font-roboto text-5xl">0 Kwh año</b>
                                                     </div>
                                             </div>
                                              @endforeach
@@ -2615,7 +2615,7 @@ span{
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <?php  $unidad_area=$results->unidad_area($id_project,1,$sumaopex_1,$tar_ele->costo_elec) ?>
                                         <div class="flex w-full justify-center">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Consumo de Energía HVAC por Área <b class="text-orange-500">(Kwh/
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.cons_ene_ar') }}<b class="text-orange-500">(Kwh/
                                                 @if ($unidad_area == 'mc')
                                                 m²
                                                 @endif
@@ -2730,13 +2730,13 @@ span{
                             <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
                                 <div class="grid bg-gray-200 rounded-md shadow-xl">
                                     <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
-                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">RESULTADOS ANÁLISIS FINANCIERO</label>
+                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">{{ __('results.res_ans_fin') }}</label>
                                     </div>
 
                                     <div class="w-full flex justify-center m-1 " >
                                         <div class="flex w-1/3 justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.nombre') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" title="{{$tar_ele->name}}" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
@@ -2744,7 +2744,7 @@ span{
                                         </div>
                                         <div class="flex w-1/4  justify-start">
                                             <div class="mr-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.region') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->region}}</label>
@@ -2752,7 +2752,7 @@ span{
                                         </div>
                                         <div class="flex w-1/3  justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.ciudad') }}: </label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
@@ -2760,7 +2760,7 @@ span{
                                         </div>
                                         <div class="flex w-1/3  justify-start">
                                             <div class="mr-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Categoría Edificio:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.categoria edificio') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->cad_edi}}</label>
@@ -2769,7 +2769,7 @@ span{
 
                                         <div class="flex w-1/5 justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Área:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.area') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{number_format($tar_ele->area)}}
@@ -2789,7 +2789,7 @@ span{
                                     <div class="w-full flex justify-start m-1" >
                                         <div class="flex w-2/5  justify-start">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tipo Edificio:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.tipo edificio') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->tipo_edi}}</label>
@@ -2799,7 +2799,7 @@ span{
 
                                         <div class="flex w-auto justify-start">
                                             <div class="ml-3">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Horas Enfriamiento Anual:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.hors_enft_anual') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">&nbsp;{{number_format($tar_ele->coolings_hours)}}</label>
@@ -2807,7 +2807,7 @@ span{
                                         </div>
                                         <div class="flex w-1/4 justify-start ml-10 pl-1">
                                             <div class="mx-1">
-                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
+                                                <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.tar_ele') }}:</label>
                                             </div>
                                             <div>
                                                 <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
@@ -2831,7 +2831,7 @@ span{
                                                                 <div class="grid w-full mx-3">
 
                                                                     <div class="flex justify-center w-full bg-blue-800 rounded-md p-2">
-                                                                        <label class="text-white font-bold text-4xl font-roboto">Solución Base</label>
+                                                                        <label class="text-white font-bold text-4xl font-roboto">{{ __('index.solucion') }} Base</label>
                                                                     </div>
 
                                                                     <div class="grid justify-center">
@@ -2849,7 +2849,7 @@ span{
                                                                         @endif
 
                                                                         @if ($unid_med_1 !== "")
-                                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label>
+                                                                            <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label>
                                                                             @if (strlen($sumacap_term_1) >= 15)
                                                                             <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
                                                                             @endif
@@ -2861,16 +2861,16 @@ span{
                                                                         @endif
 
                                                                         @if ($unid_med_1 === "")
-                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black text-3xl"> {{$unid_med_1}}</b>  </p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black text-3xl"> {{$unid_med_1}}</b>  </p>
                                                                         @endif
                                                                     </div>
 
                                                                     <div class="grid justify-center">
-                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Inversión Inicial</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($inv_ini_1)}}</p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">{{ __('index.inversion inicial') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($inv_ini_1)}}</p>
                                                                     </div>
 
                                                                     <div class="grid justify-center">
-                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">{{ __('results.consumo_anual') }} (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
                                                                     </div>
 
                                                                 </div>
@@ -2886,7 +2886,7 @@ span{
                                                                 <div class="grid w-full mx-3">
 
                                                                     <div class="w-full bg-blue-500 rounded-md p-2 text-center">
-                                                                        <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
+                                                                        <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} A</label>
                                                                     </div>
 
 
@@ -2905,21 +2905,21 @@ span{
                                                                         @endif
 
                                                                         @if ($unid_med_2 !== "")
-                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_2}}<b class="text-black text-3xl"> {{$unid_med_2->unid_med}}</b> </p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_2}}<b class="text-black text-3xl"> {{$unid_med_2->unid_med}}</b> </p>
                                                                         @endif
 
                                                                         @if ($unid_med_2 === "")
-                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_2}} <b class="text-black text-3xl"> {{$unid_med_2}} </b></p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase text-center">{{$sumacap_term_2}} <b class="text-black text-3xl"> {{$unid_med_2}} </b></p>
                                                                         @endif
                                                                     </div>
 
                                                                     <div class="grid justify-items-center text-center">
-                                                                        <label class="font-bold font-roboto text-2xl mt-3">Inversión Inicial</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($inv_ini_2)}}</p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-3">{{ __('index.inversion inicial') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($inv_ini_2)}}</p>
                                                                         <input type="number" class="hidden" id="inv_ini_2" name="inv_ini_2" value="{{$inv_ini_2}}">
                                                                     </div>
 
                                                                     <div class="grid justify-items-center">
-                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto  text-center">$ {{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">{{ __('results.consumo_anual') }} (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto  text-center">$ {{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
                                                                     </div>
 
                                                                 </div>
@@ -2932,7 +2932,7 @@ span{
                                                                 <div class="grid w-full mx-3">
 
                                                                     <div class="w-full bg-blue-500 rounded-md p-2 text-center">
-                                                                        <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
+                                                                        <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} B</label>
                                                                     </div>
 
 
@@ -2951,21 +2951,21 @@ span{
                                                                         @endif
 
                                                                         @if ($unid_med_3 !== "")
-                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b></p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b></p>
                                                                         @endif
 
                                                                         @if ($unid_med_3 === "")
-                                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}}  <b class="text-black text-3xl"> {{$unid_med_3}}</b> </p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}}  <b class="text-black text-3xl"> {{$unid_med_3}}</b> </p>
                                                                         @endif
                                                                     </div>
 
                                                                     <div class="grid justify-center">
-                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Inversión Inicial</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($inv_ini_3)}}</p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">{{ __('index.inversion inicial') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($inv_ini_3)}}</p>
                                                                         <input type="number" class="hidden" id="inv_ini_3" name="inv_ini_3" value="{{$inv_ini_3}}">
                                                                     </div>
 
                                                                     <div class="grid justify-center">
-                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">Consumo Anual (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
+                                                                        <label class="font-bold font-roboto text-2xl mt-3 text-center">{{ __('results.consumo_anual') }} (OPEX)</label><p class="text-blue-800 font-bold text-5xl font-roboto text-center">$ {{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
                                                                     </div>
                                                                 </div>
                                                         </div>
@@ -3118,7 +3118,7 @@ span{
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Ahorro Anual de Costo Energético – Entre Soluciones</label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.aho_anu_cost_ele') }} – {{ __('results.entre_sol') }}</label>
                                         </div>
 
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
@@ -3135,7 +3135,7 @@ span{
                                                 <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s A </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl mt-5">{{ __('index.solucion') }}  Base v/s A </b>
                                                     </div>
                                                     <div class="flex justify-center w-full">
                                                         <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">${{number_format($dif_1_cost)}}</b>
@@ -3145,7 +3145,7 @@ span{
 
                                                 <div class="grid w-1/2 justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="grid w-full  justify-center">
-                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s B </b>
+                                                    <b class="text-blue-800 mr-1 font-roboto text-3xl mt-5">{{ __('index.solucion') }}  Base v/s B </b>
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
                                                     </div>
                                                 </div>
@@ -3159,7 +3159,7 @@ span{
                                                     <?php  $dif_1_cost=$smasolutions->dif_1_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                     <div class="w-1/2 grid w-full justify-center text-[24px] m-1 gap-x-4">
                                                         <div class="flex justify-center w-full">
-                                                            <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">Solución  Base v/s A </b>
+                                                            <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">{{ __('index.solucion') }}  Base v/s A </b>
                                                             </div>
                                                         <div class="flex justify-center w-full">
                                                             <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">$ {{number_format($dif_1_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
@@ -3172,7 +3172,7 @@ span{
                                                     <?php  $dif_2_cost=$smasolutions->dif_2_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                                                     <div class="w-1/2 grid w-full justify-center text-[24px] m-1 gap-x-4">
                                                         <div class="flex w-full justify-center">
-                                                        <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">Solución  Base v/s B </b>
+                                                        <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">{{ __('index.solucion') }}  Base v/s B </b>
                                                         </div>
                                                         <div class="flex w-full justify-center">
                                                             <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">$ {{number_format($dif_2_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
@@ -3193,11 +3193,11 @@ span{
 
 
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s A </b><b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
+                                                <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">{{ __('index.solucion') }}  Base v/s A </b><b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
                                                 </div>
 
                                                     <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">Solución  Base v/s B </b><b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
+                                                    <b style="color:#33cc33;" class="text-blue-800 mr-1 font-roboto text-3xl mt-5">{{ __('index.solucion') }}  Base v/s B </b><b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl text-center">$ 0</b>
                                                     </div>
                                             </div>
                                              @endforeach
@@ -3208,7 +3208,7 @@ span{
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Payback Simple (años)</label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Payback {{ __('results.simple') }} ({{ __('results.ans') }})</label>
                                         </div>
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             <div class="flex justify-center w-1/3">
@@ -3494,7 +3494,7 @@ span{
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">ROI Entre Soluciónes</label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">ROI {{ __('results.entre_sol') }}</label>
                                         </div>
 
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
@@ -3503,29 +3503,29 @@ span{
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
-                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 Años</b>
+                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 {{ __('results.ans') }}</b>
 
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
-                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 Años</b>
+                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 {{ __('results.ans') }}</b>
 
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
-                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 Años</b>
+                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 {{ __('results.ans') }}</b>
 
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
-                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 Años</b>
+                                                <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 {{ __('results.ans') }}</b>
 
                                             </div>
                                         </div>
                                         {{--  --}}
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             <div class="grid justify-center w-1/4">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl mt-3">Solución A</b>
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl mt-3">{{ __('index.solucion') }} A</b>
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
@@ -3635,7 +3635,7 @@ span{
                                         {{--  --}}
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             <div class="grid justify-center w-1/4">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl mt-3">Solución B</b>
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl mt-3">{{ __('index.solucion') }} B</b>
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
@@ -3762,7 +3762,7 @@ span{
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Análisis CAPEX v/s OPEX (@if($tar_ele->unidad == 'mc')$/m²)@endif
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.analisis') }} CAPEX v/s OPEX (@if($tar_ele->unidad == 'mc')$/m²)@endif
                                             @if($tar_ele->unidad == 'ft')$/ft²)@endif
                                             </label>
                                         </div>
@@ -3806,13 +3806,13 @@ span{
                         <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
                             <div class="grid bg-gray-200 rounded-md shadow-xl">
                                 <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
-                                    <label class="font-bold text-white text-2xl font-roboto text-4xl">ANÁLISIS DE INTENSIDAD DEL USO DE LA ENERGÍA (EUI)</label>
+                                    <label class="font-bold text-white text-2xl font-roboto text-4xl">{{ __('results.anls_int_uso_ene') }} (EUI)</label>
                                 </div>
 
                                 <div class="w-full flex justify-center m-1 " >
                                     <div class="flex w-1/3 justify-start">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.nombre') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
@@ -3820,7 +3820,7 @@ span{
                                     </div>
                                     <div class="flex w-1/4  justify-start">
                                         <div class="mr-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.region') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->region}}</label>
@@ -3828,7 +3828,7 @@ span{
                                     </div>
                                     <div class="flex w-1/3  justify-start">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.ciudad') }}: </label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
@@ -3836,7 +3836,7 @@ span{
                                     </div>
                                     <div class="flex w-1/3  justify-start">
                                         <div class="mr-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Categoría Edificio:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.categoria edificio') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->cad_edi}}</label>
@@ -3845,7 +3845,7 @@ span{
 
                                     <div class="flex w-1/5 justify-start">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Área:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.area') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{number_format($tar_ele->area)}}
@@ -3865,7 +3865,7 @@ span{
                                 <div class="w-full flex justify-start m-1" >
                                     <div class="flex w-2/5  justify-start">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tipo Edificio:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.tipo edificio') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->tipo_edi}}</label>
@@ -3875,7 +3875,7 @@ span{
 
                                     <div class="flex w-auto justify-start">
                                         <div class="ml-3">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Horas Enfriamiento Anual:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.hors_enft_anual') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">&nbsp;{{number_format($tar_ele->coolings_hours)}}</label>
@@ -3883,7 +3883,7 @@ span{
                                     </div>
                                     <div class="flex w-1/4 justify-start ml-10 pl-1">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.tar_ele') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
@@ -3925,7 +3925,7 @@ span{
                                                     <div class="grid w-full mx-3">
 
                                                         <div class="flex justify-center w-full bg-blue-800 rounded-md p-2">
-                                                            <label class="text-white font-bold text-4xl font-roboto">Solución Base</label>
+                                                            <label class="text-white font-bold text-4xl font-roboto">{{ __('index.solucion') }} Base</label>
                                                         </div>
 
                                                         <div class="grid justify-center">
@@ -3943,7 +3943,7 @@ span{
                                                             @endif
 
                                                             @if ($unid_med_1 !== "")
-                                                                <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label>
+                                                                <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label>
                                                                 @if (strlen($sumacap_term_1) >= 15)
                                                                 <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b> </p>
                                                                 @endif
@@ -3955,11 +3955,11 @@ span{
                                                             @endif
 
                                                             @if ($unid_med_1 === "")
-                                                             <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1}}</b>  </p>
+                                                             <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1}}</b>  </p>
                                                             @endif
 
                                                             <div class="grid justify-items-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual del Edificio</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_edi)}}</p>
+                                                                <label class="font-bold font-roboto text-2xl mt-3">{{ __('results.consumo_anual') }} {{ __('results.del_ed') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_edi)}}</p>
                                                             </div>
                                                         </div>
 
@@ -3977,7 +3977,7 @@ span{
                                                     <div class="grid w-full mx-3">
 
                                                         <div class="w-full bg-blue-500 rounded-md p-2 text-center">
-                                                            <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
+                                                            <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} A</label>
                                                         </div>
 
 
@@ -3995,15 +3995,15 @@ span{
                                                             @endif
 
                                                             @if ($unid_med_2 !== "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2->unid_med}} </b></p>
+                                                            <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2->unid_med}} </b></p>
                                                             @endif
 
                                                             @if ($unid_med_2 === "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2}}</b></p>
+                                                            <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2}}</b></p>
                                                             @endif
 
                                                             <div class="grid justify-items-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual del Edificio</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_edi_a)}}</p>
+                                                                <label class="font-bold font-roboto text-2xl mt-3">{{ __('results.consumo_anual') }} {{ __('results.del_ed') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_edi_a)}}</p>
                                                             </div>
                                                         </div>
 
@@ -4019,7 +4019,7 @@ span{
                                                     <div class="grid w-full mx-3">
 
                                                         <div class="w-full bg-blue-500 rounded-md p-2 text-center">
-                                                            <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
+                                                            <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} B</label>
                                                         </div>
 
 
@@ -4038,15 +4038,15 @@ span{
                                                             @endif
 
                                                             @if ($unid_med_3 !== "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}}  <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b></p>
+                                                            <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}}  <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b></p>
                                                             @endif
 
                                                             @if ($unid_med_3 === "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3}}</b>  </p>
+                                                            <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3}}</b>  </p>
                                                             @endif
 
                                                             <div class="grid justify-items-center">
-                                                                <label class="font-bold font-roboto text-2xl mt-3">Consumo Anual del Edificio</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_edi_b)}}</p>
+                                                                <label class="font-bold font-roboto text-2xl mt-3">{{ __('results.consumo_anual') }} {{ __('results.del_ed') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto">$ {{number_format($consumo_anual_edi_b)}}</p>
                                                             </div>
                                                         </div>
 
@@ -4139,7 +4139,7 @@ span{
                                 <div class="grid bg-gray-200 rounded-md shadow-xl my-3 w-full">
 
                                     <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
-                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Desperdicio de Energía Eléctrica del Edificio (Año)</label>
+                                        <label class="font-bold text-white text-2xl font-roboto text-4xl">{{ __('results.des_ene_ele_edif') }} ({{ __('results.anio') }})</label>
                                     </div>
 
                                     <div class="flex w-full justify-center mt-5">
@@ -4162,7 +4162,7 @@ span{
 
                                         <div class="w-full flex mt-5">
                                             <div class="w-1/3 flex">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución Base</b>
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">{{ __('index.solucion') }} Base</b>
                                             </div>
                                             <?php  $energy_base=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
                                             <div class="w-1/3 flex justify-center">
@@ -4190,7 +4190,7 @@ span{
 
                                         <div class="w-full flex">
                                             <div class="w-1/3 flex">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución A</b>
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">{{ __('index.solucion') }} A</b>
                                             </div>
                                             <?php  $energy_a=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
                                             <div class="w-1/3 flex justify-center">
@@ -4227,7 +4227,7 @@ span{
 
                                         <div class="w-full flex">
                                             <div class="w-1/3 flex">
-                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">Solución B</b>
+                                                <b class="text-[24px] text-blue-600 font-roboto text-3xl" style="margin-left:15px;">{{ __('index.solucion') }} B</b>
                                             </div>
                                             <?php  $energy_b=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
                                             <div class="w-1/3 flex justify-center">
@@ -4281,13 +4281,13 @@ span{
                         <div class="2xl:w-3/4 xl:w-3/4 my-3 lg:w-full ">
                             <div class="grid bg-gray-200 rounded-md shadow-xl">
                                 <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
-                                    <label class="font-bold text-white text-2xl font-roboto text-4xl">RESULTADOS ANÁLISIS SUSTENTABLE</label>
+                                    <label class="font-bold text-white text-2xl font-roboto text-4xl">{{ __('results.res_ana_sus') }}</label>
                                 </div>
 
                                 <div class="w-full flex justify-center m-1 " >
                                     <div class="flex w-1/3 justify-start">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.nombre') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
@@ -4295,7 +4295,7 @@ span{
                                     </div>
                                     <div class="flex w-1/4  justify-start">
                                         <div class="mr-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.region') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->region}}</label>
@@ -4303,7 +4303,7 @@ span{
                                     </div>
                                     <div class="flex w-1/3  justify-start">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.ciudad') }}: </label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
@@ -4311,7 +4311,7 @@ span{
                                     </div>
                                     <div class="flex w-1/3  justify-start">
                                         <div class="mr-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Categoría Edificio:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.categoria edificio') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->cad_edi}}</label>
@@ -4320,7 +4320,7 @@ span{
 
                                     <div class="flex w-1/5 justify-start">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Área:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.area') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{number_format($tar_ele->area)}}
@@ -4340,7 +4340,7 @@ span{
                                 <div class="w-full flex justify-start m-1" >
                                     <div class="flex w-2/5  justify-start">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tipo Edificio:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.tipo edificio') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->tipo_edi}}</label>
@@ -4350,7 +4350,7 @@ span{
 
                                     <div class="flex w-auto justify-start">
                                         <div class="ml-3">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Horas Enfriamiento Anual:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.hors_enft_anual') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">&nbsp;{{number_format($tar_ele->coolings_hours)}}</label>
@@ -4358,7 +4358,7 @@ span{
                                     </div>
                                     <div class="flex w-1/4 justify-start ml-10 pl-1">
                                         <div class="mx-1">
-                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
+                                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.tar_ele') }}:</label>
                                         </div>
                                         <div>
                                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
@@ -4380,7 +4380,7 @@ span{
                                                 <div class="grid w-full mx-3">
 
                                                     <div class="flex justify-center w-full bg-blue-800 rounded-md p-2">
-                                                        <label class="text-white font-bold text-4xl font-roboto">Solución Base</label>
+                                                        <label class="text-white font-bold text-4xl font-roboto">{{ __('index.solucion') }} Base</label>
                                                     </div>
 
                                                     <div class="grid justify-center">
@@ -4398,7 +4398,7 @@ span{
                                                         @endif
 
                                                         @if ($unid_med_1 !== "")
-                                                            <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label>
+                                                            <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label>
                                                             @if (strlen($sumacap_term_1) >= 15)
                                                             <p class="text-blue-800 font-bold text-4xl font-roboto uppercase text-center">{{$sumacap_term_1}} <b class="text-black text-3xl">{{$unid_med_1->unid_med}}</b>  </p>
                                                             @endif
@@ -4410,7 +4410,7 @@ span{
                                                         @endif
 
                                                         @if ($unid_med_1 === "")
-                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black">{{$unid_med_1}} </b> </p>
+                                                        <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_1}} <b class="text-black">{{$unid_med_1}} </b> </p>
                                                         @endif
                                                     </div>
 
@@ -4429,7 +4429,7 @@ span{
                                                 <div class="grid w-full mx-3">
 
                                                     <div class="w-full bg-blue-500 rounded-md p-2 text-center">
-                                                        <label class="text-white font-bold text-4xl font-roboto" for="">Solución A</label>
+                                                        <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} A</label>
                                                     </div>
 
 
@@ -4448,11 +4448,11 @@ span{
                                                         @endif
 
                                                         @if ($unid_med_2 !== "")
-                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}} <b class="text-black text-3xl">{{$unid_med_2->unid_med}}</b></p>
+                                                        <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}} <b class="text-black text-3xl">{{$unid_med_2->unid_med}}</b></p>
                                                         @endif
 
                                                         @if ($unid_med_2 === "")
-                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2}}</b> </p>
+                                                        <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_2}}  <b class="text-black text-3xl">{{$unid_med_2}}</b> </p>
                                                         @endif
                                                     </div>
 
@@ -4468,7 +4468,7 @@ span{
                                                 <div class="grid w-full mx-3">
 
                                                     <div class="w-full bg-blue-500 rounded-md p-2 text-center">
-                                                        <label class="text-white font-bold text-4xl font-roboto" for="">Solución B</label>
+                                                        <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} B</label>
                                                     </div>
 
 
@@ -4487,11 +4487,11 @@ span{
                                                         @endif
 
                                                         @if ($unid_med_3 !== "")
-                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b> </p>
+                                                        <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl">{{$unid_med_3->unid_med}}</b> </p>
                                                         @endif
 
                                                         @if ($unid_med_3 === "")
-                                                        <label class="font-bold font-roboto text-2xl mt-10">Capacidad Térmica Total</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl"> {{$unid_med_3}}</b> </p>
+                                                        <label class="font-bold font-roboto text-2xl mt-10">{{ __('results.cap_ter_loc') }}</label><p class="text-blue-800 font-bold text-5xl font-roboto uppercase">{{$sumacap_term_3}} <b class="text-black text-3xl"> {{$unid_med_3}}</b> </p>
                                                         @endif
                                                     </div>
 
@@ -4513,7 +4513,7 @@ span{
                                         </div>
                                         <div class="flex w-full justify-center">
 
-                                                <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl mr-10">Reducción Energética - Mega Watts</label>
+                                                <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl mr-10">{{ __('results.red_ene') }} - Mega Watts</label>
 
                                         </div>
                                     </div>
@@ -4523,19 +4523,19 @@ span{
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 Años</b>
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 {{ __('results.ans') }}</b>
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 Años</b>
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 {{ __('results.ans') }}</b>
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 Años</b>
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 {{ __('results.ans') }}</b>
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 Años</b>
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 {{ __('results.ans') }}</b>
                                         </div>
                                     </div>
 
@@ -4543,7 +4543,7 @@ span{
                                     {{--  --}}
                                     <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                         <div class="grid justify-center w-1/4">
-                                            <b class="text-[24px] text-blue-600 font-roboto text-3xl">Solución A</b>
+                                            <b class="text-[24px] text-blue-600 font-roboto text-3xl">{{ __('index.solucion') }} A</b>
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
@@ -4595,7 +4595,7 @@ span{
                                     {{--  --}}
                                     <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                         <div class="grid justify-center w-1/4">
-                                            <b class="text-[24px] text-blue-600 font-roboto text-3xl">Solución B</b>
+                                            <b class="text-[24px] text-blue-600 font-roboto text-3xl">{{ __('index.solucion') }} B</b>
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
@@ -4652,7 +4652,7 @@ span{
                                             <img src="{{asset('/assets/images/Huella.png')}}" style="width:100px; height:100px;" class="mx-10 mt-2" alt="Nano Degree">
                                         </div>
                                         <div class="flex w-full justify-center">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Reducción Huella de Carbono – Ton. CO2</label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.red_pe_ca') }} – Ton. CO2</label>
                                         </div>
 
                                     </div>
@@ -4663,29 +4663,29 @@ span{
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 Años</b>
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 {{ __('results.ans') }}</b>
 
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 Años</b>
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 {{ __('results.ans') }}</b>
 
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 Años</b>
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 {{ __('results.ans') }}</b>
 
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 Años</b>
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 {{ __('results.ans') }}</b>
 
                                         </div>
                                     </div>
                                     {{--  --}}
                                     <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                         <div class="grid justify-center w-1/4">
-                                            <b class="text-[24px] text-blue-600 font-roboto text-3xl">Solución A</b>
+                                            <b class="text-[24px] text-blue-600 font-roboto text-3xl">{{ __('index.solucion') }} A</b>
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
@@ -4738,7 +4738,7 @@ span{
                                     {{--  --}}
                                     <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                         <div class="grid justify-center w-1/4">
-                                            <b class="text-[24px] text-blue-600 font-roboto text-3xl">Solución B</b>
+                                            <b class="text-[24px] text-blue-600 font-roboto text-3xl">{{ __('index.solucion') }} B</b>
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
@@ -4799,7 +4799,7 @@ span{
                                             <img src="{{asset('/assets/images/reducción-bolsas.png')}}" style="width:100px; height:90px;" class="mx-10 mt-2" alt="Nano Degree">
                                         </div>
                                         <div class="flex w-full justify-center">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">Reducción de Bolsas de Basura - Recicladas</label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.red_bol_ca') }} - {{ __('results.recicladas') }}</label>
                                         </div>
 
                                     </div>
@@ -4810,29 +4810,29 @@ span{
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 Años</b>
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">3 {{ __('results.ans') }}</b>
 
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 Años</b>
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">5 {{ __('results.ans') }}</b>
 
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 Años</b>
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">10 {{ __('results.ans') }}</b>
 
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
-                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 Años</b>
+                                            <b class="text-[24px] text-blue-900 font-roboto text-2xl">15 {{ __('results.ans') }}</b>
 
                                         </div>
                                     </div>
                                     {{--  --}}
                                     <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                         <div class="grid justify-center w-1/4">
-                                            <b class="text-[24px] text-blue-600 font-roboto text-3xl">Solución A</b>
+                                            <b class="text-[24px] text-blue-600 font-roboto text-3xl">{{ __('index.solucion') }} A</b>
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
@@ -4885,7 +4885,7 @@ span{
                                     {{--  --}}
                                     <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                         <div class="grid justify-center w-1/4">
-                                            <b class="text-[24px] text-blue-600 font-roboto text-3xl">Solución B</b>
+                                            <b class="text-[24px] text-blue-600 font-roboto text-3xl">{{ __('index.solucion') }} B</b>
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
@@ -4955,13 +4955,13 @@ span{
         <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
             <div class="grid bg-gray-200 rounded-md shadow-xl">
                 <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
-                    <label class="font-bold text-white text-2xl font-roboto text-4xl">Analisis de Confort y Productividad</label>
+                    <label class="font-bold text-white text-2xl font-roboto text-4xl">{{ __('results.res_ana_sus') }}</label>
                 </div>
 
                 <div class="w-full flex justify-center m-1 " >
                     <div class="flex w-1/3 justify-start">
                         <div class="mx-1">
-                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Nombre:</label>
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.nombre') }}:</label>
                         </div>
                         <div>
                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{substr($tar_ele->name, 0, 25)}} </label>
@@ -4969,7 +4969,7 @@ span{
                     </div>
                     <div class="flex w-1/4  justify-start">
                         <div class="mr-1">
-                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Región:</label>
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.region') }}:</label>
                         </div>
                         <div>
                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->region}}</label>
@@ -4977,7 +4977,7 @@ span{
                     </div>
                     <div class="flex w-1/3  justify-start">
                         <div class="mx-1">
-                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Ciudad: </label>
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.ciudad') }}: </label>
                         </div>
                         <div>
                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->ciudad}}</label>
@@ -4985,7 +4985,7 @@ span{
                     </div>
                     <div class="flex w-1/3  justify-start">
                         <div class="mr-1">
-                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Categoría Edificio:</label>
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.categoria edificio') }}:</label>
                         </div>
                         <div>
                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->cad_edi}}</label>
@@ -4994,7 +4994,7 @@ span{
 
                     <div class="flex w-1/5 justify-start">
                         <div class="mx-1">
-                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Área:</label>
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.area') }}:</label>
                         </div>
                         <div>
                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{number_format($tar_ele->area)}}
@@ -5014,7 +5014,7 @@ span{
                 <div class="w-full flex justify-start m-1" >
                     <div class="flex w-2/5  justify-start">
                         <div class="mx-1">
-                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tipo Edificio:</label>
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.tipo edificio') }}:</label>
                         </div>
                         <div>
                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->tipo_edi}}</label>
@@ -5024,7 +5024,7 @@ span{
 
                     <div class="flex w-auto justify-start">
                         <div class="ml-3">
-                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Horas Enfriamiento Anual:</label>
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.hors_enft_anual') }}:</label>
                         </div>
                         <div>
                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">&nbsp;{{number_format($tar_ele->coolings_hours)}}</label>
@@ -5032,7 +5032,7 @@ span{
                     </div>
                     <div class="flex w-1/4 justify-start ml-10 pl-1">
                         <div class="mx-1">
-                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">Tarifa Eléctrica:</label>
+                            <label style="font-size: 18px;"  class="text-blue-800 font-bold font-roboto" for="">{{ __('index.tar_ele') }}:</label>
                         </div>
                         <div>
                             <label style="font-size: 18px;" class="text-blue-600 font-bold" for="">{{$tar_ele->costo_elec}} $/Kwh</label>
@@ -5044,7 +5044,7 @@ span{
                 {{-- confotr --}}
                 <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
                     <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
-                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Nivel de Confort</label>
+                        <label class="font-bold text-white text-2xl font-roboto text-4xl">{{ __('results.niv_conf') }}</label>
                     </div>
 
                     <div class="w-full grid mb-5 gap-y-2">
@@ -5056,7 +5056,7 @@ span{
 
                                 <div class="w-1/5 flex justify-start">
                                 {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                                        <p class="text-3xl text-blue-600 font-roboto  font-bold text-left">Solución Base</p>
+                                        <p class="text-3xl text-blue-600 font-roboto  font-bold text-left">{{ __('index.solucion') }} Base</p>
                                     {{-- </div> --}}
                                 </div>
 
@@ -5088,7 +5088,7 @@ span{
 
                         <div class="w-1/5 flex justify-start">
 
-                                <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold text-left">Solución A</p>
+                                <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold text-left">{{ __('index.solucion') }} A</p>
 
                         </div>
 
@@ -5113,7 +5113,7 @@ span{
 
                         <div class="w-1/5 flex justify-start">
 
-                                <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold text-left">Solución A</p>
+                                <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold text-left">{{ __('index.solucion') }} A</p>
 
                         </div>
 
@@ -5138,7 +5138,7 @@ span{
                     <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
                         <div class="w-1/5 flex justify-start">
 
-                                <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold text-left">Solución B</p>
+                                <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold text-left">{{ __('index.solucion') }} B</p>
 
                         </div>
                       <div class="flex rounded-lg" style="background: rgb(255,0,56);
@@ -5161,7 +5161,7 @@ span{
                     <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
                         <div class="w-1/5 flex justify-start">
 
-                                <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">Solución B</p>
+                                <p class="text-[24px] text-blue-600 font-roboto text-3xl font-bold">{{ __('index.solucion') }} B</p>
 
                         </div>
                       <div class="flex rounded-lg" style="background: rgb(255,0,56);
@@ -5182,7 +5182,7 @@ span{
 
                 <div class="grid bg-gray-200 rounded-md shadow-xl my-3">
                     <div class="w-full flex justify-center text-white bg-blue-800 rounded-md p-3">
-                        <label class="font-bold text-white text-2xl font-roboto text-4xl">Productividad Laboral</label>
+                        <label class="font-bold text-white text-2xl font-roboto text-4xl">{{ __('results.prod_lab') }}</label>
                     </div>
 
                     <div class="flex w-full justify-center">
@@ -5236,18 +5236,39 @@ span{
 			<div class="max-w-3xl mx-auto px-4">
 				<div class="flex justify-between">
 					<div class="w-1/2">
-						<button
+                        @if (strlen(__('index.atras')) > 6)
+                        <button
+							x-show="step > 1"
+							@click="step--"
+							class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 text-md bg-white hover:bg-gray-100 font-medium border font-roboto"
+						>{{ __('index.atras') }}</button>
+                        @endif
+
+                        @if (strlen(__('index.atras')) == 6)
+                        <button
 							x-show="step > 1"
 							@click="step--"
 							class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 text-xl bg-white hover:bg-gray-100 font-medium border font-roboto"
-						>Átras</button>
+						>{{ __('index.atras') }}</button>
+                        @endif
 
+                        @if (strlen(__('index.atras')) > 6)
+                       <a  href="{{URL::action('ResultadosController@edit_project',$id_project)}}">
+                            <button
+                            x-show="step == 1"
+                            class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 text-md bg-white hover:bg-gray-100 font-medium border font-roboto"
+                        >{{ __('index.atras') }}</button>
+                       </a>
+                       @endif
+
+                       @if (strlen(__('index.atras')) == 6)
                        <a  href="{{URL::action('ResultadosController@edit_project',$id_project)}}">
                             <button
                             x-show="step == 1"
                             class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 text-xl bg-white hover:bg-gray-100 font-medium border font-roboto"
-                        >Átras</button>
+                        >{{ __('index.atras') }}</button>
                        </a>
+                       @endif
 					</div>
 
 
@@ -5257,7 +5278,7 @@ span{
 							x-show="step < 6"
 							@click="step++"
 							class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-xl text-center text-white bg-blue-500 hover:bg-blue-600 font-medium font-roboto"
-						>Siguiente</button>
+						>{{ __('index.siguiente') }}</button>
 
 						{{-- <button
 							@click="step = 'complete'"

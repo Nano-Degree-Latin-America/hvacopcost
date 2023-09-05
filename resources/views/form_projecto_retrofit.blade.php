@@ -7,7 +7,7 @@
                 <input type="text" class="hidden" value="1" id="set_sol_1_retro" name="set_sol_1_retro">
             </div>
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex  2xl:justify-center xl:justify-center lg:justify-center  py-1">
-                <h2 style="margin-right: 0px;" class="text-white font-bold text-3xl">Sistema Existente</h2>
+                <h2 style="margin-right: 0px;" class="text-white font-bold text-3xl">{{ __('index.sis_ext') }}</h2>
             </div>
             @include('modal_add_marca_modelo')
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
@@ -31,7 +31,7 @@
             <div class="flex w-full">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2 ">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label class="labels" for=""><b>Unidad HVAC</b> </label>
+                        <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                     </div>
 
                     <div class="w-1/2 flex justify-start">
@@ -50,7 +50,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="flex justify-start w-1/2 text-left">
-                        <label class="labels" for=""><b>Tipo Equipo</b> </label>
+                        <label class="labels" for=""><b>{{ __('index.tipo equipo') }}</b> </label>
                     </div>
                     <div class="w-full flex justify-start">
                         <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);change_diseño(this.value,1,'csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','lblCsTipo_1_1_retro');"  name="csTipo_1_1_retro" id="csTipo_1_1_retro">
@@ -65,7 +65,7 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label class="labels" for=""><b>Marca</b> </label>
+                        <label class="labels" for=""><b>{{ __('index.marca') }}</b> </label>
                     </div>
 
                     <div class="w-1/2 flex justify-start">
@@ -79,7 +79,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="flex justify-start w-1/2 text-left">
-                        <label class="labels" for=""><b>Modelo</b></label>
+                        <label class="labels" for=""><b>{{ __('index.modelo') }}</b></label>
                     </div>
                     <div class="w-full flex justify-start">
                         <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_1_retro" id="modelo_1_1_retro">
@@ -94,7 +94,7 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="flex justify-start w-1/3 ">
-                        <label  class="labels" for=""><b>Años de vida</b> </label>
+                        <label  class="labels" for=""><b>{{ __('index.yrs_life') }}</b> </label>
                     </div>
 
                     <div class="flex justify-start w-1/3">
@@ -109,7 +109,7 @@
                 @include('modal_seer_retro')
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                     <div class="flex justify-start w-1/3 text-left">
-                        <label  class="labels" for=""><b>Eficiencia Original</b> </label>
+                        <label  class="labels" for=""><b>{{ __('index.efi_ori') }}</b> </label>
                     </div>
                     <div class="flex justify-start w-1/4">
                         <select name="csStd_1_1_retro" id="csStd_1_1_retro" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="set_ser_to_sers(this.value);" class="w-full border-2 border-blue-600 rounded-md text-center">
@@ -132,7 +132,7 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="flex justify-start w-1/2 text-left">
-                        <label  class="labels" for=""><b>Capacidad Térmica</b> </label>
+                        <label  class="labels" for=""><b>{{ __('index.capacidad termica') }}</b> </label>
                     </div>
                     <div class="flex w-full justify-start gap-x-2">
                         <div class="w-1/3">
@@ -153,7 +153,7 @@
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
 
                     <div class="w-1/2 flex justify-start text-left">
-                        <label class="labels" for=""><b>Tipo Diseño</b> </label>
+                        <label class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                     </div>
 
                     <div class="w-full flex justify-start">
@@ -169,7 +169,7 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                     <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                        <label  class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                        <label  class="labels" for=""><b>{{ __('index.costo elec') }} $/Kwh</b> </label>
                     </div>
                     <div class="w-1/2 flex justify-start">
                         <input id="costo_elec_1_1_retro" name="costo_elec_1_1_retro" onchange="valida_selects_inps(this.id);asign_cos_ele(this.value);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
@@ -179,7 +179,7 @@
                 @include('modal_coolinghours_retro')
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="flex justify-start w-1/3 text-left">
-                        <label  class="labels" for=""><b>Horas Enfriamiento</b> </label>
+                        <label  class="labels" for=""><b>{{ __('index.hors enf') }}</b> </label>
                     </div>
                     <div class="flex justify-start w-1/3">
                         <input  type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_1_1_retro" onkeypress="return soloNumeros(event)" id="hrsEnfriado_1_1_retro" onchange="hrs_enfs_inps(this.value);valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);">
@@ -195,7 +195,7 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                     <div class="flex justify-start w-1/3 text-left">
-                        <label  class="labels" for=""><b>Tipo Control</b> </label>
+                        <label  class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
                     </div>
 
                     <div class="flex justify-start w-1/2">
@@ -211,7 +211,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label class="labels" for=""><b>Difusor/Rejilla</b> </label>
+                        <label class="labels" for=""><b>{{ __('index.dr') }}</b> </label>
                     </div>
                     <div class="w-full flex justify-start">
                         <select style="width: 100%;margin-left:6px;" class="border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_1_1_retro" id="dr_1_1_retro" >
@@ -225,7 +225,7 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex w-1/2">
                     <div class="flex w-1/3 justify-start text-left">
-                        <label class="labels" for=""><b>Tipo de Mantenimiento</b></label>
+                        <label class="labels" for=""><b>{{ __('index.mantenimiento') }}</b></label>
                     </div>
                     <div class="flex w-1/2 justify-start">
                         <select onchange="valida_selects_inps(this.id);"  style="margin-left: 5px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_1_1_retro" id="csMantenimiento_1_1_retro">
@@ -245,7 +245,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label  class="labels" for=""><b>Valor por Depreciar</b> </label>
+                        <label  class="labels" for=""><b>{{ __('index.val_dep') }}</b> </label>
                     </div>
 
                     <div class="w-1/2 flex justify-start">
@@ -259,7 +259,7 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label  class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
+                        <label  class="labels" for=""><b>{{ __('index.costo anual') }}</b> </label>
                     </div>
 
                     <div class="w-1/2 flex justify-start">
@@ -270,7 +270,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label class="labels" for=""><b>Costo Anual Reparaciones</b></label>
+                        <label class="labels" for=""><b>{{ __('index.cost_an_re') }}</b></label>
                     </div>
 
                     <div class="w-1/2 flex justify-start text-left">
@@ -300,7 +300,7 @@
             <div class="flex w-full">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label  class="labels" for=""><b>Unidad HVAC</b> </label>
+                        <label  class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                     </div>
 
                     <div class="w-1/2 flex justify-start">
@@ -319,7 +319,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="flex justify-start w-1/2 text-left">
-                        <label  class="labels" for=""><b>Tipo Equipo</b></label>
+                        <label  class="labels" for=""><b>{{ __('index.tipo equipo') }}</b></label>
                     </div>
 
                     <div class="w-full flex justify-start">
@@ -334,7 +334,7 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label  class="labels" for=""><b>Tipo Diseño</b> </label>
+                        <label  class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                     </div>
                     <div class="w-1/2 flex justify-start">
                         <select  class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="valida_selects_inps(this.id);send_name(this.id);" name="csDisenio_1_2_retro" id="csDisenio_1_2_retro">
@@ -376,7 +376,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="flex justify-start w-1/3 text-left ">
-                        <label  class="labels" for=""><b>Horas Enfriamiento</b> </label>
+                        <label  class="labels" for=""><b>{{ __('index.hors enf') }}</b> </label>
                     </div>
 
                     <div class="flex justify-start w-1/3">
@@ -467,7 +467,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-3/6 flex justify-start text-left">
-                        <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
+                        <label class="labels" for=""><b>{{ __('index.costo anual') }}</b> </label>
                     </div>
 
                     <div class="w-full flex gap-x-2 justify-start">
@@ -499,7 +499,7 @@
             <input type="number" class="hidden" value="2" id="cont_sol_2_retro" name="cont_sol_2">
             </div>
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
-                <h2 style="margin-right: 75px;" class="text-white font-bold justify-start text-3xl">Solución A</h2>
+                <h2 style="margin-right: 75px;" class="text-white font-bold justify-start text-3xl">{{ __('index.solucion') }} A</h2>
             </div>
 
         </div>
@@ -514,7 +514,7 @@
                     <div class="flex w-full gap-x-1">
                         <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2">
                             <div class="w-1/3 flex justify-start text-left">
-                                <label class="labels" for=""><b>Unidad HVAC</b> </label>
+                                <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
                                 <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro');"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
@@ -533,7 +533,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="flex justify-start w-1/2 text-left">
-                                <label class="labels" for=""><b>Tipo Equipo</b> </label>
+                                <label class="labels" for=""><b>{{ __('index.tipo equipo') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
                                 <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);change_diseño(this.value,1,'cheDisenio_2_1_retro','tipo_control_2_1_retro','dr_2_1_retro','lblCsTipo_2_1_retro');"  name="cheTipo_2_1_retro" id="cheTipo_2_1_retro">
@@ -548,7 +548,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="w-1/3 flex justify-start text-left">
-                                <label class="labels" for=""><b>Marca</b> </label>
+                                <label class="labels" for=""><b>{{ __('index.marca') }}</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
@@ -562,7 +562,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="flex justify-start w-1/2 text-left">
-                                <label class="labels" for=""><b>Modelo</b> </label>
+                                <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
                                 <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);"  name="modelo_2_1_retro" id="modelo_2_1_retro">
@@ -578,7 +578,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="flex justify-start w-1/3 ">
-                                <label  class="labels" for=""><b>Años de vida</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.yrs_life') }}</b> </label>
                             </div>
 
                             <div class="flex justify-start w-1/3">
@@ -592,7 +592,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                             <div class="flex justify-start w-1/3 text-left">
-                                <label  class="labels" for=""><b>Eficiencia</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.efi') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
                                 <input name="csStd_2_1_retro" readonly id="csStd_2_1_retro" style="padding-top: 0.425rem;padding-bottom: 0.248rem;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -610,7 +610,7 @@
 
 
                             <div class="flex justify-start w-1/3 text-left">
-                                <label  class="labels" for=""><b>Capacidad Térmica</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.capacidad termica') }}</b> </label>
                             </div>
                             <div class="flex w-1/2 justify-start gap-x-2">
                                 <div class="w-full">
@@ -626,7 +626,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="w-1/2 flex justify-start text-left">
-                                <label  class="labels" for=""><b>Tipo Diseño</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
                                 <select class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);" name="cheDisenio_2_1_retro" id="cheDisenio_2_1_retro">
@@ -641,7 +641,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                             <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                                <label style="" class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                <label style="" class="labels" for=""><b>{{ __('index.costo elec') }} $/Kwh</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
@@ -652,7 +652,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="flex justify-start w-1/3 text-left">
-                                <label class="labels" for=""><b>Horas Enfriamiento</b> </label>
+                                <label class="labels" for=""><b>{{ __('index.hors enf') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
                                 <input type="text" style="font-size: 14px;margin-left:1px;" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_2_1_retro" id="hrsEnfriado_2_1_retro" readonly>
@@ -664,7 +664,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                             <div class="flex justify-start w-1/3">
-                                <label class="labels" for=""><b>Tipo Control</b> </label>
+                                <label class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/2">
                             <select class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="valida_selects_inps(this.id);send_name_t_c(this.id);"  name="tipo_control_2_1_retro" id="tipo_control_2_1_retro">
@@ -678,7 +678,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                             <div class="w-1/3 flex justify-start text-left">
-                                <label style="margin-left:2.5px;" class="labels" for=""><b>Difusor/Rejilla</b> </label>
+                                <label style="margin-left:2.5px;" class="labels" for=""><b>{{ __('index.dr') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
                             <select  style="width: 100%;" class="border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_2_1_retro" id="dr_2_1_retro" >
@@ -694,7 +694,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2">
                             <div class="flex w-1/3 justify-start text-left">
-                                <label class="labels" for=""><b>Tipo de Mantenimiento</b></label>
+                                <label class="labels" for=""><b>{{ __('index.mantenimiento') }}</b></label>
                             </div>
                             <div class="flex w-1/2 justify-start">
                                 <select style="margin-left: 3px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_2_1_retro" id="csMantenimiento_2_1_retro" onchange="valida_selects_inps(this.id);">
@@ -711,7 +711,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="w-1/3 flex justify-start text-left">
-                                <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.inversion inicial') }} (CAPEX)</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
@@ -726,7 +726,7 @@
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
 
                             <div class="w-1/3 flex justify-start text-left">
-                                <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
+                                <label class="labels" for=""><b>{{ __('index.costo anual') }}</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
@@ -773,7 +773,7 @@
                 <input type="number" class="hidden" value="2" id="cont_sol_3_retro" name="cont_sol_3_retro">
             </div>
             <div class="2xl:ml-0 xl:ml-0 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
-                <h2 style="margin-right: 75px;" class="text-white font-bold  text-3xl ">Solución B</h2>
+                <h2 style="margin-right: 75px;" class="text-white font-bold  text-3xl ">{{ __('index.solucion') }} B</h2>
             </div>
 
           {{--   <div cslass="w-1/2 flex justify-start">
@@ -791,7 +791,7 @@
                     <div class="flex w-full">
                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                             <div class="w-1/3 flex justify-start text-left">
-                                <label  class="labels" for=""><b>Unidad HVAC</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
                                 <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro');" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
@@ -810,7 +810,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="flex justify-start w-1/2 text-left">
-                                 <label  class="labels" for=""><b>Tipo Equipo</b> </label>
+                                 <label  class="labels" for=""><b>{{ __('index.tipo equipo') }}</b> </label>
                              </div>
                              <div class="w-full flex justify-start">
                                     <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);change_diseño(this.value,1,'cheDisenio_3_1_retro','tipo_control_3_1_retro','dr_3_1_retro','lblCsTipo_3_1_retro');"  name="cheTipo_3_1_retro" id="cheTipo_3_1_retro">
@@ -826,7 +826,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="w-1/3 flex justify-start text-left">
-                                <label class="labels" for=""><b>Marca</b> </label>
+                                <label class="labels" for=""><b>{{ __('index.marca') }}</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
@@ -840,7 +840,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="flex justify-start w-1/2 text-left">
-                                <label class="labels" for=""><b>Modelo</b> </label>
+                                <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
                                 <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_3_1_retro" id="modelo_3_1_retro">
@@ -853,7 +853,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="flex justify-start w-1/3 ">
-                                <label  class="labels" for=""><b>Años de vida</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.yrs_life') }}</b> </label>
                             </div>
 
                             <div class="flex justify-start w-1/3">
@@ -867,7 +867,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                             <div class="flex justify-start w-1/3 text-left">
-                                <label  class="labels" for=""><b>Eficiencia</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.efi') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
                                 <input readonly style="padding-top: 0.425rem;padding-bottom: 0.248rem;" type="text" name="csStd_3_1_retro" id="csStd_3_1_retro" class="text-center w-full py-1 border-2 border-blue-600 rounded-md">
@@ -884,7 +884,7 @@
                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
 
                             <div class="flex justify-start w-1/3 text-left">
-                                <label class="labels" for=""><b>Capacidad Térmica</b> </label>
+                                <label class="labels" for=""><b>{{ __('index.capacidad termica') }}</b> </label>
                             </div>
 
                             <div class="flex w-1/2 justify-start gap-x-2">
@@ -905,7 +905,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="w-1/2 flex justify-start text-left">
-                                <label  class="labels" for=""><b>Tipo Diseño</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
                                 <select class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);" name="cheDisenio_3_1_retro" id="cheDisenio_3_1_retro">
@@ -920,7 +920,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
                             <div class="w-1/3 flex justify-start text-left" title="Costo Eléctrico">
-                                <label style="" class="labels" for=""><b>Costo Eléctrico $/Kwh</b> </label>
+                                <label style="" class="labels" for=""><b>{{ __('index.costo elec') }} $/Kwh</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
 {{--                                                                 <input onchange="valida_selects_inps(this.id);" name="costo_elec_3_1" id="costo_elec_3_1" readonly onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;margin-left:2px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
@@ -933,7 +933,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="flex justify-start w-1/3 text-left">
-                                <label  class="labels" for=""><b>Horas Enfriamiento</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.hors enf') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
                                 <input onchange="valida_selects_inps(this.id);" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_3_1_retro" id="hrsEnfriado_3_1_retro" readonly>
@@ -947,7 +947,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                             <div class="flex justify-start w-1/3">
-                                <label  class="labels" for=""><b>Tipo Control</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/2">
                                 <select class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="valida_selects_inps(this.id);send_name_t_c(this.id);"  name="tipo_control_3_1_retro" id="tipo_control_3_1_retro">
@@ -961,7 +961,7 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                             <div class="w-1/2 flex justify-start text-left">
-                                <label  class="labels" for=""><b>Difusor/Rejilla</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.dr') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
                                 <select style="width: 100%;margin-left:2.5px;" class="border-2 border-blue-600 rounded-md py-1" onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_3_1_retro" id="dr_3_1_retro" >
@@ -976,7 +976,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                               <div class="flex w-1/3 justify-start text-left">
-                                <label  class="labels" for=""><b>Tipo Mantenimiento</b> </label>
+                                <label  class="labels" for=""><b>{{ __('index.mantenimiento') }}</b> </label>
                             </div>
                             <div class="flex w-1/2 justify-start">
                                 <select onchange="valida_selects_inps(this.id);" style="margin-left: 0px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_3_1_retro" id="cheMantenimiento_3_1_retro">
@@ -1006,7 +1006,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">
                                 <div class="w-1/3 flex justify-start text-left">
-                                    <label class="labels" for=""><b>Costo Anual Mantenimiento</b> </label>
+                                    <label class="labels" for=""><b>{{ __('index.costo anual') }}</b> </label>
                                 </div>
 
                                 <div class="w-1/2 flex justify-start">
