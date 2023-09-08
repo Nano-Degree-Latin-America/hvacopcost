@@ -221,6 +221,9 @@ cursor: pointer;
 @inject('paises_empresa','app\Http\Controllers\ResultadosController')
 @inject('all_paises','app\Http\Controllers\ResultadosController')
 @inject('check_types_p','app\Http\Controllers\ResultadosController')
+<?php
+$idm = App::getLocale();
+?>
 <div class="bg-white" x-data="app()" x-cloak>
     <div class="w-full px-4">
 
@@ -291,6 +294,8 @@ cursor: pointer;
                                      <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
                                         <input type="number" class="hidden" id="type_p" name="type_p">
                                         <input type="text" value="update" class="hidden" id="action_submit_send" name="action_submit_send">
+                                        <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
+
                                         <div class="flex w-full gap-x-10 my-2 mx-1 justify-center">
 
                                             <div class="grid justify-items-end h-full gap-y-3 w-1/2">
@@ -981,8 +986,8 @@ cursor: pointer;
                 </div>
                 <div  x-show="step === 2" class="w-1/2 flex" style=" justify-content: center;">
 
-                    <button x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1);"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
-                    <button x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2);"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>            </div>
+                    <button x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}');"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
+                    <button x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}');"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>            </div>
             </div>
         </div>
     </div>

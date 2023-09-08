@@ -36,7 +36,7 @@
 
                     <div class="w-1/2 flex justify-start">
                         <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');">
-                            <option value="0">Seleccionar</option>
+                            <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
                             <option value="3">VRF No Ductados</option>
@@ -229,7 +229,7 @@
                     </div>
                     <div class="flex w-1/2 justify-start">
                         <select onchange="valida_selects_inps(this.id);"  style="margin-left: 5px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_1_1_retro" id="csMantenimiento_1_1_retro">
-                            <option selected value="0">Seleccionar</option>
+                            <option selected value="0">{{ __('index.seleccionar') }}</option>
                             <option value="ASHRAE 180">ASHRAE 180</option>
                             <option value="Deficiente">Deficiente</option>
                             <option value="Sin Mantenimiento">Sin Mantenimiento</option>
@@ -305,7 +305,7 @@
 
                     <div class="w-1/2 flex justify-start">
                         <select  class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2_retro');" name="cUnidad_1_2_retro" id="cUnidad_1_2_retro" >
-                            <option value="0">Seleccionar</option>
+                            <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
                             <option value="3">VRF No Ductados</option>
@@ -518,7 +518,7 @@
                             </div>
                             <div class="w-1/2 flex justify-start">
                                 <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro');"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
-                                    <option value="0">Seleccionar</option>
+                                    <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
                                     <option value="3">VRF No Ductados</option>
@@ -698,7 +698,7 @@
                             </div>
                             <div class="flex w-1/2 justify-start">
                                 <select style="margin-left: 3px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_2_1_retro" id="csMantenimiento_2_1_retro" onchange="valida_selects_inps(this.id);">
-                                    <option value="0">Seleccionar</option>
+                                    <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="ASHRAE 180">ASHRAE 180</option>
                                     <option value="Deficiente">Deficiente</option>
                                     <option value="Sin Mantenimiento">Sin Mantenimiento</option>
@@ -795,7 +795,7 @@
                             </div>
                             <div class="w-1/2 flex justify-start">
                                 <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro');" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
-                                    <option value="0">Seleccionar</option>
+                                    <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
                                     <option value="3">VRF No Ductados</option>
@@ -980,7 +980,7 @@
                             </div>
                             <div class="flex w-1/2 justify-start">
                                 <select onchange="valida_selects_inps(this.id);" style="margin-left: 0px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_3_1_retro" id="cheMantenimiento_3_1_retro">
-                                    <option value="0">Seleccionar</option>
+                                    <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="ASHRAE 180">ASHRAE 180</option>
                                     <option value="Deficiente">Deficiente</option>
                                     <option value="Sin Mantenimiento">Sin Mantenimiento</option>

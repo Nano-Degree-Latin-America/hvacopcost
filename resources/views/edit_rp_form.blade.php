@@ -37,7 +37,7 @@
 
                             <div class="w-1/2 flex justify-start">
                                 <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');">
-                                    <option value="0">Seleccionar</option>
+                                    <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
                                     <option value="3">VRF No Ductados</option>
@@ -83,7 +83,7 @@
 
                             <div class="w-1/2 flex justify-start">
                                 <select onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_1_1_retro');send_marca_to_modal(this.value,'marcas_modal');" name="marca_1_1_retro" id="marca_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2">
-                                    <option value="">Seleccionar</option>
+                                    <option value="">{{ __('index.seleccionar') }}</option>
                                     @foreach ( $marcas as $marca)
                                     <option value="{{$marca->id}}">{{$marca->marca}}</option>
                                     @endforeach
@@ -334,7 +334,7 @@
 
                         <div class="w-1/2 flex justify-start">
                             <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro');valida_update_store_solution('action_submit_2_1_retro');"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
-                                <option value="0">Seleccionar</option>
+                                <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
                                 <option value="3">VRF No Ductados</option>
@@ -379,7 +379,7 @@
 
                         <div class="w-1/2 flex justify-start">
                             <select name="marca_2_1_retro" id="marca_2_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_2_1_retro');send_marca_to_modal(this.value,'marcas_modal_2_1');">
-                                <option value="">Seleccionar</option>
+                                <option value="">{{ __('index.seleccionar') }}</option>
                                 @foreach ( $marcas as $marca)
                                 <option value="{{$marca->id}}">{{$marca->marca}}</option>
                                 @endforeach
@@ -629,7 +629,7 @@
                        </div>
                        <div class="w-1/2 flex justify-start">
                            <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro');valida_update_store_solution('action_submit_3_1_retro');" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
-                               <option value="0">Seleccionar</option>
+                               <option value="0">{{ __('index.seleccionar') }}</option>
                                <option value="1">Paquetes (RTU)</option>
                                <option value="2">Split DX</option>
                                <option value="3">VRF No Ductados</option>
@@ -675,7 +675,7 @@
 
                        <div class="w-1/2 flex justify-start">
                            <select name="marca_3_1_retro" id="marca_3_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_3_1_retro');send_marca_to_modal(this.value,'marcas_modal_3_1');">
-                            <option value="">Seleccionar</option>
+                            <option value="">{{ __('index.seleccionar') }}</option>
                             @foreach ( $marcas as $marca)
                             <option value="{{$marca->id}}">{{$marca->marca}}</option>
                             @endforeach

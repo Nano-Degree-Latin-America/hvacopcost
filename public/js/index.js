@@ -525,18 +525,34 @@ function active_display_retro(value){
 
  }
 
+ function check_val_text(id,ima){
+
+    $('#'+id).empty();
+    if(ima == 'es'){
+        $('#'+id).append($('<option>', {
+            value: 0,
+            text: '-Seleccionar-'
+        }));
+    }
+    if(ima == 'port'){
+        $('#'+id).append($('<option>', {
+            value: 0,
+            text: '-Selecione-'
+        }));
+    }
+ }
+
+
 function unidadHvac(value,num_div,id_select){
   /*  var set_sol_1 =  $('#set_sol_1').val(); */
-
+  var ima =  $('#idioma').val();
     if( num_div == 1){
-       $('#'+id_select).empty();
+      /*  $('#'+id_select).empty();
             $('#'+id_select).append($('<option>', {
                 value: 0,
                 text: 'Seleccionar'
-            }));
-
-
-
+            })); */
+            check_val_text(id_select,ima);
 
             switch (value) {
 
@@ -601,13 +617,7 @@ function unidadHvac(value,num_div,id_select){
 
 
     }else if( num_div == 2){
-        $('#'+id_select).empty();
-        $('#'+id_select).append($('<option>', {
-            value: 0,
-            text: 'Seleccionar'
-        }));
-
-
+        check_val_text(id_select,ima);
         switch (value) {
 
             case "1":
@@ -669,13 +679,7 @@ function unidadHvac(value,num_div,id_select){
                     console.log( myObj.arr[i].value);
                 }
     }else if(num_div == 3){
-        $('#'+id_select).empty();
-        $('#'+id_select).append($('<option>', {
-            value: 0,
-            text: 'Seleccionar'
-        }));
-
-
+        check_val_text(id_select,ima);
         switch (value) {
             case "1":
                 var arry = '{ "arr" : [' +
@@ -756,26 +760,12 @@ function unidadHvac(value,num_div,id_select){
 function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_value){
     /*  var set_sol_1 =  $('#set_sol_1').val(); */
     //console.log(value);
+    var ima =  $('#idioma').val();
       if( num_div == 1){
 
-         $('#'+id_select).empty();
-              $('#'+id_select).append($('<option>', {
-                  value: '',
-                  text: 'Seleccionar'
-              }));
-
-        $('#'+id_tipo_control).empty();
-         $('#'+id_tipo_control).append($('<option>', {
-             value: 0,
-             text: 'Seleccionar'
-         }));
-
-         $('#'+id_dr).empty();
-         $('#'+id_dr).append($('<option>', {
-             value: '',
-             text: 'Seleccionar'
-         }));
-
+        check_val_text(id_select,ima);
+        check_val_text(id_tipo_control,ima);
+        check_val_text(id_dr,ima);
          $('#'+equipo_value).empty();
 
 
@@ -1124,24 +1114,9 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
 
       }else if( num_div == 2){
-          $('#'+id_select).empty();
-          $('#'+id_select).append($('<option>', {
-              value: '',
-              text: 'Seleccionar'
-          }));
-
-          $('#'+id_tipo_control).empty();
-          $('#'+id_tipo_control).append($('<option>', {
-              value: 0,
-              text: 'Seleccionar'
-          }));
-
-          $('#'+id_dr).empty();
-          $('#'+id_dr).append($('<option>', {
-              value: '',
-              text: 'Seleccionar'
-          }));
-
+          check_val_text(id_select,ima);
+          check_val_text(id_tipo_control,ima);
+          check_val_text(id_dr,ima);
           $('#'+equipo_value).empty();
 
 
@@ -1869,16 +1844,19 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
   }
 
   function send_marcas(){
+    var ima =  $('#idioma').val();
         $.ajax({
             type: 'get',
             url: '/send_marcas',
             success: function (response) {
                 //retro_1_1
-                $('#marca_1_1_retro').empty();
+               /*  $('#marca_1_1_retro').empty();
                 $('#marca_1_1_retro').append($('<option>', {
                     value: '',
                     text: 'Seleccionar'
-                }));
+                })); */
+                var marca_1_1_retro = 'marca_1_1_retro';
+                check_val_text(marca_1_1_retro,ima);
 
                 response.map((marca, i) => {
                     $('#marca_1_1_retro').append($('<option>', {
@@ -1887,12 +1865,13 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                     }));
                 });
                  //retro modal
-                 $('#marcas_modal').empty();
+                /*  $('#marcas_modal').empty();
                  $('#marcas_modal').append($('<option>', {
                      value: '',
                      text: 'Seleccionar'
-                 }));
-
+                 })); */
+                 var marcas_modal = 'marcas_modal';
+                 check_val_text(marcas_modal,ima);
                  response.map((marca, i) => {
                      $('#marcas_modal').append($('<option>', {
                          value: marca.id,
@@ -1901,11 +1880,13 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                  });
 
                  //retro 2_1
-                 $('#marca_2_1_retro').empty();
+                 var marca_2_1_retro = 'marca_2_1_retro';
+                 check_val_text(marca_2_1_retro,ima);
+/*                  $('#marca_2_1_retro').empty();
                  $('#marca_2_1_retro').append($('<option>', {
                      value: '',
                      text: 'Seleccionar'
-                 }));
+                 })); */
 
                  response.map((marca, i) => {
                      $('#marca_2_1_retro').append($('<option>', {
@@ -1915,12 +1896,13 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                  });
 
                   //retro modal 2_1
-                  $('#marcas_modal_2_1').empty();
+                  /* $('#marcas_modal_2_1').empty();
                   $('#marcas_modal_2_1').append($('<option>', {
                       value: '',
                       text: 'Seleccionar'
-                  }));
-
+                  })); */
+                  var marcas_modal_2_1 = 'marcas_modal_2_1';
+                  check_val_text(marcas_modal_2_1,ima);
                   response.map((marca, i) => {
                       $('#marcas_modal_2_1').append($('<option>', {
                           value: marca.id,
@@ -1929,11 +1911,14 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                   });
 
                   //retro 3_1
-                  $('#marca_3_1_retro').empty();
+                  var marca_3_1_retro = 'marca_3_1_retro';
+                  check_val_text(marca_3_1_retro,ima);
+
+                  /* $('#marca_3_1_retro').empty();
                   $('#marca_3_1_retro').append($('<option>', {
                       value: '',
                       text: 'Seleccionar'
-                  }));
+                  })); */
 
                   response.map((marca, i) => {
                       $('#marca_3_1_retro').append($('<option>', {
@@ -1943,12 +1928,8 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                   });
 
                   //retro modal 2_1
-                  $('#marcas_modal_3_1').empty();
-                  $('#marcas_modal_3_1').append($('<option>', {
-                      value: '',
-                      text: 'Seleccionar'
-                  }));
-
+                  var marcas_modal_3_1 = 'marcas_modal_3_1';
+                  check_val_text(marcas_modal_3_1,ima);
                   response.map((marca, i) => {
                       $('#marcas_modal_3_1').append($('<option>', {
                           value: marca.id,
@@ -1999,16 +1980,12 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 
 
   function send_modelos(value,id){
+    var ima =  $('#idioma').val();
     $.ajax({
         type: 'get',
         url: '/send_modelos/'+value,
         success: function (response) {
-            $('#'+id).empty();
-            $('#'+id).append($('<option>', {
-                value: '',
-                text: 'Seleccionar'
-            }));
-
+            check_val_text(id,ima);
             response.map((marca, i) => {
                 $('#'+id).append($('<option>', {
                     value: marca.id,
@@ -2026,17 +2003,13 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
 }
 
 function send_modelo_edit(value,id,id_modelo){
-
+    var ima =  $('#idioma').val();
     $.ajax({
         type: 'get',
         url: '/send_modelos/'+value,
         success: function (response) {
-            $('#'+id).empty();
-            $('#'+id).append($('<option>', {
-                value: '',
-                text: 'Seleccionar'
-            }));
 
+            check_val_text(id,ima);
             response.map((marca, i) => {
                 $('#'+id).append($('<option>', {
                     value: marca.id,
@@ -2170,10 +2143,6 @@ function traer_categorias_edif() {
             "_token": $("meta[name='csrf-token']").attr("content")
         },
         success: function (response) {
-            $('#cat_ed').append($('<option>', {
-                value: 0,
-                text: '-Seleccionar-'
-            }));
 
             response.map((cat_ed, i) => {
                 $('#cat_ed').append($('<option>', {
@@ -2189,16 +2158,17 @@ function traer_categorias_edif() {
     });
 }
 
-function traer_t_edif(id_cat) {
+function traer_t_edif(id_cat,ima) {
+    var ima =  $('#idioma').val();
+
     $.ajax({
         type: 'get',
         url: '/get_cat_edi/'+ id_cat,
         success: function (response) {
-            $('#tipo_edificio').empty();
-            $('#tipo_edificio').append($('<option>', {
-                value: 0,
-                text: 'Seleccionar'
-            }));
+
+
+            var tipo_edificio = 'tipo_edificio';
+            check_val_text(tipo_edificio,ima);
             $('#count_tipo_edificio').val(0);
             checksuma();
             response.map((cat_ed, i) => {
@@ -2353,16 +2323,20 @@ function asign_cos_ele(value){
 
 }
 
-function set_porcent_hvac(value){
+function set_porcent_hvac(value,ima){
     $.ajax({
         type: 'get',
         url: '/porcents_aux/'+ value,
         success: function (response) {
-            $('#porcent_hvac').empty();
+            /* $('#porcent_hvac').empty();
             $('#porcent_hvac').append($('<option>', {
                 value: 0,
                 text: 'Seleccionar'
             }));
+            $('#count_porcent_hvac').val(0); */
+
+            var porcent_hvac = 'porcent_hvac';
+            check_val_text(porcent_hvac,ima);
             $('#count_porcent_hvac').val(0);
             checksuma();
             response.map((cat_ed, i) => {
@@ -2381,55 +2355,84 @@ function set_porcent_hvac(value){
     });
 
 }
+function change(idm,id){
+    var text_port = 'Opção Obrigatória';
+    var text_es = 'Campo Obligatorio';
+    if(idm == 'es'){
+        document.getElementById(id).innerHTML = text_es;
+    }
+    if(idm == 'port'){
+        document.getElementById(id).innerHTML = text_port;
+    }
+}
 
-function buton_check(){
+function change_swal(idm){
+    if(idm == 'es'){
+        Swal.fire(
+            'Atención',
+            "Seleccionar Unidad",
+            'warning'
+        )
+    }
+
+    if(idm == 'port'){
+        Swal.fire(
+            'Atenção',
+            "Selecionar Unidade",
+            'warning'
+        )
+    }
+
+}
+function buton_check(idm){
     var name = $("#name_pro");
+
     if (name.val() == '') {
-        document.getElementById('name_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'name_warning');
         return false;
     }
     var cat_ed = $("#cat_ed");
     if (cat_ed.val() == '0') {
-        document.getElementById('cat_ed_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'cat_ed_warning');
         return false;
     }
     var tipo_edificio = $("#tipo_edificio");
     if (tipo_edificio.val() == '0') {
-        document.getElementById('tipo_Edificio_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'tipo_Edificio_warning');
         return false;
     }
     var ar_project = $("#ar_project");
     if (ar_project.val() == '') {
-        document.getElementById('ar_project_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'ar_project_warning');
         return false;
     }
     var paises = $("#paises");
     if (paises.val() == '0') {
-        document.getElementById('paises_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'paises_warning');
         return false;
     }
     var ciudades = $("#ciudades");
     if (ciudades.val() == '0') {
-        document.getElementById('ciudad_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'ciudad_warning');
         return false;
     }
 
     var inflacion = $("#inc_ene");
     if (inflacion.val() == '') {
-        document.getElementById('inc_ene_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'inc_ene_warning');
         return false;
     }
 
 
     var porcent_tiempo = $("#tiempo_porcent");
     if (porcent_tiempo.val() == '') {
-        document.getElementById('tiempo_porcent_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'tiempo_porcent_warning');
         return false;
     }
 
     var porcent_hvac = $("#porcent_hvac");
     if (porcent_hvac.val() == '0') {
-        document.getElementById('por_hvac_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'por_hvac_warning');
         return false;
     }
 
@@ -2437,12 +2440,9 @@ function buton_check(){
 
     var check_mc = $("#check_mc");
     var check_ft = $("#check_ft");
+
     if (check_mc.prop('checked') === false && check_ft.prop('checked') === false) {
-        Swal.fire(
-            'Atención',
-            "Seleccionar Unidad",
-            'warning'
-        )
+        change_swal(idm);
         return false;
     }
 
@@ -2457,58 +2457,58 @@ function buton_check(){
 function buton_check_edit(){
     var name = $("#name_pro");
     if (name.val() == '') {
-        document.getElementById('name_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'name_warning');
         return false;
     }
     var cat_ed = $("#cat_ed");
     if (cat_ed.val() == '0') {
-        document.getElementById('cat_ed_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'cat_ed_warning');
         return false;
     }
     var tipo_edificio = $("#tipo_edificio");
     if (tipo_edificio.val() == '0') {
-        document.getElementById('tipo_Edificio_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'tipo_Edificio_warning');
         return false;
     }
     var ar_project = $("#ar_project");
     if (ar_project.val() == '') {
-        document.getElementById('ar_project_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'ar_project_warning');
         return false;
     }
     var paises = $("#paises_edit");
 
     if (paises.val() == '0') {
-        document.getElementById('paises_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'paises_warning');
         return false;
     }
     var ciudades = $("#ciudades_edit");
     if (ciudades.val() == '0') {
-        document.getElementById('ciudad_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'ciudad_warning');
         return false;
     }
 
     var inflacion = $("#inc_ene");
     if (inflacion.val() == '') {
-        document.getElementById('inc_ene_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'inc_ene_warning');
         return false;
     }
 
 
     var porcent_tiempo = $("#tiempo_porcent");
     if (porcent_tiempo.val() == '') {
-        document.getElementById('tiempo_porcent_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'tiempo_porcent_warning');
         return false;
     }
 
     var porcent_hvac = $("#porcent_hvac");
     if (porcent_hvac.val() == '0') {
-        document.getElementById('por_hvac_warning').innerHTML = "Campo Obligatorio";
+       change(idm,'por_hvac_warning');
         return false;
     }
 
     var tipo_edificio_edit = $("#tipo_edificio_edit");
     if (tipo_edificio_edit.val() == '0') {
-        document.getElementById('tipo_Edificio_warning').innerHTML = "Campo Obligatorio";
+        change(idm,'tipo_Edificio_warning');
         return false;
     }
 
@@ -2519,11 +2519,7 @@ function buton_check_edit(){
     var check_mc = $("#check_mc");
     var check_ft = $("#check_ft");
     if (check_mc.prop('checked') === false && check_ft.prop('checked') === false) {
-        Swal.fire(
-            'Atención',
-            "Seleccionar Unidad",
-            'warning'
-        )
+        change_swal(idm);
         return false;
     }
 
@@ -2538,8 +2534,7 @@ function buton_check_edit(){
 function check_input(value,id,id_warning){
     var inpt = $("#"+id);
     if (inpt.val() == '' || inpt.val() == '0') {
-        document.getElementById(id_warning).innerHTML = "Campo Obligatorio";
-
+        change(id_warning);
     }else{
         document.getElementById(id_warning).innerHTML = "";
 
@@ -2697,7 +2692,76 @@ function inactive_display(value){
 
 }
 
- function check_form_submit(p_type){
+function trans_sols_valid(idm){
+    if(idm == 'es'){
+        Swal.fire({
+            title: 'Atencion!',
+            icon: 'warning',
+            text:'Faltan campos por completar en la Solucion Base'
+
+        })
+
+    }
+
+    if(idm == 'port'){
+        Swal.fire({
+            title: 'Atenção!',
+            icon: 'warning',
+            text:'Campos em falta a preencher na Solução Base'
+
+        })
+
+    }
+}
+
+function trans_sols_valid_ab(idm,sol){
+    if(sol == 'A'){
+        if(idm == 'es'){
+            Swal.fire({
+                title: 'Atencion!',
+                icon: 'warning',
+                text:'Faltan campos por completar en la Solucion A'
+
+            })
+
+        }
+
+        if(idm == 'port'){
+            Swal.fire({
+                title: 'Atenção!',
+                icon: 'warning',
+                text:'Campos em falta a preencher na Solução A'
+
+            })
+
+        }
+    }
+
+    if(sol == 'B'){
+        if(idm == 'es'){
+            Swal.fire({
+                title: 'Atencion!',
+                icon: 'warning',
+                text:'Faltan campos por completar en la Solucion B'
+
+            })
+
+        }
+
+        if(idm == 'port'){
+            Swal.fire({
+                title: 'Atenção!',
+                icon: 'warning',
+                text:'Campos em falta a preencher na Solução B'
+
+            })
+
+        }
+    }
+}
+
+ function check_form_submit(p_type,idm){
+
     if(p_type == 1){
 
     var sol_1_1 = $('#cUnidad_1_1');
@@ -2885,12 +2949,7 @@ function inactive_display(value){
        var count_inps_1_1 = tipo_equipo_1_1_count + capacidad_total_1_1_count + costo_elec_1_1_count + dr_1_1_count + csStd_cant_1_1_count + tipo_control_1_count + csMantenimiento_1_1_count + csDisenio_1_1_count + hrsEnfriado_1_1_count + cheValorS_1_1_count;
 
        if(count_inps_1_1>0){
-            Swal.fire({
-                        title: '¡Atención!',
-                        icon: 'warning',
-                        text:'Faltan campos por completar en la Solucion Base'
-
-                    })
+        trans_sols_valid(idm);
                     return false;
                     }
 
@@ -3061,12 +3120,7 @@ function inactive_display(value){
             tipo_control_1_2_count + csMantenimiento_1_2_count +
             csDisenio_1_2_count + hrsEnfriado_1_2_count + cheValorS_1_2_count;
             if(count_inps_1_2>0){
-                Swal.fire({
-                            title: '¡Atención!',
-                            icon: 'warning',
-                            text:'Faltan campos por completar en la Solucion Base'
-
-                        })
+                trans_sols_valid(idm);
                         return false;
                         }
 
@@ -3230,12 +3284,7 @@ function inactive_display(value){
             csDisenio_1_3_count + hrsEnfriado_1_3_count + cheValorS_1_3_count;
 
             if(count_inps_1_3>0){
-                Swal.fire({
-                            title: '¡Atención!',
-                            icon: 'warning',
-                            text:'Faltan campos por completar en la Solucion Base'
-
-                        })
+                trans_sols_valid(idm);
                         return false;
                         }
             }
@@ -3412,12 +3461,7 @@ function inactive_display(value){
                 var count_inps_2_1 = cheTipo_2_1_count + capacidad_total_2_1_count + costo_elec_2_1_count + dr_2_1_count + csStd_cant_2_1_count + tipo_control_2_1_count + csMantenimiento_2_1_count + cheDisenio_2_1_count + hrsEnfriado_2_1_count + cheValorS_2_1_count;
               /*       alert(count_inps_2_1); */
                 if(count_inps_2_1>0){
-                        Swal.fire({
-                                    title: '¡Atención!',
-                                    icon: 'warning',
-                                    text:'Faltan campos por completar en la Solucion A'
-
-                                })
+                    trans_sols_valid_ab(idm,'A')
                                 return false;
                                 }
 
@@ -3603,12 +3647,7 @@ function inactive_display(value){
                  + cheDisenio_2_2_count + hrsEnfriado_2_2_count + cheValorS_2_2_count;
 
                 if(count_inps_2_2>0){
-                        Swal.fire({
-                                    title: '¡Atención!',
-                                    icon: 'warning',
-                                    text:'Faltan campos por completar en la Solucion A'
-
-                                })
+                    trans_sols_valid_ab(idm,'A')
                                 return false;
                                 }
 
@@ -3771,12 +3810,7 @@ function inactive_display(value){
                     cheDisenio_2_3_count + hrsEnfriado_2_3_count + cheValorS_2_3_count;
 
                     if(count_inps_2_3>0){
-                        Swal.fire({
-                                    title: '¡Atención!',
-                                    icon: 'warning',
-                                    text:'Faltan campos por completar en la Solucion A'
-
-                                })
+                        trans_sols_valid_ab(idm,'A')
                                 return false;
                                 }
                     }
@@ -3958,12 +3992,7 @@ function inactive_display(value){
                 var count_inps_3_1 = cheTipo_3_1_count + capacidad_total_3_1_count + costo_elec_3_1_count + dr_3_1_count + cheStd_3_1_count + tipo_control_3_1_count + cheMantenimiento_3_1_count + cheDisenio_3_1_count + hrsEnfriado_3_1_count + cheValorS_3_1_count;
               /*       alert(count_inps_2_1); */
                 if(count_inps_3_1>0){
-                        Swal.fire({
-                                    title: '¡Atención!',
-                                    icon: 'warning',
-                                    text:'Faltan campos por completar en la Solucion B'
-
-                                })
+                    trans_sols_valid_ab(idm,'B');
                                 return false;
                                 }
 
@@ -4153,12 +4182,7 @@ function inactive_display(value){
                 hrsEnfriado_3_2_count + cheValorS2_3_2_count;
               /*       alert(count_inps_2_1); */
                 if(count_inps_3_2>0){
-                        Swal.fire({
-                                    title: '¡Atención!',
-                                    icon: 'warning',
-                                    text:'Faltan campos por completar en la Solucion B'
-
-                                })
+                    trans_sols_valid_ab(idm,'B');
                                 return false;
                                 }
 
@@ -4320,12 +4344,7 @@ function inactive_display(value){
                     cheDisenio_3_3_count + hrsEnfriado_3_3_count + cheValorS_3_3_count;
 
                     if(count_inps_3_3>0){
-                        Swal.fire({
-                                    title: '¡Atención!',
-                                    icon: 'warning',
-                                    text:'Faltan campos por completar en la Solucion B'
-
-                                })
+                        trans_sols_valid_ab(idm,'B');
                                 return false;
                                 }
                     }
@@ -4336,11 +4355,11 @@ function inactive_display(value){
      }
 
      if(p_type == 2){
-        check_form_retro();
+        check_form_retro(idm);
      }
     }
 
-function check_form_retro(){
+function check_form_retro(idm){
     var sol_1_1_retro = $('#cUnidad_1_1_retro');
     var sol_1_2_retro = $('#cUnidad_1_2');
     //var sol_1_3 = $('#cUnidad_1_3');
@@ -4613,12 +4632,7 @@ function check_form_retro(){
                 var count_inps_1_1 = tipo_equipo_1_1_count + marca_1_1_retro_count + modelo_1_1_retro_count + yrs_vida_1_1_retro_count + csStd_retro_1_1_count + capacidad_total_1_1_retro_count + csDisenio_1_1_retro_count + costo_elec_1_1_retro_count + hrsEnfriado_1_1_retro_count + tipo_control_1_1_retro_count + dr_1_1_retro_count + csMantenimiento_1_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_1_1_retro_count + const_an_rep_1_1_count ;
 
                 if(count_inps_1_1>0){
-                        Swal.fire({
-                                    title: '¡Atención!',
-                                    icon: 'warning',
-                                    text:'Faltan campos por completar en la Solucion Base'
-
-                                })
+                    trans_sols_valid(idm);
                                 return false;
                                 }
 
@@ -4882,12 +4896,7 @@ function check_form_retro(){
                 var count_inps_2_1 = cheTipo_2_1_count_retro + marca_2_1_retro_count + modelo_2_1_retro_count + yrs_vida_2_1_retro_count + csStd_2_1_retro_count + capacidad_total_2_1_retro_count + cheDisenio_2_1_retro_count + costo_elec_2_1_retro_count + hrsEnfriado_2_1_retro_count + tipo_control_2_1_retro_count + dr_2_1_retro_count + csMantenimiento_2_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_2_1_retro_count ;
 
                 if(count_inps_2_1>0){
-                        Swal.fire({
-                                    title: '¡Atención!',
-                                    icon: 'warning',
-                                    text:'Faltan campos por completar en la Solucion A'
-
-                                })
+                    trans_sols_valid_ab(idm,'A')
                                 return false;
                                 }
 
@@ -5153,12 +5162,7 @@ function check_form_retro(){
                 var count_inps_3_1 = cheTipo_3_1_retro_count + marca_3_1_retro_count + modelo_3_1_retro_count + yrs_vida_3_1_retro_count + cheStd_3_1_retro_count + capacidad_total_3_1_retro_count + cheDisenio_3_1_retro_count + costo_elec_3_1_retro_count + hrsEnfriado_3_1_retro_count + tipo_control_3_1_retro_count + dr_3_1_retro_count + cheMantenimiento_3_1_retro_count + costo_recu_3_1_retro_count + maintenance_cost_3_1_retro_count;
 
                 if(count_inps_3_1>0){
-                        Swal.fire({
-                                    title: '¡Atención!',
-                                    icon: 'warning',
-                                    text:'Faltan campos por completar en la Solucion B'
-
-                                })
+                    trans_sols_valid_ab(idm,'B')
                                 return false;
                                 }
 

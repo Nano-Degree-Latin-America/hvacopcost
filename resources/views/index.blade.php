@@ -250,7 +250,9 @@ cursor: pointer;
         @inject('paises_empresa','app\Http\Controllers\IndexController')
         @inject('all_paises','app\Http\Controllers\IndexController')
         @inject('check_types_p','app\Http\Controllers\IndexController')
-
+        <?php
+        $idm = App::getLocale();
+        ?>
         <div x-show.transition="step != 'complete'">
             <div class="">
                 <div x-show.transition.in="step === 1">
@@ -309,7 +311,7 @@ cursor: pointer;
                                             <label class="title_index font-roboto text-blue-800 font-bold leading-tight" for="">{{ __('index.análisis energético y financiero') }} <br> {{ __('index.de sistemas HVAC') }}</label>
                                         </div>
                                      <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
-
+                                        <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
                                         <input type="number" class="hidden" id="type_p" name="type_p">
                                         <div class="flex w-full gap-x-10 my-2 mx-1 justify-center">
 
@@ -533,7 +535,9 @@ cursor: pointer;
                                                     <div class="flex w-full">
                                                         <label  class="font-roboto labels_index  text-left" for=""><b>{{ __('index.categoria edificio') }}</b></label></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');check_inp_count('count_cat_ed','cat_ed');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1"></select>
+                                                    <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value,'{{App::getLocale()}}');set_porcent_hvac(this.value,'{{App::getLocale()}}');check_input(this.value,this.id,'cat_ed_warning');check_inp_count('count_cat_ed','cat_ed');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1">
+                                                    <option value="0">-{{ __('index.seleccionar') }}-</option>
+                                                    </select>
                                                     <input id="count_cat_ed" name="count_cat_ed" type="number" class="hidden" value="0">
                                                     <span id="cat_ed_warning" name="cat_ed_warning" class="text-red-500"></span>
                                                 </div>
@@ -543,7 +547,9 @@ cursor: pointer;
                                                         <div class="flex w-full">
                                                             <label  class="font-roboto labels_index" for=""><b>{{ __('index.tipo edificio') }}:</b></label><label class="text-red-500">*</label>
                                                         </div>
-                                                            <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');check_inp_count('count_tipo_edificio','tipo_edificio');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio"></select>
+                                                            <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');check_inp_count('count_tipo_edificio','tipo_edificio');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio">
+                                                                <option value="0">-{{ __('index.seleccionar') }}-</option>
+                                                            </select>
                                                             <input id="count_tipo_edificio" name="count_tipo_edificio" type="number" class="hidden" value="0">
                                                             <span id="tipo_Edificio_warning" name="tipo_Edificio_warning" class="text-red-500"></span>
                                                     </div>
@@ -614,7 +620,7 @@ cursor: pointer;
                                                         <label  class="font-roboto text-left labels_index" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <div class="flex w-full">
-                                                        <select onchange="buton_check();check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
+                                                        <select onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                                             <option value="0">-{{ __('index.selecciona porcentaje') }}-</option>
                                                         </select>
                                                         <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="0">
@@ -628,7 +634,7 @@ cursor: pointer;
                                                 <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start mt-5">
                                                     <div id="div_next" name="div_next" class="w-1/2 text-right">
                                                         <button type="button"  id="next" name="next"
-                                                            onclick="buton_check();"
+                                                            onclick="buton_check('{{App::getLocale()}}');"
                                                             class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
                                                         >{{ __('index.siguiente') }}</button>
                                                     </div>
@@ -855,8 +861,8 @@ cursor: pointer;
                   </ul>
                 </div>
 
-                <button  x-show="step > 1" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1);"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
-                <button  x-show="step > 1" type="button" name="calcular_p_r" id="calcular_p_r" onclick="check_form_submit(2);"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto hidden">{{ __('index.calcular') }}</button>
+                <button  x-show="step > 1" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1,'{{App::getLocale()}}');"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
+                <button  x-show="step > 1" type="button" name="calcular_p_r" id="calcular_p_r" onclick="check_form_submit(2,'{{App::getLocale()}}');"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto hidden">{{ __('index.calcular') }}</button>
 
 
 

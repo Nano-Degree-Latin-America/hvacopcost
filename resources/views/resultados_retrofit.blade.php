@@ -389,7 +389,7 @@ span{
 
                                                                     <div class="w-full flex">
                                                                         <div class="w-2/5 flex ">
-                                                                            <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                            <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo equipo') }}</p>
                                                                         </div>
                                                                         <div class="ml-2 w-auto">
                                                                             <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
@@ -645,7 +645,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo equipo') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-auto">
                                                                         <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
@@ -889,7 +889,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">Tipo Equipo</p>
+                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo equipo') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-auto">
                                                                         <p class="text-blue-600 flex justify-start font-roboto font-bold" for="">
@@ -967,7 +967,7 @@ span{
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.t¿marca') }}</p>
+                                                                        <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.marca') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5">
                                                                         <p class="text-blue-600 text-left font-bold font-roboto" for="">

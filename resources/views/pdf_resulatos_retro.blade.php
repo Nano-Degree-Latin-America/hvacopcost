@@ -222,13 +222,6 @@
             padding:5px;
         }
 
-.desp_elect_style{
-            font-size:30px;
-            font-family: 'ABeeZee', sans-serif;
-            font-weight: bold;
-            padding:3px;
-}
-
         .sol_ab_yrs_style{
             font-size:20px;
             font-family: 'ABeeZee', sans-serif;
@@ -279,6 +272,13 @@
   width: 100%;
   display: grid;
 }
+
+.desp_elect_style{
+            font-size:25px;
+            font-family: 'ABeeZee', sans-serif;
+            font-weight: bold;
+            padding:2px;
+}
 	</style>
 </head>
 
@@ -294,18 +294,18 @@
 
     <div class="tarjet">
         <div align="center" class="title_tarjet">
-            <label  class="title_style">ANÁLISIS ENERGÉTICO - ENFRIAMIENTO</label>
+            <label  class="title_style">{{ __('results.anal_ene') }} - {{ __('results.enfi') }}</label>
         </div>
         <?php  $tar_ele=$solutions->tar_elec($id_project) ?>
         <div>
             <table class="">
                 <tbody>
                   <tr>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                    <td style="padding-top:10px;"  class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.nombre') }}:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.region') }}:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.ciudad') }}:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.categoria edificio') }}:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
+                    <td style="padding-top:10px;"  class="info_project_size_font"><label for="">{{ __('index.area') }}:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
                   </tr>
 
                 </tbody>
@@ -313,11 +313,11 @@
               <table class="">
                 <tbody>
                     <tr>
-                        <td class="info_project_size_font"><label for="">Tipo Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->tipo_edi}}</label></td>
+                        <td class="info_project_size_font"><label for="">{{ __('index.tipo edificio') }}:</label> <label style="color:#3182ce;">{{$tar_ele->tipo_edi}}</label></td>
                         <td></td>
-                        <td class="info_project_size_font"><label for="">Horas Enfriamiento Anual:</label> <label style="color:#3182ce;">{{number_format($tar_ele->coolings_hours)}}</label></td>
+                        <td class="info_project_size_font"><label for="">{{ __('index.hors_enft_anual') }}:</label> <label style="color:#3182ce;">{{number_format($tar_ele->coolings_hours)}}</label></td>
                         <td></td>
-                        <td class="info_project_size_font"><label for="">Tarifa Elécrtica:</label> <label style="color:#3182ce;">{{$tar_ele->costo_elec}} $/Kwh</label></td></td>
+                        <td class="info_project_size_font"><label for="">{{ __('index.tar_ele') }}:</label> <label style="color:#3182ce;">{{$tar_ele->costo_elec}} $/Kwh</label></td></td>
                       </tr>
 
                 </tbody>
@@ -334,21 +334,21 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_base" style="width:100%;">
-                        <label style="margin-left:28px;" class="title_style">Solución Existente</label>
+                        <label style="margin-left:28px;" class="title_style">{{ __('index.sis_ext') }}</label>
                     </div>
                     @foreach ($solutions as $solution)
                         @if ($solution->num_enf == 1 && $solution->num_sol == 1  )
                             <div style="width:94%;">
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.capacidad termica') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
                                     </div>
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.unidadhvac') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                             @if ($solution->unidad_hvac == 1)
                                             Paquetes (RTU)
@@ -380,7 +380,7 @@
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo equipo') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                             @if ($solution->tipo_equipo == 'basico')
                                             Básico
@@ -450,7 +450,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo diseño') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
                                     </div>
                                 </div>
@@ -464,7 +464,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Marca</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.marca') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->marca}}</div>
                                     </div>
                                 </div>
@@ -478,7 +478,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Modelo</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.modelo') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->modelo}}</div>
                                     </div>
                                 </div>
@@ -492,14 +492,14 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Años de vida</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.yrs_life') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->yrs_vida}}</div>
                                     </div>
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Eficiencia Original</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.efi_ori') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene}} {{$solution->eficencia_ene_cant}}</div>
                                     </div>
                                 </div>
@@ -513,7 +513,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo control') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
                                     </div>
                                 </div>
@@ -527,7 +527,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.dr') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
                                     </div>
                                 </div>
@@ -541,28 +541,28 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
                                     </div>
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Valor por Depreciar</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.val_dep') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                     </div>
                                 </div>
 
-                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;;margin-bottom:30px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.costo anual') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
                                     </div>
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Anual Reparaciónes</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.cost_an_re') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->cost_an_re)}}</div>
                                     </div>
                                 </div>
@@ -582,21 +582,21 @@
                     <div>
                         <div style="margin-right:5px;margin-top:5px;" class="column" >
                             <div style="background-color: #2c5282;width:100%; border_radius:5px;">
-                                <label style="margin-left:60px;" class="title_style">Solución A</label>
+                                <label style="margin-left:60px;" class="title_style">{{ __('index.solucion') }} A</label>
                             </div>
                             @foreach ($solutions as $solution)
                             @if ($solution->num_enf == 2 && $solution->num_sol == 1  )
                             <div style="width:94%;">
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.capacidad termica') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
                                     </div>
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.unidadhvac') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                             @if ($solution->unidad_hvac == 1)
                                             Paquetes (RTU)
@@ -628,7 +628,7 @@
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo equipo') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                             @if ($solution->tipo_equipo == 'basico')
                                             Básico
@@ -698,7 +698,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo diseño') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
                                     </div>
                                 </div>
@@ -712,7 +712,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Marca</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.marca') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->marca}}</div>
                                     </div>
                                 </div>
@@ -726,7 +726,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Modelo</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.modelo') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->modelo}}</div>
                                     </div>
                                 </div>
@@ -740,14 +740,14 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Años de vida</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.yrs_life') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->yrs_vida}}</div>
                                     </div>
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Eficiencia</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.efi') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene}} {{$solution->eficencia_ene_cant}}</div>
                                     </div>
                                 </div>
@@ -761,7 +761,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo control') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
                                     </div>
                                 </div>
@@ -775,7 +775,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.dr') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
                                     </div>
                                 </div>
@@ -789,28 +789,28 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
                                     </div>
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.inversion inicial') }} (CAPEX)</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                     </div>
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.costo anual') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
                                     </div>
                                 </div>
 
                                 {{-- <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Anual Reparaciónes</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.cost_an_re') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->cost_an_re)}}</div>
                                     </div>
                                 </div> --}}
@@ -829,21 +829,21 @@
                     <div>
                         <div style="margin-right:5px;margin-top:5px;" class="column" >
                             <div style="width:100%;background-color:#2c5282;border_radius:5px;">
-                                <label style="margin-left:60px;" class="title_style">Solución B</label>
+                                <label style="margin-left:60px;" class="title_style">{{ __('index.solucion') }} B</label>
                             </div>
                             @foreach ($solutions as $solution)
                                 @if ($solution->num_enf == 3 && $solution->num_sol == 1  )
                             <div style="width:94%;">
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.capacidad termica') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
                                     </div>
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.unidadhvac') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                             @if ($solution->unidad_hvac == 1)
                                             Paquetes (RTU)
@@ -875,7 +875,7 @@
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo equipo') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                             @if ($solution->tipo_equipo == 'basico')
                                             Básico
@@ -945,7 +945,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo diseño') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
                                     </div>
                                 </div>
@@ -959,7 +959,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Marca</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.marca') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->marca}}</div>
                                     </div>
                                 </div>
@@ -973,7 +973,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Modelo</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.modelo') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->modelo}}</div>
                                     </div>
                                 </div>
@@ -987,14 +987,14 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Años de vida</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.yrs_life') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->yrs_vida}}</div>
                                     </div>
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Eficiencia</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.efi') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->eficencia_ene}} {{$solution->eficencia_ene_cant}}</div>
                                     </div>
                                 </div>
@@ -1008,7 +1008,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo control') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
                                     </div>
                                 </div>
@@ -1022,7 +1022,7 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.dr') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
                                     </div>
                                 </div>
@@ -1036,28 +1036,28 @@
                                 @endif
                                 >
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
                                     </div>
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.inversion inicial') }} (CAPEX)</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                     </div>
                                 </div>
 
                                 <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.costo anual') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
                                     </div>
                                 </div>
 
                                 {{-- <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                     <div>
-                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Anual Reparaciónes</div>
+                                        <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.cost_an_re') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->cost_an_re)}}</div>
                                     </div>
                                 </div> --}}
@@ -1081,7 +1081,7 @@
                                     <div style="width:94%;border-top:1px solid;border-color:#e2e8f0;">
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.capacidad termica') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
                                             </div>
                                         </div>
@@ -1095,7 +1095,7 @@
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.unidadhvac') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                                     @if ($solution->unidad_hvac == 1)
                                                     Paquetes (RTU)
@@ -1127,7 +1127,7 @@
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo equipo') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                                     @if ($solution->tipo_equipo == 'basico')
                                             Básico
@@ -1197,7 +1197,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo diseño') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
                                             </div>
                                         </div>
@@ -1211,7 +1211,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo control') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
                                             </div>
                                         </div>
@@ -1225,7 +1225,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.dr') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
                                             </div>
                                         </div>
@@ -1239,21 +1239,21 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
                                             </div>
                                         </div>
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.inversion inicial') }} (CAPEX)</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                             </div>
                                         </div>
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.costo anual') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
                                             </div>
                                         </div>
@@ -1276,7 +1276,7 @@
                                     <div style="width:94%;border-top:1px solid;border-color:#e2e8f0;">
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.capacidad termica') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
                                             </div>
                                         </div>
@@ -1290,7 +1290,7 @@
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.unidadhvac') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                                     @if ($solution->unidad_hvac == 1)
                                                     Paquetes (RTU)
@@ -1322,7 +1322,7 @@
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo equipo') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                                     @if ($solution->tipo_equipo == 'basico')
                                             Básico
@@ -1392,7 +1392,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo diseño') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
                                             </div>
                                         </div>
@@ -1406,7 +1406,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo control') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
                                             </div>
                                         </div>
@@ -1420,7 +1420,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.dr') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
                                             </div>
                                         </div>
@@ -1434,21 +1434,21 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
                                             </div>
                                         </div>
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.inversion inicial') }} (CAPEX)</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                             </div>
                                         </div>
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.costo anual') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
                                             </div>
                                         </div>
@@ -1471,7 +1471,7 @@
                                     <div style="width:94%; border-top:1px solid;border-color:#e2e8f0;">
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.capacidad termica') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
                                             </div>
                                         </div>
@@ -1485,7 +1485,7 @@
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.unidadhvac') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                                     @if ($solution->unidad_hvac == 1)
                                                     Paquetes (RTU)
@@ -1517,7 +1517,7 @@
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo equipo') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                                     @if ($solution->tipo_equipo == 'basico')
                                             Básico
@@ -1587,7 +1587,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo diseño') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
                                             </div>
                                         </div>
@@ -1601,7 +1601,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo control') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
                                             </div>
                                         </div>
@@ -1615,7 +1615,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.dr') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
                                             </div>
                                         </div>
@@ -1629,21 +1629,21 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
                                             </div>
                                         </div>
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.inversion inicial') }} (CAPEX)</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                             </div>
                                         </div>
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.costo anual') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
                                             </div>
                                         </div>
@@ -1667,7 +1667,7 @@
                                     <div style="width:94%;border-top:1px solid;border-color:#e2e8f0;">
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.capacidad termica') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
                                             </div>
                                         </div>
@@ -1681,7 +1681,7 @@
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.unidadhvac') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                                     @if ($solution->unidad_hvac == 1)
                                                     Paquetes (RTU)
@@ -1713,7 +1713,7 @@
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo equipo') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                                     @if ($solution->tipo_equipo == 'basico')
                                             Básico
@@ -1783,7 +1783,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo diseño') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
                                             </div>
                                         </div>
@@ -1797,7 +1797,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo control') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
                                             </div>
                                         </div>
@@ -1811,7 +1811,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.dr') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
                                             </div>
                                         </div>
@@ -1825,21 +1825,21 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
                                             </div>
                                         </div>
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.inversion inicial') }} (CAPEX)</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                             </div>
                                         </div>
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.costo anual') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
                                             </div>
                                         </div>
@@ -1862,7 +1862,7 @@
                                     <div style="width:94%;border-top:1px solid;border-color:#e2e8f0;">
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.capacidad termica') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
                                             </div>
                                         </div>
@@ -1876,7 +1876,7 @@
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.unidadhvac') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                                     @if ($solution->unidad_hvac == 1)
                                                     Paquetes (RTU)
@@ -1908,7 +1908,7 @@
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo equipo') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                                     @if ($solution->tipo_equipo == 'basico')
                                             Básico
@@ -1978,7 +1978,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo diseño') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
                                             </div>
                                         </div>
@@ -1992,7 +1992,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo control') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
                                             </div>
                                         </div>
@@ -2006,7 +2006,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.dr') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
                                             </div>
                                         </div>
@@ -2020,21 +2020,21 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
                                             </div>
                                         </div>
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.inversion inicial') }} (CAPEX)</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                             </div>
                                         </div>
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.costo anual') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
                                             </div>
                                         </div>
@@ -2057,7 +2057,7 @@
                                     <div style="width:94%; border-top:1px solid;border-color:#e2e8f0;">
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:3px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Capacidad Térmica</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.capacidad termica') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</div>
                                             </div>
                                         </div>
@@ -2071,7 +2071,7 @@
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Equipos HVAC</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.unidadhvac') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                                     @if ($solution->unidad_hvac == 1)
                                                     Paquetes (RTU)
@@ -2103,7 +2103,7 @@
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Equipo</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo equipo') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">
                                                     @if ($solution->tipo_equipo == 'basico')
                                             Básico
@@ -2173,7 +2173,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Diseño</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo diseño') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_disenio}}</div>
                                             </div>
                                         </div>
@@ -2187,7 +2187,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Tipo Control</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.tipo control') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->name_t_control}}</div>
                                             </div>
                                         </div>
@@ -2201,7 +2201,7 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Difusor o Rejilla</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.dr') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->dr_name}}</div>
                                             </div>
                                         </div>
@@ -2215,21 +2215,21 @@
                                         @endif
                                         >
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Mantenimiento</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
                                             </div>
                                         </div>
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Inversión Inicial (CAPEX)</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.inversion inicial') }} (CAPEX)</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->val_aprox)}}</div>
                                             </div>
                                         </div>
 
                                         <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;">
                                             <div>
-                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">Costo Mantenimiento</div>
+                                                <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.costo anual') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">${{number_format($solution->costo_mantenimiento)}}</div>
                                             </div>
                                         </div>
@@ -2246,18 +2246,18 @@
 
     <div class="tarjet">
         <div align="center" class="title_tarjet">
-            <label  class="title_style">RESULTADOS ANÁLISIS ENERGÉTICO</label>
+            <label  class="title_style">{{ __('results.res_ans_ene') }}</label>
         </div>
 
         <div>
             <table class="">
                 <tbody>
                   <tr>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.nombre') }}:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.region') }}:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.ciudad') }}:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.categoria edificio') }}:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.area') }}:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
                   </tr>
 
                 </tbody>
@@ -2265,11 +2265,11 @@
               <table class="">
                 <tbody>
                     <tr>
-                        <td class="info_project_size_font"><label for="">Tipo Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->tipo_edi}}</label></td>
+                        <td class="info_project_size_font"><label for="">{{ __('index.tipo edificio') }}:</label> <label style="color:#3182ce;">{{$tar_ele->tipo_edi}}</label></td>
                         <td></td>
-                        <td class="info_project_size_font"><label for="">Horas Enfriamiento Anual:</label> <label style="color:#3182ce;">{{number_format($tar_ele->coolings_hours)}}</label></td>
+                        <td class="info_project_size_font"><label for="">{{ __('index.hors_enft_anual') }}:</label> <label style="color:#3182ce;">{{number_format($tar_ele->coolings_hours)}}</label></td>
                         <td></td>
-                        <td class="info_project_size_font"><label for="">Tarifa Elécrtica:</label> <label style="color:#3182ce;">{{$tar_ele->costo_elec}} $/Kwh</label></td></td>
+                        <td class="info_project_size_font"><label for="">{{ __('index.tar_ele') }}:</label> <label style="color:#3182ce;">{{$tar_ele->costo_elec}} $/Kwh</label></td></td>
                       </tr>
 
                 </tbody>
@@ -2283,7 +2283,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_base" style="width:100%;">
-                        <label style="margin-left:28px;" class="title_style">Solución Existente</label>
+                        <label style="margin-left:28px;" class="title_style">{{ __('index.sis_ext') }}</label>
                     </div>
                     <?php  $result1=$results->result_1($id_project,1) ?>
                     @if ($result1 ==! null)
@@ -2301,7 +2301,7 @@
                             @if ($unid_med_1 !== "")
 
                             <tr class="tr_style">
-                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
@@ -2311,7 +2311,7 @@
 
                             @if ($unid_med_1 === "")
                             <tr class="tr_style">
-                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
@@ -2325,7 +2325,7 @@
                       <tbody style="width: 100%;">
 
                           <tr class="tr_style">
-                              <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
+                              <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">{{ __('results.consumo_anual') }} (OPEX)</label></td>
                               </tr>
 
                               <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">{{number_format($sumaopex_1)}}</label>
@@ -2341,7 +2341,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_ab">
-                        <label style="margin-left:60px;" class="title_style">Solución A</label>
+                        <label style="margin-left:60px;" class="title_style">{{ __('index.solucion') }} A</label>
                     </div>
                     <?php  $result2=$results->result_1($id_project,2) ?>
                      @if ($result2 ==! null)
@@ -2359,7 +2359,7 @@
                       <tbody style="width: 100%;">
                         @if ($unid_med_2 !== "")
                             <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}}</label>
@@ -2369,7 +2369,7 @@
 
                         @if ($unid_med_2 === "")
                         <tr class="tr_style">
-                         <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                         <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                         </tr>
 
                         <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}}</label>
@@ -2384,7 +2384,7 @@
                     <tbody style="width: 100%;">
 
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">{{ __('results.consumo_anual') }} (OPEX)</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">{{number_format($sumaopex_2)}}</label>
@@ -2400,7 +2400,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_ab">
-                        <label style="margin-left:60px;" class="title_style">Solución B</label>
+                        <label style="margin-left:60px;" class="title_style">{{ __('index.solucion') }} B</label>
                     </div>
                     <?php  $result3=$results->result_1($id_project,3) ?>
                     @if ($result3 ==! null)
@@ -2417,7 +2417,7 @@
                       <tbody style="width: 100%;">
                         @if ($unid_med_3 !== "")
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
@@ -2427,7 +2427,7 @@
 
                         @if ($unid_med_3 === "")
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:100px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
@@ -2442,7 +2442,7 @@
                     <tbody style="width: 100%;">
 
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">{{ __('results.consumo_anual') }} (OPEX)</label></td>
                             </tr>
 
                             <td style="width: 100%;" class="">
@@ -2468,7 +2468,7 @@
     {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
     <div style="margin-top:5px; height:13%;" class="tarjet">
         <div align="center" class="title_tarjet_no_bg">
-            <p  class="title_style_no_bg">Ahorro Anual Energía – Diferencia entre Soluciones<b style="color:#ed8936;">(Kw/hr año)</b></p>
+            <p  class="title_style_no_bg">{{ __('results.eco_an_en') }} – {{ __('results.dif_ent_sol') }}<b style="color:#ed8936;">(Kw/hr año)</b></p>
         </div>
         <?php  $results_aux=$results->results($id_project) ?>
 
@@ -2484,7 +2484,7 @@
                 <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
-                        <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Existente v/s A</label>
+                        <label style="margin-left:100px;" class="dif_sols_subtitle">{{ __('index.sis_ext') }} v/s A</label>
                     </div>
                     <div style="width:100%;">
                         <label style="margin-left:150px;" class="cant_green">{{number_format($dif_1)}}</label>
@@ -2492,7 +2492,7 @@
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
-                        <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Existente v/s B</label>
+                        <label style="margin-left:50px;" class="dif_sols_subtitle">{{ __('index.sis_ext') }} v/s B</label>
                     </div>
                     <div style="width:100%;">
                         <label style="margin-left:150px;" class="cant_green">0</label>
@@ -2506,7 +2506,7 @@
                 <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
-                        <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Existente v/s A</label>
+                        <label style="margin-left:100px;" class="dif_sols_subtitle">{{ __('index.sis_ext') }} v/s A</label>
                     </div>
                     <div style="width:100%;">
                         <label style="margin-left:150px;" class="cant_green">{{number_format($dif_1)}}</label>
@@ -2517,7 +2517,7 @@
                 <?php  $dif_2=$smasolutions->dif_2($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
-                        <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Existente v/s B</label>
+                        <label style="margin-left:50px;" class="dif_sols_subtitle">{{ __('index.sis_ext') }} v/s B</label>
                     </div>
                     <div style="width:100%;">
                         <label style="margin-left:90px;" class="cant_green">{{number_format($dif_2)}}</label>
@@ -2536,7 +2536,7 @@
 {{-- title_style_no_bg --}}
 <div style="margin-top:9px; height:11%;" class="tarjet">
     <div align="center"  class="title_tarjet_no_bg">
-        <p  class="title_style_no_bg">Consumo de Energía HVAC por Área <b style="color:#ed8936;">(Kwh/@if($unidad_area == 'mc')m²@endif @if($unidad_area == 'ft')ft²@endif)</b></p>
+        <p  class="title_style_no_bg">{{ __('results.cons_ene_ar') }} <b style="color:#ed8936;">(Kwh/@if($unidad_area == 'mc')m²@endif @if($unidad_area == 'ft')ft²@endif)</b></p>
     </div>
     <div style="margin-left:15px; margin-right:15px;">
         <div>
@@ -2578,18 +2578,18 @@
      <div style="page-break-after:always;"></div>
      <div class="tarjet">
         <div align="center" class="title_tarjet">
-            <label  class="title_style">RESULTADOS ANÁLISIS FINANCIERO</label>
+            <label  class="title_style">{{ __('results.res_ans_fin') }}</label>
         </div>
 
         <div>
             <table class="">
                 <tbody>
                   <tr>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.nombre') }}:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.region') }}:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.ciudad') }}:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.categoria edificio') }}:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.area') }}:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
                   </tr>
 
                 </tbody>
@@ -2597,11 +2597,11 @@
               <table class="">
                 <tbody>
                     <tr>
-                        <td class="info_project_size_font"><label for="">Tipo Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->tipo_edi}}</label></td>
+                        <td class="info_project_size_font"><label for="">{{ __('index.tipo edificio') }}:</label> <label style="color:#3182ce;">{{$tar_ele->tipo_edi}}</label></td>
                         <td></td>
-                        <td class="info_project_size_font"><label for="">Horas Enfriamiento Anual:</label> <label style="color:#3182ce;">{{number_format($tar_ele->coolings_hours)}}</label></td>
+                        <td class="info_project_size_font"><label for="">{{ __('index.hors_enft_anual') }}:</label> <label style="color:#3182ce;">{{number_format($tar_ele->coolings_hours)}}</label></td>
                         <td></td>
-                        <td class="info_project_size_font"><label for="">Tarifa Elécrtica:</label> <label style="color:#3182ce;">{{$tar_ele->costo_elec}} $/Kwh</label></td></td>
+                        <td class="info_project_size_font"><label for="">{{ __('index.tar_ele') }}:</label> <label style="color:#3182ce;">{{$tar_ele->costo_elec}} $/Kwh</label></td></td>
                       </tr>
 
                 </tbody>
@@ -2615,7 +2615,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_base" style="width:100%;">
-                        <label style="margin-left:28px;" class="title_style">Solución Existente</label>
+                        <label style="margin-left:28px;" class="title_style">{{ __('index.sis_ext') }}</label>
                     </div>
                         {{-- Capacidad Total --}}
                         @if ($result1 ==! null)
@@ -2633,7 +2633,7 @@
                         <tbody style="width: 100%;">
                             @if ($unid_med_1 !== "")
                             <tr class="tr_style">
-                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
@@ -2643,7 +2643,7 @@
 
                             @if ($unid_med_1 === "")
                             <tr class="tr_style">
-                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
@@ -2658,7 +2658,7 @@
                         <tbody style="width: 100%;">
 
                             <tr class="tr_style">
-                                <td style="width: 100%;" class=""><label style="margin-left:50px;" class="title_cap_term" for="">Inversión Inicial</label></td>
+                                <td style="width: 100%;" class=""><label style="margin-left:50px;" class="title_cap_term" for="">{{ __('index.inversion inicial') }}</label></td>
                                 </tr>
 
                                 <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">${{number_format($inv_ini_1)}}</label>
@@ -2670,7 +2670,7 @@
                       <tbody style="width: 100%;">
 
                           <tr class="tr_style">
-                              <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
+                              <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">{{ __('results.consumo_anual') }} (OPEX)</label></td>
                               </tr>
 
                               <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">${{number_format($sumaopex_1*$tar_ele->costo_elec)}}</label>
@@ -2686,7 +2686,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_ab">
-                        <label style="margin-left:60px;" class="title_style">Solución A</label>
+                        <label style="margin-left:60px;" class="title_style">{{ __('index.solucion') }} A</label>
                     </div>
 
                      {{-- Capacidad Total --}}
@@ -2706,7 +2706,7 @@
 
                         @if ($unid_med_2 !== "")
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                         </tr>
 
                         <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}}</label>
@@ -2716,7 +2716,7 @@
 
                         @if ($unid_med_2 === "")
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                         </tr>
 
                         <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}}</label>
@@ -2733,7 +2733,7 @@
                     <tbody style="width: 100%;">
 
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:50px;" class="title_cap_term" for="">Inversión Inicial</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:50px;" class="title_cap_term" for="">{{ __('index.inversion inicial') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">$ {{number_format($inv_ini_2)}}</label>
@@ -2745,7 +2745,7 @@
                     <tbody style="width: 100%;">
 
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">{{ __('results.consumo_anual') }} (OPEX)</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">$ {{number_format($sumaopex_2*$tar_ele->costo_elec)}}</label>
@@ -2761,7 +2761,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_ab">
-                        <label style="margin-left:60px;" class="title_style">Solución B</label>
+                        <label style="margin-left:60px;" class="title_style">{{ __('index.solucion') }} B</label>
                     </div>
 
                      {{-- Capacidad Total --}}
@@ -2781,7 +2781,7 @@
 
                         @if ($unid_med_3 !== "")
                           <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                           </tr>
 
                         <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
@@ -2791,7 +2791,7 @@
 
                         @if ($unid_med_3 === "")
                           <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                           </tr>
 
                         <td style="width: 100%;" class=""><label style="margin-left:100px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
@@ -2805,7 +2805,7 @@
                     <tbody style="width: 100%;">
 
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:50px;" class="title_cap_term" for="">Inversión Inicial</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:50px;" class="title_cap_term" for="">{{ __('index.inversion inicial') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class="">
@@ -2829,7 +2829,7 @@
                     <tbody style="width: 100%;">
 
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">{{ __('results.consumo_anual') }} (OPEX)</label></td>
                             </tr>
 
                             <td style="width: 100%;" class="">
@@ -2850,7 +2850,7 @@
     {{-- nversión Inicial (CAPEX) por Área ($/m²) --}}
     {{-- <div style="margin-top:5px; height:11%;" class="tarjet">
         <div align="center" class="title_tarjet_no_bg">
-            <p  class="title_style_no_bg">Inversión Inicial (CAPEX) por Área<b style="color:#ed8936;">($/{{$uni_med1 = ($unidad_area == 'mc') ? 'm²' : 'ft²'}})</b></p>
+            <p  class="title_style_no_bg">{{ __('index.inversion inicial') }} (CAPEX) por Área<b style="color:#ed8936;">($/{{$uni_med1 = ($unidad_area == 'mc') ? 'm²' : 'ft²'}})</b></p>
         </div>
 
         <div style="margin-left:15px; margin-right:15px;">
@@ -2933,7 +2933,7 @@
 {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
 <div style="margin-top:5px; height:14%;" class="tarjet">
     <div align="center" class="title_tarjet_no_bg">
-        <p  class="title_style_no_bg">Ahorro Anual de Costo Energético – Entre Soluciones</p>
+        <p  class="title_style_no_bg">{{ __('results.aho_anu_cost_ele') }} – {{ __('results.entre_sol') }}</p>
     </div>
     @if (count($results_aux)>1)
     <div style="margin-left:15px; margin-right:15px;">
@@ -2949,7 +2949,7 @@
 
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                 <div style="width:100%;">
-                    <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Existente v/s A</label>
+                    <label style="margin-left:100px;" class="dif_sols_subtitle">{{ __('index.sis_ext') }} v/s A</label>
                 </div>
                 <div style="width:100%;">
                     <label style="margin-left:150px;" class="cant_green">${{number_format($dif_1_cost)}}</label>
@@ -2957,7 +2957,7 @@
             </div>
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                 <div style="width:100%;">
-                    <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Existente v/s B</label>
+                    <label style="margin-left:50px;" class="dif_sols_subtitle">{{ __('index.sis_ext') }} v/s B</label>
                 </div>
                 <div style="width:100%;">
                     <label style="margin-left:90;" class="cant_green">$ 0</label>
@@ -2972,7 +2972,7 @@
 
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                 <div style="width:100%;">
-                    <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Existente v/s A</label>
+                    <label style="margin-left:100px;" class="dif_sols_subtitle">{{ __('index.sis_ext') }} v/s A</label>
                 </div>
                 <div style="width:100%;">
                     <label style="margin-left:150px;" class="cant_green">$ {{number_format($dif_1_cost)}}</label>
@@ -2983,7 +2983,7 @@
             <?php  $dif_2_cost=$smasolutions->dif_2_cost($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                 <div style="width:100%;">
-                    <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Existente v/s B</label>
+                    <label style="margin-left:50px;" class="dif_sols_subtitle">{{ __('index.sis_ext') }} v/s B</label>
                 </div>
                 <div style="width:100%;">
                     <label style="margin-left:90px;" class="cant_green">$ {{number_format($dif_2_cost)}}</label>
@@ -3001,7 +3001,7 @@
     @foreach ($results_aux as $solution)
     <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
         <div style="width:100%;">
-            <label style="margin-left:100px;" class="dif_sols_subtitle">Solución Existente v/s A</label>
+            <label style="margin-left:100px;" class="dif_sols_subtitle">{{ __('index.sis_ext') }} v/s A</label>
         </div>
         <div style="width:100%;">
             <label style="margin-left:150px;" class="cant_green">$ 0</label>
@@ -3009,7 +3009,7 @@
     </div>
     <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
         <div style="width:100%;">
-            <label style="margin-left:50px;" class="dif_sols_subtitle">Solución Existente v/s B</label>
+            <label style="margin-left:50px;" class="dif_sols_subtitle">{{ __('index.sis_ext') }} v/s B</label>
         </div>
         <div style="width:100%;">
             <label style="margin-left:90px;" class="cant_green">$ 0</label>
@@ -3022,7 +3022,7 @@
 {{--Payback Simple (años) --}}
 <div style="margin-top:5px; height:11%;" class="tarjet">
     <div align="center" class="title_tarjet_no_bg">
-        <p  class="title_style_no_bg">Payback Simple (años)<b style="color:#ed8936;"></b></p>
+        <p  class="title_style_no_bg">{{ __('results.simple') }} ({{ __('results.ans') }})<b style="color:#ed8936;"></b></p>
     </div>
 
     <div style="margin-left:15px; margin-right:15px;">
@@ -3059,21 +3059,21 @@
 
 <div style="margin-top:5px; height:20%;" class="tarjet">
     <div align="center" class="title_tarjet_no_bg">
-        <p  class="title_style_no_bg">ROI Entre Soluciónes</p>
+        <p  class="title_style_no_bg">ROI {{ __('results.entre_sol') }}</p>
     </div>
 
     <div style="margin-left:15px; margin-right:15px;">
         <table style="width: 100%">
             <tr>
             <th></th>
-            <th class="yrs_style">1 Años</th>
-            <th class="yrs_style">2 Años</th>
-            <th class="yrs_style">3 Años</th>
-            <th class="yrs_style">4 Años</th>
-            <th class="yrs_style">5 Años</th>
+            <th class="yrs_style">1 {{ __('results.ans') }}</th>
+            <th class="yrs_style">2 {{ __('results.ans') }}</th>
+            <th class="yrs_style">3 {{ __('results.ans') }}</th>
+            <th class="yrs_style">4 {{ __('results.ans') }}</th>
+            <th class="yrs_style">5 {{ __('results.ans') }}</th>
             </tr>
             <tr>
-            <td class="sol_ab_yrs_style">Solución A</td>
+            <td class="sol_ab_yrs_style">{{ __('index.solucion') }} A</td>
             @if ($result2 !== null)
                 <?php  $roi_inv_tot_1=$smasolutions->roi_inv_tot_retro(1,$id_project,$dif_1_cost,$inv_ini_2) ?>
                 @if ($roi_inv_tot_1 <= 0)
@@ -3165,7 +3165,7 @@
             @endif
             </tr>
             <tr>
-                <td class="sol_ab_yrs_style">Solución B</td>
+                <td class="sol_ab_yrs_style">{{ __('index.solucion') }} B</td>
 
                 @if ($result3 !== null)
                 <?php  $roi_inv_tot_b_1=$smasolutions->roi_inv_tot_retro(1,$id_project,$dif_2_cost,$inv_ini_3) ?>
@@ -3297,7 +3297,7 @@
 
         <div style="margin-top:5px; height:65%;" class="tarjet">
                 <div align="center" class="title_tarjet_no_bg">
-                    <p  class="title_style_no_bg">Análisis CAPEX v/s OPEX @if($unidad_area == 'mc')($/m²)@endif @if($unidad_area == 'ft')($/ft²)@endif</p>
+                    <p  class="title_style_no_bg">{{ __('results.analisis') }} CAPEX v/s OPEX @if($unidad_area == 'mc')($/m²)@endif @if($unidad_area == 'ft')($/ft²)@endif</p>
                 </div>
                 <div style="margin-left:15px; margin-right:15px;">
                     <img style="width:110px; height:30px;" src="../public/assets/images/capex_opex.png">
@@ -3540,18 +3540,18 @@
 
     <div class="tarjet">
         <div align="center" class="title_tarjet">
-            <label  class="title_style">ANÁLISIS DE LA INTENSIDAD DEL USO DE LA ENERGÍA (EUI)</label>
+            <label  class="title_style">{{ __('results.anls_int_uso_ene') }} (EUI)</label>
         </div>
 
         <div>
             <table class="">
                 <tbody>
                   <tr>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.nombre') }}:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.region') }}:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.ciudad') }}:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.categoria edificio') }}:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
+                    <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.area') }}:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
                   </tr>
 
                 </tbody>
@@ -3559,11 +3559,11 @@
               <table class="">
                 <tbody>
                     <tr>
-                        <td class="info_project_size_font"><label for="">Tipo Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->tipo_edi}}</label></td>
+                        <td class="info_project_size_font"><label for="">{{ __('index.tipo edificio') }}:</label> <label style="color:#3182ce;">{{$tar_ele->tipo_edi}}</label></td>
                         <td></td>
-                        <td class="info_project_size_font"><label for="">Horas Enfriamiento Anual:</label> <label style="color:#3182ce;">{{number_format($tar_ele->coolings_hours)}}</label></td>
+                        <td class="info_project_size_font"><label for="">{{ __('index.hors_enft_anual') }}:</label> <label style="color:#3182ce;">{{number_format($tar_ele->coolings_hours)}}</label></td>
                         <td></td>
-                        <td class="info_project_size_font"><label for="">Tarifa Elécrtica:</label> <label style="color:#3182ce;">{{$tar_ele->costo_elec}} $/Kwh</label></td></td>
+                        <td class="info_project_size_font"><label for="">{{ __('index.tar_ele') }}:</label> <label style="color:#3182ce;">{{$tar_ele->costo_elec}} $/Kwh</label></td></td>
                       </tr>
 
                 </tbody>
@@ -3605,7 +3605,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_base" style="width:100%;">
-                        <label style="margin-left:28px;" class="title_style">Solución Existente</label>
+                        <label style="margin-left:28px;" class="title_style">{{ __('index.sis_ext') }}</label>
                     </div>
                     {{-- Capacidad Total --}}
                     <table class="">
@@ -3624,7 +3624,7 @@
 
                             @if ($unid_med_1 !== "")
                                 <tr class="tr_style">
-                                    <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                                    <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                                     </tr>
 
                                     <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}} </label>
@@ -3634,7 +3634,7 @@
 
                             @if ($unid_med_1 === "")
                             <tr class="tr_style">
-                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                                <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                                 </tr>
 
                                 <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}} </label>
@@ -3649,7 +3649,7 @@
                       <tbody style="width: 100%;">
 
                           <tr class="tr_style">
-                              <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
+                              <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">{{ __('results.consumo_anual') }} (OPEX)</label></td>
                               </tr>
 
                               <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">$ {{number_format($consumo_anual_edi)}}</label>
@@ -3665,7 +3665,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_ab">
-                        <label style="margin-left:60px;" class="title_style">Solución A</label>
+                        <label style="margin-left:60px;" class="title_style">{{ __('index.solucion') }} A</label>
                     </div>
 
                      {{-- Capacidad Total --}}
@@ -3685,7 +3685,7 @@
 
                         @if ($unid_med_2 !== "")
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}}</label>
@@ -3695,7 +3695,7 @@
 
                         @if ($unid_med_2 === "")
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}}</label>
@@ -3710,7 +3710,7 @@
                     <tbody style="width: 100%;">
 
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">{{ __('results.consumo_anual') }} (OPEX)</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">$ {{number_format($consumo_anual_edi_a)}}</label>
@@ -3726,7 +3726,7 @@
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
                     <div class="sol_ab">
-                        <label style="margin-left:60px;" class="title_style">Solución B</label>
+                        <label style="margin-left:60px;" class="title_style">{{ __('index.solucion') }} B</label>
                     </div>
 
                      {{-- Capacidad Total --}}
@@ -3746,7 +3746,7 @@
 
                         @if ($unid_med_3 !== "")
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
@@ -3756,7 +3756,7 @@
 
                         @if ($unid_med_3 === "")
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:100px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
@@ -3771,7 +3771,7 @@
                     <tbody style="width: 100%;">
 
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">Consumo Anual (OPEX)</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">{{ __('results.consumo_anual') }} (OPEX)</label></td>
                             </tr>
                             <td style="width: 100%;" class="">
                             @if (number_format($sumaopex_3) <= 0 )
@@ -3905,9 +3905,9 @@
         </div>
     </div>
     {{-- <div style="page-break-after:always;"></div> --}}
-    <div  style="margin-top:6px; height:22%;" class="tarjet">
+    <div  style="margin-top:6px; height:20%;" class="tarjet">
         <div align="center" class="title_tarjet_blue">
-            <label  class="title_style">Desperdicio de Energía Eléctrica del Edificio<b style="color:#ed8936;"> (Año)</b></label>
+            <label  class="title_style">{{ __('results.des_ene_ele_edif') }}<b style="color:#ed8936;"> ({{ __('results.anio') }})</b></label>
         </div>
         <div style="margin-left:15px; margin-right:15px;">
             <table style="width: 100%">
@@ -3917,7 +3917,7 @@
                 <th class="yrs_style">ASHRAE</th>
                 </tr>
                 <tr>
-                    <td class="sol_ab_yrs_style">Solución Existente</td>
+                    <td class="sol_ab_yrs_style">{{ __('index.sis_ext') }}</td>
                     <?php  $energy_base=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_base,$tar_ele->costo_elec) ?>
                     @if ($energy_base > 0)
                     <td style="color:#ea0000;" class="desp_elect_style">${{number_format($energy_base)}}</td>
@@ -3938,7 +3938,7 @@
                     </tr>
                 <tr>
 
-                <td class="sol_ab_yrs_style">Solución A</td>
+                <td class="sol_ab_yrs_style">{{ __('index.solucion') }} A</td>
 
             <?php  $energy_a=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_a,$tar_ele->costo_elec) ?>
 
@@ -3960,7 +3960,7 @@
                 @endif
                 </tr>
                 <tr>
-                    <td class="sol_ab_yrs_style">Solución B</td>
+                    <td class="sol_ab_yrs_style">{{ __('index.solucion') }} B</td>
                     @if ($result3 ==! null)
                         <?php  $energy_b=$desperdicio->desp_energy($id_project,$energy_star,$ashrae,$valor_eui_b,$tar_ele->costo_elec) ?>
 
@@ -3999,18 +3999,18 @@
 <div style="page-break-after:always;"></div>
 <div class="tarjet">
     <div align="center" class="title_tarjet">
-        <label  class="title_style">RESULTADOS ANÁLISIS SUSTENTABLE</label>
+        <label  class="title_style">{{ __('results.res_ana_sus') }}</label>
     </div>
 
     <div>
         <table class="">
             <tbody>
               <tr>
-                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
-                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
-                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
-                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.nombre') }}:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.region') }}:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.ciudad') }}:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.categoria edificio') }}:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.area') }}:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
               </tr>
 
             </tbody>
@@ -4018,11 +4018,11 @@
           <table class="">
             <tbody>
                 <tr>
-                    <td class="info_project_size_font"><label for="">Tipo Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->tipo_edi}}</label></td>
+                    <td class="info_project_size_font"><label for="">{{ __('index.tipo edificio') }}:</label> <label style="color:#3182ce;">{{$tar_ele->tipo_edi}}</label></td>
                     <td></td>
-                    <td class="info_project_size_font"><label for="">Horas Enfriamiento Anual:</label> <label style="color:#3182ce;">{{number_format($tar_ele->coolings_hours)}}</label></td>
+                    <td class="info_project_size_font"><label for="">{{ __('index.hors_enft_anual') }}:</label> <label style="color:#3182ce;">{{number_format($tar_ele->coolings_hours)}}</label></td>
                     <td></td>
-                    <td class="info_project_size_font"><label for="">Tarifa Elécrtica:</label> <label style="color:#3182ce;">{{$tar_ele->costo_elec}} $/Kwh</label></td></td>
+                    <td class="info_project_size_font"><label for="">{{ __('index.tar_ele') }}:</label> <label style="color:#3182ce;">{{$tar_ele->costo_elec}} $/Kwh</label></td></td>
                   </tr>
 
             </tbody>
@@ -4036,7 +4036,7 @@
         <div>
             <div style="margin-right:5px;margin-top:5px;" class="column" >
                 <div class="sol_base" style="width:100%;">
-                    <label style="margin-left:28px;" class="title_style">Solución Existente</label>
+                    <label style="margin-left:28px;" class="title_style">{{ __('index.sis_ext') }}</label>
                 </div>
                 {{-- Capacidad Total --}}
                 <table class="">
@@ -4054,7 +4054,7 @@
                         @endif
                         @if ($unid_med_1 !== "")
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
@@ -4064,7 +4064,7 @@
 
                         @if ($unid_med_1 === "")
                         <tr class="tr_style">
-                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                            <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
 
                             <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
@@ -4082,7 +4082,7 @@
         <div>
             <div style="margin-right:5px;margin-top:5px;" class="column" >
                 <div class="sol_ab">
-                    <label style="margin-left:60px;" class="title_style">Solución A</label>
+                    <label style="margin-left:60px;" class="title_style">{{ __('index.solucion') }} A</label>
                 </div>
 
                  {{-- Capacidad Total --}}
@@ -4102,7 +4102,7 @@
 
                     @if ($unid_med_2 !== "")
                     <tr class="tr_style">
-                        <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                        <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                         </tr>
 
                         <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}} </label>
@@ -4112,7 +4112,7 @@
 
                     @if ($unid_med_2 === "")
                     <tr class="tr_style">
-                        <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                        <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                         </tr>
 
                         <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_2}} </label>
@@ -4131,7 +4131,7 @@
         <div>
             <div style="margin-right:5px;margin-top:5px;" class="column" >
                 <div class="sol_ab">
-                    <label style="margin-left:60px;" class="title_style">Solución B</label>
+                    <label style="margin-left:60px;" class="title_style">{{ __('index.solucion') }} B</label>
                 </div>
 
                  {{-- Capacidad Total --}}
@@ -4151,7 +4151,7 @@
 
                     @if ($unid_med_3 !== "")
                     <tr class="tr_style">
-                        <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                        <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                         </tr>
 
                         <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
@@ -4161,7 +4161,7 @@
 
                     @if ($unid_med_3 === "")
                     <tr class="tr_style">
-                        <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">Capacidad Térmica Total</label></td>
+                        <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                         </tr>
 
                         <td style="width: 100%;" class=""><label style="margin-left:100px;" class="cap_term" for="">{{$sumacap_term_3}}</label>
@@ -4180,7 +4180,7 @@
  {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
  <div style="margin-top:5px; height:20%;" class="tarjet">
     <div  align="center" class="title_tarjet_no_bg">
-        <p  style="margin-top:0px;" class="title_style_no_bg">Reducción Energética - Mega Watts</p>
+        <p  style="margin-top:0px;" class="title_style_no_bg">{{ __('results.red_ene') }} - Mega Watts</p>
     </div>
 
     <div style="margin-left:15px; margin-right:15px;">
@@ -4188,14 +4188,14 @@
             <tr>
             <th><img style="margin-left:30px;"  src="../public/assets/images/watts.png" width="50px" height="50"/>
             </th>
-            <th class="yrs_style">1 Años</th>
-            <th class="yrs_style">2 Años</th>
-            <th class="yrs_style">3 Años</th>
-            <th class="yrs_style">4 Años</th>
-            <th class="yrs_style">5 Años</th>
+            <th class="yrs_style">1 {{ __('results.ans') }}</th>
+            <th class="yrs_style">2 {{ __('results.ans') }}</th>
+            <th class="yrs_style">3 {{ __('results.ans') }}</th>
+            <th class="yrs_style">4 {{ __('results.ans') }}</th>
+            <th class="yrs_style">5 {{ __('results.ans') }}</th>
             </tr>
             <tr>
-            <td class="sol_ab_yrs_style">Solución A</td>
+            <td class="sol_ab_yrs_style">{{ __('index.solucion') }} A</td>
             @if ($result2 !== null)
             <?php  $red_en_mw_a_1=$smasolutions->red_en_mw(1,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_1)}}</td>
@@ -4239,7 +4239,7 @@
             @endif
             </tr>
             <tr>
-                <td class="sol_ab_yrs_style">Solución B</td>
+                <td class="sol_ab_yrs_style">{{ __('index.solucion') }} B</td>
                 @if ($result3 !== null)
                 <?php  $red_en_mw_b_1=$smasolutions->red_en_mw(1,$dif_2) ?>
                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_1)}}</td>
@@ -4288,21 +4288,21 @@
  {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
  <div style="margin-top:5px; height:20%;" class="tarjet">
     <div align="center" class="title_tarjet_no_bg">
-        <p  class="title_style_no_bg">Reducción Huella de Carbono – Ton. CO2</p>
+        <p  class="title_style_no_bg">{{ __('results.red_pe_ca') }} – Ton. CO2</p>
     </div>
 
     <div style="margin-left:15px; margin-right:15px;">
         <table style="width: 100%">
             <tr>
             <th><img style="margin-left:30px;"  src="../public/assets/images/Huella.png" width="55px" height="55"/></th>
-            <th class="yrs_style">1 Años</th>
-            <th class="yrs_style">2 Años</th>
-            <th class="yrs_style">3 Años</th>
-            <th class="yrs_style">4 Años</th>
-            <th class="yrs_style">5 Años</th>
+            <th class="yrs_style">1 {{ __('results.ans') }}</th>
+            <th class="yrs_style">2 {{ __('results.ans') }}</th>
+            <th class="yrs_style">3 {{ __('results.ans') }}</th>
+            <th class="yrs_style">4 {{ __('results.ans') }}</th>
+            <th class="yrs_style">5 {{ __('results.ans') }}</th>
             </tr>
             <tr>
-            <td class="sol_ab_yrs_style">Solución A</td>
+            <td class="sol_ab_yrs_style">{{ __('index.solucion') }} A</td>
             @if ($result2 !== null)
             <?php  $red_hu_carb_a_1=$smasolutions->red_hu_carb(1,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_1)}}</td>
@@ -4344,7 +4344,7 @@
             @endif
             </tr>
             <tr>
-                <td class="sol_ab_yrs_style">Solución B</td>
+                <td class="sol_ab_yrs_style">{{ __('index.solucion') }} B</td>
                 @if ($result3 !== null)
                 <?php  $red_hu_carb_b_1=$smasolutions->red_hu_carb(1,$dif_2) ?>
                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_1)}}</td>
@@ -4396,21 +4396,21 @@
  {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
  <div style="margin-top:5px; height:20%;" class="tarjet">
     <div align="center" class="title_tarjet_no_bg">
-        <p  class="title_style_no_bg">Reducción de Bolsas de Basura - Recicladas</p>
+        <p  class="title_style_no_bg">{{ __('results.red_bol_ca') }} - {{ __('results.recicladas') }}</p>
     </div>
 
     <div style="margin-left:15px; margin-right:15px;">
         <table style="width: 100%">
             <tr>
             <th><img style="margin-left:30px;"  src="../public/assets/images/reducción-bolsas.png" width="50px" height="50"/></th>
-            <th class="yrs_style">1 Años</th>
-            <th class="yrs_style">2 Años</th>
-            <th class="yrs_style">3 Años</th>
-            <th class="yrs_style">4 Años</th>
-            <th class="yrs_style">5 Años</th>
+            <th class="yrs_style">1 {{ __('results.ans') }}</th>
+            <th class="yrs_style">2 {{ __('results.ans') }}</th>
+            <th class="yrs_style">3 {{ __('results.ans') }}</th>
+            <th class="yrs_style">4 {{ __('results.ans') }}</th>
+            <th class="yrs_style">5 {{ __('results.ans') }}</th>
             </tr>
             <tr>
-            <td class="sol_ab_yrs_style">Solución A</td>
+            <td class="sol_ab_yrs_style">{{ __('index.solucion') }} A</td>
             @if ($result2 !== null)
             <?php  $red_bol_ba_a_1=$smasolutions->red_bol_ba(1,$dif_1) ?>
             <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_1)}}</td>
@@ -4453,7 +4453,7 @@
             @endif
             </tr>
             <tr>
-                <td class="sol_ab_yrs_style">Solución B</td>
+                <td class="sol_ab_yrs_style">{{ __('index.solucion') }} B</td>
                 @if ($result3 !== null)
                 <?php  $red_bol_ba_b_1=$smasolutions->red_bol_ba(1,$dif_2) ?>
                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_1)}}</td>
@@ -4501,18 +4501,18 @@
 <div style="page-break-after:always;"></div>
 <div class="tarjet">
     <div align="center" class="title_tarjet">
-        <label  class="title_style">Analisis de Confort y Productividad</label>
+        <label  class="title_style">{{ __('results.ans_conf_prod') }}</label>
     </div>
 
     <div>
         <table class="">
             <tbody>
               <tr>
-                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Nombre:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
-                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Región:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
-                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Ciudad:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
-                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Categoría Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
-                <td style="padding-top:10px;" class="info_project_size_font"><label for="">Área:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.nombre') }}:</label> <label style="color:#3182ce;">{{substr($tar_ele->name, 0,9)}}</label></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.region') }}:</label> <label style="color:#3182ce;">{{$tar_ele->region}}</label></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.ciudad') }}:</label> <label style="color:#3182ce;">{{$tar_ele->ciudad}}</label></td></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.categoria edificio') }}:</label> <label style="color:#3182ce;">{{$tar_ele->cad_edi}}</label></td></td>
+                <td style="padding-top:10px;" class="info_project_size_font"><label for="">{{ __('index.area') }}:</label> <label style="color:#3182ce;">{{number_format($tar_ele->area)}}</label></td></td>
               </tr>
 
             </tbody>
@@ -4520,11 +4520,11 @@
           <table class="">
             <tbody>
                 <tr>
-                    <td class="info_project_size_font"><label for="">Tipo Edificio:</label> <label style="color:#3182ce;">{{$tar_ele->tipo_edi}}</label></td>
+                    <td class="info_project_size_font"><label for="">{{ __('index.tipo edificio') }}:</label> <label style="color:#3182ce;">{{$tar_ele->tipo_edi}}</label></td>
                     <td></td>
-                    <td class="info_project_size_font"><label for="">Horas Enfriamiento Anual:</label> <label style="color:#3182ce;">{{number_format($tar_ele->coolings_hours)}}</label></td>
+                    <td class="info_project_size_font"><label for="">{{ __('index.hors_enft_anual') }}:</label> <label style="color:#3182ce;">{{number_format($tar_ele->coolings_hours)}}</label></td>
                     <td></td>
-                    <td class="info_project_size_font"><label for="">Tarifa Elécrtica:</label> <label style="color:#3182ce;">{{$tar_ele->costo_elec}} $/Kwh</label></td></td>
+                    <td class="info_project_size_font"><label for="">{{ __('index.tar_ele') }}:</label> <label style="color:#3182ce;">{{$tar_ele->costo_elec}} $/Kwh</label></td></td>
                   </tr>
 
             </tbody>
@@ -4534,13 +4534,13 @@
 </div>
 <div  style="margin-top:6px; height:25%;" class="tarjet">
     <div align="center" class="title_tarjet_blue">
-        <label  class="title_style">Nivel de Confort</label>
+        <label  class="title_style">{{ __('results.niv_conf') }}</label>
     </div>
 
     <div style="margin-left:15px; margin-right:15px;margin-bottom:10px;">
         <table style="width: 100%; margin-top:20px;">
             <tr style="">
-            <th class="sol_ab_yrs_style_confort" style="width:170px;">Solución Existente</th>
+            <th class="sol_ab_yrs_style_confort" style="width:170px;">{{ __('index.sis_ext') }}</th>
             <?php  $conf_val_base=$conf_val->conf_val($id_project,1,1,$sumacap_term_1); ?>
 
                     <?php
@@ -4579,7 +4579,7 @@
                 @endfor
             </tr>{{-- espacio --}}
             <tr>
-                <th class="sol_ab_yrs_style_confort" style="width:170px;">Solución A</th>
+                <th class="sol_ab_yrs_style_confort" style="width:170px;">{{ __('index.solucion') }} A</th>
 
                 @if ($result2 !== null)
                 <?php  $conf_val_a=$conf_val->conf_val($id_project,2,1,$sumacap_term_2);?>
@@ -4626,7 +4626,7 @@
                 @endfor
             </tr>{{-- espacio --}}
             <tr>
-                <td class="sol_ab_yrs_style_confort" style="width:170px;">Solución B</td>
+                <td class="sol_ab_yrs_style_confort" style="width:170px;">{{ __('index.solucion') }} B</td>
 
                 @if ($result3 !== null)
                 <?php  $conf_val_b=$conf_val->conf_val($id_project,3,1,$sumacap_term_3) ?>
@@ -4673,7 +4673,7 @@
 
 <div  style="margin-top:6px; height:25%;" class="tarjet">
     <div align="center" class="title_tarjet_blue">
-        <label  class="title_style">Productividad Laboral</label>
+        <label  class="title_style">{{ __('results.prod_lab') }}</label>
     </div>
 
     <div>

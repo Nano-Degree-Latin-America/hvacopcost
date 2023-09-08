@@ -8,7 +8,7 @@ return [
     'ciudad' => 'Ciudad',
     'incremento anual energia' => 'Incremento Anual Energía',
     'inflacion anual' => 'Inflación Anual',
-    'categoria edificio' => 'Categoria Edificio',
+    'categoria edificio' => 'Categoría Edificio',
     'tipo edificio' => 'Tipo Edificio',
     'area' => 'Aréa',
     'unidad' => 'Unidad',

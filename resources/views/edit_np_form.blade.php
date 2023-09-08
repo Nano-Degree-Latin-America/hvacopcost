@@ -20,7 +20,6 @@
         <div class="grid w-full" id="sol_1_1" name="sol_1_1">
         <input type="text" name="pais" id="pais" class="hidden">
         <input type="text" name="ciudad" id="ciudad" class="hidden">
-
        <div class="flex w-full ">
         <div class="w-full  mt-2 mx-2 bg-gray-200 rounded-md shadow-md">
           <div class="w-full grid gap-y-2 my-2 ">
@@ -257,7 +256,7 @@
 
 
                     <div class="w-1/2 flex justify-start">
-                        <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2','csDisenio_1_2');" name="cUnidad_1_2" id="cUnidad_1_2" >
+                        <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2','csDisenio_1_2','{{App::getLocale()}}');" name="cUnidad_1_2" id="cUnidad_1_2" >
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -467,7 +466,7 @@
                                <label style="font-size: 14px;" class="" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                            </div>
                            <div class="w-1/2 flex justify-start">
-                               <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,3,'csTipo_1_3');" name="cUnidad_1_3" id="cUnidad_1_3" >
+                               <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,3,'csTipo_1_3','{{App::getLocale()}}');" name="cUnidad_1_3" id="cUnidad_1_3" >
                                     <option selected value="0">{{ __('index.seleccionar') }}</option>
                                    <option value="1">Paquetes (RTU)</option>
                                    <option value="2">Split DX</option>
@@ -779,7 +778,7 @@
                                 <label style="font-size: 14px;" class="" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1');valida_update_store_solution('action_submit_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
+                                <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1','{{App::getLocale()}}');valida_update_store_solution('action_submit_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -989,7 +988,7 @@
                             <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select style="margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,2,'cheTipo_2_2');"  name="cUnidad_2_2" id="cUnidad_2_2" >
+                            <select style="margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,2,'cheTipo_2_2','{{App::getLocale()}}');"  name="cUnidad_2_2" id="cUnidad_2_2" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -1205,7 +1204,7 @@
                             <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,3,'cheTipo_2_3');" name="cUnidad_2_3" id="cUnidad_2_3" >
+                            <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,3,'cheTipo_2_3','{{App::getLocale()}}');" name="cUnidad_2_3" id="cUnidad_2_3" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -1528,7 +1527,7 @@
                                 <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1');valida_update_store_solution('action_submit_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
+                                <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1','{{App::getLocale()}}');valida_update_store_solution('action_submit_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -1743,7 +1742,7 @@
                             <label class="labels" class="" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="unidadHvac(this.value,1,'cheTipo_3_2');" name="cUnidad_3_2" id="cUnidad_3_2" >
+                            <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="unidadHvac(this.value,1,'cheTipo_3_2','{{App::getLocale()}}');" name="cUnidad_3_2" id="cUnidad_3_2" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -1956,7 +1955,7 @@
                             <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_3');" name="cUnidad_3_3" id="cUnidad_3_3" >
+                            <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_3','{{App::getLocale()}}');" name="cUnidad_3_3" id="cUnidad_3_3" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
