@@ -30,20 +30,38 @@ class EmpresasController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $query=trim($request->GET('searchText'));
 
-        $empresas = DB::table('empresas')
-        ->join('users','users.id','=','empresas.id_user')
-        ->select('empresas.*','users.name as name_user')
-        ->orderBy('created_at','desc')
-        ->paginate(10);
+        if($request)
+        {
+            if($query != ""){
+                $empresas = DB::table('empresas')
+                ->join('users','users.id','=','empresas.id_user')
+                ->where('empresas.id','=',$query)
+                ->select('empresas.*','users.name as name_user')
+                ->orderBy('created_at','desc')
+                ->paginate(10);
+            }
 
+            if($query == ""){
+                $empresas = DB::table('empresas')
+                ->join('users','users.id','=','empresas.id_user')
+                ->select('empresas.*','users.name as name_user')
+                ->orderBy('created_at','desc')
+                ->paginate(10);
+            }
+        }
+
+
+        $emps = DB::table('empresas')
+        ->get();
         $empresa_admin  = DB::table('empresas')
         ->where('empresas.id','=',Auth::user()->id_empresa)
         ->first()->name;
 
-        return view('empresas.index',["empresas"=>$empresas,"empresa_admin"=>$empresa_admin]);
+        return view('empresas.index',["emps"=>$emps,"empresas"=>$empresas,"empresa_admin"=>$empresa_admin,"searchText"=>$query]);
     }
 
     /**

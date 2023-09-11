@@ -75,13 +75,13 @@ span{
                          </button>
 
                     </a>
-                  </div>
+                </div>
 
 
+            </div>
 
-               </div>
 
-
+            @include('empresas.search')
               <div class="card has-table">
                 <header class="card-header">
                   <p class="card-header-title">
