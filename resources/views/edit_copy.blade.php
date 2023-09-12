@@ -670,19 +670,19 @@ $idm = App::getLocale();
                                                         @switch($project_edit->hrs_tiempo)
                                                             @case(30)
                                                             <option selected value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                            <option value="51_167 ">{{ __('index.menos de 50 hrs') }}.</option>
+                                                            <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
                                                             <option value="168">168 Hrs.</option>
                                                             @break
 
                                                             @case(80)
                                                             <option  value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                            <option selected value="51_167 ">{{ __('index.menos de 50 hrs') }}.</option>
+                                                            <option selected value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
                                                             <option value="168">168 Hrs.</option>
                                                             @break
 
                                                             @case(168)
                                                             <option value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                            <option value="51_167 ">{{ __('index.menos de 50 hrs') }}.</option>
+                                                            <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
                                                             <option selected value="168">168 Hrs.</option>
                                                             @break
 

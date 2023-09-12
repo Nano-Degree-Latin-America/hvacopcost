@@ -606,7 +606,7 @@ cursor: pointer;
                                                                 <select onchange="check_input(this.value,this.id,'tiempo_porcent_warning');check_inp_count('count_tiempo_porcent','tiempo_porcent');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
                                                                     <option value="">-{{ __('index.seleccionar horas') }}-</option>
                                                                     <option value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                                    <option value="51_167 ">{{ __('index.menos de 50 hrs') }}.</option>
+                                                                    <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
                                                                     <option value="168">{{ __('index.168 hrs') }}.</option>
                                                                 </select>
 
