@@ -29,7 +29,7 @@ return [
     'del_ed' => 'del Edificio',
     'red_ene' => 'Reducción Energética',
     'red_pe_ca' => 'Reducción Huella de Carbono',
-    'red_bol_ca' => 'Reducción Huella de Carbono',
+    'red_bol_ca' => 'Reducción Bolsas de Basura',
     'recicladas' => 'Recicladas',
     'anio' => 'Año',
     'des_ene_ele_edif' =>'Desperdicio de Energía Eléctrica del Edificio',

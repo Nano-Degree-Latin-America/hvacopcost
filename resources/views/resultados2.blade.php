@@ -4955,7 +4955,7 @@ span{
         <div class="2xl:w-3/4 xl:w-3/4 lg:w-full my-3 ">
             <div class="grid bg-gray-200 rounded-md shadow-xl">
                 <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
-                    <label class="font-bold text-white text-2xl font-roboto text-4xl">{{ __('results.res_ana_sus') }}</label>
+                    <label class="font-bold text-white text-2xl font-roboto text-4xl">{{ __('results.ans_conf_prod') }}</label>
                 </div>
 
                 <div class="w-full flex justify-center m-1 " >
