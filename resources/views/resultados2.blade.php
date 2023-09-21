@@ -265,7 +265,7 @@ span{
                             <div class="2xl:w-3/4 xl:w-3/4 lg:w-full">
                                 <div class="grid my-3 bg-gray-200 rounded-md shadow-xl">
                                     <div class="w-full flex justify-center text-white bg-orange-500 rounded-md p-3">
-                                        <label  class="font-bold text-white text-3xl font-roboto">{{ __('results.anal_ene') }} - {{ __('results.enfi') }}</label>
+                                        <label  class="font-bold text-white text-3xl font-roboto">{{ __('results.analisis_ener') }} - {{ __('results.enfriamiento') }}</label>
                                     </div>
                                     <?php  $tar_ele=$solutions->tar_elec($id_project) ?>
                                     <div class="w-full flex justify-center m-1 " >

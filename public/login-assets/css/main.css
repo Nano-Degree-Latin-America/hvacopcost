@@ -200,7 +200,7 @@ iframe {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-color: #102E52;
+    background-color: #1B17BB;
     /* position: relative; */
     z-index: 1;
 }
@@ -223,7 +223,7 @@ iframe {
 }
 
 .wrap-login100 {
-    
+
     background: transparent;
 }
 
@@ -371,7 +371,7 @@ iframe {
     width: 100%;
     height: 50px;
     border-radius: 25px;
-    background: #FF8405 !important;
+    background: #EEF508 !important;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
