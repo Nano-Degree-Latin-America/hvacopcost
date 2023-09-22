@@ -3310,9 +3310,9 @@
                 <div align="center" class="title_tarjet_no_bg">
                     <p  class="title_style_no_bg">{{ __('results.analisis') }} CAPEX v/s OPEX @if($unidad_area == 'mc')($/m²)@endif @if($unidad_area == 'ft')($/ft²)@endif</p>
                 </div>
-                <div style="margin-left:15px; margin-right:15px;">
+               {{--  <div style="margin-left:15px; margin-right:15px;">
                     <img style="width:110px; height:30px;" src="../public/assets/images/capex_opex.png">
-                </div>
+                </div> --}}
                 <div style="margin-left:15px; margin-right:15px;">
                     <?php  $cap_op_3=$graficas_capex_opex->cap_op_1_retro_pdf($id_project);?>
                         <div style="margin-right:5px;" class="column_x_2" >
