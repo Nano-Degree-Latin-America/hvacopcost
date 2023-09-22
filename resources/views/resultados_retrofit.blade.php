@@ -2262,6 +2262,11 @@ span{
                                     </div>
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl py-10">
+
+                                        <input type="text" id="ima_ener" name="ima_ener" class="hidden" value="{{ __('index.energia') }}">
+                                        <input type="text" id="ima_man" name="ima_man" class="hidden" value="{{ __('index.mantenimiento') }}">
+                                        <input type="text" id="ima_sol" name="ima_sol" class="hidden" value="{{ __('index.solucion') }}">
+
                                         <div class="flex w-full justify-center mb-5">
                                             <div class="w-1/2">
                                                 <div id="chart_roi_base_a" name="chart_roi_base_a"></div>
@@ -3893,6 +3898,9 @@ span{
 	</div>
 
 <script type="text/javascript">
+    var ener_lang = document.getElementById('ima_ener').value;
+    var man_lang = document.getElementById('ima_man').value;
+    var ima_sol = document.getElementById('ima_sol').value;
 window.onload = function() {
     cap_op_1_retro('{{$id_project}}','{{$tar_ele->unidad}}');
     cap_op_3_retro('{{$id_project}}','{{$tar_ele->unidad}}');
@@ -4001,10 +4009,10 @@ function cap_op_1_retro(id_project,unidad){
           name: 'CAPEX',
           data: [res[2][0], res[1][0], res[0][0]]
         },{
-          name: 'Energía OPEX',
+           name: ener_lang + ' OPEX',
           data: [res[2][1], res[1][1], res[0][1]]
         },{
-          name: 'Mantenimiento OPEX',
+            name: man_lang + ' OPEX',
           data: [res[2][2], res[1][2], res[0][2]]
         }],
           chart: {
@@ -4134,10 +4142,10 @@ function cap_op_3_retro(id_project,unidad){
           name: 'CAPEX',
           data: [res[2][0], res[1][0], res[0][0]]
         },{
-          name: 'Energía OPEX',
+          name: ener_lang + ' OPEX',
           data: [res[2][1], res[1][1], res[0][1]]
         },{
-          name: 'Mantenimiento OPEX',
+          name: man_lang + ' OPEX',
           data: [res[2][2], res[1][2], res[0][2]]
         }],
           chart: {
@@ -4264,10 +4272,10 @@ function cap_op_10(id_project,unidad){
           name: 'CAPEX',
           data: [res[2][0], res[1][0], res[0][0]]
         }, {
-          name: 'Energía OPEX',
+           name: ener_lang + ' OPEX',
           data: [res[2][1], res[1][1], res[0][1]]
         },{
-          name: 'Mantenimiento OPEX',
+          name: man_lang + ' OPEX',
           data: [res[2][2], res[1][2], res[0][2]]
         }],
           chart: {
@@ -4395,10 +4403,10 @@ function cap_op_15(id_project,unidad){
           data: [res[2][0], res[1][0], res[0][0]],
 
         },{
-          name: 'Energía OPEX',
+           name: ener_lang + ' OPEX',
           data: [res[2][1], res[1][1], res[0][1]]
         },{
-          name: 'Mantenimiento OPEX',
+          name: man_lang + ' OPEX',
           data: [res[2][2], res[1][2], res[0][2]]
         }],
           chart: {
@@ -4562,7 +4570,7 @@ function roi_base_a(id_project){
           curve: 'smooth'
         },
         title: {
-          text: 'ROI Solución A v/s MARR',
+            text: 'ROI '+ima_sol+' A v/s MARR',
           align: 'center',
           style: {
             fontSize: '24px',
@@ -4701,7 +4709,7 @@ function roi_base_b(id_project){
           curve: 'smooth'
         },
         title: {
-          text: 'ROI Solución B v/s MARR',
+            text: 'ROI '+ima_sol+' B v/s MARR',
           align: 'center',
           style: {
             fontSize: '24px',

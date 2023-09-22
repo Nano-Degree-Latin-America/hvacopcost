@@ -751,10 +751,6 @@ function unidadHvac(value,num_div,id_select){
    var costo_elec = $('#costo_elec_1_1_retro');
    $('#costo_elec_2_1_retro').val(costo_elec.val());
    $('#costo_elec_3_1_retro').val(costo_elec.val());
-
-
-
-
 }
 
 function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_value){

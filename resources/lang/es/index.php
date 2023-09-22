@@ -74,4 +74,5 @@ return [
     'activo' => 'Activo',
     'inactivo' => 'Inactivo',
     'edit_proj' => 'Editar Proyecto',
+    'energia' => 'Energía',
 ];
