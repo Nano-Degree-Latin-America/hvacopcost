@@ -2,8 +2,8 @@
 
 return [
     //es
-    'analisis_ener' => 'ANÁLISE ENÉRGICO',
-    'enfriamiento' => ' ARREFECIMENTO',
+    'analisis_ener' => 'ANÁLISIS ENERGÉTICO',
+    'enfriamiento' => ' ENFRIAMIENTO',
     'tipo diseño' => 'Tipo Diseño',
     'capacidad termica' => 'Capacidad Térmica',
     'costo elec' => 'Costo Eléctrico',
