@@ -147,6 +147,8 @@ Route::post('store_new_marc/{value}', 'ResultadosController@store_new_marc');
 Route::get('store_new_model/{value}/{marca}', 'ResultadosController@store_new_model');
 Route::get('send_modelos_datalist/{value}', 'ResultadosController@send_modelos_datalist');
 
+Route::get('verifica_solucion/{num_disp}/{num_sol}/{id_project}', 'ProjectController@verifica_solucion');
+
 //lang
 Route::get('locale/{locale}', function($locale){
    session()->put('locale',$locale);

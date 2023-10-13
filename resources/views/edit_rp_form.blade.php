@@ -45,6 +45,9 @@
                                     <option value="5">PTAC/VTAC</option>
                                     <option value="6">WSHP</option>
                                     <option value="7">Minisplit Inverter</option>
+                                    <option value="8">Chiller - Aire - Scroll Constante</option>
+                                    <option value="9">Chiller - Aire - Scroll Variable</option>
+                                    <option value="10">Chiller - Aire - Tornillo 4 Etapas</option>
                                     <script>
                                         $(document).ready(function () {
                                             let type_p_edit = '{{$type_p}}'
@@ -54,6 +57,8 @@
                                                 ,'capacidad_total_1_1_retro','costo_elec_1_1_retro','csStd_retro_1_1_cant','costo_recu_1_1_retro','csStd_1_1_retro'
                                                 ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','');
                                             }
+
+
                                             });
 
                                         </script>
@@ -342,6 +347,9 @@
                                 <option value="5">PTAC/VTAC</option>
                                 <option value="6">WSHP</option>
                                 <option value="7">Minisplit Inverter</option>
+                                <option value="8">Chiller - Aire - Scroll Constante</option>
+                                <option value="9">Chiller - Aire - Scroll Variable</option>
+                                <option value="10">Chiller - Aire - Tornillo 4 Etapas</option>
                                 <script>
                                     $(document).ready(function () {
                                         var type_p_edit_2_1 = '{{$type_p}}';
@@ -351,6 +359,7 @@
                                         ,'capacidad_total_2_1_retro','costo_elec_2_1_retro','csStd_cant_2_1_retro','costo_recu_2_1_retro','csStd_2_1_retro'
                                         ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1','action_submit_2_1_retro');
                                         }
+                                        verifica_solution(2,1,'action_submit_2_1_retro','{{$id_project}}');
                                     });
                                     </script>
                             </select>
@@ -637,6 +646,9 @@
                                <option value="5">PTAC/VTAC</option>
                                <option value="6">WSHP</option>
                                <option value="7">Minisplit Inverter</option>
+                               <option value="8">Chiller - Aire - Scroll Constante</option>
+                                <option value="9">Chiller - Aire - Scroll Variable</option>
+                                <option value="10">Chiller - Aire - Tornillo 4 Etapas</option>
                                <script>
                                 $(document).ready(function () {
                                     let type_p_edit_3_1 = '{{$type_p}}'
@@ -646,6 +658,7 @@
                                     ,'capacidad_total_3_1_retro','costo_elec_3_1_retro','csStd_cant_3_1_retro','costo_recu_3_1_retro','csStd_3_1_retro'
                                     ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro');
                                     }
+                                    verifica_solution(3,1,'action_submit_3_1_retro','{{$id_project}}');
                                 });
                                 </script>
                            </select>

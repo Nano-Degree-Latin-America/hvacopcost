@@ -530,13 +530,13 @@ function active_display_retro(value){
     $('#'+id).empty();
     if(ima == 'es'){
         $('#'+id).append($('<option>', {
-            value: 0,
+            value: '',
             text: '-Seleccionar-'
         }));
     }
     if(ima == 'port'){
         $('#'+id).append($('<option>', {
-            value: 0,
+            value: '',
             text: '-Selecione-'
         }));
     }
@@ -559,25 +559,31 @@ function unidadHvac(value,num_div,id_select){
                 case "1":
                 var arry = '{ "arr" : [' +
                 '{ "text":"Básico" , "value":"basico" },' +
-                '{"text":"c/ Economizador" , "value":"c_economizador" } ]}';
+                '{ "text":"c/ Economizador" , "value":"c_economizador" },' +
+                '{ "text":"c/ Heat Recovery" , "value":"w_heat_rec" } ]}';
                 break;
 
                 case "2":
                 var arry = '{ "arr" : [' +
                 '{ "text":"Manejadora" , "value":"manejadora" },' +
-                '{ "text":"Fancoil" , "value":"fancoil" },' +
-                '{"text":"Unidad de Presición" , "value":"unid_pred" } ]}';
+                '{ "text":"Fancoil M/HSP" , "value":"fancoil" },' +
+                '{"text":"Fancoil LSP" , "value":"fancoil_lsp_spt" } ]}';
                 break;
                 case "3":
                 var arry = '{ "arr" : [' +
-                '{ "text":"Cassette y Piso Techo" , "value":"ca_pi_te" },' +
-                '{ "text":"Fancoil (LSP)" , "value":"fancoil_lsp" }' +
+                '{ "text":"Pared - Piso - Techo" , "value":"ca_pi_te" },' +
+                '{ "text":"Fancoil (LSP)" , "value":"fancoil_lsp" },' +
+                '{ "text":"Cassette" , "value":"ca" }' +
                 ']}';
                 break;
                 case "4":
                 var arry = '{ "arr" : [' +
                 '{ "text":"Manejadoras" , "value":"man" },' +
-                '{ "text":"Fancoils (HSP)" , "value":"fancoil_hsp" }' +
+                '{ "text":"Fancoils (M/HSP)" , "value":"fancoil_hsp" },' +
+                '{ "text":"Manejadoras c/DOA" , "value":"man_doa" },' +
+                '{ "text":"Fancoils (M/HSP) c/ DOA" , "value":"fan_hsp_doa" },' +
+                '{ "text":"Manejadoras DOA + HR" , "value":"man_doa_hr" },' +
+                '{ "text":"Fancoils (M/HSP) DOA + HR" , "value":"fan_hsp_doa_hr" }' +
                 ']}';
                 break;
                 case "5":
@@ -589,19 +595,37 @@ function unidadHvac(value,num_div,id_select){
                 break;
                 case "6":
                 var arry = '{ "arr" : [' +
-                    '{ "text":"Agua Circuito Cerrado" , "value":"agu_cir_cer" },' +
-                    '{"text":"Agua Circuito Abierto" , "value":"agu_cir_abr" } ]}';
+                    '{ "text":"Torre Circuito Cerrado" , "value":"agu_cir_cer" },' +
+                    '{"text":"Torre Circuito Abierto" , "value":"agu_cir_abr" } ]}';
                 break;
                 case "7":
                 var arry =  '{ "arr" : [' +
-                '{ "text":"Pared - Piso - Techo" , "value":"pa_pi_te" }' +
+                '{ "text":"Pared - Piso - Techo" , "value":"pa_pi_te" },' +
+                '{ "text":"Ductado (Concealed)" , "value":"duc_con" },' +
+                '{ "text":"Cassette" , "value":"cass" }' +
                 ']}';
                 break;
                 case "8":
                     var arry = '{ "arr" : [' +
-                    '{ "text":"Enfriado por Aire" , "value":"enf_air" },' +
-                    '{"text":"Enfriado por Agua" , "value":"enf_agu" } ]}';
-                    break;
+                    '{ "text":"Manejadora" , "value":"man_scholl_const" },' +
+                    '{"text":"Fan Coils L/M HSP" , "value":"fan_hsp_scholl_const" } ]}';
+                break;
+
+                case "9":
+                    var arry = '{ "arr" : [' +
+                    '{ "text":"Manejadora" , "value":"man_scholl_var" },' +
+                    '{ "text":"Fan Coils L/M HSP" , "value":"fan_hsp_scholl_var" },' +
+                    '{"text":"Chilled Beans" , "value":"chill_bean_scholl_var" } ]}';
+                break;
+
+                case "10":
+                    var arry = '{ "arr" : [' +
+                    '{ "text":"Manejadora" , "value":"man_scholl_tor_four_eta" },' +
+                    '{ "text":"Fan Coils L/M HSP" , "value":"fan_hsp_tor_four_eta" },' +
+                    '{"text":"Chilled Beans" , "value":"chill_bean_tor_four_eta" } ]}';
+                break;
+
+
               default:
                     // code block
             }
@@ -620,28 +644,35 @@ function unidadHvac(value,num_div,id_select){
         check_val_text(id_select,ima);
         switch (value) {
 
+
             case "1":
                 var arry = '{ "arr" : [' +
                 '{ "text":"Básico" , "value":"basico" },' +
-                '{"text":"c/ Economizador" , "value":"c_economizador" } ]}';
+                '{ "text":"c/ Economizador" , "value":"c_economizador" },' +
+                '{ "text":"c/ Heat Recovery" , "value":"w_heat_rec" } ]}';
                 break;
 
                 case "2":
                 var arry = '{ "arr" : [' +
                 '{ "text":"Manejadora" , "value":"manejadora" },' +
-                '{ "text":"Fancoil" , "value":"fancoil" },' +
-                '{"text":"Unidad de Presición" , "value":"unid_pred" } ]}';
+                '{ "text":"Fancoil M/HSP" , "value":"fancoil" },' +
+                '{"text":"Fancoil LSP" , "value":"fancoil_lsp_spt" } ]}';
                 break;
                 case "3":
                 var arry = '{ "arr" : [' +
-                '{ "text":"Cassette y Piso Techo" , "value":"ca_pi_te" },' +
-                '{ "text":"Fancoil (LSP)" , "value":"fancoil_lsp" }' +
+                '{ "text":"Pared - Piso - Techo" , "value":"ca_pi_te" },' +
+                '{ "text":"Fancoil (LSP)" , "value":"fancoil_lsp" },' +
+                '{ "text":"Cassette" , "value":"ca" }' +
                 ']}';
                 break;
                 case "4":
                 var arry = '{ "arr" : [' +
                 '{ "text":"Manejadoras" , "value":"man" },' +
-                '{ "text":"Fancoils (HSP)" , "value":"fancoil_hsp" }' +
+                '{ "text":"Fancoils (M/HSP)" , "value":"fancoil_hsp" },' +
+                '{ "text":"Manejadoras c/DOA" , "value":"man_doa" },' +
+                '{ "text":"Fancoils (M/HSP) c/ DOA" , "value":"fan_hsp_doa" },' +
+                '{ "text":"Manejadoras DOA + HR" , "value":"man_doa_hr" },' +
+                '{ "text":"Fancoils (M/HSP) DOA + HR" , "value":"fan_hsp_doa_hr" }' +
                 ']}';
                 break;
                 case "5":
@@ -649,22 +680,40 @@ function unidadHvac(value,num_div,id_select){
                 '{ "text":"Horiozontal" , "value":"horz" },' +
                 '{ "text":"Vertical" , "value":"vert" }' +
                 ']}';
+
                 break;
                 case "6":
                 var arry = '{ "arr" : [' +
-                    '{ "text":"Agua Circuito Cerrado" , "value":"agu_cir_cer" },' +
-                    '{"text":"Agua Circuito Abierto" , "value":"agu_cir_abr" } ]}';
+                    '{ "text":"Torre Circuito Cerrado" , "value":"agu_cir_cer" },' +
+                    '{"text":"Torre Circuito Abierto" , "value":"agu_cir_abr" } ]}';
                 break;
                 case "7":
                 var arry =  '{ "arr" : [' +
-                '{ "text":"Pared - Piso - Techo" , "value":"pa_pi_te" }' +
+                '{ "text":"Pared - Piso - Techo" , "value":"pa_pi_te" },' +
+                '{ "text":"Ductado (Concealed)" , "value":"duc_con" },' +
+                '{ "text":"Cassette" , "value":"cass" }' +
                 ']}';
                 break;
                 case "8":
                     var arry = '{ "arr" : [' +
-                    '{ "text":"Enfriado por Aire" , "value":"enf_air" },' +
-                    '{"text":"Enfriado por Agua" , "value":"enf_agu" } ]}';
-                    break;
+                    '{ "text":"Manejadora" , "value":"man_scholl_const" },' +
+                    '{"text":"Fan Coils L/M HSP" , "value":"fan_hsp_scholl_const" } ]}';
+                break;
+
+                case "9":
+                    var arry = '{ "arr" : [' +
+                    '{ "text":"Manejadora" , "value":"man_scholl_var" },' +
+                    '{ "text":"Fan Coils L/M HSP" , "value":"fan_hsp_scholl_var" },' +
+                    '{"text":"Chilled Beans" , "value":"chill_bean_scholl_var" } ]}';
+                break;
+
+                case "10":
+                    var arry = '{ "arr" : [' +
+                    '{ "text":"Manejadora" , "value":"man_scholl_tor_four_eta" },' +
+                    '{ "text":"Fan Coils L/M HSP" , "value":"fan_hsp_tor_four_eta" },' +
+                    '{"text":"Chilled Beans" , "value":"chill_bean_tor_four_eta" } ]}';
+                break;
+
 
           default:
                 // code block
@@ -681,28 +730,35 @@ function unidadHvac(value,num_div,id_select){
     }else if(num_div == 3){
         check_val_text(id_select,ima);
         switch (value) {
+
             case "1":
                 var arry = '{ "arr" : [' +
                 '{ "text":"Básico" , "value":"basico" },' +
-                '{"text":"c/ Economizador" , "value":"c_economizador" } ]}';
+                '{ "text":"c/ Economizador" , "value":"c_economizador" },' +
+                '{ "text":"c/ Heat Recovery" , "value":"w_heat_rec" } ]}';
                 break;
 
                 case "2":
                 var arry = '{ "arr" : [' +
                 '{ "text":"Manejadora" , "value":"manejadora" },' +
-                '{ "text":"Fancoil" , "value":"fancoil" },' +
-                '{"text":"Unidad de Presición" , "value":"unid_pred" } ]}';
+                '{ "text":"Fancoil M/HSP" , "value":"fancoil" },' +
+                '{"text":"Fancoil LSP" , "value":"fancoil_lsp_spt" } ]}';
                 break;
                 case "3":
                 var arry = '{ "arr" : [' +
-                '{ "text":"Cassette y Piso Techo" , "value":"ca_pi_te" },' +
-                '{ "text":"Fancoil (LSP)" , "value":"fancoil_lsp" }' +
+                '{ "text":"Pared - Piso - Techo" , "value":"ca_pi_te" },' +
+                '{ "text":"Fancoil (LSP)" , "value":"fancoil_lsp" },' +
+                '{ "text":"Cassette" , "value":"ca" }' +
                 ']}';
                 break;
                 case "4":
                 var arry = '{ "arr" : [' +
                 '{ "text":"Manejadoras" , "value":"man" },' +
-                '{ "text":"Fancoils (HSP)" , "value":"fancoil_hsp" }' +
+                '{ "text":"Fancoils (M/HSP)" , "value":"fancoil_hsp" },' +
+                '{ "text":"Manejadoras c/DOA" , "value":"man_doa" },' +
+                '{ "text":"Fancoils (M/HSP) c/ DOA" , "value":"fan_hsp_doa" },' +
+                '{ "text":"Manejadoras DOA + HR" , "value":"man_doa_hr" },' +
+                '{ "text":"Fancoils (M/HSP) DOA + HR" , "value":"fan_hsp_doa_hr" }' +
                 ']}';
                 break;
                 case "5":
@@ -710,27 +766,40 @@ function unidadHvac(value,num_div,id_select){
                 '{ "text":"Horiozontal" , "value":"horz" },' +
                 '{ "text":"Vertical" , "value":"vert" }' +
                 ']}';
+
                 break;
                 case "6":
                 var arry = '{ "arr" : [' +
-                    '{ "text":"Agua Circuito Cerrado" , "value":"agu_cir_cer" },' +
-                    '{"text":"Agua Circuito Abierto" , "value":"agu_cir_abr" } ]}';
+                    '{ "text":"Torre Circuito Cerrado" , "value":"agu_cir_cer" },' +
+                    '{"text":"Torre Circuito Abierto" , "value":"agu_cir_abr" } ]}';
                 break;
                 case "7":
                 var arry =  '{ "arr" : [' +
-                '{ "text":"Pared - Piso - Techo" , "value":"pa_pi_te" }' +
+                '{ "text":"Pared - Piso - Techo" , "value":"pa_pi_te" },' +
+                '{ "text":"Ductado (Concealed)" , "value":"duc_con" },' +
+                '{ "text":"Cassette" , "value":"cass" }' +
                 ']}';
                 break;
                 case "8":
                     var arry = '{ "arr" : [' +
-                    '{ "text":"Enfriado por Aire" , "value":"enf_air" },' +
-                    '{"text":"Enfriado por Agua" , "value":"enf_agu" } ]}';
-                    break;
-               /*  case "8":
+                    '{ "text":"Manejadora" , "value":"man_scholl_const" },' +
+                    '{"text":"Fan Coils L/M HSP" , "value":"fan_hsp_scholl_const" } ]}';
+                break;
+
+                case "9":
                     var arry = '{ "arr" : [' +
-                    '{ "text":"Enfriado por Aire" , "value":"enf_air" },' +
-                    '{"text":"Enfriado por Agua" , "value":"enf_agu" } ]}';
-                    break; */
+                    '{ "text":"Manejadora" , "value":"man_scholl_var" },' +
+                    '{ "text":"Fan Coils L/M HSP" , "value":"fan_hsp_scholl_var" },' +
+                    '{"text":"Chilled Beans" , "value":"chill_bean_scholl_var" } ]}';
+                break;
+
+                case "10":
+                    var arry = '{ "arr" : [' +
+                    '{ "text":"Manejadora" , "value":"man_scholl_tor_four_eta" },' +
+                    '{ "text":"Fan Coils L/M HSP" , "value":"fan_hsp_tor_four_eta" },' +
+                    '{"text":"Chilled Beans" , "value":"chill_bean_tor_four_eta" } ]}';
+                break;
+
 
               default:
                 // code block
@@ -764,191 +833,331 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
         check_val_text(id_dr,ima);
          $('#'+equipo_value).empty();
 
-
-
               switch (value) {
 
                       case "basico":
 
-                            var arry_disenio = '{ "arry_diseño" : [' +
-                          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-                          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-                          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-                          '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
-                          '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.25 } ]}';
+                          var arry_disenio = '{ "arry_diseño" : [' +
+                            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                            '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+                            '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                            '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
+                            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
 
                           var arry_control = '{ "arry_control" : [' +
-                          '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                          '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-                          '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+                            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                            '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                            '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+                            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
                           var arry_dr = '{ "arry_dr" : [' +
-                          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-                          $('#'+equipo_value).val(1);
+                            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+                           $('#'+equipo_value).val(1);
 
                       break;
 
                       case "c_economizador":
 
-                            var arry_disenio = '{ "arry_diseño" : [' +
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                            '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+                            '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                            '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
+                            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                            '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                            '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+                            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+                           $('#'+equipo_value).val(0.94);
+
+                      break;
+
+                      case "w_heat_rec":
+
+                        var arry_disenio = '{ "arry_diseño" : [' +
                           '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
                           '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
                           '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
                           '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
-                          '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.25 } ]}';
+                          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
 
-                          var arry_control = '{ "arry_control" : [' +
-                          '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                          '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-                          '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+                        var arry_control = '{ "arry_control" : [' +
+                          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                          '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+                          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
-                          var arry_dr = '{ "arry_dr" : [' +
-                          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+                        var arry_dr = '{ "arry_dr" : [' +
+                          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
                           '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-                          $('#'+equipo_value).val(0.9);
-                      break;
+
+                           $('#'+equipo_value).val(0.9);
+
+                        break;
 
                       case "manejadora":
 
-                            var arry_disenio = '{ "arry_diseño" : [' +
-                          '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
-                          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-                          '{ "text":"Ducto Flex y Plenum Retorno" , "value":0.19},' +
-                          '{ "text":"ASHRAE 55/62.1/90.1" , "value":-0.2} ]}';
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                           '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
+                           '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+                           '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                           '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                           '{ "text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2} ]}';
 
-                          var arry_control = '{ "arry_control" : [' +
-                          '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                          '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-                          '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+                        var arry_control = '{ "arry_control" : [' +
+                           '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                           '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                           '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
-                          var arry_dr = '{ "arry_dr" : [' +
-                          '{ "text":"No Aplica" , "value":0},' +
-                          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+                        var arry_dr = '{ "arry_dr" : [' +
+                           '{ "text":"No Aplica" , "value":0},' +
+                           '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                           '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
                           $('#'+equipo_value).val(1.04);
+
                       break;
 
                       case "fancoil":
 
                         var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Inyección y Retorno Ductado" , "value":0.03},' +
-                        '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
-                        '{ "text":"Ducto Flex y Plenum Retorno" , "value":0.19},' +
-                        '{ "text":"Baja Presión Estática" , "value":0.21},' +
-                        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.18 } ]}';
+                            '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
+                            '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+                            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                            '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
 
                         var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+                            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                            '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                            '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
                           var arry_dr = '{ "arry_dr" : [' +
-                          '{ "text":"No Aplica" , "value":0},' +
-                          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+                            '{ "text":"No Aplica" , "value":0},' +
+                            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
-                          $('#'+equipo_value).val(1.09);
+                          $('#'+equipo_value).val(1.05);
                       break;
 
-                      case "unid_pred":
+                      case "fancoil_lsp_spt":
 
-                        var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Descarga Directa sin Ductar" , "value":0.18},' +
-                        '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-                        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-                        '{"text":"Plenum Inyeción Bajo Piso" , "value":-0.25 } ]}';
+                      var arry_disenio = '{ "arry_diseño" : [' +
+                            '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
+                            '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+                            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
 
-                        var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+                      var arry_control = '{ "arry_control" : [' +
+                            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                            '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                            '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
-                          var arry_dr = '{ "arry_dr" : [' +
-                          '{ "text":"No Aplica" , "value":0},' +
-                          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+                      var arry_dr = '{ "arry_dr" : [' +
+                            '{ "text":"No Aplica" , "value":0},' +
+                            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
-                          $('#'+equipo_value).val(1);
-                      break;
+                        $('#'+equipo_value).val(1.09);
+
+                    break;
 
                       case "ca_pi_te":
                         var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Sin Ventilación" , "value":0.16},' +
-                        '{ "text":"Con Ventilación DOA" , "value":0},' +
-                        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.14 } ]}';
+                            '{ "text":"Sin Unidad DOA" , "value":0.16},' +
+                            '{ "text":"Con Unidad DOA" , "value":0},' +
+                            '{ "text":"Unidad DOA + Heat Recovery" , "value":-0.05},' +
+                            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.14 } ]}';
 
 
                         var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+                            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+                            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                            '{"text":"Termostato en Red / DDC en Zona" , "value":0.94 } ]}';
 
                           var arry_dr = '{ "arry_dr" : [' +
-                          '{"text":"No Aplica" , "value":0.08 } ]}';
+                            '{"text":"No Aplica" , "value":0.08 } ]}';
 
-                          $('#'+equipo_value).val(0.93);
+                          $('#'+equipo_value).val(0.98);
                       break;
 
                       case "fancoil_lsp":
                         var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Sin Ventilación" , "value":0.16},' +
-                        '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-                        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.14 } ]}';
+                            '{ "text":"Sin Unidad DOA" , "value":0.16},' +
+                            '{ "text":"Con DOA y Descarga Ductada" , "value":0},' +
+                            '{ "text":"Unidad DOA + Heat Recovery" , "value":-0.05},' +
+                            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.14 } ]}';
 
                         var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+                            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+                            '{ "text":"Termostato Inteligente en Zona" , "value":1},' +
+                            '{"text":"Termostato en Red / DDC en Zona" , "value":0.95 } ]}';
 
                         var arry_dr = '{ "arry_dr" : [' +
-                          '{"text":"No Aplica" , "value":0.08 } ]}';
+                            '{ "text":"No Aplica" , "value":0},' +
+                            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
-                          $('#'+equipo_value).val(0.95);
+                       $('#'+equipo_value).val(1.01);
                       break;
 
-                      case "man":
-                        var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-                        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-                        '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-                        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.25 } ]}';
+                      case "ca":
 
+                      var arry_disenio = '{ "arry_diseño" : [' +
+                            '{ "text":"Sin Unidad DOA" , "value":0.16},' +
+                            '{ "text":"Con Unidad DOA" , "value":0},' +
+                            '{ "text":"Unidad DOA + Heat Recovery" , "value":-0.05},' +
+                            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.14 } ]}';
+
+                      var arry_control = '{ "arry_control" : [' +
+                            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+                            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                            '{"text":"Termostato en Red / DDC en Zona" , "value":0.94 } ]}';
+
+                       var arry_dr = '{ "arry_dr" : [' +
+                            '{"text":"No Aplica" , "value":0.08 } ]}';
+
+                       $('#'+equipo_value).val(0.96);
+                       break;
+
+                       case "man":
+
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                            '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                            '{"text":"Descarga Directa Ductada" , "value":0.1 } ]}';
 
                         var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+                            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+                            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
-                          var arry_dr = '{ "arry_dr" : [' +
-                          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+                        var arry_dr = '{ "arry_dr" : [' +
+                            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+                        $('#'+equipo_value).val(1.06);
+
+                       break;
+
+                       case "fancoil_hsp":
+
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                          '{ "text":"Inyección y Retorno Ductado" , "value":0.03},' +
+                          '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
+                          '{"text":"Ducto Flex. y Plenum Retorno" , "value":0.19 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                          '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+                          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
                           '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
-                          $('#'+equipo_value).val(0.85);
-                      break;
+                        $('#'+equipo_value).val(1.08);
 
-                      case "fancoil_hsp":
+                       break;
+
+                       case "man_doa":
+
                         var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Inyección y Retorno Ductado" , "value":0.03},' +
-                        '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
-                        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-                        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.18 } ]}';
+                          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+                          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
 
                         var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+                          '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+                          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
                         var arry_dr = '{ "arry_dr" : [' +
-                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+                          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
-                          $('#'+equipo_value).val(0.88);
-                      break;
+                        $('#'+equipo_value).val(0.94);
 
+                       break;
+
+                       case "fan_hsp_doa":
+
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                          '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
+                          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.18 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                          '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+                          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+                        $('#'+equipo_value).val(0.96);
+
+                       break;
+
+                       case "man_doa_hr":
+
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+                          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                          '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+                          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+                        $('#'+equipo_value).val(0.84);
+
+                       break;
+
+                       case "fan_hsp_doa_hr":
+
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                        '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
+                        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                        '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.18 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                          '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+                          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+                        $('#'+equipo_value).val(0.86);
+
+                       break;
                      /* horz
                      vert */
                       case "horz":
                         var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Sin Filración MERV 8" , "value":0.12},' +
-                        '{"text":"Con Filtración MERV 8" , "value":0} ]}';
+                        '{ "text":"Filtros Aire MERV < 7" , "value":0.12},' +
+                        '{"text":"Filtros Aire MERV > 7" , "value":0} ]}';
 
                         var arry_control = '{ "arry_control" : [' +
                         '{ "text":"Termostato Interno" , "value":1.1},' +
@@ -958,17 +1167,17 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                         var arry_dr = '{ "arry_dr" : [' +
                         '{"text":"No Aplica" , "value":0.08 } ]}';
 
-                        $('#'+equipo_value).val(1.15);
+                        $('#'+equipo_value).val(1.05);
 
                       break;
 
                       case "vert":
                         var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Descarga Ductada s/ MERV 8" , "value":0.1},' +
-                        '{"text":"Descarga Ductada c/ MERV 8" , "value":-0.1 } ]}';
+                        '{ "text":"Descarga Ductada c/ MERV < 7" , "value":0.1},' +
+                        '{"text":"Descarga Ductada c/ MERV > 7" , "value":-0.1 } ]}';
 
                         var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
                         '{ "text":"Termostato en Zona de Confort" , "value":1},' +
                         '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
@@ -976,7 +1185,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                         '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
                         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
-                        $('#'+equipo_value).val(1.15);
+                        $('#'+equipo_value).val(1);
 
                       break;
 
@@ -985,19 +1194,20 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                         '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
                         '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
                         '{ "text":"Inyección Flex. y Plenum Retorno" , "value":0.19},' +
-                        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.22 } ]}';
+                        '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.22 } ]}';
 
                         var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+                        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+                        '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
                         var arry_dr = '{ "arry_dr" : [' +
                         '{ "text":"No Aplica" , "value":0},' +
-                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
                         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
-                        $('#'+equipo_value).val(0.84);
+                        $('#'+equipo_value).val(0.86);
 
                       break;
 
@@ -1006,19 +1216,20 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                         '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
                         '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
                         '{ "text":"Inyección Flex. y Plenum Retorno" , "value":0.19},' +
-                        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.22 } ]}';
+                        '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.22 } ]}';
 
                         var arry_control = '{ "arry_control" : [' +
-                         '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.1},' +
-                        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+                        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+                        '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
                         var arry_dr = '{ "arry_dr" : [' +
                         '{ "text":"No Aplica" , "value":0},' +
-                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
                         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
-                        $('#'+equipo_value).val(0.98);
+                        $('#'+equipo_value).val(0.96);
 
                       break;
 
@@ -1026,54 +1237,208 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                         var arry_disenio = '{ "arry_diseño" : [' +
                         '{ "text":"Condensador Arriba" , "value":0.06},' +
                         '{ "text":"Condensador Abajo" , "value":0.08},' +
-                        '{"text":"Espalda con Espalda" , "value":0 } ]}';
+                        '{ "text":"Espalda con Espalda" , "value":0} ]}';
 
                         var arry_control = '{ "arry_control" : [' +
-                        '{"text":"Termostato Interno" , "value":1.1 } ]}';
+                        '{"text":"Termostato Interno" , "value":1.1 }  ]}';
 
                         var arry_dr = '{ "arry_dr" : [' +
-                        '{"text":"No Aplica" , "value":0.15 } ]}';
+                        '{"text":"No Aplica" , "value":0.08 } ]}';
 
+                        $('#'+equipo_value).val(0.94);
+
+                        break;
+
+                      case "duc_con":
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                        '{ "text":"Inyección y Retorno Ductado" , "value":0.04},' +
+                        '{ "text":"Inyección Ductada y Plenum Retorno" , "value":0.15} ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                        '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+                        '{"text":"Termostato Inteligente en Zona" , "value":0.94 }  ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                        '{"text":"No Aplica" , "value":0.08 } ]}';
+
+                        $('#'+equipo_value).val(0.91);
+
+                        break;
+
+                        case "cass":
+                            var arry_disenio = '{ "arry_diseño" : [' +
+                            '{ "text":"Condensador Arriba" , "value":0.12},' +
+                            '{ "text":"Condensador Abajo" , "value":0.1} ]}';
+
+                            var arry_control = '{ "arry_control" : [' +
+                            '{ "text":"Termostato Interno" , "value":1.1},' +
+                            '{"text":"Termostato Inteligente en Zona" , "value":0.94 }  ]}';
+
+                            var arry_dr = '{ "arry_dr" : [' +
+                            '{"text":"No Aplica" , "value":0.08 } ]}';
+
+                            $('#'+equipo_value).val(0.94);
+
+                        break;
+
+
+                     case "man_scholl_const":
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                        '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+                        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                        '{"text":"VAV y Retorno Ductado" , "value":-0.15 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                        '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                        '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+                        $('#'+equipo_value).val(1);
+
+                      break;
+
+                      case "fan_hsp_scholl_const":
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                        '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+                        '{"text":"Inyección y Retorno Ductado" , "value":0 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+                        $('#'+equipo_value).val(1.05);
+
+                      break;
+
+
+                      case "man_scholl_var":
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                        '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+                        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                        '{ "text":"VAV y Retorno Ductado" , "value":-0.15},' +
+                        '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                        '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                        '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+                        $('#'+equipo_value).val(0.96);
+
+                      break;
+
+                      case "fan_hsp_scholl_var":
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                        '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+                        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                        '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.15 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+                        $('#'+equipo_value).val(0.98);
+
+                      break;
+
+                      case "chill_bean_scholl_var":
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                        '{ "text":"Sistema Pasivo" , "value":0.05},' +
+                        '{"text":"Sistema Activo" , "value":-0.19 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                        '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                        '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
                         $('#'+equipo_value).val(0.9);
 
                       break;
-                     /*  case "enf_air":
+
+                      case "man_scholl_tor_four_eta":
                         var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"c/ VAV y Retorno Ductado" , "value":0},' +
-                        '{ "text":"Descarga a Plenum" , "value":0.15},' +
-                        '{ "text":"c/ Ducto Flex. y Plenum Retorno" , "value":0.25},' +
-                        '{"text":"ASHRAE 55/62.1/90.0" , "value":-0.15 } ]}';
+                        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                        '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+                        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                        '{ "text":"VAV y Retorno Ductado" , "value":-0.15},' +
+                        '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
 
                         var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-                        '{"text":"Termostato Programable Inteligente" , "value":0.95 } ]}';
+                        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                        '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                        '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
                         var arry_dr = '{ "arry_dr" : [' +
-                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                        '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
-                        $('#'+equipo_value).val(1.08);
+                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+                        $('#'+equipo_value).val(0.93);
 
                       break;
 
-                      case "enf_agu":
+                     case "fan_hsp_tor_four_eta":
                         var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"c/ VAV y Retorno Ductado" , "value":0},' +
-                        '{ "text":"Descarga a Plenum" , "value":0.15},' +
-                        '{ "text":"c/ Ducto Flex. y Plenum Retorno" , "value":0.25},' +
-                        '{"text":"ASHRAE 55/62.1/90.0" , "value":-0.15 } ]}';
+                        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+                        '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+                        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+                        '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.15 } ]}';
 
                         var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-                        '{"text":"Termostato Programable Inteligente" , "value":0.95 } ]}';
+                        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
                         var arry_dr = '{ "arry_dr" : [' +
-                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                        '{"text":"Sin Pruebas ASHRAE Standard 70" , "value":0.14 } ]}';
-                        $('#'+equipo_value).val(1.13);
+                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+                        $('#'+equipo_value).val(0.95);
 
-                      break; */
+                    break;
+
+                    case "chill_bean_tor_four_eta":
+                        var arry_disenio = '{ "arry_diseño" : [' +
+                        '{ "text":"Sistema Pasivo" , "value":0.05},' +
+                        '{"text":"Sistema Activo" , "value":-0.19 } ]}';
+
+                        var arry_control = '{ "arry_control" : [' +
+                        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+                        '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+                        '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+                        '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+                        var arry_dr = '{ "arry_dr" : [' +
+                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+                        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+                        $('#'+equipo_value).val(0.87);
+
+                      break;
+
+
+
 
                     default:
                       // code block
@@ -1121,272 +1486,604 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
             case "basico":
 
             var arry_disenio = '{ "arry_diseño" : [' +
-          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-          '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
-          '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.25 } ]}';
+              '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+              '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+              '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+              '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+
+            var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+              '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+              '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+              '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+            var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+             $('#'+equipo_value).val(1);
+
+        break;
+
+        case "c_economizador":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+              '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+              '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+              '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
 
           var arry_control = '{ "arry_control" : [' +
-          '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-          '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
+              '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+              '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+              '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+              '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+             $('#'+equipo_value).val(0.94);
+
+        break;
+
+        case "w_heat_rec":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+            '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+            '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+            '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
+            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+            '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+            '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+             $('#'+equipo_value).val(0.9);
+
+          break;
+
+        case "manejadora":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+             '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
+             '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+             '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+             '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+             '{ "text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2} ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+             '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+             '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+             '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+             '{ "text":"No Aplica" , "value":0},' +
+             '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+            $('#'+equipo_value).val(1.04);
+
+        break;
+
+        case "fancoil":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
+              '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+              '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+              '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+              '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+              '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+
+            var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"No Aplica" , "value":0},' +
+              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+            $('#'+equipo_value).val(1.05);
+        break;
+
+        case "fancoil_lsp_spt":
+
+        var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
+              '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+              '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
+
+        var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+              '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+              '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+
+        var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"No Aplica" , "value":0},' +
+              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(1.09);
+
+      break;
+
+        case "ca_pi_te":
+          var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Sin Unidad DOA" , "value":0.16},' +
+              '{ "text":"Con Unidad DOA" , "value":0},' +
+              '{ "text":"Unidad DOA + Heat Recovery" , "value":-0.05},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.14 } ]}';
+
+
+          var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+              '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+              '{"text":"Termostato en Red / DDC en Zona" , "value":0.94 } ]}';
+
+            var arry_dr = '{ "arry_dr" : [' +
+              '{"text":"No Aplica" , "value":0.08 } ]}';
+
+            $('#'+equipo_value).val(0.98);
+        break;
+
+        case "fancoil_lsp":
+          var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Sin Unidad DOA" , "value":0.16},' +
+              '{ "text":"Con DOA y Descarga Ductada" , "value":0},' +
+              '{ "text":"Unidad DOA + Heat Recovery" , "value":-0.05},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.14 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+              '{ "text":"Termostato Inteligente en Zona" , "value":1},' +
+              '{"text":"Termostato en Red / DDC en Zona" , "value":0.95 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"No Aplica" , "value":0},' +
+              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+         $('#'+equipo_value).val(1.01);
+        break;
+
+        case "ca":
+
+        var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Sin Unidad DOA" , "value":0.16},' +
+              '{ "text":"Con Unidad DOA" , "value":0},' +
+              '{ "text":"Unidad DOA + Heat Recovery" , "value":-0.05},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.14 } ]}';
+
+        var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+              '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+              '{"text":"Termostato en Red / DDC en Zona" , "value":0.94 } ]}';
+
+         var arry_dr = '{ "arry_dr" : [' +
+              '{"text":"No Aplica" , "value":0.08 } ]}';
+
+         $('#'+equipo_value).val(0.96);
+         break;
+
+         case "man":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+              '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+              '{"text":"Descarga Directa Ductada" , "value":0.1 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+              '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+              '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(1.06);
+
+         break;
+
+         case "fancoil_hsp":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"Inyección y Retorno Ductado" , "value":0.03},' +
+            '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
+            '{"text":"Ducto Flex. y Plenum Retorno" , "value":0.19 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(1.08);
+
+         break;
+
+         case "man_doa":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+            '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(0.94);
+
+         break;
+
+         case "fan_hsp_doa":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+            '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
+            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.18 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(0.96);
+
+         break;
+
+         case "man_doa_hr":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+            '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(0.84);
+
+         break;
+
+         case "fan_hsp_doa_hr":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.18 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(0.86);
+
+         break;
+       /* horz
+       vert */
+        case "horz":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Filtros Aire MERV < 7" , "value":0.12},' +
+          '{"text":"Filtros Aire MERV > 7" , "value":0} ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Interno" , "value":1.1},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{"text":"No Aplica" , "value":0.08 } ]}';
+
+          $('#'+equipo_value).val(1.05);
+
+        break;
+
+        case "vert":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Descarga Ductada c/ MERV < 7" , "value":0.1},' +
+          '{"text":"Descarga Ductada c/ MERV > 7" , "value":-0.1 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
           '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
           '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(1);
+
+        break;
+
+        case "agu_cir_cer":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección Flex. y Plenum Retorno" , "value":0.19},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.22 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"No Aplica" , "value":0},' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(0.86);
+
+        break;
+
+        case "agu_cir_abr":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección Flex. y Plenum Retorno" , "value":0.19},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.22 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"No Aplica" , "value":0},' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(0.96);
+
+        break;
+
+        case "pa_pi_te":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Condensador Arriba" , "value":0.06},' +
+          '{ "text":"Condensador Abajo" , "value":0.08},' +
+          '{ "text":"Espalda con Espalda" , "value":0} ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{"text":"Termostato Interno" , "value":1.1 }  ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{"text":"No Aplica" , "value":0.08 } ]}';
+
+          $('#'+equipo_value).val(0.94);
+
+          break;
+
+        case "duc_con":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0.04},' +
+          '{ "text":"Inyección Ductada y Plenum Retorno" , "value":0.15} ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+          '{"text":"Termostato Inteligente en Zona" , "value":0.94 }  ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{"text":"No Aplica" , "value":0.08 } ]}';
+
+          $('#'+equipo_value).val(0.91);
+
+          break;
+
+          case "cass":
+              var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Condensador Arriba" , "value":0.12},' +
+              '{ "text":"Condensador Abajo" , "value":0.1} ]}';
+
+              var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Interno" , "value":1.1},' +
+              '{"text":"Termostato Inteligente en Zona" , "value":0.94 }  ]}';
+
+              var arry_dr = '{ "arry_dr" : [' +
+              '{"text":"No Aplica" , "value":0.08 } ]}';
+
+              $('#'+equipo_value).val(0.94);
+
+          break;
+
+
+       case "man_scholl_const":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{"text":"VAV y Retorno Ductado" , "value":-0.15 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
           '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
           $('#'+equipo_value).val(1);
 
-      break;
+        break;
 
-      case "c_economizador":
-
-            var arry_disenio = '{ "arry_diseño" : [' +
+        case "fan_hsp_scholl_const":
+          var arry_disenio = '{ "arry_diseño" : [' +
           '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-          '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
-          '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.25 } ]}';
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{"text":"Inyección y Retorno Ductado" , "value":0 } ]}';
 
           var arry_control = '{ "arry_control" : [' +
-          '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-          '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
           '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+          $('#'+equipo_value).val(1.05);
+
+        break;
+
+
+        case "man_scholl_var":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{ "text":"VAV y Retorno Ductado" , "value":-0.15},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+          $('#'+equipo_value).val(0.96);
+
+        break;
+
+        case "fan_hsp_scholl_var":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.15 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+          $('#'+equipo_value).val(0.98);
+
+        break;
+
+        case "chill_bean_scholl_var":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Sistema Pasivo" , "value":0.05},' +
+          '{"text":"Sistema Activo" , "value":-0.19 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
           '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
           $('#'+equipo_value).val(0.9);
-      break;
 
-      case "manejadora":
+        break;
 
-            var arry_disenio = '{ "arry_diseño" : [' +
-          '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
-          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-          '{ "text":"Ducto Flex y Plenum Retorno" , "value":0.19},' +
-          '{ "text":"ASHRAE 55/62.1/90.1" , "value":-0.2} ]}';
+        case "man_scholl_tor_four_eta":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{ "text":"VAV y Retorno Ductado" , "value":-0.15},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
 
           var arry_control = '{ "arry_control" : [' +
-          '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-          '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+          $('#'+equipo_value).val(0.93);
+
+        break;
+
+       case "fan_hsp_tor_four_eta":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.15 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
           '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-          '{ "text":"No Aplica" , "value":0},' +
-          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
           '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-          $('#'+equipo_value).val(1.04);
-      break;
-
-      case "fancoil":
-
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0.03},' +
-        '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
-        '{ "text":"Ducto Flex y Plenum Retorno" , "value":0.19},' +
-        '{ "text":"Baja Presión Estática" , "value":0.21},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.18 } ]}';
-
-        var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-          var arry_dr = '{ "arry_dr" : [' +
-          '{ "text":"No Aplica" , "value":0},' +
-          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-          $('#'+equipo_value).val(1.09);
-      break;
-
-      case "unid_pred":
-
-      var arry_disenio = '{ "arry_diseño" : [' +
-      '{ "text":"Descarga Directa sin Ductar" , "value":0.18},' +
-      '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-      '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-      '{"text":"Plenum Inyeción Bajo Piso" , "value":-0.25 } ]}';
-
-      var arry_control = '{ "arry_control" : [' +
-      '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-      '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-      '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-        var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"No Aplica" , "value":0},' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-        $('#'+equipo_value).val(1);
-    break;
-
-      case "ca_pi_te":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Sin Ventilación" , "value":0.16},' +
-        '{ "text":"Con Ventilación DOA" , "value":0},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.14 } ]}';
-
-
-        var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-          var arry_dr = '{ "arry_dr" : [' +
-          '{"text":"No Aplica" , "value":0.08 } ]}';
-
-          $('#'+equipo_value).val(0.93);
-      break;
-
-      case "fancoil_lsp":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Sin Ventilación" , "value":0.16},' +
-        '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.14 } ]}';
-
-        var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-        var arry_dr = '{ "arry_dr" : [' +
-          '{"text":"No Aplica" , "value":0.08 } ]}';
-
           $('#'+equipo_value).val(0.95);
+
       break;
 
-      case "man":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-        '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.25 } ]}';
+      case "chill_bean_tor_four_eta":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Sistema Pasivo" , "value":0.05},' +
+          '{"text":"Sistema Activo" , "value":-0.19 } ]}';
 
-
-        var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
           '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+          $('#'+equipo_value).val(0.87);
 
-          $('#'+equipo_value).val(0.85);
-      break;
-
-      case "fancoil_hsp":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0.03},' +
-        '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
-        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.18 } ]}';
-
-        var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-        var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-          $('#'+equipo_value).val(0.88);
-      break;
-     /*  fancoil_lsp
-      fancoil_hsp */
-
-                    case "horz":
-                        var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Sin Filración MERV 8" , "value":0.12},' +
-                        '{"text":"Con Filtración MERV 8" , "value":0} ]}';
-
-                        var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostato Interno" , "value":1.1},' +
-                        '{ "text":"Termostato en Zona de Confort" , "value":1},' +
-                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-                        var arry_dr = '{ "arry_dr" : [' +
-                        '{"text":"No Aplica" , "value":0.08 } ]}';
-
-                        $('#'+equipo_value).val(1.15);
-
-                      break;
-
-                      case "vert":
-                        var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Descarga Ductada s/ MERV 8" , "value":0.1},' +
-                        '{"text":"Descarga Ductada c/ MERV 8" , "value":-0.1 } ]}';
-
-                        var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-                        var arry_dr = '{ "arry_dr" : [' +
-                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-                        $('#'+equipo_value).val(1.15);
-
-                      break;
-
-      case "agu_cir_cer":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-        '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
-        '{ "text":"Inyección Flex. y Plenum Retorno" , "value":0.19},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.22 } ]}';
-
-        var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-        var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"No Aplica" , "value":0},' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-        $('#'+equipo_value).val(0.84);
-
-      break;
-
-      case "agu_cir_abr":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-        '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
-        '{ "text":"Inyección Flex. y Plenum Retorno" , "value":0.19},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.22 } ]}';
-
-        var arry_control = '{ "arry_control" : [' +
-         '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.1},' +
-        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-        var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"No Aplica" , "value":0},' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-        $('#'+equipo_value).val(0.98);
-
-      break;
-
-      case "pa_pi_te":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Condensador Arriba" , "value":0.06},' +
-        '{ "text":"Condensador Abajo" , "value":0.08},' +
-        '{"text":"Espalda con Espalda" , "value":0 } ]}';
-
-        var arry_control = '{ "arry_control" : [' +
-        '{"text":"Termostato Interno" , "value":1.1 } ]}';
-
-        var arry_dr = '{ "arry_dr" : [' +
-        '{"text":"No Aplica" , "value":0.15 } ]}';
-
-        $('#'+equipo_value).val(0.9);
-
-      break;
+        break;
 
         default:
           // code block
@@ -1445,272 +2142,604 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
             case "basico":
 
             var arry_disenio = '{ "arry_diseño" : [' +
-          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-          '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
-          '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.25 } ]}';
+              '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+              '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+              '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+              '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+
+            var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+              '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+              '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+              '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+            var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+             $('#'+equipo_value).val(1);
+
+        break;
+
+        case "c_economizador":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+              '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+              '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+              '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
 
           var arry_control = '{ "arry_control" : [' +
-          '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-          '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
+              '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+              '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+              '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+              '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+             $('#'+equipo_value).val(0.94);
+
+        break;
+
+        case "w_heat_rec":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+            '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+            '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+            '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
+            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+            '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+            '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+             $('#'+equipo_value).val(0.9);
+
+          break;
+
+        case "manejadora":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+             '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
+             '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+             '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+             '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+             '{ "text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2} ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+             '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+             '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+             '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+             '{ "text":"No Aplica" , "value":0},' +
+             '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+            $('#'+equipo_value).val(1.04);
+
+        break;
+
+        case "fancoil":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
+              '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+              '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+              '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+              '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+              '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+
+            var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"No Aplica" , "value":0},' +
+              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+            $('#'+equipo_value).val(1.05);
+        break;
+
+        case "fancoil_lsp_spt":
+
+        var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
+              '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+              '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
+
+        var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+              '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+              '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+
+        var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"No Aplica" , "value":0},' +
+              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(1.09);
+
+      break;
+
+        case "ca_pi_te":
+          var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Sin Unidad DOA" , "value":0.16},' +
+              '{ "text":"Con Unidad DOA" , "value":0},' +
+              '{ "text":"Unidad DOA + Heat Recovery" , "value":-0.05},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.14 } ]}';
+
+
+          var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+              '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+              '{"text":"Termostato en Red / DDC en Zona" , "value":0.94 } ]}';
+
+            var arry_dr = '{ "arry_dr" : [' +
+              '{"text":"No Aplica" , "value":0.08 } ]}';
+
+            $('#'+equipo_value).val(0.98);
+        break;
+
+        case "fancoil_lsp":
+          var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Sin Unidad DOA" , "value":0.16},' +
+              '{ "text":"Con DOA y Descarga Ductada" , "value":0},' +
+              '{ "text":"Unidad DOA + Heat Recovery" , "value":-0.05},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.14 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+              '{ "text":"Termostato Inteligente en Zona" , "value":1},' +
+              '{"text":"Termostato en Red / DDC en Zona" , "value":0.95 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"No Aplica" , "value":0},' +
+              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+         $('#'+equipo_value).val(1.01);
+        break;
+
+        case "ca":
+
+        var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Sin Unidad DOA" , "value":0.16},' +
+              '{ "text":"Con Unidad DOA" , "value":0},' +
+              '{ "text":"Unidad DOA + Heat Recovery" , "value":-0.05},' +
+              '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.14 } ]}';
+
+        var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+              '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+              '{"text":"Termostato en Red / DDC en Zona" , "value":0.94 } ]}';
+
+         var arry_dr = '{ "arry_dr" : [' +
+              '{"text":"No Aplica" , "value":0.08 } ]}';
+
+         $('#'+equipo_value).val(0.96);
+         break;
+
+         case "man":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+              '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+              '{"text":"Descarga Directa Ductada" , "value":0.1 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+              '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+              '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(1.06);
+
+         break;
+
+         case "fancoil_hsp":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"Inyección y Retorno Ductado" , "value":0.03},' +
+            '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
+            '{"text":"Ducto Flex. y Plenum Retorno" , "value":0.19 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(1.08);
+
+         break;
+
+         case "man_doa":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+            '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(0.94);
+
+         break;
+
+         case "fan_hsp_doa":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+            '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
+            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.18 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(0.96);
+
+         break;
+
+         case "man_doa_hr":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+            '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+            '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+            '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+            '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(0.84);
+
+         break;
+
+         case "fan_hsp_doa_hr":
+
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.18 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+            '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(0.86);
+
+         break;
+       /* horz
+       vert */
+        case "horz":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Filtros Aire MERV < 7" , "value":0.12},' +
+          '{"text":"Filtros Aire MERV > 7" , "value":0} ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Interno" , "value":1.1},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{"text":"No Aplica" , "value":0.08 } ]}';
+
+          $('#'+equipo_value).val(1.05);
+
+        break;
+
+        case "vert":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Descarga Ductada c/ MERV < 7" , "value":0.1},' +
+          '{"text":"Descarga Ductada c/ MERV > 7" , "value":-0.1 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
           '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
           '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(1);
+
+        break;
+
+        case "agu_cir_cer":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección Flex. y Plenum Retorno" , "value":0.19},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.22 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"No Aplica" , "value":0},' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(0.86);
+
+        break;
+
+        case "agu_cir_abr":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección Flex. y Plenum Retorno" , "value":0.19},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.22 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"No Aplica" , "value":0},' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+          $('#'+equipo_value).val(0.96);
+
+        break;
+
+        case "pa_pi_te":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Condensador Arriba" , "value":0.06},' +
+          '{ "text":"Condensador Abajo" , "value":0.08},' +
+          '{ "text":"Espalda con Espalda" , "value":0} ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{"text":"Termostato Interno" , "value":1.1 }  ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{"text":"No Aplica" , "value":0.08 } ]}';
+
+          $('#'+equipo_value).val(0.94);
+
+          break;
+
+        case "duc_con":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0.04},' +
+          '{ "text":"Inyección Ductada y Plenum Retorno" , "value":0.15} ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+          '{"text":"Termostato Inteligente en Zona" , "value":0.94 }  ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{"text":"No Aplica" , "value":0.08 } ]}';
+
+          $('#'+equipo_value).val(0.91);
+
+          break;
+
+          case "cass":
+              var arry_disenio = '{ "arry_diseño" : [' +
+              '{ "text":"Condensador Arriba" , "value":0.12},' +
+              '{ "text":"Condensador Abajo" , "value":0.1} ]}';
+
+              var arry_control = '{ "arry_control" : [' +
+              '{ "text":"Termostato Interno" , "value":1.1},' +
+              '{"text":"Termostato Inteligente en Zona" , "value":0.94 }  ]}';
+
+              var arry_dr = '{ "arry_dr" : [' +
+              '{"text":"No Aplica" , "value":0.08 } ]}';
+
+              $('#'+equipo_value).val(0.94);
+
+          break;
+
+
+       case "man_scholl_const":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{"text":"VAV y Retorno Ductado" , "value":-0.15 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
           '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
           $('#'+equipo_value).val(1);
 
-      break;
+        break;
 
-      case "c_economizador":
-
-            var arry_disenio = '{ "arry_diseño" : [' +
+        case "fan_hsp_scholl_const":
+          var arry_disenio = '{ "arry_diseño" : [' +
           '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-          '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
-          '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.25 } ]}';
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{"text":"Inyección y Retorno Ductado" , "value":0 } ]}';
 
           var arry_control = '{ "arry_control" : [' +
-          '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-          '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
           '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+          $('#'+equipo_value).val(1.05);
+
+        break;
+
+
+        case "man_scholl_var":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{ "text":"VAV y Retorno Ductado" , "value":-0.15},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+          $('#'+equipo_value).val(0.96);
+
+        break;
+
+        case "fan_hsp_scholl_var":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.15 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+          $('#'+equipo_value).val(0.98);
+
+        break;
+
+        case "chill_bean_scholl_var":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Sistema Pasivo" , "value":0.05},' +
+          '{"text":"Sistema Activo" , "value":-0.19 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
           '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
           $('#'+equipo_value).val(0.9);
-      break;
 
-      case "manejadora":
+        break;
 
-            var arry_disenio = '{ "arry_diseño" : [' +
-          '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
-          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-          '{ "text":"Ducto Flex y Plenum Retorno" , "value":0.19},' +
-          '{ "text":"ASHRAE 55/62.1/90.1" , "value":-0.2} ]}';
+        case "man_scholl_tor_four_eta":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{ "text":"VAV y Retorno Ductado" , "value":-0.15},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
 
           var arry_control = '{ "arry_control" : [' +
-          '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-          '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
+
+          var arry_dr = '{ "arry_dr" : [' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+          $('#'+equipo_value).val(0.93);
+
+        break;
+
+       case "fan_hsp_tor_four_eta":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
+          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.15 } ]}';
+
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
           '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-          '{ "text":"No Aplica" , "value":0},' +
-          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
           '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-          $('#'+equipo_value).val(1.04);
-      break;
-
-      case "fancoil":
-
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0.03},' +
-        '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
-        '{ "text":"Ducto Flex y Plenum Retorno" , "value":0.19},' +
-        '{ "text":"Baja Presión Estática" , "value":0.21},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.18 } ]}';
-
-        var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-          var arry_dr = '{ "arry_dr" : [' +
-          '{ "text":"No Aplica" , "value":0},' +
-          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-          '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-          $('#'+equipo_value).val(1.09);
-      break;
-
-      case "unid_pred":
-
-      var arry_disenio = '{ "arry_diseño" : [' +
-      '{ "text":"Descarga Directa sin Ductar" , "value":0.18},' +
-      '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-      '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-      '{"text":"Plenum Inyeción Bajo Piso" , "value":-0.25 } ]}';
-
-      var arry_control = '{ "arry_control" : [' +
-      '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-      '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-      '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-        var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"No Aplica" , "value":0},' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-        $('#'+equipo_value).val(1);
-    break;
-
-      case "ca_pi_te":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Sin Ventilación" , "value":0.16},' +
-        '{ "text":"Con Ventilación DOA" , "value":0},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.14 } ]}';
-
-
-        var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-          var arry_dr = '{ "arry_dr" : [' +
-          '{"text":"No Aplica" , "value":0.08 } ]}';
-
-          $('#'+equipo_value).val(0.93);
-      break;
-
-      case "fancoil_lsp":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Sin Ventilación" , "value":0.16},' +
-        '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.14 } ]}';
-
-        var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-        var arry_dr = '{ "arry_dr" : [' +
-          '{"text":"No Aplica" , "value":0.08 } ]}';
-
           $('#'+equipo_value).val(0.95);
+
       break;
 
-      case "man":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-        '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.25 } ]}';
+      case "chill_bean_tor_four_eta":
+          var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Sistema Pasivo" , "value":0.05},' +
+          '{"text":"Sistema Activo" , "value":-0.19 } ]}';
 
-
-        var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+          var arry_control = '{ "arry_control" : [' +
+          '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+          '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+          '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
+          '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+          '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
           '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+          $('#'+equipo_value).val(0.87);
 
-          $('#'+equipo_value).val(0.85);
-      break;
-
-      case "fancoil_hsp":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0.03},' +
-        '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
-        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.18 } ]}';
-
-        var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-        var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-          $('#'+equipo_value).val(0.88);
-      break;
-     /*  fancoil_lsp
-      fancoil_hsp */
-
-                case "horz":
-                        var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Sin Filración MERV 8" , "value":0.12},' +
-                        '{"text":"Con Filtración MERV 8" , "value":0} ]}';
-
-                        var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostato Interno" , "value":1.1},' +
-                        '{ "text":"Termostato en Zona de Confort" , "value":1},' +
-                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-                        var arry_dr = '{ "arry_dr" : [' +
-                        '{"text":"No Aplica" , "value":0.08 } ]}';
-
-                        $('#'+equipo_value).val(1.15);
-
-                      break;
-
-                      case "vert":
-                        var arry_disenio = '{ "arry_diseño" : [' +
-                        '{ "text":"Descarga Ductada s/ MERV 8" , "value":0.1},' +
-                        '{"text":"Descarga Ductada c/ MERV 8" , "value":-0.1 } ]}';
-
-                        var arry_control = '{ "arry_control" : [' +
-                        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-                        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-                        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-                        var arry_dr = '{ "arry_dr" : [' +
-                        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-                        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-                        $('#'+equipo_value).val(1.15);
-
-                      break;
-
-      case "agu_cir_cer":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-        '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
-        '{ "text":"Inyección Flex. y Plenum Retorno" , "value":0.19},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.22 } ]}';
-
-        var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.12},' +
-        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-        var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"No Aplica" , "value":0},' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-        $('#'+equipo_value).val(0.84);
-
-      break;
-
-      case "agu_cir_abr":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-        '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
-        '{ "text":"Inyección Flex. y Plenum Retorno" , "value":0.19},' +
-        '{"text":"ASHRAE 55/62.1/90.1" , "value":-0.22 } ]}';
-
-        var arry_control = '{ "arry_control" : [' +
-         '{ "text":"Termostatos Fuera Zona de Confort" , "value":1.1},' +
-        '{ "text":"Termostatos en Zona de Confort" , "value":1},' +
-        '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
-
-        var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"No Aplica" , "value":0},' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
-        '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
-
-        $('#'+equipo_value).val(0.98);
-
-      break;
-
-      case "pa_pi_te":
-        var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Condensador Arriba" , "value":0.06},' +
-        '{ "text":"Condensador Abajo" , "value":0.08},' +
-        '{"text":"Espalda con Espalda" , "value":0 } ]}';
-
-        var arry_control = '{ "arry_control" : [' +
-        '{"text":"Termostato Interno" , "value":1.1 } ]}';
-
-        var arry_dr = '{ "arry_dr" : [' +
-        '{"text":"No Aplica" , "value":0.15 } ]}';
-
-        $('#'+equipo_value).val(0.9);
-
-      break;
+        break;
 
 
             default:
@@ -5239,9 +6268,10 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 send_name_dr(dr);
 
                 set_ser_to_sers(res.val_unidad.eficencia_ene);
+
                 if(num_solu != '' || num_solu != null){
-                    $( "#"+num_solu ).removeClass( "hidden" );
                     $("#"+action_submit).val('update');
+                    $( "#"+num_solu ).removeClass( "hidden" );
                     if (cont_sol !== '' || cont_sol !== null){
                         var cont_val = parseInt($('#'+cont_sol).val());
                         var sum_cont = cont_val + 1;
@@ -6086,5 +7116,27 @@ function send_marcas_to_datalist() {
         $('#div_next').removeClass("hidden");
         $('#div_next_h').addClass("hidden");
        }
+
+    }
+
+    function verifica_solution(num_disp,num_sol,action_submit,num_project){
+
+        $.ajax({
+            type: 'get',
+            url: '/verifica_solucion/'+ num_disp + '/' + num_sol + '/' + num_project,
+            success: function (response) {
+               if(response == 1){
+                $("#"+action_submit).val('update');
+               }
+
+               if(response == 2){
+                $("#"+action_submit).val('store');
+               }
+
+            },
+            error: function (responsetext) {
+                console.log(responsetext);
+            }
+        });
 
     }
