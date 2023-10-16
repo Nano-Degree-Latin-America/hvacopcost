@@ -359,7 +359,7 @@
                                         ,'capacidad_total_2_1_retro','costo_elec_2_1_retro','csStd_cant_2_1_retro','costo_recu_2_1_retro','csStd_2_1_retro'
                                         ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1','action_submit_2_1_retro');
                                         }
-                                        verifica_solution(2,1,'action_submit_2_1_retro','{{$id_project}}');
+                                        verifica_solution(2,1,'action_submit_2_1_retro','{{$id_project}}',2);
                                     });
                                     </script>
                             </select>
@@ -658,7 +658,7 @@
                                     ,'capacidad_total_3_1_retro','costo_elec_3_1_retro','csStd_cant_3_1_retro','costo_recu_3_1_retro','csStd_3_1_retro'
                                     ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro');
                                     }
-                                    verifica_solution(3,1,'action_submit_3_1_retro','{{$id_project}}');
+                                    verifica_solution(3,1,'action_submit_3_1_retro','{{$id_project}}',2);
                                 });
                                 </script>
                            </select>

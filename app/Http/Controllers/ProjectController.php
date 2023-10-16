@@ -5674,12 +5674,13 @@ class ProjectController extends Controller
           return $nivel_confotr_1_1;
     }
 
-    public function verifica_solucion($num_disp,$num_sol,$id_project){
+    public function verifica_solucion($num_disp,$num_sol,$id_project,$type){
 
         $check_exist = DB::table('solutions_project')
         ->where('id_project','=',$id_project)
         ->where('num_enf','=',$num_disp)
         ->where('num_sol','=',$num_sol)
+        ->where('type_p','=',$type)
         ->first();
 
 

@@ -280,6 +280,8 @@
                                 ,'tipo_control_1_2','dr_1_2','csMantenimiento_1_2','lblCsTipo_1_2','capacidad_total_1_2'
                                 ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2','action_submit_1_2','csStd','maintenance_cost_1_2');
                                             }
+
+
                                 });
                             </script>
 
@@ -805,7 +807,7 @@
                                         ,'costo_elec_2_1','csStd_cant_2_1','cheValorS_2_1','2_1','action_submit_2_1','csStd','maintenance_cost_2_1');
                                         }
 
-                                        verifica_solution(2,1,'action_submit_2_1','{{$id_project}}');
+                                        verifica_solution(2,1,'action_submit_2_1','{{$id_project}}',1);
                                     });
                                     </script>
 
@@ -1562,7 +1564,7 @@
                                         ,'costo_elec_3_1','cheStd_3_1','cheValorS_3_1','3_1','action_submit_3_1','csStd','maintenance_cost_3_1');
                                         }
 
-                                        verifica_solution(3,1,'action_submit_3_1','{{$id_project}}');
+                                        verifica_solution(3,1,'action_submit_3_1','{{$id_project}}',1);
 
                                     });
                                     </script>
