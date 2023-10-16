@@ -7119,11 +7119,11 @@ function send_marcas_to_datalist() {
 
     }
 
-    function verifica_solution(num_disp,num_sol,action_submit,num_project){
+    function verifica_solution(num_disp,num_sol,action_submit,num_project,type){
 
         $.ajax({
             type: 'get',
-            url: '/verifica_solucion/'+ num_disp + '/' + num_sol + '/' + num_project,
+            url: '/verifica_solucion/'+ num_disp + '/' + num_sol + '/' + num_project + '/' + type,
             success: function (response) {
                if(response == 1){
                 $("#"+action_submit).val('update');
