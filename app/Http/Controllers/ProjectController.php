@@ -430,23 +430,20 @@ class ProjectController extends Controller
                 $factor_m =$request->get('csMantenimiento');
                 $t_e = $solution_enf1->tipo_equipo;
                 $eficiencia_ene = $solution_enf1->eficencia_ene;
+                $unidad_hvac_aux = $solution_enf1->unidad_hvac;
 
                if ($solution_enf1->unid_med == 'TR') {
 
                $tr = $solution_enf1->capacidad_tot;
-               $res_1_1 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+               $res_1_1 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
                $solution_enf1->cost_op_an = floatval(number_format($res_1_1,2, '.', ''));
 
             }else if($solution_enf1->unid_med == 'KW'){
 
-
-
-                //$solution_enf1->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
-
                $kw = $solution_enf1->capacidad_tot;
-               $res_1_1 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+               $res_1_1 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
                $solution_enf1->cost_op_an = floatval(number_format($res_1_1,2, '.', ''));
-                //$solution_enf1->cost_op_an = floatval(number_format($res_div_seer_a,2, '.', ''));
+
 
             }
 
@@ -637,66 +634,17 @@ class ProjectController extends Controller
                 $factor_m =$request->get('csMantenimiento_1_2');
                 $t_e = $solution_enf1->tipo_equipo;
                 $eficiencia_ene = $solution_enf1_2->eficencia_ene;
+                $unidad_hvac_aux = $solution_enf1_2->unidad_hvac;
                if ($solution_enf1_2->unid_med == 'TR') {
                 $tr = $solution_enf1_2->capacidad_tot;
-                $res_1_2 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+                $res_1_2 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
                 $solution_enf1_2->cost_op_an = floatval(number_format($res_1_2,2, '.', ''));
             }else if($solution_enf1_2->unid_med == 'KW'){
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
                   //(((Kw / 3.5)
                   $kw =  $solution_enf1_2->capacidad_tot;
-                  $kw_3_5 = $kw / 3.5;
-                  //(((Kw / 3.5) x 12000 )
-                  $kw_a = $kw_3_5 * 12000;
-                  $res_dividiendo = $kw_a * $cooling_hrs;
-                  //(((Kw / 3.5) x 12000 )x (Cooling Hours)
-                  $res_div_seer = $res_dividiendo / $eficiencia_cant;
-                  //(((Kw / 3.5) x 12000 )x (Cooling Hours)  ) / SEER
-                  $res_div_seer_a = $res_div_seer / 1000;
-                  //(((Kw / 3.5) x 12000 )x (Cooling Hours) / SEER ) / 1000
-
-                  //energia aplicada proccess
-                //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-
-                //(Fórmula Energía x Factor S)
-                $res_1_parent1= $res_div_seer_a * $factor_s;
-                // (Fórmula Energía x Factor D)
-                $res_2_parent1= $res_div_seer_a * $factor_d;
-                    //(Fórmula Energía x Factor T)
-                $res_3_parent1= $res_div_seer_a * $factor_t;
-//((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
-                $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
-   //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-                $res_res =  $res_parent_1 *  $factor_c;
-
-                if($solution_enf1_2->tipo_equipo === "pa_pi_te"){
-                    if($factor_m==='ASHRAE 180'){
-                        $factor_m = 1.2;
-                    }
-
-                    if($factor_m==='Deficiente'){
-                        $factor_m = 1.15;
-                    }
-
-                    if($factor_m==='Sin Mantenimiento'){
-                        $factor_m = 1.2;
-                    }
-                }else{
-                    if($factor_m==='ASHRAE 180'){
-                        $factor_m = 0.99;
-                    }
-
-                    if($factor_m==='Deficiente'){
-                        $factor_m = 1.11;
-                    }
-
-                    if($factor_m==='Sin Mantenimiento'){
-                        $factor_m = 1.18;
-                    }
-                }
-                $res_res_fact_m =  $res_res * $factor_m;
-
-                $solution_enf1_2->cost_op_an =floatval(number_format($factor_m,2, '.', ''));
+                  $res_1_2 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
+                  $solution_enf1_2->cost_op_an =floatval(number_format($res_1_2,2, '.', ''));
 
                 }
 
@@ -892,64 +840,17 @@ class ProjectController extends Controller
                     $factor_m =$request->get('csMantenimiento_1_3');
                     $t_e = $solution_enf1_3->tipo_equipo;
                     $eficiencia_ene = $solution_enf1_3->eficencia_ene;
+                    $unidad_hvac_aux = $solution_enf1_3->unidad_hvac;
                 if ($solution_enf1_3->unid_med == 'TR') {
                     $tr = $solution_enf1_3->capacidad_tot;
-                    $res_1_3 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+                    $res_1_3 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
 
                     $solution_enf1_3->cost_op_an =  floatval(number_format($res_1_3,2, '.', ''));
                 }else if($solution_enf1_3->unid_med == 'KW'){
                       //(((Kw / 3.5)
                   $kw =  $solution_enf1_3->capacidad_tot;
-                  $kw_3_5 = $kw / 3.5;
-                  //(((Kw / 3.5) x 12000 )
-                  $kw_a = $kw_3_5 * 12000;
-                  $res_dividiendo = $kw_a * $cooling_hrs;
-                  //(((Kw / 3.5) x 12000 )x (Cooling Hours)
-                  $res_div_seer = $res_dividiendo / $eficiencia_cant;
-                  //(((Kw / 3.5) x 12000 )x (Cooling Hours)  ) / SEER
-                  $res_div_seer_a = $res_div_seer / 1000;
-                  //(((Kw / 3.5) x 12000 )x (Cooling Hours)  ) / SEER ) / 1000
-
-                  //energia aplicada proccess
-                //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-
-                //(Fórmula Energía x Factor S)
-                  $res_1_parent1= $res_div_seer_a * $factor_s;
-                // (Fórmula Energía x Factor D)
-                $res_2_parent1= $res_div_seer_a * $factor_d;
-                    //(Fórmula Energía x Factor T)
-                $res_3_parent1= $res_div_seer_a * $factor_t;
-//((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
-                $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
-   //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-                $res_res =  $res_parent_1 *  $factor_c;
-                if($solution_enf1_3->tipo_equipo === "pa_pi_te"){
-                    if($factor_m==='ASHRAE 180'){
-                        $factor_m = 1.2;
-                    }
-
-                    if($factor_m==='Deficiente'){
-                        $factor_m = 1.15;
-                    }
-
-                    if($factor_m==='Sin Mantenimiento'){
-                        $factor_m = 1.2;
-                    }
-                }else{
-                    if($factor_m==='ASHRAE 180'){
-                        $factor_m = 0.99;
-                    }
-
-                    if($factor_m==='Deficiente'){
-                        $factor_m = 1.11;
-                    }
-
-                    if($factor_m==='Sin Mantenimiento'){
-                        $factor_m = 1.18;
-                    }
-                }
-                $res_res_fact_m =  $res_res * $factor_m;
-                $solution_enf1_3->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
+                  $res_1_3 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
+                  $solution_enf1_3->cost_op_an =floatval(number_format($res_1_3,2, '.', ''));
                 }
 
 
@@ -1193,65 +1094,17 @@ class ProjectController extends Controller
                         $factor_m =$request->get('csMantenimiento_2_1');
                         $t_e = $solution_enf2_1->tipo_equipo;
                         $eficiencia_ene = $solution_enf2_1->eficencia_ene;
+                        $unidad_hvac_aux = $solution_enf2_1->unidad_hvac;
                        if ($solution_enf2_1->unid_med == 'TR') {
                         $tr = $solution_enf2_1->capacidad_tot;
-                        $res_2_1 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+                        $res_2_1 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
 
                         $solution_enf2_1->cost_op_an =  floatval(number_format($res_2_1,2, '.', ''));
                         }else if($solution_enf2_1->unid_med == 'KW'){
                              //(((Kw / 3.5)
                              $kw =  $solution_enf2_1->capacidad_tot;
-                             $kw_3_5 = $kw / 3.5;
-                             //(((Kw / 3.5) x 12000 )
-                             $kw_a = $kw_3_5 * 12000;
-                             $res_dividiendo = $kw_a * $cooling_hrs;
-                             //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
-                             $res_div_seer = $res_dividiendo / $eficiencia_cant;
-                             //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
-                             $res_div_seer_a = $res_div_seer / 1000;
-                             //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
-
-                                          //energia aplicada proccess
-                                //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-
-                                //(Fórmula Energía x Factor S)
-                                $res_1_parent1= $res_div_seer_a * $factor_s;
-                                // (Fórmula Energía x Factor D)
-                                $res_2_parent1= $res_div_seer_a * $factor_d;
-                                    //(Fórmula Energía x Factor T)
-                                $res_3_parent1= $res_div_seer_a * $factor_t;
-                //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
-                                $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
-                    //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-                                $res_res =  $res_parent_1 *  $factor_c;
-
-                                if($solution_enf2_1->tipo_equipo === "pa_pi_te"){
-                                    if($factor_m==='ASHRAE 180'){
-                                        $factor_m = 1.2;
-                                    }
-
-                                    if($factor_m==='Deficiente'){
-                                        $factor_m = 1.15;
-                                    }
-
-                                    if($factor_m==='Sin Mantenimiento'){
-                                        $factor_m = 1.2;
-                                    }
-                                }else{
-                                    if($factor_m==='ASHRAE 180'){
-                                        $factor_m = 0.99;
-                                    }
-
-                                    if($factor_m==='Deficiente'){
-                                        $factor_m = 1.11;
-                                    }
-
-                                    if($factor_m==='Sin Mantenimiento'){
-                                        $factor_m = 1.18;
-                                    }
-                                }
-                                $res_res_fact_m =  $res_res * $factor_m;
-                                $solution_enf2_1->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
+                             $res_2_1 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
+                             $solution_enf2_1->cost_op_an =floatval(number_format($res_2_1,2, '.', ''));
 
                             }
 
@@ -1453,9 +1306,10 @@ class ProjectController extends Controller
                         $factor_m = $request->get('cheMantenimiento_2_2');
                         $t_e = $solution_enf2_2->tipo_equipo;
                         $eficiencia_ene = $solution_enf2_2->eficencia_ene;
+                        $unidad_hvac_aux = $solution_enf2_2->unidad_hvac;
                        if ($solution_enf2_2->unid_med == 'TR') {
                         $tr = $solution_enf2_2->capacidad_tot;
-                        $res_2_2 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+                        $res_2_2 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
 
                         $solution_enf2_2->cost_op_an =  floatval(number_format($res_2_2,2, '.', ''));
 /*
@@ -1517,66 +1371,18 @@ class ProjectController extends Controller
                         $solution_enf2_2->cost_op_an = $res_res_fact_m; */
                     }else if($solution_enf2_2->unid_med == 'KW'){
                         $kw =  $solution_enf2_2->capacidad_tot;
-                        $kw_3_5 = $kw / 3.5;
-                        //(((Kw / 3.5) x 12000 )
-                        $kw_a = $kw_3_5 * 12000;
-                        $res_dividiendo = $kw_a * $cooling_hrs;
-                        //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
-                        $res_div_seer = $res_dividiendo / $eficiencia_cant;
-                        //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
-                        $res_div_seer_a = $res_div_seer / 1000;
-                        //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
-
-                                     //energia aplicada proccess
-                           //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-
-                           //(Fórmula Energía x Factor S)
-                           $res_1_parent1= $res_div_seer_a * $factor_s;
-                           // (Fórmula Energía x Factor D)
-                           $res_2_parent1= $res_div_seer_a * $factor_d;
-                               //(Fórmula Energía x Factor T)
-                           $res_3_parent1= $res_div_seer_a * $factor_t;
-           //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
-                           $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
-               //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-                           $res_res =  $res_parent_1 *  $factor_c;
-                           if($solution_enf2_2->tipo_equipo === "pa_pi_te"){
-                            if($factor_m==='ASHRAE 180'){
-                                $factor_m = 1.2;
-                            }
-
-                            if($factor_m==='Deficiente'){
-                                $factor_m = 1.15;
-                            }
-
-                            if($factor_m==='Sin Mantenimiento'){
-                                $factor_m = 1.2;
-                            }
-                        }else{
-                            if($factor_m==='ASHRAE 180'){
-                                $factor_m = 0.99;
-                            }
-
-                            if($factor_m==='Deficiente'){
-                                $factor_m = 1.11;
-                            }
-
-                            if($factor_m==='Sin Mantenimiento'){
-                                $factor_m = 1.18;
-                            }
-                        }
-                            $res_res_fact_m =  $res_res * $factor_m;
-                           $solution_enf2_2->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
+                        $res_2_2 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
+                        $solution_enf2_2->cost_op_an =floatval(number_format($res_2_2,2, '.', ''));
                     }
 
 
                                               //niveles de confort
- $unidad_conf_1_1 = $solution_enf2_2->unidad_hvac;
- $equipo_conf_1_1 = $solution_enf2_2->tipo_equipo;
- $diseno_conf_1_1 = $solution_enf2_2->name_disenio;
- $t_control_conf_1_1 = $solution_enf2_2->name_t_control;
- $dr_conf_1_1 = $solution_enf2_2->dr_name;
- $mant_conf_1_1 = $solution_enf2_2->mantenimiento;
+            $unidad_conf_1_1 = $solution_enf2_2->unidad_hvac;
+            $equipo_conf_1_1 = $solution_enf2_2->tipo_equipo;
+            $diseno_conf_1_1 = $solution_enf2_2->name_disenio;
+            $t_control_conf_1_1 = $solution_enf2_2->name_t_control;
+            $dr_conf_1_1 = $solution_enf2_2->dr_name;
+            $mant_conf_1_1 = $solution_enf2_2->mantenimiento;
 
  $nivel_confotr_2_2 = ProjectController::calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
  $solution_enf2_2->confort = $nivel_confotr_2_2;
@@ -1759,9 +1565,10 @@ class ProjectController extends Controller
                         $factor_m =$request->get('cheMantenimiento_2_3');
                         $t_e = $solution_enf2_3->tipo_equipo;
                         $eficiencia_ene = $solution_enf2_3->eficencia_ene;
+                        $unidad_hvac_aux = $solution_enf2_3->unidad_hvac;
                     if ($solution_enf2_3->unid_med == 'TR') {
                         $tr = $solution_enf2_3->capacidad_tot;
-                        $res_2_3 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+                        $res_2_3 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
                         $solution_enf2_3->cost_op_an =  floatval(number_format($res_2_3,2, '.', ''));
                         /* $tr =  $solution_enf2_3->capacidad_tot;
                         //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
@@ -1820,56 +1627,8 @@ class ProjectController extends Controller
                              $solution_enf2_3->cost_op_an = $res_res_fact_m; */
                     }else if($solution_enf2_3->unid_med == 'KW'){
                         $kw =  $solution_enf2_3->capacidad_tot;
-                    $kw_3_5 = $kw / 3.5;
-                    //(((Kw / 3.5) x 12000 )
-                    $kw_a = $kw_3_5 * 12000;
-                    $res_dividiendo = $kw_a * $cooling_hrs * $cost_energ;
-                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
-                    $res_div_seer = $res_dividiendo / $eficiencia_cant;
-                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
-                    $res_div_seer_a = $res_div_seer / 1000;
-                    //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
-
-                                 //energia aplicada proccess
-                       //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-
-                       //(Fórmula Energía x Factor S)
-                       $res_1_parent1= $res_div_seer_a * $factor_s;
-                       // (Fórmula Energía x Factor D)
-                       $res_2_parent1= $res_div_seer_a * $factor_d;
-                           //(Fórmula Energía x Factor T)
-                       $res_3_parent1= $res_div_seer_a * $factor_t;
-       //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
-                       $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
-           //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-                       $res_res =  $res_parent_1 *  $factor_c;
-                       if($solution_enf2_3->tipo_equipo === "pa_pi_te"){
-                        if($factor_m==='ASHRAE 180'){
-                            $factor_m = 1.2;
-                        }
-
-                        if($factor_m==='Deficiente'){
-                            $factor_m = 1.15;
-                        }
-
-                        if($factor_m==='Sin Mantenimiento'){
-                            $factor_m = 1.2;
-                        }
-                    }else{
-                        if($factor_m==='ASHRAE 180'){
-                            $factor_m = 0.99;
-                        }
-
-                        if($factor_m==='Deficiente'){
-                            $factor_m = 1.11;
-                        }
-
-                        if($factor_m==='Sin Mantenimiento'){
-                            $factor_m = 1.18;
-                        }
-                    }
-                        $res_res_fact_m =  $res_res * $factor_m;
-                       $solution_enf2_3->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
+                        $res_2_3 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
+                        $solution_enf2_3->cost_op_an =floatval(number_format($res_2_3,2, '.', ''));
                     }
 
 
@@ -2101,9 +1860,10 @@ class ProjectController extends Controller
                  $factor_m =$request->get('cheMantenimiento_3_1');
                  $t_e = $solution_enf3_1->tipo_equipo;
                  $eficiencia_ene = $solution_enf3_1->eficencia_ene;
+                 $unidad_hvac_aux = $solution_enf3_1->unidad_hvac;
                 if ($solution_enf3_1->unid_med == 'TR') {
                     $tr = $solution_enf3_1->capacidad_tot;
-                    $res_3_1 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+                    $res_3_1 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
                     $solution_enf3_1->cost_op_an =  floatval(number_format($res_3_1,2, '.', ''));
                     /* $tr =  $solution_enf3_1->capacidad_tot;
                     //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
@@ -2167,56 +1927,8 @@ class ProjectController extends Controller
                  $solution_enf3_1->cost_op_an = $res_res_fact_m; */
              }else if($solution_enf3_1->unid_med == 'KW'){
                 $kw =  $solution_enf3_1->capacidad_tot;
-                $kw_3_5 = $kw / 3.5;
-                //(((Kw / 3.5) x 12000 )
-                $kw_a = $kw_3_5 * 12000;
-                $res_dividiendo = $kw_a * $cooling_hrs;
-                //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
-                $res_div_seer = $res_dividiendo / $eficiencia_cant;
-                //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
-                $res_div_seer_a = $res_div_seer / 1000;
-                //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
-
-                             //energia aplicada proccess
-                   //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-
-                   //(Fórmula Energía x Factor S)
-                   $res_1_parent1= $res_div_seer_a * $factor_s;
-                   // (Fórmula Energía x Factor D)
-                   $res_2_parent1= $res_div_seer_a * $factor_d;
-                       //(Fórmula Energía x Factor T)
-                   $res_3_parent1= $res_div_seer_a * $factor_t;
-   //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
-                   $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
-       //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-                   $res_res =  $res_parent_1 *  $factor_c;
-                   if($solution_enf3_1->tipo_equipo === "pa_pi_te"){
-                    if($factor_m==='ASHRAE 180'){
-                        $factor_m = 1.2;
-                    }
-
-                    if($factor_m==='Deficiente'){
-                        $factor_m = 1.15;
-                    }
-
-                    if($factor_m==='Sin Mantenimiento'){
-                        $factor_m = 1.2;
-                    }
-                }else{
-                    if($factor_m==='ASHRAE 180'){
-                        $factor_m = 0.99;
-                    }
-
-                    if($factor_m==='Deficiente'){
-                        $factor_m = 1.11;
-                    }
-
-                    if($factor_m==='Sin Mantenimiento'){
-                        $factor_m = 1.18;
-                    }
-                }
-                    $res_res_fact_m =  $res_res * $factor_m;
-                   $solution_enf3_1->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
+                $res_3_1 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
+                $solution_enf3_1->cost_op_an =floatval(number_format($res_3_1,2, '.', ''));
              }
              //confort
              $unidad_conf_1_1 = $solution_enf3_1->unidad_hvac;
@@ -2410,9 +2122,10 @@ class ProjectController extends Controller
                 $factor_m = $request->get('cheMantenimiento_3_2');
                 $t_e = $solution_enf3_2->tipo_equipo;
                 $eficiencia_ene = $solution_enf3_2->eficencia_ene;
+                $unidad_hvac_aux = $solution_enf3_2->unidad_hvac;
                if ($solution_enf3_2->unid_med == 'TR') {
                 $tr = $solution_enf3_2->capacidad_tot;
-                $res_3_2 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+                $res_3_2 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
                 $solution_enf3_2->cost_op_an =  floatval(number_format($res_3_2,2, '.', ''));
                 /* $tr =  $solution_enf3_2->capacidad_tot;
                 //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
@@ -2475,56 +2188,8 @@ class ProjectController extends Controller
                 $solution_enf3_2->cost_op_an = $res_res_fact_m; */
             }else if($solution_enf3_2->unid_med == 'KW'){
                $kw =  $solution_enf3_2->capacidad_tot;
-               $kw_3_5 = $kw / 3.5;
-               //(((Kw / 3.5) x 12000 )
-               $kw_a = $kw_3_5 * 12000;
-               $res_dividiendo = $kw_a * $cooling_hrs;
-               //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía)
-               $res_div_seer = $res_dividiendo / $eficiencia_cant;
-               //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER
-               $res_div_seer_a = $res_div_seer / 1000;
-               //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
-
-                            //energia aplicada proccess
-                  //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-
-                  //(Fórmula Energía x Factor S)
-                  $res_1_parent1= $res_div_seer_a * $factor_s;
-                  // (Fórmula Energía x Factor D)
-                  $res_2_parent1= $res_div_seer_a * $factor_d;
-                      //(Fórmula Energía x Factor T)
-                  $res_3_parent1= $res_div_seer_a * $factor_t;
-  //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
-                  $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
-      //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-                  $res_res =  $res_parent_1 *  $factor_c;
-                  if($solution_enf3_2->tipo_equipo === "pa_pi_te"){
-                    if($factor_m==='ASHRAE 180'){
-                        $factor_m = 1.2;
-                    }
-
-                    if($factor_m==='Deficiente'){
-                        $factor_m = 1.15;
-                    }
-
-                    if($factor_m==='Sin Mantenimiento'){
-                        $factor_m = 1.2;
-                    }
-                }else{
-                    if($factor_m==='ASHRAE 180'){
-                        $factor_m = 0.99;
-                    }
-
-                    if($factor_m==='Deficiente'){
-                        $factor_m = 1.11;
-                    }
-
-                    if($factor_m==='Sin Mantenimiento'){
-                        $factor_m = 1.18;
-                    }
-                }
-                   $res_res_fact_m =  $res_res * $factor_m;
-                  $solution_enf3_2->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
+               $res_3_2 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
+               $solution_enf3_2->cost_op_an =floatval(number_format($res_3_2,2, '.', ''));
             }
 
             //confort
@@ -2711,9 +2376,10 @@ class ProjectController extends Controller
                 $factor_m = $request->get('cheMantenimiento_3_3');
                 $t_e = $solution_enf3_3->tipo_equipo;
                 $eficiencia_ene = $solution_enf3_3->eficencia_ene;
+                $unidad_hvac_aux = $solution_enf3_3->unidad_hvac;
             if ($solution_enf3_3->unid_med == 'TR') {
                 $tr = $solution_enf3_3->capacidad_tot;
-                $res_3_3 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+                $res_3_3 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
                 $solution_enf3_3->cost_op_an =  floatval(number_format($res_3_3,2, '.', ''));
                /*  $tr =  $solution_enf3_3->capacidad_tot;
                 //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
@@ -2773,8 +2439,12 @@ class ProjectController extends Controller
                    $res_res_fact_m =  $res_res * $factor_m;
                 $solution_enf3_3->cost_op_an = $res_res_fact_m; */
             }else if($solution_enf3_3->unid_med == 'KW'){
-               $kw =  $solution_enf3_3->capacidad_tot;
-           $kw_3_5 = $kw / 3.5;
+                $kw =  $solution_enf3_3->capacidad_tot;
+                $res_3_3 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
+                $solution_enf3_3->cost_op_an =floatval(number_format($res_3_3,2, '.', ''));
+            /*
+
+            $kw_3_5 = $kw / 3.5;
            //(((Kw / 3.5) x 12000 )
            $kw_a = $kw_3_5 * 12000;
            $res_dividiendo = $kw_a * $cooling_hrs;
@@ -2822,8 +2492,8 @@ class ProjectController extends Controller
                     $factor_m = 1.18;
                 }
             }
-               $res_res_fact_m =  $res_res * $factor_m;
-              $solution_enf3_3->cost_op_an =floatval(number_format($res_res_fact_m,2, '.', ''));
+               $res_res_fact_m =  $res_res * $factor_m; */
+
             }
 
             //confort
@@ -3110,17 +2780,19 @@ class ProjectController extends Controller
                     $t_e = $solution_enf1->tipo_equipo;
                     $eficiencia_ene = $solution_enf1->eficencia_ene;
                     $yrs_l = $solution_enf1->yrs_vida;
+                    $unidad_hvac_aux = $solution_enf1->unidad_hvac;
                    if ($solution_enf1->unid_med == 'TR') {
 
                     $tr = $solution_enf1->capacidad_tot;
-                    $res_1_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+                    $res_1_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
                     $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
 
                 }else if($solution_enf1->unid_med == 'KW'){
 
                     $kw = $solution_enf1->capacidad_tot;
-                    $res_1_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+                    $res_1_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
                     $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
+
                 }
 
       //niveles de confort
@@ -3375,14 +3047,15 @@ class ProjectController extends Controller
                     $factor_m =$request->get('csMantenimiento_2_1_retro');
                     $t_e = $solution_enf_2_1_retro->tipo_equipo;
                     $eficiencia_ene = $solution_enf_2_1_retro->eficencia_ene;
+                    $unidad_hvac_aux = $solution_enf_2_1_retro->unidad_hvac;
                    if ($solution_enf_2_1_retro->unid_med == 'TR') {
                     $tr = $solution_enf_2_1_retro->capacidad_tot;
-                    $res_2_1_retro = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+                    $res_2_1_retro = ProjectController::cost_op_an_form_ab($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ);
                     $solution_enf_2_1_retro->cost_op_an =  floatval(number_format($res_2_1_retro,2, '.', ''));
 
                 }else if($solution_enf_2_1_retro->unid_med == 'KW'){
                     $kw = $solution_enf_2_1_retro->capacidad_tot;
-                    $res_2_1_retro = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+                    $res_2_1_retro = ProjectController::cost_op_an_form_kw_ab($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ);
                     $solution_enf_2_1_retro->cost_op_an = floatval(number_format($res_2_1_retro,2, '.', ''));
 
 
@@ -3643,14 +3316,15 @@ class ProjectController extends Controller
                     $factor_m =$request->get('cheMantenimiento_3_1_retro');
                     $t_e = $solution_enf_3_1_retro->tipo_equipo;
                     $eficiencia_ene = $solution_enf_3_1_retro->eficencia_ene;
+                    $unidad_hvac_aux = $solution_enf_3_1_retro->unidad_hvac;
                    if ($solution_enf_3_1_retro->unid_med == 'TR') {
                     $tr = $solution_enf_3_1_retro->capacidad_tot;
-                    $res_3_1_retro = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+                    $res_3_1_retro = ProjectController::cost_op_an_form_ab($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ);
                     $solution_enf_3_1_retro->cost_op_an =  floatval(number_format($res_3_1_retro,2, '.', ''));
 
                 }else if($solution_enf_3_1_retro->unid_med == 'KW'){
                     $kw = $solution_enf_3_1_retro->capacidad_tot;
-                    $res_3_1_retro = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+                    $res_3_1_retro = ProjectController::cost_op_an_form_kw_ab($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ);
                     $solution_enf_3_1_retro->cost_op_an = floatval(number_format($res_3_1_retro,2, '.', ''));
 
                 }
@@ -3866,8 +3540,94 @@ class ProjectController extends Controller
         }
     }
 
-    public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
 
+    public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller){
+        $int_check_chiller = intval($check_chiller);
+
+        if($int_check_chiller <= 7){
+        return ProjectController::form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+        }
+
+        if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+            return ProjectController::form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+        }
+
+    }
+
+    public function form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
+        if($eficiencia_ene == 'IPVL'){
+            //(TR x IPLV x Cooling Hours) / 0.75
+            //(TR x IPLV x Cooling Hours)
+            $mult = $tr * $eficiencia_cant * $cooling_hrs;
+            //(Res) / 0.75
+             $res_ene_apl_tot_enf_1 = $mult / 0.75;
+        }
+        if($eficiencia_ene == 'EER'){
+            //(TR x (12/EER) x Cooling Hours) / 0.75
+            //(12/EER)
+            $doce_div_err = 12 / $eficiencia_cant;
+            //(TR x (12/EER) x Cooling Hours)
+            $mult = $tr * $doce_div_err * $cooling_hrs;
+             //(Res) / 0.75
+            $res_ene_apl_tot_enf_1 = $mult / 0.75;
+        }
+
+
+        //((TR x cant) x (Cooling Hours) / (SEER) ) / 1000)
+       /* $res_ene_apl_tot_enf_1 */
+
+       //energia aplicada proccess
+       //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+       //(Fórmula Energía x Factor S)
+
+        /* (((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C) x Factor M */
+        $res_1_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_s);
+
+
+       $res_2_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_d);
+
+       $res_3_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_t);
+
+       $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+       $res_res =  $res_parent_1 * $factor_c;
+
+
+
+       if($t_e === "pa_pi_te"){
+           if($factor_m==='ASHRAE 180'){
+               $factor_m = 1.2;
+           }
+
+           if($factor_m==='Deficiente'){
+               $factor_m = 1.15;
+           }
+
+           if($factor_m==='Sin Mantenimiento'){
+               $factor_m = 1.2;
+           }
+       }else{
+           if($factor_m==='ASHRAE 180'){
+               $factor_m = 0.99;
+           }
+
+           if($factor_m==='Deficiente'){
+               $factor_m = 1.11;
+           }
+
+           if($factor_m==='Sin Mantenimiento'){
+               $factor_m = 1.18;
+           }
+       }
+
+
+       $res_res_fact_m =  $res_res * $factor_m;
+
+       return $res_res_fact_m;
+
+    }
+
+    public function form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
         //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
         //((TR /3.5) x (Cooling Hours) x (Costo Energía) / IPVL)/ 1000
        //((TR x cant)
@@ -3938,8 +3698,223 @@ class ProjectController extends Controller
        return $res_res_fact_m;
     }
 
-     public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
-//(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+    public function cost_op_an_form_ab($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ){
+        //((TR x 12000) x (Cooling Hours) x (Costo Energía) / SEER )/ 1000
+
+
+       $cant_aux = 12000;
+
+       $res_trx_cant = $tr * $cant_aux;
+       //(RES) x (Cooling Hours) x (Costo Energía)
+       $mult = $res_trx_cant * $cooling_hrs * $cost_energ;
+
+       $mult_div_efi = $mult / $eficiencia_cant;
+
+       $res_ene_apl_tot_enf_1 = $mult_div_efi / 1000;
+
+       //((TR x cant) x (Cooling Hours)
+
+
+
+       //energia aplicada proccess
+       //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+       //(Fórmula Energía x Factor S)
+
+        /* (((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C) x Factor M */
+        $res_1_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_s);
+
+
+       $res_2_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_d);
+
+       $res_3_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_t);
+
+       $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+       $res_res =  $res_parent_1 * $factor_c;
+
+
+
+       if($t_e === "pa_pi_te"){
+           if($factor_m==='ASHRAE 180'){
+               $factor_m = 1.2;
+           }
+
+           if($factor_m==='Deficiente'){
+               $factor_m = 1.15;
+           }
+
+           if($factor_m==='Sin Mantenimiento'){
+               $factor_m = 1.2;
+           }
+       }else{
+           if($factor_m==='ASHRAE 180'){
+               $factor_m = 0.99;
+           }
+
+           if($factor_m==='Deficiente'){
+               $factor_m = 1.11;
+           }
+
+           if($factor_m==='Sin Mantenimiento'){
+               $factor_m = 1.18;
+           }
+       }
+
+
+       $res_res_fact_m =  $res_res * $factor_m;
+
+       return $res_res_fact_m;
+    }
+
+    public function cost_op_an_form_kw_ab($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ){
+       // (((Kw / 3.5) x 12000 ) x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+
+       //(Kw / 3.5)
+       $cant_aux = 3.5;
+       $cant_aux_mul_12000 = $cant_aux * 12000;
+       //(RES) x (Cooling Hours) x (Costo Energía)
+       $mult = $cant_aux_mul_12000 * $cooling_hrs * $cost_energ;
+
+       $mult_div_efi = $mult / $eficiencia_cant;
+
+       $res_ene_apl_tot_enf_1 = $mult_div_efi / 1000;
+
+       //((TR x cant) x (Cooling Hours)
+
+
+
+       //energia aplicada proccess
+       //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+       //(Fórmula Energía x Factor S)
+
+        /* (((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C) x Factor M */
+        $res_1_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_s);
+
+
+       $res_2_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_d);
+
+       $res_3_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_t);
+
+       $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+       $res_res =  $res_parent_1 * $factor_c;
+
+
+
+       if($t_e === "pa_pi_te"){
+           if($factor_m==='ASHRAE 180'){
+               $factor_m = 1.2;
+           }
+
+           if($factor_m==='Deficiente'){
+               $factor_m = 1.15;
+           }
+
+           if($factor_m==='Sin Mantenimiento'){
+               $factor_m = 1.2;
+           }
+       }else{
+           if($factor_m==='ASHRAE 180'){
+               $factor_m = 0.99;
+           }
+
+           if($factor_m==='Deficiente'){
+               $factor_m = 1.11;
+           }
+
+           if($factor_m==='Sin Mantenimiento'){
+               $factor_m = 1.18;
+           }
+       }
+
+
+       $res_res_fact_m =  $res_res * $factor_m;
+
+       return $res_res_fact_m;
+    }
+
+     public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller){
+        $int_check_chiller = intval($check_chiller);
+
+        if($int_check_chiller <= 7){
+           return ProjectController::cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+        }
+
+        if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+            return ProjectController::cost_op_an_form_kw_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+        }
+     }
+
+     public function cost_op_an_form_kw_chiller(){
+           if($eficiencia_ene == 'IPVL'){
+            //((Kw / 3.54) x IPLV x Cooling Hours) / 0.75
+
+            //(Kw / 3.54)
+            $kw_div_tres_punto_cinco_cuatro = $kw / 3.54;
+            //(Res x IPLV x Cooling Hours)
+            $mult = $kw_div_tres_punto_cinco_cuatro * $eficiencia_cant * $cooling_hrs;
+             //(Res / 0.75
+            $res_div_seer_a =  $mult / 0.75;
+           }
+
+           if($eficiencia_ene == 'EER'){
+            //((Kw/3.54) x (12/EER) x Cooling Hours) / 0.75
+
+            //(Kw / 3.54)
+            $kw_div_tres_punto_cinco_cuatro = $kw / 3.54;
+            //(12/EER)
+            $doce_div_err = 12 / $eficiencia_cant;
+            //((Kw / 3.54) x IPLV x Cooling Hours)
+             $mult = $kw_div_tres_punto_cinco_cuatro * $doce_div_err * $cooling_hrs;
+            //Res / 0.75
+             $res_div_seer_a =  $mult / 0.75;
+           }
+
+           //energia aplicada proccess
+                  //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                  //(Fórmula Energía x Factor S)
+                  $res_1_parent1= $res_div_seer_a * floatval($factor_s);
+                  // (Fórmula Energía x Factor D)
+                  $res_2_parent1= $res_div_seer_a * floatval($factor_d);
+                      //(Fórmula Energía x Factor T)
+                  $res_3_parent1= $res_div_seer_a * floatval($factor_t);
+  //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
+                  $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+     //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+                  $res_res =  $res_parent_1 *  $factor_c;
+
+                  if($t_e === "pa_pi_te"){
+                      if($factor_m==='ASHRAE 180'){
+                          $factor_m = 1.2;
+                      }
+
+                      if($factor_m==='Deficiente'){
+                          $factor_m = 1.15;
+                      }
+
+                      if($factor_m==='Sin Mantenimiento'){
+                          $factor_m = 1.2;
+                      }
+                  }else{
+                      if($factor_m==='ASHRAE 180'){
+                          $factor_m = 0.99;
+                      }
+
+                      if($factor_m==='Deficiente'){
+                          $factor_m = 1.11;
+                      }
+
+                      if($factor_m==='Sin Mantenimiento'){
+                          $factor_m = 1.18;
+                      }
+                  }
+                  $res_res_fact_m =  $res_res * $factor_m;
+                  return $res_res_fact_m;
+     }
+
+     public function cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
+        //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
                   //(((Kw / 3.5)
                   //$kw =  $solution_enf1->capacidad_tot;
 
@@ -3996,7 +3971,21 @@ class ProjectController extends Controller
                   return $res_res_fact_m;
      }
 
-     public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l){
+     public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller){
+        $int_check_chiller = intval($check_chiller);
+
+        if($int_check_chiller <= 7){
+           return ProjectController::form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+        }
+
+        if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+            return ProjectController::form_proyect_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+        }
+
+    }
+
+    public function form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l){
+
         //(((Kw / 3.5) x 12000 )x (Cooling Hours)) / (SEER x (1-Z)^Años de vida)) / 1000
                           //(((Kw / 3.5)
                           //$kw =  $solution_enf1->capacidad_tot;
@@ -4074,22 +4063,118 @@ class ProjectController extends Controller
                           }
                           $res_res_fact_m =  $res_res * $factor_m;
                           return $res_res_fact_m;
-             }
+    }
 
-     public function cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l){
+    public function form_proyect_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l){
+
+        if($factor_m == 'ASHRAE 180'){
+            $z = 0.015;
+        }
+
+        if($factor_m == 'Deficiente'){
+            $z = 0.025;
+        }
+
+        if($factor_m == 'Sin Mantenimiento'){
+            $z = 0.045;
+        }
+
+        if($eficiencia_ene == 'IPVL'){
+            //((Kw/3.54) x ( IPLV / (1-(Z x Años de vida)) x Cooling Hours)
+             //((Kw/3.54)
+            $kw_3_5 = $kw / 3.54;
+            //(Z x Años de vida)
+            $z_mul_yrs_l = $z * $yrs_l;
+            //(1-(Z x Años de vida))
+            $uno_m_zeta = 1 - $z_mul_yrs_l;
+            //( IPLV / (1-(Z x Años de vida))
+            $uno_m_zeta_div_efi = $eficiencia_cant / $uno_m_zeta;
+
+            $res_div_seer_a = $kw_3_5 * $uno_m_zeta_div_efi * $cooling_hrs;
+           }
+
+           if($eficiencia_ene == 'EER'){
+            //((Kw/3.54) x (12/(EER x (1-Z)^Años de vida)) x Cooling Hours) /0.75
+            $kw_3_5 = $kw / 3.54;
+            //(1-Z)
+            $uno_m_zeta = 1-$z;
+            //(1-Z)^Años de vida)
+            $uno_m_zeta_yrs_life = pow($uno_m_zeta,floatval($yrs_l));
+            //(EER x (1-Z)^Años de vida)
+            $efi_mult_uno_m_zeta_yrs_life =  $eficiencia_cant * $uno_m_zeta_yrs_life;
+            //(Kw/3.54) x (12/(EER x (1-Z)^Años de vida)) x Cooling Hours)
+            $mult_all = $kw_3_5 * $efi_mult_uno_m_zeta_yrs_life * $cooling_hrs;
+
+            $res_div_seer_a = $mult_all / 0.75;
+           }
+
+                          //(((Kw / 3.5) x 12000 )x (Cooling Hours)  / SEER ) / 1000
+
+           //energia aplicada proccess
+                          //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                          //(Fórmula Energía x Factor S)
+                          $res_1_parent1= $res_div_seer_a * floatval($factor_s);
+                          // (Fórmula Energía x Factor D)
+                          $res_2_parent1= $res_div_seer_a * floatval($factor_d);
+                              //(Fórmula Energía x Factor T)
+                          $res_3_parent1= $res_div_seer_a * floatval($factor_t);
+          //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
+                          $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+             //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+                          $res_res =  $res_parent_1 *  $factor_c;
+
+                          if($t_e === "pa_pi_te"){
+                              if($factor_m==='ASHRAE 180'){
+                                  $factor_m = 1.2;
+                              }
+
+                              if($factor_m==='Deficiente'){
+                                  $factor_m = 1.15;
+                              }
+
+                              if($factor_m==='Sin Mantenimiento'){
+                                  $factor_m = 1.2;
+                              }
+                          }else{
+                              if($factor_m==='ASHRAE 180'){
+                                  $factor_m = 0.99;
+                              }
+
+                              if($factor_m==='Deficiente'){
+                                  $factor_m = 1.11;
+                              }
+
+                              if($factor_m==='Sin Mantenimiento'){
+                                  $factor_m = 1.18;
+                              }
+                          }
+                          $res_res_fact_m =  $res_res * $factor_m;
+                          return $res_res_fact_m;
+    }
+
+     public function cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller){
+            $int_check_chiller = intval($check_chiller);
+
+            if($int_check_chiller <= 7){
+               return ProjectController::form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+            }
+
+            if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+                return ProjectController::form_proyect_retro_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+            }
+
+    }
+
+    public function form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l){
+
         //((TR x 12000) x (Cooling Hours)  / (SEER x (1-Z)^Años de vida) )/ 1000
-
-
         //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
         //((TR /3.5) x (Cooling Hours) x (Costo Energía) / IPVL)/ 1000
        //((TR x cant)
-       if($eficiencia_ene != 'IPVL'){
-        $cant_aux = 12000;
-       }
 
-       if($eficiencia_ene == 'IPVL'){
-        $cant_aux = 3.5;
-       }
+        $cant_aux = 12000;
+
        $res_trx_cant = $tr * $cant_aux;
        //((TR x cant) x (Cooling Hours)
        $res_1er_parent = $res_trx_cant * $cooling_hrs;
@@ -4170,6 +4255,113 @@ class ProjectController extends Controller
        $res_res_fact_m =  $res_res * $factor_m;
 
        return $res_res_fact_m;
+    }
+
+    public function form_proyect_retro_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l){
+
+                            if($factor_m == 'ASHRAE 180'){
+                                $z = 0.015;
+                            }
+
+                            if($factor_m == 'Deficiente'){
+                                $z = 0.025;
+                            }
+
+                            if($factor_m == 'Sin Mantenimiento'){
+                                $z = 0.045;
+                            }
+
+                        if($eficiencia_ene == 'IPVL'){
+
+                            //(TR x ( IPLV / (1-(Z x Años de vida)) x Cooling Hours) /0.75
+
+                            //z
+
+                            //(Z x Años de vida)
+                            $z_x_yrs_l = $z * $yrs_l;
+                            //(1-(Z x Años de vida))
+                            $z_x_yrs_l_mul_mns_1 = -1 * $z_x_yrs_l;
+                            //IPLV / (1-(Z x Años de vida)
+                            $iplv_div = $eficiencia_cant / $z_x_yrs_l_mul_mns_1;
+                            //(TR x ( IPLV / (1-(Z x Años de vida)) x Cooling Hours)
+                            $tr_mul_iplv_div_mul_cooling_hrs = $tr * $iplv_div * $cooling_hrs;
+
+                            //(TR x Res x Cooling Hours) /0.75
+                            $res_ene_apl_tot_enf_1 = $tr_mul_iplv_div_mul_cooling_hrs / 0.75;
+
+                    }
+
+                    if($eficiencia_ene == 'EER'){
+                        //(TR x (12/(EER x (1-Z)^Años de vida)) x Cooling Hours) /0.75
+
+                            //(1-Z)
+                        $uno_m_zeta = 1-$z;
+
+                        //(1-Z)^Años de vida)
+                        $uno_m_zeta_yrs_life = pow($uno_m_zeta,floatval($yrs_l));
+                        //(EER x (1-Z)^Años de vida
+                        $efi_z_yrs_l = $eficiencia_cant * $uno_m_zeta_yrs_life;
+                        //(12/(EER x (1-Z)^Años de vida))
+                        $twelve_div_efi_z_yrs_l = 12 / $efi_z_yrs_l;
+                        //(TR x (12/(EER x (1-Z)^Años de vida)) x Cooling Hours)
+                        $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs = $tr * $twelve_div_efi_z_yrs_l * $cooling_hrs;
+
+                        $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
+                    }
+
+
+
+
+
+
+                        //energia aplicada proccess
+                        //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+
+                        //(Fórmula Energía x Factor S)
+
+                            /* (((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C) x Factor M */
+                            $res_1_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_s);
+
+
+                            $res_2_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_d);
+
+                            $res_3_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_t);
+
+                            $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
+                            $res_res =  $res_parent_1 * $factor_c;
+
+
+
+                            if($t_e === "pa_pi_te"){
+                                if($factor_m==='ASHRAE 180'){
+                                    $factor_m = 1.2;
+                                }
+
+                                if($factor_m==='Deficiente'){
+                                    $factor_m = 1.15;
+                                }
+
+                                if($factor_m==='Sin Mantenimiento'){
+                                    $factor_m = 1.2;
+                                }
+                            }else{
+                                if($factor_m==='ASHRAE 180'){
+                                    $factor_m = 0.99;
+                                }
+
+                                if($factor_m==='Deficiente'){
+                                    $factor_m = 1.11;
+                                }
+
+                                if($factor_m==='Sin Mantenimiento'){
+                                    $factor_m = 1.18;
+                                }
+                            }
+
+
+                            $res_res_fact_m =  $res_res * $factor_m;
+
+                            return $res_res_fact_m;
     }
 
     public function type_project($id_project){

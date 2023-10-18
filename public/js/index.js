@@ -3148,7 +3148,7 @@ function send_name_t_c(value){
 }
 
 function send_name_dr(value){
-    /*  console.log($('#'+value+' option:selected').text()); */
+
     const myArray = value.split('_');
     var text_dr = $('#'+value+' option:selected').text();
     var inp_text_dr =  $('#dr_name_'+myArray[1]+'_'+myArray[2]);
@@ -6253,7 +6253,6 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 $("#"+costo_elec).val('$'+dollarUSLocale.format(res.val_unidad.costo_elec));
                 $("#"+csStd_cant).val(dollarUSLocale.format(res.val_unidad.eficencia_ene_cant));
                 $("#"+cheValorS).val('$'+dollarUSLocale.format(res.val_unidad.val_aprox));
-                $("#"+csStd).find('option[value="'+ res.val_unidad.eficencia_ene +'"]').attr("selected", "selected");
                 $("#"+maintenance_cost).val('$'+dollarUSLocale.format(res.val_unidad.costo_mantenimiento));
                 $("#"+cUnidad).find('option[value="' + res.val_unidad.unidad_hvac + '"]').attr("selected", "selected");
                 unidadHvac(res.val_unidad.unidad_hvac,1,csTipo,csDisenio);
@@ -6266,8 +6265,9 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 send_name(csDisenio);
                 send_name_t_c(tipo_control);
                 send_name_dr(dr);
-
-                set_ser_to_sers(res.val_unidad.eficencia_ene);
+                check_chiller(res.val_unidad.unidad_hvac,csStd,res.val_unidad.type_p);
+                $("#"+csStd).find('option[value="'+ res.val_unidad.eficencia_ene +'"]').attr("selected", "selected");
+               /*  set_ser_to_sers(res.val_unidad.eficencia_ene); */
 
                 if(num_solu != '' || num_solu != null){
                     $("#"+action_submit).val('update');
@@ -6320,7 +6320,6 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 $("#"+costo_recu).val('$'+dollarUSLocale.format(res.val_unidad.val_aprox));
                 $("#"+yrs_vida).val(res.val_unidad.yrs_vida);
                 $("#"+const_an_rep).val('$'+dollarUSLocale.format(res.val_unidad.cost_an_re));
-                $("#"+csStd).find('option[value="' + res.val_unidad.eficencia_ene + '"]').attr("selected", "selected");
                 $("#"+maintenance_cost).val('$'+dollarUSLocale.format(res.val_unidad.costo_mantenimiento));
                 $("#"+cUnidad).find('option[value="' + res.val_unidad.unidad_hvac + '"]').attr("selected", "selected");
                 unidadHvac(res.val_unidad.unidad_hvac,1,csTipo,csDisenio);
@@ -6335,7 +6334,8 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 send_name_t_c(tipo_control);
                 send_name_dr(dr);
                 send_modelo_edit(res.val_unidad.id_marca,modelo,res.val_unidad.id_modelo);
-                set_ser_to_sers(res.val_unidad.eficencia_ene);
+                check_chiller(res.val_unidad.unidad_hvac,csStd,res.val_unidad.type_p);
+                $("#"+csStd).find('option[value="' + res.val_unidad.eficencia_ene + '"]').attr("selected", "selected");
                 $("#"+action_submit).val('update');
                 /* if (cont_sol !== '' || cont_sol !== null){
                     var cont_val = parseInt($('#'+cont_sol).val());
@@ -6650,75 +6650,6 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
 
      }
  }
-
- function set_ser_to_sers(value){
-
-    if(value == 'SEER'){
-        var efi = 'SEER';
-    }
-
-    if(value == 'SEER2'){
-        var efi = 'SEER2';
-    }
-
-    if(value == 'IEER'){
-        var efi = 'IEER';
-    }
-
-    if(value == 'IPVL'){
-        var efi = 'IPVL';
-    }
-
-    if(value === ''){
-        $('#csStd_1_2').val('');
-        $('#csStd_1_3').val('');
-
-        $('#csStd_2_1').val('');
-        $('#csStd_2_2').val('');
-        $('#csStd_2_3').val('');
-
-
-        $('#csStd2_3_1').val('');
-        $('#csStd_3_2').val('');
-        $('#csStd_3_3').val('');
-        //retrofit
-        $('#csStd_1_1_retro').val('');
-        $('#csStd_1_2_retro').val('');
-
-        $('#csStd_2_1_retro').val('');
-        $('#csStd_2_2_retro').val('');
-
-        $('#csStd_3_1_retro').val('');
-        $('#csStd_3_2_retro').val('');
-    }
-
-    if(value !== ''){
-        $('#csStd_1_2').val(efi);
-        $('#csStd_1_3').val(efi);
-
-        $('#csStd_2_1').val(efi);
-        $('#csStd_2_2').val(efi);
-        $('#csStd_2_3').val(efi);
-
-
-        $('#csStd2_3_1').val(efi);
-        $('#csStd_3_2').val(efi);
-        $('#csStd_3_3').val(efi);
-
-         //retrofit
-         $('#csStd_1_1_retro').val(efi);
-         $('#csStd_1_2_retro').val(efi);
-
-         $('#csStd_2_1_retro').val(efi);
-         $('#csStd_2_2_retro').val(efi);
-
-         $('#csStd_3_1_retro').val(efi);
-         $('#csStd_3_2_retro').val(efi);
-    }
-
-
- }
-
 
  function inactive_display_sol_edit(value,id_project,num_enf,num_sol,name_disp){
     Swal.fire({
@@ -7139,4 +7070,112 @@ function send_marcas_to_datalist() {
             }
         });
 
+    }
+
+    function set_ser_to_sers(value){
+
+        if(value == 'SEER'){
+            var efi = 'SEER';
+        }
+
+        if(value == 'SEER2'){
+            var efi = 'SEER2';
+        }
+
+        if(value == 'IEER'){
+            var efi = 'IEER';
+        }
+
+        if(value == 'IPVL' || 'EER'){
+            ///var efi = 'IPVL';
+        }
+
+        if(value === ''){
+            $('#csStd_1_2').val('');
+            $('#csStd_1_3').val('');
+
+            $("#csStd_2_1").find('option[value="SEER"]').attr("selected", "selected");
+           /*  $('#csStd_2_1').val(''); */
+            $('#csStd_2_2').val('');
+            $('#csStd_2_3').val('');
+
+
+            $('#csStd2_3_1').val('');
+            $('#csStd_3_2').val('');
+            $('#csStd_3_3').val('');
+            //retrofit
+            $('#csStd_1_1_retro').val('');
+            $('#csStd_1_2_retro').val('');
+
+            $('#csStd_2_1_retro').val('');
+            $('#csStd_2_2_retro').val('');
+
+            $('#csStd_3_1_retro').val('');
+            $('#csStd_3_2_retro').val('');
+        }
+
+        if(value !== ''){
+            $('#csStd_1_2').val(efi);
+            $('#csStd_1_3').val(efi);
+
+            $('#csStd_2_1').val(efi);
+            $('#csStd_2_2').val(efi);
+            $('#csStd_2_3').val(efi);
+
+
+            $('#csStd2_3_1').val(efi);
+            $('#csStd_3_2').val(efi);
+            $('#csStd_3_3').val(efi);
+
+             //retrofit
+             $('#csStd_1_1_retro').val(efi);
+             $('#csStd_1_2_retro').val(efi);
+
+             $('#csStd_2_1_retro').val(efi);
+             $('#csStd_2_2_retro').val(efi);
+
+             $('#csStd_3_1_retro').val(efi);
+             $('#csStd_3_2_retro').val(efi);
+        }
+
+
+     }
+
+    function check_chiller(equipo,id_select,type_p){
+        //no chiller
+        var ima =  $('#idioma').val();
+        if(equipo <= 7){
+            $('#'+id_select).empty();
+            $('#'+id_select).append($('<option>', {
+                value: 'SEER',
+                text: 'SEER'
+            }));
+
+            $('#'+id_select).append($('<option>', {
+                value: 'SEER2',
+                text: 'SEER2'
+            }));
+
+            $('#'+id_select).append($('<option>', {
+                value: 'IEER',
+                text: 'IEER'
+            }));
+
+
+        }
+        //chiller
+        if(equipo > 7 && equipo <= 10 ){
+            $('#'+id_select).empty();
+            $('#'+id_select).append($('<option>', {
+                value: 'EER',
+                text: 'EER'
+            }));
+
+            $('#'+id_select).append($('<option>', {
+                value: 'IPVL',
+                text: 'IPVL'
+            }));
+
+
+        }
     }

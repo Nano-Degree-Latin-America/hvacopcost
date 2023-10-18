@@ -36,7 +36,7 @@
                             </div>
 
                             <div class="w-1/2 flex justify-start">
-                                <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');">
+                                <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');check_chiller(this.value,'csStd_1_1_retro',2);">
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -133,11 +133,11 @@
                                 <label  class="labels" for=""><b>{{ __('index.efi_ori') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/4">
-                                <select name="csStd_1_1_retro" id="csStd_1_1_retro" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="set_ser_to_sers(this.value);" class="w-full border-2 border-blue-600 rounded-md text-center">
-                                    <option value="SEER">SEER</option>
+                                <select name="csStd_1_1_retro" id="csStd_1_1_retro" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" class="w-full border-2 border-blue-600 rounded-md text-center">
+                                    {{-- <option value="SEER">SEER</option>
                                     <option value="SEER2">SEER2</option>
                                     <option value="IEER">IEER</option>
-                                    <option value="IPVL" disabled>IPVL</option>
+                                    <option value="IPVL" disabled>IPVL</option> --}}
                                 </select>
                             </div>
                             <div class="flex justify-start w-1/4">
@@ -338,7 +338,7 @@
                         <input type="text" value="" class="hidden" id="action_submit_2_1_retro" name="action_submit_2_1_retro">
 
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro');valida_update_store_solution('action_submit_2_1_retro');"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
+                            <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro');valida_update_store_solution('action_submit_2_1_retro');check_chiller(this.value,'csStd_2_1_retro',2);"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -433,7 +433,12 @@
                             <label  class="labels" for=""><b>{{ __('index.efi') }}</b> </label>
                         </div>
                         <div class="flex justify-start w-1/3">
-                            <input name="csStd_2_1_retro" readonly id="csStd_2_1_retro" style="padding-top: 0.425rem;padding-bottom: 0.248rem;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
+                            <select name="csStd_2_1_retro" id="csStd_2_1_retro" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" class="w-full border-2 border-blue-600 rounded-md text-center">
+                                {{-- <option value="SEER">SEER</option>
+                                <option value="SEER2">SEER2</option>
+                                <option value="IEER">IEER</option>
+                                <option value="IPVL" disabled>IPVL</option> --}}
+                            </select>
                         </div>
                         <div class="flex justify-start w-1/4">
                         <input onchange="valida_selects_inps(this.id);"  name="csStd_cant_2_1_retro" id="csStd_cant_2_1_retro" type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md">
@@ -637,7 +642,7 @@
                            <label  class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                        </div>
                        <div class="w-1/2 flex justify-start">
-                           <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro');valida_update_store_solution('action_submit_3_1_retro');" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
+                           <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro');valida_update_store_solution('action_submit_3_1_retro');check_chiller(this.value,'csStd_3_1_retro',2);" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
                                <option value="0">{{ __('index.seleccionar') }}</option>
                                <option value="1">Paquetes (RTU)</option>
                                <option value="2">Split DX</option>
@@ -730,8 +735,13 @@
                            <label  class="labels" for=""><b>{{ __('index.efi') }}</b> </label>
                        </div>
                        <div class="flex justify-start w-1/3">
-                           <input readonly style="padding-top: 0.425rem;padding-bottom: 0.248rem;" type="text" name="csStd_3_1_retro" id="csStd_3_1_retro" class="text-center w-full py-1 border-2 border-blue-600 rounded-md">
-                       </div>
+                           <select name="csStd_3_1_retro" id="csStd_3_1_retro" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" class="w-full border-2 border-blue-600 rounded-md text-center">
+                            {{-- <option value="SEER">SEER</option>
+                            <option value="SEER2">SEER2</option>
+                            <option value="IEER">IEER</option>
+                            <option value="IPVL" disabled>IPVL</option> --}}
+                        </select>
+                        </div>
                        <div class="flex justify-start w-1/4">
                         <input  name="csStd_cant_3_1_retro" id="csStd_cant_3_1_retro" onchange="valida_selects_inps(this.id);" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
                        </div>

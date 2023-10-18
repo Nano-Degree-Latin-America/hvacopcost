@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="unidadHvac(this.value,1,'csTipo','csDisenio_1_1');"  >
+                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="unidadHvac(this.value,1,'csTipo','csDisenio_1_1');check_chiller(this.value,'csStd',1);"  >
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -143,11 +143,11 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                     <div class="flex justify-start w-1/3">
-                        <select name="csStd" id="csStd" style="padding-top: 0.528rem;padding-bottom: 0.528rem;" onchange="set_ser_to_sers(this.value);" class="w-full border-2 border-blue-600 rounded-md text-center">
-                            <option value="SEER">SEER</option>
+                        <select name="csStd" id="csStd" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
+                            {{-- <option value="SEER">SEER</option>
                             <option value="SEER2">SEER2</option>
                             <option value="IEER">IEER</option>
-                            <option value="IPVL">IPVL</option>
+                            <option value="IPVL">IPVL</option> --}}
                         </select>
                     </div>
                     <div class="flex justify-start w-1/4">
@@ -258,7 +258,7 @@
 
 
                     <div class="w-1/2 flex justify-start">
-                        <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2','csDisenio_1_2','{{App::getLocale()}}');" name="cUnidad_1_2" id="cUnidad_1_2" >
+                        <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2','csDisenio_1_2','{{App::getLocale()}}');check_chiller(this.value,'csStd_1_2',1);" name="cUnidad_1_2" id="cUnidad_1_2" >
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -278,7 +278,7 @@
                                             if(type_p_edit_1_2 == 1 ||  type_p_edit_2_1 == 0){
                                 traer_unidad_hvac('{{$id_project}}',2,1,'cUnidad_1_2','csTipo_1_2','csDisenio_1_2'
                                 ,'tipo_control_1_2','dr_1_2','csMantenimiento_1_2','lblCsTipo_1_2','capacidad_total_1_2'
-                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2','action_submit_1_2','csStd','maintenance_cost_1_2');
+                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2','action_submit_1_2','csStd_1_2','maintenance_cost_1_2');
                                             }
 
 
@@ -364,8 +364,13 @@
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
 
                         <div class="flex justify-start w-1/3">
-                        <input type="text" style="padding-top: 0.425rem;padding-bottom: 0.425rem;" readonly name="csStd_1_2" id="csStd_1_2" class="w-full border-2 border-blue-600 rounded-md text-center">
-                        </div>
+                            <select name="csStd_1_2" id="csStd_1_2" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
+                                {{-- <option value="SEER">SEER</option>
+                                <option value="SEER2">SEER2</option>
+                                <option value="IEER">IEER</option>
+                                <option value="IPVL">IPVL</option> --}}
+                            </select>
+                         </div>
 
                         <div class="flex justify-start w-1/4">
                             <input id="csStd_cant_1_2" name="csStd_cant_1_2" type="number"  step="0.5" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -472,7 +477,7 @@
                                <label style="font-size: 14px;" class="" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                            </div>
                            <div class="w-1/2 flex justify-start">
-                               <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,3,'csTipo_1_3','{{App::getLocale()}}');" name="cUnidad_1_3" id="cUnidad_1_3" >
+                               <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,3,'csTipo_1_3','{{App::getLocale()}}');check_chiller(this.value,'csStd_1_2',1)" name="cUnidad_1_3" id="cUnidad_1_3" >
                                     <option selected value="0">{{ __('index.seleccionar') }}</option>
                                    <option value="1">Paquetes (RTU)</option>
                                    <option value="2">Split DX</option>
@@ -490,7 +495,7 @@
                                         if(type_p_edit_1_3 == 1 ||  type_p_edit_1_3 == 0){
                                            traer_unidad_hvac('{{$id_project}}',3,1,'cUnidad_1_3','csTipo_1_3','csDisenio_1_3'
                                            ,'tipo_control_1_3','dr_1_3','csMantenimiento_1_3','lblCsTipo_1_3','capacidad_total_1_3'
-                                           ,'costo_elec_1_3','csStd_cant_1_3','cheValorS_1_3','sol_1_3','action_submit_1_3','csStd','maintenance_cost_1_3');
+                                           ,'costo_elec_1_3','csStd_cant_1_3','cheValorS_1_3','sol_1_3','action_submit_1_3','csStd_1_3','maintenance_cost_1_3');
                                          }
                                         });
                                        </script>
@@ -564,8 +569,12 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                            <div class="flex justify-start w-1/3">
-                                <input readonly type="text" style="padding-top: 0.425rem;padding-bottom: 0.425rem;" name="csStd_1_3" id="csStd_1_3" class="w-full border-2 border-blue-600 rounded-md text-center">
-
+                                <select name="csStd_1_3" id="csStd_1_3" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
+                                    {{-- <option value="SEER">SEER</option>
+                                    <option value="SEER2">SEER2</option>
+                                    <option value="IEER">IEER</option>
+                                    <option value="IPVL">IPVL</option> --}}
+                                </select>
                            </div>
                            <div class="flex justify-start w-1/4">
                                <input type="number" id="csStd_cant_1_3" name="csStd_cant_1_3" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -786,7 +795,7 @@
                                 <label style="font-size: 14px;" class="" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1','{{App::getLocale()}}');valida_update_store_solution('action_submit_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
+                                <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1','{{App::getLocale()}}');valida_update_store_solution('action_submit_2_1');check_chiller(this.value,'csStd_2_1',1);"  name="cUnidad_2_1" id="cUnidad_2_1" >
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -804,7 +813,7 @@
                                         if(type_p_edit_2_1 == 1 ||  type_p_edit_2_1 == 0){
                                         traer_unidad_hvac('{{$id_project}}',1,2,'cUnidad_2_1','cheTipo_2_1','cheDisenio_2_1'
                                         ,'tipo_control_2_1','dr_2_1','csMantenimiento_2_1','lblCsTipo_2_1','capacidad_total_2_1'
-                                        ,'costo_elec_2_1','csStd_cant_2_1','cheValorS_2_1','2_1','action_submit_2_1','csStd','maintenance_cost_2_1');
+                                        ,'costo_elec_2_1','csStd_cant_2_1','cheValorS_2_1','2_1','action_submit_2_1','csStd_2_1','maintenance_cost_2_1');
                                         }
 
                                         verifica_solution(2,1,'action_submit_2_1','{{$id_project}}',1);
@@ -890,8 +899,12 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                             <div class="flex justify-start w-1/3">
-                                <input readonly type="text" style="padding-top: 0.425rem;padding-bottom: 0.248rem;" name="csStd_2_1" id="csStd_2_1" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
-
+                                <select name="csStd_2_1" id="csStd_2_1" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
+                                    {{-- <option value="SEER">SEER</option>
+                                    <option value="SEER2">SEER2</option>
+                                    <option value="IEER">IEER</option>
+                                    <option value="IPVL">IPVL</option> --}}
+                                </select>
                             </div>
                             <div class="flex justify-start w-1/4">
                             <input name="csStd_cant_2_1" id="csStd_cant_2_1"  type="text" style="font-size: 14px;" class="text-center w-full border-2 border-blue-600 rounded-md">
@@ -1000,7 +1013,7 @@
                             <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select style="margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,2,'cheTipo_2_2','{{App::getLocale()}}');"  name="cUnidad_2_2" id="cUnidad_2_2" >
+                            <select style="margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,2,'cheTipo_2_2','{{App::getLocale()}}');check_chiller(this.value,'csStd_2_2',1);"  name="cUnidad_2_2" id="cUnidad_2_2" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -1019,7 +1032,7 @@
                                     traer_unidad_hvac('{{$id_project}}',2,2,'cUnidad_2_2','cheTipo_2_2','cheDisenio_2_2'
                                     ,'tipo_control_2_2','dr_2_2','cheMantenimiento_2_2','lblCsTipo_2_2',
                                     'capacidad_total_2_2','costo_elec_2_2','csStd_cant_2_2','cheValorS_2_2'
-                                    ,'sol_2_2','action_submit_2_2','csStd','maintenance_cost_2_2');
+                                    ,'sol_2_2','action_submit_2_2','csStd_2_2','maintenance_cost_2_2');
                                         }
                                 });
                                 </script>
@@ -1104,8 +1117,12 @@
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                         <div class="flex justify-start w-1/3">
-                            <input type="text" readonly name="csStd_2_2" id="csStd_2_2" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
-
+                            <select name="csStd_2_2" id="csStd_2_2" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
+                                {{-- <option value="SEER">SEER</option>
+                                <option value="SEER2">SEER2</option>
+                                <option value="IEER">IEER</option>
+                                <option value="IPVL">IPVL</option> --}}
+                            </select>
                         </div>
                         <div class="flex justify-start w-1/4">
                             <input  name="csStd_cant_2_2" id="csStd_cant_2_2" type="text"style="padding-top: 0.425rem;padding-bottom: 0.42rem;"  class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -1218,7 +1235,7 @@
                             <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,3,'cheTipo_2_3','{{App::getLocale()}}');" name="cUnidad_2_3" id="cUnidad_2_3" >
+                            <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,3,'cheTipo_2_3','{{App::getLocale()}}');check_chiller(this.value,'csStd_2_3',1);" name="cUnidad_2_3" id="cUnidad_2_3" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -1236,7 +1253,7 @@
                                         if(type_p_edit_2_3 == 1 ||  type_p_edit_2_3 == 0){
                                         traer_unidad_hvac('{{$id_project}}',3,2,'cUnidad_2_3','cheTipo_2_3','cheDisenio_2_3'
                                         ,'tipo_control_2_3','dr_2_3','cheMantenimiento_2_3','lblCsTipo_2_3','capacidad_total_2_3'
-                                        ,'costo_elec_2_3','csStd_cant_2_3','cheValorS_2_3','sol_2_3','action_submit_2_3','csStd','maintenance_cost_2_3');
+                                        ,'costo_elec_2_3','csStd_cant_2_3','cheValorS_2_3','sol_2_3','action_submit_2_3','csStd_2_3','maintenance_cost_2_3');
                                         }
                                     });
 
@@ -1315,8 +1332,12 @@
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                         <div class="flex justify-start w-1/3">
-                            <input type="text" readonly name="csStd_2_3" id="csStd_2_3"  style="padding-top: 0.4rem;padding-bottom: 0.4rem;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
-
+                            <select name="csStd_2_3" id="csStd_2_3" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
+                                {{-- <option value="SEER">SEER</option>
+                                <option value="SEER2">SEER2</option>
+                                <option value="IEER">IEER</option>
+                                <option value="IPVL">IPVL</option> --}}
+                            </select>
                         </div>
                         <div class="flex justify-start w-1/4">
                         <input  name="csStd_cant_2_3" id="csStd_cant_2_3" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
@@ -1543,7 +1564,7 @@
                                 <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1','{{App::getLocale()}}');valida_update_store_solution('action_submit_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
+                                <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1','{{App::getLocale()}}');valida_update_store_solution('action_submit_3_1');check_chiller(this.value,'csStd2_3_1',1);" name="cUnidad_3_1" id="cUnidad_3_1" >
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -1561,7 +1582,7 @@
                                         if(type_p_edit_3_1 == 1 ||  type_p_edit_3_1 == 0){
                                         traer_unidad_hvac('{{$id_project}}',1,3,'cUnidad_3_1','cheTipo_3_1','cheDisenio_3_1'
                                         ,'tipo_control_3_1','dr_3_1','cheMantenimiento_3_1','lblCsTipo_3_1','capacidad_total_3_1'
-                                        ,'costo_elec_3_1','cheStd_3_1','cheValorS_3_1','3_1','action_submit_3_1','csStd','maintenance_cost_3_1');
+                                        ,'costo_elec_3_1','cheStd_3_1','cheValorS_3_1','3_1','action_submit_3_1','csStd2_3_1','maintenance_cost_3_1');
                                         }
 
                                         verifica_solution(3,1,'action_submit_3_1','{{$id_project}}',1);
@@ -1651,8 +1672,12 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                             <div class="flex justify-start w-1/3">
-                                <input readonly type="text"  name="csStd2_3_1" id="csStd2_3_1" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
-
+                                <select name="csStd2_3_1" id="csStd2_3_1" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
+                                    {{-- <option value="SEER">SEER</option>
+                                    <option value="SEER2">SEER2</option>
+                                    <option value="IEER">IEER</option>
+                                    <option value="IPVL">IPVL</option> --}}
+                                </select>
                             </div>
                             <div class="flex justify-start w-1/4">
                              <input  name="cheStd_3_1" id="cheStd_3_1" type="text"  style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
@@ -1763,7 +1788,7 @@
                             <label class="labels" class="" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="unidadHvac(this.value,1,'cheTipo_3_2','{{App::getLocale()}}');" name="cUnidad_3_2" id="cUnidad_3_2" >
+                            <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="unidadHvac(this.value,1,'cheTipo_3_2','{{App::getLocale()}}');check_chiller(this.value,'csStd_3_2',1);" name="cUnidad_3_2" id="cUnidad_3_2" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -1782,7 +1807,7 @@
                                         if(type_p_edit_3_2 == 1 ||  type_p_edit_3_2 == 0){
                                     traer_unidad_hvac('{{$id_project}}',2,3,'cUnidad_3_2','cheTipo_3_2','cheDisenio_3_2'
                                     ,'tipo_control_3_2','dr_3_2','cheMantenimiento_3_2','lblCsTipo_3_2','capacidad_total_3_2'
-                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2','action_submit_3_2','csStd','maintenance_cost_3_2');
+                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2','action_submit_3_2','csStd_3_2','maintenance_cost_3_2');
                                         }
                                 });
                                 </script>
@@ -1866,8 +1891,12 @@
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                         <div class="flex justify-start w-1/3">
-                            <input readonly style="padding-top: 0.49rem;padding-bottom: 0.49rem;" type="text" name="csStd_3_2" id="csStd_3_2" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
-
+                            <select name="csStd_3_2" id="csStd_3_2" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
+                                {{-- <option value="SEER">SEER</option>
+                                <option value="SEER2">SEER2</option>
+                                <option value="IEER">IEER</option>
+                                <option value="IPVL">IPVL</option> --}}
+                            </select>
                         </div>
                         <div class="flex justify-start w-1/4">
                             <input step="0.5" name="csStd_cant_3_2" id="csStd_cant_3_2" type="number" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md  text-center">
@@ -1978,7 +2007,7 @@
                             <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_3','{{App::getLocale()}}');" name="cUnidad_3_3" id="cUnidad_3_3" >
+                            <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_3','{{App::getLocale()}}');check_chiller(this.value,'csStd_3_3',1);" name="cUnidad_3_3" id="cUnidad_3_3" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -1997,7 +2026,7 @@
                                         if(type_p_edit_3_3 == 1 ||  type_p_edit_3_3 == 0){
                                     traer_unidad_hvac('{{$id_project}}',3,3,'cUnidad_3_3','cheTipo_3_3','cheDisenio_3_3'
                                     ,'tipo_control_3_3','dr_3_3','cheMantenimiento_3_3','lblCsTipo_3_3','capacidad_total_3_3'
-                                    ,'costo_elec_3_3','cheStd_3_3','cheValorS_3_3','sol_3_3','action_submit_3_3','csStd','maintenance_cost_3_3');
+                                    ,'costo_elec_3_3','cheStd_3_3','cheValorS_3_3','sol_3_3','action_submit_3_3','csStd_3_3','maintenance_cost_3_3');
                                         }
                                 });
                                 </script>
@@ -2070,8 +2099,12 @@
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                         <div class="flex justify-start w-1/3">
-                            <input readonly type="text" style="padding-top: 0.425rem;padding-bottom: 0.4rem;" name="csStd_3_3" id="csStd_3_3" class="text-center w-full py-1 border-2 border-blue-600 rounded-md">
-
+                            <select name="csStd_3_3" id="csStd_3_3" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
+                                {{-- <option value="SEER">SEER</option>
+                                <option value="SEER2">SEER2</option>
+                                <option value="IEER">IEER</option>
+                                <option value="IPVL">IPVL</option> --}}
+                            </select>
                         </div>
                         <div class="flex justify-start w-1/4">
                          <input name="cheStd_3_3" id="cheStd_3_3" type="text" style="font-size: 14px;" class="w-full py-1 border-2 border-blue-600 rounded-md text-center">
@@ -2097,7 +2130,7 @@
                             <label class="labels" for=""><b>{{ __('index.dr') }}</b> </label>
                         </div>
                         <div class="w-full flex justify-start">
-                            <select  style="width: 77%;margin-left:2.5px;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_t_c(this.id);"  name="dr_3_3" id="dr_3_3" >
+                            <select  style="width: 77%;margin-left:2.5px;" class="border-2 border-blue-600 rounded-md py-1" onchange="send_name_dr(this.id);"  name="dr_3_3" id="dr_3_3" >
                             </select>
                         </div>
                         <input type="text" style="display: none" id="dr_name_3_3" name="dr_name_3_3">
