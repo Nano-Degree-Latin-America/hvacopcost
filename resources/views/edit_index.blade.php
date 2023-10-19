@@ -210,6 +210,10 @@ text-align: center;
 align-items: center;
 cursor: pointer;
 }
+
+.rounded_modal_ebergy_hvac{
+    border-radius: 40px;
+}
     </style>
 
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">

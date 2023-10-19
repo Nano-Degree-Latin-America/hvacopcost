@@ -160,8 +160,8 @@
                 </div>
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                    <div class="flex justify-start w-1/2">
-                        <label  class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
+                    <div class="flex justify-start text-left w-1/2">
+                        <label  class="labels text-left" for=""><b>{{ __('index.tipo control') }}</b> </label>
                     </div>
 
                     <div class="flex justify-start w-full">
@@ -190,7 +190,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="flex w-1/3 justify-start text-left">
-                        <label class="labels" for=""><b>{{ __('index.mantenimiento') }}</b> </label>
+                        <label class="labels text-left" for=""><b>{{ __('index.mantenimiento') }}</b> </label>
                     </div>
                     <div class="flex w-full justify-start">
                         <select class="w-full border-2 border-blue-600 rounded-md py-2" style="margin-left: 2px;" name="csMantenimiento" id="csMantenimiento">
@@ -379,7 +379,7 @@
                 </div>
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                    <div class="flex justify-start w-1/2">
+                    <div class="flex justify-start text-left w-1/2">
                         <label class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
                     </div>
 
@@ -582,7 +582,7 @@
                            </div>
 
                            <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                               <div class="flex justify-start w-1/2">
+                               <div class="flex justify-start text-left w-1/2">
                                    <label class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
                                </div>
 
@@ -915,7 +915,7 @@
                         </div>
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                            <div class="flex justify-start w-1/2">
+                            <div class="flex justify-start text-left w-1/2">
                                 <label class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-full">
@@ -1132,7 +1132,7 @@
                     </div>
 
                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                        <div class="flex justify-start w-1/2">
+                        <div class="flex justify-start text-left w-1/2">
                             <label  class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
                         </div>
 
@@ -1345,7 +1345,7 @@
                     </div>
 
                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                        <div class="flex justify-start w-1/2">
+                        <div class="flex justify-start text-left w-1/2">
                             <label class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
                         </div>
                         <div class="flex justify-start w-full">
@@ -1687,7 +1687,7 @@
                         </div>
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                            <div class="flex justify-start w-1/2">
+                            <div class="flex justify-start text-left w-1/2">
                                 <label class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-full">
@@ -1906,7 +1906,7 @@
                     </div>
 
                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                        <div class="flex justify-start w-1/2">
+                        <div class="flex justify-start text-left w-1/2">
                             <label style="font-size: 14px;" class="" for=""><b>{{ __('index.tipo control') }}</b> </label>
                         </div>
                         <div class="flex justify-start w-full">
@@ -2112,7 +2112,7 @@
                     </div>
 
                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                        <div class="flex justify-start w-1/2">
+                        <div class="flex justify-start text-left w-1/2">
                             <label class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
                         </div>
                         <div class="flex justify-start w-full">
@@ -2138,7 +2138,7 @@
 
                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                         <div class="flex w-1/3 justify-start text-left">
-                            <label class="labels" for=""><b>{{ __('index.mantenimiento') }}</b> </label>
+                            <label class="labels text-left" for=""><b>{{ __('index.mantenimiento') }}</b> </label>
                         </div>
                         <div class="flex w-full justify-start">
                                 <select style="margin-left: 2px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="cheMantenimiento_3_3" id="cheMantenimiento_3_3">
