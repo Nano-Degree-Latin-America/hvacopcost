@@ -5,7 +5,7 @@
         <div class="absolute"></div>
       </div>
       <!-- Contenedor del modal -->
-      <div class="border-2 border-blue-600 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all w-1/7" style="margin-top:450px;margin-right:1150px;" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+      <div class="border-2 border-blue-600 inline-block align-bottom bg-white rounded_modal_ebergy_hvac text-left overflow-hidden shadow-xl transform transition-all w-1/7" style="margin-top:450px;margin-right:1150px;" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
         <div class="bg-white px-3 pt-5">
             <div class="grid w-full" >
                 <div class="flex w-full justify-center">
@@ -14,12 +14,14 @@
           </div>
             <div class="flex w-full justify-center">
                 <ul class="list-disc justify-center">
-                    <li>EER = 0.7 x IERR​</li>
-                    <li>IEER = 1.43 x EER​​</li>
+                    <li>EER = COP x 3.412</li>
+                    <li>IEER = 0.7 x EER​​</li>
                     <li>IEER = 1.25 x SEER​​</li>
                     <li>SEER = 0.8 x IEER​​</li>
                     <li>SEER = 1.14 x EER​​</li>
                     <li>SEER2 = SEER x 0.95​</li>
+                    <li>IPVL = 3.5 / COP​</li>
+                    <li>IPVL = 12 / EER​</li>
                   </ul>
             </div>
         </div>

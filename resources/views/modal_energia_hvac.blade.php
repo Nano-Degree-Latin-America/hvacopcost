@@ -5,13 +5,14 @@
         <div class="absolute"></div>
       </div>
       <!-- Contenedor del modal -->
-      <div class="border-2 border-blue-600 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all w-1/6" style="margin-top:410px;margin-left:1130px;" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+      <div class="border-2 border-blue-600 inline-block align-bottom bg-white rounded_modal_ebergy_hvac text-left overflow-hidden shadow-xl transform transition-all w-1/6" style="margin-top:410px;margin-left:1130px;" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
         <div class="bg-white px-3 pt-5">
             <div class="grid w-full" >
                 <div class="flex w-full justify-center">
-                    <p class="text-xl font-roboto font-bold">Recomendaciones:​​</p>
+                    <p class="text-xl font-roboto font-bold text-center">Energía utilizada por el sistema HVAC en el edificio:​​</p>
                 </div>
           </div>
+          <br>
           <div class="flex w-full justify-center">
             <div class="flex w-full mx-5 justify-center">
                 <ul class="list-disc">
@@ -23,7 +24,6 @@
                     <li class="font-roboto font-bold text-left">Restaurante 30 - 40 %​​​</li>
                     <li class="font-roboto font-bold text-left">Education 40 - 50 %​​</li>
                     <li class="font-roboto font-bold text-left">Gobierno 30 - 40 %​​</li>
-                    <li class="font-roboto font-bold text-left">Data Center 40 - 60 %​</li>
                   </ul>
             </div>
           </div>

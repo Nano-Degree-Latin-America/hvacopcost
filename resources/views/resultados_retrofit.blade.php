@@ -184,6 +184,53 @@ span{
     width: 85px; height:65px;
     margin-top:5px;
 }
+
+.btn_roundf_retro{
+border:1px solid #3182ce;
+background: #3182ce;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
+.btn_roundf_retro:hover {
+border:1px solid #4299e1;
+background: #4299e1;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
+
+.btn_roundf_retro:active {
+border:1px solid #3182ce;
+background: #3182ce;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
@@ -1683,13 +1730,13 @@ span{
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <?php  $unidad_area=$results->unidad_area($id_project,1,$sumaopex_1,$tar_ele->costo_elec) ?>
                                         <div class="flex w-full justify-center">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.cons_ene_ar') }} <b class="text-orange-500">(Kwh/
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.cons_ene_ar') }} <b class="text-orange-500">(Kwh /
                                                 @if ($unidad_area == 'mc')
-                                                m²
+                                                m²)
                                                 @endif
                                                 @if ($unidad_area == 'ft')
-                                                ft²
-                                                @endif)</b></label>
+                                                ft²)
+                                               @endif</b></label>
                                         </div>
 
 
@@ -2482,9 +2529,12 @@ span{
                                         </div>
                                         </div>
                                     </div>
+                                        @include('modal_marr_retro')
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl py-10">
-
+                                        <div class="flex w-full justify-end">
+                                            <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr_retro');" class="btn_roundf_retro mr-10" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                                        </div>
                                         <input type="text" id="ima_ener" name="ima_ener" class="hidden" value="{{ __('index.energia') }}">
                                         <input type="text" id="ima_man" name="ima_man" class="hidden" value="{{ __('index.mantenimiento') }}">
                                         <input type="text" id="ima_sol" name="ima_sol" class="hidden" value="{{ __('index.solucion') }}">
@@ -3256,7 +3306,7 @@ span{
                                         </div>
                                         <div class="flex w-full justify-center">
 
-                                                <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl mr-10">{{ __('results.red_ene') }} - Mega Watts</label>
+                                                <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl mr-10">{{ __('results.red_ene') }} <b class="text-orange-500">(MWh)</b></label>
 
                                         </div>
                                     </div>
@@ -3421,7 +3471,7 @@ span{
                                             <img src="{{asset('/assets/images/Huella.png')}}" style="width:100px; height:100px;" class="mx-10 mt-2" alt="Nano Degree">
                                         </div>
                                         <div class="flex w-full justify-center">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.red_pe_ca') }} – Ton. CO2</label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.red_pe_ca') }} <b class="text-orange-500">(Ton. CO2)</b></label>
                                         </div>
 
                                     </div>
@@ -3597,7 +3647,7 @@ span{
                                             <img src="{{asset('/assets/images/reducción-bolsas.png')}}" style="width:100px; height:90px;" class="mx-10 mt-2" alt="Nano Degree">
                                         </div>
                                         <div class="flex w-full justify-center">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.red_bol_ca') }} - {{ __('results.recicladas') }}</label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.red_bol_ca') }} <b class="text-orange-500">({{ __('results.recicladas') }})</b></label>
                                         </div>
 
                                     </div>
@@ -4135,6 +4185,15 @@ window.onload = function() {
     roi_base_b('{{$id_project}}');
     eui_grafic('{{$id_project}}');
 };
+
+function mostrar_modal(id){
+    $("#"+id).removeClass("hidden");
+}
+
+function ocultar_modal(id){
+    $("#"+id).addClass("hidden");
+}
+
 
 function confort_base(val_conf){
     $val_ini = 1;

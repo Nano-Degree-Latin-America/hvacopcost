@@ -13,7 +13,7 @@ return [
     'area' => 'Aréa',
     'unidad' => 'Unidad',
     'ocupacion semanal' => 'Ocupación Semanal',
-    'energia hvac en el edificio' => 'Energía HVAC en el Edificio',
+    'energia hvac en el edificio' => 'Energía por HVAC',
     'proyecto nuevo' => 'Proyecto Nuevo',
     'proyecto retrofit' => 'Proyecto Retrofit',
     'selecciona tu region' => 'Selecciona tu región',
