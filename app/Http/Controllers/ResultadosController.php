@@ -688,10 +688,16 @@ class ResultadosController extends Controller
                     $solution_enf1_3->id_empresa=Auth::user()->id_empresa;
                     $solution_enf1_3->id_user=Auth::user()->id;
 
-
                     $cooling_hrs =  $solution_enf1_3->coolings_hours;
                     $cost_energ =  $solution_enf1_3->costo_elec;
-                    $seer = $solution_enf1_3->eficencia_ene_cant;
+                    $eficiencia_cant = $solution_enf1_3->eficencia_ene_cant;
+                    $factor_s = $request->get('lblCsTipo_1_3');
+                    $factor_d = floatval($request->get('csDisenio_1_3'));
+                    $factor_c = $request->get('tipo_control_1_3');
+                    $factor_t =floatval($request->get('dr_1_3'));
+                    $factor_m =$request->get('csMantenimiento_1_3');
+                    $t_e = $solution_enf1_3->tipo_equipo;
+                    $eficiencia_ene = $solution_enf1_3->eficencia_ene;
                     $unidad_hvac_aux = $solution_enf1_3->unidad_hvac;
                 if ($solution_enf1_3->unid_med == 'TR') {
 
@@ -887,7 +893,14 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
                 $cooling_hrs =  $solution_enf2_1->coolings_hours;
                 $cost_energ =  $solution_enf2_1->costo_elec;
-                $seer = floatval($request->get('csStd_cant_2_1'));
+                $eficiencia_cant = floatval($request->get('csStd_cant_2_1'));
+                $factor_s = $request->get('lblCsTipo_2_1');
+                $factor_d = floatval($request->get('cheDisenio_2_1'));
+                $factor_c = floatval($request->get('tipo_control_2_1'));
+                $factor_t =floatval($request->get('dr_2_1'));
+                $factor_m =$request->get('csMantenimiento_2_1');
+                $t_e = $solution_enf2_1->tipo_equipo;
+                $eficiencia_ene = $solution_enf2_1->eficencia_ene;
                 $unidad_hvac_aux = $solution_enf2_1->unidad_hvac;
                if ($solution_enf2_1->unid_med == 'TR') {
                 $tr =  $solution_enf2_1->capacidad_tot;
@@ -1056,7 +1069,14 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
                 $cooling_hrs =  $solution_enf2_2->coolings_hours;
                 $cost_energ =  $solution_enf2_2->costo_elec;
-                $seer = $solution_enf2_2->eficencia_ene_cant;
+                $eficiencia_cant = $solution_enf2_2->eficencia_ene_cant;
+                $factor_s = $request->get('lblCsTipo_2_2');
+                $factor_d = floatval($request->get('cheDisenio_2_2'));
+                $factor_c = $request->get('tipo_control_2_2');
+                $factor_t =floatval($request->get('dr_2_2'));
+                $factor_m = $request->get('cheMantenimiento_2_2');
+                $t_e = $solution_enf2_2->tipo_equipo;
+                $eficiencia_ene = $solution_enf2_2->eficencia_ene;
                 $unidad_hvac_aux = $solution_enf2_2->unidad_hvac;
                if ($solution_enf2_2->unid_med == 'TR') {
 
@@ -1225,10 +1245,17 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                     $solution_enf2_3->id_user=Auth::user()->id;
 
 
-                    $cooling_hrs =  $solution_enf2_3->coolings_hours;
-                    $cost_energ =  $solution_enf2_3->costo_elec;
-                    $seer = $solution_enf2_3->eficencia_ene_cant;
-                    $unidad_hvac_aux = $solution_enf2_3->unidad_hvac;
+                        $cooling_hrs =  $solution_enf2_3->coolings_hours;
+                        $cost_energ =  $solution_enf2_3->costo_elec;
+                        $eficiencia_cant = $solution_enf2_3->eficencia_ene_cant;
+                        $factor_s = $request->get('lblCsTipo_2_3');
+                        $factor_d = floatval($request->get('cheDisenio_2_3'));
+                        $factor_c = $request->get('tipo_control_2_3');
+                        $factor_t =floatval($request->get('dr_2_3'));
+                        $factor_m =$request->get('cheMantenimiento_2_3');
+                        $t_e = $solution_enf2_3->tipo_equipo;
+                        $eficiencia_ene = $solution_enf2_3->eficencia_ene;
+                        $unidad_hvac_aux = $solution_enf2_3->unidad_hvac;
                 if ($solution_enf2_3->unid_med == 'TR') {
                     $tr =  $solution_enf2_3->capacidad_tot;
                     $res_2_3 = ResultadosController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
@@ -1420,7 +1447,14 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
                  $cooling_hrs =  $solution_enf3_1->coolings_hours;
                  $cost_energ =  $solution_enf3_1->costo_elec;
-                 $seer = floatval($request->get('cheStd_3_1'));
+                 $eficiencia_cant = floatval($request->get('cheStd_3_1'));
+                 $factor_s = $request->get('lblCsTipo_3_1');
+                 $factor_d = floatval($request->get('cheDisenio_3_1'));
+                 $factor_c = $request->get('tipo_control_3_1');
+                 $factor_t =floatval($request->get('dr_3_1'));
+                 $factor_m =$request->get('cheMantenimiento_3_1');
+                 $t_e = $solution_enf3_1->tipo_equipo;
+                 $eficiencia_ene = $solution_enf3_1->eficencia_ene;
                  $unidad_hvac_aux = $solution_enf3_1->unidad_hvac;
                 if ($solution_enf3_1->unid_med == 'TR') {
                     $tr =  $solution_enf3_1->capacidad_tot;
@@ -1588,9 +1622,16 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
 
                  $cooling_hrs =  $solution_enf3_2->coolings_hours;
-                 $cost_energ =  $solution_enf3_2->costo_elec;
-                 $seer = $solution_enf3_2->eficencia_ene_cant;
-                 $unidad_hvac_aux = $solution_enf3_2->unidad_hvac;
+                $cost_energ =  $solution_enf3_2->costo_elec;
+                $eficiencia_cant = $solution_enf3_2->eficencia_ene_cant;
+                $factor_s = $request->get('lblCsTipo_3_2');
+                $factor_d = floatval($request->get('cheDisenio_3_2'));
+                $factor_c = $request->get('tipo_control_3_2');
+                $factor_t =floatval($request->get('dr_3_2'));
+                $factor_m = $request->get('cheMantenimiento_3_2');
+                $t_e = $solution_enf3_2->tipo_equipo;
+                $eficiencia_ene = $solution_enf3_2->eficencia_ene;
+                $unidad_hvac_aux = $solution_enf3_2->unidad_hvac;
                 if ($solution_enf3_2->unid_med == 'TR') {
                     $tr =  $solution_enf3_2->capacidad_tot;
                     $res_3_2 = ResultadosController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
@@ -1758,7 +1799,14 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
                      $cooling_hrs =  $solution_enf3_3->coolings_hours;
                      $cost_energ =  $solution_enf3_3->costo_elec;
-                     $seer = $solution_enf3_3->eficencia_ene_cant;
+                     $eficiencia_cant = $solution_enf3_3->eficencia_ene_cant;
+                     $factor_s = $request->get('lblCsTipo_3_3');
+                     $factor_d = floatval($request->get('cheDisenio_3_3'));
+                     $factor_c = $request->get('tipo_control_3_3');
+                     $factor_t =floatval($request->get('dr_3_3'));
+                     $factor_m = $request->get('cheMantenimiento_3_3');
+                     $t_e = $solution_enf3_3->tipo_equipo;
+                     $eficiencia_ene = $solution_enf3_3->eficencia_ene;
                      $unidad_hvac_aux = $solution_enf3_3->unidad_hvac;
                  if ($solution_enf3_3->unid_med == 'TR') {
                     $tr =  $solution_enf3_3->capacidad_tot;
