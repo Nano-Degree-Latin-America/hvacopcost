@@ -2828,6 +2828,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
         }
         if(action != 'edit'){
             send_marcas();
+            $('#csStd_1_1_retro').prop('disabled', false);
         }
          //si tipo es igual a 1
         if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 0){
@@ -7072,6 +7073,10 @@ function send_marcas_to_datalist() {
 
     }
 
+/*    function send_seer_base(value){
+        send_seers_all('csStd','');
+    }
+ */
     function set_ser_to_sers(value){
 
         if(value == 'SEER'){
@@ -7086,16 +7091,20 @@ function send_marcas_to_datalist() {
             var efi = 'IEER';
         }
 
-        if(value == 'IPVL' || 'EER'){
-            ///var efi = 'IPVL';
+        /* if(value == 'IPVL'){
+            var efi = 'IPVL';
         }
+
+        if(value == 'EER'){
+            var efi = 'IPVL';
+        } */
 
         if(value === ''){
             $('#csStd_1_2').val('');
             $('#csStd_1_3').val('');
 
-            $("#csStd_2_1").find('option[value="SEER"]').attr("selected", "selected");
-           /*  $('#csStd_2_1').val(''); */
+            //$("#csStd_2_1").find('option[value=""]').attr("selected", "selected");
+            $('#csStd_2_1').val('');
             $('#csStd_2_2').val('');
             $('#csStd_2_3').val('');
 
@@ -7115,37 +7124,41 @@ function send_marcas_to_datalist() {
         }
 
         if(value !== ''){
-            $('#csStd_1_2').val(efi);
-            $('#csStd_1_3').val(efi);
-
-            $('#csStd_2_1').val(efi);
-            $('#csStd_2_2').val(efi);
-            $('#csStd_2_3').val(efi);
 
 
-            $('#csStd2_3_1').val(efi);
-            $('#csStd_3_2').val(efi);
-            $('#csStd_3_3').val(efi);
+            send_seers_all('csStd','')
+            send_seers_all('csStd_1_2',value)
+            send_seers_all('csStd_1_3',value)
+
+            send_seers_all('csStd_2_1',value)
+            send_seers_all('csStd_2_2',value)
+            send_seers_all('csStd_2_3',value)
+
+            ///$("#csStd_2_1").find('option[value="'+value+'"]').attr("selected", "selected");
+            send_seers_all('csStd2_3_1',value)
+            send_seers_all('csStd_3_2',value)
+            send_seers_all('csStd_3_3',value)
+
 
              //retrofit
-             $('#csStd_1_1_retro').val(efi);
+             send_seers_all('csStd_1_1_retro',value)
+             send_seers_all('csStd_2_1_retro',value)
+             send_seers_all('csStd_3_1_retro',value)
+             /* $('#csStd_1_1_retro').val(efi);
              $('#csStd_1_2_retro').val(efi);
 
              $('#csStd_2_1_retro').val(efi);
              $('#csStd_2_2_retro').val(efi);
 
              $('#csStd_3_1_retro').val(efi);
-             $('#csStd_3_2_retro').val(efi);
+             $('#csStd_3_2_retro').val(efi); */
         }
 
 
      }
 
-    function check_chiller(equipo,id_select,type_p){
-        //no chiller
-        var ima =  $('#idioma').val();
-        if(equipo <= 7){
-            $('#'+id_select).empty();
+     function send_seers_all(id_select,value){
+        $('#'+id_select).empty();
             $('#'+id_select).append($('<option>', {
                 value: 'SEER',
                 text: 'SEER'
@@ -7161,7 +7174,4454 @@ function send_marcas_to_datalist() {
                 text: 'IEER'
             }));
 
+            if(value == 'SEER' || value == 'SEER2' || value == 'IEER'){
+                if(id_select != 'csStd'){
+                    $('#'+id_select).prop('disabled', true);
+                }
+            }
+     }
 
+    function check_chiller(equipo,id_select,type_p){
+        //no chiller
+        var ima =  $('#idioma').val();
+        if(equipo <= 7){
+
+            /* $('#'+id_select).empty();
+            $('#'+id_select).append($('<option>', {
+                value: 'SEER',
+                text: 'SEER'
+            }));
+
+            $('#'+id_select).append($('<option>', {
+                value: 'SEER2',
+                text: 'SEER2'
+            }));
+
+            $('#'+id_select).append($('<option>', {
+                value: 'IEER',
+                text: 'IEER'
+            })); */
+            if(type_p == 1){
+                check_ant_equipo('csStd',id_select,equipo,'cUnidad_1_1');
+
+            }
+
+            if(type_p == 2){
+
+                check_ant_equipo('csStd_1_1_retro',id_select,equipo,'cUnidad_1_1_retro');
+
+            }
+            //check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+        }
+        //chiller
+        if(equipo > 7 && equipo <= 10 ){
+            $('#'+id_select).empty();
+            /* $('#'+id_select).append($('<option>', {
+                value: 'EER',
+                text: 'EER'
+            })); */
+
+            $('#'+id_select).append($('<option>', {
+                value: 'IPVL',
+                text: 'IPVL'
+            }));
+            $('#'+id_select).prop('disabled', false);
+
+            inactiva_next_efi(id_select,equipo);
+
+        }
+    }
+
+    function inactiva_next_efi(id_select,equipo){
+        var efi = 'SEER'
+        if(id_select == 'csStd'){
+
+             //check primero
+             var chek = check_ant_equipo_aux('csStd',id_select,equipo,'cUnidad_1_1');
+             if(chek == 1){
+                 return false;
+             }
+
+             if(chek == 2){
+                $("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+                $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+                //send_seers_all('csStd_2_1',value)
+                $("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_2_1").prop('disabled',false);
+                $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+                $("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+             }
+        }
+
+        if(id_select == 'csStd_1_2'){
+            //check primero
+            var chek = check_ant_equipo_aux('csStd',id_select,equipo,'cUnidad_1_1');
+            if(chek == 1){
+                return false;
+            }
+
+            if(chek == 2){
+                //$("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+                $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+                //send_seers_all('csStd_2_1',value)
+
+                //$("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_2_2").prop('disabled',false);
+                $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+                //$("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            }
+
+
+           /*   */
+        }
+
+        if(id_select == 'csStd_1_3'){
+            //check primero
+            var chek = check_ant_equipo_aux('csStd',id_select,equipo,'cUnidad_1_1');
+            if(chek == 1){
+                return false;
+            }
+
+            if(chek == 2){
+
+                $("#csStd_2_3").prop('disabled',false);
+                $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            }
+           /*   */
+        }
+
+
+        if(id_select == 'csStd_2_1'){
+            //check primero
+            var chek = check_ant_equipo_aux('csStd',id_select,equipo,'cUnidad_1_1');
+            if(chek == 1){
+                return false;
+            }
+
+            if(chek == 2){
+                $("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+                //send_seers_all('csStd_2_1',value)
+                //$("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+                $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+                $('#csStd2_3_1').prop('disabled', false);
+                $("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            }
+            /*  */
+        }
+
+        if(id_select == 'csStd_2_2'){
+            //check primero
+            var chek = check_ant_equipo_aux('csStd',id_select,equipo,'cUnidad_1_1');
+            if(chek == 1){
+                return false;
+            }
+
+            if(chek == 2){
+
+
+                $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+
+                $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+                $("#csStd_3_2").prop('disabled',false);
+                $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            }
+
+
+           /*   */
+        }
+
+        if(id_select == 'csStd_2_3'){
+            //check primero
+            var chek = check_ant_equipo_aux('csStd',id_select,equipo,'cUnidad_1_1');
+            if(chek == 1){
+                return false;
+            }
+
+            if(chek == 2){
+                $("#csStd_3_3").prop('disabled',false);
+                $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            }
+           /*   */
+        }
+
+        if(id_select == 'csStd2_3_1'){
+            //check primero
+            var chek = check_ant_equipo_aux('csStd',id_select,equipo,'cUnidad_1_1');
+            if(chek == 1){
+                return false;
+            }
+
+            if(chek == 2){
+                //$('#csStd_1_2').prop('disabled', false);
+            $("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+
+
+            $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+
+            $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            }
+           /*   */
+        }
+
+        if(id_select == 'csStd_3_2'){
+            //check primero
+            var chek = check_ant_equipo_aux('csStd',id_select,equipo,'cUnidad_1_1');
+            if(chek == 1){
+                return false;
+            }
+
+            if(chek == 2){
+
+
+                //$("#csStd_1_3").prop('disabled',false);
+                $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            }
+           /*   */
+        }
+
+        if(id_select == 'csStd_1_1_retro'){
+
+            //check primero
+            var chek = check_ant_equipo_aux('csStd_1_1_retro',id_select,equipo,'cUnidad_1_1_retro');
+            if(chek == 1){
+                return false;
+            }
+
+            if(chek == 2){
+
+               $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+               $("#csStd_2_1_retro").prop('disabled',false);
+
+
+               $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            }
+       }
+
+       if(id_select == 'csStd_2_1_retro'){
+
+        //check primero
+        var chek = check_ant_equipo_aux('csStd_1_1_retro',id_select,equipo,'cUnidad_1_1_retro');
+        if(chek == 1){
+            return false;
+        }
+
+        if(chek == 2){
+
+           $("#csStd_3_1_retro").prop('disabled',false);
+           $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+        }
+    }
+
+    if(id_select == 'csStd_3_1_retro'){
+
+        //check primero
+        var chek = check_ant_equipo_aux('csStd_1_1_retro',id_select,equipo,'cUnidad_1_1_retro');
+        if(chek == 1){
+            return false;
+        }
+
+        if(chek == 2){
+
+
+
+        }
+    }
+
+
+    }
+
+    function check_ant_equipo(base,id_select,equipo,equipo_base){
+        var base_val = $("#"+base).val();
+        var select_val_efi = $("#"+id_select).val();
+        var select_val_equipo_base = $("#"+equipo_base).val();
+
+
+        switch (id_select) {
+
+        case "csStd":
+            if(equipo <= 7){
+
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+
+                    check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+            }
+        break;
+
+        case "csStd_1_2":
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_1_2").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+
+                }
+
+                if(select_val_equipo_base > 7){
+                    ///2_1
+                        var val_2_1 = $("#csStd_2_1").val()
+                        var Unidad_2_1 = $("#cUnidad_2_1").val()
+                        if( Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+                            $('#'+id_select).empty();
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER',
+                                text: 'SEER'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER2',
+                                text: 'SEER2'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'IEER',
+                                text: 'IEER'
+                            }));
+                            $("#csStd_1_2").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                            $('#'+id_select).prop('disabled', true);
+                        }
+
+                        if( Unidad_2_1 > 7){
+                            //3_1
+                            var val_3_1 = $("#csStd2_3_1").val()
+                            var Unidad_3_1 = $("#cUnidad_3_1").val()
+                            if( Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+                                $("#csStd_1_2").find('option[value="'+val_3_1+'"]').attr("selected", "selected");
+                                $('#'+id_select).prop('disabled', true);
+                            }
+
+                            if( Unidad_3_1 > 7){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+
+                                //$("#csStd2_3_1").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                                check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                                $('#'+id_select).prop('disabled', false);
+                            }
+
+                            if( Unidad_3_1 == 0){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+
+                                //$("#csStd2_3_1").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                                check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                                $('#'+id_select).prop('disabled', false);
+                            }
+                        }
+
+                        if( Unidad_2_1 == 0){
+                            //3_1
+                            var val_3_1 = $("#csStd2_3_1").val()
+                            var Unidad_3_1 = $("#cUnidad_3_1").val()
+                            if( Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+                                $("#csStd_1_2").find('option[value="'+val_3_1+'"]').attr("selected", "selected");
+                                $('#'+id_select).prop('disabled', true);
+                            }
+
+                            if( Unidad_3_1 > 7){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+
+                                //$("#csStd2_3_1").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                                check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                                $('#'+id_select).prop('disabled', false);
+                            }
+
+                            if( Unidad_3_1 == 0){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+
+                                //$("#csStd2_3_1").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                                check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                                $('#'+id_select).prop('disabled', false);
+                            }
+                        }
+                }
+
+            }
+
+        break;
+
+        case "csStd_1_3":
+
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_1_3").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+
+                if(select_val_equipo_base > 7){
+                    ///2_1
+                        var val_2_1 = $("#csStd_2_1").val()
+                        var Unidad_2_1 = $("#cUnidad_2_1").val()
+                        if( Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+
+                            $('#'+id_select).empty();
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER',
+                                text: 'SEER'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER2',
+                                text: 'SEER2'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'IEER',
+                                text: 'IEER'
+                            }));
+
+                            $("#csStd_1_3").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                            $('#'+id_select).prop('disabled', true);
+                        }
+
+                        if( Unidad_2_1 > 7){
+                            //3_1
+                            var val_3_1 = $("#csStd2_3_1").val()
+                            var Unidad_3_1 = $("#cUnidad_3_1").val()
+
+                            if( Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+                                $("#csStd_1_3").find('option[value="'+val_3_1+'"]').attr("selected", "selected");
+                                $('#'+id_select).prop('disabled', true);
+                            }
+
+                            if( Unidad_3_1 > 7){
+
+                                //1_2
+                                    var val_1_2 = $("#csStd_1_2").val()
+                                    var Unidad_1_2 = $("#cUnidad_1_2").val()
+
+                                    if( Unidad_1_2 <= 7 && Unidad_1_2 > 0){
+                                    $('#'+id_select).empty();
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER',
+                                        text: 'SEER'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER2',
+                                        text: 'SEER2'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'IEER',
+                                        text: 'IEER'
+                                    }));
+                                    $("#csStd_1_3").find('option[value="'+val_1_2+'"]').attr("selected", "selected");
+                                    $('#'+id_select).prop('disabled', true);
+                                    }
+
+                                    if(Unidad_1_2 > 7){
+                                        //2_2
+                                        var val_2_2 = $("#csStd_2_2").val()
+                                        var Unidad_2_2 = $("#cUnidad_2_2").val()
+                                        if( Unidad_2_2 <= 7 && Unidad_2_2 > 0){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+
+                                            $("#csStd_1_3").find('option[value="'+val_2_2+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', true);
+                                        }
+                                        if(Unidad_2_2 > 7){
+
+                                            var val_3_2 = $("#csStd_3_2").val()
+                                            var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                            if( cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_1_3").find('option[value="'+val_3_2+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                        }
+
+                                        if(cUnidad_3_2 > 7){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            //$("#csStd2_3_1").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', false);
+                                            check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                                        }
+
+                                        }
+                                    }
+                            }
+
+                            if( Unidad_3_1 == 0){
+
+                                //1_2
+                                    var val_1_2 = $("#csStd_1_2").val()
+                                    var Unidad_1_2 = $("#cUnidad_1_2").val()
+
+                                    if( Unidad_1_2 <= 7 && Unidad_1_2 > 0){
+                                    $('#'+id_select).empty();
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER',
+                                        text: 'SEER'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER2',
+                                        text: 'SEER2'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'IEER',
+                                        text: 'IEER'
+                                    }));
+                                    $("#csStd_1_3").find('option[value="'+val_1_2+'"]').attr("selected", "selected");
+                                    $('#'+id_select).prop('disabled', true);
+                                    }
+
+                                    if(Unidad_1_2 > 7){
+                                        //2_2
+                                        var val_2_2 = $("#csStd_2_2").val()
+                                        var Unidad_2_2 = $("#cUnidad_2_2").val()
+                                        if( Unidad_2_2 <= 7 && Unidad_2_2 > 0){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+
+                                            $("#csStd_1_3").find('option[value="'+val_2_2+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', true);
+                                        }
+                                        if(Unidad_2_2 > 7){
+
+                                            var val_3_2 = $("#csStd_3_2").val()
+                                            var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                            if( cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_1_3").find('option[value="'+val_3_2+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                        }
+
+                                        if(cUnidad_3_2 > 7 || cUnidad_3_2 == 0){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            //$("#csStd2_3_1").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', false);
+                                            check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                                        }
+
+                                        }
+                                    }
+                            }
+
+
+                        }
+
+                        if( Unidad_2_1 == 0){
+                            //3_1
+                            var val_3_1 = $("#csStd2_3_1").val()
+                            var Unidad_3_1 = $("#cUnidad_3_1").val()
+
+                            if( Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+                                $("#csStd_1_3").find('option[value="'+val_3_1+'"]').attr("selected", "selected");
+                                $('#'+id_select).prop('disabled', true);
+                            }
+
+                            if( Unidad_3_1 > 7){
+
+                                //1_2
+                                    var val_1_2 = $("#csStd_1_2").val()
+                                    var Unidad_1_2 = $("#cUnidad_1_2").val()
+
+                                    if( Unidad_1_2 <= 7 && Unidad_1_2 > 0){
+                                    $('#'+id_select).empty();
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER',
+                                        text: 'SEER'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER2',
+                                        text: 'SEER2'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'IEER',
+                                        text: 'IEER'
+                                    }));
+                                    $("#csStd_1_3").find('option[value="'+val_1_2+'"]').attr("selected", "selected");
+                                    $('#'+id_select).prop('disabled', true);
+                                    }
+
+                                    if(Unidad_1_2 > 7){
+                                        //2_2
+                                        var val_2_2 = $("#csStd_2_2").val()
+                                        var Unidad_2_2 = $("#cUnidad_2_2").val()
+                                        if( Unidad_2_2 <= 7 && Unidad_2_2 > 0){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+
+                                            $("#csStd_1_3").find('option[value="'+val_2_2+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', true);
+                                        }
+                                        if(Unidad_2_2 > 7){
+
+                                            var val_3_2 = $("#csStd_3_2").val()
+                                            var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                            if( cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_1_3").find('option[value="'+val_3_2+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                        }
+
+                                        if(cUnidad_3_2 > 7){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            //$("#csStd2_3_1").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', false);
+                                            check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                                        }
+
+                                        }
+                                    }
+                            }
+
+                            if( Unidad_3_1 == 0){
+
+                                //1_2
+                                    var val_1_2 = $("#csStd_1_2").val()
+                                    var Unidad_1_2 = $("#cUnidad_1_2").val()
+
+                                    if( Unidad_1_2 <= 7 && Unidad_1_2 > 0){
+                                    $('#'+id_select).empty();
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER',
+                                        text: 'SEER'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER2',
+                                        text: 'SEER2'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'IEER',
+                                        text: 'IEER'
+                                    }));
+                                    $("#csStd_1_3").find('option[value="'+val_1_2+'"]').attr("selected", "selected");
+                                    $('#'+id_select).prop('disabled', true);
+                                    }
+
+                                    if(Unidad_1_2 > 7){
+                                        //2_2
+                                        var val_2_2 = $("#csStd_2_2").val()
+                                        var Unidad_2_2 = $("#cUnidad_2_2").val()
+                                        if( Unidad_2_2 <= 7 && Unidad_2_2 > 0){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+
+                                            $("#csStd_1_3").find('option[value="'+val_2_2+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', true);
+                                        }
+                                        if(Unidad_2_2 > 7){
+
+                                            var val_3_2 = $("#csStd_3_2").val()
+                                            var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                            if( cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_1_3").find('option[value="'+val_3_2+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                        }
+
+                                        if(cUnidad_3_2 > 7 || cUnidad_3_2 == 0){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            //$("#csStd2_3_1").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', false);
+                                            check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                                        }
+
+                                        }
+
+                                        if(Unidad_2_2 == 0){
+
+                                            var val_3_2 = $("#csStd_3_2").val()
+                                            var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                            if( cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_1_3").find('option[value="'+val_3_2+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                        }
+
+                                        if(cUnidad_3_2 > 7 || cUnidad_3_2 == 0){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            //$("#csStd2_3_1").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', false);
+                                            check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                                        }
+
+                                        }
+                                    }
+                            }
+
+
+                        }
+                }
+
+            }
+
+        break;
+
+        case "csStd_2_1":
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_2_1").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+
+                if(select_val_equipo_base > 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $('#'+id_select).prop('disabled', false);
+                    check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                }
+
+            }
+
+        break;
+
+        case "csStd_2_2":
+
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_2_2").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+
+                if(select_val_equipo_base > 7){
+                    ///2_1
+                        var val_2_1 = $("#csStd_2_1").val()
+                        var Unidad_2_1 = $("#cUnidad_2_1").val()
+                        if( Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+
+                            $('#'+id_select).empty();
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER',
+                                text: 'SEER'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER2',
+                                text: 'SEER2'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'IEER',
+                                text: 'IEER'
+                            }));
+
+                            $("#csStd_2_2").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                            $('#'+id_select).prop('disabled', true);
+                        }
+
+                        if( Unidad_2_1 > 7){
+                            //3_1
+                            var val_3_1 = $("#csStd2_3_1").val()
+                            var Unidad_3_1 = $("#cUnidad_3_1").val()
+
+                            if( Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+                                $("#csStd_2_2").find('option[value="'+val_3_1+'"]').attr("selected", "selected");
+                                $('#'+id_select).prop('disabled', true);
+                            }
+
+                            if( Unidad_3_1 > 7){
+
+                                //1_2
+                                    var val_1_2 = $("#csStd_1_2").val()
+                                    var Unidad_1_2 = $("#cUnidad_1_2").val()
+
+                                    if( Unidad_1_2 <= 7 && Unidad_1_2 > 0){
+                                    $('#'+id_select).empty();
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER',
+                                        text: 'SEER'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER2',
+                                        text: 'SEER2'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'IEER',
+                                        text: 'IEER'
+                                    }));
+                                    $("#csStd_2_2").find('option[value="'+val_1_2+'"]').attr("selected", "selected");
+                                    $('#'+id_select).prop('disabled', true);
+                                    }
+
+                                    if(Unidad_1_2 > 7){
+                                        $('#'+id_select).empty();
+                                        $('#'+id_select).append($('<option>', {
+                                            value: 'SEER',
+                                            text: 'SEER'
+                                        }));
+
+                                        $('#'+id_select).append($('<option>', {
+                                            value: 'SEER2',
+                                            text: 'SEER2'
+                                        }));
+
+                                        $('#'+id_select).append($('<option>', {
+                                            value: 'IEER',
+                                            text: 'IEER'
+                                        }));
+                                        $('#'+id_select).prop('disabled', false);
+                                        check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                                    }
+
+                                    if(Unidad_1_2 == 0){
+                                        $('#'+id_select).empty();
+                                        $('#'+id_select).append($('<option>', {
+                                            value: 'SEER',
+                                            text: 'SEER'
+                                        }));
+
+                                        $('#'+id_select).append($('<option>', {
+                                            value: 'SEER2',
+                                            text: 'SEER2'
+                                        }));
+
+                                        $('#'+id_select).append($('<option>', {
+                                            value: 'IEER',
+                                            text: 'IEER'
+                                        }));
+                                        $('#'+id_select).prop('disabled', false);
+                                    }
+
+
+                            }
+
+                            if( Unidad_3_1 == 0){
+                                var val_1_2 = $("#csStd_1_2").val()
+                                var Unidad_1_2 = $("#cUnidad_1_2").val()
+
+                                if( Unidad_1_2 <= 7 && Unidad_1_2 > 0){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+                                $("#csStd_2_2").find('option[value="'+val_1_2+'"]').attr("selected", "selected");
+                                $('#'+id_select).prop('disabled', true);
+                                }
+
+                                if(Unidad_1_2 > 7){
+                                    $('#'+id_select).empty();
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER',
+                                        text: 'SEER'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER2',
+                                        text: 'SEER2'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'IEER',
+                                        text: 'IEER'
+                                    }));
+                                    $('#'+id_select).prop('disabled', false);
+                                    check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                                }
+
+                                if(Unidad_1_2 == 0){
+                                    $('#'+id_select).empty();
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER',
+                                        text: 'SEER'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER2',
+                                        text: 'SEER2'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'IEER',
+                                        text: 'IEER'
+                                    }));
+                                    $('#'+id_select).prop('disabled', false);
+                                }
+
+                            }
+                        }
+                }
+
+            }
+
+        break;
+
+        case "csStd_2_3":
+
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_2_3").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+
+                if(select_val_equipo_base > 7){
+                    ///2_1
+                        var val_2_1 = $("#csStd_2_1").val()
+                        var Unidad_2_1 = $("#cUnidad_2_1").val()
+                        if( Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+
+                            $('#'+id_select).empty();
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER',
+                                text: 'SEER'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER2',
+                                text: 'SEER2'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'IEER',
+                                text: 'IEER'
+                            }));
+
+                            $("#csStd_2_3").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                            $('#'+id_select).prop('disabled', true);
+                        }
+
+                        if( Unidad_2_1 > 7){
+                            //3_1
+                            var val_3_1 = $("#csStd2_3_1").val()
+                            var Unidad_3_1 = $("#cUnidad_3_1").val()
+
+                            if( Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+                                $("#csStd_2_3").find('option[value="'+val_3_1+'"]').attr("selected", "selected");
+                                $('#'+id_select).prop('disabled', true);
+                            }
+
+                            if( Unidad_3_1 > 7){
+
+                                //1_2
+                                    var val_1_2 = $("#csStd_1_2").val()
+                                    var Unidad_1_2 = $("#cUnidad_1_2").val()
+
+                                    if( Unidad_1_2 <= 7 && Unidad_1_2 > 0){
+                                    $('#'+id_select).empty();
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER',
+                                        text: 'SEER'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER2',
+                                        text: 'SEER2'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'IEER',
+                                        text: 'IEER'
+                                    }));
+                                    $("#csStd_2_3").find('option[value="'+val_1_2+'"]').attr("selected", "selected");
+                                    $('#'+id_select).prop('disabled', true);
+                                    }
+
+                                    if(Unidad_1_2 > 7){
+                                        //2_2
+                                        var val_2_2 = $("#csStd_2_2").val()
+                                        var Unidad_2_2 = $("#cUnidad_2_2").val()
+                                        if( Unidad_2_2 <= 7 && Unidad_2_2 > 0){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+
+                                            $("#csStd_2_3").find('option[value="'+val_2_2+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', true);
+                                        }
+                                        if(Unidad_2_2 > 7){
+
+                                            var val_3_2 = $("#csStd_3_2").val()
+                                            var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                            if( cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_2_3").find('option[value="'+val_3_2+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                        }
+
+                                        if(cUnidad_3_2 > 7){
+                                            var csStd_2_3 = $("#csStd_2_3").val()
+                                            var cUnidad_1_3 = $("#cUnidad_1_3").val()
+                                            if( cUnidad_1_3 <= 7 && cUnidad_1_3 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_2_3").find('option[value="'+csStd_2_3+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                          }
+
+                                          if(cUnidad_1_3 > 7){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                          }
+
+                                          if(cUnidad_1_3 == 0){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                          }
+                                        }
+
+                                        }
+                                    }
+
+                                    if(Unidad_1_2 == 0){
+                                        //2_2
+                                        var val_2_2 = $("#csStd_2_2").val()
+                                        var Unidad_2_2 = $("#cUnidad_2_2").val()
+                                        if( Unidad_2_2 <= 7 && Unidad_2_2 > 0){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+
+                                            $("#csStd_2_3").find('option[value="'+val_2_2+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', true);
+                                        }
+                                        if(Unidad_2_2 > 7){
+
+                                            var val_3_2 = $("#csStd_3_2").val()
+                                            var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                            if( cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_2_3").find('option[value="'+val_3_2+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                        }
+
+                                        if(cUnidad_3_2 > 7){
+                                            var csStd_2_3 = $("#csStd_2_3").val()
+                                            var cUnidad_1_3 = $("#cUnidad_1_3").val()
+                                            if( cUnidad_1_3 <= 7 && cUnidad_1_3 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_2_3").find('option[value="'+csStd_2_3+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                          }
+
+                                          if(cUnidad_1_3 > 7){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                          }
+
+                                          if(cUnidad_1_3 == 0){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                          }
+                                        }
+
+                                        }
+                                    }
+
+
+
+                            }
+
+                            if( Unidad_3_1 == 0){
+
+                                //1_2
+                                    var val_1_2 = $("#csStd_1_2").val()
+                                    var Unidad_1_2 = $("#cUnidad_1_2").val()
+
+                                    if( Unidad_1_2 <= 7 && Unidad_1_2 > 0){
+                                    $('#'+id_select).empty();
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER',
+                                        text: 'SEER'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER2',
+                                        text: 'SEER2'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'IEER',
+                                        text: 'IEER'
+                                    }));
+                                    $("#csStd_2_3").find('option[value="'+val_1_2+'"]').attr("selected", "selected");
+                                    $('#'+id_select).prop('disabled', true);
+                                    }
+
+                                    if(Unidad_1_2 > 7){
+                                        //2_2
+                                        var val_2_2 = $("#csStd_2_2").val()
+                                        var Unidad_2_2 = $("#cUnidad_2_2").val()
+                                        if( Unidad_2_2 <= 7 && Unidad_2_2 > 0){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+
+                                            $("#csStd_2_3").find('option[value="'+val_2_2+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', true);
+                                        }
+                                        if(Unidad_2_2 > 7){
+
+                                            var val_3_2 = $("#csStd_3_2").val()
+                                            var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                            if( cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_2_3").find('option[value="'+val_3_2+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                        }
+
+                                        if(cUnidad_3_2 > 7){
+                                            var csStd_2_3 = $("#csStd_2_3").val()
+                                            var cUnidad_1_3 = $("#cUnidad_1_3").val()
+                                            if( cUnidad_1_3 <= 7 && cUnidad_1_3 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_2_3").find('option[value="'+csStd_2_3+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                          }
+
+                                          if(cUnidad_1_3 > 7){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                          }
+
+                                          if(cUnidad_1_3 == 0){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                          }
+                                        }
+
+                                        if(cUnidad_3_2 == 0){
+                                            var csStd_2_3 = $("#csStd_2_3").val()
+                                            var cUnidad_1_3 = $("#cUnidad_1_3").val()
+                                            if( cUnidad_1_3 <= 7 && cUnidad_1_3 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_2_3").find('option[value="'+csStd_2_3+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                          }
+
+                                          if(cUnidad_1_3 > 7){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                          }
+                                          //me quede en check anterior 2_3 y check siguiente 1_3
+                                          if(cUnidad_1_3 == 0){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                          }
+                                        }
+
+
+                                        }
+                                    }
+
+                                    if(Unidad_1_2 == 0){
+                                        //2_2
+                                        var val_2_2 = $("#csStd_2_2").val()
+                                        var Unidad_2_2 = $("#cUnidad_2_2").val()
+                                        if( Unidad_2_2 <= 7 && Unidad_2_2 > 0){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+
+                                            $("#csStd_2_3").find('option[value="'+val_2_2+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', true);
+                                        }
+                                        if(Unidad_2_2 > 7){
+
+                                            var val_3_2 = $("#csStd_3_2").val()
+                                            var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                            if( cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_2_3").find('option[value="'+val_3_2+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                        }
+
+                                        if(cUnidad_3_2 > 7){
+                                            var csStd_2_3 = $("#csStd_2_3").val()
+                                            var cUnidad_1_3 = $("#cUnidad_1_3").val()
+                                            if( cUnidad_1_3 <= 7 && cUnidad_1_3 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_2_3").find('option[value="'+csStd_2_3+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                          }
+
+                                          if(cUnidad_1_3 > 7){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                          }
+
+                                          if(cUnidad_1_3 == 0){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                          }
+                                        }
+
+                                        if(cUnidad_3_2 == 0){
+                                            var csStd_2_3 = $("#csStd_2_3").val()
+                                            var cUnidad_1_3 = $("#cUnidad_1_3").val()
+                                            if( cUnidad_1_3 <= 7 && cUnidad_1_3 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_2_3").find('option[value="'+csStd_2_3+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                          }
+
+                                          if(cUnidad_1_3 > 7){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                          }
+                                          //me quede en check anterior 2_3 y check siguiente 1_3
+                                          if(cUnidad_1_3 == 0){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                          }
+                                        }
+
+
+                                        }
+                                    }
+
+
+
+                            }
+                        }
+                }
+
+            }
+
+        break;
+
+        case "csStd2_3_1":
+            if(equipo <= 7){
+
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd2_3_1").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+
+                if(select_val_equipo_base > 7){
+
+                        var val_2_1 = $("#csStd_2_1").val()
+                        var Unidad_2_1 = $("#cUnidad_2_1").val()
+                        if( Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+                            $('#'+id_select).empty();
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER',
+                                text: 'SEER'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER2',
+                                text: 'SEER2'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'IEER',
+                                text: 'IEER'
+                            }));
+                            $("#csStd2_3_1").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                            $('#'+id_select).prop('disabled', true);
+                        }
+
+                        if( Unidad_2_1 > 7){
+                            $('#'+id_select).empty();
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER',
+                                text: 'SEER'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER2',
+                                text: 'SEER2'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'IEER',
+                                text: 'IEER'
+                            }));
+                            //$("#csStd2_3_1").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                            $('#'+id_select).prop('disabled', false);
+                            check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+                        }
+                }
+
+            }
+
+        break;
+
+        case "csStd_3_2":
+
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_3_2").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+
+                if(select_val_equipo_base > 7){
+                    ///2_1
+                        var val_2_1 = $("#csStd_2_1").val()
+                        var Unidad_2_1 = $("#cUnidad_2_1").val()
+                        if( Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+
+                            $('#'+id_select).empty();
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER',
+                                text: 'SEER'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER2',
+                                text: 'SEER2'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'IEER',
+                                text: 'IEER'
+                            }));
+
+                            $("#csStd_3_2").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                            $('#'+id_select).prop('disabled', true);
+                        }
+
+                        if( Unidad_2_1 > 7){
+                            //3_1
+                            var val_3_1 = $("#csStd2_3_1").val()
+                            var Unidad_3_1 = $("#cUnidad_3_1").val()
+
+                            if( Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+                                $("#csStd_3_2").find('option[value="'+val_3_1+'"]').attr("selected", "selected");
+                                $('#'+id_select).prop('disabled', true);
+                            }
+
+                            if( Unidad_3_1 > 7){
+
+                                //1_2
+                                    var val_1_2 = $("#csStd_1_2").val()
+                                    var Unidad_1_2 = $("#cUnidad_1_2").val()
+
+                                    if( Unidad_1_2 <= 7 && Unidad_1_2 > 0){
+                                    $('#'+id_select).empty();
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER',
+                                        text: 'SEER'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER2',
+                                        text: 'SEER2'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'IEER',
+                                        text: 'IEER'
+                                    }));
+                                    $("#csStd_3_2").find('option[value="'+val_1_2+'"]').attr("selected", "selected");
+                                    $('#'+id_select).prop('disabled', true);
+                                    }
+
+                                    if(Unidad_1_2 > 7){
+                                        //2_2
+                                        var val_2_2 = $("#csStd_2_2").val()
+                                        var Unidad_2_2 = $("#cUnidad_2_2").val()
+                                        if( Unidad_2_2 <= 7 && Unidad_2_2 > 0){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+
+                                            $("#csStd_3_2").find('option[value="'+val_2_2+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', true);
+                                        }
+                                        if(Unidad_2_2 > 7){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+
+                                        }
+                                    }
+
+                                    if(Unidad_1_2 == 0){
+                                        var val_2_2 = $("#csStd_2_2").val()
+                                        var Unidad_2_2 = $("#cUnidad_2_2").val()
+
+                                        if(Unidad_2_2 == 0){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+                                            check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+
+                                        }
+
+                                        if(Unidad_2_2 > 0){
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+                                            check_sig_seer_eer_ieer('csStd',id_select,equipo,'cUnidad_1_1');
+
+                                        }
+                                    }
+
+
+
+                            }
+                        }
+                }
+
+            }
+
+        break;
+
+
+        case "csStd_3_3":
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_3_3").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+
+                if(select_val_equipo_base > 7){
+                    ///2_1
+                        var val_2_1 = $("#csStd_2_1").val()
+                        var Unidad_2_1 = $("#cUnidad_2_1").val()
+                        if( Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+
+                            $('#'+id_select).empty();
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER',
+                                text: 'SEER'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER2',
+                                text: 'SEER2'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'IEER',
+                                text: 'IEER'
+                            }));
+
+                            $("#csStd_3_3").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                            $('#'+id_select).prop('disabled', true);
+                        }
+
+                        if( Unidad_2_1 > 7){
+                            //3_1
+                            var val_3_1 = $("#csStd2_3_1").val()
+                            var Unidad_3_1 = $("#cUnidad_3_1").val()
+
+                            if( Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+                                $('#'+id_select).empty();
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER',
+                                    text: 'SEER'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'SEER2',
+                                    text: 'SEER2'
+                                }));
+
+                                $('#'+id_select).append($('<option>', {
+                                    value: 'IEER',
+                                    text: 'IEER'
+                                }));
+                                $("#csStd_3_3").find('option[value="'+val_3_1+'"]').attr("selected", "selected");
+                                $('#'+id_select).prop('disabled', true);
+                            }
+
+                            if( Unidad_3_1 > 7){
+
+                                //1_2
+                                    var val_1_2 = $("#csStd_1_2").val()
+                                    var Unidad_1_2 = $("#cUnidad_1_2").val()
+
+                                    if( Unidad_1_2 <= 7 && Unidad_1_2 > 0){
+                                    $('#'+id_select).empty();
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER',
+                                        text: 'SEER'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'SEER2',
+                                        text: 'SEER2'
+                                    }));
+
+                                    $('#'+id_select).append($('<option>', {
+                                        value: 'IEER',
+                                        text: 'IEER'
+                                    }));
+                                    $("#csStd_3_3").find('option[value="'+val_1_2+'"]').attr("selected", "selected");
+                                    $('#'+id_select).prop('disabled', true);
+                                    }
+
+                                    if(Unidad_1_2 > 7){
+                                        //2_2
+                                        var val_2_2 = $("#csStd_2_2").val()
+                                        var Unidad_2_2 = $("#cUnidad_2_2").val()
+                                        if( Unidad_2_2 <= 7 && Unidad_2_2 > 0){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+
+                                            $("#csStd_3_3").find('option[value="'+val_2_2+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', true);
+                                        }
+                                        if(Unidad_2_2 > 7){
+
+                                            var val_3_2 = $("#csStd_3_2").val()
+                                            var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                            if( cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_3_3").find('option[value="'+val_3_2+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                        }
+
+                                        if(cUnidad_3_2 > 7){
+                                            var csStd_1_3 = $("#csStd_1_3").val()
+                                            var cUnidad_1_3 = $("#cUnidad_1_3").val()
+                                            if( cUnidad_1_3 <= 7 && cUnidad_1_3 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_3_3").find('option[value="'+csStd_1_3+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                          }
+
+                                          if(cUnidad_1_3 > 7){
+
+                                            var csStd_2_3 = $("#csStd_2_3").val()
+                                            var cUnidad_2_3 = $("#cUnidad_2_3").val()
+                                            if( cUnidad_2_3 <= 7 && cUnidad_2_3 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_3_3").find('option[value="'+csStd_2_3+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                          }
+
+                                          if(cUnidad_2_3 > 7){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+                                      }
+
+
+/*                                             $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false); */
+
+                                          }
+                                        }
+
+                                        }
+                                    }
+
+                                    if(Unidad_1_2 == 0){
+                                        //2_2
+                                        var val_2_2 = $("#csStd_2_2").val()
+                                        var Unidad_2_2 = $("#cUnidad_2_2").val()
+                                        if( Unidad_2_2 <= 7 && Unidad_2_2 > 0){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+
+                                            $("#csStd_3_3").find('option[value="'+val_2_2+'"]').attr("selected", "selected");
+                                            $('#'+id_select).prop('disabled', true);
+                                        }
+                                        if(Unidad_2_2 > 7){
+
+                                            var val_3_2 = $("#csStd_3_2").val()
+                                            var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                            if( cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_3_3").find('option[value="'+val_3_2+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                        }
+
+                                        if(cUnidad_3_2 > 7){
+                                            var csStd_1_3 = $("#csStd_1_3").val()
+                                            var cUnidad_1_3 = $("#cUnidad_1_3").val()
+                                            if( cUnidad_1_3 <= 7 && cUnidad_1_3 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_3_3").find('option[value="'+csStd_1_3+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                          }
+
+                                          if(cUnidad_1_3 > 7){
+
+                                            var csStd_2_3 = $("#csStd_2_3").val()
+                                            var cUnidad_2_3 = $("#cUnidad_2_3").val()
+                                            if( cUnidad_2_3 <= 7 && cUnidad_2_3 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_3_3").find('option[value="'+csStd_2_3+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                          }
+
+                                          if(cUnidad_2_3 > 7){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+                                      }
+
+
+/*                                             $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false); */
+
+                                          }
+
+                                          if(cUnidad_1_3 == 0){
+
+                                            var csStd_2_3 = $("#csStd_2_3").val()
+                                            var cUnidad_2_3 = $("#cUnidad_2_3").val()
+                                            if( cUnidad_2_3 <= 7 && cUnidad_2_3 > 0){
+
+                                                $('#'+id_select).empty();
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER',
+                                                    text: 'SEER'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'SEER2',
+                                                    text: 'SEER2'
+                                                }));
+
+                                                $('#'+id_select).append($('<option>', {
+                                                    value: 'IEER',
+                                                    text: 'IEER'
+                                                }));
+
+                                                $("#csStd_3_3").find('option[value="'+csStd_2_3+'"]').attr("selected", "selected");
+                                                $('#'+id_select).prop('disabled', true);
+                                          }
+
+                                          if(cUnidad_2_3 > 7){
+
+                                            $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false);
+                                      }
+
+
+/*                                             $('#'+id_select).empty();
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER',
+                                                text: 'SEER'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'SEER2',
+                                                text: 'SEER2'
+                                            }));
+
+                                            $('#'+id_select).append($('<option>', {
+                                                value: 'IEER',
+                                                text: 'IEER'
+                                            }));
+                                            $('#'+id_select).prop('disabled', false); */
+
+                                          }
+                                        }
+
+                                        }
+                                    }
+
+
+
+
+
+                            }
+                        }
+                }
+
+            }
+        break;
+
+        case "csStd_1_1_retro":
+            if(equipo <= 7){
+
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+
+                    check_sig_seer_eer_ieer('csStd_1_1_retro',id_select,equipo,'cUnidad_1_1_retro');
+            }
+        break;
+
+        case "csStd_2_1_retro":
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_2_1_retro").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+
+                if(select_val_equipo_base > 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $('#'+id_select).prop('disabled', false);
+                    check_sig_seer_eer_ieer('csStd_1_1_retro',id_select,equipo,'cUnidad_1_1_retro');
+                }
+
+            }
+
+        break;
+
+        case "csStd_3_1_retro":
+            if(equipo <= 7){
+
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_3_1_retro").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+
+                if(select_val_equipo_base > 7){
+
+                        var val_2_1 = $("#csStd_2_1_retro").val()
+                        var Unidad_2_1 = $("#cUnidad_2_1_retro").val()
+                        if( Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+                            $('#'+id_select).empty();
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER',
+                                text: 'SEER'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER2',
+                                text: 'SEER2'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'IEER',
+                                text: 'IEER'
+                            }));
+                            $("#csStd_3_1_retro").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                            $('#'+id_select).prop('disabled', true);
+                        }
+
+                        if( Unidad_2_1 > 7){
+                            $('#'+id_select).empty();
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER',
+                                text: 'SEER'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'SEER2',
+                                text: 'SEER2'
+                            }));
+
+                            $('#'+id_select).append($('<option>', {
+                                value: 'IEER',
+                                text: 'IEER'
+                            }));
+                            //$("#csStd2_3_1").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
+                            $('#'+id_select).prop('disabled', false);
+                            check_sig_seer_eer_ieer('csStd_1_1_retro',id_select,equipo,'cUnidad_1_1_retro');
+                        }
+                }
+
+            }
+
+        break;
+
+        default:
+                // code block
+        }
+    }
+
+    function check_sig_seer_eer_ieer(base,id_select,equipo,equipo_base){
+        var base_val = $("#"+base).val();
+        var select_val_efi = $("#"+id_select).val();
+        var select_val_equipo_base = $("#"+equipo_base).val();
+        /* csStd
+        csStd_1_2
+        csStd_1_3
+        csStd_2_1
+        csStd_2_2
+        csStd_2_3
+        csStd2_3_1
+        csStd_3_2
+        csStd_3_3 */
+        switch (id_select) {
+
+            case "csStd":
+                arry = ['csStd_1_2','csStd_1_3','csStd_2_1','csStd_2_2','csStd_2_3','csStd2_3_1','csStd_3_2','csStd_3_3']
+
+                for (let index = 0; index < arry.length; index++) {
+
+                    var val_efi = $("#"+arry[index]).val();
+                    var val_efi_aux = $("#"+id_select).val();
+
+                    if(val_efi == 'SEER' || val_efi == 'SEER2' || val_efi == 'IEER'){
+                        $("#"+arry[index]).empty();
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER',
+                            text: 'SEER'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER2',
+                            text: 'SEER2'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'IEER',
+                            text: 'IEER'
+                        }));
+                        $("#"+arry[index]).find('option[value="'+val_efi_aux+'"]').attr("selected", "selected");
+                        $("#"+arry[index]).prop('disabled', true);
+                    }
+                }
+            break;
+
+            case "csStd_1_2":
+                arry = ['csStd_2_2','csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
+
+                for (let index = 0; index < arry.length; index++) {
+
+                    var val_efi = $("#"+arry[index]).val();
+                    var val_efi_aux = $("#"+id_select).val();
+
+                    if(val_efi == 'SEER' || val_efi == 'SEER2' || val_efi == 'IEER'){
+                        $("#"+arry[index]).empty();
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER',
+                            text: 'SEER'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER2',
+                            text: 'SEER2'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'IEER',
+                            text: 'IEER'
+                        }));
+                        $("#"+arry[index]).find('option[value="'+val_efi_aux+'"]').attr("selected", "selected");
+                        $("#"+arry[index]).prop('disabled', true);
+                    }
+                }
+            break;
+
+            case "csStd_1_3":
+                arry = ['csStd_2_3','csStd_3_3']
+
+                for (let index = 0; index < arry.length; index++) {
+
+                    var val_efi = $("#"+arry[index]).val();
+                    var val_efi_aux = $("#"+id_select).val();
+
+                    if(val_efi == 'SEER' || val_efi == 'SEER2' || val_efi == 'IEER'){
+                        $("#"+arry[index]).empty();
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER',
+                            text: 'SEER'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER2',
+                            text: 'SEER2'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'IEER',
+                            text: 'IEER'
+                        }));
+                        $("#"+arry[index]).find('option[value="'+val_efi_aux+'"]').attr("selected", "selected");
+                        $("#"+arry[index]).prop('disabled', true);
+                    }
+                }
+            break;
+
+            case "csStd_2_1":
+                arry = ['csStd2_3_1','csStd_1_2','csStd_2_2','csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
+
+                for (let index = 0; index < arry.length; index++) {
+
+                    var val_efi = $("#"+arry[index]).val();
+                    var val_efi_aux = $("#"+id_select).val();
+
+                    if(val_efi == 'SEER' || val_efi == 'SEER2' || val_efi == 'IEER'){
+                        $("#"+arry[index]).empty();
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER',
+                            text: 'SEER'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER2',
+                            text: 'SEER2'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'IEER',
+                            text: 'IEER'
+                        }));
+                        $("#"+arry[index]).find('option[value="'+val_efi_aux+'"]').attr("selected", "selected");
+                        $("#"+arry[index]).prop('disabled', true);
+                    }
+                }
+            break;
+
+            case "csStd_2_2":
+                arry = ['csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
+
+                for (let index = 0; index < arry.length; index++) {
+
+                    var val_efi = $("#"+arry[index]).val();
+                    var val_efi_aux = $("#"+id_select).val();
+
+                    if(val_efi == 'SEER' || val_efi == 'SEER2' || val_efi == 'IEER'){
+                        $("#"+arry[index]).empty();
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER',
+                            text: 'SEER'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER2',
+                            text: 'SEER2'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'IEER',
+                            text: 'IEER'
+                        }));
+                        $("#"+arry[index]).find('option[value="'+val_efi_aux+'"]').attr("selected", "selected");
+                        $("#"+arry[index]).prop('disabled', true);
+                    }
+                }
+            break;
+
+            case "csStd_2_3":
+                arry = ['csStd_3_3']
+
+                for (let index = 0; index < arry.length; index++) {
+
+                    var val_efi = $("#"+arry[index]).val();
+                    var val_efi_aux = $("#"+id_select).val();
+
+                    if(val_efi == 'SEER' || val_efi == 'SEER2' || val_efi == 'IEER'){
+                        $("#"+arry[index]).empty();
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER',
+                            text: 'SEER'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER2',
+                            text: 'SEER2'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'IEER',
+                            text: 'IEER'
+                        }));
+                        $("#"+arry[index]).find('option[value="'+val_efi_aux+'"]').attr("selected", "selected");
+                        $("#"+arry[index]).prop('disabled', true);
+                    }
+                }
+            break;
+
+            case "csStd2_3_1":
+
+              arry = ['csStd_1_2','csStd_2_2','csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
+
+                for (let index = 0; index < arry.length; index++) {
+
+                    var val_efi = $("#"+arry[index]).val();
+                    var val_efi_aux = $("#"+id_select).val();
+
+                    if(val_efi == 'SEER' || val_efi == 'SEER2' || val_efi == 'IEER'){
+                        $("#"+arry[index]).empty();
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER',
+                            text: 'SEER'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER2',
+                            text: 'SEER2'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'IEER',
+                            text:  'IEER'
+                        }));
+
+                        $("#"+arry[index]).find('option[value="'+val_efi_aux+'"]').attr("selected", "selected");
+                        $("#"+arry[index]).prop('disabled', true);
+                    }
+                }
+            break;
+
+            case "csStd_3_2":
+                arry = ['csStd_1_3','csStd_2_3','csStd_3_3']
+
+                for (let index = 0; index < arry.length; index++) {
+
+                    var val_efi = $("#"+arry[index]).val();
+                    var val_efi_aux = $("#"+id_select).val();
+
+                    if(val_efi == 'SEER' || val_efi == 'SEER2' || val_efi == 'IEER'){
+                        $("#"+arry[index]).empty();
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER',
+                            text: 'SEER'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER2',
+                            text: 'SEER2'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'IEER',
+                            text: 'IEER'
+                        }));
+                        $("#"+arry[index]).find('option[value="'+val_efi_aux+'"]').attr("selected", "selected");
+                        $("#"+arry[index]).prop('disabled', true);
+                    }
+                }
+            break;
+
+            case "csStd_3_3":
+
+            break;
+
+            case "csStd_1_1_retro":
+                arry = ['csStd_2_1_retro','csStd_3_1_retro']
+
+                for (let index = 0; index < arry.length; index++) {
+
+                    var val_efi = $("#"+arry[index]).val();
+                    var val_efi_aux = $("#"+id_select).val();
+
+                    if(val_efi == 'SEER' || val_efi == 'SEER2' || val_efi == 'IEER'){
+                        $("#"+arry[index]).empty();
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER',
+                            text: 'SEER'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER2',
+                            text: 'SEER2'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'IEER',
+                            text: 'IEER'
+                        }));
+                        $("#"+arry[index]).find('option[value="'+val_efi_aux+'"]').attr("selected", "selected");
+                        $("#"+arry[index]).prop('disabled', true);
+                    }
+                }
+            break;
+
+            case "csStd_2_1_retro":
+                arry = ['csStd_3_1_retro']
+
+                for (let index = 0; index < arry.length; index++) {
+
+                    var val_efi = $("#"+arry[index]).val();
+                    var val_efi_aux = $("#"+id_select).val();
+
+                    if(val_efi == 'SEER' || val_efi == 'SEER2' || val_efi == 'IEER'){
+                        $("#"+arry[index]).empty();
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER',
+                            text: 'SEER'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'SEER2',
+                            text: 'SEER2'
+                        }));
+
+                        $("#"+arry[index]).append($('<option>', {
+                            value: 'IEER',
+                            text: 'IEER'
+                        }));
+                        $("#"+arry[index]).find('option[value="'+val_efi_aux+'"]').attr("selected", "selected");
+                        $("#"+arry[index]).prop('disabled', true);
+                    }
+                }
+            break;
+
+            case "csStd_3_1_retro":
+
+            break;
+
+            default:
+        }
+            }
+
+
+    function check_ant_equipo_aux(base,id_select,equipo,equipo_base){
+
+        var base_val = $("#"+base).val();
+        var select_val_efi = $("#"+id_select).val();
+        var select_val_equipo_base = $("#"+equipo_base).val();
+
+        switch (id_select) {
+          case "csStd":
+            if(equipo <= 7){
+
+            }
+
+            if(equipo > 7){
+                //var val_2_1 = $("#csStd_2_1").val()
+                var Unidad_2_1 = $("#cUnidad_2_1").val()
+
+                if(Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+                    return 2;
+                }
+
+                if(Unidad_2_1 > 7){
+                    //var val_3_1 = $("#csStd2_3_1").val()
+                    var Unidad_3_1 = $("#cUnidad_3_1").val()
+                    if(Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+
+                    }
+
+                    if(Unidad_3_1 > 7){
+                        recorre_checa('csStd');
+
+                    }
+
+                    if(Unidad_3_1 == 0){
+                        recorre_checa('csStd');
+                    }
+                }
+
+                if(Unidad_2_1 == 0){
+
+                    recorre_checa('csStd');
+                }
+            }
+          break;
+
+          case "csStd_1_2":
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_1_2").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+                return 1;
+            }
+
+            if(equipo > 7){
+                if(select_val_equipo_base <= 7){
+
+                }
+
+                if(select_val_equipo_base > 7){
+                    //var val_2_1 = $("#csStd_2_1").val()
+                    var Unidad_2_1 = $("#cUnidad_2_1").val()
+                    if(Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+
+                    }
+
+                    if(Unidad_2_1 > 7){
+                        //var val_3_1 = $("#csStd2_3_1").val()
+                        var Unidad_3_1 = $("#cUnidad_3_1").val()
+                        if(Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+                            return 2;
+                        }
+
+                        if(Unidad_3_1 > 7){
+                            recorre_checa('csStd_1_2');
+
+                        }
+
+                        if(Unidad_3_1 == 0){
+                            recorre_checa('csStd_1_2');
+                        }
+                    }
+
+                    if(Unidad_2_1 == 0){
+                        var Unidad_3_1 = $("#cUnidad_3_1").val()
+                        if(Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+
+                        }
+
+                        if(Unidad_3_1 > 7){
+
+
+                        }
+
+                        if(Unidad_3_1 == 0){
+                            recorre_checa('csStd_1_2');
+                        }
+                    }
+                }
+            }
+
+        break;
+
+        case "csStd_1_3":
+                if(equipo <= 7){
+                    if(select_val_equipo_base <= 7){
+                        $('#'+id_select).empty();
+                        $('#'+id_select).append($('<option>', {
+                            value: 'SEER',
+                            text: 'SEER'
+                        }));
+
+                        $('#'+id_select).append($('<option>', {
+                            value: 'SEER2',
+                            text: 'SEER2'
+                        }));
+
+                        $('#'+id_select).append($('<option>', {
+                            value: 'IEER',
+                            text: 'IEER'
+                        }));
+                        $("#csStd_3_2").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                        $('#'+id_select).prop('disabled', true);
+                    }
+                    return 1;
+                }
+
+                if(equipo > 7){
+                    if(select_val_equipo_base <= 7){
+
+                    }
+
+                    if(select_val_equipo_base > 7){
+                        //var val_2_1 = $("#csStd_2_1").val()
+                        var Unidad_2_1 = $("#cUnidad_2_1").val()
+                        if(Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+
+                        }
+
+                        if(Unidad_2_1 > 7){
+                            //var val_3_1 = $("#csStd2_3_1").val()
+                            var Unidad_3_1 = $("#cUnidad_3_1").val()
+                            if(Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+
+                            }
+
+                            if(Unidad_3_1 > 7){
+
+                                var cUnidad_1_2 = $("#cUnidad_1_2").val()
+                                if(cUnidad_1_2 <= 7 && cUnidad_1_2 > 0){
+
+                                }
+
+                                if(cUnidad_1_2 > 7){
+
+                                    var cUnidad_2_2 = $("#cUnidad_2_2").val()
+                                    if(cUnidad_2_2 <= 7 && cUnidad_2_2 > 0){
+
+                                    }
+
+                                    if(cUnidad_2_2 > 7){
+                                        var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                        if(cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                        }
+
+                                        if(cUnidad_3_2 > 7){
+                                            recorre_checa('csStd_1_3');
+                                        }
+                                    }
+
+                                    if(cUnidad_2_2 == 0){
+                                        var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                        if(cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                        }
+
+                                        if(cUnidad_3_2 > 7){
+                                            recorre_checa('csStd_1_3');
+                                        }
+                                    }
+                                }
+
+                            }
+
+                            if(Unidad_3_1 == 0){
+
+                                var cUnidad_1_2 = $("#cUnidad_1_2").val()
+                                if(cUnidad_1_2 <= 7 && cUnidad_1_2 > 0){
+
+                                }
+
+                                if(cUnidad_1_2 > 7){
+
+                                    var cUnidad_2_2 = $("#cUnidad_2_2").val()
+                                    if(cUnidad_2_2 <= 7 && cUnidad_2_2 > 0){
+
+                                    }
+
+                                    if(cUnidad_2_2 > 7){
+                                        var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                        if(cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                        }
+
+                                        if(cUnidad_3_2 > 7){
+                                            return 2;
+                                        }
+
+                                        if(cUnidad_3_2 == 0){
+                                            return 2;
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+            break;
+
+        case "csStd_2_1":
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_2_1").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+                return 1;
+            }
+
+            if(equipo > 7){
+                ////////
+                if(select_val_equipo_base <= 7 && select_val_equipo_base > 0 ){
+
+                }
+
+                if(select_val_equipo_base > 7){
+
+                    recorre_checa('csStd_2_1');
+                /*  */
+                /////////////
+                }
+            }
+
+        break;
+
+        case "csStd_2_2":
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_2_2").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+                return 1;
+            }
+
+            if(equipo > 7){
+                if(select_val_equipo_base <= 7){
+
+                }
+
+                if(select_val_equipo_base > 7){
+                    //var val_2_1 = $("#csStd_2_1").val()
+                    var Unidad_2_1 = $("#cUnidad_2_1").val()
+                    if(Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+
+                    }
+
+                    if(Unidad_2_1 > 7){
+                        //var val_3_1 = $("#csStd2_3_1").val()
+                        var Unidad_3_1 = $("#cUnidad_3_1").val()
+                        if(Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+
+                        }
+
+                        if(Unidad_3_1 > 7){
+
+                            var cUnidad_1_2 = $("#cUnidad_1_2").val()
+                            if(cUnidad_1_2 <= 7 && cUnidad_1_2 > 0){
+
+                            }
+
+                            if(cUnidad_1_2 > 7){
+                                recorre_checa('csStd_2_2');
+                            }
+
+                            if(cUnidad_1_2 == 0 ){
+                                recorre_checa('csStd_2_2');
+                            }
+                        }
+
+                        if(Unidad_3_1 == 0){
+
+                            var cUnidad_1_2 = $("#cUnidad_1_2").val()
+                            if(cUnidad_1_2 <= 7 && cUnidad_1_2 > 0){
+
+                            }
+
+                            if(cUnidad_1_2 > 7){
+                                recorre_checa('csStd_2_2');
+                            }
+
+                            if(cUnidad_1_2 == 0 ){
+                                recorre_checa('csStd_2_2');
+                            }
+                        }
+                    }
+                }
+            }
+
+        break;
+
+
+        case "csStd_2_3":
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_2_3").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+                return 1;
+            }
+
+            if(equipo > 7){
+                if(select_val_equipo_base <= 7){
+
+                }
+
+                if(select_val_equipo_base > 7){
+                    //var val_2_1 = $("#csStd_2_1").val()
+                    var Unidad_2_1 = $("#cUnidad_2_1").val()
+                    if(Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+
+                    }
+
+                    if(Unidad_2_1 > 7){
+                        //var val_3_1 = $("#csStd2_3_1").val()
+                        var Unidad_3_1 = $("#cUnidad_3_1").val()
+                        if(Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+
+                        }
+
+                        if(Unidad_3_1 > 7){
+
+                            var cUnidad_1_2 = $("#cUnidad_1_2").val()
+                            if(cUnidad_1_2 <= 7 && cUnidad_1_2 > 0){
+
+                            }
+
+                            if(cUnidad_1_2 > 7){
+
+                                var cUnidad_2_2 = $("#cUnidad_2_2").val()
+                                if(cUnidad_2_2 <= 7 && cUnidad_2_2 > 0){
+
+                                }
+
+                                if(cUnidad_2_2 > 7){
+                                    var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                    if(cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                    }
+
+                                    if(cUnidad_3_2 > 7){
+                                        var cUnidad_1_3 = $("#cUnidad_1_3").val()
+                                        if(cUnidad_1_3 <= 7 && cUnidad_1_3 > 0){
+
+                                        }
+
+                                        if(cUnidad_1_3 > 7){
+                                            recorre_checa('csStd_2_3');
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+
+                        if(Unidad_3_1 == 0){
+
+                            var cUnidad_1_2 = $("#cUnidad_1_2").val()
+                            if(cUnidad_1_2 <= 7 && cUnidad_1_2 > 0){
+
+                            }
+
+                            if(cUnidad_1_2 > 7){
+
+                                var cUnidad_2_2 = $("#cUnidad_2_2").val()
+                                if(cUnidad_2_2 <= 7 && cUnidad_2_2 > 0){
+
+                                }
+
+                                if(cUnidad_2_2 > 7){
+                                    var cUnidad_3_2 = $("#cUnidad_3_2").val()
+                                    if(cUnidad_3_2 <= 7 && cUnidad_3_2 > 0){
+
+                                    }
+
+                                    if(cUnidad_3_2 > 7){
+                                        var cUnidad_1_3 = $("#cUnidad_1_3").val()
+                                        if(cUnidad_1_3 <= 7 && cUnidad_1_3 > 0){
+
+                                        }
+
+                                        if(cUnidad_1_3 > 7){
+                                            recorre_checa('csStd_2_3');
+                                        }
+                                    }
+
+                                    if(cUnidad_3_2 == 0){
+                                        var cUnidad_1_3 = $("#cUnidad_1_3").val()
+                                        if(cUnidad_1_3 <= 7 && cUnidad_1_3 > 0){
+
+                                        }
+
+                                        if(cUnidad_1_3 > 7){
+                                            //recorre_checa('csStd_1_3');
+                                        }
+                                    }
+                                }
+
+
+                            }
+
+                        }
+                    }
+                }
+            }
+        break;
+
+        case "csStd2_3_1":
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd2_3_1").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+                return 1;
+            }
+
+            if(equipo > 7){
+                if(select_val_equipo_base <= 7){
+
+                }
+
+                if(select_val_equipo_base > 7){
+                    var val_2_1 = $("#csStd_2_1").val()
+                    var Unidad_2_1 = $("#cUnidad_2_1").val()
+                    if(Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+
+                    }
+
+                    if(Unidad_2_1 > 7){
+                        recorre_checa('csStd2_3_1');
+                    }
+                }
+            }
+
+        break;
+
+        case "csStd_3_2":
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_3_2").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+                return 1;
+            }
+
+            if(equipo > 7){
+                if(select_val_equipo_base <= 7){
+
+                }
+
+                if(select_val_equipo_base > 7){
+                    //var val_2_1 = $("#csStd_2_1").val()
+                    var Unidad_2_1 = $("#cUnidad_2_1").val()
+                    if(Unidad_2_1 <= 7 && Unidad_2_1 > 0){
+
+                    }
+
+                    if(Unidad_2_1 > 7){
+                        //var val_3_1 = $("#csStd2_3_1").val()
+                        var Unidad_3_1 = $("#cUnidad_3_1").val()
+                        if(Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+
+                        }
+
+                        if(Unidad_3_1 > 7){
+
+                            var cUnidad_1_2 = $("#cUnidad_1_2").val()
+                            if(cUnidad_1_2 <= 7 && cUnidad_1_2 > 0){
+
+                            }
+
+                            if(cUnidad_1_2 > 7){
+
+                                var cUnidad_2_2 = $("#cUnidad_2_2").val()
+                                if(cUnidad_2_2 <= 7 && cUnidad_2_2 > 0){
+
+                                }
+
+                                if(cUnidad_2_2 > 7){
+                                    recorre_checa('csStd_3_2');
+                                }
+
+                                if(cUnidad_2_2 == 0){
+                                    recorre_checa('csStd_3_2');
+                                }
+                            }
+
+                            if(cUnidad_1_2 == 0){
+
+                                var cUnidad_2_2 = $("#cUnidad_2_2").val()
+                                if(cUnidad_2_2 <= 7 && cUnidad_2_2 > 0){
+
+                                }
+
+                                if(cUnidad_2_2 > 7){
+                                    recorre_checa('csStd_3_2');
+                                }
+
+                                if(cUnidad_2_2 == 0){
+                                    recorre_checa('csStd_3_2');
+                                }
+                            }
+
+
+                        }
+
+                    }
+                }
+            }
+
+        break;
+
+
+        case "csStd_1_1_retro":
+            if(equipo <= 7){
+
+            }
+
+            if(equipo > 7){
+                //var val_2_1 = $("#csStd_2_1").val()
+                var cUnidad_2_1_retro = $("#cUnidad_2_1_retro").val()
+
+                if(cUnidad_2_1_retro <= 7 && cUnidad_2_1_retro > 0){
+
+                    return 2;
+                }
+
+                if(cUnidad_2_1_retro > 7){
+                    //var val_3_1 = $("#csStd2_3_1").val()
+                    var cUnidad_3_1_retro = $("#cUnidad_3_1_retro").val()
+                    if(cUnidad_3_1_retro <= 7 && cUnidad_3_1_retro > 0){
+
+                    }
+
+                    if(cUnidad_3_1_retro > 7){
+                        recorre_checa('csStd_1_1_retro');
+
+                    }
+
+                    if(cUnidad_3_1_retro == 0){
+                        recorre_checa('csStd_1_1_retro');
+                    }
+                }
+
+                if(cUnidad_2_1_retro == 0){
+
+                    recorre_checa('csStd_1_1_retro');
+                }
+            }
+          break;
+
+          case "csStd_2_1_retro":
+            if(equipo <= 7){
+                if(select_val_equipo_base <= 7){
+                    $('#'+id_select).empty();
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER',
+                        text: 'SEER'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'SEER2',
+                        text: 'SEER2'
+                    }));
+
+                    $('#'+id_select).append($('<option>', {
+                        value: 'IEER',
+                        text: 'IEER'
+                    }));
+                    $("#csStd_2_1_retro").find('option[value="'+base_val+'"]').attr("selected", "selected");
+                    $('#'+id_select).prop('disabled', true);
+                }
+                return 1;
+            }
+
+            if(equipo > 7){
+                ////////
+                if(select_val_equipo_base <= 7 && select_val_equipo_base > 0 ){
+
+                }
+
+                if(select_val_equipo_base > 7){
+
+                    recorre_checa('csStd_2_1_retro');
+                /*  */
+                /////////////
+                }
+            }
+
+        break;
+
+
+        default:
+        }
+    }
+
+
+ function recorre_checa(id_select){
+    switch (id_select) {
+        /* arry = ['csStd_2_1','csStd2_3_1','csStd_1_2','csStd_2_2','csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3'] */
+    /*     cUnidad_1_2
+cUnidad_1_3
+cUnidad_2_1
+cUnidad_2_2
+cUnidad_2_3
+cUnidad_3_1
+cUnidad_3_2
+cUnidad_3_3 */
+
+
+    case "csStd":
+
+        arry = ['cUnidad_2_1','cUnidad_3_1','cUnidad_1_2','cUnidad_2_2','cUnidad_3_2','cUnidad_1_3','cUnidad_2_3','cUnidad_3_3']
+        arry_efis = ['csStd_2_1','csStd2_3_1','csStd_1_2','csStd_2_2','csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
+        for (let index = 0; index < arry.length; index++) {
+
+            let unidad = $("#"+arry[index]).val()
+
+            if(unidad == 0){
+
+            }
+
+            if(unidad > 0 && unidad < 7){
+
+                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                $("#"+arry_efis[index]).prop('disabled', false);
+                return false;
+            }
+        }
+
+    break;
+
+    case "csStd_2_1":
+
+        arry = ['cUnidad_3_1','cUnidad_1_2','cUnidad_2_2','cUnidad_3_2','cUnidad_1_3','cUnidad_2_3','cUnidad_3_3']
+        arry_efis = ['csStd2_3_1','csStd_1_2','csStd_2_2','csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
+        for (let index = 0; index < arry.length; index++) {
+
+            let unidad = $("#"+arry[index]).val()
+
+            if(unidad == 0){
+
+            }
+
+            if(unidad > 0 && unidad < 7){
+
+                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                $("#"+arry_efis[index]).prop('disabled', false);
+                return false;
+            }
+        }
+
+
+    break;
+
+    case "csStd2_3_1":
+
+        arry = ['cUnidad_1_2','cUnidad_2_2','cUnidad_3_2','cUnidad_1_3','cUnidad_2_3','cUnidad_3_3']
+        arry_efis = ['csStd_1_2','csStd_2_2','csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
+        for (let index = 0; index < arry.length; index++) {
+
+            let unidad = $("#"+arry[index]).val()
+
+            if(unidad == 0){
+
+            }
+
+            if(unidad > 0 && unidad < 7){
+
+                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                $("#"+arry_efis[index]).prop('disabled', false);
+                return false;
+            }
+        }
+
+
+    break;
+
+    case "csStd_1_2":
+
+        arry = ['cUnidad_2_2','cUnidad_3_2','cUnidad_1_3','cUnidad_2_3','cUnidad_3_3']
+        arry_efis = ['csStd_2_2','csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
+        for (let index = 0; index < arry.length; index++) {
+
+            let unidad = $("#"+arry[index]).val()
+
+            if(unidad == 0){
+
+            }
+
+            if(unidad > 0 && unidad < 7){
+
+                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                $("#"+arry_efis[index]).prop('disabled', false);
+                return false;
+            }
+        }
+
+
+    break;
+
+    case "csStd_2_2":
+
+        arry = ['cUnidad_3_2','cUnidad_1_3','cUnidad_2_3','cUnidad_3_3']
+        arry_efis = ['csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
+        for (let index = 0; index < arry.length; index++) {
+
+            let unidad = $("#"+arry[index]).val()
+
+            if(unidad == 0){
+
+            }
+
+            if(unidad > 0 && unidad < 7){
+
+                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                $("#"+arry_efis[index]).prop('disabled', false);
+                return false;
+            }
+        }
+
+
+    break;
+
+    case "csStd_3_2":
+
+        arry = ['cUnidad_1_3','cUnidad_2_3','cUnidad_3_3']
+        arry_efis = ['csStd_1_3','csStd_2_3','csStd_3_3']
+        for (let index = 0; index < arry.length; index++) {
+
+            let unidad = $("#"+arry[index]).val()
+
+            if(unidad == 0){
+
+            }
+
+            if(unidad > 0 && unidad < 7){
+
+                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                $("#"+arry_efis[index]).prop('disabled', false);
+                return false;
+            }
+        }
+
+
+    break;
+
+    case "csStd_1_3":
+
+        arry = ['cUnidad_2_3','cUnidad_3_3']
+        arry_efis = ['csStd_2_3','csStd_3_3']
+        for (let index = 0; index < arry.length; index++) {
+
+            let unidad = $("#"+arry[index]).val()
+
+            if(unidad == 0){
+
+            }
+
+            if(unidad > 0 && unidad < 7){
+
+                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                $("#"+arry_efis[index]).prop('disabled', false);
+                return false;
+            }
+        }
+
+
+    break;
+
+    case "csStd_2_3":
+
+        arry = ['cUnidad_3_3']
+        arry_efis = ['csStd_3_3']
+        for (let index = 0; index < arry.length; index++) {
+
+            let unidad = $("#"+arry[index]).val()
+
+            if(unidad == 0){
+
+            }
+
+            if(unidad > 0 && unidad < 7){
+
+                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                $("#"+arry_efis[index]).prop('disabled', false);
+                return false;
+            }
+        }
+
+
+    break;
+
+    case "csStd_1_1_retro":
+
+        arry = ['cUnidad_2_1_retro','cUnidad_3_1_retro']
+        arry_efis = ['csStd_2_1_retro','csStd_3_1_retro']
+        for (let index = 0; index < arry.length; index++) {
+
+            let unidad = $("#"+arry[index]).val()
+
+            if(unidad == 0){
+
+            }
+
+            if(unidad > 0 && unidad < 7){
+
+                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                $("#"+arry_efis[index]).prop('disabled', false);
+                return false;
+            }
+        }
+
+    break;
+
+    case "csStd_2_1_retro":
+
+        arry = ['cUnidad_3_1_retro']
+        arry_efis = ['csStd_3_1_retro']
+        for (let index = 0; index < arry.length; index++) {
+
+            let unidad = $("#"+arry[index]).val()
+
+            if(unidad == 0){
+
+            }
+
+            if(unidad > 0 && unidad < 7){
+
+                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                $("#"+arry_efis[index]).prop('disabled', false);
+                return false;
+            }
+        }
+
+    break;
+
+    default:
+        }
+  }
+
+    function check_send_efi(efi,equipo,id){
+
+        if(id == 'csStd' && parseInt(equipo) <= 7 || id == 'csStd'){
+
+            $("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //send_seers_all('csStd_2_1',value)
+            $("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            $("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //retrofit
+            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+        }
+
+        if(id == 'csStd_1_2' && parseInt(equipo) <= 7 || id == 'csStd_1_2'){
+
+            //$("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //send_seers_all('csStd_2_1',value)
+            //$("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //$("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //retrofit
+            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+        }
+
+        if(id == 'csStd_1_3' && parseInt(equipo) <= 7 || id == 'csStd_1_3'){
+
+
+            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //retrofit
+            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+        }
+
+        if(id == 'csStd_2_3' && parseInt(equipo) <= 7 || id == 'csStd_2_3'){
+
+            //$("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //send_seers_all('csStd_2_1',value)
+            //$("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+            //$("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            //$("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //$("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+            //$("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //retrofit
+            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+        }
+
+        if(id == 'csStd_2_1' && parseInt(equipo) <= 7 || id == 'csStd_2_1'){
+
+            //send_seers_all('csStd_2_1',value)
+            $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            $("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            $("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+             //retrofit
+            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+        }
+
+        if(id == 'csStd_2_2' && parseInt(equipo) <= 7 || id == 'csStd_2_2'){
+
+            //$("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //send_seers_all('csStd_2_1',value)
+            //$("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+            //$("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //$("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //retrofit
+            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+        }
+
+        if(id == 'csStd2_3_1' && parseInt(equipo) <= 7 || id == 'csStd2_3_1'){
+
+            //send_seers_all('csStd_2_1',value)
+            $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //$("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            $("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+             //retrofit
+            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+        }
+
+        if(id == 'csStd_3_2' && parseInt(equipo) <= 7 || id == 'csStd_3_2'){
+
+            //$("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //send_seers_all('csStd_2_1',value)
+            //$("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+            //$("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //$("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+            //$("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+            //retrofit
+            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+        }
+
+        if(id == 'csStd_1_1_retro' && parseInt(equipo) <= 7 || id == 'csStd_1_1_retro'){
+
+            //retrofit
+
+            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+        }
+
+        if(id == 'csStd_2_1_retro' && parseInt(equipo) <= 7 || id == 'csStd_2_1_retro'){
+
+
+            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+        }
+
+
+    }
+
+    function send_seer_selects(equipo){
+
+        if(equipo <= 7){
+            $('#'+id_select).empty();
+            $('#'+id_select).append($('<option>', {
+                value: 'SEER',
+                text: 'SEER'
+            }));
         }
         //chiller
         if(equipo > 7 && equipo <= 10 ){
@@ -7178,4 +11638,5 @@ function send_marcas_to_datalist() {
 
 
         }
-    }
+
+     }

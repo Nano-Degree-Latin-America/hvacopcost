@@ -43,5 +43,5 @@ return [
     'niv_conf' => 'Nivel de Confort',
     'prod_lab' => 'Productividad Laboral',
     'edit_proy' => 'Editar Proyecto',
-
+    'cu_sho_Be' => 'Comportamiento Compra de Clientes',
 ];

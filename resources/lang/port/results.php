@@ -42,4 +42,5 @@ return [
     'niv_conf' => 'Nível de Conforto',
     'prod_lab' => 'Produtividade do Trabalho',
     'edit_proy' => 'Editar Projeto',
+    'cu_sho_Be' => 'Comportamiento Compra de Clientes',
 ];

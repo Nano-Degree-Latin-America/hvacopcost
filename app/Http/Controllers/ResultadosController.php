@@ -503,9 +503,21 @@ class ResultadosController extends Controller
                 $solution_enf2_2->id_user=Auth::user()->id;
 
 
+                $cooling_hrs =  $solution_enf1->coolings_hours;
+                $cost_energ =  $solution_enf1->costo_elec;
+
+
+
                 $cooling_hrs =  $solution_enf2_2->coolings_hours;
                 $cost_energ =  $solution_enf2_2->costo_elec;
-                $seer = $solution_enf2_2->eficencia_ene_cant;
+                $eficiencia_cant = floatval($request->get('csStd_cant_2_1'));
+                $factor_s = $request->get('lblCsTipo_2_1');
+                $factor_d = floatval($request->get('csDisenio_1_2'));
+                $factor_c = $request->get('tipo_control_1_2');
+                $factor_t =floatval($request->get('dr_1_2'));
+                $factor_m =$request->get('csMantenimiento_1_2');
+                $t_e = $solution_enf2_2->tipo_equipo;
+                $eficiencia_ene = $solution_enf2_2->eficencia_ene;
                 $unidad_hvac_aux = $solution_enf2_2->unidad_hvac;
                if ($solution_enf2_2->unid_med == 'TR') {
 
@@ -7395,6 +7407,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
     }
 
     public function form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
+
         if($eficiencia_ene == 'IPVL'){
             //(TR x IPLV x Cooling Hours) / 0.75
             //(TR x IPLV x Cooling Hours)
@@ -9667,6 +9680,14 @@ if($eficiencia_ene == 'EER'){
         $nivel_confotr_1_1 = $suma_nivel_confort_1_1/5;
 
           return $nivel_confotr_1_1;
+    }
+
+    public function prim_buil_check($id){
+        $proyect = DB::table('projects')
+        ->where('projects.id','=',$id)
+        ->first();
+
+        return $proyect;
     }
 
 
