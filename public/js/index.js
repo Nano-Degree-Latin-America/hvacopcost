@@ -10498,6 +10498,7 @@ function send_marcas_to_datalist() {
             }
 
             if(equipo > 7){
+
                 //var val_2_1 = $("#csStd_2_1").val()
                 var Unidad_2_1 = $("#cUnidad_2_1").val()
 
@@ -10509,6 +10510,7 @@ function send_marcas_to_datalist() {
                     //var val_3_1 = $("#csStd2_3_1").val()
                     var Unidad_3_1 = $("#cUnidad_3_1").val()
                     if(Unidad_3_1 <= 7 && Unidad_3_1 > 0){
+                        recorre_checa('csStd');
 
                     }
 
