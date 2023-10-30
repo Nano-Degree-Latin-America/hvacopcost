@@ -22,7 +22,7 @@ return [
     'eco_an_en' => 'Ahorro Anual Energía',
     'cons_ene_ar' => 'Consumo de Energia HVAC por Área',
     'aho_anu_cost_ele' => 'Ahorro Anual de Costo Energético',
-    'entre_sol' => 'Entre Soluciones',
+    'entre_sol' => 'Total Entre Soluciones',
     'simple' => 'Simple',
     'ans' => 'Años',
     'analisis' => 'Análisis',
@@ -43,5 +43,5 @@ return [
     'niv_conf' => 'Nivel de Confort',
     'prod_lab' => 'Productividad Laboral',
     'edit_proy' => 'Editar Proyecto',
-    'cu_sho_Be' => 'Comportamiento Compra de Clientes',
+    'cu_sho_Be' => 'Compromiso de Compra de los Clientes',
 ];
