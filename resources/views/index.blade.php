@@ -1470,7 +1470,7 @@ window.onclick = function(event) {
 
 function app() {
 			return {
-				step: 1,
+				step: 2,
 				passwordStrengthText: '',
 				togglePassword: false,
 

@@ -167,7 +167,7 @@
 }
 
 .sol_ab{
-    background-color: #4299e1;
+    background-color: #ed8936;
     width:100%;
     border_radius:5px;
 }
@@ -523,7 +523,7 @@
                 <div style="margin-left:15px; margin-right:15px;">
                     <div>
                         <div style="margin-right:5px;margin-top:5px;" class="column" >
-                            <div style="background-color: #4299e1;width:100%; border_radius:5px;">
+                            <div style="background-color: #ed8936;width:100%; border_radius:5px;">
                                 <label style="margin-left:60px;" class="title_style">{{ __('index.solucion') }} A</label>
                             </div>
                             @foreach ($solutions as $solution)
@@ -720,7 +720,7 @@
                 <div style="margin-left:15px; margin-right:15px; ">
                     <div>
                         <div style="margin-right:5px;margin-top:5px;" class="column" >
-                            <div style="width:100%;background-color:#4299e1;border_radius:5px;">
+                            <div style="width:100%;background-color:#ed8936;border_radius:5px;">
                                 <label style="margin-left:60px;" class="title_style">{{ __('index.solucion') }} B</label>
                             </div>
                             @foreach ($solutions as $solution)
@@ -4497,6 +4497,57 @@
         <img style="width: 300px;height:200px; margin-left:50px;" src="https://quickchart.io/chart?v=2.9.4&c={ type: 'gauge', data: { datasets: [ { value: 3, data: [1.5, 4.5, 6], backgroundColor: ['red','yellow','green'], borderWidth: 2, }, ], }, options: { valueLabel: { display: false, }, }, }">
     </div> --}}
 </div>
+
+<?php  $prim_buil_check=$conf_val->prim_buil_check($id_project) ?>
+
+@if ($prim_buil_check->id_cat_edifico == 3 || $prim_buil_check->id_cat_edifico == 8 || $prim_buil_check->id_cat_edifico == 9 || $prim_buil_check->id_cat_edifico == 10 || $prim_buil_check->id_cat_edifico == 11)
+<div  style="margin-top:6px; height:25%;" class="tarjet">
+    <div align="center" class="title_tarjet_blue">
+        <label  class="title_style">{{ __('results.cu_sho_Be') }}</label>
+    </div>
+
+    <div>
+        <div style="margin-right:5px;margin-top:10px;" class="column" >
+            <div style="width:95%;border:3px solid #2c5282;margin-left:4px; border-radius:5px;">
+                <?php  $conf_val_base=$conf_val->conf_val($id_project,1,1,$sumacap_term_1);?>
+                <img style="width: 200px;height:150px; margin-left:15px;" src="https://quickchart.io/chart?v=2.9.4&c={ type: 'gauge', data: { datasets: [ { value: {{$conf_val_base}}, data: [2, 4, 6], backgroundColor: ['red','yellow','green'], borderWidth: 2, }, ], }, options: { valueLabel: { display: false, }, }, }">
+                 <label for="" style="margin-left:88px; font-size:24px; font-family: 'ABeeZee', sans-serif;color:#2c5282;">Base</label>
+            </div>
+        </div>
+        <div style="margin-right:5px;margin-top:10px;" class="column" >
+            <div style="width:95%;border:3px solid #2c5282;margin-left:3px; border-radius:5px;">
+                @if ($result2 !== null)
+                <?php  $conf_val_a=$conf_val->conf_val($id_project,2,1,$sumacap_term_2);?>
+                @endif
+
+                @if ($result2 === null)
+                <?php  $conf_val_a=0;?>
+                @endif
+                <img style="width: 200px;height:150px; margin-left:15px;" src="https://quickchart.io/chart?v=2.9.4&c={ type: 'gauge', data: { datasets: [ { value: {{$conf_val_a}}, data: [2, 4, 6], backgroundColor: ['red','yellow','green'], borderWidth: 2, }, ], }, options: { valueLabel: { display: false, }, }, }">
+                <label for="" style="margin-left:108px; font-size:24px; font-family: 'ABeeZee', sans-serif;color:#2c5282;">A</label>
+
+            </div>
+        </div>
+        <div style="margin-right:5px;margin-top:10px;" class="column" >
+            <div style="width:95%;border:3px solid #2c5282;margin-left:0px; border-radius:5px;">
+                @if ($result3 !== null)
+                <?php  $conf_val_b=$conf_val->conf_val($id_project,3,1,$sumacap_term_3) ?>
+                @endif
+
+                @if ($result3 === null)
+                <?php  $conf_val_b=0;?>
+                @endif
+                <img style="width: 200px;height:150px; margin-left:15px;" src="https://quickchart.io/chart?v=2.9.4&c={ type: 'gauge', data: { datasets: [ { value: {{$conf_val_b}}, data: [2, 4, 6], backgroundColor: ['red','yellow','green'], borderWidth: 2, }, ], }, options: { valueLabel: { display: false, }, }, }">
+                <label for="" style="margin-left:108px; font-size:24px; font-family: 'ABeeZee', sans-serif;color:#2c5282;">B</label>
+
+            </div>
+        </div>
+    </div>
+   {{--  <div style="width:100%;">
+        <img style="width: 300px;height:200px; margin-left:50px;" src="https://quickchart.io/chart?v=2.9.4&c={ type: 'gauge', data: { datasets: [ { value: 3, data: [1.5, 4.5, 6], backgroundColor: ['red','yellow','green'], borderWidth: 2, }, ], }, options: { valueLabel: { display: false, }, }, }">
+    </div> --}}
+</div>
+@endif
 
     <script type="text/javascript">
    $(document).ready(function() {

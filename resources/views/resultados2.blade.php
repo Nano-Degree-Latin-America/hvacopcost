@@ -706,7 +706,7 @@ cursor: pointer;
                                                                 @endif
 
                                                                 @if ($solution->num_enf == 2 || $solution->num_enf == 3)
-                                                                <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                                <div class="w-full bg-orange-500 rounded-md p-2 text-center">
                                                                     @if ($solution->num_enf == 2 )
                                                                     <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">{{ __('index.solucion') }} A</label>
                                                                     @endif
@@ -1012,7 +1012,7 @@ cursor: pointer;
                                                                         @endif
 
                                                                         @if ($solution->num_enf == 2 || $solution->num_enf == 3)
-                                                                        <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                                        <div class="w-full bg-orange-500 rounded-md p-2 text-center">
                                                                             @if ($solution->num_enf == 2 )
                                                                             <label class="text-white font-bold 2xl:text-4xl xl:text-4xl lg:text-4xl  md:text-4xl font-roboto" for="">{{ __('index.solucion') }} A</label>
                                                                             @endif
@@ -3159,7 +3159,7 @@ cursor: pointer;
                                                 <div class="flex w-full ">
                                                         <div class="grid w-full mx-3">
 
-                                                            <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                            <div class="w-full bg-orange-500 rounded-md p-2 text-center">
                                                                 <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} A</label>
                                                             </div>
 
@@ -3201,7 +3201,7 @@ cursor: pointer;
                                                 <div class="flex w-full ">
                                                         <div class="grid w-full mx-3">
 
-                                                            <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                            <div class="w-full bg-orange-500 rounded-md p-2 text-center">
                                                                 <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} B</label>
                                                             </div>
 
@@ -3593,7 +3593,7 @@ cursor: pointer;
                                                         <div class="flex w-full ">
                                                                 <div class="grid w-full mx-3">
 
-                                                                    <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                                    <div class="w-full bg-orange-500 rounded-md p-2 text-center">
                                                                         <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} A</label>
                                                                     </div>
 
@@ -3639,7 +3639,7 @@ cursor: pointer;
                                                         <div class="flex w-full ">
                                                                 <div class="grid w-full mx-3">
 
-                                                                    <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                                    <div class="w-full bg-orange-500 rounded-md p-2 text-center">
                                                                         <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} B</label>
                                                                     </div>
 
@@ -4693,7 +4693,7 @@ cursor: pointer;
                                             <div class="flex w-full ">
                                                     <div class="grid w-full mx-3">
 
-                                                        <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                        <div class="w-full bg-orange-500 rounded-md p-2 text-center">
                                                             <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} A</label>
                                                         </div>
 
@@ -4735,7 +4735,7 @@ cursor: pointer;
                                             <div class="flex w-full ">
                                                     <div class="grid w-full mx-3">
 
-                                                        <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                        <div class="w-full bg-orange-500 rounded-md p-2 text-center">
                                                             <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} B</label>
                                                         </div>
 
@@ -5145,7 +5145,7 @@ cursor: pointer;
                                         <div class="flex w-full ">
                                                 <div class="grid w-full mx-3">
 
-                                                    <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                    <div class="w-full bg-orange-500 rounded-md p-2 text-center">
                                                         <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} A</label>
                                                     </div>
 
@@ -5184,7 +5184,7 @@ cursor: pointer;
                                         <div class="flex w-full ">
                                                 <div class="grid w-full mx-3">
 
-                                                    <div class="w-full bg-blue-500 rounded-md p-2 text-center">
+                                                    <div class="w-full bg-orange-500 rounded-md p-2 text-center">
                                                         <label class="text-white font-bold text-4xl font-roboto" for="">{{ __('index.solucion') }} B</label>
                                                     </div>
 

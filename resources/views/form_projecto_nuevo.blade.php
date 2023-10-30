@@ -730,10 +730,10 @@
 </div>
     <div style="width: 100%" class="mx-1">
         {{-- 2.1 --}}
-        <div  class="text-white rounded-t-xl w-80 bg-blue-700 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
+        <div  class="text-white rounded-t-xl w-80 bg-orange-500 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
             <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
                 <a href="#final2">
-                    <button onclick="active_display('sol_2');" type="button"  class="bg-blue-700 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white "></i></button>
+                    <button onclick="active_display('sol_2');" type="button"  class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white "></i></button>
                 </a>
             <input type="number" class="hidden" value="2" id="cont_sol_2" name="cont_sol_2">
             </div>
@@ -1420,10 +1420,10 @@
 
     <div style="width: 100%" class="mx-1">
          {{-- 3.1 --}}
-         <div  class="bg-blue-500 text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
+         <div  class="bg-orange-500 text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
             <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
                 <a href="#final3">
-                    <button onclick="active_display('sol_3');" type="button"  class="bg-blue-500 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button>
+                    <button onclick="active_display('sol_3');" type="button"  class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button>
                 </a>
                 <input type="number" class="hidden" value="2" id="cont_sol_3" name="cont_sol_3">
             </div>
