@@ -148,6 +148,8 @@ Route::get('store_new_model/{value}/{marca}', 'ResultadosController@store_new_mo
 Route::get('send_modelos_datalist/{value}', 'ResultadosController@send_modelos_datalist');
 
 Route::get('verifica_solucion/{num_disp}/{num_sol}/{id_project}/{type}', 'ProjectController@verifica_solucion');
+Route::get('delete_all_disp_sol_thre', 'ResultadosController@delete_all_disp_sol_thre');
+
 
 //lang
 Route::get('locale/{locale}', function($locale){

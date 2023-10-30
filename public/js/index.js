@@ -4153,8 +4153,8 @@ function trans_sols_valid_ab(idm,sol){
         }
 
         ////////////////////////////////////////
-
-        if (sol_1_3.val() != '0'){
+        /* if (sol_1_3.val() != '0'){
+            alert(sol_1_3.val());
             var tipo_equipo_1_3 =$('#csTipo_1_3');
             var csTipo_1_3_count = $('#csTipo_1_3_count').val();
             if(tipo_equipo_1_3.val() == 0  || tipo_equipo_1_3.val() == null){
@@ -4313,7 +4313,7 @@ function trans_sols_valid_ab(idm,sol){
                 trans_sols_valid(idm);
                         return false;
                         }
-            }
+            } */
 
 
                 if (sol_2_1.val() != '0'){
@@ -4679,7 +4679,7 @@ function trans_sols_valid_ab(idm,sol){
 
                 }
 
-                if (sol_2_3.val() != '0'){
+                /* if (sol_2_3.val() != '0'){
                     var tipo_equipo_2_3 =$('#cheTipo_2_3');
                     var cheTipo_2_3_count = $('#cheTipo_2_3_count').val();
 
@@ -4839,7 +4839,7 @@ function trans_sols_valid_ab(idm,sol){
                         trans_sols_valid_ab(idm,'A')
                                 return false;
                                 }
-                    }
+                    } */
 
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -5214,7 +5214,7 @@ function trans_sols_valid_ab(idm,sol){
 
                 }
 
-                if (sol_3_3.val() != '0'){
+               /*  if (sol_3_3.val() != '0'){
                     var cheTipo_3_3 =$('#cheTipo_3_3');
                     var cheTipo_3_3_count = $('#cheTipo_3_3_count').val();
                     if(cheTipo_3_3.val() == 0  || cheTipo_3_3.val() == null){
@@ -5373,7 +5373,7 @@ function trans_sols_valid_ab(idm,sol){
                         trans_sols_valid_ab(idm,'B');
                                 return false;
                                 }
-                    }
+                    } */
                 /////////////////////////////////////////////////////////
                 formulario = document.getElementById('formulario');
                 formulario.submit();

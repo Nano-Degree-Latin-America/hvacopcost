@@ -9738,5 +9738,18 @@ if($eficiencia_ene == 'EER'){
         return $proyect;
     }
 
+    public function delete_all_disp_sol_thre(){
+        $solutions = DB::table('solutions_project')
+        ->where('solutions_project.num_sol','=',3)
+        ->get();
+        dd($solutions );
+        /* foreach($solutions as $solution){
+            $solution=SolutionsProjectModel::find($solution->id);
+            $solution->delete();
+        } */
+
+
+    }
+
 
 }

@@ -428,7 +428,7 @@
       {{-- 1.2 --}}
 
       {{-- 1.3 --}}
-      <div class="grid w-full hidden"  id="sol_1_3" name="sol_1_3">
+      {{-- <div class="grid w-full hidden"  id="sol_1_3" name="sol_1_3">
         <div class="mx-2">
             <hr>
            </div>
@@ -629,7 +629,7 @@
            </div>
          </div>
         </div>
-       </div>
+       </div> --}}
        {{-- 1.3 --}}
 
        <a id="final1" name="final1" href=""></a>
@@ -1130,7 +1130,7 @@
        {{-- 2.2 --}}
 
        {{-- 2.3 --}}
-       <div class="grid w-full hidden"  id="sol_2_3" name="sol_1_3">
+       {{-- <div class="grid w-full hidden"  id="sol_2_3" name="sol_1_3">
         <div class="mx-2">
             <hr>
         </div>
@@ -1303,7 +1303,7 @@
               </div>
             </div>
            </div>
-        </div>
+        </div> --}}
         {{-- 2.3 --}}
 
 
@@ -1824,7 +1824,7 @@
        {{-- 3.2 --}}
 
        {{-- 3.3 --}}
-       <div class="grid w-full hidden"  id="sol_3_3" name="sol_3_3">
+       {{-- <div class="grid w-full hidden"  id="sol_3_3" name="sol_3_3">
         <div class="mx-2">
             <hr>
         </div>
@@ -2009,7 +2009,7 @@
               </div>
             </div>
            </div>
-        </div>
+        </div> --}}
         {{-- 3.3 --}}
 
         {{-- 3.4 --}}

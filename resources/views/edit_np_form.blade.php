@@ -5,6 +5,7 @@
              <a href="#final1">   <button onclick="active_display_Edit('sol_1');" type="button" style="background-color: #233064;" class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button></a>
              <?php  $num_tarjets=$num_tarjets->num_tarjets($id_project,1) ?>
              <input type="number" class="hidden" value="{{$num_tarjets}}" id="cont_sol_1" name="cont_sol_1">
+
                 <input type="number" class="hidden" value="1" id="set_sol_1" name="set_sol_1">
             </div>
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
@@ -462,7 +463,7 @@
       {{-- 1.2 --}}
 
       {{-- 1.3 --}}
-      <div class="grid w-full hidden"  id="sol_1_3" name="sol_1_3">
+      {{-- <div class="grid w-full hidden"  id="sol_1_3" name="sol_1_3">
         <div class="mx-2">
             <hr>
            </div>
@@ -569,11 +570,8 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                            <div class="flex justify-start w-1/3">
-                                <select name="csStd_1_3" id="csStd_1_3" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_3').value,'csStd_1_3');" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
-                                    {{-- <option value="SEER">SEER</option>
-                                    <option value="SEER2">SEER2</option>
-                                    <option value="IEER">IEER</option>
-                                    <option value="IPVL">IPVL</option> --}}
+                                <select name="csStd_1_3" id="csStd_1_3" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_3').value,'csStd_1_3');" style="padding-top: 0.528rem;padding-bottom: 0.528rem;" class="w-full border-2 border-blue-600 rounded-md text-center">
+
                                 </select>
                            </div>
                            <div class="flex justify-start w-1/4">
@@ -656,9 +654,7 @@
                         </div>
                     </div>
 
-                       {{-- <div class="flex gap-x-3 w-1/2 justify-end">
-                           <button onclick="inactive_display_edit('sol_1','{{$id_project}}',1,3)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
-                       </div> --}}
+
                     </div>
                 </div>
             </div>
@@ -764,10 +760,10 @@
 </div>
     <div style="width: 100%" class="mx-1">
         {{-- 2.1 --}}
-        <div  class="text-white rounded-t-xl w-80 bg-blue-700 2xl:flex xl:flex lg:grid justify-betweenxl:py-3 xl:py-3 lg:py-0">
+        <div  class="text-white rounded-t-xl w-80 bg-orange-500 2xl:flex xl:flex lg:grid justify-betweenxl:py-3 xl:py-3 lg:py-0">
             <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
                 <a href="#final2">
-                    <button onclick="active_display_Edit('sol_2');" type="button"  class="bg-blue-700 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white "></i></button>
+                    <button onclick="active_display_Edit('sol_2');" type="button"  class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white "></i></button>
                 </a>
                 <?php  $num_tarjets_2=$num_tarjets_2->num_tarjets($id_project,2) ?>
 
@@ -1220,7 +1216,7 @@
        {{-- 2.2 --}}
 
        {{-- 2.3 --}}
-       <div class="grid w-full hidden"  id="sol_2_3" name="sol_2_3">
+       {{-- <div class="grid w-full hidden"  id="sol_2_3" name="sol_2_3">
         <div class="mx-2">
             <hr>
         </div>
@@ -1332,11 +1328,8 @@
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                         <div class="flex justify-start w-1/3">
-                            <select name="csStd_2_3" id="csStd_2_3" onchange="check_send_efi(this.value,document.getElementById('cUnidad_2_3').value,'csStd_2_3');" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
-                                {{-- <option value="SEER">SEER</option>
-                                <option value="SEER2">SEER2</option>
-                                <option value="IEER">IEER</option>
-                                <option value="IPVL">IPVL</option> --}}
+                            <select name="csStd_2_3" id="csStd_2_3" onchange="check_send_efi(this.value,document.getElementById('cUnidad_2_3').value,'csStd_2_3');" style="padding-top: 0.528rem;padding-bottom: 0.528rem;" class="w-full border-2 border-blue-600 rounded-md text-center">
+
                             </select>
                         </div>
                         <div class="flex justify-start w-1/4">
@@ -1409,14 +1402,12 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="flex gap-x-3 w-1/2 justify-end">
-                        <button onclick="inactive_display_edit('sol_2','{{$id_project}}',2,3)" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
-                    </div> --}}
+
                 </div>
               </div>
             </div>
            </div>
-        </div>
+        </div> --}}
         {{-- 2.3 --}}
 
 
@@ -1533,10 +1524,10 @@
 
     <div style="width: 100%" class="mx-1">
          {{-- 3.1 --}}
-         <div  class="bg-blue-500 text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
+         <div  class="bg-orange-500 text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
             <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
                 <a href="#final3">
-                    <button onclick="active_display_Edit('sol_3');" type="button"  class="bg-blue-500 rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button>
+                    <button onclick="active_display_Edit('sol_3');" type="button"  class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button>
                 </a>
                 <?php  $num_tarjets_3=$num_tarjets_3->num_tarjets($id_project,3) ?>
                 <input type="number" class="hidden" value="{{$num_tarjets_3}}" id="cont_sol_3" name="cont_sol_3">
@@ -1992,7 +1983,7 @@
        {{-- 3.2 --}}
 
        {{-- 3.3 --}}
-       <div class="grid w-full hidden"  id="sol_3_3" name="sol_3_3">
+       {{-- <div class="grid w-full hidden"  id="sol_3_3" name="sol_3_3">
         <div class="mx-2">
             <hr>
         </div>
@@ -2099,11 +2090,8 @@
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                         <div class="flex justify-start w-1/3">
-                            <select name="csStd_3_3" id="csStd_3_3" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
-                                {{-- <option value="SEER">SEER</option>
-                                <option value="SEER2">SEER2</option>
-                                <option value="IEER">IEER</option>
-                                <option value="IPVL">IPVL</option> --}}
+                            <select name="csStd_3_3" id="csStd_3_3" style="padding-top: 0.528rem;padding-bottom: 0.528rem;" class="w-full border-2 border-blue-600 rounded-md text-center">
+
                             </select>
                         </div>
                         <div class="flex justify-start w-1/4">
@@ -2175,14 +2163,12 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="flex gap-x-3 w-1/2 justify-end">
-                        <button onclick="inactive_display_edit('sol_3','{{$id_project}}',3,3)" type="button"class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
-                    </div> --}}
+
                 </div>
               </div>
             </div>
            </div>
-        </div>
+        </div> --}}
         {{-- 3.3 --}}
 
         {{-- 3.4 --}}
