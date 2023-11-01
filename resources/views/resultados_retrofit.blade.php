@@ -234,6 +234,7 @@ cursor: pointer;
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+<a id="inicial_position_check" name="inicial_position_check"></a>
 <div class="bg-blue-900 w-full flex justify-center" style="background-image: radial-gradient(rgb(10,19,59) 0%,rgb(5,1,25) 100%);">
     <div class="w-1/3">
         <img class="header" style="height:99px;" name="logoEmpresa" id="logoEmpresa" src="{{asset('assets/images/Logo-NDL_blanco_marca-r.png')}}" alt="Nano Degree">
@@ -1665,7 +1666,13 @@ cursor: pointer;
                                                     <b class="text-blue-800 mr-1 font-roboto text-3xl">{{ __('index.sis_ext') }} v/s A </b>
                                                     </div>
                                                     <div class="flex justify-center w-full">
-                                                    <b style="color:#33cc33;" id="dif_1"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b>
+                                                        @if ($dif_1 >= 0)
+                                                        <b style="color:#33cc33;" id="dif_1"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b>
+                                                        @endif
+
+                                                         @if ($dif_1 < 0)
+                                                         <b style="color:#ea0000;" id="dif_1"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b>
+                                                        @endif
                                                     </div>
                                                 </div>
 
@@ -1688,7 +1695,14 @@ cursor: pointer;
                                                             <b class="text-blue-800 mr-1 font-roboto text-3xl">{{ __('index.sis_ext') }} v/s A </b>
                                                             </div>
                                                         <div class="flex justify-center w-full">
-                                                            <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b> <b class="text-3xl mt-3 font-roboto ml-1"></b>
+                                                            @if ($dif_1 >= 0)
+                                                            <b style="color:#33cc33;" id="dif_1"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b>
+
+                                                            @endif
+
+                                                             @if ($dif_1 < 0)
+                                                             <b style="color:#ea0000;" id="dif_1"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_1)}}</b>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     @endif
@@ -1699,7 +1713,13 @@ cursor: pointer;
                                                         <b class="text-blue-800 mr-1 font-roboto text-3xl">{{ __('index.sis_ext') }} v/s B </b>
                                                         </div>
                                                         <div class="flex w-full justify-center">
-                                                            <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_2)}}</b> <b class="text-3xl mt-3 font-roboto ml-1"></b>
+                                                            @if ($dif_2 >= 0)
+                                                            <b style="color:#33cc33;" id="dif_1"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_2)}}</b>
+                                                            @endif
+
+                                                             @if ($dif_2 < 0)
+                                                             <b style="color:#ea0000;" id="dif_1"  class="text-[24px] font-roboto text-6xl">{{number_format($dif_2)}}</b>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     @endif
@@ -1751,16 +1771,28 @@ cursor: pointer;
                                                     @if (strlen($result_area_1) >= 19)
                                                 <div class="flex w-full justify-center">
                                                     <div class="w-full flex justify-center">
+                                                        @if ($result_area_1 >= 0)
                                                         <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
 
+                                                        @endif
+
+                                                         @if ($result_area_1 < 0)
+                                                         <b style="color:#ea0000;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
+                                                         @endif
                                                     </div>
                                                 </div>
                                                      @endif
 
                                                      @if (strlen($result_area_1) < 19) {{-- para tamaño de cadena disminuir tamaño --}}
                                                     <div class="w-full flex justify-center">
+                                                        @if ($result_area_1 >= 0)
                                                         <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
 
+                                                        @endif
+
+                                                         @if ($result_area_1 < 0)
+                                                         <b style="color:#ea0000;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
+                                                         @endif
                                                     </div>
                                                      @endif
                                                 </div>
@@ -1779,14 +1811,26 @@ cursor: pointer;
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     @if (strlen($result_area_2) >= 19)
                                                     <div class="w-full flex justify-center">
+                                                        @if ($result_area_2 >= 0)
                                                         <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_2, 2)}}</b>
-                                                    </div>
+                                                        @endif
+
+                                                         @if ($result_area_2 < 0)
+                                                         <b style="color:#ea0000;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_2, 2)}}</b>
+                                                         @endif
+                                                        </div>
                                                     @endif
 
                                                     @if (strlen($result_area_2) < 19)
                                                     <div class="w-full flex justify-center">
+                                                        @if ($result_area_2 >= 0)
                                                         <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_2, 2)}}</b>
-                                                    </div>
+                                                        @endif
+
+                                                         @if ($result_area_2 < 0)
+                                                         <b style="color:#ea0000;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_2, 2)}}</b>
+                                                         @endif
+                                                        </div>
                                                     @endif
                                                 </div>
                                             </div>
@@ -1804,14 +1848,26 @@ cursor: pointer;
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     @if (strlen($result_area_3) >= 19)
                                                     <div class="w-full flex justify-center">
+                                                        @if ($result_area_3 >= 0)
                                                         <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_3, 2)}}</b>
-                                                    </div>
+                                                        @endif
+
+                                                         @if ($result_area_3 < 0)
+                                                         <b style="color:#ea0000;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_3, 2)}}</b>
+                                                         @endif
+                                                        </div>
                                                      @endif
 
                                                      @if (strlen($result_area_3) < 19)
                                                      <div class="w-full flex justify-center">
+                                                        @if ($result_area_3 >= 0)
                                                         <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_3, 2)}}</b>
-                                                    </div>
+                                                        @endif
+
+                                                         @if ($result_area_3 < 0)
+                                                         <b style="color:#ea0000;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_3, 2)}}</b>
+                                                         @endif
+                                                        </div>
                                                      @endif
                                                 </div>
                                             </div>
@@ -4114,19 +4170,23 @@ cursor: pointer;
 				<div class="flex justify-between">
 					<div class="w-1/2">
 						@if (strlen(__('index.atras')) > 6)
+                         <a href="#inicial_position_check">
                         <button
 							x-show="step > 1"
 							@click="step--"
 							class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 text-md bg-white hover:bg-gray-100 font-medium border font-roboto"
 						>{{ __('index.atras') }}</button>
+                        </a>
                         @endif
 
                         @if (strlen(__('index.atras')) == 6)
+                         <a href="#inicial_position_check">
                         <button
 							x-show="step > 1"
 							@click="step--"
 							class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 text-xl bg-white hover:bg-gray-100 font-medium border font-roboto"
 						>{{ __('index.atras') }}</button>
+                        </a>
                         @endif
 
                         @if (strlen(__('index.atras')) > 6)
@@ -4151,12 +4211,13 @@ cursor: pointer;
 
 
 					<div class="w-1/2 text-right">
-						<button
+                        <a href="#inicial_position_check">
+                        <button
 							x-show="step < 6"
 							@click="step++"
 							class="w-32 focus:outline-none border border-transparent py-2 px-5 rounded-lg shadow-sm text-xl text-center text-white bg-blue-500 hover:bg-blue-600 font-medium font-roboto"
 						>{{ __('index.siguiente') }}</button>
-
+                        </a>
 						{{-- <button
 							@click="step = 'complete'"
 							x-show="step === 3"
