@@ -175,7 +175,7 @@
 .cap_term{
     font-family: 'ABeeZee', sans-serif;
     font-weight: bold;
-    font-size:25px;
+    font-size:28px;
     color:#2c5282;
 }
 
@@ -198,6 +198,13 @@
 
 .cant_green{
     color:#33cc33;
+    font-size:30px;
+    font-family: 'ABeeZee', sans-serif;
+    font-weight: bold;
+}
+
+.cant_red{
+    color:#ea0000;
     font-size:30px;
     font-family: 'ABeeZee', sans-serif;
     font-weight: bold;
@@ -247,7 +254,15 @@
             font-family: 'ABeeZee', sans-serif;
             font-weight: bold;
             padding:5px;
-            color: #ed8936;
+            color: #33cc33;
+        }
+
+        .porcent_analis_sus_yrs_style_red{
+            font-size:30px;
+            font-family: 'ABeeZee', sans-serif;
+            font-weight: bold;
+            padding:5px;
+            color: #ea0000;
         }
 
         .ancho_rang{
@@ -483,14 +498,7 @@
                                     </div>
                                 </div>
 
-                                <div style="width:100%;" class="tarjet_anal_ene"
-                                @if (strlen($solution->mantenimiento)<=20)
-                                style="margin-left: 5px;margin-top:15px;"
-                                @endif
-                                @if (strlen($solution->mantenimiento)>20)
-                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
-                                @endif
-                                >
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                     <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
@@ -680,14 +688,7 @@
                                     </div>
                                 </div>
 
-                                <div style="width:100%;" class="tarjet_anal_ene"
-                                @if (strlen($solution->mantenimiento)<=20)
-                                style="margin-left: 5px;margin-top:15px;"
-                                @endif
-                                @if (strlen($solution->mantenimiento)>20)
-                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
-                                @endif
-                                >
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                     <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
@@ -877,14 +878,7 @@
                                     </div>
                                 </div>
 
-                                <div style="width:100%;" class="tarjet_anal_ene"
-                                @if (strlen($solution->mantenimiento)<=20)
-                                style="margin-left: 5px;margin-top:15px;"
-                                @endif
-                                @if (strlen($solution->mantenimiento)>20)
-                                style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
-                                @endif
-                                >
+                                <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                     <div>
                                         <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                         <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
@@ -1072,14 +1066,7 @@
                                             </div>
                                         </div>
 
-                                        <div style="width:100%;" class="tarjet_anal_ene"
-                                        @if (strlen($solution->mantenimiento)<=20)
-                                        style="margin-left: 5px;margin-top:15px;"
-                                        @endif
-                                        @if (strlen($solution->mantenimiento)>20)
-                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
-                                        @endif
-                                        >
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
                                                 <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
@@ -1267,14 +1254,7 @@
                                             </div>
                                         </div>
 
-                                        <div style="width:100%;" class="tarjet_anal_ene"
-                                        @if (strlen($solution->mantenimiento)<=20)
-                                        style="margin-left: 5px;margin-top:15px;"
-                                        @endif
-                                        @if (strlen($solution->mantenimiento)>20)
-                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
-                                        @endif
-                                        >
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
                                                 <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
@@ -1462,14 +1442,7 @@
                                             </div>
                                         </div>
 
-                                        <div style="width:100%;" class="tarjet_anal_ene"
-                                        @if (strlen($solution->mantenimiento)<=20)
-                                        style="margin-left: 5px;margin-top:15px;"
-                                        @endif
-                                        @if (strlen($solution->mantenimiento)>20)
-                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
-                                        @endif
-                                        >
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
                                                 <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
@@ -1658,14 +1631,7 @@
                                             </div>
                                         </div>
 
-                                        <div style="width:100%;" class="tarjet_anal_ene"
-                                        @if (strlen($solution->mantenimiento)<=20)
-                                        style="margin-left: 5px;margin-top:15px;"
-                                        @endif
-                                        @if (strlen($solution->mantenimiento)>20)
-                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
-                                        @endif
-                                        >
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
                                                 <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
@@ -1853,14 +1819,7 @@
                                             </div>
                                         </div>
 
-                                        <div style="width:100%;" class="tarjet_anal_ene"
-                                        @if (strlen($solution->mantenimiento)<=20)
-                                        style="margin-left: 5px;margin-top:15px;"
-                                        @endif
-                                        @if (strlen($solution->mantenimiento)>20)
-                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
-                                        @endif
-                                        >
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
                                                 <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
@@ -2048,14 +2007,7 @@
                                             </div>
                                         </div>
 
-                                        <div style="width:100%;" class="tarjet_anal_ene"
-                                        @if (strlen($solution->mantenimiento)<=20)
-                                        style="margin-left: 5px;margin-top:15px;"
-                                        @endif
-                                        @if (strlen($solution->mantenimiento)>20)
-                                        style="margin-left: 5px;margin-top:15px;margin-bottom:30px;"
-                                        @endif
-                                        >
+                                        <div style="width:100%;" class="tarjet_anal_ene" style="margin-left: 5px;margin-top:15px;margin-bottom:30px;">
                                             <div>
                                                 <div style="float: left; width: 50%;font-size:10px;--text-opacity: 1;color: #2a4365;font-weight: 700;">{{ __('index.mantenimiento') }}</div>
                                                 <div style="float: right; width: 50%;font-size:10px;--text-opacity: 1;color: #3182ce;font-weight: 700;">{{$solution->mantenimiento}}</div>
@@ -2120,7 +2072,7 @@
         </div>
     </div>
 
-    <div  style="margin-top:5px; height:20%;" class="tarjet">
+    <div  style="margin-top:5px; height:21%;" class="tarjet">
         <div style="margin-left:15px; margin-right:15px;">
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
@@ -2145,7 +2097,6 @@
                             <tr class="tr_style">
                                 <td style="width: 100%;" class=""><label style="margin-left:15px;" class="title_cap_term" for="">{{ __('results.cap_ter_loc') }}</label></td>
                             </tr>
-
                             <td style="width: 100%;" class=""><label style="margin-left:90px;" class="cap_term" for="">{{$sumacap_term_1}}</label>
                                 <label style="" class="unit_cap_term" for="">{{$unid_med_1->unid_med}}</label>
                             </td>
@@ -2168,11 +2119,19 @@
 
                           <tr class="tr_style">
                               <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">{{ __('results.consumo_anual') }} (OPEX)</label></td>
-                              </tr>
+                          </tr>
+                          @if (strlen($sumaopex_1) >= 9)
+                          <td style="width: 100%;" class=""><label style="margin-left:40px;" class="cap_term" for="">{{number_format($sumaopex_1)}}</label>
+                            <label style="" class="unit_opex" for="">Kw/hr</label>
+                          </td>
+                          @endif
 
-                              <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">{{number_format($sumaopex_1)}}</label>
-                                  <label style="" class="unit_opex" for="">Kw/hr</label>
-                                </td>
+                          @if (strlen($sumaopex_1) < 9)
+                          <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">{{number_format($sumaopex_1)}}</label>
+                            <label style="" class="unit_opex" for="">Kw/hr</label>
+                           </td>
+                          @endif
+
                       </tbody>
                   </table>
                 </div>
@@ -2228,10 +2187,18 @@
                         <tr class="tr_style">
                             <td style="width: 100%;" class=""><label style="margin-left:20px;" class="title_cap_term" for="">{{ __('results.consumo_anual') }} (OPEX)</label></td>
                             </tr>
+                            @if (strlen($sumaopex_2) >= 9)
+                            <td style="width: 100%;" class=""><label style="margin-left:30px;" class="cap_term" for="">{{number_format($sumaopex_2)}}</label>
+                                <label  class="unit_opex" for="">Kw/hr</label>
+                              </td>
+                            @endif
 
+                            @if (strlen($sumaopex_2) < 9)
                             <td style="width: 100%;" class=""><label style="margin-left:60px;" class="cap_term" for="">{{number_format($sumaopex_2)}}</label>
                                 <label  class="unit_opex" for="">Kw/hr</label>
                               </td>
+                            @endif
+
                     </tbody>
                 </table>
                 </div>
@@ -2289,12 +2256,25 @@
 
                             <td style="width: 100%;" class="">
                                 @if (number_format($sumaopex_3/$tar_ele->costo_elec) <= 0)
-                                <label style="margin-left:90px;" class="cap_term" for="">{{number_format($sumaopex_3)}}</label>
+
+                                    @if (strlen($sumaopex_3) >= 9)
+                                    <label style="margin-left:30px;" class="cap_term" for="">{{number_format($sumaopex_3)}}</label>
+                                    @endif
+
+                                    @if (strlen($sumaopex_3) < 9)
+                                    <label style="margin-left:90px;" class="cap_term" for="">{{number_format($sumaopex_3)}}</label>
+                                    @endif
                                 <label  class="unit_cap_term" for="">Kw/hr</label>
                                 @endif
 
                                 @if (number_format($sumaopex_3/$tar_ele->costo_elec) > 0)
-                                <label style="margin-left:60px;" class="cap_term" for="">{{number_format($sumaopex_3)}}</label>
+                                    @if (strlen($sumaopex_3) >= 9)
+                                    <label style="margin-left:30px;" class="cap_term" for="">{{number_format($sumaopex_3)}}</label>
+                                    @endif
+
+                                    @if (strlen($sumaopex_3) < 9)
+                                    <label style="margin-left:90px;" class="cap_term" for="">{{number_format($sumaopex_3)}}</label>
+                                    @endif
                                 <label  class="unit_cap_term" for="">Kw/hr</label>
                                 @endif
 
@@ -2308,9 +2288,9 @@
     <?php  $unidad_area=$results->unidad_area($id_project,1,$sumaopex_1,$tar_ele->costo_elec) ?>
 
     {{-- Ahorro Anual Energía – Diferencia entre Soluciones (Kw/hr año) --}}
-    <div style="margin-top:5px; height:13%;" class="tarjet">
+    <div style="margin-top:3px; height:15%;" class="tarjet">
         <div align="center" class="title_tarjet_no_bg">
-            <p  class="title_style_no_bg">{{ __('results.eco_an_en') }} – {{ __('results.dif_ent_sol') }}<b style="color:#ed8936;">(Kw/hr año)</b></p>
+            <p  class="title_style_no_bg">{{ __('results.eco_an_en') }} – {{ __('results.dif_ent_sol') }}<b style="color:#ed8936;"> (Kw/hr año)</b></p>
         </div>
         <?php  $results_aux=$results->results($id_project) ?>
 
@@ -2324,12 +2304,20 @@
                 @if (count($results_aux) == 2)
                 @if ($solution->num_enf == 1)
                 <?php  $dif_1=$smasolutions->dif_1($solution->id_project,count($results_aux),$tar_ele->costo_elec) ?>
+
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
                     <div style="width:100%;">
                         <label style="margin-left:100px;" class="dif_sols_subtitle">{{ __('index.solucion') }} Base v/s A</label>
                     </div>
                     <div style="width:100%;">
+                        @if ($dif_1 <= 0)
+                        <label style="margin-left:150px;" class="cant_red">{{number_format($dif_1)}}</label>
+                        @endif
+
+                        @if ($dif_1 > 0)
                         <label style="margin-left:150px;" class="cant_green">{{number_format($dif_1)}}</label>
+                        @endif
+
                     </div>
                 </div>
                 <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
@@ -2351,7 +2339,19 @@
                         <label style="margin-left:100px;" class="dif_sols_subtitle">{{ __('index.solucion') }} Base v/s A</label>
                     </div>
                     <div style="width:100%;">
+                        @if ($dif_1 <= 0)
+                         @if (strlen($dif_1)>=10)
+                         <label style="margin-left:105px;" class="cant_red">{{number_format($dif_1)}}</label>
+                         @endif
+
+                         @if (strlen($dif_1)<10)
+                         <label style="margin-left:150px;" class="cant_red">{{number_format($dif_1)}}</label>
+                         @endif
+                        @endif
+
+                        @if ($dif_1 > 0)
                         <label style="margin-left:150px;" class="cant_green">{{number_format($dif_1)}}</label>
+                        @endif
                     </div>
                 </div>
                 @endif
@@ -2362,7 +2362,13 @@
                         <label style="margin-left:50px;" class="dif_sols_subtitle">{{ __('index.solucion') }} Base v/s B</label>
                     </div>
                     <div style="width:100%;">
+                        @if ($dif_2 <= 0)
+                        <label style="margin-left:150px;" class="cant_red">{{number_format($dif_2)}}</label>
+                        @endif
+
+                        @if ($dif_2 > 0)
                         <label style="margin-left:90px;" class="cant_green">{{number_format($dif_2)}}</label>
+                        @endif
                     </div>
                  </div>
                  @endif
@@ -2376,9 +2382,9 @@
         {{-- Consumo de Energía HVAC por Área (Kwh/ m² )
  --}}
 {{-- title_style_no_bg --}}
-<div style="margin-top:9px; height:11%;" class="tarjet">
+<div style="margin-top:8px; height:11%;" class="tarjet">
     <div align="center"  class="title_tarjet_no_bg">
-        <p  class="title_style_no_bg">{{ __('results.cons_ene_ar') }} <b style="color:#ed8936;">(Kwh/@if($unidad_area == 'mc')m²@endif @if($unidad_area == 'ft')ft²@endif)</b></p>
+        <p  class="title_style_no_bg">{{ __('results.cons_ene_ar') }} <b style="color:#ed8936;">(Kwh/@if($unidad_area == 'mc')m²@elseif($unidad_area == 'ft')ft²@endif)</b></p>
     </div>
     <div style="margin-left:15px; margin-right:15px;">
         <div>
@@ -2386,7 +2392,13 @@
                 <div style="width:100%;">
                     @if ($result1 ==! null)
                     <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
-                    <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_1, 2)}}</label>
+                        @if ($result_area_1 <= 0)
+                        <label style="margin-left:60px;" class="cant_red">{{number_format($result_area_1, 2)}}</label>
+                        @endif
+
+                        @if ($result_area_1 > 0)
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_1, 2)}}</label>
+                        @endif
                     @else
                     <label style="margin-left:60px;" class="cant_green">0</label>
                     @endif
@@ -2396,7 +2408,13 @@
                 <div style="width:100%;">
                     @if ($result2 ==! null)
                     <?php  $result_area_2=$results->result_area($id_project,$sumaopex_2) ?>
-                    <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_2, 2)}}</label>
+                        @if ($result_area_2 <= 0)
+                        <label style="margin-left:60px;" class="cant_red">{{number_format($result_area_2, 2)}}</label>
+                        @endif
+
+                        @if ($result_area_2 > 0)
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_2, 2)}}</label>
+                        @endif
                     @else
                     <label style="margin-left:60px;" class="cant_green">0</label>
                     @endif
@@ -2406,7 +2424,13 @@
                 <div style="width:100%;">
                     @if ($result3 ==! null)
                     <?php  $result_area_3=$results->result_area($id_project,$sumaopex_3) ?>
-                    <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_3, 2)}}</label>
+                        @if ($result_area_3 <= 0)
+                        <label style="margin-left:60px;" class="cant_red">{{number_format($result_area_3, 2)}}</label>
+                        @endif
+
+                        @if ($result_area_3 > 0)
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($result_area_3, 2)}}</label>
+                        @endif
                     @else
                     <label style="margin-left:60px;" class="cant_green">0</label>
                     @endif
@@ -2452,7 +2476,7 @@
         </div>
     </div>
     {{-- captermi res_anal_financioaeror --}}
-    <div  style="margin-top:5px; height:28%;" class="tarjet">
+    <div  style="margin-top:5px; height:30%;" class="tarjet">
         <div style="margin-left:15px; margin-right:15px;">
             <div>
                 <div style="margin-right:5px;margin-top:5px;" class="column" >
@@ -2794,7 +2818,13 @@
                     <label style="margin-left:100px;" class="dif_sols_subtitle">{{ __('index.solucion') }} Base v/s A</label>
                 </div>
                 <div style="width:100%;">
+                    @if ($dif_1_cost <= 0)
+                    <label style="margin-left:150px;" class="cant_red">${{number_format($dif_1_cost)}}</label>
+                    @endif
+
+                    @if ($dif_1_cost > 0)
                     <label style="margin-left:150px;" class="cant_green">${{number_format($dif_1_cost)}}</label>
+                    @endif
                 </div>
             </div>
             <div style="margin-right:5px;margin-top:5px;" class="column_x_2" >
@@ -2817,7 +2847,13 @@
                     <label style="margin-left:100px;" class="dif_sols_subtitle">{{ __('index.solucion') }} Base v/s A</label>
                 </div>
                 <div style="width:100%;">
+                    @if ($dif_1_cost <= 0)
+                    <label style="margin-left:150px;" class="cant_red">$ {{number_format($dif_1_cost)}}</label>
+                    @endif
+
+                    @if ($dif_1_cost > 0)
                     <label style="margin-left:150px;" class="cant_green">$ {{number_format($dif_1_cost)}}</label>
+                    @endif
                 </div>
             </div>
             @endif
@@ -2828,7 +2864,13 @@
                     <label style="margin-left:50px;" class="dif_sols_subtitle">{{ __('index.solucion') }} Base v/s B</label>
                 </div>
                 <div style="width:100%;">
+                    @if ($dif_2_cost <= 0)
+                    <label style="margin-left:90px;" class="cant_red">$ {{number_format($dif_2_cost)}}</label>
+                    @endif
+
+                    @if ($dif_2_cost > 0)
                     <label style="margin-left:90px;" class="cant_green">$ {{number_format($dif_2_cost)}}</label>
+                    @endif
                 </div>
             </div>
             @endif
@@ -2878,7 +2920,13 @@
                 <div style="width:100%;">
                     @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
                     <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1_cost) ?>
-                    <label style="margin-left:60px;" class="cant_green">{{number_format($pay_back_a)}}</label>
+                        @if ($pay_back_a <= 0)
+                        <label style="margin-left:60px;" class="cant_red">{{number_format($pay_back_a)}}</label>
+                        @endif
+
+                        @if ($pay_back_a > 0)
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($pay_back_a)}}</label>
+                        @endif
                     @else
                     <label style="margin-left:60px;" class="cant_green">N/A</label>
                    @endif
@@ -2888,7 +2936,13 @@
                 <div style="width:100%;">
                     @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
                     <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_2_cost) ?>
-                    <label style="margin-left:60px;" class="cant_green">{{number_format($pay_back_b)}}</label>
+                        @if ($pay_back_b <= 0)
+                        <label style="margin-left:60px;" class="cant_red">{{number_format($pay_back_b)}}</label>
+                        @endif
+
+                        @if ($pay_back_b > 0)
+                        <label style="margin-left:60px;" class="cant_green">{{number_format($pay_back_b)}}</label>
+                        @endif
                     @else
                     <label style="margin-left:60px;" class="cant_green">N/A</label>
 
@@ -4030,7 +4084,13 @@
             <td class="sol_ab_yrs_style">{{ __('index.solucion') }} A</td>
             @if ($result2 !== null)
             <?php  $red_en_mw_a_1=$smasolutions->red_en_mw(3,$dif_1) ?>
-            <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_1)}}</td>
+                @if ($red_en_mw_a_1 <= 0)
+                <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_en_mw_a_1)}}</td>
+                @endif
+
+                @if ($red_en_mw_a_1 > 0)
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_1)}}</td>
+                @endif
             @endif
             @if ($result2 === null)
             <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4038,7 +4098,13 @@
 
             @if ($result2 !== null)
             <?php  $red_en_mw_a_2=$smasolutions->red_en_mw(5,$dif_1) ?>
-            <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_2)}}</td>
+                @if ($red_en_mw_a_2 <= 0)
+                <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_en_mw_a_2)}}</td>
+                @endif
+
+                @if ($red_en_mw_a_2 > 0)
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_2)}}</td>
+                @endif
             @endif
             @if ($result2 === null)
             <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4046,7 +4112,13 @@
 
             @if ($result2 !== null)
             <?php  $red_en_mw_a_3=$smasolutions->red_en_mw(10,$dif_1) ?>
-            <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_3)}}</td>
+                @if ($red_en_mw_a_3 <= 0)
+                <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_en_mw_a_3)}}</td>
+                @endif
+
+                @if ($red_en_mw_a_3 > 0)
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_3)}}</td>
+                @endif
             @endif
             @if ($result2 === null)
             <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4054,7 +4126,13 @@
 
             @if ($result2 !== null)
             <?php  $red_en_mw_a_4=$smasolutions->red_en_mw(15,$dif_1) ?>
-            <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_4)}}</td>
+                @if ($red_en_mw_a_4 <= 0)
+                <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_en_mw_a_4)}}</td>
+                @endif
+
+                @if ($red_en_mw_a_4 > 0)
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_a_4)}}</td>
+                @endif
             @endif
 
             @if ($result2 === null)
@@ -4065,7 +4143,13 @@
                 <td class="sol_ab_yrs_style">{{ __('index.solucion') }} B</td>
                 @if ($result3 !== null)
                 <?php  $red_en_mw_b_1=$smasolutions->red_en_mw(3,$dif_2) ?>
-                <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_1)}}</td>
+                    @if ($red_en_mw_b_1 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_en_mw_b_1)}}</td>
+                    @endif
+
+                    @if ($red_en_mw_b_1 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_1)}}</td>
+                    @endif
                 @endif
                  @if ($result3 === null)
                  <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4073,7 +4157,13 @@
 
                  @if ($result3 !== null)
                  <?php  $red_en_mw_b_2=$smasolutions->red_en_mw(5,$dif_2) ?>
-                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_2)}}</td>
+                    @if ($red_en_mw_b_2 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_en_mw_b_2)}}</td>
+                    @endif
+
+                    @if ($red_en_mw_b_2 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_2)}}</td>
+                    @endif
                 @endif
                 @if ($result3 === null)
                 <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4081,7 +4171,13 @@
 
                  @if ($result3 !== null)
                  <?php  $red_en_mw_b_3=$smasolutions->red_en_mw(10,$dif_2) ?>
-                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_3)}}</td>
+                    @if ($red_en_mw_b_3 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_en_mw_b_3)}}</td>
+                    @endif
+
+                    @if ($red_en_mw_b_3 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_3)}}</td>
+                    @endif
                  @endif
                  @if ($result3 === null)
                  <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4089,7 +4185,13 @@
 
                  @if ($result3 !== null)
                  <?php  $red_en_mw_b_4=$smasolutions->red_en_mw(15,$dif_2) ?>
-                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_4)}}</td>
+                    @if ($red_en_mw_b_4 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_en_mw_b_4)}}</td>
+                    @endif
+
+                    @if ($red_en_mw_b_4 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_en_mw_b_4)}}</td>
+                    @endif
                  @endif
                  @if ($result3 === null)
                  <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4119,7 +4221,13 @@
             <td class="sol_ab_yrs_style">{{ __('index.solucion') }} A</td>
             @if ($result2 !== null)
             <?php  $red_hu_carb_a_1=$smasolutions->red_hu_carb(3,$dif_1) ?>
-            <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_1)}}</td>
+                    @if ($red_hu_carb_a_1 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_hu_carb_a_1)}}</td>
+                    @endif
+
+                    @if ($red_hu_carb_a_1 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_1)}}</td>
+                    @endif
             @endif
             @if ($result2 === null)
             <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4127,7 +4235,13 @@
 
             @if ($result2 !== null)
             <?php  $red_hu_carb_a_2=$smasolutions->red_hu_carb(5,$dif_1) ?>
-            <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_2)}}</td>
+                @if ($red_hu_carb_a_2 <= 0)
+                <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_hu_carb_a_2)}}</td>
+                @endif
+
+                @if ($red_hu_carb_a_2 > 0)
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_2)}}</td>
+                @endif
             @endif
             @if ($result2 === null)
             <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4135,7 +4249,13 @@
 
             @if ($result2 !== null)
             <?php  $red_hu_carb_a_3=$smasolutions->red_hu_carb(10,$dif_1) ?>
-            <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_3)}}</td>
+                @if ($red_hu_carb_a_3 <= 0)
+                <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_hu_carb_a_3)}}</td>
+                @endif
+
+                @if ($red_hu_carb_a_3 > 0)
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_3)}}</td>
+                @endif
             @endif
             @if ($result2 === null)
             <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4143,7 +4263,13 @@
 
             @if ($result2 !== null)
             <?php  $red_hu_carb_a_4=$smasolutions->red_hu_carb(15,$dif_1) ?>
-            <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_4)}}</td>
+                @if ($red_hu_carb_a_4 <= 0)
+                <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_hu_carb_a_4)}}</td>
+                @endif
+
+                @if ($red_hu_carb_a_4 > 0)
+                <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_a_4)}}</td>
+                @endif
             @endif
             @if ($result2 === null)
             <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4153,7 +4279,13 @@
                 <td class="sol_ab_yrs_style">{{ __('index.solucion') }} B</td>
                 @if ($result3 !== null)
                 <?php  $red_hu_carb_b_1=$smasolutions->red_hu_carb(3,$dif_2) ?>
-                <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_1)}}</td>
+                    @if ($red_hu_carb_b_1 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_hu_carb_b_1)}}</td>
+                    @endif
+
+                    @if ($red_hu_carb_b_1 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_1)}}</td>
+                    @endif
                 @endif
                 @if ($result3 === null)
                 <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4161,7 +4293,13 @@
 
                 @if ($result3 !== null)
                 <?php  $red_hu_carb_b_2=$smasolutions->red_hu_carb(5,$dif_2) ?>
-                <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_2)}}</td>
+                    @if ($red_hu_carb_b_2 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_hu_carb_b_2)}}</td>
+                    @endif
+
+                    @if ($red_hu_carb_b_2 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_2)}}</td>
+                    @endif
                 @endif
                 @if ($result3 === null)
                 <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4169,7 +4307,13 @@
 
                 @if ($result3 !== null)
                  <?php  $red_hu_carb_b_3=$smasolutions->red_hu_carb(10,$dif_2) ?>
-                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_3)}}</td>
+                    @if ($red_hu_carb_b_3 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_hu_carb_b_3)}}</td>
+                    @endif
+
+                    @if ($red_hu_carb_b_3 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_3)}}</td>
+                    @endif
                  @endif
 
                  @if ($result3 === null)
@@ -4178,7 +4322,13 @@
 
                  @if ($result3 !== null)
                   <?php  $red_hu_carb_b_4=$smasolutions->red_hu_carb(15,$dif_2) ?>
-                  <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_4)}}</td>
+                    @if ($red_hu_carb_b_4 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_hu_carb_b_4)}}</td>
+                    @endif
+
+                    @if ($red_hu_carb_b_4 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_hu_carb_b_4)}}</td>
+                    @endif
                   @endif
 
                   @if ($result3 === null)
@@ -4209,7 +4359,13 @@
             <td class="sol_ab_yrs_style">{{ __('index.solucion') }} A</td>
             @if ($result2 !== null)
             <?php  $red_bol_ba_a_1=$smasolutions->red_bol_ba(3,$dif_1) ?>
-            <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_1)}}</td>
+                    @if ($red_bol_ba_a_1 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_bol_ba_a_1)}}</td>
+                    @endif
+
+                    @if ($red_bol_ba_a_1 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_1)}}</td>
+                    @endif
             @endif
 
             @if ($result2 === null)
@@ -4218,7 +4374,13 @@
 
             @if ($result2 !== null)
             <?php  $red_bol_ba_a_2=$smasolutions->red_bol_ba(5,$dif_1) ?>
-            <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_2)}}</td>
+                    @if ($red_bol_ba_a_2 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_bol_ba_a_2)}}</td>
+                    @endif
+
+                    @if ($red_bol_ba_a_2 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_2)}}</td>
+                    @endif
             @endif
             @if ($result2 === null)
             <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4226,7 +4388,13 @@
 
             @if ($result2 !== null)
              <?php  $red_bol_ba_a_3=$smasolutions->red_bol_ba(10,$dif_1) ?>
-             <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_3)}}</td>
+                    @if ($red_bol_ba_a_3 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_bol_ba_a_3)}}</td>
+                    @endif
+
+                    @if ($red_bol_ba_a_3 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_3)}}</td>
+                    @endif
              @endif
             @if ($result2 === null)
             <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4234,7 +4402,13 @@
 
             @if ($result2 !== null)
             <?php  $red_bol_ba_a_4=$smasolutions->red_bol_ba(15,$dif_1) ?>
-            <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_4)}}</td>
+                    @if ($red_bol_ba_a_4 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_bol_ba_a_4)}}</td>
+                    @endif
+
+                    @if ($red_bol_ba_a_4 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_a_4)}}</td>
+                    @endif
             @endif
             @if ($result2 === null)
             <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4244,7 +4418,13 @@
                 <td class="sol_ab_yrs_style">{{ __('index.solucion') }} B</td>
                 @if ($result3 !== null)
                 <?php  $red_bol_ba_b_1=$smasolutions->red_bol_ba(3,$dif_2) ?>
-                <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_1)}}</td>
+                    @if ($red_bol_ba_b_1 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_bol_ba_b_1)}}</td>
+                    @endif
+
+                    @if ($red_bol_ba_b_1 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_1)}}</td>
+                    @endif
                 @endif
                 @if ($result3 === null)
                 <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4252,7 +4432,13 @@
 
                 @if ($result3 !== null)
                 <?php  $red_bol_ba_b_2=$smasolutions->red_bol_ba(5,$dif_2) ?>
-                <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_2)}}</td>
+                    @if ($red_bol_ba_b_2 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_bol_ba_b_2)}}</td>
+                    @endif
+
+                    @if ($red_bol_ba_b_2 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_2)}}</td>
+                    @endif
                 @endif
                 @if ($result3 === null)
                 <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4260,7 +4446,13 @@
 
                 @if ($result3 !== null)
                 <?php  $red_bol_ba_b_3=$smasolutions->red_bol_ba(10,$dif_2) ?>
-                <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_3)}}</td>
+                    @if ($red_bol_ba_b_3 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_bol_ba_b_3)}}</td>
+                    @endif
+
+                    @if ($red_bol_ba_b_3 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_3)}}</td>
+                    @endif
                 @endif
                 @if ($result3 === null)
                 <td class="porcent_analis_sus_yrs_style">N/A</td>
@@ -4268,7 +4460,13 @@
 
                  @if ($result3 !== null)
                  <?php  $red_bol_ba_b_4=$smasolutions->red_bol_ba(15,$dif_2) ?>
-                 <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_4)}}</td>
+                    @if ($red_bol_ba_b_4 <= 0)
+                    <td class="porcent_analis_sus_yrs_style_red">{{number_format($red_bol_ba_b_4)}}</td>
+                    @endif
+
+                    @if ($red_bol_ba_b_4 > 0)
+                    <td class="porcent_analis_sus_yrs_style">{{number_format($red_bol_ba_b_4)}}</td>
+                    @endif
                  @endif
                  @if ($result3 === null)
                  <td class="porcent_analis_sus_yrs_style">N/A</td>

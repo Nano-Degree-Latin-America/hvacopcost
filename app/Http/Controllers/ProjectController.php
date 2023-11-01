@@ -3047,15 +3047,16 @@ class ProjectController extends Controller
                     $factor_m =$request->get('csMantenimiento_2_1_retro');
                     $t_e = $solution_enf_2_1_retro->tipo_equipo;
                     $eficiencia_ene = $solution_enf_2_1_retro->eficencia_ene;
+                    $yrs_l = $solution_enf_2_1_retro->yrs_vida;
                     $unidad_hvac_aux = $solution_enf_2_1_retro->unidad_hvac;
                    if ($solution_enf_2_1_retro->unid_med == 'TR') {
                     $tr = $solution_enf_2_1_retro->capacidad_tot;
-                    $res_2_1_retro = ProjectController::cost_op_an_form_ab($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ);
+                    $res_2_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
                     $solution_enf_2_1_retro->cost_op_an =  floatval(number_format($res_2_1_retro,2, '.', ''));
 
                 }else if($solution_enf_2_1_retro->unid_med == 'KW'){
                     $kw = $solution_enf_2_1_retro->capacidad_tot;
-                    $res_2_1_retro = ProjectController::cost_op_an_form_kw_ab($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ);
+                    $res_2_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
                     $solution_enf_2_1_retro->cost_op_an = floatval(number_format($res_2_1_retro,2, '.', ''));
 
 
@@ -3316,15 +3317,16 @@ class ProjectController extends Controller
                     $factor_m =$request->get('cheMantenimiento_3_1_retro');
                     $t_e = $solution_enf_3_1_retro->tipo_equipo;
                     $eficiencia_ene = $solution_enf_3_1_retro->eficencia_ene;
+                    $yrs_l = $solution_enf_3_1_retro->yrs_vida;
                     $unidad_hvac_aux = $solution_enf_3_1_retro->unidad_hvac;
                    if ($solution_enf_3_1_retro->unid_med == 'TR') {
                     $tr = $solution_enf_3_1_retro->capacidad_tot;
-                    $res_3_1_retro = ProjectController::cost_op_an_form_ab($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ);
+                    $res_3_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
                     $solution_enf_3_1_retro->cost_op_an =  floatval(number_format($res_3_1_retro,2, '.', ''));
 
                 }else if($solution_enf_3_1_retro->unid_med == 'KW'){
                     $kw = $solution_enf_3_1_retro->capacidad_tot;
-                    $res_3_1_retro = ProjectController::cost_op_an_form_kw_ab($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ);
+                    $res_3_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
                     $solution_enf_3_1_retro->cost_op_an = floatval(number_format($res_3_1_retro,2, '.', ''));
 
                 }
@@ -4197,11 +4199,14 @@ class ProjectController extends Controller
        //(1-Z)
        $uno_m_zeta = 1-$z;
 
-       //(1-Z)^Años de vida)
+       //($uno_m_zeta)^Años de vida)
        $uno_m_zeta_yrs_life = pow($uno_m_zeta,floatval($yrs_l));
+
        //(SEER x (1-Z)^Años de vida) )
        $efi_z_yrs_l = $eficiencia_cant * $uno_m_zeta_yrs_life;
+       //($res_1er_parent)  / ($efi_z_yrs_l)
        $tot_1er_res = $res_1er_parent / $efi_z_yrs_l;
+        //($res_1er_parent)  / ($efi_z_yrs_l) / 1000
        $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
 
        //((TR x cant) x (Cooling Hours) / (SEER) ) / 1000)

@@ -2307,11 +2307,11 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                     $unidad_hvac_aux = $solution_enf_2_1_retro->unidad_hvac;
                    if ($solution_enf_2_1_retro->unid_med == 'TR') {
                      $tr = $solution_enf_2_1_retro->capacidad_tot;
-                    $res_2_1_retro = ResultadosController::cost_op_an_form_ab($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ);
+                    $res_2_1_retro = ResultadosController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
                     $solution_enf_2_1_retro->cost_op_an =  floatval(number_format($res_2_1_retro,2, '.', ''));
                 }else if($solution_enf_2_1_retro->unid_med == 'KW'){
                     $kw = $solution_enf_2_1_retro->capacidad_tot;
-                    $res_2_1_retro = ResultadosController::cost_op_an_form_kw_ab($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ);
+                    $res_2_1_retro = ResultadosController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
                     $solution_enf_2_1_retro->cost_op_an = floatval(number_format($res_2_1_retro,2, '.', ''));
                 }
 
@@ -2538,13 +2538,14 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                     $t_e = $solution_enf_3_1_retro->tipo_equipo;
                     $eficiencia_ene = $solution_enf_3_1_retro->eficencia_ene;
                     $unidad_hvac_aux = $solution_enf_3_1_retro->unidad_hvac;
+                    $yrs_l = $solution_enf_3_1_retro->yrs_vida;
                    if ($solution_enf_3_1_retro->unid_med == 'TR') {
                     $tr = $solution_enf_3_1_retro->capacidad_tot;
-                    $res_3_1_retro = ResultadosController::cost_op_an_form_ab($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
+                    $res_3_1_retro = ResultadosController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
                     $solution_enf_3_1_retro->cost_op_an =  floatval(number_format($res_3_1_retro,2, '.', ''));
                 }else if($solution_enf_3_1_retro->unid_med == 'KW'){
                     $kw = $solution_enf_3_1_retro->capacidad_tot;
-                    $res_3_1_retro = ResultadosController::cost_op_an_form_kw_ab($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
+                    $res_3_1_retro =  ResultadosController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
                     $solution_enf_3_1_retro->cost_op_an = floatval(number_format($res_3_1_retro,2, '.', ''));
                 }
 
@@ -9742,11 +9743,10 @@ if($eficiencia_ene == 'EER'){
         $solutions = DB::table('solutions_project')
         ->where('solutions_project.num_sol','=',3)
         ->get();
-
-        foreach($solutions as $solution){
+        /* foreach($solutions as $solution){
             $solution=SolutionsProjectModel::find($solution->id);
             $solution->delete();
-        }
+        } */
 
         dd($solutions );
 
