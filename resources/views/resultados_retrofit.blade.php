@@ -2170,7 +2170,13 @@ cursor: pointer;
                                                     <b class="text-blue-800 mr-1 font-roboto text-3xl mt-5">{{ __('index.sis_ext') }} v/s A </b>
                                                     </div>
                                                     <div class="flex justify-center w-full">
+                                                        @if ($dif_1_cost >= 0)
                                                         <b style="color:#33cc33;"  class="text-[24px] font-roboto text-6xl">${{number_format($dif_1_cost)}}</b>
+                                                        @endif
+
+                                                         @if ($dif_1_cost < 0)
+                                                         <b style="color:#ea0000;"  class="text-[24px] font-roboto text-6xl">${{number_format($dif_1_cost)}}</b>
+                                                         @endif
                                                         <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$dif_1_cost}}">
                                                     </div>
                                                 </div>
@@ -2194,7 +2200,13 @@ cursor: pointer;
                                                             <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">{{ __('index.sis_ext') }} v/s A </b>
                                                             </div>
                                                         <div class="flex justify-center w-full">
+                                                            @if ($dif_1_cost >= 0)
                                                             <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">$ {{number_format($dif_1_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
+                                                            @endif
+
+                                                            @if ($dif_1_cost < 0)
+                                                            <b style="color:#ea0000;" class="text-[24px] font-roboto text-6xl">$ {{number_format($dif_1_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
+                                                            @endif
                                                             <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$dif_1_cost}}">
 
                                                         </div>
@@ -2207,9 +2219,14 @@ cursor: pointer;
                                                         <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">{{ __('index.sis_ext') }} v/s B </b>
                                                         </div>
                                                         <div class="flex w-full justify-center">
+                                                            @if ($dif_2_cost >= 0)
                                                             <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">$ {{number_format($dif_2_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
-                                                            <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$dif_2_cost}}">
+                                                            @endif
 
+                                                            @if ($dif_2_cost < 0)
+                                                            <b style="color:#ea0000;" class="text-[24px]  font-roboto text-6xl">$ {{number_format($dif_2_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
+                                                            @endif
+                                                            <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$dif_2_cost}}">
                                                         </div>
                                                     </div>
                                                     @endif
@@ -2253,9 +2270,17 @@ cursor: pointer;
                                             </div>
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
+                                                 @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
                                                     <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1_cost) ?>
+
+                                                    @if ($pay_back_a >= 0)
                                                     <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($pay_back_a)}}</b>
+                                                    @endif
+
+                                                    @if ($pay_back_a < 0)
+                                                    <b style="color:#ea0000;" class="text-[24px] font-roboto text-6xl">{{number_format($pay_back_a)}}</b>
+                                                    @endif
+
                                                  @else
                                                  <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">N/A</b>
                                                 @endif
@@ -2265,7 +2290,14 @@ cursor: pointer;
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
                                                     <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_2_cost) ?>
-                                                    <b style="color:#33cc33;"  class="text-[24px]  font-roboto text-6xl">{{number_format($pay_back_b)}}</b>
+                                                    @if ($pay_back_b >= 0)
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($pay_back_b)}}</b>
+                                                    @endif
+
+                                                    @if ($pay_back_b < 0)
+                                                    <b style="color:#ea0000;" class="text-[24px] font-roboto text-6xl">{{number_format($pay_back_b)}}</b>
+                                                    @endif
+
                                                  @else
                                                  <b  style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">N/A</b>
                                                 @endif
@@ -3403,7 +3435,14 @@ cursor: pointer;
                                            {{--  <b class="text-[24px] text-blue-900 font-roboto text-4xl">3 Años</b> --}}
                                            @if ($result2 !== null)
                                            <?php  $red_en_mw_a_1=$smasolutions->red_en_mw(1,$dif_1) ?>
-                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_1)}}</b>
+                                            @if ($red_en_mw_a_1 >= 0)
+                                            <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_1)}}</b>
+                                            @endif
+
+                                            @if ($red_en_mw_a_1 < 0)
+                                            <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_1)}}</b>
+                                            @endif
+
                                            @endif
 
                                            @if ($result2 === null)
@@ -3414,7 +3453,13 @@ cursor: pointer;
                                         <div class="grid justify-center w-1/5">
                                             @if ($result2 !== null)
                                             <?php  $red_en_mw_a_2=$smasolutions->red_en_mw(2,$dif_1) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_2)}}</b>
+                                                @if ($red_en_mw_a_2 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_2)}}</b>
+                                                @endif
+
+                                                @if ($red_en_mw_a_2 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_2)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result2 === null)
@@ -3426,7 +3471,13 @@ cursor: pointer;
                                            {{--  <b class="text-[24px] text-blue-900 font-roboto text-4xl">10 Años</b> --}}
                                            @if ($result2 !== null)
                                            <?php  $red_en_mw_a_3=$smasolutions->red_en_mw(3,$dif_1) ?>
-                                           <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_3)}}</b>
+                                            @if ($red_en_mw_a_3 >= 0)
+                                            <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_3)}}</b>
+                                            @endif
+
+                                            @if ($red_en_mw_a_3 < 0)
+                                            <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_3)}}</b>
+                                            @endif
                                            @endif
 
                                            @if ($result2 === null)
@@ -3437,7 +3488,13 @@ cursor: pointer;
                                         <div class="grid justify-center w-1/5">
                                             @if ($result2 !== null)
                                             <?php  $red_en_mw_a_4=$smasolutions->red_en_mw(4,$dif_1) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_4)}}</b>
+                                                @if ($red_en_mw_a_4 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_4)}}</b>
+                                                @endif
+
+                                                @if ($red_en_mw_a_4 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_4)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result2 === null)
@@ -3447,8 +3504,14 @@ cursor: pointer;
 
                                         <div class="grid justify-center w-1/5">
                                             @if ($result2 !== null)
-                                            <?php  $red_en_mw_a_4=$smasolutions->red_en_mw(5,$dif_1) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_4)}}</b>
+                                            <?php  $red_en_mw_a_5=$smasolutions->red_en_mw(5,$dif_1) ?>
+                                                @if ($red_en_mw_a_5 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_5)}}</b>
+                                                @endif
+
+                                                @if ($red_en_mw_a_5 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_a_5)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result2 === null)
@@ -3465,7 +3528,13 @@ cursor: pointer;
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
                                             <?php  $red_en_mw_b_1=$smasolutions->red_en_mw(1,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_1)}}</b>
+                                                @if ($red_en_mw_b_1 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_1)}}</b>
+                                                @endif
+
+                                                @if ($red_en_mw_b_1 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_1)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result3 === null)
@@ -3476,7 +3545,13 @@ cursor: pointer;
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
                                             <?php  $red_en_mw_b_2=$smasolutions->red_en_mw(2,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_2)}}</b>
+                                                @if ($red_en_mw_b_2 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_2)}}</b>
+                                                @endif
+
+                                                @if ($red_en_mw_b_2 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_2)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result3 === null)
@@ -3487,7 +3562,13 @@ cursor: pointer;
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
                                             <?php  $red_en_mw_b_3=$smasolutions->red_en_mw(3,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_3)}}</b>
+                                                @if ($red_en_mw_b_3 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_3)}}</b>
+                                                @endif
+
+                                                @if ($red_en_mw_b_3 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_3)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result3 === null)
@@ -3498,7 +3579,13 @@ cursor: pointer;
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
                                             <?php  $red_en_mw_b_4=$smasolutions->red_en_mw(4,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_4)}}</b>
+                                                @if ($red_en_mw_b_4 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_4)}}</b>
+                                                @endif
+
+                                                @if ($red_en_mw_b_4 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_4)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result3 === null)
@@ -3508,8 +3595,14 @@ cursor: pointer;
 
                                         <div class="grid justify-center w-1/5">
                                             @if ($result3 !== null)
-                                            <?php  $red_en_mw_b_4=$smasolutions->red_en_mw(5,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_4)}}</b>
+                                            <?php  $red_en_mw_b_5=$smasolutions->red_en_mw(5,$dif_2) ?>
+                                                @if ($red_en_mw_b_5 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_5)}}</b>
+                                                @endif
+
+                                                @if ($red_en_mw_b_5 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_en_mw_b_5)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result3 === null)
@@ -3571,7 +3664,13 @@ cursor: pointer;
                                         <div class="grid justify-center w-1/5">
                                           @if ($result2 !== null)
                                           <?php  $red_hu_carb_a_1=$smasolutions->red_hu_carb(1,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_1)}}</b>
+                                            @if ($red_hu_carb_a_1 >= 0)
+                                            <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_1)}}</b>
+                                            @endif
+
+                                            @if ($red_hu_carb_a_1 < 0)
+                                            <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_1)}}</b>
+                                            @endif
                                           @endif
 
                                           @if ($result2 === null)
@@ -3583,8 +3682,14 @@ cursor: pointer;
 
                                             @if ($result2 !== null)
                                           <?php  $red_hu_carb_a_2=$smasolutions->red_hu_carb(2,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_2)}}</b>
-                                          @endif
+                                                @if ($red_hu_carb_a_2 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_2)}}</b>
+                                                @endif
+
+                                                @if ($red_hu_carb_a_2 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_2)}}</b>
+                                                @endif
+                                            @endif
 
                                           @if ($result2 === null)
                                           <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
@@ -3595,8 +3700,14 @@ cursor: pointer;
 
                                             @if ($result2 !== null)
                                           <?php  $red_hu_carb_a_3=$smasolutions->red_hu_carb(3,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_3)}}</b>
-                                          @endif
+                                                @if ($red_hu_carb_a_3 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_3)}}</b>
+                                                @endif
+
+                                                @if ($red_hu_carb_a_3 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_3)}}</b>
+                                                @endif
+                                           @endif
 
                                           @if ($result2 === null)
                                           <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
@@ -3607,8 +3718,14 @@ cursor: pointer;
 
                                             @if ($result2 !== null)
                                           <?php  $red_hu_carb_a_4=$smasolutions->red_hu_carb(4,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_4)}}</b>
-                                          @endif
+                                                @if ($red_hu_carb_a_4 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_4)}}</b>
+                                                @endif
+
+                                                @if ($red_hu_carb_a_4 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_4)}}</b>
+                                                @endif
+                                           @endif
 
                                           @if ($result2 === null)
                                           <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
@@ -3618,8 +3735,14 @@ cursor: pointer;
                                         <div class="grid justify-center w-1/5">
 
                                             @if ($result2 !== null)
-                                          <?php  $red_hu_carb_a_4=$smasolutions->red_hu_carb(5,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_4)}}</b>
+                                          <?php  $red_hu_carb_a_5=$smasolutions->red_hu_carb(5,$dif_1) ?>
+                                                @if ($red_hu_carb_a_5 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_5)}}</b>
+                                                @endif
+
+                                                @if ($red_hu_carb_a_5 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_a_5)}}</b>
+                                                @endif
                                           @endif
 
                                           @if ($result2 === null)
@@ -3637,8 +3760,14 @@ cursor: pointer;
 
                                              @if ($result3 !== null)
                                             <?php  $red_hu_carb_b_1=$smasolutions->red_hu_carb(1,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_1)}}</b>
-                                            @endif
+                                                    @if ($red_hu_carb_b_1 >= 0)
+                                                    <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_1)}}</b>
+                                                    @endif
+
+                                                    @if ($red_hu_carb_b_1 < 0)
+                                                    <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_1)}}</b>
+                                                    @endif
+                                                @endif
 
                                             @if ($result3 === null)
                                             <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
@@ -3649,7 +3778,13 @@ cursor: pointer;
 
                                              @if ($result3 !== null)
                                             <?php  $red_hu_carb_b_2=$smasolutions->red_hu_carb(2,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_2)}}</b>
+                                                @if ($red_hu_carb_b_2 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_2)}}</b>
+                                                @endif
+
+                                                @if ($red_hu_carb_b_2 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_2)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result3 === null)
@@ -3660,7 +3795,13 @@ cursor: pointer;
                                         <div class="grid justify-center w-1/5">
                                              @if ($result3 !== null)
                                             <?php  $red_hu_carb_b_3=$smasolutions->red_hu_carb(3,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_3)}}</b>
+                                                @if ($red_hu_carb_b_3 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_3)}}</b>
+                                                @endif
+
+                                                @if ($red_hu_carb_b_3 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_3)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result3 === null)
@@ -3672,20 +3813,32 @@ cursor: pointer;
 
                                              @if ($result3 !== null)
                                           <?php  $red_hu_carb_b_4=$smasolutions->red_hu_carb(4,$dif_2) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_4)}}</b>
-                                          @endif
+                                                @if ($red_hu_carb_b_4 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_4)}}</b>
+                                                @endif
 
-                                          @if ($result3 === null)
-                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
-                                          @endif
+                                                @if ($red_hu_carb_b_4 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_4)}}</b>
+                                                @endif
+                                            @endif
+
+                                            @if ($result3 === null)
+                                            <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
+                                            @endif
                                         </div>
 
                                         <div class="grid justify-center w-1/5">
 
                                             @if ($result3 !== null)
-                                         <?php  $red_hu_carb_b_4=$smasolutions->red_hu_carb(5,$dif_2) ?>
-                                         <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_4)}}</b>
-                                         @endif
+                                            <?php  $red_hu_carb_b_5=$smasolutions->red_hu_carb(5,$dif_2) ?>
+                                                @if ($red_hu_carb_b_5 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_5)}}</b>
+                                                @endif
+
+                                                @if ($red_hu_carb_b_5 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_hu_carb_b_5)}}</b>
+                                                @endif
+                                           @endif
 
                                          @if ($result3 === null)
                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
@@ -3747,7 +3900,13 @@ cursor: pointer;
                                         <div class="grid justify-center w-1/5">
                                           @if ($result2 !== null)
                                           <?php  $red_bol_ba_a_1=$smasolutions->red_bol_ba(1,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_1)}}</b>
+                                            @if ($red_bol_ba_a_1 >= 0)
+                                            <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_1)}}</b>
+                                            @endif
+
+                                            @if ($red_bol_ba_a_1 < 0)
+                                            <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_1)}}</b>
+                                            @endif
                                           @endif
 
                                           @if ($result2 === null)
@@ -3757,9 +3916,15 @@ cursor: pointer;
 
                                         <div class="grid justify-center w-1/5">
 
-                                            @if ($result2 !== null)
+                                          @if ($result2 !== null)
                                           <?php  $red_bol_ba_a_2=$smasolutions->red_bol_ba(2,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_2)}}</b>
+                                            @if ($red_bol_ba_a_2 >= 0)
+                                            <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_2)}}</b>
+                                            @endif
+
+                                            @if ($red_bol_ba_a_2 < 0)
+                                            <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_2)}}</b>
+                                            @endif
                                           @endif
 
                                           @if ($result2 === null)
@@ -3769,10 +3934,16 @@ cursor: pointer;
 
                                         <div class="grid justify-center w-1/5">
 
-                                            @if ($result2 !== null)
+                                          @if ($result2 !== null)
                                           <?php  $red_bol_ba_a_3=$smasolutions->red_bol_ba(3,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_3)}}</b>
-                                          @endif
+                                                @if ($red_bol_ba_a_3 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_3)}}</b>
+                                                @endif
+
+                                                @if ($red_bol_ba_a_3 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_3)}}</b>
+                                                @endif
+                                            @endif
 
                                           @if ($result2 === null)
                                           <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
@@ -3783,8 +3954,14 @@ cursor: pointer;
 
                                             @if ($result2 !== null)
                                           <?php  $red_bol_ba_a_4=$smasolutions->red_bol_ba(4,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_4)}}</b>
-                                          @endif
+                                                @if ($red_bol_ba_a_4 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_4)}}</b>
+                                                @endif
+
+                                                @if ($red_bol_ba_a_4 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_4)}}</b>
+                                                @endif
+                                            @endif
 
                                           @if ($result2 === null)
                                           <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
@@ -3793,9 +3970,15 @@ cursor: pointer;
 
                                         <div class="grid justify-center w-1/5">
 
-                                            @if ($result2 !== null)
-                                          <?php  $red_bol_ba_a_4=$smasolutions->red_bol_ba(5,$dif_1) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_4)}}</b>
+                                          @if ($result2 !== null)
+                                          <?php  $red_bol_ba_a_5=$smasolutions->red_bol_ba(5,$dif_1) ?>
+                                             @if ($red_bol_ba_a_5 >= 0)
+                                            <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_5)}}</b>
+                                            @endif
+
+                                            @if ($red_bol_ba_a_5 < 0)
+                                            <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_a_5)}}</b>
+                                            @endif
                                           @endif
 
                                           @if ($result2 === null)
@@ -3813,7 +3996,13 @@ cursor: pointer;
 
                                              @if ($result3 !== null)
                                             <?php  $red_bol_ba_b_1=$smasolutions->red_bol_ba(1,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_1)}}</b>
+                                                @if ($red_bol_ba_b_1 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_1)}}</b>
+                                                @endif
+
+                                                @if ($red_bol_ba_b_1 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_1)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result3 === null)
@@ -3825,7 +4014,13 @@ cursor: pointer;
 
                                              @if ($result3 !== null)
                                             <?php  $red_bol_ba_b_2=$smasolutions->red_bol_ba(2,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_2)}}</b>
+                                                @if ($red_bol_ba_b_2 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_2)}}</b>
+                                                @endif
+
+                                                @if ($red_bol_ba_b_2 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_2)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result3 === null)
@@ -3836,7 +4031,13 @@ cursor: pointer;
                                         <div class="grid justify-center w-1/5">
                                              @if ($result3 !== null)
                                             <?php  $red_bol_ba_b_3=$smasolutions->red_bol_ba(3,$dif_2) ?>
-                                            <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_3)}}</b>
+                                                @if ($red_bol_ba_b_3 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_3)}}</b>
+                                                @endif
+
+                                                @if ($red_bol_ba_b_3 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_3)}}</b>
+                                                @endif
                                             @endif
 
                                             @if ($result3 === null)
@@ -3848,8 +4049,14 @@ cursor: pointer;
 
                                              @if ($result3 !== null)
                                           <?php  $red_bol_ba_b_4=$smasolutions->red_bol_ba(4,$dif_2) ?>
-                                          <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_4)}}</b>
-                                          @endif
+                                                @if ($red_bol_ba_b_4 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_4)}}</b>
+                                                @endif
+
+                                                @if ($red_bol_ba_b_4 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_4)}}</b>
+                                                @endif
+                                             @endif
 
                                           @if ($result3 === null)
                                           <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
@@ -3859,9 +4066,15 @@ cursor: pointer;
                                         <div class="grid justify-center w-1/5">
 
                                             @if ($result3 !== null)
-                                         <?php  $red_bol_ba_b_4=$smasolutions->red_bol_ba(5,$dif_2) ?>
-                                         <b class="text-[24px] text-orange-500 font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_4)}}</b>
-                                         @endif
+                                         <?php  $red_bol_ba_b_5=$smasolutions->red_bol_ba(5,$dif_2) ?>
+                                                @if ($red_bol_ba_b_5 >= 0)
+                                                <b style="color:#33cc33;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_5)}}</b>
+                                                @endif
+
+                                                @if ($red_bol_ba_b_5 < 0)
+                                                <b style="color:#ea0000;" class="text-[24px] font-roboto 2xl:text-5xl xl:text-5xl lg:text-5xl md:text-4xl">{{number_format($red_bol_ba_b_5)}}</b>
+                                                @endif
+                                            @endif
 
                                          @if ($result3 === null)
                                          <b class="text-[24px] text-orange-500 font-roboto text-5xl">N/A</b>
