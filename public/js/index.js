@@ -3457,7 +3457,7 @@ function buton_check(idm){
     }
 
     var porcent_hvac = $("#porcent_hvac");
-    if (porcent_hvac.val() == '0') {
+    if (porcent_hvac.val() == "" || porcent_hvac.val() == null) {
         change(idm,'por_hvac_warning');
         return false;
     }
@@ -3527,7 +3527,7 @@ function buton_check_edit(){
     }
 
     var porcent_hvac = $("#porcent_hvac");
-    if (porcent_hvac.val() == '0') {
+    if (porcent_hvac.val() == "" || porcent_hvac.val() == null) {
        change(idm,'por_hvac_warning');
         return false;
     }
@@ -11641,4 +11641,42 @@ cUnidad_3_3 */
 
         }
 
+     }
+
+     function change_to_porcent(porcent){
+
+        var input_select = $('#porcent_hvac');
+        const myArray = porcent.split('%');
+        if (myArray.length > 1) {
+            check_porcent_max_min(myArray[0]);
+            //var value_set = myArray[0];
+            //input_select.val(value_set + '%');
+
+        }
+
+        if (myArray.length==1) {
+            check_porcent_max_min(porcent);
+            //input_select.val(porcent + '%');
+        }
+     }
+
+     function check_porcent_max_min(porcent){
+        var input_select = $('#porcent_hvac');
+        if(porcent > 80){
+            input_select.empty();
+            input_select.val(80 + '%');
+            return false;
+        }
+
+        if(porcent >= 10 && porcent <= 80){
+            input_select.empty();
+            input_select.val(porcent + '%');
+            return false;
+        }
+
+        if(porcent < 10){
+            input_select.empty();
+            input_select.val(10 + '%');
+            return false;
+        }
      }

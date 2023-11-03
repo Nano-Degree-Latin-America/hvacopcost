@@ -226,6 +226,12 @@ cursor: pointer;
 .rounded_modal_ebergy_hvac{
     border-radius: 40px;
 }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
@@ -538,7 +544,7 @@ cursor: pointer;
                                                     <div class="flex w-full">
                                                         <label  class="font-roboto labels_index  text-left" for=""><b>{{ __('index.categoria edificio') }}</b></label></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value,'{{App::getLocale()}}');set_porcent_hvac(this.value,'{{App::getLocale()}}');check_input(this.value,this.id,'cat_ed_warning');check_inp_count('count_cat_ed','cat_ed');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1">
+                                                    <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value,'{{App::getLocale()}}');check_input(this.value,this.id,'cat_ed_warning');check_inp_count('count_cat_ed','cat_ed');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1">
                                                     <option value="0">-{{ __('index.seleccionar') }}-</option>
                                                     </select>
                                                     <input id="count_cat_ed" name="count_cat_ed" type="number" class="hidden" value="0">
@@ -623,9 +629,10 @@ cursor: pointer;
                                                         <label  class="font-roboto text-left labels_index" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <div class="flex w-full">
-                                                        <select onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
+                                                       {{--  <select onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                                             <option value="0">-{{ __('index.selecciona porcentaje') }}-</option>
-                                                        </select>
+                                                        </select> --}}
+                                                        <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');change_to_porcent(this.value);" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac" id="porcent_hvac">
                                                         <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="0">
                                                         <div class="ml-2" style="margin-top: 5.5px;">
                                                             <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>

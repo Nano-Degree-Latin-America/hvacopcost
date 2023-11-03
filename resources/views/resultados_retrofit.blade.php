@@ -1358,49 +1358,25 @@ cursor: pointer;
                                             @endforeach
                                             </div>
                                         </div>
-                                            {{-- 1 --}}
 
-                                             {{-- 1 --}}
-                                        <div class="w-full flex justify-start">
-                                            <div class="grid w-1/3 mx-1">
-
-                                            </div>
-                                            <div class="grid w-1/3 mx-1">
-                                                    {{-- 2_2 --}}
-                                            </div>
-                                            <div class="grid w-1/3 mx-1">
-                                                    {{-- 2_3 --}}
-                                            </div>
-                                        </div>
-                                            {{-- 1 --}}
-
-                                             {{-- 1 --}}
-                                        <div class="w-full flex justify-start">
-                                                <div class="grid w-1/3 mx-1">
-                                                    {{-- 3_1 --}}
-                                                </div>
-
-                                                <div class="grid w-1/3 mx-1">
-                                                    {{-- 3_2 --}}
-                                                </div>
-
-                                                <div class="grid w-1/3 mx-1">
-                                                    {{-- 3_3 --}}
-                                                </div>
-                                        </div>
 
                                                                 {{-- espacio --}}
-                                                    <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
 
-                                                    </div>
-                                                    {{-- espacio --}}
+                                                     {{-- espacio --}}
                                             {{-- 1 --}}
                                     </div>
-
                                 </div>
                             </div>
                         </div>
 
+                        <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+
+                        </div>
+                        {{-- espacio --}}
+                         {{-- espacio --}}
+                         <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+
+                         </div>
 
 					</div>
 
@@ -1750,13 +1726,7 @@ cursor: pointer;
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <?php  $unidad_area=$results->unidad_area($id_project,1,$sumaopex_1,$tar_ele->costo_elec) ?>
                                         <div class="flex w-full justify-center">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.cons_ene_ar') }} <b class="text-orange-500">(Kwh /
-                                                @if ($unidad_area == 'mc')
-                                                m²)
-                                                @endif
-                                                @if ($unidad_area == 'ft')
-                                                ft²)
-                                               @endif</b></label>
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.cons_ene_ar') }} <b class="text-orange-500">(Kwh/@if($unidad_area == 'mc')m²)@endif @if($unidad_area == 'ft')ft²)@endif</b></label></b></label>
                                         </div>
 
 
@@ -1894,6 +1864,10 @@ cursor: pointer;
 
                             </div>
                              {{-- espacio --}}
+                               {{-- espacio --}}
+                         <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+
+                         </div>
 
 					</div>
 
@@ -2680,6 +2654,10 @@ cursor: pointer;
 
                             </div>
                              {{-- espacio --}}
+                               {{-- espacio --}}
+                         <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+
+                         </div>
 				</div>
 				<!-- / Step Content -->
                 <div x-show.transition.in="step === 4">
@@ -4093,6 +4071,10 @@ cursor: pointer;
 
                         </div>
                          {{-- espacio --}}
+                           {{-- espacio --}}
+                           <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+
+                           </div>
             </div>
 
  {{-- step 6 --}}

@@ -239,7 +239,17 @@ class ProjectController extends Controller
         ->first()->ciudad;
         $update_project->type_p= $request->get('type_p');
         $update_project->ciudad=$region;
-        $update_project->porcent_hvac=$request->get('porcent_hvac');
+
+
+
+
+        $aux_porcent = explode("%",   $request->get('porcent_hvac'));
+        if(count($aux_porcent) == 2){
+            $update_project->porcent_hvac=intval($aux_porcent[0]);
+        }else{
+            $update_project->porcent_hvac=10;
+        }
+
         $update_project->status=1;
         $update_project->id_empresa=Auth::user()->id_empresa;
         $update_project->id_user=Auth::user()->id;

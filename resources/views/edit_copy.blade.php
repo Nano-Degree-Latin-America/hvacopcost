@@ -706,9 +706,10 @@ $idm = App::getLocale();
                                                         <label  class="labels_index font-roboto" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
                                                     </div>
                                                     <div class="flex w-full">
-                                                        <select onchange="buton_check_edit();check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
+                                                       {{--  <select onchange="buton_check_edit();check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                                             <option value="0">-{{ __('index.selecciona porcentaje') }}-</option>
-                                                        </select>
+                                                        </select> --}}
+                                                        <input type="text" value="{{$project_edit->porcent_hvac}}%" onkeypress="return soloNumeros(event)" onchange="buton_check_edit('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');change_to_porcent(this.value);" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac" id="porcent_hvac">
                                                         <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="1">
                                                         <div class="ml-2" style="margin-top: 5.5px;">
                                                             <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -1907,6 +1908,8 @@ function valida_update_store_solution(id){
     }
 
 }
+
+
 </script>
 @endsection
 @section('js')

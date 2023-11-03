@@ -109,7 +109,14 @@ class ResultadosController extends Controller
         $mew_project->unidad=$request->get('unidad');
         $mew_project->region=$request->get('pais');
         $mew_project->ciudad=$request->get('ciudad');
-        $mew_project->porcent_hvac=$request->get('porcent_hvac');
+
+        $aux_porcent = explode("%",   $request->get('porcent_hvac'));
+        if(count($aux_porcent) == 2){
+            $mew_project->porcent_hvac=intval($aux_porcent[0]);
+        }else{
+            $mew_project->porcent_hvac=10;
+        }
+
         $mew_project->status=1;
         $mew_project->id_empresa=Auth::user()->id_empresa;
         $mew_project->id_user=Auth::user()->id;
@@ -3033,12 +3040,16 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
        $año_3_res = 0;
        $año_3_suma = 0;
        $año_3_res_suma = 0;
-       $inflacion_aux = DB::table('projects')
+       $incremento_anual = DB::table('projects')
         ->where('id','=',$id_projecto)
         ->first()->inflacion;
 
-        if( $inflacion_aux > 0){
-            $inflacion =  $inflacion_aux/100 + 1;
+        $inflacion_anual = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion_rate;
+
+        if( $incremento_anual > 0){
+            $inflacion =  $incremento_anual/100 + 1;
             $dif_cost_aux = $dif_cost;
 
         for ($i = 1; $i <= 15; $i++) {
@@ -3057,7 +3068,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                 }
             }
           }
-        }else if($inflacion_aux <= 0){
+        }else if($incremento_anual <= 0){
             $inflacion = 1;
             $dif_cost_aux = $dif_cost;
 
