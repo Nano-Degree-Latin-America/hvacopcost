@@ -13,7 +13,7 @@
                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
             </div> --}}
         </div>
-        <div style="border-color:#233064;" class="border-r-2 border-l-2">
+        <div style="border-color:#233064;" id="base_border_bottom" name="base_border_bottom" class="border-r-2 border-l-2">
 
 
         <div class="grid w-full" id="sol_1_1" name="sol_1_1">
@@ -227,7 +227,7 @@
       {{-- 1.1 --}}
 
       {{-- 1.2 --}}
-      <div class="grid w-full hidden"  id="sol_1_2" name="sol_1_2">
+      <div class="grid w-full hidden mb-1"  id="sol_1_2" name="sol_1_2">
        <div class="mx-2">
         <hr>
        </div>
@@ -744,7 +744,7 @@
                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
             </div> --}}
         </div>
-        <div class="border-r-2 border-l-2 border-blue-500">
+        <div class="border-r-2 border-l-2 border-blue-500" id="2_border_bottom" name="2_border_bottom">
 
 
         <div class="grid w-full">
@@ -935,7 +935,7 @@
         </div>
         {{-- 2.1 --}}
         {{-- 2.2 --}}
-      <div class="grid w-full hidden"  id="sol_2_2" name="sol_2_2">
+      <div class="grid w-full hidden mb-1"  id="sol_2_2" name="sol_2_2">
         <div class="mx-2">
             <hr>
         </div>
@@ -1434,7 +1434,7 @@
                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
             </div> --}}
         </div>
-        <div class="border-r-2 border-l-2 border-blue-600">
+        <div class="border-r-2 border-l-2 border-blue-600" id="3_border_bottom" name="3_border_bottom">
 
 
          <div class="grid w-full">
@@ -1629,7 +1629,7 @@
         </div>
         {{-- 3.1 --}}
         {{-- 3.2 --}}
-      <div class="grid w-full hidden"  id="sol_3_2" name="sol_3_2">
+      <div class="grid w-full hidden mb-1"  id="sol_3_2" name="sol_3_2">
         <div class="mx-2">
             <hr>
         </div>
@@ -2015,5 +2015,10 @@
         {{-- 3.4 --}}
         <a id="final3" name="final3" href=""></a>
         </div>
+        {{-- espacio --}}
+        <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
+
+        </div>
+         {{-- espacio --}}
     </div>
 </div>

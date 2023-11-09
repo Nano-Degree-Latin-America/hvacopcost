@@ -15,7 +15,7 @@
                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO {{ __('index.solucion') }} 1</h2>
             </div> --}}
         </div>
-        <div style="border-color:#233064;" class="border-r-2 border-l-2">
+        <div style="border-color:#233064;" class="border-r-2 border-l-2" id="base_border_bottom" name="base_border_bottom">
 
 
         <div class="grid w-full" id="sol_1_1" name="sol_1_1">
@@ -144,7 +144,7 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                     <div class="flex justify-start w-1/3">
-                        <select name="csStd" id="csStd" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_1').value,'csStd');" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
+                        <select name="csStd" id="csStd" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_1').value,'csStd');" style="padding-top: 0.63rem;padding-bottom: 0.63rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
                             {{-- <option value="SEER">SEER</option>
                             <option value="SEER2">SEER2</option>
                             <option value="IEER">IEER</option>
@@ -330,7 +330,7 @@
                      <input  id="capacidad_total_1_2_count" name="capacidad_total_1_2_count" type="number" class="hidden" value="1">
 
                     <div class="w-full">
-                        <input class="w-full  border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_1_2" id="unidad_capacidad_tot_1_2" >
+                        <input class="w-full  border-2 border-blue-600 rounded-md h-full text-center"  type="text" readonly name="unidad_capacidad_tot_1_2" id="unidad_capacidad_tot_1_2" >
                     </div>
                 </div>
                 </div>
@@ -361,11 +361,11 @@
                 </div>
             </div>
 
-            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+            <div class="flex w-full 2xl:mt-4 xl:mt-4 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
 
                         <div class="flex justify-start w-1/3">
-                            <select name="csStd_1_2" id="csStd_1_2" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_2').value,'csStd_1_2');" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
+                            <select name="csStd_1_2" id="csStd_1_2" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_2').value,'csStd_1_2');" style="padding-top: 0.3rem;padding-bottom: 0.3rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
                                 {{-- <option value="SEER">SEER</option>
                                 <option value="SEER2">SEER2</option>
                                 <option value="IEER">IEER</option>
@@ -776,7 +776,7 @@
                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
             </div> --}}
         </div>
-        <div class="border-r-2 border-l-2 border-blue-500">
+        <div class="border-r-2 border-l-2 border-blue-500" id="2_border_bottom" name="2_border_bottom">
 
 
         <div class="grid w-full">
@@ -1076,7 +1076,7 @@
                                 <input style="margin-left: 2.3px;" id="capacidad_total_2_2" name="capacidad_total_2_2"  onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" >
                              </div>
                              <div class="w-full">
-                                <input class="w-full border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_2_2" id="unidad_capacidad_tot_2_2" >
+                                <input class="w-full border-2 border-blue-600 rounded-md h-full text-center"  type="text" readonly name="unidad_capacidad_tot_2_2" id="unidad_capacidad_tot_2_2" >
                                 <input  id="capacidad_total_2_1_count" name="capacidad_total_2_1_count" type="number" class="hidden" value="1">
 
                             </div>
@@ -1539,7 +1539,7 @@
                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
             </div> --}}
         </div>
-        <div class="border-r-2 border-l-2 border-blue-600">
+        <div class="border-r-2 border-l-2 border-blue-600" id="3_border_bottom" name="3_border_bottom">
 
 
          <div class="grid w-full">
@@ -1627,7 +1627,7 @@
 
                                 </div>
                                 <div class="w-full">
-                                    <input class="w-full  border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_3_1" id="unidad_capacidad_tot_3_1" >
+                                    <input class="w-full  border-2 border-blue-600 rounded-md h-full text-center"  type="text" readonly name="unidad_capacidad_tot_3_1" id="unidad_capacidad_tot_3_1" >
 
                                 </div>
                             </div>
@@ -1663,7 +1663,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                             <div class="flex justify-start w-1/3">
-                                <select name="csStd2_3_1" id="csStd2_3_1" onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_1').value,'csStd2_3_1');" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
+                                <select name="csStd2_3_1" id="csStd2_3_1" onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_1').value,'csStd2_3_1');" style="padding-top: 0.4rem;padding-bottom: 0.4rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">
                                     {{-- <option value="SEER">SEER</option>
                                     <option value="SEER2">SEER2</option>
                                     <option value="IEER">IEER</option>
@@ -1846,7 +1846,7 @@
 
                             </div>
                             <div class="w-full">
-                                <input class="w-full  border-2 border-blue-600 rounded-md py-2 text-center"  type="text" readonly name="unidad_capacidad_tot_3_2" id="unidad_capacidad_tot_3_2" >
+                                <input class="w-full  border-2 border-blue-600 rounded-md h-full text-center"  type="text" readonly name="unidad_capacidad_tot_3_2" id="unidad_capacidad_tot_3_2" >
                                <input  id="capacidad_total_3_2_count" name="capacidad_total_3_2_count" type="number" class="hidden" value="1">
 
                             </div>
@@ -1879,7 +1879,7 @@
                     </div>
                 </div>
 
-                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                <div class="flex w-full 2xl:mt-4 xl:mt-4 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                         <div class="flex justify-start w-1/3">
                             <select name="csStd_3_2" id="csStd_3_2"  onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_2').value,'csStd_3_2');" style="padding-top: 0.528rem;padding-bottom: 0.528rem;"{{--  onchange="set_ser_to_sers(this.value);" --}} class="w-full border-2 border-blue-600 rounded-md text-center">

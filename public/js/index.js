@@ -361,7 +361,11 @@ function active_display(value){
             set_sol_1 =  set_sol_1 + 1;
             $('#set_sol_1').val(set_sol_1);
             $('#cont_sol_1').val(cont_sol_1);
-        }else if(cont_sol_1 == 3){
+            $('#base_border_bottom').css('border-bottom', '2px solid');
+            $('#base_border_bottom').css('border-bottom-right-radius', '2px');
+            $('#base_border_bottom').css('border-bottom-left-radius', '2px');
+
+        }/* else if(cont_sol_1 == 3){
             set_sol_1 =  set_sol_1 + 1;
             cont_sol_1 =  cont_sol_1 + 1;
             $('#set_sol_1').val(set_sol_1);
@@ -369,7 +373,7 @@ function active_display(value){
             $( "#sol_1_2" ).removeClass( "hidden" );
             $( "#sol_1_3" ).removeClass( "hidden" );
 
-        }
+        } */
 
 
     }else if(value == 'sol_2') {
@@ -379,12 +383,16 @@ function active_display(value){
             $( "#sol_2_3" ).addClass( "hidden" );
             cont_sol_2 =  cont_sol_2 + 1;
             $('#cont_sol_2').val(cont_sol_2);
-        }else if(cont_sol_2 == 3){
+            $('#2_border_bottom').css('border-bottom', '2px solid');
+             $('#2_border_bottom').css("border-color","#3182ce");
+             $('#2_border_bottom').css('border-bottom-right-radius', '2px');
+             $('#2_border_bottom').css('border-bottom-left-radius', '2px');
+        }/* else if(cont_sol_2 == 3){
             cont_sol_2 =  cont_sol_2 + 1;
             $('#cont_sol_2').val(cont_sol_2);
             $( "#sol_2_2" ).removeClass( "hidden" );
             $( "#sol_2_3" ).removeClass( "hidden" );
-        }
+        } */
 
     }else if(value == 'sol_3') {
         if(cont_sol_3 == 2){
@@ -392,12 +400,16 @@ function active_display(value){
             $( "#sol_3_3" ).addClass( "hidden" );
             cont_sol_3 =  cont_sol_3 + 1;
             $('#cont_sol_3').val(cont_sol_3);
-        }else if(cont_sol_3 == 3){
+            $('#3_border_bottom').css('border-bottom', '2px solid');
+            $('#3_border_bottom').css("border-color","#3182ce");
+            $('#3_border_bottom').css('border-bottom-right-radius', '2px');
+            $('#3_border_bottom').css('border-bottom-left-radius', '2px');
+        }/* else if(cont_sol_3 == 3){
             cont_sol_3 =  cont_sol_3 + 1;
             $('#cont_sol_3').val(cont_sol_3);
             $( "#sol_3_2" ).removeClass( "hidden" );
             $( "#sol_3_3" ).removeClass( "hidden" );
-        }
+        } */
 
     }
 }
@@ -3652,6 +3664,7 @@ function inactive_display(value){
              set_sol_1 =  set_sol_1 - 1;
              $('#set_sol_1').val(set_sol_1);
              $('#cont_sol_1').val(cont_sol_1);
+             $('#base_border_bottom').css('border-bottom', 'none');
          }else if(cont_sol_1 == 4){
              set_sol_1 =  set_sol_1 - 1;
              cont_sol_1 =  cont_sol_1 - 1;
@@ -3678,7 +3691,7 @@ function inactive_display(value){
             select_2_3.val($('option:first', select_2_3).val());
 
             cont_sol_2 =  cont_sol_2 - 1;
-            $('#cont_sol_2').val(cont_sol_2);
+            $('#cont_sol_2').val(cont_sol_2);$('#2_border_bottom').css('border-bottom', 'none');
         }else if(cont_sol_2 == 4){
 
            cont_sol_2 =  cont_sol_2 - 1;
@@ -3702,7 +3715,7 @@ function inactive_display(value){
              select_3_3.val($('option:first', select_3_3).val());
 
              cont_sol_3 =  cont_sol_3 - 1;
-             $('#cont_sol_3').val(cont_sol_3);
+             $('#cont_sol_3').val(cont_sol_3);$('#3_border_bottom').css('border-bottom', 'none');
          }else if(cont_sol_3 == 4){
 
             cont_sol_3 =  cont_sol_3 - 1;
@@ -6273,6 +6286,23 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 if(num_solu != '' || num_solu != null){
                     $("#"+action_submit).val('update');
                     $( "#"+num_solu ).removeClass( "hidden" );
+                    if(num_solu == 'sol_1_2' || num_solu == 'sol_2_2' || num_solu == 'sol_3_2'){
+                        if(num_solu == 'sol_1_2'){
+                            $('#base_border_bottom').css('border-bottom', '2px solid');
+                            $('#base_border_bottom').css('border-bottom-right-radius', '2px');
+                            $('#base_border_bottom').css('border-bottom-left-radius', '2px');
+                        }else{
+                            $('#2_border_bottom').css('border-bottom', '2px solid');
+                            $('#2_border_bottom').css("border-color","#3182ce");
+                            $('#2_border_bottom').css('border-bottom-right-radius', '2px');
+                            $('#2_border_bottom').css('border-bottom-left-radius', '2px');
+
+                            $('#3_border_bottom').css('border-bottom', '2px solid');
+                            $('#3_border_bottom').css("border-color","#3182ce");
+                            $('#3_border_bottom').css('border-bottom-right-radius', '2px');
+                            $('#3_border_bottom').css('border-bottom-left-radius', '2px');
+                        }
+                    }
                     if (cont_sol !== '' || cont_sol !== null){
                         var cont_val = parseInt($('#'+cont_sol).val());
                         var sum_cont = cont_val + 1;
@@ -6391,7 +6421,7 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
               $('#set_sol_1').val(set_sol_1);
               $('#cont_sol_1').val(cont_sol_1);
 
-
+$('#base_border_bottom').css('border-bottom', 'none');
                 $.ajax({
                     type: 'get',
                     url: '/inactive_tarject/'+ id_project +'/'+ num_enf + '/' +num_sol,
@@ -6448,7 +6478,7 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
 
              cont_sol_2 =  cont_sol_2 - 1;
              $('#cont_sol_2').val(cont_sol_2);
-
+ $('#2_border_bottom').css('border-bottom', 'none');
              $.ajax({
                 type: 'get',
                 url: '/inactive_tarject/'+ id_project +'/'+ num_enf + '/' +num_sol,
@@ -6499,7 +6529,7 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
 
               cont_sol_3 =  cont_sol_3 - 1;
               $('#cont_sol_3').val(cont_sol_3);
-
+              $('#3_border_bottom').css('border-bottom', 'none');
               $.ajax({
                 type: 'get',
                 url: '/inactive_tarject/'+ id_project +'/'+ num_enf + '/' +num_sol,
@@ -6559,7 +6589,10 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
              set_sol_1 =  set_sol_1 + 1;
              $('#set_sol_1').val(set_sol_1);
              $('#cont_sol_1').val(cont_sol_1);
-         }else if(cont_sol_1 == 2){
+             $('#base_border_bottom').css('border-bottom', '2px solid');
+             $('#base_border_bottom').css('border-bottom-right-radius', '2px');
+             $('#base_border_bottom').css('border-bottom-left-radius', '2px');
+         }/* else if(cont_sol_1 == 2){
              set_sol_1 =  set_sol_1 + 1;
              cont_sol_1 =  cont_sol_1 + 1;
              $('#set_sol_1').val(set_sol_1);
@@ -6571,7 +6604,7 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
              $("#costo_elec_1_3").val(consto_elect_project);
              $("#action_submit_1_3").val('store');
 
-         }
+         } */
 
 
      }else if(value == 'sol_2') {
@@ -6600,7 +6633,11 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
 
              cont_sol_2 =  cont_sol_2 + 1;
              $('#cont_sol_2').val(cont_sol_2);
-         }else if(cont_sol_2 == 2){
+             $('#2_border_bottom').css('border-bottom', '2px solid');
+             $('#2_border_bottom').css("border-color","#3182ce");
+             $('#2_border_bottom').css('border-bottom-right-radius', '2px');
+             $('#2_border_bottom').css('border-bottom-left-radius', '2px');
+         }/* else if(cont_sol_2 == 2){
              cont_sol_2 =  cont_sol_2 + 1;
              $('#cont_sol_2').val(cont_sol_2);
              $( "#sol_2_2" ).removeClass( "hidden" );
@@ -6609,7 +6646,7 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
              $("#action_submit_2_3").val('store');
              var consto_elect_project = $("#costo_elec").val();
              $("#costo_elec_2_3").val(consto_elect_project);
-         }
+         } */
 
      }else if(value == 'sol_3') {
 
@@ -6638,7 +6675,11 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
 
              cont_sol_3 =  cont_sol_3 + 1;
              $('#cont_sol_3').val(cont_sol_3);
-         }else if(cont_sol_3 == 2){
+             $('#3_border_bottom').css('border-bottom', '2px solid');
+             $('#3_border_bottom').css("border-color","#3182ce");
+             $('#3_border_bottom').css('border-bottom-right-radius', '2px');
+             $('#3_border_bottom').css('border-bottom-left-radius', '2px');
+         }/* else if(cont_sol_3 == 2){
              cont_sol_3 =  cont_sol_3 + 1;
              $('#cont_sol_3').val(cont_sol_3);
              $( "#sol_3_2" ).removeClass( "hidden" );
@@ -6647,7 +6688,7 @@ function inactive_display_edit(value,id_project,num_enf,num_sol){
              $("#action_submit_3_3").val('store');
              var consto_elect_project = $("#costo_elec").val();
              $("#costo_elec_3_3").val(consto_elect_project);
-         }
+         } */
 
      }
  }
