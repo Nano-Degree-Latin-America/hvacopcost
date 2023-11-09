@@ -6291,12 +6291,12 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                             $('#base_border_bottom').css('border-bottom', '2px solid');
                             $('#base_border_bottom').css('border-bottom-right-radius', '2px');
                             $('#base_border_bottom').css('border-bottom-left-radius', '2px');
-                        }else{
+                        }else if(num_solu == 'sol_2_2'){
                             $('#2_border_bottom').css('border-bottom', '2px solid');
                             $('#2_border_bottom').css("border-color","#3182ce");
                             $('#2_border_bottom').css('border-bottom-right-radius', '2px');
                             $('#2_border_bottom').css('border-bottom-left-radius', '2px');
-
+                        }else if(num_solu == 'sol_3_2'){
                             $('#3_border_bottom').css('border-bottom', '2px solid');
                             $('#3_border_bottom').css("border-color","#3182ce");
                             $('#3_border_bottom').css('border-bottom-right-radius', '2px');
