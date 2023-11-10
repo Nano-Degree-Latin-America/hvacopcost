@@ -64,7 +64,7 @@
                     <input  id="tipo_equipo_1_1_count_retro " name="tipo_equipo_1_1_count_retro " type="number" class="hidden" value="1">
                 </div>
             </div>
-
+            @include('modal_marca_support')
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
@@ -77,6 +77,9 @@
                         </select>
                         <input  id="marca_1_1_retro_count" name="marca_1_1_retro_count" type="number" class="hidden" value="1">
 
+                    </div>
+                    <div class="mt-1">
+                        <a onclick="mostrar_modal('modal_marca_support');" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                     </div>
                 </div>
 

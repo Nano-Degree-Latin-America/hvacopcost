@@ -6963,6 +6963,12 @@ function mostrar_modal_energia_hvac(id){
     $("#"+id).removeClass("hidden");
 }
 
+
+function mostrar_modal(id){
+    $("#"+id).removeClass("hidden");
+}
+
+
 function ocultar_modal(id){
     $("#"+id).addClass("hidden");
 }
