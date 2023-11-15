@@ -205,7 +205,7 @@
                                 <label  class="labels" for=""><b>{{ __('index.hors enf') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
-                                <input  type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_1_1_retro" onkeypress="return soloNumeros(event)" id="hrsEnfriado_1_1_retro" onchange="hrs_enfs_inps(this.value);valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);">
+                                <input  type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center" name="hrsEnfriado_1_1_retro" onkeypress="return soloNumeros(event)" id="hrsEnfriado_1_1_retro" onchange="hrs_enfs_inps_retro(this.value);valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);">
                                 <input  id="hrsEnfriado_1_1_retro_count" name="hrsEnfriado_1_1_retro_count" type="number" class="hidden" value="1">
                             </div>
                             @include('modal_coolinghours_retro')
