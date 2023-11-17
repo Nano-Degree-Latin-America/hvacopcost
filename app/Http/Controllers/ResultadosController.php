@@ -19,6 +19,7 @@ use Dompdf\Options;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Imports\TypeEdificio;
 use App\Exports\CoolingCitiesExport;
+use funciones\funciones;
 class ResultadosController extends Controller
 {
     /**
@@ -6601,17 +6602,21 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
         $int_check_chiller = intval($check_chiller);
 
         if($int_check_chiller <= 7){
-        return ResultadosController::form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+/*         return ProjectController::form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+ */        $funciones = new funciones();
+           return $funciones->form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
         }
 
         if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
-            return ResultadosController::form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+/*             return ProjectController::form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+ */            $funciones = new funciones();
+               return $funciones->form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
         }
 
     }
 
 
-    public function form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
+    /* public function form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
 
         //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
         //((TR /3.5) x (Cooling Hours) x (Costo Energía) / IPVL)/ 1000
@@ -6631,14 +6636,11 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
        $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
 
        //((TR x cant) x (Cooling Hours) / (SEER) ) / 1000)
-       /* $res_ene_apl_tot_enf_1 */
 
        //energia aplicada proccess
        //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
 
        //(Fórmula Energía x Factor S)
-
-        /* (((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C) x Factor M */
         $res_1_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_s);
 
 
@@ -6681,9 +6683,9 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
        $res_res_fact_m =  $res_res * $factor_m;
 
        return $res_res_fact_m;
-    }
+    } */
 
-    public function form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
+    /* public function form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
 
         if($eficiencia_ene == 'IPVL'){
             //(TR x IPLV x Cooling Hours) / 0.75
@@ -6704,14 +6706,13 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
 
         //((TR x cant) x (Cooling Hours) / (SEER) ) / 1000)
-       /* $res_ene_apl_tot_enf_1 */
+
 
        //energia aplicada proccess
        //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
 
        //(Fórmula Energía x Factor S)
 
-        /* (((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C) x Factor M */
         $res_1_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_s);
 
 
@@ -6755,7 +6756,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
        return $res_res_fact_m;
 
-    }
+    } */
 
 
 
@@ -6763,15 +6764,17 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
         $int_check_chiller = intval($check_chiller);
 
         if($int_check_chiller <= 7){
-           return ResultadosController::cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+           $funciones = new funciones();
+           return $funciones->cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
         }
 
         if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
-           return ResultadosController::cost_op_an_form_kw_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+           $funciones = new funciones();
+           return $funciones->cost_op_an_form_kw_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
         }
      }
 
-     public function cost_op_an_form_kw_chiller(){
+     /* public function cost_op_an_form_kw_chiller(){
         if($eficiencia_ene == 'IPVL'){
          //((Kw / 3.54) x IPLV x Cooling Hours) / 0.75
 
@@ -6837,9 +6840,9 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                }
                $res_res_fact_m =  $res_res * $factor_m;
                return $res_res_fact_m;
-  }
+  } */
 
-  public function cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
+  /* public function cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
     //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
                       //(((Kw / 3.5)
                       //$kw =  $solution_enf1->capacidad_tot;
@@ -6895,7 +6898,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                       }
                       $res_res_fact_m =  $res_res * $factor_m;
                       return $res_res_fact_m;
-         }
+         } */
 
   public function cost_op_an_form_ab($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$cost_energ){
         //((TR x 12000) x (Cooling Hours) x (Costo Energía) / SEER )/ 1000

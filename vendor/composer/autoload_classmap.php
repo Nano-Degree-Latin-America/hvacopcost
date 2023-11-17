@@ -34,6 +34,7 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\Http\\Middleware\\localization' => $baseDir . '/app/Http/Middleware/localization.php',
     'App\\Imports\\TypeEdificio' => $baseDir . '/app/Imports/TypeEdificio.php',
     'App\\MarcasEmpresaModel' => $baseDir . '/app/MarcasEmpresaModel.php',
     'App\\ModelosEmpresaModel' => $baseDir . '/app/ModelosEmpresaModel.php',
@@ -5603,6 +5604,7 @@ return array(
     'ZipStream\\Stream' => $vendorDir . '/maennchen/zipstream-php/src/Stream.php',
     'ZipStream\\ZipStream' => $vendorDir . '/maennchen/zipstream-php/src/ZipStream.php',
     'categorias_edificios_seeder' => $baseDir . '/database/seeds/categorias_edificios_seeder.php',
+    'funciones\\funciones' => $baseDir . '/funciones/funciones.php',
     'tipo_edificio_seeder' => $baseDir . '/database/seeds/tipo_edificio_seeder.php',
     'voku\\helper\\ASCII' => $vendorDir . '/voku/portable-ascii/src/voku/helper/ASCII.php',
 );

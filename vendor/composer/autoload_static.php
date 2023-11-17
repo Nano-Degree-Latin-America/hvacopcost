@@ -43,6 +43,10 @@ class ComposerStaticInit22ba1415f53e39972f76e4c42d651c6e
         array (
             'voku\\' => 5,
         ),
+        'f' => 
+        array (
+            'funciones\\' => 10,
+        ),
         'Z' => 
         array (
             'ZipStream\\' => 10,
@@ -186,6 +190,10 @@ class ComposerStaticInit22ba1415f53e39972f76e4c42d651c6e
         'voku\\' => 
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
+        ),
+        'funciones\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/funciones',
         ),
         'ZipStream\\' => 
         array (
@@ -568,6 +576,7 @@ class ComposerStaticInit22ba1415f53e39972f76e4c42d651c6e
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+        'App\\Http\\Middleware\\localization' => __DIR__ . '/../..' . '/app/Http/Middleware/localization.php',
         'App\\Imports\\TypeEdificio' => __DIR__ . '/../..' . '/app/Imports/TypeEdificio.php',
         'App\\MarcasEmpresaModel' => __DIR__ . '/../..' . '/app/MarcasEmpresaModel.php',
         'App\\ModelosEmpresaModel' => __DIR__ . '/../..' . '/app/ModelosEmpresaModel.php',
@@ -6137,6 +6146,7 @@ class ComposerStaticInit22ba1415f53e39972f76e4c42d651c6e
         'ZipStream\\Stream' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/Stream.php',
         'ZipStream\\ZipStream' => __DIR__ . '/..' . '/maennchen/zipstream-php/src/ZipStream.php',
         'categorias_edificios_seeder' => __DIR__ . '/../..' . '/database/seeds/categorias_edificios_seeder.php',
+        'funciones\\funciones' => __DIR__ . '/../..' . '/funciones/funciones.php',
         'tipo_edificio_seeder' => __DIR__ . '/../..' . '/database/seeds/tipo_edificio_seeder.php',
         'voku\\helper\\ASCII' => __DIR__ . '/..' . '/voku/portable-ascii/src/voku/helper/ASCII.php',
     );
