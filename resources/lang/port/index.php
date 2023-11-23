@@ -44,6 +44,7 @@ return [
     'tipo control' => 'Tipo Controlo',
     'dr' => 'Difusor/Grelha',
     'mantenimiento' => 'Manutenção',
+    'type_man' => 'Manutenção',
     'inversion inicial' => 'Investimento Inicial',
     'costo anual' => 'Custo Anual Manutenção',
     'calcular' => 'Calcular',

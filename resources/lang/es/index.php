@@ -34,6 +34,7 @@ return [
     'logout' => 'Cerrar Sesión',
     'mis proyectos' => 'Mis Proyectos',
     'nuevo projecto' => 'Nuevo Proyecto',
+    'type_man' => 'Mantenimiento',
     'idioma' => 'Idioma',
     'logout' => 'Cerrar Sesión',
     'mis proyectos' => 'Mis Proyectos',
