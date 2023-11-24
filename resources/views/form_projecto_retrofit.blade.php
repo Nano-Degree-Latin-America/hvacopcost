@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');check_chiller(this.value,'csStd_1_1_retro',2);">
+                        <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');check_chiller(this.value,'csStd_1_1_retro',2);check_type_set_mant('type_p');">
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -601,7 +601,7 @@
                                 <label  class="labels" for=""><b>{{ __('index.efi') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
-                                <select name="csStd_2_1_retro" id="csStd_2_1_retro" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_2_1_retro').value,'csStd_2_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
+                                <select name="csStd_2_1_retro" id="csStd_2_1_retro" style="padding-top: .58rem;padding-bottom: .58rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_2_1_retro').value,'csStd_2_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
 
                                 </select>
                             </div>
@@ -880,7 +880,7 @@
                                 <label  class="labels" for=""><b>{{ __('index.efi') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
-                                <select name="csStd_3_1_retro" id="csStd_3_1_retro" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_1_retro').value,'csStd_3_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
+                                <select name="csStd_3_1_retro" id="csStd_3_1_retro" style="padding-top: .58rem;padding-bottom: .58rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_1_retro').value,'csStd_3_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
 
                                 </select>
                             </div>

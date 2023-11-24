@@ -3945,7 +3945,7 @@ cursor: pointer;
                                                             <b class="text-blue-800 mr-1 font-roboto text-3xl mt-3">{{ __('index.solucion') }}  Base v/s A </b>
                                                             </div>
                                                         <div class="flex justify-center w-full">
-                                                            @if ($dif_1_cost >= 0))
+                                                            @if ($dif_1_cost >= 0)
                                                                 <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">$ {{number_format($dif_1_cost)}}</b><b class="text-3xl mt-3  font-roboto"></b>
 
                                                             @endif

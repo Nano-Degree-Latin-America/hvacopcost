@@ -2230,11 +2230,13 @@ return arry_dr;
   function check_form_proy(value,new_p,retro_p,button_np,button_rp,action,type_p_aux){
     var pn = document.getElementById("pn");
     var pr = document.getElementById("pr");
+    var man = document.getElementById("man");
     var type_p = document.getElementById("type_p");
     var action_submit_send = document.getElementById("action_submit_send");
     if(value == 'pn'){
         pn.checked = true;
         pr.checked = false;
+        man.checked = false;
         type_p.value = 1;
         //si tipo es igual a 2
         if(parseInt(type_p_aux) === 2){
@@ -2254,6 +2256,34 @@ return arry_dr;
         type_p.value = 2;
         pn.checked = false;
         pr.checked = true;
+        man.checked = false;
+
+        if(action == 'edit'){
+
+        }
+        if(action != 'edit'){
+            send_marcas();
+            $('#csStd_1_1_retro').prop('disabled', false);
+        }
+         //si tipo es igual a 1
+        if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 0){
+            action_submit_send.value = 'store';
+             //se da de alta nuevas soluciones tipo proyecto nuevo
+        }
+        //si tipo es igual a 2
+        if(parseInt(type_p_aux) === 2){
+            action_submit_send.value = 'update';
+            //se actualiza proyecto retro
+        }
+        $('#'+retro_p).removeClass("hidden");
+        $('#'+new_p).addClass("hidden");
+        $('#'+button_rp).removeClass("hidden");
+        $('#'+button_np).addClass("hidden");
+    }else if(value == 'man'){
+        type_p.value = 3;
+        pn.checked = false;
+        pr.checked = false;
+        man.checked = true;
 
         if(action == 'edit'){
 
@@ -11158,4 +11188,8 @@ cUnidad_3_3 */
             input_select.val(10 + '%');
             return false;
         }
+     }
+
+     function check_type_set_mant(value){
+        return true;
      }
