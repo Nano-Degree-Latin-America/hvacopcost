@@ -737,7 +737,7 @@
                            <label  class="labels" for=""><b>{{ __('index.efi') }}</b> </label>
                        </div>
                        <div class="flex justify-start w-1/3">
-                           <select name="csStd_3_1_retro" id="csStd_3_1_retro" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" class="w-full border-2 border-blue-600 rounded-md text-center">
+                           <select name="csStd_3_1_retro" id="csStd_3_1_retro" style="padding-top: .55rem;padding-bottom: .55rem;" class="w-full border-2 border-blue-600 rounded-md text-center">
                             {{-- <option value="SEER">SEER</option>
                             <option value="SEER2">SEER2</option>
                             <option value="IEER">IEER</option>
