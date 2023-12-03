@@ -382,7 +382,7 @@ cursor: pointer;
                                         <div class="w-full flex justify-center">
                                             <div class="grid w-1/3 mx-1 ">
                                                 @foreach ($solutions as $solution)
-                                                    @if ($solution->num_sol == 1 && $solution->num_enf == 1 && $solution->type_p == 2)
+                                                    @if ($solution->num_sol == 1 && $solution->num_enf == 1)
                                                     <div>
                                                         <div class="flex w-full">
                                                             <div class="w-full">
@@ -712,7 +712,7 @@ cursor: pointer;
 
                                             <div class="grid w-1/3 mx-1 ">
                                                 @foreach ($solutions as $solution)
-                                                @if ($solution->num_sol == 1 && $solution->num_enf == 2 && $solution->type_p == 2)
+                                                @if ($solution->num_sol == 1 && $solution->num_enf == 2)
                                                 <div>
                                                     <div class="flex w-full">
                                                         <div class="w-full">
@@ -1030,7 +1030,7 @@ cursor: pointer;
 
                                             <div class="grid w-1/3 mx-1 ">
                                                 @foreach ($solutions as $solution)
-                                                @if ($solution->num_sol == 1 && $solution->num_enf == 3 && $solution->type_p == 2)
+                                                @if ($solution->num_sol == 1 && $solution->num_enf == 3)
                                                 <div>
                                                     <div class="flex w-full">
                                                         <div class="w-full">

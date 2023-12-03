@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');check_chiller(this.value,'csStd_1_1_retro',2);check_type_set_mant('type_p');">
+                        <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');check_chiller(this.value,'csStd_1_1_retro',2);check_type_set_mant('type_p','cUnidad_2_1_retro','cUnidad_3_1_retro',this.value);">
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -56,7 +56,7 @@
                         <label class="labels" for=""><b>{{ __('index.tipo equipo') }}</b> </label>
                     </div>
                     <div class="w-full flex justify-start">
-                        <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);change_diseño(this.value,1,'csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','lblCsTipo_1_1_retro');"  name="csTipo_1_1_retro" id="csTipo_1_1_retro">
+                        <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);change_diseño(this.value,1,'csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','lblCsTipo_1_1_retro');check_type_set_mant('type_p','cheTipo_2_1_retro','cheTipo_3_1_retro',this.value);"  name="csTipo_1_1_retro" id="csTipo_1_1_retro">
                         </select>
                     </div>
 
@@ -72,8 +72,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_1_1_retro');send_marca_to_modal(this.value,'marcas_modal');" name="marca_1_1_retro" id="marca_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2">
-
+                        <select onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_1_1_retro');send_marca_to_modal(this.value,'marcas_modal');check_type_set_mant('type_p','marca_2_1_retro','marca_3_1_retro',this.value);" name="marca_1_1_retro" id="marca_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2">
                         </select>
                         <input  id="marca_1_1_retro_count" name="marca_1_1_retro_count" type="number" class="hidden" value="1">
 
@@ -88,9 +87,10 @@
                         <label class="labels" for=""><b>{{ __('index.modelo') }}</b></label>
                     </div>
                     <div class="w-full flex justify-start">
-                        <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_1_retro" id="modelo_1_1_retro">
+                        <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_type_set_mant('type_p','modelo_2_1_retro','modelo_3_1_retro',this.value);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_1_retro" id="modelo_1_1_retro">
                         </select>
                     </div>
+
 
                     <input  id="modelo_1_1_retro_count" name="modelo_1_1_retro_count" type="number" class="hidden" value="1">
                 </div>
@@ -104,7 +104,7 @@
                     </div>
 
                     <div class="flex justify-start w-1/3">
-                        <input name="yrs_vida_1_1_retro" id="yrs_vida_1_1_retro" onchange="valida_selects_inps(this.id);" onkeypress="return soloNumeros(event)"  type="text" class="text-center w-full border-2 border-blue-600 rounded-md">
+                        <input name="yrs_vida_1_1_retro" id="yrs_vida_1_1_retro" onchange="valida_selects_inps(this.id);check_type_set_mant_inp('type_p','yrs_vida_2_1_retro','yrs_vida_3_1_retro',this.value);" onkeypress="return soloNumeros(event)"  type="text" class="text-center w-full border-2 border-blue-600 rounded-md">
 
                         <input  id="yrs_vida_1_1_retro_count" name="yrs_vida_1_1_retro_count" type="number" class="hidden" value="1">
 
@@ -119,12 +119,10 @@
                     </div>
                     <div class="flex justify-start w-1/4">
                         <select name="csStd_1_1_retro" id="csStd_1_1_retro" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_1_retro').value,'csStd_1_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
-
-
                         </select>
                     </div>
                     <div class="flex justify-start w-1/4">
-                        <input name="csStd_retro_1_1_cant" id="csStd_retro_1_1_cant" onkeypress="return soloNumeros(event)" onchange="valida_selects_inps(this.id);" type="text" class="text-center w-full border-2 border-blue-600 rounded-md">
+                        <input name="csStd_retro_1_1_cant" id="csStd_retro_1_1_cant" onkeypress="return soloNumeros(event)" onchange="valida_selects_inps(this.id);check_type_set_mant_inp('type_p','csStd_cant_2_1_retro','csStd_cant_3_1_retro',this.value);" type="text" class="text-center w-full border-2 border-blue-600 rounded-md">
                         <input  id="csStd_retro_1_1_count" name="csStd_retro_1_1_count" type="number" class="hidden" value="1">
                     </div>
                     <div class="mt-1">
@@ -140,7 +138,7 @@
                     </div>
                     <div class="flex w-full justify-start gap-x-2">
                         <div class="w-1/3">
-                            <input type="text" style="margin-left: 1px;" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" name="capacidad_total_1_1_retro" id="capacidad_total_1_1_retro" >
+                            <input type="text" style="margin-left: 1px;" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);check_type_set_mant_inp('type_p','capacidad_total_2_1_retro','capacidad_total_3_1_retro',this.value);"  onkeypress="return soloNumeros(event)" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md py-2 text-center" name="capacidad_total_1_1_retro" id="capacidad_total_1_1_retro" >
                         </div>
                         <input  id="capacidad_total_1_1_retro_count" name="capacidad_total_1_1_retro_count" type="number" class="hidden" value="1">
                         <div class="w-1/3">
@@ -161,7 +159,7 @@
                     </div>
 
                     <div class="w-full flex justify-start">
-                        <select onchange="valida_selects_inps(this.id);send_name(this.id);" name="csDisenio_1_1_retro" id="csDisenio_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2">
+                        <select onchange="valida_selects_inps(this.id);send_name(this.id);check_type_set_mant('type_p','cheDisenio_2_1_retro','cheDisenio_3_1_retro',this.value);" name="csDisenio_1_1_retro" id="csDisenio_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2">
                         </select>
                     </div>
                     <input type="text" style="display: none" id="lblCsDisenio" name="lblCsDisenio" value="ASHRAE 55/62.1/90.1">
@@ -176,7 +174,7 @@
                         <label  class="labels" for=""><b>{{ __('index.costo elec') }} $/Kwh</b> </label>
                     </div>
                     <div class="w-1/2 flex justify-start">
-                        <input id="costo_elec_1_1_retro" name="costo_elec_1_1_retro" onchange="valida_selects_inps(this.id);asign_cos_ele(this.value);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
+                        <input id="costo_elec_1_1_retro" name="costo_elec_1_1_retro" onchange="valida_selects_inps(this.id);asign_cos_ele(this.value);check_type_set_mant_inp('type_p','costo_elec_2_1_retro','costo_elec_3_1_retro',this.value);" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full text-center border-2 border-blue-600 rounded-md py-1">
                     </div>
                     <input  id="costo_elec_1_1_retro_count" name="costo_elec_1_1_retro_count" type="number" class="hidden" value="1">
                 </div>
@@ -203,8 +201,7 @@
                     </div>
 
                     <div class="flex justify-start w-1/2">
-                        <select class="w-full border-2 border-blue-600 rounded-md py-2"   onchange="valida_selects_inps(this.id);send_name_t_c(this.id);" name="tipo_control_1_1_retro" id="tipo_control_1_1_retro">
-
+                        <select class="w-full border-2 border-blue-600 rounded-md py-2"   onchange="valida_selects_inps(this.id);send_name_t_c(this.id);check_type_set_mant('type_p','tipo_control_2_1_retro','tipo_control_3_1_retro',this.value);" name="tipo_control_1_1_retro" id="tipo_control_1_1_retro">
                         </select>
                         <input  id="tipo_control_1_1_retro_count" name="tipo_control_1_1_retro_count" type="number" class="hidden" value="1">
 
@@ -218,7 +215,7 @@
                         <label class="labels" for=""><b>{{ __('index.dr') }}</b> </label>
                     </div>
                     <div class="w-full flex justify-start">
-                        <select style="width: 100%;margin-left:6px;" class="border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_name_dr(this.id);" name="dr_1_1_retro" id="dr_1_1_retro" >
+                        <select style="width: 100%;margin-left:6px;" class="border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_name_dr(this.id);check_type_set_mant('type_p','dr_2_1_retro','dr_3_1_retro',this.value);" name="dr_1_1_retro" id="dr_1_1_retro" >
                         </select>
                     </div>
                     <input  id="dr_1_1_retro_count" name="dr_1_1_retro_count" type="number" class="hidden" value="1">
@@ -232,8 +229,8 @@
                         <label class="labels" for=""><b>{{ __('index.mantenimiento') }}</b></label>
                     </div>
                     <div class="flex w-1/2 justify-start">
-                        <select onchange="valida_selects_inps(this.id);"  style="margin-left: 5px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_1_1_retro" id="csMantenimiento_1_1_retro">
-                            <option selected value="0">{{ __('index.seleccionar') }}</option>
+                        <select onchange="valida_selects_inps(this.id);check_type_set_mant('type_p','csMantenimiento_2_1_retro','cheMantenimiento_3_1_retro',this.value);"  style="margin-left: 5px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_1_1_retro" id="csMantenimiento_1_1_retro">
+                            <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="ASHRAE 180">ASHRAE 180</option>
                             <option value="Deficiente">Deficiente</option>
                             <option value="Sin Mantenimiento">Sin Mantenimiento</option>
@@ -602,7 +599,6 @@
                             </div>
                             <div class="flex justify-start w-1/3">
                                 <select name="csStd_2_1_retro" id="csStd_2_1_retro" style="padding-top: .58rem;padding-bottom: .58rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_2_1_retro').value,'csStd_2_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
-
                                 </select>
                             </div>
                             <div class="flex justify-start w-1/4">
@@ -676,7 +672,6 @@
                             </div>
                             <div class="flex justify-start w-1/2">
                             <select class="w-full border-2 border-blue-600 rounded-md py-2"  onchange="valida_selects_inps(this.id);send_name_t_c(this.id);"  name="tipo_control_2_1_retro" id="tipo_control_2_1_retro">
-
                             </select>
                             <input  id="tipo_control_2_1_retro_count" name="tipo_control_2_1_retro_count" type="number" class="hidden" value="1">
 
@@ -824,7 +819,6 @@
                              </div>
                              <div class="w-full flex justify-start">
                                     <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);change_diseño(this.value,1,'cheDisenio_3_1_retro','tipo_control_3_1_retro','dr_3_1_retro','lblCsTipo_3_1_retro');"  name="cheTipo_3_1_retro" id="cheTipo_3_1_retro">
-
                                     </select>
                             </div>
                             <input  id="cheTipo_3_1_retro_count" name="cheTipo_3_1_retro_count" type="number" class="hidden" value="1">

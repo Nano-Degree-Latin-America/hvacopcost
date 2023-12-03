@@ -1855,6 +1855,7 @@ class ProjectController extends Controller
     if($type_p === 2){
         //si llega un store elimina solucoiners exotentes
 
+        $update_project->update();
         if($action_submit_send == 'store'){
             //elimina soluciones
            $del_functions = ProjectController::del_solutions($update_project->id);
@@ -1862,7 +1863,6 @@ class ProjectController extends Controller
             //nada
         }
 
-        $update_project->update();
         $enfriamiento1_retro = intval($request->get('cUnidad_1_1_retro'));
             $enfriamiento2_retro = intval($request->get('cUnidad_2_1_retro'));
             $enfriamiento3_retro =intval($request->get('cUnidad_3_1_retro'));
@@ -2126,6 +2126,7 @@ class ProjectController extends Controller
                     $eficiencia_ene = $solution_enf_2_1_retro->eficencia_ene;
                     $yrs_l = $solution_enf_2_1_retro->yrs_vida;
                     $unidad_hvac_aux = $solution_enf_2_1_retro->unidad_hvac;
+
                    if ($solution_enf_2_1_retro->unid_med == 'TR') {
                     $tr = $solution_enf_2_1_retro->capacidad_tot;
                     $res_2_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
@@ -2380,6 +2381,445 @@ class ProjectController extends Controller
                 return Redirect::to('/resultados_retrofit/' . $id_project);
 
              }
+    }
+
+    if($type_p === 3){
+        if($action_submit_send == 'store'){
+            //elimina soluciones
+           $del_functions = ProjectController::del_solutions($update_project->id);
+        }else if($action_submit_send == 'update'){
+            //nada
+        }
+
+        $update_project->update();
+        $enfriamiento1_retro = intval($request->get('cUnidad_1_1_retro'));
+        $enfriamiento2_retro = intval($request->get('cUnidad_2_1_retro'));
+        $enfriamiento3_retro =intval($request->get('cUnidad_3_1_retro'));
+
+        if ($enfriamiento1_retro !== 0) {
+
+            $sol_1_1_retro = intval($request->get('cUnidad_1_1_retro'));
+            if ($sol_1_1_retro !== 0) {
+                 ///11
+                if($action_submit_send == 'store'){
+                    $solution_enf1=new SolutionsProjectModel;
+                }else if($action_submit_send == 'update'){
+                    $id_solution_1_1 = DB::table('solutions_project')
+                ->where('solutions_project.id_project','=',$id)
+                ->where('solutions_project.num_enf','=',1)
+                ->where('solutions_project.num_sol','=',1)
+                ->first();
+
+                    $solution_enf1= SolutionsProjectModel::find($id_solution_1_1->id);
+                }
+
+                $solution_enf1->type_p=3;
+                $solution_enf1->num_sol=1;
+                $solution_enf1->num_enf	=1;
+                $solution_enf1->unidad_hvac=$request->get('cUnidad_1_1_retro');
+                $solution_enf1->tipo_equipo	=$request->get('csTipo_1_1_retro');
+                $solution_enf1->id_marca=$request->get('marca_1_1_retro');
+                $solution_enf1->id_modelo=$request->get('modelo_1_1_retro');
+                $solution_enf1->id_modelo=$request->get('modelo_1_1_retro');
+                $solution_enf1->yrs_vida=$request->get('yrs_vida_1_1_retro');
+                $solution_enf1->eficencia_ene=$request->get('csStd_1_1_retro');
+                $solution_enf1->eficencia_ene_cant=$request->get('csStd_retro_1_1_cant');
+                $solution_enf1->name_disenio=$request->get('name_diseno_1_1_retro');
+                $solution_enf1->tipo_diseño= $request->get('csDisenio_1_1_retro');
+
+                $cap_tot_aux1_1_retro = ProjectController::num_form($request->get('capacidad_total_1_1_retro'));
+                $solution_enf1->capacidad_tot=floatval($cap_tot_aux1_1_retro);
+
+                $solution_enf1->unid_med=$request->get('unidad_capacidad_tot_1_1_retro');
+//separa cadena
+                $costo_elec_aux = ProjectController::price_form($request->get('costo_elec_1_1_retro'));
+                $solution_enf1->costo_elec=floatval($costo_elec_aux);
+ //separa cadena
+                $cooling_hours_aux = ProjectController::num_form($request->get('hrsEnfriado_1_1_retro'));
+
+                $solution_enf1->coolings_hours=intval($cooling_hours_aux);
+
+                $solution_enf1->tipo_control=$request->get('tipo_control_1_1_retro');
+
+
+                $solution_enf1->name_t_control=$request->get('name_t_control_1_1_retro');
+                $solution_enf1->dr_name=$request->get('dr_name_1_1_retro');
+
+                $solution_enf1->dr = $request->get('dr_1_1_retro');
+                $solution_enf1->mantenimiento = $request->get('csMantenimiento_1_1_retro');
+
+                if($request->get('costo_recu_1_1_retro') != null){
+
+                    $val_aprox_aux = ProjectController::price_form($request->get('costo_recu_1_1_retro'));
+
+                }else  if($request->get('costo_recu_1_1_retro') == null){
+                    $val_aprox_aux = 0;
+                }
+
+                if($request->get('maintenance_cost_1_1_retro') != null){
+                    $aux_cost_mant = ProjectController::price_form($request->get('maintenance_cost_1_1_retro'));
+                }else  if($request->get('maintenance_cost_1_1_retro') == null){
+                    $aux_cost_mant = 0;
+
+                }
+
+                if($request->get('const_an_rep_1_1') != null){
+                    $aux__cost_an_rep_1_1 = ProjectController::price_form($request->get('const_an_rep_1_1'));
+                }else  if($request->get('const_an_rep_1_1') == null){
+                    $aux__cost_an_rep_1_1 = 0;
+
+                }
+
+                $solution_enf1->val_aprox=floatval($val_aprox_aux);
+                $solution_enf1->costo_mantenimiento=floatval($aux_cost_mant);
+                $solution_enf1->cost_an_re=floatval($aux__cost_an_rep_1_1);
+                $solution_enf1->status=1;
+                $solution_enf1->id_empresa=Auth::user()->id_empresa;
+                $solution_enf1->id_user=Auth::user()->id;
+
+
+                $cooling_hrs =  $solution_enf1->coolings_hours;
+                $cost_energ =  $solution_enf1->costo_elec;
+                $eficiencia_cant = floatval($request->get('csStd_retro_1_1_cant'));
+                $factor_s = $request->get('lblCsTipo_1_1_retro');
+                $factor_d = floatval($request->get('csDisenio_1_1_retro'));
+                $factor_c = $request->get('tipo_control_1_1_retro');
+                $factor_t =floatval($request->get('dr_1_1_retro'));
+                $factor_m =$request->get('csMantenimiento_1_1_retro');
+                $t_e = $solution_enf1->tipo_equipo;
+                $eficiencia_ene = $solution_enf1->eficencia_ene;
+                $yrs_l = $solution_enf1->yrs_vida;
+                $unidad_hvac_aux = $solution_enf1->unidad_hvac;
+               if ($solution_enf1->unid_med == 'TR') {
+
+                $tr = $solution_enf1->capacidad_tot;
+                $res_1_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
+                $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
+
+            }else if($solution_enf1->unid_med == 'KW'){
+
+                $kw = $solution_enf1->capacidad_tot;
+                $res_1_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
+                $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
+
+            }
+
+  //niveles de confort
+  $unidad_conf_1_1 = $solution_enf1->unidad_hvac;
+  $equipo_conf_1_1 = $solution_enf1->tipo_equipo;
+  $diseno_conf_1_1 = $solution_enf1->name_disenio;
+  $t_control_conf_1_1 = $solution_enf1->name_t_control;
+  $dr_conf_1_1 = $solution_enf1->dr_name;
+  $mant_conf_1_1 = $solution_enf1->mantenimiento;
+  $funciones = new funciones();
+  $nivel_confotr_1_1_retro = $funciones->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
+  $solution_enf1->confort = $nivel_confotr_1_1_retro;
+
+
+                $solution_enf1->id_project = $id;
+
+
+                if($action_submit_send == 'store'){
+                    $solution_enf1->save();
+                }else if($action_submit_send == 'update'){
+                    $solution_enf1->update();
+                }
+
+                //2_1
+                if($action_submit_send == 'store'){
+                    $solution_enf1=new SolutionsProjectModel;
+                }else if($action_submit_send == 'update'){
+                    $id_solution_1_1 = DB::table('solutions_project')
+                ->where('solutions_project.id_project','=',$id)
+                ->where('solutions_project.num_enf','=',2)
+                ->where('solutions_project.num_sol','=',1)
+                ->first();
+
+                    $solution_enf1= SolutionsProjectModel::find($id_solution_1_1->id);
+                }
+
+                $solution_enf1->type_p=3;
+                $solution_enf1->num_sol=1;
+                $solution_enf1->num_enf	=2;
+                $solution_enf1->unidad_hvac=$request->get('cUnidad_1_1_retro');
+                $solution_enf1->tipo_equipo	=$request->get('csTipo_1_1_retro');
+                $solution_enf1->id_marca=$request->get('marca_1_1_retro');
+                $solution_enf1->id_modelo=$request->get('modelo_1_1_retro');
+                $solution_enf1->id_modelo=$request->get('modelo_1_1_retro');
+                $solution_enf1->yrs_vida=$request->get('yrs_vida_1_1_retro');
+                $solution_enf1->eficencia_ene=$request->get('csStd_1_1_retro');
+                $solution_enf1->eficencia_ene_cant=$request->get('csStd_retro_1_1_cant');
+                $solution_enf1->name_disenio=$request->get('name_diseno_1_1_retro');
+                $solution_enf1->tipo_diseño= $request->get('csDisenio_1_1_retro');
+
+                $cap_tot_aux1_1_retro = ProjectController::num_form($request->get('capacidad_total_1_1_retro'));
+                $solution_enf1->capacidad_tot=floatval($cap_tot_aux1_1_retro);
+
+                $solution_enf1->unid_med=$request->get('unidad_capacidad_tot_1_1_retro');
+//separa cadena
+                $costo_elec_aux = ProjectController::price_form($request->get('costo_elec_1_1_retro'));
+                $solution_enf1->costo_elec=floatval($costo_elec_aux);
+ //separa cadena
+                $cooling_hours_aux = ProjectController::num_form($request->get('hrsEnfriado_1_1_retro'));
+
+                $solution_enf1->coolings_hours=intval($cooling_hours_aux);
+
+                $solution_enf1->tipo_control=$request->get('tipo_control_1_1_retro');
+
+
+                $solution_enf1->name_t_control=$request->get('name_t_control_1_1_retro');
+                $solution_enf1->dr_name=$request->get('dr_name_1_1_retro');
+
+                $solution_enf1->dr = $request->get('dr_1_1_retro');
+                $solution_enf1->mantenimiento = $request->get('csMantenimiento_1_1_retro');
+
+                if($request->get('costo_recu_2_1_retro') != null){
+
+                    $val_aprox_aux = ProjectController::price_form($request->get('costo_recu_2_1_retro'));
+
+                }else  if($request->get('costo_recu_2_1_retro') == null){
+                    $val_aprox_aux = 0;
+                }
+
+                if($request->get('maintenance_cost_2_1_retro') != null){
+                    $aux_cost_mant = ProjectController::price_form($request->get('maintenance_cost_2_1_retro'));
+                }else  if($request->get('maintenance_cost_2_1_retro') == null){
+                    $aux_cost_mant = 0;
+
+                }
+
+                /* if($request->get('const_an_rep_1_1') != null){
+                    $aux__cost_an_rep_1_1 = ProjectController::price_form($request->get('const_an_rep_1_1'));
+                }else  if($request->get('const_an_rep_1_1') == null){
+                    $aux__cost_an_rep_1_1 = 0;
+
+                } */
+
+                $solution_enf1->val_aprox=floatval($val_aprox_aux);
+                $solution_enf1->costo_mantenimiento=floatval($aux_cost_mant);
+                /* $solution_enf1->cost_an_re=floatval($aux__cost_an_rep_1_1); */
+                $solution_enf1->status=1;
+                $solution_enf1->id_empresa=Auth::user()->id_empresa;
+                $solution_enf1->id_user=Auth::user()->id;
+
+
+                $cooling_hrs =  $solution_enf1->coolings_hours;
+                $cost_energ =  $solution_enf1->costo_elec;
+                $eficiencia_cant = floatval($request->get('csStd_retro_1_1_cant'));
+                $factor_s = $request->get('lblCsTipo_1_1_retro');
+                $factor_d = floatval($request->get('csDisenio_1_1_retro'));
+                $factor_c = $request->get('tipo_control_1_1_retro');
+                $factor_t =floatval($request->get('dr_1_1_retro'));
+                $factor_m =$request->get('csMantenimiento_1_1_retro');
+                $t_e = $solution_enf1->tipo_equipo;
+                $eficiencia_ene = $solution_enf1->eficencia_ene;
+                $yrs_l = $solution_enf1->yrs_vida;
+                $unidad_hvac_aux = $solution_enf1->unidad_hvac;
+               if ($solution_enf1->unid_med == 'TR') {
+
+                $tr = $solution_enf1->capacidad_tot;
+                $res_1_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
+                $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
+
+            }else if($solution_enf1->unid_med == 'KW'){
+
+                $kw = $solution_enf1->capacidad_tot;
+                $res_1_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
+                $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
+
+            }
+
+  //niveles de confort
+  $unidad_conf_1_1 = $solution_enf1->unidad_hvac;
+  $equipo_conf_1_1 = $solution_enf1->tipo_equipo;
+  $diseno_conf_1_1 = $solution_enf1->name_disenio;
+  $t_control_conf_1_1 = $solution_enf1->name_t_control;
+  $dr_conf_1_1 = $solution_enf1->dr_name;
+  $mant_conf_1_1 = $solution_enf1->mantenimiento;
+  $funciones = new funciones();
+  $nivel_confotr_1_1_retro = $funciones->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
+  $solution_enf1->confort = $nivel_confotr_1_1_retro;
+
+
+                $solution_enf1->id_project = $id;
+
+
+                if($action_submit_send == 'store'){
+                    $solution_enf1->save();
+                }else if($action_submit_send == 'update'){
+                    $solution_enf1->update();
+                }
+
+                //3_1
+                if($action_submit_send == 'store'){
+                    $solution_enf1=new SolutionsProjectModel;
+                }else if($action_submit_send == 'update'){
+                    $id_solution_1_1 = DB::table('solutions_project')
+                ->where('solutions_project.id_project','=',$id)
+                ->where('solutions_project.num_enf','=',3)
+                ->where('solutions_project.num_sol','=',1)
+                ->first();
+
+                    $solution_enf1= SolutionsProjectModel::find($id_solution_1_1->id);
+                }
+
+                $solution_enf1->type_p=3;
+                $solution_enf1->num_sol=1;
+                $solution_enf1->num_enf	=3;
+                $solution_enf1->unidad_hvac=$request->get('cUnidad_1_1_retro');
+                $solution_enf1->tipo_equipo	=$request->get('csTipo_1_1_retro');
+                $solution_enf1->id_marca=$request->get('marca_1_1_retro');
+                $solution_enf1->id_modelo=$request->get('modelo_1_1_retro');
+                $solution_enf1->id_modelo=$request->get('modelo_1_1_retro');
+                $solution_enf1->yrs_vida=$request->get('yrs_vida_1_1_retro');
+                $solution_enf1->eficencia_ene=$request->get('csStd_1_1_retro');
+                $solution_enf1->eficencia_ene_cant=$request->get('csStd_retro_1_1_cant');
+                $solution_enf1->name_disenio=$request->get('name_diseno_1_1_retro');
+                $solution_enf1->tipo_diseño= $request->get('csDisenio_1_1_retro');
+
+                $cap_tot_aux1_1_retro = ProjectController::num_form($request->get('capacidad_total_1_1_retro'));
+                $solution_enf1->capacidad_tot=floatval($cap_tot_aux1_1_retro);
+
+                $solution_enf1->unid_med=$request->get('unidad_capacidad_tot_1_1_retro');
+//separa cadena
+                $costo_elec_aux = ProjectController::price_form($request->get('costo_elec_1_1_retro'));
+                $solution_enf1->costo_elec=floatval($costo_elec_aux);
+ //separa cadena
+                $cooling_hours_aux = ProjectController::num_form($request->get('hrsEnfriado_1_1_retro'));
+
+                $solution_enf1->coolings_hours=intval($cooling_hours_aux);
+
+                $solution_enf1->tipo_control=$request->get('tipo_control_1_1_retro');
+
+
+                $solution_enf1->name_t_control=$request->get('name_t_control_1_1_retro');
+                $solution_enf1->dr_name=$request->get('dr_name_1_1_retro');
+
+                $solution_enf1->dr = $request->get('dr_1_1_retro');
+                $solution_enf1->mantenimiento = $request->get('csMantenimiento_1_1_retro');
+
+                if($request->get('costo_recu_3_1_retro') != null){
+
+                    $val_aprox_aux = ProjectController::price_form($request->get('costo_recu_3_1_retro'));
+
+                }else  if($request->get('costo_recu_3_1_retro') == null){
+                    $val_aprox_aux = 0;
+                }
+
+                if($request->get('maintenance_cost_3_1_retro') != null){
+                    $aux_cost_mant = ProjectController::price_form($request->get('maintenance_cost_3_1_retro'));
+                }else  if($request->get('maintenance_cost_3_1_retro') == null){
+                    $aux_cost_mant = 0;
+
+                }
+
+                /* if($request->get('const_an_rep_1_1') != null){
+                    $aux__cost_an_rep_1_1 = ProjectController::price_form($request->get('const_an_rep_1_1'));
+                }else  if($request->get('const_an_rep_1_1') == null){
+                    $aux__cost_an_rep_1_1 = 0;
+
+                } */
+
+                $solution_enf1->val_aprox=floatval($val_aprox_aux);
+                $solution_enf1->costo_mantenimiento=floatval($aux_cost_mant);
+                /* $solution_enf1->cost_an_re=floatval($aux__cost_an_rep_1_1); */
+                $solution_enf1->status=1;
+                $solution_enf1->id_empresa=Auth::user()->id_empresa;
+                $solution_enf1->id_user=Auth::user()->id;
+
+
+                $cooling_hrs =  $solution_enf1->coolings_hours;
+                $cost_energ =  $solution_enf1->costo_elec;
+                $eficiencia_cant = floatval($request->get('csStd_retro_1_1_cant'));
+                $factor_s = $request->get('lblCsTipo_1_1_retro');
+                $factor_d = floatval($request->get('csDisenio_1_1_retro'));
+                $factor_c = $request->get('tipo_control_1_1_retro');
+                $factor_t =floatval($request->get('dr_1_1_retro'));
+                $factor_m =$request->get('csMantenimiento_1_1_retro');
+                $t_e = $solution_enf1->tipo_equipo;
+                $eficiencia_ene = $solution_enf1->eficencia_ene;
+                $yrs_l = $solution_enf1->yrs_vida;
+                $unidad_hvac_aux = $solution_enf1->unidad_hvac;
+               if ($solution_enf1->unid_med == 'TR') {
+
+                $tr = $solution_enf1->capacidad_tot;
+                $res_1_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
+                $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
+
+            }else if($solution_enf1->unid_med == 'KW'){
+
+                $kw = $solution_enf1->capacidad_tot;
+                $res_1_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
+                $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
+
+            }
+
+  //niveles de confort
+  $unidad_conf_1_1 = $solution_enf1->unidad_hvac;
+  $equipo_conf_1_1 = $solution_enf1->tipo_equipo;
+  $diseno_conf_1_1 = $solution_enf1->name_disenio;
+  $t_control_conf_1_1 = $solution_enf1->name_t_control;
+  $dr_conf_1_1 = $solution_enf1->dr_name;
+  $mant_conf_1_1 = $solution_enf1->mantenimiento;
+  $funciones = new funciones();
+  $nivel_confotr_1_1_retro = $funciones->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
+  $solution_enf1->confort = $nivel_confotr_1_1_retro;
+
+
+                $solution_enf1->id_project = $id;
+
+
+                if($action_submit_send == 'store'){
+                    $solution_enf1->save();
+                }else if($action_submit_send == 'update'){
+                    $solution_enf1->update();
+                }
+
+                //checar valor_capex y mantenimiento, checar resultados y checks boxs mant
+            }
+        //restultados update
+        $res_sum = 0;
+        $cants = DB::table('solutions_project')
+        ->where('id_project','=',$id)
+        //->where('num_enf','=',1)
+        ->get();
+
+        foreach($cants as $cant){
+            $res_sum = $res_sum + $cant->cost_op_an;
+        }
+        $id_result = DB::table('results_project')
+        ->where('id_project','=',$id)
+        ->where('num_enf','=',1)
+        ->first();
+
+        if($action_submit_send == 'store'){
+            $new_result = new ResultsProjectModel;
+        }else if($action_submit_send == 'update'){
+            $new_result = ResultsProjectModel::find($id_result->id);
+        }
+
+       $new_result->num_enf = 1;
+       $new_result->cost_op_an = $res_sum;
+       $new_result->id_project = $id;
+       $new_result->id_empresa=Auth::user()->id_empresa;
+       $new_result->id_user=Auth::user()->id;
+
+        if($action_submit_send == 'store'){
+        $new_result->save();
+             }else if($action_submit_send == 'update'){
+        $new_result->update();
+         }
+
+         //2_1
+
+            if($update_project->update()){
+                $id_project = $id;
+
+                return Redirect::to('/resultados_retrofit/' . $id_project);
+
+             }
+        }
+
     }
 
     }

@@ -100,6 +100,7 @@ class EmpresasController extends Controller
                 $new_permiso = new TypeProjectModel;
                 $new_permiso->p_n = 1;
                 $new_permiso->p_r = 1;
+                $new_permiso->mant = 1;
                 $new_permiso->id_empresa = $empresa_p->id;
                 $new_permiso->save();
                 return redirect('/empresas');
@@ -304,7 +305,7 @@ class EmpresasController extends Controller
                     $update_type->p_r = 1;
                 }
             }
-
+            $update_type->mant = 0;
             $update_type->id_empresa = $id_empresa;
             $update_type->update();
         }else{
@@ -312,6 +313,7 @@ class EmpresasController extends Controller
                 $new_type= new TypeProjectModel;
                 $new_type->p_n = 1;
                 $new_type->p_r = 0;
+                $new_type->mant = 0;
                 $new_type->id_empresa = $id_empresa;
                 $new_type->save();
                 return $new_type;
@@ -321,6 +323,7 @@ class EmpresasController extends Controller
                 $new_type= new TypeProjectModel;
                 $new_type->p_n = 0;
                 $new_type->p_r = 1;
+                $new_type->mant = 0;
                 $new_type->id_empresa = $id_empresa;
                 $new_type->save();
                 return $new_type;

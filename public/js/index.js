@@ -2233,13 +2233,16 @@ return arry_dr;
     var man = document.getElementById("man");
     var type_p = document.getElementById("type_p");
     var action_submit_send = document.getElementById("action_submit_send");
+    if(document.getElementById("id_project")){
+        var id_project = document.getElementById("id_project").value;
+    }
     if(value == 'pn'){
         pn.checked = true;
         pr.checked = false;
         man.checked = false;
         type_p.value = 1;
         //si tipo es igual a 2
-        if(parseInt(type_p_aux) === 2){
+        if(parseInt(type_p_aux) === 2 || parseInt(type_p_aux) === 3 ){
             action_submit_send.value = 'store';
             //se da de alta nuevas soluciones tipo proyecto retrofit
         }
@@ -2252,6 +2255,7 @@ return arry_dr;
         $('#'+new_p).removeClass("hidden");
         $('#'+button_np).removeClass("hidden");
         $('#'+button_rp).addClass("hidden");
+        inactive_tarjets_retro('pn');
     }else if(value == 'pr'){
         type_p.value = 2;
         pn.checked = false;
@@ -2262,23 +2266,38 @@ return arry_dr;
 
         }
         if(action != 'edit'){
-            send_marcas();
+
             $('#csStd_1_1_retro').prop('disabled', false);
+            send_marcas();
         }
          //si tipo es igual a 1
-        if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 0){
+        if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 0 || parseInt(type_p_aux) === 3){
             action_submit_send.value = 'store';
              //se da de alta nuevas soluciones tipo proyecto nuevo
+             clean_form_retro(0);
+
         }
         //si tipo es igual a 2
         if(parseInt(type_p_aux) === 2){
             action_submit_send.value = 'update';
+            traer_unidad_hvac_edit(id_project,1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
+            ,'capacidad_total_1_1_retro','costo_elec_1_1_retro','csStd_retro_1_1_cant','costo_recu_1_1_retro','csStd_1_1_retro'
+            ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','');
+            //2_1
+            traer_unidad_hvac_edit(id_project,1,2,'cUnidad_2_1_retro','cheTipo_2_1_retro','cheDisenio_2_1_retro','tipo_control_2_1_retro','dr_2_1_retro','csMantenimiento_2_1_retro','lblCsTipo_2_1_retro'
+            ,'capacidad_total_2_1_retro','costo_elec_2_1_retro','csStd_cant_2_1_retro','costo_recu_2_1_retro','csStd_2_1_retro'
+            ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1','action_submit_2_1_retro');
+            //3_1
+            traer_unidad_hvac_edit(id_project,1,3,'cUnidad_3_1_retro','cheTipo_3_1_retro','cheDisenio_3_1_retro','tipo_control_3_1_retro','dr_3_1_retro','cheMantenimiento_3_1_retro','lblCsTipo_3_1_retro'
+            ,'capacidad_total_3_1_retro','costo_elec_3_1_retro','csStd_cant_3_1_retro','costo_recu_3_1_retro','csStd_3_1_retro'
+            ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro');
             //se actualiza proyecto retro
         }
         $('#'+retro_p).removeClass("hidden");
         $('#'+new_p).addClass("hidden");
         $('#'+button_rp).removeClass("hidden");
         $('#'+button_np).addClass("hidden");
+        inactive_tarjets_retro('pr');
     }else if(value == 'man'){
         type_p.value = 3;
         pn.checked = false;
@@ -2289,27 +2308,44 @@ return arry_dr;
 
         }
         if(action != 'edit'){
-            send_marcas();
+
             $('#csStd_1_1_retro').prop('disabled', false);
+            send_marcas();
         }
          //si tipo es igual a 1
-        if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 0){
+        if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 0 || parseInt(type_p_aux) === 2) {
             action_submit_send.value = 'store';
              //se da de alta nuevas soluciones tipo proyecto nuevo
+             clean_form_retro(0);
         }
         //si tipo es igual a 2
-        if(parseInt(type_p_aux) === 2){
+        if(parseInt(type_p_aux) === 3){
             action_submit_send.value = 'update';
-            //se actualiza proyecto retro
+
+            //1_1
+            traer_unidad_hvac_edit(id_project,1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
+            ,'capacidad_total_1_1_retro','costo_elec_1_1_retro','csStd_retro_1_1_cant','costo_recu_1_1_retro','csStd_1_1_retro'
+            ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','');
+            //2_1
+            traer_unidad_hvac_edit(id_project,1,2,'cUnidad_2_1_retro','cheTipo_2_1_retro','cheDisenio_2_1_retro','tipo_control_2_1_retro','dr_2_1_retro','csMantenimiento_2_1_retro','lblCsTipo_2_1_retro'
+            ,'capacidad_total_2_1_retro','costo_elec_2_1_retro','csStd_cant_2_1_retro','costo_recu_2_1_retro','csStd_2_1_retro'
+            ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1','action_submit_2_1_retro');
+            //3_1
+            traer_unidad_hvac_edit(id_project,1,3,'cUnidad_3_1_retro','cheTipo_3_1_retro','cheDisenio_3_1_retro','tipo_control_3_1_retro','dr_3_1_retro','cheMantenimiento_3_1_retro','lblCsTipo_3_1_retro'
+            ,'capacidad_total_3_1_retro','costo_elec_3_1_retro','csStd_cant_3_1_retro','costo_recu_3_1_retro','csStd_3_1_retro'
+            ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro');
+            //se act+ualiza proyecto retro
         }
         $('#'+retro_p).removeClass("hidden");
         $('#'+new_p).addClass("hidden");
         $('#'+button_rp).removeClass("hidden");
         $('#'+button_np).addClass("hidden");
+
+        inactive_tarjets_retro('man');
     }
   }
 
-  function check_form_proy_edit(type_p){
+  function check_form_proy_edit(type_p,id_project){
     calcular_p_n = $('#calcular_p_n_Edit');
     calcular_p_r = $('#calcular_p_r_Edit');
     if(type_p == 1 || type_p == 0){
@@ -2321,14 +2357,62 @@ return arry_dr;
 
     }
 
-    if(type_p == 2){
+    if(type_p == 2 ){
         $('#display_nuevo_retrofit_edit').removeClass("hidden");
         $('#display_nuevo_project_edit').addClass("hidden");
-        $('#type_p').val(2);
+        $('#type_p').val(type_p);
+        calcular_p_n.addClass("hidden");
+        calcular_p_r.removeClass("hidden");
+        traer_unidad_hvac_edit(id_project,1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
+        ,'capacidad_total_1_1_retro','costo_elec_1_1_retro','csStd_retro_1_1_cant','costo_recu_1_1_retro','csStd_1_1_retro'
+        ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','');
+
+        inactive_tarjets_retro('pr');
+
+    }else if(type_p == 3){
+        $('#display_nuevo_retrofit_edit').removeClass("hidden");
+        $('#display_nuevo_project_edit').addClass("hidden");
+        $('#type_p').val(type_p);
         calcular_p_n.addClass("hidden");
         calcular_p_r.removeClass("hidden");
 
+        inactive_tarjets_retro('man');
     }
+
+  }
+
+  function send_marcas_to(id,val){
+
+    var ima =  $('#idioma').val();
+        $.ajax({
+            type: 'get',
+            url: '/send_marcas',
+            success: function (response) {
+                //retro_1_1
+               /*  $('#marca_1_1_retro').empty();
+                $('#marca_1_1_retro').append($('<option>', {
+                    value: '',
+                    text: 'Seleccionar'
+                })); */
+                $("#"+id).empty();
+                var marca_1_1_retro = id;
+                check_val_text(marca_1_1_retro,ima);
+
+
+                response.map((marca, i) => {
+                    $('#'+id).append($('<option>', {
+                        value: marca.id,
+                        text: marca.marca,
+                    }));
+                });
+                $("#"+id).find('option[value="' + val + '"]').attr("selected", "selected");
+                //$("#"+id+" option[value='" + val + "']").attr("selected","selected");
+
+            },
+            error: function (responsetext) {
+
+            }
+        });
   }
 
   function send_marcas(){
@@ -5802,7 +5886,65 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 $("#"+yrs_vida).val(res.val_unidad.yrs_vida);
                 $("#"+const_an_rep).val('$'+dollarUSLocale.format(res.val_unidad.cost_an_re));
                 $("#"+maintenance_cost).val('$'+dollarUSLocale.format(res.val_unidad.costo_mantenimiento));
+
+                $("#"+cUnidad).empty();
+                $("#"+cUnidad).append($('<option>', {
+                    value: 0,
+                    text: 'Seleccionar'
+                }));
+                $("#"+cUnidad).append($('<option>', {
+                    value: 1,
+                    text: 'Paquetes (RTU)'
+                }));
+                $("#"+cUnidad).append($('<option>', {
+                    value: 2,
+                    text: 'Split DX'
+                }));
+                $("#"+cUnidad).append($('<option>', {
+                    value: 3,
+                    text: 'VRF No Ductados'
+                }));
+                $("#"+cUnidad).append($('<option>', {
+                    value: 4,
+                    text: 'VRF Ductados'
+                }));
+                $("#"+cUnidad).append($('<option>', {
+                    value: 5,
+                    text: 'PTAC/VTAC'
+                }));
+                $("#"+cUnidad).append($('<option>', {
+                    value: 6,
+                    text: 'WSHP'
+                }));
+                $("#"+cUnidad).append($('<option>', {
+                    value: 7,
+                    text: 'Minisplit Inverter'
+                }));
+                $("#"+cUnidad).append($('<option>', {
+                    value: 8,
+                    text: 'Chiller - Aire - Scroll Constante'
+                }));
+                $("#"+cUnidad).append($('<option>', {
+                    value: 9,
+                    text: 'Chiller - Aire - Scroll Variable'
+                }));
+                $("#"+cUnidad).append($('<option>', {
+                    value: 10,
+                    text: 'Chiller - Aire - Tornillo 4 Etapas'
+                }));
                 $("#"+cUnidad).find('option[value="' + res.val_unidad.unidad_hvac + '"]').attr("selected", "selected");
+                /*
+                <option value="1">Paquetes (RTU)</option>
+                                    <option value="2">Split DX</option>
+                                    <option value="3">VRF No Ductados</option>
+                                    <option value="4">VRF Ductados</option>
+                                    <option value="5">PTAC/VTAC</option>
+                                    <option value="6">WSHP</option>
+                                    <option value="7">Minisplit Inverter</option>
+                                    <option value="8">Chiller - Aire - Scroll Constante</option>
+                                    <option value="9">Chiller - Aire - Scroll Variable</option>
+                                    <option value="10">Chiller - Aire - Tornillo 4 Etapas</option>
+                */
                 unidadHvac(res.val_unidad.unidad_hvac,1,csTipo,csDisenio);
                 $("#"+csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').attr("selected", "selected");
                 change_diseño(res.val_unidad.tipo_equipo,1,csDisenio,tipo_control,dr,lblCsTipo);
@@ -5810,12 +5952,27 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 $("#"+tipo_control).find('option[value="' + res.val_unidad.tipo_control + '"]').attr("selected", "selected");
                 $("#"+dr).find('option[value="' + res.val_unidad.dr + '"]').attr("selected", "selected");
                 $("#"+Mantenimiento).find('option[value="' +   res.val_unidad.mantenimiento + '"]').attr("selected", "selected");
-                $("#"+marca).find('option[value="' + res.val_unidad.id_marca + '"]').attr("selected", "selected");
+
+                send_marcas_to(marca,res.val_unidad.id_marca);
                 send_name(csDisenio);
                 send_name_t_c(tipo_control);
                 send_name_dr(dr);
                 send_modelo_edit(res.val_unidad.id_marca,modelo,res.val_unidad.id_modelo);
                 check_chiller(res.val_unidad.unidad_hvac,csStd,res.val_unidad.type_p);
+                /* $('#'+csStd).empty();
+                $('#'+csStd).append($('<option>', {
+                    value: 'SEER',
+                    text: 'SEER'
+                }));
+                $('#'+csStd).append($('<option>', {
+                    value: 'SEER2',
+                    text: 'SEER2'
+                }));
+
+                $('#'+csStd).append($('<option>', {
+                    value: 'IEER',
+                    text: 'IEER'
+                })); */
                 $("#"+csStd).find('option[value="' + res.val_unidad.eficencia_ene + '"]').attr("selected", "selected");
                 $("#"+action_submit).val('update');
                 /* if (cont_sol !== '' || cont_sol !== null){
@@ -6693,9 +6850,11 @@ function send_marcas_to_datalist() {
     function check_chiller(equipo,id_select,type_p){
         //no chiller
         var ima =  $('#idioma').val();
+        var tipo =   $('#type_p').val();
+
         if(equipo <= 7){
 
-            /* $('#'+id_select).empty();
+            $('#'+id_select).empty();
             $('#'+id_select).append($('<option>', {
                 value: 'SEER',
                 text: 'SEER'
@@ -6709,7 +6868,7 @@ function send_marcas_to_datalist() {
             $('#'+id_select).append($('<option>', {
                 value: 'IEER',
                 text: 'IEER'
-            })); */
+            }));
             if(type_p == 1){
                 check_ant_equipo('csStd',id_select,equipo,'cUnidad_1_1');
 
@@ -6724,6 +6883,7 @@ function send_marcas_to_datalist() {
         }
         //chiller
         if(equipo > 7 && equipo <= 10 ){
+
             $('#'+id_select).empty();
             /* $('#'+id_select).append($('<option>', {
                 value: 'EER',
@@ -6734,9 +6894,21 @@ function send_marcas_to_datalist() {
                 value: 'IPVL',
                 text: 'IPVL'
             }));
-            $('#'+id_select).prop('disabled', false);
+            if(parseInt(tipo) == 3){
 
-            inactiva_next_efi(id_select,equipo);
+                if(id_select == 'csStd_1_1_retro'){
+
+                }
+            }else{
+                $('#'+id_select).prop('disabled', false);
+            }
+
+
+            if(parseInt(tipo) == 2){
+
+                inactiva_next_efi(id_select,equipo);
+            }
+
 
         }
     }
@@ -11190,6 +11362,277 @@ cUnidad_3_3 */
         }
      }
 
-     function check_type_set_mant(value){
-        return true;
+     function inactive_tarjets_retro(type_p){
+        switch (type_p) {
+
+            case 'man':
+                $('#cUnidad_2_1_retro').prop('disabled', true);
+                $('#cheTipo_2_1_retro').prop('disabled', true);
+                $('#marca_2_1_retro').prop('disabled', true);
+                $('#modelo_2_1_retro').prop('disabled', true);
+                $('#yrs_vida_2_1_retro').prop('readonly', true);
+                $('#csStd_2_1_retro').prop('disabled', true);
+                $('#csStd_cant_2_1_retro').prop('readonly', true);
+                $('#capacidad_total_2_1_retro').prop('readonly', true);
+                $('#cheDisenio_2_1_retro').prop('disabled', true);
+                $('#tipo_control_2_1_retro').prop('disabled', true);
+                $('#dr_2_1_retro').prop('disabled', true);
+                $('#csMantenimiento_2_1_retro').prop('disabled', true);
+               /*  $('#costo_recu_2_1_retro').prop('readonly', true);
+                $('#maintenance_cost_2_1_retro').prop('readonly', true); */
+                $('#cUnidad_3_1_retro').prop('disabled', true);
+                $('#cheTipo_3_1_retro').prop('disabled', true);
+                $('#marca_3_1_retro').prop('disabled', true);
+                $('#modelo_3_1_retro').prop('disabled', true);
+                $('#yrs_vida_3_1_retro').prop('readonly', true);
+                $('#csStd_3_1_retro').prop('disabled', true);
+                $('#csStd_cant_3_1_retro').prop('readonly', true);
+                $('#capacidad_total_3_1_retro').prop('readonly', true);
+                $('#cheDisenio_3_1_retro').prop('disabled', true);
+                $('#tipo_control_3_1_retro').prop('disabled', true);
+                $('#dr_3_1_retro').prop('disabled', true);
+                $('#cheMantenimiento_3_1_retro').prop('disabled', true);
+            break;
+
+            case 'pn':
+                $('#cUnidad_2_1_retro').prop('disabled', false);
+                $('#cheTipo_2_1_retro').prop('disabled', false);
+                $('#marca_2_1_retro').prop('disabled', false);
+                $('#modelo_2_1_retro').prop('disabled', false);
+                $('#yrs_vida_2_1_retro').prop('readonly', false);
+                $('#csStd_2_1_retro').prop('readonly', false);
+                $('#csStd_cant_2_1_retro').prop('readonly', false);
+                $('#capacidad_total_2_1_retro').prop('readonly', false);
+                $('#cheDisenio_2_1_retro').prop('disabled', false);
+                $('#tipo_control_2_1_retro').prop('disabled', false);
+                $('#dr_2_1_retro').prop('disabled', false);
+                $('#csMantenimiento_2_1_retro').prop('disabled', false);
+               /*  $('#costo_recu_2_1_retro').prop('readonly', true);
+                $('#maintenance_cost_2_1_retro').prop('readonly', true); */
+                $('#cUnidad_3_1_retro').prop('disabled', false);
+                $('#cheTipo_3_1_retro').prop('disabled', false);
+                $('#marca_3_1_retro').prop('disabled', false);
+                $('#modelo_3_1_retro').prop('disabled', false);
+                $('#yrs_vida_3_1_retro').prop('readonly', false);
+                $('#csStd_3_1_retro').prop('readonly', false);
+                $('#csStd_cant_3_1_retro').prop('readonly', false);
+                $('#capacidad_total_3_1_retro').prop('readonly', false);
+                $('#cheDisenio_3_1_retro').prop('disabled', false);
+                $('#tipo_control_3_1_retro').prop('disabled', false);
+                $('#dr_3_1_retro').prop('disabled', false);
+                $('#cheMantenimiento_3_1_retro').prop('disabled', false);
+            break;
+
+            case 'pr':
+                $('#cUnidad_2_1_retro').prop('disabled', false);
+                $('#cheTipo_2_1_retro').prop('disabled', false);
+                $('#marca_2_1_retro').prop('disabled', false);
+                $('#modelo_2_1_retro').prop('disabled', false);
+                $('#yrs_vida_2_1_retro').prop('readonly', false);
+                $('#csStd_2_1_retro').prop('readonly', false);
+                $('#csStd_cant_2_1_retro').prop('readonly', false);
+                $('#capacidad_total_2_1_retro').prop('readonly', false);
+                $('#cheDisenio_2_1_retro').prop('disabled', false);
+                $('#tipo_control_2_1_retro').prop('disabled', false);
+                $('#dr_2_1_retro').prop('disabled', false);
+                $('#csMantenimiento_2_1_retro').prop('disabled', false);
+               /*  $('#costo_recu_2_1_retro').prop('readonly', true);
+                $('#maintenance_cost_2_1_retro').prop('readonly', true); */
+                $('#cUnidad_3_1_retro').prop('disabled', false);
+                $('#cheTipo_3_1_retro').prop('disabled', false);
+                $('#marca_3_1_retro').prop('disabled', false);
+                $('#modelo_3_1_retro').prop('disabled', false);
+                $('#yrs_vida_3_1_retro').prop('readonly', false);
+                $('#csStd_3_1_retro').prop('readonly', false);
+                $('#csStd_cant_3_1_retro').prop('readonly', false);
+                $('#capacidad_total_3_1_retro').prop('readonly', false);
+                $('#cheDisenio_3_1_retro').prop('disabled', false);
+                $('#tipo_control_3_1_retro').prop('disabled', false);
+                $('#dr_3_1_retro').prop('disabled', false);
+                $('#cheMantenimiento_3_1_retro').prop('disabled', false);
+            break;
+
+            default:
+                break;
+        }
+     }
+
+     function check_type_set_mant(type_p,value2,valu3,val){
+
+        let type = $("#"+type_p).val();
+        switch (parseInt(type)) {
+            case 3:
+                $("#"+value2).find('option[value="'+val+'"]').attr("selected", "selected");
+                $("#"+value2).trigger( "change" );
+                $("#"+valu3).find('option[value="'+val+'"]').attr("selected", "selected");
+                $("#"+valu3).trigger( "change" );
+            break;
+            default:
+            break;
+        }
+     }
+
+     function check_type_set_mant_inp(type_p,value2,valu3,val){
+        let type = $("#"+type_p).val();
+        switch (parseInt(type)) {
+            case 3:
+                $("#"+value2).val(val);
+                $( "#"+value2).trigger("change");
+                $("#"+valu3).val(val);
+                $( "#"+valu3).trigger("change");
+            break;
+            default:
+            break;
+        }
+     }
+
+     function clean_form_retro(zero){
+
+        $("#cUnidad_1_1_retro").empty();
+                $("#cUnidad_1_1_retro").append($('<option>', {
+                    value: 0,
+                    text: 'Seleccionar'
+                }));
+                $("#cUnidad_1_1_retro").append($('<option>', {
+                    value: 1,
+                    text: 'Paquetes (RTU)'
+                }));
+                $("#cUnidad_1_1_retro").append($('<option>', {
+                    value: 2,
+                    text: 'Split DX'
+                }));
+                $("#cUnidad_1_1_retro").append($('<option>', {
+                    value: 3,
+                    text: 'VRF No Ductados'
+                }));
+                $("#cUnidad_1_1_retro").append($('<option>', {
+                    value: 4,
+                    text: 'VRF Ductados'
+                }));
+                $("#cUnidad_1_1_retro").append($('<option>', {
+                    value: 5,
+                    text: 'PTAC/VTAC'
+                }));
+                $("#cUnidad_1_1_retro").append($('<option>', {
+                    value: 6,
+                    text: 'WSHP'
+                }));
+                $("#cUnidad_1_1_retro").append($('<option>', {
+                    value: 7,
+                    text: 'Minisplit Inverter'
+                }));
+                $("#cUnidad_1_1_retro").append($('<option>', {
+                    value: 8,
+                    text: 'Chiller - Aire - Scroll Constante'
+                }));
+                $("#cUnidad_1_1_retro").append($('<option>', {
+                    value: 9,
+                    text: 'Chiller - Aire - Scroll Variable'
+                }));
+                $("#cUnidad_1_1_retro").append($('<option>', {
+                    value: 10,
+                    text: 'Chiller - Aire - Tornillo 4 Etapas'
+                }));
+            $("#cUnidad_1_1_retro").find('option[value="0"]').attr("selected", "selected");
+            $("#csTipo_1_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#csDisenio_1_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#tipo_control_1_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#dr_1_1_retro").find('option[value=""]').attr("selected", "selected");
+            $('#csMantenimiento_1_1_retro').empty();
+            $('#csMantenimiento_1_1_retro').append($('<option>', {
+                value: 0,
+                text: '-Seleccionar-'
+            }));
+            $('#csMantenimiento_1_1_retro').append($('<option>', {
+                value: 'ASHRAE 180',
+                text: 'ASHRAE 180'
+            }));
+            $('#csMantenimiento_1_1_retro').append($('<option>', {
+                value: 'Deficiente',
+                text: 'Deficiente'
+            }));
+            $('#csMantenimiento_1_1_retro').append($('<option>', {
+                value: 'Sin Mantenimiento',
+                text: 'Sin Mantenimiento'
+            }));
+            $("#capacidad_total_1_1_retro").val('');
+            $("#csStd_1_1_retro").val('SEER');
+            $("#csStd_retro_1_1_cant").val('');
+            $("#costo_recu_1_1_retro").val('');
+            $("#modelo_1_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#marca_1_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#costo_recu_1_1_retro").val('');
+            $("#yrs_vida_1_1_retro").val('');
+            $("#maintenance_cost_1_1_retro").val('');
+            $("#costo_elec_1_1_retro").val('');
+            $("#const_an_rep_1_1").val('');
+
+            $("#cUnidad_2_1_retro").find('option[value="0"]').attr("selected", "selected");
+            $("#cheTipo_2_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#cheDisenio_2_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#tipo_control_2_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#dr_2_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#csMantenimiento_2_1_retro").find('option[value="0"]').attr("selected", "selected");
+            $('#csMantenimiento_2_1_retro').empty();
+            $('#csMantenimiento_2_1_retro').append($('<option>', {
+                value: 0,
+                text: '-Seleccionar-'
+            }));
+            $('#csMantenimiento_2_1_retro').append($('<option>', {
+                value: 'ASHRAE 180',
+                text: 'ASHRAE 180'
+            }));
+            $('#csMantenimiento_2_1_retro').append($('<option>', {
+                value: 'Deficiente',
+                text: 'Deficiente'
+            }));
+            $('#csMantenimiento_2_1_retro').append($('<option>', {
+                value: 'Sin Mantenimiento',
+                text: 'Sin Mantenimiento'
+            }));
+            $("#capacidad_total_2_1_retro").val('');
+            $("#csStd_cant_2_1_retro").val('');
+            $("#cheValorS_2_1_retro").val('');
+            $("#modelo_2_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#marca_2_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#costo_recu_2_1_retro").val('');
+            $("#yrs_vida_2_1_retro").val('');
+            $("#maintenance_cost_2_1_retro").val('');
+            $("#costo_elec_2_1_retro").val('');
+
+            $("#cUnidad_3_1_retro").find('option[value="0"]').attr("selected", "selected");
+            $("#cheTipo_3_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#cheDisenio_3_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#tipo_control_3_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#dr_3_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#cheMantenimiento_3_1_retro").find('option[value="0"]').attr("selected", "selected");
+            $('#cheMantenimiento_3_1_retro').empty();
+            $('#cheMantenimiento_3_1_retro').append($('<option>', {
+                value: 0,
+                text: '-Seleccionar-'
+            }));
+            $('#cheMantenimiento_3_1_retro').append($('<option>', {
+                value: 'ASHRAE 180',
+                text: 'ASHRAE 180'
+            }));
+            $('#cheMantenimiento_3_1_retro').append($('<option>', {
+                value: 'Deficiente',
+                text: 'Deficiente'
+            }));
+            $('#cheMantenimiento_3_1_retro').append($('<option>', {
+                value: 'Sin Mantenimiento',
+                text: 'Sin Mantenimiento'
+            }));
+            $("#capacidad_total_3_1_retro").val('');
+            $("#cheStd_3_1_retro").val('');
+            $("#cheValorS_3_1_retro").val('');
+            $("#modelo_3_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#marca_3_1_retro").find('option[value=""]').attr("selected", "selected");
+            $("#costo_recu_3_1_retro").val('');
+            $("#yrs_vida_3_1_retro").val('');
+            $("#costo_elec_3_1_retro").val('');
+            $("#maintenance_cost_3_1_retro").val('');
+            $("#csStd_cant_3_1_retro").val('');
+
+
      }

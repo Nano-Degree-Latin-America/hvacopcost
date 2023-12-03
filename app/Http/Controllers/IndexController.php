@@ -163,4 +163,15 @@ class IndexController extends Controller
             return false;
         }
     }
+
+    public function check_p_type_m($id){
+        $type_check = DB::table('type_project_empresas')
+        ->where('id_empresa','=',$id)
+        ->first();
+        if($type_check){
+            return $type_check->mant;
+        }else{
+            return false;
+        }
+    }
 }
