@@ -286,6 +286,7 @@ class EmpresasController extends Controller
             $update_type= TypeProjectModel::find($check_type_pais->id);
             $type_p_aux_pn = $update_type->p_n;
             $type_p_aux_pr = $update_type->p_r;
+            $type_p_aux_mant = $update_type->mant;
             if($type_p == 'p_n'){
                 if($type_p_aux_pn == 1){
                     $update_type->p_n = 0;
@@ -305,7 +306,17 @@ class EmpresasController extends Controller
                     $update_type->p_r = 1;
                 }
             }
-            $update_type->mant = 0;
+
+            if($type_p == 'man'){
+                if($type_p_aux_mant == 1){
+                    $update_type->mant = 0;
+                }
+
+                if($type_p_aux_mant == 0){
+                    $update_type->mant = 1;
+                }
+            }
+
             $update_type->id_empresa = $id_empresa;
             $update_type->update();
         }else{
@@ -324,6 +335,16 @@ class EmpresasController extends Controller
                 $new_type->p_n = 0;
                 $new_type->p_r = 1;
                 $new_type->mant = 0;
+                $new_type->id_empresa = $id_empresa;
+                $new_type->save();
+                return $new_type;
+            }
+
+            if($type_p == 'man'){
+                $new_type= new TypeProjectModel;
+                $new_type->p_n = 0;
+                $new_type->p_r = 0;
+                $new_type->mant = 1;
                 $new_type->id_empresa = $id_empresa;
                 $new_type->save();
                 return $new_type;
@@ -355,6 +376,18 @@ class EmpresasController extends Controller
         ->first();
         if($type_check){
             return $type_check->p_r;
+        }else{
+            return false;
+        }
+    }
+
+
+    public function check_p_type_m($id){
+        $type_check = DB::table('type_project_empresas')
+        ->where('id_empresa','=',$id)
+        ->first();
+        if($type_check){
+            return $type_check->mant;
         }else{
             return false;
         }

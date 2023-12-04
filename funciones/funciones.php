@@ -432,7 +432,13 @@ if($eficiencia_ene == 'IPVL'){
     //(1-(Z x Años de vida))
     $z_x_yrs_l_mul_mns_1 = -1 * $z_x_yrs_l;
     //IPLV / (1-(Z x Años de vida)
-    $iplv_div = $eficiencia_cant / $z_x_yrs_l_mul_mns_1;
+    if($z_x_yrs_l_mul_mns_1 < 0 || $z_x_yrs_l_mul_mns_1 == -0){
+        $iplv_div = $eficiencia_cant / 1;
+    }
+
+    if($z_x_yrs_l_mul_mns_1 > 0){
+        $iplv_div = $eficiencia_cant / $z_x_yrs_l_mul_mns_1;
+    }
     //(TR x ( IPLV / (1-(Z x Años de vida)) x Cooling Hours)
     $tr_mul_iplv_div_mul_cooling_hrs = $tr * $iplv_div * $cooling_hrs;
 

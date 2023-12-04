@@ -7,7 +7,7 @@
       </div>
       <!-- Contenedor del modal -->
       <div class="border-2 border-blue-600 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-        <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div class="bg-white px-2 pt-5 pb-4 sm:p-6 sm:pb-4">
           <div class="flex w-full" >
             <div class="mt-3 w-full">
 
@@ -15,7 +15,7 @@
                 <?php  $name_empresa=$pais_empresa->name_empresa($empresa->id) ?>
                 Paises Empresa: {{$name_empresa}}</h3>
               <div class="mt-2 w-full flex gap-x-3">
-                <div class="grid w-1/2">
+                <div class="grid w-1/3">
                     <div class="w-full flex gap-x-2">
                         <?php  $check_p_typr_pn=$pais_empresa->check_p_type_pn($empresa->id) ?>
                         @if ($check_p_typr_pn == 1)
@@ -27,7 +27,7 @@
                         @endif
                     </div>
                 </div>
-                <div class="grid w-1/2">
+                <div class="grid w-1/3">
                     <div class="w-full flex gap-x-2">
                         <?php  $check_p_type_pr=$pais_empresa->check_p_type_pr($empresa->id) ?>
                         @if ($check_p_type_pr == 1)
@@ -39,6 +39,21 @@
                         @endif
                     </div>
                 </div>
+
+                <div class="grid w-1/3">
+                    <div class="w-full flex gap-x-2">
+                        <?php  $check_types_m=$pais_empresa->check_p_type_m($empresa->id); ?>
+
+                        @if ($check_types_m == 1)
+                        <input checked onclick="change_type_project({{$empresa->id}},'man')" type="checkbox"><label class="font-bold font-roboto">Mantenimiento</label>
+                        @endif
+
+                        @if ($check_types_m == 0)
+                        <input  onclick="change_type_project({{$empresa->id}},'man')" type="checkbox"><label class="font-bold font-roboto">Mantenimiento</label>
+                        @endif
+                    </div>
+                </div>
+
               </div>
             </div>
           </div>

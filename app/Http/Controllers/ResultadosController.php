@@ -1594,7 +1594,8 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                     $unidad_hvac_aux = $solution_enf_2_1_retro->unidad_hvac;
                    if ($solution_enf_2_1_retro->unid_med == 'TR') {
                      $tr = $solution_enf_2_1_retro->capacidad_tot;
-                    $res_2_1_retro = ResultadosController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
+/*                     dd($tr.'_'.$eficiencia_ene.'_'.$cooling_hrs.'_'.$eficiencia_cant.'_'.$factor_s.'_'.$factor_d.'_'.$factor_t.'_'.$factor_c.'_'.$t_e.'_'.$factor_m.'_'.$yrs_l.'_'.$unidad_hvac_aux);
+ */                    $res_2_1_retro = ResultadosController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux);
                     $solution_enf_2_1_retro->cost_op_an =  floatval(number_format($res_2_1_retro,2, '.', ''));
                 }else if($solution_enf_2_1_retro->unid_med == 'KW'){
                     $kw = $solution_enf_2_1_retro->capacidad_tot;
@@ -7752,7 +7753,14 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
         //(1-(Z x Años de vida))
         $z_x_yrs_l_mul_mns_1 = -1 * $z_x_yrs_l;
         //IPLV / (1-(Z x Años de vida)
-        $iplv_div = $eficiencia_cant / $z_x_yrs_l_mul_mns_1;
+        if($z_x_yrs_l_mul_mns_1 < 0 || $z_x_yrs_l_mul_mns_1 == -0){
+            $iplv_div = $eficiencia_cant / 1;
+        }
+
+        if($z_x_yrs_l_mul_mns_1 > 0){
+            $iplv_div = $eficiencia_cant / $z_x_yrs_l_mul_mns_1;
+        }
+
         //(TR x ( IPLV / (1-(Z x Años de vida)) x Cooling Hours)
         $tr_mul_iplv_div_mul_cooling_hrs = $tr * $iplv_div * $cooling_hrs;
 
