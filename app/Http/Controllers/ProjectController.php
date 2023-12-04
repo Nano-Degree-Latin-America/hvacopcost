@@ -2810,9 +2810,72 @@ class ProjectController extends Controller
         $new_result->update();
          }
 
-         //2_1
+        //2_1 retro_mant
+            $res_sum = 0;
+            $cants = DB::table('solutions_project')
+            ->where('id_project','=',$id)
+            ->get();
 
-            if($update_project->update()){
+            foreach($cants as $cant){
+                $res_sum = $res_sum + $cant->cost_op_an;
+            }
+            $id_result = DB::table('results_project')
+            ->where('id_project','=',$id)
+            ->where('num_enf','=',2)
+            ->first();
+
+
+            if($action_submit_send == 'store'){
+                $new_result = new ResultsProjectModel;
+            }else if($action_submit_send == 'update'){
+                $new_result = ResultsProjectModel::find($id_result->id);
+            }
+
+           $new_result->num_enf = 2;
+           $new_result->cost_op_an = $res_sum;
+           $new_result->id_project = $id;
+           $new_result->id_empresa=Auth::user()->id_empresa;
+           $new_result->id_user=Auth::user()->id;
+           if($action_submit_send == 'store'){
+            $new_result->save();
+                }else if($action_submit_send == 'update'){
+            $new_result->update();
+            }
+         //3_1
+         $res_sum = 0;
+         $cants = DB::table('solutions_project')
+         ->where('id_project','=',$id)
+         ->get();
+
+         foreach($cants as $cant){
+             $res_sum = $res_sum + $cant->cost_op_an;
+         }
+
+         $id_result = DB::table('results_project')
+         ->where('id_project','=',$id)
+         ->where('num_enf','=',3)
+         ->first();
+
+
+         if($action_submit_send == 'store'){
+             $new_result = new ResultsProjectModel;
+         }else if($action_submit_send == 'update'){
+             $new_result = ResultsProjectModel::find($id_result->id);
+         }
+
+        $new_result->num_enf = 3;
+        $new_result->cost_op_an = $res_sum;
+        $new_result->id_project = $id;
+        $new_result->id_empresa=Auth::user()->id_empresa;
+        $new_result->id_user=Auth::user()->id;
+
+        if($action_submit_send == 'store'){
+             $new_result->save();
+         }else if($action_submit_send == 'update'){
+              $new_result->update();
+         }
+
+         if($update_project->update()){
                 $id_project = $id;
 
                 return Redirect::to('/resultados_retrofit/' . $id_project);
@@ -3177,6 +3240,17 @@ class ProjectController extends Controller
         ->first();
         if($type_check){
             return $type_check->p_r;
+        }else{
+            return false;
+        }
+    }
+
+    public function check_p_type_m($id){
+        $type_check = DB::table('type_project_empresas')
+        ->where('id_empresa','=',$id)
+        ->first();
+        if($type_check){
+            return $type_check->mant;
         }else{
             return false;
         }

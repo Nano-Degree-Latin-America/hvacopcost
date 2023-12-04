@@ -195,7 +195,8 @@ span{
                         <?php  $type_p=$type_project->type_project($project->id) ?>
                         <?php  $check_types_pn=$check_types_p->check_p_type_pn(Auth::user()->id_empresa); ?>
                         <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
-                        @if ( $check_types_pn == 1 &&  $check_types_pr == 1)
+                        <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
+                        @if ( $check_types_pn == 1 &&  $check_types_pr == 1  &&  $check_types_m == 1)
 
                         <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
@@ -231,6 +232,10 @@ span{
                                 @if ($project->type_p == 1 ||  $project->type_p == 0)
                                 {{ __('index.proyecto nuevo') }}
                                 @endif
+
+                                @if ($project->type_p == 3)
+                                {{ __('index.type_man') }}
+                                @endif
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                               @if ($project->status == 1)
@@ -246,7 +251,7 @@ span{
                                 <button title="Ver Resultados" class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="far fa-eye"></i></a></button>
                                 @endif
 
-                                @if ($type_p->type_p == 2 )
+                                @if ($type_p->type_p == 2 || $type_p->type_p == 3)
                                 <button title="Ver Resultados" class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="resultados_retrofit/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="far fa-eye"></i></a></button>
                                 @endif
 
@@ -296,6 +301,10 @@ span{
                                 @if ($project->type_p == 1 ||  $project->type_p == 0)
                                 {{ __('index.proyecto nuevo') }}
                                 @endif
+
+                                @if ($project->type_p == 3)
+                                {{ __('index.type_man') }}
+                                @endif
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                               @if ($project->status == 1)
@@ -311,9 +320,10 @@ span{
                                 <button title="Ver Resultados" class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="far fa-eye"></i></a></button>
                                 @endif
 
-                                @if ($type_p->type_p == 2 )
+                                @if ($type_p->type_p == 2 || $type_p->type_p == 3)
                                 <button title="Ver Resultados" class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="resultados_retrofit/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="far fa-eye"></i></a></button>
                                 @endif
+
 
                                 <button title="Editar" class="p-1 bg-blue-400 rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="edit_project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-pen-to-square"></i></a></button>
                                 <button title="Ver PDF" class="p-1 bg-red-600  rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="generatePDF/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i></a></button>
@@ -360,6 +370,11 @@ span{
                                 @if ($project->type_p == 1 ||  $project->type_p == 0)
                                 {{ __('index.proyecto nuevo') }}
                                 @endif
+
+                                @if ($project->type_p == 3)
+                                {{ __('index.type_man') }}
+                                @endif
+
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                               @if ($project->status == 1)
@@ -375,7 +390,7 @@ span{
                                 <button title="Ver Resultados" class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="far fa-eye"></i></a></button>
                                 @endif
 
-                                @if ($type_p->type_p == 2 )
+                                @if ($type_p->type_p == 2 || $type_p->type_p == 3)
                                 <button title="Ver Resultados" class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="resultados_retrofit/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="far fa-eye"></i></a></button>
                                 @endif
 

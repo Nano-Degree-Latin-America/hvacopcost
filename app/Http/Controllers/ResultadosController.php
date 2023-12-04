@@ -2987,7 +2987,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
             $view =  \View::make('pdf_resultados',compact('id_project'))->render();
         }
 
-        if($check_type->type_p == 2){
+        if($check_type->type_p == 2 || $check_type->type_p == 3){
             $view =  \View::make('pdf_resulatos_retro',compact('id_project'))->render();
         }
         //->setPaper($customPaper, 'landscape');
@@ -4284,7 +4284,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
             }
 
             ///recuperacion opex
-                if($type_p == 2){
+                if($type_p == 2 || $type_p == 3){
 
                     $suma_rec_opex = DB::table('solutions_project')
                     ->where('solutions_project.id_project','=',$id_projecto)
@@ -4374,7 +4374,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
                $total_opex_a = $suma_enf_a_aux + $res_opex_a;
 
-               if($type_p == 2){
+               if($type_p == 2 || $type_p == 3){
 
                 $suma_rec_opex = DB::table('solutions_project')
                 ->where('solutions_project.id_project','=',$id_projecto)
@@ -4463,7 +4463,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
            $total_opex_b = $suma_enf_b_aux + $res_opex_b;
 
-           if($type_p == 2){
+           if($type_p == 2 || $type_p == 3){
 
             $suma_rec_opex = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -6774,7 +6774,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
 
 
-            if($solution->type_p == 2){ //retrofit
+            if($solution->type_p == 2 || $solution->type_p == 3){ //retrofit
                 if($solution->mantenimiento == 'ASHRAE 180'){
                     $z = 0.015;
                 }
