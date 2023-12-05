@@ -585,13 +585,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
                 //mant
                 switch ($mant_conf_1_1) {
                   case 'ASHRAE 180':
-                      $val_conf_mant_1_1 = 2.5;
+                      $val_conf_mant_1_1 = 5;
                     break;
                   case 'Deficiente':
                       $val_conf_mant_1_1 = 3.5;
                     break;
                     case 'Sin Mantenimiento':
-                      $val_conf_mant_1_1 = 5;
+                      $val_conf_mant_1_1 = 2.5;
                     break;
 
                   default:
@@ -648,13 +648,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
                   //mant
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -713,13 +713,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
                   //mant
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -795,13 +795,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
               //mant
               switch ($mant_conf_1_1) {
                 case 'ASHRAE 180':
-                    $val_conf_mant_1_1 = 2.5;
+                    $val_conf_mant_1_1 = 5;
                   break;
                 case 'Deficiente':
                     $val_conf_mant_1_1 = 3.5;
                   break;
                   case 'Sin Mantenimiento':
-                    $val_conf_mant_1_1 = 5;
+                    $val_conf_mant_1_1 = 2.5;
                   break;
 
                 default:
@@ -861,13 +861,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
               //mant
               switch ($mant_conf_1_1) {
                 case 'ASHRAE 180':
-                    $val_conf_mant_1_1 = 2.5;
+                    $val_conf_mant_1_1 = 5;
                   break;
                 case 'Deficiente':
                     $val_conf_mant_1_1 = 3.5;
                   break;
                   case 'Sin Mantenimiento':
-                    $val_conf_mant_1_1 = 5;
+                    $val_conf_mant_1_1 = 2.5;
                   break;
 
                 default:
@@ -923,13 +923,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
               //mant
               switch ($mant_conf_1_1) {
                 case 'ASHRAE 180':
-                    $val_conf_mant_1_1 = 2.5;
+                    $val_conf_mant_1_1 = 5;
                   break;
                 case 'Deficiente':
                     $val_conf_mant_1_1 = 3.5;
                   break;
                   case 'Sin Mantenimiento':
-                    $val_conf_mant_1_1 = 5;
+                    $val_conf_mant_1_1 = 2.5;
                   break;
 
                 default:
@@ -1007,13 +1007,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
           //mant
           switch ($mant_conf_1_1) {
             case 'ASHRAE 180':
-                $val_conf_mant_1_1 = 2.5;
+                $val_conf_mant_1_1 = 5;
               break;
             case 'Deficiente':
                 $val_conf_mant_1_1 = 3.5;
               break;
               case 'Sin Mantenimiento':
-                $val_conf_mant_1_1 = 5;
+                $val_conf_mant_1_1 = 2.5;
               break;
 
             default:
@@ -1071,13 +1071,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
             //mant
             switch ($mant_conf_1_1) {
               case 'ASHRAE 180':
-                  $val_conf_mant_1_1 = 2.5;
+                  $val_conf_mant_1_1 = 5;
                 break;
               case 'Deficiente':
                   $val_conf_mant_1_1 = 3.5;
                 break;
                 case 'Sin Mantenimiento':
-                  $val_conf_mant_1_1 = 5;
+                  $val_conf_mant_1_1 = 2.5;
                 break;
 
               default:
@@ -1135,13 +1135,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
                   //mant
                   switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -1193,13 +1193,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
                    //mant
                    switch ($mant_conf_1_1) {
                     case 'ASHRAE 180':
-                        $val_conf_mant_1_1 = 2.5;
+                        $val_conf_mant_1_1 = 5;
                       break;
                     case 'Deficiente':
                         $val_conf_mant_1_1 = 3.5;
                       break;
                       case 'Sin Mantenimiento':
-                        $val_conf_mant_1_1 = 5;
+                        $val_conf_mant_1_1 = 2.5;
                       break;
 
                     default:
@@ -1257,13 +1257,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
               //mant
               switch ($mant_conf_1_1) {
                 case 'ASHRAE 180':
-                    $val_conf_mant_1_1 = 2.5;
+                    $val_conf_mant_1_1 = 5;
                   break;
                 case 'Deficiente':
                     $val_conf_mant_1_1 = 3.5;
                   break;
                   case 'Sin Mantenimiento':
-                    $val_conf_mant_1_1 = 5;
+                    $val_conf_mant_1_1 = 2.5;
                   break;
 
                 default:
@@ -1313,13 +1313,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
                   //mant
               switch ($mant_conf_1_1) {
                 case 'ASHRAE 180':
-                    $val_conf_mant_1_1 = 2.5;
+                    $val_conf_mant_1_1 = 5;
                   break;
                 case 'Deficiente':
                     $val_conf_mant_1_1 = 3.5;
                   break;
                   case 'Sin Mantenimiento':
-                    $val_conf_mant_1_1 = 5;
+                    $val_conf_mant_1_1 = 2.5;
                   break;
 
                 default:
@@ -1366,13 +1366,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
                //mant
                switch ($mant_conf_1_1) {
                 case 'ASHRAE 180':
-                    $val_conf_mant_1_1 = 2.5;
+                    $val_conf_mant_1_1 = 5;
                   break;
                 case 'Deficiente':
                     $val_conf_mant_1_1 = 3.5;
                   break;
                   case 'Sin Mantenimiento':
-                    $val_conf_mant_1_1 = 5;
+                    $val_conf_mant_1_1 = 2.5;
                   break;
 
                 default:
@@ -1418,13 +1418,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
                 //mant
                 switch ($mant_conf_1_1) {
                   case 'ASHRAE 180':
-                      $val_conf_mant_1_1 = 2.5;
+                      $val_conf_mant_1_1 = 5;
                     break;
                   case 'Deficiente':
                       $val_conf_mant_1_1 = 3.5;
                     break;
                     case 'Sin Mantenimiento':
-                      $val_conf_mant_1_1 = 5;
+                      $val_conf_mant_1_1 = 2.5;
                     break;
 
                   default:
@@ -1475,13 +1475,13 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
                 //mant
                 switch ($mant_conf_1_1) {
                   case 'ASHRAE 180':
-                      $val_conf_mant_1_1 = 2.5;
+                      $val_conf_mant_1_1 = 5;
                     break;
                   case 'Deficiente':
                       $val_conf_mant_1_1 = 3.5;
                     break;
                     case 'Sin Mantenimiento':
-                      $val_conf_mant_1_1 = 5;
+                      $val_conf_mant_1_1 = 2.5;
                     break;
 
                   default:

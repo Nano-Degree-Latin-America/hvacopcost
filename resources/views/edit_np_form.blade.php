@@ -23,7 +23,7 @@
         <input type="text" name="ciudad" id="ciudad" class="hidden">
        <div class="flex w-full ">
         <div class="w-full  mt-2 mx-2 bg-gray-200 rounded-md shadow-md">
-          <div class="w-full grid gap-y-2 my-2 ">
+          <div class="w-full grid gap-y-1 my-2 ">
             <div class="flex w-full  gap-x-1">
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
@@ -249,7 +249,7 @@
        </div>
         <div class="flex">
         <div class="rounded-xl mt-2 bg-gray-200 rounded-md shadow-md mx-2">
-          <div class="grid gap-y-2 my-2">
+          <div class="grid gap-y-1 my-2">
             <div class="flex w-full">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <input type="text" value="" class="hidden" id="action_submit_1_2" name="action_submit_1_2">
@@ -783,7 +783,7 @@
 
             <div class="flex">
                 <div class="w-full mx-2 mt-2 bg-gray-200 rounded-md shadow-md">
-                  <div class="grid gap-y-2 my-2">
+                  <div class="grid gap-y-1 my-2">
                     <div class="flex w-full gap-x-1">
                         <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2">
                             <input type="text" value="" class="hidden" id="action_submit_2_1" name="action_submit_2_1">
@@ -1001,7 +1001,7 @@
         </div>
         <div class="flex">
             <div class=" mt-2  mx-2 bg-gray-200 rounded-md shadow-md">
-              <div class="grid gap-y-2 my-2">
+              <div class="grid gap-y-1 my-2">
                 <div class="flex w-full gap-x-1">
                     <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2">
                         <input type="text" value="" class="hidden" id="action_submit_2_2" name="action_submit_2_2">
@@ -1546,7 +1546,7 @@
 
             <div class="flex">
                 <div class="w-full mx-2 mt-2 bg-gray-200 rounded-md shadow-md">
-                  <div class="grid gap-y-2 my-2">
+                  <div class="grid gap-y-1 my-2">
                     <div class="flex w-full">
                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                             <input type="text" value="" class="hidden" id="action_submit_3_1" name="action_submit_3_1">
@@ -1771,7 +1771,7 @@
         </div>
         <div class="flex w-full">
             <div class="mx-2 bg-gray-200 rounded-md shadow-md w-full  mt-2">
-              <div class="grid gap-y-2 my-2">
+              <div class="grid gap-y-1 my-2">
                 <div class="flex w-full">
                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                         <input type="text" value="" class="hidden" id="action_submit_3_2" name="action_submit_3_2">

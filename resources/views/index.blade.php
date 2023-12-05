@@ -1390,7 +1390,7 @@ input[type=number]::-webkit-outer-spin-button {
 /* xl	1280px */
 @media (min-width: 1280px) {
     .labels{
-        font-size:14px;
+        font-size:11px;
     }
     .ancho{
         width:100%;
@@ -1426,7 +1426,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media (min-width: 1540px) {
     .labels{
-        font-size:14px;
+        font-size:11px;
     }
     .ancho{
         width:100%;
@@ -1461,7 +1461,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media (min-width: 1640px) {
     .labels{
-        font-size:14px;
+        font-size:11px;
     }
     .ancho{
         width:100%;
