@@ -2281,14 +2281,14 @@ cursor: pointer;
                                         </div>
                                     </div>
 
-                                    <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
+                                    {{-- <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-5">
                                             <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">ROI {{ __('results.entre_sol') }}</label>
                                         </div>
                                         <a id="ir_modal_position_marr" name="ir_modal_position_marr" href=""></a>
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             <div class="grid justify-center w-1/4">
-                                               {{-- espacio --}}
+
                                             </div>
 
                                             <div class="grid justify-center w-1/5">
@@ -2316,7 +2316,7 @@ cursor: pointer;
 
                                             </div>
                                         </div>
-                                        {{--  --}}
+
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             <div class="grid justify-items-center w-1/4">
                                                 <b class="text-[24px] text-blue-600 font-roboto text-3xl mt-3">{{ __('index.solucion') }} A</b>
@@ -2452,7 +2452,7 @@ cursor: pointer;
                                                 @endif
                                             </div>
                                         </div>
-                                        {{--  --}}
+
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
                                             <div class="grid justify-items-center w-1/4">
                                                 <b class="text-[24px] text-blue-600 font-roboto text-3xl mt-3">{{ __('index.solucion') }} B</b>
@@ -2590,7 +2590,7 @@ cursor: pointer;
                                             @endif
                                         </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                         @include('modal_marr_retro')
 
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl py-10">
