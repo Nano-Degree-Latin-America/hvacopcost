@@ -6285,7 +6285,7 @@ function confort_b(val_conf_b){
      javascript:history.forward(1)
 function app() {
 			return {
-				step: 2,
+				step: 1,
 				passwordStrengthText: '',
 				togglePassword: false,
 
