@@ -2579,6 +2579,8 @@
                     @endif
                 </div>
             </div>
+            {{--             <img style="width:250px; height:170px;" src="https://quickchart.io/chart?c={type:'doughnut',data:{datasets:[{data:['{{$result_area_1}}','{{$resto}}'],borderWidth: 10,backgroundColor: ['{{$color}}','gray'],}]},options:{circumference:3.14,rotation: 3.14,cutoutPercentage: 70,plugins:{datalabels: {color: 'white',anchor: 'end',align: 'end',},anchor: 'end',align: 'end',doughnutlabel:{labels:[{text:'{{number_format($result_area_1,2)}}',font:{size:40}},{text:'Kwh/m²'}]}}}}">
+ --}}
         </div>
     </div>
 

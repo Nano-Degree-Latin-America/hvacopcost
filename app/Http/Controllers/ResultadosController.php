@@ -9408,5 +9408,62 @@ if($eficiencia_ene == 'EER'){
 
     }
 
+    public function send_color($result){
+
+        if($result > 500 || $result >  4000){
+            $limite = 5000;
+        }
+
+        if($result > 4000 && $result < 5000  || $result > 4000 && $result < 8000){
+            $limite = 10000;
+        }
+
+        $limite_5 = $limite / 5;
+
+        if($limite_5 > $result){
+            $color = 'green';
+            return $color;
+        }
+        $limite_5 = $limite_5 + $limite_5;
+        if($limite_5 > $result){
+            $color = 'orange';
+            return $color;
+        }
+
+        $limite_5 = $limite_5 + $limite_5 + $limite_5;
+        if($limite_5 > $result){
+            $color = 'yellow';
+            return $color;
+        }
+
+        $limite_5 = $limite_5 + $limite_5 + $limite_5  + $limite_5;
+        if($limite_5 > $result){
+            $color = 'orange';
+            return $color;
+        }
+
+        $limite_5 = $limite_5 + $limite_5 + $limite_5  + $limite_5 + $limite_5;
+        if($limite_5 > $result){
+            $color = 'red';
+            return $color;
+        }
+        /*
+
+        $limite_5_2 = $limite_5 + $limite_5;
+
+        if($limite_5_2 < $result){
+            $color = 'orange';
+            return $color;
+        }
+
+        $limite_5_3 = $limite_5 + $limite_5 + $limite_5;
+
+        if($limite_5_3 < $result){
+            $color = 'orange';
+            return $color;
+        } */
+
+    }
+
 
 }

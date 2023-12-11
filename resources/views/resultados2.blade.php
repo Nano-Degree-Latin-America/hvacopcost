@@ -44,6 +44,7 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
     <link rel=»canonical» href=»https://hvacopcostla.sarsoftware.com/»/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" integrity="sha256-+8RZJua0aEWg+QVVKg4LEzEEm/8RFez5Tb4JBNiV5xA=" crossorigin="anonymous"></script>
+    <script src="https://code.jscharting.com/latest/jscharting.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
    {{-- <script
   src="https://code.jquery.com/jquery-3.6.1.js"
@@ -3347,6 +3348,7 @@ cursor: pointer;
 
                                         </div>
                                     </div>
+
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <?php  $unidad_area=$results->unidad_area($id_project,1,$sumaopex_1,$tar_ele->costo_elec) ?>
                                         <div class="flex w-full justify-center">
@@ -3363,7 +3365,7 @@ cursor: pointer;
 
                                             <div class="flex justify-center w-1/3 ">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    @if (strlen($result_area_1) >= 19)
+                                                    {{-- @if (strlen($result_area_1) >= 19)
                                                 <div class="flex w-full justify-center">
                                                     <div class="w-full flex justify-center">
                                                         @if ($result_area_1 >= 0)
@@ -3376,9 +3378,9 @@ cursor: pointer;
                                                          @endif
                                                     </div>
                                                 </div>
-                                                     @endif
+                                                     @endif --}}
 
-                                                     @if (strlen($result_area_1) < 19) {{-- para tamaño de cadena disminuir tamaño --}}
+                                                    {{--  @if (strlen($result_area_1) < 19)
                                                     <div class="w-full flex justify-center">
                                                         @if ($result_area_1 >= 0)
                                                         <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
@@ -3389,13 +3391,17 @@ cursor: pointer;
                                                          <b style="color:#ea0000;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
                                                          @endif
                                                     </div>
-                                                     @endif
+                                                     @endif --}}
+                                                     <div class="w-full flex justify-center">
+                                                        <div id="chart_cons_ene_hvac_ar_base" class="w-full" style="height: 280px;"></div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             @else
+                                            <?php  $result_area_1=0?>
                                             <div class="flex justify-center w-1/3 mx-20 px-5">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">0</b>
+                                                    <div id="chart_cons_ene_hvac_ar_base" class="w-full"  style="height: 280px;"></div>
                                                 </div>
                                             </div>
                                             @endif
@@ -3404,36 +3410,16 @@ cursor: pointer;
                                             <?php  $result_area_2=$results->result_area($id_project,$sumaopex_2) ?>
                                             <div class="flex justify-center w-1/3 ">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    @if (strlen($result_area_2) >= 19)
                                                     <div class="w-full flex justify-center">
-                                                        @if ($result_area_2 >= 0)
-                                                        <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_2, 2)}}</b>
-
-                                                        @endif
-
-                                                         @if ($result_area_2 < 0)
-                                                         <b style="color:#ea0000;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_2, 2)}}</b>
-                                                         @endif
+                                                      <div id="chart_cons_ene_hvac_ar_a" class="w-full" style="height: 280px;"></div>
                                                     </div>
-                                                    @endif
-
-                                                    @if (strlen($result_area_2) < 19)
-                                                    <div class="w-full flex justify-center">
-                                                        @if ($result_area_2 >= 0)
-                                                        <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_2, 2)}}</b>
-                                                        @endif
-
-                                                         @if ($result_area_2 < 0)
-                                                         <b style="color:#ea0000;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_2, 2)}}</b>
-                                                         @endif
-                                                    </div>
-                                                    @endif
                                                 </div>
                                             </div>
                                             @else
+                                             <?php  $result_area_2=0; ?>
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">0</b>
+                                                    <div id="chart_cons_ene_hvac_ar_a" class="w-full" style="height: 280px;"></div>
                                                 </div>
                                             </div>
                                             @endif
@@ -3442,37 +3428,16 @@ cursor: pointer;
                                             <?php  $result_area_3=$results->result_area($id_project,$sumaopex_3) ?>
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    @if (strlen($result_area_3) >= 19)
-                                                    <div class="w-full flex justify-center">
-                                                        @if ($result_area_3 >= 0)
-                                                        <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_3, 2)}}</b>
-                                                        @endif
-
-                                                         @if ($result_area_3 < 0)
-                                                         <b style="color:#ea0000;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_3, 2)}}</b>
-                                                         @endif
-                                                    </div>
-                                                     @endif
-
-                                                     @if (strlen($result_area_3) < 19)
                                                      <div class="w-full flex justify-center">
-                                                        @if ($result_area_3 >= 0)
-                                                        <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_3, 2)}}</b>
-                                                        @endif
-
-                                                         @if ($result_area_3 < 0)
-                                                         <b style="color:#ea0000;" class="text-[24px]  font-roboto text-6xl">{{number_format($result_area_3, 2)}}</b>
-                                                         @endif
+                                                        <div id="chart_cons_ene_hvac_ar_b" class="w-full" style="height: 280px;"></div>
                                                     </div>
-                                                     @endif
                                                 </div>
                                             </div>
                                             @else
+                                              <?php  $result_area_3=0?>
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                <b style="color:#33cc33;" class="text-[24px]  font-roboto text-6xl">0
-
-                                                </b>
+                                                 <div id="chart_cons_ene_hvac_ar_b" class="w-full" style="height: 280px;"></div>
                                                 </div>
                                             </div>
                                             @endif
@@ -5914,7 +5879,7 @@ cursor: pointer;
                         <?php  $prod_lab=0; ?>
                         @endif
                         <div class="w-1/3 grid justify-items-center">
-                            <div id="chart_prod_base"></div>
+                            <div id="chart_prod_base"  class="w-full"></div>
                         </div>
                         @if ($result1 !== null)
                         <?php  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) ?>
@@ -5923,7 +5888,7 @@ cursor: pointer;
                         <?php  $prod_lab_a=0; ?>
                         @endif
                         <div class="w-1/3 grid justify-items-center">
-                            <div id="chart_prod_a"></div>
+                            <div id="chart_prod_a"  class="w-full"></div>
                         </div>
                         @if ($result1 !== null)
                         <?php  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) ?>
@@ -5932,7 +5897,7 @@ cursor: pointer;
                         <?php  $prod_lab_b=0; ?>
                         @endif
                         <div class="w-1/3 grid justify-items-center">
-                            <div id="chart_prod_b"></div>
+                            <div id="chart_prod_b"  class="w-full"></div>
                         </div>
                     </div>
 
@@ -6069,7 +6034,9 @@ cursor: pointer;
     var man_lang = document.getElementById('ima_man').value;
     var ima_sol = document.getElementById('ima_sol').value;
 window.onload = function() {
-
+    con_ene_hvac_ar_Base();
+    con_ene_hvac_ar_a();
+    con_ene_hvac_ar_b();
     cap_op_3('{{$id_project}}','{{$tar_ele->unidad}}');
     cap_op_5('{{$id_project}}','{{$tar_ele->unidad}}');
     cap_op_10('{{$id_project}}','{{$tar_ele->unidad}}');
@@ -6077,10 +6044,189 @@ window.onload = function() {
     confort_base('{{$conf_val_base}}');
     confort_a('{{$conf_val_a}}')
     confort_b('{{$conf_val_b}}')
+    chart_prod_base();
+    chart_prod_a();
+    chart_prod_b();
     roi_base_a('{{$id_project}}');
     roi_base_b('{{$id_project}}');
     eui_grafic('{{$id_project}}');
 };
+
+function con_ene_hvac_ar_Base(){
+// JS
+var result_area = parseFloat('{{$result_area_1}}');
+
+var min_limite = limites_graficas(result_area);
+
+var chart = JSC.chart('chart_cons_ene_hvac_ar_base', {
+  debug: true,
+  type: 'gauge',
+  animation_duration: 1000,
+  legend_visible: false,
+  box:{
+        fill:'#edf2f7',
+    },
+  xAxis: { spacingPercentage: 0.25 },
+  yAxis: {
+    defaultTick: {
+      padding: -5,
+      label_style_fontSize: '14px'
+    },
+    line: {
+      width: 9,
+      color: 'smartPalette',
+      breaks_gap: 0.06
+    },
+    scale_range: [0, min_limite]
+  },
+  palette: {
+    pointValue: '{%value/'+min_limite+'}',
+    colors: ['green', 'yellow', 'red']
+  },
+  defaultTooltip_enabled: false,
+  defaultSeries: {
+    angle: { sweep: 180 },
+    shape: {
+      innerSize: '70%',
+
+      label: {
+        text:
+          '<span color="%color">{%sum:n1}</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
+        style_fontSize: '46px',
+        verticalAlign: 'middle'
+      }
+    }
+  },
+  series: [
+    {
+      type: 'column roundcaps',
+      points: [{ id: '1', x: 'speed', y: result_area }]
+    }
+  ],
+});
+
+}
+
+function con_ene_hvac_ar_a(){
+// JS
+var result_area = parseFloat('{{$result_area_2}}');
+
+var min_limite = limites_graficas(result_area);
+
+var chart = JSC.chart('chart_cons_ene_hvac_ar_a', {
+  debug: true,
+  type: 'gauge',
+  animation_duration: 1000,
+  legend_visible: false,
+  box:{
+        fill:'#edf2f7',
+    },
+  xAxis: { spacingPercentage: 0.25 },
+  yAxis: {
+    defaultTick: {
+      padding: -5,
+      label_style_fontSize: '14px'
+    },
+    line: {
+      width: 9,
+      color: 'smartPalette',
+      breaks_gap: 0.06
+    },
+    scale_range: [0, min_limite]
+  },
+  palette: {
+    pointValue: '{%value/'+min_limite+'}',
+    colors: ['green', 'yellow', 'red']
+  },
+  defaultTooltip_enabled: false,
+  defaultSeries: {
+    angle: { sweep: 180 },
+    shape: {
+      innerSize: '70%',
+
+      label: {
+        text:
+          '<span color="%color">{%sum:n1}</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
+        style_fontSize: '46px',
+        verticalAlign: 'middle'
+      }
+    }
+  },
+  series: [
+    {
+      type: 'column roundcaps',
+      points: [{ id: '1', x: 'speed', y: result_area }]
+    }
+  ],
+});
+}
+
+function con_ene_hvac_ar_b(){
+// JS
+var result_area = parseFloat('{{$result_area_3}}');
+
+var min_limite = limites_graficas(result_area);
+
+var chart = JSC.chart('chart_cons_ene_hvac_ar_b', {
+  debug: true,
+  type: 'gauge',
+  animation_duration: 1000,
+  legend_visible: false,
+  box:{
+        fill:'#edf2f7',
+    },
+  xAxis: { spacingPercentage: 0.25 },
+  yAxis: {
+    defaultTick: {
+      padding: -5,
+      label_style_fontSize: '14px'
+    },
+    line: {
+      width: 9,
+      color: 'smartPalette',
+      breaks_gap: 0.06
+    },
+    scale_range: [0, min_limite]
+  },
+  palette: {
+    pointValue: '{%value/'+min_limite+'}',
+    colors: ['green', 'yellow', 'red']
+  },
+  defaultTooltip_enabled: false,
+  defaultSeries: {
+    angle: { sweep: 180 },
+    shape: {
+      innerSize: '70%',
+
+      label: {
+        text:
+          '<span color="%color">{%sum:n1}</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
+        style_fontSize: '46px',
+        verticalAlign: 'middle'
+      }
+    }
+  },
+  series: [
+    {
+      type: 'column roundcaps',
+      points: [{ id: '1', x: 'speed', y: result_area }]
+    }
+  ],
+});
+}
+
+function limites_graficas(result_area){
+
+    if(result_area < 500 || result_area < 4000){
+        var min_limite = 5000;
+    }
+
+    if( result_area > 4000 && result_area < 5000 || result_area > 4000 && result_area < 80000){
+        var min_limite = 10000;
+    }
+
+ return min_limite;
+}
 
 function mostrar_modal(id){
     $("#"+id).removeClass("hidden");
@@ -6139,7 +6285,7 @@ function confort_b(val_conf_b){
      javascript:history.forward(1)
 function app() {
 			return {
-				step: 1,
+				step: 2,
 				passwordStrengthText: '',
 				togglePassword: false,
 
@@ -7274,38 +7420,86 @@ function eui_grafic(id_project){
 
     }
 
-      google.charts.setOnLoadCallback(chart_prod_base);
-      google.charts.setOnLoadCallback(chart_prod_a);
-      google.charts.setOnLoadCallback(chart_prod_b);
-
-      function chart_prod_base() {
+    function chart_prod_base() {
         var check_prod = '{{$conf_val_base}}';
         var mult_cels_val = check_prod * 5;
         var val_res = mult_cels_val / 5;
 
-        var datax = google.visualization.arrayToDataTable([
-          ['Label','Value'],
-          ['Base',parseFloat(check_prod)],
-        ]);
-
-                    var options = {
-            width: 650, height: 320,
-            greenFrom:3.8,greenTo:5,
-            redFrom: 1, redTo: 2.2,
-            yellowFrom:2.2, yellowTo: 3.8,
-            minorTicks: 5,
-            max:5,
-            min:1,
-            };
-
-        var chart = new google.visualization.Gauge(document.getElementById('chart_prod_base'));
-
-        chart.draw(datax, options);
+            // JS
+            var chart = JSC.chart('chart_prod_base', {
+            debug: true,
+            type: 'gauge ',
+            width:300,
+            height:250,
+            legend_visible: false,
+            chartArea_boxVisible: false,
+            box:{
+                fill:'#edf2f7',
+            },
+            xAxis: {
+                /*Used to position marker on top of axis line.*/
+                scale: { range: [0, 1], invert: true }
+            },
+            palette: {
+                pointValue: '%yValue',
+                ranges: [
+                { value: 1, color: '#FF5353' },
+                { value: 2, color: '#FFD221' },
+                { value: 4, color: '#77E6B4' },
+                { value: [4.5, 5], color: '#21D683' }
+                ]
+            },
+            yAxis: {
+                defaultTick: { padding: 13, enabled: false },
+                customTicks: [1,2, 3, 4,5],
+                line: {
+                width: 15,
+                breaks_gap: 0.03,
+                color: 'smartPalette'
+                },
+                scale: { range: [1, 5] }
+            },
+            defaultSeries: {
+                opacity: 1,
+                shape: {
+                label: {
+                    align: 'center',
+                    verticalAlign: 'middle'
+                }
+                }
+            },
+            series: [
+                {
+                type: 'marker',
+                name: 'Score',
+                shape_label: {
+                    text:
+                    parseFloat(check_prod).toFixed(2)+"<br/> <span style='fontSize: 35'></span>",
+                    style: { fontSize: 48 }
+                },
+                defaultPoint: {
+                    tooltip: '%yValue',
+                    marker: {
+                    outline: {
+                        width: 10,
+                        color: 'currentColor'
+                    },
+                    fill: 'white',
+                    type: 'circle',
+                    visible: true,
+                    size: 30
+                    }
+                },
+                points: [[1, parseFloat(check_prod)]]
+                }
+            ]
+            });
 
       }
 
       function chart_prod_a() {
         var check_prod_a = '{{$conf_val_a}}';
+        /*     var check_prod_a = '{{$conf_val_a}}';
         var data = google.visualization.arrayToDataTable([
         ['Label', 'Value'],
         ['A', parseFloat(check_prod_a)],
@@ -7324,12 +7518,83 @@ function eui_grafic(id_project){
 
 var chart = new google.visualization.Gauge(document.getElementById('chart_prod_a'));
 
-chart.draw(data, options);
+chart.draw(data, options); */
+            // JS
+            var chart = JSC.chart('chart_prod_a', {
+            debug: true,
+            type: 'gauge ',
+            width:300,
+            height:250,
+            legend_visible: false,
+            chartArea_boxVisible: false,
+            box:{
+                fill:'#edf2f7',
+            },
+            xAxis: {
+                /*Used to position marker on top of axis line.*/
+                scale: { range: [0, 1], invert: true }
+            },
+            palette: {
+                pointValue: '%yValue',
+                ranges: [
+                    { value: 1, color: '#FF5353' },
+                    { value: 2, color: '#FFD221' },
+                    { value: 4, color: '#77E6B4' },
+                    { value: [4.5, 5], color: '#21D683' }
+                ]
+            },
+            yAxis: {
+                defaultTick: { padding: 13, enabled: false },
+                customTicks: [1,2, 3, 4,5],
+                line: {
+                width: 15,
+                breaks_gap: 0.03,
+                color: 'smartPalette'
+                },
+                scale: { range: [1, 5] }
+            },
+            defaultSeries: {
+                opacity: 1,
+                shape: {
+                label: {
+                    align: 'center',
+                    verticalAlign: 'middle'
+                }
+                }
+            },
+            series: [
+                {
+                type: 'marker',
+                name: 'Score',
+                shape_label: {
+                    text:
+                    parseFloat(check_prod_a).toFixed(2)+"<br/> <span style='fontSize: 35'></span>",
+                    style: { fontSize: 48 }
+                },
+                defaultPoint: {
+                    tooltip: '%yValue',
+                    marker: {
+                    outline: {
+                        width: 10,
+                        color: 'currentColor'
+                    },
+                    fill: 'white',
+                    type: 'circle',
+                    visible: true,
+                    size: 30
+                    }
+                },
+                points: [[1, parseFloat(check_prod_a)]]
+                }
+            ]
+            });
 }
+
+
 
 function chart_prod_b() {
     var check_prod_b = '{{$conf_val_b}}';
-var data = google.visualization.arrayToDataTable([
+/* var data = google.visualization.arrayToDataTable([
   ['Label', 'Value'],
   ['B', parseFloat(check_prod_b)],
 ]);
@@ -7347,7 +7612,76 @@ var data = google.visualization.arrayToDataTable([
 
 var chart = new google.visualization.Gauge(document.getElementById('chart_prod_b'));
 
-chart.draw(data, options);
+chart.draw(data, options); */
+            // JS
+            var chart = JSC.chart('chart_prod_b', {
+            debug: true,
+            type: 'gauge ',
+            width:300,
+            height:250,
+            legend_visible: false,
+            chartArea_boxVisible: false,
+            box:{
+                fill:'#edf2f7',
+            },
+            xAxis: {
+                /*Used to position marker on top of axis line.*/
+                scale: { range: [0, 1], invert: true }
+            },
+            palette: {
+                pointValue: '%yValue',
+                ranges: [
+                    { value: 1, color: '#FF5353' },
+                    { value: 2, color: '#FFD221' },
+                    { value: 4, color: '#77E6B4' },
+                    { value: [4.5, 5], color: '#21D683' }
+                ]
+            },
+            yAxis: {
+                defaultTick: { padding: 13, enabled: false },
+                customTicks: [1,2, 3, 4,5],
+                line: {
+                width: 15,
+                breaks_gap: 0.03,
+                color: 'smartPalette'
+                },
+                scale: { range: [1, 5] }
+            },
+            defaultSeries: {
+                opacity: 1,
+                shape: {
+                label: {
+                    align: 'center',
+                    verticalAlign: 'middle'
+                }
+                }
+            },
+            series: [
+                {
+                type: 'marker',
+                name: 'Score',
+                shape_label: {
+                    text:
+                    parseFloat(check_prod_b).toFixed(2)+"<br/> <span style='fontSize: 35'></span>",
+                    style: { fontSize: 48 }
+                },
+                defaultPoint: {
+                    tooltip: '%yValue',
+                    marker: {
+                    outline: {
+                        width: 10,
+                        color: 'currentColor'
+                    },
+                    fill: 'white',
+                    type: 'circle',
+                    visible: true,
+                    size: 30
+                    }
+                },
+                points: [[1, parseFloat(check_prod_b)]]
+                }
+            ]
+            });
 }
 /////////////////cu_sho_be/////////////
 google.charts.setOnLoadCallback(chart_cu_sho_Be_base);
