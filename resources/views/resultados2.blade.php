@@ -3393,7 +3393,7 @@ cursor: pointer;
                                                     </div>
                                                      @endif --}}
                                                      <div class="w-full flex justify-center">
-                                                        <div id="chart_cons_ene_hvac_ar_base" style="width:350; height: 280px;"></div>
+                                                        <div id="chart_cons_ene_hvac_ar_base" class="js_charts_style"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -3401,7 +3401,7 @@ cursor: pointer;
                                             <?php  $result_area_1=0?>
                                             <div class="flex justify-center w-1/3 mx-20 px-5">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <div id="chart_cons_ene_hvac_ar_base" style="width:350; height: 280px;"></div>
+                                                    <div id="chart_cons_ene_hvac_ar_base" class="js_charts_style"></div>
                                                 </div>
                                             </div>
                                             @endif
@@ -3411,7 +3411,7 @@ cursor: pointer;
                                             <div class="flex justify-center w-1/3 ">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="w-full flex justify-center">
-                                                      <div id="chart_cons_ene_hvac_ar_a" style="width:350; height: 280px;"></div>
+                                                      <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -3419,7 +3419,7 @@ cursor: pointer;
                                              <?php  $result_area_2=0; ?>
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <div id="chart_cons_ene_hvac_ar_a" style="width:350; height: 280px;"></div>
+                                                    <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style"></div>
                                                 </div>
                                             </div>
                                             @endif
@@ -3429,7 +3429,7 @@ cursor: pointer;
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                      <div class="w-full flex justify-center">
-                                                        <div id="chart_cons_ene_hvac_ar_b" style="width:350; height: 280px;"></div>
+                                                        <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -3437,7 +3437,7 @@ cursor: pointer;
                                               <?php  $result_area_3=0?>
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                 <div id="chart_cons_ene_hvac_ar_b" style="width:350; height: 280px;"></div>
+                                                 <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
                                                 </div>
                                             </div>
                                             @endif
@@ -5879,7 +5879,7 @@ cursor: pointer;
                         <?php  $prod_lab=0; ?>
                         @endif
                         <div class="w-1/3 grid justify-items-center">
-                            <div id="chart_prod_base"  class="w-full"></div>
+                            <div id="chart_prod_base"  class="js_charts_style"></div>
                         </div>
                         @if ($result1 !== null)
                         <?php  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) ?>
@@ -5888,7 +5888,7 @@ cursor: pointer;
                         <?php  $prod_lab_a=0; ?>
                         @endif
                         <div class="w-1/3 grid justify-items-center">
-                            <div id="chart_prod_a"  class="w-full"></div>
+                            <div id="chart_prod_a"  class="js_charts_style"></div>
                         </div>
                         @if ($result1 !== null)
                         <?php  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) ?>
@@ -5897,7 +5897,7 @@ cursor: pointer;
                         <?php  $prod_lab_b=0; ?>
                         @endif
                         <div class="w-1/3 grid justify-items-center">
-                            <div id="chart_prod_b"  class="w-full"></div>
+                            <div id="chart_prod_b"  class="js_charts_style"></div>
                         </div>
                     </div>
 
@@ -6028,7 +6028,77 @@ cursor: pointer;
 		<!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
 
     </div>
+    <style>
+        /* md	768px */
 
+    @media (min-width: 600px) {
+            .js_charts_style{
+                width: 250px;
+                height: 200px;
+                margin: 0px auto;
+            }
+        }
+
+
+        @media (min-width: 768px) {
+            .js_charts_style{
+                width: 250px;
+                height: 200px;
+                margin: 0px auto;
+            }
+        }
+
+
+        @media (min-width: 950px) {
+            .js_charts_style{
+                width: 280px;
+                height: 250px;
+                margin: 0px auto;
+            }
+        }
+        /* lg	1024px */
+        @media (min-width: 1024px) {
+            .js_charts_style{
+                width: 280px;
+                height: 250px;
+                margin: 0px auto;
+            }
+
+        }
+
+        @media (min-width: 1024px) {
+            .js_charts_style{
+                width: 280px;
+                height: 250px;
+                margin: 0px auto;
+            }
+
+        }
+
+        @media (min-width: 1800px) {
+            .js_charts_style{
+                width: 350px;
+                height: 280px;
+                margin: 0px auto;
+            }
+        }
+
+        @media (min-width: 1890px) {
+            .js_charts_style{
+                width: 350px;
+                height: 280px;
+                margin: 0px auto;
+            }
+        }
+
+        @media (min-width: 1900px) {
+            .js_charts_style{
+                width: 350px;
+                height: 280px;
+                margin: 0px auto;
+            }
+        }
+        </style>
 <script type="text/javascript">
     var ener_lang = document.getElementById('ima_ener').value;
     var man_lang = document.getElementById('ima_man').value;
@@ -6285,7 +6355,7 @@ function confort_b(val_conf_b){
      javascript:history.forward(1)
 function app() {
 			return {
-				step: 1,
+				step: 6,
 				passwordStrengthText: '',
 				togglePassword: false,
 
@@ -7429,8 +7499,8 @@ function eui_grafic(id_project){
             var chart = JSC.chart('chart_prod_base', {
             debug: true,
             type: 'gauge ',
-            width:300,
-            height:250,
+            /* width:350,
+            height:250, */
             legend_visible: false,
             chartArea_boxVisible: false,
             box:{
@@ -7523,8 +7593,8 @@ chart.draw(data, options); */
             var chart = JSC.chart('chart_prod_a', {
             debug: true,
             type: 'gauge ',
-            width:300,
-            height:250,
+           /*  width:350,
+            height:250, */
             legend_visible: false,
             chartArea_boxVisible: false,
             box:{
@@ -7617,8 +7687,8 @@ chart.draw(data, options); */
             var chart = JSC.chart('chart_prod_b', {
             debug: true,
             type: 'gauge ',
-            width:300,
-            height:250,
+            /* width:350,
+            height:250, */
             legend_visible: false,
             chartArea_boxVisible: false,
             box:{
