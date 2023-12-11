@@ -4403,23 +4403,75 @@ cursor: pointer;
 	</div>
 
 <style>
-/* md	768px */
-@media (min-width: 768px) {
+ /* md	768px */
 
-}
-/* lg	1024px */
-@media (max-width: 1024px) {
+ @media (min-width: 600px) {
+            .js_charts_style{
+                width: 250px;
+                height: 200px;
+                margin: 0px auto;
+            }
+        }
 
 
-}
+        @media (min-width: 768px) {
+            .js_charts_style{
+                width: 250px;
+                height: 200px;
+                margin: 0px auto;
+            }
+        }
 
-@media (max-width: 1940px) {
-    .js_charts_style{
-        width: 450px;
-        height: 280px;
-        margin: 0px auto;
-    }
-}
+
+        @media (min-width: 950px) {
+            .js_charts_style{
+                width: 280px;
+                height: 250px;
+                margin: 0px auto;
+            }
+        }
+        /* lg	1024px */
+        @media (min-width: 1024px) {
+            .js_charts_style{
+                width: 280px;
+                height: 250px;
+                margin: 0px auto;
+            }
+
+        }
+
+        @media (min-width: 1024px) {
+            .js_charts_style{
+                width: 280px;
+                height: 250px;
+                margin: 0px auto;
+            }
+
+        }
+
+        @media (min-width: 1800px) {
+            .js_charts_style{
+                width: 350px;
+                height: 280px;
+                margin: 0px auto;
+            }
+        }
+
+        @media (min-width: 1890px) {
+            .js_charts_style{
+                width: 350px;
+                height: 280px;
+                margin: 0px auto;
+            }
+        }
+
+        @media (min-width: 1900px) {
+            .js_charts_style{
+                width: 350px;
+                height: 280px;
+                margin: 0px auto;
+            }
+        }
 </style>
 <script type="text/javascript">
     var ener_lang = document.getElementById('ima_ener').value;
