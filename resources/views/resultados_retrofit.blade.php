@@ -1753,7 +1753,7 @@ cursor: pointer;
                                                          @if ($result_area_1 < 0)
                                                          <b style="color:#ea0000;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
                                                          @endif --}}
-                                                         <div id="chart_cons_ene_hvac_ar_base" name="chart_cons_ene_hvac_ar_base" class="w-full flex" style="height: 280px;"></div>
+                                                         <div id="chart_cons_ene_hvac_ar_base" name="chart_cons_ene_hvac_ar_base" style="width:350; height: 280px;"></div>
                                                     </div>
 
                                                 </div>
@@ -1762,7 +1762,7 @@ cursor: pointer;
                                             <?php  $result_area_1=0?>
                                             <div class="flex justify-center w-1/3 mx-20 px-5">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <div id="chart_cons_ene_hvac_ar_base" name="chart_cons_ene_hvac_ar_base" class="w-full flex" style="height: 280px;"></div>
+                                                    <div id="chart_cons_ene_hvac_ar_base" name="chart_cons_ene_hvac_ar_base" style="width:350; height: 280px;"></div>
                                                 </div>
                                             </div>
                                             @endif
@@ -1795,7 +1795,7 @@ cursor: pointer;
                                                         </div>
                                                     @endif --}}
                                                     <div class="w-full flex justify-center">
-                                                        <div id="chart_cons_ene_hvac_ar_a" class="w-full flex" style="height: 280px;" ></div>
+                                                        <div id="chart_cons_ene_hvac_ar_a" style="width:350; height: 280px;" ></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1803,7 +1803,7 @@ cursor: pointer;
                                             <?php  $result_area_2=0; ?>
                                             <div class="flex justify-center w-1/3">
                                                 <div class="w-full flex justify-center">
-                                                    <div id="chart_cons_ene_hvac_ar_a" class="w-full flex" style="height: 280px;" ></div>
+                                                    <div id="chart_cons_ene_hvac_ar_a" style="width:350; height: 280px;" ></div>
                                                 </div>
                                             </div>
                                             @endif
@@ -1813,7 +1813,7 @@ cursor: pointer;
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="w-full flex justify-center">
-                                                        <div id="chart_cons_ene_hvac_ar_b" class="w-full flex" style="height: 280px;" ></div>
+                                                        <div id="chart_cons_ene_hvac_ar_b" style="width:350; height: 280px;"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1822,7 +1822,7 @@ cursor: pointer;
                                             <div class="flex justify-center w-1/3">
                                                 <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
                                                     <div class="w-full flex justify-center">
-                                                        <div id="chart_cons_ene_hvac_ar_b" class="w-full flex" style="height: 280px;" ></div>
+                                                        <div id="chart_cons_ene_hvac_ar_b" style="width:350; height: 280px;"></div>
                                                     </div>
                                                 </div>
                                             </div>
