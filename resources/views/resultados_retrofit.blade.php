@@ -6065,6 +6065,8 @@ function eui_grafic(id_project){
         var mult_cels_val = check_prod * 5;
         var val_res = mult_cels_val / 5;
 
+        var message = message_prod_lab_chart(check_prod);
+
             // JS
             var chart = JSC.chart('chart_prod_base', {
             debug: true,
@@ -6114,7 +6116,7 @@ function eui_grafic(id_project){
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(check_prod).toFixed(2)+"<br/> <span style='fontSize: 35'></span>",
+                    parseFloat(check_prod).toFixed(2)+'<br/> <span style="fontSize: 35">'+message+'</span>',
                     style: { fontSize: 48 }
                 },
                 defaultPoint: {
@@ -6160,6 +6162,7 @@ var chart = new google.visualization.Gauge(document.getElementById('chart_prod_a
 
 chart.draw(data, options); */
             // JS
+            var message = message_prod_lab_chart(check_prod_a);
             var chart = JSC.chart('chart_prod_a', {
             debug: true,
             type: 'gauge ',
@@ -6208,7 +6211,7 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(check_prod_a).toFixed(2)+"<br/> <span style='fontSize: 35'></span>",
+                    parseFloat(check_prod_a).toFixed(2)+'<br/> <span style="fontSize: 35">'+message+'</span>',
                     style: { fontSize: 48 }
                 },
                 defaultPoint: {
@@ -6234,6 +6237,7 @@ chart.draw(data, options); */
 
 function chart_prod_b() {
     var check_prod_b = '{{$conf_val_b}}';
+    var message = message_prod_lab_chart(check_prod_b);
 /* var data = google.visualization.arrayToDataTable([
   ['Label', 'Value'],
   ['B', parseFloat(check_prod_b)],
@@ -6302,7 +6306,7 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(check_prod_b).toFixed(2)+"<br/> <span style='fontSize: 35'></span>",
+                    parseFloat(check_prod_b).toFixed(2)+'<br/> <span style="fontSize: 35">'+message+'</span>',
                     style: { fontSize: 48 }
                 },
                 defaultPoint: {
@@ -6323,6 +6327,26 @@ chart.draw(data, options); */
             ]
             });
 }
+
+function message_prod_lab_chart(check_prod){
+
+            if(check_prod == 0){
+            var message = '';
+            }
+
+            if(check_prod > 1 && check_prod <= 3){
+            var message = 'Mala';
+            }
+
+            if(check_prod > 3 && check_prod <= 4){
+                var message = 'Regular';
+            }
+
+            if(check_prod > 4 && check_prod <= 5){
+                var message = 'Buena';
+            }
+            return message;
+        }
 </script>
 
 @section('js')
