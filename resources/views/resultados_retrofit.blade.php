@@ -1736,7 +1736,7 @@ cursor: pointer;
 
 
                                         <div class="flex w-full justify-center bg-gray-200 gap-x-3">
-
+                                            <?php  $kwh_yr=$results->kwh_yr($id_project,$tar_ele->cad_edi) ?>
                                             @if ($result1 ==! null)
                                             <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
 
@@ -4478,9 +4478,9 @@ cursor: pointer;
     var man_lang = document.getElementById('ima_man').value;
     var ima_sol = document.getElementById('ima_sol').value;
 window.onload = function() {
-    con_ene_hvac_ar_Base();
-    con_ene_hvac_ar_a();
-    con_ene_hvac_ar_b();
+    con_ene_hvac_ar_Base('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+    con_ene_hvac_ar_a('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+    con_ene_hvac_ar_b('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     cap_op_1_retro('{{$id_project}}','{{$tar_ele->unidad}}');
     cap_op_3_retro('{{$id_project}}','{{$tar_ele->unidad}}');
    /*  cap_op_10('{{$id_project}}','{{$tar_ele->unidad}}');
@@ -4496,48 +4496,78 @@ window.onload = function() {
     eui_grafic('{{$id_project}}');
 };
 
-function con_ene_hvac_ar_Base(){
+function con_ene_hvac_ar_Base(kwh_yr,porcent_hvac){
 // JS
+/* var result_area = parseFloat('{{$result_area_1}}'); */
 var result_area = parseFloat('{{$result_area_1}}');
 
 var min_limite = limites_graficas(result_area);
+//saca porcentaje dividiendo porcen entre 100
+var porcenthvac_a = porcent_hvac / 100;
+// multiplica porcenthvac_a x kwh_yr para sacar la media
+var mediakwh_yr = porcenthvac_a * kwh_yr;
+//elevar media al cuadrado
+var media_cuadrada  = Math.pow(mediakwh_yr, 2);
+//rango color verde numero 2 aproximando a 10 mas cercano
+var green_2 = Math.ceil(media_cuadrada / 10) * 10;
+//rango color verde numero 1, diviendo color verde 2 entre 2
+var green_1 = green_2/2;
+//rango color amarillo, naranja, multiplicando el color verde numero 2 x 1.5
+var yellow_orange = green_2*1.5;
+//rango color rojo multiplicando la media al cuadrado x 2.5
+var red_aux = parseInt(media_cuadrada*2.5);
 
-var chart = JSC.chart('chart_cons_ene_hvac_ar_base', {
+var red = Math.ceil(red_aux / 10) * 10;
+//si resultarea es mayor a rojo
+if(result_area > red){
+//result area aux es igual a rojo, para que no se pase del tope que es red
+    var result_area_aux = red;
+}
+//si rojo es mayor a result
+if(result_area < red){
+    //toma el valor de result para que este en el rango de maximo que es rojo
+    var result_area_aux = result_area;
+}
+
+
+
+ // JS
+    var chart = JSC.chart('chart_cons_ene_hvac_ar_base', {
   debug: true,
-  type: 'gauge',
-  animation_duration: 1000,
- /*  width:400,
-  height:300, */
   legend_visible: false,
+  defaultTooltip_enabled: false,
   box:{
         fill:'#edf2f7',
   },
-  xAxis: { spacingPercentage: 0.25 },
-  yAxis: {
-    defaultTick: {
-      padding: -5,
-      label_style_fontSize: '14px'
-    },
-    line: {
-      width: 9,
-      color: 'smartPalette',
-      breaks_gap: 0.06
-    },
-    scale_range: [0, min_limite]
-  },
-  palette: {
-    pointValue: '{%value/'+min_limite+'}',
-    colors: ['green', 'yellow', 'red']
-  },
-  defaultTooltip_enabled: false,
-  defaultSeries: {
-    angle: { sweep: 180 },
-    shape: {
-      innerSize: '70%',
+  xAxis_spacingPercentage: 0.4,
+  yAxis: [
+    {
+      id: 'ax1',
+      defaultTick: {
+        padding: 5,
+        enabled: false
+      },
+      customTicks: [0,green_1, green_2, yellow_orange, red],
+      line: {
+        width: 9,
 
-      label: {
+        /*Defining the option will enable it.*/
+        breaks_gap: 0.06,
+
+        /*Palette is defined at series level with an ID referenced here.*/
+        color: 'smartPalette',
+      },
+      scale_range: [0, red]
+    },
+  ],
+  defaultSeries: {
+    type: 'gauge column roundcaps',
+    angle: { sweep: 180 },
+    innerSize: '70%',
+    shape: {
+        label: {
         text:
-          '<span color="%color">{%sum:n1}</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
+          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
         style_fontSize: '46px',
         verticalAlign: 'middle'
       }
@@ -4546,54 +4576,103 @@ var chart = JSC.chart('chart_cons_ene_hvac_ar_base', {
   series: [
     {
       type: 'column roundcaps',
-      points: [{ id: '1', x: 'speed', y: result_area }]
+      name: 'Temperatures',
+      yAxis: 'ax1',
+      palette: {
+        id: 'pal1',
+        pointValue: '{%value/'+red+'}',
+        /* ranges: [
+          { value: 0, color: 'green' },
+          { value: 1000, color: 'green' },
+          { value: 2000, color: 'yellow' },
+          { value: 3000, color: 'orange' },
+          { value: [4000,min_limite], color: 'red' }
+
+        ] */
+        ranges: [
+          { value: 0 },
+          { value: green_1},
+          { value: green_2 },
+          { value: yellow_orange},
+          { value: red},
+        ],
+        colors: ['green', 'yellow', 'red']
+      },
+      points: [['x', [0, result_area_aux]]]
     }
-  ],
+  ]
 });
 }
 
-function con_ene_hvac_ar_a(){
+function con_ene_hvac_ar_a(kwh_yr,porcent_hvac){
 // JS
 var result_area = parseFloat('{{$result_area_2}}');
 
 var min_limite = limites_graficas(result_area);
 
-var chart = JSC.chart('chart_cons_ene_hvac_ar_a', {
+//saca porcentaje dividiendo porcen entre 100
+var porcenthvac_a = porcent_hvac / 100;
+// multiplica porcenthvac_a x kwh_yr para sacar la media
+var mediakwh_yr = porcenthvac_a * kwh_yr;
+//elevar media al cuadrado
+var media_cuadrada  = Math.pow(mediakwh_yr, 2);
+//rango color verde numero 2 aproximando a 10 mas cercano
+var green_2 = Math.ceil(media_cuadrada / 10) * 10;
+//rango color verde numero 1, diviendo color verde 2 entre 2
+var green_1 = green_2/2;
+//rango color amarillo, naranja, multiplicando el color verde numero 2 x 1.5
+var yellow_orange = green_2*1.5;
+//rango color rojo multiplicando la media al cuadrado x 2.5
+var red_aux = parseInt(media_cuadrada*2.5);
+
+var red = Math.ceil(red_aux / 10) * 10;
+//si resultarea es mayor a rojo
+if(result_area > red){
+//result area aux es igual a rojo, para que no se pase del tope que es red
+    var result_area_aux = red;
+}
+//si rojo es mayor a result
+if(result_area < red){
+    //toma el valor de result para que este en el rango de maximo que es rojo
+    var result_area_aux = result_area;
+}
+ //JS
+  var chart = JSC.chart('chart_cons_ene_hvac_ar_a', {
   debug: true,
-  type: 'gauge',
- /*  width:400,
-  height:300, */
-  animation_duration: 1000,
   legend_visible: false,
+  defaultTooltip_enabled: false,
   box:{
         fill:'#edf2f7',
   },
-  xAxis: { spacingPercentage: 0.25 },
-  yAxis: {
-    defaultTick: {
-      padding: -5,
-      label_style_fontSize: '14px'
-    },
-    line: {
-      width: 9,
-      color: 'smartPalette',
-      breaks_gap: 0.06
-    },
-    scale_range: [0, min_limite]
-  },
-  palette: {
-    pointValue: '{%value/'+min_limite+'}',
-    colors: ['green', 'yellow', 'red']
-  },
-  defaultTooltip_enabled: false,
-  defaultSeries: {
-    angle: { sweep: 180 },
-    shape: {
-      innerSize: '70%',
+  xAxis_spacingPercentage: 0.4,
+  yAxis: [
+    {
+      id: 'ax1',
+      defaultTick: {
+        padding: 5,
+        enabled: false
+      },
+      customTicks: [0,green_1, green_2, yellow_orange, red],
+      line: {
+        width: 9,
 
-      label: {
+        /*Defining the option will enable it.*/
+        breaks_gap: 0.06,
+
+        /*Palette is defined at series level with an ID referenced here.*/
+        color: 'smartPalette',
+      },
+      scale_range: [0, red]
+    },
+  ],
+  defaultSeries: {
+    type: 'gauge column roundcaps',
+    angle: { sweep: 180 },
+    innerSize: '70%',
+    shape: {
+        label: {
         text:
-          '<span color="%color">{%sum:n1}</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
+          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
         style_fontSize: '46px',
         verticalAlign: 'middle'
       }
@@ -4602,54 +4681,104 @@ var chart = JSC.chart('chart_cons_ene_hvac_ar_a', {
   series: [
     {
       type: 'column roundcaps',
-      points: [{ id: '1', x: 'speed', y: result_area }]
+      name: 'Temperatures',
+      yAxis: 'ax1',
+      palette: {
+        id: 'pal1',
+        pointValue: '{%value/'+red+'}',
+        /* ranges: [
+          { value: 0, color: 'green' },
+          { value: 1000, color: 'green' },
+          { value: 2000, color: 'yellow' },
+          { value: 3000, color: 'orange' },
+          { value: [4000,min_limite], color: 'red' }
+
+        ] */
+        ranges: [
+          { value: 0 },
+          { value: green_1},
+          { value: green_2 },
+          { value: yellow_orange},
+          { value: red},
+        ],
+        colors: ['green', 'yellow', 'red']
+      },
+      points: [['x', [0, result_area_aux]]]
     }
-  ],
+  ]
 });
 }
 
-function con_ene_hvac_ar_b(){
+function con_ene_hvac_ar_b(kwh_yr,porcent_hvac){
 // JS
 var result_area = parseFloat('{{$result_area_3}}');
 
 var min_limite = limites_graficas(result_area);
 
-var chart = JSC.chart('chart_cons_ene_hvac_ar_b', {
+//saca porcentaje dividiendo porcen entre 100
+var porcenthvac_a = porcent_hvac / 100;
+// multiplica porcenthvac_a x kwh_yr para sacar la media
+var mediakwh_yr = porcenthvac_a * kwh_yr;
+//elevar media al cuadrado
+var media_cuadrada  = Math.pow(mediakwh_yr, 2);
+//rango color verde numero 2 aproximando a 10 mas cercano
+var green_2 = Math.ceil(media_cuadrada / 10) * 10;
+//rango color verde numero 1, diviendo color verde 2 entre 2
+var green_1 = green_2/2;
+//rango color amarillo, naranja, multiplicando el color verde numero 2 x 1.5
+var yellow_orange = green_2*1.5;
+//rango color rojo multiplicando la media al cuadrado x 2.5
+var red_aux = parseInt(media_cuadrada*2.5);
+
+var red = Math.ceil(red_aux / 10) * 10;
+//si resultarea es mayor a rojo
+if(result_area > red){
+//result area aux es igual a rojo, para que no se pase del tope que es red
+    var result_area_aux = red;
+}
+//si rojo es mayor a result
+if(result_area < red){
+    //toma el valor de result para que este en el rango de maximo que es rojo
+    var result_area_aux = result_area;
+}
+
+    //JS
+  var chart = JSC.chart('chart_cons_ene_hvac_ar_b', {
   debug: true,
-  type: 'gauge',
-  /* width:400,
-  height:300, */
-  animation_duration: 1000,
   legend_visible: false,
+  defaultTooltip_enabled: false,
   box:{
         fill:'#edf2f7',
   },
-  xAxis: { spacingPercentage: 0.25 },
-  yAxis: {
-    defaultTick: {
-      padding: -5,
-      label_style_fontSize: '14px'
-    },
-    line: {
-      width: 9,
-      color: 'smartPalette',
-      breaks_gap: 0.06
-    },
-    scale_range: [0, min_limite]
-  },
-  palette: {
-    pointValue: '{%value/'+min_limite+'}',
-    colors: ['green', 'yellow', 'red']
-  },
-  defaultTooltip_enabled: false,
-  defaultSeries: {
-    angle: { sweep: 180 },
-    shape: {
-      innerSize: '70%',
+  xAxis_spacingPercentage: 0.4,
+  yAxis: [
+    {
+      id: 'ax1',
+      defaultTick: {
+        padding: 5,
+        enabled: false
+      },
+      customTicks: [0,green_1, green_2, yellow_orange, red],
+      line: {
+        width: 9,
 
-      label: {
+        /*Defining the option will enable it.*/
+        breaks_gap: 0.06,
+
+        /*Palette is defined at series level with an ID referenced here.*/
+        color: 'smartPalette',
+      },
+      scale_range: [0, red]
+    },
+  ],
+  defaultSeries: {
+    type: 'gauge column roundcaps',
+    angle: { sweep: 180 },
+    innerSize: '70%',
+    shape: {
+        label: {
         text:
-          '<span color="%color">{%sum:n1}</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
+          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
         style_fontSize: '46px',
         verticalAlign: 'middle'
       }
@@ -4658,9 +4787,31 @@ var chart = JSC.chart('chart_cons_ene_hvac_ar_b', {
   series: [
     {
       type: 'column roundcaps',
-      points: [{ id: '1', x: 'speed', y: result_area }]
+      name: 'Temperatures',
+      yAxis: 'ax1',
+      palette: {
+        id: 'pal1',
+        pointValue: '{%value/'+red+'}',
+        /* ranges: [
+          { value: 0, color: 'green' },
+          { value: 1000, color: 'green' },
+          { value: 2000, color: 'yellow' },
+          { value: 3000, color: 'orange' },
+          { value: [4000,min_limite], color: 'red' }
+
+        ] */
+        ranges: [
+          { value: 0 },
+          { value: green_1},
+          { value: green_2 },
+          { value: yellow_orange},
+          { value: red},
+        ],
+        colors: ['green', 'yellow', 'red']
+      },
+      points: [['x', [0, result_area_aux]]]
     }
-  ],
+  ]
 });
 }
 

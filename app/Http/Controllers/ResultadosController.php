@@ -29,7 +29,7 @@ class ResultadosController extends Controller
      */
     public function __construct()
     {
-
+        $this->middleware('auth');
     }
     public function getResultados(Request $request)
     {
@@ -2567,6 +2567,19 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
         $res = $sumaopex/$proj->area;
         return $res;
     }
+
+    public function kwh_yr($id,$id_cat_edi){
+
+        $id_tipo_edificio = DB::table('projects')
+       ->where('projects.id','=',$id)
+       ->first()->id_tipo_edificio;
+
+       $kwh_yr = DB::table('tipo_edificio')
+       ->where('tipo_edificio.id','=',$id_tipo_edificio)
+       ->first()->kwh_yr;
+
+         return $kwh_yr;
+     }
 
     public function project(Request $request,$id_project){
 
