@@ -229,7 +229,7 @@
                         <label class="labels" for=""><b>{{ __('index.mantenimiento') }}</b></label>
                     </div>
                     <div class="flex w-1/2 justify-start">
-                        <select onchange="valida_selects_inps(this.id);check_type_set_mant('type_p','csMantenimiento_2_1_retro','cheMantenimiento_3_1_retro',this.value);"  style="margin-left: 5px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_1_1_retro" id="csMantenimiento_1_1_retro">
+                        <select onchange="valida_selects_inps(this.id);/* check_type_set_mant('type_p','csMantenimiento_2_1_retro','cheMantenimiento_3_1_retro',this.value); */"  style="margin-left: 5px;" class="w-full border-2 border-blue-600 rounded-md py-2" name="csMantenimiento_1_1_retro" id="csMantenimiento_1_1_retro">
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="ASHRAE 180">ASHRAE 180</option>
                             <option value="Deficiente">Deficiente</option>
