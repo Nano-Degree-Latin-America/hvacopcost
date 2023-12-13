@@ -6127,20 +6127,21 @@ function con_ene_hvac_ar_Base(kwh_yr,porcent_hvac){
 // JS
 /* var result_area = parseFloat('{{$result_area_1}}'); */
 var result_area = parseFloat('{{$result_area_1}}');
-
 var min_limite = limites_graficas(result_area);
 //saca porcentaje dividiendo porcen entre 100
 var porcenthvac_a = porcent_hvac / 100;
 // multiplica porcenthvac_a x kwh_yr para sacar la media
 var mediakwh_yr = porcenthvac_a * kwh_yr;
 //elevar media al cuadrado
-var media_cuadrada  = Math.pow(mediakwh_yr, 2);
+var media_cuadrada  = mediakwh_yr * 10.76
 //rango color verde numero 2 aproximando a 10 mas cercano
 var green_2 = Math.ceil(media_cuadrada / 10) * 10;
+
 //rango color verde numero 1, diviendo color verde 2 entre 2
 var green_1 = green_2/2;
 //rango color amarillo, naranja, multiplicando el color verde numero 2 x 1.5
 var yellow_orange = green_2*1.5;
+
 //rango color rojo multiplicando la media al cuadrado x 2.5
 var red_aux = parseInt(media_cuadrada*2.5);
 
@@ -6240,7 +6241,7 @@ var porcenthvac_a = porcent_hvac / 100;
 // multiplica porcenthvac_a x kwh_yr para sacar la media
 var mediakwh_yr = porcenthvac_a * kwh_yr;
 //elevar media al cuadrado
-var media_cuadrada  = Math.pow(mediakwh_yr, 2);
+var media_cuadrada  = mediakwh_yr * 10.76;
 //rango color verde numero 2 aproximando a 10 mas cercano
 var green_2 = Math.ceil(media_cuadrada / 10) * 10;
 //rango color verde numero 1, diviendo color verde 2 entre 2
@@ -6345,7 +6346,7 @@ var porcenthvac_a = porcent_hvac / 100;
 // multiplica porcenthvac_a x kwh_yr para sacar la media
 var mediakwh_yr = porcenthvac_a * kwh_yr;
 //elevar media al cuadrado
-var media_cuadrada  = Math.pow(mediakwh_yr, 2);
+var media_cuadrada  = mediakwh_yr * 10.76;
 //rango color verde numero 2 aproximando a 10 mas cercano
 var green_2 = Math.ceil(media_cuadrada / 10) * 10;
 //rango color verde numero 1, diviendo color verde 2 entre 2
@@ -6510,7 +6511,7 @@ function confort_b(val_conf_b){
      javascript:history.forward(1)
 function app() {
 			return {
-				step: 1,
+				step: 2,
 				passwordStrengthText: '',
 				togglePassword: false,
 
