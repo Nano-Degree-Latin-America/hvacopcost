@@ -3241,9 +3241,109 @@ cursor: pointer;
                                         </div>
                                     </div>
 
+                                    <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
+                                        <?php  $unidad_area=$results->unidad_area($id_project,1,$sumaopex_1,$tar_ele->costo_elec) ?>
+                                        <div class="flex w-full justify-center">
+                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.cons_ene_ar') }} <b class="text-orange-500">(Kwh/@if($unidad_area == 'mc')m²)@endif @if($unidad_area == 'ft')ft²)@endif</b></label></b></label>
+
+                                        </div>
 
 
-                                    <?php  $results_aux=$results->results($id_project) ?>
+
+                                        <div class="flex w-full justify-center bg-gray-200 gap-x-3">
+                                            <?php  $kwh_yr=$results->kwh_yr($id_project,$tar_ele->cad_edi) ?>
+                                            @if ($result1 ==! null)
+                                            <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
+
+
+                                            <div class="flex justify-center w-1/3 ">
+                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
+                                                    {{-- @if (strlen($result_area_1) >= 19)
+                                                <div class="flex w-full justify-center">
+                                                    <div class="w-full flex justify-center">
+                                                        @if ($result_area_1 >= 0)
+                                                        <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
+
+                                                        @endif
+
+                                                         @if ($result_area_1 < 0)
+                                                         <b style="color:#ea0000;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
+                                                         @endif
+                                                    </div>
+                                                </div>
+                                                     @endif --}}
+
+                                                    {{--  @if (strlen($result_area_1) < 19)
+                                                    <div class="w-full flex justify-center">
+                                                        @if ($result_area_1 >= 0)
+                                                        <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
+
+                                                        @endif
+
+                                                         @if ($result_area_1 < 0)
+                                                         <b style="color:#ea0000;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
+                                                         @endif
+                                                    </div>
+                                                     @endif --}}
+                                                     <div class="w-full flex justify-center">
+                                                        <div id="chart_cons_ene_hvac_ar_base" class="js_charts_style"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @else
+                                            <?php  $result_area_1=0?>
+                                            <div class="flex justify-center w-1/3 mx-20 px-5">
+                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
+                                                    <div id="chart_cons_ene_hvac_ar_base" class="js_charts_style"></div>
+                                                </div>
+                                            </div>
+                                            @endif
+
+                                            @if ($result2 ==! null)
+                                            <?php  $result_area_2=$results->result_area($id_project,$sumaopex_2) ?>
+                                            <div class="flex justify-center w-1/3 ">
+                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
+                                                    <div class="w-full flex justify-center">
+                                                      <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @else
+                                             <?php  $result_area_2=0; ?>
+                                            <div class="flex justify-center w-1/3">
+                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
+                                                    <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style"></div>
+                                                </div>
+                                            </div>
+                                            @endif
+
+                                            @if ($result3 ==! null)
+                                            <?php  $result_area_3=$results->result_area($id_project,$sumaopex_3) ?>
+                                            <div class="flex justify-center w-1/3">
+                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
+                                                     <div class="w-full flex justify-center">
+                                                        <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            @else
+                                              <?php  $result_area_3=0?>
+                                            <div class="flex justify-center w-1/3">
+                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
+                                                 <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
+                                                </div>
+                                            </div>
+                                            @endif
+
+                                        </div>
+
+
+
+
+                                    </div>
+
+{{-- sigue la otra tarjeta --}}
+<?php  $results_aux=$results->results($id_project) ?>
                                     <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
                                         <div class="flex w-full justify-center mb-3">
                                             <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.eco_an_en') }} – {{ __('results.dif_ent_sol') }} <b class="text-orange-500">(Kwh año)</b> </label>
@@ -3348,106 +3448,6 @@ cursor: pointer;
 
                                         </div>
                                     </div>
-
-                                    <div class="grid w-full justify-items-center mt-8 bg-gray-200 rounded-md shadow-xl">
-                                        <?php  $unidad_area=$results->unidad_area($id_project,1,$sumaopex_1,$tar_ele->costo_elec) ?>
-                                        <div class="flex w-full justify-center">
-                                            <label class="text-blue-800 text-[18px] font-roboto font-bold text-blue-900 text-4xl">{{ __('results.cons_ene_ar') }} <b class="text-orange-500">(Kwh/@if($unidad_area == 'mc')m²)@endif @if($unidad_area == 'ft')ft²)@endif</b></label></b></label>
-
-                                        </div>
-
-
-
-                                        <div class="flex w-full justify-center bg-gray-200 gap-x-3">
-                                            <?php  $kwh_yr=$results->kwh_yr($id_project,$tar_ele->cad_edi) ?>
-                                            @if ($result1 ==! null)
-                                            <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
-
-
-                                            <div class="flex justify-center w-1/3 ">
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    {{-- @if (strlen($result_area_1) >= 19)
-                                                <div class="flex w-full justify-center">
-                                                    <div class="w-full flex justify-center">
-                                                        @if ($result_area_1 >= 0)
-                                                        <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
-
-                                                        @endif
-
-                                                         @if ($result_area_1 < 0)
-                                                         <b style="color:#ea0000;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
-                                                         @endif
-                                                    </div>
-                                                </div>
-                                                     @endif --}}
-
-                                                    {{--  @if (strlen($result_area_1) < 19)
-                                                    <div class="w-full flex justify-center">
-                                                        @if ($result_area_1 >= 0)
-                                                        <b style="color:#33cc33;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
-
-                                                        @endif
-
-                                                         @if ($result_area_1 < 0)
-                                                         <b style="color:#ea0000;" class="text-[24px] font-roboto text-6xl">{{number_format($result_area_1, 2)}}</b>
-                                                         @endif
-                                                    </div>
-                                                     @endif --}}
-                                                     <div class="w-full flex justify-center">
-                                                        <div id="chart_cons_ene_hvac_ar_base" class="js_charts_style"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @else
-                                            <?php  $result_area_1=0?>
-                                            <div class="flex justify-center w-1/3 mx-20 px-5">
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <div id="chart_cons_ene_hvac_ar_base" class="js_charts_style"></div>
-                                                </div>
-                                            </div>
-                                            @endif
-
-                                            @if ($result2 ==! null)
-                                            <?php  $result_area_2=$results->result_area($id_project,$sumaopex_2) ?>
-                                            <div class="flex justify-center w-1/3 ">
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <div class="w-full flex justify-center">
-                                                      <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @else
-                                             <?php  $result_area_2=0; ?>
-                                            <div class="flex justify-center w-1/3">
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                    <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style"></div>
-                                                </div>
-                                            </div>
-                                            @endif
-
-                                            @if ($result3 ==! null)
-                                            <?php  $result_area_3=$results->result_area($id_project,$sumaopex_3) ?>
-                                            <div class="flex justify-center w-1/3">
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                     <div class="w-full flex justify-center">
-                                                        <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            @else
-                                              <?php  $result_area_3=0?>
-                                            <div class="flex justify-center w-1/3">
-                                                <div class="flex w-full justify-center text-[24px] m-1 gap-x-4">
-                                                 <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
-                                                </div>
-                                            </div>
-                                            @endif
-
-                                        </div>
-
-                                    </div>
-
-
 
                                 </div>
                             </div>
