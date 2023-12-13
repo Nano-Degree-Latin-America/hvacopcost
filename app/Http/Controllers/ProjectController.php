@@ -430,7 +430,16 @@ class ProjectController extends Controller
                 $aux_cooling_hours_1_2 = ProjectController::num_form($request->get('hrsEnfriado_1_2'));
                 $solution_enf1_2->coolings_hours =intval($aux_cooling_hours_1_2);
 
-                $solution_enf1_2->eficencia_ene = $request->get('csStd_1_2');
+
+                if($request->get('csStd_1_2') == null){
+                    $solution_enf1_2->eficencia_ene=$request->get('csStd');
+                 }
+
+                  if($request->get('csStd_1_2') != null){
+                    $solution_enf1_2->eficencia_ene = $request->get('csStd_1_2');
+                  }
+
+
                 $solution_enf1_2->eficencia_ene_cant = $request->get('csStd_cant_1_2');
                 $solution_enf1_2->tipo_control = $request->get('tipo_control_1_2');
 
@@ -806,7 +815,15 @@ class ProjectController extends Controller
 
                         $aux_cooling_hours_2_1 = ProjectController::num_form($request->get('hrsEnfriado_2_1'));
                         $solution_enf2_1->coolings_hours=intval($aux_cooling_hours_2_1);
-                        $solution_enf2_1->eficencia_ene=$request->get('csStd_2_1');
+                        if($request->get('csStd_2_1') == null){
+                            $solution_enf2_1->eficencia_ene=$request->get('csStd');
+                        }
+
+                        if($request->get('csStd_2_1') != null){
+                            $solution_enf2_1->eficencia_ene=$request->get('csStd_2_1');
+                        }
+
+
                         $solution_enf2_1->eficencia_ene_cant=floatval($request->get('csStd_cant_2_1'));
                         $solution_enf2_1->tipo_control=$request->get('tipo_control_2_1');
 
@@ -937,7 +954,17 @@ class ProjectController extends Controller
 
                         $aux_cooling_hours_2_2 = ProjectController::num_form($request->get('hrsEnfriado_2_2'));
                         $solution_enf2_2->coolings_hours = intval($aux_cooling_hours_2_2);
-                        $solution_enf2_2->eficencia_ene = $request->get('csStd_2_2');
+
+
+                        if($request->get('csStd_2_2') == null){
+                            $solution_enf2_2->eficencia_ene=$request->get('csStd');
+                         }
+
+                          if($request->get('csStd_2_2') != null){
+                            $solution_enf2_2->eficencia_ene = $request->get('csStd_2_2');
+                          }
+
+
                         $solution_enf2_2->eficencia_ene_cant = floatval($request->get('csStd_cant_2_2'));
                         $solution_enf2_2->tipo_control = $request->get('tipo_control_2_2');
 
@@ -1297,7 +1324,16 @@ class ProjectController extends Controller
                  $aux_cooling_hours_3_1 = ProjectController::num_form($request->get('hrsEnfriado_3_1'));
 
                  $solution_enf3_1->coolings_hours=intval($aux_cooling_hours_3_1);
-                 $solution_enf3_1->eficencia_ene=$request->get('csStd2_3_1');
+
+                 if($request->get('csStd2_3_1') == null){
+                    $solution_enf3_1->eficencia_ene=$request->get('csStd');
+                 }
+
+                  if($request->get('csStd2_3_1') != null){
+                        $solution_enf3_1->eficencia_ene=$request->get('csStd2_3_1');
+                  }
+
+
                  $solution_enf3_1->eficencia_ene_cant=floatval($request->get('cheStd_3_1'));
                  $solution_enf3_1->tipo_control=$request->get('tipo_control_3_1');
 
@@ -1477,7 +1513,15 @@ class ProjectController extends Controller
 
                 $aux_cooling_hours_3_2 = ProjectController::num_form($request->get('hrsEnfriado_3_2'));
                 $solution_enf3_2->coolings_hours = intval($aux_cooling_hours_3_2);
-                $solution_enf3_2->eficencia_ene = $request->get('csStd_3_2');
+
+                if($request->get('csStd_3_2') == null){
+                    $solution_enf3_2->eficencia_ene=$request->get('csStd');
+                 }
+
+                  if($request->get('csStd_3_2') != null){
+                    $solution_enf3_2->eficencia_ene = $request->get('csStd_3_2');
+                  }
+                  
                 $solution_enf3_2->eficencia_ene_cant =floatval($request->get('csStd_cant_3_2'));
                 $solution_enf3_2->tipo_control = $request->get('tipo_control_3_2');
 

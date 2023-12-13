@@ -5170,13 +5170,13 @@ function check_form_retro(idm){
                     const myArray_maintenance_cost_1_1 = maintenance_cost_1_1_retro.val().split('$');
                     var var_maintenance_cost_1_1_retro =  myArray_maintenance_cost_1_1[1];
 
-                    if(var_maintenance_cost_1_1_retro <= 0 || maintenance_cost_1_1_retro.val() == ""){
+                    if(var_maintenance_cost_1_1_retro < 0 || maintenance_cost_1_1_retro.val() == ""){
 
                         maintenance_cost_1_1_retro.css("border-color", "red")
                         maintenance_cost_1_1_retro_count = 1;
 
                         $('#maintenance_cost_1_1_retro_count').val(maintenance_cost_1_1_retro_count);
-                    }else if (var_maintenance_cost_1_1_retro > 0 || maintenance_cost_1_1_retro.val() != null) {
+                    }else if (var_maintenance_cost_1_1_retro >= 0 || maintenance_cost_1_1_retro.val() != null) {
 
                         maintenance_cost_1_1_retro_count = 0;
                     $('#maintenance_cost_1_1_retro_count').val(maintenance_cost_1_1_retro_count);
@@ -5186,10 +5186,10 @@ function check_form_retro(idm){
                     /////////////////////////////////////
                     var const_an_rep_1_1 =$('#const_an_rep_1_1');
                     var const_an_rep_1_1_count = $('#const_an_rep_1_1_count').val();
-                    const myArray_const_an_rep_1_1 = maintenance_cost_1_1_retro.val().split('$');
+                    const myArray_const_an_rep_1_1 = const_an_rep_1_1.val().split('$');
                     var var_const_an_rep_1_1 =  myArray_const_an_rep_1_1[1];
 
-                    if(var_const_an_rep_1_1 <= 0 || maintenance_cost_1_1_retro.val() == ""){
+                    if(var_const_an_rep_1_1 <= 0 || const_an_rep_1_1.val() == ""){
 
                         const_an_rep_1_1.css("border-color", "red")
                         const_an_rep_1_1_count = 1;
@@ -5435,13 +5435,13 @@ function check_form_retro(idm){
                     const myArray_maintenance_cost_2_1 = maintenance_cost_2_1_retro.val().split('$');
                     var var_maintenance_cost_2_1_retro =  myArray_maintenance_cost_2_1[1];
 
-                    if(var_maintenance_cost_2_1_retro <= 0 || maintenance_cost_2_1_retro.val() == ""){
+                    if(var_maintenance_cost_2_1_retro < 0 || maintenance_cost_2_1_retro.val() == ""){
 
                         maintenance_cost_2_1_retro.css("border-color", "red")
                         maintenance_cost_2_1_retro_count = 1;
 
                         $('#maintenance_cost_2_1_retro_count').val(maintenance_cost_2_1_retro_count);
-                    }else if (var_maintenance_cost_2_1_retro > 0 || maintenance_cost_2_1_retro.val() != null) {
+                    }else if (var_maintenance_cost_2_1_retro >= 0 || maintenance_cost_2_1_retro.val() != null) {
 
                         maintenance_cost_2_1_retro_count = 0;
                     $('#maintenance_cost_2_1_retro_count').val(maintenance_cost_2_1_retro_count);
@@ -5701,13 +5701,13 @@ function check_form_retro(idm){
                     const myArray_maintenance_cost_3_1 = maintenance_cost_3_1_retro.val().split('$');
                     var var_maintenance_cost_3_1_retro =  myArray_maintenance_cost_3_1[1];
 
-                    if(var_maintenance_cost_3_1_retro <= 0 || maintenance_cost_3_1_retro.val() == ""){
+                    if(var_maintenance_cost_3_1_retro < 0 || maintenance_cost_3_1_retro.val() == ""){
 
                         maintenance_cost_3_1_retro.css("border-color", "red")
                         maintenance_cost_3_1_retro_count = 1;
 
                         $('#maintenance_cost_3_1_retro_count').val(maintenance_cost_3_1_retro_count);
-                    }else if (var_maintenance_cost_3_1_retro > 0 || maintenance_cost_3_1_retro.val() != null) {
+                    }else if (var_maintenance_cost_3_1_retro >= 0 || maintenance_cost_3_1_retro.val() != null) {
 
                         maintenance_cost_3_1_retro_count = 0;
                     $('#maintenance_cost_3_1_retro_count').val(maintenance_cost_3_1_retro_count);

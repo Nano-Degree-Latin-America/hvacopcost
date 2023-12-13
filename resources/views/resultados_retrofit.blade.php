@@ -616,7 +616,7 @@ cursor: pointer;
 
                                                                     <div class="w-full flex">
                                                                         <div class="w-2/5 flex ">
-                                                                            <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.yrs_life') }}</p>
+                                                                            <p class="font-bold text-blue-900 text-left mr-10 font-roboto" for="">{{ __('index.yrs_life') }}</p>
                                                                         </div>
                                                                         <div class="ml-2 w-2/5">
                                                                             <p class="text-blue-600 text-left font-bold font-roboto" for="">
@@ -627,7 +627,7 @@ cursor: pointer;
 
                                                                     <div class="w-full flex">
                                                                         <div class="w-2/5 flex ">
-                                                                            <p class="font-bold text-blue-900 text-justify mr-10 font-roboto" for="">{{ __('index.efi_ori') }}</p>
+                                                                            <p class="font-bold text-blue-900 text-left mr-10 font-roboto" for="">{{ __('index.efi_ori') }}</p>
                                                                         </div>
                                                                         <div class="ml-2 w-auto flex justify-start">
                                                                             <label class="font-roboto text-blue-600 font-bold" for="">{{$solution->eficencia_ene}} {{$solution->eficencia_ene_cant}}  </label>
@@ -638,7 +638,7 @@ cursor: pointer;
 
                                                                     <div class="w-full flex">
                                                                         <div class="w-2/5 flex ">
-                                                                            <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
+                                                                            <p class="text-blue-900 text-left mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
                                                                         </div>
                                                                         <div class="ml-2 w-1/2">
                                                                             <p class="text-blue-600 text-left font-bold  font-roboto" for="">
@@ -648,7 +648,7 @@ cursor: pointer;
 
                                                                     </div> <div class="w-full flex">
                                                                         <div class="w-2/5 flex ">
-                                                                            <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
+                                                                            <p class="text-blue-900 text-sm text-left mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
                                                                         </div>
                                                                         <div class="ml-2 w-2/5">
                                                                             <p class="text-blue-600  text-left font-bold  font-roboto" for="">
@@ -968,7 +968,7 @@ cursor: pointer;
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
+                                                                        <p class="text-blue-900 text-left mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-1/2">
                                                                         <p class="text-blue-600 text-left font-bold  font-roboto" for="">
@@ -978,7 +978,7 @@ cursor: pointer;
 
                                                                 </div> <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
+                                                                        <p class="text-blue-900 text-sm text-left mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5">
                                                                         <p class="text-blue-600  text-left font-bold  font-roboto" for="">
@@ -1286,7 +1286,7 @@ cursor: pointer;
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-justify mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
+                                                                        <p class="text-blue-900 text-left mr-10 font-roboto font-bold" for="">{{ __('index.tipo control') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-1/2">
                                                                         <p class="text-blue-600 text-left font-bold  font-roboto" for="">
@@ -1296,7 +1296,7 @@ cursor: pointer;
 
                                                                 </div> <div class="w-full flex">
                                                                     <div class="w-2/5 flex ">
-                                                                        <p class="text-blue-900 text-sm text-justify mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
+                                                                        <p class="text-blue-900 text-sm text-left mr-10 font-roboto font-bold" for="">{{ __('index.dr') }}</p>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5">
                                                                         <p class="text-blue-600  text-left font-bold  font-roboto" for="">
