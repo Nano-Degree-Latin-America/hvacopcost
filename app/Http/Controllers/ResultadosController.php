@@ -1931,7 +1931,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                     $solution_enf1->dr_name=$request->get('dr_name_1_1_retro');
 
                     $solution_enf1->dr = $request->get('dr_1_1_retro');
-                    $solution_enf1->mantenimiento = $request->get('csMantenimiento_1_1_retro');
+                    $solution_enf1->mantenimiento = $request->get('csMantenimiento_2_1_retro');
 
                     if($request->get('costo_recu_2_1_retro') != null){
                         $val_aprox_aux = ResultadosController::price_form($request->get('costo_recu_2_1_retro'));
@@ -2036,7 +2036,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                     $solution_enf1->dr_name=$request->get('dr_name_1_1_retro');
 
                     $solution_enf1->dr = $request->get('dr_1_1_retro');
-                    $solution_enf1->mantenimiento = $request->get('csMantenimiento_1_1_retro');
+                    $solution_enf1->mantenimiento = $request->get('cheMantenimiento_3_1_retro');
 
                     if($request->get('costo_recu_3_1_retro') != null){
                         $val_aprox_aux = ResultadosController::price_form($request->get('costo_recu_3_1_retro'));

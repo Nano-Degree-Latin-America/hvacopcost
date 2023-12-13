@@ -11377,7 +11377,7 @@ cUnidad_3_3 */
                 $('#cheDisenio_2_1_retro').prop('disabled', true);
                 $('#tipo_control_2_1_retro').prop('disabled', true);
                 $('#dr_2_1_retro').prop('disabled', true);
-                $('#csMantenimiento_2_1_retro').prop('disabled', true);
+                //$('#csMantenimiento_2_1_retro').prop('disabled', true);
                /*  $('#costo_recu_2_1_retro').prop('readonly', true);
                 $('#maintenance_cost_2_1_retro').prop('readonly', true); */
                 $('#cUnidad_3_1_retro').prop('disabled', true);
@@ -11391,7 +11391,7 @@ cUnidad_3_3 */
                 $('#cheDisenio_3_1_retro').prop('disabled', true);
                 $('#tipo_control_3_1_retro').prop('disabled', true);
                 $('#dr_3_1_retro').prop('disabled', true);
-                $('#cheMantenimiento_3_1_retro').prop('disabled', true);
+                //$('#cheMantenimiento_3_1_retro').prop('disabled', true);
             break;
 
             case 'pn':
@@ -11406,7 +11406,7 @@ cUnidad_3_3 */
                 $('#cheDisenio_2_1_retro').prop('disabled', false);
                 $('#tipo_control_2_1_retro').prop('disabled', false);
                 $('#dr_2_1_retro').prop('disabled', false);
-                $('#csMantenimiento_2_1_retro').prop('disabled', false);
+                //$('#csMantenimiento_2_1_retro').prop('disabled', false);
                /*  $('#costo_recu_2_1_retro').prop('readonly', true);
                 $('#maintenance_cost_2_1_retro').prop('readonly', true); */
                 $('#cUnidad_3_1_retro').prop('disabled', false);
@@ -11420,7 +11420,7 @@ cUnidad_3_3 */
                 $('#cheDisenio_3_1_retro').prop('disabled', false);
                 $('#tipo_control_3_1_retro').prop('disabled', false);
                 $('#dr_3_1_retro').prop('disabled', false);
-                $('#cheMantenimiento_3_1_retro').prop('disabled', false);
+               // $('#cheMantenimiento_3_1_retro').prop('disabled', false);
             break;
 
             case 'pr':
@@ -11435,7 +11435,7 @@ cUnidad_3_3 */
                 $('#cheDisenio_2_1_retro').prop('disabled', false);
                 $('#tipo_control_2_1_retro').prop('disabled', false);
                 $('#dr_2_1_retro').prop('disabled', false);
-                $('#csMantenimiento_2_1_retro').prop('disabled', false);
+                //$('#csMantenimiento_2_1_retro').prop('disabled', false);
                /*  $('#costo_recu_2_1_retro').prop('readonly', true);
                 $('#maintenance_cost_2_1_retro').prop('readonly', true); */
                 $('#cUnidad_3_1_retro').prop('disabled', false);
@@ -11449,7 +11449,7 @@ cUnidad_3_3 */
                 $('#cheDisenio_3_1_retro').prop('disabled', false);
                 $('#tipo_control_3_1_retro').prop('disabled', false);
                 $('#dr_3_1_retro').prop('disabled', false);
-                $('#cheMantenimiento_3_1_retro').prop('disabled', false);
+                //$('#cheMantenimiento_3_1_retro').prop('disabled', false);
             break;
 
             default:
