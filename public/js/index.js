@@ -5170,7 +5170,7 @@ function check_form_retro(idm){
                     const myArray_maintenance_cost_1_1 = maintenance_cost_1_1_retro.val().split('$');
                     var var_maintenance_cost_1_1_retro =  myArray_maintenance_cost_1_1[1];
 
-                    if(var_maintenance_cost_1_1_retro < 0 || maintenance_cost_1_1_retro.val() == ""){
+                    if(var_maintenance_cost_1_1_retro < 0){
 
                         maintenance_cost_1_1_retro.css("border-color", "red")
                         maintenance_cost_1_1_retro_count = 1;
@@ -5435,7 +5435,7 @@ function check_form_retro(idm){
                     const myArray_maintenance_cost_2_1 = maintenance_cost_2_1_retro.val().split('$');
                     var var_maintenance_cost_2_1_retro =  myArray_maintenance_cost_2_1[1];
 
-                    if(var_maintenance_cost_2_1_retro < 0 || maintenance_cost_2_1_retro.val() == ""){
+                    if(var_maintenance_cost_2_1_retro < 0){
 
                         maintenance_cost_2_1_retro.css("border-color", "red")
                         maintenance_cost_2_1_retro_count = 1;
@@ -5701,7 +5701,7 @@ function check_form_retro(idm){
                     const myArray_maintenance_cost_3_1 = maintenance_cost_3_1_retro.val().split('$');
                     var var_maintenance_cost_3_1_retro =  myArray_maintenance_cost_3_1[1];
 
-                    if(var_maintenance_cost_3_1_retro < 0 || maintenance_cost_3_1_retro.val() == ""){
+                    if(var_maintenance_cost_3_1_retro < 0){
 
                         maintenance_cost_3_1_retro.css("border-color", "red")
                         maintenance_cost_3_1_retro_count = 1;
