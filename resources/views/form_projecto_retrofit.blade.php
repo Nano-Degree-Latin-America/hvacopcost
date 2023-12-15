@@ -250,7 +250,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <input type="text" style="margin-left: 2px;" onchange="valida_selects_inps(this.id);format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="costo_recu_1_1_retro" id="costo_recu_1_1_retro" >
+                        <input type="text" style="margin-left: 2px;" onchange="valida_selects_inps(this.id);format_num(this.value,this.id);check_type_set_mant_inp('type_p','costo_recu_2_1_retro','costo_recu_3_1_retro',this.value);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="costo_recu_1_1_retro" id="costo_recu_1_1_retro" >
                     </div>
                     <input  id="costo_recu_1_1_retro_count" name="costo_recu_1_1_retro_count" type="number" class="hidden" value="1">
 
@@ -714,7 +714,8 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="w-1/3 flex justify-start text-left">
-                                <label  class="labels" for=""><b>{{ __('index.inversion inicial') }} (CAPEX)</b> </label>
+                                <label id="inv_ini_capex_2_1_retro" name="inv_ini_capex_2_1_retro" class="labels hidden" for=""><b>{{ __('index.inversion inicial') }} (CAPEX)</b> </label>
+                                <label id="inv_ini_capex_2_1_mant" name="inv_ini_capex_2_1_mant" class="labels hidden" for=""><b>{{ __('index.val_dep') }}</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
@@ -741,14 +742,16 @@
                         </div>
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                           {{--  <div class="w-1/3 flex justify-start text-left">
-                                <label class="labels" for=""><b>Costo Anual Reparaciones</b></label>
+                            <div id="costo_anual_reparaciones_2_1_retro" name="costo_anual_reparaciones_2_1_retro" class="flex w-full">
+                                <div class="w-1/3 flex justify-start text-left">
+                                    <label class="labels" for=""><b>Costo Anual Reparaciones</b></label>
+                                </div>
+                                <div class="w-1/2 flex justify-start text-left">
+                                    <input type="text"  onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_2_1" id="const_an_rep_2_1" >
+                                    <input  id="const_an_rep_2_1_retro_count" name="const_an_rep_2_1_retro_count" type="number" class="hidden" value="1">
+                                </div>
                             </div>
-                            <div class="w-1/2 flex justify-start text-left">
-                                <input type="text"  onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_2_1" id="const_an_rep_2_1" >
-                                <input  id="const_an_rep_2_1_retro_count" name="const_an_rep_2_1_retro_count" type="number" class="hidden" value="1">
 
-                            </div> --}}
 
                         </div>
 
@@ -998,7 +1001,8 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                             <div class="w-1/3 flex justify-start text-left">
-                                <label  class="labels" for=""><b>Inversión Inicial (CAPEX)</b> </label>
+                                <label id="inv_ini_capex_3_1_retro" name="inv_ini_capex_3_1_retro" class="labels hidden" for=""><b>{{ __('index.inversion inicial') }} (CAPEX)</b> </label>
+                                <label id="inv_ini_capex_3_1_mant" name="inv_ini_capex_3_1_mant" class="labels hidden" for=""><b>{{ __('index.val_dep') }}</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
@@ -1023,14 +1027,17 @@
                         </div>
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                            {{-- <div class="w-1/3 flex justify-start text-left">
-                                <label  class="labels" for=""><b>Costo Anual Reparaciones</b> </label>
-                            </div>
-                            <div class="w-1/2 flex justify-start text-left">
-                                 <input style="margin-left: 1px;" onchange="format_num(this.value,this.id);valida_selects_inps(this.id)" type="text" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_3_1" id="const_an_rep_3_1" >
-                                 <input  id="cheValorS_3_1_retro_count" name="const_an_rep_3_1_retro_count" type="number" class="hidden" value="1">
+                            <div id="costo_anual_reparaciones_3_1_retro" name="costo_anual_reparaciones_3_1_retro" class="flex w-full">
+                                <div class="w-1/3 flex justify-start text-left">
+                                    <label  class="labels" for=""><b>Costo Anual Reparaciones</b> </label>
+                                </div>
+                                <div class="w-1/2 flex justify-start text-left">
+                                    <input style="margin-left: 1px;" onchange="format_num(this.value,this.id);valida_selects_inps(this.id)" type="text" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_3_1" id="const_an_rep_3_1" >
+                                    <input  id="const_an_rep_3_1_retro_count" name="conconst_an_rep_3_1_retro_count" type="number" class="hidden" value="1">
 
-                                </div> --}}
+
+                                </div>
+                          </div>
                         </div>
 
 

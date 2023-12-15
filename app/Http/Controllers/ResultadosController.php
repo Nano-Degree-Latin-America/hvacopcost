@@ -1970,9 +1970,9 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                     $solution_enf1->dr = $request->get('dr_1_1_retro');
                     $solution_enf1->mantenimiento = $request->get('csMantenimiento_2_1_retro');
 
-                    if($request->get('costo_recu_2_1_retro') != null){
-                        $val_aprox_aux = ResultadosController::price_form($request->get('costo_recu_2_1_retro'));
-                    }else  if($request->get('costo_recu_2_1_retro') == null){
+                    if($request->get('costo_recu_1_1_retro') != null){
+                        $val_aprox_aux = ResultadosController::price_form($request->get('costo_recu_1_1_retro'));
+                    }else  if($request->get('costo_recu_1_1_retro') == null){
                         $val_aprox_aux = 0;
                     }
 
@@ -1983,16 +1983,16 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
                     }
 
-                    /* if($request->get('const_an_rep_1_1') != null){
-                        $aux__cost_an_rep_1_1 = ResultadosController::price_form($request->get('const_an_rep_1_1'));
-                    }else  if($request->get('const_an_rep_1_1') == null){
+                    if($request->get('const_an_rep_2_1') != null){
+                        $aux__cost_an_rep_1_1 = ResultadosController::price_form($request->get('const_an_rep_2_1'));
+                    }else  if($request->get('const_an_rep_2_1') == null){
                         $aux__cost_an_rep_1_1 = 0;
 
-                    } */
+                    }
 
                     $solution_enf1->val_aprox=floatval($val_aprox_aux);
                     $solution_enf1->costo_mantenimiento=floatval($aux_cost_mant);
-                    //$solution_enf1->cost_an_re=floatval($aux__cost_an_rep_1_1);
+                    $solution_enf1->cost_an_re=floatval($aux__cost_an_rep_1_1);
                     $solution_enf1->status=1;
                     $solution_enf1->id_empresa=Auth::user()->id_empresa;
                     $solution_enf1->id_user=Auth::user()->id;
@@ -2075,9 +2075,9 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                     $solution_enf1->dr = $request->get('dr_1_1_retro');
                     $solution_enf1->mantenimiento = $request->get('cheMantenimiento_3_1_retro');
 
-                    if($request->get('costo_recu_3_1_retro') != null){
-                        $val_aprox_aux = ResultadosController::price_form($request->get('costo_recu_3_1_retro'));
-                    }else  if($request->get('costo_recu_3_1_retro') == null){
+                    if($request->get('costo_recu_1_1_retro') != null){
+                        $val_aprox_aux = ResultadosController::price_form($request->get('costo_recu_1_1_retro'));
+                    }else  if($request->get('costo_recu_1_1_retro') == null){
                         $val_aprox_aux = 0;
                     }
 
@@ -2088,16 +2088,16 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
                     }
 
-                    /* if($request->get('const_an_rep_1_1') != null){
-                        $aux__cost_an_rep_1_1 = ResultadosController::price_form($request->get('const_an_rep_1_1'));
-                    }else  if($request->get('const_an_rep_1_1') == null){
+                    if($request->get('const_an_rep_3_1') != null){
+                        $aux__cost_an_rep_1_1 = ResultadosController::price_form($request->get('const_an_rep_3_1'));
+                    }else  if($request->get('const_an_rep_3_1') == null){
                         $aux__cost_an_rep_1_1 = 0;
 
-                    } */
+                    }
 
                     $solution_enf1->val_aprox=floatval($val_aprox_aux);
                     $solution_enf1->costo_mantenimiento=floatval($aux_cost_mant);
-                    //$solution_enf1->cost_an_re=floatval($aux__cost_an_rep_1_1);
+                    $solution_enf1->cost_an_re=floatval($aux__cost_an_rep_1_1);
                     $solution_enf1->status=1;
                     $solution_enf1->id_empresa=Auth::user()->id_empresa;
                     $solution_enf1->id_user=Auth::user()->id;

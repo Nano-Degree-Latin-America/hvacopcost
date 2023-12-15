@@ -999,7 +999,12 @@ cursor: pointer;
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
+                                                                        @if ($tar_ele->type_p == 2)
                                                                         <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.inversion inicial') }} (CAPEX)</label>
+                                                                        @endif
+                                                                        @if ($tar_ele->type_p == 3)
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.val_dep') }}</label>
+                                                                        @endif
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
@@ -1015,14 +1020,17 @@ cursor: pointer;
                                                                     </div>
                                                                 </div>
 
-                                                                {{-- <div class="w-full flex">
+                                                                @if ($tar_ele->type_p == 3)
+                                                                <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
                                                                         <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Reparaciónes</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->cost_an_re)}}</label>
                                                                     </div>
-                                                                </div> --}}
+                                                                </div>
+                                                                @endif
+                                                                {{-- --}}
                                                         </div>
                                                         </div>
                                                     </div>
@@ -1329,8 +1337,12 @@ cursor: pointer;
 
                                                                 <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
+                                                                        @if ($tar_ele->type_p == 2)
                                                                         <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.inversion inicial') }} (CAPEX)</label>
-                                                                    </div>
+                                                                        @endif
+                                                                        @if ($tar_ele->type_p == 3)
+                                                                        <label class="text-blue-900 font-bold font-roboto" for="">{{ __('index.val_dep') }}</label>
+                                                                        @endif                                                                    </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->val_aprox)}}</label>
                                                                     </div>
@@ -1345,14 +1357,18 @@ cursor: pointer;
                                                                     </div>
                                                                 </div>
 
-                                                               {{--  <div class="w-full flex">
+                                                               {{--  --}}
+
+                                                                @if ($tar_ele->type_p == 3)
+                                                                <div class="w-full flex">
                                                                     <div class="w-2/5 flex justify-start">
                                                                         <label class="text-blue-900 font-bold font-roboto" for="">Costo Anual Reparaciónes</label>
                                                                     </div>
                                                                     <div class="ml-2 w-2/5 flex justify-start">
                                                                         <label class="font-roboto text-blue-600 font-bold" for="">${{number_format($solution->cost_an_re)}}</label>
                                                                     </div>
-                                                                </div> --}}
+                                                                </div>
+                                                                @endif
                                                         </div>
                                                         </div>
                                                     </div>

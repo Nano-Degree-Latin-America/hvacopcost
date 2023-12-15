@@ -2297,7 +2297,18 @@ return arry_dr;
         $('#'+new_p).addClass("hidden");
         $('#'+button_rp).removeClass("hidden");
         $('#'+button_np).addClass("hidden");
+        $('#costo_anual_reparaciones_2_1_retro').addClass("hidden");
+        $('#costo_anual_reparaciones_3_1_retro').addClass("hidden");
         inactive_tarjets_retro('pr');
+        $('#inv_ini_capex_2_1_retro').removeClass("hidden");
+        $('#inv_ini_capex_2_1_mant').addClass("hidden");
+        $('#inv_ini_capex_3_1_retro').removeClass("hidden");
+        $('#inv_ini_capex_3_1_mant').addClass("hidden");
+        $('#button_inactive_2_1_mant').addClass("hidden");
+        $('#button_inactive_2_1_retro').removeClass("hidden");
+        $('#button_inactive_3_1_retro').removeClass("hidden");
+        $('#button_inactive_3_1_mant').addClass("hidden");
+
     }else if(value == 'man'){
         type_p.value = 3;
         pn.checked = false;
@@ -2340,8 +2351,17 @@ return arry_dr;
         $('#'+new_p).addClass("hidden");
         $('#'+button_rp).removeClass("hidden");
         $('#'+button_np).addClass("hidden");
-
+        $('#costo_anual_reparaciones_2_1_retro').removeClass("hidden");
+        $('#costo_anual_reparaciones_3_1_retro').removeClass("hidden");
         inactive_tarjets_retro('man');
+        $('#inv_ini_capex_2_1_retro').addClass("hidden");
+        $('#inv_ini_capex_2_1_mant').removeClass("hidden");
+        $('#inv_ini_capex_3_1_retro').addClass("hidden");
+        $('#inv_ini_capex_3_1_mant').removeClass("hidden");
+        $('#button_inactive_2_1_mant').removeClass("hidden");
+        $('#button_inactive_2_1_retro').addClass("hidden");
+        $('#button_inactive_3_1_retro').addClass("hidden");
+        $('#button_inactive_3_1_mant').removeClass("hidden");
     }
   }
 
@@ -2368,15 +2388,33 @@ return arry_dr;
         ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','');
 
         inactive_tarjets_retro('pr');
-
+        $('#costo_anual_reparaciones_2_1_retro').addClass("hidden");
+        $('#costo_anual_reparaciones_3_1_retro').addClass("hidden");
+        $('#button_inactive_2_1_mant').addClass("hidden");
+        $('#button_inactive_2_1_retro').removeClass("hidden");
+        $('#button_inactive_3_1_retro').removeClass("hidden");
+        $('#button_inactive_3_1_mant').addClass("hidden");
+        $('#inv_ini_capex_2_1_retro').removeClass("hidden");
+        $('#inv_ini_capex_2_1_mant').addClass("hidden");
+        $('#inv_ini_capex_3_1_retro').removeClass("hidden");
+        $('#inv_ini_capex_3_1_mant').addClass("hidden");
     }else if(type_p == 3){
         $('#display_nuevo_retrofit_edit').removeClass("hidden");
         $('#display_nuevo_project_edit').addClass("hidden");
         $('#type_p').val(type_p);
         calcular_p_n.addClass("hidden");
         calcular_p_r.removeClass("hidden");
-
+        $('#costo_anual_reparaciones_2_1_retro').removeClass("hidden");
+        $('#costo_anual_reparaciones_3_1_retro').removeClass("hidden");
         inactive_tarjets_retro('man');
+        $('#button_inactive_2_1_mant').removeClass("hidden");
+        $('#button_inactive_2_1_retro').addClass("hidden");
+        $('#button_inactive_3_1_retro').addClass("hidden");
+        $('#button_inactive_3_1_mant').removeClass("hidden");
+        $('#inv_ini_capex_2_1_retro').addClass("hidden");
+        $('#inv_ini_capex_2_1_mant').removeClass("hidden");
+        $('#inv_ini_capex_3_1_retro').addClass("hidden");
+        $('#inv_ini_capex_3_1_mant').removeClass("hidden");
     }
 
   }
@@ -11377,6 +11415,7 @@ cUnidad_3_3 */
                 $('#cheDisenio_2_1_retro').prop('disabled', true);
                 $('#tipo_control_2_1_retro').prop('disabled', true);
                 $('#dr_2_1_retro').prop('disabled', true);
+                $('#costo_recu_2_1_retro').prop('readonly', true);
                 //$('#csMantenimiento_2_1_retro').prop('disabled', true);
                /*  $('#costo_recu_2_1_retro').prop('readonly', true);
                 $('#maintenance_cost_2_1_retro').prop('readonly', true); */
@@ -11391,6 +11430,7 @@ cUnidad_3_3 */
                 $('#cheDisenio_3_1_retro').prop('disabled', true);
                 $('#tipo_control_3_1_retro').prop('disabled', true);
                 $('#dr_3_1_retro').prop('disabled', true);
+                $('#costo_recu_3_1_retro').prop('disabled', true);
                 //$('#cheMantenimiento_3_1_retro').prop('disabled', true);
             break;
 
@@ -11435,6 +11475,7 @@ cUnidad_3_3 */
                 $('#cheDisenio_2_1_retro').prop('disabled', false);
                 $('#tipo_control_2_1_retro').prop('disabled', false);
                 $('#dr_2_1_retro').prop('disabled', false);
+                $('#costo_recu_2_1_retro').prop('readonly', false);
                 //$('#csMantenimiento_2_1_retro').prop('disabled', false);
                /*  $('#costo_recu_2_1_retro').prop('readonly', true);
                 $('#maintenance_cost_2_1_retro').prop('readonly', true); */
@@ -11449,6 +11490,7 @@ cUnidad_3_3 */
                 $('#cheDisenio_3_1_retro').prop('disabled', false);
                 $('#tipo_control_3_1_retro').prop('disabled', false);
                 $('#dr_3_1_retro').prop('disabled', false);
+                $('#costo_recu_3_1_retro').prop('disabled', false);
                 //$('#cheMantenimiento_3_1_retro').prop('disabled', false);
             break;
 
@@ -11599,6 +11641,8 @@ cUnidad_3_3 */
             $("#yrs_vida_2_1_retro").val('');
             $("#maintenance_cost_2_1_retro").val('');
             $("#costo_elec_2_1_retro").val('');
+            $("#const_an_rep_2_1").val('');
+
 
             $("#cUnidad_3_1_retro").find('option[value="0"]').attr("selected", "selected");
             $("#cheTipo_3_1_retro").find('option[value=""]').attr("selected", "selected");
@@ -11633,6 +11677,6 @@ cUnidad_3_3 */
             $("#costo_elec_3_1_retro").val('');
             $("#maintenance_cost_3_1_retro").val('');
             $("#csStd_cant_3_1_retro").val('');
-
+            $("#const_an_rep_3_1").val('');
 
      }

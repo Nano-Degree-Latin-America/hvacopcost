@@ -1521,7 +1521,7 @@ class ProjectController extends Controller
                   if($request->get('csStd_3_2') != null){
                     $solution_enf3_2->eficencia_ene = $request->get('csStd_3_2');
                   }
-                  
+
                 $solution_enf3_2->eficencia_ene_cant =floatval($request->get('csStd_cant_3_2'));
                 $solution_enf3_2->tipo_control = $request->get('tipo_control_3_2');
 
@@ -2617,11 +2617,11 @@ class ProjectController extends Controller
                 $solution_enf1->dr = $request->get('dr_1_1_retro');
                 $solution_enf1->mantenimiento = $request->get('csMantenimiento_2_1_retro');
 
-                if($request->get('costo_recu_2_1_retro') != null){
+                if($request->get('costo_recu_1_1_retro') != null){
 
-                    $val_aprox_aux = ProjectController::price_form($request->get('costo_recu_2_1_retro'));
+                    $val_aprox_aux = ProjectController::price_form($request->get('costo_recu_1_1_retro'));
 
-                }else  if($request->get('costo_recu_2_1_retro') == null){
+                }else  if($request->get('costo_recu_1_1_retro') == null){
                     $val_aprox_aux = 0;
                 }
 
@@ -2742,9 +2742,9 @@ class ProjectController extends Controller
                 $solution_enf1->dr = $request->get('dr_1_1_retro');
                 $solution_enf1->mantenimiento = $request->get('cheMantenimiento_3_1_retro');
 
-                if($request->get('costo_recu_3_1_retro') != null){
+                if($request->get('costo_recu_1_1_retro') != null){
 
-                    $val_aprox_aux = ProjectController::price_form($request->get('costo_recu_3_1_retro'));
+                    $val_aprox_aux = ProjectController::price_form($request->get('costo_recu_1_1_retro'));
 
                 }else  if($request->get('costo_recu_3_1_retro') == null){
                     $val_aprox_aux = 0;

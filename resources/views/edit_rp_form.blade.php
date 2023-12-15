@@ -262,7 +262,7 @@
                             </div>
 
                             <div class="w-1/2 flex justify-start">
-                                <input type="text" style="margin-left: 2px;" onchange="valida_selects_inps(this.id);format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="costo_recu_1_1_retro" id="costo_recu_1_1_retro" >
+                                <input type="text" style="margin-left: 2px;" onchange="valida_selects_inps(this.id);format_num(this.value,this.id);check_type_set_mant_inp('type_p','costo_recu_2_1_retro','costo_recu_3_1_retro',this.value);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center"  name="costo_recu_1_1_retro" id="costo_recu_1_1_retro" >
                             </div>
                             <input  id="costo_recu_1_1_retro_count" name="costo_recu_1_1_retro_count" type="number" class="hidden" value="1">
 
@@ -546,20 +546,12 @@
                         <input type="text" style="display: none" id="lblCsTipo" name="lblCsTipo" value="Tipo paquete">
                     </div>
 
-                   {{--  <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                        <div class="w-1/3 flex justify-start text-left">
-                            <label class="labels" for=""><b>Costo Anual Reparaciones</b></label>
-                        </div>
-                        <div class="w-1/2 flex justify-start text-left">
-                            <input type="text"  onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_2_1" id="const_an_rep_2_1" >
-                            <input  id="const_an_rep_2_1_retro_count" name="const_an_rep_2_1_retro_count" type="number" class="hidden" value="1">
-
-                        </div>
-                    </div>
+                   {{--
  --}}
                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                         <div class="w-1/3 flex justify-start text-left">
-                            <label  class="labels" for=""><b>{{ __('index.inversion inicial') }} (CAPEX)</b> </label>
+                            <label id="inv_ini_capex_2_1_retro" name="inv_ini_capex_2_1_retro" class="labels hidden" for=""><b>{{ __('index.inversion inicial') }} (CAPEX)</b> </label>
+                            <label id="inv_ini_capex_2_1_mant" name="inv_ini_capex_2_1_mant" class="labels hidden" for=""><b>{{ __('index.val_dep') }}</b> </label>
                         </div>
 
                         <div class="w-1/2 flex justify-start">
@@ -584,9 +576,26 @@
                         <input  id="maintenance_cost_2_1_retro_count" name="maintenance_cost_2_1_retro_count" type="number" class="hidden" value="1">
 
                     </div>
-                    <div class="flex w-1/2 justify-end">
-                        <button onclick="inactive_display_sol_edit('sol_2_1_retro','{{$id_project}}',2,1,'A')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+
+                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                        <div id="costo_anual_reparaciones_2_1_retro" name="costo_anual_reparaciones_2_1_retro" class="flex w-full  gap-x-1">
+                            <div class="w-1/3 flex justify-start text-left">
+                                <label class="labels" for=""><b>Costo Anual Reparaciones</b></label>
+                            </div>
+                            <div class="w-1/2 flex justify-start text-left ml-4">
+                                <input type="text"  onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_2_1" id="const_an_rep_2_1" >
+                                <input  id="const_an_rep_2_1_retro_count" name="const_an_rep_2_1_retro_count" type="number" class="hidden" value="1">
+                            </div>
+                            <div id="button_inactive_2_1_mant" name="button_inactive_2_1_mant" class="flex w-auto justify-end">
+                                <button onclick="inactive_display_sol_edit('sol_2_1_retro','{{$id_project}}',2,1,'A')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </div>
+                        <div id="button_inactive_2_1_retro" name="button_inactive_2_1_retro" class="flex justify-end w-full hidden">
+                            <button onclick="inactive_display_sol_edit('sol_2_1_retro','{{$id_project}}',2,1,'A')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                        </div>
                     </div>
+
+
 
 
 
@@ -866,9 +875,10 @@
                    </div> --}}
                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label  class="labels" for=""><b>{{ __('index.inversion inicial') }} (CAPEX)</b> </label>
-                    </div>
+                        <label id="inv_ini_capex_3_1_retro" name="inv_ini_capex_3_1_retro" class="labels hidden" for=""><b>{{ __('index.inversion inicial') }} (CAPEX)</b> </label>
+                        <label id="inv_ini_capex_3_1_mant" name="inv_ini_capex_3_1_mant" class="labels hidden" for=""><b>{{ __('index.val_dep') }}</b> </label>
 
+                    </div>
                     <div class="w-1/2 flex justify-start">
                         <input type="text" style="margin-left: 2px;" onchange="format_num(this.value,this.id);valida_selects_inps(this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="costo_recu_3_1_retro" id="costo_recu_3_1_retro" >
                     </div>
@@ -889,9 +899,24 @@
                            <input  id="maintenance_cost_3_1_retro_count" name="maintenance_cost_3_1_retro_count" type="number" class="hidden" value="1">
 
                    </div>
-                   <div class="flex w-1/2 justify-end">
-                     <button onclick="inactive_display_sol_edit('sol_3_1_retro','{{$id_project}}',3,1,'B')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                   <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                    <div id="costo_anual_reparaciones_3_1_retro" name="costo_anual_reparaciones_3_1_retro" class="flex w-full  gap-x-1">
+                        <div class="w-1/3 flex justify-start text-left">
+                            <label class="labels" for=""><b>Costo Anual Reparaciones</b></label>
+                        </div>
+                        <div class="w-1/2 flex justify-start text-left ml-3">
+                            <input type="text"  onchange="format_num(this.value,this.id);valida_selects_inps(this.id)"  class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-1 text-center" name="const_an_rep_3_1" id="const_an_rep_3_1" >
+                            <input  id="const_an_rep_3_1_retro_count" name="const_an_rep_3_1_retro_count" type="number" class="hidden" value="1">
+                        </div>
+                        <div id="button_inactive_3_1_mant" name="button_inactive_3_1_mant" class="flex w-auto justify-end">
+                            <button onclick="inactive_display_sol_edit('sol_3_1_retro','{{$id_project}}',3,1,'B')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                         </div>
                     </div>
+                    <div id="button_inactive_3_1_retro" name="button_inactive_3_1_retro" class="flex w-full justify-end hidden">
+                        <button onclick="inactive_display_sol_edit('sol_3_1_retro','{{$id_project}}',3,1,'B')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                     </div>
+                </div>
+
                </div>
 
              </div>
