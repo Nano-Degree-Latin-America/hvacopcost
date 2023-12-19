@@ -534,6 +534,15 @@ input[type=number]::-webkit-outer-spin-button {
                                                     <span id="inflation_rate_warning" name="inflation_rate_warning" class="text-red-500"></span>
                                                     </div>
 
+                                                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                        <div class="flex w-full">
+                                                            <label  class="labels_index font-roboto font-bold text-left" for=""><b>{{ __('index.n_empleados') }}:</b></label><label class="text-red-500"></label>
+                                                        </div>
+                                                    <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'n_empleados_warning');format_nums_no_$(this.value,this.id);" name="n_empleados" id="n_empleados" type="text" style="font-size: 14px;" class="w-1/2 border-2  border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
+
+                                                    <span id="n_empleados_warning" name="n_empleados_warning" class="text-red-500"></span>
+                                                    </div>
+
 
 
                                             </div>
@@ -632,13 +641,26 @@ input[type=number]::-webkit-outer-spin-button {
                                                        {{--  <select onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                                             <option value="0">-{{ __('index.selecciona porcentaje') }}-</option>
                                                         </select> --}}
-                                                        <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');change_to_porcent(this.value);" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac" id="porcent_hvac">
+                                                        <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');change_to_porcent(this.value);" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac" id="porcent_hvac">
                                                         <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="0">
                                                         <div class="ml-2" style="margin-top: 5.5px;">
                                                             <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                                                         </div>
                                                     </div>
                                                     <span id="por_hvac_warning" name="por_hvac_warning" class="text-red-500"></span>
+                                                </div>
+
+                                                <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                    <div class="flex w-full">
+                                                        <label  class="font-roboto text-left labels_index" for=""><b>{{ __('index.sal_an_prom') }}:</b></label><label class="text-red-500"></label>
+                                                    </div>
+                                                    <div class="flex w-full">
+
+                                                        <input type="text" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" name="sal_an_prom" id="sal_an_prom">
+                                                        <input id="count_sal_an_prom" name="count_sal_an_prom" type="number" class="hidden" value="0">
+
+                                                    </div>
+                                                    <span id="sal_an_prom_warning" name="sal_an_prom_warning" class="text-red-500"></span>
                                                 </div>
 
                                                 <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start mt-5">

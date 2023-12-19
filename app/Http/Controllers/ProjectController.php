@@ -189,6 +189,21 @@ class ProjectController extends Controller
         $update_project->id_tipo_edificio=$request->get('tipo_edificio_edit');
         $update_project->inflacion=intval($request->get('inc_ene'));
         $update_project->inflacion_rate=intval($request->get('inflation_rate'));
+
+        if($request->get('n_empleados') == ''){
+            $update_project->n_empleados = 0;
+        }else if($request->get('n_empleados') != '' || $request->get('n_empleados') >= 0){
+            $n_empleados_aux = ProjectController::num_form($request->get('n_empleados'));
+            $update_project->n_empleados = $n_empleados_aux;
+        }
+
+        if($request->get('sal_an_prom') == ''){
+            $update_project->sal_an_prom = 0;
+        }else if($request->get('sal_an_prom') != '' || $request->get('sal_an_prom') >= 0){
+            $sal_an_prom_aux = ProjectController::price_form($request->get('sal_an_prom'));
+            $update_project->sal_an_prom = $sal_an_prom_aux;
+        }
+
         $hrs_tiempo = $request->get('tiempo_porcent');
 
         switch ($hrs_tiempo) {

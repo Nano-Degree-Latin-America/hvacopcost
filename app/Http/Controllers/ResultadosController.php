@@ -104,6 +104,20 @@ class ResultadosController extends Controller
             $mew_project->porcent_hvac=10;
         }
 
+        if($request->get('n_empleados') == ''){
+            $mew_project->n_empleados = 0;
+        }else if($request->get('n_empleados') != '' || $request->get('n_empleados') >= 0){
+            $n_empleados_aux = ResultadosController::num_form($request->get('n_empleados'));
+            $mew_project->n_empleados = $n_empleados_aux;
+        }
+
+        if($request->get('sal_an_prom') == ''){
+            $mew_project->sal_an_prom = 0;
+        }else if($request->get('sal_an_prom') != '' || $request->get('sal_an_prom') >= 0){
+            $sal_an_prom_aux = ResultadosController::price_form($request->get('sal_an_prom'));
+            $mew_project->sal_an_prom = $sal_an_prom_aux;
+        }
+
         $mew_project->status=1;
         $mew_project->id_empresa=Auth::user()->id_empresa;
         $mew_project->id_user=Auth::user()->id;

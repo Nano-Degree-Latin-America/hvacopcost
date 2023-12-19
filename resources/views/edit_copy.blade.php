@@ -580,6 +580,15 @@ $idm = App::getLocale();
                                                 <span id="inflation_rate_warning" name="inflation_rate_warning" class="text-red-500"></span>
                                                 </div>
 
+                                                <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                    <div class="flex w-full">
+                                                        <label  class="labels_index font-roboto font-bold text-left" for=""><b>{{ __('index.n_empleados') }}:</b></label><label class="text-red-500"></label>
+                                                    </div>
+                                                <input onkeypress="return soloNumeros(event)" value="{{$project_edit->n_empleados}}" onchange="check_input(this.value,this.id,'n_empleados_warning');format_nums_no_$(this.value,this.id);" name="n_empleados" id="n_empleados" type="text" style="font-size: 14px;" class="w-1/2 border-2  border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
+
+                                                <span id="n_empleados_warning" name="n_empleados_warning" class="text-red-500"></span>
+                                                </div>
+
 
                                             </div>
 
@@ -716,6 +725,19 @@ $idm = App::getLocale();
                                                         </div>
                                                     </div>
                                                     <span id="por_hvac_warning" name="por_hvac_warning" class="text-red-500"></span>
+                                                </div>
+
+                                                <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                    <div class="flex w-full">
+                                                        <label  class="font-roboto text-left labels_index" for=""><b>{{ __('index.sal_an_prom') }}:</b></label><label class="text-red-500"></label>
+                                                    </div>
+                                                    <div class="flex w-full">
+
+                                                        <input type="text" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" name="sal_an_prom" id="sal_an_prom">
+                                                        <input id="count_sal_an_prom" name="count_sal_an_prom" type="number" class="hidden" value="1">
+
+                                                    </div>
+                                                    <span id="sal_an_prom_warning" name="sal_an_prom_warning" class="text-red-500"></span>
                                                 </div>
 
                                                 <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-startmt-5 ">
@@ -1856,6 +1878,9 @@ window.onload = function() {
     traer_horas_enf_edit('{{ $project_edit->id }}');
     setTimeout(function() {
     checksuma();
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+    var num_aux = dollarUSLocale.format('{{$project_edit->sal_an_prom}}');
+    $('#sal_an_prom').val('$'+num_aux);
 }, 1000);
 };
 

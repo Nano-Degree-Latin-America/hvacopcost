@@ -14,6 +14,8 @@ return [
     'unidad' => 'Unidad',
     'ocupacion semanal' => 'Ocupación Semanal',
     'energia hvac en el edificio' => 'Energía por HVAC',
+    'n_empleados' => 'N° Empleados',
+    'sal_an_prom' => 'Salario Anual Promedio',
     'proyecto nuevo' => 'Proyecto Nuevo',
     'proyecto retrofit' => 'Proyecto Retrofit',
     'selecciona tu region' => 'Selecciona tu región',

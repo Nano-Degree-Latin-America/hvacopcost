@@ -10,6 +10,7 @@ $(document).ready(function () {
     $('#calcular_p_r').attr('disabled', true);
     $('#calcular_p_r').css('background-color','gray');
 
+
     /* $('#marcas_modal').select2({
         width: 'resolve'
     }); */
@@ -3021,6 +3022,7 @@ function buton_check(idm){
         change(idm,'paises_warning');
         return false;
     }
+
     var ciudades = $("#ciudades");
     if (ciudades.val() == '0') {
         change(idm,'ciudad_warning');
@@ -3204,6 +3206,7 @@ function format_nums_no_$(value,id){
        var num_aux = dollarUSLocale.format(num);
        var num_format_split = num_aux.split(',');
        inpt.val(num_aux);
+
     }
 
 }
