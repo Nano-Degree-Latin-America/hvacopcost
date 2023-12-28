@@ -2639,6 +2639,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
     public function resultados_retrofit(Request $request,$id_project){
 
+        //return view('result_retro_imp',['id_project'=>$id_project]);
         return view('resultados_retrofit',['id_project'=>$id_project]);
     }
 
