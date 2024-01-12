@@ -13,6 +13,7 @@
 @inject('sumacap_term','app\Http\Controllers\ResultadosController')
 @inject('desperdicio','app\Http\Controllers\ResultadosController')
 @inject('conf_val','app\Http\Controllers\ResultadosController')
+@inject('graficas_capex_opex','app\Http\Controllers\ResultadosController')
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -156,6 +157,25 @@
             margin-top:.5rem;
         }
 
+        .ancho_rang{
+            width:1.25rem;
+            height:3rem;
+        }
+
+        .puntero_medidas{
+            width: 85px; height:65px;
+            margin-top:5px;
+        }
+
+        .size_solutions_confort{
+            font-size:2rem;
+        }
+
+        .style_grafics_marr{
+            width:600px;
+            height:320px;
+        }
+
 @media print{
   @page { margin: 0; }
 
@@ -164,14 +184,14 @@
   }
 
   .info_project{
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'ABeeZee', sans-serif;
     color:#2c5282;
     font-weight: bold;
   }
 
   .info_project_res{
-    font-size: 14px;
+    font-size: 18px;
     font-family: 'ABeeZee', sans-serif;
     font-weight: bold;
   }
@@ -182,13 +202,13 @@
          }
 
   .titulos_style{
-            font-size:20px;
+            font-size:25px;
             color: white;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
          }
    .solucions_style_name{
-        font-size: 1.4rem;
+        font-size: 1.8rem;
         color: #2c5282;
         font-weight: bold;
         font-family: 'ABeeZee', sans-serif;
@@ -202,15 +222,15 @@
    }
 
    .unit_style{
-            font-size: .9rem;
+            font-size: 1.2rem;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
             margin-top:.8rem;
    }
 
    .style_grafica_khw2{
-    width:200px;
-    height: 150px;
+    width:300px;
+    height: 250px;
    }
 
    .eui_energy_style{
@@ -219,14 +239,14 @@
     font-weight: bold;
     font-family: 'ABeeZee', sans-serif;
     margin-right: .15rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
    }
 
    .eui_energy_val_style{
     margin-top: 1.5rem;
     font-weight: bold;
     font-family: 'ABeeZee', sans-serif;
-    font-size: 2rem;
+    font-size: 2.5rem;
    }
 
    .energy_star_style_img{
@@ -246,13 +266,13 @@
    }
 
    .img_red_ene{
-            width:70px;
+            width:68px;
              height:50px;
               z-index:1;
         }
 
    .red_energetica_style{
-            font-size: 1rem;
+            font-size: 1.3rem;
             color: #2c5282;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -261,6 +281,25 @@
 
         .margin_new_page{
             margin-top: .5rem;
+        }
+
+        .ancho_rang{
+            width:1rem;
+            height:2rem;
+        }
+
+        .puntero_medidas{
+            width: 35px; height:38px;
+            margin-top:5px;
+        }
+
+        .size_solutions_confort{
+            font-size:1.2rem;
+        }
+
+        .style_grafics_marr{
+            width:400px;
+            height:250px;
         }
 }
 
@@ -303,7 +342,7 @@
 
         @media (min-width: 1024px) {
             .js_charts_style{
-                width: 280px;
+                width: 300px;
                 height: 200px;
                 margin: 0px auto;
             }
@@ -312,7 +351,7 @@
 
         @media (min-width: 1800px) {
             .js_charts_style{
-                width: 350px;
+                width: 410px;
                 height: 210px;
                 margin: 0px auto;
             }
@@ -320,7 +359,7 @@
 
         @media (min-width: 1890px) {
             .js_charts_style{
-                width: 350px;
+                width: 410px;
                 height: 210px;
                 margin: 0px auto;
             }
@@ -328,7 +367,7 @@
 
         @media (min-width: 1900px) {
             .js_charts_style{
-                width: 350px;
+                width: 410px;
                 height: 210px;
                 margin: 0px auto;
             }
@@ -340,7 +379,7 @@
 <?php  $kwh_yr=$results->kwh_yr($id_project,$tar_ele->cad_edi) ?>
 {{-- principal --}}
 <div class="w-full grid rounded-md justify-items-center mt-5">
-    <div  class="ancho border-2 border-blue-500 flex">
+    <div  class="ancho border-2 border-blue-500 rounded-md flex">
 
 
         <div class="w-1/4 flex justify-center">
@@ -382,7 +421,7 @@
 </div>
 {{-- Counsumo energia electrica --}}
 <div class="w-full grid rounded-md justify-items-center mt-2">
-    <div class="ancho border-2 border-blue-500 grid">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                 <p class="titulos_style">Consumo Energía Eléctrica</p>
@@ -399,7 +438,7 @@
                             </div>
 
                             <div class="flex justify-center w-full p-2">
-                                <div class="grid justify-center text-center">
+                                <div class="grid justify-items-center w-full">
                                     <?php  $result1=$results->result_1($id_project,1) ?>
                                     @if ($result1 ==! null)
                                     <?php  $sumaopex_1=$smasolutions->sumaopex($id_project,$result1->num_enf) ?>
@@ -415,10 +454,16 @@
                                     <div class="flex w-full justify-center">
                                         <p class="cant_style">{{number_format($sumaopex_1)}}</p><b class="unit_style">Kwh</b>
                                     </div>
+                                    <div class="flex w-full justify-center">
+                                        <div id="chart_cons_ene_hvac_ar_base" name="chart_cons_ene_hvac_ar_base" class="js_charts_style">
 
-
-
-                                    <div id="chart_cons_ene_hvac_ar_base" name="chart_cons_ene_hvac_ar_base" class="js_charts_style"></div>
+                                        </div>
+                                    </div>
+{{--                                     <div id="chart_cons_ene_hvac_ar_base_print" name="chart_cons_ene_hvac_ar_base_print" class="js_charts_style"></div>
+ --}}
+                                    <div class="flex w-full justify-center">
+                                        <p class="cant_style">$15112</p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -453,6 +498,9 @@
                                         <p class="cant_style">{{number_format($sumaopex_2)}}</p><b class="unit_style">Kwh</b>
                                     </div>
                                     <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style" ></div>
+                                    <div class="flex w-full justify-center">
+                                        <p class="cant_style">$15112</p>
+                                    </div>
                           </div>
                             </div>
                         </div>
@@ -486,6 +534,9 @@
                                         <p class="cant_style">{{number_format($sumaopex_3)}}</p><b class="unit_style">Kwh</b>
                                     </div>
                                      <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
+                                     <div class="flex w-full justify-center">
+                                        <p class="cant_style">$15112</p>
+                                    </div>
                                </div>
                             </div>
                         </div>
@@ -497,7 +548,7 @@
 
 {{-- Índice Intensidad del Uso de Energía --}}
 <div class="w-full grid rounded-md justify-items-center mt-2">
-    <div class="ancho border-2 border-blue-500 grid">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                 <p class="titulos_style">Índice Intensidad del Uso de Energía (Kbtu/ft²)</p>
@@ -565,7 +616,7 @@
 
 {{-- Índice Intensidad del Uso de Energía --}}
 <div class="w-full grid rounded-md justify-items-center mt-2">
-    <div class="ancho border-2 border-blue-500 grid">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
 
 
         <div class="w-full grid">
@@ -581,9 +632,9 @@
                     <label class="red_energetica_style" for="">Reducción Energética (MWh)</label>
                 </div>
 
-                <div class="w-full">
-                    <div id="chart_red_ene" name="chart_red_ene"></div>
-                    <div class="hidden" style="width: 350px; height:150px;" id="chart_red_ene_print" name="chart_red_ene_print"></div>
+                <div class="w-full flex justify-center">
+                    <div id="chart_red_ene" name="chart_red_ene" style="width: 600px;"></div>
+                    <div class="hidden "  id="chart_red_ene_print" name="chart_red_ene_print"></div>
                 </div>
             </div>
 
@@ -593,36 +644,473 @@
                     <label class="red_energetica_style" for="">Descarbonización (Ton CO2)</label>
                 </div>
 
-                <div class="w-full">
-                    <div id="chart_descarb" name="chart_descarb"></div>
-                    <div class="hidden" style="width: 350px; height:150px;" id="chart_descarb_print" name="chart_descarb_print"></div>
+                <div class="w-full flex justify-center">
+                    <div id="chart_descarb" name="chart_descarb" style="width: 600px;"></div>
+                    <div class="hidden "  id="chart_descarb_print" name="chart_descarb_print"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="p-3">
+{{-- espacio --}}
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:440px;" >
 
 </div>
+
 {{-- Nivel de Confort --}}
-<div class="margin_new_page w-full grid rounded-md justify-items-center">
-  <div class="ancho border-2 border-blue-500 grid">
-    <div class="w-full grid">
-            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                <p class="titulos_style">{{ __('results.niv_conf') }}</p>
-            </div>
+<div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
+      <div class="w-full grid">
+              <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                  <p class="titulos_style">{{ __('results.niv_conf') }}</p>
+              </div>
+      </div>
+      <?php  $conf_val_base=$conf_val->conf_val($id_project,1,1,$sumacap_term_1); ?>
+      <?php  $conf_val_a=$conf_val->conf_val($id_project,2,1,$sumacap_term_2);?>
+      <?php  $conf_val_b=$conf_val->conf_val($id_project,3,1,$sumacap_term_3) ?>
+      <div class="flex w-full justify-center gap-x-3 mb-2">
+
+              {{--  --}}
+              <div class="w-full grid mb-0 gap-y-5">
+                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg" style="margin-top:1.8rem;">
+
+                          <div class="w-1/5 flex justify-start">
+                          {{--  <div class="ml-10 flex w-full mt-5"> --}}
+                                  <p class="size_solutions_confort text-blue-600 font-roboto  font-bold text-left">{{ __('index.sis_ext') }}</p>
+                              {{-- </div> --}}
+                          </div>
+
+                      <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                      background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+                              {{-- 1 --} --}}
+                          @for ($i = 1; $i <= 32; $i++)
+                          <div id="term_{{$i}}" name="term_{{$i}}" class="grid ancho_rang">
+                              <img  id="val_base_{{$i}}" name="val_base_{{$i}}" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                          </div>
+                          @endfor
+                      </div>
+              </div>
+
+              @if ($result2 !== null)
+                  <div class="w-full grid mb-0 gap-y-5">
+                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+                          <div class="w-1/5 flex justify-start">
+
+                                  <p class="text-blue-600 font-roboto size_solutions_confort font-bold text-left">{{ __('index.solucion') }} A</p>
+
+                          </div>
+                        <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+
+                                      @for ($i = 1; $i <= 32; $i++)
+                                      <div id="term_{{$i}}_a" name="term_{{$i}}_a" class="grid ancho_rang">
+                                          <img  id="val_base_{{$i}}_a" name="val_base_{{$i}}_a" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                                      </div>
+                                      @endfor
+                          </div>
+                  </div>
+              @endif
+
+              @if ($result2 === null)
+                  <?php  $conf_val_a=0; ?>
+                  <div class="w-full grid mb-0 gap-y-5">
+                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+                          <div class="w-1/5 flex justify-start">
+                                  <p class="size_solutions_confort text-blue-600 font-roboto font-bold text-left">{{ __('index.solucion') }} A</p>
+                          </div>
+                        <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+
+                                      @for ($i = 1; $i <= 32; $i++)
+                                      <div id="term_{{$i}}_a" name="term_{{$i}}_a" class="grid ancho_rang">
+                                          <img  id="val_base_{{$i}}_a" name="val_base_{{$i}}_a" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                                      </div>
+                                      @endfor
+                      </div>
+                  </div>
+              @endif
+
+              @if ($result3 !== null)
+                  <div class="w-full grid mb-0 gap-y-5">
+                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+                          <div class="w-1/5 flex justify-start">
+                                  <p class="size_solutions_confort text-blue-600 font-roboto font-bold text-left">{{ __('index.solucion') }} B</p>
+                          </div>
+                        <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+
+                                  @for ($i = 1; $i <= 32; $i++)
+                                  <div id="term_{{$i}}_b" name="term_{{$i}}_b" class="grid ancho_rang">
+                                      <img  id="val_base_{{$i}}_b" name="val_base_{{$i}}_b" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                                  </div>
+                                  @endfor
+                          </div>
+                      </div>
+              @endif
+
+              @if ($result3 === null)
+                  <?php  $conf_val_b=0; ?>
+                  <div class="w-full grid mb-0 gap-y-5">
+                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+                          <div class="w-1/5 flex justify-start">
+
+                                  <p class="text-blue-600 font-roboto size_solutions_confort font-bold">{{ __('index.solucion') }} B</p>
+
+                          </div>
+                        <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+
+                                  @for ($i = 1; $i <= 32; $i++)
+                                  <div id="term_{{$i}}_b" name="term_{{$i}}_b" class="grid ancho_rang">
+                                      <img  id="val_base_{{$i}}_b" name="val_base_{{$i}}_b" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                                  </div>
+                                  @endfor
+                          </div>
+                  </div>
+              @endif
+              {{--  --}}
+
+
+      </div>
     </div>
   </div>
+
+{{-- checar estos /divs --}}
+</div>
+</div>
+{{-- checar estos /divs --}}
+  {{-- Nivel de Confort --}}
+<div class="margin_new_page w-full grid rounded-md justify-items-center">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
+      <div class="w-full grid">
+              <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                  <p class="titulos_style">{{ __('results.prod_lab') }}</p>
+              </div>
+      </div>
+
+      <div class="grid w-full justify-items-center gap-x-3 mb-2">
+
+        <div class="flex w-full justify-center">
+            @if ($result1 !== null)
+            <?php  $prod_lab=$conf_val->prod_lab($id_project,1,1,$sumacap_term_1) ?>
+            @endif
+            @if ($result1 === null)
+            <?php  $prod_lab=0; ?>
+            @endif
+            <div class="w-1/3 grid justify-items-center">
+                <div class="w-full flex justify-center">
+                    {{--  <div class="ml-10 flex w-full mt-5"> --}}
+                            <p class="size_solutions_confort text-blue-600 font-roboto font-bold">{{ __('index.sis_ext') }}</p>
+                        {{-- </div> --}}
+                    </div>
+                <div class="mt-5" style="margin: 0px auto" id="chart_prod_base"></div>
+            </div>
+            @if ($result1 !== null)
+            <?php  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) ?>
+            @endif
+            @if ($result1 === null)
+            <?php  $prod_lab_a=0; ?>
+            @endif
+            <div class="w-1/3 grid justify-items-center">
+                <div class="w-full flex justify-center">
+                    {{--  <div class="ml-10 flex w-full mt-5"> --}}
+                            <p class="size_solutions_confort text-blue-600 font-roboto font-bold">{{ __('index.solucion') }} A</p>
+                        {{-- </div> --}}
+                </div>
+                <div class="mt-5"  id="chart_prod_a" style="margin: 0px auto"></div>
+            </div>
+            @if ($result1 !== null)
+            <?php  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) ?>
+            @endif
+            @if ($result1 === null)
+            <?php  $prod_lab_b=0; ?>
+            @endif
+            <div class="w-1/3 grid justify-items-center">
+                <div class="w-full flex justify-center">
+                    {{--  <div class="ml-10 flex w-full mt-5"> --}}
+                            <p class="size_solutions_confort text-blue-600 font-roboto font-bold">{{ __('index.solucion') }} B</p>
+                        {{-- </div> --}}
+                </div>
+                <div class="mt-5" id="chart_prod_b" style="margin: 0px auto"></div>
+            </div>
+        </div>
+
+        <div class="flex w-full justify-center mt-3">
+            <p class="size_solutions_confort text-blue-600 font-roboto font-bold">Personas y Costo de la Pérdida de Pooductividad</p>
+        </div>
+
+        <div class="flex w-full justify-center mt-3">
+           <div class="w-1/3 grid justify-items-center gap-y-2">
+                <div class="flex w-full justify-center">
+                    <p class="cant_style">15</p>
+                </div>
+
+                <div class="flex w-full justify-center">
+                    <p class="cant_style">$15112</p>
+                </div>
+            </div>
+
+            <div class="w-1/3 grid justify-items-center gap-y-2">
+                <div class="flex w-full justify-center">
+                    <p class="cant_style">15</p>
+                </div>
+
+                <div class="flex w-full justify-center">
+                    <p class="cant_style">$15112</p>
+                </div>
+            </div>
+
+            <div class="w-1/3 grid justify-items-center gap-y-2">
+                <div class="flex w-full justify-center">
+                    <p class="cant_style">15</p>
+                </div>
+
+                <div class="flex w-full justify-center">
+                    <p class="cant_style">$15112</p>
+                </div>
+            </div>
+        </div>
+
+      </div>
+    </div>
+</div>
+{{-- espacio hoja pagina 3 --}}
+<div id="next_page_3" name="next_page_3" style="width: 80%; height:870px;" class="hidden">
+
+</div>
+{{-- espacio hoja pagina 3 --}}
+ {{-- payback --}}
+ <div class="margin_new_page w-full grid rounded-md justify-items-center">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
+      <div class="w-full grid">
+              <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                  <p class="titulos_style">Payback {{ __('results.simple') }} ({{ __('results.ans') }})</p>
+              </div>
+
+              <div class="flex w-full justify-center gap-x-3">
+                <div class="grid justify-center w-1/4">
+                   {{-- espacio --}}
+                </div>
+
+                <div class="grid justify-center w-1/5">
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Existente</b>
+
+                </div>
+
+                <div class="grid justify-center w-1/5">
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Solución A</b>
+
+                </div>
+
+                <div class="grid justify-center w-1/5">
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Solución B</b>
+
+                </div>
+            </div>
+
+            <div class="flex w-full justify-center gap-x-3">
+                <div class="grid justify-center w-1/4">
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Inversión</b>
+                </div>
+
+                <div class="grid justify-center w-1/5">
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">$15112</p></b>
+
+                </div>
+
+                <div class="grid justify-center w-1/5">
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">$15112</p></b>
+
+                </div>
+
+                <div class="grid justify-center w-1/5">
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">$15112</p></b>
+
+                </div>
+            </div>
+
+            <div class="flex w-full justify-center gap-x-3">
+                <div class="grid justify-center w-1/4">
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Payback Simple</b>
+                </div>
+
+                <div class="grid justify-center w-1/5">
+
+                        <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">-</p></b>
+
+                </div>
+
+                <div style="border-style: solid; border-width: 5px;" class="grid justify-center w-1/5 border-green-300 rounded-md my-1">
+                    <div class="flex">
+                        <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">7</p></b>
+                    </div>
+
+                </div>
+
+                <div style="border-style: solid; border-width: 5px;" class="grid justify-center w-1/5 border-green-300 rounded-md my-1">
+                    <div class="flex">
+                        <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">7</p></b>
+                    </div>
+
+                </div>
+            </div>
+      </div>
+    </div>
 </div>
 
+{{-- MARR --}}
+<?php  $results_aux=$results->results($id_project) ?>
+<?php  $dif_1_cost=$smasolutions->dif_1_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
+<?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
+                                        <input type="text" id="ima_ener" name="ima_ener" class="hidden" value="{{ __('index.energia') }}">
+                                        <input type="text" id="ima_man" name="ima_man" class="hidden" value="{{ __('index.mantenimiento') }}">
+                                        <input type="text" id="ima_sol" name="ima_sol" class="hidden" value="{{ __('index.solucion') }}">
+<div class="w-full grid rounded-md justify-items-center mt-2">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
+
+
+        <div class="w-full grid">
+            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                <p class="titulos_style">ROI v/s MARR (solo Energía)</p>
+            </div>
+        </div>
+
+        <div class="flex w-full justify-center gap-x-3">
+            <div class="grid w-1/2 justify-items-center text-[24px] m-1">
+                <div class="w-full flex justify-center">
+                    <label class="red_energetica_style" for="">Solución A</label>
+                    <?php  $roi_base_a=$graficas_capex_opex->roi_base_a_pdf_retro($id_project,$dif_1_cost,$inv_ini_2);?>
+                </div>
+
+                <div class="w-full flex justify-center">
+                    {{-- <div id="chart_red_ene" name="chart_red_ene"></div>
+                    <div class="hidden" style="width: 400px; height:380px;" id="chart_red_ene_print" name="chart_red_ene_print"></div> --}}
+                     <div style="width:100%;" class="flex justify-center">
+                        @if (App::getLocale() == 'es')
+                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
+                        @endif
+                        @if (App::getLocale() == 'port')
+                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solução A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid w-1/2 justify-items-center text-[24px] m-1">
+                <div class="w-full flex justify-center">
+
+                    <label class="red_energetica_style" for="">Solución B</label>
+                </div>
+
+                <div class="w-full flex justify-center">
+                    {{-- <div id="chart_descarb" name="chart_descarb"></div>
+                    <div class="hidden" style="width: 400px; height:380px;" id="chart_descarb_print" name="chart_descarb_print"></div> --}}
+                     <div style="width:100%;" class="flex justify-center">
+                        @if (App::getLocale() == 'es')
+                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
+                        @endif
+                        @if (App::getLocale() == 'port')
+                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solução A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{-- MARR --}}
+<div class="w-full grid rounded-md justify-items-center mt-2">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
+
+        <div class="w-full grid">
+            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                <p class="titulos_style">ROI v/s MARR (Energía + Productividad)</p>
+            </div>
+        </div>
+
+        <div class="flex w-full justify-center gap-x-3">
+            <div class="grid w-1/2 justify-items-center text-[24px] m-1">
+                <div class="w-full flex justify-center">
+                    <label class="red_energetica_style" for="">Solución A</label>
+
+                </div>
+
+                <div class="w-full flex justify-center">
+                  {{--   <div id="chart_red_ene" name="chart_red_ene"></div>
+                    <div class="hidden" style="width: 400px; height:380px;" id="chart_red_ene_print" name="chart_red_ene_print"></div> --}}
+                    <div style="width:100%;" class="flex justify-center">
+                        @if (App::getLocale() == 'es')
+                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
+                        @endif
+                        @if (App::getLocale() == 'port')
+                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solução A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid w-1/2 justify-items-center text-[24px] m-1">
+                <div class="w-full flex justify-center">
+
+                    <label class="red_energetica_style" for="">Solución B</label>
+                </div>
+
+                <div class="w-full flex justify-center">
+                   {{--  <div id="chart_descarb" name="chart_descarb"></div>
+                    <div class="hidden" style="width: 400px; height:380px;" id="chart_descarb_print" name="chart_descarb_print"></div> --}}
+                    <div style="width:100%;" class="flex justify-center">
+                        @if (App::getLocale() == 'es')
+                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
+                        @endif
+                        @if (App::getLocale() == 'port')
+                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solução A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
+                        @endif
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- capex vs opex --}}
+<div class="w-full grid rounded-md justify-items-center mt-2">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
+
+        <div class="w-full grid">
+            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                <p class="titulos_style">{{-- {{ __('results.analisis') }} --}}CAPEX v/s OPEX (@if($tar_ele->unidad == 'mc')$/m²)@endif
+                    @if($tar_ele->unidad == 'ft')$/ft²)@endif
+                </p>
+            </div>
+        </div>
+
+        <div class="flex w-full justify-center gap-x-3">
+            <div class="w-1/2 flex justify-center">
+                <div id="chart" name="chart" style="width:600px;"></div>
+                <div class="hidden" id="chart_print" name="chart_print" style="width:550px;"></div>
+            </div>
+
+            <div class="w-1/2 flex justify-center">
+                <div  id="chart_3" name="chart_3" style="width:600px;"></div>
+                <div class="hidden" id="chart_3_print" name="chart_3_print" style="width:550px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- capex vs opex --}}
 <script type="text/javascript">
+
+    var ener_lang = document.getElementById('ima_ener').value;
+    var man_lang = document.getElementById('ima_man').value;
+    var ima_sol = document.getElementById('ima_sol').value;
+
 document.addEventListener('keydown', function(event) {
   if (event.ctrlKey && event.key === 'p') {
-    $("#chart_cons_ene_hvac_ar_base").width(180).height(140);
-    $("#chart_cons_ene_hvac_ar_a").width(180).height(140);
-    $("#chart_cons_ene_hvac_ar_b").width(180).height(140);
-    $("#chart_red_ene").width(180).height(140);
-    $("#chart_descarb").width(180).height(140);
+    $("#chart_cons_ene_hvac_ar_base").width(180).height(100);
+    $("#chart_cons_ene_hvac_ar_a").width(180).height(100);
+    $("#chart_cons_ene_hvac_ar_b").width(180).height(100);
+    $("#chart_red_ene").width(180).height(120);
+    $("#chart_descarb").width(180).height(120);
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
@@ -634,20 +1122,24 @@ document.addEventListener('keydown', function(event) {
         $("#chart_descarb").addClass("hidden");
         $('#chart_red_ene_print').removeClass("hidden");
         $("#chart_descarb_print").removeClass("hidden");
-
+        chart_prod_base_print();
+        chart_prod_a_print();
+        chart_prod_b_print();
   }
 });
 
-window.matchMedia('print').addListener(function(event) {
-    $("#chart_cons_ene_hvac_ar_base").width(180).height(140);
-    $("#chart_cons_ene_hvac_ar_a").width(180).height(140);
-    $("#chart_cons_ene_hvac_ar_b").width(180).height(140);
-    $("#chart_red_ene").width(180).height(140);
-    $("#chart_descarb").width(180).height(140);
+window.matchMedia('print').addListener((event)=>{
+    $("#next_page_3").removeClass("hidden");
+    $("#chart_cons_ene_hvac_ar_base").width(200).height(150);
+    $("#chart_cons_ene_hvac_ar_a").width(200).height(150);
+    $("#chart_cons_ene_hvac_ar_b").width(200).height(150);
+    $("#chart_red_ene").width(200).height(120);
+    $("#chart_descarb").width(200).height(120);
+    $("#chart").width(200).height(120);
+    $("#chart_3").width(200).height(120);
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-        google.charts.load('current', {'packages':['gauge']});
         google.charts.setOnLoadCallback(chart_base_eui_print);
         google.charts.setOnLoadCallback(chart_a_eui_print);
         google.charts.setOnLoadCallback(chart_b_eui_print);
@@ -655,11 +1147,21 @@ window.matchMedia('print').addListener(function(event) {
         $("#chart_descarb").addClass("hidden");
         $('#chart_red_ene_print').removeClass("hidden");
         $("#chart_descarb_print").removeClass("hidden");
+        $('#chart_print').removeClass("hidden");
+        $("#chart_3_print").removeClass("hidden");
+        $('#chart').addClass("hidden");
+        $("#chart_3").addClass("hidden");
+        $("#espacio_pagina_1").removeClass("hidden");
+        chart_prod_base_print();
+        chart_prod_a_print();
+        chart_prod_b_print();
+
 
 });
 
 window.onafterprint = function() {
-  $("#chart_cons_ene_hvac_ar_base").width(350).height(280);
+    location.reload ();
+    /* $("#chart_cons_ene_hvac_ar_base").width(350).height(280);
   $("#chart_cons_ene_hvac_ar_a").width(350).height(280);
     $("#chart_cons_ene_hvac_ar_b").width(350).height(280);
     $("#chart_red_ene").width(670).height(280);
@@ -667,14 +1169,14 @@ window.onafterprint = function() {
     con_ene_hvac_ar_Base('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-      google.charts.load('current', {'packages':['gauge']});
+
       google.charts.setOnLoadCallback(chart_base_eui);
       google.charts.setOnLoadCallback(chart_a_eui);
       google.charts.setOnLoadCallback(chart_b_eui);
       $('#chart_red_ene').removeClass("hidden");
       $("#chart_descarb").removeClass("hidden");
       $('#chart_red_ene_print').addClass("hidden");
-      $("#chart_descarb_print").addClass("hidden");
+      $("#chart_descarb_print").addClass("hidden"); */
 
 }
 window.onload = function() {
@@ -689,6 +1191,16 @@ window.onload = function() {
       descarb('{{$id_project}}');
       red_ene_print('{{$id_project}}');
       descarb_print('{{$id_project}}');
+      confort_base('{{$conf_val_base}}');
+      confort_a('{{$conf_val_a}}');
+      confort_b('{{$conf_val_b}}');
+      chart_prod_base();
+      chart_prod_a();
+      chart_prod_b();
+      cap_op_1_retro('{{$id_project}}','{{$tar_ele->unidad}}');
+      cap_op_3_retro('{{$id_project}}','{{$tar_ele->unidad}}');
+      cap_op_1_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
+      cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
     };
 /* window.print() */
 function con_ene_hvac_ar_Base(kwh_yr,porcent_hvac){
@@ -728,8 +1240,8 @@ if(result_area < red){
     var chart = JSC.chart('chart_cons_ene_hvac_ar_base', {
   debug: true,
   legend_visible: false,
-  width:350,
-  height:220,
+  width:400,
+  height:230,
   chartArea_boxVisible: false,
   defaultTooltip_enabled: false,
   box:{
@@ -835,8 +1347,8 @@ if(result_area < red){
   debug: true,
   legend_visible: false,
   defaultTooltip_enabled: false,
-  width:350,
-  height:220,
+  width:400,
+  height:230,
   chartArea_boxVisible: false,
   box:{
         fill:'white',
@@ -942,8 +1454,8 @@ if(result_area < red){
   debug: true,
   legend_visible: false,
   defaultTooltip_enabled: false,
-  width:350,
-  height:220,
+  width:400,
+  height:230,
   chartArea_boxVisible: false,
   box:{
         fill:'white',
@@ -1269,6 +1781,592 @@ var chart = new ApexCharts(document.querySelector("#chart_descarb"), options);
 chart.render();
 }
 
+function confort_base(val_conf){
+    $val_ini = 1;
+    $val_fin = 1.125;
+    for (let i = 1; i <= 32; i++) {
+        if(val_conf >= $val_ini && val_conf < $val_fin){
+
+            $("#val_base_"+i).removeClass('hidden');
+        }
+        $val_ini = $val_ini + 0.125;
+        $val_fin = $val_fin + 0.125;
+    }
+}
+
+function confort_a(val_conf_a){
+
+    $val_ini_a = 1;
+    $val_fin_a = 1.125;
+    for (let i = 1; i <= 32; i++) {
+        if(val_conf_a >= $val_ini_a && val_conf_a < $val_fin_a){
+
+            $("#val_base_"+i+"_a").removeClass('hidden');
+        }
+
+        if(val_conf_a > 5){
+
+            $("#val_base_32_a").removeClass('hidden');
+        }
+
+        $val_ini_a = $val_ini_a + 0.125;
+        $val_fin_a = $val_fin_a + 0.125;
+    }
+
+
+}
+
+function confort_b(val_conf_b){
+    $val_ini_b = 1;
+    $val_fin_b = 1.125;
+    for (let i = 1; i <= 33; i++) {
+        if(val_conf_b >= $val_ini_b && val_conf_b < $val_fin_b){
+
+            $("#val_base_"+i+"_b").removeClass('hidden');
+        }
+
+        if(val_conf_b > 5){
+
+            $("#val_base_32_b").removeClass('hidden');
+        }
+        $val_ini_b = $val_ini_b + 0.125;
+        $val_fin_b = $val_fin_b + 0.125;
+    }
+
+
+/* alert(val_conf_b); */
+}
+
+function chart_prod_base() {
+        var check_prod = '{{$conf_val_base}}';
+        var mult_cels_val = check_prod * 5;
+        var val_res = mult_cels_val / 5;
+
+        var message = message_prod_lab_chart(check_prod);
+
+            // JS
+            var chart = JSC.chart('chart_prod_base', {
+            debug: true,
+            type: 'gauge ',
+            legend_visible: false,
+            chartArea_boxVisible: false,
+            width:300,
+            height:250,
+            box:{
+                fill:'white',
+            },
+            xAxis: {
+                /*Used to position marker on top of axis line.*/
+                scale: { range: [0, 1], invert: true }
+            },
+            palette: {
+                pointValue: '%yValue',
+                ranges: [
+                { value: 1, color: '#FF5353' },
+                { value: 2, color: '#FFD221' },
+                { value: 4, color: '#77E6B4' },
+                { value: [4.5, 5], color: '#21D683' }
+                ]
+            },
+            yAxis: {
+                defaultTick: { padding: 13, enabled: false },
+                customTicks: [1,2, 3, 4,5],
+                line: {
+                width: 15,
+                breaks_gap: 0.03,
+                color: 'smartPalette'
+                },
+                scale: { range: [1, 5] }
+            },
+            defaultSeries: {
+                opacity: 1,
+                shape: {
+                label: {
+                    align: 'center',
+                    verticalAlign: 'middle'
+                }
+                }
+            },
+            series: [
+                {
+                type: 'marker',
+                name: 'Score',
+                shape_label: {
+                    text:
+                    parseFloat(check_prod).toFixed(2)+'<br/> <span style="fontSize: 35">'+message+'</span>',
+                    style: { fontSize: 48 }
+                },
+                defaultPoint: {
+                    tooltip: '%yValue',
+                    marker: {
+                    outline: {
+                        width: 10,
+                        color: 'currentColor'
+                    },
+                    fill: 'white',
+                    type: 'circle',
+                    visible: true,
+                    size: 30
+                    }
+                },
+                points: [[1, parseFloat(check_prod)]]
+                }
+            ]
+            });
+
+      }
+
+      function chart_prod_a() {
+        var check_prod_a = '{{$conf_val_a}}';
+        /*     var check_prod_a = '{{$conf_val_a}}';
+        var data = google.visualization.arrayToDataTable([
+        ['Label', 'Value'],
+        ['A', parseFloat(check_prod_a)],
+        ]);
+
+
+        var options = {
+  width: 650, height: 320,
+  greenFrom:3.8,greenTo:5,
+  redFrom: 1, redTo: 2.2,
+  yellowFrom:2.2, yellowTo: 3.8,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+var chart = new google.visualization.Gauge(document.getElementById('chart_prod_a'));
+
+chart.draw(data, options); */
+            // JS
+            var message = message_prod_lab_chart(check_prod_a);
+            var chart = JSC.chart('chart_prod_a', {
+            debug: true,
+            type: 'gauge ',
+            legend_visible: false,
+            width:300,
+            height:250,
+            chartArea_boxVisible: false,
+            box:{
+                fill:'white',
+            },
+            xAxis: {
+                /*Used to position marker on top of axis line.*/
+                scale: { range: [0, 1], invert: true }
+            },
+            palette: {
+                pointValue: '%yValue',
+                ranges: [
+                    { value: 1, color: '#FF5353' },
+                    { value: 2, color: '#FFD221' },
+                    { value: 4, color: '#77E6B4' },
+                    { value: [4.5, 5], color: '#21D683' }
+                ]
+            },
+            yAxis: {
+                defaultTick: { padding: 13, enabled: false },
+                customTicks: [1,2, 3, 4,5],
+                line: {
+                width: 15,
+                breaks_gap: 0.03,
+                color: 'smartPalette'
+                },
+                scale: { range: [1, 5] }
+            },
+            defaultSeries: {
+                opacity: 1,
+                shape: {
+                label: {
+                    align: 'center',
+                    verticalAlign: 'middle'
+                }
+                }
+            },
+            series: [
+                {
+                type: 'marker',
+                name: 'Score',
+                shape_label: {
+                    text:
+                    parseFloat(check_prod_a).toFixed(2)+'<br/> <span style="fontSize: 35">'+message+'</span>',
+                    style: { fontSize: 48 }
+                },
+                defaultPoint: {
+                    tooltip: '%yValue',
+                    marker: {
+                    outline: {
+                        width: 10,
+                        color: 'currentColor'
+                    },
+                    fill: 'white',
+                    type: 'circle',
+                    visible: true,
+                    size: 30
+                    }
+                },
+                points: [[1, parseFloat(check_prod_a)]]
+                }
+            ]
+            });
+}
+
+
+
+function chart_prod_b() {
+    var check_prod_b = '{{$conf_val_b}}';
+    var message = message_prod_lab_chart(check_prod_b);
+/* var data = google.visualization.arrayToDataTable([
+  ['Label', 'Value'],
+  ['B', parseFloat(check_prod_b)],
+]);
+
+
+    var options = {
+  width: 650, height: 320,
+  greenFrom:3.8,greenTo:5,
+  redFrom: 1, redTo: 2.2,
+  yellowFrom:2.2, yellowTo: 3.8,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+var chart = new google.visualization.Gauge(document.getElementById('chart_prod_b'));
+
+chart.draw(data, options); */
+            // JS
+            var chart = JSC.chart('chart_prod_b', {
+            debug: true,
+            type: 'gauge ',
+            legend_visible: false,
+            width:300,
+            height:250,
+            chartArea_boxVisible: false,
+            box:{
+                fill:'white',
+            },
+            xAxis: {
+                /*Used to position marker on top of axis line.*/
+                scale: { range: [0, 1], invert: true }
+            },
+            palette: {
+                pointValue: '%yValue',
+                ranges: [
+                    { value: 1, color: '#FF5353' },
+                    { value: 2, color: '#FFD221' },
+                    { value: 4, color: '#77E6B4' },
+                    { value: [4.5, 5], color: '#21D683' }
+                ]
+            },
+            yAxis: {
+                defaultTick: { padding: 13, enabled: false },
+                customTicks: [1,2, 3, 4,5],
+                line: {
+                width: 15,
+                breaks_gap: 0.03,
+                color: 'smartPalette'
+                },
+                scale: { range: [1, 5] }
+            },
+            defaultSeries: {
+                opacity: 1,
+                shape: {
+                label: {
+                    align: 'center',
+                    verticalAlign: 'middle'
+                }
+                }
+            },
+            series: [
+                {
+                type: 'marker',
+                name: 'Score',
+                shape_label: {
+                    text:
+                    parseFloat(check_prod_b).toFixed(2)+'<br/> <span style="fontSize: 35">'+message+'</span>',
+                    style: { fontSize: 48 }
+                },
+                defaultPoint: {
+                    tooltip: '%yValue',
+                    marker: {
+                    outline: {
+                        width: 10,
+                        color: 'currentColor'
+                    },
+                    fill: 'white',
+                    type: 'circle',
+                    visible: true,
+                    size: 30
+                    }
+                },
+                points: [[1, parseFloat(check_prod_b)]]
+                }
+            ]
+            });
+}
+
+function cap_op_1_retro(id_project,unidad){
+
+$.ajax({
+    type: 'get',
+    url: "/cap_op_1_retro/" + id_project,
+    success: function (res) {
+        var options = {
+      series: [{
+      name: 'CAPEX',
+      data: [res[2][0], res[1][0], res[0][0]]
+    },{
+       name: ener_lang + ' OPEX',
+      data: [res[2][1], res[1][1], res[0][1]]
+    },{
+        name: man_lang + ' OPEX',
+      data: [res[2][2], res[1][2], res[0][2]]
+    }],
+      chart: {
+      type: 'bar',
+      height: 350,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '16px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+      text: '1 Año',
+      align: 'center',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '24px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Solución B', 'Solución A', 'Sistema Existente'],
+      labels: {
+            style: {
+                colors: [],
+                fontSize: '14px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            style: {
+                colors: [],
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            if(unidad == 'mc'){
+                return val + "$/m²"
+            }
+
+            if(unidad == 'ft'){
+                return val + "$/ft²"
+            }
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '14px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
+function cap_op_3_retro(id_project,unidad){
+    $.ajax({
+        type: 'get',
+        url: "/cap_op_3_retro/" + id_project,
+        success: function (res) {
+
+            var options = {
+          series: [{
+          name: 'CAPEX',
+          data: [res[2][0], res[1][0], res[0][0]]
+        },{
+          name: ener_lang + ' OPEX',
+          data: [res[2][1], res[1][1], res[0][1]]
+        },{
+          name: man_lang + ' OPEX',
+          data: [res[2][2], res[1][2], res[0][2]]
+        }],
+          chart: {
+          type: 'bar',
+          height: 350,
+          stacked: true,
+          stackType: 'normal',
+          dropShadow: {
+            enabled: true,
+            enabledOnSeries: undefined,
+            },
+          toolbar: {
+            show: false,
+            },
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+          },
+        },
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        title: {
+            text: '3 Años',
+            align: 'center',
+            offsetY:25,
+            style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        xaxis: {
+          categories: ['Solución B', 'Solución A', 'Sistema Existente'],
+          labels: {
+                style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            },
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    colors: [],
+                    fontSize: '16px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+
+                },
+            },
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+                if(unidad == 'mc'){
+                    return val + "$/m²"
+                }
+
+                if(unidad == 'ft'){
+                    return val + "$/ft²"
+                }
+            }
+          }
+        },
+        fill: {
+          opacity: 1,
+          colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C']
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'left',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_3"), options);
+        chart.render();
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+
+}
+
 ////pirnt
 
 function con_ene_hvac_ar_Base_print(kwh_yr,porcent_hvac){
@@ -1308,7 +2406,7 @@ if(result_area < red){
     var chart = JSC.chart('chart_cons_ene_hvac_ar_base', {
   debug: true,
   legend_visible: false,
-  width:200,
+  width:230,
   height:150,
   chartArea_boxVisible: false,
   defaultTooltip_enabled: false,
@@ -1343,8 +2441,8 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="10px">Kwh/m²</span>',
-        style_fontSize: '15px',
+          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
+        style_fontSize: '25px',
         verticalAlign: 'middle'
       }
     }
@@ -1415,7 +2513,7 @@ if(result_area < red){
   debug: true,
   legend_visible: false,
   defaultTooltip_enabled: false,
-  width:200,
+  width:230,
   height:150,
   chartArea_boxVisible: false,
   box:{
@@ -1449,8 +2547,8 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="10px">Kwh/m²</span>',
-        style_fontSize: '15px',
+          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
+        style_fontSize: '25px',
         verticalAlign: 'middle'
       }
     }
@@ -1522,7 +2620,7 @@ if(result_area < red){
   debug: true,
   legend_visible: false,
   defaultTooltip_enabled: false,
-  width:200,
+  width:230,
   height:150,
   chartArea_boxVisible: false,
   box:{
@@ -1556,8 +2654,8 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="10px">Kwh/m²</span>',
-        style_fontSize: '15px',
+          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
+        style_fontSize: '25px',
         verticalAlign: 'middle'
       }
     }
@@ -1803,7 +2901,7 @@ if(result_area < red){
 
         if(energy > ashrae){
             var options = {
-          width: 300, height: 130,
+                width: 440, height: 190,
           greenFrom:1,greenTo:ashrae,
           redFrom: energy, redTo: 300,
           yellowFrom:ashrae, yellowTo: energy,
@@ -1815,7 +2913,7 @@ if(result_area < red){
 
         if(energy < ashrae){
             var options = {
-          width: 300, height: 130,
+                width: 440, height: 190,
           greenFrom:1,greenTo:energy,
           redFrom: ashrae, redTo: 300,
           yellowFrom:energy, yellowTo: ashrae,
@@ -1860,7 +2958,7 @@ if(result_area < red){
 
         if(energy > ashrae){
             var options = {
-          width: 300, height: 130,
+                width: 440, height: 190,
           greenFrom:1,greenTo:ashrae,
           redFrom: energy, redTo: 300,
           yellowFrom:ashrae, yellowTo: energy,
@@ -1872,7 +2970,7 @@ if(result_area < red){
 
         if(energy < ashrae){
             var options = {
-          width: 300, height: 130,
+                width: 440, height: 190,
           greenFrom:1,greenTo:energy,
           redFrom: ashrae, redTo: 300,
           yellowFrom:energy, yellowTo: ashrae,
@@ -1917,7 +3015,7 @@ if(result_area < red){
 
             if(energy > ashrae){
                     var options = {
-                width: 300, height: 130,
+                        width: 440, height: 190,
                 greenFrom:1,greenTo:ashrae,
                 redFrom: energy, redTo: 300,
                 yellowFrom:ashrae, yellowTo: energy,
@@ -1929,7 +3027,7 @@ if(result_area < red){
 
                 if(energy < ashrae){
                     var options = {
-                width: 300, height: 130,
+                        width: 440, height: 190,
                 greenFrom:1,greenTo:energy,
                 redFrom: ashrae, redTo: 300,
                 yellowFrom:energy, yellowTo: ashrae,
@@ -1966,8 +3064,8 @@ if(result_area < red){
           offsetX: 0,
           offsetY: 0,
           bottom:0,
-          height: 200,
-          width:365,
+          height: 165,
+          width:380,
           type: 'line',
           dropShadow: {
             enabled: true,
@@ -1997,7 +3095,7 @@ if(result_area < red){
 
           align: 'center',
           style: {
-            fontSize: '24px',
+            fontSize: '25px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: "bold",
             cssClass: 'apexcharts-yaxis-label',
@@ -2101,8 +3199,8 @@ function descarb_print(id_project){
           }
         ],
           chart: {
-            height: 200,
-          width:365,
+            height: 165,
+          width:380,
           type: 'line',
           dropShadow: {
             enabled: true,
@@ -2218,6 +3316,558 @@ function descarb_print(id_project){
 
         var chart = new ApexCharts(document.querySelector("#chart_descarb_print"), options);
         chart.render();
+}
+
+function chart_prod_base_print() {
+        var check_prod = '{{$conf_val_base}}';
+        var mult_cels_val = check_prod * 5;
+        var val_res = mult_cels_val / 5;
+
+        var message = message_prod_lab_chart(check_prod);
+
+            // JS
+            var chart = JSC.chart('chart_prod_base', {
+            debug: true,
+            type: 'gauge ',
+            legend_visible: false,
+            chartArea_boxVisible: false,
+            width:300,
+            height:220,
+            box:{
+                fill:'white',
+            },
+            xAxis: {
+                /*Used to position marker on top of axis line.*/
+                scale: { range: [0, 1], invert: true }
+            },
+            palette: {
+                pointValue: '%yValue',
+                ranges: [
+                { value: 1, color: '#FF5353' },
+                { value: 2, color: '#FFD221' },
+                { value: 4, color: '#77E6B4' },
+                { value: [4.5, 5], color: '#21D683' }
+                ]
+            },
+            yAxis: {
+                defaultTick: { padding: 13, enabled: false },
+                customTicks: [1,2, 3, 4,5],
+                line: {
+                width: 15,
+                breaks_gap: 0.03,
+                color: 'smartPalette'
+                },
+                scale: { range: [1, 5] }
+            },
+            defaultSeries: {
+                opacity: 1,
+                shape: {
+                label: {
+                    align: 'center',
+                    verticalAlign: 'middle'
+                }
+                }
+            },
+            series: [
+                {
+                type: 'marker',
+                name: 'Score',
+                shape_label: {
+                    text:
+                    parseFloat(check_prod).toFixed(2)+'<br/> <span style="fontSize: 25">'+message+'</span>',
+                    style: { fontSize: 38 }
+                },
+                defaultPoint: {
+                    tooltip: '%yValue',
+                    marker: {
+                    outline: {
+                        width: 10,
+                        color: 'currentColor'
+                    },
+                    fill: 'white',
+                    type: 'circle',
+                    visible: true,
+                    size: 25
+                    }
+                },
+                points: [[1, parseFloat(check_prod)]]
+                }
+            ]
+            });
+
+      }
+
+      function chart_prod_a_print() {
+        var check_prod_a = '{{$conf_val_a}}';
+        /*     var check_prod_a = '{{$conf_val_a}}';
+        var data = google.visualization.arrayToDataTable([
+        ['Label', 'Value'],
+        ['A', parseFloat(check_prod_a)],
+        ]);
+
+
+        var options = {
+  width: 650, height: 320,
+  greenFrom:3.8,greenTo:5,
+  redFrom: 1, redTo: 2.2,
+  yellowFrom:2.2, yellowTo: 3.8,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+var chart = new google.visualization.Gauge(document.getElementById('chart_prod_a'));
+
+chart.draw(data, options); */
+            // JS
+            var message = message_prod_lab_chart(check_prod_a);
+            var chart = JSC.chart('chart_prod_a', {
+            debug: true,
+            type: 'gauge ',
+            legend_visible: false,
+            width:300,
+            height:220,
+            chartArea_boxVisible: false,
+            box:{
+                fill:'white',
+            },
+            xAxis: {
+                /*Used to position marker on top of axis line.*/
+                scale: { range: [0, 1], invert: true }
+            },
+            palette: {
+                pointValue: '%yValue',
+                ranges: [
+                    { value: 1, color: '#FF5353' },
+                    { value: 2, color: '#FFD221' },
+                    { value: 4, color: '#77E6B4' },
+                    { value: [4.5, 5], color: '#21D683' }
+                ]
+            },
+            yAxis: {
+                defaultTick: { padding: 13, enabled: false },
+                customTicks: [1,2, 3, 4,5],
+                line: {
+                width: 15,
+                breaks_gap: 0.03,
+                color: 'smartPalette'
+                },
+                scale: { range: [1, 5] }
+            },
+            defaultSeries: {
+                opacity: 1,
+                shape: {
+                label: {
+                    align: 'center',
+                    verticalAlign: 'middle'
+                }
+                }
+            },
+            series: [
+                {
+                type: 'marker',
+                name: 'Score',
+                shape_label: {
+                    text:
+                    parseFloat(check_prod_a).toFixed(2)+'<br/> <span style="fontSize: 25">'+message+'</span>',
+                    style: { fontSize: 38 }
+                },
+                defaultPoint: {
+                    tooltip: '%yValue',
+                    marker: {
+                    outline: {
+                        width: 10,
+                        color: 'currentColor'
+                    },
+                    fill: 'white',
+                    type: 'circle',
+                    visible: true,
+                    size: 25
+                    }
+                },
+                points: [[1, parseFloat(check_prod_a)]]
+                }
+            ]
+            });
+}
+
+
+
+function chart_prod_b_print() {
+    var check_prod_b = '{{$conf_val_b}}';
+    var message = message_prod_lab_chart(check_prod_b);
+/* var data = google.visualization.arrayToDataTable([
+  ['Label', 'Value'],
+  ['B', parseFloat(check_prod_b)],
+]);
+
+
+    var options = {
+  width: 650, height: 320,
+  greenFrom:3.8,greenTo:5,
+  redFrom: 1, redTo: 2.2,
+  yellowFrom:2.2, yellowTo: 3.8,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+var chart = new google.visualization.Gauge(document.getElementById('chart_prod_b'));
+
+chart.draw(data, options); */
+            // JS
+            var chart = JSC.chart('chart_prod_b', {
+            debug: true,
+            type: 'gauge ',
+            legend_visible: false,
+            width:300,
+            height:220,
+            chartArea_boxVisible: false,
+            box:{
+                fill:'white',
+            },
+            xAxis: {
+                /*Used to position marker on top of axis line.*/
+                scale: { range: [0, 1], invert: true }
+            },
+            palette: {
+                pointValue: '%yValue',
+                ranges: [
+                    { value: 1, color: '#FF5353' },
+                    { value: 2, color: '#FFD221' },
+                    { value: 4, color: '#77E6B4' },
+                    { value: [4.5, 5], color: '#21D683' }
+                ]
+            },
+            yAxis: {
+                defaultTick: { padding: 13, enabled: false },
+                customTicks: [1,2, 3, 4,5],
+                line: {
+                width: 15,
+                breaks_gap: 0.03,
+                color: 'smartPalette'
+                },
+                scale: { range: [1, 5] }
+            },
+            defaultSeries: {
+                opacity: 1,
+                shape: {
+                label: {
+                    align: 'center',
+                    verticalAlign: 'middle'
+                }
+                }
+            },
+            series: [
+                {
+                type: 'marker',
+                name: 'Score',
+                shape_label: {
+                    text:
+                    parseFloat(check_prod_b).toFixed(2)+'<br/> <span style="fontSize: 25">'+message+'</span>',
+                    style: { fontSize: 38 }
+                },
+                defaultPoint: {
+                    tooltip: '%yValue',
+                    marker: {
+                    outline: {
+                        width: 10,
+                        color: 'currentColor'
+                    },
+                    fill: 'white',
+                    type: 'circle',
+                    visible: true,
+                    size: 25
+                    }
+                },
+                points: [[1, parseFloat(check_prod_b)]]
+                }
+            ]
+            });
+}
+
+function cap_op_1_retro_print(id_project,unidad){
+
+$.ajax({
+    type: 'get',
+    url: "/cap_op_1_retro/" + id_project,
+    success: function (res) {
+        var options = {
+      series: [{
+      name: 'CAPEX',
+      data: [res[2][0], res[1][0], res[0][0]]
+    },{
+       name: ener_lang + ' OPEX',
+      data: [res[2][1], res[1][1], res[0][1]]
+    },{
+        name: man_lang + ' OPEX',
+      data: [res[2][2], res[1][2], res[0][2]]
+    }],
+      chart: {
+      type: 'bar',
+      height: 250,
+      width: 500,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '16px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+      text: '1 Año',
+      align: 'center',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '24px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Solución B', 'Solución A', 'Sistema Existente'],
+      labels: {
+            style: {
+                colors: [],
+                fontSize: '14px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            style: {
+                colors: [],
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            if(unidad == 'mc'){
+                return val + "$/m²"
+            }
+
+            if(unidad == 'ft'){
+                return val + "$/ft²"
+            }
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '14px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_print"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
+function cap_op_3_retro_print(id_project,unidad){
+    $.ajax({
+        type: 'get',
+        url: "/cap_op_3_retro/" + id_project,
+        success: function (res) {
+
+            var options = {
+          series: [{
+          name: 'CAPEX',
+          data: [res[2][0], res[1][0], res[0][0]]
+        },{
+          name: ener_lang + ' OPEX',
+          data: [res[2][1], res[1][1], res[0][1]]
+        },{
+          name: man_lang + ' OPEX',
+          data: [res[2][2], res[1][2], res[0][2]]
+        }],
+          chart: {
+          type: 'bar',
+          height: 250,
+          width: 500,
+          stacked: true,
+          stackType: 'normal',
+          dropShadow: {
+            enabled: true,
+            enabledOnSeries: undefined,
+            },
+          toolbar: {
+            show: false,
+            },
+        },
+        plotOptions: {
+          bar: {
+            horizontal: true,
+          },
+        },
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        title: {
+            text: '3 Años',
+            align: 'center',
+            offsetY:25,
+            style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        xaxis: {
+          categories: ['Solución B', 'Solución A', 'Sistema Existente'],
+          labels: {
+                style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            },
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    colors: [],
+                    fontSize: '16px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+
+                },
+            },
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+                if(unidad == 'mc'){
+                    return val + "$/m²"
+                }
+
+                if(unidad == 'ft'){
+                    return val + "$/ft²"
+                }
+            }
+          }
+        },
+        fill: {
+          opacity: 1,
+          colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C']
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'left',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_3_print"), options);
+        chart.render();
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+
+}
+
+function message_prod_lab_chart(check_prod){
+
+if(check_prod == 0){
+var message = '';
+}
+
+if(check_prod > 1 && check_prod <= 3){
+var message = 'Mala';
+}
+
+if(check_prod > 3 && check_prod <= 4){
+    var message = 'Regular';
+}
+
+if(check_prod > 4 && check_prod <= 5){
+    var message = 'Buena';
+}
+return message;
 }
 
 setTimeout(function() {
