@@ -176,6 +176,9 @@
             height:320px;
         }
 
+        .per_cos{
+            font-size: 2.25rem;
+        }
 @media print{
   @page { margin: 0; }
 
@@ -202,7 +205,7 @@
          }
 
   .titulos_style{
-            font-size:25px;
+            font-size:28px;
             color: white;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -215,7 +218,7 @@
    }
 
    .cant_style{
-            font-size: 1.8rem;
+            font-size: 2.3rem;
             color: #2c5282;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -280,26 +283,30 @@
         }
 
         .margin_new_page{
-            margin-top: .5rem;
+            margin-top: 0rem;
         }
 
         .ancho_rang{
-            width:1rem;
-            height:2rem;
+            width:1.2rem;
+            height:2.2rem;
         }
 
         .puntero_medidas{
-            width: 35px; height:38px;
+            width: 38px; height:40px;
             margin-top:5px;
         }
 
         .size_solutions_confort{
-            font-size:1.2rem;
+            font-size:1.6rem;
         }
 
         .style_grafics_marr{
             width:400px;
             height:250px;
+        }
+
+        .per_cos{
+            font-size: 1.8rem;
         }
 }
 
@@ -377,6 +384,30 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 <?php  $tar_ele=$solutions->tar_elec($id_project) ?>
 <?php  $kwh_yr=$results->kwh_yr($id_project,$tar_ele->cad_edi) ?>
+
+{{-- navbar --}}
+<div id="navbar"  name="navbar" class="bg-blue-900 w-full flex justify-center" style="background-image: radial-gradient(rgb(10,19,59) 0%,rgb(5,1,25) 100%);">
+    <div class="w-1/3">
+        <img class="header" style="height:99px;" name="logoEmpresa" id="logoEmpresa" src="{{asset('assets/images/Logo-NDL_blanco_marca-r.png')}}" alt="Nano Degree">
+    </div>
+    <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
+        {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
+        <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
+
+    </div>
+    <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
+    {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
+    <button class="bg-orange-500  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/edit_project_copy/{{$id_project}}'"><p class="mx-1">{{ __('index.edit_proj') }}</p></button>
+
+    {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
+{{--     <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" onclick="window.open('/generatePDF/{{$id_project}}', '_blank');" ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
+ --}}
+ <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" onclick="send_print();" ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
+    <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'">Nuevo Proyecto</button>
+
+    </div>
+</div>
+{{-- navbar --}}
 {{-- principal --}}
 <div class="w-full grid rounded-md justify-items-center mt-5">
     <div  class="ancho border-2 border-blue-500 rounded-md flex">
@@ -388,32 +419,40 @@
 
         <div class="w-1/3 grid justify-left ml-2">
             <div class="w-full flex ">
-                <label class="info_project" for="">Nombre:</label><p class="info_project">Project name</p>
+                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project">{{$tar_ele->name}}</p>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">Categoría:</label><p class="info_project">Project name</p>
+                <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project">{{$tar_ele->cad_edi}}</p>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">Tipo:</label><p class="info_project">Project name</p>
+                <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project">{{$tar_ele->tipo_edi}}</p>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">Área:</label><p class="info_project">Project name</p>
+                <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project">{{number_format($tar_ele->area)}}
+                    @if ($tar_ele->unidad == 'mc')
+                    m²
+                @endif
+
+                @if ($tar_ele->unidad == 'ft')
+                ft²
+                @endif
+                </p>
             </div>
         </div>
 
         <div class="w-1/3 grid justify-left">
             <div class="w-full">
                 <div class="w-full flex">
-                    <label class="info_project" for="">País:</label><p class="info_project">Project name</p>
+                    <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project">{{$tar_ele->region}}</p>
                 </div>
                 <div class="w-full flex">
-                    <label class="info_project" for="">Ciudad:</label><p class="info_project">Project name</p>
+                    <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project">{{$tar_ele->ciudad}}</p>
                 </div>
                 <div class="w-full flex">
-                    <label class="info_project" for="">Enfriamiento Anual:</label><p class="info_project">Project name</p>
+                    <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
                 </div>
                 <div class="w-full flex">
-                    <label class="info_project" for="">Valor Energía Electrica:</label><p class="info_project">Project name</p>
+                    <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project">{{$tar_ele->costo_elec}} $/Kwh</p>
                 </div>
             </div>
         </div>
@@ -445,15 +484,18 @@
                                     <?php  $sumacap_term_1=$smasolutions->sumacap_term($id_project,$result1->num_enf) ?>
                                     <?php  $unid_med_1=$smasolutions->unid_med($id_project,$result1->num_enf) ?>
                                     <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
+                                    <?php  $inv_ini_1=$smasolutions->inv_ini($id_project,$result1->num_enf) ?>
                                     @elseif($result1 === null)
                                     <?php $sumaopex_1=0?>
                                     <?php $sumacap_term_1=0?>
                                      <?php $unid_med_1=""?>
                                      <?php  $result_area_1=0 ?>
+                                     <?php $inv_ini_1=0?>
                                     @endif
                                     <div class="flex w-full justify-center">
                                         <p class="cant_style">{{number_format($sumaopex_1)}}</p><b class="unit_style">Kwh</b>
                                     </div>
+
                                     <div class="flex w-full justify-center">
                                         <div id="chart_cons_ene_hvac_ar_base" name="chart_cons_ene_hvac_ar_base" class="js_charts_style">
 
@@ -461,8 +503,8 @@
                                     </div>
 {{--                                     <div id="chart_cons_ene_hvac_ar_base_print" name="chart_cons_ene_hvac_ar_base_print" class="js_charts_style"></div>
  --}}
-                                    <div class="flex w-full justify-center">
-                                        <p class="cant_style">$15112</p>
+                                    <div class="flex w-full justify-center mt-4">
+                                        <p class="cant_style">$15,112</p>
                                     </div>
                                 </div>
                             </div>
@@ -488,18 +530,22 @@
                                     <?php  $sumacap_term_2=$smasolutions->sumacap_term($id_project,$result2->num_enf) ?>
                                     <?php  $unid_med_2=$smasolutions->unid_med($id_project,$result2->num_enf) ?>
                                     <?php  $result_area_2=$results->result_area($id_project,$sumaopex_2) ?>
+                                    <?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
+                                    <input type="number" class="hidden" id="inv_ini_2" name="inv_ini_2" value="{{$inv_ini_2}}">
                                     @elseif($result2 === null)
                                     <?php $sumaopex_2=0?>
                                     <?php $sumacap_term_2=0?>
                                     <?php $unid_med_2=""?>
                                     <?php  $result_area_2=0?>
+                                    <?php $inv_ini_2=0?>
+
                                     @endif
                                     <div class="flex w-full justify-center">
                                         <p class="cant_style">{{number_format($sumaopex_2)}}</p><b class="unit_style">Kwh</b>
                                     </div>
                                     <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style" ></div>
-                                    <div class="flex w-full justify-center">
-                                        <p class="cant_style">$15112</p>
+                                    <div class="flex w-full justify-center mt-4">
+                                        <p class="cant_style">$15,112</p>
                                     </div>
                           </div>
                             </div>
@@ -524,18 +570,22 @@
                                     <?php  $sumacap_term_3=$smasolutions->sumacap_term($id_project,$result3->num_enf) ?>
                                     <?php  $unid_med_3=$smasolutions->unid_med($id_project,$result3->num_enf) ?>
                                     <?php  $result_area_3=$results->result_area($id_project,$sumaopex_3) ?>
+                                     <?php  $inv_ini_3=$smasolutions->inv_ini($id_project,$result3->num_enf) ?>
+                                      <input type="number" class="hidden" id="inv_ini_3" name="inv_ini_3" value="{{$inv_ini_3}}">
                                     @elseif($result3 === null)
                                     <?php $sumaopex_3=0?>
                                     <?php $sumacap_term_3=0?>
                                     <?php $unid_med_3=""?>
                                     <?php  $result_area_3=0?>
+                                    <?php $inv_ini_3=0?>
+                                     <input type="number" class="hidden" id="inv_ini_3" name="inv_ini_3" value="{{$inv_ini_3}}">
                                     @endif
                                    <div class="flex w-full justify-center">
                                         <p class="cant_style">{{number_format($sumaopex_3)}}</p><b class="unit_style">Kwh</b>
                                     </div>
                                      <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
-                                     <div class="flex w-full justify-center">
-                                        <p class="cant_style">$15112</p>
+                                     <div class="flex w-full justify-center mt-4">
+                                        <p class="cant_style">$15,112</p>
                                     </div>
                                </div>
                             </div>
@@ -580,7 +630,8 @@
                 @if ($result1 === null)
                 <?php  $valor_eui_base=0 ?>
                 @endif
-                <div id="eui_sol_base"></div>
+                <div id="eui_sol_base" name="eui_sol_base"></div>
+                <div class="hidden" id="eui_sol_base_print" name="eui_sol_base_print"></div>
             </div>
             {{-- sumaopex_2
             sumaopex_3 --}}
@@ -595,7 +646,9 @@
                 @if ($result2 === null)
                 <?php  $valor_eui_a=0; ?>
                 @endif
-                <div id="eui_sol_a"></div>
+                <div id="eui_sol_a" name="eui_sol_a"></div>
+                <div class="hidden" id="eui_sol_a_print" name="eui_sol_a_print"></div>
+
             </div>
             <div class="w-1/3 grid justify-items-center">
                 <div class="flex justify-center w-full">
@@ -608,7 +661,8 @@
                 @if ($result3 === null)
                 <?php $valor_eui_b = 0; ?>
                 @endif
-                <div id="eui_sol_b"></div>
+                <div id="eui_sol_b" name="eui_sol_b"></div>
+                <div class="hidden" id="eui_sol_b_print" name="eui_sol_b_print"></div>
             </div>
     </div>
     </div>
@@ -634,7 +688,7 @@
 
                 <div class="w-full flex justify-center">
                     <div id="chart_red_ene" name="chart_red_ene" style="width: 600px;"></div>
-                    <div class="hidden "  id="chart_red_ene_print" name="chart_red_ene_print"></div>
+                    <div class="hidden" style="height:200px;"  id="chart_red_ene_print" name="chart_red_ene_print"></div>
                 </div>
             </div>
 
@@ -646,15 +700,67 @@
 
                 <div class="w-full flex justify-center">
                     <div id="chart_descarb" name="chart_descarb" style="width: 600px;"></div>
-                    <div class="hidden "  id="chart_descarb_print" name="chart_descarb_print"></div>
+                    <div class="hidden "  style="height:200px;"  id="chart_descarb_print" name="chart_descarb_print"></div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<br>
 {{-- espacio --}}
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:440px;" >
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:40px;" >
 
+</div>
+
+    {{-- principal --}}
+    <div id="principal_hoja_2" name="principal_hoja_2" class="hidden w-full grid rounded-md justify-items-center mt-8">
+        <div  class="ancho border-2 border-blue-500 rounded-md flex">
+
+
+        <div class="w-1/4 flex justify-center">
+            <img src="{{asset('/assets/images/Logo-NDL_marca-registrada.jpg')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+        </div>
+
+        <div class="w-1/3 grid justify-left ml-2">
+            <div class="w-full flex ">
+                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project">{{$tar_ele->name}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project">{{$tar_ele->cad_edi}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project">{{$tar_ele->tipo_edi}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project">{{number_format($tar_ele->area)}}
+                    @if ($tar_ele->unidad == 'mc')
+                    m²
+                @endif
+
+                @if ($tar_ele->unidad == 'ft')
+                ft²
+                @endif
+                </p>
+            </div>
+        </div>
+
+        <div class="w-1/3 grid justify-left">
+            <div class="w-full">
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project">{{$tar_ele->region}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project">{{$tar_ele->ciudad}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project">{{$tar_ele->costo_elec}} $/Kwh</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 {{-- Nivel de Confort --}}
@@ -803,7 +909,7 @@
                             <p class="size_solutions_confort text-blue-600 font-roboto font-bold">{{ __('index.sis_ext') }}</p>
                         {{-- </div> --}}
                     </div>
-                <div class="mt-5" style="margin: 0px auto" id="chart_prod_base"></div>
+                <div class="my-6" style="margin: 0px auto" id="chart_prod_base"></div>
             </div>
             @if ($result1 !== null)
             <?php  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) ?>
@@ -817,7 +923,7 @@
                             <p class="size_solutions_confort text-blue-600 font-roboto font-bold">{{ __('index.solucion') }} A</p>
                         {{-- </div> --}}
                 </div>
-                <div class="mt-5"  id="chart_prod_a" style="margin: 0px auto"></div>
+                <div class="my-6"  id="chart_prod_a" style="margin: 0px auto"></div>
             </div>
             @if ($result1 !== null)
             <?php  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) ?>
@@ -831,12 +937,12 @@
                             <p class="size_solutions_confort text-blue-600 font-roboto font-bold">{{ __('index.solucion') }} B</p>
                         {{-- </div> --}}
                 </div>
-                <div class="mt-5" id="chart_prod_b" style="margin: 0px auto"></div>
+                <div class="my-6" id="chart_prod_b" style="margin: 0px auto"></div>
             </div>
         </div>
 
-        <div class="flex w-full justify-center mt-3">
-            <p class="size_solutions_confort text-blue-600 font-roboto font-bold">Personas y Costo de la Pérdida de Pooductividad</p>
+        <div class="flex w-full justify-center mt-6">
+            <p class="per_cos text-blue-600 font-roboto font-bold">Personas y Costo de la Pérdida de Pooductividad</p>
         </div>
 
         <div class="flex w-full justify-center mt-3">
@@ -846,7 +952,7 @@
                 </div>
 
                 <div class="flex w-full justify-center">
-                    <p class="cant_style">$15112</p>
+                    <p class="cant_style">$15,112</p>
                 </div>
             </div>
 
@@ -856,7 +962,7 @@
                 </div>
 
                 <div class="flex w-full justify-center">
-                    <p class="cant_style">$15112</p>
+                    <p class="cant_style">$15,112</p>
                 </div>
             </div>
 
@@ -866,7 +972,7 @@
                 </div>
 
                 <div class="flex w-full justify-center">
-                    <p class="cant_style">$15112</p>
+                    <p class="cant_style">$15,112</p>
                 </div>
             </div>
         </div>
@@ -875,12 +981,64 @@
     </div>
 </div>
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_3" name="next_page_3" style="width: 80%; height:870px;" class="hidden">
+<div id="next_page_3" name="next_page_3" style="width: 80%; height:545px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
+
+{{-- principal --}}
+<div id="principal_hoja_3" name="principal_hoja_3" class="hidden w-full grid rounded-md justify-items-center mt-5">
+    <div  class="ancho border-2 border-blue-500 rounded-md flex">
+
+
+    <div class="w-1/4 flex justify-center">
+        <img src="{{asset('/assets/images/Logo-NDL_marca-registrada.jpg')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+    </div>
+
+    <div class="w-1/3 grid justify-left ml-2">
+        <div class="w-full flex ">
+            <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project">{{$tar_ele->name}}</p>
+        </div>
+        <div class="w-full flex">
+            <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project">{{$tar_ele->cad_edi}}</p>
+        </div>
+        <div class="w-full flex">
+            <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project">{{$tar_ele->tipo_edi}}</p>
+        </div>
+        <div class="w-full flex">
+            <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project">{{number_format($tar_ele->area)}}
+                @if ($tar_ele->unidad == 'mc')
+                m²
+            @endif
+
+            @if ($tar_ele->unidad == 'ft')
+            ft²
+            @endif
+            </p>
+        </div>
+    </div>
+
+    <div class="w-1/3 grid justify-left">
+        <div class="w-full">
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project">{{$tar_ele->region}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project">{{$tar_ele->ciudad}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project">{{$tar_ele->costo_elec}} $/Kwh</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
  {{-- payback --}}
- <div class="margin_new_page w-full grid rounded-md justify-items-center">
+ <div class="margin_new_page w-full grid rounded-md justify-items-center mt-2">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
       <div class="w-full grid">
               <div style="background-color:#1B17BB;" class="w-full flex justify-center">
@@ -914,17 +1072,17 @@
                 </div>
 
                 <div class="grid justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">$15112</p></b>
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">$15,112</p></b>
 
                 </div>
 
                 <div class="grid justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">$15112</p></b>
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">$15,112</p></b>
 
                 </div>
 
                 <div class="grid justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">$15112</p></b>
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">$15,112</p></b>
 
                 </div>
             </div>
@@ -962,9 +1120,10 @@
 <?php  $results_aux=$results->results($id_project) ?>
 <?php  $dif_1_cost=$smasolutions->dif_1_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
 <?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
-                                        <input type="text" id="ima_ener" name="ima_ener" class="hidden" value="{{ __('index.energia') }}">
-                                        <input type="text" id="ima_man" name="ima_man" class="hidden" value="{{ __('index.mantenimiento') }}">
-                                        <input type="text" id="ima_sol" name="ima_sol" class="hidden" value="{{ __('index.solucion') }}">
+<input type="text" id="ima_ener" name="ima_ener" class="hidden" value="{{ __('index.energia') }}">
+<input type="text" id="ima_man" name="ima_man" class="hidden" value="{{ __('index.mantenimiento') }}">
+<input type="text" id="ima_sol" name="ima_sol" class="hidden" value="{{ __('index.solucion') }}">
+
 <div class="w-full grid rounded-md justify-items-center mt-2">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
 
@@ -979,39 +1138,35 @@
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
                 <div class="w-full flex justify-center">
                     <label class="red_energetica_style" for="">Solución A</label>
-                    <?php  $roi_base_a=$graficas_capex_opex->roi_base_a_pdf_retro($id_project,$dif_1_cost,$inv_ini_2);?>
+
+                    <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$dif_1_cost}}">
+
                 </div>
 
                 <div class="w-full flex justify-center">
-                    {{-- <div id="chart_red_ene" name="chart_red_ene"></div>
-                    <div class="hidden" style="width: 400px; height:380px;" id="chart_red_ene_print" name="chart_red_ene_print"></div> --}}
-                     <div style="width:100%;" class="flex justify-center">
-                        @if (App::getLocale() == 'es')
-                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
-                        @endif
-                        @if (App::getLocale() == 'port')
-                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solução A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
-                        @endif
+
+                    <div class="w-1/2 flex justify-center">
+                        <div id="chart_roi_base_a" name="chart_roi_base_a" style="width: 600px;"></div>
+                        <div class="hidden" style="height:200px;"  id="chart_roi_base_a_print" name="chart_roi_base_a_print"></div>
                     </div>
+
                 </div>
             </div>
+            <?php  $dif_2_cost=$smasolutions->dif_2_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
 
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
                 <div class="w-full flex justify-center">
 
                     <label class="red_energetica_style" for="">Solución B</label>
                 </div>
+                <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$dif_2_cost}}">
 
                 <div class="w-full flex justify-center">
-                    {{-- <div id="chart_descarb" name="chart_descarb"></div>
-                    <div class="hidden" style="width: 400px; height:380px;" id="chart_descarb_print" name="chart_descarb_print"></div> --}}
-                     <div style="width:100%;" class="flex justify-center">
-                        @if (App::getLocale() == 'es')
-                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
-                        @endif
-                        @if (App::getLocale() == 'port')
-                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solução A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
-                        @endif
+
+                    <div class="w-1/2 flex justify-center">
+
+                        <div id="chart_roi_base_b" name="chart_roi_base_b" style="width: 600px;"></div>
+                        <div class="hidden "  style="height:200px;"  id="chart_roi_base_b_print" name="chart_roi_base_b_print"></div>
                     </div>
                 </div>
             </div>
@@ -1039,13 +1194,9 @@
                 <div class="w-full flex justify-center">
                   {{--   <div id="chart_red_ene" name="chart_red_ene"></div>
                     <div class="hidden" style="width: 400px; height:380px;" id="chart_red_ene_print" name="chart_red_ene_print"></div> --}}
-                    <div style="width:100%;" class="flex justify-center">
-                        @if (App::getLocale() == 'es')
-                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
-                        @endif
-                        @if (App::getLocale() == 'port')
-                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solução A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
-                        @endif
+                     <div class="w-1/2 flex justify-center">
+                        <div id="chart_roi_base_a_ene_prod" name="chart_roi_base_a_ene_prod" style="width: 600px;"></div>
+                        <div class="hidden" style="height:200px;"  id="chart_roi_base_a_ene_prod_print" name="chart_roi_base_a_ene_prod_print"></div>
                     </div>
                 </div>
             </div>
@@ -1059,13 +1210,10 @@
                 <div class="w-full flex justify-center">
                    {{--  <div id="chart_descarb" name="chart_descarb"></div>
                     <div class="hidden" style="width: 400px; height:380px;" id="chart_descarb_print" name="chart_descarb_print"></div> --}}
-                    <div style="width:100%;" class="flex justify-center">
-                        @if (App::getLocale() == 'es')
-                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solución A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
-                        @endif
-                        @if (App::getLocale() == 'port')
-                        <img class="style_grafics_marr" src="https://quickchart.io/apex-charts/render?config={chart: {height: 350,type: 'line',dropShadow: {enabled: true,top: 18,left: 7,blur: 10,opacity: 0.2},},series: [{name: 'ROI - A',data: [{{$roi_base_a[0]}}, {{$roi_base_a[1]}}, {{$roi_base_a[2]}}, {{$roi_base_a[3]}} , {{$roi_base_a[4]}}]},{name: 'MARR',data: [15, 30, 45, 60, 75]}],dataLabels: {enabled: true,style: {fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',},},stroke: {curve: 'smooth'},title: {text: 'ROI Solução A v/s MARR',align: 'center',style: {fontSize: '24px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label'}},markers: {size: 1},xaxis: {tickPlacement: 'between',categories: [3,5,10,15],range:4,title: {text: 'Años',style: {colors: [],fontSize: '20px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},labels: {style: {colors: [],fontSize: '12px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-xaxis-label',},},},yaxis: {labels:{style: {colors: [],fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',cssClass: 'apexcharts-yaxis-label',},},},legend: {position: 'top',horizontalAlign: 'right',offsetX: 40,fontSize: '14px',fontFamily: 'ABeeZee, sans-serif',fontWeight: 'bold',markers: {width: 12,height: 12,strokeWidth: 0,radius: 12,offsetX: 0,offsetY: 0,},}}">
-                        @endif
+                    <div class="w-1/2 flex justify-center">
+
+                        <div id="chart_roi_base_b_ene_prod" name="chart_roi_base_b_ene_prod" style="width: 600px;"></div>
+                        <div class="hidden "  style="height:200px;"  id="chart_roi_base_b_ene_prod_print" name="chart_roi_base_b_ene_prod_print"></div>
                     </div>
                 </div>
             </div>
@@ -1103,32 +1251,12 @@
     var ener_lang = document.getElementById('ima_ener').value;
     var man_lang = document.getElementById('ima_man').value;
     var ima_sol = document.getElementById('ima_sol').value;
-
+    google.charts.load('current', {'packages':['gauge']});
 document.addEventListener('keydown', function(event) {
   if (event.ctrlKey && event.key === 'p') {
-    $("#chart_cons_ene_hvac_ar_base").width(180).height(100);
-    $("#chart_cons_ene_hvac_ar_a").width(180).height(100);
-    $("#chart_cons_ene_hvac_ar_b").width(180).height(100);
-    $("#chart_red_ene").width(180).height(120);
-    $("#chart_descarb").width(180).height(120);
-    con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-    con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-    con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-        google.charts.load('current', {'packages':['gauge']});
-        google.charts.setOnLoadCallback(chart_base_eui_print);
-        google.charts.setOnLoadCallback(chart_a_eui_print);
-        google.charts.setOnLoadCallback(chart_b_eui_print);
-        $('#chart_red_ene').addClass("hidden");
-        $("#chart_descarb").addClass("hidden");
-        $('#chart_red_ene_print').removeClass("hidden");
-        $("#chart_descarb_print").removeClass("hidden");
-        chart_prod_base_print();
-        chart_prod_a_print();
-        chart_prod_b_print();
-  }
-});
-
-window.matchMedia('print').addListener((event)=>{
+    //$("#navbar").removeClass("hidden");
+    $("#principal_hoja_2").removeClass("hidden");
+    $("#principal_hoja_3").removeClass("hidden");
     $("#next_page_3").removeClass("hidden");
     $("#chart_cons_ene_hvac_ar_base").width(200).height(150);
     $("#chart_cons_ene_hvac_ar_a").width(200).height(150);
@@ -1140,24 +1268,108 @@ window.matchMedia('print').addListener((event)=>{
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-        google.charts.setOnLoadCallback(chart_base_eui_print);
-        google.charts.setOnLoadCallback(chart_a_eui_print);
-        google.charts.setOnLoadCallback(chart_b_eui_print);
-        $('#chart_red_ene').addClass("hidden");
-        $("#chart_descarb").addClass("hidden");
-        $('#chart_red_ene_print').removeClass("hidden");
-        $("#chart_descarb_print").removeClass("hidden");
-        $('#chart_print').removeClass("hidden");
-        $("#chart_3_print").removeClass("hidden");
-        $('#chart').addClass("hidden");
-        $("#chart_3").addClass("hidden");
-        $("#espacio_pagina_1").removeClass("hidden");
-        chart_prod_base_print();
-        chart_prod_a_print();
-        chart_prod_b_print();
+    $('#chart_red_ene').addClass("hidden");
+    $("#chart_descarb").addClass("hidden");
+    $("#eui_sol_base").addClass("hidden");
+    $("#eui_sol_a").addClass("hidden");
+    $("#eui_sol_b").addClass("hidden");
+    $('#chart_red_ene_print').removeClass("hidden");
+    $("#chart_descarb_print").removeClass("hidden");
+    $('#eui_sol_base_print').removeClass("hidden");
+    $("#eui_sol_a_print").removeClass("hidden");
+    $('#eui_sol_b_print').removeClass("hidden");
+    chart_prod_base_print();
+    chart_prod_a_print();
+    chart_prod_b_print();
+  }
+});
+
+window.matchMedia('print').addListener((event)=>{
+   /*  $("#navbar").addClass("hidden");
+    $("#principal_hoja_2").removeClass("hidden");
+    $("#principal_hoja_3").removeClass("hidden");
+    $("#next_page_3").removeClass("hidden");
+    $("#chart_cons_ene_hvac_ar_base").width(280).height(180);
+    $("#chart_cons_ene_hvac_ar_a").width(280).height(180);
+    $("#chart_cons_ene_hvac_ar_b").width(280).height(180);
+    $("#chart_red_ene").width(200).height(120);
+    $("#chart_descarb").width(200).height(120);
+    $("#chart").width(200).height(120);
+    $("#chart_3").width(200).height(120);
+    con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+    con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+    con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+    $('#chart_red_ene').addClass("hidden");
+    $("#chart_descarb").addClass("hidden");
+    $("#eui_sol_base").addClass("hidden");
+    $("#eui_sol_a").addClass("hidden");
+    $("#eui_sol_b").addClass("hidden");
+    $('#chart_red_ene_print').removeClass("hidden");
+    $("#chart_descarb_print").removeClass("hidden");
+    $('#chart_print').removeClass("hidden");
+    $("#chart_3_print").removeClass("hidden");
+    $('#chart').addClass("hidden");
+    $("#chart_3").addClass("hidden");
+    $("#espacio_pagina_1").removeClass("hidden");
+    $('#eui_sol_base_print').removeClass("hidden");
+    $("#eui_sol_a_print").removeClass("hidden");
+    $('#eui_sol_b_print').removeClass("hidden");
+    chart_prod_base_print();
+    chart_prod_a_print();
+    chart_prod_b_print(); */
 
 
 });
+
+function send_print(){
+    $("#navbar").addClass("hidden");
+    $("#principal_hoja_2").removeClass("hidden");
+    $("#principal_hoja_3").removeClass("hidden");
+    $("#next_page_3").removeClass("hidden");
+    $("#chart_cons_ene_hvac_ar_base").width(280).height(180);
+    $("#chart_cons_ene_hvac_ar_a").width(280).height(180);
+    $("#chart_cons_ene_hvac_ar_b").width(280).height(180);
+    $("#chart_red_ene").width(200).height(120);
+    $("#chart_descarb").width(200).height(120);
+    $("#chart_red_ene_print").width(480).height(280);
+    $("#chart_descarb_print").width(480).height(280);
+    $("#chart").width(200).height(120);
+    $("#chart_3").width(200).height(120);
+    con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+    con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+    con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+    $('#chart_red_ene').addClass("hidden");
+    $("#chart_descarb").addClass("hidden");
+    $("#eui_sol_base").addClass("hidden");
+    $("#eui_sol_a").addClass("hidden");
+    $("#eui_sol_b").addClass("hidden");
+    $('#chart_red_ene_print').removeClass("hidden");
+    $("#chart_descarb_print").removeClass("hidden");
+    $('#chart_print').removeClass("hidden");
+    $("#chart_3_print").removeClass("hidden");
+    $('#chart').addClass("hidden");
+    $("#chart_3").addClass("hidden");
+    $("#espacio_pagina_1").removeClass("hidden");
+    $('#eui_sol_base_print').removeClass("hidden");
+    $("#eui_sol_a_print").removeClass("hidden");
+    $('#eui_sol_b_print').removeClass("hidden");
+    $("#chart_roi_base_a_print").removeClass("hidden");
+    $('#chart_roi_base_b_print').removeClass("hidden");
+    $('#chart_roi_base_a').addClass("hidden");
+    $("#chart_roi_base_b").addClass("hidden");
+
+    $("#chart_roi_base_a_ene_prod_print").removeClass("hidden");
+    $('#chart_roi_base_b_ene_prod_print').removeClass("hidden");
+    $('#chart_roi_base_a_ene_prod').addClass("hidden");
+    $("#chart_roi_base_b_ene_prod").addClass("hidden");
+    chart_prod_base_print();
+    chart_prod_a_print();
+    chart_prod_b_print();
+    setTimeout(function() {
+        window.print();
+}, 2000);
+
+}
 
 window.onafterprint = function() {
     location.reload ();
@@ -1187,6 +1399,9 @@ window.onload = function() {
       google.charts.setOnLoadCallback(chart_base_eui);
       google.charts.setOnLoadCallback(chart_a_eui);
       google.charts.setOnLoadCallback(chart_b_eui);
+      google.charts.setOnLoadCallback(chart_base_eui_print);
+      google.charts.setOnLoadCallback(chart_a_eui_print);
+      google.charts.setOnLoadCallback(chart_b_eui_print);
       red_ene('{{$id_project}}');
       descarb('{{$id_project}}');
       red_ene_print('{{$id_project}}');
@@ -1201,6 +1416,15 @@ window.onload = function() {
       cap_op_3_retro('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_1_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
+      roi_base_a('{{$id_project}}');
+      roi_base_b('{{$id_project}}');
+      roi_base_a_print('{{$id_project}}');
+      roi_base_b_print('{{$id_project}}');
+
+      roi_base_a_ene_prod('{{$id_project}}');
+      roi_base_b_ene_prod('{{$id_project}}');
+      roi_base_a_ene_prod_print('{{$id_project}}');
+      roi_base_b_ene_prod_print('{{$id_project}}');
     };
 /* window.print() */
 function con_ene_hvac_ar_Base(kwh_yr,porcent_hvac){
@@ -2367,6 +2591,566 @@ function cap_op_3_retro(id_project,unidad){
 
 }
 
+function roi_base_a(id_project){
+    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    $.ajax({
+        type: 'get',
+        url: "/roi_base_a_retro/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
+        success: function (res) {
+
+
+            //console.log(res);
+    var options = {
+          series: [
+          {
+            name: "ROI - A",
+            data: [res[0], res[1], res[2], res[3], res[4]]
+          },
+          {
+            name: "MARR",
+            data: [15, 30, 45, 60, 75]
+          }
+        ],
+          chart: {
+          height: 350,
+          width: 600,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#ff00ff', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [1,2,3,4,5],
+           range:4,
+          title: {
+            text: 'Años',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#ff00ff', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_a"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function roi_base_b(id_project){
+    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+
+    $.ajax({
+        type: 'get',
+        url: "/roi_base_a_retro/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
+        success: function (res) {
+
+    var options = {
+          series: [
+          {
+            name: "ROI - B",
+            data: [res[0], res[1], res[2], res[3], res[4]]
+          },
+          {
+            name: "MARR",
+            data:  [15, 30, 45, 60, 75]
+          }
+        ],
+          chart: {
+          height: 350,
+          width: 600,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#2be6ee', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [1,2,3,4,5],
+           range:4,
+          title: {
+            text: 'Años',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#2be6ee', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_b"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function roi_base_a_ene_prod(id_project){
+    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    $.ajax({
+        type: 'get',
+        url: "/roi_base_a_retro/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
+        success: function (res) {
+
+
+            //console.log(res);
+    var options = {
+          series: [
+          {
+            name: "ROI - A",
+            data: [res[0], res[1], res[2], res[3], res[4]]
+          },
+          {
+            name: "MARR",
+            data: [15, 30, 45, 60, 75]
+          }
+        ],
+          chart: {
+          height: 350,
+          width: 600,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#ff00ff', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+            text: 'ROI '+ima_sol+' A v/s MARR',
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [1,2,3,4,5],
+           range:4,
+          title: {
+            text: 'Años',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#ff00ff', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_a_ene_prod"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function roi_base_b_ene_prod(id_project){
+    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+
+    $.ajax({
+        type: 'get',
+        url: "/roi_base_a_retro/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
+        success: function (res) {
+
+    var options = {
+          series: [
+          {
+            name: "ROI - B",
+            data: [res[0], res[1], res[2], res[3], res[4]]
+          },
+          {
+            name: "MARR",
+            data:  [15, 30, 45, 60, 75]
+          }
+        ],
+          chart: {
+          height: 350,
+          width: 600,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#2be6ee', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+            text: 'ROI '+ima_sol+' B v/s MARR',
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [1,2,3,4,5],
+           range:4,
+          title: {
+            text: 'Años',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#2be6ee', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_b_ene_prod"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
 ////pirnt
 
 function con_ene_hvac_ar_Base_print(kwh_yr,porcent_hvac){
@@ -2406,8 +3190,8 @@ if(result_area < red){
     var chart = JSC.chart('chart_cons_ene_hvac_ar_base', {
   debug: true,
   legend_visible: false,
-  width:230,
-  height:150,
+  width:300,
+  height:190,
   chartArea_boxVisible: false,
   defaultTooltip_enabled: false,
   box:{
@@ -2513,8 +3297,8 @@ if(result_area < red){
   debug: true,
   legend_visible: false,
   defaultTooltip_enabled: false,
-  width:230,
-  height:150,
+  width:300,
+  height:190,
   chartArea_boxVisible: false,
   box:{
         fill:'white',
@@ -2620,8 +3404,8 @@ if(result_area < red){
   debug: true,
   legend_visible: false,
   defaultTooltip_enabled: false,
-  width:230,
-  height:150,
+  width:300,
+  height:190,
   chartArea_boxVisible: false,
   box:{
         fill:'white',
@@ -2901,7 +3685,7 @@ if(result_area < red){
 
         if(energy > ashrae){
             var options = {
-                width: 440, height: 190,
+                width: 580, height: 250,
           greenFrom:1,greenTo:ashrae,
           redFrom: energy, redTo: 300,
           yellowFrom:ashrae, yellowTo: energy,
@@ -2913,7 +3697,7 @@ if(result_area < red){
 
         if(energy < ashrae){
             var options = {
-                width: 440, height: 190,
+                width: 580, height: 250,
           greenFrom:1,greenTo:energy,
           redFrom: ashrae, redTo: 300,
           yellowFrom:energy, yellowTo: ashrae,
@@ -2924,7 +3708,7 @@ if(result_area < red){
         }
 
 
-        var chart = new google.visualization.Gauge(document.getElementById('eui_sol_base'));
+        var chart = new google.visualization.Gauge(document.getElementById('eui_sol_base_print'));
 
         chart.draw(data, options);
       }
@@ -2958,7 +3742,7 @@ if(result_area < red){
 
         if(energy > ashrae){
             var options = {
-                width: 440, height: 190,
+                width: 580, height: 250,
           greenFrom:1,greenTo:ashrae,
           redFrom: energy, redTo: 300,
           yellowFrom:ashrae, yellowTo: energy,
@@ -2970,7 +3754,7 @@ if(result_area < red){
 
         if(energy < ashrae){
             var options = {
-                width: 440, height: 190,
+                width: 580, height: 250,
           greenFrom:1,greenTo:energy,
           redFrom: ashrae, redTo: 300,
           yellowFrom:energy, yellowTo: ashrae,
@@ -2980,7 +3764,7 @@ if(result_area < red){
         };
         }
 
-        var chart = new google.visualization.Gauge(document.getElementById('eui_sol_a'));
+        var chart = new google.visualization.Gauge(document.getElementById('eui_sol_a_print'));
 
         chart.draw(data, options);
     }
@@ -3015,7 +3799,7 @@ if(result_area < red){
 
             if(energy > ashrae){
                     var options = {
-                        width: 440, height: 190,
+                        width: 580, height: 250,
                 greenFrom:1,greenTo:ashrae,
                 redFrom: energy, redTo: 300,
                 yellowFrom:ashrae, yellowTo: energy,
@@ -3027,7 +3811,7 @@ if(result_area < red){
 
                 if(energy < ashrae){
                     var options = {
-                        width: 440, height: 190,
+                        width: 580, height: 250,
                 greenFrom:1,greenTo:energy,
                 redFrom: ashrae, redTo: 300,
                 yellowFrom:energy, yellowTo: ashrae,
@@ -3037,7 +3821,7 @@ if(result_area < red){
                 };
                 }
 
-            var chart = new google.visualization.Gauge(document.getElementById('eui_sol_b'));
+            var chart = new google.visualization.Gauge(document.getElementById('eui_sol_b_print'));
 
             chart.draw(data, options);
         }
@@ -3064,8 +3848,8 @@ if(result_area < red){
           offsetX: 0,
           offsetY: 0,
           bottom:0,
-          height: 165,
-          width:380,
+          height: 280,
+          width:480,
           type: 'line',
           dropShadow: {
             enabled: true,
@@ -3199,8 +3983,8 @@ function descarb_print(id_project){
           }
         ],
           chart: {
-            height: 165,
-          width:380,
+            height: 280,
+            width:480,
           type: 'line',
           dropShadow: {
             enabled: true,
@@ -3605,7 +4389,7 @@ $.ajax({
     }],
       chart: {
       type: 'bar',
-      height: 250,
+      height: 270,
       width: 500,
       stacked: true,
       stackType: 'normal',
@@ -3739,7 +4523,7 @@ function cap_op_3_retro_print(id_project,unidad){
         }],
           chart: {
           type: 'bar',
-          height: 250,
+          height: 270,
           width: 500,
           stacked: true,
           stackType: 'normal',
@@ -3850,6 +4634,566 @@ function cap_op_3_retro_print(id_project,unidad){
 
 }
 
+function roi_base_a_print(id_project){
+    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    $.ajax({
+        type: 'get',
+        url: "/roi_base_a_retro/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
+        success: function (res) {
+
+
+            //console.log(res);
+    var options = {
+          series: [
+          {
+            name: "ROI - A",
+            data: [res[0], res[1], res[2], res[3], res[4]]
+          },
+          {
+            name: "MARR",
+            data: [15, 30, 45, 60, 75]
+          }
+        ],
+          chart: {
+            height: 250,
+            width:480,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#ff00ff', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [1,2,3,4,5],
+           range:4,
+          title: {
+            text: 'Años',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#ff00ff', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_a_print"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function roi_base_b_print(id_project){
+    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+
+    $.ajax({
+        type: 'get',
+        url: "/roi_base_a_retro/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
+        success: function (res) {
+
+    var options = {
+          series: [
+          {
+            name: "ROI - B",
+            data: [res[0], res[1], res[2], res[3], res[4]]
+          },
+          {
+            name: "MARR",
+            data:  [15, 30, 45, 60, 75]
+          }
+        ],
+          chart: {
+            height: 250,
+            width:480,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#2be6ee', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [1,2,3,4,5],
+           range:4,
+          title: {
+            text: 'Años',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#2be6ee', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_b_print"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function roi_base_a_ene_prod_print(id_project){
+    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    $.ajax({
+        type: 'get',
+        url: "/roi_base_a_retro/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
+        success: function (res) {
+
+
+            //console.log(res);
+    var options = {
+          series: [
+          {
+            name: "ROI - A",
+            data: [res[0], res[1], res[2], res[3], res[4]]
+          },
+          {
+            name: "MARR",
+            data: [15, 30, 45, 60, 75]
+          }
+        ],
+          chart: {
+             height: 250,
+            width:480,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#ff00ff', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [1,2,3,4,5],
+           range:4,
+          title: {
+            text: 'Años',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#ff00ff', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_a_ene_prod_print"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function roi_base_b_ene_prod_print(id_project){
+    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+
+    $.ajax({
+        type: 'get',
+        url: "/roi_base_a_retro/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
+        success: function (res) {
+
+    var options = {
+          series: [
+          {
+            name: "ROI - B",
+            data: [res[0], res[1], res[2], res[3], res[4]]
+          },
+          {
+            name: "MARR",
+            data:  [15, 30, 45, 60, 75]
+          }
+        ],
+          chart: {
+            height: 250,
+            width:480,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#2be6ee', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [1,2,3,4,5],
+           range:4,
+          title: {
+            text: 'Años',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#2be6ee', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_b_ene_prod_print"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
 function message_prod_lab_chart(check_prod){
 
 if(check_prod == 0){
@@ -3869,6 +5213,8 @@ if(check_prod > 4 && check_prod <= 5){
 }
 return message;
 }
+
+
 
 setTimeout(function() {
     //con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
