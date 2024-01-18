@@ -9991,6 +9991,10 @@ if($eficiencia_ene == 'EER'){
                 return 0;
             }
 
+            if($prod_lab == null){
+                return 0;
+            }
+
 
     }
 
