@@ -9926,28 +9926,28 @@ if($eficiencia_ene == 'EER'){
                 $porcent_point2 = 0;
                 }
 
-            if($prod_lab > 1 && $prod_lab < 2){
+            if($prod_lab >= 1 && $prod_lab < 2){
             $porcent_check1 = 0.25;
             $porcent_check2 = 0.20;
             $porcent_point1 = 1;
             $porcent_point2 = 2;
             }
 
-            if($prod_lab > 2 && $prod_lab < 3){
+            if($prod_lab >= 2 && $prod_lab < 3){
             $porcent_check1 = 0.20;
             $porcent_check2 = 0.15;
             $porcent_point1 = 2;
             $porcent_point2 = 3;
             }
 
-            if($prod_lab > 3 && $prod_lab < 4){
+            if($prod_lab >= 3 && $prod_lab < 4){
             $porcent_check1 = 0.15;
             $porcent_check2 = 0.10;
             $porcent_point1 = 3;
             $porcent_point2 = 4;
             }
 
-            if($prod_lab > 4 && $prod_lab < 5){
+            if($prod_lab >= 4 && $prod_lab < 5){
             $porcent_check1 = 0.10;
             $porcent_check2 = 0.05;
             $porcent_point1 = 4;
