@@ -6424,7 +6424,8 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
        return $array_tot;
     }
 
-    public function roi_base_a_retro($id_projecto,$dif_cost,$inv_ini){
+/*
+public function roi_base_a_retro($id_projecto,$dif_cost,$inv_ini){
         $array_res = [];
         $año_1 = 0;
         $año_1_res = 0;
@@ -6449,7 +6450,7 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
         $inflacion_aux = DB::table('projects')
         ->where('id','=',$id_projecto)
         ->first()->inflacion;
-        /* $inflacion =  $inflacion_aux/100 + 1; */
+
         $dif_cost_aux = $dif_cost;
 
         if( $inflacion_aux > 0){
@@ -6507,15 +6508,391 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                     array_push($array_res,$año_5);
                 }
 
-                /* if($i == 5){
+
+            }
+        }
+        return response()->json($array_res);
+    }
+*/
+
+/* ene prod */
+public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo){
+    $array_roi_base_ene_solo_ene = ResultadosController::roi_base_a_retro_new_nojson($id_projecto,$dif_cost,$inv_ini);
+    $array_sumas = ResultadosController::roi_sumas_grafics($id_projecto,$dif_cost,$inv_ini);
+
+
+    $costo = intval($costo);
+
+    $prod_m_prode =intval($costobase) - intval($costo);
+
+    ///formula
+    $array_sums_res = [];
+    $array_res = [];
+    $año_3 = 0;
+    $año_3_res = 0;
+    $año_3_suma = 0;
+    $año_3_res_suma = 0;
+    $año_5 = 0;
+    $año_5_res = 0;
+    $año_5_suma = 0;
+    $año_5_res_suma = 0;
+    $año_10 = 0;
+    $año_10_res = 0;
+    $año_10_suma = 0;
+    $año_10_res_suma = 0;
+    $año_15 = 0;
+    $año_15_res = 0;
+    $año_15_suma = 0;
+    $año_15_res_suma = 0;
+    $inflacion_aux = DB::table('projects')
+    ->where('id','=',$id_projecto)
+    ->first()->inflacion_rate;
+    $inv_ini = intval($inv_ini);
+    $dif_cost_aux = $prod_m_prode;
+    $cost_an_ene = DB::table('projects')
+    ->where('id','=',$id_projecto)
+    ->first()->inflacion;
+    //ince_an_ene
+
+    if( floatval($inflacion_aux) > 0){
+        $inflacion =  floatval($inflacion_aux)/100 + 1;
+    }else if( floatval($inflacion_aux) <= 0){
+        $inflacion = 1;
+    }
+
+    for ($i = 1; $i <= 15; $i++) {
+        if($i == 1){
+            $año_3_suma =  $prod_m_prode + $año_3_suma;
+            $año_5_suma =  $prod_m_prode + $año_5_suma;
+            $año_10_suma =  $prod_m_prode + $año_10_suma;
+            $año_15_suma =  $prod_m_prode + $año_15_suma;
+
+        }else{
+
+            $prod_m_prode = $prod_m_prode * $inflacion;
+            $año_3_suma =  $prod_m_prode + $año_3_suma;
+            $año_5_suma =  $prod_m_prode + $año_5_suma;
+            $año_10_suma =  $prod_m_prode + $año_10_suma;
+            $año_15_suma =  $prod_m_prode + $año_15_suma;
+
+
+            if($i === 3){
+                $año_3_res =  $prod_m_prode;
+                $año_3_res_suma = $año_3_suma;
+                $suma_años_3 = $año_3_res_suma+intval($array_sumas[0]);
+                //$año_3 = intval($año_3_res_suma/$inv_ini * 100);
+                array_push($array_sums_res,intval($suma_años_3));
+
+            }
+
+            if($i === 5){
+                $año_5_res =  $prod_m_prode;
+                $año_5_res_suma = $año_5_suma ;
+                $suma_años_5 = $año_3_res_suma+intval($array_sumas[1]);
+                //$año_5 = intval($año_5_res_suma/$inv_ini * 100);
+                array_push($array_sums_res,intval($año_5_res_suma));
+
+
+            }
+
+            if($i === 10){
+                $año_10_res =  $prod_m_prode;
+                $año_10_res_suma = $año_10_suma ;
+                $año_10 = intval($año_10_res_suma/$inv_ini * 100);
+                array_push($array_sums_res,intval($año_10_res_suma));
+
+            }
+
+            if($i === 15){
+                $año_15_res =  $prod_m_prode;
+                $año_15_res_suma = $año_15_suma ;
+                $año_15 = intval($año_15_res_suma/$inv_ini * 100);
+                array_push($array_sums_res,intval($año_15_res_suma));
+                //dd($array_res);
+            }
+
+
+        }
+    }
+
+    $count_arry= count($array_sums_res) - 1;
+    for ($i = 0; $i <= $count_arry; $i++) {
+
+        //$suma = $array_sums_res[$i] + $array_roi_base_ene_solo_ene[$i];
+        $suma = $array_sums_res[$i] +  $array_sumas[$i];
+        $div_Result = $suma / $inv_ini * 100;
+
+        array_push($array_res,intval($div_Result));
+    }
+
+    return response()->json($array_res);
+}
+
+    public function roi_base_a_retro_new($id_projecto,$dif_cost,$inv_ini){
+        $array_res = [];
+        $año_3 = 0;
+        $año_3_res = 0;
+        $año_3_suma = 0;
+        $año_3_res_suma = 0;
+        $año_5 = 0;
+        $año_5_res = 0;
+        $año_5_suma = 0;
+        $año_5_res_suma = 0;
+        $año_10 = 0;
+        $año_10_res = 0;
+        $año_10_suma = 0;
+        $año_10_res_suma = 0;
+        $año_15 = 0;
+        $año_15_res = 0;
+        $año_15_suma = 0;
+        $año_15_res_suma = 0;
+        $inflacion_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+        $inv_ini = intval($inv_ini);
+        $dif_cost_aux = $dif_cost;
+        $cost_an_ene = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+        //ince_an_ene
+
+        if( floatval($inflacion_aux) > 0){
+            $inflacion =  floatval($inflacion_aux)/100 + 1;
+        }else if( floatval($inflacion_aux) <= 0){
+            $inflacion = 1;
+        }
+
+        for ($i = 1; $i <= 15; $i++) {
+            if($i == 1){
+                $año_3_suma =  $dif_cost + $año_3_suma;
+                $año_5_suma =  $dif_cost + $año_5_suma;
+                $año_10_suma =  $dif_cost + $año_10_suma;
+                $año_15_suma =  $dif_cost + $año_15_suma;
+
+            }else{
+
+                $dif_cost = $dif_cost * $inflacion;
+                $año_3_suma =  $dif_cost + $año_3_suma;
+                $año_5_suma =  $dif_cost + $año_5_suma;
+                $año_10_suma =  $dif_cost + $año_10_suma;
+                $año_15_suma =  $dif_cost + $año_15_suma;
+
+
+                if($i === 3){
+                    $año_3_res =  $dif_cost;
+                    $año_3_res_suma = $año_3_suma;
+                    $año_3 = intval($año_3_res_suma/$inv_ini * 100);
+                    array_push($array_res,$año_3);
+
+                }
+
+                if($i === 5){
                     $año_5_res =  $dif_cost;
                     $año_5_res_suma = $año_5_suma ;
                     $año_5 = intval($año_5_res_suma/$inv_ini * 100);
                     array_push($array_res,$año_5);
-                } */
+
+
+                }
+
+                if($i === 10){
+                    $año_10_res =  $dif_cost;
+                    $año_10_res_suma = $año_10_suma ;
+                    $año_10 = intval($año_10_res_suma/$inv_ini * 100);
+                    array_push($array_res,$año_10);
+
+                }
+
+                if($i === 15){
+                    $año_15_res =  $dif_cost;
+                    $año_15_res_suma = $año_15_suma ;
+                    $año_15 = intval($año_15_res_suma/$inv_ini * 100);
+                    array_push($array_res,$año_15);
+                    //dd($array_res);
+                }
+//me quede checando la formula
+
             }
         }
         return response()->json($array_res);
+    }
+
+    public function roi_base_a_retro_new_nojson($id_projecto,$dif_cost,$inv_ini){
+    $array_res = [];
+    $año_3 = 0;
+    $año_3_res = 0;
+    $año_3_suma = 0;
+    $año_3_res_suma = 0;
+    $año_5 = 0;
+    $año_5_res = 0;
+    $año_5_suma = 0;
+    $año_5_res_suma = 0;
+    $año_10 = 0;
+    $año_10_res = 0;
+    $año_10_suma = 0;
+    $año_10_res_suma = 0;
+    $año_15 = 0;
+    $año_15_res = 0;
+    $año_15_suma = 0;
+    $año_15_res_suma = 0;
+    $inflacion_aux = DB::table('projects')
+    ->where('id','=',$id_projecto)
+    ->first()->inflacion;
+    $inv_ini = intval($inv_ini);
+    $dif_cost_aux = $dif_cost;
+    $cost_an_ene = DB::table('projects')
+    ->where('id','=',$id_projecto)
+    ->first()->inflacion;
+    //ince_an_ene
+
+    if( floatval($inflacion_aux) > 0){
+        $inflacion =  floatval($inflacion_aux)/100 + 1;
+    }else if( floatval($inflacion_aux) <= 0){
+        $inflacion = 1;
+    }
+
+    for ($i = 1; $i <= 15; $i++) {
+        if($i == 1){
+            $año_3_suma =  $dif_cost + $año_3_suma;
+            $año_5_suma =  $dif_cost + $año_5_suma;
+            $año_10_suma =  $dif_cost + $año_10_suma;
+            $año_15_suma =  $dif_cost + $año_15_suma;
+
+        }else{
+
+            $dif_cost = $dif_cost * $inflacion;
+            $año_3_suma =  $dif_cost + $año_3_suma;
+            $año_5_suma =  $dif_cost + $año_5_suma;
+            $año_10_suma =  $dif_cost + $año_10_suma;
+            $año_15_suma =  $dif_cost + $año_15_suma;
+
+
+            if($i === 3){
+                $año_3_res =  $dif_cost;
+                $año_3_res_suma = $año_3_suma;
+                $año_3 = intval($año_3_res_suma/$inv_ini * 100);
+                array_push($array_res,$año_3);
+
+            }
+
+            if($i === 5){
+                $año_5_res =  $dif_cost;
+                $año_5_res_suma = $año_5_suma ;
+                $año_5 = intval($año_5_res_suma/$inv_ini * 100);
+                array_push($array_res,$año_5);
+
+
+            }
+
+            if($i === 10){
+                $año_10_res =  $dif_cost;
+                $año_10_res_suma = $año_10_suma ;
+                $año_10 = intval($año_10_res_suma/$inv_ini * 100);
+                array_push($array_res,$año_10);
+
+            }
+
+            if($i === 15){
+                $año_15_res =  $dif_cost;
+                $año_15_res_suma = $año_15_suma ;
+                $año_15 = intval($año_15_res_suma/$inv_ini * 100);
+                array_push($array_res,$año_15);
+                //dd($array_res);
+            }
+//me quede checando la formula
+
+        }
+    }
+    return $array_res;
+}
+
+    public function roi_sumas_grafics($id_projecto,$dif_cost,$inv_ini){
+            $array_res = [];
+            $año_3 = 0;
+            $año_3_res = 0;
+            $año_3_suma = 0;
+            $año_3_res_suma = 0;
+            $año_5 = 0;
+            $año_5_res = 0;
+            $año_5_suma = 0;
+            $año_5_res_suma = 0;
+            $año_10 = 0;
+            $año_10_res = 0;
+            $año_10_suma = 0;
+            $año_10_res_suma = 0;
+            $año_15 = 0;
+            $año_15_res = 0;
+            $año_15_suma = 0;
+            $año_15_res_suma = 0;
+            $inflacion_aux = DB::table('projects')
+            ->where('id','=',$id_projecto)
+            ->first()->inflacion;
+            $inv_ini = intval($inv_ini);
+            $dif_cost_aux = $dif_cost;
+            $cost_an_ene = DB::table('projects')
+            ->where('id','=',$id_projecto)
+            ->first()->inflacion;
+            //ince_an_ene
+
+            if( floatval($inflacion_aux) > 0){
+                $inflacion =  floatval($inflacion_aux)/100 + 1;
+            }else if( floatval($inflacion_aux) <= 0){
+                $inflacion = 1;
+            }
+
+            for ($i = 1; $i <= 15; $i++) {
+                if($i == 1){
+                    $año_3_suma =  $dif_cost + $año_3_suma;
+                    $año_5_suma =  $dif_cost + $año_5_suma;
+                    $año_10_suma =  $dif_cost + $año_10_suma;
+                    $año_15_suma =  $dif_cost + $año_15_suma;
+
+                }else{
+
+                    $dif_cost = $dif_cost * $inflacion;
+                    $año_3_suma =  $dif_cost + $año_3_suma;
+                    $año_5_suma =  $dif_cost + $año_5_suma;
+                    $año_10_suma =  $dif_cost + $año_10_suma;
+                    $año_15_suma =  $dif_cost + $año_15_suma;
+
+
+                    if($i === 3){
+                        $año_3_res =  $dif_cost;
+                        $año_3_res_suma = $año_3_suma;
+                        $año_3 = intval($año_3_res_suma/$inv_ini * 100);
+                        array_push($array_res,$año_3_res_suma);
+
+                    }
+
+                    if($i === 5){
+                        $año_5_res =  $dif_cost;
+                        $año_5_res_suma = $año_5_suma ;
+                        $año_5 = intval($año_5_res_suma/$inv_ini * 100);
+                        array_push($array_res,$año_5_res_suma);
+
+
+                    }
+
+                    if($i === 10){
+                        $año_10_res =  $dif_cost;
+                        $año_10_res_suma = $año_10_suma ;
+                        $año_10 = intval($año_10_res_suma/$inv_ini * 100);
+                        array_push($array_res,$año_10_res_suma);
+
+                    }
+
+                    if($i === 15){
+                        $año_15_res =  $dif_cost;
+                        $año_15_res_suma = $año_15_suma ;
+                        $año_15 = intval($año_15_res_suma/$inv_ini * 100);
+                        array_push($array_res,$año_15_res_suma);
+                        //dd($array_res);
+                    }
+            //me quede checando la formula
+
+                }
+            }
+    return $array_res;
     }
 
     public function roi_base_a($id_projecto,$dif_cost,$inv_ini){
@@ -9533,6 +9910,97 @@ if($eficiencia_ene == 'EER'){
             return $color;
         } */
 
+    }
+
+    public function personas($id_project,$prod_lab){
+        $proyect = DB::table('projects')
+        ->where('projects.id','=',$id_project)
+        ->first();
+
+        if($prod_lab > 0){
+
+        if($prod_lab > 1 && $prod_lab < 2){
+            $porcent_check1 = 0.25;
+            $porcent_check2 = 0.20;
+            $porcent_point1 = 1;
+            $porcent_point2 = 2;
+            }
+
+            if($prod_lab > 2 && $prod_lab < 3){
+            $porcent_check1 = 0.20;
+            $porcent_check2 = 0.15;
+            $porcent_point1 = 2;
+            $porcent_point2 = 3;
+            }
+
+            if($prod_lab > 3 && $prod_lab < 4){
+            $porcent_check1 = 0.15;
+            $porcent_check2 = 0.10;
+            $porcent_point1 = 3;
+            $porcent_point2 = 4;
+            }
+
+            if($prod_lab > 4 && $prod_lab < 5){
+            $porcent_check1 = 0.10;
+            $porcent_check2 = 0.05;
+            $porcent_point1 = 4;
+            $porcent_point2 = 5;
+            }
+
+            if($prod_lab >= 5){
+                $porcent_check1 = 0.10;
+                $porcent_check2 = 0.05;
+                $porcent_point1 = 4;
+                $porcent_point2 = 5;
+                }
+
+            //porcent_check1% + ((3.76-3) / (4 - 3)) x (porcent_check2% - porcent_check1%)
+
+            //((3.76-3) / (4 - 3))
+
+            //(3.76-porcent_point1)
+            $trespuntosiete_m_point1 = $prod_lab-$porcent_point1;
+            //(porcent_point2 - porcent_point1)
+            $porcent_point2_m_porcent_point1 = $porcent_point2 - $porcent_point1;
+            //(3.76-porcent_point1) / (porcent_point2 - porcent_point1)
+            $div_porcents_poins = $trespuntosiete_m_point1 / $porcent_point2_m_porcent_point1;
+
+
+            //(porcent_check2% - porcent_check1%)
+            $porcent_check2_m_porcent_check1 =  $porcent_check2 - $porcent_check1;
+
+            //((3.76-3) / (4 - 3)) x (porcent_check2% - porcent_check1%)
+            //div_porcents_poins x porcent_check2_m_porcent_check1
+            $mult_divporcentpoints_res_porsents_checks = $div_porcents_poins * $porcent_check2_m_porcent_check1;
+
+            //porcent_check1% + ((3.76-3) / (4 - 3)) x (porcent_check2% - porcent_check1%)
+            $sum_resultd = $porcent_check1 + $mult_divporcentpoints_res_porsents_checks;
+
+            //porcent
+            $result = $sum_resultd * 100;
+
+            //personas
+            //n_empleados*(result-5%)
+            $menos_result = $sum_resultd - 0.05;
+            $n_emppleados = $proyect->n_empleados * $menos_result;
+
+
+            return intval($n_emppleados);
+        }
+            if($prod_lab <= 0){
+                return 0;
+            }
+
+
+    }
+
+    public function costo($personas,$id_project){
+        $proyect = DB::table('projects')
+        ->where('projects.id','=',$id_project)
+        ->first();
+
+        $mult = $personas * $proyect->sal_an_prom;
+        return intval($mult);
     }
 
 

@@ -911,10 +911,10 @@
                     </div>
                 <div class="my-6" style="margin: 0px auto" id="chart_prod_base"></div>
             </div>
-            @if ($result1 !== null)
+            @if ($result2 !== null)
             <?php  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) ?>
             @endif
-            @if ($result1 === null)
+            @if ($result2 === null)
             <?php  $prod_lab_a=0; ?>
             @endif
             <div class="w-1/3 grid justify-items-center">
@@ -925,10 +925,10 @@
                 </div>
                 <div class="my-6"  id="chart_prod_a" style="margin: 0px auto"></div>
             </div>
-            @if ($result1 !== null)
+            @if ($result3 !== null)
             <?php  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) ?>
             @endif
-            @if ($result1 === null)
+            @if ($result3 === null)
             <?php  $prod_lab_b=0; ?>
             @endif
             <div class="w-1/3 grid justify-items-center">
@@ -946,33 +946,60 @@
         </div>
 
         <div class="flex w-full justify-center mt-3">
-           <div class="w-1/3 grid justify-items-center gap-y-2">
+            @if ($result1 !== null)
+
+
+            <?php  $personas=$conf_val->personas($id_project,$conf_val_base) ?>
+            <?php  $costo_base=$conf_val->costo($personas,$id_project) ?>
+            @endif
+
+            @if ($result1 === null)
+            <?php  $personas=0; ?>
+            @endif
+            <div class="w-1/3 grid justify-items-center gap-y-2">
                 <div class="flex w-full justify-center">
-                    <p class="cant_style">15</p>
+                    <p class="cant_style">{{$personas}}</p>
                 </div>
 
                 <div class="flex w-full justify-center">
-                    <p class="cant_style">$15,112</p>
+                    <p class="cant_style">${{number_format($costo_base)}}</p>
                 </div>
             </div>
 
+            @if ($result2 !== null)
+            <?php  $personas_a=$conf_val->personas($id_project,$conf_val_a) ?>
+            <?php  $costo_a=$conf_val->costo($personas_a,$id_project) ?>
+            @endif
+
+            @if ($result2 === null)
+            <?php  $costo_a=0; ?>
+            @endif
             <div class="w-1/3 grid justify-items-center gap-y-2">
                 <div class="flex w-full justify-center">
-                    <p class="cant_style">15</p>
+                    <p class="cant_style">{{$personas_a}}</p>
                 </div>
 
                 <div class="flex w-full justify-center">
-                    <p class="cant_style">$15,112</p>
+                    <p class="cant_style">${{number_format($costo_a)}}</p>
                 </div>
             </div>
 
+            @if ($result2 !== null)
+            <?php  $personas_b=$conf_val->personas($id_project,$conf_val_b) ?>
+            <?php  $costo_b=$conf_val->costo($personas_b,$id_project) ?>
+            @endif
+
+            @if ($result2 === null)
+            <?php  $personas_b=0; ?>
+            @endif
+
             <div class="w-1/3 grid justify-items-center gap-y-2">
                 <div class="flex w-full justify-center">
-                    <p class="cant_style">15</p>
+                    <p class="cant_style">{{$personas_b}}</p>
                 </div>
 
                 <div class="flex w-full justify-center">
-                    <p class="cant_style">$15,112</p>
+                    <p class="cant_style">${{number_format($costo_b)}}</p>
                 </div>
             </div>
         </div>
@@ -980,6 +1007,7 @@
       </div>
     </div>
 </div>
+
 {{-- espacio hoja pagina 3 --}}
 <div id="next_page_3" name="next_page_3" style="width: 80%; height:545px;" class="hidden">
 
@@ -1367,7 +1395,7 @@ function send_print(){
     chart_prod_b_print();
     setTimeout(function() {
         window.print();
-}, 2000);
+}, 3000);
 
 }
 
@@ -1421,10 +1449,10 @@ window.onload = function() {
       roi_base_a_print('{{$id_project}}');
       roi_base_b_print('{{$id_project}}');
 
-      roi_base_a_ene_prod('{{$id_project}}');
-      roi_base_b_ene_prod('{{$id_project}}');
-      roi_base_a_ene_prod_print('{{$id_project}}');
-      roi_base_b_ene_prod_print('{{$id_project}}');
+      roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
+      roi_base_b_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
+      roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
+      roi_base_b_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
     };
 /* window.print() */
 function con_ene_hvac_ar_Base(kwh_yr,porcent_hvac){
@@ -2061,10 +2089,13 @@ function confort_b(val_conf_b){
 /* alert(val_conf_b); */
 }
 
+
+
 function chart_prod_base() {
         var check_prod = '{{$conf_val_base}}';
         var mult_cels_val = check_prod * 5;
         var val_res = mult_cels_val / 5;
+        var interpolacion = interp(check_prod);
 
         var message = message_prod_lab_chart(check_prod);
 
@@ -2081,26 +2112,29 @@ function chart_prod_base() {
             },
             xAxis: {
                 /*Used to position marker on top of axis line.*/
-                scale: { range: [0, 1], invert: true }
+                scale: { range: [0, 1], invert: true },
+
             },
             palette: {
                 pointValue: '%yValue',
                 ranges: [
-                { value: 1, color: '#FF5353' },
-                { value: 2, color: '#FFD221' },
-                { value: 4, color: '#77E6B4' },
-                { value: [4.5, 5], color: '#21D683' }
+                { value: 5, color: '#FF5353' },
+                { value: 10, color: '#FFD221' },
+                { value: 20, color: '#77E6B4' },
+                { value: [23, 25], color: '#21D683' }
                 ]
             },
             yAxis: {
                 defaultTick: { padding: 13, enabled: false },
-                customTicks: [1,2, 3, 4,5],
+                customTicks: [5,10,15,20,25],
                 line: {
                 width: 15,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
-                scale: { range: [1, 5] }
+                scale: { range: [5, 25],
+                invert: true
+                 }
             },
             defaultSeries: {
                 opacity: 1,
@@ -2117,7 +2151,7 @@ function chart_prod_base() {
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(check_prod).toFixed(2)+'<br/> <span style="fontSize: 35">'+message+'</span>',
+                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize: 35">'+message+'</span>',
                     style: { fontSize: 48 }
                 },
                 defaultPoint: {
@@ -2133,7 +2167,7 @@ function chart_prod_base() {
                     size: 30
                     }
                 },
-                points: [[1, parseFloat(check_prod)]]
+                points: [[1, parseFloat(interpolacion)]]
                 }
             ]
             });
@@ -2142,6 +2176,7 @@ function chart_prod_base() {
 
       function chart_prod_a() {
         var check_prod_a = '{{$conf_val_a}}';
+        var interpolacion = interp(check_prod_a);
         /*     var check_prod_a = '{{$conf_val_a}}';
         var data = google.visualization.arrayToDataTable([
         ['Label', 'Value'],
@@ -2176,26 +2211,27 @@ chart.draw(data, options); */
             },
             xAxis: {
                 /*Used to position marker on top of axis line.*/
-                scale: { range: [0, 1], invert: true }
+                 scale: { range: [0, 1], invert: true },
             },
             palette: {
                 pointValue: '%yValue',
                 ranges: [
-                    { value: 1, color: '#FF5353' },
-                    { value: 2, color: '#FFD221' },
-                    { value: 4, color: '#77E6B4' },
-                    { value: [4.5, 5], color: '#21D683' }
+                  { value: 5, color: '#FF5353' },
+                { value: 10, color: '#FFD221' },
+                { value: 20, color: '#77E6B4' },
+                { value: [23, 25], color: '#21D683' }
                 ]
             },
             yAxis: {
                 defaultTick: { padding: 13, enabled: false },
-                customTicks: [1,2, 3, 4,5],
+               customTicks: [5,10,15,20,25],
                 line: {
                 width: 15,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
-                scale: { range: [1, 5] }
+               scale: { range: [5, 25],
+                invert: true},
             },
             defaultSeries: {
                 opacity: 1,
@@ -2212,7 +2248,7 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(check_prod_a).toFixed(2)+'<br/> <span style="fontSize: 35">'+message+'</span>',
+                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize: 35">'+message+'</span>',
                     style: { fontSize: 48 }
                 },
                 defaultPoint: {
@@ -2228,7 +2264,7 @@ chart.draw(data, options); */
                     size: 30
                     }
                 },
-                points: [[1, parseFloat(check_prod_a)]]
+                points: [[1, parseFloat(interpolacion)]]
                 }
             ]
             });
@@ -2238,7 +2274,9 @@ chart.draw(data, options); */
 
 function chart_prod_b() {
     var check_prod_b = '{{$conf_val_b}}';
+
     var message = message_prod_lab_chart(check_prod_b);
+    var interpolacion = interp(check_prod_b);
 /* var data = google.visualization.arrayToDataTable([
   ['Label', 'Value'],
   ['B', parseFloat(check_prod_b)],
@@ -2271,26 +2309,27 @@ chart.draw(data, options); */
             },
             xAxis: {
                 /*Used to position marker on top of axis line.*/
-                scale: { range: [0, 1], invert: true }
+              scale: { range: [0, 1], invert: true },
             },
             palette: {
                 pointValue: '%yValue',
                 ranges: [
-                    { value: 1, color: '#FF5353' },
-                    { value: 2, color: '#FFD221' },
-                    { value: 4, color: '#77E6B4' },
-                    { value: [4.5, 5], color: '#21D683' }
+                   { value: 5, color: '#FF5353' },
+                { value: 10, color: '#FFD221' },
+                { value: 20, color: '#77E6B4' },
+                { value: [23, 25], color: '#21D683' }
                 ]
             },
             yAxis: {
                 defaultTick: { padding: 13, enabled: false },
-                customTicks: [1,2, 3, 4,5],
+                 customTicks: [5,10,15,20,25],
                 line: {
                 width: 15,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
-                scale: { range: [1, 5] }
+               scale: { range: [5, 25],
+                invert: true},
             },
             defaultSeries: {
                 opacity: 1,
@@ -2307,7 +2346,7 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(check_prod_b).toFixed(2)+'<br/> <span style="fontSize: 35">'+message+'</span>',
+                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize: 35">'+message+'</span>',
                     style: { fontSize: 48 }
                 },
                 defaultPoint: {
@@ -2323,11 +2362,13 @@ chart.draw(data, options); */
                     size: 30
                     }
                 },
-                points: [[1, parseFloat(check_prod_b)]]
+                points: [[1, parseFloat(interpolacion)]]
                 }
             ]
             });
 }
+
+
 
 function cap_op_1_retro(id_project,unidad){
 
@@ -2594,9 +2635,10 @@ function cap_op_3_retro(id_project,unidad){
 function roi_base_a(id_project){
     var dif_1_cost = document.getElementById('dif_cost_base_a').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
+
     $.ajax({
         type: 'get',
-        url: "/roi_base_a_retro/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
+        url: "/roi_base_a_retro_new/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
         success: function (res) {
 
 
@@ -2605,11 +2647,11 @@ function roi_base_a(id_project){
           series: [
           {
             name: "ROI - A",
-            data: [res[0], res[1], res[2], res[3], res[4]]
+            data: [res[0], res[1], res[2], res[3]]
           },
           {
             name: "MARR",
-            data: [15, 30, 45, 60, 75]
+            data: [45, 75, 150, 225]
           }
         ],
           chart: {
@@ -2663,7 +2705,7 @@ function roi_base_a(id_project){
         },
         xaxis: {
             tickPlacement: 'between',
-           categories: [1,2,3,4,5],
+           categories: [3,5,10,15],
            range:4,
           title: {
             text: 'Años',
@@ -2738,18 +2780,18 @@ function roi_base_b(id_project){
 
     $.ajax({
         type: 'get',
-        url: "/roi_base_a_retro/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
+        url: "/roi_base_a_retro_new/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
         success: function (res) {
 
     var options = {
           series: [
           {
             name: "ROI - B",
-            data: [res[0], res[1], res[2], res[3], res[4]]
+            data: [res[0], res[1], res[2], res[3]]
           },
           {
             name: "MARR",
-            data:  [15, 30, 45, 60, 75]
+             data: [45, 75, 150, 225]
           }
         ],
           chart: {
@@ -2803,7 +2845,7 @@ function roi_base_b(id_project){
         },
         xaxis: {
             tickPlacement: 'between',
-           categories: [1,2,3,4,5],
+           categories: [3,5,10,15],
            range:4,
           title: {
             text: 'Años',
@@ -2871,12 +2913,12 @@ function roi_base_b(id_project){
     });
 }
 
-function roi_base_a_ene_prod(id_project){
+function roi_base_a_ene_prod(id_project,costo_base,costo){
     var dif_1_cost = document.getElementById('dif_cost_base_a').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     $.ajax({
         type: 'get',
-        url: "/roi_base_a_retro/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
+        url: "/roi_base_a_retro_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo,
         success: function (res) {
 
 
@@ -2885,11 +2927,11 @@ function roi_base_a_ene_prod(id_project){
           series: [
           {
             name: "ROI - A",
-            data: [res[0], res[1], res[2], res[3], res[4]]
+            data: [res[0], res[1], res[2], res[3]]
           },
           {
             name: "MARR",
-            data: [15, 30, 45, 60, 75]
+            data: [45, 75, 150, 225]
           }
         ],
           chart: {
@@ -2921,7 +2963,7 @@ function roi_base_a_ene_prod(id_project){
           curve: 'smooth'
         },
         title: {
-            text: 'ROI '+ima_sol+' A v/s MARR',
+
           align: 'center',
           style: {
             fontSize: '24px',
@@ -2943,7 +2985,7 @@ function roi_base_a_ene_prod(id_project){
         },
         xaxis: {
             tickPlacement: 'between',
-           categories: [1,2,3,4,5],
+           categories: [3,5,10,15],
            range:4,
           title: {
             text: 'Años',
@@ -3012,24 +3054,24 @@ function roi_base_a_ene_prod(id_project){
     });
 }
 
-function roi_base_b_ene_prod(id_project){
+function roi_base_b_ene_prod(id_project,costo_base,costo){
     var dif_2_cost = document.getElementById('dif_cost_base_b').value;
     var inv_ini_3 = document.getElementById('inv_ini_3').value;
 
     $.ajax({
         type: 'get',
-        url: "/roi_base_a_retro/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
+        url: "/roi_base_a_retro_ene_prod/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3 +'/'+ costo_base +'/'+ costo,
         success: function (res) {
 
     var options = {
           series: [
           {
             name: "ROI - B",
-            data: [res[0], res[1], res[2], res[3], res[4]]
+            data: [res[0], res[1], res[2], res[3]]
           },
           {
             name: "MARR",
-            data:  [15, 30, 45, 60, 75]
+            data:  [45, 75, 120, 225]
           }
         ],
           chart: {
@@ -3061,7 +3103,7 @@ function roi_base_b_ene_prod(id_project){
           curve: 'smooth'
         },
         title: {
-            text: 'ROI '+ima_sol+' B v/s MARR',
+
           align: 'center',
           style: {
             fontSize: '24px',
@@ -3083,7 +3125,7 @@ function roi_base_b_ene_prod(id_project){
         },
         xaxis: {
             tickPlacement: 'between',
-           categories: [1,2,3,4,5],
+           categories: [3,5,10,15],
            range:4,
           title: {
             text: 'Años',
@@ -4639,7 +4681,7 @@ function roi_base_a_print(id_project){
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     $.ajax({
         type: 'get',
-        url: "/roi_base_a_retro/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
+        url: "/roi_base_a_retro_new/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
         success: function (res) {
 
 
@@ -4648,11 +4690,11 @@ function roi_base_a_print(id_project){
           series: [
           {
             name: "ROI - A",
-            data: [res[0], res[1], res[2], res[3], res[4]]
+            data: [res[0], res[1], res[2], res[3]]
           },
           {
             name: "MARR",
-            data: [15, 30, 45, 60, 75]
+            data: [45, 75, 150, 225]
           }
         ],
           chart: {
@@ -4706,7 +4748,7 @@ function roi_base_a_print(id_project){
         },
         xaxis: {
             tickPlacement: 'between',
-           categories: [1,2,3,4,5],
+            categories: [3,5,10,15],
            range:4,
           title: {
             text: 'Años',
@@ -4781,18 +4823,18 @@ function roi_base_b_print(id_project){
 
     $.ajax({
         type: 'get',
-        url: "/roi_base_a_retro/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
+        url: "/roi_base_a_retro_new/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
         success: function (res) {
 
     var options = {
           series: [
           {
             name: "ROI - B",
-            data: [res[0], res[1], res[2], res[3], res[4]]
+            data: [res[0], res[1], res[2], res[3]]
           },
           {
             name: "MARR",
-            data:  [15, 30, 45, 60, 75]
+             data: [45, 75, 150, 225]
           }
         ],
           chart: {
@@ -4846,7 +4888,7 @@ function roi_base_b_print(id_project){
         },
         xaxis: {
             tickPlacement: 'between',
-           categories: [1,2,3,4,5],
+            categories: [3,5,10,15],
            range:4,
           title: {
             text: 'Años',
@@ -4914,12 +4956,12 @@ function roi_base_b_print(id_project){
     });
 }
 
-function roi_base_a_ene_prod_print(id_project){
+function roi_base_a_ene_prod_print(id_project,costo_base,costo){
     var dif_1_cost = document.getElementById('dif_cost_base_a').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     $.ajax({
         type: 'get',
-        url: "/roi_base_a_retro/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
+        url: "/roi_base_a_retro_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo,
         success: function (res) {
 
 
@@ -4928,15 +4970,15 @@ function roi_base_a_ene_prod_print(id_project){
           series: [
           {
             name: "ROI - A",
-            data: [res[0], res[1], res[2], res[3], res[4]]
+            data: [res[0], res[1], res[2], res[3]]
           },
           {
             name: "MARR",
-            data: [15, 30, 45, 60, 75]
+            data: [45, 75, 150, 225]
           }
         ],
           chart: {
-             height: 250,
+            height: 250,
             width:480,
           type: 'line',
           dropShadow: {
@@ -4986,7 +5028,7 @@ function roi_base_a_ene_prod_print(id_project){
         },
         xaxis: {
             tickPlacement: 'between',
-           categories: [1,2,3,4,5],
+           categories: [3,5,10,15],
            range:4,
           title: {
             text: 'Años',
@@ -5055,24 +5097,23 @@ function roi_base_a_ene_prod_print(id_project){
     });
 }
 
-function roi_base_b_ene_prod_print(id_project){
+function roi_base_b_ene_prod_print(id_project,costo_base,costo){
     var dif_2_cost = document.getElementById('dif_cost_base_b').value;
     var inv_ini_3 = document.getElementById('inv_ini_3').value;
-
     $.ajax({
         type: 'get',
-        url: "/roi_base_a_retro/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3,
+        url: "/roi_base_a_retro_ene_prod/" + id_project + '/' + dif_2_cost + '/' + inv_ini_3 +'/'+ costo_base +'/'+ costo,
         success: function (res) {
 
     var options = {
           series: [
           {
             name: "ROI - B",
-            data: [res[0], res[1], res[2], res[3], res[4]]
+            data: [res[0], res[1], res[2], res[3]]
           },
           {
             name: "MARR",
-            data:  [15, 30, 45, 60, 75]
+            data: [45, 75, 150, 225]
           }
         ],
           chart: {
@@ -5126,7 +5167,7 @@ function roi_base_b_ene_prod_print(id_project){
         },
         xaxis: {
             tickPlacement: 'between',
-           categories: [1,2,3,4,5],
+            categories: [3,5,10,15],
            range:4,
           title: {
             text: 'Años',
@@ -5192,6 +5233,74 @@ function roi_base_b_ene_prod_print(id_project){
             console.log(responsetext);
         }
     });
+}
+
+function interp(conf_val){
+
+    if(conf_val > 0){
+        if(conf_val > 1 && conf_val < 2){
+            var porcent_check1 = 0.25;
+            var porcent_check2 = 0.20;
+            var porcent_point1 = 1;
+            var porcent_point2 = 2;
+            }
+
+            if(conf_val > 2 && conf_val < 3){
+            var porcent_check1 = 0.20;
+            var porcent_check2 = 0.15;
+            var porcent_point1 = 2;
+            var porcent_point2 = 3;
+            }
+
+            if(conf_val > 3 && conf_val < 4){
+            var porcent_check1 = 0.15;
+            var porcent_check2 = 0.10;
+            var porcent_point1 = 3;
+            var porcent_point2 = 4;
+            }
+
+            if(conf_val > 4 && conf_val < 5){
+            var porcent_check1 = 0.10;
+            var porcent_check2 = 0.05;
+            var porcent_point1 = 4;
+            var porcent_point2 = 5;
+            }
+
+            //porcent_check1% + ((3.76-3) / (4 - 3)) x (porcent_check2% - porcent_check1%)
+
+            //((3.76-3) / (4 - 3))
+
+            //(3.76-porcent_point1)
+            var trespuntosiete_m_point1 = conf_val-porcent_point1;
+            //(porcent_point2 - porcent_point1)
+            var porcent_point2_m_porcent_point1 = porcent_point2 - porcent_point1;
+            //(3.76-porcent_point1) / (porcent_point2 - porcent_point1)
+            var div_porcents_poins = trespuntosiete_m_point1 / porcent_point2_m_porcent_point1;
+
+
+            //(porcent_check2% - porcent_check1%)
+            var porcent_check2_m_porcent_check1 =  porcent_check2 - porcent_check1;
+
+            //((3.76-3) / (4 - 3)) x (porcent_check2% - porcent_check1%)
+            //div_porcents_poins x porcent_check2_m_porcent_check1
+            var mult_divporcentpoints_res_porsents_checks = div_porcents_poins * porcent_check2_m_porcent_check1;
+
+            //porcent_check1% + ((3.76-3) / (4 - 3)) x (porcent_check2% - porcent_check1%)
+            var sum_resultd = porcent_check1 + mult_divporcentpoints_res_porsents_checks;
+
+            //porcent
+            var result = sum_resultd * 100;
+
+            return result.toFixed(1);
+    }
+
+
+    if(conf_val == 0){
+        return 0;
+    }
+
+
+
 }
 
 function message_prod_lab_chart(check_prod){

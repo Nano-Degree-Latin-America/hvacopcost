@@ -137,7 +137,8 @@ Route::get('cap_op_10/{id_project}', 'ResultadosController@cap_op_10');
 Route::get('cap_op_15/{id_project}', 'ResultadosController@cap_op_15');
 Route::get('roi_base_a/{id_project}/{dif_cost}/{inv_ini}', 'ResultadosController@roi_base_a');
 Route::get('roi_base_a_retro/{id_project}/{dif_cost}/{inv_ini}', 'ResultadosController@roi_base_a_retro');
-
+Route::get('roi_base_a_retro_new/{id_project}/{dif_cost}/{inv_ini}', 'ResultadosController@roi_base_a_retro_new');
+Route::get('roi_base_a_retro_ene_prod/{id_project}/{dif_cost}/{inv_ini}/{costobase}/{costo}', 'ResultadosController@roi_base_a_retro_ene_prod');
 Route::post('cerrar_session', 'IndexController@cerrar_session')->name('cerrar_session');
 //marcas
 
