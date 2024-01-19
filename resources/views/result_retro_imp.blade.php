@@ -4188,7 +4188,8 @@ function chart_prod_base_print() {
         var mult_cels_val = check_prod * 5;
         var val_res = mult_cels_val / 5;
 
-        var message = message_prod_lab_chart(check_prod);
+        var interpolacion = interp(check_prod);
+        var message = message_prod_lab_chart(interpolacion);
 
             // JS
             var chart = JSC.chart('chart_prod_base', {
@@ -4208,21 +4209,22 @@ function chart_prod_base_print() {
             palette: {
                 pointValue: '%yValue',
                 ranges: [
-                { value: 1, color: '#FF5353' },
-                { value: 2, color: '#FFD221' },
-                { value: 4, color: '#77E6B4' },
-                { value: [4.5, 5], color: '#21D683' }
+                { value: 5, color: '#21D683' },
+                    { value: 10, color: '#FFD221' },
+                    { value: 20, color: '#FF5353' },
+                    { value: [23, 25], color: '#FF5353' }
                 ]
             },
             yAxis: {
                 defaultTick: { padding: 13, enabled: false },
-                customTicks: [1,2, 3, 4,5],
+                customTicks: [5,10,15,20,25],
                 line: {
                 width: 15,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
-                scale: { range: [1, 5] }
+                scale: { range: [5, 25],
+                invert: true},
             },
             defaultSeries: {
                 opacity: 1,
@@ -4239,7 +4241,7 @@ function chart_prod_base_print() {
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(check_prod).toFixed(2)+'<br/> <span style="fontSize: 25">'+message+'</span>',
+                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 25">'+message+'</span>',
                     style: { fontSize: 38 }
                 },
                 defaultPoint: {
@@ -4255,7 +4257,7 @@ function chart_prod_base_print() {
                     size: 25
                     }
                 },
-                points: [[1, parseFloat(check_prod)]]
+                points: [[1, parseFloat(interpolacion)]]
                 }
             ]
             });
@@ -4285,7 +4287,9 @@ var chart = new google.visualization.Gauge(document.getElementById('chart_prod_a
 
 chart.draw(data, options); */
             // JS
-            var message = message_prod_lab_chart(check_prod_a);
+
+            var interpolacion = interp(check_prod_a);
+            var message = message_prod_lab_chart(interpolacion);
             var chart = JSC.chart('chart_prod_a', {
             debug: true,
             type: 'gauge ',
@@ -4303,21 +4307,22 @@ chart.draw(data, options); */
             palette: {
                 pointValue: '%yValue',
                 ranges: [
-                    { value: 1, color: '#FF5353' },
-                    { value: 2, color: '#FFD221' },
-                    { value: 4, color: '#77E6B4' },
-                    { value: [4.5, 5], color: '#21D683' }
+                    { value: 5, color: '#21D683' },
+                    { value: 10, color: '#FFD221' },
+                    { value: 20, color: '#FF5353' },
+                    { value: [23, 25], color: '#FF5353' }
                 ]
             },
             yAxis: {
                 defaultTick: { padding: 13, enabled: false },
-                customTicks: [1,2, 3, 4,5],
+                customTicks: [5,10,15,20,25],
                 line: {
                 width: 15,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
-                scale: { range: [1, 5] }
+                scale: { range: [5, 25],
+                invert: true},
             },
             defaultSeries: {
                 opacity: 1,
@@ -4334,7 +4339,7 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(check_prod_a).toFixed(2)+'<br/> <span style="fontSize: 25">'+message+'</span>',
+                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 25">'+message+'</span>',
                     style: { fontSize: 38 }
                 },
                 defaultPoint: {
@@ -4350,7 +4355,7 @@ chart.draw(data, options); */
                     size: 25
                     }
                 },
-                points: [[1, parseFloat(check_prod_a)]]
+                points: [[1, parseFloat(interpolacion)]]
                 }
             ]
             });
@@ -4360,7 +4365,8 @@ chart.draw(data, options); */
 
 function chart_prod_b_print() {
     var check_prod_b = '{{$conf_val_b}}';
-    var message = message_prod_lab_chart(check_prod_b);
+    var interpolacion = interp(check_prod_b);
+    var message = message_prod_lab_chart(interpolacion);
 /* var data = google.visualization.arrayToDataTable([
   ['Label', 'Value'],
   ['B', parseFloat(check_prod_b)],
@@ -4398,21 +4404,22 @@ chart.draw(data, options); */
             palette: {
                 pointValue: '%yValue',
                 ranges: [
-                    { value: 1, color: '#FF5353' },
-                    { value: 2, color: '#FFD221' },
-                    { value: 4, color: '#77E6B4' },
-                    { value: [4.5, 5], color: '#21D683' }
+                    { value: 5, color: '#21D683' },
+                    { value: 10, color: '#FFD221' },
+                    { value: 20, color: '#FF5353' },
+                    { value: [23, 25], color: '#FF5353' }
                 ]
             },
             yAxis: {
                 defaultTick: { padding: 13, enabled: false },
-                customTicks: [1,2, 3, 4,5],
+                customTicks: [5,10,15,20,25],
                 line: {
                 width: 15,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
-                scale: { range: [1, 5] }
+                scale: { range: [5, 25],
+                invert: true},
             },
             defaultSeries: {
                 opacity: 1,
@@ -4429,7 +4436,7 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(check_prod_b).toFixed(2)+'<br/> <span style="fontSize: 25">'+message+'</span>',
+                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 25">'+message+'</span>',
                     style: { fontSize: 38 }
                 },
                 defaultPoint: {
@@ -4445,7 +4452,7 @@ chart.draw(data, options); */
                     size: 25
                     }
                 },
-                points: [[1, parseFloat(check_prod_b)]]
+                points: [[1, parseFloat(interpolacion)]]
                 }
             ]
             });
