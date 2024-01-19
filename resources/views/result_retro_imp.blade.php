@@ -2135,7 +2135,7 @@ function chart_prod_base() {
         var val_res = mult_cels_val / 5;
         var interpolacion = interp(check_prod);
 
-        var message = message_prod_lab_chart(check_prod);
+        var message = message_prod_lab_chart(interpolacion);
 
             // JS
             var chart = JSC.chart('chart_prod_base', {
@@ -2156,10 +2156,10 @@ function chart_prod_base() {
             palette: {
                 pointValue: '%yValue',
                 ranges: [
-                { value: 5, color: '#FF5353' },
+                { value: 5, color: '#21D683' },
                 { value: 10, color: '#FFD221' },
-                { value: 20, color: '#77E6B4' },
-                { value: [23, 25], color: '#21D683' }
+                { value: 20, color: '#FF5353' },
+                { value: [23, 25], color: '#FF5353' }
                 ]
             },
             yAxis: {
@@ -2236,7 +2236,7 @@ var chart = new google.visualization.Gauge(document.getElementById('chart_prod_a
 
 chart.draw(data, options); */
             // JS
-            var message = message_prod_lab_chart(check_prod_a);
+            var message = message_prod_lab_chart(interpolacion);
             var chart = JSC.chart('chart_prod_a', {
             debug: true,
             type: 'gauge ',
@@ -2254,10 +2254,10 @@ chart.draw(data, options); */
             palette: {
                 pointValue: '%yValue',
                 ranges: [
-                  { value: 5, color: '#FF5353' },
+                    { value: 5, color: '#21D683' },
                 { value: 10, color: '#FFD221' },
-                { value: 20, color: '#77E6B4' },
-                { value: [23, 25], color: '#21D683' }
+                { value: 20, color: '#FF5353' },
+                { value: [23, 25], color: '#FF5353' }
                 ]
             },
             yAxis: {
@@ -2313,8 +2313,9 @@ chart.draw(data, options); */
 function chart_prod_b() {
     var check_prod_b = '{{$conf_val_b}}';
 
-    var message = message_prod_lab_chart(check_prod_b);
     var interpolacion = interp(check_prod_b);
+    var message = message_prod_lab_chart(interpolacion);
+
 /* var data = google.visualization.arrayToDataTable([
   ['Label', 'Value'],
   ['B', parseFloat(check_prod_b)],
@@ -2352,10 +2353,10 @@ chart.draw(data, options); */
             palette: {
                 pointValue: '%yValue',
                 ranges: [
-                   { value: 5, color: '#FF5353' },
+                   { value: 5, color: '#21D683' },
                 { value: 10, color: '#FFD221' },
-                { value: 20, color: '#77E6B4' },
-                { value: [23, 25], color: '#21D683' }
+                { value: 20, color: '#FF5353' },
+                { value: [23, 25], color: '#FF5353' }
                 ]
             },
             yAxis: {
@@ -5347,15 +5348,15 @@ if(check_prod == 0){
 var message = '';
 }
 
-if(check_prod > 1 && check_prod <= 3){
+if(check_prod > 20 && check_prod <= 25){
 var message = 'Mala';
 }
 
-if(check_prod > 3 && check_prod <= 4){
+if(check_prod > 10 && check_prod <= 20){
     var message = 'Regular';
 }
 
-if(check_prod > 4 && check_prod <= 5){
+if(check_prod > 5 && check_prod <= 10){
     var message = 'Buena';
 }
 return message;
