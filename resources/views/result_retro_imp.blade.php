@@ -501,7 +501,7 @@
                                      <?php  $result_area_1=0 ?>
                                      <?php $inv_ini_1=0?>
                                     @endif
-                                    <div class="flex w-full justify-center">
+                                    <div class="flex w-full justify-center gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_1)}}</p><b class="unit_style">Kwh</b>
                                     </div>
 
@@ -512,8 +512,8 @@
                                     </div>
 {{--                                     <div id="chart_cons_ene_hvac_ar_base_print" name="chart_cons_ene_hvac_ar_base_print" class="js_charts_style"></div>
  --}}
-                                    <div class="flex w-full justify-center mt-4">
-                                        <p class="cant_style">$ {{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
+                                    <div class="flex w-full justify-center mt-8">
+                                        <p class="cant_style">${{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -549,12 +549,12 @@
                                     <?php $inv_ini_2=0?>
 
                                     @endif
-                                    <div class="flex w-full justify-center">
+                                    <div class="flex w-full justify-center  gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_2)}}</p><b class="unit_style">Kwh</b>
                                     </div>
                                     <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style" ></div>
-                                    <div class="flex w-full justify-center mt-4">
-                                        <p class="cant_style">$ {{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
+                                    <div class="flex w-full justify-center mt-8">
+                                        <p class="cant_style">${{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
                                     </div>
                           </div>
                             </div>
@@ -589,12 +589,12 @@
                                     <?php $inv_ini_3=0?>
                                      <input type="number" class="hidden" id="inv_ini_3" name="inv_ini_3" value="{{$inv_ini_3}}">
                                     @endif
-                                   <div class="flex w-full justify-center">
+                                   <div class="flex w-full justify-center  gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_3)}}</p><b class="unit_style">Kwh</b>
                                     </div>
                                      <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
-                                     <div class="flex w-full justify-center mt-4">
-                                        <p class="cant_style">$ {{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
+                                     <div class="flex w-full justify-center mt-8">
+                                        <p class="cant_style">${{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
                                     </div>
                                </div>
                             </div>
@@ -628,7 +628,7 @@
             </div>
         </div>
 
-        <div class="flex w-full justify-center">
+        <div class="flex w-full justify-center mb-3">
             <div class="w-1/3 grid justify-items-center">
                 <div class="flex justify-center w-full">
                     <label class="solucions_style_name">{{ __('index.sis_ext') }}</label>
@@ -783,7 +783,7 @@
       <?php  $conf_val_base=$conf_val->conf_val($id_project,1,1,$sumacap_term_1); ?>
       <?php  $conf_val_a=$conf_val->conf_val($id_project,2,1,$sumacap_term_2);?>
       <?php  $conf_val_b=$conf_val->conf_val($id_project,3,1,$sumacap_term_3) ?>
-      <div class="flex w-full justify-center gap-x-3 mb-2">
+      <div class="flex w-full justify-center gap-x-3 mb-8">
 
               {{--  --}}
               <div class="w-full grid mb-0 gap-y-5">
@@ -903,7 +903,7 @@
               </div>
       </div>
 
-      <div class="grid w-full justify-items-center gap-x-3 mb-2">
+      <div class="grid w-full justify-items-center gap-x-3 my-3">
 
         <div class="flex w-full justify-center">
             @if ($result1 !== null)
@@ -951,7 +951,7 @@
         </div>
 
         <div class="flex w-full justify-center mt-6">
-            <p class="per_cos text-blue-600 font-roboto font-bold">Personas y Costo de la Pérdida de Pooductividad</p>
+            <p class="per_cos text-blue-600 font-roboto font-bold">Personas y Costo de la Pérdida de Productividad</p>
         </div>
 
         <div class="flex w-full justify-center mt-3">
@@ -1086,7 +1086,7 @@
                   <p class="titulos_style">Payback {{ __('results.simple') }} ({{ __('results.ans') }})</p>
               </div>
 
-              <div class="flex w-full justify-center gap-x-3">
+              <div class="flex w-full justify-center gap-x-3  mt-5">
                 <div class="grid justify-center w-1/4">
                    {{-- espacio --}}
                 </div>
@@ -1128,7 +1128,7 @@
                 </div>
             </div>
 
-            <div class="flex w-full justify-center gap-x-3">
+            <div class="flex w-full justify-center gap-x-3 mb-3">
                 <div class="grid justify-center w-1/4">
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Payback Simple</b>
                 </div>
@@ -1139,8 +1139,8 @@
 
                 </div>
 
-                <div style="border-style: solid; border-width: 8px;" class="grid justify-center w-1/5 border-green-300 rounded-md my-1">
-                    <div class="flex">
+                <div  class="grid justify-center w-1/5  my-1">
+                    <div  style="border-style: solid; border-width: 8px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
 {{--                         <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">7</p></b>
  --}}                        @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
                                                     <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1_cost) ?>
@@ -1160,8 +1160,8 @@
 
                 </div>
 
-                <div style="border-style: solid; border-width: 8px;" class="grid justify-center w-1/5 border-green-300 rounded-md my-1">
-                    <div class="flex">
+                <div  class="grid justify-center w-1/5  my-1">
+                    <div  style="border-style: solid; border-width: 8px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
 
                         @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
                              <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_2_cost) ?>
