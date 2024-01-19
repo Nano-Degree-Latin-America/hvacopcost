@@ -9992,7 +9992,7 @@ if($eficiencia_ene == 'EER'){
             $n_emppleados = $proyect->n_empleados * $menos_result;
 
 
-            return intval($n_emppleados);
+            return  round($n_emppleados, 0, PHP_ROUND_HALF_UP);;
         }
             if($prod_lab <= 0){
                 return 0;

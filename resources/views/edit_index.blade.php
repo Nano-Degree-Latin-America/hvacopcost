@@ -848,7 +848,7 @@ $idm = App::getLocale();
                                         <label for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
                                     </div>
 
-                                    <div class="flex">
+                                    <div class="flex hidden">
                                         @if ($type_p == 2)
                                         <input class="check_style" id="man" type="checkbox" onclick="check_form_proy('man','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
@@ -894,7 +894,7 @@ $idm = App::getLocale();
                                         <label for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
                                     </div>
 
-                                    <div class="flex">
+                                    <div class="flex hidden">
                                         @if ($type_p == 2)
                                         <input disabled class="check_style" id="man" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
@@ -940,7 +940,7 @@ $idm = App::getLocale();
                                         <label for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
                                     </div>
 
-                                    <div class="flex">
+                                    <div class="flex hidden">
                                         @if ($type_p == 2)
                                         <input class="check_style" id="man" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
@@ -987,7 +987,7 @@ $idm = App::getLocale();
                                         <label for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
                                     </div>
 
-                                    <div class="flex">
+                                    <div class="flex hidden">
                                         @if ($type_p == 2)
                                         <input disabled class="check_style" id="man" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
@@ -1033,7 +1033,7 @@ $idm = App::getLocale();
                                         <label for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
                                     </div>
 
-                                    <div class="flex">
+                                    <div class="flex hidden">
                                         @if ($type_p == 2)
                                         <input  class="check_style" id="man" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
@@ -1078,7 +1078,7 @@ $idm = App::getLocale();
                                         <label for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
                                     </div>
 
-                                    <div class="flex">
+                                    <div class="flex hidden">
                                         @if ($type_p == 2)
                                         <input class="check_style" id="man" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
@@ -1123,7 +1123,7 @@ $idm = App::getLocale();
                                         <label for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
                                     </div>
 
-                                    <div class="flex">
+                                    <div class="flex hidden">
                                         @if ($type_p == 2)
                                         <input class="check_style" id="man" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif
@@ -1169,7 +1169,7 @@ $idm = App::getLocale();
                                         <label for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold">Proyecto Retrofit</label>
                                     </div>
 
-                                    <div class="flex">
+                                    <div class="flex hidden">
                                         @if ($type_p == 2)
                                         <input  disabled class="check_style" id="man" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         @endif

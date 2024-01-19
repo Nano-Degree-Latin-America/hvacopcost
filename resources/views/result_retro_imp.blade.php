@@ -171,6 +171,10 @@
             font-size:2rem;
         }
 
+        .size_solutions_payback{
+            font-size:3rem;
+        }
+
         .style_grafics_marr{
             width:600px;
             height:320px;
@@ -299,6 +303,11 @@
         .size_solutions_confort{
             font-size:1.6rem;
         }
+
+        .size_solutions_payback{
+            font-size:2.6rem;
+        }
+
 
         .style_grafics_marr{
             width:400px;
@@ -504,7 +513,7 @@
 {{--                                     <div id="chart_cons_ene_hvac_ar_base_print" name="chart_cons_ene_hvac_ar_base_print" class="js_charts_style"></div>
  --}}
                                     <div class="flex w-full justify-center mt-4">
-                                        <p class="cant_style">$15,112</p>
+                                        <p class="cant_style">$ {{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -545,7 +554,7 @@
                                     </div>
                                     <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style" ></div>
                                     <div class="flex w-full justify-center mt-4">
-                                        <p class="cant_style">$15,112</p>
+                                        <p class="cant_style">$ {{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
                                     </div>
                           </div>
                             </div>
@@ -585,7 +594,7 @@
                                     </div>
                                      <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
                                      <div class="flex w-full justify-center mt-4">
-                                        <p class="cant_style">$15,112</p>
+                                        <p class="cant_style">$ {{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
                                     </div>
                                </div>
                             </div>
@@ -1064,7 +1073,11 @@
     </div>
 </div>
 </div>
+<?php  $results_aux=$results->results($id_project) ?>
+<?php  $dif_1_cost=$smasolutions->dif_1_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
+<?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
 
+<?php  $dif_2_cost=$smasolutions->dif_2_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
  {{-- payback --}}
  <div class="margin_new_page w-full grid rounded-md justify-items-center mt-2">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
@@ -1100,17 +1113,17 @@
                 </div>
 
                 <div class="grid justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">$15,112</p></b>
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{$inv_ini_1}}</p></b>
 
                 </div>
 
                 <div class="grid justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">$15,112</p></b>
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{$inv_ini_2}}</p></b>
 
                 </div>
 
                 <div class="grid justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">$15,112</p></b>
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{$inv_ini_3}}</p></b>
 
                 </div>
             </div>
@@ -1122,20 +1135,47 @@
 
                 <div class="grid justify-center w-1/5">
 
-                        <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">-</p></b>
+                        <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style"></p></b>
 
                 </div>
 
-                <div style="border-style: solid; border-width: 5px;" class="grid justify-center w-1/5 border-green-300 rounded-md my-1">
+                <div style="border-style: solid; border-width: 8px;" class="grid justify-center w-1/5 border-green-300 rounded-md my-1">
                     <div class="flex">
-                        <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">7</p></b>
+{{--                         <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">7</p></b>
+ --}}                        @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
+                                                    <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1_cost) ?>
+
+                            @if ($pay_back_a >= 0)
+                            <b style="color:#33cc33;" class="size_solutions_payback  font-roboto font-bold">{{number_format($pay_back_a)}}</b>
+                            @endif
+
+                             @if ($pay_back_a < 0)
+                            <b style="color:#ea0000;" class="size_solutions_payback  font-roboto font-bold">{{number_format($pay_back_a)}}</b>
+                            @endif
+
+                            @else
+                         <b style="color:#33cc33;" class="size_solutions_payback font-roboto font-bold">N/A</b>
+                         @endif
                     </div>
 
                 </div>
 
-                <div style="border-style: solid; border-width: 5px;" class="grid justify-center w-1/5 border-green-300 rounded-md my-1">
+                <div style="border-style: solid; border-width: 8px;" class="grid justify-center w-1/5 border-green-300 rounded-md my-1">
                     <div class="flex">
-                        <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">7</p></b>
+
+                        @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
+                             <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_2_cost) ?>
+                             @if ($pay_back_b >= 0)
+                            <b style="color:#33cc33;" class="size_solutions_payback text-blue-600 font-roboto font-bold">{{number_format($pay_back_b)}}</b>
+                            @endif
+
+                             @if ($pay_back_b < 0)
+                            <b style="color:#ea0000;" class="size_solutions_payback text-blue-600 font-roboto font-bold">{{number_format($pay_back_b)}}</b>
+                            @endif
+
+                            @else
+                            <b  style="color:#33cc33;" class="size_solutions_payback text-blue-600 font-roboto font-bold">N/A</b>
+                        @endif
                     </div>
 
                 </div>
@@ -1145,9 +1185,7 @@
 </div>
 
 {{-- MARR --}}
-<?php  $results_aux=$results->results($id_project) ?>
-<?php  $dif_1_cost=$smasolutions->dif_1_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
-<?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
+
 <input type="text" id="ima_ener" name="ima_ener" class="hidden" value="{{ __('index.energia') }}">
 <input type="text" id="ima_man" name="ima_man" class="hidden" value="{{ __('index.mantenimiento') }}">
 <input type="text" id="ima_sol" name="ima_sol" class="hidden" value="{{ __('index.solucion') }}">
@@ -1180,7 +1218,7 @@
 
                 </div>
             </div>
-            <?php  $dif_2_cost=$smasolutions->dif_2_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
+
 
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
                 <div class="w-full flex justify-center">

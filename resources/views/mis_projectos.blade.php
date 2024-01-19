@@ -196,8 +196,8 @@ span{
                         <?php  $check_types_pn=$check_types_p->check_p_type_pn(Auth::user()->id_empresa); ?>
                         <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
                         <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
-                        @if ( $check_types_pn == 1 &&  $check_types_pr == 1  &&  $check_types_m == 1)
-
+                        @if ( $check_types_pn == 1 &&  $check_types_pr == 1)
+                        @if ($project->type_p == 1 || $project->type_p == 1)
                         <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                                {{$project->name}}
@@ -233,9 +233,9 @@ span{
                                 {{ __('index.proyecto nuevo') }}
                                 @endif
 
-                                @if ($project->type_p == 3)
+                               {{--  @if ($project->type_p == 3)
                                 {{ __('index.type_man') }}
-                                @endif
+                                @endif --}}
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                               @if ($project->status == 1)
@@ -262,10 +262,10 @@ span{
                             </td>
 
                         </tr>
-
+                        @endif
                         @endif
 
-                        @if ( $check_types_pn == 1 &&  $check_types_pr == 0 &&  $check_types_m == 0)
+                        @if ( $check_types_pn == 1 &&  $check_types_pr == 0)
                         @if ($project->type_p == 1)
                         <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
@@ -302,9 +302,9 @@ span{
                                 {{ __('index.proyecto nuevo') }}
                                 @endif
 
-                                @if ($project->type_p == 3)
+                                {{-- @if ($project->type_p == 3)
                                 {{ __('index.type_man') }}
-                                @endif
+                                @endif --}}
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                               @if ($project->status == 1)
@@ -334,7 +334,7 @@ span{
                         </tr>
                         @endif
                         @endif
-                        @if ( $check_types_pn == 0 &&  $check_types_pr == 1 && $check_types_m == 0)
+                        @if ( $check_types_pn == 0 &&  $check_types_pr == 1)
                         @if ($project->type_p == 2)
                         <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
@@ -371,9 +371,9 @@ span{
                                 {{ __('index.proyecto nuevo') }}
                                 @endif
 
-                                @if ($project->type_p == 3)
+                                {{-- @if ($project->type_p == 3)
                                 {{ __('index.type_man') }}
-                                @endif
+                                @endif --}}
 
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
@@ -404,7 +404,7 @@ span{
                         @endif
                         @endif
 
-                        @if ( $check_types_pn == 1 &&  $check_types_pr == 1 && $check_types_m == 0)
+                        @if ( $check_types_pn == 1 &&  $check_types_pr == 1)
                         @if ($project->type_p == 2 || $project->type_p == 1)
                         <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
@@ -441,9 +441,9 @@ span{
                                 {{ __('index.proyecto nuevo') }}
                                 @endif
 
-                                @if ($project->type_p == 3)
+                                {{-- @if ($project->type_p == 3)
                                 {{ __('index.type_man') }}
-                                @endif
+                                @endif --}}
 
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
@@ -474,8 +474,8 @@ span{
                         @endif
                         @endif
 
-                        @if ( $check_types_pn == 1 &&  $check_types_pr == 0 && $check_types_m == 1)
-                        @if ($project->type_p == 1 || $project->type_p == 3)
+                        @if ( $check_types_pn == 1 &&  $check_types_pr == 0)
+                        @if ($project->type_p == 1)
                         <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                                {{$project->name}}
@@ -511,9 +511,9 @@ span{
                                 {{ __('index.proyecto nuevo') }}
                                 @endif
 
-                                @if ($project->type_p == 3)
+                               {{--  @if ($project->type_p == 3)
                                 {{ __('index.type_man') }}
-                                @endif
+                                @endif --}}
 
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
@@ -544,8 +544,8 @@ span{
                         @endif
                         @endif
 
-                        @if ( $check_types_pn == 0 &&  $check_types_pr == 1 && $check_types_m == 1)
-                        @if ($project->type_p == 2 || $project->type_p == 3)
+                        @if ( $check_types_pn == 0 &&  $check_types_pr == 1)
+                        @if ($project->type_p == 2)
                         <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                                {{$project->name}}
@@ -581,9 +581,9 @@ span{
                                 {{ __('index.proyecto nuevo') }}
                                 @endif
 
-                                @if ($project->type_p == 3)
+                                {{-- @if ($project->type_p == 3)
                                 {{ __('index.type_man') }}
-                                @endif
+                                @endif --}}
 
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
@@ -614,77 +614,7 @@ span{
                         @endif
                         @endif
 
-                        @if ( $check_types_pn == 0 &&  $check_types_pr == 0 && $check_types_m == 1)
-                        @if ($project->type_p == 3)
-                        <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-                            <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
-                               {{$project->name}}
-                            </td>
-                            <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
-                                {{$project->tipo_edi}}
-                            </td>
-                            {{-- <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
-                                {{number_format($project->area)}}
-                            </td>
-                            <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
-                                @if ($project->unidad == 'mc')
-                                m²
-                            @endif
-
-                            @if ($project->unidad == 'ft')
-                            ft²
-                            @endif
-                            </td> --}}
-                            <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
-                                {{$project->region}}
-                            </td>
-                            <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
-                                {{$project->ciudad}}
-                            </td>
-
-                            <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
-                                @if ($project->type_p == 2 )
-                                {{ __('index.proyecto retrofit') }}
-                                @endif
-
-                                @if ($project->type_p == 1 ||  $project->type_p == 0)
-                                {{ __('index.proyecto nuevo') }}
-                                @endif
-
-                                @if ($project->type_p == 3)
-                                {{ __('index.type_man') }}
-                                @endif
-
-                            </td>
-                            <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
-                              @if ($project->status == 1)
-                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-green-500 text-white">{{ __('index.activo') }}</span>
-                              @endif
-
-                              @if ($project->status == 2)
-                              <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-red-500 text-white">{{ __('index.inactivo') }}</span>
-                              @endif
-                            </td>
-                            <td class="border-grey-light border flex hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer gap-x-2">
-                                @if ($type_p->type_p < 2 )
-                                <button title="Ver Resultados" class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="far fa-eye"></i></a></button>
-                                @endif
-
-                                @if ($type_p->type_p == 2 || $type_p->type_p == 3)
-                                <button title="Ver Resultados" class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a href="resultados_retrofit/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="far fa-eye"></i></a></button>
-                                @endif
-
-                                <button title="Editar" class="p-1 bg-blue-400 rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="edit_project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-pen-to-square"></i></a></button>
-                                <button title="Ver PDF" class="p-1 bg-red-600  rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="generatePDF/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i></a></button>
-                                <button  onclick="elimiinar_project('{{$project->id}}','del_project');" class="p-1  bg-orange-400 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a><i class="fas fa-trash"></i></a></button>
-
-                            </td>
-
-                        </tr>
-                        @endif
-                        @endif
-
-                        @if ( $check_types_pn == 0 &&  $check_types_pr == 0 && $check_types_m == 0)
+                        @if ( $check_types_pn == 0 &&  $check_types_pr == 0)
 
                         @endif
                         @endforeach
