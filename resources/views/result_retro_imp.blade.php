@@ -2215,6 +2215,7 @@ function chart_prod_base() {
       function chart_prod_a() {
         var check_prod_a = '{{$conf_val_a}}';
         var interpolacion = interp(check_prod_a);
+
         /*     var check_prod_a = '{{$conf_val_a}}';
         var data = google.visualization.arrayToDataTable([
         ['Label', 'Value'],
@@ -5284,28 +5285,28 @@ function roi_base_b_ene_prod_print(id_project,costo_base,costo){
 function interp(conf_val){
 
     if(conf_val > 0){
-        if(conf_val > 1 && conf_val < 2){
+        if(conf_val > 1 && conf_val <= 2){
             var porcent_check1 = 0.25;
             var porcent_check2 = 0.20;
             var porcent_point1 = 1;
             var porcent_point2 = 2;
             }
 
-            if(conf_val > 2 && conf_val < 3){
+            if(conf_val > 2 && conf_val <= 3){
             var porcent_check1 = 0.20;
             var porcent_check2 = 0.15;
             var porcent_point1 = 2;
             var porcent_point2 = 3;
             }
 
-            if(conf_val > 3 && conf_val < 4){
+            if(conf_val > 3 && conf_val <= 4){
             var porcent_check1 = 0.15;
             var porcent_check2 = 0.10;
             var porcent_point1 = 3;
             var porcent_point2 = 4;
             }
 
-            if(conf_val > 4 && conf_val < 5){
+            if(conf_val > 4 && conf_val <= 5){
             var porcent_check1 = 0.10;
             var porcent_check2 = 0.05;
             var porcent_point1 = 4;
