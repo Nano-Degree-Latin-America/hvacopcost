@@ -305,7 +305,7 @@
         }
 
         .size_solutions_payback{
-            font-size:2.6rem;
+            font-size:2rem;
         }
 
 
@@ -696,7 +696,7 @@
                 </div>
 
                 <div class="w-full flex justify-center">
-                    <div id="chart_red_ene" name="chart_red_ene" style="width: 600px;"></div>
+                    <div id="chart_red_ene" name="chart_red_ene" style="width: 600px;height:380px;!important"></div>
                     <div class="hidden" style="height:200px;"  id="chart_red_ene_print" name="chart_red_ene_print"></div>
                 </div>
             </div>
@@ -708,7 +708,7 @@
                 </div>
 
                 <div class="w-full flex justify-center">
-                    <div id="chart_descarb" name="chart_descarb" style="width: 600px;"></div>
+                    <div id="chart_descarb" name="chart_descarb" style="width: 600px;height:380px;!important"></div>
                     <div class="hidden "  style="height:200px;"  id="chart_descarb_print" name="chart_descarb_print"></div>
                 </div>
             </div>
@@ -717,7 +717,7 @@
 </div>
 <br>
 {{-- espacio --}}
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:40px;" >
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:30px;" >
 
 </div>
 
@@ -1018,7 +1018,7 @@
 </div>
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_3" name="next_page_3" style="width: 80%; height:545px;" class="hidden">
+<div id="next_page_3" name="next_page_3" style="width: 80%; height:490px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
@@ -1831,12 +1831,11 @@ data: [15, 30, 45, 60, 75]
 }
 ],
 chart: {
-height: 350,
+height: 390,
 type: 'line',
 dropShadow: {
 enabled: true,
 color: '#000',
-top: 18,
 left: 7,
 blur: 10,
 opacity: 0.2
@@ -1959,12 +1958,11 @@ data:  [15, 30, 45, 60, 75]
 }
 ],
 chart: {
-height: 350,
+height: 390,
 type: 'line',
 dropShadow: {
 enabled: true,
 color: '#000',
-top: 18,
 left: 7,
 blur: 10,
 opacity: 0.2
@@ -2695,7 +2693,7 @@ function roi_base_a(id_project){
           }
         ],
           chart: {
-          height: 350,
+          height: 390,
           width: 600,
           type: 'line',
           dropShadow: {
@@ -2835,7 +2833,7 @@ function roi_base_b(id_project){
           }
         ],
           chart: {
-          height: 350,
+          height: 390,
           width: 600,
           type: 'line',
           dropShadow: {
@@ -2975,7 +2973,7 @@ function roi_base_a_ene_prod(id_project,costo_base,costo){
           }
         ],
           chart: {
-          height: 350,
+          height: 390,
           width: 600,
           type: 'line',
           dropShadow: {
@@ -3115,7 +3113,7 @@ function roi_base_b_ene_prod(id_project,costo_base,costo){
           }
         ],
           chart: {
-          height: 350,
+          height: 390,
           width: 600,
           type: 'line',
           dropShadow: {
