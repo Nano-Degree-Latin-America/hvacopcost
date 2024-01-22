@@ -468,7 +468,7 @@
     </div>
 </div>
 {{-- Counsumo energia electrica --}}
-<div class="w-full grid rounded-md justify-items-center mt-2">
+<div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
@@ -606,7 +606,7 @@
 </div>
 
 {{-- Índice Intensidad del Uso de Energía --}}
-<div class="w-full grid rounded-md justify-items-center mt-2">
+<div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
@@ -676,9 +676,9 @@
     </div>
     </div>
 </div>
-
+<?php  $results_aux=$results->results($id_project) ?>
 {{-- Índice Intensidad del Uso de Energía --}}
-<div class="w-full grid rounded-md justify-items-center mt-2">
+<div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
 
 
@@ -687,6 +687,24 @@
                 <p class="titulos_style">Sustentabilidad</p>
             </div>
         </div>
+
+                {{-- para graficas red_en y descarb --}}
+                @if ($result2 ==! null)
+                <?php  $dif_1=$smasolutions->dif_1($id_project,count($results_aux),$tar_ele->costo_elec) ?>
+                @endif
+
+                @if ($result2 === null)
+                <?php  $dif_1=0; ?>
+                @endif
+
+                @if ($result3 ==! null)
+                <?php  $dif_2=$smasolutions->dif_2($id_project,count($results_aux),$tar_ele->costo_elec) ?>
+                @endif
+
+                @if ($result3 === null)
+                <?php $dif_2 = 0; ?>
+                @endif
+
 
         <div class="flex w-full justify-center gap-x-3">
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
@@ -715,7 +733,7 @@
         </div>
     </div>
 </div>
-<br>
+
 {{-- espacio --}}
 <div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:30px;" >
 
@@ -895,7 +913,7 @@
 </div>
 {{-- checar estos /divs --}}
   {{-- Nivel de Confort --}}
-<div class="margin_new_page w-full grid rounded-md justify-items-center">
+<div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
       <div class="w-full grid">
               <div style="background-color:#1B17BB;" class="w-full flex justify-center">
@@ -950,11 +968,24 @@
             </div>
         </div>
 
-        <div class="flex w-full justify-center mt-6">
+        {{-- <div class="flex w-full justify-center mt-6">
             <p class="per_cos text-blue-600 font-roboto font-bold">Personas y Costo de la Pérdida de Productividad</p>
-        </div>
+        </div> --}}
 
-        <div class="flex w-full justify-center mt-3">
+
+      </div>
+    </div>
+</div>
+
+<div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
+      <div class="w-full grid">
+              <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                  <p class="titulos_style">Personas y Costo de la Pérdida de Productividad</p>
+              </div>
+      </div>
+
+      <div class="flex w-full justify-center mt-3">
             @if ($result1 !== null)
 
 
@@ -1012,13 +1043,12 @@
                 </div>
             </div>
         </div>
-
-      </div>
     </div>
 </div>
 
+
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_3" name="next_page_3" style="width: 80%; height:490px;" class="hidden">
+<div id="next_page_3" name="next_page_3" style="width: 80%; height:450px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
@@ -1073,13 +1103,13 @@
     </div>
 </div>
 </div>
-<?php  $results_aux=$results->results($id_project) ?>
+
 <?php  $dif_1_cost=$smasolutions->dif_1_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
 <?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
 
 <?php  $dif_2_cost=$smasolutions->dif_2_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
  {{-- payback --}}
- <div class="margin_new_page w-full grid rounded-md justify-items-center mt-2">
+ <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
       <div class="w-full grid">
               <div style="background-color:#1B17BB;" class="w-full flex justify-center">
@@ -1190,7 +1220,7 @@
 <input type="text" id="ima_man" name="ima_man" class="hidden" value="{{ __('index.mantenimiento') }}">
 <input type="text" id="ima_sol" name="ima_sol" class="hidden" value="{{ __('index.solucion') }}">
 
-<div class="w-full grid rounded-md justify-items-center mt-2">
+<div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
 
 
@@ -1241,7 +1271,7 @@
 </div>
 
 {{-- MARR --}}
-<div class="w-full grid rounded-md justify-items-center mt-2">
+<div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
@@ -1286,8 +1316,65 @@
         </div>
     </div>
 </div>
+
+{{-- espacio hoja pagina 3 --}}
+<div id="next_page_4" name="next_page_4" style="width: 80%; height:350px;" class="hidden">
+
+</div>
+{{-- espacio hoja pagina 3 --}}
+
+{{-- principal --}}
+<div id="principal_hoja_4" name="principal_hoja_4" class="hidden w-full grid rounded-md justify-items-center mt-5">
+    <div  class="ancho border-2 border-blue-500 rounded-md flex">
+
+
+    <div class="w-1/4 flex justify-center">
+        <img src="{{asset('/assets/images/Logo-NDL_marca-registrada.jpg')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+    </div>
+
+    <div class="w-1/3 grid justify-left ml-2">
+        <div class="w-full flex ">
+            <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project">{{$tar_ele->name}}</p>
+        </div>
+        <div class="w-full flex">
+            <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project">{{$tar_ele->cad_edi}}</p>
+        </div>
+        <div class="w-full flex">
+            <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project">{{$tar_ele->tipo_edi}}</p>
+        </div>
+        <div class="w-full flex">
+            <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project">{{number_format($tar_ele->area)}}
+                @if ($tar_ele->unidad == 'mc')
+                m²
+            @endif
+
+            @if ($tar_ele->unidad == 'ft')
+            ft²
+            @endif
+            </p>
+        </div>
+    </div>
+
+    <div class="w-1/3 grid justify-left">
+        <div class="w-full">
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project">{{$tar_ele->region}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project">{{$tar_ele->ciudad}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project">{{$tar_ele->costo_elec}} $/Kwh</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 {{-- capex vs opex --}}
-<div class="w-full grid rounded-md justify-items-center mt-2">
+<div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
@@ -1323,7 +1410,10 @@ document.addEventListener('keydown', function(event) {
     //$("#navbar").removeClass("hidden");
     $("#principal_hoja_2").removeClass("hidden");
     $("#principal_hoja_3").removeClass("hidden");
+    $("#principal_hoja_4").removeClass("hidden");
     $("#next_page_3").removeClass("hidden");
+    $("#next_page_4").removeClass("hidden");
+
     $("#chart_cons_ene_hvac_ar_base").width(200).height(150);
     $("#chart_cons_ene_hvac_ar_a").width(200).height(150);
     $("#chart_cons_ene_hvac_ar_b").width(200).height(150);
@@ -1391,7 +1481,9 @@ function send_print(){
     $("#navbar").addClass("hidden");
     $("#principal_hoja_2").removeClass("hidden");
     $("#principal_hoja_3").removeClass("hidden");
+    $("#principal_hoja_4").removeClass("hidden");
     $("#next_page_3").removeClass("hidden");
+    $("#next_page_4").removeClass("hidden");
     $("#chart_cons_ene_hvac_ar_base").width(280).height(180);
     $("#chart_cons_ene_hvac_ar_a").width(280).height(180);
     $("#chart_cons_ene_hvac_ar_b").width(280).height(180);
@@ -1468,10 +1560,10 @@ window.onload = function() {
       google.charts.setOnLoadCallback(chart_base_eui_print);
       google.charts.setOnLoadCallback(chart_a_eui_print);
       google.charts.setOnLoadCallback(chart_b_eui_print);
-      red_ene('{{$id_project}}');
-      descarb('{{$id_project}}');
-      red_ene_print('{{$id_project}}');
-      descarb_print('{{$id_project}}');
+      red_ene('{{$dif_1}}','{{$dif_2}}');
+      descarb('{{$dif_1}}','{{$dif_2}}');
+      red_ene_print('{{$dif_1}}','{{$dif_2}}');
+      descarb_print('{{$dif_1}}','{{$dif_2}}');
       confort_base('{{$conf_val_base}}');
       confort_a('{{$conf_val_a}}');
       confort_b('{{$conf_val_b}}');
@@ -1708,6 +1800,8 @@ if(result_area < red){
 });
 }
 
+
+
 function con_ene_hvac_ar_b(kwh_yr,porcent_hvac){
 // JS
 var result_area = parseFloat('{{$result_area_3}}');
@@ -1815,258 +1909,273 @@ if(result_area < red){
 });
 }
 
-function red_ene(id_project){
+function red_ene(dif,dif_2){
 
+    $.ajax({
+            type: 'get',
+            url: '/red_en_mw_grafic/'+ dif + '/' + dif_2,
+            success: function (response) {
+                var options = {
+                    series: [
+                    {
+                    name:'Solución A',
+                    data: [response[0][0], response[0][1], response[0][2], response[0][3], response[0][4]]
+                    },
+                    {
+                    name:'Solución B',
+                    data: [response[1][0], response[1][1], response[1][2], response[1][3], response[1][4]]
+                    }
+                    ],
+                    chart: {
+                    height: 390,
+                    type: 'line',
+                    dropShadow: {
+                    enabled: true,
+                    color: '#000',
+                    left: 7,
+                    blur: 10,
+                    opacity: 0.2
+                    },
+                    toolbar: {
+                    show: false
+                    }
+                    },
+                    colors: ['#ff00ff', '#545454'],
+                    dataLabels: {
+                        enabled: true,
+                        style: {
+                        fontSize: '16px',
+                        fontFamily: 'ABeeZee, sans-serif',
+                        fontWeight: 'bold',
+                    },
+                    },
+                    stroke: {
+                    curve: 'smooth'
+                    },
+                    title: {
 
+                    align: 'center',
+                    style: {
+                    fontSize: '24px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                    color: '#000',
+                    },
+                    },
+                    grid: {
+                    borderColor: '#e7e7e7',
+                    row: {
+                    colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                    opacity: 0.5
+                    },
+                    },
+                    markers: {
+                    size: 1
+                    },
+                    xaxis: {
+                    tickPlacement: 'between',
+                    categories: [1,2,3,4,5],
+                    range:4,
+                    title: {
+                    text: 'Años',
+                    style: {
+                            colors: [],
+                            fontSize: '20px',
+                            fontFamily: 'ABeeZee, sans-serif',
+                            fontWeight: "bold",
+                            cssClass: 'apexcharts-yaxis-label',
+                        },
+                    },
+                    labels: {
+                    style: {
+                            colors: [],
+                            fontSize: '12px',
+                            fontFamily: 'ABeeZee, sans-serif',
+                            fontWeight: "bold",
+                            cssClass: 'apexcharts-xaxis-label',
+                        },
+                    },
+                    },
+                    yaxis: {
+                    labels:{
+                    style: {
+                            colors: [],
+                            fontSize: '14px',
+                            fontFamily: 'ABeeZee, sans-serif',
+                            fontWeight: "bold",
+                            cssClass: 'apexcharts-yaxis-label',
+                        },
+
+                    },
+
+                    },
+                    legend: {
+                    position: 'top',
+                    horizontalAlign: 'right',
+                    offsetX: 40,
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: 'bold',
+                    markers: {
+                    width: 12,
+                    height: 12,
+                    strokeWidth: 0,
+                    strokeColor: '#fff',
+                    fillColors: ['#ff00ff', '#545454'],
+                    radius: 12,
+                    customHTML: undefined,
+                    onClick: undefined,
+                    offsetX: 0,
+                    offsetY: 0,
+                    },
+
+                    }
+                    };
+
+                    var chart = new ApexCharts(document.querySelector("#chart_red_ene"), options);
+                    chart.render();
+
+            },
+            error: function (responsetext) {
+                console.log(responsetext);
+            }
+        });
 //console.log(res);
-var options = {
-series: [
-{
-name:'Solución A',
-data: [20, 30, 40, 50, 60]
-},
-{
-name:'Solución B',
-data: [15, 30, 45, 60, 75]
-}
-],
-chart: {
-height: 390,
-type: 'line',
-dropShadow: {
-enabled: true,
-color: '#000',
-left: 7,
-blur: 10,
-opacity: 0.2
-},
-toolbar: {
-show: false
-}
-},
-colors: ['#ff00ff', '#545454'],
-dataLabels: {
-    enabled: true,
-    style: {
-    fontSize: '16px',
-    fontFamily: 'ABeeZee, sans-serif',
-    fontWeight: 'bold',
-},
-},
-stroke: {
-curve: 'smooth'
-},
-title: {
-
-align: 'center',
-style: {
-fontSize: '24px',
-fontFamily: 'ABeeZee, sans-serif',
-fontWeight: "bold",
-cssClass: 'apexcharts-yaxis-label',
-color: '#000',
-},
-},
-grid: {
-borderColor: '#e7e7e7',
-row: {
-colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-opacity: 0.5
-},
-},
-markers: {
-size: 1
-},
-xaxis: {
-tickPlacement: 'between',
-categories: [1,2,3,4,5],
-range:4,
-title: {
-text: 'Años',
-style: {
-        colors: [],
-        fontSize: '20px',
-        fontFamily: 'ABeeZee, sans-serif',
-        fontWeight: "bold",
-        cssClass: 'apexcharts-yaxis-label',
-    },
-},
-labels: {
-style: {
-        colors: [],
-        fontSize: '12px',
-        fontFamily: 'ABeeZee, sans-serif',
-        fontWeight: "bold",
-        cssClass: 'apexcharts-xaxis-label',
-    },
-},
-},
-yaxis: {
-labels:{
-style: {
-        colors: [],
-        fontSize: '14px',
-        fontFamily: 'ABeeZee, sans-serif',
-        fontWeight: "bold",
-        cssClass: 'apexcharts-yaxis-label',
-    },
-formatter: function (val) {
-  return val + "%"
-},
-},
-
-},
-legend: {
-position: 'top',
-horizontalAlign: 'right',
-offsetX: 40,
-fontSize: '14px',
-fontFamily: 'ABeeZee, sans-serif',
-fontWeight: 'bold',
-markers: {
-width: 12,
-height: 12,
-strokeWidth: 0,
-strokeColor: '#fff',
-fillColors: ['#ff00ff', '#545454'],
-radius: 12,
-customHTML: undefined,
-onClick: undefined,
-offsetX: 0,
-offsetY: 0,
-},
 
 }
-};
 
-var chart = new ApexCharts(document.querySelector("#chart_red_ene"), options);
-chart.render();
-}
+function descarb(dif,dif_2){
+$.ajax({
+            type: 'get',
+            url: '/red_hu_carb_grafic/'+ dif + '/' + dif_2,
+            success: function (response) {
+                var options = {
+                    series: [
+                    {
+                    name:'Solución A',
+                    data: [response[0][0], response[0][1], response[0][2], response[0][3], response[0][4]]
+                    },
+                    {
+                    name:'Solución B',
+                    data: [response[1][0], response[1][1], response[1][2], response[1][3], response[1][4]]
+                    }
+                    ],
+                    chart: {
+                    height: 390,
+                    type: 'line',
+                    dropShadow: {
+                    enabled: true,
+                    color: '#000',
+                    left: 7,
+                    blur: 10,
+                    opacity: 0.2
+                    },
+                    toolbar: {
+                    show: false
+                    }
+                    },
+                    colors: ['#ff00ff', '#545454'],
+                    dataLabels: {
+                        enabled: true,
+                        style: {
+                        fontSize: '16px',
+                        fontFamily: 'ABeeZee, sans-serif',
+                        fontWeight: 'bold',
+                    },
+                    },
+                    stroke: {
+                    curve: 'smooth'
+                    },
+                    title: {
 
-function descarb(id_project){
+                    align: 'center',
+                    style: {
+                    fontSize: '24px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                    color: '#000',
+                    },
+                    },
+                    grid: {
+                    borderColor: '#e7e7e7',
+                    row: {
+                    colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                    opacity: 0.5
+                    },
+                    },
+                    markers: {
+                    size: 1
+                    },
+                    xaxis: {
+                    tickPlacement: 'between',
+                    categories: [1,2,3,4,5],
+                    range:4,
+                    title: {
+                    text: 'Años',
+                    style: {
+                            colors: [],
+                            fontSize: '20px',
+                            fontFamily: 'ABeeZee, sans-serif',
+                            fontWeight: "bold",
+                            cssClass: 'apexcharts-yaxis-label',
+                        },
+                    },
+                    labels: {
+                    style: {
+                            colors: [],
+                            fontSize: '12px',
+                            fontFamily: 'ABeeZee, sans-serif',
+                            fontWeight: "bold",
+                            cssClass: 'apexcharts-xaxis-label',
+                        },
+                    },
+                    },
+                    yaxis: {
+                    labels:{
+                    style: {
+                            colors: [],
+                            fontSize: '14px',
+                            fontFamily: 'ABeeZee, sans-serif',
+                            fontWeight: "bold",
+                            cssClass: 'apexcharts-yaxis-label',
+                        },
+                    },
+                    },
+                    legend: {
+                    position: 'top',
+                    horizontalAlign: 'right',
+                    offsetX: 40,
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: 'bold',
+                    markers: {
+                    width: 12,
+                    height: 12,
+                    strokeWidth: 0,
+                    strokeColor: '#fff',
+                    fillColors: ['#ff00ff', '#545454'],
+                    radius: 12,
+                    customHTML: undefined,
+                    onClick: undefined,
+                    offsetX: 0,
+                    offsetY: 0,
+                    },
+
+                    }
+                    };
+
+                    var chart = new ApexCharts(document.querySelector("#chart_descarb"), options);
+                    chart.render();
+
+            },
+            error: function (responsetext) {
+                console.log(responsetext);
+            }
+        });
 
 
-var options = {
-series: [
-{
-name:'Solución A',
-data: [20, 30, 40, 50, 60]
-},
-{
-name:'Solución B',
-data:  [15, 30, 45, 60, 75]
-}
-],
-chart: {
-height: 390,
-type: 'line',
-dropShadow: {
-enabled: true,
-color: '#000',
-left: 7,
-blur: 10,
-opacity: 0.2
-},
-toolbar: {
-show: false
-}
-},
-colors: ['#2be6ee', '#545454'],
-dataLabels: {
-    enabled: true,
-    style: {
-    fontSize: '16px',
-    fontFamily: 'ABeeZee, sans-serif',
-    fontWeight: 'bold',
-},
-},
-stroke: {
-curve: 'smooth'
-},
-title: {
-
-align: 'center',
-style: {
-fontSize: '24px',
-fontFamily: 'ABeeZee, sans-serif',
-fontWeight: "bold",
-cssClass: 'apexcharts-yaxis-label',
-color: '#000',
-},
-},
-grid: {
-borderColor: '#e7e7e7',
-row: {
-colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-opacity: 0.5
-},
-},
-markers: {
-size: 1
-},
-xaxis: {
-tickPlacement: 'between',
-categories: [1,2,3,4,5],
-range:4,
-title: {
-text: 'Años',
-style: {
-        colors: [],
-        fontSize: '20px',
-        fontFamily: 'ABeeZee, sans-serif',
-        fontWeight: "bold",
-        cssClass: 'apexcharts-yaxis-label',
-    },
-},
-labels: {
-style: {
-        colors: [],
-        fontSize: '12px',
-        fontFamily: 'ABeeZee, sans-serif',
-        fontWeight: "bold",
-        cssClass: 'apexcharts-xaxis-label',
-    },
-},
-},
-yaxis: {
-labels:{
-style: {
-        colors: [],
-        fontSize: '14px',
-        fontFamily: 'ABeeZee, sans-serif',
-        fontWeight: "bold",
-        cssClass: 'apexcharts-yaxis-label',
-    },
-formatter: function (val) {
-  return val + "%"
-},
-},
-},
-legend: {
-position: 'top',
-horizontalAlign: 'right',
-offsetX: 40,
-fontSize: '14px',
-fontFamily: 'ABeeZee, sans-serif',
-fontWeight: 'bold',
-markers: {
-width: 12,
-height: 12,
-strokeWidth: 0,
-strokeColor: '#fff',
-fillColors: ['#2be6ee', '#545454'],
-radius: 12,
-customHTML: undefined,
-onClick: undefined,
-offsetX: 0,
-offsetY: 0,
-},
-
-}
-};
-
-var chart = new ApexCharts(document.querySelector("#chart_descarb"), options);
-chart.render();
 }
 
 function confort_base(val_conf){
@@ -3909,19 +4018,21 @@ if(result_area < red){
 
     }
 
-    function red_ene_print(id_project){
+    function red_ene_print(dif,dif_2){
 
-
-            //console.log(res);
-    var options = {
+        $.ajax({
+        type: 'get',
+         url: '/red_en_mw_grafic/'+ dif + '/' + dif_2,
+        success: function (response) {
+            var options = {
           series: [
           {
-            name:'Solución A',
-            data: [20, 30, 40, 50, 60]
+          name:'Solución A',
+          data: [response[0][0], response[0][1], response[0][2], response[0][3], response[0][4]]
           },
           {
-            name:'Solución B',
-            data: [15, 30, 45, 60, 75]
+          name:'Solución B',
+          data: [response[1][0], response[1][1], response[1][2], response[1][3], response[1][4]]
           }
         ],
           chart: {
@@ -4015,9 +4126,6 @@ if(result_area < red){
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
                 },
-            formatter: function (val) {
-              return val + "%"
-            },
           },
 
         },
@@ -4046,21 +4154,34 @@ if(result_area < red){
 
         var chart = new ApexCharts(document.querySelector("#chart_red_ene_print"), options);
         chart.render();
+
+
+        },
+        error: function (responsetext) {
+
+        }
+    });
+
+            //console.log(res);
+
 }
 
-function descarb_print(id_project){
+function descarb_print(dif,dif_2){
 
-
-    var options = {
+        $.ajax({
+            type: 'get',
+            url: '/red_hu_carb_grafic/'+ dif + '/' + dif_2,
+            success: function (response) {
+                var options = {
           series: [
-          {
+            {
             name:'Solución A',
-            data: [20, 30, 40, 50, 60]
-          },
-          {
+            data: [response[0][0], response[0][1], response[0][2], response[0][3], response[0][4]]
+            },
+            {
             name:'Solución B',
-            data:  [15, 30, 45, 60, 75]
-          }
+            data: [response[1][0], response[1][1], response[1][2], response[1][3], response[1][4]]
+            }
         ],
           chart: {
             height: 280,
@@ -4078,7 +4199,7 @@ function descarb_print(id_project){
             show: false
           }
         },
-        colors: ['#2be6ee', '#545454'],
+        colors: ['#ff00ff', '#545454'],
         dataLabels: {
                 enabled: true,
                 style: {
@@ -4150,9 +4271,6 @@ function descarb_print(id_project){
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
                 },
-            formatter: function (val) {
-              return val + "%"
-            },
           },
         },
         legend: {
@@ -4167,7 +4285,7 @@ function descarb_print(id_project){
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['#2be6ee', '#545454'],
+          fillColors: ['#ff00ff', '#545454'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
@@ -4180,6 +4298,12 @@ function descarb_print(id_project){
 
         var chart = new ApexCharts(document.querySelector("#chart_descarb_print"), options);
         chart.render();
+
+            },
+            error: function (responsetext) {
+                console.log(responsetext);
+            }
+        });
 }
 
 function chart_prod_base_print() {

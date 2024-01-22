@@ -2866,11 +2866,157 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
         return $difx3_div;
     }
 
+    public function red_en_mw_grafic($dif,$dif_2){
+        $dif = intval($dif);
+        $dif_2 = intval($dif_2);
+        $arry_res_a = [];
+        $arry_res_b = [];
+        $array_res = [];
+        for ($i = 1; $i <= 5; $i++) {
+            if($i == 1){
+                //A
+                $difx3 = $dif * $i;
+                $difx3a_div =  $difx3 / 1000;
+                array_push($arry_res_a,intval($difx3a_div));
+                //B
+                $difx3 = $dif_2 * $i;
+                $difx3b_div =  $difx3 / 1000;
+                array_push($arry_res_b,intval($difx3b_div));
+            }
+
+            if($i == 2){
+                //A
+                $difx3 = $dif * $i;
+                $difx3a_div =  $difx3 / 1000;
+                array_push($arry_res_a,intval($difx3a_div));
+                //B
+                $difx3 = $dif_2 * $i;
+                $difx3b_div =  $difx3 / 1000;
+                array_push($arry_res_b,intval($difx3b_div));
+            }
+
+            if($i == 3){
+                //A
+                $difx3 = $dif * $i;
+                $difx3a_div =  $difx3 / 1000;
+                array_push($arry_res_a,intval($difx3a_div));
+                //B
+                $difx3 = $dif_2 * $i;
+                $difx3b_div =  $difx3 / 1000;
+                array_push($arry_res_b,intval($difx3b_div));
+            }
+
+            if($i == 4){
+                //A
+                $difx3 = $dif * $i;
+                $difx3a_div =  $difx3 / 1000;
+                array_push($arry_res_a,intval($difx3a_div));
+                //B
+                $difx3 = $dif_2 * $i;
+                $difx3b_div =  $difx3 / 1000;
+                array_push($arry_res_b,intval($difx3b_div));
+            }
+
+            if($i == 5){
+                //A
+                $difx3 = $dif * $i;
+                $difx3a_div =  $difx3 / 1000;
+                array_push($arry_res_a,intval($difx3a_div));
+                //B
+                $difx3 = $dif_2 * $i;
+                $difx3b_div =  $difx3 / 1000;
+                array_push($arry_res_b,intval($difx3b_div));
+            }
+        }
+        /* (dif * 3) /1,000 */
+       /*  $difx3 = $dif * $yrs;
+        $difx3_div =  $difx3 / 1000; */
+
+        array_push($array_res,$arry_res_a,$arry_res_b);
+
+        return $array_res;
+
+    }
+
     public function red_hu_carb($yrs,$dif){
         /* (dif * 3) * 0.0007087 */
         $difx3 = $dif * $yrs;
         $difx3_div =  $difx3 * 0.0007087;
         return $difx3_div;
+    }
+
+    public function red_hu_carb_grafic($dif,$dif_2){
+        $dif = intval($dif);
+        $dif_2 = intval($dif_2);
+        $arry_res_a = [];
+        $arry_res_b = [];
+        $array_res = [];
+        for ($i = 1; $i <= 5; $i++) {
+            if($i == 1){
+                //A
+                $difx3 = $dif * $i;
+                $difx3a_div =  $difx3 * 0.0007087;
+                array_push($arry_res_a,intval($difx3a_div));
+                //B
+               /*  $difx3 = $dif_2 * $i;
+                $difx3b_div =  $difx3 / 1000; */
+                $difx3_b = $dif_2 * $i;
+                $difx3b_div =  $difx3_b * 0.0007087;
+                array_push($arry_res_b,intval($difx3b_div));
+            }
+
+            if($i == 2){
+                //A
+                $difx3 = $dif * $i;
+                $difx3a_div =  $difx3 * 0.0007087;
+                array_push($arry_res_a,intval($difx3a_div));
+                //B
+                $difx3_b = $dif_2 * $i;
+                $difx3b_div =  $difx3_b * 0.0007087;
+                array_push($arry_res_b,intval($difx3b_div));
+            }
+
+            if($i == 3){
+                //A
+                $difx3 = $dif * $i;
+                $difx3a_div =  $difx3 * 0.0007087;
+                array_push($arry_res_a,intval($difx3a_div));
+                //B
+                $difx3_b = $dif_2 * $i;
+                $difx3b_div =  $difx3_b * 0.0007087;
+                array_push($arry_res_b,intval($difx3b_div));
+            }
+
+            if($i == 4){
+                 //A
+                $difx3 = $dif * $i;
+                $difx3a_div =  $difx3 * 0.0007087;
+                array_push($arry_res_a,intval($difx3a_div));
+                //B
+                $difx3_b = $dif_2 * $i;
+                $difx3b_div =  $difx3_b * 0.0007087;
+                array_push($arry_res_b,intval($difx3b_div));
+            }
+
+            if($i == 5){
+                 //A
+                $difx3 = $dif * $i;
+                $difx3a_div =  $difx3 * 0.0007087;
+                array_push($arry_res_a,intval($difx3a_div));
+                //B
+                $difx3_b = $dif_2 * $i;
+                $difx3b_div =  $difx3_b * 0.0007087;
+                array_push($arry_res_b,intval($difx3b_div));
+            }
+        }
+        /* (dif * 3) /1,000 */
+       /*  $difx3 = $dif * $yrs;
+        $difx3_div =  $difx3 / 1000; */
+
+        array_push($array_res,$arry_res_a,$arry_res_b);
+
+        return $array_res;
+
     }
 
     public function red_bol_ba($yrs,$dif){
