@@ -191,45 +191,45 @@
   }
 
   .info_project{
-    font-size: 18px;
+    font-size: 14px;
     font-family: 'ABeeZee', sans-serif;
     color:#2c5282;
     font-weight: bold;
   }
 
   .info_project_res{
-    font-size: 18px;
+    font-size: 14px;
     font-family: 'ABeeZee', sans-serif;
     font-weight: bold;
   }
 
-  .img_projec{
-            height: 120px;
-            width:230px;
+  .img_porject{
+            height:80px;
+            width:180px;
          }
 
   .titulos_style{
-            font-size:28px;
+            font-size:20px;
             color: white;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
          }
    .solucions_style_name{
-        font-size: 1.8rem;
+        font-size: 1.2rem;
         color: #2c5282;
         font-weight: bold;
         font-family: 'ABeeZee', sans-serif;
    }
 
    .cant_style{
-            font-size: 2.3rem;
+            font-size: 1.7rem;
             color: #2c5282;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
    }
 
    .unit_style{
-            font-size: 1.2rem;
+            font-size: 1rem;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
             margin-top:.8rem;
@@ -246,14 +246,14 @@
     font-weight: bold;
     font-family: 'ABeeZee', sans-serif;
     margin-right: .15rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
    }
 
    .eui_energy_val_style{
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
     font-weight: bold;
     font-family: 'ABeeZee', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2.1rem;
    }
 
    .energy_star_style_img{
@@ -273,13 +273,13 @@
    }
 
    .img_red_ene{
-            width:68px;
-             height:50px;
+            width:50px;
+             height:35px;
               z-index:1;
         }
 
    .red_energetica_style{
-            font-size: 1.3rem;
+            font-size: 1rem;
             color: #2c5282;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -291,8 +291,8 @@
         }
 
         .ancho_rang{
-            width:1.2rem;
-            height:2.2rem;
+            width:.8rem;
+            height:1.8rem;
         }
 
         .puntero_medidas{
@@ -301,11 +301,11 @@
         }
 
         .size_solutions_confort{
-            font-size:1.6rem;
+            font-size:1.1rem;
         }
 
         .size_solutions_payback{
-            font-size:2rem;
+            font-size:1.5rem;
         }
 
 
@@ -418,7 +418,7 @@
 </div>
 {{-- navbar --}}
 {{-- principal --}}
-<div class="w-full grid rounded-md justify-items-center mt-5">
+<div class="w-full grid rounded-md justify-items-center mt-3">
     <div  class="ancho border-2 border-blue-500 rounded-md flex">
 
 
@@ -512,7 +512,7 @@
                                     </div>
 {{--                                     <div id="chart_cons_ene_hvac_ar_base_print" name="chart_cons_ene_hvac_ar_base_print" class="js_charts_style"></div>
  --}}
-                                    <div class="flex w-full justify-center mt-8">
+                                    <div class="flex w-full justify-center mt-5">
                                         <p class="cant_style">${{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
                                     </div>
                                 </div>
@@ -553,7 +553,7 @@
                                         <p class="cant_style">{{number_format($sumaopex_2)}}</p><b class="unit_style">Kwh</b>
                                     </div>
                                     <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style" ></div>
-                                    <div class="flex w-full justify-center mt-8">
+                                    <div class="flex w-full justify-center mt-5">
                                         <p class="cant_style">${{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
                                     </div>
                           </div>
@@ -593,7 +593,7 @@
                                         <p class="cant_style">{{number_format($sumaopex_3)}}</p><b class="unit_style">Kwh</b>
                                     </div>
                                      <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
-                                     <div class="flex w-full justify-center mt-8">
+                                     <div class="flex w-full justify-center mt-5">
                                         <p class="cant_style">${{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
                                     </div>
                                </div>
@@ -715,7 +715,7 @@
 
                 <div class="w-full flex justify-center">
                     <div id="chart_red_ene" name="chart_red_ene" style="width: 600px;height:380px;!important"></div>
-                    <div class="hidden" style="height:200px;"  id="chart_red_ene_print" name="chart_red_ene_print"></div>
+                    <div class="hidden" style="height:180px;"  id="chart_red_ene_print" name="chart_red_ene_print"></div>
                 </div>
             </div>
 
@@ -727,7 +727,7 @@
 
                 <div class="w-full flex justify-center">
                     <div id="chart_descarb" name="chart_descarb" style="width: 600px;height:380px;!important"></div>
-                    <div class="hidden "  style="height:200px;"  id="chart_descarb_print" name="chart_descarb_print"></div>
+                    <div class="hidden "  style="height:180px;"  id="chart_descarb_print" name="chart_descarb_print"></div>
                 </div>
             </div>
         </div>
@@ -735,12 +735,12 @@
 </div>
 
 {{-- espacio --}}
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:30px;" >
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:16px;" >
 
 </div>
 
     {{-- principal --}}
-    <div id="principal_hoja_2" name="principal_hoja_2" class="hidden w-full grid rounded-md justify-items-center mt-8">
+    <div id="principal_hoja_2" name="principal_hoja_2" class="hidden w-full grid rounded-md justify-items-center mt-3">
         <div  class="ancho border-2 border-blue-500 rounded-md flex">
 
 
@@ -1048,13 +1048,13 @@
 
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_3" name="next_page_3" style="width: 80%; height:450px;" class="hidden">
+<div id="next_page_3" name="next_page_3" style="width: 80%; height:250px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
 
 {{-- principal --}}
-<div id="principal_hoja_3" name="principal_hoja_3" class="hidden w-full grid rounded-md justify-items-center mt-5">
+<div id="principal_hoja_3" name="principal_hoja_3" class="hidden w-full grid rounded-md justify-items-center mt-3">
     <div  class="ancho border-2 border-blue-500 rounded-md flex">
 
 
@@ -1143,17 +1143,17 @@
                 </div>
 
                 <div class="grid justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{$inv_ini_1}}</p></b>
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_1)}}</p></b>
 
                 </div>
 
                 <div class="grid justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{$inv_ini_2}}</p></b>
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_2)}}</p></b>
 
                 </div>
 
                 <div class="grid justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{$inv_ini_3}}</p></b>
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_3)}}</p></b>
 
                 </div>
             </div>
@@ -1243,7 +1243,7 @@
 
                     <div class="w-1/2 flex justify-center">
                         <div id="chart_roi_base_a" name="chart_roi_base_a" style="width: 600px;"></div>
-                        <div class="hidden" style="height:200px;"  id="chart_roi_base_a_print" name="chart_roi_base_a_print"></div>
+                        <div class="hidden" style="height:250px;"  id="chart_roi_base_a_print" name="chart_roi_base_a_print"></div>
                     </div>
 
                 </div>
@@ -1262,7 +1262,7 @@
                     <div class="w-1/2 flex justify-center">
 
                         <div id="chart_roi_base_b" name="chart_roi_base_b" style="width: 600px;"></div>
-                        <div class="hidden "  style="height:200px;"  id="chart_roi_base_b_print" name="chart_roi_base_b_print"></div>
+                        <div class="hidden "  style="height:250px;"  id="chart_roi_base_b_print" name="chart_roi_base_b_print"></div>
                     </div>
                 </div>
             </div>
@@ -1318,13 +1318,13 @@
 </div>
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_4" name="next_page_4" style="width: 80%; height:350px;" class="hidden">
+<div id="next_page_4" name="next_page_4" style="width: 80%; height:80px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
 
 {{-- principal --}}
-<div id="principal_hoja_4" name="principal_hoja_4" class="hidden w-full grid rounded-md justify-items-center mt-5">
+<div id="principal_hoja_4" name="principal_hoja_4" class="hidden w-full grid rounded-md justify-items-center mt-3">
     <div  class="ancho border-2 border-blue-500 rounded-md flex">
 
 
@@ -1388,12 +1388,12 @@
         <div class="flex w-full justify-center gap-x-3">
             <div class="w-1/2 flex justify-center">
                 <div id="chart" name="chart" style="width:600px;"></div>
-                <div class="hidden" id="chart_print" name="chart_print" style="width:550px;"></div>
+                <div class="hidden" id="chart_print" name="chart_print" style="width:370px;"></div>
             </div>
 
             <div class="w-1/2 flex justify-center">
                 <div  id="chart_3" name="chart_3" style="width:600px;"></div>
-                <div class="hidden" id="chart_3_print" name="chart_3_print" style="width:550px;"></div>
+                <div class="hidden" id="chart_3_print" name="chart_3_print" style="width:370px;"></div>
             </div>
         </div>
     </div>
@@ -1405,6 +1405,20 @@
     var man_lang = document.getElementById('ima_man').value;
     var ima_sol = document.getElementById('ima_sol').value;
     google.charts.load('current', {'packages':['gauge']});
+    var cons_ene_ele_ancho = 370;
+    var cons_ene_ele_alto = 200;
+    var cons_ene_ele_ancho_print = 210;
+    var cons_ene_ele_alto_print = 120;
+    var eui_print_width = 470;
+    var eui_print_height = 140;
+    var red_ene_print_height= 200;
+    var red_ene_print_width= 370;
+    var roi_height = 230;
+    var roi_width = 370;
+    var prod_lab_print_width= 230;
+    var prod_lab_print_height= 170;
+    var capex_opex_print_height= 260;
+    var capex_opex_print_width= 370;
 document.addEventListener('keydown', function(event) {
   if (event.ctrlKey && event.key === 'p') {
     //$("#navbar").removeClass("hidden");
@@ -1484,13 +1498,13 @@ function send_print(){
     $("#principal_hoja_4").removeClass("hidden");
     $("#next_page_3").removeClass("hidden");
     $("#next_page_4").removeClass("hidden");
-    $("#chart_cons_ene_hvac_ar_base").width(280).height(180);
-    $("#chart_cons_ene_hvac_ar_a").width(280).height(180);
-    $("#chart_cons_ene_hvac_ar_b").width(280).height(180);
+    $("#chart_cons_ene_hvac_ar_base").width(210).height(120);
+    $("#chart_cons_ene_hvac_ar_a").width(210).height(120);
+    $("#chart_cons_ene_hvac_ar_b").width(210).height(120);
     $("#chart_red_ene").width(200).height(120);
     $("#chart_descarb").width(200).height(120);
-    $("#chart_red_ene_print").width(480).height(280);
-    $("#chart_descarb_print").width(480).height(280);
+    $("#chart_red_ene_print").width(360).height(200);
+    $("#chart_descarb_print").width(360).height(200);
     $("#chart").width(200).height(120);
     $("#chart_3").width(200).height(120);
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
@@ -1622,8 +1636,8 @@ if(result_area < red){
     var chart = JSC.chart('chart_cons_ene_hvac_ar_base', {
   debug: true,
   legend_visible: false,
-  width:400,
-  height:230,
+  width:cons_ene_ele_ancho,
+  height:cons_ene_ele_alto,
   chartArea_boxVisible: false,
   defaultTooltip_enabled: false,
   box:{
@@ -1729,8 +1743,8 @@ if(result_area < red){
   debug: true,
   legend_visible: false,
   defaultTooltip_enabled: false,
-  width:400,
-  height:230,
+  width:cons_ene_ele_ancho,
+  height:cons_ene_ele_alto,
   chartArea_boxVisible: false,
   box:{
         fill:'white',
@@ -1838,8 +1852,8 @@ if(result_area < red){
   debug: true,
   legend_visible: false,
   defaultTooltip_enabled: false,
-  width:400,
-  height:230,
+  width:cons_ene_ele_ancho,
+  height:cons_ene_ele_alto,
   chartArea_boxVisible: false,
   box:{
         fill:'white',
@@ -3379,8 +3393,8 @@ if(result_area < red){
     var chart = JSC.chart('chart_cons_ene_hvac_ar_base', {
   debug: true,
   legend_visible: false,
-  width:300,
-  height:190,
+  width:cons_ene_ele_ancho_print,
+  height:cons_ene_ele_alto_print,
   chartArea_boxVisible: false,
   defaultTooltip_enabled: false,
   box:{
@@ -3486,8 +3500,8 @@ if(result_area < red){
   debug: true,
   legend_visible: false,
   defaultTooltip_enabled: false,
-  width:300,
-  height:190,
+  width:cons_ene_ele_ancho_print,
+  height:cons_ene_ele_alto_print,
   chartArea_boxVisible: false,
   box:{
         fill:'white',
@@ -3593,8 +3607,8 @@ if(result_area < red){
   debug: true,
   legend_visible: false,
   defaultTooltip_enabled: false,
-  width:300,
-  height:190,
+  width:cons_ene_ele_ancho_print,
+  height:cons_ene_ele_alto_print,
   chartArea_boxVisible: false,
   box:{
         fill:'white',
@@ -3874,7 +3888,7 @@ if(result_area < red){
 
         if(energy > ashrae){
             var options = {
-                width: 580, height: 250,
+                width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:ashrae,
           redFrom: energy, redTo: 300,
           yellowFrom:ashrae, yellowTo: energy,
@@ -3886,7 +3900,7 @@ if(result_area < red){
 
         if(energy < ashrae){
             var options = {
-                width: 580, height: 250,
+                width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:energy,
           redFrom: ashrae, redTo: 300,
           yellowFrom:energy, yellowTo: ashrae,
@@ -3931,7 +3945,7 @@ if(result_area < red){
 
         if(energy > ashrae){
             var options = {
-                width: 580, height: 250,
+                 width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:ashrae,
           redFrom: energy, redTo: 300,
           yellowFrom:ashrae, yellowTo: energy,
@@ -3943,7 +3957,7 @@ if(result_area < red){
 
         if(energy < ashrae){
             var options = {
-                width: 580, height: 250,
+                 width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:energy,
           redFrom: ashrae, redTo: 300,
           yellowFrom:energy, yellowTo: ashrae,
@@ -3988,7 +4002,7 @@ if(result_area < red){
 
             if(energy > ashrae){
                     var options = {
-                        width: 580, height: 250,
+                         width: eui_print_width, height: eui_print_height,
                 greenFrom:1,greenTo:ashrae,
                 redFrom: energy, redTo: 300,
                 yellowFrom:ashrae, yellowTo: energy,
@@ -4000,7 +4014,7 @@ if(result_area < red){
 
                 if(energy < ashrae){
                     var options = {
-                        width: 580, height: 250,
+                         width: eui_print_width, height: eui_print_height,
                 greenFrom:1,greenTo:energy,
                 redFrom: ashrae, redTo: 300,
                 yellowFrom:energy, yellowTo: ashrae,
@@ -4039,8 +4053,8 @@ if(result_area < red){
           offsetX: 0,
           offsetY: 0,
           bottom:0,
-          height: 280,
-          width:480,
+          height:red_ene_print_height,
+          width:red_ene_print_width,
           type: 'line',
           dropShadow: {
             enabled: true,
@@ -4184,8 +4198,8 @@ function descarb_print(dif,dif_2){
             }
         ],
           chart: {
-            height: 280,
-            width:480,
+            height:red_ene_print_height,
+          width:red_ene_print_width,
           type: 'line',
           dropShadow: {
             enabled: true,
@@ -4320,8 +4334,8 @@ function chart_prod_base_print() {
             type: 'gauge ',
             legend_visible: false,
             chartArea_boxVisible: false,
-            width:300,
-            height:220,
+            width:prod_lab_print_width,
+            height:prod_lab_print_height,
             box:{
                 fill:'white',
             },
@@ -4417,8 +4431,8 @@ chart.draw(data, options); */
             debug: true,
             type: 'gauge ',
             legend_visible: false,
-            width:300,
-            height:220,
+            width:prod_lab_print_width,
+            height:prod_lab_print_height,
             chartArea_boxVisible: false,
             box:{
                 fill:'white',
@@ -4514,8 +4528,8 @@ chart.draw(data, options); */
             debug: true,
             type: 'gauge ',
             legend_visible: false,
-            width:300,
-            height:220,
+            width:prod_lab_print_width,
+            height:prod_lab_print_height,
             chartArea_boxVisible: false,
             box:{
                 fill:'white',
@@ -4600,8 +4614,8 @@ $.ajax({
     }],
       chart: {
       type: 'bar',
-      height: 270,
-      width: 500,
+      height: capex_opex_print_height,
+      width: capex_opex_print_width,
       stacked: true,
       stackType: 'normal',
       dropShadow: {
@@ -4623,7 +4637,7 @@ $.ajax({
     dataLabels: {
             enabled: true,
             style: {
-            fontSize: '16px',
+            fontSize: '10px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: 'bold',
         },
@@ -4631,10 +4645,10 @@ $.ajax({
     title: {
       text: '1 Año',
       align: 'center',
-      offsetY:25,
+      offsetY:20,
       style: {
         fontWeight:  'bold',
-        fontSize: '24px',
+        fontSize: '15px',
         fontFamily: 'ABeeZee, sans-serif',
         fontWeight: "bold",
         cssClass: 'apexcharts-yaxis-label',
@@ -4642,11 +4656,11 @@ $.ajax({
       },
     },
     xaxis: {
-      categories: ['Solución B', 'Solución A', 'Sistema Existente'],
+      categories: ['Solución B', 'Solución A', 'Sistema Exis...'],
       labels: {
             style: {
                 colors: [],
-                fontSize: '14px',
+                fontSize: '8px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -4657,7 +4671,7 @@ $.ajax({
         labels: {
             style: {
                 colors: [],
-                fontSize: '16px',
+                fontSize: '12px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -4679,6 +4693,7 @@ $.ajax({
       }
     },
     fill: {
+      width: '100%',
       opacity: 1,
       colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C'],
 
@@ -4687,7 +4702,7 @@ $.ajax({
       position: 'top',
       horizontalAlign: 'left',
       offsetX: 40,
-      fontSize: '14px',
+      fontSize: '8px',
       fontFamily: 'ABeeZee, sans-serif',
       fontWeight: 'bold',
       markers: {
@@ -4734,8 +4749,8 @@ function cap_op_3_retro_print(id_project,unidad){
         }],
           chart: {
           type: 'bar',
-          height: 270,
-          width: 500,
+          height: capex_opex_print_height,
+          width: capex_opex_print_width,
           stacked: true,
           stackType: 'normal',
           dropShadow: {
@@ -4754,7 +4769,7 @@ function cap_op_3_retro_print(id_project,unidad){
         dataLabels: {
                 enabled: true,
                 style: {
-                fontSize: '16px',
+                fontSize: '10px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: 'bold',
             },
@@ -4762,9 +4777,9 @@ function cap_op_3_retro_print(id_project,unidad){
         title: {
             text: '3 Años',
             align: 'center',
-            offsetY:25,
+            offsetY:20,
             style: {
-            fontSize: '24px',
+            fontSize: '15px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: "bold",
             cssClass: 'apexcharts-yaxis-label',
@@ -4772,11 +4787,11 @@ function cap_op_3_retro_print(id_project,unidad){
           },
         },
         xaxis: {
-          categories: ['Solución B', 'Solución A', 'Sistema Existente'],
+          categories: ['Solución B', 'Solución A', 'Sistema Exis...'],
           labels: {
                 style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '8px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4787,7 +4802,7 @@ function cap_op_3_retro_print(id_project,unidad){
             labels: {
                 style: {
                     colors: [],
-                    fontSize: '16px',
+                    fontSize: '12px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4816,7 +4831,7 @@ function cap_op_3_retro_print(id_project,unidad){
           position: 'top',
           horizontalAlign: 'left',
           offsetX: 40,
-          fontSize: '14px',
+          fontSize: '8px',
           fontFamily: 'ABeeZee, sans-serif',
           fontWeight: 'bold',
           markers: {
@@ -4867,8 +4882,8 @@ function roi_base_a_print(id_project){
           }
         ],
           chart: {
-            height: 250,
-            width:480,
+            height:roi_height,
+            width:roi_width,
           type: 'line',
           dropShadow: {
             enabled: true,
@@ -4886,7 +4901,7 @@ function roi_base_a_print(id_project){
         dataLabels: {
                 enabled: true,
                 style: {
-                fontSize: '16px',
+                fontSize: '11px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: 'bold',
             },
@@ -4898,7 +4913,7 @@ function roi_base_a_print(id_project){
 
           align: 'center',
           style: {
-            fontSize: '24px',
+            fontSize: '18px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: "bold",
             cssClass: 'apexcharts-yaxis-label',
@@ -4923,7 +4938,7 @@ function roi_base_a_print(id_project){
             text: 'Años',
             style: {
                     colors: [],
-                    fontSize: '20px',
+                    fontSize: '13px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4932,7 +4947,7 @@ function roi_base_a_print(id_project){
           labels: {
             style: {
                     colors: [],
-                    fontSize: '12px',
+                    fontSize: '8px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-xaxis-label',
@@ -4943,7 +4958,7 @@ function roi_base_a_print(id_project){
           labels:{
             style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '11px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4958,7 +4973,7 @@ function roi_base_a_print(id_project){
           position: 'top',
           horizontalAlign: 'right',
           offsetX: 40,
-          fontSize: '14px',
+          fontSize: '11px',
           fontFamily: 'ABeeZee, sans-serif',
           fontWeight: 'bold',
           markers: {
@@ -5007,8 +5022,8 @@ function roi_base_b_print(id_project){
           }
         ],
           chart: {
-            height: 250,
-            width:480,
+            height:roi_height,
+            width:roi_width,
           type: 'line',
           dropShadow: {
             enabled: true,
@@ -5026,7 +5041,7 @@ function roi_base_b_print(id_project){
         dataLabels: {
                 enabled: true,
                 style: {
-                fontSize: '16px',
+                fontSize: '11px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: 'bold',
             },
@@ -5038,7 +5053,7 @@ function roi_base_b_print(id_project){
 
           align: 'center',
           style: {
-            fontSize: '24px',
+            fontSize: '18px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: "bold",
             cssClass: 'apexcharts-yaxis-label',
@@ -5063,7 +5078,7 @@ function roi_base_b_print(id_project){
             text: 'Años',
             style: {
                     colors: [],
-                    fontSize: '20px',
+                    fontSize: '13px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -5072,7 +5087,7 @@ function roi_base_b_print(id_project){
           labels: {
             style: {
                     colors: [],
-                    fontSize: '12px',
+                    fontSize: '10px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-xaxis-label',
@@ -5083,7 +5098,7 @@ function roi_base_b_print(id_project){
           labels:{
             style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '11px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -5097,7 +5112,7 @@ function roi_base_b_print(id_project){
           position: 'top',
           horizontalAlign: 'right',
           offsetX: 40,
-          fontSize: '14px',
+          fontSize: '11px',
           fontFamily: 'ABeeZee, sans-serif',
           fontWeight: 'bold',
           markers: {
@@ -5147,8 +5162,8 @@ function roi_base_a_ene_prod_print(id_project,costo_base,costo){
           }
         ],
           chart: {
-            height: 250,
-            width:480,
+            height:roi_height,
+            width:roi_width,
           type: 'line',
           dropShadow: {
             enabled: true,
@@ -5166,7 +5181,7 @@ function roi_base_a_ene_prod_print(id_project,costo_base,costo){
         dataLabels: {
                 enabled: true,
                 style: {
-                fontSize: '16px',
+                fontSize: '11px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: 'bold',
             },
@@ -5178,7 +5193,7 @@ function roi_base_a_ene_prod_print(id_project,costo_base,costo){
 
           align: 'center',
           style: {
-            fontSize: '24px',
+            fontSize: '18px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: "bold",
             cssClass: 'apexcharts-yaxis-label',
@@ -5203,7 +5218,7 @@ function roi_base_a_ene_prod_print(id_project,costo_base,costo){
             text: 'Años',
             style: {
                     colors: [],
-                    fontSize: '20px',
+                    fontSize: '13px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -5212,7 +5227,7 @@ function roi_base_a_ene_prod_print(id_project,costo_base,costo){
           labels: {
             style: {
                     colors: [],
-                    fontSize: '12px',
+                    fontSize: '10px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-xaxis-label',
@@ -5223,7 +5238,7 @@ function roi_base_a_ene_prod_print(id_project,costo_base,costo){
           labels:{
             style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '11px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -5238,7 +5253,7 @@ function roi_base_a_ene_prod_print(id_project,costo_base,costo){
           position: 'top',
           horizontalAlign: 'right',
           offsetX: 40,
-          fontSize: '14px',
+          fontSize: '11px',
           fontFamily: 'ABeeZee, sans-serif',
           fontWeight: 'bold',
           markers: {
@@ -5286,8 +5301,8 @@ function roi_base_b_ene_prod_print(id_project,costo_base,costo){
           }
         ],
           chart: {
-            height: 250,
-            width:480,
+            height:roi_height,
+            width:roi_width,
           type: 'line',
           dropShadow: {
             enabled: true,
@@ -5305,7 +5320,7 @@ function roi_base_b_ene_prod_print(id_project,costo_base,costo){
         dataLabels: {
                 enabled: true,
                 style: {
-                fontSize: '16px',
+                fontSize: '11px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: 'bold',
             },
@@ -5317,7 +5332,7 @@ function roi_base_b_ene_prod_print(id_project,costo_base,costo){
 
           align: 'center',
           style: {
-            fontSize: '24px',
+            fontSize: '18px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: "bold",
             cssClass: 'apexcharts-yaxis-label',
@@ -5342,7 +5357,7 @@ function roi_base_b_ene_prod_print(id_project,costo_base,costo){
             text: 'Años',
             style: {
                     colors: [],
-                    fontSize: '20px',
+                    fontSize: '13px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -5351,7 +5366,7 @@ function roi_base_b_ene_prod_print(id_project,costo_base,costo){
           labels: {
             style: {
                     colors: [],
-                    fontSize: '12px',
+                    fontSize: '10px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-xaxis-label',
@@ -5362,7 +5377,7 @@ function roi_base_b_ene_prod_print(id_project,costo_base,costo){
           labels:{
             style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '11px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -5376,7 +5391,7 @@ function roi_base_b_ene_prod_print(id_project,costo_base,costo){
           position: 'top',
           horizontalAlign: 'right',
           offsetX: 40,
-          fontSize: '14px',
+          fontSize: '11px',
           fontFamily: 'ABeeZee, sans-serif',
           fontWeight: 'bold',
           markers: {
