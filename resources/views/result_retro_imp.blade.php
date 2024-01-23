@@ -183,6 +183,11 @@
         .per_cos{
             font-size: 2.25rem;
         }
+
+        .img_porject{
+            height:130px;
+            width:350px;
+         }
 @media print{
   @page { margin: 0; }
 
@@ -423,7 +428,7 @@
 
 
         <div class="w-1/4 flex justify-center">
-            <img src="{{asset('/assets/images/Logo-NDL_marca-registrada.jpg')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+            <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
         </div>
 
         <div class="w-1/3 grid justify-left ml-2">
@@ -745,7 +750,7 @@
 
 
         <div class="w-1/4 flex justify-center">
-            <img src="{{asset('/assets/images/Logo-NDL_marca-registrada.jpg')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+            <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
         </div>
 
         <div class="w-1/3 grid justify-left ml-2">
@@ -1059,7 +1064,7 @@
 
 
     <div class="w-1/4 flex justify-center">
-        <img src="{{asset('/assets/images/Logo-NDL_marca-registrada.jpg')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+        <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
     </div>
 
     <div class="w-1/3 grid justify-left ml-2">
@@ -1329,7 +1334,7 @@
 
 
     <div class="w-1/4 flex justify-center">
-        <img src="{{asset('/assets/images/Logo-NDL_marca-registrada.jpg')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+        <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
     </div>
 
     <div class="w-1/3 grid justify-left ml-2">
