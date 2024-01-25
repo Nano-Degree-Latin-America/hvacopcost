@@ -401,6 +401,53 @@
                 margin: 0px auto;
             }
         }
+
+        .btn_roundf_retro{
+border:1px solid #3182ce;
+background: #3182ce;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
+.btn_roundf_retro:hover {
+border:1px solid #4299e1;
+background: #4299e1;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
+
+.btn_roundf_retro:active {
+border:1px solid #3182ce;
+background: #3182ce;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
@@ -1122,6 +1169,7 @@
 
 <?php  $dif_2_cost=$smasolutions->dif_2_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
  {{-- payback --}}
+ <a id="ir_modal_position_marr" name="ir_modal_position_marr" href=""></a>
  <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
       <div class="w-full grid">
@@ -1233,7 +1281,10 @@
 <input type="text" id="ima_man" name="ima_man" class="hidden" value="{{ __('index.mantenimiento') }}">
 <input type="text" id="ima_sol" name="ima_sol" class="hidden" value="{{ __('index.solucion') }}">
 
+@include('modal_marr')
+
 <div class="w-full grid rounded-md justify-items-center mt-3">
+
     <div class="ancho border-2 border-blue-500 rounded-md grid">
 
 
@@ -1241,6 +1292,10 @@
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                 <p class="titulos_style">ROI v/s MARR (solo Energía)</p>
             </div>
+        </div>
+
+        <div class="flex w-full justify-end mt-1">
+            <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr');" class="btn_roundf_retro mr-10" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
         </div>
 
         <div class="flex w-full justify-center gap-x-3">
@@ -1405,10 +1460,23 @@
             </div>
 
             <div class="w-1/2 flex justify-center">
-                <div  id="chart_3" name="chart_3" style="width:600px;"></div>
-                <div class="hidden" id="chart_3_print" name="chart_3_print" style="width:370px;"></div>
+                <div  id="chart_5" name="chart_5" style="width:600px;"></div>
+                <div class="hidden" id="chart_5_print" name="chart_5_print" style="width:370px;"></div>
             </div>
         </div>
+
+        <div class="flex w-full justify-center gap-x-3">
+            <div class="w-1/2 flex justify-center">
+                <div id="chart_10" name="chart_10" style="width:600px;"></div>
+                <div class="hidden" id="chart_10_print" name="chart_10_print" style="width:370px;"></div>
+            </div>
+
+            <div class="w-1/2 flex justify-center">
+                <div  id="chart_15" name="chart_15" style="width:600px;"></div>
+                <div class="hidden" id="chart_15_print" name="chart_15_print" style="width:370px;"></div>
+            </div>
+        </div>
+
     </div>
 </div>
 {{-- capex vs opex --}}
@@ -1597,10 +1665,16 @@ window.onload = function() {
       chart_prod_base();
       chart_prod_a();
       chart_prod_b();
-      cap_op_1_retro('{{$id_project}}','{{$tar_ele->unidad}}');
-      cap_op_3_retro('{{$id_project}}','{{$tar_ele->unidad}}');
-      cap_op_1_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
-      cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
+      cap_op_3('{{$id_project}}','{{$tar_ele->unidad}}');
+      cap_op_5('{{$id_project}}','{{$tar_ele->unidad}}');
+      cap_op_10('{{$id_project}}','{{$tar_ele->unidad}}');
+      cap_op_15('{{$id_project}}','{{$tar_ele->unidad}}');
+      cap_op_3_print('{{$id_project}}','{{$tar_ele->unidad}}');
+      cap_op_5_print('{{$id_project}}','{{$tar_ele->unidad}}');
+      cap_op_10_print('{{$id_project}}','{{$tar_ele->unidad}}');
+      cap_op_15_print('{{$id_project}}','{{$tar_ele->unidad}}');
+      /* cap_op_1_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
+      cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}'); */
       roi_base_a('{{$id_project}}');
       roi_base_b('{{$id_project}}');
       roi_base_a_print('{{$id_project}}');
@@ -2803,6 +2877,532 @@ function cap_op_3_retro(id_project,unidad){
             console.log(responsetext);
         }
     });
+
+}
+
+//grafica capex_vx_opex 3 años
+function cap_op_3(id_project,unidad){
+
+
+$.ajax({
+    type: 'get',
+    url: "/cap_op_3/" + id_project,
+    success: function (res) {
+
+        var options = {
+      series: [{
+      name: 'CAPEX',
+      data: [res[2][0], res[1][0], res[0][0]]
+    },{
+      name: ener_lang + ' OPEX',
+      data: [res[2][1], res[1][1], res[0][1]]
+    },{
+      name: man_lang + ' OPEX',
+      data: [res[2][2], res[1][2], res[0][2]]
+    }],
+      chart: {
+      type: 'bar',
+      height: 350,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '16px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+      text: '3 Años',
+      align: 'center',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '24px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Solución B', 'Solución A', 'Solución Base'],
+      labels: {
+            style: {
+                colors: [],
+                fontSize: '14px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            style: {
+                colors: [],
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            if(unidad == 'mc'){
+                return val + "$/m²"
+            }
+
+            if(unidad == 'ft'){
+                return val + "$/ft²"
+            }
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '14px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
+function cap_op_5(id_project,unidad){
+$.ajax({
+    type: 'get',
+    url: "/cap_op_5/" + id_project,
+    success: function (res) {
+
+        var options = {
+      series: [{
+      name: 'CAPEX',
+      data: [res[2][0], res[1][0], res[0][0]]
+    },{
+       name: ener_lang + ' OPEX',
+      data: [res[2][1], res[1][1], res[0][1]]
+    },{
+       name: man_lang + ' OPEX',
+      data: [res[2][2], res[1][2], res[0][2]]
+    }],
+      chart: {
+      type: 'bar',
+      height: 350,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+        },
+      toolbar: {
+        show: false,
+        },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '16px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+        text: '5 Años',
+        align: 'center',
+        offsetY:25,
+        style: {
+        fontSize: '24px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Solución B', 'Solución A', 'Solución Base'],
+      labels: {
+            style: {
+                colors: [],
+                fontSize: '14px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            style: {
+                colors: [],
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+
+            },
+        },
+    },
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            if(unidad == 'mc'){
+                return val + "$/m²"
+            }
+
+            if(unidad == 'ft'){
+                return val + "$/ft²"
+            }
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)']
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '14px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_5"), options);
+    chart.render();
+
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
+//grafica 10 años
+function cap_op_10(id_project,unidad){
+$.ajax({
+    type: 'get',
+    url: "/cap_op_10/" + id_project,
+    success: function (res) {
+
+        var options = {
+      series: [{
+      name: 'CAPEX',
+      data: [res[2][0], res[1][0], res[0][0]]
+    }, {
+      name: ener_lang + ' OPEX',
+      data: [res[2][1], res[1][1], res[0][1]]
+    },{
+      name: man_lang + ' OPEX',
+      data: [res[2][2], res[1][2], res[0][2]]
+    }],
+      chart: {
+      type: 'bar',
+      height: 350,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+            enabled: true,
+            enabledOnSeries: undefined,
+        },
+    toolbar: {
+        show: false,
+        },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '16px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+      text: '10 Años',
+      align: 'center',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '24px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Solución B', 'Solución A', 'Solución Base'],
+      labels: {
+            style: {
+                colors: [],
+                fontSize: '14px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            style: {
+                colors: [],
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            if(unidad == 'mc'){
+                return val + "$/m²"
+            }
+
+            if(unidad == 'ft'){
+                return val + "$/ft²"
+            }
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)']
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '14px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_10"), options);
+    chart.render();
+
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
+//grafica 15 años
+function cap_op_15(id_project,unidad){
+
+$.ajax({
+    type: 'get',
+    url: "/cap_op_15/" + id_project,
+    success: function (res) {
+        var options = {
+      series: [{
+      name: 'CAPEX',
+      data: [res[2][0], res[1][0], res[0][0]],
+
+    },{
+       name: ener_lang + ' OPEX',
+      data: [res[2][1], res[1][1], res[0][1]]
+    },{
+       name: man_lang + ' OPEX',
+      data: [res[2][2], res[1][2], res[0][2]]
+    }],
+      chart: {
+      type: 'bar',
+      height: 350,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+        },
+        toolbar: {
+        show: false,
+        },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '16px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+        text: '15 Años',
+      align: 'center',
+      offsetY:25,
+      style: {
+        fontSize: '24px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Solución B', 'Solución A', 'Solución Base'],
+      labels: {
+            style: {
+                colors: [],
+                fontSize: '14px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            style: {
+                colors: [],
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            if(unidad == 'mc'){
+                return val + "$/m²"
+            }
+
+            if(unidad == 'ft'){
+                return val + "$/ft²"
+            }
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)']
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '14px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_15"), options);
+    chart.render();
+
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
 
 }
 
@@ -4873,6 +5473,535 @@ function cap_op_3_retro_print(id_project,unidad){
 
 }
 
+//grafica capex_vx_opex 3 años
+function cap_op_3_print(id_project,unidad){
+
+
+$.ajax({
+    type: 'get',
+    url: "/cap_op_3/" + id_project,
+    success: function (res) {
+
+        var options = {
+      series: [{
+      name: 'CAPEX',
+      data: [res[2][0], res[1][0], res[0][0]]
+    },{
+      name: ener_lang + ' OPEX',
+      data: [res[2][1], res[1][1], res[0][1]]
+    },{
+      name: man_lang + ' OPEX',
+      data: [res[2][2], res[1][2], res[0][2]]
+    }],
+      chart: {
+      type: 'bar',
+      height: capex_opex_print_height,
+      width: capex_opex_print_width,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '10px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+      text: '3 Años',
+      align: 'center',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '15px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Solución B', 'Solución A', 'Solución Base'],
+      labels: {
+            style: {
+                colors: [],
+                fontSize: '8px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            style: {
+                colors: [],
+                fontSize: '12px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            if(unidad == 'mc'){
+                return val + "$/m²"
+            }
+
+            if(unidad == 'ft'){
+                return val + "$/ft²"
+            }
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '8px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_print"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
+function cap_op_5_print(id_project,unidad){
+$.ajax({
+    type: 'get',
+    url: "/cap_op_5/" + id_project,
+    success: function (res) {
+
+        var options = {
+      series: [{
+      name: 'CAPEX',
+      data: [res[2][0], res[1][0], res[0][0]]
+    },{
+       name: ener_lang + ' OPEX',
+      data: [res[2][1], res[1][1], res[0][1]]
+    },{
+       name: man_lang + ' OPEX',
+      data: [res[2][2], res[1][2], res[0][2]]
+    }],
+      chart: {
+      type: 'bar',
+      height: capex_opex_print_height,
+      width: capex_opex_print_width,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+        },
+      toolbar: {
+        show: false,
+        },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '10px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+        text: '5 Años',
+        align: 'center',
+        offsetY:25,
+        style: {
+        fontSize: '15px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Solución B', 'Solución A', 'Solución Base'],
+      labels: {
+            style: {
+                colors: [],
+                fontSize: '8px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            style: {
+                colors: [],
+                fontSize: '12px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+
+            },
+        },
+    },
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            if(unidad == 'mc'){
+                return val + "$/m²"
+            }
+
+            if(unidad == 'ft'){
+                return val + "$/ft²"
+            }
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)']
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '8px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_5_print"), options);
+    chart.render();
+
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
+//grafica 10 años
+function cap_op_10_print(id_project,unidad){
+$.ajax({
+    type: 'get',
+    url: "/cap_op_10/" + id_project,
+    success: function (res) {
+
+        var options = {
+      series: [{
+      name: 'CAPEX',
+      data: [res[2][0], res[1][0], res[0][0]]
+    }, {
+      name: ener_lang + ' OPEX',
+      data: [res[2][1], res[1][1], res[0][1]]
+    },{
+      name: man_lang + ' OPEX',
+      data: [res[2][2], res[1][2], res[0][2]]
+    }],
+      chart: {
+      type: 'bar',
+      height: 350,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+            enabled: true,
+            enabledOnSeries: undefined,
+        },
+    toolbar: {
+        show: false,
+        },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '10px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+      text: '10 Años',
+      align: 'center',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '15px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Solución B', 'Solución A', 'Solución Base'],
+      labels: {
+            style: {
+                colors: [],
+                fontSize: '8px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            style: {
+                colors: [],
+                fontSize: '12px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            if(unidad == 'mc'){
+                return val + "$/m²"
+            }
+
+            if(unidad == 'ft'){
+                return val + "$/ft²"
+            }
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)']
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '8px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_10_print"), options);
+    chart.render();
+
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
+//grafica 15 años
+function cap_op_15_print(id_project,unidad){
+
+$.ajax({
+    type: 'get',
+    url: "/cap_op_15/" + id_project,
+    success: function (res) {
+        var options = {
+      series: [{
+      name: 'CAPEX',
+      data: [res[2][0], res[1][0], res[0][0]],
+
+    },{
+       name: ener_lang + ' OPEX',
+      data: [res[2][1], res[1][1], res[0][1]]
+    },{
+       name: man_lang + ' OPEX',
+      data: [res[2][2], res[1][2], res[0][2]]
+    }],
+      chart: {
+      type: 'bar',
+      height: capex_opex_print_height,
+      width: capex_opex_print_width,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+        },
+        toolbar: {
+        show: false,
+        },
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '10px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+        text: '15 Años',
+      align: 'center',
+      offsetY:25,
+      style: {
+        fontSize: '15px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Solución B', 'Solución A', 'Solución Base'],
+      labels: {
+            style: {
+                colors: [],
+                fontSize: '8px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            style: {
+                colors: [],
+                fontSize: '12px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            if(unidad == 'mc'){
+                return val + "$/m²"
+            }
+
+            if(unidad == 'ft'){
+                return val + "$/ft²"
+            }
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)']
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '8px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_15_print"), options);
+    chart.render();
+
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
 function roi_base_a_print(id_project){
     var dif_1_cost = document.getElementById('dif_cost_base_a').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
@@ -5520,11 +6649,15 @@ if(check_prod > 5 && check_prod <= 10){
 return message;
 }
 
+function mostrar_modal(id){
+    $("#"+id).removeClass("hidden");
+}
 
 
-setTimeout(function() {
-    //con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-}, 2000);
+function ocultar_modal(id){
+    $("#"+id).addClass("hidden");
+}
+
 </script>
 @section('js')
 <?php

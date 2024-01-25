@@ -401,6 +401,53 @@
                 margin: 0px auto;
             }
         }
+
+        .btn_roundf_retro{
+border:1px solid #3182ce;
+background: #3182ce;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
+.btn_roundf_retro:hover {
+border:1px solid #4299e1;
+background: #4299e1;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
+
+.btn_roundf_retro:active {
+border:1px solid #3182ce;
+background: #3182ce;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
@@ -1122,6 +1169,8 @@
 
 <?php  $dif_2_cost=$smasolutions->dif_2_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
  {{-- payback --}}
+ <a id="ir_modal_position_marr" name="ir_modal_position_marr" href=""></a>
+
  <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
       <div class="w-full grid">
@@ -1232,7 +1281,7 @@
 <input type="text" id="ima_ener" name="ima_ener" class="hidden" value="{{ __('index.energia') }}">
 <input type="text" id="ima_man" name="ima_man" class="hidden" value="{{ __('index.mantenimiento') }}">
 <input type="text" id="ima_sol" name="ima_sol" class="hidden" value="{{ __('index.solucion') }}">
-
+@include('modal_marr')
 <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
 
@@ -1241,6 +1290,10 @@
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                 <p class="titulos_style">ROI v/s MARR (solo Energía)</p>
             </div>
+        </div>
+
+        <div class="flex w-full justify-end mt-1">
+            <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr');" class="btn_roundf_retro mr-10" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
         </div>
 
         <div class="flex w-full justify-center gap-x-3">
@@ -4369,7 +4422,7 @@ function chart_prod_base_print() {
                 defaultTick: { padding: 13, enabled: false },
                 customTicks: [5,10,15,20,25],
                 line: {
-                width: 15,
+                width: 8,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
@@ -4398,13 +4451,13 @@ function chart_prod_base_print() {
                     tooltip: '%yValue',
                     marker: {
                     outline: {
-                        width: 10,
+                       width: 8,
                         color: 'currentColor'
                     },
                     fill: 'white',
                     type: 'circle',
                     visible: true,
-                    size: 25
+                    size: 18
                     }
                 },
                 points: [[1, parseFloat(interpolacion)]]
@@ -4467,7 +4520,7 @@ chart.draw(data, options); */
                 defaultTick: { padding: 13, enabled: false },
                 customTicks: [5,10,15,20,25],
                 line: {
-                width: 15,
+                width: 8,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
@@ -4496,13 +4549,13 @@ chart.draw(data, options); */
                     tooltip: '%yValue',
                     marker: {
                     outline: {
-                        width: 10,
+                        width: 8,
                         color: 'currentColor'
                     },
                     fill: 'white',
                     type: 'circle',
                     visible: true,
-                    size: 25
+                    size: 18
                     }
                 },
                 points: [[1, parseFloat(interpolacion)]]
@@ -4564,7 +4617,7 @@ chart.draw(data, options); */
                 defaultTick: { padding: 13, enabled: false },
                 customTicks: [5,10,15,20,25],
                 line: {
-                width: 15,
+                width: 8,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
@@ -4593,13 +4646,13 @@ chart.draw(data, options); */
                     tooltip: '%yValue',
                     marker: {
                     outline: {
-                        width: 10,
+                        width: 8,
                         color: 'currentColor'
                     },
                     fill: 'white',
                     type: 'circle',
                     visible: true,
-                    size: 25
+                    size: 18
                     }
                 },
                 points: [[1, parseFloat(interpolacion)]]
@@ -5522,9 +5575,14 @@ return message;
 
 
 
-setTimeout(function() {
-    //con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-}, 2000);
+function mostrar_modal(id){
+    $("#"+id).removeClass("hidden");
+}
+
+
+function ocultar_modal(id){
+    $("#"+id).addClass("hidden");
+}
 </script>
 @section('js')
 <?php
