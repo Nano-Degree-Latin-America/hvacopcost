@@ -177,6 +177,7 @@
 
         .size_solutions_confort{
             font-size:2rem;
+            color: #2c5282;
         }
 
         .size_solutions_payback{
@@ -973,6 +974,7 @@ cursor: pointer;
 </div>
 {{-- checar estos /divs --}}
   {{-- Nivel de Confort --}}
+   @include('modal_prod_retro')
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
       <div class="w-full grid">
@@ -980,7 +982,9 @@ cursor: pointer;
                   <p class="titulos_style">Perdida de Productividad Laboral</p>
               </div>
       </div>
-
+        <div id="button_prod" name="button_prod" class="flex w-full justify-end mt-1">
+                    <a href="#ir_modal_position_prod" onclick="mostrar_modal('modal_prod_retro');" class="btn_roundf_retro mr-10" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+        </div>
       <div class="grid w-full justify-items-center gap-x-3 my-3">
 
         <div class="flex w-full justify-center">
@@ -993,7 +997,7 @@ cursor: pointer;
             <div class="w-1/3 grid justify-items-center">
                 <div class="w-full flex justify-center">
                     {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                            <p class="size_solutions_confort text-blue-600 font-roboto font-bold">{{ __('index.sis_ext') }}</p>
+                            <p class="size_solutions_confort font-roboto font-bold">{{ __('index.sis_ext') }}</p>
                         {{-- </div> --}}
                     </div>
                 <div class="my-6" style="margin: 0px auto" id="chart_prod_base"></div>
@@ -1007,7 +1011,7 @@ cursor: pointer;
             <div class="w-1/3 grid justify-items-center">
                 <div class="w-full flex justify-center">
                     {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                            <p class="size_solutions_confort text-blue-600 font-roboto font-bold">{{ __('index.solucion') }} A</p>
+                            <p class="size_solutions_confort font-roboto font-bold">{{ __('index.solucion') }} A</p>
                         {{-- </div> --}}
                 </div>
                 <div class="my-6"  id="chart_prod_a" style="margin: 0px auto"></div>
@@ -1021,7 +1025,7 @@ cursor: pointer;
             <div class="w-1/3 grid justify-items-center">
                 <div class="w-full flex justify-center">
                     {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                            <p class="size_solutions_confort text-blue-600 font-roboto font-bold">{{ __('index.solucion') }} B</p>
+                            <p class="size_solutions_confort font-roboto font-bold">{{ __('index.solucion') }} B</p>
                         {{-- </div> --}}
                 </div>
                 <div class="my-6" id="chart_prod_b" style="margin: 0px auto"></div>
@@ -1205,17 +1209,17 @@ cursor: pointer;
                 </div>
 
                 <div class="grid justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_1)}}</p></b>
+                    <b class="size_solutions_confort font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_1)}}</p></b>
 
                 </div>
 
                 <div class="grid justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_2)}}</p></b>
+                    <b class="size_solutions_confort font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_2)}}</p></b>
 
                 </div>
 
                 <div class="grid justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_3)}}</p></b>
+                    <b class="size_solutions_confort font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_3)}}</p></b>
 
                 </div>
             </div>
@@ -1258,15 +1262,15 @@ cursor: pointer;
                         @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
                              <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_2_cost) ?>
                              @if ($pay_back_b >= 0)
-                            <b style="color:#33cc33;" class="size_solutions_payback text-blue-600 font-roboto font-bold">{{number_format($pay_back_b)}}</b>
+                            <b style="color:#33cc33;" class="size_solutions_payback font-roboto font-bold">{{number_format($pay_back_b)}}</b>
                             @endif
 
                              @if ($pay_back_b < 0)
-                            <b style="color:#ea0000;" class="size_solutions_payback text-blue-600 font-roboto font-bold">{{number_format($pay_back_b)}}</b>
+                            <b style="color:#ea0000;" class="size_solutions_payback font-roboto font-bold">{{number_format($pay_back_b)}}</b>
                             @endif
 
                             @else
-                            <b  style="color:#33cc33;" class="size_solutions_payback text-blue-600 font-roboto font-bold">N/A</b>
+                            <b  style="color:#33cc33;" class="size_solutions_payback font-roboto font-bold">N/A</b>
                         @endif
                     </div>
 
@@ -1292,7 +1296,7 @@ cursor: pointer;
             </div>
         </div>
 
-        <div class="flex w-full justify-end mt-1">
+        <div id="button_marrr" name="button_marrr" class="flex w-full justify-end mt-1">
             <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr');" class="btn_roundf_retro mr-10" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
         </div>
 
@@ -1384,7 +1388,7 @@ cursor: pointer;
 </div>
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_4" name="next_page_4" style="width: 80%; height:80px;" class="hidden">
+<div id="next_page_4" name="next_page_4" style="width: 80%; height:40px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
@@ -1466,7 +1470,7 @@ cursor: pointer;
 </div>
 {{-- capex vs opex --}}
 <script type="text/javascript">
-
+    let dollarUSLocale = Intl.NumberFormat('en-US');
     var ener_lang = document.getElementById('ima_ener').value;
     var man_lang = document.getElementById('ima_man').value;
     var ima_sol = document.getElementById('ima_sol').value;
@@ -1558,6 +1562,8 @@ window.matchMedia('print').addListener((event)=>{
 });
 
 function send_print(){
+    $("#button_prod").addClass("hidden");
+    $("#button_marrr").addClass("hidden");
     $("#navbar").addClass("hidden");
     $("#principal_hoja_2").removeClass("hidden");
     $("#principal_hoja_3").removeClass("hidden");
@@ -1737,7 +1743,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
+          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
         style_fontSize: '46px',
         verticalAlign: 'middle'
       }
@@ -1843,7 +1849,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
+          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
         style_fontSize: '46px',
         verticalAlign: 'middle'
       }
@@ -1952,7 +1958,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
+          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
         style_fontSize: '46px',
         verticalAlign: 'middle'
       }
@@ -3494,7 +3500,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
+          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
         style_fontSize: '25px',
         verticalAlign: 'middle'
       }
@@ -3600,7 +3606,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
+          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
         style_fontSize: '25px',
         verticalAlign: 'middle'
       }
@@ -3707,7 +3713,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
+          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
         style_fontSize: '25px',
         verticalAlign: 'middle'
       }

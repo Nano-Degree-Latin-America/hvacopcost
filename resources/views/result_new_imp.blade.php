@@ -57,6 +57,17 @@
         width:75%;
     }
 
+    .loader {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('images/pageLoader.gif') 50% 50% no-repeat rgb(249,249,249);
+    opacity: .8;
+}
+
 
         .font-roboto{
             font-family: 'ABeeZee', sans-serif;
@@ -177,7 +188,9 @@
 
         .size_solutions_confort{
             font-size:2rem;
+            color: #2c5282;
         }
+
 
         .size_solutions_payback{
             font-size:3rem;
@@ -196,6 +209,11 @@
             height:130px;
             width:350px;
          }
+
+         .border_box{
+            border:2px solid;
+         }
+
 @media print{
   @page { margin: 0; }
 
@@ -217,12 +235,12 @@
   }
 
   .img_porject{
-            height:80px;
-            width:180px;
+            height:90px;
+            width:235px;
          }
 
   .titulos_style{
-            font-size:20px;
+            font-size:18px;
             color: white;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -235,17 +253,17 @@
    }
 
    .cant_style{
-            font-size: 1.7rem;
+            font-size: 1.6rem;
             color: #2c5282;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
    }
 
    .unit_style{
-            font-size: 1rem;
+            font-size: 1.3rem;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
-            margin-top:.8rem;
+            margin-top:1.2rem;
    }
 
    .style_grafica_khw2{
@@ -259,14 +277,14 @@
     font-weight: bold;
     font-family: 'ABeeZee', sans-serif;
     margin-right: .15rem;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
    }
 
    .eui_energy_val_style{
-    margin-top: 1.2rem;
+    margin-top: 1.5rem;
     font-weight: bold;
     font-family: 'ABeeZee', sans-serif;
-    font-size: 2.1rem;
+    font-size: 2.2rem;
    }
 
    .energy_star_style_img{
@@ -274,15 +292,15 @@
        margin-right: .5rem;
        margin-top: 1.5rem;
        width:80px;
-       height:50px;
+       height:45px;
    }
 
    .ashrae_style_img{
         margin-left: .5rem;
         margin-right: .5rem;
         margin-top: 1.5rem;
-        width: 80px;
-        height:50px;
+        width:70px;
+       height:45px;
    }
 
    .img_red_ene{
@@ -309,16 +327,17 @@
         }
 
         .puntero_medidas{
-            width: 38px; height:40px;
+            width: 45px; height:40px;
             margin-top:5px;
         }
 
         .size_solutions_confort{
             font-size:1.1rem;
+            color: #2c5282;
         }
 
         .size_solutions_payback{
-            font-size:1.5rem;
+            font-size:1.6rem;
         }
 
 
@@ -330,6 +349,11 @@
         .per_cos{
             font-size: 1.8rem;
         }
+
+        .border_box{
+            border:2.5px solid;
+         }
+
 }
 
 /* md	768px */
@@ -478,8 +502,8 @@ cursor: pointer;
 </div>
 {{-- navbar --}}
 {{-- principal --}}
-<div class="w-full grid rounded-md justify-items-center mt-3">
-    <div  class="ancho border-2 border-blue-500 rounded-md flex">
+<div class="w-full grid rounded-md justify-items-center mt-4">
+    <div  class="ancho border_box border-blue-500 rounded-xl flex">
 
 
         <div class="w-1/4 flex justify-center">
@@ -529,7 +553,7 @@ cursor: pointer;
 </div>
 {{-- Counsumo energia electrica --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                 <p class="titulos_style">Consumo Energía Eléctrica</p>
@@ -667,7 +691,7 @@ cursor: pointer;
 
 {{-- Índice Intensidad del Uso de Energía --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                 <p class="titulos_style">Índice Intensidad del Uso de Energía (Kbtu/ft²)</p>
@@ -739,7 +763,7 @@ cursor: pointer;
 <?php  $results_aux=$results->results($id_project) ?>
 {{-- Índice Intensidad del Uso de Energía --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
 
 
         <div class="w-full grid">
@@ -795,13 +819,13 @@ cursor: pointer;
 </div>
 
 {{-- espacio --}}
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:16px;" >
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:15px;" >
 
 </div>
 
     {{-- principal --}}
     <div id="principal_hoja_2" name="principal_hoja_2" class="hidden w-full grid rounded-md justify-items-center mt-3">
-        <div  class="ancho border-2 border-blue-500 rounded-md flex">
+        <div  class="ancho border_box border-blue-500 rounded-md flex">
 
 
         <div class="w-1/4 flex justify-center">
@@ -849,10 +873,10 @@ cursor: pointer;
         </div>
     </div>
 </div>
-
+<a id="ir_modal_position_prod" name="ir_modal_position_prod" href=""></a>
 {{-- Nivel de Confort --}}
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
       <div class="w-full grid">
               <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                   <p class="titulos_style">{{ __('results.niv_conf') }}</p>
@@ -869,7 +893,7 @@ cursor: pointer;
 
                           <div class="w-1/5 flex justify-start">
                           {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                                  <p class="size_solutions_confort text-blue-600 font-roboto  font-bold text-left">{{ __('index.sis_ext') }}</p>
+                                  <p class="size_solutions_confort  font-roboto  font-bold text-left">{{ __('index.sis_ext') }}</p>
                               {{-- </div> --}}
                           </div>
 
@@ -889,7 +913,7 @@ cursor: pointer;
                       <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
                           <div class="w-1/5 flex justify-start">
 
-                                  <p class="text-blue-600 font-roboto size_solutions_confort font-bold text-left">{{ __('index.solucion') }} A</p>
+                                  <p class=" font-roboto size_solutions_confort font-bold text-left">{{ __('index.solucion') }} A</p>
 
                           </div>
                         <div class="flex rounded-lg" style="background: rgb(255,0,56);
@@ -909,7 +933,7 @@ cursor: pointer;
                   <div class="w-full grid mb-0 gap-y-5">
                       <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
                           <div class="w-1/5 flex justify-start">
-                                  <p class="size_solutions_confort text-blue-600 font-roboto font-bold text-left">{{ __('index.solucion') }} A</p>
+                                  <p class="size_solutions_confort font-roboto font-bold text-left">{{ __('index.solucion') }} A</p>
                           </div>
                         <div class="flex rounded-lg" style="background: rgb(255,0,56);
                         background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
@@ -927,7 +951,7 @@ cursor: pointer;
                   <div class="w-full grid mb-0 gap-y-5">
                       <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
                           <div class="w-1/5 flex justify-start">
-                                  <p class="size_solutions_confort text-blue-600 font-roboto font-bold text-left">{{ __('index.solucion') }} B</p>
+                                  <p class="size_solutions_confort font-roboto font-bold text-left">{{ __('index.solucion') }} B</p>
                           </div>
                         <div class="flex rounded-lg" style="background: rgb(255,0,56);
                         background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
@@ -947,7 +971,7 @@ cursor: pointer;
                       <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
                           <div class="w-1/5 flex justify-start">
 
-                                  <p class="text-blue-600 font-roboto size_solutions_confort font-bold">{{ __('index.solucion') }} B</p>
+                                  <p class= "font-roboto size_solutions_confort font-bold">{{ __('index.solucion') }} B</p>
 
                           </div>
                         <div class="flex rounded-lg" style="background: rgb(255,0,56);
@@ -973,14 +997,17 @@ cursor: pointer;
 </div>
 {{-- checar estos /divs --}}
   {{-- Nivel de Confort --}}
+  @include('modal_prod_retro')
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
       <div class="w-full grid">
               <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                   <p class="titulos_style">Perdida de Productividad Laboral</p>
               </div>
       </div>
-
+        <div id="button_prod" name="button_prod" class="flex w-full justify-end mt-1">
+                    <a href="#ir_modal_position_prod" onclick="mostrar_modal('modal_prod_retro');" class="btn_roundf_retro mr-10" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+        </div>
       <div class="grid w-full justify-items-center gap-x-3 my-3">
 
         <div class="flex w-full justify-center">
@@ -993,10 +1020,10 @@ cursor: pointer;
             <div class="w-1/3 grid justify-items-center">
                 <div class="w-full flex justify-center">
                     {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                            <p class="size_solutions_confort text-blue-600 font-roboto font-bold">{{ __('index.sis_ext') }}</p>
+                            <p class="size_solutions_confort font-roboto font-bold">{{ __('index.sis_ext') }}</p>
                         {{-- </div> --}}
                     </div>
-                <div class="my-6" style="margin: 0px auto" id="chart_prod_base"></div>
+                <div class="my-4" style="margin: 0px auto" id="chart_prod_base"></div>
             </div>
             @if ($result2 !== null)
             <?php  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) ?>
@@ -1007,10 +1034,10 @@ cursor: pointer;
             <div class="w-1/3 grid justify-items-center">
                 <div class="w-full flex justify-center">
                     {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                            <p class="size_solutions_confort text-blue-600 font-roboto font-bold">{{ __('index.solucion') }} A</p>
+                            <p class="size_solutions_confort font-roboto font-bold">{{ __('index.solucion') }} A</p>
                         {{-- </div> --}}
                 </div>
-                <div class="my-6"  id="chart_prod_a" style="margin: 0px auto"></div>
+                <div class="my-4"  id="chart_prod_a" style="margin: 0px auto"></div>
             </div>
             @if ($result3 !== null)
             <?php  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) ?>
@@ -1021,10 +1048,10 @@ cursor: pointer;
             <div class="w-1/3 grid justify-items-center">
                 <div class="w-full flex justify-center">
                     {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                            <p class="size_solutions_confort text-blue-600 font-roboto font-bold">{{ __('index.solucion') }} B</p>
+                            <p class="size_solutions_confort font-roboto font-bold">{{ __('index.solucion') }} B</p>
                         {{-- </div> --}}
                 </div>
-                <div class="my-6" id="chart_prod_b" style="margin: 0px auto"></div>
+                <div class="my-4" id="chart_prod_b" style="margin: 0px auto"></div>
             </div>
         </div>
 
@@ -1038,7 +1065,7 @@ cursor: pointer;
 </div>
 
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
       <div class="w-full grid">
               <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                   <p class="titulos_style">Personas y Costos Asociados a la Perdida de Productividad Laboral</p>
@@ -1115,7 +1142,7 @@ cursor: pointer;
 
 {{-- principal --}}
 <div id="principal_hoja_3" name="principal_hoja_3" class="hidden w-full grid rounded-md justify-items-center mt-3">
-    <div  class="ancho border-2 border-blue-500 rounded-md flex">
+    <div  class="ancho border_box border-blue-500 rounded-md flex">
 
 
     <div class="w-1/4 flex justify-center">
@@ -1171,7 +1198,7 @@ cursor: pointer;
  {{-- payback --}}
  <a id="ir_modal_position_marr" name="ir_modal_position_marr" href=""></a>
  <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
       <div class="w-full grid">
               <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                   <p class="titulos_style">Payback {{ __('results.simple') }} ({{ __('results.ans') }})</p>
@@ -1285,7 +1312,7 @@ cursor: pointer;
 
 <div class="w-full grid rounded-md justify-items-center mt-3">
 
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
 
 
         <div class="w-full grid">
@@ -1294,7 +1321,7 @@ cursor: pointer;
             </div>
         </div>
 
-        <div class="flex w-full justify-end mt-1">
+        <div id="button_marrr" name="button_marrr" class="flex w-full justify-end mt-1">
             <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr');" class="btn_roundf_retro mr-10" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
         </div>
 
@@ -1340,7 +1367,7 @@ cursor: pointer;
 
 {{-- MARR --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
@@ -1386,14 +1413,14 @@ cursor: pointer;
 </div>
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_4" name="next_page_4" style="width: 80%; height:80px;" class="hidden">
+<div id="next_page_4" name="next_page_4" style="width: 80%; height:50px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
 
 {{-- principal --}}
 <div id="principal_hoja_4" name="principal_hoja_4" class="hidden w-full grid rounded-md justify-items-center mt-3">
-    <div  class="ancho border-2 border-blue-500 rounded-md flex">
+    <div  class="ancho border_box border-blue-500 rounded-md flex">
 
 
     <div class="w-1/4 flex justify-center">
@@ -1443,7 +1470,7 @@ cursor: pointer;
 </div>
 {{-- capex vs opex --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
@@ -1453,33 +1480,34 @@ cursor: pointer;
             </div>
         </div>
 
-        <div class="flex w-full justify-center gap-x-3">
+        <div class="flex w-full justify-center gap-x-1">
             <div class="w-1/2 flex justify-center">
-                <div id="chart" name="chart" style="width:600px;"></div>
-                <div class="hidden" id="chart_print" name="chart_print" style="width:370px;"></div>
+                <div id="chart_3" name="chart_3" style="width:600px;"></div>
+                <div class="hidden w-full" id="chart_3_print" name="chart_3_print" ></div>
             </div>
 
             <div class="w-1/2 flex justify-center">
                 <div  id="chart_5" name="chart_5" style="width:600px;"></div>
-                <div class="hidden" id="chart_5_print" name="chart_5_print" style="width:370px;"></div>
+                <div class="hidden w-full" id="chart_5_print" name="chart_5_print" ></div>
             </div>
         </div>
 
-        <div class="flex w-full justify-center gap-x-3">
+        <div class="flex w-full justify-center gap-x-1">
             <div class="w-1/2 flex justify-center">
                 <div id="chart_10" name="chart_10" style="width:600px;"></div>
-                <div class="hidden" id="chart_10_print" name="chart_10_print" style="width:370px;"></div>
+                <div class="hidden w-full" id="chart_10_print" name="chart_10_print" ></div>
             </div>
 
             <div class="w-1/2 flex justify-center">
                 <div  id="chart_15" name="chart_15" style="width:600px;"></div>
-                <div class="hidden" id="chart_15_print" name="chart_15_print" style="width:370px;"></div>
+                <div class="hidden w-full" id="chart_15_print" name="chart_15_print" ></div>
             </div>
         </div>
 
     </div>
 </div>
 {{-- capex vs opex --}}
+{{-- <div class="loader"></div> --}}
 <script type="text/javascript">
 
     var ener_lang = document.getElementById('ima_ener').value;
@@ -1488,18 +1516,20 @@ cursor: pointer;
     google.charts.load('current', {'packages':['gauge']});
     var cons_ene_ele_ancho = 370;
     var cons_ene_ele_alto = 200;
-    var cons_ene_ele_ancho_print = 210;
-    var cons_ene_ele_alto_print = 120;
-    var eui_print_width = 470;
+    var cons_ene_ele_ancho_print = 200;
+    var cons_ene_ele_alto_print = 110;
+    var eui_print_width = 400;
     var eui_print_height = 140;
-    var red_ene_print_height= 200;
-    var red_ene_print_width= 370;
-    var roi_height = 230;
-    var roi_width = 370;
-    var prod_lab_print_width= 230;
-    var prod_lab_print_height= 170;
-    var capex_opex_print_height= 260;
-    var capex_opex_print_width= 370;
+    var red_ene_print_height= 190;
+    var red_ene_print_width= 340;
+    var roi_height = 250;
+    var roi_width = 380;
+    var prod_lab_print_width= 250;
+    var prod_lab_print_height= 180;
+    var capex_opex_print_height= 250;
+    var capex_opex_print_width= 380;
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+
 document.addEventListener('keydown', function(event) {
   if (event.ctrlKey && event.key === 'p') {
     //$("#navbar").removeClass("hidden");
@@ -1573,21 +1603,26 @@ window.matchMedia('print').addListener((event)=>{
 });
 
 function send_print(){
+
+    $("#button_prod").addClass("hidden");
+    $("#button_marrr").addClass("hidden");
     $("#navbar").addClass("hidden");
     $("#principal_hoja_2").removeClass("hidden");
     $("#principal_hoja_3").removeClass("hidden");
     $("#principal_hoja_4").removeClass("hidden");
     $("#next_page_3").removeClass("hidden");
     $("#next_page_4").removeClass("hidden");
-    $("#chart_cons_ene_hvac_ar_base").width(210).height(120);
-    $("#chart_cons_ene_hvac_ar_a").width(210).height(120);
-    $("#chart_cons_ene_hvac_ar_b").width(210).height(120);
+    $("#chart_cons_ene_hvac_ar_base").width(200).height(120);
+    $("#chart_cons_ene_hvac_ar_a").width(200).height(120);
+    $("#chart_cons_ene_hvac_ar_b").width(200).height(120);
     $("#chart_red_ene").width(200).height(120);
     $("#chart_descarb").width(200).height(120);
-    $("#chart_red_ene_print").width(360).height(200);
-    $("#chart_descarb_print").width(360).height(200);
-    $("#chart").width(200).height(120);
-    $("#chart_3").width(200).height(120);
+    $("#chart_red_ene_print").width(350).height(120);
+    $("#chart_descarb_print").width(350).height(120);
+    $("#chart_3_print").width(380).height(200);
+    $("#chart_5_print").width(380).height(200);
+    $("#chart_10_print").width(380).height(200);
+    $("#chart_15_print").width(380).height(200);
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
@@ -1598,10 +1633,14 @@ function send_print(){
     $("#eui_sol_b").addClass("hidden");
     $('#chart_red_ene_print').removeClass("hidden");
     $("#chart_descarb_print").removeClass("hidden");
-    $('#chart_print').removeClass("hidden");
     $("#chart_3_print").removeClass("hidden");
-    $('#chart').addClass("hidden");
-    $("#chart_3").addClass("hidden");
+    $("#chart_5_print").removeClass("hidden");
+    $("#chart_10_print").removeClass("hidden");
+    $("#chart_15_print").removeClass("hidden");
+    $('#chart_3').addClass("hidden");
+    $("#chart_5").addClass("hidden");
+    $('#chart_10').addClass("hidden");
+    $("#chart_15").addClass("hidden");
     $("#espacio_pagina_1").removeClass("hidden");
     $('#eui_sol_base_print').removeClass("hidden");
     $("#eui_sol_a_print").removeClass("hidden");
@@ -1618,7 +1657,7 @@ function send_print(){
     chart_prod_base_print();
     chart_prod_a_print();
     chart_prod_b_print();
-    setTimeout(function() {
+     setTimeout(function() {
         window.print();
 }, 3000);
 
@@ -1645,20 +1684,34 @@ window.onafterprint = function() {
 
 }
 window.onload = function() {
-    con_ene_hvac_ar_Base('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-    con_ene_hvac_ar_a('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-    con_ene_hvac_ar_b('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+
+
+    red_ene_print('{{$dif_1}}','{{$dif_2}}');
+    descarb_print('{{$dif_1}}','{{$dif_2}}');
+    cap_op_3_print('{{$id_project}}','{{$tar_ele->unidad}}');
+    cap_op_5_print('{{$id_project}}','{{$tar_ele->unidad}}');
+    cap_op_10_print('{{$id_project}}','{{$tar_ele->unidad}}');
+    cap_op_15_print('{{$id_project}}','{{$tar_ele->unidad}}');
+    roi_base_a_print('{{$id_project}}');
+    roi_base_b_print('{{$id_project}}');
+    roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
+    roi_base_b_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
+    google.charts.setOnLoadCallback(chart_base_eui);
+    google.charts.setOnLoadCallback(chart_base_eui_print);
+    //no_print
+      con_ene_hvac_ar_Base('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+      con_ene_hvac_ar_a('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+      con_ene_hvac_ar_b('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
       google.charts.load('current', {'packages':['gauge']});
-      google.charts.setOnLoadCallback(chart_base_eui);
+
       google.charts.setOnLoadCallback(chart_a_eui);
       google.charts.setOnLoadCallback(chart_b_eui);
-      google.charts.setOnLoadCallback(chart_base_eui_print);
+
       google.charts.setOnLoadCallback(chart_a_eui_print);
       google.charts.setOnLoadCallback(chart_b_eui_print);
       red_ene('{{$dif_1}}','{{$dif_2}}');
       descarb('{{$dif_1}}','{{$dif_2}}');
-      red_ene_print('{{$dif_1}}','{{$dif_2}}');
-      descarb_print('{{$dif_1}}','{{$dif_2}}');
+
       confort_base('{{$conf_val_base}}');
       confort_a('{{$conf_val_a}}');
       confort_b('{{$conf_val_b}}');
@@ -1669,21 +1722,16 @@ window.onload = function() {
       cap_op_5('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_10('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_15('{{$id_project}}','{{$tar_ele->unidad}}');
-      cap_op_3_print('{{$id_project}}','{{$tar_ele->unidad}}');
-      cap_op_5_print('{{$id_project}}','{{$tar_ele->unidad}}');
-      cap_op_10_print('{{$id_project}}','{{$tar_ele->unidad}}');
-      cap_op_15_print('{{$id_project}}','{{$tar_ele->unidad}}');
+
       /* cap_op_1_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}'); */
       roi_base_a('{{$id_project}}');
       roi_base_b('{{$id_project}}');
-      roi_base_a_print('{{$id_project}}');
-      roi_base_b_print('{{$id_project}}');
+
 
       roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
       roi_base_b_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
-      roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
-      roi_base_b_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
+
     };
 /* window.print() */
 function con_ene_hvac_ar_Base(kwh_yr,porcent_hvac){
@@ -1758,7 +1806,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
+          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
         style_fontSize: '46px',
         verticalAlign: 'middle'
       }
@@ -1864,7 +1912,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
+          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
         style_fontSize: '46px',
         verticalAlign: 'middle'
       }
@@ -1973,7 +2021,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
+          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
         style_fontSize: '46px',
         verticalAlign: 'middle'
       }
@@ -3006,7 +3054,7 @@ $.ajax({
     }
     };
 
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
+    var chart = new ApexCharts(document.querySelector("#chart_3"), options);
     chart.render();
     },
     error: function (responsetext) {
@@ -4041,7 +4089,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
+          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
         style_fontSize: '25px',
         verticalAlign: 'middle'
       }
@@ -4147,7 +4195,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
+          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
         style_fontSize: '25px',
         verticalAlign: 'middle'
       }
@@ -4254,7 +4302,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+result_area.toFixed(2)+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
+          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="15px">Kwh/m²</span>',
         style_fontSize: '25px',
         verticalAlign: 'middle'
       }
@@ -4969,7 +5017,7 @@ function chart_prod_base_print() {
                 defaultTick: { padding: 13, enabled: false },
                 customTicks: [5,10,15,20,25],
                 line: {
-                width: 15,
+                width: 8,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
@@ -5067,7 +5115,7 @@ chart.draw(data, options); */
                 defaultTick: { padding: 13, enabled: false },
                 customTicks: [5,10,15,20,25],
                 line: {
-                width: 15,
+                width: 8,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
@@ -5164,7 +5212,7 @@ chart.draw(data, options); */
                 defaultTick: { padding: 13, enabled: false },
                 customTicks: [5,10,15,20,25],
                 line: {
-                width: 15,
+                width: 8,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
@@ -5518,7 +5566,7 @@ $.ajax({
     dataLabels: {
             enabled: true,
             style: {
-            fontSize: '10px',
+            fontSize: '12px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: 'bold',
         },
@@ -5529,7 +5577,7 @@ $.ajax({
       offsetY:25,
       style: {
         fontWeight:  'bold',
-        fontSize: '15px',
+        fontSize: '17px',
         fontFamily: 'ABeeZee, sans-serif',
         fontWeight: "bold",
         cssClass: 'apexcharts-yaxis-label',
@@ -5541,7 +5589,7 @@ $.ajax({
       labels: {
             style: {
                 colors: [],
-                fontSize: '8px',
+                fontSize: '10px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -5552,7 +5600,7 @@ $.ajax({
         labels: {
             style: {
                 colors: [],
-                fontSize: '12px',
+                fontSize: '14px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -5577,6 +5625,7 @@ $.ajax({
       opacity: 1,
       colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)'],
 
+      height: 30,
     },
     legend: {
       position: 'top',
@@ -5600,7 +5649,7 @@ $.ajax({
     }
     };
 
-    var chart = new ApexCharts(document.querySelector("#chart_print"), options);
+    var chart = new ApexCharts(document.querySelector("#chart_3_print"), options);
     chart.render();
     },
     error: function (responsetext) {
@@ -5649,7 +5698,7 @@ $.ajax({
     dataLabels: {
             enabled: true,
             style: {
-            fontSize: '10px',
+            fontSize: '12px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: 'bold',
         },
@@ -5659,7 +5708,7 @@ $.ajax({
         align: 'center',
         offsetY:25,
         style: {
-        fontSize: '15px',
+        fontSize: '18px',
         fontFamily: 'ABeeZee, sans-serif',
         fontWeight: "bold",
         cssClass: 'apexcharts-yaxis-label',
@@ -5671,7 +5720,7 @@ $.ajax({
       labels: {
             style: {
                 colors: [],
-                fontSize: '8px',
+                fontSize: '10px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -5682,7 +5731,7 @@ $.ajax({
         labels: {
             style: {
                 colors: [],
-                fontSize: '12px',
+                fontSize: '14px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -5760,7 +5809,8 @@ $.ajax({
     }],
       chart: {
       type: 'bar',
-      height: 350,
+      height: capex_opex_print_height,
+      width: capex_opex_print_width,
       stacked: true,
       stackType: 'normal',
       dropShadow: {
@@ -5779,7 +5829,7 @@ $.ajax({
     dataLabels: {
             enabled: true,
             style: {
-            fontSize: '10px',
+            fontSize: '12px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: 'bold',
         },
@@ -5790,7 +5840,7 @@ $.ajax({
       offsetY:25,
       style: {
         fontWeight:  'bold',
-        fontSize: '15px',
+        fontSize: '18px',
         fontFamily: 'ABeeZee, sans-serif',
         fontWeight: "bold",
         cssClass: 'apexcharts-yaxis-label',
@@ -5802,7 +5852,7 @@ $.ajax({
       labels: {
             style: {
                 colors: [],
-                fontSize: '8px',
+                fontSize: '10px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -5813,7 +5863,7 @@ $.ajax({
         labels: {
             style: {
                 colors: [],
-                fontSize: '12px',
+                fontSize: '14px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -5911,7 +5961,7 @@ $.ajax({
     dataLabels: {
             enabled: true,
             style: {
-            fontSize: '10px',
+            fontSize: '12px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: 'bold',
         },
@@ -5921,7 +5971,7 @@ $.ajax({
       align: 'center',
       offsetY:25,
       style: {
-        fontSize: '15px',
+        fontSize: '18px',
         fontFamily: 'ABeeZee, sans-serif',
         fontWeight: "bold",
         cssClass: 'apexcharts-yaxis-label',
@@ -5933,7 +5983,7 @@ $.ajax({
       labels: {
             style: {
                 colors: [],
-                fontSize: '8px',
+                fontSize: '10px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -5944,7 +5994,7 @@ $.ajax({
         labels: {
             style: {
                 colors: [],
-                fontSize: '12px',
+                fontSize: '14px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
