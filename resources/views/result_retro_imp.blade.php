@@ -800,7 +800,7 @@ cursor: pointer;
         <div class="flex w-full justify-center gap-x-3">
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
                 <div class="w-full flex justify-center">
-                    <img src="{{asset('/assets/images/watts.png')}}" class="img_red_ene mx-10 mt-2" alt="Nano Degree">
+                    <img src="{{asset('/assets/images/watts.png')}}" class="img_red_ene mx-10" alt="Nano Degree">
                     <label class="red_energetica_style" for="">Reducción Energética (MWh)</label>
                 </div>
 
@@ -812,7 +812,7 @@ cursor: pointer;
 
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
                 <div class="w-full flex justify-center">
-                    <img src="{{asset('/assets/images/Huella.png')}}" class="img_red_ene mx-10 mt-2" alt="Nano Degree">
+                    <img src="{{asset('/assets/images/Huella.png')}}" class="img_red_ene mx-10" alt="Nano Degree">
                     <label class="red_energetica_style" for="">Descarbonización (Ton CO2)</label>
                 </div>
 
@@ -4183,7 +4183,7 @@ if(result_area < red){
         dataLabels: {
                 enabled: true,
                 style: {
-                fontSize: '12px',
+                fontSize: '10px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: 'bold',
             },
@@ -4195,7 +4195,7 @@ if(result_area < red){
 
           align: 'center',
           style: {
-            fontSize: '25px',
+            fontSize: '16px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: "bold",
             cssClass: 'apexcharts-yaxis-label',
@@ -4226,7 +4226,7 @@ if(result_area < red){
             text: 'Años',
             style: {
                     colors: [],
-                    fontSize: '15px',
+                    fontSize: '10px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4235,7 +4235,7 @@ if(result_area < red){
           labels: {
             style: {
                     colors: [],
-                    fontSize: '12px',
+                    fontSize: '10px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-xaxis-label',
@@ -4246,7 +4246,7 @@ if(result_area < red){
           labels:{
             style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '11px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4258,12 +4258,12 @@ if(result_area < red){
           position: 'top',
           horizontalAlign: 'right',
           offsetX: 40,
-          fontSize: '14px',
+          fontSize: '10px',
           fontFamily: 'ABeeZee, sans-serif',
           fontWeight: 'bold',
           markers: {
-          width: 12,
-          height: 12,
+          width: 8,
+          height: 8,
           strokeWidth: 0,
           strokeColor: '#fff',
           fillColors: ['#ff00ff', '#545454'],
@@ -4328,7 +4328,7 @@ function descarb_print(dif,dif_2){
         dataLabels: {
                 enabled: true,
                 style: {
-                fontSize: '12px',
+                fontSize: '10px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: 'bold',
             },
@@ -4340,7 +4340,7 @@ function descarb_print(dif,dif_2){
 
           align: 'center',
           style: {
-            fontSize: '24px',
+            fontSize: '16px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: "bold",
             cssClass: 'apexcharts-yaxis-label',
@@ -4371,7 +4371,7 @@ function descarb_print(dif,dif_2){
             text: 'Años',
             style: {
                     colors: [],
-                    fontSize: '15px',
+                    fontSize: '10px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4380,7 +4380,7 @@ function descarb_print(dif,dif_2){
           labels: {
             style: {
                     colors: [],
-                    fontSize: '12px',
+                    fontSize: '10px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-xaxis-label',
@@ -4391,7 +4391,7 @@ function descarb_print(dif,dif_2){
           labels:{
             style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '11px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4402,12 +4402,12 @@ function descarb_print(dif,dif_2){
           position: 'top',
           horizontalAlign: 'right',
           offsetX: 40,
-          fontSize: '14px',
+          fontSize: '10px',
           fontFamily: 'ABeeZee, sans-serif',
           fontWeight: 'bold',
           markers: {
-          width: 12,
-          height: 12,
+          width: 8,
+          height: 8,
           strokeWidth: 0,
           strokeColor: '#fff',
           fillColors: ['#ff00ff', '#545454'],

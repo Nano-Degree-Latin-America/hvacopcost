@@ -823,7 +823,7 @@ cursor: pointer;
         <div class="flex w-full justify-center gap-x-3">
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
                 <div class="w-full flex justify-center">
-                    <img src="{{asset('/assets/images/watts.png')}}" class="img_red_ene mx-10 mt-2" alt="Nano Degree">
+                    <img src="{{asset('/assets/images/watts.png')}}" class="img_red_ene mx-10" alt="Nano Degree">
                     <label class="red_energetica_style" for="">Reducción Energética (MWh)</label>
                 </div>
 
@@ -835,7 +835,7 @@ cursor: pointer;
 
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
                 <div class="w-full flex justify-center">
-                    <img src="{{asset('/assets/images/Huella.png')}}" class="img_red_ene mx-10 mt-2" alt="Nano Degree">
+                    <img src="{{asset('/assets/images/Huella.png')}}" class="img_red_ene mx-10" alt="Nano Degree">
                     <label class="red_energetica_style" for="">Descarbonización (Ton CO2)</label>
                 </div>
 
@@ -1551,6 +1551,16 @@ cursor: pointer;
     </div>
 </div>
 {{-- capex vs opex --}}
+{{-- capex vs opex --}}
+{{-- <div class="w-full grid rounded-md justify-items-center mt-3">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
+        <div class="w-full grid">
+            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                <p class="titulos_style">{{ __('results.analisis_ener') }} - {{ __('results.enfriamiento') }}</p>
+            </div>
+        </div>
+    </div>
+</div> --}}
 {{-- <div class="loader"></div> --}}
 <script type="text/javascript">
 
@@ -1564,8 +1574,8 @@ cursor: pointer;
     var cons_ene_ele_alto_print = 110;
     var eui_print_width = 400;
     var eui_print_height = 140;
-    var red_ene_print_height= 190;
-    var red_ene_print_width= 340;
+    var red_ene_print_height= 195;
+    var red_ene_print_width= 350;
     var roi_height = 250;
     var roi_width = 380;
     var prod_lab_print_width= 220;
@@ -1661,8 +1671,8 @@ function send_print(){
     $("#chart_cons_ene_hvac_ar_b").width(200).height(120);
     $("#chart_red_ene").width(200).height(120);
     $("#chart_descarb").width(200).height(120);
-    $("#chart_red_ene_print").width(350).height(120);
-    $("#chart_descarb_print").width(350).height(120);
+    $("#chart_red_ene_print").width(350).height(90);
+    $("#chart_descarb_print").width(350).height(90);
     $("#chart_3_print").width(380).height(200);
     $("#chart_5_print").width(380).height(200);
     $("#chart_10_print").width(380).height(200);
@@ -4777,7 +4787,7 @@ if(result_area < red){
         dataLabels: {
                 enabled: true,
                 style: {
-                fontSize: '12px',
+                fontSize: '10px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: 'bold',
             },
@@ -4789,7 +4799,7 @@ if(result_area < red){
 
           align: 'center',
           style: {
-            fontSize: '25px',
+            fontSize: '16px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: "bold",
             cssClass: 'apexcharts-yaxis-label',
@@ -4820,7 +4830,7 @@ if(result_area < red){
             text: 'Años',
             style: {
                     colors: [],
-                    fontSize: '15px',
+                    fontSize: '10px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4829,7 +4839,7 @@ if(result_area < red){
           labels: {
             style: {
                     colors: [],
-                    fontSize: '12px',
+                    fontSize: '10px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-xaxis-label',
@@ -4840,7 +4850,7 @@ if(result_area < red){
           labels:{
             style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '11px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4852,12 +4862,12 @@ if(result_area < red){
           position: 'top',
           horizontalAlign: 'right',
           offsetX: 40,
-          fontSize: '14px',
+          fontSize: '10px',
           fontFamily: 'ABeeZee, sans-serif',
           fontWeight: 'bold',
           markers: {
-          width: 12,
-          height: 12,
+          width: 8,
+          height: 8,
           strokeWidth: 0,
           strokeColor: '#fff',
           fillColors: ['#ff00ff', '#545454'],
@@ -4922,7 +4932,7 @@ function descarb_print(dif,dif_2){
         dataLabels: {
                 enabled: true,
                 style: {
-                fontSize: '12px',
+                fontSize: '10px',
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: 'bold',
             },
@@ -4934,7 +4944,7 @@ function descarb_print(dif,dif_2){
 
           align: 'center',
           style: {
-            fontSize: '24px',
+            fontSize: '16px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: "bold",
             cssClass: 'apexcharts-yaxis-label',
@@ -4965,7 +4975,7 @@ function descarb_print(dif,dif_2){
             text: 'Años',
             style: {
                     colors: [],
-                    fontSize: '15px',
+                    fontSize: '10px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4974,7 +4984,7 @@ function descarb_print(dif,dif_2){
           labels: {
             style: {
                     colors: [],
-                    fontSize: '12px',
+                    fontSize: '10px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-xaxis-label',
@@ -4985,7 +4995,7 @@ function descarb_print(dif,dif_2){
           labels:{
             style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: '11px',
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4996,12 +5006,12 @@ function descarb_print(dif,dif_2){
           position: 'top',
           horizontalAlign: 'right',
           offsetX: 40,
-          fontSize: '14px',
+          fontSize: '10px',
           fontFamily: 'ABeeZee, sans-serif',
           fontWeight: 'bold',
           markers: {
-          width: 12,
-          height: 12,
+          width: 8,
+          height: 8,
           strokeWidth: 0,
           strokeColor: '#fff',
           fillColors: ['#ff00ff', '#545454'],
