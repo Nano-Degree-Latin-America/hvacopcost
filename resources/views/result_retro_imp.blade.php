@@ -197,6 +197,21 @@
             height:130px;
             width:350px;
          }
+
+         .img_persona{
+            height:85px;
+            width:80px;
+         }
+
+         .img_ahorro{
+            height:100px;
+            width:100px;
+         }
+
+         .padding_space_white{
+            padding-left: 2.85rem;
+            padding-right: 2.85rem;
+         }
 @media print{
   @page { margin: 0; }
 
@@ -331,6 +346,21 @@
         .per_cos{
             font-size: 1.8rem;
         }
+
+        .padding_space_white{
+            padding-left: 1.85rem;
+            padding-right: 1.85rem;
+         }
+
+         .img_persona{
+            height:45px;
+            width:40px;
+         }
+
+         .img_ahorro{
+            height:50px;
+            width:50px;
+         }
 }
 
 /* md	768px */
@@ -988,6 +1018,8 @@ cursor: pointer;
       <div class="grid w-full justify-items-center gap-x-3 my-3">
 
         <div class="flex w-full justify-center">
+            <div  class="padding_space_white flex justify-center">
+            </div>
             @if ($result1 !== null)
             <?php  $prod_lab=$conf_val->prod_lab($id_project,1,1,$sumacap_term_1) ?>
             @endif
@@ -1050,9 +1082,16 @@ cursor: pointer;
       </div>
 
       <div class="flex w-full justify-center mt-3">
+        <div class="w-1/8 flex grid justify-items-center">
+            <div>
+                <img src="{{asset('assets/images/persona.png')}}" class="img_persona mx-2">
+            </div>
+
+            <div>
+                <img src="{{asset('assets/images/ahorro.png')}}" class="img_ahorro mx-2">
+            </div>
+        </div>
             @if ($result1 !== null)
-
-
             <?php  $personas=$conf_val->personas($id_project,$conf_val_base) ?>
             <?php  $costo_base=$conf_val->costo($personas,$id_project) ?>
             @endif
@@ -4450,20 +4489,20 @@ function chart_prod_base_print() {
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 25">'+message+'</span>',
-                    style: { fontSize: 38 }
+                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 20">'+message+'</span>',
+                    style: { fontSize: 30 }
                 },
                 defaultPoint: {
                     tooltip: '%yValue',
                     marker: {
                     outline: {
-                       width: 8,
+                       width: 7,
                         color: 'currentColor'
                     },
                     fill: 'white',
                     type: 'circle',
                     visible: true,
-                    size: 18
+                    size: 15
                     }
                 },
                 points: [[1, parseFloat(interpolacion)]]
@@ -4548,20 +4587,20 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 25">'+message+'</span>',
-                    style: { fontSize: 38 }
+                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 20">'+message+'</span>',
+                    style: { fontSize: 30 }
                 },
                 defaultPoint: {
                     tooltip: '%yValue',
                     marker: {
                     outline: {
-                        width: 8,
+                        width: 7,
                         color: 'currentColor'
                     },
                     fill: 'white',
                     type: 'circle',
                     visible: true,
-                    size: 18
+                    size: 15
                     }
                 },
                 points: [[1, parseFloat(interpolacion)]]
@@ -4645,20 +4684,20 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 25">'+message+'</span>',
-                    style: { fontSize: 38 }
+                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 20">'+message+'</span>',
+                    style: { fontSize: 30  }
                 },
                 defaultPoint: {
                     tooltip: '%yValue',
                     marker: {
                     outline: {
-                        width: 8,
+                        width: 7,
                         color: 'currentColor'
                     },
                     fill: 'white',
                     type: 'circle',
                     visible: true,
-                    size: 18
+                    size: 15
                     }
                 },
                 points: [[1, parseFloat(interpolacion)]]
