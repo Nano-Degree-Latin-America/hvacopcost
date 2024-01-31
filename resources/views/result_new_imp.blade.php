@@ -865,7 +865,7 @@ cursor: pointer;
 </div>
 
 {{-- espacio --}}
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:15px;" >
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:25px;" >
 
 </div>
 
@@ -1625,7 +1625,7 @@ cursor: pointer;
 </div>
 </div>
 {{-- res_ana_ener --}}
-<div class="w-full grid rounded-md justify-items-center margin_top_solus">
+<div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
