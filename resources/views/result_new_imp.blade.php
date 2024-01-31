@@ -229,6 +229,14 @@
             padding-right: 2.85rem;
          }
 
+         .tam_info_sols{
+            font-size: 16px;
+         }
+
+         .margin_top_solus{
+            margin-top: 2.5rem;
+         }
+
 @media print{
   @page { margin: 0; }
 
@@ -275,10 +283,10 @@
    }
 
    .unit_style{
-            font-size: 1.3rem;
+            font-size: .8rem;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
-            margin-top:1.2rem;
+            margin-top:.8rem;
    }
 
    .style_grafica_khw2{
@@ -382,6 +390,14 @@
          .img_ahorro{
             height:50px;
             width:50px;
+         }
+
+         .tam_info_sols{
+            font-size: 8px;
+         }
+
+         .margin_top_solus{
+            margin-top: .5rem;
          }
 
 }
@@ -1551,16 +1567,857 @@ cursor: pointer;
     </div>
 </div>
 {{-- capex vs opex --}}
-{{-- capex vs opex --}}
-{{-- <div class="w-full grid rounded-md justify-items-center mt-3">
+
+{{-- espacio hoja pagina 3 --}}
+<div id="next_page_5" name="next_page_5" style="width: 80%; height:380px;" class="hidden">
+
+</div>
+{{-- espacio hoja pagina 3 --}}
+
+{{-- principal --}}
+<div id="principal_hoja_5" name="principal_hoja_5" class="hidden w-full grid rounded-md justify-items-center mt-3">
+    <div  class="ancho border_box border-blue-500 rounded-md flex">
+
+
+    <div class="w-1/4 flex justify-center">
+        <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+    </div>
+
+    <div class="w-1/3 grid justify-left ml-2">
+        <div class="w-full flex ">
+            <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name}}</p>
+        </div>
+        <div class="w-full flex">
+            <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
+        </div>
+        <div class="w-full flex">
+            <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project_res">{{$tar_ele->tipo_edi}}</p>
+        </div>
+        <div class="w-full flex">
+            <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project_res">{{number_format($tar_ele->area)}}
+                @if ($tar_ele->unidad == 'mc')
+                m²
+            @endif
+
+            @if ($tar_ele->unidad == 'ft')
+            ft²
+            @endif
+            </p>
+        </div>
+    </div>
+
+    <div class="w-1/3 grid justify-left">
+        <div class="w-full">
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">{{$tar_ele->region}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">{{$tar_ele->ciudad}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project_res">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{{-- res_ana_ener --}}
+<div class="w-full grid rounded-md justify-items-center margin_top_solus">
     <div class="ancho border_box border-blue-500 rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                 <p class="titulos_style">{{ __('results.analisis_ener') }} - {{ __('results.enfriamiento') }}</p>
             </div>
+            <?php  $solutions=$solutions->solutions($id_project) ?>
+            <div class="w-90 grid  mt-10 mx-2">
+                <div style="background-color:#1B17BB;" class="w-full flex justify-center rounded-md">
+                    <p class="titulos_style">Solución Base</p>
+                </div>
+                <div style="" class="w-full flex">
+                    @foreach ($solutions as $solution)
+                    @if ($solution->num_enf == 1)
+                        {{-- @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
+                            <div class="w-1/2 grid rounded-md mx-2 my-2 border-2" style="border-color:#1B17BB;">
+                                {{-- cap_term --}}
+                                <div class="flex w-full mx-1">
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.capacidad termica') }}</p>
+                                    </div>
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex w-full mx-1">
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="text-blue-900 font-bold font-roboto tam_info_sols">{{$solution->eficencia_ene}}</p>
+                                    </div>
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols">{{$solution->eficencia_ene_cant}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex w-full mx-1">
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="text-blue-900 font-bold font-roboto tam_info_sols">{{ __('results.equipos_hvac') }}</p>
+                                    </div>
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols">
+                                            @if ($solution->unidad_hvac == 1)
+                                            Paquetes (RTU)
+                                            @endif
+                                            @if ($solution->unidad_hvac == 2)
+                                            Split DX
+                                            @endif
+                                            @if ($solution->unidad_hvac == 3)
+                                            VRF No Ductados
+                                            @endif
+                                            @if ($solution->unidad_hvac == 4)
+                                            VRF Ductados
+                                            @endif
+                                            @if ($solution->unidad_hvac == 5)
+                                            PTAC/VTAC
+                                            @endif
+                                            @if ($solution->unidad_hvac == 6)
+                                            WSHP
+                                            @endif
+                                            @if ($solution->unidad_hvac == 7)
+                                            Minisplit Inverter
+                                            @endif
+                                            @if ($solution->unidad_hvac == 8)
+                                            Chiller - Aire - Scroll Constante
+                                            @endif
+                                            @if ($solution->unidad_hvac == 9)
+                                            Chiller - Aire - Scroll Variable
+                                            @endif
+                                            @if ($solution->unidad_hvac == 10)
+                                            Chiller - Aire - Tornillo 4 Etapas
+                                            @endif
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex w-full mx-1">
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.tipo equipo') }}</p>
+                                    </div>
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">
+                                            @if ($solution->tipo_equipo == 'basico')
+                                            Básico
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'c_economizador')
+                                            c/ Economizador
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'w_heat_rec')
+                                            c/ Heat Recovery
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'manejadora')
+                                            Manejadora
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil')
+                                            Fancoil M/HSP
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil_lsp_spt')
+                                            Fancoil LSP
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'unid_pred')
+                                            Unidad de Presición
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'ca_pi_te')
+                                            Pared - Piso - Techo
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                            Fancoil (LSP)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'ca')
+                                            Cassette
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'man')
+                                            Manejadoras
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                            Fancoils (M/HSP)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'man_doa')
+                                            Manejadoras c/DOA
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fan_hsp_doa')
+                                            Fancoils (M/HSP) c/ DOA
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'man_doa_hr')
+                                            Manejadoras DOA + HR
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fan_hsp_doa_hr')
+                                            Fancoils (M/HSP) DOA + HR
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'vert')
+                                            Vertical
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'horz')
+                                            Horizontal
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                            Torre  Circuito Cerrado
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                            Torre Circuito Abierto
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'pa_pi_te')
+                                            Pared - Piso - Techo
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'duc_con')
+                                            Ductado (Concealed)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'cass')
+                                            Cassette
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'man_scholl_const')
+                                            Manejadora
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fan_hsp_scholl_const')
+                                            Fan Coils L/M HSP
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'man_scholl_var')
+                                            Manejadora
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fan_hsp_scholl_var')
+                                            Fan Coils L/M HSP
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'chill_bean_scholl_var')
+                                            Chilled Beans
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'man_scholl_tor_four_eta')
+                                            Manejadora
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fan_hsp_tor_four_eta')
+                                            Fan Coils L/M HSP
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'chill_bean_tor_four_eta')
+                                            Chilled Beans
+                                            @endif
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex w-full mx-1">
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.tipo diseño') }}</p>
+                                    </div>
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->name_disenio}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex w-full mx-1">
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.tipo control') }}</p>
+                                    </div>
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->name_t_control}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex w-full mx-1">
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.dr') }}</p>
+                                    </div>
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->dr_name}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex w-full mx-1">
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.mantenimiento') }}</p>
+                                    </div>
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->mantenimiento}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex w-full mx-1">
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.inversion inicial') }} (CAPEX)</p>
+                                    </div>
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">${{number_format($solution->val_aprox)}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex w-full mx-1">
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('results.costo anual') }}</p>
+                                    </div>
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">${{number_format($solution->costo_mantenimiento)}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                    </div>
+                </div>
+
+                {{-- Solucion A --}}
+                <div class="w-90 grid  margin_top_solus mx-2">
+                    <div style="background-color:#1B17BB;" class="w-full flex justify-center rounded-md">
+                        <p class="titulos_style">Solución A</p>
+                    </div>
+                    <div style="" class="w-full flex">
+                        @foreach ($solutions as $solution)
+                        @if ($solution->num_enf == 2)
+                            {{-- @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
+                                <div class="w-1/2 grid rounded-md mx-2 my-2 border-2" style="border-color:#1B17BB;">
+                                    {{-- cap_term --}}
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.capacidad termica') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols">{{$solution->eficencia_ene}}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols">{{$solution->eficencia_ene_cant}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols">{{ __('results.equipos_hvac') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols">
+                                                @if ($solution->unidad_hvac == 1)
+                                                Paquetes (RTU)
+                                                @endif
+                                                @if ($solution->unidad_hvac == 2)
+                                                Split DX
+                                                @endif
+                                                @if ($solution->unidad_hvac == 3)
+                                                VRF No Ductados
+                                                @endif
+                                                @if ($solution->unidad_hvac == 4)
+                                                VRF Ductados
+                                                @endif
+                                                @if ($solution->unidad_hvac == 5)
+                                                PTAC/VTAC
+                                                @endif
+                                                @if ($solution->unidad_hvac == 6)
+                                                WSHP
+                                                @endif
+                                                @if ($solution->unidad_hvac == 7)
+                                                Minisplit Inverter
+                                                @endif
+                                                @if ($solution->unidad_hvac == 8)
+                                                Chiller - Aire - Scroll Constante
+                                                @endif
+                                                @if ($solution->unidad_hvac == 9)
+                                                Chiller - Aire - Scroll Variable
+                                                @endif
+                                                @if ($solution->unidad_hvac == 10)
+                                                Chiller - Aire - Tornillo 4 Etapas
+                                                @endif
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.tipo equipo') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">
+                                                @if ($solution->tipo_equipo == 'basico')
+                                                Básico
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'c_economizador')
+                                                c/ Economizador
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'w_heat_rec')
+                                                c/ Heat Recovery
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'manejadora')
+                                                Manejadora
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fancoil')
+                                                Fancoil M/HSP
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fancoil_lsp_spt')
+                                                Fancoil LSP
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'unid_pred')
+                                                Unidad de Presición
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                Pared - Piso - Techo
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                Fancoil (LSP)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'ca')
+                                                Cassette
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'man')
+                                                Manejadoras
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                Fancoils (M/HSP)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'man_doa')
+                                                Manejadoras c/DOA
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fan_hsp_doa')
+                                                Fancoils (M/HSP) c/ DOA
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'man_doa_hr')
+                                                Manejadoras DOA + HR
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fan_hsp_doa_hr')
+                                                Fancoils (M/HSP) DOA + HR
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'vert')
+                                                Vertical
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'horz')
+                                                Horizontal
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                Torre  Circuito Cerrado
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                Torre Circuito Abierto
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                Pared - Piso - Techo
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'duc_con')
+                                                Ductado (Concealed)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'cass')
+                                                Cassette
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'man_scholl_const')
+                                                Manejadora
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fan_hsp_scholl_const')
+                                                Fan Coils L/M HSP
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'man_scholl_var')
+                                                Manejadora
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fan_hsp_scholl_var')
+                                                Fan Coils L/M HSP
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'chill_bean_scholl_var')
+                                                Chilled Beans
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'man_scholl_tor_four_eta')
+                                                Manejadora
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fan_hsp_tor_four_eta')
+                                                Fan Coils L/M HSP
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'chill_bean_tor_four_eta')
+                                                Chilled Beans
+                                                @endif
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.tipo diseño') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->name_disenio}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.tipo control') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->name_t_control}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.dr') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->dr_name}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.mantenimiento') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->mantenimiento}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.inversion inicial') }} (CAPEX)</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">${{number_format($solution->val_aprox)}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('results.costo anual') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">${{number_format($solution->costo_mantenimiento)}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                        </div>
+                    </div>
+
+                    {{-- Solucion B --}}
+                <div class="w-90 grid  margin_top_solus mx-2">
+                    <div style="background-color:#1B17BB;" class="w-full flex justify-center rounded-md">
+                        <p class="titulos_style">Solución B</p>
+                    </div>
+                    <div style="" class="w-full flex">
+                        @foreach ($solutions as $solution)
+                        @if ($solution->num_enf == 3)
+                            {{-- @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
+                                <div class="w-1/2 grid rounded-md mx-2 my-2 border-2" style="border-color:#1B17BB;">
+                                    {{-- cap_term --}}
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.capacidad termica') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->capacidad_tot}}  {{$solution->unid_med}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols">{{$solution->eficencia_ene}}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols">{{$solution->eficencia_ene_cant}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols">{{ __('results.equipos_hvac') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols">
+                                                @if ($solution->unidad_hvac == 1)
+                                                Paquetes (RTU)
+                                                @endif
+                                                @if ($solution->unidad_hvac == 2)
+                                                Split DX
+                                                @endif
+                                                @if ($solution->unidad_hvac == 3)
+                                                VRF No Ductados
+                                                @endif
+                                                @if ($solution->unidad_hvac == 4)
+                                                VRF Ductados
+                                                @endif
+                                                @if ($solution->unidad_hvac == 5)
+                                                PTAC/VTAC
+                                                @endif
+                                                @if ($solution->unidad_hvac == 6)
+                                                WSHP
+                                                @endif
+                                                @if ($solution->unidad_hvac == 7)
+                                                Minisplit Inverter
+                                                @endif
+                                                @if ($solution->unidad_hvac == 8)
+                                                Chiller - Aire - Scroll Constante
+                                                @endif
+                                                @if ($solution->unidad_hvac == 9)
+                                                Chiller - Aire - Scroll Variable
+                                                @endif
+                                                @if ($solution->unidad_hvac == 10)
+                                                Chiller - Aire - Tornillo 4 Etapas
+                                                @endif
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.tipo equipo') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">
+                                                @if ($solution->tipo_equipo == 'basico')
+                                                Básico
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'c_economizador')
+                                                c/ Economizador
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'w_heat_rec')
+                                                c/ Heat Recovery
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'manejadora')
+                                                Manejadora
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fancoil')
+                                                Fancoil M/HSP
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fancoil_lsp_spt')
+                                                Fancoil LSP
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'unid_pred')
+                                                Unidad de Presición
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'ca_pi_te')
+                                                Pared - Piso - Techo
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fancoil_lsp')
+                                                Fancoil (LSP)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'ca')
+                                                Cassette
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'man')
+                                                Manejadoras
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fancoil_hsp')
+                                                Fancoils (M/HSP)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'man_doa')
+                                                Manejadoras c/DOA
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fan_hsp_doa')
+                                                Fancoils (M/HSP) c/ DOA
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'man_doa_hr')
+                                                Manejadoras DOA + HR
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fan_hsp_doa_hr')
+                                                Fancoils (M/HSP) DOA + HR
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'vert')
+                                                Vertical
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'horz')
+                                                Horizontal
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'agu_cir_cer')
+                                                Torre  Circuito Cerrado
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'agu_cir_abr')
+                                                Torre Circuito Abierto
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'pa_pi_te')
+                                                Pared - Piso - Techo
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'duc_con')
+                                                Ductado (Concealed)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'cass')
+                                                Cassette
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'man_scholl_const')
+                                                Manejadora
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fan_hsp_scholl_const')
+                                                Fan Coils L/M HSP
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'man_scholl_var')
+                                                Manejadora
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fan_hsp_scholl_var')
+                                                Fan Coils L/M HSP
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'chill_bean_scholl_var')
+                                                Chilled Beans
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'man_scholl_tor_four_eta')
+                                                Manejadora
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fan_hsp_tor_four_eta')
+                                                Fan Coils L/M HSP
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'chill_bean_tor_four_eta')
+                                                Chilled Beans
+                                                @endif
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.tipo diseño') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->name_disenio}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.tipo control') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->name_t_control}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.dr') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->dr_name}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.mantenimiento') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->mantenimiento}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.inversion inicial') }} (CAPEX)</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">${{number_format($solution->val_aprox)}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('results.costo anual') }}</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">${{number_format($solution->costo_mantenimiento)}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                        </div>
+                    </div>
+            </div>
         </div>
     </div>
-</div> --}}
+</div>
+{{-- res_ana_ener --}}
 {{-- <div class="loader"></div> --}}
 <script type="text/javascript">
 
@@ -1664,8 +2521,10 @@ function send_print(){
     $("#principal_hoja_2").removeClass("hidden");
     $("#principal_hoja_3").removeClass("hidden");
     $("#principal_hoja_4").removeClass("hidden");
+    $("#principal_hoja_5").removeClass("hidden");
     $("#next_page_3").removeClass("hidden");
     $("#next_page_4").removeClass("hidden");
+    $("#next_page_5").removeClass("hidden");
     $("#chart_cons_ene_hvac_ar_base").width(200).height(120);
     $("#chart_cons_ene_hvac_ar_a").width(200).height(120);
     $("#chart_cons_ene_hvac_ar_b").width(200).height(120);

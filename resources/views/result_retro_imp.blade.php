@@ -258,7 +258,7 @@
    }
 
    .unit_style{
-            font-size: 1rem;
+            font-size: .8rem;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
             margin-top:.8rem;
@@ -1508,6 +1508,7 @@ cursor: pointer;
     </div>
 </div>
 {{-- capex vs opex --}}
+
 <script type="text/javascript">
     let dollarUSLocale = Intl.NumberFormat('en-US');
     var ener_lang = document.getElementById('ima_ener').value;
@@ -1543,7 +1544,7 @@ document.addEventListener('keydown', function(event) {
     $("#chart_red_ene").width(200).height(120);
     $("#chart_descarb").width(200).height(120);
     $("#chart").width(200).height(120);
-    $("#chart_3").width(200).height(120);
+    $("#art_3").width(200).height(120);
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
