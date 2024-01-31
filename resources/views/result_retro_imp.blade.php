@@ -1101,7 +1101,12 @@ cursor: pointer;
             @endif
             <div class="w-1/3 grid justify-items-center gap-y-2">
                 <div class="flex w-full justify-center">
+                    @if ($personas > 0)
+                    <p style="color:#ea0000;" class="cant_style">{{$personas}}</p>
+                    @endif
+                    @if ($personas <= 0)
                     <p class="cant_style">{{$personas}}</p>
+                    @endif
                 </div>
 
                 <div class="flex w-full justify-center">
@@ -1119,7 +1124,12 @@ cursor: pointer;
             @endif
             <div class="w-1/3 grid justify-items-center gap-y-2">
                 <div class="flex w-full justify-center">
+                    @if ($personas_a > 0)
+                    <p style="color:#ea0000;" class="cant_style">{{$personas_a}}</p>
+                    @endif
+                    @if ($personas_a <= 0)
                     <p class="cant_style">{{$personas_a}}</p>
+                    @endif
                 </div>
 
                 <div class="flex w-full justify-center">
@@ -1138,7 +1148,14 @@ cursor: pointer;
 
             <div class="w-1/3 grid justify-items-center gap-y-2">
                 <div class="flex w-full justify-center">
-                    <p class="cant_style">{{$personas_b}}</p>
+                    <div class="flex w-full justify-center">
+                        @if ($personas_b > 0)
+                        <p style="color:#ea0000;" class="cant_style">{{$personas_b}}</p>
+                        @endif
+                        @if ($personas_b <= 0)
+                        <p class="cant_style">{{$personas_b}}</p>
+                        @endif
+                    </div>
                 </div>
 
                 <div class="flex w-full justify-center">
@@ -4818,8 +4835,8 @@ $.ajax({
       fontFamily: 'ABeeZee, sans-serif',
       fontWeight: 'bold',
       markers: {
-      width: 12,
-      height: 12,
+      width: 8,
+      height: 8,
       strokeWidth: 0,
       strokeColor: '#fff',
       fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C'],
@@ -4947,8 +4964,8 @@ function cap_op_3_retro_print(id_project,unidad){
           fontFamily: 'ABeeZee, sans-serif',
           fontWeight: 'bold',
           markers: {
-          width: 12,
-          height: 12,
+          width: 8,
+          height: 8,
           strokeWidth: 0,
           strokeColor: '#fff',
           fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#7CDF7C'],
