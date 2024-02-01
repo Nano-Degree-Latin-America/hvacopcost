@@ -220,8 +220,8 @@
          }
 
          .img_ahorro{
-            height:100px;
-            width:100px;
+            height:130px;
+            width:130px;
          }
 
          .padding_space_white{
@@ -473,9 +473,9 @@
         }
 
         .btn_roundf_retro{
-border:1px solid #3182ce;
-background: #3182ce;
-color:#ffff;
+border:1px solid #ffff;
+background: #ffff;
+color:#3182ce;
 border-radius: 50%;
 width: 30px;
 height: 30px;
@@ -504,9 +504,9 @@ cursor: pointer;
 }
 
 .btn_roundf_retro:active {
-border:1px solid #3182ce;
-background: #3182ce;
-color:#ffff;
+border:1px solid #ffff;
+background: #ffff;
+color:#4299e1;
 border-radius: 50%;
 width: 30px;
 height: 30px;
@@ -1043,17 +1043,23 @@ cursor: pointer;
 </div>
 {{-- checar estos /divs --}}
   {{-- Nivel de Confort --}}
-  @include('modal_prod_retro')
+  @include('modal_prod')
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
-      <div class="w-full grid">
+      <div class="w-full flex">
               <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                  <p class="titulos_style">Perdida de Productividad Laboral</p>
+                <div class="flex w-full justify-center mt-1">
+                    <p class="titulos_style">Perdida de Productividad Laboral</p>
+                </div>
+
+                  <div id="button_prod" name="button_prod" class="flex justify-end mt-2">
+                    <a href="#ir_modal_position_prod" onclick="mostrar_modal('modal_prod');" class="btn_roundf_retro mr-5" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                  </div>
               </div>
+
+
       </div>
-        <div id="button_prod" name="button_prod" class="flex w-full justify-end mt-1">
-                    <a href="#ir_modal_position_prod" onclick="mostrar_modal('modal_prod_retro');" class="btn_roundf_retro mr-10" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
-        </div>
+
       <div class="grid w-full justify-items-center gap-x-3 my-3">
 
         <div class="flex w-full justify-center">
@@ -1113,6 +1119,63 @@ cursor: pointer;
     </div>
 </div>
 
+<?php  $prim_buil_check=$conf_val->prim_buil_check($id_project) ?>
+
+ @if ($prim_buil_check->id_cat_edifico == 3 || $prim_buil_check->id_cat_edifico == 7 || $prim_buil_check->id_cat_edifico == 8 || $prim_buil_check->id_cat_edifico == 9 || $prim_buil_check->id_cat_edifico == 10 || $prim_buil_check->id_cat_edifico == 11)
+                    <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
+                        <div class="ancho border_box border-blue-500 rounded-md grid">
+                          <div class="w-full flex">
+                                  <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                                    <div class="flex w-full justify-center mt-1">
+                                        <p class="titulos_style">{{ __('results.cu_sho_Be') }}</p>
+                                    </div>
+                                  </div>
+
+
+                          </div>
+
+                        <div class="flex w-full justify-center">
+                            <div  class="padding_space_white flex justify-center">
+                            </div>
+                            @if ($result1 !== null)
+                            <?php  $prod_lab=$conf_val->prod_lab($id_project,1,1,$sumacap_term_1) ?>
+                            @endif
+                            @if ($result1 === null)
+                            <?php  $prod_lab=0; ?>
+                            @endif
+                            <div class="w-1/3 grid justify-items-center">
+                                <div id="chart_cu_sho_Be_base"></div>
+                                 <div class="hidden" id="chart_cu_sho_Be_base_print" name="chart_cu_sho_Be_base_print"></div>
+                            </div>
+                            @if ($result1 !== null)
+                            <?php  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) ?>
+                            @endif
+                            @if ($result1 === null)
+                            <?php  $prod_lab_a=0; ?>
+                            @endif
+                            <div class="w-1/3 grid justify-items-center">
+                                <div id="chart_cu_sho_Be_a"></div>
+                                <div class="hidden" id="chart_cu_sho_Be_a_print" name="chart_cu_sho_Be_a_print"></div>
+                            </div>
+                            @if ($result1 !== null)
+                            <?php  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) ?>
+                            @endif
+                            @if ($result1 === null)
+                            <?php  $prod_lab_b=0; ?>
+                            @endif
+                            <div class="w-1/3 grid justify-items-center">
+                                <div id="chart_cu_sho_Be_b"></div>
+                                <div class="hidden" id="chart_cu_sho_Be_b_print" name="chart_cu_sho_Be_b_print"></div>
+                            </div>
+                        </div>
+
+    {{-- <div id="check_gauge" name="check_gauge"></div> --}}
+{{--                     <img style="width: 300px;height:200px; margin-left:50px;" src="https://quickchart.io/chart?v=2.9.4&c={ type: 'gauge', data: { datasets: [ { value: 3, data: [1.5, 4.5, 6], backgroundColor: ['red','yellow','green'], borderWidth: 2, }, ], }, options: { valueLabel: { display: false, }, }, }">
+--}}                </div>
+</div>
+@endif
+
+
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
       <div class="w-full grid">
@@ -1144,7 +1207,7 @@ cursor: pointer;
             <?php  $personas=0; ?>
             @endif
             <div class="w-1/3 grid justify-items-center gap-y-2">
-                <div class="flex w-full justify-center">
+                <div class="flex w-full justify-center mt-5">
 
 
                     @if ($personas > 0)
@@ -1170,7 +1233,7 @@ cursor: pointer;
             <?php  $costo_a=0; ?>
             @endif
             <div class="w-1/3 grid justify-items-center gap-y-2">
-                <div class="flex w-full justify-center">
+                <div class="flex w-full justify-center mt-5">
                     @if ($personas_a > 0)
                     <p style="color:#ea0000;" class="cant_style">{{$personas_a}}</p>
                     @endif
@@ -1194,7 +1257,7 @@ cursor: pointer;
             @endif
 
             <div class="w-1/3 grid justify-items-center gap-y-2">
-                <div class="flex w-full justify-center">
+                <div class="flex w-full justify-center mt-5">
                     @if ($personas_b > 0)
                     <p style="color:#ea0000;" class="cant_style">{{$personas_b}}</p>
                     @endif
@@ -1214,6 +1277,9 @@ cursor: pointer;
 
 {{-- espacio hoja pagina 3 --}}
 <div id="next_page_3" name="next_page_3" style="width: 80%; height:250px;" class="hidden">
+
+</div>
+<div id="next_page_3_cushobe" name="next_page_3_cushobe" style="width: 80%; height:95px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
@@ -1282,60 +1348,60 @@ cursor: pointer;
                   <p class="titulos_style">Payback {{ __('results.simple') }} ({{ __('results.ans') }})</p>
               </div>
 
-              <div class="flex w-full justify-center gap-x-3  mt-5">
-                <div class="grid justify-center w-1/4">
+              <div class="flex w-full justify-start gap-x-3  mt-5">
+                <div class="grid justify-start w-1/4">
                    {{-- espacio --}}
                 </div>
 
-                <div class="grid justify-center w-1/5">
+                <div class="grid justify-start w-1/5">
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Existente</b>
 
                 </div>
 
-                <div class="grid justify-center w-1/5">
+                <div class="grid justify-start w-1/5">
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Solución A</b>
 
                 </div>
 
-                <div class="grid justify-center w-1/5">
+                <div class="grid justify-start w-1/5">
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Solución B</b>
 
                 </div>
             </div>
 
-            <div class="flex w-full justify-center gap-x-3">
-                <div class="grid justify-center w-1/4">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Inversión</b>
+            <div class="flex w-full justify-start gap-x-3">
+                <div class="grid justify-start w-1/4 mt-5">
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold ml-10">Inversión</b>
                 </div>
 
-                <div class="grid justify-center w-1/5">
+                <div class="grid justify-start w-1/5">
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_1)}}</p></b>
 
                 </div>
 
-                <div class="grid justify-center w-1/5">
+                <div class="grid justify-start w-1/5">
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_2)}}</p></b>
 
                 </div>
 
-                <div class="grid justify-center w-1/5">
+                <div class="grid justify-start w-1/5">
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_3)}}</p></b>
 
                 </div>
             </div>
 
-            <div class="flex w-full justify-center gap-x-3 mb-3">
-                <div class="grid justify-center w-1/4">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Payback Simple</b>
+            <div class="flex w-full justify-start gap-x-3 mb-3">
+                <div class="grid justify-start w-1/4 mt-5">
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold ml-10">Payback Simple</b>
                 </div>
 
-                <div class="grid justify-center w-1/5">
+                <div class="grid justify-start w-1/5">
 
                         <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style"></p></b>
 
                 </div>
 
-                <div  class="grid justify-center w-1/5  my-1">
+                <div  class="grid justify-start w-1/5  my-1">
                     <div  style="border-style: solid; border-width: 8px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
 {{--                         <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">7</p></b>
  --}}                        @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
@@ -1356,7 +1422,7 @@ cursor: pointer;
 
                 </div>
 
-                <div  class="grid justify-center w-1/5  my-1">
+                <div  class="grid justify-start w-1/5  my-1">
                     <div  style="border-style: solid; border-width: 8px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
 
                         @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
@@ -1393,15 +1459,20 @@ cursor: pointer;
     <div class="ancho border_box border-blue-500 rounded-md grid">
 
 
-        <div class="w-full grid">
+        <div class="w-full flex grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                <p class="titulos_style">ROI v/s MARR (solo Energía)</p>
+                <div class="flex w-full justify-center mt-1">
+                    <p class="titulos_style ml-8">ROI v/s MARR (solo Energía)</p>
+                </div>
+                <div id="button_marrr" name="button_marrr" class="flex justify-end mt-2">
+                    <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr');" class="btn_roundf_retro mr-5" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                </div>
             </div>
+
+
         </div>
 
-        <div id="button_marrr" name="button_marrr" class="flex w-full justify-end mt-1">
-            <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr');" class="btn_roundf_retro mr-10" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
-        </div>
+
 
         <div class="flex w-full justify-center gap-x-3">
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
@@ -1491,7 +1562,7 @@ cursor: pointer;
 </div>
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_4" name="next_page_4" style="width: 80%; height:50px;" class="hidden">
+<div id="next_page_4" name="next_page_4" style="width: 80%; height:40px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
@@ -2540,7 +2611,13 @@ function send_print(){
     $("#principal_hoja_3").removeClass("hidden");
     $("#principal_hoja_4").removeClass("hidden");
     $("#principal_hoja_5").removeClass("hidden");
-    $("#next_page_3").removeClass("hidden");
+
+
+    if('{{$prim_buil_check->id_cat_edifico}}' == 3 ||'{{$prim_buil_check->id_cat_edifico}}' == 7 || '{{$prim_buil_check->id_cat_edifico}}' == 8 || '{{$prim_buil_check->id_cat_edifico}}' == 9 || '{{$prim_buil_check->id_cat_edifico}}' == 10 || '{{$prim_buil_check->id_cat_edifico}}' == 11){
+        $("#next_page_3_cushobe").removeClass("hidden");
+    }else{
+        $("#next_page_3").removeClass("hidden");
+    }
     $("#next_page_4").removeClass("hidden");
     $("#next_page_5").removeClass("hidden");
     $("#chart_cons_ene_hvac_ar_base").width(200).height(120);
@@ -2572,10 +2649,16 @@ function send_print(){
     $("#chart_5").addClass("hidden");
     $('#chart_10').addClass("hidden");
     $("#chart_15").addClass("hidden");
+    $('#chart_cu_sho_Be_base').addClass("hidden");
+    $("#chart_cu_sho_Be_a").addClass("hidden");
+    $('#chart_cu_sho_Be_b').addClass("hidden");
     $("#espacio_pagina_1").removeClass("hidden");
     $('#eui_sol_base_print').removeClass("hidden");
     $("#eui_sol_a_print").removeClass("hidden");
     $('#eui_sol_b_print').removeClass("hidden");
+    $('#chart_cu_sho_Be_base_print').removeClass("hidden");
+    $("#chart_cu_sho_Be_a_print").removeClass("hidden");
+    $('#chart_cu_sho_Be_b_print').removeClass("hidden");
     $("#chart_roi_base_a_print").removeClass("hidden");
     $('#chart_roi_base_b_print').removeClass("hidden");
     $('#chart_roi_base_a').addClass("hidden");
@@ -2627,19 +2710,23 @@ window.onload = function() {
     roi_base_b_print('{{$id_project}}');
     roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
     roi_base_b_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
-    google.charts.setOnLoadCallback(chart_base_eui);
     google.charts.setOnLoadCallback(chart_base_eui_print);
+    google.charts.setOnLoadCallback(chart_a_eui_print);
+    google.charts.setOnLoadCallback(chart_b_eui_print);
+    google.charts.setOnLoadCallback(chart_cu_sho_Be_base_print);
+    google.charts.setOnLoadCallback(chart_cu_sho_Be_a_print);
+    google.charts.setOnLoadCallback(chart_cu_sho_Be_b_print);
     //no_print
       con_ene_hvac_ar_Base('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
       con_ene_hvac_ar_a('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
       con_ene_hvac_ar_b('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
       google.charts.load('current', {'packages':['gauge']});
-
+      google.charts.setOnLoadCallback(chart_base_eui);
       google.charts.setOnLoadCallback(chart_a_eui);
       google.charts.setOnLoadCallback(chart_b_eui);
-
-      google.charts.setOnLoadCallback(chart_a_eui_print);
-      google.charts.setOnLoadCallback(chart_b_eui_print);
+      google.charts.setOnLoadCallback(chart_cu_sho_Be_base);
+      google.charts.setOnLoadCallback(chart_cu_sho_Be_a);
+      google.charts.setOnLoadCallback(chart_cu_sho_Be_b);
       red_ene('{{$dif_1}}','{{$dif_2}}');
       descarb('{{$dif_1}}','{{$dif_2}}');
 
@@ -4944,6 +5031,80 @@ function roi_base_b_ene_prod(id_project,costo_base,costo){
             console.log(responsetext);
         }
     });
+}
+
+function chart_cu_sho_Be_base() {
+        var check_prod = '{{$conf_val_base}}';
+        var mult_cels_val = check_prod * 5;
+        var val_res = mult_cels_val / 5;
+
+        var datax = google.visualization.arrayToDataTable([
+          ['Label','Value'],
+          ['Base',parseFloat(check_prod)],
+        ]);
+
+        var options = {
+            width: 550, height: 280,
+  yellowColor:'ffff00',
+  greenFrom:4,greenTo:5,
+  redFrom: 1, redTo: 2,
+  yellowFrom:2, yellowTo: 4,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_cu_sho_Be_base'));
+
+        chart.draw(datax, options);
+
+      }
+function chart_cu_sho_Be_a() {
+        var check_prod_a = '{{$conf_val_a}}';
+        var data = google.visualization.arrayToDataTable([
+        ['Label', 'Value'],
+        ['A', parseFloat(check_prod_a)],
+        ]);
+
+
+        var options = {
+            width: 550, height: 280,
+  yellowColor:'ffff00',
+  greenFrom:4,greenTo:5,
+  redFrom: 1, redTo: 2,
+  yellowFrom:2, yellowTo: 4,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+var chart = new google.visualization.Gauge(document.getElementById('chart_cu_sho_Be_a'));
+
+chart.draw(data, options);
+}
+
+function chart_cu_sho_Be_b() {
+    var check_prod_b = '{{$conf_val_b}}';
+var data = google.visualization.arrayToDataTable([
+  ['Label', 'Value'],
+  ['B', parseFloat(check_prod_b)],
+]);
+
+
+    var options = {
+        width: 550, height: 280,
+  yellowColor:'ffff00',
+  greenFrom:4,greenTo:5,
+  redFrom: 1, redTo: 2,
+  yellowFrom:2, yellowTo: 4,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+var chart = new google.visualization.Gauge(document.getElementById('chart_cu_sho_Be_b'));
+
+chart.draw(data, options);
 }
 
 ////pirnt
@@ -7540,6 +7701,81 @@ function roi_base_b_ene_prod_print(id_project,costo_base,costo){
             console.log(responsetext);
         }
     });
+}
+
+
+function chart_cu_sho_Be_base_print() {
+        var check_prod = '{{$conf_val_base}}';
+        var mult_cels_val = check_prod * 5;
+        var val_res = mult_cels_val / 5;
+
+        var datax = google.visualization.arrayToDataTable([
+          ['Label','Value'],
+          ['Base',parseFloat(check_prod)],
+        ]);
+
+        var options = {
+            width: eui_print_width, height: eui_print_height,
+  yellowColor:'ffff00',
+  greenFrom:4,greenTo:5,
+  redFrom: 1, redTo: 2,
+  yellowFrom:2, yellowTo: 4,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_cu_sho_Be_base_print'));
+
+        chart.draw(datax, options);
+
+      }
+function chart_cu_sho_Be_a_print() {
+        var check_prod_a = '{{$conf_val_a}}';
+        var data = google.visualization.arrayToDataTable([
+        ['Label', 'Value'],
+        ['A', parseFloat(check_prod_a)],
+        ]);
+
+
+        var options = {
+            width: eui_print_width, height: eui_print_height,
+  yellowColor:'ffff00',
+  greenFrom:4,greenTo:5,
+  redFrom: 1, redTo: 2,
+  yellowFrom:2, yellowTo: 4,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+var chart = new google.visualization.Gauge(document.getElementById('chart_cu_sho_Be_a_print'));
+
+chart.draw(data, options);
+}
+
+function chart_cu_sho_Be_b_print() {
+    var check_prod_b = '{{$conf_val_b}}';
+var data = google.visualization.arrayToDataTable([
+  ['Label', 'Value'],
+  ['B', parseFloat(check_prod_b)],
+]);
+
+
+    var options = {
+        width: eui_print_width, height: eui_print_height,
+  yellowColor:'ffff00',
+  greenFrom:4,greenTo:5,
+  redFrom: 1, redTo: 2,
+  yellowFrom:2, yellowTo: 4,
+  minorTicks: 5,
+  max:5,
+  min:1,
+};
+
+var chart = new google.visualization.Gauge(document.getElementById('chart_cu_sho_Be_b_print'));
+
+chart.draw(data, options);
 }
 
 function interp(conf_val){
