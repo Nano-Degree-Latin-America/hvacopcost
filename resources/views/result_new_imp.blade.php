@@ -612,7 +612,7 @@ cursor: pointer;
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
                             <div class="flex justify-center w-full p-2">
-                                <label class="solucions_style_name">{{ __('index.sis_ext') }}</label>
+                                <label class="solucions_style_name">{{ __('index.solucion') }} Base</label>
                             </div>
 
                             <div class="flex justify-center w-full p-2">
@@ -761,7 +761,7 @@ cursor: pointer;
         <div class="flex w-full justify-center mb-3">
             <div class="w-1/3 grid justify-items-center">
                 <div class="flex justify-center w-full">
-                    <label class="solucions_style_name">{{ __('index.sis_ext') }}</label>
+                    <label class="solucions_style_name">{{ __('index.solucion') }} Base</label>
                 </div>
                 @if ($result1 ==! null)
                 <?php  $valor_eui_base=$smasolutions->valor_eui_aux($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
@@ -939,7 +939,7 @@ cursor: pointer;
 
                           <div class="w-1/5 flex justify-start">
                           {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                                  <p class="size_solutions_confort  font-roboto  font-bold text-left">{{ __('index.sis_ext') }}</p>
+                                  <p class="size_solutions_confort  font-roboto  font-bold text-left">{{ __('index.solucion') }} Base</p>
                               {{-- </div> --}}
                           </div>
 
@@ -1075,7 +1075,7 @@ cursor: pointer;
             <div class="w-1/3 grid justify-items-center">
                 <div class="w-full flex justify-center">
                     {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                            <p class="size_solutions_confort font-roboto font-bold">{{ __('index.sis_ext') }}</p>
+                            <p class="size_solutions_confort font-roboto font-bold">{{ __('index.solucion') }} Base</p>
                         {{-- </div> --}}
                     </div>
                 <div class="my-4" style="margin: 0px auto" id="chart_prod_base"></div>
@@ -1354,7 +1354,7 @@ cursor: pointer;
                 </div>
 
                 <div class="grid justify-start w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Existente</b>
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Solución Base</b>
 
                 </div>
 
@@ -3744,7 +3744,7 @@ $.ajax({
       },
     },
     xaxis: {
-      categories: ['Solución B', 'Solución A', 'Sistema Existente'],
+      categories: ['Solución B', 'Solución A', 'Solución Base'],
       labels: {
             style: {
                 colors: [],
@@ -3873,7 +3873,7 @@ function cap_op_3_retro(id_project,unidad){
           },
         },
         xaxis: {
-          categories: ['Solución B', 'Solución A', 'Sistema Existente'],
+          categories: ['Solución B', 'Solución A', 'Solución Base'],
           labels: {
                 style: {
                     colors: [],
@@ -6409,7 +6409,7 @@ $.ajax({
       },
     },
     xaxis: {
-      categories: ['Solución B', 'Solución A', 'Sistema Exis...'],
+      categories: ['Solución B', 'Solución A', 'Solución Base'],
       labels: {
             style: {
                 colors: [],
