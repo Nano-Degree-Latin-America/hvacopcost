@@ -128,7 +128,7 @@
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                     <div class="flex justify-start w-1/3">
-                        <select name="csStd" id="csStd" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_1').value,'csStd');" class="w-full border-2 border-blue-600 rounded-md text-center">
+                        <select name="csStd" id="csStd" style="padding-top: 0.43rem;padding-bottom: 0.43rem;font-size: 14px;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_1').value,'csStd');" class="w-full border-2 border-blue-600 rounded-md text-center">
 
                         </select>
                     </div>
@@ -332,7 +332,7 @@
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
 
                         <div class="flex justify-start w-1/3">
-                            <select name="csStd_1_2" id="csStd_1_2" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_2').value,'csStd_1_2');" class="w-full border-2 border-blue-600 rounded-md text-center">
+                            <select name="csStd_1_2" id="csStd_1_2" style="padding-top: 0.43rem;padding-bottom: 0.43rem;font-size: 14px;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_2').value,'csStd_1_2');" class="w-full border-2 border-blue-600 rounded-md text-center">
                             </select>
                         </div>
 
@@ -847,7 +847,7 @@
                             <div class="flex justify-start w-1/3">
 {{--                                 <input name="csStd_2_1" readonly id="csStd_2_1" style="padding-top: 0.425rem;padding-bottom: 0.248rem;" class="w-full border-2 border-blue-600 rounded-md py-1 text-center">
  --}}
-                                <select name="csStd_2_1" id="csStd_2_1" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_2_1').value,'csStd_2_1');" class="w-full border-2 border-blue-600 rounded-md text-center">
+                                <select name="csStd_2_1" id="csStd_2_1" style="padding-top: 0.43rem;padding-bottom: 0.43rem;font-size: 14px;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_2_1').value,'csStd_2_1');" class="w-full border-2 border-blue-600 rounded-md text-center">
 
                                 </select>
                             </div>
@@ -1038,7 +1038,7 @@
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                         <div class="flex justify-start w-1/3">
-                            <select name="csStd_2_2" id="csStd_2_2" style="padding-top: 0.43rem;padding-bottom: 0.43rem;"  class="w-full border-2 border-blue-600 rounded-md text-center" onchange="check_send_efi(this.value,document.getElementById('cUnidad_2_2').value,'csStd_2_2');">
+                            <select name="csStd_2_2" id="csStd_2_2" style="padding-top: 0.43rem;padding-bottom: 0.43rem;font-size: 14px;"  class="w-full border-2 border-blue-600 rounded-md text-center" onchange="check_send_efi(this.value,document.getElementById('cUnidad_2_2').value,'csStd_2_2');">
                             </select>
                         </div>
                         <div class="flex justify-start w-1/4">
@@ -1543,7 +1543,7 @@
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                             <div class="flex justify-start w-1/3">
-                                <select name="csStd2_3_1" id="csStd2_3_1" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_1').value,'csStd2_3_1');" class="w-full border-2 border-blue-600 rounded-md text-center">
+                                <select name="csStd2_3_1" id="csStd2_3_1" style="padding-top: 0.43rem;padding-bottom: 0.43rem;font-size: 14px;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_1').value,'csStd2_3_1');" class="w-full border-2 border-blue-600 rounded-md text-center">
                                 </select>
                             </div>
                             <div class="flex justify-start w-1/4">
@@ -1732,7 +1732,7 @@
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2 gap-y-1">
                         <div class="flex justify-start w-1/3">
-                            <select name="csStd_3_2" id="csStd_3_2" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_2').value,'csStd_3_2');" class="w-full border-2 border-blue-600 rounded-md text-center">
+                            <select name="csStd_3_2" id="csStd_3_2" style="padding-top: 0.43rem;padding-bottom: 0.43rem;font-size: 14px;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_2').value,'csStd_3_2');" class="w-full border-2 border-blue-600 rounded-md text-center">
                             </select>
                         </div>
 

@@ -5462,19 +5462,21 @@ if(result_area < red){
           ['EUI E', eui_base],
         ]);
 
-        if(energy > ashrae){
+        if(parseInt(energy) > parseInt(ashrae)){
+
             var options = {
           width: 550, height: 280,
-          greenFrom:1,greenTo:ashrae,
-          redFrom: energy, redTo: 300,
-          yellowFrom:ashrae, yellowTo: energy,
+          greenFrom:1,greenTo:parseInt(ashrae),
+          redFrom: parseInt(energy), redTo: 300,
+          yellowFrom:parseInt(ashrae), yellowTo: parseInt(energy),
           minorTicks: 5,
           max:300,
           min:1,
         };
         }
 
-        if(energy < ashrae){
+        if(parseInt(energy) < parseInt(ashrae)){
+            alert(energy);
             var options = {
           width: 550, height: 280,
           greenFrom:1,greenTo:energy,
@@ -5519,7 +5521,7 @@ if(result_area < red){
             var max_cant_timer = parseInt(eui_b_check_cant * 2);
         }
 
-        if(energy > ashrae){
+        if(parseInt(energy) > parseInt(ashrae)){
             var options = {
           width: 550, height: 280,
           greenFrom:1,greenTo:ashrae,
@@ -5531,7 +5533,7 @@ if(result_area < red){
         };
         }
 
-        if(energy < ashrae){
+        if(parseInt(energy) < parseInt(ashrae)){
             var options = {
           width: 550, height: 280,
           greenFrom:1,greenTo:energy,
@@ -5576,7 +5578,7 @@ if(result_area < red){
                 var max_cant_timer = parseInt(eui_b_check_cant * 2);
             }
 
-            if(energy > ashrae){
+            if(parseInt(energy) > parseInt(ashrae)){
                     var options = {
                 width: 550, height: 280,
                 greenFrom:1,greenTo:ashrae,
@@ -5588,7 +5590,7 @@ if(result_area < red){
                 };
                 }
 
-                if(energy < ashrae){
+                if(parseInt(energy) < parseInt(ashrae)){
                     var options = {
                 width: 550, height: 280,
                 greenFrom:1,greenTo:energy,
@@ -5639,7 +5641,8 @@ if(result_area < red){
           ['EUI E', eui_base],
         ]);
 
-        if(energy > ashrae){
+        if(parseInt(energy) > parseInt(ashrae)){
+
             var options = {
                 width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:ashrae,
@@ -5651,7 +5654,7 @@ if(result_area < red){
         };
         }
 
-        if(energy < ashrae){
+        if(parseInt(energy) < parseInt(ashrae)){
             var options = {
                 width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:energy,
@@ -5696,7 +5699,7 @@ if(result_area < red){
             var max_cant_timer = parseInt(eui_b_check_cant * 2);
         }
 
-        if(energy > ashrae){
+        if(parseInt(energy) > parseInt(ashrae)){
             var options = {
                  width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:ashrae,
@@ -5708,7 +5711,7 @@ if(result_area < red){
         };
         }
 
-        if(energy < ashrae){
+        if(parseInt(energy) < parseInt(ashrae)){
             var options = {
                  width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:energy,
@@ -5753,7 +5756,7 @@ if(result_area < red){
                 var max_cant_timer = parseInt(eui_b_check_cant * 2);
             }
 
-            if(energy > ashrae){
+            if(parseInt(energy) > parseInt(ashrae)){
                     var options = {
                          width: eui_print_width, height: eui_print_height,
                 greenFrom:1,greenTo:ashrae,
@@ -5765,7 +5768,7 @@ if(result_area < red){
                 };
                 }
 
-                if(energy < ashrae){
+                if(parseInt(energy) < parseInt(ashrae)){
                     var options = {
                          width: eui_print_width, height: eui_print_height,
                 greenFrom:1,greenTo:energy,

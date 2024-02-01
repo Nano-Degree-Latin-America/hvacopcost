@@ -118,7 +118,7 @@
                         <label  class="labels" for=""><b>{{ __('index.efi_ori') }}</b> </label>
                     </div>
                     <div class="flex justify-start w-1/4">
-                        <select name="csStd_1_1_retro" id="csStd_1_1_retro" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_1_retro').value,'csStd_1_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
+                        <select name="csStd_1_1_retro" id="csStd_1_1_retro" style="padding-top: 0.43rem;padding-bottom: 0.43rem;font-size: 14px;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_1_retro').value,'csStd_1_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
                         </select>
                     </div>
                     <div class="flex justify-start w-1/4">
@@ -598,7 +598,7 @@
                                 <label  class="labels" for=""><b>{{ __('index.efi') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
-                                <select name="csStd_2_1_retro" id="csStd_2_1_retro" style="padding-top: .58rem;padding-bottom: .58rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_2_1_retro').value,'csStd_2_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
+                                <select name="csStd_2_1_retro" id="csStd_2_1_retro" style="padding-top: .58rem;padding-bottom: .58rem;font-size: 14px;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_2_1_retro').value,'csStd_2_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
                                 </select>
                             </div>
                             <div class="flex justify-start w-1/4">
@@ -877,7 +877,7 @@
                                 <label  class="labels" for=""><b>{{ __('index.efi') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
-                                <select name="csStd_3_1_retro" id="csStd_3_1_retro" style="padding-top: .58rem;padding-bottom: .58rem;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_1_retro').value,'csStd_3_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
+                                <select name="csStd_3_1_retro" id="csStd_3_1_retro" style="padding-top: .58rem;padding-bottom: .58rem;font-size: 14px;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_1_retro').value,'csStd_3_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
 
                                 </select>
                             </div>

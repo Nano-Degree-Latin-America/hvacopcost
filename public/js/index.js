@@ -6933,7 +6933,7 @@ function send_marcas_to_datalist() {
 
             $('#'+id_select).append($('<option>', {
                 value: 'IPLV',
-                text: 'IPLV(kW/TR)'
+                text: 'IPLV (Kw/TR)'
             }));
             if(parseInt(tipo) == 3){
 
@@ -11357,7 +11357,7 @@ cUnidad_3_3 */
 
             $('#'+id_select).append($('<option>', {
                 value: 'IPLV',
-                text: 'IPLV(kW/TR)'
+                text: 'IPLV (Kw/TR)'
             }));
 
 
