@@ -602,7 +602,7 @@ cursor: pointer;
     <div class="ancho border_box border-blue-500 rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                <p class="titulos_style">Consumo Energía Eléctrica</p>
+                <p class="titulos_style">Consumo Anual Energía Eléctrica</p>
             </div>
         </div>
 
@@ -7860,11 +7860,11 @@ var message = 'Mala';
 }
 
 if(check_prod > 10 && check_prod <= 20){
-    var message = 'Regular';
+    var message = 'Inadecuada';
 }
 
 if(check_prod > 5 && check_prod <= 10){
-    var message = 'Buena';
+    var message = 'Aceptable';
 }
 return message;
 }
