@@ -8148,7 +8148,7 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
             $z = 0.045;
         }
 
-        if($eficiencia_ene == 'IPVL'){
+        if($eficiencia_ene == 'IPLV'){
             //((Kw/3.54) x ( IPLV / (1-(Z x Años de vida)) x Cooling Hours)
              //((Kw/3.54)
             $kw_3_5 = $kw / 3.54;
@@ -8340,7 +8340,7 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
             $z = 0.045;
         }
 
-    if($eficiencia_ene == 'IPVL'){
+    if($eficiencia_ene == 'IPLV'){
 
         //(TR x ( IPLV / (1-(Z x Años de vida)) x Cooling Hours) /0.75
 
@@ -10163,5 +10163,38 @@ if($eficiencia_ene == 'EER'){
         return intval($mult);
     }
 
+    public function iplv(){
+        $sols = DB::table('solutions_project')
+        ->get();
+        foreach($sols as $sol){
+            if($sol->eficencia_ene == 'IPVL'){
+                $udpate = SolutionsProjectModel::find($sol->id);
+                $udpate->eficencia_ene = 'IPLV';
+                $udpate->update();
+            }
+        }
+        /* $projects = DB::table('projects')
+        ->get();
+
+        foreach($projects as $project){
+            $check_type = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$project->id)
+            ->first();
+
+            if($check_type){
+
+                if($check_type->eficencia_ene == 'IPVL'){
+                    $update_sol->eficencia_ene= 'IPLV';
+                    $update_sol->update();
+                }else{
+
+                }
+
+
+            }
+
+        } */
+
+    }
 
 }
