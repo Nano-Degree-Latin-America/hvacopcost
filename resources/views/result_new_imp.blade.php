@@ -5486,7 +5486,7 @@ if(result_area < red){
         }
 
         if(parseInt(energy) < parseInt(ashrae)){
-            alert(energy);
+
             var options = {
           width: 550, height: 280,
           greenFrom:1,greenTo:energy,
