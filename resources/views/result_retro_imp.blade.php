@@ -1077,72 +1077,6 @@ cursor: pointer;
 
 
       </div>
-    </div>
-</div>
-
-<?php  $prim_buil_check=$conf_val->prim_buil_check($id_project) ?>
-
- @if ($prim_buil_check->id_cat_edifico == 3 || $prim_buil_check->id_cat_edifico == 7 || $prim_buil_check->id_cat_edifico == 8 || $prim_buil_check->id_cat_edifico == 9 || $prim_buil_check->id_cat_edifico == 10 || $prim_buil_check->id_cat_edifico == 11)
-                    <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-                        <div class="ancho border-2 border-blue-500 rounded-md grid">
-                          <div class="w-full flex">
-                                  <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                                    <div class="flex w-full justify-center mt-1">
-                                        <p class="titulos_style">{{ __('results.cu_sho_Be') }}</p>
-                                    </div>
-                                  </div>
-
-
-                          </div>
-
-                        <div class="flex w-full justify-center my-2">
-                            <div  class="padding_space_white flex justify-center">
-                            </div>
-                            @if ($result1 !== null)
-                            <?php  $prod_lab=$conf_val->prod_lab($id_project,1,1,$sumacap_term_1) ?>
-                            @endif
-                            @if ($result1 === null)
-                            <?php  $prod_lab=0; ?>
-                            @endif
-                            <div class="w-1/3 grid justify-items-center">
-                                <div id="chart_cu_sho_Be_base"></div>
-                                 <div class="hidden" id="chart_cu_sho_Be_base_print" name="chart_cu_sho_Be_base_print"></div>
-                            </div>
-                            @if ($result1 !== null)
-                            <?php  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) ?>
-                            @endif
-                            @if ($result1 === null)
-                            <?php  $prod_lab_a=0; ?>
-                            @endif
-                            <div class="w-1/3 grid justify-items-center">
-                                <div id="chart_cu_sho_Be_a"></div>
-                                <div class="hidden" id="chart_cu_sho_Be_a_print" name="chart_cu_sho_Be_a_print"></div>
-                            </div>
-                            @if ($result1 !== null)
-                            <?php  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) ?>
-                            @endif
-                            @if ($result1 === null)
-                            <?php  $prod_lab_b=0; ?>
-                            @endif
-                            <div class="w-1/3 grid justify-items-center">
-                                <div id="chart_cu_sho_Be_b"></div>
-                                <div class="hidden" id="chart_cu_sho_Be_b_print" name="chart_cu_sho_Be_b_print"></div>
-                            </div>
-                        </div>
-
-    {{-- <div id="check_gauge" name="check_gauge"></div> --}}
-{{--                     <img style="width: 300px;height:200px; margin-left:50px;" src="https://quickchart.io/chart?v=2.9.4&c={ type: 'gauge', data: { datasets: [ { value: 3, data: [1.5, 4.5, 6], backgroundColor: ['red','yellow','green'], borderWidth: 2, }, ], }, options: { valueLabel: { display: false, }, }, }">
---}}                </div>
-</div>
-@endif
-
-<div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
-      <div class="w-full grid">
-              <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                  <p class="titulos_style">Personas y Costos Asociados a la Perdida de Productividad Laboral</p>
-              </div>
-      </div>
 
       <div class="flex w-full justify-center my-2">
         <div class="w-1/8 flex grid justify-items-center">
@@ -1226,9 +1160,65 @@ cursor: pointer;
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
+<?php  $prim_buil_check=$conf_val->prim_buil_check($id_project) ?>
+
+ @if ($prim_buil_check->id_cat_edifico == 3 || $prim_buil_check->id_cat_edifico == 7 || $prim_buil_check->id_cat_edifico == 8 || $prim_buil_check->id_cat_edifico == 9 || $prim_buil_check->id_cat_edifico == 10 || $prim_buil_check->id_cat_edifico == 11)
+                    <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
+                        <div class="ancho border-2 border-blue-500 rounded-md grid">
+                          <div class="w-full flex">
+                                  <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                                    <div class="flex w-full justify-center mt-1">
+                                        <p class="titulos_style">{{ __('results.cu_sho_Be') }}</p>
+                                    </div>
+                                  </div>
+
+
+                          </div>
+
+                        <div class="flex w-full justify-center my-2">
+                            <div  class="padding_space_white flex justify-center">
+                            </div>
+                            @if ($result1 !== null)
+                            <?php  $prod_lab=$conf_val->prod_lab($id_project,1,1,$sumacap_term_1) ?>
+                            @endif
+                            @if ($result1 === null)
+                            <?php  $prod_lab=0; ?>
+                            @endif
+                            <div class="w-1/3 grid justify-items-center">
+                                <div id="chart_cu_sho_Be_base"></div>
+                                 <div class="hidden" id="chart_cu_sho_Be_base_print" name="chart_cu_sho_Be_base_print"></div>
+                            </div>
+                            @if ($result1 !== null)
+                            <?php  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) ?>
+                            @endif
+                            @if ($result1 === null)
+                            <?php  $prod_lab_a=0; ?>
+                            @endif
+                            <div class="w-1/3 grid justify-items-center">
+                                <div id="chart_cu_sho_Be_a"></div>
+                                <div class="hidden" id="chart_cu_sho_Be_a_print" name="chart_cu_sho_Be_a_print"></div>
+                            </div>
+                            @if ($result1 !== null)
+                            <?php  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) ?>
+                            @endif
+                            @if ($result1 === null)
+                            <?php  $prod_lab_b=0; ?>
+                            @endif
+                            <div class="w-1/3 grid justify-items-center">
+                                <div id="chart_cu_sho_Be_b"></div>
+                                <div class="hidden" id="chart_cu_sho_Be_b_print" name="chart_cu_sho_Be_b_print"></div>
+                            </div>
+                        </div>
+
+    {{-- <div id="check_gauge" name="check_gauge"></div> --}}
+{{--                     <img style="width: 300px;height:200px; margin-left:50px;" src="https://quickchart.io/chart?v=2.9.4&c={ type: 'gauge', data: { datasets: [ { value: 3, data: [1.5, 4.5, 6], backgroundColor: ['red','yellow','green'], borderWidth: 2, }, ], }, options: { valueLabel: { display: false, }, }, }">
+--}}                </div>
+</div>
+@endif
 
 {{-- espacio hoja pagina 3 --}}
 <div id="next_page_3" name="next_page_3" style="width: 80%; height:250px;" class="hidden">
@@ -3577,10 +3567,12 @@ function chart_cu_sho_Be_base() {
         var check_prod = '{{$conf_val_base}}';
         var mult_cels_val = check_prod * 5;
         var val_res = mult_cels_val / 5;
-
+        //un decumal
+        var number = check_prod
+        var rounded = Math.round(number * 10) / 10
         var datax = google.visualization.arrayToDataTable([
           ['Label','Value'],
-          ['Base',parseFloat(check_prod)],
+          ['Base',rounded],
         ]);
 
         var options = {
@@ -3601,9 +3593,14 @@ function chart_cu_sho_Be_base() {
       }
 function chart_cu_sho_Be_a() {
         var check_prod_a = '{{$conf_val_a}}';
+
+        //un decumal
+        var number_a = check_prod_a
+        var rounded_a = Math.round(number_a * 10) / 10
+
         var data = google.visualization.arrayToDataTable([
         ['Label', 'Value'],
-        ['A', parseFloat(check_prod_a)],
+        ['A', rounded_a],
         ]);
 
 
@@ -3625,9 +3622,13 @@ chart.draw(data, options);
 
 function chart_cu_sho_Be_b() {
     var check_prod_b = '{{$conf_val_b}}';
+
+     //un decumal
+     var number_b = check_prod_b
+     var rounded_b = Math.round(number_b * 10) / 10
 var data = google.visualization.arrayToDataTable([
   ['Label', 'Value'],
-  ['B', parseFloat(check_prod_b)],
+  ['B', rounded_b],
 ]);
 
 
@@ -5715,12 +5716,17 @@ function roi_base_b_ene_prod_print(id_project,costo_base,costo){
 
 function chart_cu_sho_Be_base_print() {
         var check_prod = '{{$conf_val_base}}';
+
+            //un decumal
+        var number_base = check_prod
+        var rounded_base = Math.round(number_base * 10) / 10
+
         var mult_cels_val = check_prod * 5;
         var val_res = mult_cels_val / 5;
 
         var datax = google.visualization.arrayToDataTable([
           ['Label','Value'],
-          ['Base',parseFloat(check_prod)],
+          ['Base',rounded_base],
         ]);
 
         var options = {
@@ -5741,9 +5747,14 @@ function chart_cu_sho_Be_base_print() {
       }
 function chart_cu_sho_Be_a_print() {
         var check_prod_a = '{{$conf_val_a}}';
+
+        //un decumal
+        var number_a = check_prod_a
+        var rounded_a = Math.round(number_a * 10) / 10
+
         var data = google.visualization.arrayToDataTable([
         ['Label', 'Value'],
-        ['A', parseFloat(check_prod_a)],
+        ['A', rounded_a],
         ]);
 
 
@@ -5765,9 +5776,14 @@ chart.draw(data, options);
 
 function chart_cu_sho_Be_b_print() {
     var check_prod_b = '{{$conf_val_b}}';
+
+    //un decumal
+    var number_b = check_prod_b
+    var rounded_b = Math.round(number_b * 10) / 10
+
 var data = google.visualization.arrayToDataTable([
   ['Label', 'Value'],
-  ['B', parseFloat(check_prod_b)],
+  ['B', rounded_b],
 ]);
 
 
