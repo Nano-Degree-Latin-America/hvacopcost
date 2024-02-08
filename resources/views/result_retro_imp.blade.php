@@ -1762,7 +1762,10 @@ window.onafterprint = function() {
 window.onload = function() {
       $('#modal_loding').addClass("hidden");
       $('#caja_principal').removeClass("hidden");
-
+      roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
+      roi_base_b_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
+      roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
+      roi_base_b_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
     };
 
 $(document).ready(function() {
@@ -1802,10 +1805,7 @@ $(document).ready(function() {
       google.charts.setOnLoadCallback(chart_cu_sho_Be_base);
       google.charts.setOnLoadCallback(chart_cu_sho_Be_a);
       google.charts.setOnLoadCallback(chart_cu_sho_Be_b);
-      roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
-      roi_base_b_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
-      roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
-      roi_base_b_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
+
 });
 /* window.print() */
 function con_ene_hvac_ar_Base(kwh_yr,porcent_hvac){
