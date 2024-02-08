@@ -158,7 +158,7 @@
             color: #2c5282;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
-            margin-top:15px;
+            margin-top:5px;
         }
 
         .margin_new_page{
@@ -204,8 +204,8 @@
          }
 
          .img_ahorro{
-            height:100px;
-            width:100px;
+            height:80px;
+            width:80px;
          }
 
          .padding_space_white{
@@ -358,8 +358,8 @@
          }
 
          .img_ahorro{
-            height:50px;
-            width:50px;
+            height:40px;
+            width:40px;
          }
 }
 
@@ -508,6 +508,9 @@ cursor: pointer;
     </div>
 </div>
 {{-- navbar --}}
+@include('modal_loding')
+{{-- caja_principal --}}
+<div id="caja_principal" name="caja_principal" class="hidden">
 {{-- principal --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
     <div  class="ancho border-2 border-blue-500 rounded-md flex">
@@ -706,20 +709,20 @@ cursor: pointer;
         </div>
 
         <div class="flex w-full justify-center gap-x-3">
-            <div class="flex w-1/2 justify-center text-[24px] m-1">
+            <div class="flex w-1/2 justify-center text-[24px]">
                 <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
-                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}"  class="energy_star_style_img mx-2 mt-6" alt="Nano Degree">
+                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}"  class="energy_star_style_img mx-2 mt-4" alt="Nano Degree">
                 <b class="eui_energy_style">EUI - Energy Star</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{number_format($energy_star,1)}}</b>
             </div>
 
-            <div class="flex w-1/2 justify-center text-[24px] m-1">
+            <div class="flex w-1/2 justify-center text-[24px]">
                 <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
                 <img src="{{asset('/assets/images/Logo-ASHRAE-png.png')}}" class="ashrae_style_img" alt="Nano Degree">
                 <b class="eui_energy_style">EUI - ASHRAE</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{$ashrae}}</b>
             </div>
         </div>
 
-        <div class="flex w-full justify-center mb-3">
+        <div class="flex w-full justify-center mb-1">
             <div class="w-1/3 grid justify-items-center">
                 <div class="flex justify-center w-full">
                     <label class="solucions_style_name">{{ __('index.sis_ext') }}</label>
@@ -799,25 +802,25 @@ cursor: pointer;
 
         <div class="flex w-full justify-center gap-x-3">
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
-                <div class="w-full flex justify-center">
+                <div class="w-full flex justify-center mt-2">
                     <img src="{{asset('/assets/images/watts.png')}}" class="img_red_ene mx-10" alt="Nano Degree">
                     <label class="red_energetica_style" for="">Reducción Energética (MWh)</label>
                 </div>
 
                 <div class="w-full flex justify-center">
-                    <div id="chart_red_ene" name="chart_red_ene" style="width: 600px;height:380px;!important"></div>
+                    <div id="chart_red_ene" name="chart_red_ene" style="width: 600px;height:auto !important;"></div>
                     <div class="hidden" style="height:180px;"  id="chart_red_ene_print" name="chart_red_ene_print"></div>
                 </div>
             </div>
 
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
-                <div class="w-full flex justify-center">
+                <div class="w-full flex justify-center mt-2">
                     <img src="{{asset('/assets/images/Huella.png')}}" class="img_red_ene mx-10" alt="Nano Degree">
                     <label class="red_energetica_style" for="">Descarbonización (Ton CO2)</label>
                 </div>
 
                 <div class="w-full flex justify-center">
-                    <div id="chart_descarb" name="chart_descarb" style="width: 600px;height:380px;!important"></div>
+                    <div id="chart_descarb" name="chart_descarb" style="width: 600px;height:auto !important;"></div>
                     <div class="hidden "  style="height:180px;"  id="chart_descarb_print" name="chart_descarb_print"></div>
                 </div>
             </div>
@@ -826,7 +829,7 @@ cursor: pointer;
 </div>
 
 {{-- espacio --}}
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:16px;" >
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:25px;" >
 
 </div>
 
@@ -896,7 +899,7 @@ cursor: pointer;
 
               {{--  --}}
               <div class="w-full grid mb-0 gap-y-5">
-                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg" style="margin-top:1.8rem;">
+                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg" style="margin-top:1.3rem;">
 
                           <div class="w-1/5 flex justify-start">
                           {{--  <div class="ml-10 flex w-full mt-5"> --}}
@@ -1019,7 +1022,7 @@ cursor: pointer;
           </div>
       </div>
 
-      <div class="grid w-full justify-items-center gap-x-3 my-3">
+      <div class="grid w-full justify-items-center gap-x-3 my-2">
 
         <div class="flex w-full justify-center">
             <div  class="padding_space_white flex justify-center">
@@ -1092,7 +1095,7 @@ cursor: pointer;
 
                           </div>
 
-                        <div class="flex w-full justify-center">
+                        <div class="flex w-full justify-center my-2">
                             <div  class="padding_space_white flex justify-center">
                             </div>
                             @if ($result1 !== null)
@@ -1141,7 +1144,7 @@ cursor: pointer;
               </div>
       </div>
 
-      <div class="flex w-full justify-center mt-3">
+      <div class="flex w-full justify-center my-2">
         <div class="w-1/8 flex grid justify-items-center">
             <div>
                 <img src="{{asset('assets/images/persona.png')}}" class="img_persona mx-2">
@@ -1232,7 +1235,7 @@ cursor: pointer;
 
 </div>
 
-<div id="next_page_3_cushobe" name="next_page_3_cushobe" style="width: 80%; height:95px;" class="hidden">
+<div id="next_page_3_cushobe" name="next_page_3_cushobe" style="width: 80%; height:78px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
@@ -1302,7 +1305,7 @@ cursor: pointer;
                   <p class="titulos_style">Payback {{ __('results.simple') }} ({{ __('results.ans') }})</p>
               </div>
 
-              <div class="flex w-full justify-center gap-x-3  mt-5">
+              <div class="flex w-full justify-center gap-x-3 mt-2">
                 <div class="grid justify-center w-1/4">
                    {{-- espacio --}}
                 </div>
@@ -1324,8 +1327,8 @@ cursor: pointer;
             </div>
 
             <div class="flex w-full justify-center gap-x-3">
-                <div class="grid justify-center w-1/4">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Inversión</b>
+                <div class="grid justify-start w-1/4">
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold text-left mt-5">Inversión</b>
                 </div>
 
                 <div class="grid justify-center w-1/5">
@@ -1345,8 +1348,8 @@ cursor: pointer;
             </div>
 
             <div class="flex w-full justify-center gap-x-3 mb-3">
-                <div class="grid justify-center w-1/4">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Payback Simple</b>
+                <div class="grid justify-start w-1/4">
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold text-left mt-5">Payback Simple</b>
                 </div>
 
                 <div class="grid justify-center w-1/5">
@@ -1356,7 +1359,7 @@ cursor: pointer;
                 </div>
 
                 <div  class="grid justify-center w-1/5  my-1">
-                    <div  style="border-style: solid; border-width: 8px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
+                    <div  style="border-style: solid; border-width: 5px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
 {{--                         <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">7</p></b>
  --}}                        @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
                                                     <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1_cost) ?>
@@ -1377,7 +1380,7 @@ cursor: pointer;
                 </div>
 
                 <div  class="grid justify-center w-1/5  my-1">
-                    <div  style="border-style: solid; border-width: 8px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
+                    <div  style="border-style: solid; border-width: 5px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
 
                         @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
                              <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_2_cost) ?>
@@ -1588,7 +1591,8 @@ cursor: pointer;
     </div>
 </div>
 {{-- capex vs opex --}}
-
+{{-- caja_principal --}}
+</div>
 <script type="text/javascript">
     let dollarUSLocale = Intl.NumberFormat('en-US');
     var ener_lang = document.getElementById('ima_ener').value;
@@ -1766,6 +1770,12 @@ window.onafterprint = function() {
 
 }
 window.onload = function() {
+      $('#modal_loding').addClass("hidden");
+      $('#caja_principal').removeClass("hidden");
+
+    };
+
+$(document).ready(function() {
     google.charts.load('current', {'packages':['gauge']});
     con_ene_hvac_ar_Base('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
@@ -1806,7 +1816,7 @@ window.onload = function() {
       roi_base_b_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
       roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
       roi_base_b_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
-    };
+});
 /* window.print() */
 function con_ene_hvac_ar_Base(kwh_yr,porcent_hvac){
 // JS

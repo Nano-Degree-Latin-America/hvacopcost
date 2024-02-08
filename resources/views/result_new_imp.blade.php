@@ -169,7 +169,7 @@
             color: #2c5282;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
-            margin-top:15px;
+            margin-top:5px;
         }
 
         .margin_new_page{
@@ -220,8 +220,8 @@
          }
 
          .img_ahorro{
-            height:130px;
-            width:130px;
+            height:80px;
+            width:80px;
          }
 
          .padding_space_white{
@@ -234,7 +234,7 @@
          }
 
          .margin_top_solus{
-            margin-top: 2.5rem;
+            margin-top: 1.5rem;
          }
 
 @media print{
@@ -388,8 +388,8 @@
          }
 
          .img_ahorro{
-            height:50px;
-            width:50px;
+            height:40px;
+            width:40px;
          }
 
          .tam_info_sols{
@@ -547,6 +547,9 @@ cursor: pointer;
     </div>
 </div>
 {{-- navbar --}}
+@include('modal_loding')
+{{-- caja_principal --}}
+<div id="caja_principal" name="caja_principal" class="hidden">
 {{-- principal --}}
 <div class="w-full grid rounded-md justify-items-center mt-4">
     <div  class="ancho border_box border-blue-500 rounded-xl flex">
@@ -747,7 +750,7 @@ cursor: pointer;
         <div class="flex w-full justify-center gap-x-3">
             <div class="flex w-1/2 justify-center text-[24px] m-1">
                 <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
-                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}"  class="energy_star_style_img mx-2 mt-6" alt="Nano Degree">
+                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}"  class="energy_star_style_img mx-2 mt-3" alt="Nano Degree">
                 <b class="eui_energy_style">EUI - Energy Star</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{number_format($energy_star,1)}}</b>
             </div>
 
@@ -758,7 +761,7 @@ cursor: pointer;
             </div>
         </div>
 
-        <div class="flex w-full justify-center mb-3">
+        <div class="flex w-full justify-center mb-1">
             <div class="w-1/3 grid justify-items-center">
                 <div class="flex justify-center w-full">
                     <label class="solucions_style_name">{{ __('index.solucion') }} Base</label>
@@ -838,7 +841,7 @@ cursor: pointer;
 
         <div class="flex w-full justify-center gap-x-3">
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
-                <div class="w-full flex justify-center">
+                <div class="w-full flex justify-center mt-2">
                     <img src="{{asset('/assets/images/watts.png')}}" class="img_red_ene mx-10" alt="Nano Degree">
                     <label class="red_energetica_style" for="">Reducción Energética (MWh)</label>
                 </div>
@@ -850,7 +853,7 @@ cursor: pointer;
             </div>
 
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
-                <div class="w-full flex justify-center">
+                <div class="w-full flex justify-center mt-2">
                     <img src="{{asset('/assets/images/Huella.png')}}" class="img_red_ene mx-10" alt="Nano Degree">
                     <label class="red_energetica_style" for="">Descarbonización (Ton CO2)</label>
                 </div>
@@ -935,7 +938,7 @@ cursor: pointer;
 
               {{--  --}}
               <div class="w-full grid mb-0 gap-y-5">
-                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg" style="margin-top:1.8rem;">
+                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg" style="margin-top:1.3rem;">
 
                           <div class="w-1/5 flex justify-start">
                           {{--  <div class="ml-10 flex w-full mt-5"> --}}
@@ -1060,7 +1063,7 @@ cursor: pointer;
 
       </div>
 
-      <div class="grid w-full justify-items-center gap-x-3 my-3">
+      <div class="grid w-full justify-items-center gap-x-3 my-2">
 
         <div class="flex w-full justify-center">
             <div  class="padding_space_white flex justify-center">
@@ -1134,7 +1137,7 @@ cursor: pointer;
 
                           </div>
 
-                        <div class="flex w-full justify-center">
+                        <div class="flex w-full justify-center my-2">
                             <div  class="padding_space_white flex justify-center">
                             </div>
                             @if ($result1 !== null)
@@ -1348,7 +1351,7 @@ cursor: pointer;
                   <p class="titulos_style">Payback {{ __('results.simple') }} ({{ __('results.ans') }})</p>
               </div>
 
-              <div class="flex w-full justify-start gap-x-3  mt-5">
+              <div class="flex w-full justify-start gap-x-3 mt-2">
                 <div class="grid justify-start w-1/4">
                    {{-- espacio --}}
                 </div>
@@ -1402,7 +1405,7 @@ cursor: pointer;
                 </div>
 
                 <div  class="grid justify-start w-1/5  my-1">
-                    <div  style="border-style: solid; border-width: 8px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
+                    <div  style="border-style: solid; border-width: 5px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
 {{--                         <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">7</p></b>
  --}}                        @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
                                                     <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1_cost) ?>
@@ -1423,7 +1426,7 @@ cursor: pointer;
                 </div>
 
                 <div  class="grid justify-start w-1/5  my-1">
-                    <div  style="border-style: solid; border-width: 8px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
+                    <div  style="border-style: solid; border-width: 5px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
 
                         @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
                              <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_2_cost) ?>
@@ -2243,7 +2246,7 @@ cursor: pointer;
                     </div>
 
                     {{-- Solucion B --}}
-                <div class="w-90 grid  margin_top_solus mx-2">
+                <div class="w-90 grid  margin_top_solus mx-2 mb-3">
                     <div style="background-color:#1B17BB;" class="w-full flex justify-center rounded-md">
                         <p class="titulos_style">Solución B</p>
                     </div>
@@ -2506,6 +2509,7 @@ cursor: pointer;
         </div>
     </div>
 </div>
+</div>
 {{-- res_ana_ener --}}
 {{-- <div class="loader"></div> --}}
 <script type="text/javascript">
@@ -2698,8 +2702,15 @@ window.onafterprint = function() {
 
 }
 window.onload = function() {
+    $('#modal_loding').addClass("hidden");
+    $('#caja_principal').removeClass("hidden");
+    roi_base_a('{{$id_project}}');
+      roi_base_b('{{$id_project}}');
+      roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
+      roi_base_b_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
+};
 
-
+$(document).ready(function() {
     red_ene_print('{{$dif_1}}','{{$dif_2}}');
     descarb_print('{{$dif_1}}','{{$dif_2}}');
     cap_op_3_print('{{$id_project}}','{{$tar_ele->unidad}}');
@@ -2743,14 +2754,9 @@ window.onload = function() {
 
       /* cap_op_1_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}'); */
-      roi_base_a('{{$id_project}}');
-      roi_base_b('{{$id_project}}');
 
+    });
 
-      roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
-      roi_base_b_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
-
-    };
 /* window.print() */
 function con_ene_hvac_ar_Base(kwh_yr,porcent_hvac){
 // JS
