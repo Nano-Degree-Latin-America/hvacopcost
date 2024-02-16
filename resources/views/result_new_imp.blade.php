@@ -561,7 +561,21 @@ cursor: pointer;
 
         <div class="w-1/3 grid justify-left ml-2">
             <div class="w-full flex ">
-                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name}}</p>
+                <div id="name_no_print" name="name_no_print" class="w-full flex ">
+                    <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
+               </div>
+
+               <div id="name_print" name="name_print" class="hidden w-full flex ">
+                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
+                    @if (strlen($tar_ele->name) > 21)
+                    {{substr($tar_ele->name, 0, 21)}}...
+                    @endif
+
+                    @if (strlen($tar_ele->name) < 21)
+                    {{$tar_ele->name}}
+                    @endif
+                    </p>
+               </div>
             </div>
             <div class="w-full flex">
                 <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
@@ -883,7 +897,21 @@ cursor: pointer;
 
         <div class="w-1/3 grid justify-left ml-2">
             <div class="w-full flex ">
-                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name}}</p>
+                <div id="name_no_print_2" name="name_no_print_2" class="w-full flex ">
+                    <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
+               </div>
+
+               <div id="name_print_2" name="name_print_2" class="hidden w-full flex ">
+                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
+                    @if (strlen($tar_ele->name) > 21)
+                    {{substr($tar_ele->name, 0, 21)}}...
+                    @endif
+
+                    @if (strlen($tar_ele->name) < 21)
+                    {{$tar_ele->name}}
+                    @endif
+                    </p>
+               </div>
             </div>
             <div class="w-full flex">
                 <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
@@ -1291,7 +1319,21 @@ cursor: pointer;
 
     <div class="w-1/3 grid justify-left ml-2">
         <div class="w-full flex ">
-            <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name}}</p>
+            <div id="name_no_print_3" name="name_no_print_3" class="w-full flex ">
+                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
+           </div>
+
+           <div id="name_print_3" name="name_print_3" class="hidden w-full flex ">
+            <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
+                @if (strlen($tar_ele->name) > 21)
+                {{substr($tar_ele->name, 0, 21)}}...
+                @endif
+
+                @if (strlen($tar_ele->name) < 21)
+                {{$tar_ele->name}}
+                @endif
+                </p>
+           </div>
         </div>
         <div class="w-full flex">
             <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
@@ -1574,7 +1616,21 @@ cursor: pointer;
 
     <div class="w-1/3 grid justify-left ml-2">
         <div class="w-full flex ">
-            <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name}}</p>
+            <div id="name_no_print_4" name="name_no_print_4" class="w-full flex ">
+                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
+           </div>
+
+           <div id="name_print_4" name="name_print_4" class="hidden w-full flex ">
+            <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
+                @if (strlen($tar_ele->name) > 21)
+                {{substr($tar_ele->name, 0, 21)}}...
+                @endif
+
+                @if (strlen($tar_ele->name) < 21)
+                {{$tar_ele->name}}
+                @endif
+                </p>
+           </div>
         </div>
         <div class="w-full flex">
             <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
@@ -2608,7 +2664,14 @@ function send_print(){
     $("#principal_hoja_3").removeClass("hidden");
     $("#principal_hoja_4").removeClass("hidden");
     $("#principal_hoja_5").removeClass("hidden");
-
+    $("#name_no_print").addClass("hidden");
+    $("#name_print").removeClass("hidden");
+    $("#name_no_print_2").addClass("hidden");
+    $("#name_print_2").removeClass("hidden");
+    $("#name_no_print_3").addClass("hidden");
+    $("#name_print_3").removeClass("hidden");
+    $("#name_no_print_4").addClass("hidden");
+    $("#name_print_4").removeClass("hidden");
 
     if('{{$prim_buil_check->id_cat_edifico}}' == 3 ||'{{$prim_buil_check->id_cat_edifico}}' == 7 || '{{$prim_buil_check->id_cat_edifico}}' == 8 || '{{$prim_buil_check->id_cat_edifico}}' == 9 || '{{$prim_buil_check->id_cat_edifico}}' == 10 || '{{$prim_buil_check->id_cat_edifico}}' == 11){
         $("#next_page_3_cushobe").removeClass("hidden");
