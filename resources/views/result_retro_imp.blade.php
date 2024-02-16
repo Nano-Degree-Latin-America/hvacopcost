@@ -1830,6 +1830,10 @@ window.onload = function() {
       roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
       roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
       roi_base_b_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
+      roi_base_a('{{$id_project}}');
+      roi_base_b('{{$id_project}}');
+      roi_base_a_print('{{$id_project}}');
+      roi_base_b_print('{{$id_project}}');
     };
 
 $(document).ready(function() {
@@ -1858,10 +1862,7 @@ $(document).ready(function() {
       cap_op_3_retro('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_1_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
-      roi_base_a('{{$id_project}}');
-      roi_base_b('{{$id_project}}');
-      roi_base_a_print('{{$id_project}}');
-      roi_base_b_print('{{$id_project}}');
+
 
       google.charts.setOnLoadCallback(chart_base_eui);
       google.charts.setOnLoadCallback(chart_a_eui);
