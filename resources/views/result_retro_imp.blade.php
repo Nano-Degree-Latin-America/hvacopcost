@@ -1837,10 +1837,7 @@ $(document).ready(function() {
     con_ene_hvac_ar_Base('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-      roi_base_a('{{$id_project}}');
-      roi_base_b('{{$id_project}}');
-      roi_base_a_print('{{$id_project}}');
-      roi_base_b_print('{{$id_project}}');
+
       google.charts.setOnLoadCallback(chart_base_eui_print);
       google.charts.setOnLoadCallback(chart_a_eui_print);
       google.charts.setOnLoadCallback(chart_b_eui_print);
@@ -1861,7 +1858,10 @@ $(document).ready(function() {
       cap_op_3_retro('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_1_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
-
+      roi_base_a('{{$id_project}}');
+      roi_base_b('{{$id_project}}');
+      roi_base_a_print('{{$id_project}}');
+      roi_base_b_print('{{$id_project}}');
 
       google.charts.setOnLoadCallback(chart_base_eui);
       google.charts.setOnLoadCallback(chart_a_eui);
