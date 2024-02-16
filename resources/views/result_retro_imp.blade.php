@@ -1824,13 +1824,12 @@ window.onafterprint = function() {
 
 }
 window.onload = function() {
-    roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
+      $('#modal_loding').addClass("hidden");
+      $('#caja_principal').removeClass("hidden");
+      roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
       roi_base_b_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
       roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
       roi_base_b_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
-      $('#modal_loding').addClass("hidden");
-      $('#caja_principal').removeClass("hidden");
-
     };
 
 $(document).ready(function() {
