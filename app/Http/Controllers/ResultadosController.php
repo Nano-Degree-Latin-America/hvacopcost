@@ -7393,7 +7393,8 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
                 $uno_m_zeta_yrs_life = pow($uno_m_zeta,floatval($solution->yrs_vida));
                     if($solution->num_enf == 1){
                         //solucion existente
-                        $sol_Res = $sol * 1.15 * $uno_m_zeta_yrs_life;
+                        /* $sol_Res = $sol * 1.15 * $uno_m_zeta_yrs_life; */
+                        $sol_Res = $sol * $uno_m_zeta_yrs_life;
                     }
 
                     if($solution->num_enf == 2 || $solution->num_enf == 3){
