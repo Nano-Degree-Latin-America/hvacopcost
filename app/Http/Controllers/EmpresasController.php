@@ -42,7 +42,7 @@ class EmpresasController extends Controller
                 ->where('empresas.id','=',$query)
                 ->select('empresas.*','users.name as name_user')
                 ->orderBy('created_at','desc')
-                ->paginate(5);
+                ->get();
             }
 
             if($query == ""){
@@ -50,7 +50,7 @@ class EmpresasController extends Controller
                 ->join('users','users.id','=','empresas.id_user')
                 ->select('empresas.*','users.name as name_user')
                 ->orderBy('created_at','desc')
-                ->paginate(5);
+                ->get();
             }
         }
 

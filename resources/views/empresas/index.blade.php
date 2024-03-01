@@ -204,7 +204,7 @@ span{
                   </table>
                   <div class="table-pagination">
                     <div class="flex items-center justify-between">
-                        {{ $empresas->links() }}
+                        {{-- {{ $empresas->links() }} --}}
                     </div>
                   </div>
                 </div>
