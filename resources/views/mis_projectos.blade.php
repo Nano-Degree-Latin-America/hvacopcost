@@ -256,8 +256,8 @@ span{
                                 @endif
 
                                 <button title="Editar" class="p-1 bg-blue-400 rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="edit_project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-pen-to-square"></i></a></button>
-                                <button title="Ver PDF" class="p-1 bg-red-600  rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="generatePDF/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i></a></button>
-                                <button  onclick="elimiinar_project('{{$project->id}}','del_project');" class="p-1  bg-orange-400 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a><i class="fas fa-trash"></i></a></button>
+{{--                                 <button title="Ver PDF" class="p-1 bg-red-600  rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="generatePDF/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i></a></button>
+ --}}                                <button  onclick="elimiinar_project('{{$project->id}}','del_project');" class="p-1  bg-orange-400 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a><i class="fas fa-trash"></i></a></button>
 
                             </td>
 
@@ -326,8 +326,8 @@ span{
 
 
                                 <button title="Editar" class="p-1 bg-blue-400 rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="edit_project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-pen-to-square"></i></a></button>
-                                <button title="Ver PDF" class="p-1 bg-red-600  rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="generatePDF/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i></a></button>
-                                <button  onclick="elimiinar_project('{{$project->id}}','del_project');" class="p-1  bg-orange-400 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a><i class="fas fa-trash"></i></a></button>
+{{--                                 <button title="Ver PDF" class="p-1 bg-red-600  rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="generatePDF/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i></a></button>
+ --}}                                <button  onclick="elimiinar_project('{{$project->id}}','del_project');" class="p-1  bg-orange-400 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a><i class="fas fa-trash"></i></a></button>
 
                             </td>
 
@@ -395,8 +395,8 @@ span{
                                 @endif
 
                                 <button title="Editar" class="p-1 bg-blue-400 rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="edit_project/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-pen-to-square"></i></a></button>
-                                <button title="Ver PDF" class="p-1 bg-red-600  rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="generatePDF/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i></a></button>
-                                <button  onclick="elimiinar_project('{{$project->id}}','del_project');" class="p-1  bg-orange-400 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a><i class="fas fa-trash"></i></a></button>
+{{--                                 <button title="Ver PDF" class="p-1 bg-red-600  rounded-md hover:bg-blue-600 text-white font-roboto action:bg-blue-600"><a href="generatePDF/{{$project->id}}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-file-pdf"></i></a></button>
+ --}}                                <button  onclick="elimiinar_project('{{$project->id}}','del_project');" class="p-1  bg-orange-400 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><a><i class="fas fa-trash"></i></a></button>
 
                             </td>
 
