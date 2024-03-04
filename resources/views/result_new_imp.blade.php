@@ -694,7 +694,7 @@ cursor: pointer;
                                     <?php $unid_med_2=""?>
                                     <?php  $result_area_2=0?>
                                     <?php $inv_ini_2=0?>
-
+                                    <input type="number" class="hidden" id="inv_ini_2" name="inv_ini_2" value="{{$inv_ini_2}}">
                                     @endif
                                     <div class="flex w-full justify-center  gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_2)}}</p><b class="unit_style">Kwh</b>
@@ -1191,10 +1191,13 @@ cursor: pointer;
             @if ($result2 !== null)
             <?php  $personas_a=$conf_val->personas($id_project,$conf_val_a) ?>
             <?php  $costo_a=$conf_val->costo($personas_a,$id_project) ?>
+            <?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
             @endif
 
             @if ($result2 === null)
             <?php  $costo_a=0; ?>
+            <?php  $personas_a=0 ?>
+            <?php  $inv_ini_2=0 ?>
             @endif
             <div class="w-1/3 grid justify-items-center gap-y-2">
                 <div class="flex w-full justify-center mt-5">
@@ -1217,6 +1220,7 @@ cursor: pointer;
             @endif
 
             @if ($result2 === null)
+            <?php  $costo_b=0 ?>
             <?php  $personas_b=0; ?>
             @endif
 
@@ -1374,7 +1378,8 @@ cursor: pointer;
 </div>
 
 <?php  $dif_1_cost=$smasolutions->dif_1_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
-<?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
+
+
 
 <?php  $dif_2_cost=$smasolutions->dif_2_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
  {{-- payback --}}
@@ -2773,16 +2778,17 @@ $(document).ready(function() {
     cap_op_5_print('{{$id_project}}','{{$tar_ele->unidad}}');
     cap_op_10_print('{{$id_project}}','{{$tar_ele->unidad}}');
     cap_op_15_print('{{$id_project}}','{{$tar_ele->unidad}}');
-    roi_base_a_print('{{$id_project}}');
-    roi_base_b_print('{{$id_project}}');
-    roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
-    roi_base_b_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
+
     google.charts.setOnLoadCallback(chart_base_eui_print);
     google.charts.setOnLoadCallback(chart_a_eui_print);
     google.charts.setOnLoadCallback(chart_b_eui_print);
     google.charts.setOnLoadCallback(chart_cu_sho_Be_base_print);
     google.charts.setOnLoadCallback(chart_cu_sho_Be_a_print);
     google.charts.setOnLoadCallback(chart_cu_sho_Be_b_print);
+    roi_base_a_print('{{$id_project}}');
+    roi_base_b_print('{{$id_project}}');
+    roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
+    roi_base_b_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
     //no_print
       con_ene_hvac_ar_Base('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
       con_ene_hvac_ar_a('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
