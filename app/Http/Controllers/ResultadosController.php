@@ -2634,11 +2634,10 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
 
     public function project(Request $request,$id_project){
 
-        if(Auth::user()->tipo_user == 5){
+
             return view('result_new_imp',['id_project'=>$id_project]);
-        }else{
-            return view('resultados2',['id_project'=>$id_project]);
-        }
+
+        
 
     }
 
