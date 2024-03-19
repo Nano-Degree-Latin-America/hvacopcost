@@ -114,6 +114,13 @@
             font-family: 'ABeeZee', sans-serif;
         }
 
+        .cant_style_minim{
+            font-size: 2.8rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+        }
+
         .unit_style{
             font-size: 1.3rem;
             font-weight: bold;
@@ -281,6 +288,13 @@
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
    }
+
+   .cant_style_minim{
+            font-size: 1.4rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+        }
 
    .unit_style{
             font-size: .8rem;
@@ -1396,17 +1410,17 @@ cursor: pointer;
                    {{-- espacio --}}
                 </div>
 
-                <div class="grid justify-start w-1/5">
+                <div class="flex justify-center w-1/5">
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Solución Base</b>
 
                 </div>
 
-                <div class="grid justify-start w-1/5">
+                <div class="flex justify-center w-1/5">
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Solución A</b>
 
                 </div>
 
-                <div class="grid justify-start w-1/5">
+                <div class="flex justify-center w-1/5">
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Solución B</b>
 
                 </div>
@@ -1417,19 +1431,37 @@ cursor: pointer;
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold ml-10">Inversión</b>
                 </div>
 
-                <div class="grid justify-start w-1/5">
+                <div class="flex justify-center w-1/5">
+                    @if (strlen(number_format($inv_ini_1)) > 9)
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style_minim">${{number_format($inv_ini_1)}}</p></b>
+                    @endif
+
+                    @if (strlen(number_format($inv_ini_1)) < 9)
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_1)}}</p></b>
+                    @endif
 
                 </div>
 
-                <div class="grid justify-start w-1/5">
+                <div class="flex justify-center w-1/5">
+
+                    @if (strlen(number_format($inv_ini_2)) > 9)
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style_minim">${{number_format($inv_ini_2)}}</p></b>
+                    @endif
+
+                    @if (strlen(number_format($inv_ini_2)) < 9)
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_2)}}</p></b>
-
+                    @endif
                 </div>
 
-                <div class="grid justify-start w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_3)}}</p></b>
+                <div class="flex justify-center w-1/5">
 
+                    @if (strlen(number_format($inv_ini_3)) > 9)
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style_minim">${{number_format($inv_ini_3)}}</p></b>
+                    @endif
+
+                    @if (strlen(number_format($inv_ini_3)) < 9)
+                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_3)}}</p></b>
+                    @endif
                 </div>
             </div>
 
@@ -1444,7 +1476,7 @@ cursor: pointer;
 
                 </div>
 
-                <div  class="grid justify-start w-1/5  my-1">
+                <div  class="flex justify-center w-1/5  my-1">
                     <div  style="border-style: solid; border-width: 5px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
 {{--                         <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">7</p></b>
  --}}                        @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
@@ -1465,7 +1497,7 @@ cursor: pointer;
 
                 </div>
 
-                <div  class="grid justify-start w-1/5  my-1">
+                <div  class="flex justify-center w-1/5  my-1">
                     <div  style="border-style: solid; border-width: 5px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
 
                         @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
