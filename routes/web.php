@@ -76,6 +76,8 @@ Route::get('/users_admin_hvaccopcostla/{$id}', 'UserController@index')->name('in
 Route::get('/users/create/', 'UserController@create');
 Route::get('/users_edit/{id}', 'UserController@edit');
 Route::get('/del_usr/{id}', 'UserController@delete')->name('delete');
+Route::get('/eliminar_usr/{id}', 'UserController@eliminar_usr')->name('eliminar_usr');
+
 Route::post('/edit_usr/{id}', 'UserController@update')->name('update');
 Route::post('users_store', 'UserController@users_store')->name('users_store');
 Route::post('/getLogo','UserController@getLogo');

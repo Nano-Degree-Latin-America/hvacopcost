@@ -65,28 +65,11 @@ span{
 <hr>
 
 
-{!! Form::open(array('url'=>'/users','method' => 'GET','autocomplete'=>'on','role'=>'search')) !!}
-<div class="flex  w-full">
-    <div style="margin-left:50px;" class="w-1/3 grid mt-5">
-        <label style="font-size: 20px;" class="mb-1" for=""><b>Empresas</b> </label>
-        <div class="flex gap-x-3">
-        <select name="searchText" id="searchText" value="{{$searchText}}"  class="w-full border-2 border-blue-600 rounded-md p-1" onchange="valida_form_calc();unidadHvac(this.value,1,'csTipo','csDisenio_1_1');">
-            <option value="">Seleccionar</option>
-            @foreach ($empresas as $empresa)
-            <option value="{{$empresa->id}}">{{$empresa->name}}</option>
-            @endforeach
-        </select>
-        <button type="submit" class="bg-blue-500 p-1 rounded-md" ><i class="fa-solid fa-magnifying-glass text-xl text-white"></i></button>
-      </div>
-    </div>
 
-</div>
-
-{!! Form::close() !!}
 
   <div class="w-0.8 my-5 mx-5 justify-center">
     <!-- This example requires Tailwind CSS v2.0+ -->
-    <div class="container mx-auto">
+    <div class="container mx-full">
       <div class="flex flex-col">
           <div class="w-full">
             <div class="flex w-full my-3">
@@ -115,6 +98,10 @@ span{
                               <th class="px-6 py-2 text-center text-xm text-white">
                                 Email
                                 </th>
+
+                                <th class="px-6 py-2 text-center text-xm text-white">
+                                    Empresa
+                                    </th>
                               <th class="px-6 py-2 text-xm text-white">
                                   Estado
                               </th>
@@ -139,6 +126,10 @@ span{
                               </th>
 
                               <th class="px-6 py-2 text-xm text-white">
+                                Inactivar
+                            </th>
+
+                              <th class="px-6 py-2 text-xm text-white">
                                   Eliminar
                               </th>
                           </tr>
@@ -154,7 +145,9 @@ span{
                             <td class="px-6 py-4 text-sm text-gray-500">
                                 {{$client->email}}
                             </td>
-
+                            <td class="px-6 py-4 text-sm text-gray-500">
+                                {{$client->name_empresa}}
+                            </td>
                             @if ($client->status === 1)
                             <td class="px-6 py-4">
                                 <div class="text-xm text-gray-900">
@@ -168,6 +161,7 @@ span{
                                 </div>
                             </td>
                             @endif
+
 
                              @if ($client->tipo_user === 1)
                             <td class="px-6 py-4">
@@ -234,6 +228,22 @@ span{
 
                             <td class="px-6 py-2">
                                 <a  onclick="inac('{{$client->id}}','del_usr');" class=" inline-block text-center">
+                                 <i class="fa-sharp fa-solid fa-trash text-orange-600  text-[25px]"></i>
+                                </a>
+                            </td>
+
+
+                            @else
+                            <td>No aplica</td>
+
+                            @endif
+
+
+                        @if($client->status == 1)
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+
+                            <td class="px-6 py-2">
+                                <a  onclick="delet('{{$client->id}}','eliminar_usr');" class=" inline-block text-center">
                                  <i class="fa-sharp fa-solid fa-trash text-red-600  text-[25px]"></i>
                                 </a>
                             </td>
@@ -251,19 +261,56 @@ span{
                   </table>
                 </div>
             </div>
-          <div class="m-2">
 
-            {{ $users->links() }}
-          </div>
         </div>
     </div>
 </div>
 <script>
+    window.onload = function() {
+    let table =  $('#dataTable').DataTable( {
+    responsive: true
+} );
+};
     //FUNCION PARA BORRAR REGISTROS// AUX ES LA RUTA QUE RECIBE
     function inac(id, aux) {
     Swal.fire({
         title: 'Estás seguro?',
         text: "Se inactivará el registro!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, inactivar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // var route = ruta_global + "/" + aux + "/" + id + "";
+          /*   var token = document.getElementById('token').value; */
+            $.ajax({
+                url: "/" + aux + "/" + id + "",
+               /*  headers: { 'X-CSRF-TOKEN': token }, */
+                type: 'get',
+              /*   dataType: 'json', */
+                success: function () {
+                    Swal.fire(
+                        'Inactivado!',
+                        'El registro se ha inactivado.',
+                        'success'
+                    )
+                }
+            });
+
+            setTimeout(function () { location.reload() }, 1000);
+
+            //location.reload();
+        }
+    })
+}
+
+    //FUNCION PARA BORRAR REGISTROS// AUX ES LA RUTA QUE RECIBE
+    function delet(id, aux) {
+    Swal.fire({
+        title: 'Estás seguro?',
+        text: "Se eliminara el registro!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',

@@ -42,30 +42,16 @@ class UserController extends Controller
     public function users(Request $request){
         $today = date('Y-m-d');
 
-        $query=trim($request->GET('searchText'));
-        if($request)
-       {
-        if($query != ""){
-            $users = DB::table('users')
-            ->where('users.id_empresa','=',$query)
-             ->orderBy('created_at','desc')
-            ->paginate(10);
-        }
-
-        if($query == ""){
-            $users = DB::table('users')
-             ->orderBy('created_at','desc')
-            ->paginate(10);
-        }
-
-        }
-
-
+        $users = DB::table('users')
+        ->join('empresas','empresas.id','=','users.id_empresa')
+        ->select('users.*','empresas.name as name_empresa')
+        ->orderBy('created_at','desc')
+        ->get();
 
         $empresas = DB::table('empresas')
         ->get();
 
-        return view('users.index', ['users' => $users,'empresas'=>$empresas,"searchText"=>$query,'today'=>$today]);
+        return view('users.index', ['users' => $users,'empresas'=>$empresas,'today'=>$today]);
     }
 
     public function create(Request $request){
@@ -158,6 +144,15 @@ class UserController extends Controller
         $user_update= User::find($id);
         $user_update->status=2;
         $user_update->update();
+        /* if($user_update->update()){
+            return Redirect::to('/users_admin_hvaccopcostla');
+        } */
+    }
+
+    public function eliminar_usr(Request $request,$id){
+
+        $user_update= User::find($id);
+        $user_update->delete();
         /* if($user_update->update()){
             return Redirect::to('/users_admin_hvaccopcostla');
         } */
