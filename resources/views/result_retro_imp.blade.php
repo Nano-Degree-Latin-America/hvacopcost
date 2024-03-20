@@ -2842,6 +2842,16 @@ $.ajax({
     type: 'get',
     url: "/cap_op_1_retro/" + id_project,
     success: function (res) {
+        var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min.length > 5){
+             var fontSize_cap_op = '11px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '14px';
+        }
         var options = {
       series: [{
       name: 'CAPEX',
@@ -2900,7 +2910,7 @@ $.ajax({
       labels: {
             style: {
                 colors: [],
-                fontSize: '14px',
+                fontSize: fontSize_cap_op,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -2974,7 +2984,16 @@ function cap_op_3_retro(id_project,unidad){
         type: 'get',
         url: "/cap_op_3_retro/" + id_project,
         success: function (res) {
+            var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
 
+        if(vals_min.length > 5){
+             var fontSize_cap_op = '11px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '14px';
+        }
             var options = {
           series: [{
           name: 'CAPEX',
@@ -3029,7 +3048,7 @@ function cap_op_3_retro(id_project,unidad){
           labels: {
                 style: {
                     colors: [],
-                    fontSize: '14px',
+                    fontSize: fontSize_cap_op,
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -4992,6 +5011,18 @@ $.ajax({
     type: 'get',
     url: "/cap_op_1_retro/" + id_project,
     success: function (res) {
+
+        var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min.length > 5){
+             var fontSize_cap_op = '5px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '8px';
+        }
+
         var options = {
       series: [{
       name: 'CAPEX',
@@ -5051,7 +5082,7 @@ $.ajax({
       labels: {
             style: {
                 colors: [],
-                fontSize: '8px',
+                fontSize: fontSize_cap_op,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -5127,6 +5158,16 @@ function cap_op_3_retro_print(id_project,unidad){
         url: "/cap_op_3_retro/" + id_project,
         success: function (res) {
 
+         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min.length > 5){
+             var fontSize_cap_op = '5px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '8px';
+        }
             var options = {
           series: [{
           name: 'CAPEX',
@@ -5182,7 +5223,7 @@ function cap_op_3_retro_print(id_project,unidad){
           labels: {
                 style: {
                     colors: [],
-                    fontSize: '8px',
+                    fontSize: fontSize_cap_op,
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',

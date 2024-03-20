@@ -4054,7 +4054,20 @@ $.ajax({
     type: 'get',
     url: "/cap_op_3/" + id_project,
     success: function (res) {
+/*
+        var vals_min = Math.min(res[2][0], res[1][0], res[0][0],res[2][1], res[1][1], res[0][1],res[2][2], res[1][2],res[0][2]);}
+        var sumacapex =
+       */
+        var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
 
+        if(vals_min.length > 5){
+             var fontSize_cap_op = '11px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '14px';
+        }
         var options = {
       series: [{
       name: 'CAPEX',
@@ -4111,17 +4124,20 @@ $.ajax({
     xaxis: {
       categories: ['Solución B', 'Solución A', 'Solución Base'],
       labels: {
+            hideOverlappingLabels: true,
             style: {
                 colors: [],
-                fontSize: '14px',
+                fontSize: fontSize_cap_op,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
-                cssClass: 'apexcharts-yaxis-label',
+                cssClass: 'apexcharts-xaxis-label',
+
             },
         },
     },
     yaxis: {
         labels: {
+            hideOverlappingLabels: true,
             style: {
                 colors: [],
                 fontSize: '16px',
@@ -4187,7 +4203,16 @@ $.ajax({
     type: 'get',
     url: "/cap_op_5/" + id_project,
     success: function (res) {
+        var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
 
+        if(vals_min.length > 5){
+             var fontSize_cap_op = '11px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '14px';
+        }
         var options = {
       series: [{
       name: 'CAPEX',
@@ -4240,17 +4265,20 @@ $.ajax({
     xaxis: {
       categories: ['Solución B', 'Solución A', 'Solución Base'],
       labels: {
+            hideOverlappingLabels: true,
             style: {
                 colors: [],
-                fontSize: '14px',
+                fontSize: fontSize_cap_op,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
-                cssClass: 'apexcharts-yaxis-label',
+                cssClass: 'apexcharts-xaxis-label',
             },
+
         },
     },
     yaxis: {
         labels: {
+            hideOverlappingLabels: true,
             style: {
                 colors: [],
                 fontSize: '16px',
@@ -4317,7 +4345,16 @@ $.ajax({
     type: 'get',
     url: "/cap_op_10/" + id_project,
     success: function (res) {
+        var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
 
+        if(vals_min.length > 5){
+             var fontSize_cap_op = '11px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '14px';
+        }
         var options = {
       series: [{
       name: 'CAPEX',
@@ -4371,12 +4408,13 @@ $.ajax({
     xaxis: {
       categories: ['Solución B', 'Solución A', 'Solución Base'],
       labels: {
+            hideOverlappingLabels: true,
             style: {
                 colors: [],
-                fontSize: '14px',
+                fontSize: fontSize_cap_op,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
-                cssClass: 'apexcharts-yaxis-label',
+                cssClass: 'apexcharts-xaxis-label',
             },
         },
     },
@@ -4448,6 +4486,16 @@ $.ajax({
     type: 'get',
     url: "/cap_op_15/" + id_project,
     success: function (res) {
+    var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min.length > 5){
+             var fontSize_cap_op = '11px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '14px';
+        }
         var options = {
       series: [{
       name: 'CAPEX',
@@ -4501,9 +4549,10 @@ $.ajax({
     xaxis: {
       categories: ['Solución B', 'Solución A', 'Solución Base'],
       labels: {
+         hideOverlappingLabels: true,
             style: {
                 colors: [],
-                fontSize: '14px',
+                fontSize: fontSize_cap_op,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -6602,7 +6651,16 @@ function cap_op_3_retro_print(id_project,unidad){
         type: 'get',
         url: "/cap_op_3_retro/" + id_project,
         success: function (res) {
+            var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
 
+        if(vals_min.length > 5){
+             var fontSize_cap_op = '5px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '8px';
+        }
             var options = {
           series: [{
           name: 'CAPEX',
@@ -6658,7 +6716,7 @@ function cap_op_3_retro_print(id_project,unidad){
           labels: {
                 style: {
                     colors: [],
-                    fontSize: '8px',
+                    fontSize: fontSize_cap_op,
                     fontFamily: 'ABeeZee, sans-serif',
                     fontWeight: "bold",
                     cssClass: 'apexcharts-yaxis-label',
@@ -6735,7 +6793,16 @@ $.ajax({
     type: 'get',
     url: "/cap_op_3/" + id_project,
     success: function (res) {
+        var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
 
+        if(vals_min_string.length > 5){
+             var fontSize_cap_op = '6.5px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '8px';
+        }
         var options = {
       series: [{
       name: 'CAPEX',
@@ -6795,10 +6862,10 @@ $.ajax({
       labels: {
             style: {
                 colors: [],
-                fontSize: '8px',
+                fontSize: fontSize_cap_op,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
-                cssClass: 'apexcharts-yaxis-label',
+                cssClass: 'apexcharts-xaxis-label',
             },
         },
     },
@@ -7001,7 +7068,16 @@ $.ajax({
     type: 'get',
     url: "/cap_op_10/" + id_project,
     success: function (res) {
+        var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
 
+        if(vals_min_string.length > 5){
+             var fontSize_cap_op = '6.5px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '8px';
+        }
         var options = {
       series: [{
       name: 'CAPEX',
@@ -7058,7 +7134,7 @@ $.ajax({
       labels: {
             style: {
                 colors: [],
-                fontSize: '8px',
+                fontSize: fontSize_cap_op,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -7133,6 +7209,16 @@ $.ajax({
     type: 'get',
     url: "/cap_op_15/" + id_project,
     success: function (res) {
+        var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min_string.length > 5){
+             var fontSize_cap_op = '6.5px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '8px';
+        }
         var options = {
       series: [{
       name: 'CAPEX',
@@ -7189,7 +7275,7 @@ $.ajax({
       labels: {
             style: {
                 colors: [],
-                fontSize: '8px',
+                fontSize: fontSize_cap_op,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
