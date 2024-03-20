@@ -251,7 +251,7 @@ span{
                   </table>
                 </div>
             </div>
-          <diva class="m-2">
+          <div class="m-2">
 
             {{ $users->links() }}
           </div>
