@@ -315,7 +315,7 @@ span{
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, inactivar!'
+        confirmButtonText: 'Si, eliminar!'
     }).then((result) => {
         if (result.isConfirmed) {
             // var route = ruta_global + "/" + aux + "/" + id + "";
@@ -328,7 +328,7 @@ span{
                 success: function () {
                     Swal.fire(
                         'Inactivado!',
-                        'El registro se ha inactivado.',
+                        'El registro se ha eliminado.',
                         'success'
                     )
                 }
