@@ -415,7 +415,7 @@ span{
 
 
         </div>
-        {{ $mis_projectos->links() }}
+        {{ $mis_projectos->render() }}
     </div>
 </div>
 

@@ -4058,6 +4058,8 @@ $.ajax({
         var vals_min = Math.min(res[2][0], res[1][0], res[0][0],res[2][1], res[1][1], res[0][1],res[2][2], res[1][2],res[0][2]);}
         var sumacapex =
        */
+
+if (res[2][0] > 0 || res[2][0] != null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
@@ -4068,6 +4070,39 @@ $.ajax({
         if(vals_min_string.length <= 5 && vals_min_string.length > 0){
             var fontSize_cap_op = '14px';
         }
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
+
+        var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min_string.length > 5){
+             var fontSize_cap_op = '11px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '14px';
+        }
+
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  && res[0][0] > 0 || res[0][0] != null) {
+
+var vals_min = parseInt(res[0][0]);
+var vals_min_string = vals_min.toString();
+
+if(vals_min_string.length > 5){
+     var fontSize_cap_op = '11px';
+}
+
+if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+    var fontSize_cap_op = '14px';
+}
+
+}
+
+
         var options = {
       series: [{
       name: 'CAPEX',
@@ -4203,6 +4238,7 @@ $.ajax({
     type: 'get',
     url: "/cap_op_5/" + id_project,
     success: function (res) {
+        if (res[2][0] > 0 || res[2][0] != null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
@@ -4213,6 +4249,37 @@ $.ajax({
         if(vals_min_string.length <= 5 && vals_min_string.length > 0){
             var fontSize_cap_op = '14px';
         }
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
+
+        var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min_string.length > 5){
+             var fontSize_cap_op = '11px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '14px';
+        }
+
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  && res[0][0] > 0 || res[0][0] != null) {
+
+var vals_min = parseInt(res[0][0]);
+var vals_min_string = vals_min.toString();
+
+if(vals_min_string.length > 5){
+     var fontSize_cap_op = '11px';
+}
+
+if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+    var fontSize_cap_op = '14px';
+}
+
+}
         var options = {
       series: [{
       name: 'CAPEX',
@@ -4345,6 +4412,7 @@ $.ajax({
     type: 'get',
     url: "/cap_op_10/" + id_project,
     success: function (res) {
+        if (res[2][0] > 0 || res[2][0] != null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
@@ -4355,6 +4423,37 @@ $.ajax({
         if(vals_min_string.length <= 5 && vals_min_string.length > 0){
             var fontSize_cap_op = '14px';
         }
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
+
+        var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min_string.length > 5){
+             var fontSize_cap_op = '11px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '14px';
+        }
+
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  && res[0][0] > 0 || res[0][0] != null) {
+
+var vals_min = parseInt(res[0][0]);
+var vals_min_string = vals_min.toString();
+
+if(vals_min_string.length > 5){
+     var fontSize_cap_op = '11px';
+}
+
+if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+    var fontSize_cap_op = '14px';
+}
+
+}
         var options = {
       series: [{
       name: 'CAPEX',
@@ -4486,7 +4585,8 @@ $.ajax({
     type: 'get',
     url: "/cap_op_15/" + id_project,
     success: function (res) {
-    var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+        if (res[2][0] > 0 || res[2][0] != null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
+        var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
         if(vals_min.length > 5){
@@ -4496,6 +4596,37 @@ $.ajax({
         if(vals_min_string.length <= 5 && vals_min_string.length > 0){
             var fontSize_cap_op = '14px';
         }
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
+
+        var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min_string.length > 5){
+             var fontSize_cap_op = '11px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '14px';
+        }
+
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  && res[0][0] > 0 || res[0][0] != null) {
+
+var vals_min = parseInt(res[0][0]);
+var vals_min_string = vals_min.toString();
+
+if(vals_min_string.length > 5){
+     var fontSize_cap_op = '11px';
+}
+
+if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+    var fontSize_cap_op = '14px';
+}
+
+}
         var options = {
       series: [{
       name: 'CAPEX',
@@ -6793,16 +6924,49 @@ $.ajax({
     type: 'get',
     url: "/cap_op_3/" + id_project,
     success: function (res) {
+
+        if (res[2][0] > 0 || res[2][0] != null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min_string.length > 5){
+        if(vals_min.length > 5){
              var fontSize_cap_op = '6.5px';
         }
 
         if(vals_min_string.length <= 5 && vals_min_string.length > 0){
             var fontSize_cap_op = '8px';
         }
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
+
+        var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min.length > 5){
+             var fontSize_cap_op = '6.5px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '8px';
+        }
+
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  && res[0][0] > 0 || res[0][0] != null) {
+
+var vals_min = parseInt(res[0][0]);
+var vals_min_string = vals_min.toString();
+
+        if(vals_min.length > 5){
+                    var fontSize_cap_op = '6.5px';
+                }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '8px';
+        }
+
+}
         var options = {
       series: [{
       name: 'CAPEX',
@@ -7068,16 +7232,48 @@ $.ajax({
     type: 'get',
     url: "/cap_op_10/" + id_project,
     success: function (res) {
+        if (res[2][0] > 0 || res[2][0] != null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min_string.length > 5){
+        if(vals_min.length > 5){
              var fontSize_cap_op = '6.5px';
         }
 
         if(vals_min_string.length <= 5 && vals_min_string.length > 0){
             var fontSize_cap_op = '8px';
         }
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
+
+        var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min.length > 5){
+             var fontSize_cap_op = '6.5px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '8px';
+        }
+
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  && res[0][0] > 0 || res[0][0] != null) {
+
+var vals_min = parseInt(res[0][0]);
+var vals_min_string = vals_min.toString();
+
+        if(vals_min.length > 5){
+                    var fontSize_cap_op = '6.5px';
+                }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '8px';
+        }
+
+}
         var options = {
       series: [{
       name: 'CAPEX',
@@ -7209,16 +7405,48 @@ $.ajax({
     type: 'get',
     url: "/cap_op_15/" + id_project,
     success: function (res) {
+        if (res[2][0] > 0 || res[2][0] != null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min_string.length > 5){
+        if(vals_min.length > 5){
              var fontSize_cap_op = '6.5px';
         }
 
         if(vals_min_string.length <= 5 && vals_min_string.length > 0){
             var fontSize_cap_op = '8px';
         }
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
+
+        var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min.length > 5){
+             var fontSize_cap_op = '6.5px';
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '8px';
+        }
+
+}
+
+if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  && res[0][0] > 0 || res[0][0] != null) {
+
+var vals_min = parseInt(res[0][0]);
+var vals_min_string = vals_min.toString();
+
+        if(vals_min.length > 5){
+                    var fontSize_cap_op = '6.5px';
+                }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+            var fontSize_cap_op = '8px';
+        }
+
+}
         var options = {
       series: [{
       name: 'CAPEX',
