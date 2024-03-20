@@ -81,7 +81,7 @@ span{
             </div>
 
 
-            @include('empresas.search')
+
               <div class="card has-table">
                 <header class="card-header">
                   <p class="card-header-title">
@@ -91,7 +91,7 @@ span{
 
                 </header>
                 <div class="card-content">
-                  <table>
+                  <table id="tabla_empresas">
                     <thead>
                     <tr>
 
@@ -215,6 +215,10 @@ span{
   </div>
 </div>
 <script>
+window.onload = function() {
+    let table = new DataTable('#tabla_empresas');
+};
+
 
 function redirect_edit(id){
     window.location.href = "edit_empresa"+"/"+id;

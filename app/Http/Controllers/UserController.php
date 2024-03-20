@@ -49,13 +49,13 @@ class UserController extends Controller
             $users = DB::table('users')
             ->where('users.id_empresa','=',$query)
              ->orderBy('created_at','desc')
-            ->paginate(10);
+            ->paginate(8);
         }
 
         if($query == ""){
             $users = DB::table('users')
              ->orderBy('created_at','desc')
-            ->paginate(10);
+            ->paginate(8);
         }
 
         }

@@ -34,27 +34,11 @@ class EmpresasController extends Controller
     {
         $query=trim($request->GET('searchText'));
 
-        if($request)
-        {
-            if($query != ""){
-                $empresas = DB::table('empresas')
-                ->join('users','users.id','=','empresas.id_user')
-                ->where('empresas.id','=',$query)
-                ->select('empresas.*','users.name as name_user')
-                ->orderBy('created_at','desc')
-                ->get();
-            }
-
-            if($query == ""){
-                $empresas = DB::table('empresas')
+        $empresas = DB::table('empresas')
                 ->join('users','users.id','=','empresas.id_user')
                 ->select('empresas.*','users.name as name_user')
                 ->orderBy('created_at','desc')
                 ->get();
-            }
-        }
-
-
         $emps = DB::table('empresas')
         ->get();
         $empresa_admin  = DB::table('empresas')
