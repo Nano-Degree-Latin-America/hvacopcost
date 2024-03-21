@@ -1677,7 +1677,7 @@ cursor: pointer;
     var ima_sol = document.getElementById('ima_sol').value;
     google.charts.load('current', {'packages':['gauge']});
     var cons_ene_ele_ancho = 370;
-    var cons_ene_ele_alto = 200;
+    var cons_ene_ele_alto = 220;
     var cons_ene_ele_ancho_print = 210;
     var cons_ene_ele_alto_print = 120;
     var eui_print_width = 470;
