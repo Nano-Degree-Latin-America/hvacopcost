@@ -3,11 +3,10 @@
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
      <div id="slider" class="slider-big">
          <div class="col-4">
-             <img class="header" name="logoEmpresa" id="logoEmpresa" src="{{asset('assets/images/Logo-NDL_blanco_marca-r.png')}}" alt="Nano Degree">
+             <img class="" style="max-height: 100px; width:230px;" name="logoEmpresa" id="logoEmpresa" src="{{asset('assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="Nano Degree">
          </div>
          <div class=" col-4 flex justify-center" style="line-height: 30px">
              {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
-             <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
 
         </div>
 
@@ -15,9 +14,9 @@
 
 
 
-             </div>
+        </div>
 
-         <div class="col-4 flex justify-end gap-x-3">
+         <div class="col-4 flex justify-end gap-x-3 mt-5">
 
             @if (Auth::user()->tipo_user == 5)
             <button class="text_butons_top ml-5 mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='empresas'"><p class="text_butons_top">Admin</p></button>

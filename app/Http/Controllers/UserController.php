@@ -233,9 +233,9 @@ class UserController extends Controller
         // ->where('idUsuario', session('idUsuario'))
         // ->get();
         $submit = array(
-            "logo" => "Logo-NDL_blanco_marca-r.png"
+            "logo" => "Logotipo-HVACOPCOST_blanco.png"
         );
-        return response()->json("Logo-NDL_blanco_marca-r.png");
+        return response()->json("Logotipo-HVACOPCOST_blanco.png");
     }
     public function actualizarLogo(Request $request){
         date_default_timezone_set("America/Mexico_City");

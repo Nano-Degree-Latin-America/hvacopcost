@@ -10,11 +10,10 @@
 
 <div class="bg-blue-900 w-full flex justify-center" style="background-image: radial-gradient(rgb(10,19,59) 0%,rgb(5,1,25) 100%);">
     <div class="w-1/3">
-        <img class="header" style="height:99px;" name="" id="" src="{{asset('/assets/images/Logo-NDL_blanco_marca-r.png')}}" alt="Nano Degree">
+        <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
     </div>
     <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
         {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
-        <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
 
 
     </div>

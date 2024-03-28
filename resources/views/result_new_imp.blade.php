@@ -541,11 +541,11 @@ cursor: pointer;
 {{-- navbar --}}
 <div id="navbar"  name="navbar" class="bg-blue-900 w-full flex justify-center" style="background-image: radial-gradient(rgb(10,19,59) 0%,rgb(5,1,25) 100%);">
     <div class="w-1/3">
-        <img class="header" style="height:99px;" name="logoEmpresa" id="logoEmpresa" src="{{asset('assets/images/Logo-NDL_blanco_marca-r.png')}}" alt="Nano Degree">
+        <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
     </div>
     <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
         {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
-        <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
+
 
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
@@ -2604,8 +2604,8 @@ cursor: pointer;
     var man_lang = document.getElementById('ima_man').value;
     var ima_sol = document.getElementById('ima_sol').value;
     google.charts.load('current', {'packages':['gauge']});
-    var cons_ene_ele_ancho = 370;
-    var cons_ene_ele_alto = 220;
+    var cons_ene_ele_ancho = 400;
+    var cons_ene_ele_alto = 235;
     var cons_ene_ele_ancho_print = 200;
     var cons_ene_ele_alto_print = 120;
     var eui_print_width = 400;

@@ -40,7 +40,7 @@ return [
     'anls_int_uso_ene' => 'ANÁLISIS DE INTENSIDAD DEL USO DE LA ENERGÍA',
     'res_ana_sus' => 'RESULTADOS ANÁLISIS SUSTENTABLE',
     'ans_conf_prod' => 'ANÁLISIS DE CONFORT Y PRODUCTIVIDAD',
-    'niv_conf' => 'Nivel de Confort',
+    'niv_conf' => 'Nivel Estimado de Confort',
     'prod_lab' => 'Productividad Laboral',
     'edit_proy' => 'Editar Proyecto',
     'cu_sho_Be' => 'Compromiso de Compra de los Clientes',

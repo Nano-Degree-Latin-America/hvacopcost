@@ -134,6 +134,8 @@ Route::get('asigna_empresas_tipo', 'ResultadosController@asigna_empresas_tipo');
 
 Route::get('cap_op_1_retro/{id_project}', 'ResultadosController@cap_op_1_retro');
 Route::get('cap_op_3_retro/{id_project}', 'ResultadosController@cap_op_3_retro');
+Route::get('cap_op_5_retro/{id_project}', 'ResultadosController@cap_op_5_retro');
+Route::get('cap_op_10_retro/{id_project}', 'ResultadosController@cap_op_10_retro');
 Route::get('cap_op_3/{id_project}', 'ResultadosController@cap_op_3');
 Route::get('cap_op_5/{id_project}', 'ResultadosController@cap_op_5');
 Route::get('cap_op_10/{id_project}', 'ResultadosController@cap_op_10');
