@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>HACOPCOST</title>
+    <title>Desprosoft Hvacopcost</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,7 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style="background-color:#102E52;">
+<body style="background-color:#1B17BB;">
     <div id="app" >
        {{--  <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

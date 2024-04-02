@@ -78,4 +78,8 @@ return [
     'inactivo' => 'Inactivo',
     'edit_proj' => 'Editar Proyecto',
     'energia' => 'Energía',
+
+    'email' => 'Correo',
+    'password' => 'Contraseña',
+    'password_confirm' => 'Confirmar Contraseña',
 ];

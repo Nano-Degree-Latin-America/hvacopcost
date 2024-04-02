@@ -35,7 +35,7 @@
 </head>
 <body>
 
-    <div class="limiter">
+    <div class="">
         <div class="container-login100">
             <div class="wrap-login100 p-b-20">
                 <div class="w-full flex justify-center">
