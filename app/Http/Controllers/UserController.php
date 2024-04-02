@@ -26,8 +26,8 @@ class UserController extends Controller
     }
 
     public function redirect_login(Request $request){
-
-        return redirect('/login');
+        return view('login');
+        /* return redirect('/login'); */
     }
 
 
