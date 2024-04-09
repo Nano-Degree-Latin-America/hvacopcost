@@ -10768,4 +10768,39 @@ if($eficiencia_ene == 'EER'){
 
     }
 
+    public function elimina_project_demo($id){
+
+            $solutions_ids = DB::table('solutions_project')
+             ->where('solutions_project.id_project','=',$id)
+             ->get();
+
+             $results_ids = DB::table('results_project')
+             ->where('results_project.id_project','=',$id)
+             ->get();
+
+
+             foreach($solutions_ids as $solution){
+                 $solution_del=SolutionsProjectModel::find($solution->id);
+                 $solution_del->delete();
+             }
+
+             foreach($results_ids as $result){
+                 $result_del=ResultsProjectModel::find($result->id);
+                 $result_del->delete();
+             }
+
+                 $solution_del=ProjectsModel::find($id);
+                 $solution_del->delete();
+
+                 Auth::logout();
+
+
+             if( $solution_del->delete()){
+
+                return true;
+             }else{
+                 return false;
+             }
+
+    }
 }

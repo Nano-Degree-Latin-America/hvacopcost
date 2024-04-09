@@ -110,6 +110,10 @@ class ProjectController extends Controller
                     ->paginate(10);
                 }
             }
+
+            if($tipo_user == 3){
+                return Redirect::to('/home');
+            }
         }
 
 

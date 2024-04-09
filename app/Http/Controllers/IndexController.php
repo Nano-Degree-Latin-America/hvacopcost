@@ -18,8 +18,9 @@ class IndexController extends Controller
      */
     public function __construct()
     {
-
+        $this->middleware(['auth', 'verified']);
     }
+
 
     public function check_user(Request $request)
     {
@@ -37,8 +38,9 @@ class IndexController extends Controller
                 return view('index');
             }else if(Auth::user()->tipo_user==2 && Auth::user()->status==1){
                 return view('index');
-            }else if(Auth::user()->tipo_user==3 && Auth::user()->status==2){
-                Auth::logout();
+            }else if(Auth::user()->tipo_user==3 && Auth::user()->status==1){
+               /*  Auth::logout(); */
+               return view('index');
                 return redirect('/');
             }else{
                 Auth::logout();
@@ -93,6 +95,14 @@ class IndexController extends Controller
         ->get();
 
         return $all_paises;
+    }
+
+    public function usuario_pais(){
+        $pais_user = DB::table('user_pais')
+        ->where('user_pais.id_user','=',Auth::user()->id)
+        ->first();
+
+        return $pais_user;
     }
 
     public function check_pais($pais){
@@ -174,4 +184,6 @@ class IndexController extends Controller
             return false;
         }
     }
+
+
 }

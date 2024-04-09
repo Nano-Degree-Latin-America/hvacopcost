@@ -22,13 +22,11 @@ class UserController extends Controller
      */
     public function __construct()
     {
-
+       /*  $this->middleware('auth'); */
+       $this->middleware(['auth', 'verified']);
     }
 
-    public function redirect_login(Request $request){
-        return view('login');
-        /* return redirect('/login'); */
-    }
+
 
 
     public function index(Request $request, $id){

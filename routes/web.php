@@ -12,11 +12,12 @@ use Illuminate\Support\Facades\Redirect;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'IndexController@check_user');
 
-Route::get('/', 'UserController@redirect_login');
+Route::get('/', 'HomeController@redirect_login');
 
 Route::get('check_usr/{email}', 'UserController@check_usr')->name('check_usr');;
 
@@ -77,6 +78,7 @@ Route::get('/users/create/', 'UserController@create');
 Route::get('/users_edit/{id}', 'UserController@edit');
 Route::get('/del_usr/{id}', 'UserController@delete')->name('delete');
 Route::get('/eliminar_usr/{id}', 'UserController@eliminar_usr')->name('eliminar_usr');
+Route::get('/check_mail/{mail}', 'HomeController@check_mail');
 
 Route::post('/edit_usr/{id}', 'UserController@update')->name('update');
 Route::post('users_store', 'UserController@users_store')->name('users_store');
@@ -126,7 +128,7 @@ Route::get('del_solution/{id_project}/{num_sol}/{num_enf}', 'ProjectController@d
 Route::get('/del_project/{id}', 'ProjectController@del_project')->name('del_project');
 Route::get('edit_project_copy/{id_project}', 'ResultadosController@edit_project_copy');
 Route::get('resultados_retrofit/{id_project}', 'ResultadosController@resultados_retrofit');
-
+Route::post('elimina_project_demo/{id_project}', 'ResultadosController@elimina_project_demo');
 ///asigna tipo, existente
 Route::get('asigna_tipos', 'ResultadosController@asiga_typos');
 Route::get('asigna_empresas_tipo', 'ResultadosController@asigna_empresas_tipo');

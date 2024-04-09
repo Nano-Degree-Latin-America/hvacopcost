@@ -57,8 +57,9 @@ strong {
     color: white;
     /* text-shadow: 0px 0px 5px #444; */
     /* background: rgba(0, 46, 93); */
-    background-image: radial-gradient(rgb(10,19,59) 0%,rgb(5,1,25) 100%);
+    /* background-image: radial-gradient(rgb(10,19,59) 0%,rgb(5,1,25) 100%); */
     /* text-align: -webkit-center; */
+    background-color:#1B17BB ;
 }
 #slider  .col-4 {
     padding: 0px !important;
@@ -115,6 +116,19 @@ strong {
 
 .center .col-6 {
     width: 46%;
+    text-align: -webkit-center;
+    padding: 10px;
+    border-radius: 5px;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-top: 5%;
+    box-shadow: 0px 0px 3px rgba(0, 46, 93);
+    border: 1px solid rgba(0, 46, 93);
+}
+
+    .col-6-p {
+    width: 46%;
+    height: 100%;
     text-align: -webkit-center;
     padding: 10px;
     border-radius: 5px;
@@ -419,8 +433,7 @@ img[usemap] {
     border-bottom: 1px solid rgb(236, 224, 200); */
     margin-bottom: 40px;
     overflow-x: auto;
-    padding-left: 3%;
-    padding-right: 3%;
+
     /* background-color: #ebe7e0; */
 }
 
@@ -429,7 +442,7 @@ img[usemap] {
 }
 #mapa-div .col-4 {
     line-height: 23px;
-    width: 50%;
+    width: 49%;
 }
 #mapa-div .col-7 {
     line-height: 23px;
