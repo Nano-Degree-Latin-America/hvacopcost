@@ -1703,6 +1703,7 @@ cursor: pointer;
     var prod_lab_print_height= 170;
     var capex_opex_print_height= 260;
     var capex_opex_print_width= 370;
+    var pais='{{$tar_ele->region}}';
 document.addEventListener('keydown', function(event) {
   if (event.ctrlKey && event.key === 'p') {
     //$("#navbar").removeClass("hidden");
@@ -1884,6 +1885,7 @@ window.onload = function() {
       roi_base_b('{{$id_project}}');
       roi_base_a_print('{{$id_project}}');
       roi_base_b_print('{{$id_project}}');
+
     };
 
 $(document).ready(function() {
@@ -2868,13 +2870,20 @@ $.ajax({
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '11px';
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
+        }
+
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
+        }
+        /* if(vals_min.length > 5){
+             var fontSize_cap_op = '14px';
         }
 
         if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-            var fontSize_cap_op = '14px';
-        }
+            var fontSize_cap_op = '11px';
+        } */
         var options = {
       series: [{
       name: 'CAPEX',
@@ -3010,12 +3019,12 @@ function cap_op_3_retro(id_project,unidad){
             var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '11px';
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-            var fontSize_cap_op = '14px';
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
         }
             var options = {
           series: [{
@@ -3149,27 +3158,24 @@ function cap_op_5_retro(id_project,unidad){
             var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
             var vals_min_string = vals_min.toString();
 
-            if(vals_min.length > 5){
-                var fontSize_cap_op = '11px';
-            }
+            if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
+        }
 
-            if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-                var fontSize_cap_op = '14px';
-            }
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
+        }
     }
 
     if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null) {
 
-            var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
-            var vals_min_string = vals_min.toString();
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
+        }
 
-            if(vals_min_string.length > 5){
-                var fontSize_cap_op = '11px';
-            }
-
-            if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-                var fontSize_cap_op = '14px';
-            }
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
+        }
 
     }
 
@@ -3178,13 +3184,13 @@ function cap_op_5_retro(id_project,unidad){
     var vals_min = parseInt(res[0][0]);
     var vals_min_string = vals_min.toString();
 
-    if(vals_min_string.length > 5){
-        var fontSize_cap_op = '11px';
-    }
+    if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
+        }
 
-    if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-        var fontSize_cap_op = '14px';
-    }
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
+        }
 
     }
             var options = {
@@ -3322,12 +3328,12 @@ function cap_op_10_retro(id_project,unidad){
             var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
             var vals_min_string = vals_min.toString();
 
-            if(vals_min.length > 5){
-                var fontSize_cap_op = '11px';
+            if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
             }
 
-            if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-                var fontSize_cap_op = '14px';
+            if(pais == 'Colombia'){
+                var fontSize_cap_op = '11px';
             }
     }
 
@@ -3336,12 +3342,12 @@ function cap_op_10_retro(id_project,unidad){
             var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
             var vals_min_string = vals_min.toString();
 
-            if(vals_min_string.length > 5){
-                var fontSize_cap_op = '11px';
+            if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
             }
 
-            if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-                var fontSize_cap_op = '14px';
+            if(pais == 'Colombia'){
+                var fontSize_cap_op = '11px';
             }
 
     }
@@ -3351,13 +3357,13 @@ function cap_op_10_retro(id_project,unidad){
     var vals_min = parseInt(res[0][0]);
     var vals_min_string = vals_min.toString();
 
-    if(vals_min_string.length > 5){
-        var fontSize_cap_op = '11px';
-    }
+            if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
+            }
 
-    if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-        var fontSize_cap_op = '14px';
-    }
+            if(pais == 'Colombia'){
+                var fontSize_cap_op = '11px';
+            }
 
     }
             var options = {
@@ -4492,10 +4498,10 @@ if(result_area < red){
             var options = {
           width: 550, height: 280,
           greenFrom:1,greenTo:ashrae,
-          redFrom: energy, redTo: 300,
+          redFrom: energy, redTo:400,
           yellowFrom:ashrae, yellowTo: energy,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -4504,10 +4510,10 @@ if(result_area < red){
             var options = {
           width: 550, height: 280,
           greenFrom:1,greenTo:energy,
-          redFrom: ashrae, redTo: 300,
+          redFrom: ashrae, redTo: 400,
           yellowFrom:energy, yellowTo: ashrae,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -4549,10 +4555,10 @@ if(result_area < red){
             var options = {
           width: 550, height: 280,
           greenFrom:1,greenTo:ashrae,
-          redFrom: energy, redTo: 300,
+          redFrom: energy, redTo: 400,
           yellowFrom:ashrae, yellowTo: energy,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -4606,10 +4612,10 @@ if(result_area < red){
                     var options = {
                 width: 550, height: 280,
                 greenFrom:1,greenTo:ashrae,
-                redFrom: energy, redTo: 300,
+                redFrom: energy, redTo: 400,
                 yellowFrom:ashrae, yellowTo: energy,
                 minorTicks: 5,
-                max:300,
+                max:400,
                 min:1,
                 };
                 }
@@ -4618,10 +4624,10 @@ if(result_area < red){
                     var options = {
                 width: 550, height: 280,
                 greenFrom:1,greenTo:energy,
-                redFrom: ashrae, redTo: 300,
+                redFrom: ashrae, redTo: 400,
                 yellowFrom:energy, yellowTo: ashrae,
                 minorTicks: 5,
-                max:300,
+                max:400,
                 min:1,
                 };
                 }
@@ -4669,10 +4675,10 @@ if(result_area < red){
             var options = {
                 width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:ashrae,
-          redFrom: energy, redTo: 300,
+          redFrom: energy, redTo: 400,
           yellowFrom:ashrae, yellowTo: energy,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -4681,10 +4687,10 @@ if(result_area < red){
             var options = {
                 width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:energy,
-          redFrom: ashrae, redTo: 300,
+          redFrom: ashrae, redTo: 400,
           yellowFrom:energy, yellowTo: ashrae,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -4726,10 +4732,10 @@ if(result_area < red){
             var options = {
                  width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:ashrae,
-          redFrom: energy, redTo: 300,
+          redFrom: energy, redTo: 400,
           yellowFrom:ashrae, yellowTo: energy,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -4738,10 +4744,10 @@ if(result_area < red){
             var options = {
                  width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:energy,
-          redFrom: ashrae, redTo: 300,
+          redFrom: ashrae, redTo: 400,
           yellowFrom:energy, yellowTo: ashrae,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -4783,10 +4789,10 @@ if(result_area < red){
                     var options = {
                          width: eui_print_width, height: eui_print_height,
                 greenFrom:1,greenTo:ashrae,
-                redFrom: energy, redTo: 300,
+                redFrom: energy, redTo: 400,
                 yellowFrom:ashrae, yellowTo: energy,
                 minorTicks: 5,
-                max:300,
+                max:400,
                 min:1,
                 };
                 }
@@ -4795,10 +4801,10 @@ if(result_area < red){
                     var options = {
                          width: eui_print_width, height: eui_print_height,
                 greenFrom:1,greenTo:energy,
-                redFrom: ashrae, redTo: 300,
+                redFrom: ashrae, redTo: 400,
                 yellowFrom:energy, yellowTo: ashrae,
                 minorTicks: 5,
-                max:300,
+                max:400,
                 min:1,
                 };
                 }
@@ -5384,11 +5390,12 @@ $.ajax({
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '5px';
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
+
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
 
@@ -5459,6 +5466,7 @@ $.ajax({
         },
     },
     yaxis: {
+
         labels: {
             style: {
                 colors: [],
@@ -5530,11 +5538,12 @@ function cap_op_3_retro_print(id_project,unidad){
          var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '5px';
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
+
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
             var options = {
@@ -5670,11 +5679,11 @@ function cap_op_5_retro_print(id_project,unidad){
          var vals_min = parseInt(Math.min(res[2][0], res[1][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '5px';
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
             var options = {
@@ -5810,11 +5819,12 @@ function cap_op_10_retro_print(id_project,unidad){
          var vals_min = parseInt(Math.min(res[2][0], res[1][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '5px';
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+             var fontSize_cap_op = '6.1px';
+
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
             var options = {

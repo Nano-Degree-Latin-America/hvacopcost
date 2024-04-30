@@ -273,13 +273,9 @@ input[type=number]::-webkit-outer-spin-button {
                         <?php  $check_types_pn=$check_types_p->check_p_type_pn(Auth::user()->id_empresa); ?>
                         <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
                         <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
-                        @if (Auth::user()->tipo_user != 3)
-                        @include('form_project')
-                        @endif
 
-                        @if (Auth::user()->tipo_user == 3)
-                        @include('form_project_demo')
-                        @endif
+                        @include('form_project')
+                       
 
                     </div>
 
@@ -380,17 +376,17 @@ input[type=number]::-webkit-outer-spin-button {
                 </div>
 
 
-                @if (auth::user()->tipo_user == 3)
+               {{--  @if (auth::user()->tipo_user == 3)
                 <button  x-show="step > 1" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit_demo(1,'{{App::getLocale()}}');"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
                 <button  x-show="step > 1" type="button" name="calcular_p_r" id="calcular_p_r" onclick="check_form_submit_demo(2,'{{App::getLocale()}}');"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto hidden">{{ __('index.calcular') }}</button>
 
-                @endif
+                @endif --}}
 
-                @if (auth::user()->tipo_user != 3)
+
                 <button  x-show="step > 1" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1,'{{App::getLocale()}}');"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
                 <button  x-show="step > 1" type="button" name="calcular_p_r" id="calcular_p_r" onclick="check_form_submit(2,'{{App::getLocale()}}');"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto hidden">{{ __('index.calcular') }}</button>
 
-                @endif
+
 
 
 
@@ -974,17 +970,6 @@ input[type=number]::-webkit-outer-spin-button {
         mostrar_type_p('{{$check_types_pn}}','{{$check_types_pr}}');
     });
 
-    window.onload = function() {
-
-       /*  $('#div_next').addClass("hidden"); */
-        $('#modal_video_public').removeClass("hidden");
-        setTimeout(() => {
-            $('#modal_video_public').addClass("hidden");
-        }, 4000);
-    };
-document.querySelector('video_public').addEventListener('ended',function(){alert('Video ended!');});
-/* When the user clicks on the button,
-toggle between hiding and showing the dropdown content */
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
 }

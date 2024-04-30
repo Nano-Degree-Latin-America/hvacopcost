@@ -2619,7 +2619,7 @@ cursor: pointer;
     var capex_opex_print_height= 250;
     var capex_opex_print_width= 380;
     let dollarUSLocale = Intl.NumberFormat('en-US');
-
+    var pais='{{$tar_ele->region}}';
 document.addEventListener('keydown', function(event) {
   if (event.ctrlKey && event.key === 'p') {
     //$("#navbar").removeClass("hidden");
@@ -4063,12 +4063,12 @@ if (res[2][0] > 0 || res[2][0] != null && res[1][0] > 0 || res[1][0] != null  &&
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '11px';
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-            var fontSize_cap_op = '14px';
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
         }
 }
 
@@ -4077,12 +4077,12 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  &
         var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min_string.length > 5){
-             var fontSize_cap_op = '11px';
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-            var fontSize_cap_op = '14px';
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
         }
 
 }
@@ -4092,13 +4092,13 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  
 var vals_min = parseInt(res[0][0]);
 var vals_min_string = vals_min.toString();
 
-if(vals_min_string.length > 5){
-     var fontSize_cap_op = '11px';
-}
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
+        }
 
-if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-    var fontSize_cap_op = '14px';
-}
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
+        }
 
 }
 
@@ -4242,12 +4242,12 @@ $.ajax({
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '11px';
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-            var fontSize_cap_op = '14px';
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
         }
 }
 
@@ -4256,12 +4256,12 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  &
         var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min_string.length > 5){
-             var fontSize_cap_op = '11px';
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-            var fontSize_cap_op = '14px';
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
         }
 
 }
@@ -4271,13 +4271,13 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  
 var vals_min = parseInt(res[0][0]);
 var vals_min_string = vals_min.toString();
 
-if(vals_min_string.length > 5){
-     var fontSize_cap_op = '11px';
-}
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
+        }
 
-if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-    var fontSize_cap_op = '14px';
-}
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
+        }
 
 }
         var options = {
@@ -4416,12 +4416,12 @@ $.ajax({
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '11px';
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-            var fontSize_cap_op = '14px';
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
         }
 }
 
@@ -4430,12 +4430,12 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  &
         var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min_string.length > 5){
-             var fontSize_cap_op = '11px';
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-            var fontSize_cap_op = '14px';
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
         }
 
 }
@@ -4445,13 +4445,13 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  
 var vals_min = parseInt(res[0][0]);
 var vals_min_string = vals_min.toString();
 
-if(vals_min_string.length > 5){
-     var fontSize_cap_op = '11px';
-}
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
+        }
 
-if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-    var fontSize_cap_op = '14px';
-}
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
+        }
 
 }
         var options = {
@@ -4589,12 +4589,12 @@ $.ajax({
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '11px';
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-            var fontSize_cap_op = '14px';
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
         }
 }
 
@@ -4603,12 +4603,12 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  &
         var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min_string.length > 5){
-             var fontSize_cap_op = '11px';
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-            var fontSize_cap_op = '14px';
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
         }
 
 }
@@ -4618,13 +4618,13 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  
 var vals_min = parseInt(res[0][0]);
 var vals_min_string = vals_min.toString();
 
-if(vals_min_string.length > 5){
-     var fontSize_cap_op = '11px';
-}
+        if(pais != 'Colombia'){
+             var fontSize_cap_op = '14px';
+        }
 
-if(vals_min_string.length <= 5 && vals_min_string.length > 0){
-    var fontSize_cap_op = '14px';
-}
+        if(pais == 'Colombia'){
+            var fontSize_cap_op = '11px';
+        }
 
 }
         var options = {
@@ -5758,10 +5758,10 @@ if(result_area < red){
             var options = {
           width: 550, height: 280,
           greenFrom:1,greenTo:parseInt(ashrae),
-          redFrom: parseInt(energy), redTo: 300,
+          redFrom: parseInt(energy), redTo: 400,
           yellowFrom:parseInt(ashrae), yellowTo: parseInt(energy),
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -5771,10 +5771,10 @@ if(result_area < red){
             var options = {
           width: 550, height: 280,
           greenFrom:1,greenTo:energy,
-          redFrom: ashrae, redTo: 300,
+          redFrom: ashrae, redTo: 400,
           yellowFrom:energy, yellowTo: ashrae,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -5816,10 +5816,10 @@ if(result_area < red){
             var options = {
           width: 550, height: 280,
           greenFrom:1,greenTo:ashrae,
-          redFrom: energy, redTo: 300,
+          redFrom: energy, redTo: 400,
           yellowFrom:ashrae, yellowTo: energy,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -5828,10 +5828,10 @@ if(result_area < red){
             var options = {
           width: 550, height: 280,
           greenFrom:1,greenTo:energy,
-          redFrom: ashrae, redTo: 300,
+          redFrom: ashrae, redTo: 400,
           yellowFrom:energy, yellowTo: ashrae,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -5873,10 +5873,10 @@ if(result_area < red){
                     var options = {
                 width: 550, height: 280,
                 greenFrom:1,greenTo:ashrae,
-                redFrom: energy, redTo: 300,
+                redFrom: energy, redTo: 400,
                 yellowFrom:ashrae, yellowTo: energy,
                 minorTicks: 5,
-                max:300,
+                max:400,
                 min:1,
                 };
                 }
@@ -5885,10 +5885,10 @@ if(result_area < red){
                     var options = {
                 width: 550, height: 280,
                 greenFrom:1,greenTo:energy,
-                redFrom: ashrae, redTo: 300,
+                redFrom: ashrae, redTo: 400,
                 yellowFrom:energy, yellowTo: ashrae,
                 minorTicks: 5,
-                max:300,
+                max:400,
                 min:1,
                 };
                 }
@@ -5937,10 +5937,10 @@ if(result_area < red){
             var options = {
                 width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:ashrae,
-          redFrom: energy, redTo: 300,
+          redFrom: energy, redTo: 400,
           yellowFrom:ashrae, yellowTo: energy,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -5949,10 +5949,10 @@ if(result_area < red){
             var options = {
                 width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:energy,
-          redFrom: ashrae, redTo: 300,
+          redFrom: ashrae, redTo: 400,
           yellowFrom:energy, yellowTo: ashrae,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -5994,10 +5994,10 @@ if(result_area < red){
             var options = {
                  width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:ashrae,
-          redFrom: energy, redTo: 300,
+          redFrom: energy, redTo: 400,
           yellowFrom:ashrae, yellowTo: energy,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -6006,10 +6006,10 @@ if(result_area < red){
             var options = {
                  width: eui_print_width, height: eui_print_height,
           greenFrom:1,greenTo:energy,
-          redFrom: ashrae, redTo: 300,
+          redFrom: ashrae, redTo: 400,
           yellowFrom:energy, yellowTo: ashrae,
           minorTicks: 5,
-          max:300,
+          max:400,
           min:1,
         };
         }
@@ -6051,10 +6051,10 @@ if(result_area < red){
                     var options = {
                          width: eui_print_width, height: eui_print_height,
                 greenFrom:1,greenTo:ashrae,
-                redFrom: energy, redTo: 300,
+                redFrom: energy, redTo: 400,
                 yellowFrom:ashrae, yellowTo: energy,
                 minorTicks: 5,
-                max:300,
+                max:400,
                 min:1,
                 };
                 }
@@ -6063,10 +6063,10 @@ if(result_area < red){
                     var options = {
                          width: eui_print_width, height: eui_print_height,
                 greenFrom:1,greenTo:energy,
-                redFrom: ashrae, redTo: 300,
+                redFrom: ashrae, redTo: 400,
                 yellowFrom:energy, yellowTo: ashrae,
                 minorTicks: 5,
-                max:300,
+                max:400,
                 min:1,
                 };
                 }
@@ -6929,11 +6929,12 @@ $.ajax({
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '6.5px';
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
+
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
 }
@@ -6943,11 +6944,12 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  &
         var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '6.5px';
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
+
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
 
@@ -6958,11 +6960,12 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  
 var vals_min = parseInt(res[0][0]);
 var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-                    var fontSize_cap_op = '6.5px';
-                }
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
 
@@ -7102,6 +7105,18 @@ $.ajax({
     url: "/cap_op_5/" + id_project,
     success: function (res) {
 
+        var vals_min = parseInt(res[0][0]);
+        var vals_min_string = vals_min.toString();
+
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
+
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
+            var fontSize_cap_op = '8px';
+        }
+
         var options = {
       series: [{
       name: 'CAPEX',
@@ -7157,7 +7172,7 @@ $.ajax({
       labels: {
             style: {
                 colors: [],
-                fontSize: '8px',
+                fontSize: fontSize_cap_op,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -7233,28 +7248,30 @@ $.ajax({
     url: "/cap_op_10/" + id_project,
     success: function (res) {
         if (res[2][0] > 0 || res[2][0] != null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
-        var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
-        var vals_min_string = vals_min.toString();
+            var vals_min = parseInt(res[0][0]);
+            var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '6.5px';
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
+
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
 }
 
 if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
 
-        var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
+        var vals_min = parseInt(res[0][0]);
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '6.5px';
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
+
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
 
@@ -7262,14 +7279,15 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  &
 
 if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  && res[0][0] > 0 || res[0][0] != null) {
 
-var vals_min = parseInt(res[0][0]);
-var vals_min_string = vals_min.toString();
+        var vals_min = parseInt(res[0][0]);
+        var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-                    var fontSize_cap_op = '6.5px';
-                }
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
 
@@ -7406,28 +7424,30 @@ $.ajax({
     url: "/cap_op_15/" + id_project,
     success: function (res) {
         if (res[2][0] > 0 || res[2][0] != null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
-        var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
+         var vals_min = parseInt(res[0][0]);
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '6.5px';
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
+
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
 }
 
 if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
 
-        var vals_min = parseInt(Math.min(res[1][0], res[0][0]));
+        var vals_min = parseInt(res[0][0]);
         var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-             var fontSize_cap_op = '6.5px';
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
+
         }
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
 
@@ -7435,14 +7455,15 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] > 0 || res[1][0] != null  &
 
 if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  && res[0][0] > 0 || res[0][0] != null) {
 
-var vals_min = parseInt(res[0][0]);
-var vals_min_string = vals_min.toString();
+    var vals_min = parseInt(res[0][0]);
+        var vals_min_string = vals_min.toString();
 
-        if(vals_min.length > 5){
-                    var fontSize_cap_op = '6.5px';
-                }
+        if(vals_min_string.length > 5 || vals_min_string.length == 1){
+            var fontSize_cap_op = '6.1px';
 
-        if(vals_min_string.length <= 5 && vals_min_string.length > 0){
+        }
+
+        if(vals_min_string.length <= 5 && vals_min_string.length > 1){
             var fontSize_cap_op = '8px';
         }
 

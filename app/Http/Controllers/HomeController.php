@@ -28,8 +28,8 @@ class HomeController extends Controller
     }
 
     public function redirect_login(Request $request){
-        return view('login');
-        /* return redirect('/login'); */
+        //return view('login');
+        return redirect('/login');
     }
 
     public function check_mail($mail)

@@ -71,13 +71,9 @@
                                 <label class="labels_index font-roboto text-left" for=""><b>{{ __('index.region') }}</b></label><label class="text-red-500">*</label>
                             </div>
 
-                            @if (Auth::user()->tipo_user  == 3)
-                                @include('index_elements.select_paises_demo')
-                            @endif
 
-                            @if (Auth::user()->tipo_user  != 3)
                                 @include('index_elements.select_paises')
-                            @endif
+
 
                             <input id="count_paises" name="count_paises" type="number" class="hidden" value="0">
                             <span id="paises_warning" name="paises_warning" class="text-red-500"></span>

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@inject('empresas','app\Http\Controllers\Auth\RegisterController')
 <div style="background-color:#1B17BB;" class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -15,7 +16,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('index.nombre') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="w-full border-2  rounded-md p-1 my-1 font-roboto" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -30,7 +31,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('index.email') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" onchange="check_mail(this.value)" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input id="email" type="email" onchange="check_mail(this.value)" class="w-full border-2  rounded-md p-1 my-1 font-roboto" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -40,7 +41,81 @@
                             </div>
                         </div>
 
+                        <?php  $empresas=$empresas->empresas() ?>
                         <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">Empresa</label>
+
+                            <div class="col-md-6">
+                                <select id="empresa" name="empresa" onchange="check_mail(this.value)" class="w-full border-2  rounded-md p-1 my-1 font-roboto"   required autocomplete="empresa">
+                                    <option value="0">-Selecciona tu Empresa-</option>
+                                    @foreach ($empresas as $empresa)
+                                    <option value="{{$empresa->id}}">{{$empresa->name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('empresa')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="telefono" class="col-md-4 col-form-label text-md-right">Teléfono</label>
+
+                            <div class="col-md-6">
+                                <input id="telefono" type="telefono" class="w-full border-2  rounded-md p-1 my-1 font-roboto" name="telefono" value="{{ old('telefono') }}" required autocomplete="telefono">
+
+                                @error('telefono')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">País</label>
+
+                            <div class="col-md-6">
+                                <select id="pais"  onchange="check_mail(this.value)" class="w-full border-2  rounded-md p-1 my-1 font-roboto" name="pais"  required autocomplete="pais">
+                                    <option value="0">-{{ __('index.selecciona tu region') }}-</option>
+
+                                    <option disabled class="font-roboto" value="Argentina">Argentina</option>
+
+                                    <option disabled class="font-roboto" value="Bolivia">Bolivia</option>
+
+                                    <option disabled class="font-roboto" value="Brasil">Brasil</option>
+
+                                    <option disabled class="font-roboto" value="Chile">Chile</option>
+
+                                    <option  class="font-roboto font-bold" value="Colombia"><b>Colombia</b></option>
+
+                                    <option disabled class="font-roboto" value="Ecuador">Ecuador</option>
+
+                                    <option  class="font-roboto font-bold" value="México"><b>México</b></option>
+
+                                    <option disabled class="font-roboto" value="Paraguay">Paraguay</option>
+
+                                    <option disabled class="font-roboto" value="Perú">Perú</option>
+
+                                    <option disabled class="font-roboto" value="Uruguay">Uruguay</option>
+
+                                    <option disabled class="font-roboto" value="Venezuela">Venezuela</option>
+
+                                    <option disabled class="font-roboto" value="Caribe">Caribe</option>
+
+                                    <option disabled class="font-roboto" value="Centro América">Centro América</option>
+                                </select>
+                                @error('pais')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        {{-- <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">Región de Aplicación</label>
 
                             <div class="col-md-6">
@@ -79,13 +154,13 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('index.password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="w-full border-2  rounded-md p-1 my-1 font-roboto" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -99,7 +174,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('index.password_confirm') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                <input id="password-confirm" type="password" class="w-full border-2  rounded-md p-1 my-1 font-roboto" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
 

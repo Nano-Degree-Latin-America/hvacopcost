@@ -92,4 +92,13 @@ class RegisterController extends Controller
 
         return  $user;
     }
+
+    public function empresas()
+    {
+        $empresas  = DB::table('empresas')
+        ->where('empresas.status','=',1)
+        ->get();
+
+        return $empresas;
+    }
 }

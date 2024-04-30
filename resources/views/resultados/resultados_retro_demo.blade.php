@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+@include('modal_video_public')
 @inject('solutions','app\Http\Controllers\ResultadosController')
 @inject('results','app\Http\Controllers\ResultadosController')
 @inject('smasolutions','app\Http\Controllers\ResultadosController')
@@ -1863,9 +1864,11 @@ function send_print(){
     chart_prod_base_print();
     chart_prod_a_print();
     chart_prod_b_print();
+    $('#modal_video_public').removeClass("hidden");
     setTimeout(function() {
+        $('#modal_video_public').addClass("hidden");
         window.print();
-}, 3000);
+}, 4000);
 
 }
 
