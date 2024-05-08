@@ -275,7 +275,7 @@ input[type=number]::-webkit-outer-spin-button {
                         <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
 
                         @include('form_project')
-                       
+
 
                     </div>
 

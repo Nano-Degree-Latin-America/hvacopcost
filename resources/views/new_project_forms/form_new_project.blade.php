@@ -7,7 +7,12 @@
                 <input type="text" class="hidden" value="1" id="set_sol_1" name="set_sol_1">
             </div>
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex  2xl:justify-center xl:justify-center lg:justify-center  py-1">
-                <h2 style="margin-right: 75px;" class="text-white font-bold text-3xl">{{ __('index.solucion') }} Base</h2>
+                <h2 style="margin-right:0px;" class="text-white font-bold text-3xl">{{ __('index.solucion') }} Base</h2>
+            </div>
+
+            @include('modal_add_marca_modelo')
+            <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
+                <button  onclick="mostrar_modal_marcas_modelos('modal_add_marca_modelo');send_marcas_to_datalist();" type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning.png')}}" height ="60" width="60" /></button>
             </div>
           {{--   <div cslass="w-1/2 flex justify-start">
                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
@@ -31,7 +36,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(1);unidadHvac(this.value,1,'csTipo','csDisenio_1_1');check_chiller(this.value,'csStd',1);">
+                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(1);unidadHvac(this.value,1,'csTipo','csDisenio_1_1');check_chiller(this.value,'csStd',1);send_value_equipo_marca_form(this.id,'equipo_modal',this.value);"">
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -58,6 +63,38 @@
 
                     <input type="text" style="display: none" id="lblCsTipo_1_1" name="lblCsTipo_1_1">
                     <input  id="tipo_equipo_1_1_count" name="tipo_equipo_1_1_count" type="number" class="hidden" value="1">
+                </div>
+            </div>
+
+            @include('modal_marca_support')
+            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                    <div class="w-1/3 flex justify-start text-left">
+                        <label class="labels" for=""><b>{{ __('index.marca') }}</b> </label>
+                    </div>
+
+                    <div class="w-1/2 flex justify-start">
+                        <select onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_1_1');send_marca_to_modal(this.value,'marcas_modal');check_type_set_mant('type_p','marca_2_1','marca_3_1',this.value);" name="marca_1_1" id="marca_1_1" class="w-full border-2 border-blue-600 rounded-md py-2">
+                        </select>
+                        <input  id="marca_1_1_count" name="marca_1_1_count" type="number" class="hidden" value="1">
+
+                    </div>
+                    <div class="mt-1">
+                        <a onclick="mostrar_modal('modal_marca_support');" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                    </div>
+                </div>
+
+                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                    <div class="flex justify-start w-1/2 text-left">
+                        <label class="labels" for=""><b>{{ __('index.modelo') }}</b></label>
+                    </div>
+                    <div class="w-full flex justify-start">
+                        <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_type_set_mant('type_p','modelo_2_1','modelo_3_1',this.value);send_efi(this.value,'csStd');" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_1" id="modelo_1_1">
+                        </select>
+                    </div>
+
+
+                    <input  id="modelo_1_1_count" name="modelo_1_1_count" type="number" class="hidden" value="1">
                 </div>
             </div>
 
@@ -242,7 +279,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select  class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2');check_chiller(this.value,'csStd_1_2',1);" name="cUnidad_1_2" id="cUnidad_1_2" >
+                        <select  class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2');check_chiller(this.value,'csStd_1_2',1);send_value_equipo_marcas(this.id,this.value,'marca_1_2');" name="cUnidad_1_2" id="cUnidad_1_2" >
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -269,6 +306,37 @@
                     </div>
                     <input  id="csTipo_1_2_count" name="csTipo_1_2_count" type="number" class="hidden" value="1">
                     <input type="text" style="display: none" id="lblCsTipo_1_2" name="lblCsTipo_1_2">
+                </div>
+            </div>
+
+            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                    <div class="w-1/3 flex justify-start text-left">
+                        <label class="labels" for=""><b>{{ __('index.marca') }}</b> </label>
+                    </div>
+
+                    <div class="w-1/2 flex justify-start">
+                        <select onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_1_2');send_marca_to_modal(this.value,'marcas_modal');check_type_set_mant('type_p','marca_2_1','marca_3_1',this.value);" name="marca_1_2" id="marca_1_2" class="w-full border-2 border-blue-600 rounded-md py-2">
+                        </select>
+                        <input  id="marca_1_2_count" name="marca_1_2_count" type="number" class="hidden" value="1">
+
+                    </div>
+                    <div class="mt-1">
+                        <a onclick="mostrar_modal('modal_marca_support');" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                    </div>
+                </div>
+
+                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                    <div class="flex justify-start w-1/2 text-left">
+                        <label class="labels" for=""><b>{{ __('index.modelo') }}</b></label>
+                    </div>
+                    <div class="w-full flex justify-start">
+                        <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_2" id="modelo_1_2">
+                        </select>
+                    </div>
+
+
+                    <input  id="modelo_1_2_count" name="modelo_1_2_count" type="number" class="hidden" value="1">
                 </div>
             </div>
 
@@ -758,7 +826,7 @@
                                 <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1');check_chiller(this.value,'csStd_2_1',1);"  name="cUnidad_2_1" id="cUnidad_2_1" >
+                                <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1');check_chiller(this.value,'csStd_2_1',1);send_value_equipo_marcas(this.id,this.value,'marca_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -785,6 +853,36 @@
                              </div>
                              <input  id="cheTipo_2_1_count" name="cheTipo_2_1_count" type="number" class="hidden" value="1">
                             <input type="text" style="display: none" id="lblCsTipo_2_1" name="lblCsTipo_2_1">
+                        </div>
+                    </div>
+
+                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                            <div class="w-1/3 flex justify-start text-left">
+                                <label class="labels" for=""><b>{{ __('index.marca') }}</b> </label>
+                            </div>
+
+                            <div class="w-1/2 flex justify-start">
+                                <select name="marca_2_1" id="marca_2_1" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_2_1');send_marca_to_modal(this.value,'marcas_modal_2_1');">
+
+                                </select>
+                            <input  id="marca_2_1_count" name="marca_2_1_count" type="number" class="hidden" value="1">
+
+                            </div>
+                        </div>
+
+                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                            <div class="flex justify-start w-1/2 text-left">
+                                <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
+                            </div>
+                            <div class="w-full flex justify-start">
+                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);"  name="modelo_2_1" id="modelo_2_1">
+                                </select>
+                            <input  id="modelo_2_1_count" name="modelo_2_1_count" type="number" class="hidden" value="1">
+
+                            </div>
+
+
                         </div>
                     </div>
 
@@ -948,7 +1046,7 @@
                             <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select style="margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,2,'cheTipo_2_2');check_chiller(this.value,'csStd_2_2',1);"  name="cUnidad_2_2" id="cUnidad_2_2" >
+                            <select style="margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,2,'cheTipo_2_2');check_chiller(this.value,'csStd_2_2',1);send_value_equipo_marcas(this.id,this.value,'marca_2_2');"  name="cUnidad_2_2" id="cUnidad_2_2" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -977,6 +1075,37 @@
                         <input type="text" style="display: none" id="lblCsTipo_2_2" name="lblCsTipo_2_2">
                     </div>
                 </div>
+
+                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                        <div class="w-1/3 flex justify-start text-left">
+                            <label class="labels" for=""><b>{{ __('index.marca') }}</b> </label>
+                        </div>
+
+                        <div class="w-1/2 flex justify-start">
+                            <select name="marca_2_2" id="marca_2_2" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_2_2');send_marca_to_modal(this.value,'marca_2_2');">
+
+                            </select>
+                        <input  id="marca_2_2_count" name="marca_2_2_count" type="number" class="hidden" value="1">
+
+                        </div>
+                    </div>
+
+                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                        <div class="flex justify-start w-1/2 text-left">
+                            <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
+                        </div>
+                        <div class="w-full flex justify-start">
+                            <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);"  name="modelo_2_2" id="modelo_2_2">
+                            </select>
+                        <input  id="modelo_2_2_count" name="modelo_2_2_count" type="number" class="hidden" value="1">
+
+                        </div>
+
+
+                    </div>
+                </div>
+
 
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
@@ -1448,7 +1577,7 @@
                                 <label  class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1');check_chiller(this.value,'csStd2_3_1',1);" name="cUnidad_3_1" id="cUnidad_3_1" >
+                                <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1');check_chiller(this.value,'csStd2_3_1',1);send_value_equipo_marcas(this.id,this.value,'marca_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -1476,6 +1605,33 @@
                             <input  id="cheTipo_3_1_count" name="cheTipo_3_1_count" type="number" class="hidden" value="1">
 
                             <input type="text" style="display: none" id="lblCsTipo_3_1" name="lblCsTipo_3_1">
+                        </div>
+                    </div>
+
+                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                            <div class="w-1/3 flex justify-start text-left">
+                                <label class="labels" for=""><b>{{ __('index.marca') }}</b> </label>
+                            </div>
+
+                            <div class="w-1/2 flex justify-start">
+                                <select name="marca_3_1" id="marca_3_1" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_3_1');send_marca_to_modal(this.value,'marcas_modal_3_1');">
+
+                                </select>
+                                <input  id="marca_3_1_count" name="marca_3_1_count" type="number" class="hidden" value="1">
+
+                            </div>
+                        </div>
+
+                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                            <div class="flex justify-start w-1/2 text-left">
+                                <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
+                            </div>
+                            <div class="w-full flex justify-start">
+                                <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_3_1" id="modelo_3_1">
+                                </select>
+                            </div>
+                            <input  id="modelo_3_1_count" name="modelo_3_1_count" type="number" class="hidden" value="1">
                         </div>
                     </div>
 
@@ -1642,7 +1798,7 @@
                             <label  class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_3_2');check_chiller(this.value,'csStd_3_2',1);" name="cUnidad_3_2" id="cUnidad_3_2" >
+                            <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_3_2');check_chiller(this.value,'csStd_3_2',1);send_value_equipo_marcas(this.id,this.value,'marca_3_2');" name="cUnidad_3_2" id="cUnidad_3_2" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -1669,6 +1825,33 @@
 
                         </div>
                         <input type="text" style="display: none" id="lblCsTipo_3_2" name="lblCsTipo_3_2">
+                    </div>
+                </div>
+
+                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                        <div class="w-1/3 flex justify-start text-left">
+                            <label class="labels" for=""><b>{{ __('index.marca') }}</b> </label>
+                        </div>
+
+                        <div class="w-1/2 flex justify-start">
+                            <select name="marca_3_2" id="marca_3_2" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_3_2');send_marca_to_modal(this.value,'marcas_modal_2_1');">
+
+                            </select>
+                            <input  id="marca_3_2_count" name="marca_3_2_count" type="number" class="hidden" value="1">
+
+                        </div>
+                    </div>
+
+                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                        <div class="flex justify-start w-1/2 text-left">
+                            <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
+                        </div>
+                        <div class="w-full flex justify-start">
+                            <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_3_2" id="modelo_3_2">
+                            </select>
+                        </div>
+                        <input  id="modelo_3_2_count" name="modelo_3_2_count" type="number" class="hidden" value="1">
                     </div>
                 </div>
 

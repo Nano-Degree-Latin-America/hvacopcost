@@ -2422,12 +2422,12 @@ return arry_dr;
 
   }
 
-  function send_marcas_to(id,val){
+  function send_marcas_to(id,val,equipo){
 
     var ima =  $('#idioma').val();
         $.ajax({
             type: 'get',
-            url: '/send_marcas',
+            url: '/send_marcas_equipo/'+equipo,
             success: function (response) {
                 //retro_1_1
                /*  $('#marca_1_1_retro').empty();
@@ -2559,6 +2559,57 @@ return arry_dr;
         });
   }
 
+  function send_marcas_equipo(value){
+    var ima =  $('#idioma').val();
+        $.ajax({
+            type: 'get',
+            url: '/send_marcas_equipo/'+value,
+            success: function (response) {
+                //retro_1_1
+               /*  $('#marca_1_1_retro').empty();
+                $('#marca_1_1_retro').append($('<option>', {
+                    value: '',
+                    text: 'Seleccionar'
+                })); */
+                var marca_modal = 'marca_modal';
+                check_val_text(marca_modal,ima);
+
+                response.map((marca, i) => {
+                    $('#marca_modal').append($('<option>', {
+                        value: marca.id,
+                        text: marca.marca,
+                    }));
+                });
+
+
+                 var marca_1_1 = 'marca_1_1';
+                 check_val_text(marca_1_1,ima);
+
+                 response.map((marca, i) => {
+                     $('#marca_1_1').append($('<option>', {
+                         value: marca.id,
+                         text: marca.marca,
+                     }));
+                 });
+
+   //retro modal
+                 var marca_1_1_retro = 'marca_1_1_retro';
+                 check_val_text(marca_1_1_retro,ima);
+
+                 response.map((marca, i) => {
+                     $('#marca_1_1_retro').append($('<option>', {
+                         value: marca.id,
+                         text: marca.marca,
+                     }));
+                 });
+
+            },
+            error: function (responsetext) {
+
+            }
+        });
+  }
+
   function send_marca_to_modal(value,id){
     $("#"+id).find('option[value="'+value+'"]').attr("selected", "selected");
   }
@@ -2640,9 +2691,11 @@ function send_modelo_edit(value,id,id_modelo){
 
 
 
-function new_model_or_marck_add(modelo,marcas_mod) {
+function new_model_or_marck_add(modelo,marcas_mod,eficiencia_modal) {
     var modelo = $('#'+modelo).val();
     var marca = $('#'+marcas_mod).val();
+    var eficiencia = $('#'+eficiencia_modal).val();
+    var equipo  = $('#cUnidad_1_1_retro').val();
     if(marca == ''){
         marca = 'empty';
     }
@@ -2653,7 +2706,7 @@ function new_model_or_marck_add(modelo,marcas_mod) {
     var token = $("._token").val();
     $.ajax({
         type: 'GET',
-        url: '/store_new_model/'+ marca +'/'+ modelo,
+        url: '/store_new_model/'+ marca +'/'+ modelo +"/"+ eficiencia,
         success: function (response) {
 
             Swal.fire({
@@ -2663,7 +2716,7 @@ function new_model_or_marck_add(modelo,marcas_mod) {
 
             })
             $('#nuevo_modelo_modal').val('');
-            send_marcas();
+            send_marcas_equipo(equipo);
         },
         error: function (responsetext) {
             console.log(responsetext);
@@ -6396,7 +6449,7 @@ function valida_form_calc(p_type){
 
 function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,tipo_control,dr
     ,Mantenimiento,lblCsTipo,capacidad_total,costo_elec,csStd_cant
-    ,cheValorS,num_solu,action_submit,csStd,maintenance_cost) {
+    ,cheValorS,num_solu,action_submit,csStd,maintenance_cost,marca,modelo) {
     $.ajax({
         type: 'get',
         url: "/traer_unidad_hvac/" + id_project + "/" + num_sol + "/" +num_enf,
@@ -6417,6 +6470,8 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 $("#"+tipo_control).find('option[value="' + res.val_unidad.tipo_control + '"]').attr("selected", "selected");
                 $("#"+dr).find('option[value="' + res.val_unidad.dr + '"]').attr("selected", "selected");
                 $("#"+Mantenimiento).find('option[value="' +   res.val_unidad.mantenimiento + '"]').attr("selected", "selected");
+                send_marcas_to(marca,res.val_unidad.id_marca,res.val_unidad.unidad_hvac);
+                send_modelo_edit(res.val_unidad.id_marca,modelo,res.val_unidad.id_modelo);
                 send_name(csDisenio);
                 send_name_t_c(tipo_control);
                 send_name_dr(dr);
@@ -12263,3 +12318,68 @@ cUnidad_3_3 */
             }
 })
      }
+
+     function send_value_equipo_marca_form(id_input,id,value,csTipo,csDisenio,csStd,type_p,cUnidad_2_1,cUnidad_3_1){
+
+        $("#"+id).find('option[value="' + value + '"]').attr("selected", "selected");
+        send_marcas_equipo(value);
+
+     }
+
+     function send_value_equipo_marcas(id,value,equipo){
+        send_marcas_equipo_retros(value,equipo);
+
+     }
+
+       function send_marcas_equipo_retros(value,equipo){
+    var ima =  $('#idioma').val();
+        $.ajax({
+            type: 'get',
+            url: '/send_marcas_equipo/'+value,
+            success: function (response) {
+                //retro_1_1
+               /*  $('#marca_1_1_retro').empty();
+                $('#marca_1_1_retro').append($('<option>', {
+                    value: '',
+                    text: 'Seleccionar'
+                })); */
+                check_val_text(equipo,ima);
+
+                response.map((marca, i) => {
+                    $('#'+equipo).append($('<option>', {
+                        value: marca.id,
+                        text: marca.marca,
+                    }));
+                });
+
+
+            },
+            error: function (responsetext) {
+
+            }
+        });
+  }
+
+     function send_value_equipo_marca_modal(id_input,id,id_retro,value,csTipo,csDisenio,csStd,type_p,cUnidad_2_1,cUnidad_3_1){
+
+        $("#"+id).find('option[value="' + value + '"]').prop('selected', true);
+        $("#"+id).trigger("change");
+        $("#"+id_retro).find('option[value="' + value + '"]').prop('selected', true);
+        $("#"+id_retro).trigger("change");
+}
+
+function send_efi(value,id_input){
+
+    $.ajax({
+        type: 'get',
+        url: '/send_efi/'+ value,
+        success: function (response) {
+            $("#"+id_input).find('option[value="' + response + '"]').prop('selected', true);
+            $("#"+id_input).trigger("change");
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}

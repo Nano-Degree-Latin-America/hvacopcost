@@ -147,6 +147,8 @@ class ResultadosController extends Controller
                 $solution_enf1->num_enf	=1;
                 $solution_enf1->unidad_hvac=$request->get('cUnidad_1_1');
                 $solution_enf1->tipo_equipo	=$request->get('csTipo');
+                $solution_enf1->id_marca=$request->get('marca_1_1');
+                $solution_enf1->id_modelo=$request->get('modelo_1_1');
                 $solution_enf1->tipo_diseño	=$request->get('csDisenio_1_1');
 
                 $cap_tot_aux = ResultadosController::num_form($request->get('capacidad_total'));
@@ -299,6 +301,8 @@ class ResultadosController extends Controller
                 $solution_enf2_2->num_enf = 1;
                 $solution_enf2_2->unidad_hvac = $request->get('cUnidad_1_2');
                 $solution_enf2_2->tipo_equipo	= $request->get('csTipo_1_2');
+                $solution_enf2_2->id_marca=$request->get('marca_1_2');
+                $solution_enf2_2->id_modelo=$request->get('modelo_1_2');
                 $solution_enf2_2->tipo_diseño	= $request->get('csDisenio_1_2');
 
 
@@ -614,6 +618,8 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                 $solution_enf2_1->num_enf = 2;
                 $solution_enf2_1->unidad_hvac=$request->get('cUnidad_2_1');
                 $solution_enf2_1->tipo_equipo	=$request->get('cheTipo_2_1');
+                $solution_enf2_1->id_marca=$request->get('marca_2_1');
+                $solution_enf2_1->id_modelo=$request->get('modelo_2_1');
                 $solution_enf2_1->tipo_diseño	=$request->get('cheDisenio_2_1');
 
                 $cap_tot_aux_2_1 = ResultadosController::num_form($request->get('capacidad_total_2_1'));
@@ -713,6 +719,8 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                 $solution_enf2_2->num_enf = 2;
                 $solution_enf2_2->unidad_hvac = $request->get('cUnidad_2_2');
                 $solution_enf2_2->tipo_equipo = $request->get('cheTipo_2_2');
+                $solution_enf2_2->id_marca=$request->get('marca_2_2');
+                $solution_enf2_2->id_modelo=$request->get('modelo_2_2');
                 $solution_enf2_2->tipo_diseño = $request->get('cheDisenio_2_2');
 
                 $cap_tot_aux_2_2 = ResultadosController::num_form($request->get('capacidad_total_2_2'));
@@ -1020,6 +1028,8 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                  $solution_enf3_1->num_enf = 3;
                  $solution_enf3_1->unidad_hvac=$request->get('cUnidad_3_1');
                  $solution_enf3_1->tipo_equipo	=$request->get('cheTipo_3_1');
+                 $solution_enf3_1->id_marca=$request->get('marca_3_1');
+                 $solution_enf3_1->id_modelo=$request->get('modelo_3_1');
                  $solution_enf3_1->tipo_diseño	=$request->get('cheDisenio_3_1');
 
                  $cap_tot_aux_3_1 = ResultadosController::num_form($request->get('capacidad_total_3_1'));
@@ -1117,6 +1127,8 @@ $solution_enf1_3->confort = $nivel_confotr_1_3;
                  $solution_enf3_2->num_enf = 3;
                  $solution_enf3_2->unidad_hvac = $request->get('cUnidad_3_2');
                  $solution_enf3_2->tipo_equipo = $request->get('cheTipo_3_2');
+                 $solution_enf3_2->id_marca=$request->get('marca_3_2');
+                 $solution_enf3_2->id_modelo=$request->get('modelo_3_2');
                  $solution_enf3_2->tipo_diseño = $request->get('cheDisenio_3_2');
 
                  $cap_tot_aux_3_2 = ResultadosController::num_form($request->get('capacidad_total_3_2'));
@@ -8071,9 +8083,16 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
         return response()->json($marcas);
     }
 
+    public function send_marcas_equipo($value){
+        $marcas = DB::table('marcas_empresa')
+        ->where('marcas_empresa.equipo','=',intval($value))
+        ->get();
+
+        return response()->json($marcas);
+    }
+
     public function send_modelos($value){
         $marcas = DB::table('modelos_empresa')
-        ->where('modelos_empresa.id_empresa','=',Auth::user()->id_empresa)
         ->where('modelos_empresa.id_marca','=',$value)
         ->get();
 
@@ -8095,6 +8114,14 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
     }
 
 
+    public function send_efi($value){
+        $marca = DB::table('modelos_empresa')
+        ->where('modelos_empresa.id','=',$value)
+        ->first();
+
+        return $marca->eficiencia;
+    }
+
 
     public function store_new_marc($value){
         $new_marc = new MarcasEmpresaModel;
@@ -8106,73 +8133,21 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
         return $new_marc;
     }
 
-    public function store_new_model($marca,$modelo){
-        if($marca == 'empty'){
-            $value = 'vacio marca';
+    public function store_new_model($marca,$modelo,$eficiencia){
+        $check_modelo = DB::table('modelos_empresa')
+        ->where('modelos_empresa.modelo','=',$modelo)
+        ->first();
+
+        if($check_modelo){
             return false;
+        }else{
+            $new_model = new ModelosEmpresaModel;
+            $new_model->modelo = $modelo;
+            $new_model->id_marca = $marca;
+            $new_model->eficiencia = $eficiencia;
+            $new_model->save();
         }
-
-        if($marca !== 'empty'){ //si marca es diferente a vacio
-            //buscar marca
-            $check_m = DB::table('marcas_empresa')
-            ->where('marcas_empresa.id_empresa','=',Auth::user()->id_empresa)
-            ->where('marcas_empresa.marca','=',$marca)
-            ->first();
-
-            if($check_m){ //si encontro marca
-                //check_modelo
-                if($modelo == 'empty'){
-                    return false;
-                }
-
-                if($modelo !== 'empty'){
-                    $check_modelo = DB::table('modelos_empresa')
-                    ->where('modelos_empresa.id_empresa','=',Auth::user()->id_empresa)
-                    ->where('modelos_empresa.modelo','=',$modelo)
-                    ->first();
-
-                    if($check_modelo){
-                        return false;
-                    }else{
-                        $new_model = new ModelosEmpresaModel;
-                        $new_model->modelo = $modelo;
-                        $new_model->id_empresa = Auth::user()->id_empresa;
-                        $new_model->id_marca = $check_m->id;
-                        $new_model->save();
-                    }
-                }
-            }else{ // si no eocntro marca
-                $new_marc = new MarcasEmpresaModel; //nueva marca
-                $new_marc->marca = $marca;
-                $new_marc->id_empresa = Auth::user()->id_empresa;
-                $new_marc->save();
-                //check_modelo
-                if($modelo == 'empty'){
-                    return false;
-                }
-
-                if($modelo !== 'empty'){
-                    $check_modelo = DB::table('modelos_empresa')
-                    ->where('modelos_empresa.id_empresa','=',Auth::user()->id_empresa)
-                    ->where('modelos_empresa.modelo','=',$modelo)
-                    ->first();
-
-                    if($check_modelo){
-                        return false;
-                    }else{
-                        $new_model = new ModelosEmpresaModel;
-                        $new_model->modelo = $modelo;
-                        $new_model->id_empresa = Auth::user()->id_empresa;
-                        $new_model->id_marca = $new_marc->id;
-                        $new_model->save();
-                    }
-                }
-            }
-            return 'si';
-        }
-
-
-    }
+}
 
     public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller){
         $int_check_chiller = intval($check_chiller);
