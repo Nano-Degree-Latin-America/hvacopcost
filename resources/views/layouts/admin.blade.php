@@ -113,6 +113,12 @@
               <span>Nuevo Proyecto</span>
             </a>
           </li>
+
+          <li>
+            <a href="/marcas">
+              <span>Marcas</span>
+            </a>
+          </li>
         </ul>
       </li>
     </ul>

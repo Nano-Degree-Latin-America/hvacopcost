@@ -149,8 +149,12 @@ Route::get('roi_base_a_retro_ene_prod/{id_project}/{dif_cost}/{inv_ini}/{costoba
 Route::get('red_hu_carb_grafic/{dif}/{dif_2}', 'ResultadosController@red_hu_carb_grafic');
 Route::get('red_en_mw_grafic/{dif}/{dif_2}', 'ResultadosController@red_en_mw_grafic');
 Route::post('cerrar_session', 'IndexController@cerrar_session')->name('cerrar_session');
-//marcas
 
+//marcas
+Route::resource('marcas', 'MarcasController');
+Route::get('create_marcas', 'MarcasController@create');
+Route::get('edit_marcas/{id}', 'MarcasController@edit');
+Route::get('delete_marcas/{id}', 'MarcasController@delete_marcas');
 Route::get('send_marcas', 'ResultadosController@send_marcas');
 Route::get('send_marcas_equipo/{value}', 'ResultadosController@send_marcas_equipo');
 Route::get('send_modelos/{value}', 'ResultadosController@send_modelos');
