@@ -2719,7 +2719,7 @@ function new_model_or_marck_add(modelo,marcas_mod,eficiencia_modal) {
     var marca = $('#'+marcas_mod).val();
     var eficiencia = $('#'+eficiencia_modal).val();
     var equipo  = $('#cUnidad_1_1_retro').val();
-    alert(modelo);
+
     if(marca == ''){
         marca = 'empty';
     }
