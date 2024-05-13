@@ -331,7 +331,7 @@
                         <label class="labels" for=""><b>{{ __('index.modelo') }}</b></label>
                     </div>
                     <div class="w-full flex justify-start">
-                        <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_2" id="modelo_1_2">
+                        <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd_1_2',this.id,'cUnidad_1_1');" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_2" id="modelo_1_2">
                         </select>
                     </div>
 
@@ -876,7 +876,7 @@
                                 <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
-                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);"  name="modelo_2_1" id="modelo_2_1">
+                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd_2_1',this.id,'cUnidad_1_1');"  name="modelo_2_1" id="modelo_2_1">
                                 </select>
                             <input  id="modelo_2_1_count" name="modelo_2_1_count" type="number" class="hidden" value="1">
 
@@ -1096,7 +1096,7 @@
                             <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                         </div>
                         <div class="w-full flex justify-start">
-                            <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);"  name="modelo_2_2" id="modelo_2_2">
+                            <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd_2_2',this.id,'cUnidad_2_1');"  name="modelo_2_2" id="modelo_2_2">
                             </select>
                         <input  id="modelo_2_2_count" name="modelo_2_2_count" type="number" class="hidden" value="1">
 
@@ -1628,7 +1628,7 @@
                                 <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
-                                <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_3_1" id="modelo_3_1">
+                                <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd2_3_1',this.id,'cUnidad_2_1');" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_3_1" id="modelo_3_1">
                                 </select>
                             </div>
                             <input  id="modelo_3_1_count" name="modelo_3_1_count" type="number" class="hidden" value="1">
@@ -1848,7 +1848,7 @@
                             <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                         </div>
                         <div class="w-full flex justify-start">
-                            <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_3_2" id="modelo_3_2">
+                            <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd_3_2',this.id,'cUnidad_3_1');" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_3_2" id="modelo_3_2">
                             </select>
                         </div>
                         <input  id="modelo_3_2_count" name="modelo_3_2_count" type="number" class="hidden" value="1">

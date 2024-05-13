@@ -19,6 +19,15 @@ $(document).ready(function () {
     $('#paises').on('change', function () {
         getCiudades($('#paises').val());
     });
+
+    $('#btn-reset').on('click', function () {
+        resetValues();
+    });
+
+    $('#equipo_modal').on('change', function () {
+        var eficiencia = $('#equipo_modal').val();
+        mostrar_eficiencias(eficiencia,'eficiencia_modal')
+    });
     //selecciona ciudad -> obtiene coolingo y heating hours
     $('#ciudades').on('change', function () {
         getDegreeHrs($('#paises').val(), $('#ciudades').val());
@@ -2269,9 +2278,9 @@ return arry_dr;
 
         }
         if(action != 'edit'){
-
+            var equipo_1 = $('#cUnidad_1_1_retro').val();
             $('#csStd_1_1_retro').prop('disabled', false);
-            send_marcas();
+            send_marcas_equipo(equipo_1);
         }
          //si tipo es igual a 1
         if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 0 || parseInt(type_p_aux) === 3){
@@ -2572,6 +2581,7 @@ return arry_dr;
                     text: 'Seleccionar'
                 })); */
                 var marca_modal = 'marca_modal';
+
                 check_val_text(marca_modal,ima);
 
                 response.map((marca, i) => {
@@ -2579,6 +2589,19 @@ return arry_dr;
                         value: marca.id,
                         text: marca.marca,
                     }));
+
+                });
+
+                var marca_modal = 'marca_modal_retro';
+
+                check_val_text(marca_modal,ima);
+
+                response.map((marca, i) => {
+                    $('#marca_modal_retro').append($('<option>', {
+                        value: marca.id,
+                        text: marca.marca,
+                    }));
+
                 });
 
 
@@ -2696,6 +2719,7 @@ function new_model_or_marck_add(modelo,marcas_mod,eficiencia_modal) {
     var marca = $('#'+marcas_mod).val();
     var eficiencia = $('#'+eficiencia_modal).val();
     var equipo  = $('#cUnidad_1_1_retro').val();
+    alert(modelo);
     if(marca == ''){
         marca = 'empty';
     }
@@ -6615,11 +6639,11 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 $("#"+dr).find('option[value="' + res.val_unidad.dr + '"]').attr("selected", "selected");
                 $("#"+Mantenimiento).find('option[value="' +   res.val_unidad.mantenimiento + '"]').attr("selected", "selected");
 
-                send_marcas_to(marca,res.val_unidad.id_marca);
+                send_marcas_to(marca,res.val_unidad.id_marca,res.val_unidad.unidad_hvac);
+                send_modelo_edit(res.val_unidad.id_marca,modelo,res.val_unidad.id_modelo);
                 send_name(csDisenio);
                 send_name_t_c(tipo_control);
                 send_name_dr(dr);
-                send_modelo_edit(res.val_unidad.id_marca,modelo,res.val_unidad.id_modelo);
                 check_chiller(res.val_unidad.unidad_hvac,csStd,res.val_unidad.type_p);
                 /* $('#'+csStd).empty();
                 $('#'+csStd).append($('<option>', {
@@ -7255,6 +7279,7 @@ function ocultar_modal(id){
 }
 
 function mostrar_modal_marcas_modelos(id){
+
      $("#"+id).removeClass("hidden");
  }
 
@@ -7509,7 +7534,9 @@ function send_marcas_to_datalist() {
             }
      }
 
-    function check_chiller(equipo,id_select,type_p){
+
+
+     function check_chiller(equipo,id_select,type_p){
         //no chiller
         var ima =  $('#idioma').val();
         var tipo =   $('#type_p').val();
@@ -7531,6 +7558,7 @@ function send_marcas_to_datalist() {
                 value: 'IEER',
                 text: 'IEER'
             }));
+
             if(type_p == 1){
                 check_ant_equipo('csStd',id_select,equipo,'cUnidad_1_1');
 
@@ -7566,10 +7594,20 @@ function send_marcas_to_datalist() {
             }
 
 
-            if(parseInt(tipo) == 2){
+            if(parseInt(tipo) == 1){
+
 
                 inactiva_next_efi(id_select,equipo);
             }
+
+
+            if(parseInt(tipo) == 2){
+
+
+                inactiva_next_efi(id_select,equipo);
+            }
+
+
 
 
         }
@@ -7577,6 +7615,7 @@ function send_marcas_to_datalist() {
 
     function inactiva_next_efi(id_select,equipo){
         var efi = 'SEER'
+
         if(id_select == 'csStd'){
 
              //check primero
@@ -7586,19 +7625,31 @@ function send_marcas_to_datalist() {
              }
 
              if(chek == 2){
-                $("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+                var value_modelo = $('#modelo_2_1').val();
 
-                $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                var array_ids = ['csStd_1_2','csStd_1_3','csStd_2_1','csStd_2_2','csStd_2_3','csStd2_3_1','csStd_3_2','csStd_3_3']
 
-                //send_seers_all('csStd_2_1',value)
-                $("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_2_1").prop('disabled',false);
-                $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                var arry = ['cUnidad_1_2','cUnidad_1_3','cUnidad_2_1','cUnidad_2_2','cUnidad_2_3','cUnidad_3_1',,'cUnidad_3_2','cUnidad_3_3']
 
-                $("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                for (let index = 0; index < arry.length; index++) {
+                                let equipo_val = $('#'+arry[index]).val();
+                                if(equipo_val > 7){
+
+                                }
+
+                                if(equipo_val < 7){
+
+                                    $('#'+array_ids[index]).empty();
+                                    $('#'+array_ids[index]).append($('<option>', {
+                                        value: efi,
+                                        text: efi
+                                    }));
+                                }
+                                $("#csStd_2_1").prop('disabled',false);
+                                send_efi(value_modelo,'csStd_2_1');
+                            }
+
+
              }
         }
 
@@ -7610,20 +7661,19 @@ function send_marcas_to_datalist() {
             }
 
             if(chek == 2){
-                //$("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
+                var value_modelo = $('#modelo_2_2').val();
 
-                $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                var array_ids = ['csStd_1_3','csStd_2_2','csStd_2_2','csStd_2_3','csStd_3_2','csStd_3_3']
 
-                //send_seers_all('csStd_2_1',value)
-
-                //$("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_2_2").prop('disabled',false);
-                $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
-
-                //$("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                array_ids.forEach(function(input, index) {
+                    $('#'+input).empty();
+                    $('#'+input).append($('<option>', {
+                        value: efi,
+                        text: efi
+                    }));
+                    $("#csStd_2_2").prop('disabled',false);
+                    send_efi(value_modelo,'csStd_2_2');
+                });
             }
 
 
@@ -7650,24 +7700,27 @@ function send_marcas_to_datalist() {
         if(id_select == 'csStd_2_1'){
             //check primero
             var chek = check_ant_equipo_aux('csStd',id_select,equipo,'cUnidad_1_1');
+
             if(chek == 1){
                 return false;
             }
 
             if(chek == 2){
-                $("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
 
-                //send_seers_all('csStd_2_1',value)
-                //$("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
+                var value_modelo = $('#modelo_3_1').val();
 
-                $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                var array_ids = ['csStd_1_2','csStd_1_3','csStd_2_2','csStd_2_3','csStd_3_2','csStd_3_3']
 
-                $('#csStd2_3_1').prop('disabled', false);
-                $("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                array_ids.forEach(function(input, index) {
+                    $('#'+input).empty();
+                    $('#'+input).append($('<option>', {
+                        value: efi,
+                        text: efi
+                    }));
+                    $("#csStd2_3_1").prop('disabled',false);
+                    send_efi(value_modelo,'csStd2_3_1');
+                });
+
             }
             /*  */
         }
@@ -7682,14 +7735,20 @@ function send_marcas_to_datalist() {
             if(chek == 2){
 
 
-                $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
 
+                var value_modelo = $('#modelo_2_2').val();
 
-                $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                var array_ids = ['csStd_1_3','csStd_2_3','csStd_3_2','csStd_3_3']
 
-                $("#csStd_3_2").prop('disabled',false);
-                $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-                $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                array_ids.forEach(function(input, index) {
+                    $('#'+input).empty();
+                    $('#'+input).append($('<option>', {
+                        value: efi,
+                        text: efi
+                    }));
+                    $("#csStd_3_2").prop('disabled',false);
+                    send_efi(value_modelo,'csStd_3_2');
+                });
             }
 
 
@@ -7719,17 +7778,16 @@ function send_marcas_to_datalist() {
 
             if(chek == 2){
                 //$('#csStd_1_2').prop('disabled', false);
-            $("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
 
+                var array_ids = ['csStd_1_2','csStd_1_3','csStd_2_2','csStd_2_3','csStd_3_2','csStd_3_3']
 
-
-            $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
-
-
-            $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                array_ids.forEach(function(input, index) {
+                    $('#'+input).empty();
+                    $('#'+input).append($('<option>', {
+                        value: efi,
+                        text: efi
+                    }));
+                });
             }
            /*   */
         }
@@ -7760,6 +7818,8 @@ function send_marcas_to_datalist() {
                 return false;
             }
 
+
+
             if(chek == 2){
 
                $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
@@ -7767,6 +7827,16 @@ function send_marcas_to_datalist() {
 
 
                $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+
+               var array_ids = ['csStd_2_1_retro','csStd_3_1_retro']
+
+               array_ids.forEach(function(input, index) {
+                   $('#'+input).empty();
+                   $('#'+input).append($('<option>', {
+                       value: efi,
+                       text: efi
+                   }));
+               });
 
             }
        }
@@ -10904,6 +10974,7 @@ function send_marcas_to_datalist() {
                 }
 
                 if(select_val_equipo_base > 7){
+
                     //var val_2_1 = $("#csStd_2_1").val()
                     var Unidad_2_1 = $("#cUnidad_2_1").val()
                     if(Unidad_2_1 <= 7 && Unidad_2_1 > 0){
@@ -11576,6 +11647,7 @@ cUnidad_3_3 */
 
         arry = ['cUnidad_3_1','cUnidad_1_2','cUnidad_2_2','cUnidad_3_2','cUnidad_1_3','cUnidad_2_3','cUnidad_3_3']
         arry_efis = ['csStd2_3_1','csStd_1_2','csStd_2_2','csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
+        arry_modelos = ['modelo_3_1','modelo_1_2','modelo_2_2','modelo_3_2','modelo_1_3','modelo_2_3','modelo_3_3']
         for (let index = 0; index < arry.length; index++) {
 
             let unidad = $("#"+arry[index]).val()
@@ -11586,10 +11658,14 @@ cUnidad_3_3 */
 
             if(unidad > 0 && unidad < 7){
 
-                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+
+                var value_modelo = $('#'+arry_modelos[index]).val();
+                send_efi(value_modelo,arry_efis[index]);
                 $("#"+arry_efis[index]).prop('disabled', false);
                 return false;
             }
+
+
         }
 
 
@@ -11599,6 +11675,7 @@ cUnidad_3_3 */
 
         arry = ['cUnidad_1_2','cUnidad_2_2','cUnidad_3_2','cUnidad_1_3','cUnidad_2_3','cUnidad_3_3']
         arry_efis = ['csStd_1_2','csStd_2_2','csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
+        arry_modelos = ['modelo_1_2','modelo_2_2','modelo_3_2','modelo_1_3','modelo_2_3','modelo_3_3']
         for (let index = 0; index < arry.length; index++) {
 
             let unidad = $("#"+arry[index]).val()
@@ -11609,8 +11686,18 @@ cUnidad_3_3 */
 
             if(unidad > 0 && unidad < 7){
 
-                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+/*                 $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                $("#"+arry_efis[index]).prop('disabled', false); */
+                var value_modelo = $('#'+arry_modelos[index]).val();
+                send_efi(value_modelo,arry_efis[index]);
                 $("#"+arry_efis[index]).prop('disabled', false);
+            /*     $('#'+arry_efis[index]).empty();
+                $('#'+arry_efis[index]).append($('<option>', {
+                    value: efi,
+                    text: efi
+                }));
+                $("#"+arry_efis[index]).prop('disabled', false); */
+
                 return false;
             }
         }
@@ -11622,6 +11709,7 @@ cUnidad_3_3 */
 
         arry = ['cUnidad_2_2','cUnidad_3_2','cUnidad_1_3','cUnidad_2_3','cUnidad_3_3']
         arry_efis = ['csStd_2_2','csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
+        arry_modelos = ['modelo_2_2','modelo_3_2','modelo_1_3','modelo_2_3','modelo_3_3']
         for (let index = 0; index < arry.length; index++) {
 
             let unidad = $("#"+arry[index]).val()
@@ -11632,7 +11720,8 @@ cUnidad_3_3 */
 
             if(unidad > 0 && unidad < 7){
 
-                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                var value_modelo = $('#'+arry_modelos[index]).val();
+                send_efi(value_modelo,arry_efis[index]);
                 $("#"+arry_efis[index]).prop('disabled', false);
                 return false;
             }
@@ -11644,6 +11733,7 @@ cUnidad_3_3 */
     case "csStd_2_2":
 
         arry = ['cUnidad_3_2','cUnidad_1_3','cUnidad_2_3','cUnidad_3_3']
+        arry_modelos = ['modelo_3_2','modelo_1_3','modelo_2_3','modelo_3_3']
         arry_efis = ['csStd_3_2','csStd_1_3','csStd_2_3','csStd_3_3']
         for (let index = 0; index < arry.length; index++) {
 
@@ -11654,8 +11744,8 @@ cUnidad_3_3 */
             }
 
             if(unidad > 0 && unidad < 7){
-
-                $("#"+arry_efis[index]).find('option[value="SEER"]').attr("selected", "selected");
+                var value_modelo = $('#'+arry_modelos[index]).val();
+                send_efi(value_modelo,arry_efis[index]);
                 $("#"+arry_efis[index]).prop('disabled', false);
                 return false;
             }
@@ -11785,43 +11875,47 @@ cUnidad_3_3 */
 
         if(id == 'csStd' && parseInt(equipo) <= 7 || id == 'csStd'){
 
-            $("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            var arry = ['cUnidad_2_1','cUnidad_3_1','cUnidad_1_2','cUnidad_2_2','cUnidad_3_2','cUnidad_1_3','cUnidad_2_3','cUnidad_3_3']
+            var array_ids = ['csStd_2_1','csStd2_3_1','csStd_1_2','csStd_2_2','csStd_3_2','csStd2_1_3','csStd_2_3','csStd_3_3','csStd_1_1_retro','csStd_2_1_retro','csStd_3_1_retro']
 
-            //send_seers_all('csStd_2_1',value)
-            $("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            for (let index = 0; index < arry.length; index++) {
+                let equipo_val = $('#'+arry[index]).val();
+                if(equipo_val > 7){
 
-            $("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                }
 
-            //retrofit
-            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+                if(equipo_val <= 7){
+
+                    $('#'+array_ids[index]).empty();
+                    $('#'+array_ids[index]).append($('<option>', {
+                        value: efi,
+                        text: efi
+                    }));
+                }
+            }
 
         }
 
         if(id == 'csStd_1_2' && parseInt(equipo) <= 7 || id == 'csStd_1_2'){
 
-            //$("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            var arry = ['cUnidad_1_3','cUnidad_2_2','cUnidad_2_3','cUnidad_3_2','cUnidad_3_3','cUnidad_1_1_retro','cUnidad_2_1_retro','cUnidad_3_1_retro']
+            var array_ids = ['csStd_1_3','csStd_2_2','csStd_2_3','csStd_3_2','csStd_3_3','csStd_1_1_retro','csStd_2_1_retro','csStd_3_1_retro']
 
-            //send_seers_all('csStd_2_1',value)
-            //$("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            for (let index = 0; index < arry.length; index++) {
+                let equipo_val = $('#'+arry[index]).val();
+                if(equipo_val > 7){
 
-            //$("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                }
 
-            //retrofit
-            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+                if(equipo_val <= 7){
+
+                    $('#'+array_ids[index]).empty();
+                    $('#'+array_ids[index]).append($('<option>', {
+                        value: efi,
+                        text: efi
+                    }));
+                }
+            }
 
         }
 
@@ -11839,7 +11933,7 @@ cUnidad_3_3 */
 
         }
 
-        if(id == 'csStd_2_3' && parseInt(equipo) <= 7 || id == 'csStd_2_3'){
+        if(id == 'csStd_2_3' && parseInt(equipo) < 7 || id == 'csStd_2_3'){
 
             //$("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
             $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
@@ -11862,60 +11956,71 @@ cUnidad_3_3 */
 
         if(id == 'csStd_2_1' && parseInt(equipo) <= 7 || id == 'csStd_2_1'){
 
-            //send_seers_all('csStd_2_1',value)
-            $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            var arry = ['cUnidad_3_1','cUnidad_2_2','cUnidad_2_3','cUnidad_3_2','cUnidad_3_3','cUnidad_1_2','cUnidad_1_1_retro','cUnidad_2_1_retro','cUnidad_3_1_retro']
+            var array_ids = ['csStd2_3_1','csStd_2_2','csStd_2_3','csStd_3_2','csStd_3_3','csStd_1_2','csStd_1_1_retro','csStd_2_1_retro','csStd_3_1_retro']
 
-            $("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            for (let index = 0; index < arry.length; index++) {
+                let equipo_val = $('#'+arry[index]).val();
+                if(equipo_val > 7){
 
-            $("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
-             //retrofit
-            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+                }
+
+                if(equipo_val <= 7){
+
+                    $('#'+array_ids[index]).empty();
+                    $('#'+array_ids[index]).append($('<option>', {
+                        value: efi,
+                        text: efi
+                    }));
+                }
+            }
+
 
         }
 
         if(id == 'csStd_2_2' && parseInt(equipo) <= 7 || id == 'csStd_2_2'){
 
-            //$("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            var arry = ['cUnidad_1_3','cUnidad_2_3','cUnidad_3_2','cUnidad_3_3','cUnidad_3_3','cUnidad_2_1_retro','cUnidad_3_1_retro']
+            var array_ids = ['csStd_1_3','csStd_2_3','csStd_3_2','csStd_3_3','csStd_1_1_retro','csStd_2_1_retro','csStd_3_1_retro']
 
-            //send_seers_all('csStd_2_1',value)
-            //$("#csStd_2_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-            //$("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            for (let index = 0; index < arry.length; index++) {
+                let equipo_val = $('#'+arry[index]).val();
+                if(equipo_val > 7){
 
-            //$("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+                }
 
-            //retrofit
-            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+                if(equipo_val <= 7){
+
+                    $('#'+array_ids[index]).empty();
+                    $('#'+array_ids[index]).append($('<option>', {
+                        value: efi,
+                        text: efi
+                    }));
+                }
+            }
 
         }
 
         if(id == 'csStd2_3_1' && parseInt(equipo) <= 7 || id == 'csStd2_3_1'){
 
-            //send_seers_all('csStd_2_1',value)
-            $("#csStd_2_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            var arry = ['cUnidad_2_2','cUnidad_2_3','cUnidad_3_2','cUnidad_3_3','cUnidad_1_2','cUnidad_1_3','cUnidad_1_1_retro','cUnidad_2_1_retro','cUnidad_3_1_retro']
+            var array_ids = ['csStd_2_2','csStd_2_3','csStd_3_2','csStd_3_3','csStd_1_2','csStd_1_3','csStd_1_1_retro','csStd_2_1_retro','csStd_3_1_retro']
 
-            //$("#csStd2_3_1").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_3").find('option[value="'+efi+'"]').attr("selected", "selected");
+            for (let index = 0; index < arry.length; index++) {
+                let equipo_val = $('#'+arry[index]).val();
+                if(equipo_val > 7){
 
-            $("#csStd_1_2").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_1_3").find('option[value="'+efi+'"]').attr("selected", "selected");
-             //retrofit
-            $("#csStd_1_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+                }
+
+                if(equipo_val <= 7){
+
+                    $('#'+array_ids[index]).empty();
+                    $('#'+array_ids[index]).append($('<option>', {
+                        value: efi,
+                        text: efi
+                    }));
+                }
+            }
 
         }
 
@@ -12368,18 +12473,450 @@ cUnidad_3_3 */
         $("#"+id_retro).trigger("change");
 }
 
+
 function send_efi(value,id_input){
 
     $.ajax({
         type: 'get',
         url: '/send_efi/'+ value,
         success: function (response) {
-            $("#"+id_input).find('option[value="' + response + '"]').prop('selected', true);
-            $("#"+id_input).trigger("change");
+          /*   $("#"+id_input).find('option[value="' + response + '"]').prop('selected', true);
+            $("#"+id_input).trigger("change"); */
 
+            $('#'+id_input).empty();
+            $('#'+id_input).append($('<option>', {
+                value: response,
+                text: response
+            }));
+            $("#"+id_input).trigger("change");
         },
         error: function (responsetext) {
             console.log(responsetext);
         }
     });
 }
+
+function check_enfi_mod(value,id_input_b,id_input,equipo_a){
+
+    switch (id_input) {
+        case "modelo_2_1":
+            var equipo_a_val = $('#'+equipo_a).val();
+            if(equipo_a_val <= 7){
+                return false
+            }
+            //chiller
+            if(equipo_a_val > 7 && equipo_a_val <= 10 ){
+                $.ajax({
+                    type: 'get',
+                    url: '/send_efi/'+ value,
+                    success: function (response) {
+                        $('#'+id_input_b).empty();
+                        $('#'+id_input_b).append($('<option>', {
+                            value: response,
+                            text: response
+                        }));
+                        //$("#"+id_input_b).trigger("change");
+                        send_seer_to_nexts_seers(id_input_b);
+                    },
+                    error: function (responsetext) {
+                        console.log(responsetext);
+                    }
+                });
+            }
+        break;
+
+        case "modelo_3_1":
+
+            //valida equipo alfa hasta beta
+            var equipo_a_val = $('#'+equipo_a).val();
+
+            if(equipo_a_val <= 7){
+                return false
+            }
+            //chiller
+            if(equipo_a_val > 7 && equipo_a_val <= 10 ){
+                var equipo_a_val_2_1 = $('#cUnidad_2_1').val();
+                if(equipo_a_val_2_1 <= 7){
+                    return false
+                }
+
+                if(equipo_a_val_2_1 > 7 && equipo_a_val_2_1 <= 10 ){
+                    $.ajax({
+                        type: 'get',
+                        url: '/send_efi/'+ value,
+                        success: function (response) {
+                            $('#'+id_input_b).empty();
+                            $('#'+id_input_b).append($('<option>', {
+                                value: response,
+                                text: response
+                            }));
+                            //$("#"+id_input_b).trigger("change");
+                            send_seer_to_nexts_seers(id_input_b);
+                        },
+                        error: function (responsetext) {
+                            console.log(responsetext);
+                        }
+                    });
+                }
+            }
+        break;
+
+        case "modelo_1_2":
+            //valida equipo alfa hasta beta
+            var equipo_a_val = $('#'+equipo_a).val();
+            if(equipo_a_val <= 7){
+                return false
+            }
+            //chiller
+            if(equipo_a_val > 7 && equipo_a_val <= 10 ){
+                var equipo_a_val_2_1 = $('#cUnidad_2_1').val();
+                if(equipo_a_val_2_1 <= 7){
+                    return false
+                }
+
+                if(equipo_a_val_2_1 > 7 && equipo_a_val_2_1 <= 10 ){
+
+                    var equipo_a_val_3_1 = $('#cUnidad_3_1').val();
+                    if(equipo_a_val_3_1 <= 7){
+                        return false
+                    }
+
+                    if(equipo_a_val_3_1 > 7 && equipo_a_val_3_1 <= 10 ){
+                        $.ajax({
+                            type: 'get',
+                            url: '/send_efi/'+ value,
+                            success: function (response) {
+                                $('#'+id_input_b).empty();
+                                $('#'+id_input_b).append($('<option>', {
+                                    value: response,
+                                    text: response
+                                }));
+                                //$("#"+id_input_b).trigger("change");
+                                send_seer_to_nexts_seers(id_input_b);
+                            },
+                            error: function (responsetext) {
+                                console.log(responsetext);
+                            }
+                        });
+                    }
+                }
+            }
+        break;
+
+        case "modelo_2_2":
+            //valida equipo alfa hasta beta
+            var equipo_a_val = $('#'+equipo_a).val();
+            if(equipo_a_val <= 7){
+                return false
+            }
+            //chiller
+            if(equipo_a_val > 7 && equipo_a_val <= 10 ){
+                var equipo_a_val_2_1 = $('#cUnidad_2_1').val();
+                if(equipo_a_val_2_1 <= 7){
+                    return false
+                }
+
+                if(equipo_a_val_2_1 > 7 && equipo_a_val_2_1 <= 10 ){
+
+                    var equipo_a_val_3_1 = $('#cUnidad_3_1').val();
+                    if(equipo_a_val_3_1 <= 7){
+                        return false
+                    }
+
+                    if(equipo_a_val_3_1 > 7 && equipo_a_val_3_1 <= 10 ){
+                        var equipo_a_val_1_2 = $('#cUnidad_1_2').val();
+                        if(equipo_a_val_1_2 <= 7){
+                            return false
+                        }
+
+                        if(equipo_a_val_1_2 > 7 && equipo_a_val_1_2 <= 10 ){
+                            $.ajax({
+                                type: 'get',
+                                url: '/send_efi/'+ value,
+                                success: function (response) {
+                                    $('#'+id_input_b).empty();
+                                    $('#'+id_input_b).append($('<option>', {
+                                        value: response,
+                                        text: response
+                                    }));
+                                    //$("#"+id_input_b).trigger("change");
+                                    send_seer_to_nexts_seers(id_input_b);
+                                },
+                                error: function (responsetext) {
+                                    console.log(responsetext);
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        break;
+
+        case "modelo_3_2":
+            //valida equipo alfa hasta beta
+            var equipo_a_val = $('#'+equipo_a).val();
+            if(equipo_a_val <= 7){
+                return false
+            }
+            //chiller
+            if(equipo_a_val > 7 && equipo_a_val <= 10 ){
+                var equipo_a_val_2_1 = $('#cUnidad_2_1').val();
+                if(equipo_a_val_2_1 <= 7){
+                    return false
+                }
+
+                if(equipo_a_val_2_1 > 7 && equipo_a_val_2_1 <= 10 ){
+
+                    var equipo_a_val_3_1 = $('#cUnidad_3_1').val();
+                    if(equipo_a_val_3_1 <= 7){
+                        return false
+                    }
+
+                    if(equipo_a_val_3_1 > 7 && equipo_a_val_3_1 <= 10 ){
+                        var equipo_a_val_1_2 = $('#cUnidad_1_2').val();
+                        if(equipo_a_val_1_2 <= 7){
+                            return false
+                        }
+
+                        if(equipo_a_val_1_2 > 7 && equipo_a_val_1_2 <= 10 ){
+                            var equipo_a_val_2_2 = $('#cUnidad_2_2').val();
+                            if(equipo_a_val_2_2 <= 7){
+                                return false
+                            }
+
+                            if(equipo_a_val_2_2 > 7 && equipo_a_val_2_2 <= 10 ){
+                                $.ajax({
+                                    type: 'get',
+                                    url: '/send_efi/'+ value,
+                                    success: function (response) {
+                                        $('#'+id_input_b).empty();
+                                        $('#'+id_input_b).append($('<option>', {
+                                            value: response,
+                                            text: response
+                                        }));
+                                        //$("#"+id_input_b).trigger("change");
+                                        send_seer_to_nexts_seers(id_input_b);
+                                    },
+                                    error: function (responsetext) {
+                                        console.log(responsetext);
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        break;
+
+        case "modelo_2_1_retro":
+            var equipo_a_val = $('#'+equipo_a).val();
+            if(equipo_a_val <= 7){
+                return false
+            }
+            //chiller
+            if(equipo_a_val > 7 && equipo_a_val <= 10 ){
+                $.ajax({
+                    type: 'get',
+                    url: '/send_efi/'+ value,
+                    success: function (response) {
+                        $('#'+id_input_b).empty();
+                        $('#'+id_input_b).append($('<option>', {
+                            value: response,
+                            text: response
+                        }));
+                        //$("#"+id_input_b).trigger("change");
+                        send_seer_to_nexts_seers(id_input_b);
+                    },
+                    error: function (responsetext) {
+                        console.log(responsetext);
+                    }
+                });
+            }
+        break;
+
+        default:
+
+    }
+
+}
+
+function  send_seer_to_nexts_seers(id_input_b){
+
+    var val_id_input_b = $('#'+id_input_b).val();
+    switch (id_input_b) {
+        case "csStd_2_1":
+
+            var array_ids = ['csStd2_3_1','csStd_1_2','csStd_2_2','csStd_3_2','csStd_1_1_retro','csStd_2_1_retro','csStd_3_1_retro']
+            var arry = ['cUnidad_3_1','cUnidad_1_2','cUnidad_2_2','cUnidad_3_2','cUnidad_1_1_retro','cUnidad_2_1_retro','cUnidad_3_1_retro']
+
+
+                        for (let index = 0; index < arry.length; index++) {
+                            let equipo_val = $('#'+arry[index]).val();
+                            if(equipo_val > 7){
+
+                            }
+
+                            if(equipo_val < 7){
+
+                                $('#'+array_ids[index]).empty();
+                                $('#'+array_ids[index]).append($('<option>', {
+                                    value: val_id_input_b,
+                                    text: val_id_input_b
+                                }));
+                            }
+                        }
+
+        break;
+
+        case "csStd2_3_1":
+
+            var array_ids = ['csStd_1_2','csStd_2_2','csStd_3_2','csStd_1_1_retro','csStd_2_1_retro','csStd_3_1_retro']
+            var arry = ['cUnidad_1_2','cUnidad_2_2','cUnidad_3_2','cUnidad_1_1_retro','cUnidad_2_1_retro','cUnidad_3_1_retro']
+
+            for (let index = 0; index < arry.length; index++) {
+                            let equipo_val = $('#'+arry[index]).val();
+                            if(equipo_val > 7){
+
+                            }
+
+                            if(equipo_val < 7){
+
+                                $('#'+array_ids[index]).empty();
+                                $('#'+array_ids[index]).append($('<option>', {
+                                    value: val_id_input_b,
+                                    text: val_id_input_b
+                                }));
+                            }
+                        }
+        break;
+
+
+        case "csStd_1_2":
+
+            var array_ids = ['csStd_2_2','csStd_3_2','csStd_1_1_retro','csStd_2_1_retro','csStd_3_1_retro']
+            var arry = ['cUnidad_2_2','cUnidad_3_2','cUnidad_1_1_retro','cUnidad_2_1_retro','cUnidad_3_1_retro']
+
+            for (let index = 0; index < arry.length; index++) {
+                let equipo_val = $('#'+arry[index]).val();
+                if(equipo_val > 7){
+
+                }
+
+                if(equipo_val < 7){
+
+                    $('#'+array_ids[index]).empty();
+                    $('#'+array_ids[index]).append($('<option>', {
+                        value: val_id_input_b,
+                        text: val_id_input_b
+                    }));
+                }
+            }
+
+        break;
+
+        case "csStd_2_2":
+
+            var array_ids = ['csStd_3_2','csStd_1_1_retro','csStd_2_1_retro','csStd_3_1_retro']
+            var arry = ['cUnidad_3_2','cUnidad_1_1_retro','cUnidad_2_1_retro','cUnidad_3_1_retro']
+
+            for (let index = 0; index < arry.length; index++) {
+                let equipo_val = $('#'+arry[index]).val();
+                if(equipo_val > 7){
+
+                }
+
+                if(equipo_val < 7){
+
+                    $('#'+array_ids[index]).empty();
+                    $('#'+array_ids[index]).append($('<option>', {
+                        value: val_id_input_b,
+                        text: val_id_input_b
+                    }));
+                }
+            }
+        break;
+
+        case "csStd_2_1_retro":
+
+        var array_ids = ['csStd_3_1_retro','csStd_3_1_retro']
+        var arry = ['cUnidad_3_1_retro','cUnidad_3_1_retro']
+
+
+                    for (let index = 0; index < arry.length; index++) {
+                        let equipo_val = $('#'+arry[index]).val();
+                        if(equipo_val > 7){
+
+                        }
+
+                        if(equipo_val < 7){
+
+                            $('#'+array_ids[index]).empty();
+                            $('#'+array_ids[index]).append($('<option>', {
+                                value: val_id_input_b,
+                                text: val_id_input_b
+                            }));
+                        }
+                    }
+
+            break;
+
+            case "csStd_3_1_retro":
+
+                    var array_ids = ['csStd_3_1_retro']
+                    var arry = ['cUnidad_3_1_retro']
+
+                    for (let index = 0; index < arry.length; index++) {
+                                    let equipo_val = $('#'+arry[index]).val();
+                                    if(equipo_val > 7){
+
+                                    }
+
+                                    if(equipo_val < 7){
+
+                                        $('#'+array_ids[index]).empty();
+                                        $('#'+array_ids[index]).append($('<option>', {
+                                            value: val_id_input_b,
+                                            text: val_id_input_b
+                                        }));
+                                    }
+                                }
+                break;
+
+        default:
+
+    }
+
+}
+
+    function mostrar_eficiencias(equipo,id_eficiencia){
+        alert(equipo);
+        if(equipo <= 7){
+
+            $('#'+id_eficiencia).empty();
+            $('#'+id_eficiencia).append($('<option>', {
+                value: 'SEER',
+                text: 'SEER'
+            }));
+
+            $('#'+id_eficiencia).append($('<option>', {
+                value: 'SEER2',
+                text: 'SEER2'
+            }));
+
+            $('#'+id_eficiencia).append($('<option>', {
+                value: 'IEER',
+                text: 'IEER'
+            }));
+
+
+        }
+
+        if(equipo > 7 && equipo <= 10 ){
+
+            $('#'+id_eficiencia).empty();
+            $('#'+id_eficiencia).append($('<option>', {
+                value: 'IPLV (Kw/TR)',
+                text: 'IPLV (Kw/TR)'
+            }));
+        }
+     }

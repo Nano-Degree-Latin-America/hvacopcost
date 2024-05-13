@@ -11,9 +11,9 @@
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
                 <h2 style="margin-right: 0px;" class="text-white font-bold text-3xl">{{ __('index.sis_ext') }}</h2>
             </div>
-            @include('modal_add_marca_modelo')
+            @include('modal_add_marca_modelo_retro')
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
-                <button  onclick="mostrar_modal_marcas_modelos('modal_add_marca_modelo');send_marcas_to_datalist();" type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning_blue.png')}}" height ="59" width="59" /></button>
+                <button id="button_modal_retro" name="button_modal_retro" onclick="mostrar_modal('modal_add_marca_modelo_retro');send_marcas_to_datalist();" type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning_blue.png')}}" height ="59" width="59" /></button>
             </div>
           {{--   <div cslass="w-1/2 flex justify-start">
                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
@@ -37,7 +37,7 @@
                             </div>
 
                             <div class="w-1/2 flex justify-start">
-                                <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');check_chiller(this.value,'csStd_1_1_retro',2);check_type_set_mant('type_p','cUnidad_2_1_retro','cUnidad_3_1_retro',this.value);">
+                                <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');check_chiller(this.value,'csStd_1_1_retro',2);check_type_set_mant('type_p','cUnidad_2_1_retro','cUnidad_3_1_retro',this.value);send_value_equipo_marca_form(this.id,'equipo_modal',this.value);">
                                     <option value="0">{{ __('index.seleccionar') }}</option>
 
                                     <script>
@@ -97,7 +97,7 @@
                                 <label class="labels" for=""><b>{{ __('index.modelo') }}</b></label>
                             </div>
                             <div class="w-full flex justify-start">
-                                <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_type_set_mant('type_p','modelo_2_1_retro','modelo_3_1_retro',this.value);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_1_retro" id="modelo_1_1_retro">
+                                <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_type_set_mant('type_p','modelo_2_1_retro','modelo_3_1_retro',this.value);send_efi(this.value,'csStd_1_1_retro');" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_1_retro" id="modelo_1_1_retro">
                                 </select>
                             </div>
 
@@ -332,7 +332,7 @@
                         <input type="text" value="" class="hidden" id="action_submit_2_1_retro" name="action_submit_2_1_retro">
 
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro');valida_update_store_solution('action_submit_2_1_retro');check_chiller(this.value,'csStd_2_1_retro',2);"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
+                            <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro');valida_update_store_solution('action_submit_2_1_retro');check_chiller(this.value,'csStd_2_1_retro',2);send_value_equipo_marcas(this.id,this.value,'marca_2_1_retro');"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -397,7 +397,7 @@
                             <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                         </div>
                         <div class="w-full flex justify-start">
-                            <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);"  name="modelo_2_1_retro" id="modelo_2_1_retro">
+                            <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd_2_1_retro',this.id,'cUnidad_1_1_retro');"  name="modelo_2_1_retro" id="modelo_2_1_retro">
                             </select>
                         <input  id="modelo_2_1_retro_count" name="modelo_2_1_retro_count" type="number" class="hidden" value="1">
 
@@ -645,7 +645,7 @@
                            <label  class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                        </div>
                        <div class="w-1/2 flex justify-start">
-                           <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro');valida_update_store_solution('action_submit_3_1_retro');check_chiller(this.value,'csStd_3_1_retro',2);" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
+                           <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro');valida_update_store_solution('action_submit_3_1_retro');check_chiller(this.value,'csStd_3_1_retro',2);send_value_equipo_marcas(this.id,this.value,'marca_3_1_retro');" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
                                <option value="0">{{ __('index.seleccionar') }}</option>
                                <option value="1">Paquetes (RTU)</option>
                                <option value="2">Split DX</option>

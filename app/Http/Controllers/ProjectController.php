@@ -824,7 +824,7 @@ class ProjectController extends Controller
                         $solution_enf2_1->unidad_hvac=$request->get('cUnidad_2_1');
                         $solution_enf2_1->tipo_equipo	=$request->get('cheTipo_2_1');
                         $solution_enf2_1->id_marca=$request->get('marca_2_1');
-                        $solution_enf2_1->id_modelo=$request->get('marca_2_1');
+                        $solution_enf2_1->id_modelo=$request->get('modelo_2_1');
                         $solution_enf2_1->tipo_diseño	=$request->get('cheDisenio_2_1');
 
                         $cap_tot_aux_2_1 = ProjectController::num_form($request->get('capacidad_total_2_1'));
@@ -964,7 +964,7 @@ class ProjectController extends Controller
                         $solution_enf2_2->unidad_hvac = $request->get('cUnidad_2_2');
                         $solution_enf2_2->tipo_equipo = $request->get('cheTipo_2_2');
                         $solution_enf2_2->id_marca=$request->get('marca_2_2');
-                        $solution_enf2_2->id_modelo=$request->get('marca_2_2');
+                        $solution_enf2_2->id_modelo=$request->get('modelo_2_2');
                         $solution_enf2_2->tipo_diseño = $request->get('cheDisenio_2_2');
 
                         $cap_tot_aux_2_2 = ProjectController::num_form($request->get('capacidad_total_2_2'));
@@ -1336,7 +1336,7 @@ class ProjectController extends Controller
                  $solution_enf3_1->unidad_hvac=$request->get('cUnidad_3_1');
                  $solution_enf3_1->tipo_equipo	=$request->get('cheTipo_3_1');
                  $solution_enf3_1->id_marca=$request->get('marca_3_1');
-                 $solution_enf3_1->id_modelo=$request->get('marca_3_1');
+                 $solution_enf3_1->id_modelo=$request->get('modelo_3_1');
                  $solution_enf3_1->tipo_diseño	=$request->get('cheDisenio_3_1');
 
                  $cap_tot_aux_3_1 = ProjectController::num_form($request->get('capacidad_total_3_1'));
@@ -1526,7 +1526,7 @@ class ProjectController extends Controller
                 $solution_enf3_2->unidad_hvac = $request->get('cUnidad_3_2');
                 $solution_enf3_2->tipo_equipo = $request->get('cheTipo_3_2');
                 $solution_enf3_2->id_marca=$request->get('marca_3_2');
-                $solution_enf3_2->id_modelo=$request->get('marca_3_2');
+                $solution_enf3_2->id_modelo=$request->get('modelo_3_2');
                 $solution_enf3_2->tipo_diseño = $request->get('cheDisenio_3_2');
 
                 $cap_tot_aux_3_2 = ProjectController::num_form($request->get('capacidad_total_3_2'));

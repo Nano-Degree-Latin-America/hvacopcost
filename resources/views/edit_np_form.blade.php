@@ -9,7 +9,7 @@
                 <input type="number" class="hidden" value="1" id="set_sol_1" name="set_sol_1">
             </div>
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
-                <h2 style="margin-right: 75px;" class="text-white font-bold text-3xl">{{ __('index.solucion') }} Base</h2>
+                <h2 style="" class="text-white font-bold text-3xl">{{ __('index.solucion') }} Base</h2>
             </div>
 
 
@@ -105,7 +105,7 @@
                         <label class="labels" for=""><b>{{ __('index.modelo') }}</b></label>
                     </div>
                     <div class="w-full flex justify-start">
-                        <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_type_set_mant('type_p','modelo_2_1','modelo_3_1',this.value);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_1" id="modelo_1_1">
+                        <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_type_set_mant('type_p','modelo_2_1','modelo_3_1',this.value);send_efi(this.value,'csStd');" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_1" id="modelo_1_1">
                         </select>
                     </div>
 
@@ -297,7 +297,7 @@
 
 
                     <div class="w-1/2 flex justify-start">
-                        <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2','csDisenio_1_2','{{App::getLocale()}}');check_chiller(this.value,'csStd_1_2',1);" name="cUnidad_1_2" id="cUnidad_1_2" >
+                        <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2','csDisenio_1_2','{{App::getLocale()}}');check_chiller(this.value,'csStd_1_2',1);send_value_equipo_marcas(this.id,this.value,'marca_1_2');" name="cUnidad_1_2" id="cUnidad_1_2" >
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -362,7 +362,7 @@
                         <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                     </div>
                     <div class="w-full flex justify-start">
-                        <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);"  name="modelo_1_2" id="modelo_1_2">
+                        <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd_1_2',this.id,'cUnidad_1_1');"  name="modelo_1_2" id="modelo_1_2">
                         </select>
                     <input  id="modelo_1_2_count" name="modelo_1_2_count" type="number" class="hidden" value="1">
 
@@ -859,7 +859,7 @@
                                 <label style="font-size: 14px;" class="" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1','{{App::getLocale()}}');valida_update_store_solution('action_submit_2_1');check_chiller(this.value,'csStd_2_1',1);"  name="cUnidad_2_1" id="cUnidad_2_1" >
+                                <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1','{{App::getLocale()}}');valida_update_store_solution('action_submit_2_1');check_chiller(this.value,'csStd_2_1',1);send_value_equipo_marcas(this.id,this.value,'marca_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -923,7 +923,7 @@
                                 <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
-                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);"  name="modelo_2_1" id="modelo_2_1">
+                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd_2_1',this.id,'cUnidad_1_1');"  name="modelo_2_1" id="modelo_2_1">
                                 </select>
                             <input  id="modelo_2_1_count" name="modelo_2_1_count" type="number" class="hidden" value="1">
 
@@ -1107,7 +1107,7 @@
                             <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select style="margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,2,'cheTipo_2_2','{{App::getLocale()}}');check_chiller(this.value,'csStd_2_2',1);"  name="cUnidad_2_2" id="cUnidad_2_2" >
+                            <select style="margin-left:1px;" class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,2,'cheTipo_2_2','{{App::getLocale()}}');check_chiller(this.value,'csStd_2_2',1);send_value_equipo_marcas(this.id,this.value,'marca_2_2');"  name="cUnidad_2_2" id="cUnidad_2_2" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -1170,7 +1170,7 @@
                             <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                         </div>
                         <div class="w-full flex justify-start">
-                            <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);"  name="modelo_2_2" id="modelo_2_2">
+                            <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd_2_2',this.id,'cUnidad_1_1');"  name="modelo_2_2" id="modelo_2_2">
                             </select>
                         <input  id="modelo_2_2_count" name="modelo_2_2_count" type="number" class="hidden" value="1">
 
@@ -1683,7 +1683,7 @@
                                 <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1','{{App::getLocale()}}');valida_update_store_solution('action_submit_3_1');check_chiller(this.value,'csStd2_3_1',1);" name="cUnidad_3_1" id="cUnidad_3_1" >
+                                <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1','{{App::getLocale()}}');valida_update_store_solution('action_submit_3_1');check_chiller(this.value,'csStd2_3_1',1);send_value_equipo_marcas(this.id,this.value,'marca_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -1748,7 +1748,7 @@
                                 <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
-                                <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_3_1" id="modelo_3_1">
+                                <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd2_3_1',this.id,'cUnidad_1_1');" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_3_1" id="modelo_3_1">
                                 </select>
                             </div>
                             <input  id="modelo_3_1_count" name="modelo_3_1_count" type="number" class="hidden" value="1">
@@ -1934,7 +1934,7 @@
                             <label class="labels" class="" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="unidadHvac(this.value,1,'cheTipo_3_2','{{App::getLocale()}}');check_chiller(this.value,'csStd_3_2',1);" name="cUnidad_3_2" id="cUnidad_3_2" >
+                            <select class="w-full py-1 border-2 border-blue-600 rounded-md" onchange="unidadHvac(this.value,1,'cheTipo_3_2','{{App::getLocale()}}');check_chiller(this.value,'csStd_3_2',1);send_value_equipo_marcas(this.id,this.value,'marca_3_2');" name="cUnidad_3_2" id="cUnidad_3_2" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -1996,7 +1996,7 @@
                             <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                         </div>
                         <div class="w-full flex justify-start">
-                            <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);"  name="modelo_3_2" id="modelo_3_2">
+                            <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd_3_2',this.id,'cUnidad_1_1');"  name="modelo_3_2" id="modelo_3_2">
                             </select>
                         <input  id="modelo_3_2_count" name="modelo_3_2_count" type="number" class="hidden" value="1">
 
