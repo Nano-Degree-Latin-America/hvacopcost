@@ -12889,7 +12889,7 @@ function  send_seer_to_nexts_seers(id_input_b){
 }
 
     function mostrar_eficiencias(equipo,id_eficiencia){
-        alert(equipo);
+
         if(equipo <= 7){
 
             $('#'+id_eficiencia).empty();
