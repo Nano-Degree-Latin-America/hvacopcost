@@ -12476,6 +12476,7 @@ cUnidad_3_3 */
 
 function send_efi(value,id_input){
 
+
     $.ajax({
         type: 'get',
         url: '/send_efi/'+ value,
@@ -12488,7 +12489,11 @@ function send_efi(value,id_input){
                 value: response,
                 text: response
             }));
-            $("#"+id_input).trigger("change");
+           if(response == 'IPLV (Kw/TR)'){
+
+           }else{
+               $("#"+id_input).trigger("change");
+           }
         },
         error: function (responsetext) {
             console.log(responsetext);
@@ -12915,7 +12920,7 @@ function  send_seer_to_nexts_seers(id_input_b){
 
             $('#'+id_eficiencia).empty();
             $('#'+id_eficiencia).append($('<option>', {
-                value: 'IPLV (Kw/TR)',
+                value: 'IPLV',
                 text: 'IPLV (Kw/TR)'
             }));
         }

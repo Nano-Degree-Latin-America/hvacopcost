@@ -8144,6 +8144,10 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
             $new_model = new ModelosEmpresaModel;
             $new_model->modelo = $modelo;
             $new_model->id_marca = $marca;
+            if($eficiencia  == 'IPLV'){
+                $eficiencia = 'IPLV (Kw/TR)';
+
+            }
             $new_model->eficiencia = $eficiencia;
             $new_model->save();
         }
