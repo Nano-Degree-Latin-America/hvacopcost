@@ -1383,7 +1383,7 @@ cursor: pointer;
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style_minim">${{number_format($inv_ini_1)}}</p></b>
                     @endif
 
-                    @if (strlen(number_format($inv_ini_1)) < 9)
+                    @if (strlen(number_format($inv_ini_1)) <= 9)
                     <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_1)}}</p></b>
                     @endif
                 </div>
@@ -1394,7 +1394,7 @@ cursor: pointer;
                     <b class="size_solutions_confort font-roboto font-bold"> <p class="cant_style_minim">${{number_format($inv_ini_2)}}</p></b>
                     @endif
 
-                    @if (strlen(number_format($inv_ini_2)) < 9)
+                    @if (strlen(number_format($inv_ini_2)) <= 9)
                     <b class="size_solutions_confort font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_2)}}</p></b>
                     @endif
                 </div>
@@ -1404,7 +1404,7 @@ cursor: pointer;
                     <b class="size_solutions_confort font-roboto font-bold"> <p class="cant_style_minim">${{number_format($inv_ini_3)}}</p></b>
                     @endif
 
-                    @if (strlen(number_format($inv_ini_3)) < 9)
+                    @if (strlen(number_format($inv_ini_3)) <= 9)
                     <b class="size_solutions_confort font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_3)}}</p></b>
                     @endif
                 </div>
