@@ -159,8 +159,8 @@ Route::get('send_marcas', 'ResultadosController@send_marcas');
 Route::get('send_marcas_equipo/{value}', 'ResultadosController@send_marcas_equipo');
 Route::get('send_modelos/{value}', 'ResultadosController@send_modelos');
 Route::post('store_new_marc/{value}', 'ResultadosController@store_new_marc');
-Route::get('store_new_model/{value}/{marca}/{eficiencia}', 'ResultadosController@store_new_model');
-Route::get('send_modelos_datalist/{value}', 'ResultadosController@send_modelos_datalist');
+Route::get('store_new_model/{value}/{marca}/{eficiencia}/{equipo}', 'ResultadosController@store_new_model');
+Route::get('send_modelos_datalist/{value}/{equipo}', 'ResultadosController@send_modelos_datalist');
 Route::get('send_efi/{value}', 'ResultadosController@send_efi');
 
 Route::get('verifica_solucion/{num_disp}/{num_sol}/{id_project}/{type}', 'ProjectController@verifica_solucion');

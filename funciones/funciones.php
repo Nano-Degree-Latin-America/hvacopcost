@@ -22,7 +22,7 @@ class funciones {
 
     public function form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
 
-        if($eficiencia_ene == 'IPLV'){
+        if($eficiencia_ene == 'IPLV' || $eficiencia_ene == 'IPLV (Kw/TR)'){
             //(TR x IPLV x Cooling Hours) / 0.75
             //(TR x IPLV x Cooling Hours)
             $mult = $tr * $eficiencia_cant * $cooling_hrs;
@@ -96,11 +96,11 @@ class funciones {
         //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
         //((TR /3.5) x (Cooling Hours) x (Costo Energía) / IPVL)/ 1000
        //((TR x cant)
-       if($eficiencia_ene != 'IPLV'){
+       if($eficiencia_ene != 'IPLV' || $eficiencia_ene == 'IPLV (Kw/TR)'){
         $cant_aux = 12000;
        }
 
-       if($eficiencia_ene == 'IPLV'){
+       if($eficiencia_ene == 'IPLV' || $eficiencia_ene == 'IPLV (Kw/TR)'){
         $cant_aux = 3.5;
        }
        $res_trx_cant = $tr * $cant_aux;
@@ -172,7 +172,7 @@ class funciones {
      }
 
      public function cost_op_an_form_kw_chiller(){
-        if($eficiencia_ene == 'IPLV'){
+        if($eficiencia_ene == 'IPLV' || $eficiencia_ene == 'IPLV (Kw/TR)'){
          //((Kw / 3.54) x IPLV x Cooling Hours) / 0.75
 
          //(Kw / 3.54)
@@ -288,7 +288,7 @@ public function form_proyect_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficie
         $z = 0.045;
     }
 
-    if($eficiencia_ene == 'IPLV'){
+    if($eficiencia_ene == 'IPLV' || $eficiencia_ene == 'IPLV (Kw/TR)'){
         //((Kw/3.54) x ( IPLV / (1-(Z x Años de vida)) x Cooling Hours)
          //((Kw/3.54)
         $kw_3_5 = $kw / 3.54;
@@ -421,7 +421,7 @@ public function form_proyect_retro_chiller($tr,$eficiencia_ene,$cooling_hrs,$efi
         $z = 0.045;
     }
 
-if($eficiencia_ene == 'IPLV'){
+if($eficiencia_ene == 'IPLV' || $eficiencia_ene == 'IPLV (Kw/TR)'){
 
     //(TR x ( IPLV / (1-(Z x Años de vida)) x Cooling Hours) /0.75
 

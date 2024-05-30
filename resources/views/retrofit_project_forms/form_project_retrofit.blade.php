@@ -9,9 +9,9 @@
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex  2xl:justify-center xl:justify-center lg:justify-center  py-1">
                 <h2 style="margin-right: 0px;" class="text-white font-bold text-3xl">{{ __('index.sis_ext') }}</h2>
             </div>
-            @include('modal_add_marca_modelo')
+            @include('modal_add_marca_modelo_retro')
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
-                <button id="button_modal" name="button_modal" onclick="mostrar_modal_marcas_modelos('modal_add_marca_modelo');send_marcas_to_datalist();" type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning_blue.png')}}" height ="60" width="60" /></button>
+                <button id="button_modal" name="button_modal" onclick="mostrar_modal_marcas_modelos('modal_add_marca_modelo_retro');send_marcas_to_datalist();" type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning_blue.png')}}" height ="60" width="60" /></button>
             </div>
                 {{--   <div cslass="w-1/2 flex justify-start">
                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');check_chiller(this.value,'csStd_1_1_retro',2);check_type_set_mant('type_p','cUnidad_2_1_retro','cUnidad_3_1_retro',this.value);">
+                        <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');check_chiller(this.value,'csStd_1_1_retro',2);check_type_set_mant('type_p','cUnidad_2_1_retro','cUnidad_3_1_retro',this.value);send_value_equipo_marca_form(this.id,'equipo_modal',this.value);">">
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -87,7 +87,7 @@
                         <label class="labels" for=""><b>{{ __('index.modelo') }}</b></label>
                     </div>
                     <div class="w-full flex justify-start">
-                        <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_type_set_mant('type_p','modelo_2_1_retro','modelo_3_1_retro',this.value);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_1_retro" id="modelo_1_1_retro">
+                        <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_type_set_mant('type_p','modelo_2_1_retro','modelo_3_1_retro',this.value);send_efi(this.value,'csStd_1_1_retro');" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_1_1_retro" id="modelo_1_1_retro">
                         </select>
                     </div>
 
@@ -118,7 +118,11 @@
                         <label  class="labels" for=""><b>{{ __('index.efi_ori') }}</b> </label>
                     </div>
                     <div class="flex justify-start w-1/4">
-                        <select name="csStd_1_1_retro" id="csStd_1_1_retro" style="padding-top: 0.43rem;padding-bottom: 0.43rem;font-size: 14px;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_1_retro').value,'csStd_1_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
+                        <select name="csStd_1_1_retro" id="csStd_1_1_retro" style="font-size: 14px;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_1_1_retro').value,'csStd_1_1_retro');" style="padding-top: 0.43rem;padding-bottom: 0.43rem;" class="w-full border-2 border-blue-600 rounded-md text-center">
+                            {{-- <option value="SEER">SEER</option>
+                            <option value="SEER2">SEER2</option>
+                            <option value="IEER">IEER</option>
+                            <option value="IPVL" disabled>IPVL</option> --}}
                         </select>
                     </div>
                     <div class="flex justify-start w-1/4">
@@ -518,7 +522,7 @@
                                 <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro');check_chiller(this.value,'csStd_2_1_retro',2);"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
+                                <select class="w-full border-2 border-blue-600 rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro');check_chiller(this.value,'csStd_2_1_retro',2);send_value_equipo_marcas(this.id,this.value,'marca_2_1_retro');"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -568,7 +572,7 @@
                                 <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
-                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);"  name="modelo_2_1_retro" id="modelo_2_1_retro">
+                                <select style="font-size: 14px" class="w-full border-2 border-blue-600 rounded-md py-2" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd_2_1_retro',this.id,'cUnidad_1_1_retro');"  name="modelo_2_1_retro" id="modelo_2_1_retro">
                                 </select>
                             <input  id="modelo_2_1_retro_count" name="modelo_2_1_retro_count" type="number" class="hidden" value="1">
 
@@ -598,7 +602,11 @@
                                 <label  class="labels" for=""><b>{{ __('index.efi') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
-                                <select name="csStd_2_1_retro" id="csStd_2_1_retro" style="padding-top: .58rem;padding-bottom: .58rem;font-size: 14px;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_2_1_retro').value,'csStd_2_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
+                                <select name="csStd_2_1_retro" id="csStd_2_1_retro" onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_1_retro').value,'csStd_3_1_retro');" style="padding-top: .55rem;padding-bottom: .55rem;font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md text-center">
+                                    {{-- <option value="SEER">SEER</option>
+                                    <option value="SEER2">SEER2</option>
+                                    <option value="IEER">IEER</option>
+                                    <option value="IPVL" disabled>IPVL</option> --}}
                                 </select>
                             </div>
                             <div class="flex justify-start w-1/4">
@@ -800,7 +808,7 @@
                                 <label  class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro');check_chiller(this.value,'csStd_3_1_retro',2);" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
+                                <select class="w-full border-2 border-blue-600 rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro');check_chiller(this.value,'csStd_3_1_retro',2);send_value_equipo_marcas(this.id,this.value,'marca_3_1_retro');" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -850,7 +858,7 @@
                                 <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
-                                <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_3_1_retro" id="modelo_3_1_retro">
+                                <select style="font-size: 14px" onchange="valida_selects_inps(this.id);send_efi(this.value,'csStd_1_1_retro');" class="w-full border-2 border-blue-600 rounded-md py-2"   name="modelo_3_1_retro" id="modelo_3_1_retro">
                                 </select>
                             </div>
                             <input  id="modelo_3_1_retro_count" name="modelo_3_1_retro_count" type="number" class="hidden" value="1">
@@ -877,8 +885,11 @@
                                 <label  class="labels" for=""><b>{{ __('index.efi') }}</b> </label>
                             </div>
                             <div class="flex justify-start w-1/3">
-                                <select name="csStd_3_1_retro" id="csStd_3_1_retro" style="padding-top: .58rem;padding-bottom: .58rem;font-size: 14px;" onchange="check_send_efi(this.value,document.getElementById('cUnidad_3_1_retro').value,'csStd_3_1_retro');" class="w-full border-2 border-blue-600 rounded-md text-center">
-
+                                <select name="csStd_3_1_retro" id="csStd_3_1_retro" style="padding-top: .55rem;padding-bottom: .55rem;font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md text-center">
+                                    {{-- <option value="SEER">SEER</option>
+                                    <option value="SEER2">SEER2</option>
+                                    <option value="IEER">IEER</option>
+                                    <option value="IPVL" disabled>IPVL</option> --}}
                                 </select>
                             </div>
                             <div class="flex justify-start w-1/4">
@@ -1051,3 +1062,24 @@
         </div>
     </div>
 </div>
+<script>
+    function send_marcas_to_datalist() {
+
+$.ajax({
+    type: 'get',
+    url: '/send_marcas',
+    success: function (response) {
+
+        response.map((marca, i) => {
+            $('#browsers').append($('<option>', {
+                value: marca.marca,
+            }));
+        });
+
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+}
+</script>

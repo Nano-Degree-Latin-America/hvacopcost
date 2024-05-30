@@ -53,13 +53,12 @@
                             <label  class="labels" for=""><b>Marca</b> </label>
                         </div>
                         <div class="w-full flex justify-start">
-                           {{--  <input type="text" list="browsers" id="marca_modal" onchange="send_modelos_to_datalist(value,'modelos_datalist')" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center">
+                            <input type="text" list="browsers" id="marca_modal_retro" onchange="send_modelos_to_datalist(value,'modelos_datalist',document.getElementById('equipo_modal').value)" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center">
                             <datalist id="browsers">
 
-                            </datalist> --}}
+                            </datalist>
 
-                            <select name="marca_modal_retro" id="marca_modal_retro"  onchange="send_modelos_to_datalist(value,'modelos_datalist')"{{--  onchange="send_value_equipo_marca_modal(this.id,'cUnidad_1_1_retro',this.value);"  --}}class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-left">
-                            </select>
+
                         </div>
 
                         {{-- <div class="dropdown ">
@@ -104,7 +103,7 @@
                     </div>
 
                     <div style="margin-top:23px;">
-                        <a onclick="new_model_or_marck_add('nuevo_modelo_modal_retro','marca_modal_retro','eficiencia_modal_retro');" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
+                        <a onclick="new_model_or_marck_add('nuevo_modelo_modal_retro','marca_modal_retro','eficiencia_modal_retro',document.getElementById('equipo_modal').value);" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
                     </div> {{-- onclick="new_model_or_marck_add('nuevo_modelo_modal','marca_modal','eficiencia_modal');" --}}
                 </div>
 

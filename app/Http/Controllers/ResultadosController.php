@@ -8084,8 +8084,10 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
     }
 
     public function send_marcas_equipo($value){
+
         $marcas = DB::table('marcas_empresa')
         ->where('marcas_empresa.equipo','=',intval($value))
+        ->where('marcas_empresa.id_empresa','=',Auth::user()->id_empresa)
         ->get();
 
         return response()->json($marcas);
@@ -8099,9 +8101,10 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
         return response()->json($marcas);
     }
 
-    public function send_modelos_datalist($value){
+    public function send_modelos_datalist($value,$equipo){
         $id_marca = DB::table('marcas_empresa')
         ->where('marcas_empresa.marca','=',$value)
+        ->where('marcas_empresa.equipo','=',$equipo)
         ->where('marcas_empresa.id_empresa','=',Auth::user()->id_empresa)
         ->first();
 
@@ -8133,7 +8136,7 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
         return $new_marc;
     }
 
-    public function store_new_model($marca,$modelo,$eficiencia){
+    /* public function store_new_model($marca,$modelo,$eficiencia){
         $check_modelo = DB::table('modelos_empresa')
         ->where('modelos_empresa.modelo','=',$modelo)
         ->first();
@@ -8151,7 +8154,92 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
             $new_model->eficiencia = $eficiencia;
             $new_model->save();
         }
+} */
+
+
+public function store_new_model($marca,$modelo,$eficiencia,$equipo){
+    if($marca == 'empty'){
+        $value = 'vacio marca';
+        return false;
+    }
+
+    if($marca !== 'empty'){ //si marca es diferente a vacio
+        //buscar marca
+        $check_m = DB::table('marcas_empresa')
+        ->where('marcas_empresa.id_empresa','=',Auth::user()->id_empresa)
+        ->where('marcas_empresa.marca','=',$marca)
+        ->where('marcas_empresa.equipo','=',$equipo)
+        ->first();
+
+        if($check_m){ //si encontro marca
+            //check_modelo
+            if($modelo == 'empty'){
+                return false;
+            }
+
+            if($modelo !== 'empty'){
+                $check_modelo = DB::table('modelos_empresa')
+                ->where('modelos_empresa.id_empresa','=',Auth::user()->id_empresa)
+                ->where('modelos_empresa.modelo','=',$modelo)
+                ->where('modelos_empresa.id_marca','=',$check_m->id)
+                ->first();
+
+                if($check_modelo){
+                    return false;
+                }else{
+
+                    $new_model = new ModelosEmpresaModel;
+                    $new_model->modelo = $modelo;
+                    $new_model->id_empresa = Auth::user()->id_empresa;
+                    $new_model->id_marca = $check_m->id;
+                    if($eficiencia == 'IPLV'){
+                        $new_model->eficiencia = 'IPLV (Kw/TR)';
+                    }else{
+                        $new_model->eficiencia = $eficiencia;
+                    }
+                    $new_model->save();
+                }
+            }
+        }else{ // si no eocntro marca
+            $new_marc = new MarcasEmpresaModel; //nueva marca
+            $new_marc->marca = $marca;
+            $new_marc->equipo = $equipo;
+            $new_marc->id_empresa = Auth::user()->id_empresa;
+            $new_marc->id_user = Auth::user()->id;
+            $new_marc->save();
+            //check_modelo
+            if($modelo == 'empty'){
+                return false;
+            }
+
+            if($modelo !== 'empty'){
+                $check_modelo = DB::table('modelos_empresa')
+                ->where('modelos_empresa.id_empresa','=',Auth::user()->id_empresa)
+                ->where('modelos_empresa.modelo','=',$modelo)
+                ->first();
+
+                if($check_modelo){
+                    return false;
+                }else{
+                    $new_model = new ModelosEmpresaModel;
+                    $new_model->modelo = $modelo;
+                    $new_model->id_empresa = Auth::user()->id_empresa;
+                    $new_model->id_marca = $check_m->id;
+                    if($eficiencia == 'IPLV'){
+                        $new_model->eficiencia = 'IPLV (Kw/TR)';
+                    }else{
+                        $new_model->eficiencia = $eficiencia;
+                    }
+                    $new_model->save();
+                }
+            }
+        }
+        return 'si';
+    }
+
+
 }
+
 
     public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller){
         $int_check_chiller = intval($check_chiller);

@@ -24,10 +24,15 @@ $(document).ready(function () {
         resetValues();
     });
 
-    $('#equipo_modal').on('change', function () {
+    /* $('#equipo_modal').on('change', function () {
         var eficiencia = $('#equipo_modal').val();
         mostrar_eficiencias(eficiencia,'eficiencia_modal')
-    });
+    }); */
+
+
+
+    var eficiencia = $('#equipo_modal').val();
+    mostrar_eficiencias(eficiencia,'eficiencia_modal');
     //selecciona ciudad -> obtiene coolingo y heating hours
     $('#ciudades').on('change', function () {
         getDegreeHrs($('#paises').val(), $('#ciudades').val());
@@ -2458,6 +2463,8 @@ return arry_dr;
                 $("#"+id).find('option[value="' + val + '"]').attr("selected", "selected");
                 //$("#"+id+" option[value='" + val + "']").attr("selected","selected");
 
+
+
             },
             error: function (responsetext) {
 
@@ -2574,13 +2581,24 @@ return arry_dr;
             type: 'get',
             url: '/send_marcas_equipo/'+value,
             success: function (response) {
+
                 //retro_1_1
                /*  $('#marca_1_1_retro').empty();
                 $('#marca_1_1_retro').append($('<option>', {
                     value: '',
                     text: 'Seleccionar'
                 })); */
-                var marca_modal = 'marca_modal';
+
+                $('#browsers').empty();
+                response.map((marca, i) => {
+                    $('#browsers').append($('<option>', {
+                        value: marca.marca,
+                    }));
+                });
+
+                $('#marca_modal').val('');
+
+/*                 var marca_modal = 'marca_modal';
 
                 check_val_text(marca_modal,ima);
 
@@ -2590,7 +2608,7 @@ return arry_dr;
                         text: marca.marca,
                     }));
 
-                });
+                }); */
 
                 var marca_modal = 'marca_modal_retro';
 
@@ -2714,11 +2732,12 @@ function send_modelo_edit(value,id,id_modelo){
 
 
 
-function new_model_or_marck_add(modelo,marcas_mod,eficiencia_modal) {
+function new_model_or_marck_add(modelo,marcas_mod,eficiencia_modal, equipo) {
     var modelo = $('#'+modelo).val();
+
     var marca = $('#'+marcas_mod).val();
     var eficiencia = $('#'+eficiencia_modal).val();
-    var equipo  = $('#cUnidad_1_1_retro').val();
+    //var equipo  = $('#cUnidad_1_1_retro').val();
 
     if(marca == ''){
         marca = 'empty';
@@ -2730,7 +2749,7 @@ function new_model_or_marck_add(modelo,marcas_mod,eficiencia_modal) {
     var token = $("._token").val();
     $.ajax({
         type: 'GET',
-        url: '/store_new_model/'+ marca +'/'+ modelo +"/"+ eficiencia,
+        url: '/store_new_model/'+ marca +'/'+ modelo +"/"+ eficiencia +"/"+ equipo,
         success: function (response) {
 
             Swal.fire({
@@ -7285,12 +7304,13 @@ function mostrar_modal_marcas_modelos(id){
 
  /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
-function send_marcas_to_datalist() {
+/* function send_marcas_to_datalist() {
 
     $.ajax({
         type: 'get',
         url: '/send_marcas',
         success: function (response) {
+
             response.map((marca, i) => {
                 $('#browsers').append($('<option>', {
                     value: marca.marca,
@@ -7302,13 +7322,15 @@ function send_marcas_to_datalist() {
             console.log(responsetext);
         }
     });
-  }
+  } */
 
- function send_modelos_to_datalist(value,id){
+ function send_modelos_to_datalist(value,id,equipo){
+
     $.ajax({
         type: 'get',
-        url: '/send_modelos_datalist/'+value,
+        url: '/send_modelos_datalist/'+value+'/'+equipo,
         success: function (response) {
+
             $('#'+id).empty();
             response.map((modelo, i) => {
                 $('#'+id).append($('<option>', {
@@ -11875,7 +11897,7 @@ cUnidad_3_3 */
 
         if(id == 'csStd' && parseInt(equipo) <= 7 || id == 'csStd'){
 
-            var arry = ['cUnidad_2_1','cUnidad_3_1','cUnidad_1_2','cUnidad_2_2','cUnidad_3_2','cUnidad_1_3','cUnidad_2_3','cUnidad_3_3']
+            var arry = ['cUnidad_2_1','cUnidad_3_1','cUnidad_1_2','cUnidad_2_2','cUnidad_3_2','cUnidad_1_3','cUnidad_2_3','cUnidad_3_3','cUnidad_1_1_retro','cUnidad_2_1_retro','cUnidad_3_1_retro']
             var array_ids = ['csStd_2_1','csStd2_3_1','csStd_1_2','csStd_2_2','csStd_3_2','csStd2_1_3','csStd_2_3','csStd_3_3','csStd_1_1_retro','csStd_2_1_retro','csStd_3_1_retro']
 
             for (let index = 0; index < arry.length; index++) {
@@ -12048,17 +12070,50 @@ cUnidad_3_3 */
         if(id == 'csStd_1_1_retro' && parseInt(equipo) <= 7 || id == 'csStd_1_1_retro'){
 
             //retrofit
+            var arry = ['cUnidad_2_1_retro','cUnidad_3_1_retro']
+            var array_ids = ['csStd_2_1_retro','csStd_3_1_retro']
 
-            $("#csStd_2_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
-            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+            for (let index = 0; index < arry.length; index++) {
+                let equipo_val = $('#'+arry[index]).val();
+                if(equipo_val > 7){
+
+                }
+
+                if(equipo_val <= 7){
+
+                    $('#'+array_ids[index]).empty();
+                    $('#'+array_ids[index]).append($('<option>', {
+                        value: efi,
+                        text: efi
+                    }));
+                }
+            }
+
 
         }
 
         if(id == 'csStd_2_1_retro' && parseInt(equipo) <= 7 || id == 'csStd_2_1_retro'){
 
 
-            $("#csStd_3_1_retro").find('option[value="'+efi+'"]').attr("selected", "selected");
+                //retrofit
+                var arry = ['cUnidad_3_1_retro']
+                var array_ids = ['csStd_3_1_retro']
 
+                for (let index = 0; index < arry.length; index++) {
+                    let equipo_val = $('#'+arry[index]).val();
+                    if(equipo_val > 7){
+
+                    }
+
+                    if(equipo_val <= 7){
+
+                        $('#'+array_ids[index]).empty();
+                        $('#'+array_ids[index]).append($('<option>', {
+                            value: efi,
+                            text: efi
+                        }));
+                    }
+                }
         }
 
 

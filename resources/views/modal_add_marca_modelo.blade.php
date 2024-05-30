@@ -30,7 +30,7 @@
                         <div class="w-full flex justify-start">
 
 
-                            <select name="equipo_modal" id="equipo_modal" onchange="send_value_equipo_marca_modal(this.id,'cUnidad_1_1','cUnidad_1_1_retro',this.value);mostrar_eficiencias('equipo_modal','eficiencia_modal');send_marcas_equipo(this.value);" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-left">
+                            <select name="equipo_modal" id="equipo_modal" onchange="send_value_equipo_marca_modal(this.id,'cUnidad_1_1','cUnidad_1_1_retro',this.value);mostrar_eficiencias(this.value,'eficiencia_modal');send_marcas_equipo(this.value);" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-left">
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -53,13 +53,22 @@
                             <label  class="labels" for=""><b>Marca</b> </label>
                         </div>
                         <div class="w-full flex justify-start">
-                           {{--  <input type="text" list="browsers" id="marca_modal" onchange="send_modelos_to_datalist(value,'modelos_datalist')" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center">
+
+                            <input type="text" list="browsers" id="marca_modal" onchange="send_modelos_to_datalist(value,'modelos_datalist',document.getElementById('equipo_modal').value)" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center">
+                            <datalist id="browsers">
+
+                            </datalist>
+
+                            {{--  <input type="text" list="browsers" id="marca_modal" onchange="send_modelos_to_datalist(value,'modelos_datalist')" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center">
                             <datalist id="browsers">
 
                             </datalist> --}}
 
-                            <select name="marca_modal" id="marca_modal"  onchange="send_modelos_to_datalist(value,'modelos_datalist')"{{--  onchange="send_value_equipo_marca_modal(this.id,'cUnidad_1_1_retro',this.value);"  --}}class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-left">
-                            </select>
+                           {{--  <select name="marca_modal" id="marca_modal"  onchange="send_modelos_to_datalist(value,'modelos_datalist')" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-left">
+                            </select> --}}
+
+                            {{--  onchange="send_value_equipo_marca_modal(this.id,'cUnidad_1_1_retro',this.value);"  --}}
+
                         </div>
 
                         {{-- <div class="dropdown ">
@@ -104,7 +113,7 @@
                     </div>
 
                     <div style="margin-top:23px;">
-                        <a onclick="new_model_or_marck_add('nuevo_modelo_modal','marca_modal','eficiencia_modal');" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
+                        <a onclick="new_model_or_marck_add('nuevo_modelo_modal','marca_modal','eficiencia_modal',document.getElementById('equipo_modal').value);" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
                     </div> {{-- onclick="new_model_or_marck_add('nuevo_modelo_modal','marca_modal','eficiencia_modal');" --}}
                 </div>
 
@@ -120,7 +129,10 @@
           </div>
         </div>
         <script>
-
+    $('#equipo_modal').on('change', function () {
+        var eficiencia = $('#equipo_modal').val();
+        mostrar_eficiencias(eficiencia,'eficiencia_modal')
+    });
         </script>
       </div>
 
