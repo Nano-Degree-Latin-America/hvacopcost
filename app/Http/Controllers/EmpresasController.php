@@ -14,6 +14,7 @@ use App\SolutionsProjectModel;
 use App\TypeProjectModel;
 use App\ProjectsModel;
 use App\SucursalesModel;
+use App\MarcasEmpresaModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
@@ -387,5 +388,89 @@ class EmpresasController extends Controller
         ->get();
 
         return $submit;
+    }
+
+    public function add_marcas_empresas(){
+
+        $array_paquetes = ['1','2','5','6','7'];
+        $marcas_paquetes = ['Carrier','Trane','JCI','Lennox','Rheem','Aoon'];
+        $empresas = DB::table('empresas')
+        ->get();
+
+
+        for ($a=0; $a < count($empresas) ; $a++) {
+
+            for ($z=0; $z < count($array_paquetes) ; $z++) {
+
+                for ($i=0; $i < count($marcas_paquetes) ; $i++) {
+                    $new_marca= new MarcasEmpresaModel;
+                    $new_marca->marca = $marcas_paquetes[$i];
+                    $new_marca->equipo = $array_paquetes[$z];
+                    $new_marca->id_empresa = $empresas[$a]->id;
+                    $new_marca->id_user = Auth::user()->id;
+                    $new_marca->save();
+
+                }
+            }
+        }
+
+        dd('paquetes');
+
+    }
+
+    public function add_marcas_empresasvrf(){
+
+        $array_paquetes = ['3','4'];
+        $marcas_paquetes = ['Daikin','Hitachi','Samsung','Midea','Toshiba','Mitsubishi','LG'];
+        $empresas = DB::table('empresas')
+        ->get();
+
+
+        for ($a=0; $a < count($empresas) ; $a++) {
+
+            for ($z=0; $z < count($array_paquetes) ; $z++) {
+
+                for ($i=0; $i < count($marcas_paquetes) ; $i++) {
+                    $new_marca= new MarcasEmpresaModel;
+                    $new_marca->marca = $marcas_paquetes[$i];
+                    $new_marca->equipo = $array_paquetes[$z];
+                    $new_marca->id_empresa = $empresas[$a]->id;
+                    $new_marca->id_user = Auth::user()->id;
+                    $new_marca->save();
+
+                }
+            }
+        }
+
+        dd('vrfs');
+
+    }
+
+    public function add_marcas_empresaschillers(){
+
+        $array_paquetes = ['8','9','10'];
+        $marcas_paquetes = ['Carrier','Trane','York','Daikin','McQuay','Mitsubishi','Generico'];
+        $empresas = DB::table('empresas')
+        ->get();
+
+
+        for ($a=0; $a < count($empresas) ; $a++) {
+
+            for ($z=0; $z < count($array_paquetes) ; $z++) {
+
+                for ($i=0; $i < count($marcas_paquetes) ; $i++) {
+                    $new_marca= new MarcasEmpresaModel;
+                    $new_marca->marca = $marcas_paquetes[$i];
+                    $new_marca->equipo = $array_paquetes[$z];
+                    $new_marca->id_empresa = $empresas[$a]->id;
+                    $new_marca->id_user = Auth::user()->id;
+                    $new_marca->save();
+
+                }
+            }
+        }
+
+        dd('chillers');
+
     }
 }
