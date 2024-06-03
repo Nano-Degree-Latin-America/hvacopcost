@@ -2633,12 +2633,82 @@ return arry_dr;
                      }));
                  });
 
+                 var marca_1_2 = 'marca_1_2';
+                 check_val_text(marca_1_2,ima);
+
+                 response.map((marca, i) => {
+                     $('#marca_1_2').append($('<option>', {
+                         value: marca.id,
+                         text: marca.marca,
+                     }));
+                 });
+
+                 var marca_2_1 = 'marca_2_1';
+                 check_val_text(marca_2_1,ima);
+
+                 response.map((marca, i) => {
+                     $('#marca_2_1').append($('<option>', {
+                         value: marca.id,
+                         text: marca.marca,
+                     }));
+                 });
+
+                 var marca_2_2 = 'marca_2_2';
+                 check_val_text(marca_2_2,ima);
+
+                 response.map((marca, i) => {
+                     $('#marca_2_2').append($('<option>', {
+                         value: marca.id,
+                         text: marca.marca,
+                     }));
+                 });
+
+                 var marca_3_1 = 'marca_3_1';
+                 check_val_text(marca_3_1,ima);
+
+                 response.map((marca, i) => {
+                     $('#marca_3_1').append($('<option>', {
+                         value: marca.id,
+                         text: marca.marca,
+                     }));
+                 });
+
+                 var marca_3_2 = 'marca_3_2';
+                 check_val_text(marca_3_2,ima);
+
+                 response.map((marca, i) => {
+                     $('#marca_3_2').append($('<option>', {
+                         value: marca.id,
+                         text: marca.marca,
+                     }));
+                 });
+
    //retro modal
                  var marca_1_1_retro = 'marca_1_1_retro';
                  check_val_text(marca_1_1_retro,ima);
 
                  response.map((marca, i) => {
                      $('#marca_1_1_retro').append($('<option>', {
+                         value: marca.id,
+                         text: marca.marca,
+                     }));
+                 });
+
+                 var marca_2_1_retro = 'marca_2_1_retro';
+                 check_val_text(marca_2_1_retro,ima);
+
+                 response.map((marca, i) => {
+                     $('#marca_2_1_retro').append($('<option>', {
+                         value: marca.id,
+                         text: marca.marca,
+                     }));
+                 });
+
+                 var marca_3_1_retro = 'marca_3_1_retro';
+                 check_val_text(marca_3_1_retro,ima);
+
+                 response.map((marca, i) => {
+                     $('#marca_3_1_retro').append($('<option>', {
                          value: marca.id,
                          text: marca.marca,
                      }));

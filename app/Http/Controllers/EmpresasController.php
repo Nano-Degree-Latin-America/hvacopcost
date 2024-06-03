@@ -393,7 +393,8 @@ class EmpresasController extends Controller
     public function add_marcas_empresas(){
 
         $array_paquetes = ['1','2','5','6','7'];
-        $marcas_paquetes = ['Carrier','Trane','JCI','Lennox','Rheem','Aoon'];
+        //$marcas_paquetes = ['Carrier','Trane','JCI','Lennox','Rheem','Aoon'];
+        $marcas_paquetes = ['Genérico'];
         $empresas = DB::table('empresas')
         ->get();
 
@@ -421,7 +422,8 @@ class EmpresasController extends Controller
     public function add_marcas_empresasvrf(){
 
         $array_paquetes = ['3','4'];
-        $marcas_paquetes = ['Daikin','Hitachi','Samsung','Midea','Toshiba','Mitsubishi','LG'];
+       /*  $marcas_paquetes = ['Daikin','Hitachi','Samsung','Midea','Toshiba','Mitsubishi','LG']; */
+       $marcas_paquetes = ['Genérico'];
         $empresas = DB::table('empresas')
         ->get();
 
@@ -442,6 +444,15 @@ class EmpresasController extends Controller
             }
         }
 
+        $marcas_generico = DB::table('marcas_empresa')->get();
+
+        foreach($marcas_generico as $marcas){
+           if($marcas->marca == 'Generico'){
+            $new_marca=  MarcasEmpresaModel::find($marcas->id);
+            $new_marca->marca = 'Génerico';
+            $new_marca->update();
+           }
+        }
         dd('vrfs');
 
     }
@@ -449,7 +460,7 @@ class EmpresasController extends Controller
     public function add_marcas_empresaschillers(){
 
         $array_paquetes = ['8','9','10'];
-        $marcas_paquetes = ['Carrier','Trane','York','Daikin','McQuay','Mitsubishi','Generico'];
+        $marcas_paquetes = ['Carrier','Trane','York','Daikin','McQuay','Mitsubishi','Génerico'];
         $empresas = DB::table('empresas')
         ->get();
 
