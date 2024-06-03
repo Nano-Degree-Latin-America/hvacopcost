@@ -104,6 +104,7 @@ Route::get('delete_empresa/{id}', 'EmpresasController@delete_empresa');
 Route::get('add_marcas_empresas', 'EmpresasController@add_marcas_empresas');
 Route::get('add_marcas_empresasvrf', 'EmpresasController@add_marcas_empresasvrf');
 Route::get('add_marcas_empresaschillers', 'EmpresasController@add_marcas_empresaschillers');
+Route::get('add_genericos', 'EmpresasController@add_genericos');
 
 //sucursales
 Route::get('sucursales_emp/{id}', 'SucursalesController@sucursales_empresa');

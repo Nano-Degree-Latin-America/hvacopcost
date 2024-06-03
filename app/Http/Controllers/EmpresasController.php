@@ -15,6 +15,7 @@ use App\TypeProjectModel;
 use App\ProjectsModel;
 use App\SucursalesModel;
 use App\MarcasEmpresaModel;
+use App\ModelosEmpresaModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
@@ -482,6 +483,56 @@ class EmpresasController extends Controller
         }
 
         dd('chillers');
+
+    }
+
+    public function add_genericos(){
+
+        $array_paquetes = ['8','9','10'];
+        $marcas_paquetes = ['Carrier','Trane','York','Daikin','McQuay','Mitsubishi','Génerico'];
+        $empresas = DB::table('empresas')
+        ->get();
+
+
+for ($a=0; $a < count($empresas) ; $a++) {
+
+
+    $marcas = DB::table('marcas_empresa')
+    ->where('marcas_empresa.marca','=','Génerico')
+    ->where('marcas_empresa.id_empresa','=',$empresas[$a]->id)
+    ->get();
+
+        for ($i=0; $i < count($marcas) ; $i++) {
+            $new_modelo= new ModelosEmpresaModel;
+            $new_modelo->modelo = 'Génerico';
+            $new_modelo->eficiencia = 'SEER';
+            $new_modelo->id_marca = $marcas[$i]->id;
+            $new_modelo->id_empresa =  $empresas[$a]->id;
+            $new_modelo->save();
+
+        }
+}
+      /*   foreach ($genericos as $key => $value) {
+            # code...
+        } */
+
+        /* for ($a=0; $a < count($empresas) ; $a++) {
+
+            for ($z=0; $z < count($array_paquetes) ; $z++) {
+
+                for ($i=0; $i < count($marcas_paquetes) ; $i++) {
+                    $new_marca= new MarcasEmpresaModel;
+                    $new_marca->marca = $marcas_paquetes[$i];
+                    $new_marca->equipo = $array_paquetes[$z];
+                    $new_marca->id_empresa = $empresas[$a]->id;
+                    $new_marca->id_user = Auth::user()->id;
+                    $new_marca->save();
+
+                }
+            }
+        } */
+
+        dd('genericos modelos');
 
     }
 }
