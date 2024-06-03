@@ -83,7 +83,7 @@
                     <div class="lg:grid 2xl:grid xl:grid w-1/3">
                         <div class="w-full">
                             <div class="w-full flex justify-start text-left">
-                                <label class="labels" for=""><b>Nuevo Modelo</b></label>
+                                <label class="labels" for=""><b>Modelo</b></label>
                             </div>
 
                             <div class="w-full flex justify-start text-left">
