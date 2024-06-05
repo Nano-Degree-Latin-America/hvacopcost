@@ -95,8 +95,9 @@ span{
                     <thead>
                     <tr>
 
-                      <th>Marca</th>
+                      <th>Empresa</th>
                       <th>Equipo</th>
+                      <th>Marca</th>
                       <th>Status</th>
                       <th>Fecha de registro</th>
                       <th>Ultima Actualizacion</th>
@@ -111,8 +112,9 @@ span{
 
 
                             <td class="px-6 py-4 text-sm text-gray-500">
-                                {{$marca->marca}}
+                                {{$marca->empresa_name}}
                             </td>
+
                             <td class="px-6 py-4 text-sm text-gray-500">
 
                                 @if ($marca->equipo == '1')
@@ -156,7 +158,9 @@ span{
                                 @endif
                             </td>
 
-
+                            <td class="px-6 py-4 text-sm text-gray-500">
+                                {{$marca->marca}}
+                            </td>
 
 
 

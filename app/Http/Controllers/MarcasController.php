@@ -21,6 +21,8 @@ class MarcasController extends Controller
 
     public function index(Request $request){
         $marcas = DB::table('marcas_empresa')
+        ->join('empresas','empresas.id','marcas_empresa.id_empresa')
+        ->select('marcas_empresa.*','empresas.name as empresa_name')
         ->orderBy('created_at','desc')
         ->get();
 
