@@ -171,10 +171,10 @@ span{
         <div style="color: #2c5282;" class="w-full flex justify-center mt-3 text-4xl font-roboto font-bold">
             <p>{{ __('index.mis proyectos') }} : {{$empresa_name}}</p>
         </div>
-        @include('search')
+      {{--   @include('search') --}}
         <div class="grid my-3 rounded-md shadow-xl w-full">
             <div class="w-full">
-                <table class="font-roboto w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg">
+                <table id="table_projects"  name="table_projects" class="font-roboto w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg">
                     <thead class="text-white">
                         <tr class="bg-blue-700 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
                             <th class="p-3 text-left">{{ __('index.nombre') }}</th>
@@ -414,11 +414,50 @@ span{
 
 
         </div>
-        {{ $mis_projectos->render() }}
+       {{--  {{ $mis_projectos->render() }} --}}
     </div>
 </div>
 
 <script>
+    window.onload = function() {
+    //let table = new DataTable('#table_projects');
+/*     $('#table_projects').dataTable( {
+        "language": {
+        "search": "Buscar:",
+
+        },
+        layout: {
+        bottomStart: {
+            info: {
+                text: 'Table dislay: _START_ to _END_ of _TOTAL_ records'
+            }
+        }
+    }
+    }); */
+
+    new DataTable('#table_projects', {
+        "language": {
+
+
+    "lengthMenu":     "Mostrar _MENU_ Proyectos",
+    "search":         "Buscar:",
+    "zeroRecords":    "No matching records found",
+    "paginate": {
+
+        "next":       "Siguiente",
+        "previous":   "Anterior"
+    },
+
+        },
+    layout: {
+        bottomStart: {
+            info: {
+                text: 'Mostrar: _START_ de _END_ total _TOTAL_ Proyectos'
+            }
+        }
+    }
+});
+};
 function app() {
 			return {
 				step: 1,

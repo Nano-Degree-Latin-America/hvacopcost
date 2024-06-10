@@ -67,7 +67,7 @@ class ProjectController extends Controller
                     ->where('id_empresa','=',$id_empresa)
                     ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
                     ->orderby('created_at','desc')
-                    ->paginate(10);
+                    ->get();
                 }
 
                 if($query != ""){
@@ -80,7 +80,7 @@ class ProjectController extends Controller
                     ->orwhere('projects.ciudad','=',$query)
                     ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
                     ->orderby('created_at','desc')
-                    ->paginate(10);
+                    ->get();
                 }
             }
 
@@ -93,7 +93,7 @@ class ProjectController extends Controller
                 ->where('projects.id_user','=',Auth::user()->id)
                 ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
                 ->orderby('created_at','desc')
-                ->paginate(10);
+                ->get();
                 }
 
                 if($query != ""){
@@ -107,7 +107,7 @@ class ProjectController extends Controller
                     ->where('projects.id_user','=',Auth::user()->id)
                     ->select('projects.*','categorias_edificios.name as cad_edi','tipo_edificio.name as tipo_edi')
                     ->orderby('created_at','desc')
-                    ->paginate(10);
+                    ->get();
                 }
             }
 
