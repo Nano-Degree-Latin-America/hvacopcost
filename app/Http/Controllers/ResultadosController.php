@@ -8234,7 +8234,7 @@ public function store_new_model($marca,$modelo,$eficiencia,$equipo){
                 }
             }
         }
-        return 'si';
+
     }
 
 
