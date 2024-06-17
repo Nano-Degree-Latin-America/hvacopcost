@@ -1,6 +1,24 @@
 <div id="modal_add_marca_modelo" name="modal_add_marca_modelo" class="fixed z-10 inset-0 overflow-y-auto mt-10 hidden">
     <style>
+datalist {
+  position: absolute;
+  background-color: white;
+  border: 1px solid blue;
+  border-radius: 0 0 5px 5px;
+  border-top: none;
+  font-family: sans-serif;
+  width: 350px;
+  padding: 5px;
+}
 
+datalist.option {
+  background-color: white;
+  padding: 4px;
+  color: blue;
+  margin-bottom: 1px;
+  font-size: 18px;
+  cursor: pointer;
+}
     </style>
         <div class="flex  items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <!-- Fondo oscuro -->
@@ -54,7 +72,7 @@
                         </div>
                         <div class="w-full flex justify-start">
 
-                            <input type="text" list="browsers" id="marca_modal" onchange="send_modelos_to_datalist(value,'modelos_datalist',document.getElementById('equipo_modal').value)" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center">
+                            <input type="text" list="browsers" autocomplete="on" id="marca_modal" onchange="send_modelos_to_datalist(value,'modelos_datalist',document.getElementById('equipo_modal').value,'nuevo_modelo_modal');check_marcas_guardadas(this.value,'marca_modal');" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center">
                             <datalist id="browsers">
 
                             </datalist>
@@ -88,7 +106,7 @@
 
                             <div class="w-full flex justify-start text-left">
                                         <div  class="w-full">
-                                            <input type="text"list="modelos_datalist"  type="text" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="nuevo_modelo_modal" id="nuevo_modelo_modal" >
+                                            <input type="text" list="modelos_datalist"  type="text" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="nuevo_modelo_modal" id="nuevo_modelo_modal" >
                                             <datalist id="modelos_datalist">
 
                                             </datalist>

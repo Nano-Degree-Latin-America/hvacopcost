@@ -1871,7 +1871,6 @@ $idm = App::getLocale();
 <script>
 
 window.onload = function() {
-
     check_form_proy_edit('{{$type_p}}','{{ $project_edit->id }}');
     val = '{{ $project_edit->id_cat_edifico }}';
     id_tipo_edi = '{{ $project_edit->id_tipo_edificio }}';

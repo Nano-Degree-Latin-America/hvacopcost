@@ -1,6 +1,8 @@
 // var sc = require('state-cities-db');
 
 $(document).ready(function () {
+
+
     cap_term_change('TR');
     //getPaises();
     traer_categorias_edif();
@@ -2575,6 +2577,17 @@ return arry_dr;
         });
   }
 
+
+  function check_marcas_guardadas(value,id){
+    if(value == '-Marcas Guardadas-'){
+        $('#'+id).val('');
+
+    }
+
+  }
+
+
+
   function send_marcas_equipo(value){
     var ima =  $('#idioma').val();
         $.ajax({
@@ -2590,13 +2603,23 @@ return arry_dr;
                 })); */
 
                 $('#browsers').empty();
+                $('#marca_modal').val('');
+                $('#marca_modal_retro').val('');
+                $('#browsers').append($('<option>', {
+                    value: '-Marcas Guardadas-'
+                }));
+
+
+
                 response.map((marca, i) => {
                     $('#browsers').append($('<option>', {
                         value: marca.marca,
                     }));
                 });
 
-                $('#marca_modal').val('');
+                //$("#browsers").find('option[value="Marcas Guardadas"]').prop("disabled", true);
+
+
 
 /*                 var marca_modal = 'marca_modal';
 
@@ -7394,7 +7417,7 @@ toggle between hiding and showing the dropdown content */
     });
   } */
 
- function send_modelos_to_datalist(value,id,equipo){
+ function send_modelos_to_datalist(value,id,equipo,modelo){
 
     $.ajax({
         type: 'get',
@@ -7402,6 +7425,7 @@ toggle between hiding and showing the dropdown content */
         success: function (response) {
 
             $('#'+id).empty();
+            $('#'+modelo).val('');
             response.map((modelo, i) => {
                 $('#'+id).append($('<option>', {
                     value: modelo.modelo,
