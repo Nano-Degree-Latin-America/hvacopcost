@@ -47,9 +47,9 @@
                             <option value="5">PTAC/VTAC</option>
                             <option value="6">WSHP</option>
                             <option value="7">Minisplit Inverter</option>
-                            <option value="8">Chiller - Aire - Scroll Constante</option>
+{{--                             <option value="8">Chiller - Aire - Scroll Constante</option>
                             <option value="9">Chiller - Aire - Scroll Variable</option>
-                            <option value="10">Chiller - Aire - Tornillo 4 Etapas</option>
+                            <option value="10">Chiller - Aire - Tornillo 4 Etapas</option> --}}
                             <script>
                             $(document).ready(function () {
                                 let type_p_edit_1_1 = '{{$type_p}}'
@@ -306,9 +306,9 @@
                             <option value="5">PTAC/VTAC</option>
                             <option value="6">WSHP</option>
                             <option value="7">Minisplit Inverter</option>
-                            <option value="8">Chiller - Aire - Scroll Constante</option>
+{{--                             <option value="8">Chiller - Aire - Scroll Constante</option>
                             <option value="9">Chiller - Aire - Scroll Variable</option>
-                            <option value="10">Chiller - Aire - Tornillo 4 Etapas</option>
+                            <option value="10">Chiller - Aire - Tornillo 4 Etapas</option> --}}
 
                             <script>
                             $(document).ready(function () {
@@ -868,9 +868,9 @@
                                     <option value="5">PTAC/VTAC</option>
                                     <option value="6">WSHP</option>
                                     <option value="7">Minisplit Inverter</option>
-                                    <option value="8">Chiller - Aire - Scroll Constante</option>
-                                    <option value="9">Chiller - Aire - Scroll Variable</option>
-                                    <option value="10">Chiller - Aire - Tornillo 4 Etapas</option>
+{{--                             <option value="8">Chiller - Aire - Scroll Constante</option>
+                            <option value="9">Chiller - Aire - Scroll Variable</option>
+                            <option value="10">Chiller - Aire - Tornillo 4 Etapas</option> --}}
                                     <script>
                                     $(document).ready(function () {
                                         let type_p_edit_2_1 = '{{$type_p}}'
@@ -1116,9 +1116,9 @@
                                 <option value="5">PTAC/VTAC</option>
                                 <option value="6">WSHP</option>
                                 <option value="7">Minisplit Inverter</option>
-                                <option value="8">Chiller - Aire - Scroll Constante</option>
-                                <option value="9">Chiller - Aire - Scroll Variable</option>
-                                <option value="10">Chiller - Aire - Tornillo 4 Etapas</option>
+{{--                             <option value="8">Chiller - Aire - Scroll Constante</option>
+                            <option value="9">Chiller - Aire - Scroll Variable</option>
+                            <option value="10">Chiller - Aire - Tornillo 4 Etapas</option> --}}
                                 <script>
                                 $(document).ready(function () {
                                     let type_p_edit_2_2 = '{{$type_p}}'
@@ -1692,9 +1692,9 @@
                                     <option value="5">PTAC/VTAC</option>
                                     <option value="6">WSHP</option>
                                     <option value="7">Minisplit Inverter</option>
-                                    <option value="8">Chiller - Aire - Scroll Constante</option>
-                                    <option value="9">Chiller - Aire - Scroll Variable</option>
-                                    <option value="10">Chiller - Aire - Tornillo 4 Etapas</option>
+{{--                             <option value="8">Chiller - Aire - Scroll Constante</option>
+                            <option value="9">Chiller - Aire - Scroll Variable</option>
+                            <option value="10">Chiller - Aire - Tornillo 4 Etapas</option> --}}
                                     <script>
                                     $(document).ready(function () {
                                         let type_p_edit_3_1 = '{{$type_p}}'
@@ -1943,9 +1943,9 @@
                                 <option value="5">PTAC/VTAC</option>
                                 <option value="6">WSHP</option>
                                 <option value="7">Minisplit Inverter</option>
-                                <option value="8">Chiller - Aire - Scroll Constante</option>
-                                <option value="9">Chiller - Aire - Scroll Variable</option>
-                                <option value="10">Chiller - Aire - Tornillo 4 Etapas</option>
+{{--                             <option value="8">Chiller - Aire - Scroll Constante</option>
+                            <option value="9">Chiller - Aire - Scroll Variable</option>
+                            <option value="10">Chiller - Aire - Tornillo 4 Etapas</option> --}}
 
                                 <script>
                                 $(document).ready(function () {

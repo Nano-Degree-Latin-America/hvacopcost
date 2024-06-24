@@ -1996,4 +1996,130 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
 
           return $nivel_confotr_1_1;
     }
+
+    public function price_form($id_select){
+        $aux_costo_elec = explode("$", $id_select);
+        $aux_costo_elec_a = explode(",",    $aux_costo_elec[1]);
+        if(count($aux_costo_elec_a) == 1){
+            $costo_elec_aux =  $aux_costo_elec_a[0];
+        }
+        if(count($aux_costo_elec_a) == 2){
+            $costo_elec_aux=  $aux_costo_elec_a[0].$aux_costo_elec_a[1];
+        }
+        if(count($aux_costo_elec_a) == 3){
+            $costo_elec_aux =  $aux_costo_elec_a[0].$aux_costo_elec_a[1].$aux_costo_elec_a[2];
+        }
+        if(count($aux_costo_elec_a) == 4){
+            $costo_elec_aux =  $aux_costo_elec_a[0].$aux_costo_elec_a[1].$aux_costo_elec_a[2].$aux_costo_elec_a[3];
+        }
+        if(count($aux_costo_elec_a) == 5){
+            $costo_elec_aux =  $aux_costo_elec_a[0].$aux_costo_elec_a[1].$aux_costo_elec_a[2].$aux_costo_elec_a[3].$aux_costo_elec_a[4];
+    }
+            return $costo_elec_aux;
 }
+
+
+public function num_form($id_select){
+
+    $aux = explode(",",  $id_select);
+                    if(count($aux) == 1){
+                        $cap_tot_aux =  $aux[0];
+                    }
+                    if(count($aux) == 2){
+                        $cap_tot_aux=  $aux[0].$aux[1];
+                    }
+                    if(count($aux) == 3){
+                        $cap_tot_aux =  $aux[0].$aux[1].$aux[2];
+                    }
+                    if(count($aux) == 4){
+                        $cap_tot_aux =  $aux[0].$aux[1].$aux[2].$aux[3];
+                    }
+                    if(count($aux) == 5){
+                        $cap_tot_aux =  $aux[0].$aux[1].$aux[2].$aux[3].$aux[4];
+                    }
+
+                    return $cap_tot_aux;
+}
+
+public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller){
+    $int_check_chiller = intval($check_chiller);
+
+    if($int_check_chiller <= 7){
+/*         return ProjectController::form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+*/        $funciones = new funciones();
+       return $funciones->form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+    }
+
+    if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+/*             return ProjectController::form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+*/            $funciones = new funciones();
+           return $funciones->form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+    }
+
+}
+
+public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller){
+    $int_check_chiller = intval($check_chiller);
+
+    if($int_check_chiller <= 7){
+       $funciones = new funciones();
+       return $funciones->cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+    }
+
+    if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+       $funciones = new funciones();
+       return $funciones->cost_op_an_form_kw_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+    }
+ }
+
+ public function cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller){
+    $int_check_chiller = intval($check_chiller);
+
+    if($int_check_chiller <= 7){
+        $funciones = new funciones();
+        return $funciones->form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+    }
+
+    if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+        $funciones = new funciones();
+        return $funciones->form_proyect_retro_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+    }
+
+}
+
+public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller){
+    $int_check_chiller = intval($check_chiller);
+
+    if($int_check_chiller <= 7){
+        $funciones = new funciones();
+        return $funciones->form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+    }
+
+    if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+        $funciones = new funciones();
+        return $funciones->form_proyect_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+    }
+
+}
+
+ public function save_results($enf,$id_project){
+    $res_sum = 0;
+    $cants = DB::table('solutions_project')
+    ->where('id_project','=',$id_project)
+    ->get();
+
+    foreach($cants as $cant){
+        $res_sum = $res_sum + $cant->cost_op_an;
+    }
+
+   $new_result = new ResultsProjectModel;
+   $new_result->num_enf = $enf;
+   $new_result->cost_op_an = $res_sum;
+   $new_result->id_project = $id_project;
+   $new_result->id_empresa=Auth::user()->id_empresa;
+   $new_result->id_user=Auth::user()->id;
+   $new_result->save();
+}
+
+}
+

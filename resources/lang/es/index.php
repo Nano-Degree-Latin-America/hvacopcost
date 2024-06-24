@@ -71,6 +71,7 @@ return [
     'guardar' => 'Guardar',
     'logout' => 'Cerrar Sesión',
     'tipo_p' => 'Tipo Proyecto',
+    'fecha' => 'Fecha',
     'actions' => 'Acciones',
     'buscar' => 'Buscar',
     'buscar_proy' => 'Buscar proyecto',

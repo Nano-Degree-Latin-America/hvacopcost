@@ -50,7 +50,7 @@ return [
     'calcular' => 'Calcular',
     'solucion' => 'Solução',
     'sis_ext' => 'Sistema Existente',
-
+    'fecha' => 'Fecha',
     'marca' => 'Marca',
     'modelo' => 'Modelo',
     'yrs_life' => 'Anos de vida',

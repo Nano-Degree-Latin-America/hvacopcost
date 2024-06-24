@@ -6718,7 +6718,7 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                     value: 7,
                     text: 'Minisplit Inverter'
                 }));
-                $("#"+cUnidad).append($('<option>', {
+/*                 $("#"+cUnidad).append($('<option>', {
                     value: 8,
                     text: 'Chiller - Aire - Scroll Constante'
                 }));
@@ -6729,7 +6729,7 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 $("#"+cUnidad).append($('<option>', {
                     value: 10,
                     text: 'Chiller - Aire - Tornillo 4 Etapas'
-                }));
+                })); */
                 $("#"+cUnidad).find('option[value="' + res.val_unidad.unidad_hvac + '"]').attr("selected", "selected");
                 /*
                 <option value="1">Paquetes (RTU)</option>
@@ -12441,7 +12441,7 @@ cUnidad_3_3 */
                     value: 7,
                     text: 'Minisplit Inverter'
                 }));
-                $("#cUnidad_1_1_retro").append($('<option>', {
+  /*               $("#cUnidad_1_1_retro").append($('<option>', {
                     value: 8,
                     text: 'Chiller - Aire - Scroll Constante'
                 }));
@@ -12452,7 +12452,7 @@ cUnidad_3_3 */
                 $("#cUnidad_1_1_retro").append($('<option>', {
                     value: 10,
                     text: 'Chiller - Aire - Tornillo 4 Etapas'
-                }));
+                })); */
             $("#cUnidad_1_1_retro").find('option[value="0"]').attr("selected", "selected");
             $("#csTipo_1_1_retro").find('option[value=""]').attr("selected", "selected");
             $("#csDisenio_1_1_retro").find('option[value=""]').attr("selected", "selected");

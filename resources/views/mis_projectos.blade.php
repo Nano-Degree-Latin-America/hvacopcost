@@ -184,6 +184,7 @@ span{
                             <th class="p-3 text-left">{{ __('index.region') }}</th>
                             <th class="p-3 text-left">{{ __('index.ciudad') }}</th>
                             <th class="p-3 text-left">{{ __('index.tipo_p') }}</th>
+                            <th class="p-3 text-center">{{ __('index.fecha') }}</th>
                             <th class="p-3 text-left">Status</th>
                             <th class="p-3 text-left" width="110px">{{ __('index.actions') }}</th>
                         </tr>
@@ -235,6 +236,9 @@ span{
                                {{--  @if ($project->type_p == 3)
                                 {{ __('index.type_man') }}
                                 @endif --}}
+                            </td>
+                            <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
+                                {{$project->created_at}}
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                               @if ($project->status == 1)
@@ -306,6 +310,9 @@ span{
                                 @endif --}}
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
+                                {{$project->created_at}}
+                            </td>
+                            <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                               @if ($project->status == 1)
                               <span class="px-2 inline-flex text-md leading-5 font-semibold rounded-full bg-green-500 text-white">{{ __('index.activo') }}</span>
                               @endif
@@ -374,6 +381,9 @@ span{
                                 {{ __('index.type_man') }}
                                 @endif --}}
 
+                            </td>
+                            <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
+                                {{$project->created_at}}
                             </td>
                             <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
                               @if ($project->status == 1)
@@ -449,6 +459,7 @@ span{
     },
 
         },
+        order: [[5, 'desc']],
     layout: {
         bottomStart: {
             info: {
