@@ -14,6 +14,9 @@
 @inject('desperdicio','app\Http\Controllers\ResultadosController')
 @inject('conf_val','app\Http\Controllers\ResultadosController')
 @inject('graficas_capex_opex','app\Http\Controllers\ResultadosController')
+@inject('capacidad_sol','app\Http\Controllers\ResultadosController')
+@inject('capacidad_sol','app\Http\Controllers\ResultadosController')
+@inject('red_ene','app\Http\Controllers\ResultadosController')
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -82,6 +85,7 @@
             width:230px;
          }
 
+
          .titulos_style{
             font-size:30px;
             color: white;
@@ -90,10 +94,10 @@
          }
 
          .solucions_style_name{
-        font-size: 2.25rem;
-        color: #2c5282;
-        font-weight: bold;
-        font-family: 'ABeeZee', sans-serif;
+            font-size: 2.25rem;
+            color: #1B17BB;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
         }
 
         .cant_style{
@@ -104,7 +108,7 @@
         }
 
         .cant_style_minim{
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: #2c5282;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -187,8 +191,13 @@
             color: #2c5282;
         }
 
+        .size_solutions_confort_enermaspro{
+            font-size:1.78rem;
+            color: #2c5282;
+        }
+
         .size_solutions_payback{
-            font-size:3rem;
+            font-size:2.5rem;
         }
 
         .style_grafics_marr{
@@ -201,13 +210,36 @@
         }
 
         .img_porject{
-            height:130px;
+            height:150px;
             width:350px;
          }
 
          .img_persona{
-            height:85px;
+            height:125px;
+            width:105px;
+         }
+
+         .img_tr{
+            height:95px;
+            width:90px;
+         }
+
+         .img_huella{
+            height:90px;
+            width:85px;
+         }
+
+
+
+         .img_payback{
+            height:80px;
             width:80px;
+         }
+
+
+         .img_prod_lab{
+            height:110px;
+            width:100px;
          }
 
          .img_ahorro{
@@ -219,6 +251,62 @@
             padding-left: 2.85rem;
             padding-right: 2.85rem;
          }
+
+         .cant_2{
+            font-size:3.5rem;
+            color:#2c5282;
+        }
+
+        .cant_2_l{
+            font-size:3.5rem;
+            color:#2c5282;
+            margin-left:110px;
+        }
+
+        .cant_2_v{
+            font-size:3.5rem;
+            color:#33cc33;
+        }
+
+        .cant_2_cero{
+            font-size:3.5rem;
+            color:#33cc33;
+            margin-left:100px;
+        }
+
+        .cant_2_cero_des{
+            font-size:3.5rem;
+            color:#2c5282;
+            margin-left:130px;
+        }
+
+
+        .payback_cants{
+            font-size:2.5rem
+        }
+
+
+        .payback_cants_min{
+            font-size:2rem
+        }
+
+        .payback_cants_green{
+            font-size: 2.5rem;
+        }
+
+        .mt_titles{
+            margin-top:2.5rem;
+        }
+
+        .padding_na{
+          padding-left: .75rem;
+          padding-right: .75rem;
+        }
+
+        .padding_pay{
+          padding-right:33px;
+          padding-left:33px;
+        }
 @media print{
   @page { margin: 0; }
 
@@ -240,7 +328,7 @@
   }
 
   .img_porject{
-            height:80px;
+            height:100px;
             width:180px;
          }
 
@@ -371,10 +459,76 @@
             width:40px;
          }
 
+         .img_tr{
+            height:55px;
+            width:50px;
+         }
+
+
+         .cant_2{
+            font-size:2rem;
+            color:#2c5282;
+        }
+
+        .cant_2_cero{
+            font-size:2rem;
+            color:#33cc33;
+            margin-left:50px;
+        }
+
+        .cant_2_cero_des{
+            font-size:2rem;
+            color:#2c5282;
+            margin-left:60px;
+        }
+
+        .cant_2_l{
+            font-size:2rem;
+            color:#2c5282;
+            margin-left:85px;
+        }
+
+        .cant_2_v{
+            font-size:2rem;
+            color:#33cc33;
+        }
+
+        .payback_cants{
+            font-size: 14px;
+        }
+
+        .payback_cants_green{
+            font-size: 14px;
+        }
+
          .img_ahorro{
             height:40px;
             width:40px;
          }
+
+         .img_prod_lab{
+            height:65px;
+            width:55px;
+         }
+
+         .mt_titles{
+            margin-top:0rem;
+        }
+
+        .payback_cants_min{
+            font-size:1rem
+        }
+
+        .padding_na{
+          padding-left: .75rem;
+          padding-right: .75rem;
+        }
+
+        .padding_pay{
+           padding-left: 1.2rem;
+          padding-right: 1.2rem;
+        }
+
 }
 
 /* md	768px */
@@ -493,6 +647,7 @@ text-align: center;
 align-items: center;
 cursor: pointer;
 }
+
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
@@ -501,8 +656,9 @@ cursor: pointer;
 
 {{-- navbar --}}
 <div id="navbar"  name="navbar" class="bg-blue-900 w-full flex justify-center" style="background-color:#1B17BB ;">
-    <div class="w-1/3">
+    <div class="w-1/3 flex h-full">
         <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
+        <h1 style=" font-size: 4.3rem;" class="text-white font-roboto" >2.0</h1>
     </div>
     <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
         {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
@@ -569,6 +725,9 @@ cursor: pointer;
                 @endif
                 </p>
             </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">{{number_format($tar_ele->hrs_tiempo)}} Hrs.</p>
+            </div>
         </div>
 
         <div class="w-1/3 grid justify-left">
@@ -585,7 +744,50 @@ cursor: pointer;
                 <div class="w-full flex">
                     <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
                 </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.incremento anual energia') }}:</label><p class="info_project_res">{{$tar_ele->inflacion}}%</p>
+                </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
+        <div class="w-full grid">
+            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                <p class="titulos_style">Capacidad Térmica (TR) </p>
+            </div>
+
+            <div class="flex w-full justify-center my-2">
+                <div class="w-1/7 grid justify-items-center">
+                    <div class="place-content-center">
+                        <img src="{{asset('assets/images/cap_term.png')}}" class="img_tr mx-2 mt-10">
+                    </div>
+                </div>
+
+                    <div class="w-1/3 grid justify-items-start gap-y-2">
+                                <label style="margin-left:60px;" class="solucions_style_name  font-bold">Existente</label>
+                                <?php  $capacidad1=$smasolutions->sumacap_term($id_project,1) ?>
+                                <p style="" class="cant_2_l font-bold font-roboto">{{$capacidad1}}</p>
+                    </div>
+
+                    <div class="w-1/3 grid justify-items-center gap-y-2">
+                        <?php  $capacidad2=$smasolutions->sumacap_term($id_project,2) ?>
+                            <label style="margin-right:100px;" class="solucions_style_name  font-bold">A</label>
+                            <p  style="margin-right:100px;" class="cant_2 font-bold font-roboto">{{number_format($capacidad2)}}</p>
+                    </div>
+
+
+                    <div class="w-1/3 grid justify-items-center gap-y-2">
+
+                                <label class="solucions_style_name  font-bold">B</label>
+                            <?php  $capacidad3=$smasolutions->sumacap_term($id_project,3) ?>
+                                <p style="" class="cant_2 font-bold font-roboto">{{$capacidad3}}</p>
+
+                        </div>
+                    </div>
+                </div>
         </div>
     </div>
 </div>
@@ -603,9 +805,9 @@ cursor: pointer;
 
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
-                            <div class="flex justify-center w-full p-2">
-                                <label class="solucions_style_name">{{ __('index.sis_ext') }}</label>
-                            </div>
+                           {{--  <div class="flex justify-center w-full p-2">
+                                <label class="solucions_style_name">Existente</label>
+                            </div> --}}
 
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-items-center w-full">
@@ -634,9 +836,7 @@ cursor: pointer;
                                     </div>
 {{--                                     <div id="chart_cons_ene_hvac_ar_base_print" name="chart_cons_ene_hvac_ar_base_print" class="js_charts_style"></div>
  --}}
-                                    <div class="flex w-full justify-center mt-5">
-                                        <p class="cant_style">${{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
-                                    </div>
+
                                 </div>
                             </div>
 
@@ -650,9 +850,9 @@ cursor: pointer;
 
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
-                            <div class="flex justify-center w-full p-2">
-                                <label class="solucions_style_name">{{ __('index.solucion') }} A</label>
-                            </div>
+                           {{--  <div class="flex justify-center w-full p-2">
+                                <label class="solucions_style_name">A</label>
+                            </div> --}}
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-center text-center">
                                     <?php  $result2=$results->result_1($id_project,2) ?>
@@ -675,9 +875,7 @@ cursor: pointer;
                                         <p class="cant_style">{{number_format($sumaopex_2)}}</p><b class="unit_style">Kwh</b>
                                     </div>
                                     <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style" ></div>
-                                    <div class="flex w-full justify-center mt-5">
-                                        <p class="cant_style">${{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
-                                    </div>
+
                           </div>
                             </div>
                         </div>
@@ -690,9 +888,9 @@ cursor: pointer;
 
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
-                            <div class="flex justify-center w-full p-2">
-                                <label class="solucions_style_name">{{ __('index.solucion') }} B</label>
-                            </div>
+                           {{--  <div class="flex justify-center w-full p-2">
+                                <label class="solucions_style_name">B</label>
+                            </div> --}}
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-center text-center">
                                     <?php  $result3=$results->result_1($id_project,3) ?>
@@ -715,15 +913,223 @@ cursor: pointer;
                                         <p class="cant_style">{{number_format($sumaopex_3)}}</p><b class="unit_style">Kwh</b>
                                     </div>
                                      <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
-                                     <div class="flex w-full justify-center mt-5">
-                                        <p class="cant_style">${{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
-                                    </div>
                                </div>
                             </div>
                         </div>
                 </div>
             </div>
         </div>
+
+        <div class="flex w-full justify-center my-2">
+            <div class="w-1/7 grid justify-items-center">
+                <div class="place-content-center">
+                    <img src="{{asset('assets/images/pesosjpg.jpg')}}" class="img_tr mx-2">
+                </div>
+            </div>
+
+                <div class="w-1/3 grid justify-items-start ">
+
+                    @if (strlen(number_format($sumaopex_1*$tar_ele->costo_elec)) > 9)
+                    <p style="margin-left:13px;" class="cant_style_minim font-bold font-roboto">${{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
+                    @endif
+
+                    @if (strlen(number_format($sumaopex_1*$tar_ele->costo_elec)) <= 9)
+                    <p style="margin-left:50px;" class="cant_style font-bold font-roboto">${{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
+                    @endif
+                </div>
+
+                <div class="w-1/3 grid justify-items-center">
+
+                    @if (strlen(number_format($sumaopex_2*$tar_ele->costo_elec)) > 9)
+                        <p  style="margin-right:100px;" class="cant_style_minim font-bold font-roboto">${{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
+                    @endif
+
+                    @if (strlen(number_format($sumaopex_2*$tar_ele->costo_elec)) <= 9)
+                    <p  style="margin-right:95px;" class="cant_style font-bold font-roboto">${{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
+                    @endif
+                </div>
+
+                <div class="w-1/3 grid justify-items-center">
+
+                    @if ($sumaopex_3  == 0)
+                        <p style="margin-right:40px;" class="cant_style_minim font-bold font-roboto">$0</p>
+                    @endif
+
+                    @if ($sumaopex_3 > 0)
+                        @if (strlen(number_format($sumaopex_3*$tar_ele->costo_elec)) > 9)
+                        <p style="margin-right:30px;" class="cant_style_minim font-bold font-roboto">${{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
+                        @endif
+
+                        @if (strlen(number_format($sumaopex_3*$tar_ele->costo_elec)) <= 9)
+                        <p style="margin-right:75px;" class="cant_style font-bold font-roboto">${{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
+                        @endif
+                    @endif
+
+
+                </div>
+            </div>
+
+            <?php  $results_aux=$results->results($id_project) ?>
+            {{-- para graficas red_en y descarb --}}
+            @if ($result2 ==! null)
+            <?php  $dif_1=$smasolutions->dif_1($id_project,count($results_aux),$tar_ele->costo_elec) ?>
+            @endif
+
+            @if ($result2 === null)
+            <?php  $dif_1=0; ?>
+            @endif
+
+            @if ($result3 ==! null)
+            <?php  $dif_2=$smasolutions->dif_2($id_project,count($results_aux),$tar_ele->costo_elec) ?>
+            @endif
+
+            @if ($result3 === null)
+            <?php $dif_2 = 0; ?>
+            @endif
+
+            <?php
+
+$arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_elec,$sumaopex_3*$tar_ele->costo_elec];
+
+$base_red_an = $sumaopex_1*$tar_ele->costo_elec;
+$a_red_an = $sumaopex_2*$tar_ele->costo_elec;
+$b_red_an = $sumaopex_3*$tar_ele->costo_elec;
+
+$val_red_an_alt = max($arr_red_ene);
+$counter = 0;
+for ($i=0; $i < count($arr_red_ene) ; $i++) {
+if ($arr_red_ene[$i] ==  $val_red_an_alt) {
+    $counter = $i;
+}
+}
+
+if($counter == 0){
+$val_base_red_ene =  0;
+$val_a_red_ene = $base_red_an - $a_red_an;
+$val_b_red_ene = $base_red_an - $b_red_an;
+}
+
+if($counter == 1){
+$val_a_red_ene =  0;
+$val_base_red_ene = $a_red_an - $base_red_an;
+$val_b_red_ene = $a_red_an - $b_red_an;
+}
+
+if($counter == 2){
+$val_b_red_ene =  0;
+$val_base_red_ene = $b_red_an - $base_red_an;
+$val_a_red_ene = $b_red_an - $a_red_an;
+}
+
+
+?>
+
+
+<div class="w-full grid">
+    <div style="background-color:#fff;" class="w-full flex justify-center mt_titles">
+        <p style="color:#1B17BB;" class="titulos_style">Reducción Anual del Costo de Energía</p>
+    </div>
+
+    <div class="flex w-full justify-center">
+        <div class="w-1/7 grid justify-items-center">
+            <div class="place-content-center">
+                <img src="{{asset('assets/images/watts.png')}}" class="img_tr mx-2">
+            </div>
+        </div>
+
+            <div class="w-1/3 grid justify-items-start">
+
+                    <p  class="cant_2_cero font-bold font-roboto">${{number_format($val_base_red_ene)}}</p>
+            </div>
+
+            <div class="w-1/3 grid justify-items-center">
+                @if ($sumaopex_2  == 0)
+                <p  style="margin-right:50px;" class="cant_2_v font-bold font-roboto">$0</p>
+                @endif
+
+                @if ($sumaopex_2 > 0)
+                    @if (strlen(number_format($val_a_red_ene)) > 9)
+                    <p  style="margin-right:50px;" class="cant_2_v font-bold font-roboto">${{number_format($val_a_red_ene)}}</p>
+                    @endif
+
+                    @if (strlen(number_format($val_a_red_ene)) <= 9)
+                    <p  style="margin-right:95px;" class="cant_2_v font-bold font-roboto">${{number_format($val_a_red_ene)}}</p>
+                    @endif
+
+                @endif
+            </div>
+
+
+            <div class="w-1/3 grid justify-items-center">
+
+                <div class="flex w-full justify-center">
+                    @if ($sumaopex_3  == 0)
+                    <p style="margin-right:30px;" class="cant_2_v font-bold font-roboto">$0</p>
+                    @endif
+
+                    @if ($sumaopex_3 > 0)
+                        @if (strlen(number_format($val_b_red_ene)) > 9)
+                        <p style="" class="cant_2_v font-bold font-roboto">${{number_format($val_b_red_ene)}}</p>
+                        @endif
+
+                        @if (strlen(number_format($val_b_red_ene)) <= 9)
+                        <p style="margin-right:50px;" class="cant_2_v font-bold font-roboto">${{number_format($val_b_red_ene)}}</p>
+                        @endif
+
+                    @endif
+                </div>
+            </div>
+        </div>
+</div>
+
+
+<div class="w-full grid">
+    <div style="background-color:#ffff;" class="w-full flex justify-center  mt_titles">
+        <p style="color: #1B17BB" class="titulos_style">Descarbonización (Ton CO2)</p>
+    </div>
+
+    <div class="flex w-full justify-center">
+        <div class="w-1/7 grid justify-items-center">
+            <div class="place-content-center">
+                <img src="{{asset('assets/images/Huella.png')}}" class="img_tr mx-2">
+            </div>
+        </div>
+
+            <div class="w-1/3 grid justify-items-start ">
+
+                    <p  class="cant_2_cero_des font-bold font-roboto">0</p>
+            </div>
+
+            <div class="w-1/3 grid justify-items-center">
+                <?php  $red_hu_carb_a=$red_ene->red_hu_carb(1,$dif_1) ?>
+
+                    @if ($red_hu_carb_a  == 0)
+                    <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                    @endif
+
+                    @if ($red_hu_carb_a > 0)
+                        @if (strlen(number_format($red_hu_carb_a,2)) > 9)
+                        <p  style="margin-right:50px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                        @endif
+
+                        @if (strlen(number_format($red_hu_carb_a,2)) <= 9)
+                        <p  style="margin-right:75px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                        @endif
+
+                    @endif
+            </div>
+
+
+            <div class="w-1/3 grid justify-items-center">
+                <div class="flex w-full justify-center">
+                    <?php  $red_hu_carb_b=$red_ene->red_hu_carb(1,$dif_2) ?>
+                            <div class="flex w-full justify-center">
+                                <p style="" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_b,2)}}</p>
+                            </div>
+                </div>
+            </div>
+        </div>
+</div>
     </div>
 </div>
 
@@ -752,9 +1158,9 @@ cursor: pointer;
 
         <div class="flex w-full justify-center mb-1">
             <div class="w-1/3 grid justify-items-center">
-                <div class="flex justify-center w-full">
+                {{-- <div class="flex justify-center w-full">
                     <label class="solucions_style_name">{{ __('index.sis_ext') }}</label>
-                </div>
+                </div> --}}
                 @if ($result1 ==! null)
                 <?php  $valor_eui_base=$smasolutions->valor_eui_aux($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
                 @endif
@@ -767,9 +1173,9 @@ cursor: pointer;
             {{-- sumaopex_2
             sumaopex_3 --}}
             <div class="w-1/3 grid justify-items-center">
-                <div class="flex justify-center w-full">
+               {{--  <div class="flex justify-center w-full">
                     <label class="solucions_style_name">{{ __('index.solucion') }} A</label>
-                </div>
+                </div> --}}
                 @if ($result2 ==! null)
                 <?php  $valor_eui_a=$smasolutions->valor_eui_aux($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
                 @endif
@@ -782,9 +1188,9 @@ cursor: pointer;
 
             </div>
             <div class="w-1/3 grid justify-items-center">
-                <div class="flex justify-center w-full">
+                {{-- <div class="flex justify-center w-full">
                     <label class="solucions_style_name">{{ __('index.solucion') }} B</label>
-                </div>
+                </div> --}}
                 @if ($result3 ==! null)
                 <?php  $valor_eui_b=$smasolutions->valor_eui_aux($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
                 @endif
@@ -798,9 +1204,11 @@ cursor: pointer;
     </div>
     </div>
 </div>
-<?php  $results_aux=$results->results($id_project) ?>
+
+
+
 {{-- Índice Intensidad del Uso de Energía --}}
-<div class="w-full grid rounded-md justify-items-center mt-3">
+{{-- <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
 
 
@@ -809,24 +1217,6 @@ cursor: pointer;
                 <p class="titulos_style">Sustentabilidad</p>
             </div>
         </div>
-
-                {{-- para graficas red_en y descarb --}}
-                @if ($result2 ==! null)
-                <?php  $dif_1=$smasolutions->dif_1($id_project,count($results_aux),$tar_ele->costo_elec) ?>
-                @endif
-
-                @if ($result2 === null)
-                <?php  $dif_1=0; ?>
-                @endif
-
-                @if ($result3 ==! null)
-                <?php  $dif_2=$smasolutions->dif_2($id_project,count($results_aux),$tar_ele->costo_elec) ?>
-                @endif
-
-                @if ($result3 === null)
-                <?php $dif_2 = 0; ?>
-                @endif
-
 
         <div class="flex w-full justify-center gap-x-3">
             <div class="grid w-1/2 justify-items-center text-[24px] m-1">
@@ -854,10 +1244,10 @@ cursor: pointer;
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 {{-- espacio --}}
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:25px;" >
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:60px;" >
 
 </div>
 
@@ -866,63 +1256,69 @@ cursor: pointer;
         <div  class="ancho border-2 border-blue-500 rounded-md flex">
 
 
-        <div class="w-1/4 flex justify-center">
-            <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
-        </div>
+            <div class="w-1/4 flex justify-center">
+                <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+            </div>
 
-        <div class="w-1/3 grid justify-left ml-2">
-            <div class="w-full flex ">
-                <div id="name_no_print_2" name="name_no_print_2" class="w-full flex ">
-                    <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
-               </div>
+            <div class="w-1/3 grid justify-left ml-2">
+                <div class="w-full flex ">
+                   <div id="name_no_print" name="name_no_print" class="w-full flex ">
+                        <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
+                   </div>
 
-               <div id="name_print_2" name="name_print_2" class="hidden w-full flex ">
-                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
-                    @if (strlen($tar_ele->name) > 21)
-                    {{substr($tar_ele->name, 0, 21)}}...
+                   <div id="name_print" name="name_print" class="hidden w-full flex ">
+                    <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
+                        @if (strlen($tar_ele->name) > 21)
+                        {{substr($tar_ele->name, 0, 21)}}...
+                        @endif
+
+                        @if (strlen($tar_ele->name) < 21)
+                        {{$tar_ele->name}}
+                        @endif
+                        </p>
+                   </div>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project_res">{{$tar_ele->tipo_edi}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project_res">{{number_format($tar_ele->area)}}
+                        @if ($tar_ele->unidad == 'mc')
+                        m²
                     @endif
 
-                    @if (strlen($tar_ele->name) < 21)
-                    {{$tar_ele->name}}
+                    @if ($tar_ele->unidad == 'ft')
+                    ft²
                     @endif
                     </p>
-               </div>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">{{number_format($tar_ele->hrs_tiempo)}} Hrs.</p>
+                </div>
             </div>
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
-            </div>
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project_res">{{$tar_ele->tipo_edi}}</p>
-            </div>
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project_res">{{number_format($tar_ele->area)}}
-                    @if ($tar_ele->unidad == 'mc')
-                    m²
-                @endif
 
-                @if ($tar_ele->unidad == 'ft')
-                ft²
-                @endif
-                </p>
-            </div>
-        </div>
-
-        <div class="w-1/3 grid justify-left">
-            <div class="w-full">
-                <div class="w-full flex">
-                    <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">{{$tar_ele->region}}</p>
-                </div>
-                <div class="w-full flex">
-                    <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">{{$tar_ele->ciudad}}</p>
-                </div>
-                <div class="w-full flex">
-                    <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project_res">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
-                </div>
-                <div class="w-full flex">
-                    <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
+            <div class="w-1/3 grid justify-left">
+                <div class="w-full">
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">{{$tar_ele->region}}</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">{{$tar_ele->ciudad}}</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project_res">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.incremento anual energia') }}:</label><p class="info_project_res">{{$tar_ele->inflacion}}%</p>
+                    </div>
                 </div>
             </div>
-        </div>
     </div>
 </div>
 
@@ -939,108 +1335,112 @@ cursor: pointer;
       <?php  $conf_val_b=$conf_val->conf_val($id_project,3,1,$sumacap_term_3) ?>
       <div class="flex w-full justify-center gap-x-3 mb-8">
 
-              {{--  --}}
-              <div class="w-full grid mb-0 gap-y-5">
-                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg" style="margin-top:1.3rem;">
+        {{--  --}}
+        <div class="w-full grid mb-0 gap-y-5">
+                <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg" style="margin-top:1.3rem;">
+                    <div style="width: 8.666667%"></div>
+                    <div class="w-1/5 flex justify-start">
+                    {{--  <div class="ml-10 flex w-full mt-5"> --}}
+                            <p class="size_solutions_confort  font-roboto  font-bold text-left">{{ __('index.sis_ext') }}</p>
+                        {{-- </div> --}}
+                    </div>
 
-                          <div class="w-1/5 flex justify-start">
-                          {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                                  <p class="size_solutions_confort text-blue-600 font-roboto  font-bold text-left">{{ __('index.sis_ext') }}</p>
-                              {{-- </div> --}}
-                          </div>
+                <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+                        {{-- 1 --} --}}
+                    @for ($i = 1; $i <= 32; $i++)
+                    <div id="term_{{$i}}" name="term_{{$i}}" class="grid ancho_rang">
+                        <img  id="val_base_{{$i}}" name="val_base_{{$i}}" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                    </div>
+                    @endfor
+                </div>
+        </div>
 
-                      <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                      background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
-                              {{-- 1 --} --}}
-                          @for ($i = 1; $i <= 32; $i++)
-                          <div id="term_{{$i}}" name="term_{{$i}}" class="grid ancho_rang">
-                              <img  id="val_base_{{$i}}" name="val_base_{{$i}}" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
-                          </div>
-                          @endfor
-                      </div>
-              </div>
+        @if ($result2 !== null)
+            <div class="w-full grid mb-0 gap-y-5">
+                <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+                  <div style="width: 8.666667%"></div>
+                    <div class="w-1/5 flex justify-start">
 
-              @if ($result2 !== null)
-                  <div class="w-full grid mb-0 gap-y-5">
-                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
-                          <div class="w-1/5 flex justify-start">
+                            <p class=" font-roboto size_solutions_confort font-bold text-left">{{ __('index.solucion') }} A</p>
 
-                                  <p class="text-blue-600 font-roboto size_solutions_confort font-bold text-left">{{ __('index.solucion') }} A</p>
+                    </div>
+                  <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                  background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
 
-                          </div>
-                        <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+                                @for ($i = 1; $i <= 32; $i++)
+                                <div id="term_{{$i}}_a" name="term_{{$i}}_a" class="grid ancho_rang">
+                                    <img  id="val_base_{{$i}}_a" name="val_base_{{$i}}_a" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                                </div>
+                                @endfor
+                    </div>
+            </div>
+        @endif
 
-                                      @for ($i = 1; $i <= 32; $i++)
-                                      <div id="term_{{$i}}_a" name="term_{{$i}}_a" class="grid ancho_rang">
-                                          <img  id="val_base_{{$i}}_a" name="val_base_{{$i}}_a" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
-                                      </div>
-                                      @endfor
-                          </div>
-                  </div>
-              @endif
+        @if ($result2 === null)
+            <?php  $conf_val_a=0; ?>
+            <div class="w-full grid mb-0 gap-y-5">
+                <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+                  <div style="width: 8.666667%"></div>
+                    <div class="w-1/5 flex justify-start">
+                            <p class="size_solutions_confort font-roboto font-bold text-left">{{ __('index.solucion') }} A</p>
+                    </div>
+                  <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                  background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
 
-              @if ($result2 === null)
-                  <?php  $conf_val_a=0; ?>
-                  <div class="w-full grid mb-0 gap-y-5">
-                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
-                          <div class="w-1/5 flex justify-start">
-                                  <p class="size_solutions_confort text-blue-600 font-roboto font-bold text-left">{{ __('index.solucion') }} A</p>
-                          </div>
-                        <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+                                @for ($i = 1; $i <= 32; $i++)
+                                <div id="term_{{$i}}_a" name="term_{{$i}}_a" class="grid ancho_rang">
+                                    <img  id="val_base_{{$i}}_a" name="val_base_{{$i}}_a" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                                </div>
+                                @endfor
+                </div>
+            </div>
+        @endif
 
-                                      @for ($i = 1; $i <= 32; $i++)
-                                      <div id="term_{{$i}}_a" name="term_{{$i}}_a" class="grid ancho_rang">
-                                          <img  id="val_base_{{$i}}_a" name="val_base_{{$i}}_a" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
-                                      </div>
-                                      @endfor
-                      </div>
-                  </div>
-              @endif
+        @if ($result3 !== null)
+            <div class="w-full grid mb-0 gap-y-5">
+                <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+                  <div style="width: 8.666667%"></div>
+                    <div class="w-1/5 flex justify-start">
+                            <p class="size_solutions_confort font-roboto font-bold text-left">{{ __('index.solucion') }} B</p>
+                    </div>
+                  <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                  background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
 
-              @if ($result3 !== null)
-                  <div class="w-full grid mb-0 gap-y-5">
-                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
-                          <div class="w-1/5 flex justify-start">
-                                  <p class="size_solutions_confort text-blue-600 font-roboto font-bold text-left">{{ __('index.solucion') }} B</p>
-                          </div>
-                        <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+                            @for ($i = 1; $i <= 32; $i++)
+                            <div id="term_{{$i}}_b" name="term_{{$i}}_b" class="grid ancho_rang">
+                                <img  id="val_base_{{$i}}_b" name="val_base_{{$i}}_b" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                            </div>
+                            @endfor
+                    </div>
+                </div>
+        @endif
 
-                                  @for ($i = 1; $i <= 32; $i++)
-                                  <div id="term_{{$i}}_b" name="term_{{$i}}_b" class="grid ancho_rang">
-                                      <img  id="val_base_{{$i}}_b" name="val_base_{{$i}}_b" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
-                                  </div>
-                                  @endfor
-                          </div>
-                      </div>
-              @endif
+        @if ($result3 === null)
+            <?php  $conf_val_b=0; ?>
+            <div class="w-full grid mb-0 gap-y-5">
+                <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
+                  <div style="width: 8.666667%"></div>
+                    <div class="w-1/5 flex justify-start">
 
-              @if ($result3 === null)
-                  <?php  $conf_val_b=0; ?>
-                  <div class="w-full grid mb-0 gap-y-5">
-                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg">
-                          <div class="w-1/5 flex justify-start">
+                            <p class= "font-roboto size_solutions_confort font-bold">{{ __('index.solucion') }} B</p>
 
-                                  <p class="text-blue-600 font-roboto size_solutions_confort font-bold">{{ __('index.solucion') }} B</p>
+                    </div>
+                  <div class="flex rounded-lg" style="background: rgb(255,0,56);
+                  background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
 
-                          </div>
-                        <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
-
-                                  @for ($i = 1; $i <= 32; $i++)
-                                  <div id="term_{{$i}}_b" name="term_{{$i}}_b" class="grid ancho_rang">
-                                      <img  id="val_base_{{$i}}_b" name="val_base_{{$i}}_b" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
-                                  </div>
-                                  @endfor
-                          </div>
-                  </div>
-              @endif
-              {{--  --}}
+                            @for ($i = 1; $i <= 32; $i++)
+                            <div id="term_{{$i}}_b" name="term_{{$i}}_b" class="grid ancho_rang">
+                                <img  id="val_base_{{$i}}_b" name="val_base_{{$i}}_b" src="{{asset('assets\images\puntero_barra.png')}}"  class="hidden puntero_medidas" alt="">
+                            </div>
+                            @endfor
+                    </div>
+            </div>
+        @endif
+        {{--  --}}
 
 
-      </div>
+</div>
     </div>
   </div>
 
@@ -1076,11 +1476,7 @@ cursor: pointer;
             <?php  $prod_lab=0; ?>
             @endif
             <div class="w-1/3 grid justify-items-center">
-                <div class="w-full flex justify-center">
-                    {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                            <p class="size_solutions_confort font-roboto font-bold">{{ __('index.sis_ext') }}</p>
-                        {{-- </div> --}}
-                    </div>
+
                 <div class="my-6" style="margin: 0px auto" id="chart_prod_base"></div>
             </div>
             @if ($result2 !== null)
@@ -1090,11 +1486,7 @@ cursor: pointer;
             <?php  $prod_lab_a=0; ?>
             @endif
             <div class="w-1/3 grid justify-items-center">
-                <div class="w-full flex justify-center">
-                    {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                            <p class="size_solutions_confort font-roboto font-bold">{{ __('index.solucion') }} A</p>
-                        {{-- </div> --}}
-                </div>
+
                 <div class="my-6"  id="chart_prod_a" style="margin: 0px auto"></div>
             </div>
             @if ($result3 !== null)
@@ -1104,11 +1496,7 @@ cursor: pointer;
             <?php  $prod_lab_b=0; ?>
             @endif
             <div class="w-1/3 grid justify-items-center">
-                <div class="w-full flex justify-center">
-                    {{--  <div class="ml-10 flex w-full mt-5"> --}}
-                            <p class="size_solutions_confort font-roboto font-bold">{{ __('index.solucion') }} B</p>
-                        {{-- </div> --}}
-                </div>
+
                 <div class="my-6" id="chart_prod_b" style="margin: 0px auto"></div>
             </div>
         </div>
@@ -1120,91 +1508,101 @@ cursor: pointer;
 
       </div>
 
-      <div class="flex w-full justify-center my-2">
-        <div class="w-1/8 flex grid justify-items-center">
-            <div>
-                <img src="{{asset('assets/images/persona.png')}}" class="img_persona mx-2">
+      <div class="w-full grid">
+        <div style="background-color:#ffff;" class="w-full flex justify-center">
+            <div class="flex w-full justify-center mt-1">
+                <p style="color:#1B17BB;" class="titulos_style">Costos por Pérdida de Productividad Laboral</p>
             </div>
+          </div>
 
-            <div>
-                <img src="{{asset('assets/images/ahorro.png')}}" class="img_ahorro mx-2">
-            </div>
-        </div>
-            @if ($result1 !== null)
-            <?php  $personas=$conf_val->personas($id_project,$conf_val_base) ?>
-            <?php  $costo_base=$conf_val->costo($personas,$id_project) ?>
-            @endif
-
-            @if ($result1 === null)
-            <?php  $personas=0; ?>
-            @endif
-            <div class="w-1/3 grid justify-items-center gap-y-2">
-                <div class="flex w-full justify-center">
-                    @if ($personas > 0)
-                    <p style="color:#ea0000;" class="cant_style">{{$personas}}</p>
-                    @endif
-                    @if ($personas <= 0)
-                    <p class="cant_style">{{$personas}}</p>
-                    @endif
+          <div class="flex w-full justify-center my-3">
+            <div class="w-1/8 flex grid justify-items-center">
+                <div>
+                    <img src="{{asset('assets/images/pesos_personas.jpg')}}" class="img_prod_lab mx-2 mt-10">
                 </div>
 
-                <div class="flex w-full justify-center">
-                    <p class="cant_style">${{number_format($costo_base)}}</p>
-                </div>
+               {{--  <div>
+                    <img src="{{asset('assets/images/ahorro.png')}}" class="img_ahorro mx-2">
+                </div> --}}
             </div>
+                @if ($result1 !== null)
+                <?php  $personas=$conf_val->personas($id_project,$conf_val_base) ?>
+                <?php  $costo_base=$conf_val->costo($personas,$id_project) ?>
+                @endif
 
-            @if ($result2 !== null)
-            <?php  $personas_a=$conf_val->personas($id_project,$conf_val_a) ?>
-            <?php  $costo_a=$conf_val->costo($personas_a,$id_project) ?>
-            @endif
-
-            @if ($result2 === null)
-            <?php  $costo_a=0; ?>
-            @endif
-            <div class="w-1/3 grid justify-items-center gap-y-2">
-                <div class="flex w-full justify-center">
-                    @if ($personas_a > 0)
-                    <p style="color:#ea0000;" class="cant_style">{{$personas_a}}</p>
-                    @endif
-                    @if ($personas_a <= 0)
-                    <p class="cant_style">{{$personas_a}}</p>
-                    @endif
-                </div>
-
-                <div class="flex w-full justify-center">
-                    <p class="cant_style">${{number_format($costo_a)}}</p>
-                </div>
-            </div>
-
-            @if ($result2 !== null)
-            <?php  $personas_b=$conf_val->personas($id_project,$conf_val_b) ?>
-            <?php  $costo_b=$conf_val->costo($personas_b,$id_project) ?>
-            @endif
-
-            @if ($result2 === null)
-            <?php  $personas_b=0; ?>
-            @endif
-
-            <div class="w-1/3 grid justify-items-center gap-y-2">
-                <div class="flex w-full justify-center">
+                @if ($result1 === null)
+                <?php  $personas=0; ?>
+                @endif
+                <div class="w-1/3 grid justify-items-center gap-y-3">
                     <div class="flex w-full justify-center">
-                        @if ($personas_b > 0)
-                        <p style="color:#ea0000;" class="cant_style">{{$personas_b}}</p>
+                        @if ($personas > 0)
+                        <p style="color:#ea0000;" class="cant_style">{{$personas}}</p>
                         @endif
-                        @if ($personas_b <= 0)
-                        <p class="cant_style">{{$personas_b}}</p>
+                        @if ($personas <= 0)
+                        <p class="cant_style">{{$personas}}</p>
                         @endif
+                    </div>
+
+                    <div class="flex w-full justify-center">
+                        <p class="cant_style">${{number_format($costo_base)}}</p>
                     </div>
                 </div>
 
-                <div class="flex w-full justify-center">
-                    <p class="cant_style">${{number_format($costo_b)}}</p>
+                @if ($result2 !== null)
+                <?php  $personas_a=$conf_val->personas($id_project,$conf_val_a) ?>
+                <?php  $costo_a=$conf_val->costo($personas_a,$id_project) ?>
+                @endif
+
+                @if ($result2 === null)
+                <?php  $costo_a=0; ?>
+                @endif
+                <div class="w-1/3 grid justify-items-center gap-y-3">
+                    <div class="flex w-full justify-center">
+                        @if ($personas_a > 0)
+                        <p style="color:#ea0000;" class="cant_style">{{$personas_a}}</p>
+                        @endif
+                        @if ($personas_a <= 0)
+                        <p class="cant_style">{{$personas_a}}</p>
+                        @endif
+                    </div>
+
+                    <div class="flex w-full justify-center">
+                        <p class="cant_style">${{number_format($costo_a)}}</p>
+                    </div>
+                </div>
+
+                @if ($result2 !== null)
+                <?php  $personas_b=$conf_val->personas($id_project,$conf_val_b) ?>
+                <?php  $costo_b=$conf_val->costo($personas_b,$id_project) ?>
+                @endif
+
+                @if ($result2 === null)
+                <?php  $personas_b=0; ?>
+                @endif
+
+                <div class="w-1/3 grid justify-items-center gap-y-3">
+                    <div class="flex w-full justify-center">
+                        <div class="flex w-full justify-center">
+                            @if ($personas_b > 0)
+                            <p style="color:#ea0000;" class="cant_style">{{$personas_b}}</p>
+                            @endif
+                            @if ($personas_b <= 0)
+                            <p class="cant_style">{{$personas_b}}</p>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="flex w-full justify-center">
+                        <p class="cant_style">${{number_format($costo_b)}}</p>
+                    </div>
                 </div>
             </div>
-        </div>
+      </div>
+
 
     </div>
 </div>
+
 
 <?php  $prim_buil_check=$conf_val->prim_buil_check($id_project) ?>
 
@@ -1277,63 +1675,69 @@ cursor: pointer;
     <div  class="ancho border-2 border-blue-500 rounded-md flex">
 
 
-    <div class="w-1/4 flex justify-center">
-        <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
-    </div>
+        <div class="w-1/4 flex justify-center">
+            <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+        </div>
 
-    <div class="w-1/3 grid justify-left ml-2">
-        <div class="w-full flex ">
-            <div id="name_no_print_3" name="name_no_print_3" class="w-full flex ">
-                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
-           </div>
+        <div class="w-1/3 grid justify-left ml-2">
+            <div class="w-full flex ">
+               <div id="name_no_print" name="name_no_print" class="w-full flex ">
+                    <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
+               </div>
 
-           <div id="name_print_3" name="name_print_3" class="hidden w-full flex ">
-            <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
-                @if (strlen($tar_ele->name) > 21)
-                {{substr($tar_ele->name, 0, 21)}}...
+               <div id="name_print" name="name_print" class="hidden w-full flex ">
+                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
+                    @if (strlen($tar_ele->name) > 21)
+                    {{substr($tar_ele->name, 0, 21)}}...
+                    @endif
+
+                    @if (strlen($tar_ele->name) < 21)
+                    {{$tar_ele->name}}
+                    @endif
+                    </p>
+               </div>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project_res">{{$tar_ele->tipo_edi}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project_res">{{number_format($tar_ele->area)}}
+                    @if ($tar_ele->unidad == 'mc')
+                    m²
                 @endif
 
-                @if (strlen($tar_ele->name) < 21)
-                {{$tar_ele->name}}
+                @if ($tar_ele->unidad == 'ft')
+                ft²
                 @endif
                 </p>
-           </div>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">{{number_format($tar_ele->hrs_tiempo)}} Hrs.</p>
+            </div>
         </div>
-        <div class="w-full flex">
-            <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
-        </div>
-        <div class="w-full flex">
-            <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project_res">{{$tar_ele->tipo_edi}}</p>
-        </div>
-        <div class="w-full flex">
-            <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project_res">{{number_format($tar_ele->area)}}
-                @if ($tar_ele->unidad == 'mc')
-                m²
-            @endif
 
-            @if ($tar_ele->unidad == 'ft')
-            ft²
-            @endif
-            </p>
-        </div>
-    </div>
-
-    <div class="w-1/3 grid justify-left">
-        <div class="w-full">
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">{{$tar_ele->region}}</p>
-            </div>
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">{{$tar_ele->ciudad}}</p>
-            </div>
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project_res">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
-            </div>
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
+        <div class="w-1/3 grid justify-left">
+            <div class="w-full">
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">{{$tar_ele->region}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">{{$tar_ele->ciudad}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project_res">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.incremento anual energia') }}:</label><p class="info_project_res">{{$tar_ele->inflacion}}%</p>
+                </div>
             </div>
         </div>
-    </div>
 </div>
 </div>
 
@@ -1347,121 +1751,315 @@ cursor: pointer;
  <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
       <div class="w-full grid">
-              <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                  <p class="titulos_style">Payback {{ __('results.simple') }} ({{ __('results.ans') }})</p>
+        <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+            <div class="flex w-full justify-center mt-1">
+                <p class="titulos_style ml-8">Análisis Financiero - Retornos de Inversión (años)</p>
+            </div>
+            <div id="button_marrr" name="button_marrr" class="flex justify-end mt-2">
+                <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr_retro');" class="btn_roundf_retro mr-5" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+            </div>
+        </div>
+
+              <div class="w-full grid">
+                <div class="w-full flex justify-center ">
+                        <p class="solucions_style_name  ">Recuperación - Solo Energía</p>
+                </div>
+
+                <div class="w-full flex">
+                    <div class="w-1/2 grid h-full">
+
+                        <div class="flex w-full justify-center gap-x-3 mb-3">
+
+                            <div  class="flex justify-start w-full  my-1 gap-x-3">
+                                <div class="">
+                                    <img  style="" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
+                                </div>
+
+                                <div class="place-items-center">
+                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Payback Simple</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="flex w-full justify-start gap-x-3 mb-3">
+
+                            <div  class="flex justify-start w-2/5  my-1">
+                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-8 mt-2">Existente</b>
+                            </div>
+
+                            <div  class="flex justify-start w-1/3  my-1 place-items-center">
+                                @if (strlen(number_format($inv_ini_1)) > 9)
+                                <b  style="color:#2c5282;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_1)}}</b>
+                                @endif
+                                @if (strlen(number_format($inv_ini_1)) <= 9)
+                                <b  style="color:#2c5282;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_1)}}</b>
+                               @endif
+
+                            </div>
+
+                            <div   class="flex  rounded-md justify-center w-1/4  ">
+                                <div  class="grid justify-items-center  rounded-md place-items-center">
+                                  <div style="" class="w-full mx-3 my-1  flex justify-center">
+                                    <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;"  class="payback_cants_green rounded-md font-roboto font-bold rounded-md padding_na">N/A</b>
+                                  </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="flex w-full justify-start gap-x-3 mb-3">
+
+                            <div  class="flex justify-start  w-2/5  my-1 place-items-center">
+                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-8">Inversión A</b>
+                            </div>
+
+                            <div  class="flex justify-start w-1/3  my-1 place-items-center">
+                                @if (strlen(number_format($inv_ini_2)) > 9)
+                                <b  style="color:#2c5282;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_2)}}</b>
+                                @endif
+                                @if (strlen(number_format($inv_ini_2)) <= 9)
+                                <b  style="color:#2c5282;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_2)}}</b>
+                               @endif
+                            </div>
+
+                            <div style="" class=" rounded-md flex justify-center w-1/4 ">
+                                <div  style="" class="grid justify-items-center place-items-center">
+                                    <div  class="w-full mx-3 rounded-md flex justify-center">
+
+
+                                        @if ( true == ( isset( $dif_1 ) ? $dif_1 : null ) )
+                                        <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1) ?>
+
+                                        @if ($pay_back_a > 0)
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
+                                        @endif
+
+                                        @if ($pay_back_a < 0)
+                                        <b style="color:#ea0000;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
+                                        @endif
+
+                                        @if ($pay_back_a == 0)
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                        @endif
+
+                                        @else
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="flex w-full justify-start gap-x-3 mb-3">
+
+                            <div  class="flex justify-start  w-2/5 place-items-center my-1">
+                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-8">Inversión B</b>
+                            </div>
+
+                            <div  class="flex justify-start w-1/3  my-1 place-items-center">
+                                @if (strlen(number_format($inv_ini_3)) > 9)
+                                <b  style="color:#2c5282;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_3)}}</b>
+                                @endif
+                                @if (strlen(number_format($inv_ini_3)) <= 9)
+                                <b  style="color:#2c5282;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_3)}}</b>
+                               @endif
+                            </div>
+
+                            <div  class="rounded-md flex justify-center w-1/4 ">
+                                <div  style="" class="grid justify-items-center  place-items-center">
+                                     <div  class="w-full mx-3 rounded-md flex justify-center">
+                                        @if ( true == ( isset( $dif_1 ) ? $dif_1 : null ) )
+                                            <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_1) ?>
+                                            @if ($pay_back_b > 0)
+                                            <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
+                                            @endif
+
+                                                @if ($pay_back_b < 0)
+                                            <b style="border:solid  3px;border-color:#1B17BB;color:#ea0000;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
+                                            @endif
+
+                                            @if ($pay_back_b == 0)
+                                            <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                            @endif
+
+                                            @else
+                                            <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;"  class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                            <?php  $dif_1=0 ?>
+                                            @endif
+                                      </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$val_a_red_ene}}">
+
+                    <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$val_b_red_ene}}">
+                    <div class="w-1/2">
+                        <div id="chart_roi_base_a" name="chart_roi_base_a" style="width: 600px;"></div>
+                        <div class="hidden" style="height:250px;"  id="chart_roi_base_a_print" name="chart_roi_base_a_print"></div>
+                    </div>
+                </div>
+
+
+                <div class="w-full flex justify-center">
+                    <p class="solucions_style_name  ">Recuperación - Energía + Productividad</p>
+                </div>
+                <div class="w-full flex">
+                    <div class="w-1/2 grid h-full">
+
+                        <div class="flex w-full justify-center gap-x-3 mb-3">
+
+                            <div  class="flex justify-start w-full  my-1 gap-x-3">
+                                <div class="">
+                                    <img style="" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
+                                </div>
+
+                                <div class="place-items-center">
+                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Payback Simple</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="flex w-full justify-start gap-x-3 mb-3">
+
+                            <div  class="flex justify-start w-2/5 place-items-center my-1">
+                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-8">Existente</b>
+                            </div>
+
+                            <div  class="flex justify-start w-1/3 place-items-center my-1">
+                                @if (strlen(number_format($inv_ini_1)) > 9)
+                                <b  style="color:#2c5282;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_1)}}</b>
+                                @endif
+                                @if (strlen(number_format($inv_ini_1)) <= 9)
+                                <b  style="color:#2c5282;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_1)}}</b>
+                               @endif
+                            </div>
+
+                            <div style="" class="flex  rounded-md justify-center w-1/4 ">
+                                <div  style="" class="grid justify-items-center place-items-center">
+                                    <div  class="w-full mx-3 flex justify-center">
+                                    <?php  $pay_back_base=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,0,$costo_base) ?>
+
+                                    @if ($pay_back_base > 0)
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_base)}}</b>
+                                    @endif
+
+                                    @if ($pay_back_base < 0)
+                                    <b style="color:#ea0000;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_base)}}</b>
+                                    @endif
+
+                                    @if ($pay_back_base == 0)
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                    @endif
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="flex w-full justify-start gap-x-3 mb-3">
+
+                            <div  class="flex justify-start w-2/5 place-items-center  my-1">
+                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-8">Inversión A</b>
+                            </div>
+
+                            <div  class="flex justify-start w-1/3 place-items-center my-1">
+                                @if (strlen(number_format($inv_ini_2)) > 9)
+                                <b  style="color:#2c5282;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_2)}}</b>
+                                @endif
+                                @if (strlen(number_format($inv_ini_2)) <= 9)
+                                <b  style="color:#2c5282;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_2)}}</b>
+                               @endif
+                            </div>
+
+                            <div style="" class="rounded-md flex justify-center w-1/4 ">
+                                {{--
+                                $costo_base
+$costo_a
+$costo_b
+                                --}}
+                                <div  style="" class="grid justify-items-center  place-items-center">
+                                  <div  class="w-full mx-3  flex justify-center">
+                                    @if ( true == ( isset( $dif_1 ) ? $dif_1_cost : null ) )
+                                    <?php  $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$dif_1,$costo_a) ?>
+
+                                    @if ($pay_back_a > 0)
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
+                                    @endif
+
+                                    @if ($pay_back_a < 0)
+                                    <b style="color:#ea0000;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
+                                    @endif
+
+                                    @if ($pay_back_a == 0)
+                                    <b  style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                    @endif
+
+                                    @else
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                    @endif
+                                   </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="flex w-full justify-start gap-x-3 mb-3">
+
+                            <div  class="flex justify-start w-2/5 place-items-center my-1">
+                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-8">Inversión B</b>
+                            </div>
+
+                            <div  class="flex justify-start w-1/3 place-items-center my-1">
+                                @if (strlen(number_format($inv_ini_3)) > 9)
+                                <b  style="color:#2c5282;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_3)}}</b>
+                                @endif
+                                @if (strlen(number_format($inv_ini_3)) <= 9)
+                                <b  style="color:#2c5282;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_3)}}</b>
+                               @endif
+                            </div>
+
+                            <div style="" class="rounded-md  flex justify-center w-1/4 ">
+                                <div  style="" class="grid justify-items-center  place-items-center">
+                                    <div  class="w-full mx-3  flex justify-center">
+                                    @if ( true == ( isset( $dif_2 ) ? $dif_2 : null ) )
+                                    <?php  $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$dif_2,$costo_b) ?>
+                                    @if ($pay_back_b > 0)
+                                   <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
+                                   @endif
+
+                                    @if ($pay_back_b < 0)
+                                   <b style="color:#ea0000;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
+                                   @endif
+
+                                   @if ($pay_back_b == 0)
+                                   <b  style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                   @endif
+
+                                    @else
+                                    <b  style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                    <?php  $dif_2=0 ?>
+                                     @endif
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="w-1/2">
+                        <div id="chart_roi_base_a_ene_prod" name="chart_roi_base_a_ene_prod" style="width: 600px;"></div>
+                        <div class="hidden" style="height:200px;"  id="chart_roi_base_a_ene_prod_print" name="chart_roi_base_a_ene_prod_print"></div>
+                    </div>
+                </div>
+
               </div>
-
-              <div class="flex w-full justify-center gap-x-3 mt-2">
-                <div class="grid justify-center w-1/4">
-                   {{-- espacio --}}
-                </div>
-
-                <div class="flex justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Existente</b>
-
-                </div>
-
-                <div class="flex justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Solución A</b>
-
-                </div>
-
-                <div class="flex justify-center w-1/5">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold">Solución B</b>
-
-                </div>
-            </div>
-
-            <div class="flex w-full justify-center gap-x-3">
-                <div class="grid justify-start w-1/4">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold text-left mt-5">Inversión</b>
-                </div>
-
-                <div class="flex justify-center w-1/5">
-
-                    @if (strlen(number_format($inv_ini_1)) > 9)
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style_minim">${{number_format($inv_ini_1)}}</p></b>
-                    @endif
-
-                    @if (strlen(number_format($inv_ini_1)) <= 9)
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_1)}}</p></b>
-                    @endif
-                </div>
-
-                <div class="flex justify-center w-1/5">
-
-                    @if (strlen(number_format($inv_ini_2)) > 9)
-                    <b class="size_solutions_confort font-roboto font-bold"> <p class="cant_style_minim">${{number_format($inv_ini_2)}}</p></b>
-                    @endif
-
-                    @if (strlen(number_format($inv_ini_2)) <= 9)
-                    <b class="size_solutions_confort font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_2)}}</p></b>
-                    @endif
-                </div>
-
-                <div class="flex justify-center w-1/5">
-                    @if (strlen(number_format($inv_ini_3)) > 9)
-                    <b class="size_solutions_confort font-roboto font-bold"> <p class="cant_style_minim">${{number_format($inv_ini_3)}}</p></b>
-                    @endif
-
-                    @if (strlen(number_format($inv_ini_3)) <= 9)
-                    <b class="size_solutions_confort font-roboto font-bold"> <p class="cant_style">${{number_format($inv_ini_3)}}</p></b>
-                    @endif
-                </div>
-            </div>
-
-            <div class="flex w-full justify-center gap-x-3 mb-3">
-                <div class="grid justify-start w-1/4">
-                    <b class="size_solutions_confort text-blue-600 font-roboto font-bold text-left mt-5">Payback Simple</b>
-                </div>
-
-                <div class="grid justify-center w-1/5">
-
-                        <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style"></p></b>
-
-                </div>
-
-                <div  class="flex justify-center w-1/5  my-1">
-                    <div  style="border-style: solid; border-width: 5px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
-{{--                         <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">7</p></b>
- --}}                        @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
-                                                    <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1_cost) ?>
-
-                            @if ($pay_back_a >= 0)
-                            <b style="color:#33cc33;" class="size_solutions_payback  font-roboto font-bold">{{number_format($pay_back_a)}}</b>
-                            @endif
-
-                             @if ($pay_back_a < 0)
-                            <b style="color:#ea0000;" class="size_solutions_payback  font-roboto font-bold">{{number_format($pay_back_a)}}</b>
-                            @endif
-
-                            @else
-                         <b style="color:#33cc33;" class="size_solutions_payback font-roboto font-bold">N/A</b>
-                         @endif
-                    </div>
-
-                </div>
-
-                <div  class="flex justify-center w-1/5  my-1">
-                    <div  style="border-style: solid; border-width: 5px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
-
-                        @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
-                             <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_2_cost) ?>
-                             @if ($pay_back_b >= 0)
-                            <b style="color:#33cc33;" class="size_solutions_payback font-roboto font-bold">{{number_format($pay_back_b)}}</b>
-                            @endif
-
-                             @if ($pay_back_b < 0)
-                            <b style="color:#ea0000;" class="size_solutions_payback font-roboto font-bold">{{number_format($pay_back_b)}}</b>
-                            @endif
-
-                            @else
-                            <b  style="color:#33cc33;" class="size_solutions_payback font-roboto font-bold">N/A</b>
-                        @endif
-                    </div>
-
-                </div>
-            </div>
       </div>
     </div>
 </div>
@@ -1472,7 +2070,7 @@ cursor: pointer;
 <input type="text" id="ima_man" name="ima_man" class="hidden" value="{{ __('index.mantenimiento') }}">
 <input type="text" id="ima_sol" name="ima_sol" class="hidden" value="{{ __('index.solucion') }}">
 @include('modal_marr_retro')
-<div class="w-full grid rounded-md justify-items-center mt-3">
+{{-- <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
 
 
@@ -1523,10 +2121,10 @@ cursor: pointer;
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 {{-- MARR --}}
-<div class="w-full grid rounded-md justify-items-center mt-3">
+{{-- <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
@@ -1543,8 +2141,7 @@ cursor: pointer;
                 </div>
 
                 <div class="w-full flex justify-center">
-                  {{--   <div id="chart_red_ene" name="chart_red_ene"></div>
-                    <div class="hidden" style="width: 400px; height:380px;" id="chart_red_ene_print" name="chart_red_ene_print"></div> --}}
+
                      <div class="w-1/2 flex justify-center">
                         <div id="chart_roi_base_a_ene_prod" name="chart_roi_base_a_ene_prod" style="width: 600px;"></div>
                         <div class="hidden" style="height:200px;"  id="chart_roi_base_a_ene_prod_print" name="chart_roi_base_a_ene_prod_print"></div>
@@ -1559,8 +2156,7 @@ cursor: pointer;
                 </div>
 
                 <div class="w-full flex justify-center">
-                   {{--  <div id="chart_descarb" name="chart_descarb"></div>
-                    <div class="hidden" style="width: 400px; height:380px;" id="chart_descarb_print" name="chart_descarb_print"></div> --}}
+
                     <div class="w-1/2 flex justify-center">
 
                         <div id="chart_roi_base_b_ene_prod" name="chart_roi_base_b_ene_prod" style="width: 600px;"></div>
@@ -1570,10 +2166,10 @@ cursor: pointer;
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_4" name="next_page_4" style="width: 80%; height:40px;" class="hidden">
+<div id="next_page_4" name="next_page_4" style="width: 80%; height:320px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
@@ -1583,63 +2179,69 @@ cursor: pointer;
     <div  class="ancho border-2 border-blue-500 rounded-md flex">
 
 
-    <div class="w-1/4 flex justify-center">
-        <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
-    </div>
+        <div class="w-1/4 flex justify-center">
+            <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+        </div>
 
-    <div class="w-1/3 grid justify-left ml-2">
-        <div class="w-full flex ">
-            <div id="name_no_print_4" name="name_no_print_4" class="w-full flex ">
-                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
-           </div>
+        <div class="w-1/3 grid justify-left ml-2">
+            <div class="w-full flex ">
+               <div id="name_no_print" name="name_no_print" class="w-full flex ">
+                    <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
+               </div>
 
-           <div id="name_print_4" name="name_print_4" class="hidden w-full flex ">
-            <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
-                @if (strlen($tar_ele->name) > 21)
-                {{substr($tar_ele->name, 0, 21)}}...
+               <div id="name_print" name="name_print" class="hidden w-full flex ">
+                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
+                    @if (strlen($tar_ele->name) > 21)
+                    {{substr($tar_ele->name, 0, 21)}}...
+                    @endif
+
+                    @if (strlen($tar_ele->name) < 21)
+                    {{$tar_ele->name}}
+                    @endif
+                    </p>
+               </div>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project_res">{{$tar_ele->tipo_edi}}</p>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project_res">{{number_format($tar_ele->area)}}
+                    @if ($tar_ele->unidad == 'mc')
+                    m²
                 @endif
 
-                @if (strlen($tar_ele->name) < 21)
-                {{$tar_ele->name}}
+                @if ($tar_ele->unidad == 'ft')
+                ft²
                 @endif
                 </p>
-           </div>
+            </div>
+            <div class="w-full flex">
+                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">{{number_format($tar_ele->hrs_tiempo)}} Hrs.</p>
+            </div>
         </div>
-        <div class="w-full flex">
-            <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
-        </div>
-        <div class="w-full flex">
-            <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project_res">{{$tar_ele->tipo_edi}}</p>
-        </div>
-        <div class="w-full flex">
-            <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project_res">{{number_format($tar_ele->area)}}
-                @if ($tar_ele->unidad == 'mc')
-                m²
-            @endif
 
-            @if ($tar_ele->unidad == 'ft')
-            ft²
-            @endif
-            </p>
-        </div>
-    </div>
-
-    <div class="w-1/3 grid justify-left">
-        <div class="w-full">
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">{{$tar_ele->region}}</p>
-            </div>
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">{{$tar_ele->ciudad}}</p>
-            </div>
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project_res">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
-            </div>
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
+        <div class="w-1/3 grid justify-left">
+            <div class="w-full">
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">{{$tar_ele->region}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">{{$tar_ele->ciudad}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project_res">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.incremento anual energia') }}:</label><p class="info_project_res">{{$tar_ele->inflacion}}%</p>
+                </div>
             </div>
         </div>
-    </div>
 </div>
 </div>
 {{-- capex vs opex --}}
@@ -1877,14 +2479,18 @@ window.onafterprint = function() {
 window.onload = function() {
       $('#modal_loding').addClass("hidden");
       $('#caja_principal').removeClass("hidden");
-      roi_base_b_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
+      roi_s_ene('{{$id_project}}');
+      roi_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}','{{$costo_b}}');
+      roi_s_ene_print('{{$id_project}}');
+      roi_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}','{{$costo_b}}');
+      /* roi_base_b_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
       roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
       roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
       roi_base_b_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
       roi_base_a('{{$id_project}}');
       roi_base_b('{{$id_project}}');
       roi_base_a_print('{{$id_project}}');
-      roi_base_b_print('{{$id_project}}');
+      roi_base_b_print('{{$id_project}}'); */
 
     };
 
@@ -2617,7 +3223,7 @@ function chart_prod_base() {
                 defaultTick: { padding: 13, enabled: false },
                 customTicks: [5,10,15,20,25],
                 line: {
-                width: 15,
+                width: 20,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
@@ -2640,7 +3246,7 @@ function chart_prod_base() {
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize: 35">'+message+'</span>',
+                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize: 30">'+message+'</span>',
                     style: { fontSize: 48 }
                 },
                 defaultPoint: {
@@ -2653,7 +3259,7 @@ function chart_prod_base() {
                     fill: 'white',
                     type: 'circle',
                     visible: true,
-                    size: 30
+                    size: 35
                     }
                 },
                 points: [[1, parseFloat(interpolacion)]]
@@ -2716,7 +3322,7 @@ chart.draw(data, options); */
                 defaultTick: { padding: 13, enabled: false },
                customTicks: [5,10,15,20,25],
                 line: {
-                width: 15,
+                width: 20,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
@@ -2738,7 +3344,7 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize: 35">'+message+'</span>',
+                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize: 30">'+message+'</span>',
                     style: { fontSize: 48 }
                 },
                 defaultPoint: {
@@ -2751,7 +3357,7 @@ chart.draw(data, options); */
                     fill: 'white',
                     type: 'circle',
                     visible: true,
-                    size: 30
+                    size: 35
                     }
                 },
                 points: [[1, parseFloat(interpolacion)]]
@@ -2815,7 +3421,7 @@ chart.draw(data, options); */
                 defaultTick: { padding: 13, enabled: false },
                  customTicks: [5,10,15,20,25],
                 line: {
-                width: 15,
+                width: 20,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
@@ -2837,7 +3443,7 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize: 35">'+message+'</span>',
+                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize: 30">'+message+'</span>',
                     style: { fontSize: 48 }
                 },
                 defaultPoint: {
@@ -2850,7 +3456,7 @@ chart.draw(data, options); */
                     fill: 'white',
                     type: 'circle',
                     visible: true,
-                    size: 30
+                    size: 35
                     }
                 },
                 points: [[1, parseFloat(interpolacion)]]
@@ -3492,22 +4098,31 @@ function cap_op_10_retro(id_project,unidad){
 
 }
 
-function roi_base_a(id_project){
+function roi_s_ene(id_project){
     var dif_1_cost = document.getElementById('dif_cost_base_a').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
 
+    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value
+
     $.ajax({
         type: 'get',
-        url: "/roi_base_a_retro_new/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
+        url: "/roi_s_ene/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 + '/' + dif_2_cost + '/' + inv_ini_3,
         success: function (res) {
 
-
-            //console.log(res);
     var options = {
           series: [
           {
             name: "ROI - A",
-            data: [res[0], res[1], res[2], res[3]]
+            data: [res[0][0], res[0][1], res[0][2], res[0][3]]
+          },
+          {
+            name: "ROI - B",
+            data: [res[1][0], res[1][1], res[1][2], res[1][3]]
+          },
+          {
+            name: "ROI - C",
+            data: [res[2][0], res[2][1], res[2][2], res[2][3]]
           },
           {
             name: "MARR",
@@ -3530,7 +4145,308 @@ function roi_base_a(id_project){
             show: false
           }
         },
-        colors: ['#ff00ff', '#545454'],
+        colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [3,5,10,15],
+           range:4,
+          title: {
+            text: '',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_a"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function roi_ene_prod(id_project,costo_base,costo_a,costo_b){
+    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    $.ajax({
+        type: 'get',
+        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b,
+        success: function (res) {
+
+
+            //console.log(res);
+    var options = {
+          series: [
+            {
+            name: "ROI - A",
+            data: [res[0][0], res[0][1], res[0][2], res[0][3]]
+          },
+          {
+            name: "ROI - B",
+            data: [res[1][0], res[1][1], res[1][2], res[1][3]]
+          },
+          {
+            name: "ROI - C",
+            data: [res[2][0], res[2][1], res[2][2], res[2][3]]
+          },
+          {
+            name: "MARR",
+            data: [45, 75, 150, 225]
+          }
+        ],
+          chart: {
+          height: 390,
+          width: 600,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [3,5,10,15],
+           range:4,
+          title: {
+            text: '',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_a_ene_prod"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function roi_base_a(id_project){
+    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+
+    $.ajax({
+        type: 'get',
+        url: "/roi_base_a_retro_new/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2,
+        success: function (res) {
+
+
+            //console.log(res);
+    var options = {
+          series: [
+          {
+            name: "ROI - A",
+            data: [res[0], res[1], res[2], res[3]]
+          },
+          {
+            name: "ROI - B",
+            data: [15, 65, 98, 98]
+          },
+          {
+            name: "ROI - C",
+            data: [12, 20, 45, 68]
+          },
+          {
+            name: "MARR",
+            data: [45, 75, 150, 225]
+          }
+        ],
+          chart: {
+          height: 390,
+          width: 600,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
         dataLabels: {
                 enabled: true,
                 style: {
@@ -3614,7 +4530,7 @@ function roi_base_a(id_project){
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['#ff00ff', '#545454'],
+          fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
@@ -3646,8 +4562,16 @@ function roi_base_b(id_project){
     var options = {
           series: [
           {
+            name: "ROI - A",
+            data: [11, 20, 67, 78]
+          },
+          {
             name: "ROI - B",
             data: [res[0], res[1], res[2], res[3]]
+          },
+          {
+            name: "ROI - C",
+            data: [12, 22, 35, 45]
           },
           {
             name: "MARR",
@@ -3670,7 +4594,7 @@ function roi_base_b(id_project){
             show: false
           }
         },
-        colors: ['#2be6ee', '#545454'],
+        colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
         dataLabels: {
                 enabled: true,
                 style: {
@@ -3753,7 +4677,7 @@ function roi_base_b(id_project){
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['#2be6ee', '#545454'],
+          fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
@@ -6223,6 +7147,309 @@ function roi_base_b_print(id_project){
         };
 
         var chart = new ApexCharts(document.querySelector("#chart_roi_base_b_print"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function roi_s_ene_print(id_project){
+    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+
+    $.ajax({
+        type: 'get',
+        url: "/roi_s_ene/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 + '/' + dif_2_cost + '/' + inv_ini_3,
+        success: function (res) {
+
+
+            //console.log(res);
+    var options = {
+          series: [
+          {
+            name: "ROI - A",
+            data: [res[0][0], res[0][1], res[0][2], res[0][3]]
+          },
+          {
+            name: "ROI - B",
+            data: [res[1][0], res[1][1], res[1][2], res[1][3]]
+          },
+          {
+            name: "ROI - C",
+            data: [res[2][0], res[2][1], res[2][2], res[2][3]]
+          },
+          {
+            name: "MARR",
+            data: [45, 75, 150, 225]
+          }
+        ],
+          chart: {
+            height:roi_height,
+            width:roi_width,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '11px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+
+          align: 'center',
+          style: {
+            fontSize: '18px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+            categories: [3,5,10,15],
+           range:4,
+          title: {
+            text: '',
+            style: {
+                    colors: [],
+                    fontSize: '13px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '8px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '11px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '11px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_a_print"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function roi_ene_prod_print(id_project,costo_base,costo_a,costo_b){
+    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    $.ajax({
+        type: 'get',
+        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b,
+        success: function (res) {
+
+
+            //console.log(res);
+    var options = {
+          series: [
+            {
+            name: "ROI - A",
+            data: [res[0][0], res[0][1], res[0][2], res[0][3]]
+          },
+          {
+            name: "ROI - B",
+            data: [res[1][0], res[1][1], res[1][2], res[1][3]]
+          },
+          {
+            name: "ROI - C",
+            data: [res[2][0], res[2][1], res[2][2], res[2][3]]
+          },
+          {
+            name: "MARR",
+            data: [45, 75, 150, 225]
+          }
+        ],
+          chart: {
+            height:roi_height,
+            width:roi_width,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '11px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+
+          align: 'center',
+          style: {
+            fontSize: '18px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [3,5,10,15],
+           range:4,
+          title: {
+            text: '',
+            style: {
+                    colors: [],
+                    fontSize: '13px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '10px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '11px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '11px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_a_ene_prod_print"), options);
         chart.render();
         },
         error: function (responsetext) {

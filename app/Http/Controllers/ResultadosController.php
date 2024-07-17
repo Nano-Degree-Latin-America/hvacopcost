@@ -544,7 +544,10 @@ class ResultadosController extends Controller
 
         if($check_project_t->type_p == 0 || $check_project_t->type_p == 1){
             $solutions = DB::table('solutions_project')
+            ->join('marcas_empresa','marcas_empresa.id','=','solutions_project.id_marca')
+            ->join('modelos_empresa','modelos_empresa.id','=','solutions_project.id_modelo')
             ->where('solutions_project.id_project','=',$id)
+            ->select('solutions_project.*','marcas_empresa.marca','modelos_empresa.modelo')
             ->get();
         }
 
@@ -1371,6 +1374,22 @@ class ResultadosController extends Controller
         $res = $inv_ini_x / $dif_cost;
         return $res;
     }
+
+    public function pay_back_ene_prod($inv_ini_1,$costo,$dif_cost,$costo_x){
+      //costo – costo_x
+      $costos_rest = $costo - $costo_x;
+      //(dif_cost + (costo – costo_x)
+      $dif_costo_sum_costos_rest=  $dif_cost + $costos_rest;
+      // inv_ini / (dif_cost + (costo – costo_x)
+      if($costos_rest == 0){
+        $res = 0;
+      }else{
+        $res = $inv_ini_1 / $dif_costo_sum_costos_rest;
+      }
+
+        return $res;
+    }
+
 
     ////Edicion functions///
     public function traer_unidad_hvac($id,$num_sol,$num_enf){
@@ -5436,7 +5455,7 @@ public function roi_base_a_retro($id_projecto,$dif_cost,$inv_ini){
 */
 
 /* ene prod */
-public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo){
+/* public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo){
     $array_roi_base_ene_solo_ene = ResultadosController::roi_base_a_retro_new_nojson($id_projecto,$dif_cost,$inv_ini);
     $array_sumas = ResultadosController::roi_sumas_grafics($id_projecto,$dif_cost,$inv_ini);
 
@@ -5546,9 +5565,32 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
     }
 
     return response()->json($array_res);
+} */
+
+public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$dif_2_cost,$inv_ini_3,$costo_b){
+
+    $funciones = new funciones();
+    $array_a = [0,0,0,0];
+    $array_b = [];
+    $array_c = [];
+    $array_res = [];
+
+
+    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a);
+
+    if($dif_2_cost == 0){
+        $array_c = [0,0,0,0];
+    }else{
+        $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b);
+    }
+
+
+    array_push($array_res,$array_a,$array_b,$array_c);
+    return response()->json($array_res);
+
 }
 
-    public function roi_base_a_retro_new($id_projecto,$dif_cost,$inv_ini){
+    /* public function roi_base_a_retro_new($id_projecto,$dif_cost,$inv_ini){
         $array_res = [];
         $año_3 = 0;
         $año_3_res = 0;
@@ -5635,7 +5677,44 @@ public function roi_base_a_retro_ene_prod($id_projecto,$dif_cost,$inv_ini,$costo
             }
         }
         return response()->json($array_res);
-    }
+    } */
+
+
+     public function roi_s_ene($id_projecto,$dif_cost,$inv_ini,$dif_cost_c,$inv_ini_c){
+        $funciones = new funciones();
+        $array_a = [0,0,0,0];
+        $array_b = [];
+        $array_c = [];
+        $array_res = [];
+
+        $inflacion_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+        $inv_ini = intval($inv_ini);
+        $dif_cost_aux = $dif_cost;
+        $cost_an_ene = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+        //ince_an_ene
+
+        if( floatval($inflacion_aux) > 0){
+            $inflacion =  floatval($inflacion_aux)/100 + 1;
+        }else if( floatval($inflacion_aux) <= 0){
+            $inflacion = 1;
+        }
+
+
+        $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini);
+        if($dif_cost_c == 0){
+            $array_c = [0,0,0,0];
+        }else{
+            $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c);
+        }
+        array_push($array_res,$array_a,$array_b,$array_c);
+
+        return response()->json($array_res);
+     }
+
 
     public function roi_base_a_retro_new_nojson($id_projecto,$dif_cost,$inv_ini){
     $array_res = [];
@@ -7370,7 +7449,7 @@ if($eficiencia_ene == 'EER'){
                   }
                 //Dr
                 switch ($dr_conf_1_1) {
-                    case 'Cumple ASHRAE  Standard 70':
+                    case 'Cumple ASHRAE Standard 70':
                         $val_conf_dr_1_1 = 5;
                       break;
                     case 'No Cumple ASHRAE Standard 70':
@@ -7435,7 +7514,7 @@ if($eficiencia_ene == 'EER'){
                     case 'No Aplica':
                         $val_conf_dr_1_1 = 2;
                       break;
-                    case 'Cumple ASHRAE  Standard 70':
+                    case 'Cumple ASHRAE Standard 70':
                         $val_conf_dr_1_1 = 5;
                       break;
                       case 'No Cumple ASHRAE Standard 70':
@@ -7500,7 +7579,7 @@ if($eficiencia_ene == 'EER'){
                     case 'No Aplica':
                         $val_conf_dr_1_1 = 2;
                       break;
-                    case 'Cumple ASHRAE  Standard 70':
+                    case 'Cumple ASHRAE Standard 70':
                         $val_conf_dr_1_1 = 5;
                       break;
                       case 'No Cumple ASHRAE Standard 70':
@@ -7583,7 +7662,7 @@ if($eficiencia_ene == 'EER'){
               }
 
               switch ($dr_conf_1_1) {
-                  case 'Cumple ASHRAE  Standard 70':
+                  case 'Cumple ASHRAE Standard 70':
                       $val_conf_dr_1_1 = 5;
                     break;
                   case 'No Cumple ASHRAE Standard 70':
@@ -7661,7 +7740,7 @@ if($eficiencia_ene == 'EER'){
                 case 'No Aplica':
                     $val_conf_dr_1_1 = 2;
                   break;
-                case 'Cumple ASHRAE  Standard 70':
+                case 'Cumple ASHRAE Standard 70':
                     $val_conf_dr_1_1 = 5;
                   break;
                   case 'No Cumple ASHRAE Standard 70':
@@ -7724,7 +7803,7 @@ if($eficiencia_ene == 'EER'){
                 //dr
               switch ($dr_conf_1_1) {
 
-                case 'Cumple ASHRAE  Standard 70':
+                case 'Cumple ASHRAE Standard 70':
                     $val_conf_dr_1_1 = 5;
                   break;
                   case 'No Cumple ASHRAE Standard 70':
@@ -7795,7 +7874,7 @@ if($eficiencia_ene == 'EER'){
           }
 
           switch ($dr_conf_1_1) {
-              case 'Cumple ASHRAE  Standard 70':
+              case 'Cumple ASHRAE Standard 70':
                   $val_conf_dr_1_1 = 5;
                 break;
               case 'No Cumple ASHRAE Standard 70':
@@ -7856,7 +7935,7 @@ if($eficiencia_ene == 'EER'){
               }
             //Dr
             switch ($dr_conf_1_1) {
-                case 'Cumple ASHRAE  Standard 70':
+                case 'Cumple ASHRAE Standard 70':
                     $val_conf_dr_1_1 = 5;
                   break;
                 case 'No Cumple ASHRAE Standard 70':
@@ -7922,7 +8001,7 @@ if($eficiencia_ene == 'EER'){
                     case 'No Aplica':
                         $val_conf_dr_1_1 = 2;
                       break;
-                    case 'Cumple ASHRAE  Standard 70':
+                    case 'Cumple ASHRAE Standard 70':
                         $val_conf_dr_1_1 = 5;
                       break;
                       case 'No Cumple ASHRAE Standard 70':
@@ -8058,7 +8137,7 @@ if($eficiencia_ene == 'EER'){
                 case 'No Aplica':
                     $val_conf_dr_1_1 = 2;
                   break;
-                  case 'Cumple ASHRAE  Standard 70':
+                  case 'Cumple ASHRAE Standard 70':
                     $val_conf_dr_1_1 = 4;
                   break;
                   case 'No Cumple ASHRAE Standard 70':
@@ -8167,7 +8246,7 @@ if($eficiencia_ene == 'EER'){
               }
 
               switch ($dr_conf_1_1) {
-                case 'Cumple ASHRAE  Standard 70':
+                case 'Cumple ASHRAE Standard 70':
                     $val_conf_dr_1_1 = 5;
                   break;
                 case 'No Cumple ASHRAE Standard 70':
@@ -8261,7 +8340,7 @@ if($eficiencia_ene == 'EER'){
                 }
 
                 switch ($dr_conf_1_1) {
-                    case 'Cumple ASHRAE  Standard 70':
+                    case 'Cumple ASHRAE Standard 70':
                         $val_conf_dr_1_1 = 5;
                       break;
                     case 'No Cumple ASHRAE Standard 70':
@@ -8475,7 +8554,7 @@ if($eficiencia_ene == 'EER'){
             }
 
             switch ($dr_conf_1_1) {
-                case 'Cumple ASHRAE  Standard 70':
+                case 'Cumple ASHRAE Standard 70':
                     $val_conf_dr_1_1 = 5;
                 break;
                 case 'No Cumple ASHRAE Standard 70':
@@ -8538,7 +8617,7 @@ if($eficiencia_ene == 'EER'){
             }
 
             switch ($dr_conf_1_1) {
-                case 'Cumple ASHRAE  Standard 70':
+                case 'Cumple ASHRAE Standard 70':
                     $val_conf_dr_1_1 = 5;
                 break;
                 case 'No Cumple ASHRAE Standard 70':
@@ -8594,7 +8673,7 @@ if($eficiencia_ene == 'EER'){
             }
 
             switch ($dr_conf_1_1) {
-                case 'Cumple ASHRAE  Standard 70':
+                case 'Cumple ASHRAE Standard 70':
                     $val_conf_dr_1_1 = 5;
                 break;
                 case 'No Cumple ASHRAE Standard 70':
@@ -8660,7 +8739,7 @@ if($eficiencia_ene == 'EER'){
             }
 
             switch ($dr_conf_1_1) {
-                case 'Cumple ASHRAE  Standard 70':
+                case 'Cumple ASHRAE Standard 70':
                     $val_conf_dr_1_1 = 5;
                 break;
                 case 'No Cumple ASHRAE Standard 70':
@@ -8723,7 +8802,7 @@ if($eficiencia_ene == 'EER'){
             }
 
             switch ($dr_conf_1_1) {
-                case 'Cumple ASHRAE  Standard 70':
+                case 'Cumple ASHRAE Standard 70':
                     $val_conf_dr_1_1 = 5;
                 break;
                 case 'No Cumple ASHRAE Standard 70':
@@ -8779,7 +8858,7 @@ if($eficiencia_ene == 'EER'){
             }
 
             switch ($dr_conf_1_1) {
-                case 'Cumple ASHRAE  Standard 70':
+                case 'Cumple ASHRAE Standard 70':
                     $val_conf_dr_1_1 = 5;
                 break;
                 case 'No Cumple ASHRAE Standard 70':
@@ -9056,5 +9135,13 @@ if($eficiencia_ene == 'EER'){
                  return false;
              }
 
+    }
+
+    public function capacidad($id_project,$solucion){
+        $solution = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_project)
+        ->first();
+
+        return $solution;
     }
 }

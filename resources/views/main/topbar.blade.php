@@ -2,9 +2,10 @@
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
      <div id="slider" class="slider-big">
-         <div class="col-4">
+         <div class="col-4 flex gap-x-3 h-full">
              <img class="" style="max-height: 100px; width:230px;" name="logoEmpresa" id="logoEmpresa" src="{{asset('assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="Nano Degree">
-         </div>
+            <h1 style=" font-size: 4.3rem;" class="text-white font-roboto" >2.0</h1>
+        </div>
          <div class=" col-4 flex justify-center" style="line-height: 30px">
              {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
 

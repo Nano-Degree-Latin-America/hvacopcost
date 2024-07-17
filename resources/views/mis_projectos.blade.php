@@ -150,8 +150,9 @@ span{
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 <div class="bg-blue-900 w-full flex justify-center" style="background-color:#1B17BB ;">
-    <div class="w-1/3">
+    <div class="w-1/3 flex h-full">
         <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
+        <h1 style=" font-size: 4.3rem;margin-top:.80rem;" class="text-white font-roboto" >2.0</h1>
     </div>
     <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
         {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
@@ -168,7 +169,7 @@ span{
 @inject('check_types_p','app\Http\Controllers\ProjectController')
 <div class="w-full flex justify-center">
     <div class="w-3/4">
-        <div style="color: #2c5282;" class="w-full flex justify-center mt-3 text-4xl font-roboto font-bold">
+        <div style="color: #1B17BB;" class="w-full flex justify-center mt-3 text-4xl font-roboto font-bold">
             <p>{{ __('index.mis proyectos') }} : {{$empresa_name}}</p>
         </div>
       {{--   @include('search') --}}
@@ -176,7 +177,7 @@ span{
             <div class="w-full">
                 <table id="table_projects"  name="table_projects" class="font-roboto w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg">
                     <thead class="text-white">
-                        <tr class="bg-blue-700 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+                        <tr style="background-color:#1B17BB;" class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
                             <th class="p-3 text-left">{{ __('index.nombre') }}</th>
                             <th class="p-3 text-left">{{ __('index.tipo edificio') }}</th>
                             {{-- <th class="p-3 text-left">Área</th>

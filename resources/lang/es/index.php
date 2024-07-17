@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'análisis energético y financiero' => 'Análisis Energético y Financiero',
-    'de sistemas HVAC' => 'de Sistemas HVAC',
+    'análisis energético y financiero' => 'Simulador Energético y',
+    'de sistemas HVAC' => 'Financiero de Sistemas de HVAC',
     'nombre projecto' => 'Nombre Projecto',
     'region' => 'Región',
     'ciudad' => 'Ciudad',
@@ -36,7 +36,7 @@ return [
     'logout' => 'Cerrar Sesión',
     'mis proyectos' => 'Mis Proyectos',
     'nuevo projecto' => 'Nuevo Proyecto',
-    'type_man' => 'Mantenimiento',
+    'type_man' => 'Cálculo Carga Térmica',
     'idioma' => 'Idioma',
     'logout' => 'Cerrar Sesión',
     'mis proyectos' => 'Mis Proyectos',
@@ -63,6 +63,8 @@ return [
     'val_dep' => 'Valor por Depreciar',
     'cost_an_re' => 'Costo Anual Reparaciones',
     'efi' => 'Eficiencia',
+    'ventilacion' => 'Ventilación',
+    'filtracion' => 'Filtración',
     'nombre' => 'Nombre',
     'hors_enft_anual' => 'Horas Enfriamiento Anual',
     'tar_ele' => 'Tarifa Eléctrica',

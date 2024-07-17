@@ -1,4 +1,4 @@
-<select onchange="check_input(this.value,this.id,'paises_warning');check_inp_count('count_paises','paises');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="paises" id="paises">
+<select onchange="check_input(this.value,this.id,'paises_warning');check_inp_count('count_paises','paises');" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="paises" id="paises">
     <option value="0">-{{ __('index.selecciona tu region') }}-</option>
     <?php  $all_paises=$all_paises->all_paises(); ?>
     @foreach ($all_paises as $pais)

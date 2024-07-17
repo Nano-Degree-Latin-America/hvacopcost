@@ -40,10 +40,15 @@
 
     <script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" integrity="sha256-+8RZJua0aEWg+QVVKg4LEzEEm/8RFez5Tb4JBNiV5xA=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa&family=Dongle&family=Montserrat:wght@500;600&family=Rubik:wght@300&display=swap');
 
-        .font-roboto{
+.font-exo2{
+            font-family: 'Exo 2', sans-serif;
+        }
+
+.font-roboto{
             font-family: 'ABeeZee', sans-serif;
         }
 

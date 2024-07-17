@@ -233,6 +233,10 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.border-color-inps{
+    border-color:#1B17BB;
+}
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
@@ -311,6 +315,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 
                         </form>
+                        {{-- form --}}
                     </div>
 
                 </div>
@@ -383,8 +388,8 @@ input[type=number]::-webkit-outer-spin-button {
                 @endif --}}
 
 
-                <button  x-show="step > 1" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1,'{{App::getLocale()}}');"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
-                <button  x-show="step > 1" type="button" name="calcular_p_r" id="calcular_p_r" onclick="check_form_submit(2,'{{App::getLocale()}}');"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto hidden">{{ __('index.calcular') }}</button>
+                <button style="background-color:#1B17BB;" x-show="step > 1" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1,'{{App::getLocale()}}');"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
+                <button style="background-color:#1B17BB;" x-show="step > 1" type="button" name="calcular_p_r" id="calcular_p_r" onclick="check_form_submit(2,'{{App::getLocale()}}');"  class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto hidden">{{ __('index.calcular') }}</button>
 
 
 
@@ -400,6 +405,10 @@ input[type=number]::-webkit-outer-spin-button {
 </div>
 </div>
 <style>
+
+.title_index{
+              color:#1B17BB !important;"
+        }
 @media (min-width: 640px) {
     .labels{
         font-size:11px;
@@ -416,6 +425,7 @@ input[type=number]::-webkit-outer-spin-button {
     color:#2c5282 !important;"
     }
 }
+
 /* lg	1024px */
 @media (max-width: 1024px) {
     .labels{
@@ -935,6 +945,7 @@ input[type=number]::-webkit-outer-spin-button {
             }
         .title_index{
             font-size: 3rem;
+              color:#1B17BB !important;"
         }
 
         .unit_style{
@@ -949,7 +960,7 @@ input[type=number]::-webkit-outer-spin-button {
 @media (min-width: 1940px) {
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#1B17BB !important;"
     }
     .labels{
         font-size:14px;

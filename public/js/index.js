@@ -653,13 +653,19 @@ function set_unit_type(value){
         ']}';
         break;
         case "4":
-        var arry = '{ "arr" : [' +
+        /* var arry = '{ "arr" : [' +
         '{ "text":"Manejadoras" , "value":"man" },' +
         '{ "text":"Fancoils (M/HSP)" , "value":"fancoil_hsp" },' +
         '{ "text":"Manejadoras c/DOA" , "value":"man_doa" },' +
         '{ "text":"Fancoils (M/HSP) c/ DOA" , "value":"fan_hsp_doa" },' +
         '{ "text":"Manejadoras DOA + HR" , "value":"man_doa_hr" },' +
         '{ "text":"Fancoils (M/HSP) DOA + HR" , "value":"fan_hsp_doa_hr" }' +
+        ']}';
+        break; */
+        var arry = '{ "arr" : [' +
+        '{ "text":"Manejadoras" , "value":"man" },' +
+        '{ "text":"Fancoils (M/HSP)" , "value":"fancoil_hsp" },' +
+        '{ "text":"Manejadoras DOA + HR" , "value":"man_doa_hr" }' +
         ']}';
         break;
         case "5":
@@ -681,7 +687,7 @@ function set_unit_type(value){
         '{ "text":"Cassette" , "value":"cass" }' +
         ']}';
         break;
-        case "8":
+        /* case "8":
             var arry = '{ "arr" : [' +
             '{ "text":"Manejadora" , "value":"man_scholl_const" },' +
             '{"text":"Fan Coils L/M HSP" , "value":"fan_hsp_scholl_const" } ]}';
@@ -699,7 +705,7 @@ function set_unit_type(value){
             '{ "text":"Manejadora" , "value":"man_scholl_tor_four_eta" },' +
             '{ "text":"Fan Coils L/M HSP" , "value":"fan_hsp_tor_four_eta" },' +
             '{"text":"Chilled Beans" , "value":"chill_bean_tor_four_eta" } ]}';
-        break;
+        break; */
 
 
       default:
@@ -709,7 +715,7 @@ function set_unit_type(value){
     return arry;
 }
 
-function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_value){
+function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ventilacion,id_tipo_filtracion,equipo_value){
     /*  var set_sol_1 =  $('#set_sol_1').val(); */
     //console.log(value);
     var ima =  $('#idioma').val();
@@ -718,6 +724,8 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
         check_val_text(id_select,ima);
         check_val_text(id_tipo_control,ima);
         check_val_text(id_dr,ima);
+        check_val_text(id_tipo_ventilacion,ima);
+        check_val_text(id_tipo_filtracion,ima);
          $('#'+equipo_value).empty();
               var arry_disenio = set_diseño(value);
               const myObj = JSON.parse(arry_disenio);
@@ -728,6 +736,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                           }));
 
                       }
+
                       var arry_control = set_control(value);
                       const myObj_cont = JSON.parse(arry_control);
                       for (let i = 0; i < myObj_cont.arry_control.length; i++) {
@@ -737,6 +746,27 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                         }));
 
                     }
+
+                    var arry_vent = set_ventilacion(value);
+                    const myObj_vent = JSON.parse(arry_vent);
+                    for (let i = 0; i < myObj_vent.arry_vent.length; i++) {
+                      $('#'+id_tipo_ventilacion).append($('<option>', {
+                          value:  myObj_vent.arry_vent[i].value,
+                          text:  myObj_vent.arry_vent[i].text
+                      }));
+
+                  }
+
+                  var arry_filt = set_filtracion(value);
+                    const myObj_filt= JSON.parse(arry_filt);
+                    for (let i = 0; i < myObj_filt.arry_filt.length; i++) {
+                      $('#'+id_tipo_filtracion).append($('<option>', {
+                          value:  myObj_filt.arry_filt[i].value,
+                          text:  myObj_filt.arry_filt[i].text
+                      }));
+
+                  }
+
                     var arry_dr = set_dr(value,equipo_value);
                     const myObj_dr = JSON.parse(arry_dr);
                     for (let i = 0; i < myObj_dr.arry_dr.length; i++) {
@@ -752,6 +782,9 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
           check_val_text(id_select,ima);
           check_val_text(id_tipo_control,ima);
           check_val_text(id_dr,ima);
+        check_val_text(id_tipo_ventilacion,ima);
+        check_val_text(id_tipo_filtracion,ima);
+
           $('#'+equipo_value).empty();
 
 
@@ -774,6 +807,27 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
                     }));
 
                 }
+
+                    var arry_vent = set_ventilacion(value);
+                    const myObj_vent = JSON.parse(arry_vent);
+                    for (let i = 0; i < myObj_vent.arry_vent.length; i++) {
+                      $('#'+id_tipo_ventilacion).append($('<option>', {
+                          value:  myObj_vent.arry_vent[i].value,
+                          text:  myObj_vent.arry_vent[i].text
+                      }));
+
+                  }
+
+                  var arry_filt = set_filtracion(value);
+                    const myObj_filt= JSON.parse(arry_filt);
+                    for (let i = 0; i < myObj_filt.arry_filt.length; i++) {
+                      $('#'+id_tipo_filtracion).append($('<option>', {
+                          value:  myObj_filt.arry_filt[i].value,
+                          text:  myObj_filt.arry_filt[i].text
+                      }));
+
+                  }
+
                 var arry_dr = set_dr(value,equipo_value);
                 const myObj_dr = JSON.parse(arry_dr);
                 for (let i = 0; i < myObj_dr.arry_dr.length; i++) {
@@ -845,9 +899,8 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
           '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
           '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
           '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-          '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
-          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
-    break;
+          '{"text":"VAV y Retorno Ductado" , "value":-0.2} ]}';
+        break;
 
     case "c_economizador":
 
@@ -855,8 +908,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
           '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
           '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
           '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-          '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
-          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+          '{"text":"VAV y Retorno Ductado" , "value":-0.2 } ]}';
     break;
 
     case "w_heat_rec":
@@ -865,8 +917,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
         '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
         '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
         '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-        '{ "text":"VAV y Retorno Ductado" , "value":-0.2},' +
-        '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+        '{"text":"VAV y Retorno Ductado" , "value":-0.2 } ]}';
       break;
 
     case "manejadora":
@@ -875,8 +926,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
          '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-         '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-         '{ "text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2} ]}';
+         '{ "text":"Inyección y Retorno Ductado" , "value":0} ]}';
     break;
 
     case "fancoil":
@@ -885,8 +935,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
           '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
           '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
           '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-          '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
+          '{"text":"Inyección y Retorno Ductado" , "value":0 } ]}';
     break;
 
     case "fancoil_lsp_spt":
@@ -894,8 +943,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
     var arry_disenio = '{ "arry_diseño" : [' +
           '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
           '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.2 } ]}';
+          '{"text":"Ducto Flex. y Plenum Retorno" , "value":0.19 } ]}';
 
   break;
 
@@ -903,16 +951,14 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
       var arry_disenio = '{ "arry_diseño" : [' +
           '{ "text":"Sin Unidad DOA" , "value":0.16},' +
           '{ "text":"Con Unidad DOA" , "value":0},' +
-          '{ "text":"Unidad DOA + Heat Recovery" , "value":-0.05},' +
-          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.14 } ]}';
+          '{"text":"Unidad DOA + Heat Recovery" , "value":-0.05 } ]}';
     break;
 
     case "fancoil_lsp":
       var arry_disenio = '{ "arry_diseño" : [' +
           '{ "text":"Sin Unidad DOA" , "value":0.16},' +
           '{ "text":"Con DOA y Descarga Ductada" , "value":0},' +
-          '{ "text":"Unidad DOA + Heat Recovery" , "value":-0.05},' +
-          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.14 } ]}';
+          '{"text":"Unidad DOA + Heat Recovery" , "value":-0.05 } ]}';
     break;
 
     case "ca":
@@ -920,8 +966,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
     var arry_disenio = '{ "arry_diseño" : [' +
           '{ "text":"Sin Unidad DOA" , "value":0.16},' +
           '{ "text":"Con Unidad DOA" , "value":0},' +
-          '{ "text":"Unidad DOA + Heat Recovery" , "value":-0.05},' +
-          '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.14 } ]}';
+          '{"text":"Unidad DOA + Heat Recovery" , "value":-0.05 } ]}';
      break;
 
      case "man":
@@ -940,41 +985,15 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
         '{"text":"Ducto Flex. y Plenum Retorno" , "value":0.19 } ]}';
      break;
 
-     case "man_doa":
-
-      var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-        '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-        '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
-     break;
-
-     case "fan_hsp_doa":
-
-      var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-        '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
-        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-        '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.18 } ]}';
-     break;
-
      case "man_doa_hr":
 
       var arry_disenio = '{ "arry_diseño" : [' +
         '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
         '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-        '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-        '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.25 } ]}';
+        '{"text":"Descarga Directa Ductada" , "value":0.1 } ]}';
      break;
 
-     case "fan_hsp_doa_hr":
 
-      var arry_disenio = '{ "arry_diseño" : [' +
-      '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-      '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
-      '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-      '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.18 } ]}';
-     break;
    /* horz
    vert */
     case "horz":
@@ -993,28 +1012,26 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,equipo_val
       var arry_disenio = '{ "arry_diseño" : [' +
       '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
       '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
-      '{ "text":"Inyección Flex. y Plenum Retorno" , "value":0.19},' +
-      '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.22 } ]}';
+      '{"text":"Inyección Flex. y Plenum Retorno" , "value":0.19 } ]}';
     break;
 
     case "agu_cir_abr":
       var arry_disenio = '{ "arry_diseño" : [' +
       '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
       '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
-      '{ "text":"Inyección Flex. y Plenum Retorno" , "value":0.19},' +
-      '{"text":"Basado en ASHRAE 90.1 - 2019" , "value":-0.22 } ]}';
+      '{"text":"Inyección Flex. y Plenum Retorno" , "value":0.19 } ]}';
     break;
 
     case "pa_pi_te":
       var arry_disenio = '{ "arry_diseño" : [' +
-      '{ "text":"Condensador Arriba" , "value":0.06},' +
-      '{ "text":"Condensador Abajo" , "value":0.08},' +
+      '{ "text":"Condensador Arriba" , "value":0.12},' +
+      '{ "text":"Condensador Abajo" , "value":0.1},' +
       '{ "text":"Espalda con Espalda" , "value":0} ]}';
       break;
 
     case "duc_con":
       var arry_disenio = '{ "arry_diseño" : [' +
-      '{ "text":"Inyección y Retorno Ductado" , "value":0.04},' +
+      '{ "text":"Inyección y Retorno Ductado" , "value":0.01},' +
       '{ "text":"Inyección Ductada y Plenum Retorno" , "value":0.15} ]}';
       break;
 
@@ -1349,7 +1366,7 @@ function set_dr(value,equipo_value){
         case "basico":
 
              var arry_dr = '{ "arry_dr" : [' +
-              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
              $('#'+equipo_value).val(1);
@@ -1359,7 +1376,7 @@ function set_dr(value,equipo_value){
         case "c_economizador":
 
           var arry_dr = '{ "arry_dr" : [' +
-              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
              $('#'+equipo_value).val(0.94);
@@ -1368,7 +1385,7 @@ function set_dr(value,equipo_value){
 
         case "w_heat_rec":
             var arry_dr = '{ "arry_dr" : [' +
-            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
              $('#'+equipo_value).val(0.9);
@@ -1378,7 +1395,7 @@ function set_dr(value,equipo_value){
         case "manejadora":
             var arry_dr = '{ "arry_dr" : [' +
              '{ "text":"No Aplica" , "value":0},' +
-             '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+             '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
             $('#'+equipo_value).val(1.04);
@@ -1389,7 +1406,7 @@ function set_dr(value,equipo_value){
 
           var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"No Aplica" , "value":0},' +
-              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
             $('#'+equipo_value).val(1.05);
@@ -1399,7 +1416,7 @@ function set_dr(value,equipo_value){
 
         var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"No Aplica" , "value":0},' +
-              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(1.09);
@@ -1416,7 +1433,7 @@ function set_dr(value,equipo_value){
         case "fancoil_lsp":
           var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"No Aplica" , "value":0},' +
-              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
          $('#'+equipo_value).val(1.01);
@@ -1432,7 +1449,7 @@ function set_dr(value,equipo_value){
          case "man":
 
           var arry_dr = '{ "arry_dr" : [' +
-              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(1.06);
@@ -1441,7 +1458,7 @@ function set_dr(value,equipo_value){
 
          case "fancoil_hsp":
             var arry_dr = '{ "arry_dr" : [' +
-            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(1.08);
@@ -1450,7 +1467,7 @@ function set_dr(value,equipo_value){
 
          case "man_doa":
             var arry_dr = '{ "arry_dr" : [' +
-            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(0.94);
@@ -1459,7 +1476,7 @@ function set_dr(value,equipo_value){
 
          case "fan_hsp_doa":
           var arry_dr = '{ "arry_dr" : [' +
-            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(0.96);
@@ -1469,7 +1486,7 @@ function set_dr(value,equipo_value){
          case "man_doa_hr":
 
           var arry_dr = '{ "arry_dr" : [' +
-            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(0.84);
@@ -1479,7 +1496,7 @@ function set_dr(value,equipo_value){
          case "fan_hsp_doa_hr":
 
           var arry_dr = '{ "arry_dr" : [' +
-            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(0.86);
@@ -1496,7 +1513,7 @@ function set_dr(value,equipo_value){
 
       case "vert":
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.1},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
         $('#'+equipo_value).val(1);
@@ -1506,7 +1523,7 @@ function set_dr(value,equipo_value){
       case "agu_cir_cer":
         var arry_dr = '{ "arry_dr" : [' +
         '{ "text":"No Aplica" , "value":0},' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
         $('#'+equipo_value).val(0.86);
@@ -1516,7 +1533,7 @@ function set_dr(value,equipo_value){
       case "agu_cir_abr":
         var arry_dr = '{ "arry_dr" : [' +
         '{ "text":"No Aplica" , "value":0},' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
         $('#'+equipo_value).val(0.96);
@@ -1550,7 +1567,7 @@ function set_dr(value,equipo_value){
 
      case "man_scholl_const":
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(1);
 
@@ -1558,7 +1575,7 @@ function set_dr(value,equipo_value){
 
       case "fan_hsp_scholl_const":
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(1.05);
       break;
@@ -1566,21 +1583,21 @@ function set_dr(value,equipo_value){
 
       case "man_scholl_var":
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(0.96);
       break;
 
       case "fan_hsp_scholl_var":
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(0.98);
       break;
 
       case "chill_bean_scholl_var":
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(0.9);
 
@@ -1588,7 +1605,7 @@ function set_dr(value,equipo_value){
 
       case "man_scholl_tor_four_eta":
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(0.93);
 
@@ -1596,7 +1613,7 @@ function set_dr(value,equipo_value){
 
      case "fan_hsp_tor_four_eta":
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(0.95);
 
@@ -1604,7 +1621,7 @@ function set_dr(value,equipo_value){
 
     case "chill_bean_tor_four_eta":
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(0.87);
 
@@ -1615,6 +1632,318 @@ function set_dr(value,equipo_value){
 
         }
 return arry_dr;
+}
+
+function set_filtracion(value){
+    switch (value) {
+
+        case "basico":
+
+             var arry_filt = '{ "arry_filt" : [' +
+              '{ "text":"MERV ≥ 7" , "value":1},' +
+              '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
+              '{ "text":"Metalicos Lavables" , "value":1.15},' +
+              '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        break;
+
+        case "c_economizador":
+
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
+            '{ "text":"Metalicos Lavables" , "value":1.15},' +
+            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        break;
+
+        case "w_heat_rec":
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
+            '{ "text":"Metalicos Lavables" , "value":1.15},' +
+            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+          break;
+
+        case "manejadora":
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
+            '{ "text":"Metalicos Lavables" , "value":1.15},' +
+            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        break;
+
+        case "fancoil":
+
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
+            '{ "text":"Metalicos Lavables" , "value":1.15},' +
+            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        break;
+
+        case "fancoil_lsp_spt":
+
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
+            '{ "text":"Metalicos Lavables" , "value":1.15},' +
+            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+      break;
+
+        case "ca_pi_te":
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
+            '{ "text":"Metalicos Lavables" , "value":1.15},' +
+            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        break;
+
+        case "fancoil_lsp":
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
+            '{ "text":"Metalicos Lavables" , "value":1.15},' +
+            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        break;
+
+        case "ca":
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
+            '{ "text":"Metalicos Lavables" , "value":1.15},' +
+            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+         break;
+
+         case "man":
+
+         var arry_filt = '{ "arry_filt" : [' +
+         '{ "text":"MERV ≥ 7" , "value":1},' +
+         '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
+         '{ "text":"Metalicos Lavables" , "value":1.15},' +
+         '{"text":"Sin Filtros" , "value":1.2 } ]}';
+
+         break;
+
+         case "fancoil_hsp":
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
+            '{ "text":"Metalicos Lavables" , "value":1.15},' +
+            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+
+         break;
+
+         case "man_doa":
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
+            '{ "text":"Metalicos Lavables" , "value":1.15},' +
+            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+
+         break;
+
+       case "horz":
+        var arry_filt = '{ "arry_filt" : [' +
+        '{ "text":"MERV ≥ 7" , "value":1},' +
+        '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
+        '{"text":"Sin Filtros" , "value":1.2 } ]}';
+
+      break;
+
+      case "vert":
+        var arry_filt = '{ "arry_filt" : [' +
+        '{ "text":"MERV ≥ 7" , "value":1},' +
+        '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
+        '{"text":"Sin Filtros" , "value":1.2 } ]}';
+
+      break;
+
+      case "agu_cir_cer":
+        var arry_filt = '{ "arry_filt" : [' +
+        '{ "text":"MERV ≥ 7" , "value":1},' +
+        '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
+        '{"text":"Sin Filtros" , "value":1.2 } ]}';
+
+      break;
+
+      case "agu_cir_abr":
+        var arry_filt = '{ "arry_filt" : [' +
+        '{ "text":"MERV ≥ 7" , "value":1},' +
+        '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
+        '{"text":"Sin Filtros" , "value":1.2 } ]}';
+
+      break;
+
+      case "pa_pi_te":
+        var arry_filt = '{ "arry_filt" : [' +
+        '{ "text":"MERV ≥ 7" , "value":1},' +
+        '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
+        '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        break;
+
+      case "duc_con":
+        var arry_filt = '{ "arry_filt" : [' +
+        '{ "text":"MERV ≥ 7" , "value":1},' +
+        '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
+        '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        break;
+
+        case "cass":
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
+            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        break;
+      default:
+        // code block
+        }
+return arry_filt;
+}
+
+function set_ventilacion(value){
+
+    switch (value) {
+
+        case "basico":
+
+             var arry_vent = '{ "arry_vent" : [' +
+              '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+              '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+              '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+        break;
+
+        case "c_economizador":
+
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+
+        case "w_heat_rec":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+          break;
+
+        case "manejadora":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+        break;
+
+        case "fancoil":
+
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+              '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+        break;
+
+        case "fancoil_lsp_spt":
+
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+      break;
+
+        case "ca_pi_te":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.21 } ]}';
+        break;
+
+        case "fancoil_lsp":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.21 } ]}';
+        break;
+
+        case "ca":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.21 } ]}';
+         break;
+
+         case "man":
+
+         var arry_vent = '{ "arry_vent" : [' +
+         '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
+         '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+         '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+         break;
+
+         case "fancoil_hsp":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+         break;
+
+         case "man_doa":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+         break;
+
+       case "horz":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+      break;
+
+      case "vert":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+      break;
+
+      case "agu_cir_cer":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+      break;
+
+      case "agu_cir_abr":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+      break;
+
+      case "pa_pi_te":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+        break;
+
+      case "duc_con":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+        break;
+
+        case "cass":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+        break;
+      default:
+        // code block
+        }
+
+return arry_vent;
 }
 
 /*
@@ -1636,7 +1965,7 @@ return arry_dr;
               '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
             var arry_dr = '{ "arry_dr" : [' +
-              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
              $('#'+equipo_value).val(1);
@@ -1659,7 +1988,7 @@ return arry_dr;
               '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
              $('#'+equipo_value).val(0.94);
@@ -1682,7 +2011,7 @@ return arry_dr;
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
              $('#'+equipo_value).val(0.9);
@@ -1705,7 +2034,7 @@ return arry_dr;
 
           var arry_dr = '{ "arry_dr" : [' +
              '{ "text":"No Aplica" , "value":0},' +
-             '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+             '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
             $('#'+equipo_value).val(1.04);
@@ -1728,7 +2057,7 @@ return arry_dr;
 
             var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"No Aplica" , "value":0},' +
-              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
             $('#'+equipo_value).val(1.05);
@@ -1749,7 +2078,7 @@ return arry_dr;
 
         var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"No Aplica" , "value":0},' +
-              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(1.09);
@@ -1789,7 +2118,7 @@ return arry_dr;
 
           var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"No Aplica" , "value":0},' +
-              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
          $('#'+equipo_value).val(1.01);
@@ -1827,7 +2156,7 @@ return arry_dr;
               '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-              '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(1.06);
@@ -1847,7 +2176,7 @@ return arry_dr;
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(1.08);
@@ -1868,7 +2197,7 @@ return arry_dr;
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(0.94);
@@ -1889,7 +2218,7 @@ return arry_dr;
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(0.96);
@@ -1910,7 +2239,7 @@ return arry_dr;
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(0.84);
@@ -1931,7 +2260,7 @@ return arry_dr;
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
           var arry_dr = '{ "arry_dr" : [' +
-            '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+            '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
           $('#'+equipo_value).val(0.86);
@@ -1966,7 +2295,7 @@ return arry_dr;
         '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.1},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.1},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
         $('#'+equipo_value).val(1);
@@ -1988,7 +2317,7 @@ return arry_dr;
 
         var arry_dr = '{ "arry_dr" : [' +
         '{ "text":"No Aplica" , "value":0},' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
         $('#'+equipo_value).val(0.86);
@@ -2010,7 +2339,7 @@ return arry_dr;
 
         var arry_dr = '{ "arry_dr" : [' +
         '{ "text":"No Aplica" , "value":0},' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
         $('#'+equipo_value).val(0.96);
@@ -2080,7 +2409,7 @@ return arry_dr;
         '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(1);
 
@@ -2098,7 +2427,7 @@ return arry_dr;
         '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(1.05);
 
@@ -2120,7 +2449,7 @@ return arry_dr;
         '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(0.96);
 
@@ -2139,7 +2468,7 @@ return arry_dr;
         '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(0.98);
 
@@ -2157,7 +2486,7 @@ return arry_dr;
         '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(0.9);
 
@@ -2178,7 +2507,7 @@ return arry_dr;
         '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(0.93);
 
@@ -2197,7 +2526,7 @@ return arry_dr;
         '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
 
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(0.95);
 
@@ -2215,7 +2544,7 @@ return arry_dr;
         '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
 
         var arry_dr = '{ "arry_dr" : [' +
-        '{ "text":"Cumple ASHRAE  Standard 70" , "value":-0.01},' +
+        '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
         '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
         $('#'+equipo_value).val(0.87);
 
@@ -2925,16 +3254,33 @@ function send_name_t_c(value){
 }
 
 function send_name_dr(value){
-
     const myArray = value.split('_');
     var text_dr = $('#'+value+' option:selected').text();
     var inp_text_dr =  $('#dr_name_'+myArray[1]+'_'+myArray[2]);
     inp_text_dr.val(text_dr);
     var inp_text_dr_retro =  $('#dr_name_'+myArray[1]+'_'+myArray[2]+'_retro');
     inp_text_dr_retro.val(text_dr);
-
-
 }
+
+function send_name_vent(value){
+    const myArray = value.split('_');
+    var text_vent = $('#'+value+' option:selected').text();
+    var inp_text_vent =  $('#ventilacion_name_'+myArray[1]+'_'+myArray[2]);
+    inp_text_vent.val(text_vent);
+    var inp_text_vent_retro =  $('#ventilacion_name_'+myArray[1]+'_'+myArray[2]+'_retro');
+    inp_text_vent_retro.val(text_vent);
+}
+
+function send_name_filt(value){
+    const myArray = value.split('_');
+    var text_filt = $('#'+value+' option:selected').text();
+    var inp_text_filt =  $('#filtracion_name_'+myArray[1]+'_'+myArray[2]);
+    inp_text_filt.val(text_filt);
+    var inp_text_filt_retro =  $('#filtracion_name_'+myArray[1]+'_'+myArray[2]+'_retro');
+    inp_text_filt_retro.val(text_filt);
+}
+
+
 
 function traer_categorias_edif() {
     $.ajax({
@@ -6562,7 +6908,7 @@ function valida_form_calc(p_type){
 
         if (sol_1_1.val() != 0){
             $('#calcular_p_n').attr('disabled', false);
-            $('#calcular_p_n').css('background-color','#3c6382');
+            $('#calcular_p_n').css('background-color','#1B17BB');
         }else if (sol_1_1.val() == 0){
             $('#calcular_p_n').attr('disabled', true);
             $('#calcular_p_n').css('background-color','gray');
@@ -6574,7 +6920,7 @@ function valida_form_calc(p_type){
 
         if (sol_1_1.val() != 0){
             $('#calcular_p_r').attr('disabled', false);
-            $('#calcular_p_r').css('background-color','#3c6382');
+            $('#calcular_p_r').css('background-color','#1B17BB');
         }else if (sol_1_1.val() == 0){
             $('#calcular_p_r').attr('disabled', true);
             $('#calcular_p_r').css('background-color','gray');
@@ -6585,7 +6931,7 @@ function valida_form_calc(p_type){
 
 function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,tipo_control,dr
     ,Mantenimiento,lblCsTipo,capacidad_total,costo_elec,csStd_cant
-    ,cheValorS,num_solu,action_submit,csStd,maintenance_cost,marca,modelo) {
+    ,cheValorS,num_solu,action_submit,csStd,maintenance_cost,marca,modelo,ventilacion,filtracion) {
     $.ajax({
         type: 'get',
         url: "/traer_unidad_hvac/" + id_project + "/" + num_sol + "/" +num_enf,
@@ -6601,16 +6947,21 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 $("#"+cUnidad).find('option[value="' + res.val_unidad.unidad_hvac + '"]').attr("selected", "selected");
                 unidadHvac(res.val_unidad.unidad_hvac,1,csTipo,csDisenio);
                 $("#"+csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').attr("selected", "selected");
-                change_diseño(res.val_unidad.tipo_equipo,1,csDisenio,tipo_control,dr,lblCsTipo);
+                change_diseño(res.val_unidad.tipo_equipo,1,csDisenio,tipo_control,dr,ventilacion,filtracion,lblCsTipo);
                 $("#"+csDisenio).find('option[value="' + res.val_unidad.tipo_diseño + '"]').attr("selected", "selected");
                 $("#"+tipo_control).find('option[value="' + res.val_unidad.tipo_control + '"]').attr("selected", "selected");
                 $("#"+dr).find('option[value="' + res.val_unidad.dr + '"]').attr("selected", "selected");
+                $("#"+ventilacion).find('option[value="' + res.val_unidad.ventilacion + '"]').attr("selected", "selected");
+                $("#"+filtracion).find('option[value="' + res.val_unidad.filtracion + '"]').attr("selected", "selected");
+
                 $("#"+Mantenimiento).find('option[value="' +   res.val_unidad.mantenimiento + '"]').attr("selected", "selected");
                 send_marcas_to(marca,res.val_unidad.id_marca,res.val_unidad.unidad_hvac);
                 send_modelo_edit(res.val_unidad.id_marca,modelo,res.val_unidad.id_modelo);
                 send_name(csDisenio);
                 send_name_t_c(tipo_control);
                 send_name_dr(dr);
+                send_name_vent(ventilacion);
+                send_name_filt(filtracion);
                 check_chiller(res.val_unidad.unidad_hvac,csStd,res.val_unidad.type_p);
                 $("#"+csStd).find('option[value="'+ res.val_unidad.eficencia_ene +'"]').attr("selected", "selected");
                /*  set_ser_to_sers(res.val_unidad.eficencia_ene); */
@@ -6668,7 +7019,7 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
 }
 
 function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,tipo_control,dr
-    ,Mantenimiento,lblCsTipo,capacidad_total,costo_elec,csStd_cant
+    ,ventilacion,filtracion,Mantenimiento,lblCsTipo,capacidad_total,costo_elec,csStd_cant
     ,costo_recu,csStd,maintenance_cost,marca,modelo,yrs_vida,const_an_rep,action_submit) {
     $.ajax({
         type: 'get',
@@ -6745,10 +7096,12 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 */
                 unidadHvac(res.val_unidad.unidad_hvac,1,csTipo,csDisenio);
                 $("#"+csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').attr("selected", "selected");
-                change_diseño(res.val_unidad.tipo_equipo,1,csDisenio,tipo_control,dr,lblCsTipo);
+                change_diseño(res.val_unidad.tipo_equipo,1,csDisenio,tipo_control,dr,ventilacion,filtracion,lblCsTipo);
                 $("#"+csDisenio).find('option[value="' + res.val_unidad.tipo_diseño + '"]').attr("selected", "selected");
                 $("#"+tipo_control).find('option[value="' + res.val_unidad.tipo_control + '"]').attr("selected", "selected");
                 $("#"+dr).find('option[value="' + res.val_unidad.dr + '"]').attr("selected", "selected");
+                $("#"+ventilacion).find('option[value="' + res.val_unidad.ventilacion + '"]').attr("selected", "selected");
+                $("#"+filtracion).find('option[value="' + res.val_unidad.filtracion + '"]').attr("selected", "selected");
                 $("#"+Mantenimiento).find('option[value="' +   res.val_unidad.mantenimiento + '"]').attr("selected", "selected");
 
                 send_marcas_to(marca,res.val_unidad.id_marca,res.val_unidad.unidad_hvac);
@@ -6756,6 +7109,8 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 send_name(csDisenio);
                 send_name_t_c(tipo_control);
                 send_name_dr(dr);
+                send_name_filt(filtracion);
+                send_name_vent(ventilacion);
                 check_chiller(res.val_unidad.unidad_hvac,csStd,res.val_unidad.type_p);
                 /* $('#'+csStd).empty();
                 $('#'+csStd).append($('<option>', {

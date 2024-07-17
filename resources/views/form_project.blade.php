@@ -47,7 +47,7 @@
          <form action="{{route('resultados')}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
             @csrf
             <div class="my-8">
-                <label class="title_index font-roboto text-blue-800 font-bold leading-tight" for="">{{ __('index.análisis energético y financiero') }} <br> {{ __('index.de sistemas HVAC') }}</label>
+                <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight" for="">{{ __('index.análisis energético y financiero') }} <br> {{ __('index.de sistemas HVAC') }}</label>
             </div>
          <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
             <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
@@ -60,7 +60,7 @@
                                 <div class="flex w-full">
                                     <label  class="labels_index font-roboto font-bold text-left" for=""><b>{{ __('index.nombre projecto') }}</b></label><label class="text-red-500">*</label>
                                 </div>
-                            <input onchange="check_input(this.value,this.id,'name_warning');check_inp_count('count_name_pro','name_pro');" name="name_pro" id="name_pro" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+                            <input onchange="check_input(this.value,this.id,'name_warning');check_inp_count('count_name_pro','name_pro');" name="name_pro" id="name_pro" type="text" style="font-size: 14px;" class="w-full border-2  border-color-inps rounded-md p-1 my-1 font-roboto" >
                             <input id="count_name_pro" name="count_name_pro" type="number" class="hidden" value="0">
                             <span id="name_warning" name="name_warning" class="text-red-500"></span>
                         </div>
@@ -83,7 +83,7 @@
                             <div class="flex w-full">
                                 <label  class="labels_index text-left font-roboto" for=""><b>{{ __('index.ciudad') }}</b></label><label class="text-red-500">*</label>
                             </div>
-                            <select onchange="check_input(this.value,this.id,'ciudad_warning');check_inp_count('count_ciudad','ciudades');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto"  name="ciudades" id="ciudades">
+                            <select onchange="check_input(this.value,this.id,'ciudad_warning');check_inp_count('count_ciudad','ciudades');" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto"  name="ciudades" id="ciudades">
                                 <option value="0">-{{ __('index.selecciona tu ciudad') }}-</option>
                             </select>
                             <input id="count_ciudad" name="count_ciudad" type="number" class="hidden" value="0" >
@@ -94,8 +94,8 @@
                             <div class="flex w-full">
                                 <label  class="labels_index text-left font-roboto font-bold text-left" for=""><b>{{ __('index.incremento anual energia') }}</b></label><label class="text-red-500 text-left"></label>
                             </div>
-{{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
---}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inc_ene" id="inc_ene">
+{{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-color-inps rounded-md p-1 my-1 font-roboto" >
+--}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="inc_ene" id="inc_ene">
                                     @for ($i = 0; $i <= 15; $i++)
                                     <option value="{{$i}}">{{$i}}%</option>
                                     @endfor
@@ -107,8 +107,8 @@
                             <div class="flex w-full">
                                 <label  class="labels_index font-roboto font-bold text-left" for=""><b>{{ __('index.inflacion anual') }}:</b></label><label class="text-red-500">*</label>
                             </div>
-{{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
---}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="inflation_rate" id="inflation_rate">
+{{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-color-inps rounded-md p-1 my-1 font-roboto" >
+--}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="inflation_rate" id="inflation_rate">
                                     @for ($i = 0; $i <= 15; $i++)
                                     <option value="{{$i}}">{{$i}}%</option>
                                     @endfor
@@ -116,14 +116,7 @@
                         <span id="inflation_rate_warning" name="inflation_rate_warning" class="text-red-500"></span>
                         </div>
 
-                        <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
-                            <div class="flex w-full">
-                                <label  class="labels_index font-roboto font-bold text-left" for=""><b>{{ __('index.n_empleados') }}:</b></label><label class="text-red-500"></label>
-                            </div>
-                        <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'n_empleados_warning');format_nums_no_$(this.value,this.id);" name="n_empleados" id="n_empleados" type="text" style="font-size: 14px;" class="w-1/2 border-2  border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
 
-                        <span id="n_empleados_warning" name="n_empleados_warning" class="text-red-500"></span>
-                        </div>
 
 
 
@@ -135,7 +128,7 @@
                         <div class="flex w-full">
                             <label  class="font-roboto labels_index  text-left" for=""><b>{{ __('index.categoria edificio') }}</b></label></label><label class="text-red-500">*</label>
                         </div>
-                        <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value,'{{App::getLocale()}}');check_input(this.value,this.id,'cat_ed_warning');check_inp_count('count_cat_ed','cat_ed');"  class="w-full font-roboto border-2 border-blue-600 rounded-md p-1 my-1">
+                        <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value,'{{App::getLocale()}}');check_input(this.value,this.id,'cat_ed_warning');check_inp_count('count_cat_ed','cat_ed');"  class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
                         <option value="0">-{{ __('index.seleccionar') }}-</option>
                         </select>
                         <input id="count_cat_ed" name="count_cat_ed" type="number" class="hidden" value="0">
@@ -147,7 +140,7 @@
                             <div class="flex w-full">
                                 <label  class="font-roboto labels_index" for=""><b>{{ __('index.tipo edificio') }}:</b></label><label class="text-red-500">*</label>
                             </div>
-                                <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');check_inp_count('count_tipo_edificio','tipo_edificio');" class="w-full border-2 border-blue-600  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio">
+                                <select onchange="check_input(this.value,this.id,'tipo_Edificio_warning');check_inp_count('count_tipo_edificio','tipo_edificio');" class="w-full border-2 border-color-inps  rounded-md p-1 my-1 font-roboto" name="tipo_edificio"  id="tipo_edificio">
                                     <option value="0">-{{ __('index.seleccionar') }}-</option>
                                 </select>
                                 <input id="count_tipo_edificio" name="count_tipo_edificio" type="number" class="hidden" value="0">
@@ -163,7 +156,7 @@
                                 <div class="flex w-full">
                                     <label  class="font-roboto labels_index" for=""><b>{{ __('index.area') }}:</b></label><label class="text-red-500">*</label>
                                 </div>
-                                <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);check_inp_count('count_ar_project','ar_project');"  name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" >
+                                <input onchange="check_input(this.value,this.id,'ar_project_warning');format_nums_no_$(this.value,this.id);check_inp_count('count_ar_project','ar_project');"  name="ar_project" id="ar_project"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" >
                                 <input id="count_ar_project" name="count_ar_project" type="number" class="hidden" value="0">
                                 <span id="ar_project_warning" name="ar_project_warning" class="text-red-500"></span>
                         </div>
@@ -188,10 +181,10 @@
 
                                 </div>
                             </div>
-                            <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-blue-600 rounded-xl"  name="unidad" id="unidad" value="0">
+                            <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-color-inps rounded-xl"  name="unidad" id="unidad" value="0">
                             <input id="count_unidad" name="count_unidad" type="number" class="hidden" value="0">
 
-                        {{-- <input type="text" style="font-size: 14px;" class="w-full border-2 border-blue-600 rounded-xl"  name="nombre_projecto" id="nombre_projecto"> --}}
+                        {{-- <input type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-xl"  name="nombre_projecto" id="nombre_projecto"> --}}
                         </div>
                     </div>
 
@@ -200,10 +193,10 @@
                             <div class="flex w-full justify-start">
                                 <label  class="font-roboto font-bold text-left labels_index" for=""><b>{{ __('index.ocupacion semanal') }}</b></label><label class="text-red-500">*</label>
                             </div>
-{{--                                                     <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');"  name="tiempo_porcent"  id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-blue-600 rounded-md p-1 my-1 font-roboto" >
+{{--                                                     <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');"  name="tiempo_porcent"  id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-color-inps rounded-md p-1 my-1 font-roboto" >
 --}}
 
-                                    <select onchange="check_input(this.value,this.id,'tiempo_porcent_warning');check_inp_count('count_tiempo_porcent','tiempo_porcent');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
+                                    <select onchange="check_input(this.value,this.id,'tiempo_porcent_warning');check_inp_count('count_tiempo_porcent','tiempo_porcent');" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
                                         <option value="">-{{ __('index.seleccionar horas') }}-</option>
                                         <option value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
                                         <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
@@ -220,10 +213,10 @@
                             <label  class="font-roboto text-left labels_index" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
                         </div>
                         <div class="flex w-full">
-                           {{--  <select onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
+                           {{--  <select onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
                                 <option value="0">-{{ __('index.selecciona porcentaje') }}-</option>
                             </select> --}}
-                            <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');change_to_porcent(this.value);" class="w-full border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac" id="porcent_hvac">
+                            <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');change_to_porcent(this.value);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac" id="porcent_hvac">
                             <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="0">
                             <div class="ml-2" style="margin-top: 5.5px;">
                                 <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -232,40 +225,55 @@
                         <span id="por_hvac_warning" name="por_hvac_warning" class="text-red-500"></span>
                     </div>
 
+
+
+
+                </div>
+
+
+            </div>
+            @include('modal_analisis_prod')
+            <div class="flex justify-center w-2/3 mt-8">
+                <label style="color:#1B17BB;margin-top:2px;" class="text-2xl font-roboto  font-bold" for="">Análisis de Productividad Laboral</label>
+                <div class="ml-2" style="">
+                    <a onclick="mostrar_modal('modal_analisis_prod');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                </div>
+            </div>
+            <div class="flex w-full gap-x-10 my-2 mx-1 justify-center">
+
+                <div class="grid justify-items-end h-full gap-y-3 w-1/2">
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                        <div class="flex w-full">
+                            <label  class="labels_index font-roboto font-bold text-left" for=""><b>{{ __('index.n_empleados') }}:</b></label><label class="text-red-500"></label>
+                        </div>
+                    <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'n_empleados_warning');format_nums_no_$(this.value,this.id);" name="n_empleados" id="n_empleados" type="text" style="font-size: 14px;" class="w-1/2 border-2  border-color-inps rounded-md p-1 my-1 font-roboto text-center" >
+
+                    <span id="n_empleados_warning" name="n_empleados_warning" class="text-red-500"></span>
+                    </div>
+
+
+                </div>
+
+                <div class="grid justify-items-start h-full gap-y-3 w-1/2">
                     <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                         <div class="flex w-full">
                             <label  class="font-roboto text-left labels_index" for=""><b>{{ __('index.sal_an_prom') }}:</b></label><label class="text-red-500"></label>
                         </div>
                         <div class="flex w-full">
 
-                            <input type="text" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);" class="w-1/2 border-2 border-blue-600 rounded-md p-1 my-1 font-roboto text-center" name="sal_an_prom" id="sal_an_prom">
+                            <input type="text" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="sal_an_prom" id="sal_an_prom">
                             <input id="count_sal_an_prom" name="count_sal_an_prom" type="number" class="hidden" value="0">
 
                         </div>
                         <span id="sal_an_prom_warning" name="sal_an_prom_warning" class="text-red-500"></span>
                     </div>
-
-                    <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start mt-5">
-                        <div id="div_next" name="div_next" class="w-1/2 text-right">
-                            <button type="button"  id="next" name="next"
-                                onclick="buton_check('{{App::getLocale()}}');"
-                                class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
-                            >{{ __('index.siguiente') }}</button>
-                        </div>
-                        <div id="div_next_h" name="div_next_h" class="w-1/2 text-right">
-                                <button  type="button"  id="next_h" name="next_h"
-                                    x-show="step < 2"
-                                    @click="step++"
-                                    class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
-                                >{{ __('index.siguiente') }}</button>
-
-
-                        </div>
-                    </div>
                 </div>
 
 
             </div>
+
+
         </div>
 
      {{-- <div class="bullets">
@@ -331,8 +339,8 @@
             <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
         </div>
 
-        <div class="flex hidden">
-            <input  class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <div class="flex ">
+            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
         </div>
         @endif
@@ -348,7 +356,7 @@
             <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
         </div>
 
-        <div class="flex hidden">
+        <div class="flex">
             <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
         </div>
@@ -365,7 +373,7 @@
             <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
         </div>
 
-        <div class="flex hidden">
+        <div class="flex ">
             <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
         </div>
@@ -382,7 +390,7 @@
             <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
         </div>
 
-        <div class="flex hidden">
+        <div class="flex ">
             <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
         </div>
@@ -399,8 +407,8 @@
             <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
         </div>
 
-        <div class="flex hidden">
-            <input  class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <div class="flex ">
+            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
         </div>
         @endif
@@ -416,7 +424,7 @@
             <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
         </div>
 
-        <div class="flex hidden">
+        <div class="flex ">
             <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
         </div>
@@ -433,8 +441,8 @@
             <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
         </div>
 
-        <div class="flex hidden">
-            <input  class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+        <div class="flex ">
+            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
         </div>
         @endif
@@ -452,11 +460,15 @@
             <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
         </div>
 
-        <div class="flex hidden">
+        <div class="flex ">
             <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
             <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
         </div>
         @endif
+        <div class="flex ">
+            <input disabled class="check_style" id="agua_fria" type="checkbox"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">Sistemas de Agua Fría</label>
+        </div>
         {{-- @if (Auth::user()->tipo_user === 5)
         <div class="flex">
             <input  class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -468,8 +480,36 @@
             <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
         </div>
         @endif --}}
-
-
         </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="w-full flex justify-center">
+            <div id="div_next" name="div_next" class="w-1/2 ">
+                <button type="button"  id="next" name="next"
+                    onclick="buton_check('{{App::getLocale()}}');"
+                    style="background-color:#1B17BB;"
+                    class="w-32 focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                >{{ __('index.siguiente') }}</button>
+            </div>
+            <div id="div_next_h" name="div_next_h" class="w-1/2">
+                    <button  type="button"  id="next_h" name="next_h"
+                        x-show="step < 2"
+                        @click="step++"
+                        style="background-color:#1B17BB;"
+                        class="w-32 focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                    >{{ __('index.siguiente') }}</button>
+            </div>
+        </div>
+
 </div>
 
