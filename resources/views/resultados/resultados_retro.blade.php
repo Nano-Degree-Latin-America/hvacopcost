@@ -1253,7 +1253,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
 </div> --}}
 
 {{-- espacio --}}
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:60px;" >
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:40px;" >
 
 </div>
 
