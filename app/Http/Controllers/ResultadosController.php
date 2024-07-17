@@ -5578,7 +5578,7 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
 
     $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a);
 
-    if($dif_2_cost == 0){
+    if($dif_2_cost == 0 || $inv_ini_3 == 0){
         $array_c = [0,0,0,0];
     }else{
         $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b);
@@ -5705,7 +5705,7 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
 
 
         $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini);
-        if($dif_cost_c == 0){
+        if($dif_cost_c == 0 || $inv_ini_c == 0){
             $array_c = [0,0,0,0];
         }else{
             $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c);
