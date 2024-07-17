@@ -529,6 +529,12 @@
           padding-right: 1.2rem;
         }
 
+        .img_payback{
+            height:45px;
+            width:40px;
+            margin-top:10px;
+         }
+
 }
 
 /* md	768px */
