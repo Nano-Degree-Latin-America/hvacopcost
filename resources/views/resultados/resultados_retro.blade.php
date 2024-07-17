@@ -929,7 +929,7 @@ cursor: pointer;
         <div class="flex w-full justify-center my-2">
             <div class="w-1/7 grid justify-items-center">
                 <div class="place-content-center">
-                    <img src="{{asset('assets/images/pesosjpg.jpg')}}" class="img_tr mx-2">
+                    <img src="{{asset('assets/images/pesosjpg.jpg')}}" class="img_tr mx-2 mt-5">
                 </div>
             </div>
 
