@@ -18,6 +18,8 @@
                 <p class="text-blue-800">Dar click en el siguiente icono</p>
                 <div class="mt-2 w-full flex gap-x-3 justify-center">
 
+
+
                 <div class="rounded-md shadow-md">
                     <img  class="rounded-md" style="width: 300px; height:200px;"  src="{{asset('assets\images\disp_click.png')}}">
                 </div>
