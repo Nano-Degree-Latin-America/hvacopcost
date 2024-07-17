@@ -804,7 +804,7 @@ cursor: pointer;
             <div class="flex w-full justify-center my-2">
                 <div class="w-auto grid justify-items-center">
                     <div class="place-content-center">
-                        <img src="{{asset('assets/images/cap_term.png')}}" class="img_tr mx-2 mt-8">
+                        <img src="{{asset('assets/images/cap_term.PNG')}}" class="img_tr mx-2 mt-8">
                     </div>
                 </div>
 
