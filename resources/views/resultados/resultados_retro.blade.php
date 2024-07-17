@@ -933,7 +933,7 @@ cursor: pointer;
                 </div>
             </div>
 
-                <div class="w-1/3 grid justify-items-start ">
+                <div class="w-1/3 grid justify-items-start  mt-8">
 
                     @if (strlen(number_format($sumaopex_1*$tar_ele->costo_elec)) > 9)
                     <p style="margin-left:13px;" class="cant_style_minim font-bold font-roboto">${{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
@@ -944,7 +944,7 @@ cursor: pointer;
                     @endif
                 </div>
 
-                <div class="w-1/3 grid justify-items-center">
+                <div class="w-1/3 grid justify-items-center mt-8">
 
                     @if (strlen(number_format($sumaopex_2*$tar_ele->costo_elec)) > 9)
                         <p  style="margin-right:100px;" class="cant_style_minim font-bold font-roboto">${{number_format($sumaopex_2*$tar_ele->costo_elec)}}</p>
@@ -955,7 +955,7 @@ cursor: pointer;
                     @endif
                 </div>
 
-                <div class="w-1/3 grid justify-items-center">
+                <div class="w-1/3 grid justify-items-center mt-8">
 
                     @if ($sumaopex_3  == 0)
                         <p style="margin-right:40px;" class="cant_style_minim font-bold font-roboto">$0</p>
