@@ -3911,7 +3911,26 @@ function trans_sols_valid_ab(idm,sol){
     }
 }
 
- function check_form_submit(p_type,idm){
+
+
+ function check_form_submit(p_type,idm,action,id_project,fecha_project){
+
+
+    if(action == 'update'){
+        const fechaUno = new Date(fecha_project); // Primera fecha
+        const fechaDos = new Date('2024-07-12 00:00:00'); //
+        const tiempoFechaUno = fechaUno.getTime();
+        const tiempoFechaDos = fechaDos.getTime();
+
+        if (tiempoFechaUno < tiempoFechaDos) {
+            var action_use = 1;
+        } else if (tiempoFechaUno > tiempoFechaDos) {
+            var action_use = 2;
+        }
+    }else{
+        var action_use = 2;
+    }
+
 
     if(p_type == 1){
 
@@ -4029,7 +4048,46 @@ function trans_sols_valid_ab(idm,sol){
         $('#dr_1_1_count').val(dr_1_1_count);
 
        }
+
+       if(action_use == 2  || action == 'store'){
+
+            /////////////////////////////////////
+            var ventilacion_1_1 =$('#ventilacion_1_1');
+            var ventilacion_1_1_count = $('#ventilacion_1_1_count').val();
+
+            if(ventilacion_1_1.val() == "" || ventilacion_1_1.val() == null){
+
+            ventilacion_1_1.css("border-color", "red")
+            ventilacion_1_1_count = 1;
+            $('#ventilacion_1_1_count').val(ventilacion_1_1_count);
+
+            }else if (ventilacion_1_1.val() != "" || ventilacion_1_1.val() != null) {
+
+            ventilacion_1_1_count = 0;
+            $('#ventilacion_1_1_count').val(ventilacion_1_1_count);
+
+            }
+            /////////////////////////////////////
+
+            var filtracion_1_1 =$('#filtracion_1_1');
+            var filtracion_1_1_count = $('#filtracion_1_1_count').val();
+
+            if(filtracion_1_1.val() == "" || filtracion_1_1.val() == null){
+
+            filtracion_1_1.css("border-color", "red")
+            filtracion_1_1_count = 1;
+            $('#filtracion_1_1_count').val(filtracion_1_1_count);
+
+            }else if (filtracion_1_1.val() != "" || filtracion_1_1.val() != null) {
+
+            filtracion_1_1_count = 0;
+            $('#filtracion_1_1_count').val(filtracion_1_1_count);
+
+            }
+       }
+
         /////////////////////////////////////
+
        var csMantenimiento =$('#csMantenimiento');
        var csMantenimiento_1_1_count = $('#csMantenimiento_1_1_count').val();
 
@@ -4097,7 +4155,7 @@ function trans_sols_valid_ab(idm,sol){
 
         }
 
-       var count_inps_1_1 = tipo_equipo_1_1_count + capacidad_total_1_1_count + costo_elec_1_1_count + dr_1_1_count + csStd_cant_1_1_count + tipo_control_1_count + csMantenimiento_1_1_count + csDisenio_1_1_count + hrsEnfriado_1_1_count + cheValorS_1_1_count;
+       var count_inps_1_1 = tipo_equipo_1_1_count + capacidad_total_1_1_count + costo_elec_1_1_count + dr_1_1_count + csStd_cant_1_1_count + tipo_control_1_count + csMantenimiento_1_1_count + csDisenio_1_1_count + hrsEnfriado_1_1_count + cheValorS_1_1_count  + ventilacion_1_1_count + filtracion_1_1_count;
 
        if(count_inps_1_1>0){
         trans_sols_valid(idm);
@@ -4198,6 +4256,42 @@ function trans_sols_valid_ab(idm,sol){
 
         }
 
+        if(action_use == 2 || action == 'store'){
+            /////////////////////////////////////
+            var ventilacion_1_2 =$('#ventilacion_1_2');
+            var ventilacion_1_2_count = $('#ventilacion_1_2_count').val();
+
+            if(ventilacion_1_2.val() == "" || ventilacion_1_2.val() == null){
+
+                ventilacion_1_2.css("border-color", "red")
+                ventilacion_1_2_count = 1;
+            $('#ventilacion_1_2_count').val(ventilacion_1_2_count);
+
+            }else if (ventilacion_1_2.val() != "" || ventilacion_1_2.val() != null) {
+
+                ventilacion_1_2_count = 0;
+            $('#ventilacion_1_2_count').val(ventilacion_1_2_count);
+
+            }
+            /////////////////////////////////////
+
+            var filtracion_1_2 =$('#filtracion_1_2');
+            var filtracion_1_2_count = $('#filtracion_1_2_count').val();
+
+            if(filtracion_1_2.val() == "" || filtracion_1_2.val() == null){
+
+            filtracion_1_2.css("border-color", "red")
+            filtracion_1_2_count = 1;
+            $('#filtracion_1_2_count').val(filtracion_1_2_count);
+
+            }else if (filtracion_1_2.val() != "" || filtracion_1_2.val() != null) {
+
+                filtracion_1_2_count = 0;
+            $('#filtracion_1_2_count').val(filtracion_1_2_count);
+
+            }
+       }
+
         var csMantenimiento_1_2 =$('#csMantenimiento_1_2');
         var csMantenimiento_1_2_count = $('#csMantenimiento_1_2_count').val();
 
@@ -4269,7 +4363,7 @@ function trans_sols_valid_ab(idm,sol){
             capacidad_tota_1_2_count + costo_elec_1_2_count
             + dr_1_2_count + csStd_1_2_count +
             tipo_control_1_2_count + csMantenimiento_1_2_count +
-            csDisenio_1_2_count + hrsEnfriado_1_2_count + cheValorS_1_2_count;
+            csDisenio_1_2_count + hrsEnfriado_1_2_count + cheValorS_1_2_count+ ventilacion_1_2_count + filtracion_1_2_count;
             if(count_inps_1_2>0){
                 trans_sols_valid(idm);
                         return false;
@@ -4541,6 +4635,42 @@ function trans_sols_valid_ab(idm,sol){
                     $('#dr_2_1_count').val(dr_2_1_count);
 
                 }
+
+                if(action_use == 2 || action == 'store'){
+                    /////////////////////////////////////
+                    var ventilacion_2_1 =$('#ventilacion_2_1');
+                    var ventilacion_2_1_count = $('#ventilacion_2_1_count').val();
+
+                    if(ventilacion_2_1.val() == "" || ventilacion_2_1.val() == null){
+
+                        ventilacion_2_1.css("border-color", "red")
+                        ventilacion_2_1_count = 1;
+                    $('#ventilacion_2_1_count').val(ventilacion_2_1_count);
+
+                    }else if (ventilacion_2_1.val() != "" || ventilacion_2_1.val() != null) {
+
+                        ventilacion_2_1_count = 0;
+                    $('#ventilacion_2_1_count').val(ventilacion_2_1_count);
+
+                    }
+                    /////////////////////////////////////
+
+                    var filtracion_2_1 =$('#filtracion_2_1');
+                    var filtracion_2_1_count = $('#filtracion_2_1_count').val();
+
+                    if(filtracion_2_1.val() == "" || filtracion_2_1.val() == null){
+
+                    filtracion_2_1.css("border-color", "red")
+                    filtracion_2_1_count = 1;
+                    $('#filtracion_2_1_count').val(filtracion_2_1_count);
+
+                    }else if (filtracion_2_1.val() != "" || filtracion_2_1.val() != null) {
+
+                        filtracion_2_1_count = 0;
+                    $('#filtracion_2_1_count').val(filtracion_2_1_count);
+
+                    }
+               }
                     /////////////////////////////////////
                 var csMantenimiento_2_1 =$('#csMantenimiento_2_1');
                 var csMantenimiento_2_1_count = $('#csMantenimiento_2_1_count').val();
@@ -4609,7 +4739,8 @@ function trans_sols_valid_ab(idm,sol){
 
                     }
 
-                var count_inps_2_1 = cheTipo_2_1_count + capacidad_total_2_1_count + costo_elec_2_1_count + dr_2_1_count + csStd_cant_2_1_count + tipo_control_2_1_count + csMantenimiento_2_1_count + cheDisenio_2_1_count + hrsEnfriado_2_1_count + cheValorS_2_1_count;
+                var count_inps_2_1 = cheTipo_2_1_count + capacidad_total_2_1_count + costo_elec_2_1_count + dr_2_1_count + csStd_cant_2_1_count + tipo_control_2_1_count + csMantenimiento_2_1_count + cheDisenio_2_1_count +
+                hrsEnfriado_2_1_count + cheValorS_2_1_count + ventilacion_2_1_count + filtracion_2_1_count;
               /*       alert(count_inps_2_1); */
                 if(count_inps_2_1>0){
                     trans_sols_valid_ab(idm,'A')
@@ -4721,6 +4852,42 @@ function trans_sols_valid_ab(idm,sol){
                     $('#dr_2_2_count').val(dr_2_2_count);
 
                 }
+
+                if(action_use == 2  || action == 'store'){
+                    /////////////////////////////////////
+                    var ventilacion_2_2 =$('#ventilacion_2_2');
+                    var ventilacion_2_2_count = $('#ventilacion_2_2_count').val();
+
+                    if(ventilacion_2_2.val() == "" || ventilacion_2_2.val() == null){
+
+                        ventilacion_2_2.css("border-color", "red")
+                        ventilacion_2_2_count = 1;
+                    $('#ventilacion_2_2_count').val(ventilacion_2_2_count);
+
+                    }else if (ventilacion_2_2.val() != "" || ventilacion_2_2.val() != null) {
+
+                        ventilacion_2_2_count = 0;
+                    $('#ventilacion_2_2_count').val(ventilacion_2_2_count);
+
+                    }
+                    /////////////////////////////////////
+
+                    var filtracion_2_2 =$('#filtracion_2_2');
+                    var filtracion_2_2_count = $('#filtracion_2_2_count').val();
+
+                    if(filtracion_2_2.val() == "" || filtracion_2_2.val() == null){
+
+                    filtracion_2_2.css("border-color", "red")
+                    filtracion_2_2_count = 1;
+                    $('#filtracion_2_2_count').val(filtracion_2_2_count);
+
+                    }else if (filtracion_2_2.val() != "" || filtracion_2_2.val() != null) {
+
+                        filtracion_2_2_count = 0;
+                    $('#filtracion_2_2_count').val(filtracion_2_2_count);
+
+                    }
+               }
                     /////////////////////////////////////
                 var cheMantenimiento_2_2 =$('#cheMantenimiento_2_2');
                 var cheMantenimiento_2_2_count = $('#cheMantenimiento_2_2_count').val();
@@ -4795,7 +4962,7 @@ function trans_sols_valid_ab(idm,sol){
                 + costo_elec_2_2_count
                 + dr_2_2_count + csStd_cant_2_2_count
                  + tipo_control_2_2_count + cheMantenimiento_2_2_count
-                 + cheDisenio_2_2_count + hrsEnfriado_2_2_count + cheValorS_2_2_count;
+                 + cheDisenio_2_2_count + hrsEnfriado_2_2_count + cheValorS_2_2_count+ventilacion_2_2_count+filtracion_2_2_count;
 
                 if(count_inps_2_2>0){
                     trans_sols_valid_ab(idm,'A')
@@ -5071,6 +5238,42 @@ function trans_sols_valid_ab(idm,sol){
                     $('#dr_3_1_count').val(dr_3_1_count);
 
                 }
+
+                if(action_use == 2 || action == 'store'){
+                    /////////////////////////////////////
+                    var ventilacion_3_1 =$('#ventilacion_3_1');
+                    var ventilacion_3_1_count = $('#ventilacion_2_2_count').val();
+
+                    if(ventilacion_3_1.val() == "" || ventilacion_3_1.val() == null){
+
+                        ventilacion_3_1.css("border-color", "red")
+                        ventilacion_3_1_count = 1;
+                    $('#ventilacion_3_1_count').val(ventilacion_3_1_count);
+
+                    }else if (ventilacion_3_1.val() != "" || ventilacion_3_1.val() != null) {
+
+                        ventilacion_3_1_count = 0;
+                    $('#ventilacion_3_1_count').val(ventilacion_3_1_count);
+
+                    }
+                    /////////////////////////////////////
+
+                    var filtracion_3_1 =$('#filtracion_3_1');
+                    var filtracion_3_1_count = $('#filtracion_3_1_count').val();
+
+                    if(filtracion_3_1.val() == "" || filtracion_3_1.val() == null){
+
+                    filtracion_3_1.css("border-color", "red")
+                    filtracion_3_1_count = 1;
+                    $('#filtracion_3_1_count').val(filtracion_3_1_count);
+
+                    }else if (filtracion_3_1.val() != "" || filtracion_3_1.val() != null) {
+
+                        filtracion_3_1_count = 0;
+                    $('#filtracion_3_1_count').val(filtracion_3_1_count);
+
+                    }
+               }
                     /////////////////////////////////////
                 var cheMantenimiento_3_1 =$('#cheMantenimiento_3_1');
                 var cheMantenimiento_3_1_count = $('#cheMantenimiento_3_1_count').val();
@@ -5140,7 +5343,7 @@ function trans_sols_valid_ab(idm,sol){
 
                     }
 
-                var count_inps_3_1 = cheTipo_3_1_count + capacidad_total_3_1_count + costo_elec_3_1_count + dr_3_1_count + cheStd_3_1_count + tipo_control_3_1_count + cheMantenimiento_3_1_count + cheDisenio_3_1_count + hrsEnfriado_3_1_count + cheValorS_3_1_count;
+                var count_inps_3_1 = cheTipo_3_1_count + capacidad_total_3_1_count + costo_elec_3_1_count + dr_3_1_count + cheStd_3_1_count + tipo_control_3_1_count + cheMantenimiento_3_1_count + cheDisenio_3_1_count + hrsEnfriado_3_1_count + cheValorS_3_1_count+ventilacion_3_1_count+filtracion_3_1_count;
               /*       alert(count_inps_2_1); */
                 if(count_inps_3_1>0){
                     trans_sols_valid_ab(idm,'B');
@@ -5250,6 +5453,41 @@ function trans_sols_valid_ab(idm,sol){
                     $('#dr_3_2_count').val(dr_3_2_count);
 
                 }
+                if(action_use == 2  || action == 'store'){
+                    /////////////////////////////////////
+                    var ventilacion_3_2 =$('#ventilacion_3_2');
+                    var ventilacion_3_2_count = $('#ventilacion_3_2_count').val();
+
+                    if(ventilacion_3_2.val() == "" || ventilacion_3_2.val() == null){
+
+                        ventilacion_3_2.css("border-color", "red")
+                        ventilacion_3_2_count = 1;
+                    $('#ventilacion_3_2_count').val(ventilacion_3_2_count);
+
+                    }else if (ventilacion_3_2.val() != "" || ventilacion_3_2.val() != null) {
+
+                        ventilacion_3_2_count = 0;
+                    $('#ventilacion_3_2_count').val(ventilacion_3_2_count);
+
+                    }
+                    /////////////////////////////////////
+
+                    var filtracion_3_2 =$('#filtracion_3_2');
+                    var filtracion_3_2_count = $('#filtracion_3_2_count').val();
+
+                    if(filtracion_3_2.val() == "" || filtracion_3_2.val() == null){
+
+                    filtracion_3_2.css("border-color", "red")
+                    filtracion_3_2_count = 1;
+                    $('#filtracion_3_2_count').val(filtracion_3_2_count);
+
+                    }else if (filtracion_3_2.val() != "" || filtracion_3_2.val() != null) {
+
+                        filtracion_3_2_count = 0;
+                    $('#filtracion_3_2_count').val(filtracion_3_2_count);
+
+                    }
+               }
                     /////////////////////////////////////
                 var cheMantenimiento_3_2 =$('#cheMantenimiento_3_2');
                 var cheMantenimiento_3_2_count = $('#cheMantenimiento_3_2_count').val();
@@ -5506,7 +5744,7 @@ function trans_sols_valid_ab(idm,sol){
      }
 
      if(p_type == 2){
-        check_form_retro(idm);
+        check_form_retro(idm,fecha_project,action);
      }
     }
 
@@ -6070,11 +6308,40 @@ function trans_sols_valid_ab(idm,sol){
          }
 
          if(p_type == 2){
-            check_form_retro(idm);
+            check_form_retro(idm,fecha_project,action);
          }
         }
 
-function check_form_retro(idm){
+        function check_fecha_proj(id_project){
+            $.ajax({
+                type: 'get',
+                url: '/check_date_2_0/'+id_project,
+                success: function (response) {
+
+                  return response;
+                },
+
+            });
+          }
+
+function check_form_retro(idm,fecha_project,action){
+
+ if(action == 'update'){
+    const fechaUno = new Date(fecha_project); // Primera fecha
+    const fechaDos = new Date('2024-07-12 00:00:00'); //
+    const tiempoFechaUno = fechaUno.getTime();
+    const tiempoFechaDos = fechaDos.getTime();
+
+    if (tiempoFechaUno < tiempoFechaDos) {
+        var action_use = 1;
+    } else if (tiempoFechaUno > tiempoFechaDos) {
+        var action_use = 2;
+    }
+}else{
+    var action_use = 2;
+}
+
+
     var sol_1_1_retro = $('#cUnidad_1_1_retro');
     var sol_1_2_retro = $('#cUnidad_1_2');
     //var sol_1_3 = $('#cUnidad_1_3');
@@ -6272,6 +6539,43 @@ function check_form_retro(idm){
                     $('#dr_1_1_retro_count').val(dr_1_1_retro_count);
 
                 }
+
+                if(action_use == 2  || action == 'store'){
+
+                    /////////////////////////////////////
+                    var ventilacion_1_1_retro =$('#ventilacion_1_1_retro');
+                    var ventilacion_1_1_retro_count = $('#ventilacion_1_1_retro_count').val();
+
+                    if(ventilacion_1_1_retro.val() == "" || ventilacion_1_1_retro.val() == null){
+
+                        ventilacion_1_1_retro.css("border-color", "red")
+                        ventilacion_1_1_retro_count = 1;
+                    $('#ventilacion_1_1_retro_count').val(ventilacion_1_1_retro_count);
+
+                    }else if (ventilacion_1_1_retro.val() != "" || ventilacion_1_1_retro.val() != null) {
+
+                        ventilacion_1_1_retro_count = 0;
+                    $('#ventilacion_1_1_retro_count').val(ventilacion_1_1_retro_count);
+
+                    }
+                    /////////////////////////////////////
+
+                    var filtracion_1_1_retro =$('#filtracion_1_1_retro');
+                    var filtracion_1_1_retro_count = $('#filtracion_1_1_retro_count').val();
+
+                    if(filtracion_1_1_retro.val() == "" || filtracion_1_1_retro.val() == null){
+
+                    filtracion_1_1_retro.css("border-color", "red")
+                    filtracion_1_1_retro_count = 1;
+                    $('#filtracion_1_1_retro_count').val(filtracion_1_1_retro_count);
+
+                    }else if (filtracion_1_1_retro.val() != "" || filtracion_1_1_retro.val() != null) {
+
+                        filtracion_1_1_retro_count = 0;
+                    $('#filtracion_1_1_retro_count').val(filtracion_1_1_retro_count);
+
+                    }
+               }
                     /////////////////////////////////////
                 var csMantenimiento_1_1_retro =$('#csMantenimiento_1_1_retro');
                 var csMantenimiento_1_1_retro_count = $('#csMantenimiento_1_1_retro_count').val();
@@ -6344,7 +6648,7 @@ function check_form_retro(idm){
 
                     }
 
-                var count_inps_1_1 = tipo_equipo_1_1_count + marca_1_1_retro_count + modelo_1_1_retro_count + yrs_vida_1_1_retro_count + csStd_retro_1_1_count + capacidad_total_1_1_retro_count + csDisenio_1_1_retro_count + costo_elec_1_1_retro_count + hrsEnfriado_1_1_retro_count + tipo_control_1_1_retro_count + dr_1_1_retro_count + csMantenimiento_1_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_1_1_retro_count + const_an_rep_1_1_count ;
+                var count_inps_1_1 = tipo_equipo_1_1_count + marca_1_1_retro_count + modelo_1_1_retro_count + yrs_vida_1_1_retro_count + csStd_retro_1_1_count + capacidad_total_1_1_retro_count + csDisenio_1_1_retro_count + costo_elec_1_1_retro_count + hrsEnfriado_1_1_retro_count + tipo_control_1_1_retro_count + dr_1_1_retro_count + csMantenimiento_1_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_1_1_retro_count + const_an_rep_1_1_count +ventilacion_1_1_retro_count+filtracion_1_1_retro_count;
 
                 if(count_inps_1_1>0){
                     trans_sols_valid(idm);
@@ -6537,6 +6841,42 @@ function check_form_retro(idm){
                     $('#dr_2_1_retro_count').val(dr_2_1_retro_count);
 
                 }
+
+                if(action_use == 2 || action == 'store'){
+                    /////////////////////////////////////
+                    var ventilacion_2_1_retro =$('#ventilacion_2_1_retro');
+                    var ventilacion_2_1_retro_count = $('#ventilacion_2_1_retro_count').val();
+
+                    if(ventilacion_2_1_retro.val() == "" || ventilacion_2_1_retro.val() == null){
+
+                        ventilacion_2_1_retro.css("border-color", "red")
+                        ventilacion_2_1_retro_count = 1;
+                    $('#ventilacion_2_1_retro_count').val(ventilacion_2_1_retro_count);
+
+                    }else if (ventilacion_2_1_retro.val() != "" || ventilacion_2_1_retro.val() != null) {
+
+                        ventilacion_2_1_retro_count = 0;
+                    $('#ventilacion_2_1_retro_count').val(ventilacion_2_1_retro_count);
+
+                    }
+                    /////////////////////////////////////
+
+                    var filtracion_2_1_retro =$('#filtracion_2_1_retro');
+                    var filtracion_2_1_retro_count = $('#filtracion_2_1_retro_count').val();
+
+                    if(filtracion_2_1_retro.val() == "" || filtracion_2_1_retro.val() == null){
+
+                    filtracion_2_1_retro.css("border-color", "red")
+                    filtracion_2_1_retro_count = 1;
+                    $('#filtracion_2_1_retro_count').val(filtracion_2_1_retro_count);
+
+                    }else if (filtracion_2_1_retro.val() != "" || filtracion_2_1_retro.val() != null) {
+
+                        filtracion_2_1_retro_count = 0;
+                    $('#filtracion_2_1_retro_count').val(filtracion_2_1_retro_count);
+
+                    }
+               }
                     /////////////////////////////////////
                 var csMantenimiento_2_1_retro =$('#csMantenimiento_2_1_retro');
                 var csMantenimiento_2_1_retro_count = $('#csMantenimiento_2_1_retro_count').val();
@@ -6608,7 +6948,7 @@ function check_form_retro(idm){
 
                     } */
 
-                var count_inps_2_1 = cheTipo_2_1_count_retro + marca_2_1_retro_count + modelo_2_1_retro_count + yrs_vida_2_1_retro_count + csStd_2_1_retro_count + capacidad_total_2_1_retro_count + cheDisenio_2_1_retro_count + costo_elec_2_1_retro_count + hrsEnfriado_2_1_retro_count + tipo_control_2_1_retro_count + dr_2_1_retro_count + csMantenimiento_2_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_2_1_retro_count ;
+                var count_inps_2_1 = cheTipo_2_1_count_retro + marca_2_1_retro_count + modelo_2_1_retro_count + yrs_vida_2_1_retro_count + csStd_2_1_retro_count + capacidad_total_2_1_retro_count + cheDisenio_2_1_retro_count + costo_elec_2_1_retro_count + hrsEnfriado_2_1_retro_count + tipo_control_2_1_retro_count + dr_2_1_retro_count + csMantenimiento_2_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_2_1_retro_count +ventilacion_2_1_retro_count+filtracion_2_1_retro_count;
 
                 if(count_inps_2_1>0){
                     trans_sols_valid_ab(idm,'A')
@@ -6803,6 +7143,42 @@ function check_form_retro(idm){
                     $('#dr_3_1_retro_count').val(dr_3_1_retro_count);
 
                 }
+
+                if(action_use == 2 || action == 'store'){
+                    /////////////////////////////////////
+                    var ventilacion_3_1_retro =$('#ventilacion_3_1_retro');
+                    var ventilacion_3_1_retro_count = $('#ventilacion_3_1_retro_count').val();
+
+                    if(ventilacion_3_1_retro.val() == "" || ventilacion_3_1_retro.val() == null){
+
+                        ventilacion_3_1_retro.css("border-color", "red")
+                        ventilacion_3_1_retro_count = 1;
+                    $('#ventilacion_3_1_retro_count').val(ventilacion_3_1_retro_count);
+
+                    }else if (ventilacion_3_1_retro.val() != "" || ventilacion_3_1_retro.val() != null) {
+
+                        ventilacion_3_1_retro_count = 0;
+                    $('#ventilacion_3_1_retro_count').val(ventilacion_3_1_retro_count);
+
+                    }
+                    /////////////////////////////////////
+
+                    var filtracion_3_1_retro =$('#filtracion_3_1_retro');
+                    var filtracion_3_1_retro_count = $('#filtracion_3_1_retro_count').val();
+
+                    if(filtracion_3_1_retro.val() == "" || filtracion_3_1_retro.val() == null){
+
+                    filtracion_3_1_retro_count.css("border-color", "red")
+                    filtracion_3_1_retro_count = 1;
+                    $('#filtracion_3_1_retro_count').val(filtracion_3_1_retro_count);
+
+                    }else if (filtracion_3_1_retro.val() != "" || filtracion_3_1_retro.val() != null) {
+
+                        filtracion_3_1_retro_count = 0;
+                    $('#filtracion_3_1_retro_count').val(filtracion_3_1_retro_count);
+
+                    }
+               }
                     /////////////////////////////////////
                 var cheMantenimiento_3_1_retro =$('#cheMantenimiento_3_1_retro');
                 var cheMantenimiento_3_1_retro_count = $('#cheMantenimiento_3_1_retro_count').val();
@@ -6874,7 +7250,7 @@ function check_form_retro(idm){
 
                     } */
 
-                var count_inps_3_1 = cheTipo_3_1_retro_count + marca_3_1_retro_count + modelo_3_1_retro_count + yrs_vida_3_1_retro_count + cheStd_3_1_retro_count + capacidad_total_3_1_retro_count + cheDisenio_3_1_retro_count + costo_elec_3_1_retro_count + hrsEnfriado_3_1_retro_count + tipo_control_3_1_retro_count + dr_3_1_retro_count + cheMantenimiento_3_1_retro_count + costo_recu_3_1_retro_count + maintenance_cost_3_1_retro_count;
+                var count_inps_3_1 = cheTipo_3_1_retro_count + marca_3_1_retro_count + modelo_3_1_retro_count + yrs_vida_3_1_retro_count + cheStd_3_1_retro_count + capacidad_total_3_1_retro_count + cheDisenio_3_1_retro_count + costo_elec_3_1_retro_count + hrsEnfriado_3_1_retro_count + tipo_control_3_1_retro_count + dr_3_1_retro_count + cheMantenimiento_3_1_retro_count + costo_recu_3_1_retro_count + maintenance_cost_3_1_retro_count+ventilacion_3_1_retro_count+filtracion_3_1_retro_count;
 
                 if(count_inps_3_1>0){
                     trans_sols_valid_ab(idm,'B')
@@ -6893,7 +7269,7 @@ function check_form_retro(idm){
 function valida_selects_inps(id_input){
    input_select = $('#'+id_input);
    if (input_select.val() != 0 || input_select.val() != null){
-    input_select.css('border-color','#3182ce');
+    input_select.css('border-color','#1B17BB');
    }else if (input_select.val() == 0 || input_select.val() == null){
     input_select.css("border-color", "red");
    }

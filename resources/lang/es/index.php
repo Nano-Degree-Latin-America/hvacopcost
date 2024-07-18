@@ -36,7 +36,7 @@ return [
     'logout' => 'Cerrar Sesión',
     'mis proyectos' => 'Mis Proyectos',
     'nuevo projecto' => 'Nuevo Proyecto',
-    'type_man' => 'Cálculo Carga Térmica',
+    'type_man' => 'Sistemas de Agua Fría',
     'idioma' => 'Idioma',
     'logout' => 'Cerrar Sesión',
     'mis proyectos' => 'Mis Proyectos',

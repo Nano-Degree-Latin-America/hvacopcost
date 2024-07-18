@@ -69,6 +69,8 @@ Route::post('/getPaises','IndexController@getPaises');
 Route::post('/getCiudades','IndexController@getCiudades');
 Route::post('/getDegreeHrs','IndexController@getdegreeHrs');
 Route::get('/getDegreeHrsadd/{id}','IndexController@getDegreeHrsadd');
+
+Route::get('check_date_2_0/{id_project}','IndexController@check_date_2_0');
 // rutas resultados
 Route::post('/resultados','ResultadosController@getResultados')->name('resultados');
 

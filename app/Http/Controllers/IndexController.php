@@ -185,5 +185,25 @@ class IndexController extends Controller
         }
     }
 
+    public function check_date_2_0($id){
+
+        $fecha_update_2_0 = strtotime('2024-07-12 00:00:00');
+
+        $date_project = DB::table('projects')
+       ->where('id','=',$id)
+       ->first();
+
+       $fecha_project = strtotime($date_project->created_at);
+
+       if ($fecha_project < $fecha_update_2_0) {
+
+            return response()->json($fecha_update_2_0);
+        } else {
+            return response()->json($fecha_project);
+        }
+    }
+
+
+
 
 }
