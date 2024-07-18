@@ -1872,7 +1872,7 @@ cursor: pointer;
                 <p class="titulos_style ml-8">Análisis Financiero - Retornos de Inversión (años)</p>
             </div>
             <div id="button_marrr" name="button_marrr" class="flex justify-end mt-2">
-                <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr_retro');" class="btn_roundf_retro mr-5" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr');" class="btn_roundf_retro mr-5" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
             </div>
         </div>
 
@@ -9729,6 +9729,7 @@ return message;
 }
 
 function mostrar_modal(id){
+
     $("#"+id).removeClass("hidden");
 }
 

@@ -177,12 +177,12 @@
         }
 
         .ancho_rang{
-            width:1.25rem;
+            width:1.3rem;
             height:3rem;
         }
 
         .puntero_medidas{
-            width: 85px; height:65px;
+              width: 85px; height:65px;
             margin-top:5px;
         }
 
@@ -238,8 +238,8 @@
 
 
          .img_prod_lab{
-            height:110px;
-            width:100px;
+            height:115px;
+            width:95px;
          }
 
          .img_ahorro{
@@ -768,7 +768,7 @@ cursor: pointer;
             <div class="flex w-full justify-center my-2">
                 <div class="w-1/7 grid justify-items-center">
                     <div class="place-content-center">
-                        <img src="{{asset('assets/images/cap_term.PNG')}}" class="img_tr mx-2 mt-10">
+                        <img src="{{asset('assets/images/cap_term.PNG')}}" style="margin-top:2rem;" class="img_tr mx-2 ">
                     </div>
                 </div>
 
@@ -1461,7 +1461,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
       <div class="w-full grid">
         <div style="background-color:#1B17BB;" class="w-full flex justify-center">
             <div class="flex w-full justify-center mt-1">
-                <p class="titulos_style">Perdida de Productividad Laboral - Anual</p>
+                <p class="titulos_style">Perdida de Productividad Laboral</p>
             </div>
 
               <div id="button_prod" name="button_prod" class="flex justify-end mt-2">
@@ -1516,15 +1516,15 @@ $val_a_red_ene = $b_red_an - $a_red_an;
 
       <div class="w-full grid">
         <div style="background-color:#ffff;" class="w-full flex justify-center">
-            <div class="flex w-full justify-center mt-1">
-                <p style="color:#1B17BB;" class="titulos_style">Costos por Pérdida de Productividad Laboral</p>
+            <div style="margin-top:1rem;" class="flex w-full justify-center">
+                <p style="color:#1B17BB;" class="titulos_style">Personal Exedente y Costos Anuales</p>
             </div>
           </div>
 
-          <div class="flex w-full justify-center my-3">
+          <div class="flex w-full justify-center">
             <div class="w-1/8 flex grid justify-items-center">
                 <div>
-                    <img src="{{asset('assets/images/pesos_personas.jpg')}}" class="img_prod_lab mx-2 mt-10">
+                    <img src="{{asset('assets/images/pesos_personas.jpg')}}" class="img_prod_lab mx-2 mt-8 ml-5">
                 </div>
 
                {{--  <div>
@@ -1766,7 +1766,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
             </div>
         </div>
 
-              <div class="w-full grid">
+              <div class="w-full grid mt-4">
                 <div class="w-full flex justify-center ">
                         <p class="solucions_style_name  ">Recuperación - Solo Energía</p>
                 </div>
@@ -1778,7 +1778,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
 
                             <div  class="flex justify-start w-full  my-1 gap-x-3">
                                 <div class="">
-                                    <img  style="" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
+                                    <img  style="margin-left: 1.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
 
                                 <div class="place-items-center">
@@ -1791,7 +1791,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                         <div class="flex w-full justify-start gap-x-3 mb-3">
 
                             <div  class="flex justify-start w-2/5  my-1">
-                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-8 mt-2">Existente</b>
+                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-10 mt-2">Existente</b>
                             </div>
 
                             <div  class="flex justify-start w-1/3  my-1 place-items-center">
@@ -1817,7 +1817,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                         <div class="flex w-full justify-start gap-x-3 mb-3">
 
                             <div  class="flex justify-start  w-2/5  my-1 place-items-center">
-                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-8">Inversión A</b>
+                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-10">Inversión A</b>
                             </div>
 
                             <div  class="flex justify-start w-1/3  my-1 place-items-center">
@@ -1861,7 +1861,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                         <div class="flex w-full justify-start gap-x-3 mb-3">
 
                             <div  class="flex justify-start  w-2/5 place-items-center my-1">
-                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-8">Inversión B</b>
+                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-10">Inversión B</b>
                             </div>
 
                             <div  class="flex justify-start w-1/3  my-1 place-items-center">
@@ -1911,7 +1911,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                 </div>
 
 
-                <div class="w-full flex justify-center">
+                <div class="w-full flex justify-center  mt-10">
                     <p class="solucions_style_name  ">Recuperación - Energía + Productividad</p>
                 </div>
                 <div class="w-full flex">
@@ -1921,7 +1921,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
 
                             <div  class="flex justify-start w-full  my-1 gap-x-3">
                                 <div class="">
-                                    <img style="" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
+                                    <img style="margin-left: 1.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
 
                                 <div class="place-items-center">
@@ -2175,7 +2175,7 @@ $costo_b
 </div> --}}
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_4" name="next_page_4" style="width: 80%; height:320px;" class="hidden">
+<div id="next_page_4" name="next_page_4" style="width: 80%; height:280px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
