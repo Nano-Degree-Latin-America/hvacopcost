@@ -1330,8 +1330,8 @@ $idm = App::getLocale();
                 </div>
                 <div  x-show="step === 2" class="w-1/2 flex" style=" justify-content: center;">
 
-                <button style="background-color:#1B17BB;" x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}','udpate',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
-                <button style="background-color:#1B17BB;" x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}','udpate',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
+                <button style="background-color:#1B17BB;" x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
+                <button style="background-color:#1B17BB;" x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
 
             </div>
             </div>

@@ -3927,6 +3927,7 @@ function trans_sols_valid_ab(idm,sol){
         } else if (tiempoFechaUno > tiempoFechaDos) {
             var action_use = 2;
         }
+
     }else{
         var action_use = 2;
     }
