@@ -3931,7 +3931,7 @@ function trans_sols_valid_ab(idm,sol){
     }else{
         var action_use = 2;
     }
-
+ 
 
     if(p_type == 1){
 

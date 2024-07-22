@@ -1514,8 +1514,8 @@ $val_a_red_ene = $b_red_an - $a_red_an;
 
       </div>
 
-      <div class="w-full grid">
-        <div style="background-color:#ffff;" class="w-full flex justify-center">
+      <div class="w-full grid mb-1">
+        <div style="background-color:#ffff;" class="w-full flex justify-center ">
             <div style="margin-top:1rem;" class="flex w-full justify-center">
                 <p style="color:#1B17BB;" class="titulos_style">Personal Exedente y Costos Anuales</p>
             </div>

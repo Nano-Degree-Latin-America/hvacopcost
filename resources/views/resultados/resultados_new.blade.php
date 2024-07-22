@@ -1159,7 +1159,6 @@ cursor: pointer;
                                 <p style="margin-right:30px;" class="cant_2_v  font-bold font-roboto">${{number_format($val_b_red_ene)}}</p>
                                 @endif
 
-
                                 @if (strlen(number_format($val_b_red_ene)) <= 9 && strlen(number_format($val_b_red_ene)) > 6)
                                 <p style="" class="cant_2_v  font-bold font-roboto">${{number_format($val_b_red_ene)}}</p>
                                 @endif
@@ -1608,7 +1607,7 @@ cursor: pointer;
       </div>
 
 
-      <div class="w-full grid">
+      <div class="w-full grid mb-1">
         <div style="background-color:#fff;" class="w-full flex justify-center">
             <div style="margin-top:1rem;" class="flex w-full justify-center">
                 <p class="titulos_style" style="color:#1B17BB;">Personal Exedente y Costos Anuales</p>
