@@ -2077,12 +2077,12 @@ public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_
     }
  }
 
- public function cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller){
+ public function cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller,$factor_v,$factor_f){
     $int_check_chiller = intval($check_chiller);
 
     if($int_check_chiller <= 7){
         $funciones = new funciones();
-        return $funciones->form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+        return $funciones->form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f);
     }
 
     if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
