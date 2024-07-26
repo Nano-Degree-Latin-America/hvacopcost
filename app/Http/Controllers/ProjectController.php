@@ -1508,7 +1508,7 @@ class ProjectController extends Controller
                  $solution_enf3_1->cost_op_an = $res_res_fact_m; */
              }else if($solution_enf3_1->unid_med == 'KW'){
                 $kw =  $solution_enf3_1->capacidad_tot;
-                $res_3_1 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux);
+                $res_3_1 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
                 $solution_enf3_1->cost_op_an =floatval(number_format($res_3_1,2, '.', ''));
              }
              //confort
@@ -3196,13 +3196,13 @@ class ProjectController extends Controller
     }
 
 
-    public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller){
+    public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller,$factor_v,$factor_f){
         $int_check_chiller = intval($check_chiller);
 
         if($int_check_chiller <= 7){
 /*         return ProjectController::form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
  */        $funciones = new funciones();
-            return $funciones->form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+            return $funciones->form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f);
         }
 
         if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
@@ -3294,13 +3294,13 @@ class ProjectController extends Controller
        return $res_res_fact_m;
     }
 
-     public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller){
+     public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller,$factor_v,$factor_f){
         $int_check_chiller = intval($check_chiller);
 
         if($int_check_chiller <= 7){
 /*            return ProjectController::cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
  */           $funciones = new funciones();
-              return $funciones->cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+              return $funciones->cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f);
         }
 
         if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
@@ -3309,12 +3309,12 @@ class ProjectController extends Controller
         }
      }
 
-     public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller){
+     public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller,$factor_v,$factor_f){
         $int_check_chiller = intval($check_chiller);
 
         if($int_check_chiller <= 7){
            $funciones = new funciones();
-           return $funciones->form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+           return $funciones->form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f);
         }
 
         if($int_check_chiller > 7 && $int_check_chiller <= 10 ){

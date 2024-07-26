@@ -92,7 +92,7 @@ class funciones {
     }
 
 
-    public function form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
+    public function form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f){
         //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
         //((TR /3.5) x (Cooling Hours) x (Costo Energía) / IPVL)/ 1000
        //((TR x cant)
@@ -118,25 +118,35 @@ class funciones {
 
        //(Fórmula Energía x Factor S)
 
-        /* (((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C) x Factor M */
+       //((FE x Factor S) + (FE x Factor D) + (FE x Factor T) + (FE x Factor V)+ (FE x Factor M)) x Factor F x Factor C
+        //(FE x Factor S)
         $res_1_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_s);
-
-
+        //(FE x Factor D)
        $res_2_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_d);
-
+        //(FE x Factor T)
        $res_3_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_t);
+            //(FE x Factor V)
+        $res_4_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_v);
+        //(FE x Factor M)
+        $funciones = new funciones();
 
-       $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
-       $res_res =  $res_parent_1 * $factor_c;
+        $factor_m = $funciones->factor_m($t_e,$factor_m);
+
+        $res_5_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_m);
+
+        $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1 + $res_4_parent1 + $res_5_parent1;
+
+        $res_res_fact_m =  $res_parent_1 * $factor_f * $factor_c;
+       /* $res_res =  $res_parent_1 * $factor_c;
 
        $funciones = new funciones();
        $factor_m = $funciones->factor_m($t_e,$factor_m);
-       $res_res_fact_m =  $res_res * $factor_m;
+       $res_res_fact_m =  $res_res * $factor_m; */
 
        return $res_res_fact_m;
     }
 
-    public function cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m){
+    public function cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f){
         //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
                   //(((Kw / 3.5)
                   //$kw =  $solution_enf1->capacidad_tot;
@@ -152,7 +162,7 @@ class funciones {
                   //(((Kw / 3.5) x 12000 )x (Cooling Hours)  / SEER ) / 1000
 
    //energia aplicada proccess
-                  //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
+               //((FE x Factor S) + (FE x Factor D) + (FE x Factor T) + (FE x Factor V)+ (FE x Factor M)) x Factor F x Factor C
 
                   //(Fórmula Energía x Factor S)
                   $res_1_parent1= $res_div_seer_a * floatval($factor_s);
@@ -160,14 +170,27 @@ class funciones {
                   $res_2_parent1= $res_div_seer_a * floatval($factor_d);
                       //(Fórmula Energía x Factor T)
                   $res_3_parent1= $res_div_seer_a * floatval($factor_t);
-  //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
+                    //(FE x Factor V)
+                    $res_4_parent1= $res_div_seer_a * floatval($factor_v);
+                    //(FE x Factor M)
+                    $funciones = new funciones();
+
+                    $factor_m = $funciones->factor_m($t_e,$factor_m);
+
+                    $res_5_parent1= $res_div_seer_a * floatval($factor_m);
+
+                    $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1 + $res_4_parent1 + $res_5_parent1;
+
+                    $res_res_fact_m =  $res_parent_1 * $factor_f * $factor_c;
+
+/*   //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
                   $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
      //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
                   $res_res =  $res_parent_1 *  $factor_c;
 
                   $funciones = new funciones();
                   $factor_m = $funciones->factor_m($t_e,$factor_m);
-                  $res_res_fact_m =  $res_res * $factor_m;
+                  $res_res_fact_m =  $res_res * $factor_m; */
                   return $res_res_fact_m;
      }
 
@@ -216,7 +239,7 @@ class funciones {
                return $res_res_fact_m;
   }
 
-  public function form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l){
+  public function form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f){
 
     //(((Kw / 3.5) x 12000 )x (Cooling Hours)) / (SEER x (1-Z)^Años de vida)) / 1000
                       //(((Kw / 3.5)
@@ -262,15 +285,19 @@ class funciones {
                       // (Fórmula Energía x Factor D)
                       $res_2_parent1= $res_div_seer_a * floatval($factor_d);
                           //(Fórmula Energía x Factor T)
-                      $res_3_parent1= $res_div_seer_a * floatval($factor_t);
-      //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T))
-                      $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1;
-         //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
-                      $res_res =  $res_parent_1 *  $factor_c;
+                          $res_3_parent1= $res_div_seer_a * floatval($factor_t);
+                          //(FE x Factor V)
+                          $res_4_parent1= $res_div_seer_a * floatval($factor_v);
+                          //(FE x Factor M)
+                          $funciones = new funciones();
 
-                      $funciones = new funciones();
-                      $factor_m = $funciones->factor_m($t_e,$factor_m);
-                      $res_res_fact_m =  $res_res * $factor_m;
+                          $factor_m = $funciones->factor_m($t_e,$factor_m);
+
+                          $res_5_parent1= $res_div_seer_a * floatval($factor_m);
+
+                          $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1 + $res_4_parent1 + $res_5_parent1;
+
+                          $res_res_fact_m =  $res_parent_1 * $factor_f * $factor_c;
                       return $res_res_fact_m;
 }
 
@@ -384,12 +411,9 @@ public function form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$
    /* $res_ene_apl_tot_enf_1 */
 
    //energia aplicada proccess
-   //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
 
-   //(Fórmula Energía x Factor S)
+   //((FE x Factor S) + (FE x Factor D) + (FE x Factor T) + (FE x Factor V)+ (FE x Factor M)) x Factor F x Factor C
 
-
-    //((FE x Factor S) + (FE x Factor D) + (FE x Factor T) + (FE x Factor V)) x Factor F x Factor C x Factor M
     //(FE x Factor S)
     $res_1_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_s);
     //(FE x Factor D)
@@ -398,15 +422,18 @@ public function form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$
    $res_3_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_t);
     //(FE x Factor V)
    $res_4_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_v);
-
-   $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1 + $res_4_parent1;
-
-   $res_res =  $res_parent_1 * $factor_f * $factor_c;
-
+   //(FE x Factor M)
    $funciones = new funciones();
+
    $factor_m = $funciones->factor_m($t_e,$factor_m);
 
-   $res_res_fact_m =  $res_res * $factor_m;
+   $res_5_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_m);
+
+   $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1 + $res_4_parent1 + $res_5_parent1;
+
+   $res_res_fact_m =  $res_parent_1 * $factor_f * $factor_c;
+
+ /*   $res_res_fact_m =  $res_res * $factor_m; */
 
    return $res_res_fact_m;
 }
@@ -2046,13 +2073,13 @@ public function num_form($id_select){
                     return $cap_tot_aux;
 }
 
-public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller){
+public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller,$factor_v,$factor_f){
     $int_check_chiller = intval($check_chiller);
 
     if($int_check_chiller <= 7){
 /*         return ProjectController::form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
 */        $funciones = new funciones();
-       return $funciones->form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+       return $funciones->form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f);
     }
 
     if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
@@ -2063,12 +2090,12 @@ public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_can
 
 }
 
-public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller){
+public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller,$factor_v,$factor_f){
     $int_check_chiller = intval($check_chiller);
 
     if($int_check_chiller <= 7){
        $funciones = new funciones();
-       return $funciones->cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+       return $funciones->cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f);
     }
 
     if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
@@ -2092,12 +2119,12 @@ public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_
 
 }
 
-public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller){
+public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller,$factor_v,$factor_f){
     $int_check_chiller = intval($check_chiller);
 
     if($int_check_chiller <= 7){
         $funciones = new funciones();
-        return $funciones->form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
+        return $funciones->form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f);
     }
 
     if($int_check_chiller > 7 && $int_check_chiller <= 10 ){

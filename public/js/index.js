@@ -925,7 +925,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
       var arry_disenio = '{ "arry_diseño" : [' +
          '{ "text":"Descarga Directa Sin Ductar" , "value":0.08},' +
          '{ "text":"Descarga Directa Ductada" , "value":0.05},' +
-         '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+         '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.11},' +
          '{ "text":"Inyección y Retorno Ductado" , "value":0} ]}';
     break;
 
@@ -934,7 +934,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
       var arry_disenio = '{ "arry_diseño" : [' +
           '{ "text":"Descarga Directa Sin Ductar" , "value":0.08},' +
           '{ "text":"Descarga Directa Ductada" , "value":0.05},' +
-          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.11},' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.12},' +
           '{"text":"Inyección y Retorno Ductado" , "value":0 } ]}';
     break;
 
