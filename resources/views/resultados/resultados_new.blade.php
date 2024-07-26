@@ -768,7 +768,24 @@ cursor: pointer;
                 </p>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">{{number_format($tar_ele->hrs_tiempo)}} Hrs.</p>
+                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">
+                    @switch($tar_ele->hrs_tiempo)
+                    @case(30)
+                        {{ __('index.menos de 50 hrs') }}.
+                    @break
+
+                    @case(80)
+                        {{ __('index.51 a 167 hrs') }}.
+                    @break
+
+                    @case(168)
+                        168 Hrs.
+                    @break
+
+                    @default
+
+                @endswitch
+                </p>
             </div>
         </div>
 
@@ -1391,7 +1408,24 @@ cursor: pointer;
                     </p>
                 </div>
                 <div class="w-full flex">
-                    <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">{{number_format($tar_ele->hrs_tiempo)}} Hrs.</p>
+                    <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">
+                        @switch($tar_ele->hrs_tiempo)
+                            @case(30)
+                                {{ __('index.menos de 50 hrs') }}.
+                            @break
+
+                            @case(80)
+                                {{ __('index.51 a 167 hrs') }}.
+                            @break
+
+                            @case(168)
+                                168 Hrs.
+                            @break
+
+                            @default
+
+                        @endswitch
+                    </p>
                 </div>
             </div>
 
@@ -1831,7 +1865,24 @@ cursor: pointer;
                 </p>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">{{number_format($tar_ele->hrs_tiempo)}} Hrs.</p>
+                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">
+                    @switch($tar_ele->hrs_tiempo)
+                            @case(30)
+                                {{ __('index.menos de 50 hrs') }}.
+                            @break
+
+                            @case(80)
+                                {{ __('index.51 a 167 hrs') }}.
+                            @break
+
+                            @case(168)
+                                168 Hrs.
+                            @break
+
+                            @default
+
+                        @endswitch
+                </p>
             </div>
         </div>
 
@@ -2343,7 +2394,24 @@ $costo_b
                 </p>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">{{number_format($tar_ele->hrs_tiempo)}} Hrs.</p>
+                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">
+                    @switch($tar_ele->hrs_tiempo)
+                            @case(30)
+                                {{ __('index.menos de 50 hrs') }}.
+                            @break
+
+                            @case(80)
+                                {{ __('index.51 a 167 hrs') }}.
+                            @break
+
+                            @case(168)
+                                168 Hrs.
+                            @break
+
+                            @default
+
+                        @endswitch
+                </p>
             </div>
         </div>
 
@@ -2416,53 +2484,90 @@ $costo_b
 
 {{-- principal --}}
 <div id="principal_hoja_5" name="principal_hoja_5" class="hidden w-full grid rounded-md justify-items-center mt-3">
-    <div  class="ancho border_box border-blue-500 rounded-md flex">
+        <div  class="ancho border_box border-blue-500 rounded-md flex">
 
 
-    <div class="w-1/4 flex justify-center">
-        <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+            <div class="w-1/4 flex justify-center">
+                <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+            </div>
+
+            <div class="w-1/3 grid justify-left ml-2">
+                <div class="w-full flex ">
+                    <div id="name_no_print" name="name_no_print" class="w-full flex ">
+                        <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
+                </div>
+
+                <div id="name_print" name="name_print" class="hidden w-full flex ">
+                    <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
+                        @if (strlen($tar_ele->name) > 21)
+                        {{substr($tar_ele->name, 0, 21)}}...
+                        @endif
+
+                        @if (strlen($tar_ele->name) < 21)
+                        {{$tar_ele->name}}
+                        @endif
+                        </p>
+                </div>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project_res">{{$tar_ele->tipo_edi}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project_res">{{number_format($tar_ele->area)}}
+                        @if ($tar_ele->unidad == 'mc')
+                        m²
+                    @endif
+
+                    @if ($tar_ele->unidad == 'ft')
+                    ft²
+                    @endif
+                    </p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">
+                        @switch($tar_ele->hrs_tiempo)
+                                @case(30)
+                                    {{ __('index.menos de 50 hrs') }}.
+                                @break
+
+                                @case(80)
+                                    {{ __('index.51 a 167 hrs') }}.
+                                @break
+
+                                @case(168)
+                                    168 Hrs.
+                                @break
+
+                                @default
+
+                            @endswitch
+                    </p>
+                </div>
+            </div>
+
+            <div class="w-1/3 grid justify-left">
+                <div class="w-full">
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">{{$tar_ele->region}}</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">{{$tar_ele->ciudad}}</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project_res">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.incremento anual energia') }}:</label><p class="info_project_res">{{$tar_ele->inflacion}}%</p>
+                    </div>
+                </div>
+            </div>
     </div>
-
-    <div class="w-1/3 grid justify-left ml-2">
-        <div class="w-full flex ">
-            <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name}}</p>
-        </div>
-        <div class="w-full flex">
-            <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
-        </div>
-        <div class="w-full flex">
-            <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project_res">{{$tar_ele->tipo_edi}}</p>
-        </div>
-        <div class="w-full flex">
-            <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project_res">{{number_format($tar_ele->area)}}
-                @if ($tar_ele->unidad == 'mc')
-                m²
-            @endif
-
-            @if ($tar_ele->unidad == 'ft')
-            ft²
-            @endif
-            </p>
-        </div>
-    </div>
-
-    <div class="w-1/3 grid justify-left">
-        <div class="w-full">
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">{{$tar_ele->region}}</p>
-            </div>
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">{{$tar_ele->ciudad}}</p>
-            </div>
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project_res">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
-            </div>
-            <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
-            </div>
-        </div>
-    </div>
-</div>
 </div>
 {{-- res_ana_ener --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">

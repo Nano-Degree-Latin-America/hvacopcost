@@ -732,7 +732,24 @@ cursor: pointer;
                 </p>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">{{number_format($tar_ele->hrs_tiempo)}} Hrs.</p>
+                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">
+                @switch($tar_ele->hrs_tiempo)
+                    @case(30)
+                        {{ __('index.menos de 50 hrs') }}.
+                    @break
+
+                    @case(80)
+                        {{ __('index.51 a 167 hrs') }}.
+                    @break
+
+                    @case(168)
+                        168 Hrs.
+                    @break
+
+                    @default
+
+                @endswitch
+                    </p>
             </div>
         </div>
 
@@ -1302,7 +1319,24 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                     </p>
                 </div>
                 <div class="w-full flex">
-                    <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">{{number_format($tar_ele->hrs_tiempo)}} Hrs.</p>
+                    <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">
+                    @switch($tar_ele->hrs_tiempo)
+                        @case(30)
+                            {{ __('index.menos de 50 hrs') }}.
+                        @break
+
+                        @case(80)
+                            {{ __('index.51 a 167 hrs') }}.
+                        @break
+
+                        @case(168)
+                            168 Hrs.
+                        @break
+
+                        @default
+
+                    @endswitch
+                        </p>
                 </div>
             </div>
 
@@ -1325,7 +1359,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
 </div>
 
 {{-- Nivel de Confort --}}
@@ -1721,7 +1755,24 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                 </p>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">{{number_format($tar_ele->hrs_tiempo)}} Hrs.</p>
+                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">
+                @switch($tar_ele->hrs_tiempo)
+                    @case(30)
+                        {{ __('index.menos de 50 hrs') }}.
+                    @break
+
+                    @case(80)
+                        {{ __('index.51 a 167 hrs') }}.
+                    @break
+
+                    @case(168)
+                        168 Hrs.
+                    @break
+
+                    @default
+
+                @endswitch
+                    </p>
             </div>
         </div>
 
@@ -1744,7 +1795,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                 </div>
             </div>
         </div>
-</div>
+    </div>
 </div>
 
 <?php  $dif_1_cost=$smasolutions->dif_1_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
@@ -2225,7 +2276,24 @@ $costo_b
                 </p>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">{{number_format($tar_ele->hrs_tiempo)}} Hrs.</p>
+                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">
+                @switch($tar_ele->hrs_tiempo)
+                    @case(30)
+                        {{ __('index.menos de 50 hrs') }}.
+                    @break
+
+                    @case(80)
+                        {{ __('index.51 a 167 hrs') }}.
+                    @break
+
+                    @case(168)
+                        168 Hrs.
+                    @break
+
+                    @default
+
+                @endswitch
+                    </p>
             </div>
         </div>
 
@@ -2248,7 +2316,7 @@ $costo_b
                 </div>
             </div>
         </div>
-</div>
+    </div>
 </div>
 {{-- capex vs opex --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
