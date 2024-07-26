@@ -1834,8 +1834,8 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                                     <div  class="w-full mx-3 rounded-md flex justify-center">
 
 
-                                        @if ( true == ( isset( $dif_1 ) ? $dif_1 : null ) )
-                                        <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1) ?>
+                                        @if ( true == ( isset( $val_a_red_ene ) ? $val_a_red_ene : null ) )
+                                        <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$val_a_red_ene) ?>
 
                                         @if ($pay_back_a > 0)
                                         <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
@@ -1876,8 +1876,8 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                             <div  class="rounded-md flex justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center  place-items-center">
                                      <div  class="w-full mx-3 rounded-md flex justify-center">
-                                        @if ( true == ( isset( $dif_1 ) ? $dif_1 : null ) )
-                                            <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_1) ?>
+                                        @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
+                                            <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$val_b_red_ene) ?>
                                             @if ($pay_back_b > 0)
                                             <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
                                             @endif

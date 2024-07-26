@@ -896,8 +896,8 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "basico":
 
         var arry_disenio = '{ "arry_diseño" : [' +
-          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.12},' +
+          '{ "text":"Descarga Directa Ductada" , "value":0.05},' +
           '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
           '{"text":"VAV y Retorno Ductado" , "value":-0.2} ]}';
         break;
@@ -905,8 +905,8 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
     case "c_economizador":
 
       var arry_disenio = '{ "arry_diseño" : [' +
-          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.12},' +
+          '{ "text":"Descarga Directa Ductada" , "value":0.05},' +
           '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
           '{"text":"VAV y Retorno Ductado" , "value":-0.2 } ]}';
     break;
@@ -914,8 +914,8 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
     case "w_heat_rec":
 
       var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-        '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.12},' +
+        '{ "text":"Descarga Directa Ductada" , "value":0.05},' +
         '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
         '{"text":"VAV y Retorno Ductado" , "value":-0.2 } ]}';
       break;
@@ -923,8 +923,8 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
     case "manejadora":
 
       var arry_disenio = '{ "arry_diseño" : [' +
-         '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
-         '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
+         '{ "text":"Descarga Directa Sin Ductar" , "value":0.08},' +
+         '{ "text":"Descarga Directa Ductada" , "value":0.05},' +
          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
          '{ "text":"Inyección y Retorno Ductado" , "value":0} ]}';
     break;
@@ -932,31 +932,31 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
     case "fancoil":
 
       var arry_disenio = '{ "arry_diseño" : [' +
-          '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
-          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
+          '{ "text":"Descarga Directa Sin Ductar" , "value":0.08},' +
+          '{ "text":"Descarga Directa Ductada" , "value":0.05},' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.11},' +
           '{"text":"Inyección y Retorno Ductado" , "value":0 } ]}';
     break;
 
     case "fancoil_lsp_spt":
 
     var arry_disenio = '{ "arry_diseño" : [' +
-          '{ "text":"Descarga Directa Sin Ductar" , "value":0.15},' +
-          '{ "text":"Descarga Directa Ductada" , "value":0.1},' +
-          '{"text":"Ducto Flex. y Plenum Retorno" , "value":0.19 } ]}';
+          '{ "text":"Descarga Directa Sin Ductar" , "value":0.08},' +
+          '{ "text":"Descarga Directa Ductada" , "value":0.06},' +
+          '{"text":"Ducto Flex. y Plenum Retorno" , "value":0.12 } ]}';
 
   break;
 
     case "ca_pi_te":
       var arry_disenio = '{ "arry_diseño" : [' +
-          '{ "text":"Sin Unidad DOA" , "value":0.16},' +
+          '{ "text":"Sin Unidad DOA" , "value":0.08},' +
           '{ "text":"Con Unidad DOA" , "value":0},' +
           '{"text":"Unidad DOA + Heat Recovery" , "value":-0.05 } ]}';
     break;
 
     case "fancoil_lsp":
       var arry_disenio = '{ "arry_diseño" : [' +
-          '{ "text":"Sin Unidad DOA" , "value":0.16},' +
+          '{ "text":"Sin Unidad DOA" , "value":0.08},' +
           '{ "text":"Con DOA y Descarga Ductada" , "value":0},' +
           '{"text":"Unidad DOA + Heat Recovery" , "value":-0.05 } ]}';
     break;
@@ -973,24 +973,24 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
 
       var arry_disenio = '{ "arry_diseño" : [' +
           '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-          '{"text":"Descarga Directa Ductada" , "value":0.1 } ]}';
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.12},' +
+          '{"text":"Descarga Directa Ductada" , "value":0.06 } ]}';
      break;
 
      case "fancoil_hsp":
 
       var arry_disenio = '{ "arry_diseño" : [' +
-        '{ "text":"Inyección y Retorno Ductado" , "value":0.03},' +
-        '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.12},' +
-        '{"text":"Ducto Flex. y Plenum Retorno" , "value":0.19 } ]}';
+        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+        '{ "text":"Ducto Flex. y Retorno Ductado" , "value":0.05},' +
+        '{"text":"Ducto Flex. y Plenum Retorno" , "value":0.12 } ]}';
      break;
 
      case "man_doa_hr":
 
       var arry_disenio = '{ "arry_diseño" : [' +
         '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.19},' +
-        '{"text":"Descarga Directa Ductada" , "value":0.1 } ]}';
+        '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.12},' +
+        '{"text":"Descarga Directa Ductada" , "value":0.06 } ]}';
      break;
 
 
@@ -1011,15 +1011,15 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
     case "agu_cir_cer":
       var arry_disenio = '{ "arry_diseño" : [' +
       '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-      '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
-      '{"text":"Inyección Flex. y Plenum Retorno" , "value":0.19 } ]}';
+      '{ "text":"Inyección y Retorno Flexible" , "value":0.09},' +
+      '{"text":"Inyección Flex. y Plenum Retorno" , "value":0.12 } ]}';
     break;
 
     case "agu_cir_abr":
       var arry_disenio = '{ "arry_diseño" : [' +
       '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
-      '{ "text":"Inyección y Retorno Flexible" , "value":0.12},' +
-      '{"text":"Inyección Flex. y Plenum Retorno" , "value":0.19 } ]}';
+      '{ "text":"Inyección y Retorno Flexible" , "value":0.09},' +
+      '{"text":"Inyección Flex. y Plenum Retorno" , "value":0.12 } ]}';
     break;
 
     case "pa_pi_te":
@@ -1031,8 +1031,8 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
 
     case "duc_con":
       var arry_disenio = '{ "arry_diseño" : [' +
-      '{ "text":"Inyección y Retorno Ductado" , "value":0.01},' +
-      '{ "text":"Inyección Ductada y Plenum Retorno" , "value":0.15} ]}';
+      '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+      '{ "text":"Inyección Ductada y Plenum Retorno" , "value":0.07} ]}';
       break;
 
       case "cass":
@@ -1121,7 +1121,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
     switch (value) {
             case "basico":
             var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
             '{ "text":"Termostato en Zona de Confort" , "value":1},' +
             '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
@@ -1130,7 +1130,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "c_economizador":
 
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
             '{ "text":"Termostato en Zona de Confort" , "value":1},' +
             '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
@@ -1139,7 +1139,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "w_heat_rec":
 
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
             '{ "text":"Termostato en Zona de Confort" , "value":1},' +
             '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
@@ -1148,7 +1148,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "manejadora":
 
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
             '{ "text":"Termostato en Zona de Confort" , "value":1},' +
             '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
         break;
@@ -1156,7 +1156,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "fancoil":
 
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
             '{ "text":"Termostato en Zona de Confort" , "value":1},' +
             '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
         break;
@@ -1164,21 +1164,21 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "fancoil_lsp_spt":
 
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
             '{ "text":"Termostato en Zona de Confort" , "value":1},' +
             '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
         break;
 
         case "ca_pi_te":
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.06},' +
             '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.94 } ]}';
         break;
 
         case "fancoil_lsp":
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.06},' +
             '{ "text":"Termostato Inteligente en Zona" , "value":1},' +
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.95 } ]}';
         break;
@@ -1186,7 +1186,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "ca":
 
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.06},' +
             '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.94 } ]}';
         break;
@@ -1194,7 +1194,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "man":
 
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.06},' +
             '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
         break;
@@ -1202,7 +1202,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "fancoil_hsp":
 
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.06},' +
             '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
         break;
@@ -1210,7 +1210,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "man_doa":
 
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.06},' +
             '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
         break;
@@ -1218,7 +1218,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "fan_hsp_doa":
 
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.06},' +
             '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
         break;
@@ -1226,7 +1226,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "man_doa_hr":
 
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.06},' +
             '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
         break;
@@ -1234,28 +1234,28 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         case "fan_hsp_doa_hr":
 
         var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.06},' +
             '{ "text":"Termostato Inteligente en Zona" , "value":0.95},' +
             '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
         break;
 
         case "horz":
         var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostato Interno" , "value":1.1},' +
+        '{ "text":"Termostato Interno" , "value":1.04},' +
         '{ "text":"Termostato en Zona de Confort" , "value":1},' +
         '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
         break;
 
         case "vert":
         var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
         '{ "text":"Termostato en Zona de Confort" , "value":1},' +
         '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
         break;
 
         case "agu_cir_cer":
         var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
         '{ "text":"Termostato en Zona de Confort" , "value":1},' +
         '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
         '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
@@ -1263,7 +1263,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
 
         case "agu_cir_abr":
         var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.12},' +
+        '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
         '{ "text":"Termostato en Zona de Confort" , "value":1},' +
         '{"text":"Termostato Inteligente en Zona" , "value":0.95 },' +
         '{"text":"Termostato en Red / DDC en Zona" , "value":0.93 } ]}';
@@ -1271,18 +1271,18 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
 
         case "pa_pi_te":
         var arry_control = '{ "arry_control" : [' +
-        '{"text":"Termostato Interno" , "value":1.1 }  ]}';
+        '{"text":"Termostato Interno" , "value":1.04 }  ]}';
         break;
 
         case "duc_con":
         var arry_control = '{ "arry_control" : [' +
-        '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.12},' +
+        '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.06},' +
         '{"text":"Termostato Inteligente en Zona" , "value":0.94 }  ]}';
         break;
 
         case "cass":
             var arry_control = '{ "arry_control" : [' +
-            '{ "text":"Termostato Interno" , "value":1.1},' +
+            '{ "text":"Termostato Interno" , "value":1.04},' +
             '{"text":"Termostato Inteligente en Zona" , "value":0.94 }  ]}';
         break;
 
@@ -1641,42 +1641,42 @@ function set_filtracion(value){
 
              var arry_filt = '{ "arry_filt" : [' +
               '{ "text":"MERV ≥ 7" , "value":1},' +
-              '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
-              '{ "text":"Metalicos Lavables" , "value":1.15},' +
-              '{"text":"Sin Filtros" , "value":1.2 } ]}';
+              '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+              '{ "text":"Metalicos Lavables" , "value":1.08},' +
+              '{"text":"Sin Filtros" , "value":1.12 } ]}';
         break;
 
         case "c_economizador":
 
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
-            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
-            '{ "text":"Metalicos Lavables" , "value":1.15},' +
-            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+            '{ "text":"Metalicos Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
         break;
 
         case "w_heat_rec":
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
-            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
-            '{ "text":"Metalicos Lavables" , "value":1.15},' +
-            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+            '{ "text":"Metalicos Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
           break;
 
         case "manejadora":
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
-            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
-            '{ "text":"Metalicos Lavables" , "value":1.15},' +
-            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+            '{ "text":"Metalicos Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
         break;
 
         case "fancoil":
 
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
-            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
-            '{ "text":"Metalicos Lavables" , "value":1.15},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+            '{ "text":"Metalicos Lavables" , "value":1.08},' +
             '{"text":"Sin Filtros" , "value":1.2 } ]}';
         break;
 
@@ -1684,114 +1684,114 @@ function set_filtracion(value){
 
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
-            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
-            '{ "text":"Metalicos Lavables" , "value":1.15},' +
-            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+            '{ "text":"Metalicos Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
       break;
 
         case "ca_pi_te":
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
-            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
-            '{ "text":"Metalicos Lavables" , "value":1.15},' +
-            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+            '{ "text":"Metalicos Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
         break;
 
         case "fancoil_lsp":
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
-            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
-            '{ "text":"Metalicos Lavables" , "value":1.15},' +
-            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+            '{ "text":"Metalicos Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
         break;
 
         case "ca":
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
-            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
-            '{ "text":"Metalicos Lavables" , "value":1.15},' +
-            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+            '{ "text":"Metalicos Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
          break;
 
          case "man":
 
          var arry_filt = '{ "arry_filt" : [' +
          '{ "text":"MERV ≥ 7" , "value":1},' +
-         '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
-         '{ "text":"Metalicos Lavables" , "value":1.15},' +
-         '{"text":"Sin Filtros" , "value":1.2 } ]}';
+         '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+         '{ "text":"Metalicos Lavables" , "value":1.08},' +
+         '{"text":"Sin Filtros" , "value":1.12 } ]}';
 
          break;
 
          case "fancoil_hsp":
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
-            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
-            '{ "text":"Metalicos Lavables" , "value":1.15},' +
-            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+            '{ "text":"Metalicos Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
 
          break;
 
          case "man_doa":
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
-            '{ "text":"MERV ≥ 7 Lavables" , "value":1.08},' +
-            '{ "text":"Metalicos Lavables" , "value":1.15},' +
-            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+            '{ "text":"Metalicos Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
 
          break;
 
        case "horz":
         var arry_filt = '{ "arry_filt" : [' +
         '{ "text":"MERV ≥ 7" , "value":1},' +
-        '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
-        '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        '{ "text":"MERV < 7  Lavables" , "value":1.08},' +
+        '{"text":"Sin Filtros" , "value":1.12 } ]}';
 
       break;
 
       case "vert":
         var arry_filt = '{ "arry_filt" : [' +
         '{ "text":"MERV ≥ 7" , "value":1},' +
-        '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
-        '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        '{ "text":"MERV < 7  Lavables" , "value":1.08},' +
+        '{"text":"Sin Filtros" , "value":1.12 } ]}';
 
       break;
 
       case "agu_cir_cer":
         var arry_filt = '{ "arry_filt" : [' +
         '{ "text":"MERV ≥ 7" , "value":1},' +
-        '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
-        '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        '{ "text":"MERV < 7  Lavables" , "value":1.08},' +
+        '{"text":"Sin Filtros" , "value":1.12 } ]}';
 
       break;
 
       case "agu_cir_abr":
         var arry_filt = '{ "arry_filt" : [' +
         '{ "text":"MERV ≥ 7" , "value":1},' +
-        '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
-        '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        '{ "text":"MERV < 7  Lavables" , "value":1.08},' +
+        '{"text":"Sin Filtros" , "value":1.12 } ]}';
 
       break;
 
       case "pa_pi_te":
         var arry_filt = '{ "arry_filt" : [' +
         '{ "text":"MERV ≥ 7" , "value":1},' +
-        '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
-        '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        '{ "text":"MERV < 7  Lavables" , "value":1.08},' +
+        '{"text":"Sin Filtros" , "value":1.12 } ]}';
         break;
 
       case "duc_con":
         var arry_filt = '{ "arry_filt" : [' +
         '{ "text":"MERV ≥ 7" , "value":1},' +
-        '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
-        '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        '{ "text":"MERV < 7  Lavables" , "value":1.08},' +
+        '{"text":"Sin Filtros" , "value":1.12 } ]}';
         break;
 
         case "cass":
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
-            '{ "text":"MERV < 7  Lavables" , "value":1.1},' +
-            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+            '{ "text":"MERV < 7  Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
         break;
       default:
         // code block
@@ -1808,7 +1808,7 @@ function set_ventilacion(value){
              var arry_vent = '{ "arry_vent" : [' +
               '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
               '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-              '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+              '{"text":"Sin Ventilación" , "value":0.1 } ]}';
         break;
 
         case "c_economizador":
@@ -1816,20 +1816,20 @@ function set_ventilacion(value){
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
 
         case "w_heat_rec":
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
           break;
 
         case "manejadora":
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
         break;
 
         case "fancoil":
@@ -1837,7 +1837,7 @@ function set_ventilacion(value){
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-              '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+              '{"text":"Sin Ventilación" , "value":0.1 } ]}';
         break;
 
         case "fancoil_lsp_spt":
@@ -1845,28 +1845,28 @@ function set_ventilacion(value){
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
       break;
 
         case "ca_pi_te":
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-            '{"text":"Sin Ventilación" , "value":0.21 } ]}';
+            '{"text":"Sin Ventilación" , "value":0.12 } ]}';
         break;
 
         case "fancoil_lsp":
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-            '{"text":"Sin Ventilación" , "value":0.21 } ]}';
+            '{"text":"Sin Ventilación" , "value":0.12 } ]}';
         break;
 
         case "ca":
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-            '{"text":"Sin Ventilación" , "value":0.21 } ]}';
+            '{"text":"Sin Ventilación" , "value":0.12 } ]}';
          break;
 
          case "man":
@@ -1874,70 +1874,70 @@ function set_ventilacion(value){
          var arry_vent = '{ "arry_vent" : [' +
          '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
          '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-         '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+         '{"text":"Sin Ventilación" , "value":0.1 } ]}';
          break;
 
          case "fancoil_hsp":
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
          break;
 
          case "man_doa":
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
          break;
 
        case "horz":
         var arry_vent = '{ "arry_vent" : [' +
         '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
         '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-        '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
       break;
 
       case "vert":
         var arry_vent = '{ "arry_vent" : [' +
         '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
         '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-        '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
       break;
 
       case "agu_cir_cer":
         var arry_vent = '{ "arry_vent" : [' +
         '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
         '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-        '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
       break;
 
       case "agu_cir_abr":
         var arry_vent = '{ "arry_vent" : [' +
         '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
         '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-        '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
       break;
 
       case "pa_pi_te":
         var arry_vent = '{ "arry_vent" : [' +
         '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
         '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-        '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
         break;
 
       case "duc_con":
         var arry_vent = '{ "arry_vent" : [' +
         '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
         '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-        '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
         break;
 
         case "cass":
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
-            '{"text":"Sin Ventilación" , "value":0.18 } ]}';
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
         break;
       default:
         // code block
@@ -3931,7 +3931,7 @@ function trans_sols_valid_ab(idm,sol){
     }else{
         var action_use = 2;
     }
- 
+
 
     if(p_type == 1){
 

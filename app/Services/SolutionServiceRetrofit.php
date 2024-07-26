@@ -267,7 +267,6 @@ class SolutionServiceRetrofit
                     $factor_v =floatval($request->get('ventilacion_2_1_retro'));
                     $factor_f =floatval($request->get('filtracion_2_1_retro'));
 
-
                     $t_e = $solution_enf_2_1_retro->tipo_equipo;
                     $eficiencia_ene = $solution_enf_2_1_retro->eficencia_ene;
                     $yrs_l = $solution_enf_2_1_retro->yrs_vida;
