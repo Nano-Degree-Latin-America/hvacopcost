@@ -527,7 +527,7 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
 
     public function factor_m($t_e,$factor_m){
 
-        if($t_e === "pa_pi_te"){
+        /* if($t_e === "pa_pi_te"){
             if($factor_m==='ASHRAE 180'){
                 $factor_m = 1.2;
             }
@@ -541,16 +541,28 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
             }
         }else{
             if($factor_m==='ASHRAE 180'){
-                $factor_m = 0.99;
+                $factor_m = -0.1;
             }
 
             if($factor_m==='Deficiente'){
-                $factor_m = 1.11;
+                $factor_m = 0.11;
             }
 
             if($factor_m==='Sin Mantenimiento'){
-                $factor_m = 1.18;
+                $factor_m = 0.18;
             }
+        } */
+
+        if($factor_m==='ASHRAE 180'){
+            $factor_m = -0.1;
+        }
+
+        if($factor_m==='Deficiente'){
+            $factor_m = 0.11;
+        }
+
+        if($factor_m==='Sin Mantenimiento'){
+            $factor_m = 0.18;
         }
 
       return $factor_m;
