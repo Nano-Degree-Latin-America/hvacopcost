@@ -253,15 +253,15 @@ class funciones {
                       //(SEER x (1-Z)^Años de vida) )
                         //valor de Z
                         if($factor_m == 'ASHRAE 180'){
-                            $z = 0.015;
+                            $z = 0.01;
                         }
 
                         if($factor_m == 'Deficiente'){
-                            $z = 0.03;
+                             $z = 0.017;
                         }
 
                         if($factor_m == 'Sin Mantenimiento'){
-                            $z = 0.052;
+                           $z = 0.035;
                         }
 
                         //(1-Z)
@@ -383,15 +383,15 @@ public function form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$
    //(SEER x (1-Z)^Años de vida) )
    //valor de Z
    if($factor_m == 'ASHRAE 180'){
-    $z = 0.015;
+    $z = 0.01;
    }
 
    if($factor_m == 'Deficiente'){
-    $z = 0.03;
+    $z = 0.017;
    }
 
    if($factor_m == 'Sin Mantenimiento'){
-    $z = 0.052;
+    $z = 0.035;
    }
 
    //(1-Z)
