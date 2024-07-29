@@ -2043,7 +2043,7 @@ $costo_b
                                 --}}
                                 <div  style="" class="grid justify-items-center  place-items-center">
                                   <div  class="w-full mx-3  flex justify-center">
-                                    @if ( true == ( isset( $dif_1 ) ? $dif_1_cost : null ) )
+                                    @if ( true == ( isset( $dif_1 ) ? $dif_1 : null ) )
                                     <?php  $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$dif_1,$costo_a) ?>
 
                                     @if ($pay_back_a > 0)
@@ -4187,15 +4187,15 @@ function roi_s_ene(id_project){
     var options = {
           series: [
           {
-            name: "ROI - A",
+            name: "ROI - Existente",
             data: [res[0][0], res[0][1], res[0][2], res[0][3]]
           },
           {
-            name: "ROI - B",
+            name: "ROI - A",
             data: [res[1][0], res[1][1], res[1][2], res[1][3]]
           },
           {
-            name: "ROI - C",
+            name: "ROI - B",
             data: [res[2][0], res[2][1], res[2][2], res[2][3]]
           },
           {
@@ -4338,15 +4338,15 @@ function roi_ene_prod(id_project,costo_base,costo_a,costo_b){
     var options = {
           series: [
             {
-            name: "ROI - A",
+            name: "ROI - Existente",
             data: [res[0][0], res[0][1], res[0][2], res[0][3]]
           },
           {
-            name: "ROI - B",
+            name: "ROI - A",
             data: [res[1][0], res[1][1], res[1][2], res[1][3]]
           },
           {
-            name: "ROI - C",
+            name: "ROI - B",
             data: [res[2][0], res[2][1], res[2][2], res[2][3]]
           },
           {
@@ -7245,15 +7245,15 @@ function roi_s_ene_print(id_project){
     var options = {
           series: [
           {
-            name: "ROI - A",
+            name: "ROI - Existente",
             data: [res[0][0], res[0][1], res[0][2], res[0][3]]
           },
           {
-            name: "ROI - B",
+            name: "ROI - A",
             data: [res[1][0], res[1][1], res[1][2], res[1][3]]
           },
           {
-            name: "ROI - C",
+            name: "ROI - B",
             data: [res[2][0], res[2][1], res[2][2], res[2][3]]
           },
           {
@@ -7396,15 +7396,15 @@ function roi_ene_prod_print(id_project,costo_base,costo_a,costo_b){
     var options = {
           series: [
             {
-            name: "ROI - A",
+            name: "ROI - Existente",
             data: [res[0][0], res[0][1], res[0][2], res[0][3]]
           },
           {
-            name: "ROI - B",
+            name: "ROI - A",
             data: [res[1][0], res[1][1], res[1][2], res[1][3]]
           },
           {
-            name: "ROI - C",
+            name: "ROI - B",
             data: [res[2][0], res[2][1], res[2][2], res[2][3]]
           },
           {

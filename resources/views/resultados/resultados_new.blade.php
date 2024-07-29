@@ -1048,11 +1048,21 @@ cursor: pointer;
 
 <?php
 
+
+
+
    $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_elec,$sumaopex_3*$tar_ele->costo_elec];
 
   $base_red_an = $sumaopex_1*$tar_ele->costo_elec;
+
   $a_red_an = $sumaopex_2*$tar_ele->costo_elec;
-  $b_red_an = $sumaopex_3*$tar_ele->costo_elec;
+
+  if($result3 ==! null){
+    $b_red_an = $sumaopex_3*$tar_ele->costo_elec;
+  }else{
+    $b_red_an = 0;
+  }
+
 
   $val_red_an_alt = max($arr_red_ene);
   $counter = 0;
@@ -1065,17 +1075,37 @@ cursor: pointer;
   if($counter == 0){
     $val_base_red_ene =  0;
     $val_a_red_ene = $base_red_an - $a_red_an;
-    $val_b_red_ene = $base_red_an - $b_red_an;
+
+
+    if($result3 ==! null){
+            $val_b_red_ene = $base_red_an - $b_red_an;
+    }else{
+            $val_b_red_ene = 0;
+    }
+
+
   }
 
   if($counter == 1){
     $val_a_red_ene =  0;
     $val_base_red_ene = $a_red_an - $base_red_an;
-    $val_b_red_ene = $a_red_an - $b_red_an;
+
+    if($result3 ==! null){
+        $val_b_red_ene = $a_red_an - $b_red_an;
+    }else{
+        $val_b_red_ene = 0;
+    }
+
+
   }
 
   if($counter == 2){
-    $val_b_red_ene =  0;
+    if($result3 ==! null){
+        $val_b_red_ene =  0;
+    }else{
+        $val_b_red_ene = 0;
+    }
+
     $val_base_red_ene = $b_red_an - $base_red_an;
     $val_a_red_ene = $b_red_an - $a_red_an;
   }
@@ -1994,8 +2024,8 @@ cursor: pointer;
                                     <div  class="w-full mx-3 rounded-md flex justify-center">
 
 
-                                        @if ( true == ( isset( $dif_1 ) ? $dif_1 : null ) )
-                                        <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1) ?>
+                                        @if ( true == ( isset( $val_a_red_ene ) ? $val_a_red_ene : null ) )
+                                        <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$val_a_red_ene) ?>
 
                                         @if ($pay_back_a > 0)
                                         <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
@@ -2036,8 +2066,8 @@ cursor: pointer;
                             <div  class="rounded-md flex justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center  place-items-center">
                                      <div  class="w-full mx-3 rounded-md flex justify-center">
-                                        @if ( true == ( isset( $dif_1 ) ? $dif_1 : null ) )
-                                            <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_1) ?>
+                                        @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
+                                            <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$val_b_red_ene) ?>
                                             @if ($pay_back_b > 0)
                                             <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
                                             @endif
@@ -2052,7 +2082,7 @@ cursor: pointer;
 
                                             @else
                                             <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;"  class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
-                                            <?php  $dif_1=0 ?>
+                                            <?php  $val_b_red_ene=0 ?>
                                             @endif
                                       </div>
                                 </div>
@@ -2152,7 +2182,7 @@ $costo_b
                                 --}}
                                 <div  style="" class="grid justify-items-center  place-items-center">
                                   <div  class="w-full mx-3  flex justify-center">
-                                    @if ( true == ( isset( $dif_1 ) ? $dif_1_cost : null ) )
+                                    @if ( true == ( isset( $dif_1 ) ? $dif_1 : null ) )
                                     <?php  $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$dif_1,$costo_a) ?>
 
                                     @if ($pay_back_a > 0)
