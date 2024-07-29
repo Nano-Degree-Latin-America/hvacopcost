@@ -757,6 +757,8 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
 
                   }
 
+                  console.log(arry_vent);
+
                   var arry_filt = set_filtracion(value);
                     const myObj_filt= JSON.parse(arry_filt);
                     for (let i = 0; i < myObj_filt.arry_filt.length; i++) {
@@ -2628,15 +2630,15 @@ return arry_vent;
         //si tipo es igual a 2
         if(parseInt(type_p_aux) === 2){
             action_submit_send.value = 'update';
-            traer_unidad_hvac_edit(id_project,1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
+            traer_unidad_hvac_edit(id_project,1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','ventilacion_1_1_retro','filtracion_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
             ,'capacidad_total_1_1_retro','costo_elec_1_1_retro','csStd_retro_1_1_cant','costo_recu_1_1_retro','csStd_1_1_retro'
             ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','');
             //2_1
-            traer_unidad_hvac_edit(id_project,1,2,'cUnidad_2_1_retro','cheTipo_2_1_retro','cheDisenio_2_1_retro','tipo_control_2_1_retro','dr_2_1_retro','csMantenimiento_2_1_retro','lblCsTipo_2_1_retro'
+            traer_unidad_hvac_edit(id_project,1,2,'cUnidad_2_1_retro','cheTipo_2_1_retro','cheDisenio_2_1_retro','tipo_control_2_1_retro','dr_2_1_retro','ventilacion_2_1_retro','filtracion_2_1_retro','csMantenimiento_2_1_retro','lblCsTipo_2_1_retro'
             ,'capacidad_total_2_1_retro','costo_elec_2_1_retro','csStd_cant_2_1_retro','costo_recu_2_1_retro','csStd_2_1_retro'
             ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1','action_submit_2_1_retro');
             //3_1
-            traer_unidad_hvac_edit(id_project,1,3,'cUnidad_3_1_retro','cheTipo_3_1_retro','cheDisenio_3_1_retro','tipo_control_3_1_retro','dr_3_1_retro','cheMantenimiento_3_1_retro','lblCsTipo_3_1_retro'
+            traer_unidad_hvac_edit(id_project,1,3,'cUnidad_3_1_retro','cheTipo_3_1_retro','cheDisenio_3_1_retro','tipo_control_3_1_retro','dr_3_1_retro','ventilacion_3_1_retro','filtracion_3_1_retro','cheMantenimiento_3_1_retro','lblCsTipo_3_1_retro'
             ,'capacidad_total_3_1_retro','costo_elec_3_1_retro','csStd_cant_3_1_retro','costo_recu_3_1_retro','csStd_3_1_retro'
             ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro');
             //se actualiza proyecto retro
@@ -2731,7 +2733,7 @@ return arry_vent;
         $('#type_p').val(type_p);
         calcular_p_n.addClass("hidden");
         calcular_p_r.removeClass("hidden");
-        traer_unidad_hvac_edit(id_project,1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
+        traer_unidad_hvac_edit(id_project,1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','ventilacion_1_1_retro','filtracion_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
         ,'capacidad_total_1_1_retro','costo_elec_1_1_retro','csStd_retro_1_1_cant','costo_recu_1_1_retro','csStd_1_1_retro'
         ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','');
 
@@ -7474,11 +7476,15 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 unidadHvac(res.val_unidad.unidad_hvac,1,csTipo,csDisenio);
                 $("#"+csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').attr("selected", "selected");
                 change_diseño(res.val_unidad.tipo_equipo,1,csDisenio,tipo_control,dr,ventilacion,filtracion,lblCsTipo);
+
+
                 $("#"+csDisenio).find('option[value="' + res.val_unidad.tipo_diseño + '"]').attr("selected", "selected");
                 $("#"+tipo_control).find('option[value="' + res.val_unidad.tipo_control + '"]').attr("selected", "selected");
                 $("#"+dr).find('option[value="' + res.val_unidad.dr + '"]').attr("selected", "selected");
                 $("#"+ventilacion).find('option[value="' + res.val_unidad.ventilacion + '"]').attr("selected", "selected");
                 $("#"+filtracion).find('option[value="' + res.val_unidad.filtracion + '"]').attr("selected", "selected");
+
+
                 $("#"+Mantenimiento).find('option[value="' +   res.val_unidad.mantenimiento + '"]').attr("selected", "selected");
 
                 send_marcas_to(marca,res.val_unidad.id_marca,res.val_unidad.unidad_hvac);

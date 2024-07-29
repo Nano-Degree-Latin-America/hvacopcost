@@ -2042,6 +2042,11 @@ class ProjectController extends Controller
                     $solution_enf1->name_t_control=$request->get('name_t_control_1_1_retro');
                     $solution_enf1->dr_name=$request->get('dr_name_1_1_retro');
 
+                    $solution_enf1->ventilacion_name=$request->get('ventilacion_name_1_1_retro');
+                    $solution_enf1->ventilacion	=$request->get('ventilacion_1_1_retro');
+                    $solution_enf1->filtracion_name=$request->get('filtracion_name_1_1_retro');
+                    $solution_enf1->filtracion	=$request->get('filtracion_1_1_retro');
+
                     $solution_enf1->dr = $request->get('dr_1_1_retro');
                     $solution_enf1->mantenimiento = $request->get('csMantenimiento_1_1_retro');
 
@@ -2209,6 +2214,11 @@ class ProjectController extends Controller
                     $solution_enf_2_1_retro->name_t_control=$request->get('name_t_control_2_1_retro');
                     $solution_enf_2_1_retro->dr_name=$request->get('dr_name_2_1_retro');
 
+                    $solution_enf_2_1_retro->ventilacion_name=$request->get('ventilacion_name_2_1_retro');
+                    $solution_enf_2_1_retro->ventilacion=$request->get('ventilacion_2_1_retro');
+                    $solution_enf_2_1_retro->filtracion_name=$request->get('filtracion_name_2_1_retro');
+                    $solution_enf_2_1_retro->filtracion	=$request->get('filtracion_2_1_retro');
+
                     $solution_enf_2_1_retro->dr = $request->get('dr_2_1_retro');
                     $solution_enf_2_1_retro->mantenimiento = $request->get('csMantenimiento_2_1_retro');
 
@@ -2375,6 +2385,11 @@ class ProjectController extends Controller
 
                     $solution_enf_3_1_retro->name_t_control=$request->get('name_t_control_3_1_retro');
                     $solution_enf_3_1_retro->dr_name=$request->get('dr_name_3_1_retro');
+
+                    $solution_enf_3_1_retro->ventilacion_name=$request->get('ventilacion_name_3_1_retro');
+                    $solution_enf_3_1_retro->ventilacion=$request->get('ventilacion_3_1_retro');
+                    $solution_enf_3_1_retro->filtracion_name=$request->get('filtracion_name_3_1_retro');
+                    $solution_enf_3_1_retro->filtracion	=$request->get('filtracion_3_1_retro');
 
                     $solution_enf_3_1_retro->dr = $request->get('dr_3_1_retro');
                     $solution_enf_3_1_retro->mantenimiento = $request->get('cheMantenimiento_3_1_retro');

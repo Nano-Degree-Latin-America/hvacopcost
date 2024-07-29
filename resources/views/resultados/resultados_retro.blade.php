@@ -1014,35 +1014,85 @@ cursor: pointer;
 
 $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_elec,$sumaopex_3*$tar_ele->costo_elec];
 
-$base_red_an = $sumaopex_1*$tar_ele->costo_elec;
-$a_red_an = $sumaopex_2*$tar_ele->costo_elec;
-$b_red_an = $sumaopex_3*$tar_ele->costo_elec;
+  $base_red_an = $sumaopex_1*$tar_ele->costo_elec;
 
-$val_red_an_alt = max($arr_red_ene);
-$counter = 0;
-for ($i=0; $i < count($arr_red_ene) ; $i++) {
-if ($arr_red_ene[$i] ==  $val_red_an_alt) {
-    $counter = $i;
-}
-}
 
-if($counter == 0){
-$val_base_red_ene =  0;
-$val_a_red_ene = $base_red_an - $a_red_an;
-$val_b_red_ene = $base_red_an - $b_red_an;
-}
 
-if($counter == 1){
-$val_a_red_ene =  0;
-$val_base_red_ene = $a_red_an - $base_red_an;
-$val_b_red_ene = $a_red_an - $b_red_an;
-}
+  if($result2 ==! null){
+    $a_red_an = $sumaopex_2*$tar_ele->costo_elec;
+  }else{
+    $a_red_an = 0;
+  }
 
-if($counter == 2){
-$val_b_red_ene =  0;
-$val_base_red_ene = $b_red_an - $base_red_an;
-$val_a_red_ene = $b_red_an - $a_red_an;
-}
+  if($result3 ==! null){
+    $b_red_an = $sumaopex_3*$tar_ele->costo_elec;
+  }else{
+    $b_red_an = 0;
+  }
+
+
+  $val_red_an_alt = max($arr_red_ene);
+  $counter = 0;
+  for ($i=0; $i < count($arr_red_ene) ; $i++) {
+    if ($arr_red_ene[$i] ==  $val_red_an_alt) {
+        $counter = $i;
+    }
+  }
+
+  if($counter == 0){
+
+    if($result1 ==! null){
+        if($result2 == null && $result3 == null){
+            $val_base_red_ene = 0;
+        }else{
+            $val_base_red_ene =  0;
+        }
+
+    }else{
+        $val_base_red_ene =  0;
+    }
+
+
+
+
+    if($result2 ==! null){
+        $val_a_red_ene = $base_red_an - $a_red_an;
+    }else{
+        $val_a_red_ene = 0;
+    }
+
+    if($result3 ==! null){
+            $val_b_red_ene = $base_red_an - $b_red_an;
+    }else{
+            $val_b_red_ene = 0;
+    }
+
+
+  }
+
+  if($counter == 1){
+    $val_a_red_ene =  0;
+    $val_base_red_ene = $a_red_an - $base_red_an;
+
+    if($result3 ==! null){
+        $val_b_red_ene = $a_red_an - $b_red_an;
+    }else{
+        $val_b_red_ene = 0;
+    }
+
+
+  }
+
+  if($counter == 2){
+    if($result3 ==! null){
+        $val_b_red_ene =  0;
+    }else{
+        $val_b_red_ene = 0;
+    }
+
+    $val_base_red_ene = $b_red_an - $base_red_an;
+    $val_a_red_ene = $b_red_an - $a_red_an;
+  }
 
 
 ?>
@@ -1594,6 +1644,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                 @endif
 
                 @if ($result2 === null)
+                <?php  $personas_a=0 ?>
                 <?php  $costo_a=0; ?>
                 @endif
                 <div class="w-1/3 grid justify-items-center gap-y-3">
@@ -1611,13 +1662,14 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                     </div>
                 </div>
 
-                @if ($result2 !== null)
+                @if ($result3 !== null)
                 <?php  $personas_b=$conf_val->personas($id_project,$conf_val_b) ?>
                 <?php  $costo_b=$conf_val->costo($personas_b,$id_project) ?>
                 @endif
 
-                @if ($result2 === null)
+                @if ($result3 === null)
                 <?php  $personas_b=0; ?>
+                <?php  $costo_b=0 ?>
                 @endif
 
                 <div class="w-1/3 grid justify-items-center gap-y-3">
@@ -1799,7 +1851,21 @@ $val_a_red_ene = $b_red_an - $a_red_an;
 </div>
 
 <?php  $dif_1_cost=$smasolutions->dif_1_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
+
+@if ($result2 !== null)
 <?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
+@endif
+ @if ($result2 === null)
+ <?php  $inv_ini_2=0 ?>
+@endif
+
+
+@if ($result2 !== null)
+<?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
+@endif
+ @if ($result2 === null)
+ <?php  $inv_ini_2=0 ?>
+@endif
 
 <?php  $dif_2_cost=$smasolutions->dif_2_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
  {{-- payback --}}
@@ -1892,7 +1958,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                                             <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$val_a_red_ene) ?>
 
                                             @if ($pay_back_a > 1)
-                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a,1)}}</b>
                                             @endif
 
                                             @if ($pay_back_a <= 1)
@@ -1934,7 +2000,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                                         @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
                                                 <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$val_b_red_ene) ?>
                                                 @if ($pay_back_b > 1)
-                                                <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
+                                                <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b,1)}}</b>
                                                 @endif
 
                                                 @if ($pay_back_b <= 1)
@@ -2004,7 +2070,7 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                                     <?php  $pay_back_base=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,0,$costo_base) ?>
 
                                     @if ($pay_back_base > 1)
-                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_base)}}</b>
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_base,1)}}</b>
                                     @endif
 
                                     @if ($pay_back_base <= 1)
@@ -2044,7 +2110,7 @@ $costo_b
                                     <?php  $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$dif_1,$costo_a) ?>
 
                                     @if ($pay_back_a > 1)
-                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a,1)}}</b>
                                     @endif
 
                                     @if ($pay_back_a <= 1)
@@ -2081,7 +2147,7 @@ $costo_b
                                     @if ( true == ( isset( $dif_2 ) ? $dif_2 : null ) )
                                     <?php  $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$dif_2,$costo_b) ?>
                                     @if ($pay_back_b > 1)
-                                   <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
+                                   <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b,1)}}</b>
                                    @endif
 
                                     @if ($pay_back_b <= 1)

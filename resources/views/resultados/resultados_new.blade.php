@@ -1051,64 +1051,87 @@ cursor: pointer;
 
 
 
-   $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_elec,$sumaopex_3*$tar_ele->costo_elec];
+$arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_elec,$sumaopex_3*$tar_ele->costo_elec];
 
-  $base_red_an = $sumaopex_1*$tar_ele->costo_elec;
+$base_red_an = $sumaopex_1*$tar_ele->costo_elec;
 
+
+
+if($result2 ==! null){
   $a_red_an = $sumaopex_2*$tar_ele->costo_elec;
+}else{
+  $a_red_an = 0;
+}
+
+if($result3 ==! null){
+  $b_red_an = $sumaopex_3*$tar_ele->costo_elec;
+}else{
+  $b_red_an = 0;
+}
+
+
+$val_red_an_alt = max($arr_red_ene);
+$counter = 0;
+for ($i=0; $i < count($arr_red_ene) ; $i++) {
+  if ($arr_red_ene[$i] ==  $val_red_an_alt) {
+      $counter = $i;
+  }
+}
+
+if($counter == 0){
+
+  if($result1 ==! null){
+      if($result2 == null && $result3 == null){
+          $val_base_red_ene = 0;
+      }else{
+          $val_base_red_ene =  0;
+      }
+
+  }else{
+      $val_base_red_ene =  0;
+  }
+
+
+
+
+  if($result2 ==! null){
+      $val_a_red_ene = $base_red_an - $a_red_an;
+  }else{
+      $val_a_red_ene = 0;
+  }
 
   if($result3 ==! null){
-    $b_red_an = $sumaopex_3*$tar_ele->costo_elec;
+          $val_b_red_ene = $base_red_an - $b_red_an;
   }else{
-    $b_red_an = 0;
+          $val_b_red_ene = 0;
   }
 
 
-  $val_red_an_alt = max($arr_red_ene);
-  $counter = 0;
-  for ($i=0; $i < count($arr_red_ene) ; $i++) {
-    if ($arr_red_ene[$i] ==  $val_red_an_alt) {
-        $counter = $i;
-    }
+}
+
+if($counter == 1){
+  $val_a_red_ene =  0;
+  $val_base_red_ene = $a_red_an - $base_red_an;
+
+  if($result3 ==! null){
+      $val_b_red_ene = $a_red_an - $b_red_an;
+  }else{
+      $val_b_red_ene = 0;
   }
 
-  if($counter == 0){
-    $val_base_red_ene =  0;
-    $val_a_red_ene = $base_red_an - $a_red_an;
 
+}
 
-    if($result3 ==! null){
-            $val_b_red_ene = $base_red_an - $b_red_an;
-    }else{
-            $val_b_red_ene = 0;
-    }
-
-
+if($counter == 2){
+  if($result3 ==! null){
+      $val_b_red_ene =  0;
+  }else{
+      $val_b_red_ene = 0;
   }
 
-  if($counter == 1){
-    $val_a_red_ene =  0;
-    $val_base_red_ene = $a_red_an - $base_red_an;
-
-    if($result3 ==! null){
-        $val_b_red_ene = $a_red_an - $b_red_an;
-    }else{
-        $val_b_red_ene = 0;
-    }
-
-
-  }
-
-  if($counter == 2){
-    if($result3 ==! null){
-        $val_b_red_ene =  0;
-    }else{
-        $val_b_red_ene = 0;
-    }
-
-    $val_base_red_ene = $b_red_an - $base_red_an;
-    $val_a_red_ene = $b_red_an - $a_red_an;
-  }
+  $val_base_red_ene = $b_red_an - $base_red_an;
+  $val_a_red_ene = $b_red_an - $a_red_an;
+}
 
 
 ?>
