@@ -1883,25 +1883,25 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                             <div style="" class=" rounded-md flex justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center place-items-center">
                                     <div  class="w-full mx-3 rounded-md flex justify-center">
-
-
-                                        @if ( true == ( isset( $val_a_red_ene ) ? $val_a_red_ene : null ) )
-                                        <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$val_a_red_ene) ?>
-
-                                        @if ($pay_back_a > 0)
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
-                                        @endif
-
-                                        @if ($pay_back_a < 0)
-                                        <b style="color:#ea0000;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
-                                        @endif
-
-                                        @if ($pay_back_a == 0)
+                                        @if ($result2 === null)
                                         <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
                                         @endif
 
-                                        @else
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                        @if ($result2 != null)
+                                            @if ( true == ( isset( $val_a_red_ene ) ? $val_a_red_ene : null ) )
+                                            <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$val_a_red_ene) ?>
+
+                                            @if ($pay_back_a > 1)
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
+                                            @endif
+
+                                            @if ($pay_back_a <= 1)
+                                            <b style="color:#ea0000;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
+                                            @endif
+
+                                            @else
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                            @endif
                                         @endif
                                     </div>
                                 </div>
@@ -1927,24 +1927,25 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                             <div  class="rounded-md flex justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center  place-items-center">
                                      <div  class="w-full mx-3 rounded-md flex justify-center">
+                                    @if ($result3 === null)
+                                    <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                    @endif
+                                    @if ($result3 != null)
                                         @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
-                                            <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$val_b_red_ene) ?>
-                                            @if ($pay_back_b > 0)
-                                            <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
-                                            @endif
+                                                <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$val_b_red_ene) ?>
+                                                @if ($pay_back_b > 1)
+                                                <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
+                                                @endif
 
-                                                @if ($pay_back_b < 0)
-                                            <b style="border:solid  3px;border-color:#1B17BB;color:#ea0000;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
-                                            @endif
+                                                @if ($pay_back_b <= 1)
+                                                <b style="border:solid  3px;border-color:#1B17BB;color:#ea0000;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
+                                                @endif
 
-                                            @if ($pay_back_b == 0)
-                                            <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
-                                            @endif
-
-                                            @else
+                                        @else
                                             <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;"  class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
-                                            <?php  $dif_1=0 ?>
-                                            @endif
+                                            <?php  $val_b_red_ene=0 ?>
+                                        @endif
+                                    @endif
                                       </div>
                                 </div>
                             </div>
@@ -2002,16 +2003,12 @@ $val_a_red_ene = $b_red_an - $a_red_an;
                                     <div  class="w-full mx-3 flex justify-center">
                                     <?php  $pay_back_base=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,0,$costo_base) ?>
 
-                                    @if ($pay_back_base > 0)
+                                    @if ($pay_back_base > 1)
                                     <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_base)}}</b>
                                     @endif
 
-                                    @if ($pay_back_base < 0)
-                                    <b style="color:#ea0000;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_base)}}</b>
-                                    @endif
-
-                                    @if ($pay_back_base == 0)
-                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                    @if ($pay_back_base <= 1)
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
                                     @endif
                                     </div>
 
@@ -2046,16 +2043,12 @@ $costo_b
                                     @if ( true == ( isset( $dif_1 ) ? $dif_1 : null ) )
                                     <?php  $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$dif_1,$costo_a) ?>
 
-                                    @if ($pay_back_a > 0)
+                                    @if ($pay_back_a > 1)
                                     <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
                                     @endif
 
-                                    @if ($pay_back_a < 0)
-                                    <b style="color:#ea0000;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a)}}</b>
-                                    @endif
-
-                                    @if ($pay_back_a == 0)
-                                    <b  style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                    @if ($pay_back_a <= 1)
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
                                     @endif
 
                                     @else
@@ -2087,16 +2080,12 @@ $costo_b
                                     <div  class="w-full mx-3  flex justify-center">
                                     @if ( true == ( isset( $dif_2 ) ? $dif_2 : null ) )
                                     <?php  $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$dif_2,$costo_b) ?>
-                                    @if ($pay_back_b > 0)
+                                    @if ($pay_back_b > 1)
                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
                                    @endif
 
-                                    @if ($pay_back_b < 0)
-                                   <b style="color:#ea0000;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
-                                   @endif
-
-                                   @if ($pay_back_b == 0)
-                                   <b  style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                    @if ($pay_back_b <= 1)
+                                   <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
                                    @endif
 
                                     @else
