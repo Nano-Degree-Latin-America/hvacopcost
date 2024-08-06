@@ -1259,7 +1259,7 @@ if($counter == 2){
                         </div>
 
                         <div class="w-1/3 grid justify-items-center gap-y-2 mt-3">
-                            <?php  $red_hu_carb_a=$red_ene->red_hu_carb(1,$dif_1) ?>
+                            <?php  $red_hu_carb_a=$red_ene->red_hu_carb(1,$val_a_red_ene) ?> {{-- se quito  dif y se pego val_b_red_ene --}}
                             @if ($red_hu_carb_a  < 0)
                             <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
                             @endif
@@ -1283,7 +1283,7 @@ if($counter == 2){
 
                         <div class="w-1/3 grid justify-items-center gap-y-2">
                             <div class="flex w-full justify-center">
-                                <?php  $red_hu_carb_b=$red_ene->red_hu_carb(1,$dif_2) ?>
+                                <?php  $red_hu_carb_b=$red_ene->red_hu_carb(1,$val_b_red_ene) ?>
                                         <div class="flex w-full justify-center mt-3">
                                             <p  style="" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_b,2)}}</p>
                                         </div>
@@ -2173,7 +2173,7 @@ if($counter == 2){
                                     @endif
 
                                     @if ($pay_back_base <= 1)
-                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
                                     @endif
 
 
@@ -2213,8 +2213,8 @@ $costo_b
                                 @endif
 
                                 @if ($result2 != null)
-                                    @if ( true == ( isset( $dif_1 ) ? $dif_1 : null ) )
-                                    <?php  $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$dif_1,$costo_a) ?>
+                                    @if ( true == ( isset( $val_a_red_ene ) ? $val_a_red_ene : null ) )
+                                    <?php  $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_a_red_ene,$costo_a) ?>
 
                                         @if ($pay_back_a > 1)
                                         <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a),1}}</b>
@@ -2258,14 +2258,14 @@ $costo_b
                                 @endif
 
                                 @if ($result3 != null)
-                                    @if ( true == ( isset( $dif_2 ) ? $dif_2 : null ) )
-                                        <?php  $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$dif_2,$costo_b) ?>
-                                        @if ($pay_back_b > 0)
+                                    @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
+                                        <?php  $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_b_red_ene,$costo_b) ?>
+                                        @if ($pay_back_b > 1)
                                         <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b)}}</b>
                                         @endif
 
                                         @if ($pay_back_b <= 1)
-                                        <b style="color:#ea0000;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
                                         @endif
                                     @else
                                         <b  style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
