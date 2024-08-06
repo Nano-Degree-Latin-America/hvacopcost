@@ -1174,7 +1174,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
             </div>
 
             <div class="w-1/3 grid justify-items-center">
-                <?php  $red_hu_carb_a=$red_ene->red_hu_carb(1,$dif_1) ?>
+                <?php  $red_hu_carb_a=$red_ene->red_hu_carb(1,$val_a_red_ene) ?>
 
                     @if ($red_hu_carb_a  == 0)
                     <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
@@ -1195,7 +1195,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
             <div class="w-1/3 grid justify-items-center">
                 <div class="flex w-full justify-center">
-                    <?php  $red_hu_carb_b=$red_ene->red_hu_carb(1,$dif_2) ?>
+                    <?php  $red_hu_carb_b=$red_ene->red_hu_carb(1,$val_b_red_ene) ?>
                             <div class="flex w-full justify-center">
                                 <p style="" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_b,2)}}</p>
                             </div>
@@ -2074,7 +2074,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                     @endif
 
                                     @if ($pay_back_base <= 1)
-                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
                                     @endif
                                     </div>
 
@@ -2106,8 +2106,8 @@ $costo_b
                                 --}}
                                 <div  style="" class="grid justify-items-center  place-items-center">
                                   <div  class="w-full mx-3  flex justify-center">
-                                    @if ( true == ( isset( $dif_1 ) ? $dif_1 : null ) )
-                                    <?php  $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$dif_1,$costo_a) ?>
+                                    @if ( true == ( isset( $val_a_red_ene ) ? $val_a_red_ene : null ) )
+                                    <?php  $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_a_red_ene,$costo_a) ?>
 
                                     @if ($pay_back_a > 1)
                                     <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a,1)}}</b>
@@ -2144,8 +2144,8 @@ $costo_b
                             <div style="" class="rounded-md  flex justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center  place-items-center">
                                     <div  class="w-full mx-3  flex justify-center">
-                                    @if ( true == ( isset( $dif_2 ) ? $dif_2 : null ) )
-                                    <?php  $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$dif_2,$costo_b) ?>
+                                    @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
+                                    <?php  $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_b_red_ene,$costo_b) ?>
                                     @if ($pay_back_b > 1)
                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b,1)}}</b>
                                    @endif
@@ -2156,7 +2156,7 @@ $costo_b
 
                                     @else
                                     <b  style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
-                                    <?php  $dif_2=0 ?>
+                                    <?php  $val_b_red_ene=0 ?>
                                      @endif
                                     </div>
                                 </div>
