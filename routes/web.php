@@ -164,6 +164,8 @@ Route::get('delete_marcas/{id}', 'MarcasController@delete_marcas');
 Route::get('send_marcas', 'ResultadosController@send_marcas');
 Route::get('send_marcas_equipo/{value}', 'ResultadosController@send_marcas_equipo');
 Route::get('send_modelos/{value}', 'ResultadosController@send_modelos');
+Route::get('check_marca/{value}', 'ResultadosController@check_marca');
+
 Route::post('store_new_marc/{value}', 'ResultadosController@store_new_marc');
 Route::get('store_new_model/{value}/{marca}/{eficiencia}/{equipo}', 'ResultadosController@store_new_model');
 Route::get('send_modelos_datalist/{value}/{equipo}', 'ResultadosController@send_modelos_datalist');

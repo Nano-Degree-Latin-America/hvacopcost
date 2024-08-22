@@ -6367,6 +6367,14 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
         return response()->json($marcas);
     }
 
+    public function check_marca($id){
+        $marca = DB::table('marcas_empresa')
+        ->where('marcas_empresa.id','=',$id)
+        ->first();
+
+        return response()->json($marca);
+    }
+
     public function send_modelos_datalist($value,$equipo){
         $id_marca = DB::table('marcas_empresa')
         ->where('marcas_empresa.marca','=',$value)

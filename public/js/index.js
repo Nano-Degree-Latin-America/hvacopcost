@@ -3110,7 +3110,60 @@ return arry_vent;
 
   function send_modelos(value,id){
     var ima =  $('#idioma').val();
+    //check marca generico
     $.ajax({
+        type: 'get',
+        url: '/check_marca/'+value,
+        success: function (response) {
+          if (response.marca == 'Genérico') {
+            $.ajax({
+                type: 'get',
+                url: '/send_modelos/'+value,
+                success: function (response) {
+                    $('#'+id).empty();
+                    response.map((marca, i) => {
+                        $('#'+id).append($('<option>', {
+                            value: marca.id,
+                            text: marca.modelo,
+                        }));
+                    });
+
+
+
+                },
+                error: function (responsetext) {
+
+                }
+            });
+                return false;
+          }else{
+            $.ajax({
+                type: 'get',
+                url: '/send_modelos/'+value,
+                success: function (response) {
+                    check_val_text(id,ima);
+                    response.map((marca, i) => {
+                        $('#'+id).append($('<option>', {
+                            value: marca.id,
+                            text: marca.modelo,
+                        }));
+                    });
+
+
+
+                },
+                error: function (responsetext) {
+
+                }
+            });
+          }
+        },
+        error: function (responsetext) {
+
+        }
+    });
+
+    /* $.ajax({
         type: 'get',
         url: '/send_modelos/'+value,
         success: function (response) {
@@ -3128,7 +3181,7 @@ return arry_vent;
         error: function (responsetext) {
 
         }
-    });
+    }); */
 }
 
 function send_modelo_edit(value,id,id_modelo){
