@@ -1957,12 +1957,12 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                             @if ( true == ( isset( $val_a_red_ene ) ? $val_a_red_ene : null ) )
                                             <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$val_a_red_ene) ?>
 
-                                            @if ($pay_back_a > 1)
+                                            @if ($pay_back_a >= 1)
                                             <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a,1)}}</b>
                                             @endif
 
-                                            @if ($pay_back_a <= 1)
-                                            <b style="color:#ea0000;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
+                                            @if ($pay_back_a < 1)
+                                            <b style="color:#ea0000;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
                                             @endif
 
                                             @else
@@ -1999,12 +1999,12 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                     @if ($result3 != null)
                                         @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
                                                 <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$val_b_red_ene) ?>
-                                                @if ($pay_back_b > 1)
+                                                @if ($pay_back_b >= 1)
                                                 <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b,1)}}</b>
                                                 @endif
 
-                                                @if ($pay_back_b <= 1)
-                                                <b style="border:solid  3px;border-color:#1B17BB;color:#ea0000;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
+                                                @if ($pay_back_b < 1)
+                                                <b style="border:solid  3px;border-color:#1B17BB;color:#ea0000;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
                                                 @endif
 
                                         @else
@@ -2109,12 +2109,12 @@ $costo_b
                                     @if ( true == ( isset( $val_a_red_ene ) ? $val_a_red_ene : null ) )
                                     <?php  $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_a_red_ene,$costo_a) ?>
 
-                                    @if ($pay_back_a > 1)
+                                    @if ($pay_back_a >= 1)
                                     <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_a,1)}}</b>
                                     @endif
 
-                                    @if ($pay_back_a <= 1)
-                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
+                                    @if ($pay_back_a < 1)
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
                                     @endif
 
                                     @else
@@ -2146,12 +2146,12 @@ $costo_b
                                     <div  class="w-full mx-3  flex justify-center">
                                     @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
                                     <?php  $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_b_red_ene,$costo_b) ?>
-                                    @if ($pay_back_b > 1)
+                                    @if ($pay_back_b >= 1)
                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b,1)}}</b>
                                    @endif
 
-                                    @if ($pay_back_b <= 1)
-                                   <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">-1</b>
+                                    @if ($pay_back_b < 1)
+                                   <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
                                    @endif
 
                                     @else

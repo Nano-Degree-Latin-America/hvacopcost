@@ -3127,9 +3127,6 @@ return arry_vent;
                             text: marca.modelo,
                         }));
                     });
-
-
-
                 },
                 error: function (responsetext) {
 
