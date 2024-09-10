@@ -107,7 +107,7 @@ Route::get('add_marcas_empresas', 'EmpresasController@add_marcas_empresas');
 Route::get('add_marcas_empresasvrf', 'EmpresasController@add_marcas_empresasvrf');
 Route::get('add_marcas_empresaschillers', 'EmpresasController@add_marcas_empresaschillers');
 Route::get('add_genericos', 'EmpresasController@add_genericos');
-
+Route::get('delete_marcas_empresa/{value}', 'EmpresasController@delete_marcas_empresa');
 //sucursales
 Route::get('sucursales_emp/{id}', 'SucursalesController@sucursales_empresa');
 Route::resource('sucursales', 'SucursalesController');
@@ -165,6 +165,7 @@ Route::get('send_marcas', 'ResultadosController@send_marcas');
 Route::get('send_marcas_equipo/{value}', 'ResultadosController@send_marcas_equipo');
 Route::get('send_modelos/{value}', 'ResultadosController@send_modelos');
 Route::get('check_marca/{value}', 'ResultadosController@check_marca');
+
 
 Route::post('store_new_marc/{value}', 'ResultadosController@store_new_marc');
 Route::get('store_new_model/{value}/{marca}/{eficiencia}/{equipo}', 'ResultadosController@store_new_model');

@@ -89,6 +89,10 @@ class EmpresasController extends Controller
                 $new_permiso->mant = 1;
                 $new_permiso->id_empresa = $empresa_p->id;
                 $new_permiso->save();
+
+                EmpresasController::add_marcas_empresas($empresa_p->id);
+                EmpresasController::add_marcas_empresasvrf($empresa_p->id);
+                EmpresasController::add_genericos_renew($empresa_p->id);
                 return redirect('/empresas');
 
 
@@ -391,16 +395,14 @@ class EmpresasController extends Controller
         return $submit;
     }
 
-    public function add_marcas_empresas(){
+    public function add_marcas_empresas($id_empresa){
 
         $array_paquetes = ['1','2','5','6','7'];
-        //$marcas_paquetes = ['Carrier','Trane','JCI','Lennox','Rheem','Aoon'];
-        $marcas_paquetes = ['Genérico'];
+        $marcas_paquetes = ['Carrier','Trane','JCI','Lennox','Rheem','Aoon','Genérico'];
         $empresas = DB::table('empresas')
         ->get();
 
 
-        for ($a=0; $a < count($empresas) ; $a++) {
 
             for ($z=0; $z < count($array_paquetes) ; $z++) {
 
@@ -408,28 +410,24 @@ class EmpresasController extends Controller
                     $new_marca= new MarcasEmpresaModel;
                     $new_marca->marca = $marcas_paquetes[$i];
                     $new_marca->equipo = $array_paquetes[$z];
-                    $new_marca->id_empresa = $empresas[$a]->id;
+                    $new_marca->id_empresa = $id_empresa;
                     $new_marca->id_user = Auth::user()->id;
                     $new_marca->save();
 
                 }
             }
-        }
 
-        dd('paquetes');
 
     }
 
-    public function add_marcas_empresasvrf(){
+    public function add_marcas_empresasvrf($id_empresa){
 
         $array_paquetes = ['3','4'];
-       /*  $marcas_paquetes = ['Daikin','Hitachi','Samsung','Midea','Toshiba','Mitsubishi','LG']; */
-       $marcas_paquetes = ['Genérico'];
-        $empresas = DB::table('empresas')
-        ->get();
+        $marcas_paquetes = ['Daikin','Hitachi','Samsung','Midea','Toshiba','Mitsubishi','LG','Genérico'];
 
 
-        for ($a=0; $a < count($empresas) ; $a++) {
+
+
 
             for ($z=0; $z < count($array_paquetes) ; $z++) {
 
@@ -437,15 +435,14 @@ class EmpresasController extends Controller
                     $new_marca= new MarcasEmpresaModel;
                     $new_marca->marca = $marcas_paquetes[$i];
                     $new_marca->equipo = $array_paquetes[$z];
-                    $new_marca->id_empresa = $empresas[$a]->id;
+                    $new_marca->id_empresa = $id_empresa;
                     $new_marca->id_user = Auth::user()->id;
                     $new_marca->save();
 
                 }
-            }
-        }
+           }
 
-        $marcas_generico = DB::table('marcas_empresa')->get();
+        /* $marcas_generico = DB::table('marcas_empresa')->get();
 
         foreach($marcas_generico as $marcas){
            if($marcas->marca == 'Generico'){
@@ -453,8 +450,19 @@ class EmpresasController extends Controller
             $new_marca->marca = 'Génerico';
             $new_marca->update();
            }
+        } */
+
+    }
+
+    public function delete_marcas_empresa($id){
+        $empresa_marcas= MarcasEmpresaModel::where('id_empresa','=',$id)->get();
+        foreach($empresa_marcas as $marca){
+            $marca->delete();
         }
-        dd('vrfs');
+
+        EmpresasController::add_marcas_empresas($id);
+        EmpresasController::add_marcas_empresasvrf($id);
+        EmpresasController::add_genericos_renew($id);
 
     }
 
@@ -484,6 +492,23 @@ class EmpresasController extends Controller
 
         dd('chillers');
 
+    }
+
+    public function add_genericos_renew($id_empresa){
+        $marcas = DB::table('marcas_empresa')
+        ->where('marcas_empresa.marca','=','Génerico')
+        ->where('marcas_empresa.id_empresa','=',$id_empresa)
+        ->get();
+
+            for ($i=0; $i < count($marcas) ; $i++) {
+                $new_modelo= new ModelosEmpresaModel;
+                $new_modelo->modelo = 'Génerico';
+                $new_modelo->eficiencia = 'SEER';
+                $new_modelo->id_marca = $marcas[$i]->id;
+                $new_modelo->id_empresa =  $id_empresa;
+                $new_modelo->save();
+
+            }
     }
 
     public function add_genericos(){
