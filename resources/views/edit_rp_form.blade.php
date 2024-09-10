@@ -298,6 +298,35 @@
                     </div>
 
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                            <div class="flex w-1/2 justify-start text-left">
+                                <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
+                            </div>
+                            <div class="flex w-full justify-start">
+                                <select onchange="valida_selects_inps(this.id);"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_1_1_retro" id="tipo_ambiente_1_1_retro">
+                                    <option selected value="0">{{ __('index.seleccionar') }}</option>
+                                    <option value="no_agresivo">No Agresivo</option>
+                                    <option value="marino">Marino</option>
+                                    <option value="sin_mantenimiento">Sin Mantenimiento</option>
+                                </select>
+                                <input  id="tipo_ambiente_1_1_retro_count" name="tipo_ambiente_1_1_retro_count" type="number" class="hidden" value="1">
+                            </div>
+                        </div>
+
+
+                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                             <div class="flex w-1/3 justify-start text-left">
+                                <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
+                            </div>
+                            <div class="flex w-full justify-start">
+                                <select onchange="valida_selects_inps(this.id);"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1_retro" id="proteccion_condensador_1_1_retro">
+                                </select>
+                                <input  id="proteccion_condensador_1_1_retro_count" name="proteccion_condensador_1_1_retro_count" type="number" class="hidden" value="1">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
                             <div class="w-1/3 flex justify-start text-left">
                                 <label  class="labels" for=""><b>{{ __('index.costo anual') }}</b> </label>
@@ -624,6 +653,35 @@
                 </div>
 
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                        <div class="flex w-1/2 justify-start text-left">
+                            <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
+                        </div>
+                        <div class="flex w-full justify-start">
+                            <select onchange="valida_selects_inps(this.id);"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_1_retro" id="tipo_ambiente_2_1_retro">
+                                <option selected value="0">{{ __('index.seleccionar') }}</option>
+                                <option value="no_agresivo">No Agresivo</option>
+                                <option value="marino">Marino</option>
+                                <option value="sin_mantenimiento">Sin Mantenimiento</option>
+                            </select>
+                            <input  id="tipo_ambiente_2_1_retro_count" name="tipo_ambiente_2_1_retro_count" type="number" class="hidden" value="1">
+                        </div>
+                    </div>
+
+
+                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                         <div class="flex w-1/3 justify-start text-left">
+                            <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
+                        </div>
+                        <div class="flex w-full justify-start">
+                            <select onchange="valida_selects_inps(this.id);"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_2_1_retro" id="proteccion_condensador_2_1_retro">
+                            </select>
+                            <input  id="proteccion_condensador_2_1_retro_count" name="proteccion_condensador_2_1_retro_count" type="number" class="hidden" value="1">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1">
 
                         <div class="w-1/3 flex justify-start text-left">
@@ -946,16 +1004,7 @@
                         <input  id="filtracion_3_1_retro_count" name="filtracion_3_1_retro_count" type="number" class="hidden" value="1">
                    </div>
                 </div>
-                   {{-- <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                    <div class="w-1/3 flex justify-start text-left">
-                        <label  class="labels" for=""><b>Costo Anual Reparaciones</b> </label>
-                    </div>
-                    <div class="w-1/2 flex justify-start text-left">
-                         <input style="margin-left: 1px;" onchange="format_num(this.value,this.id);valida_selects_inps(this.id)" type="text" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-color-inps rounded-md py-1 text-center" name="const_an_rep_3_1" id="const_an_rep_3_1" >
-                         <input  id="cheValorS_3_1_retro_count" name="const_an_rep_3_1_retro_count" type="number" class="hidden" value="1">
 
-                    </div>
-                   </div> --}}
                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="flex w-1/3 justify-start text-left">
                         <label  class="labels" for=""><b>{{ __('index.mantenimiento') }}</b> </label>
@@ -974,6 +1023,35 @@
                     </div>
 
                </div>
+
+               <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+                <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                    <div class="flex w-1/2 justify-start text-left">
+                        <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
+                    </div>
+                    <div class="flex w-full justify-start">
+                        <select onchange="valida_selects_inps(this.id);"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_1_retro" id="tipo_ambiente_3_1_retro">
+                            <option selected value="0">{{ __('index.seleccionar') }}</option>
+                            <option value="no_agresivo">No Agresivo</option>
+                            <option value="marino">Marino</option>
+                            <option value="sin_mantenimiento">Sin Mantenimiento</option>
+                        </select>
+                        <input  id="tipo_ambiente_3_1_retro_count" name="tipo_ambiente_3_1_retro_count" type="number" class="hidden" value="1">
+                    </div>
+                </div>
+
+
+                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                     <div class="flex w-1/3 justify-start text-left">
+                        <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
+                    </div>
+                    <div class="flex w-full justify-start">
+                        <select onchange="valida_selects_inps(this.id);"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_3_1_retro" id="proteccion_condensador_3_1_retro">
+                        </select>
+                        <input  id="proteccion_condensador_3_1_retro_count" name="proteccion_condensador_3_1_retro_count" type="number" class="hidden" value="1">
+                    </div>
+                </div>
+            </div>
 
                <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                    <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-2">

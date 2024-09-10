@@ -3,7 +3,7 @@
 return [
     'análisis energético y financiero' => 'Simulador Energético y',
     'de sistemas HVAC' => 'Financiero de Sistemas de HVAC',
-    'nombre projecto' => 'Nombre Projecto',
+    'nombre projecto' => 'Nombre Proyecto',
     'region' => 'Región',
     'ciudad' => 'Ciudad',
     'incremento anual energia' => 'Incremento Anual Energía',
@@ -68,6 +68,8 @@ return [
     'nombre' => 'Nombre',
     'hors_enft_anual' => 'Horas Enfriamiento Anual',
     'tar_ele' => 'Tarifa Eléctrica',
+    'tipo_ambiente' => 'Tipo Ambiente',
+    'proteccion_condensador' => 'Protección Condensador',
 
     'resultado' => 'Resultado',
     'guardar' => 'Guardar',

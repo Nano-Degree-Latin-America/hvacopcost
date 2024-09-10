@@ -13862,3 +13862,60 @@ function  send_seer_to_nexts_seers(id_input_b){
             }));
         }
      }
+
+
+function show_prot_cond(tipo_ambiente_id,id_prot_comp){
+    var ima =  $('#idioma').val();
+
+    switch (tipo_ambiente_id) {
+        case 'no_agresivo':
+            check_val_text(id_prot_comp,ima);
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'sin_proteccion',
+                text: 'Sin Protección'
+            }));
+        break;
+
+        case 'marino':
+            check_val_text(id_prot_comp,ima);
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'sin_proteccion',
+                text: 'Sin Protección'
+            }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'infiniguard',
+                text: 'Infiniguard®'
+            }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'cobre_cobre',
+                text: 'Cobre - Cobre'
+            }));
+        break;
+
+        case 'contaminado':
+            check_val_text(id_prot_comp,ima);
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'sin_proteccion',
+                text: 'Sin Protección'
+            }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'infiniguard',
+                text: 'Infiniguard®'
+            }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'cobre_cobre',
+                text: 'Cobre - Cobre'
+            }));
+        break;
+
+        default:
+        break;
+    }
+}
+
+
+
