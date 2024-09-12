@@ -291,7 +291,7 @@
                         <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_1_1','proteccion_condensador_1_1_value','tipo_ambiente_1_1');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1" id="proteccion_condensador_1_1">
                         </select>
                         <input  id="proteccion_condensador_1_1_count" name="proteccion_condensador_1_1_count" type="number" class="hidden" value="1">
-                        <input  id="proteccion_condensador_1_1_value" name="proteccion_condensador_1_1_value" type="text" class="">
+                        <input  id="proteccion_condensador_1_1_value" name="proteccion_condensador_1_1_value" type="text" class="hidden">
                     </div>
                 </div>
             </div>
@@ -1197,7 +1197,7 @@
                                 <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_2_1','proteccion_condensador_2_1_value','tipo_ambiente_2_1');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_2_1" id="proteccion_condensador_2_1">
                                 </select>
                                 <input  id="proteccion_condensador_2_1_count" name="proteccion_condensador_2_1_count" type="number" class="hidden" value="1">
-                                <input  id="proteccion_condensador_2_1_value" name="proteccion_condensador_2_1_value" type="text" class="">
+                                <input  id="proteccion_condensador_2_1_value" name="proteccion_condensador_2_1_value" type="text" class="hidden">
                             </div>
                         </div>
                     </div>
