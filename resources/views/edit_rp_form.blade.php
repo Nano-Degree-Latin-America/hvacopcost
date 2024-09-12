@@ -659,7 +659,7 @@
                             <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                         </div>
                         <div class="flex w-full justify-start">
-                            <select onchange="valida_selects_inps(this.id);show_prot_cond('tipo_ambiente_2_1_retro','proteccion_condensador_2_1_retro','retro','yrs_vida_2_1_retro');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_1_retro" id="tipo_ambiente_2_1_retro">
+                            <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_2_1_retro','retro','yrs_vida_2_1_retro');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_1_retro" id="tipo_ambiente_2_1_retro">
                                 <option selected value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="no_agresivo">No Agresivo</option>
                                 <option value="marino">Marino</option>
@@ -1032,7 +1032,7 @@
                         <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select onchange="valida_selects_inps(this.id);show_prot_cond('tipo_ambiente_3_1_retro','proteccion_condensador_3_1_retro','retro','yrs_vida_3_1_retro');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_1_retro" id="tipo_ambiente_3_1_retro">
+                        <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_3_1_retro','retro','yrs_vida_3_1_retro');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_1_retro" id="tipo_ambiente_3_1_retro">
                             <option selected value="0">{{ __('index.seleccionar') }}</option>
                             <option value="no_agresivo">No Agresivo</option>
                             <option value="marino">Marino</option>
