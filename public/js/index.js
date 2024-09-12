@@ -13967,7 +13967,7 @@ function send_value_box(id_set,id_get,tipo_ambiente){
 
 switch (tipo_ambiente_val) {
     case 'no_agresivo':
-        alert($('#'+id_set).val());
+
         value = $('#'+id_set).val();
         switch (value) {
              case 'sin_proteccion':
