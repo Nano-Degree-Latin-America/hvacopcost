@@ -2632,15 +2632,15 @@ return arry_vent;
             action_submit_send.value = 'update';
             traer_unidad_hvac_edit(id_project,1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','ventilacion_1_1_retro','filtracion_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
             ,'capacidad_total_1_1_retro','costo_elec_1_1_retro','csStd_retro_1_1_cant','costo_recu_1_1_retro','csStd_1_1_retro'
-            ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','');
+            ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','','tipo_ambiente_1_1_retro','proteccion_condensador_1_1_retro');
             //2_1
             traer_unidad_hvac_edit(id_project,1,2,'cUnidad_2_1_retro','cheTipo_2_1_retro','cheDisenio_2_1_retro','tipo_control_2_1_retro','dr_2_1_retro','ventilacion_2_1_retro','filtracion_2_1_retro','csMantenimiento_2_1_retro','lblCsTipo_2_1_retro'
             ,'capacidad_total_2_1_retro','costo_elec_2_1_retro','csStd_cant_2_1_retro','costo_recu_2_1_retro','csStd_2_1_retro'
-            ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1','action_submit_2_1_retro');
+            ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1','action_submit_2_1_retro','tipo_ambiente_2_1_retro','proteccion_condensador_2_1_retro');
             //3_1
             traer_unidad_hvac_edit(id_project,1,3,'cUnidad_3_1_retro','cheTipo_3_1_retro','cheDisenio_3_1_retro','tipo_control_3_1_retro','dr_3_1_retro','ventilacion_3_1_retro','filtracion_3_1_retro','cheMantenimiento_3_1_retro','lblCsTipo_3_1_retro'
             ,'capacidad_total_3_1_retro','costo_elec_3_1_retro','csStd_cant_3_1_retro','costo_recu_3_1_retro','csStd_3_1_retro'
-            ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro');
+            ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro','tipo_ambiente_2_1_retro','proteccion_condensador_2_1_retro');
             //se actualiza proyecto retro
         }
         $('#'+retro_p).removeClass("hidden");
@@ -2686,15 +2686,15 @@ return arry_vent;
             //1_1
             traer_unidad_hvac_edit(id_project,1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
             ,'capacidad_total_1_1_retro','costo_elec_1_1_retro','csStd_retro_1_1_cant','costo_recu_1_1_retro','csStd_1_1_retro'
-            ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','');
+            ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','','tipo_ambiente_1_1_retro','proteccion_condensador_1_1_retro');
             //2_1
             traer_unidad_hvac_edit(id_project,1,2,'cUnidad_2_1_retro','cheTipo_2_1_retro','cheDisenio_2_1_retro','tipo_control_2_1_retro','dr_2_1_retro','csMantenimiento_2_1_retro','lblCsTipo_2_1_retro'
             ,'capacidad_total_2_1_retro','costo_elec_2_1_retro','csStd_cant_2_1_retro','costo_recu_2_1_retro','csStd_2_1_retro'
-            ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1','action_submit_2_1_retro');
+            ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1','action_submit_2_1_retro','tipo_ambiente_2_1_retro','proteccion_condensador_2_1_retro');
             //3_1
             traer_unidad_hvac_edit(id_project,1,3,'cUnidad_3_1_retro','cheTipo_3_1_retro','cheDisenio_3_1_retro','tipo_control_3_1_retro','dr_3_1_retro','cheMantenimiento_3_1_retro','lblCsTipo_3_1_retro'
             ,'capacidad_total_3_1_retro','costo_elec_3_1_retro','csStd_cant_3_1_retro','costo_recu_3_1_retro','csStd_3_1_retro'
-            ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro');
+            ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro','tipo_ambiente_3_1_retro','proteccion_condensador_3_1_retro');
             //se act+ualiza proyecto retro
         }
         $('#'+retro_p).removeClass("hidden");
@@ -2735,7 +2735,7 @@ return arry_vent;
         calcular_p_r.removeClass("hidden");
         traer_unidad_hvac_edit(id_project,1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','ventilacion_1_1_retro','filtracion_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
         ,'capacidad_total_1_1_retro','costo_elec_1_1_retro','csStd_retro_1_1_cant','costo_recu_1_1_retro','csStd_1_1_retro'
-        ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','');
+        ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','','tipo_ambiente_1_1_retro','proteccion_condensador_1_1_retro');
 
         inactive_tarjets_retro('pr');
         $('#costo_anual_reparaciones_2_1_retro').addClass("hidden");
@@ -7360,7 +7360,7 @@ function valida_form_calc(p_type){
 
 function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,tipo_control,dr
     ,Mantenimiento,lblCsTipo,capacidad_total,costo_elec,csStd_cant
-    ,cheValorS,num_solu,action_submit,csStd,maintenance_cost,marca,modelo,ventilacion,filtracion) {
+    ,cheValorS,num_solu,action_submit,csStd,maintenance_cost,marca,modelo,ventilacion,filtracion,tipo_ambiente_1_1,proteccion_condensador_1_1,proteccion_condensador_value) {
     $.ajax({
         type: 'get',
         url: "/traer_unidad_hvac/" + id_project + "/" + num_sol + "/" +num_enf,
@@ -7382,6 +7382,12 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 $("#"+dr).find('option[value="' + res.val_unidad.dr + '"]').attr("selected", "selected");
                 $("#"+ventilacion).find('option[value="' + res.val_unidad.ventilacion + '"]').attr("selected", "selected");
                 $("#"+filtracion).find('option[value="' + res.val_unidad.filtracion + '"]').attr("selected", "selected");
+
+                $("#"+tipo_ambiente_1_1).find('option[value="' + res.val_unidad.tipo_ambiente + '"]').attr("selected", "selected");
+                show_prot_cond(res.val_unidad.tipo_ambiente,proteccion_condensador_1_1,'new',3)
+
+                $("#"+proteccion_condensador_1_1).find('option[value="' + res.val_unidad.proteccion_condensador + '"]').attr("selected", "selected");
+                $("#"+proteccion_condensador_value).val(res.val_unidad.proteccion_condensador_val);
 
                 $("#"+Mantenimiento).find('option[value="' +   res.val_unidad.mantenimiento + '"]').attr("selected", "selected");
                 send_marcas_to(marca,res.val_unidad.id_marca,res.val_unidad.unidad_hvac);
@@ -7449,7 +7455,7 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
 
 function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,tipo_control,dr
     ,ventilacion,filtracion,Mantenimiento,lblCsTipo,capacidad_total,costo_elec,csStd_cant
-    ,costo_recu,csStd,maintenance_cost,marca,modelo,yrs_vida,const_an_rep,action_submit) {
+    ,costo_recu,csStd,maintenance_cost,marca,modelo,yrs_vida,const_an_rep,action_submit,tipo_ambiente,proteccion_condensador,proteccion_condensador_value) {
     $.ajax({
         type: 'get',
         url: "/traer_unidad_hvac/" + id_project + "/" + num_sol + "/" +num_enf,
@@ -7462,6 +7468,13 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 $("#"+csStd_cant).val(dollarUSLocale.format(res.val_unidad.eficencia_ene_cant));
                 $("#"+costo_recu).val('$'+dollarUSLocale.format(res.val_unidad.val_aprox));
                 $("#"+yrs_vida).val(res.val_unidad.yrs_vida);
+
+                $("#"+tipo_ambiente).find('option[value="' + res.val_unidad.tipo_ambiente + '"]').attr("selected", "selected");
+                show_prot_cond(res.val_unidad.tipo_ambiente,proteccion_condensador,'retro',res.val_unidad.yrs_vida)
+
+                $("#"+proteccion_condensador).find('option[value="' + res.val_unidad.proteccion_condensador + '"]').attr("selected", "selected");
+                $("#"+proteccion_condensador_value).val(res.val_unidad.proteccion_condensador_val);
+
                 $("#"+const_an_rep).val('$'+dollarUSLocale.format(res.val_unidad.cost_an_re));
                 $("#"+maintenance_cost).val('$'+dollarUSLocale.format(res.val_unidad.costo_mantenimiento));
 
@@ -13864,8 +13877,27 @@ function  send_seer_to_nexts_seers(id_input_b){
      }
 
 
-function show_prot_cond(tipo_ambiente_id,id_prot_comp){
+function show_prot_cond(tipo_ambiente_id,id_prot_comp,tipo_proyect,yrs){
     var ima =  $('#idioma').val();
+
+    switch (tipo_proyect) {
+        case 'new':
+            options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima);
+        break;
+
+        case 'retro':
+
+            options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima);
+        break;
+
+        default:
+            break;
+    }
+
+}
+
+
+function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima){
 
     switch (tipo_ambiente_id) {
         case 'no_agresivo':
@@ -13874,10 +13906,172 @@ function show_prot_cond(tipo_ambiente_id,id_prot_comp){
                 value: 'sin_proteccion',
                 text: 'Sin Protección'
             }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'infiniguard',
+                text: 'Infiniguard®'
+            }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'cobre_cobre',
+                text: 'Cobre - Cobre'
+            }));
+
         break;
 
         case 'marino':
             check_val_text(id_prot_comp,ima);
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'sin_proteccion',
+                text: 'Sin Protección'
+            }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'infiniguard',
+                text: 'Infiniguard®'
+            }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'cobre_cobre',
+                text: 'Cobre - Cobre'
+            }));
+        break;
+
+        case 'contaminado':
+            check_val_text(id_prot_comp,ima);
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'sin_proteccion',
+                text: 'Sin Protección'
+            }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'infiniguard',
+                text: 'Infiniguard®'
+            }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'cobre_cobre',
+                text: 'Cobre - Cobre'
+            }));
+        break;
+
+        default:
+        break;
+    }
+}
+
+function send_value_box(id_set,id_get,tipo_ambiente){
+    tipo_ambiente_val =  $('#'+tipo_ambiente).val();
+
+
+switch (tipo_ambiente_val) {
+    case 'no_agresivo':
+        alert($('#'+id_set).val());
+        value = $('#'+id_set).val();
+        switch (value) {
+             case 'sin_proteccion':
+              $('#'+id_get).val(1);
+             break;
+
+             case 'infiniguard':
+
+                 $('#'+id_get).val(0.99);
+             break;
+
+             case 'cobre_cobre':
+                 $('#'+id_get).val(1);
+             break;
+
+             default:
+             break;
+         }
+
+    break;
+
+    case 'marino':
+
+        value = $('#'+id_set).val();
+        switch (value) {
+             case 'sin_proteccion':
+
+             var value_sin_p =  Math.pow(1 - 0.04, 3);
+             $('#'+id_get).val(value_sin_p);
+             break;
+
+             case 'infiniguard':
+                 $('#'+id_get).val(0.98);
+             break;
+
+             case 'cobre_cobre':
+                 $('#'+id_get).val(1);
+             break;
+
+             default:
+             break;
+         }
+
+    break;
+
+
+
+    case 'contaminado':
+
+    value = $('#'+id_set).val();
+    switch (value) {
+         case 'sin_proteccion':
+
+         var value_sin_p =  Math.pow(1 - 0.015, 3);
+         $('#'+id_get).val(value_sin_p);
+         break;
+
+         case 'infiniguard':
+             $('#'+id_get).val(0.985);
+         break;
+
+         case 'cobre_cobre':
+             $('#'+id_get).val(1);
+         break;
+
+         default:
+         break;
+     }
+
+break
+
+
+    default:
+    break;
+}
+
+
+}
+
+function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima){
+    var yrs_val =  $('#'+yrs).val();
+    switch (tipo_ambiente_id) {
+        case 'no_agresivo':
+            check_val_text(id_prot_comp,ima);
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'sin_proteccion',
+                text: 'Sin Protección'
+            }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'infiniguard',
+                text: 'Infiniguard®'
+            }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'cobre_cobre',
+                text: 'Cobre - Cobre'
+            }));
+
+        break;
+
+        case 'marino':
+            check_val_text(id_prot_comp,ima);
+
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'sin_proteccion',
                 text: 'Sin Protección'

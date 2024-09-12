@@ -131,13 +131,17 @@ class SolutionServiceRetrofit
 
                     }
 
+                    $solution_enf1->tipo_ambiente=$request->get('tipo_ambiente_1_1_retro');
+                    $solution_enf1->proteccion_condensador=$request->get('proteccion_condensador_1_1_retro');
+                    $solution_enf1->proteccion_condensador_val=floatval($request->get('proteccion_condensador_1_1_retro_value'));
+
                     $solution_enf1->val_aprox=floatval($val_aprox_aux);
                     $solution_enf1->costo_mantenimiento=floatval($aux_cost_mant);
                     $solution_enf1->cost_an_re=floatval($aux__cost_an_rep_1_1);
                     $solution_enf1->status=1;
                     $solution_enf1->id_empresa=Auth::user()->id_empresa;
                     $solution_enf1->id_user=Auth::user()->id;
-
+                    $am =$solution_enf1->proteccion_condensador_val;
 
                     $cooling_hrs =  $solution_enf1->coolings_hours;
                     $cost_energ =  $solution_enf1->costo_elec;
@@ -156,13 +160,14 @@ class SolutionServiceRetrofit
                    if ($solution_enf1->unid_med == 'TR') {
 
                     $tr = $solution_enf1->capacidad_tot;
-                    $res_1_1_retro =$funciones->cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f);
+                    $res_1_1_retro =$funciones->cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
 
 
                 }else if($solution_enf1->unid_med == 'KW'){
                     $kw = $solution_enf1->capacidad_tot;
-                    $res_1_1_retro =$funciones->cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f);
+
+                    $res_1_1_retro =$funciones->cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
 
                     //$solution_enf1->cost_op_an = floatval(number_format($res_div_seer_a,2, '.', ''));
@@ -249,6 +254,10 @@ class SolutionServiceRetrofit
 
                     }
 
+                    $solution_enf_2_1_retro->tipo_ambiente=$request->get('tipo_ambiente_2_1_retro');
+                    $solution_enf_2_1_retro->proteccion_condensador=$request->get('proteccion_condensador_2_1_retro');
+                    $solution_enf_2_1_retro->proteccion_condensador_val=floatval($request->get('proteccion_condensador_2_1_retro_value'));
+
                     $solution_enf_2_1_retro->val_aprox=floatval($val_aprox_aux);
                     $solution_enf_2_1_retro->costo_mantenimiento=floatval($aux_cost_mant);
                     $solution_enf_2_1_retro->cost_an_re=floatval($aux__cost_an_rep_1_1);
@@ -256,6 +265,7 @@ class SolutionServiceRetrofit
                     $solution_enf_2_1_retro->id_empresa=Auth::user()->id_empresa;
                     $solution_enf_2_1_retro->id_user=Auth::user()->id;
 
+                    $am =$solution_enf_2_1_retro->proteccion_condensador_val;
                     $cooling_hrs =  $solution_enf_2_1_retro->coolings_hours;
                     $cost_energ =  $solution_enf_2_1_retro->costo_elec;
                     $eficiencia_cant = floatval($request->get('csStd_cant_2_1_retro'));
@@ -273,11 +283,11 @@ class SolutionServiceRetrofit
                     $unidad_hvac_aux = $solution_enf_2_1_retro->unidad_hvac;
                    if ($solution_enf_2_1_retro->unid_med == 'TR') {
                      $tr = $solution_enf_2_1_retro->capacidad_tot;
-                     $res_2_1_retro =$funciones->cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f);
+                     $res_2_1_retro =$funciones->cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                      $solution_enf_2_1_retro->cost_op_an =  floatval(number_format($res_2_1_retro,2, '.', ''));
                 }else if($solution_enf_2_1_retro->unid_med == 'KW'){
                     $kw = $solution_enf_2_1_retro->capacidad_tot;
-                    $res_2_1_retro =$funciones->cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f);
+                    $res_2_1_retro =$funciones->cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf_2_1_retro->cost_op_an = floatval(number_format($res_2_1_retro,2, '.', ''));
                 }
 
@@ -360,6 +370,10 @@ class SolutionServiceRetrofit
 
             }
 
+            $solution_enf_3_1_retro->tipo_ambiente=$request->get('tipo_ambiente_3_1_retro');
+            $solution_enf_3_1_retro->proteccion_condensador=$request->get('proteccion_condensador_3_1_retro');
+            $solution_enf_3_1_retro->proteccion_condensador_val=floatval($request->get('proteccion_condensador_3_1_retro_value'));
+
             $solution_enf_3_1_retro->val_aprox=floatval($val_aprox_aux);
             $solution_enf_3_1_retro->costo_mantenimiento=floatval($aux_cost_mant);
             $solution_enf_3_1_retro->cost_an_re=floatval($aux__cost_an_rep_1_1);
@@ -367,7 +381,7 @@ class SolutionServiceRetrofit
             $solution_enf_3_1_retro->id_empresa=Auth::user()->id_empresa;
             $solution_enf_3_1_retro->id_user=Auth::user()->id;
 
-
+            $am =$solution_enf_3_1_retro->proteccion_condensador_val;
             $cooling_hrs =  $solution_enf_3_1_retro->coolings_hours;
             $cost_energ =  $solution_enf_3_1_retro->costo_elec;
             $eficiencia_cant = floatval($request->get('csStd_cant_3_1_retro'));
@@ -386,11 +400,11 @@ class SolutionServiceRetrofit
             $yrs_l = $solution_enf_3_1_retro->yrs_vida;
            if ($solution_enf_3_1_retro->unid_med == 'TR') {
             $tr = $solution_enf_3_1_retro->capacidad_tot;
-            $res_3_1_retro =$funciones->cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f);
+            $res_3_1_retro =$funciones->cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
             $solution_enf_3_1_retro->cost_op_an =  floatval(number_format($res_3_1_retro,2, '.', ''));
         }else if($solution_enf_3_1_retro->unid_med == 'KW'){
             $kw = $solution_enf_3_1_retro->capacidad_tot;
-            $res_3_1_retro =$funciones->cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f);
+            $res_3_1_retro =$funciones->cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
             $solution_enf_3_1_retro->cost_op_an = floatval(number_format($res_3_1_retro,2, '.', ''));
         }
 

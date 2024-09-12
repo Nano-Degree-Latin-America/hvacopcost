@@ -56,7 +56,7 @@
 
                                 if(type_p_edit_1_1 == 1 ||  type_p_edit_1_1 == 0){
                                 traer_unidad_hvac('{{$id_project}}',1,1,'cUnidad_1_1','csTipo','csDisenio_1_1','tipo_control_1_1','dr_1_1','csMantenimiento','lblCsTipo_1_1'
-                                ,'capacidad_total','costo_elec','csStd_cant_1_1','cheValorS_1_1','','','csStd','maintenance_cost_1_1','marca_1_1','modelo_1_1','ventilacion_1_1','filtracion_1_1');
+                                ,'capacidad_total','costo_elec','csStd_cant_1_1','cheValorS_1_1','','','csStd','maintenance_cost_1_1','marca_1_1','modelo_1_1','ventilacion_1_1','filtracion_1_1','tipo_ambiente_1_1','proteccion_condensador_1_1','proteccion_condensador_1_1_value');
                                 }
                             });
                             </script>
@@ -261,11 +261,11 @@
                         <label class="labels text-left" for=""><b>{{ __('index.mantenimiento') }}</b> </label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select class="w-full border-2 border-color-inps rounded-md py-2" style="margin-left: 2px;" name="csMantenimiento" id="csMantenimiento">
+                        <select  class="w-full border-2 border-color-inps rounded-md py-2" style="margin-left: 2px;" name="csMantenimiento" id="csMantenimiento">
                             <option selected value="0">{{ __('index.seleccionar') }}</option>
-                            <option value="no_agresivo">No Agresivo</option>
-                            <option value="marino">Marino</option>
-                            <option value="contaminado">Contaminado</option>
+                            <option value="ASHRAE 180">ASHRAE 180</option>
+                            <option value="Deficiente">Deficiente</option>
+                            <option value="Sin Mantenimiento">Sin Mantenimiento</option>
                         </select>
                         <input  id="csMantenimiento_1_1_count" name="csMantenimiento_1_1_count" type="number" class="hidden" value="1">
                     </div>
@@ -283,11 +283,11 @@
                         <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select onchange="valida_selects_inps(this.id);"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_1_1" id="tipo_ambiente_1_1">
+                        <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_1_1','new');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_1_1" id="tipo_ambiente_1_1">
                             <option selected value="0">{{ __('index.seleccionar') }}</option>
                             <option value="no_agresivo">No Agresivo</option>
                             <option value="marino">Marino</option>
-                            <option value="sin_mantenimiento">Sin Mantenimiento</option>
+                            <option value="contaminado">Contaminado</option>
                         </select>
                         <input  id="tipo_ambiente_1_1_count" name="tipo_ambiente_1_1_count" type="number" class="hidden" value="1">
                     </div>
@@ -299,9 +299,12 @@
                         <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select onchange="valida_selects_inps(this.id);"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1" id="proteccion_condensador_1_1">
+
+                        <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_1_1','proteccion_condensador_1_1_value','tipo_ambiente_1_1');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1" id="proteccion_condensador_1_1">
                         </select>
+
                         <input  id="proteccion_condensador_1_1_count" name="proteccion_condensador_1_1_count" type="number" class="hidden" value="1">
+                        <input  id="proteccion_condensador_1_1_value" name="proteccion_condensador_1_1_value" type="text" class="hidden" value="1">
                     </div>
                 </div>
             </div>
@@ -377,7 +380,7 @@
                                             if(type_p_edit_1_2 == 1 ||  type_p_edit_2_1 == 0){
                                 traer_unidad_hvac('{{$id_project}}',2,1,'cUnidad_1_2','csTipo_1_2','csDisenio_1_2'
                                 ,'tipo_control_1_2','dr_1_2','csMantenimiento_1_2','lblCsTipo_1_2','capacidad_total_1_2'
-                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2','action_submit_1_2','csStd_1_2','maintenance_cost_1_2','marca_1_2','modelo_1_2','ventilacion_1_2','filtracion_1_2');
+                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2','action_submit_1_2','csStd_1_2','maintenance_cost_1_2','marca_1_2','modelo_1_2','ventilacion_1_2','filtracion_1_2','tipo_ambiente_1_2','proteccion_condensador_1_2','proteccion_condensador_1_2_value');
                                             }
 
 
@@ -592,7 +595,7 @@
                         <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select onchange="valida_selects_inps(this.id);"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_1_2" id="tipo_ambiente_1_2">
+                        <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_1_2','new');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_1_2" id="tipo_ambiente_1_2">
                             <option selected value="0">{{ __('index.seleccionar') }}</option>
                             <option value="no_agresivo">No Agresivo</option>
                             <option value="marino">Marino</option>
@@ -608,9 +611,10 @@
                         <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select onchange="valida_selects_inps(this.id);"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_2" id="proteccion_condensador_1_2">
+                        <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_1_2','proteccion_condensador_1_2_value','tipo_ambiente_1_2');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_2" id="proteccion_condensador_1_2">
                         </select>
                         <input  id="proteccion_condensador_1_2_count" name="proteccion_condensador_1_2_count" type="number" class="hidden" value="1">
+                        <input  id="proteccion_condensador_1_2_value" name="proteccion_condensador_1_2_value" type="text" class="hidden" value="1">
                     </div>
                 </div>
             </div>
@@ -997,7 +1001,7 @@
                                         if(type_p_edit_2_1 == 1 ||  type_p_edit_2_1 == 0){
                                         traer_unidad_hvac('{{$id_project}}',1,2,'cUnidad_2_1','cheTipo_2_1','cheDisenio_2_1'
                                         ,'tipo_control_2_1','dr_2_1','csMantenimiento_2_1','lblCsTipo_2_1','capacidad_total_2_1'
-                                        ,'costo_elec_2_1','csStd_cant_2_1','cheValorS_2_1','2_1','action_submit_2_1','csStd_2_1','maintenance_cost_2_1','marca_2_1','modelo_2_1','ventilacion_2_1','filtracion_2_1');
+                                        ,'costo_elec_2_1','csStd_cant_2_1','cheValorS_2_1','2_1','action_submit_2_1','csStd_2_1','maintenance_cost_2_1','marca_2_1','modelo_2_1','ventilacion_2_1','filtracion_2_1','tipo_ambiente_2_1','proteccion_condensador_2_1','proteccion_condensador_2_1_value');
                                         }
 
                                         verifica_solution(2,1,'action_submit_2_1','{{$id_project}}',1);
@@ -1216,7 +1220,7 @@
                                 <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_1" id="tipo_ambiente_2_1">
+                                <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_2_1','new');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_1" id="tipo_ambiente_2_1">
                                     <option selected value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="no_agresivo">No Agresivo</option>
                                     <option value="marino">Marino</option>
@@ -1232,9 +1236,10 @@
                                 <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_2_1" id="proteccion_condensador_2_1">
+                                <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_2_1','proteccion_condensador_2_1_value','tipo_ambiente_2_1');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_2_1" id="proteccion_condensador_2_1">
                                 </select>
                                 <input  id="proteccion_condensador_2_1_count" name="proteccion_condensador_2_1_count" type="number" class="hidden" value="1">
+                                <input  id="proteccion_condensador_2_1_value" name="proteccion_condensador_2_1_value" type="text" class="hidden">
                             </div>
                         </div>
                     </div>
@@ -1309,7 +1314,7 @@
                                     traer_unidad_hvac('{{$id_project}}',2,2,'cUnidad_2_2','cheTipo_2_2','cheDisenio_2_2'
                                     ,'tipo_control_2_2','dr_2_2','cheMantenimiento_2_2','lblCsTipo_2_2',
                                     'capacidad_total_2_2','costo_elec_2_2','csStd_cant_2_2','cheValorS_2_2'
-                                    ,'sol_2_2','action_submit_2_2','csStd_2_2','maintenance_cost_2_2','marca_2_2','modelo_2_2','ventilacion_2_2','filtracion_2_2');
+                                    ,'sol_2_2','action_submit_2_2','csStd_2_2','maintenance_cost_2_2','marca_2_2','modelo_2_2','ventilacion_2_2','filtracion_2_2','tipo_ambiente_2_2','proteccion_condensador_2_2','proteccion_condensador_2_2_value');
                                         }
                                 });
                                 </script>
@@ -1524,7 +1529,7 @@
                             <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                         </div>
                         <div class="flex w-full justify-start">
-                            <select onchange="valida_selects_inps(this.id);"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_2" id="tipo_ambiente_2_2">
+                            <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_2_2','new');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_2" id="tipo_ambiente_2_2">
                                 <option selected value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="no_agresivo">No Agresivo</option>
                                 <option value="marino">Marino</option>
@@ -1540,9 +1545,10 @@
                             <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
                         </div>
                         <div class="flex w-full justify-start">
-                            <select onchange="valida_selects_inps(this.id);"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_2_2" id="proteccion_condensador_2_2">
+                            <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_2_2','proteccion_condensador_2_2_value','tipo_ambiente_2_2');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_2_2" id="proteccion_condensador_2_2">
                             </select>
                             <input  id="proteccion_condensador_2_2_count" name="proteccion_condensador_2_2_count" type="number" class="hidden" value="1">
+                            <input  id="proteccion_condensador_2_2_value" name="proteccion_condensador_2_2_value" type="text" class="hidden" value="1">
                         </div>
                     </div>
                 </div>
@@ -1941,7 +1947,7 @@
                                         if(type_p_edit_3_1 == 1 ||  type_p_edit_3_1 == 0){
                                         traer_unidad_hvac('{{$id_project}}',1,3,'cUnidad_3_1','cheTipo_3_1','cheDisenio_3_1'
                                         ,'tipo_control_3_1','dr_3_1','cheMantenimiento_3_1','lblCsTipo_3_1','capacidad_total_3_1'
-                                        ,'costo_elec_3_1','cheStd_3_1','cheValorS_3_1','3_1','action_submit_3_1','csStd2_3_1','maintenance_cost_3_1','marca_3_1','modelo_3_1','ventilacion_3_1','filtracion_3_1');
+                                        ,'costo_elec_3_1','cheStd_3_1','cheValorS_3_1','3_1','action_submit_3_1','csStd2_3_1','maintenance_cost_3_1','marca_3_1','modelo_3_1','ventilacion_3_1','filtracion_3_1','tipo_ambiente_3_1','proteccion_condensador_3_1','proteccion_condensador_3_1_value');
                                         }
 
                                         verifica_solution(3,1,'action_submit_3_1','{{$id_project}}',1);
@@ -2159,7 +2165,7 @@
                                 <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_1" id="tipo_ambiente_3_1">
+                                <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_3_1','new');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_1" id="tipo_ambiente_3_1">
                                     <option selected value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="no_agresivo">No Agresivo</option>
                                     <option value="marino">Marino</option>
@@ -2175,9 +2181,10 @@
                                 <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_3_1" id="proteccion_condensador_3_1">
+                                <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_3_1','proteccion_condensador_3_1_value','tipo_ambiente_3_1');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_3_1" id="proteccion_condensador_3_1">
                                 </select>
                                 <input  id="proteccion_condensador_3_1_count" name="proteccion_condensador_3_1_count" type="number" class="hidden" value="1">
+                                <input  id="proteccion_condensador_3_1_value" name="proteccion_condensador_3_1_value" type="text" class="hidden" value="1">
                             </div>
                         </div>
                     </div>
@@ -2254,7 +2261,7 @@
                                         if(type_p_edit_3_2 == 1 ||  type_p_edit_3_2 == 0){
                                     traer_unidad_hvac('{{$id_project}}',2,3,'cUnidad_3_2','cheTipo_3_2','cheDisenio_3_2'
                                     ,'tipo_control_3_2','dr_3_2','cheMantenimiento_3_2','lblCsTipo_3_2','capacidad_total_3_2'
-                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2','action_submit_3_2','csStd_3_2','maintenance_cost_3_2','marca_3_2','modelo_3_2','ventilacion_3_2','filtracion_3_2');
+                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2','action_submit_3_2','csStd_3_2','maintenance_cost_3_2','marca_3_2','modelo_3_2','ventilacion_3_2','filtracion_3_2','tipo_ambiente_3_2','proteccion_condensador_3_2','proteccion_condensador_3_2_value');
                                         }
                                 });
                                 </script>
@@ -2465,7 +2472,7 @@
                             <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                         </div>
                         <div class="flex w-full justify-start">
-                            <select onchange="valida_selects_inps(this.id);"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_2" id="tipo_ambiente_3_2">
+                            <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_3_2','new');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_2" id="tipo_ambiente_3_2">
                                 <option selected value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="no_agresivo">No Agresivo</option>
                                 <option value="marino">Marino</option>
@@ -2481,9 +2488,10 @@
                             <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
                         </div>
                         <div class="flex w-full justify-start">
-                            <select onchange="valida_selects_inps(this.id);"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_3_2" id="proteccion_condensador_3_2">
+                            <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_3_2','proteccion_condensador_3_2_value','tipo_ambiente_3_2');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_3_2" id="proteccion_condensador_3_2">
                             </select>
                             <input  id="proteccion_condensador_3_2_count" name="proteccion_condensador_3_2_count" type="number" class="hidden" value="1">
+                            <input  id="proteccion_condensador_3_2_value" name="proteccion_condensador_3_2_value" type="text" class="hidden" value="1">
                         </div>
                     </div>
                 </div>

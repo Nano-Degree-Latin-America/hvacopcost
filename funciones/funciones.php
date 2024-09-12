@@ -92,10 +92,11 @@ class funciones {
     }
 
 
-    public function form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f){
+    public function form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f,$am){
         //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
         //((TR /3.5) x (Cooling Hours) x (Costo Energía) / IPVL)/ 1000
        //((TR x cant)
+       /* ((TR x 12000) x (Cooling Hours) /(SEER x ((1-Z)^Años de vida) x AM )/ 1000 */
        if($eficiencia_ene != 'IPLV' || $eficiencia_ene == 'IPLV (Kw/TR)'){
         $cant_aux = 12000;
        }
@@ -106,11 +107,35 @@ class funciones {
        $res_trx_cant = $tr * $cant_aux;
        //((TR x cant) x (Cooling Hours)
        $res_1er_parent = $res_trx_cant * $cooling_hrs;
-       //((TR x 12000) x (Cooling Hours)  / (SEER) )
-       $tot_1er_res = $res_1er_parent / $eficiencia_cant;
+       //((TR x 12000) x (Cooling Hours)  / (SEER x ((1-Z)^Años de vida) x AM )/
+
+       //(1-Z)^Años de vida
+       if($factor_m == 'ASHRAE 180'){
+        $z = 0.01;
+       }
+
+       if($factor_m == 'Deficiente'){
+        $z = 0.017;
+       }
+
+       if($factor_m == 'Sin Mantenimiento'){
+        $z = 0.035;
+       }
+
+       //(1-Z)
+       $uno_m_zeta = 1-$z;
+
+       //($uno_m_zeta)^Años de vida)
+       $uno_m_zeta_yrs_life = pow($uno_m_zeta,3);
+       //(SEER x uno_m_zeta_yrs_life)
+       $efi_z_yrs_l = $eficiencia_cant * $uno_m_zeta_yrs_life;
+
+       $am_efi_z_yrs = $am * $efi_z_yrs_l;
+
+       $tot_1er_res = $res_1er_parent / $am_efi_z_yrs;
        $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
 
-       //((TR x cant) x (Cooling Hours) / (SEER) ) / 1000)
+       //((TR x cant) x (Cooling Hours) / (SEER x ((1-Z)^Años de vida) x AM )/ 1000)
        /* $res_ene_apl_tot_enf_1 */
 
        //energia aplicada proccess
@@ -146,7 +171,7 @@ class funciones {
        return $res_res_fact_m;
     }
 
-    public function cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f){
+    public function cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f,$am){
         //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
                   //(((Kw / 3.5)
                   //$kw =  $solution_enf1->capacidad_tot;
@@ -156,7 +181,30 @@ class funciones {
                   $kw_a = $kw_3_5 * 12000;
                   $res_dividiendo = $kw_a * $cooling_hrs;
                   //(((Kw / 3.5) x 12000 )x (Cooling Hours)
-                  $res_div_seer = $res_dividiendo / $eficiencia_cant;
+
+                  if($factor_m == 'ASHRAE 180'){
+                    $z = 0.01;
+                   }
+
+                   if($factor_m == 'Deficiente'){
+                    $z = 0.017;
+                   }
+
+                   if($factor_m == 'Sin Mantenimiento'){
+                    $z = 0.035;
+                   }
+
+                   //(1-Z)
+                   $uno_m_zeta = 1-$z;
+
+                   //($uno_m_zeta)^Años de vida)
+                   $uno_m_zeta_yrs_life = pow($uno_m_zeta,3);
+                   //(SEER x uno_m_zeta_yrs_life)
+                   $efi_z_yrs_l = $eficiencia_cant * $uno_m_zeta_yrs_life;
+
+                   $am_efi_z_yrs = $am * $efi_z_yrs_l;
+
+                  $res_div_seer = $res_dividiendo / $am_efi_z_yrs;
                   //(((Kw / 3.5) x 12000 )x (Cooling Hours)  / SEER
                   $res_div_seer_a = $res_div_seer / 1000;
                   //(((Kw / 3.5) x 12000 )x (Cooling Hours)  / SEER ) / 1000
@@ -239,7 +287,7 @@ class funciones {
                return $res_res_fact_m;
   }
 
-  public function form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f){
+  public function form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f,$am){
 
     //(((Kw / 3.5) x 12000 )x (Cooling Hours)) / (SEER x (1-Z)^Años de vida)) / 1000
                       //(((Kw / 3.5)
@@ -271,8 +319,9 @@ class funciones {
                         $uno_m_zeta_yrs_life = pow($uno_m_zeta,floatval($yrs_l));
                         //(SEER x (1-Z)^Años de vida) )
                         $efi_z_yrs_l = $eficiencia_cant * $uno_m_zeta_yrs_life;
+                        $am_efi_z_yrs = $am * $efi_z_yrs_l;
 
-                      $res_div_seer = $res_dividiendo / $efi_z_yrs_l;
+                      $res_div_seer = $res_dividiendo / $am_efi_z_yrs;
                       //(((Kw / 3.5) x 12000 )x (Cooling Hours)  / SEER
                       $res_div_seer_a = $res_div_seer / 1000;
                       //(((Kw / 3.5) x 12000 )x (Cooling Hours)  / SEER ) / 1000
@@ -366,7 +415,7 @@ public function form_proyect_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficie
                       return $res_res_fact_m;
 }
 
-public function form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f){
+public function form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f,$am){
 
     //((TR x 12000) x (Cooling Hours)  / (SEER x (1-Z)^Años de vida) )/ 1000
     //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
@@ -399,10 +448,12 @@ public function form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$
 
    //($uno_m_zeta)^Años de vida)
    $uno_m_zeta_yrs_life = pow($uno_m_zeta,floatval($yrs_l));
+   $am_efi_z_yrs = $am * $uno_m_zeta_yrs_life;
 
    //(SEER x (1-Z)^Años de vida) )
-   $efi_z_yrs_l = $eficiencia_cant * $uno_m_zeta_yrs_life;
+   $efi_z_yrs_l = $eficiencia_cant * $am_efi_z_yrs;
    //($res_1er_parent)  / ($efi_z_yrs_l)
+
    $tot_1er_res = $res_1er_parent / $efi_z_yrs_l;
     //($res_1er_parent)  / ($efi_z_yrs_l) / 1000
    $res_ene_apl_tot_enf_1 = $tot_1er_res / 1000;
@@ -2085,64 +2136,64 @@ public function num_form($id_select){
                     return $cap_tot_aux;
 }
 
-public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller,$factor_v,$factor_f){
+public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller,$factor_v,$factor_f,$am){
     $int_check_chiller = intval($check_chiller);
 
     if($int_check_chiller <= 7){
 /*         return ProjectController::form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
 */        $funciones = new funciones();
-       return $funciones->form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f);
+       return $funciones->form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f,$am);
     }
 
     if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
 /*             return ProjectController::form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
-*/            $funciones = new funciones();
-           return $funciones->form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
+*/           /*  $funciones = new funciones();
+           return $funciones->form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m); */
     }
 
 }
 
-public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller,$factor_v,$factor_f){
+public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller,$factor_v,$factor_f,$am){
     $int_check_chiller = intval($check_chiller);
 
     if($int_check_chiller <= 7){
        $funciones = new funciones();
-       return $funciones->cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f);
+       return $funciones->cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f,$am);
     }
 
-    if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+   /*  if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
        $funciones = new funciones();
        return $funciones->cost_op_an_form_kw_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
-    }
+    } */
  }
 
- public function cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller,$factor_v,$factor_f){
+ public function cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller,$factor_v,$factor_f,$am){
     $int_check_chiller = intval($check_chiller);
 
     if($int_check_chiller <= 7){
         $funciones = new funciones();
-        return $funciones->form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f);
+        return $funciones->form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f,$am);
     }
 
-    if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+   /*  if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
         $funciones = new funciones();
         return $funciones->form_proyect_retro_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
-    }
+    } */
 
 }
 
-public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller,$factor_v,$factor_f){
+public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller,$factor_v,$factor_f,$am){
     $int_check_chiller = intval($check_chiller);
 
     if($int_check_chiller <= 7){
         $funciones = new funciones();
-        return $funciones->form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f);
+        return $funciones->form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f,$am);
     }
 
-    if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+   /*  if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
         $funciones = new funciones();
         return $funciones->form_proyect_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
-    }
+    } */
 
 }
 

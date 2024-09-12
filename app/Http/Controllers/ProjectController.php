@@ -352,13 +352,17 @@ class ProjectController extends Controller
 
                 }
 
+                $solution_enf1->tipo_ambiente=$request->get('tipo_ambiente_1_1');
+                $solution_enf1->proteccion_condensador=$request->get('proteccion_condensador_1_1');
+                $solution_enf1->proteccion_condensador_val=floatval($request->get('proteccion_condensador_1_1_value'));
+
                 $solution_enf1->val_aprox=floatval( $val_aprox_aux);
                 $solution_enf1->costo_mantenimiento=floatval($aux_cost_mant);
                 $solution_enf1->status=1;
                 $solution_enf1->id_empresa=Auth::user()->id_empresa;
                 $solution_enf1->id_user=Auth::user()->id;
 
-
+                $am =$solution_enf1->proteccion_condensador_val;
                 $cooling_hrs =  $solution_enf1->coolings_hours;
                 $cost_energ =  $solution_enf1->costo_elec;
                 $eficiencia_cant = floatval($request->get('csStd_cant_1_1'));
@@ -378,13 +382,13 @@ class ProjectController extends Controller
                if ($solution_enf1->unid_med == 'TR') {
 
                $tr = $solution_enf1->capacidad_tot;
-               $res_1_1 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
+               $res_1_1 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                $solution_enf1->cost_op_an = floatval(number_format($res_1_1,2, '.', ''));
 
             }else if($solution_enf1->unid_med == 'KW'){
 
                $kw = $solution_enf1->capacidad_tot;
-               $res_1_1 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
+               $res_1_1 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                $solution_enf1->cost_op_an = floatval(number_format($res_1_1,2, '.', ''));
 
 
@@ -496,13 +500,19 @@ class ProjectController extends Controller
 
                 }
 
+
+
+                $solution_enf1_2->tipo_ambiente=$request->get('tipo_ambiente_1_2');
+                $solution_enf1_2->proteccion_condensador=floatval($request->get('proteccion_condensador_1_2'));
+                $solution_enf1_2->proteccion_condensador_val=floatval($request->get('proteccion_condensador_1_2_value'));
+
                 $solution_enf1_2->costo_mantenimiento=floatval($aux_cost_mant_1_2);
                 $solution_enf1_2->val_aprox = floatval($val_aprox_aux_1_2);
                 $solution_enf1_2->status = 1;
                 $solution_enf1_2->id_empresa=Auth::user()->id_empresa;
                 $solution_enf1_2->id_user=Auth::user()->id;
 
-
+                $am =$solution_enf1_2->proteccion_condensador_val;
                 $cooling_hrs =  $solution_enf1_2->coolings_hours;
                 $cost_energ =  $solution_enf1_2->costo_elec;
                 $eficiencia_cant = $solution_enf1_2->eficencia_ene_cant;
@@ -519,13 +529,13 @@ class ProjectController extends Controller
                 $unidad_hvac_aux = $solution_enf1_2->unidad_hvac;
                if ($solution_enf1_2->unid_med == 'TR') {
                 $tr = $solution_enf1_2->capacidad_tot;
-                $res_1_2 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
+                $res_1_2 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                 $solution_enf1_2->cost_op_an = floatval(number_format($res_1_2,2, '.', ''));
             }else if($solution_enf1_2->unid_med == 'KW'){
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
                   //(((Kw / 3.5)
                   $kw =  $solution_enf1_2->capacidad_tot;
-                  $res_1_2 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
+                  $res_1_2 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                   $solution_enf1_2->cost_op_an =floatval(number_format($res_1_2,2, '.', ''));
 
                 }
@@ -891,6 +901,10 @@ class ProjectController extends Controller
                         }else  if($request->get('maintenance_cost_2_1') == null){
                             $aux_cost_mant_2_1 = 0;
                         }
+                      /*   dd($request->get('proteccion_condensador_2_1_value')); */
+                        $solution_enf2_1->tipo_ambiente=$request->get('tipo_ambiente_2_1');
+                        $solution_enf2_1->proteccion_condensador=$request->get('proteccion_condensador_2_1');
+                        $solution_enf2_1->proteccion_condensador_val=floatval($request->get('proteccion_condensador_2_1_value'));
 
 
                         $solution_enf2_1->val_aprox	=floatval($val_aprox_aux_2_1);
@@ -899,7 +913,7 @@ class ProjectController extends Controller
                         $solution_enf2_1->id_empresa=Auth::user()->id_empresa;
                         $solution_enf2_1->id_user=Auth::user()->id;
 
-
+                        $am =$solution_enf2_1->proteccion_condensador_val;
                         $cooling_hrs =  $solution_enf2_1->coolings_hours;
                         $cost_energ =  $solution_enf2_1->costo_elec;
                         $eficiencia_cant = floatval($request->get('csStd_cant_2_1'));
@@ -915,13 +929,13 @@ class ProjectController extends Controller
                         $unidad_hvac_aux = $solution_enf2_1->unidad_hvac;
                        if ($solution_enf2_1->unid_med == 'TR') {
                         $tr = $solution_enf2_1->capacidad_tot;
-                        $res_2_1 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
+                        $res_2_1 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
 
                         $solution_enf2_1->cost_op_an =  floatval(number_format($res_2_1,2, '.', ''));
                         }else if($solution_enf2_1->unid_med == 'KW'){
                              //(((Kw / 3.5)
                              $kw =  $solution_enf2_1->capacidad_tot;
-                             $res_2_1 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
+                             $res_2_1 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                              $solution_enf2_1->cost_op_an =floatval(number_format($res_2_1,2, '.', ''));
 
                             }
@@ -1042,12 +1056,17 @@ class ProjectController extends Controller
 
                         }
                         $solution_enf2_2->costo_mantenimiento=floatval($aux_cost_mant_2_2);
+
+                        $solution_enf2_2->tipo_ambiente=$request->get('tipo_ambiente_2_2');
+                        $solution_enf2_2->proteccion_condensador=$request->get('proteccion_condensador_2_2');
+                        $solution_enf2_2->proteccion_condensador_val=floatval($request->get('proteccion_condensador_2_2_value'));
+
                         $solution_enf2_2->val_aprox = floatval($val_aprox_aux_2_2);
                         $solution_enf2_2->status = 1;
                         $solution_enf2_2->id_empresa=Auth::user()->id_empresa;
                         $solution_enf2_2->id_user=Auth::user()->id;
 
-
+                        $am =$solution_enf2_2->proteccion_condensador_val;
                         $cooling_hrs =  $solution_enf2_2->coolings_hours;
                         $cost_energ =  $solution_enf2_2->costo_elec;
                         $eficiencia_cant = $solution_enf2_2->eficencia_ene_cant;
@@ -1063,11 +1082,11 @@ class ProjectController extends Controller
                         $unidad_hvac_aux = $solution_enf2_2->unidad_hvac;
                        if ($solution_enf2_2->unid_med == 'TR') {
                         $tr = $solution_enf2_2->capacidad_tot;
-                        $res_2_2 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
+                        $res_2_2 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                         $solution_enf2_2->cost_op_an =  floatval(number_format($res_2_2,2, '.', ''));
                     }else if($solution_enf2_2->unid_med == 'KW'){
                         $kw =  $solution_enf2_2->capacidad_tot;
-                        $res_2_2 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
+                        $res_2_2 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                         $solution_enf2_2->cost_op_an =floatval(number_format($res_2_2,2, '.', ''));
                     }
 
@@ -1422,13 +1441,17 @@ class ProjectController extends Controller
                 }
 
 
+                 $solution_enf3_1->tipo_ambiente=$request->get('tipo_ambiente_3_1');
+                 $solution_enf3_1->proteccion_condensador=$request->get('proteccion_condensador_3_1');
+                 $solution_enf3_1->proteccion_condensador_val=floatval($request->get('proteccion_condensador_3_1_value'));
+
                  $solution_enf3_1->val_aprox=floatval($val_aprox_aux_3_1);
                  $solution_enf3_1->costo_mantenimiento=floatval($aux_cost_mant_3_1);
                  $solution_enf3_1->status=1;
                  $solution_enf3_1->id_empresa=Auth::user()->id_empresa;
                  $solution_enf3_1->id_user=Auth::user()->id;
 
-
+                 $am =$solution_enf3_1->proteccion_condensador_val;
                  $cooling_hrs =  $solution_enf3_1->coolings_hours;
                  $cost_energ =  $solution_enf3_1->costo_elec;
                  $eficiencia_cant = floatval($request->get('cheStd_3_1'));
@@ -1444,7 +1467,7 @@ class ProjectController extends Controller
                  $unidad_hvac_aux = $solution_enf3_1->unidad_hvac;
                 if ($solution_enf3_1->unid_med == 'TR') {
                     $tr = $solution_enf3_1->capacidad_tot;
-                    $res_3_1 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
+                    $res_3_1 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf3_1->cost_op_an =  floatval(number_format($res_3_1,2, '.', ''));
                     /* $tr =  $solution_enf3_1->capacidad_tot;
                     //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
@@ -1508,7 +1531,7 @@ class ProjectController extends Controller
                  $solution_enf3_1->cost_op_an = $res_res_fact_m; */
              }else if($solution_enf3_1->unid_med == 'KW'){
                 $kw =  $solution_enf3_1->capacidad_tot;
-                $res_3_1 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
+                $res_3_1 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                 $solution_enf3_1->cost_op_an =floatval(number_format($res_3_1,2, '.', ''));
              }
              //confort
@@ -1619,13 +1642,18 @@ class ProjectController extends Controller
                 $aux_cost_mant_3_2 = 0;
 
             }
+
+                $solution_enf3_2->tipo_ambiente=$request->get('tipo_ambiente_3_2');
+                $solution_enf3_2->proteccion_condensador=$request->get('proteccion_condensador_3_2');
+                $solution_enf3_2->proteccion_condensador_val=floatval($request->get('proteccion_condensador_3_2_value'));
+
                 $solution_enf3_2->costo_mantenimiento=floatval($aux_cost_mant_3_2);
                 $solution_enf3_2->val_aprox = floatval($val_aprox_aux_3_2);
                 $solution_enf3_2->status = 1;
                 $solution_enf3_2->id_empresa=Auth::user()->id_empresa;
                 $solution_enf3_2->id_user=Auth::user()->id;
 
-
+                $am =$solution_enf3_2->proteccion_condensador_val;
                 $cooling_hrs =  $solution_enf3_2->coolings_hours;
                 $cost_energ =  $solution_enf3_2->costo_elec;
                 $eficiencia_cant = $solution_enf3_2->eficencia_ene_cant;
@@ -1641,7 +1669,7 @@ class ProjectController extends Controller
                 $unidad_hvac_aux = $solution_enf3_2->unidad_hvac;
                if ($solution_enf3_2->unid_med == 'TR') {
                 $tr = $solution_enf3_2->capacidad_tot;
-                $res_3_2 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
+                $res_3_2 = ProjectController::cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                 $solution_enf3_2->cost_op_an =  floatval(number_format($res_3_2,2, '.', ''));
                 /* $tr =  $solution_enf3_2->capacidad_tot;
                 //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
@@ -1704,7 +1732,7 @@ class ProjectController extends Controller
                 $solution_enf3_2->cost_op_an = $res_res_fact_m; */
             }else if($solution_enf3_2->unid_med == 'KW'){
                $kw =  $solution_enf3_2->capacidad_tot;
-               $res_3_2 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f);
+               $res_3_2 = ProjectController::cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                $solution_enf3_2->cost_op_an =floatval(number_format($res_3_2,2, '.', ''));
             }
 
@@ -2072,6 +2100,10 @@ class ProjectController extends Controller
 
                     }
 
+                    $solution_enf1->tipo_ambiente=$request->get('tipo_ambiente_1_1_retro');
+                    $solution_enf1->proteccion_condensador=$request->get('proteccion_condensador_1_1_retro');
+                    $solution_enf1->proteccion_condensador_val=floatval($request->get('proteccion_condensador_1_1_retro_value'));
+
                     $solution_enf1->val_aprox=floatval($val_aprox_aux);
                     $solution_enf1->costo_mantenimiento=floatval($aux_cost_mant);
                     $solution_enf1->cost_an_re=floatval($aux__cost_an_rep_1_1);
@@ -2079,7 +2111,7 @@ class ProjectController extends Controller
                     $solution_enf1->id_empresa=Auth::user()->id_empresa;
                     $solution_enf1->id_user=Auth::user()->id;
 
-
+                    $am =$solution_enf1->proteccion_condensador_val;
                     $cooling_hrs =  $solution_enf1->coolings_hours;
                     $cost_energ =  $solution_enf1->costo_elec;
                     $eficiencia_cant = floatval($request->get('csStd_retro_1_1_cant'));
@@ -2097,13 +2129,13 @@ class ProjectController extends Controller
                    if ($solution_enf1->unid_med == 'TR') {
 
                     $tr = $solution_enf1->capacidad_tot;
-                    $res_1_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f);
+                    $res_1_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
 
                 }else if($solution_enf1->unid_med == 'KW'){
 
                     $kw = $solution_enf1->capacidad_tot;
-                    $res_1_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f);
+                    $res_1_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
 
                 }
@@ -2242,6 +2274,10 @@ class ProjectController extends Controller
 
                     }
 
+                    $solution_enf_2_1_retro->tipo_ambiente=$request->get('tipo_ambiente_2_1_retro');
+                    $solution_enf_2_1_retro->proteccion_condensador=$request->get('proteccion_condensador_2_1_retro');
+                    $solution_enf_2_1_retro->proteccion_condensador_val=floatval($request->get('proteccion_condensador_2_1_retro_value'));
+
                     $solution_enf_2_1_retro->val_aprox=floatval($val_aprox_aux);
                     $solution_enf_2_1_retro->costo_mantenimiento=floatval($aux_cost_mant);
                     $solution_enf_2_1_retro->cost_an_re=floatval($aux__cost_an_rep_1_1);
@@ -2249,7 +2285,7 @@ class ProjectController extends Controller
                     $solution_enf_2_1_retro->id_empresa=Auth::user()->id_empresa;
                     $solution_enf_2_1_retro->id_user=Auth::user()->id;
 
-
+                    $am =$solution_enf_2_1_retro->proteccion_condensador_val;
                     $cooling_hrs =  $solution_enf_2_1_retro->coolings_hours;
                     $cost_energ =  $solution_enf_2_1_retro->costo_elec;
                     $eficiencia_cant = floatval($request->get('csStd_cant_2_1_retro'));
@@ -2267,14 +2303,13 @@ class ProjectController extends Controller
 
                    if ($solution_enf_2_1_retro->unid_med == 'TR') {
                     $tr = $solution_enf_2_1_retro->capacidad_tot;
-                    $res_2_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f);
+                    $res_2_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf_2_1_retro->cost_op_an =  floatval(number_format($res_2_1_retro,2, '.', ''));
 
                 }else if($solution_enf_2_1_retro->unid_med == 'KW'){
                     $kw = $solution_enf_2_1_retro->capacidad_tot;
-                    $res_2_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f);
+                    $res_2_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf_2_1_retro->cost_op_an = floatval(number_format($res_2_1_retro,2, '.', ''));
-
 
                 }
 
@@ -2419,6 +2454,11 @@ class ProjectController extends Controller
 
                     }
 
+                    $solution_enf_3_1_retro->tipo_ambiente=$request->get('tipo_ambiente_3_1_retro');
+                    $solution_enf_3_1_retro->proteccion_condensador=$request->get('proteccion_condensador_3_1_retro');
+                    $solution_enf_3_1_retro->proteccion_condensador_val=floatval($request->get('proteccion_condensador_3_1_retro_value'));
+
+
                     $solution_enf_3_1_retro->val_aprox=floatval($val_aprox_aux);
                     $solution_enf_3_1_retro->costo_mantenimiento=floatval($aux_cost_mant);
                     $solution_enf_3_1_retro->cost_an_re=floatval($aux__cost_an_rep_1_1);
@@ -2426,7 +2466,7 @@ class ProjectController extends Controller
                     $solution_enf_3_1_retro->id_empresa=Auth::user()->id_empresa;
                     $solution_enf_3_1_retro->id_user=Auth::user()->id;
 
-
+                    $am =$solution_enf_3_1_retro->proteccion_condensador_val;
                     $cooling_hrs =  $solution_enf_3_1_retro->coolings_hours;
                     $cost_energ =  $solution_enf_3_1_retro->costo_elec;
                     $eficiencia_cant = floatval($request->get('csStd_cant_3_1_retro'));
@@ -2443,12 +2483,12 @@ class ProjectController extends Controller
                     $unidad_hvac_aux = $solution_enf_3_1_retro->unidad_hvac;
                    if ($solution_enf_3_1_retro->unid_med == 'TR') {
                     $tr = $solution_enf_3_1_retro->capacidad_tot;
-                    $res_3_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f);
+                    $res_3_1_retro = ProjectController::cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf_3_1_retro->cost_op_an =  floatval(number_format($res_3_1_retro,2, '.', ''));
 
                 }else if($solution_enf_3_1_retro->unid_med == 'KW'){
                     $kw = $solution_enf_3_1_retro->capacidad_tot;
-                    $res_3_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f);
+                    $res_3_1_retro = ProjectController::cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf_3_1_retro->cost_op_an = floatval(number_format($res_3_1_retro,2, '.', ''));
 
                 }
@@ -3211,20 +3251,19 @@ class ProjectController extends Controller
     }
 
 
-    public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller,$factor_v,$factor_f){
+    public function cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller,$factor_v,$factor_f,$am){
         $int_check_chiller = intval($check_chiller);
 
         if($int_check_chiller <= 7){
 /*         return ProjectController::form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
  */        $funciones = new funciones();
-            return $funciones->form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f);
+            return $funciones->form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f,$am);
         }
 
-        if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
-/*             return ProjectController::form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
- */            $funciones = new funciones();
+/*         if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+           $funciones = new funciones();
                 return $funciones->form_pn_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m);
-        }
+        } */
 
     }
 
@@ -3309,33 +3348,33 @@ class ProjectController extends Controller
        return $res_res_fact_m;
     }
 
-     public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller,$factor_v,$factor_f){
+     public function cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$check_chiller,$factor_v,$factor_f,$am){
         $int_check_chiller = intval($check_chiller);
 
         if($int_check_chiller <= 7){
 /*            return ProjectController::cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
  */           $funciones = new funciones();
-              return $funciones->cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f);
+              return $funciones->cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f,$am);
         }
 
-        if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+/*         if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
             $funciones = new funciones();
             return $funciones->cost_op_an_form_kw_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
-        }
+        } */
      }
 
-     public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller,$factor_v,$factor_f){
+     public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller,$factor_v,$factor_f,$am){
         $int_check_chiller = intval($check_chiller);
 
         if($int_check_chiller <= 7){
            $funciones = new funciones();
-           return $funciones->form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f);
+           return $funciones->form_proyect_no_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f,$am);
         }
 
-        if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+        /* if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
             $funciones = new funciones();
             return $funciones->form_proyect_chiller_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
-        }
+        } */
 
     }
 
@@ -3343,18 +3382,18 @@ class ProjectController extends Controller
 
 
 
-     public function cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller,$factor_v,$factor_f){
+     public function cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$check_chiller,$factor_v,$factor_f,$am){
             $int_check_chiller = intval($check_chiller);
 
             if($int_check_chiller <= 7){
                $funciones = new funciones();
-               return $funciones->form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f);
+               return $funciones->form_proyect_retro_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$factor_v,$factor_f,$am);
             }
 
-            if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
+/*             if($int_check_chiller > 7 && $int_check_chiller <= 10 ){
                 $funciones = new funciones();
                 return $funciones->form_proyect_retro_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l);
-            }
+            } */
 
     }
 

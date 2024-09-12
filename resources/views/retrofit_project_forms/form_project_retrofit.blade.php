@@ -295,11 +295,11 @@
                         <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_1_1_retro');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_1_1_retro" id="tipo_ambiente_1_1_retro">
+                        <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_1_1_retro','retro','yrs_vida_1_1_retro');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_1_1_retro" id="tipo_ambiente_1_1_retro">
                             <option selected value="0">{{ __('index.seleccionar') }}</option>
                             <option value="no_agresivo">No Agresivo</option>
                             <option value="marino">Marino</option>
-                            <option value="sin_mantenimiento">Sin Mantenimiento</option>
+                            <option value="contaminado">Contaminado</option>
                         </select>
                         <input  id="tipo_ambiente_1_1_retro_count" name="tipo_ambiente_1_1_retro_count" type="number" class="hidden" value="1">
                     </div>
@@ -311,9 +311,10 @@
                         <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select onchange="valida_selects_inps(this.id);"  style="margin-left: 15px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1_retro" id="proteccion_condensador_1_1_retro">
+                        <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_1_1_retro','proteccion_condensador_1_1_retro_value','tipo_ambiente_1_1_retro');"  style="margin-left: 15px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1_retro" id="proteccion_condensador_1_1_retro">
                         </select>
                         <input  id="proteccion_condensador_1_1_retro_count" name="proteccion_condensador_1_1_retro_count" type="number" class="hidden" value="1">
+                        <input  id="proteccion_condensador_1_1_retro_value" name="proteccion_condensador_1_1_retro_value" type="text" class="hidden">
                     </div>
                 </div>
             </div>
@@ -820,11 +821,11 @@
                                 <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_2_1_retro');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_1_retro" id="tipo_ambiente_2_1_retro">
+                                <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_2_1_retro','retro','yrs_vida_2_1_retro');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_1_retro" id="tipo_ambiente_2_1_retro">
                                     <option selected value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="no_agresivo">No Agresivo</option>
                                     <option value="marino">Marino</option>
-                                    <option value="sin_mantenimiento">Sin Mantenimiento</option>
+                                    <option value="contaminado">Contaminado</option>
                                 </select>
                                 <input  id="tipo_ambiente_2_1_retro_count" name="tipo_ambiente_2_1_retro_count" type="number" class="hidden" value="1">
                             </div>
@@ -836,9 +837,10 @@
                                 <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);"  style="margin-left: 15px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_2_1_retro" id="proteccion_condensador_2_1_retro">
+                                <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_2_1_retro','proteccion_condensador_2_1_retro_value','tipo_ambiente_2_1_retro');"  style="margin-left: 15px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_2_1_retro" id="proteccion_condensador_2_1_retro">
                                 </select>
                                 <input  id="proteccion_condensador_2_1_retro_count" name="proteccion_condensador_2_1_retro_count" type="number" class="hidden" value="1">
+                                <input  id="proteccion_condensador_2_1_retro_value" name="proteccion_condensador_2_1_retro_value" type="text" class="hidden">
                             </div>
                         </div>
                     </div>
@@ -1170,11 +1172,11 @@
                                 <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_3_1_retro');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_1_retro" id="tipo_ambiente_3_1_retro">
+                                <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_3_1_retro','retro','yrs_vida_3_1_retro');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_1_retro" id="tipo_ambiente_3_1_retro">
                                     <option selected value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="no_agresivo">No Agresivo</option>
                                     <option value="marino">Marino</option>
-                                    <option value="sin_mantenimiento">Sin Mantenimiento</option>
+                                    <option value="contaminado">Contaminado</option>
                                 </select>
                                 <input  id="tipo_ambiente_3_1_retro_count" name="tipo_ambiente_3_1_retro_count" type="number" class="hidden" value="1">
                             </div>
@@ -1186,9 +1188,10 @@
                                 <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);"  style="margin-left: 15px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_3_1_retro" id="proteccion_condensador_3_1_retro">
+                                <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_3_1_retro','proteccion_condensador_3_1_retro_value','tipo_ambiente_3_1_retro');"  style="margin-left: 15px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_3_1_retro" id="proteccion_condensador_3_1_retro">
                                 </select>
                                 <input  id="proteccion_condensador_3_1_retro_count" name="proteccion_condensador_3_1_retro_count" type="number" class="hidden" value="1">
+                                <input  id="proteccion_condensador_3_1_retro_value" name="proteccion_condensador_3_1_retro_value" type="text" class="hidden">
                             </div>
                         </div>
                     </div>
