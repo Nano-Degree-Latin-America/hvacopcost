@@ -1485,6 +1485,42 @@ class ResultadosController extends Controller
         $inflacion_rate =  $inflacion_rate_aux/100 + 1;
 
 
+        $tipo_mant_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_2 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_2 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_3 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_3 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
         foreach( $num_enfs as $num_enf){
            if($num_enf->num_enf === 1){
             $type_p = DB::table('solutions_project')
@@ -1567,7 +1603,6 @@ class ResultadosController extends Controller
                 $suma_cost_mant_base_div_area = $suma_cost_mant_base_div_area * $inflacion_rate;
                 $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
             } */
-
 
 
                     array_push($array_base,round($res_enf_base,1),round($suma_enf_base_aux,1),round($res_opex_base,1));
@@ -2356,6 +2391,43 @@ class ResultadosController extends Controller
         $inflacion_rate =  $inflacion_rate_aux/100 + 1;
 
 
+        $tipo_mant_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_2 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_2 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_3 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_3 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+
         foreach( $num_enfs as $num_enf){
            if($num_enf->num_enf === 1){
             $type_p = DB::table('solutions_project')
@@ -2438,7 +2510,15 @@ class ResultadosController extends Controller
             }
 
 
-                    array_push($array_base,round($res_enf_base,1),round($suma_enf_base_aux,1),round($res_opex_base,1));
+
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
+
+                array_push($array_base,0,0,0);
+            }else{
+                array_push($array_base,round($res_enf_base,1),round($suma_enf_base_aux,1),round($res_opex_base,1));
+            }
+
+
         }
 
            if($num_enf->num_enf === 2){
@@ -2512,10 +2592,13 @@ class ResultadosController extends Controller
                $total_opex_a = $suma_enf_a_aux + $res_opex_a;
 
 
+               if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
 
+                array_push($array_a,0,0,0);
+                }else{
+                    array_push($array_a,round($res_enf_a,1),round($suma_enf_a_aux,1),round($res_opex_a,1));
+                }
 
-
-                    array_push( $array_a,round($res_enf_a,1),round($suma_enf_a_aux,1),round($res_opex_a,1));
 
 
            }
@@ -2589,7 +2672,14 @@ class ResultadosController extends Controller
 
            $total_opex_b = $suma_enf_b_aux + $res_opex_b;
 
-                array_push( $array_b,round($res_enf_b,1),round($suma_enf_b_aux,1),round($res_opex_b,1));
+
+           if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
+            array_push($array_b,0,0,0);
+            }else{
+            array_push($array_b,round($res_enf_b,1),round($suma_enf_b_aux,1),round($res_opex_b,1));
+            }
+
+
 
            }
         }
@@ -2936,8 +3026,44 @@ class ResultadosController extends Controller
         ->first()->inflacion_rate;
         $inflacion_rate =  $inflacion_rate_aux/100 + 1;
 
+        $tipo_mant_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_2 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_2 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_3 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_3 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
 
         foreach( $num_enfs as $num_enf){
+
            if($num_enf->num_enf === 1){
             $type_p = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id_projecto)
@@ -3009,9 +3135,8 @@ class ResultadosController extends Controller
                 $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
             }
 
+            array_push($array_base,round($res_enf_base,1),round($suma_enf_base_aux,1),round($res_opex_base,1));
 
-
-                    array_push($array_base,round($res_enf_base,1),round($suma_enf_base_aux,1),round($res_opex_base,1));
         }
 
            if($num_enf->num_enf === 2){
@@ -4405,6 +4530,42 @@ class ResultadosController extends Controller
         ->first()->inflacion_rate;
         $inflacion_rate =  $inflacion_rate_aux/100 + 1;
 
+        $tipo_mant_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_2 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_2 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_3 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_3 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
         foreach( $num_enfs as $num_enf){
            if($num_enf->num_enf === 1){
             //capex
@@ -4470,8 +4631,13 @@ class ResultadosController extends Controller
             }
 
             //$total_opex_base = $suma_enf_base_aux + $res_opex_base;
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
+                array_push($array_base,0,0,0);
+            }else{
+                array_push( $array_base,round($res_enf_base,1),round($suma_enf_base_aux,1),round($res_opex_base,1));
+            }
 
-            array_push( $array_base,round($res_enf_base,1),round($suma_enf_base_aux,1),round($res_opex_base,1));
+
         }
 
            if($num_enf->num_enf === 2){
@@ -4541,7 +4707,13 @@ class ResultadosController extends Controller
 
            //$total_opex_a = $suma_enf_a_aux + $res_opex_a;
 
-            array_push( $array_a,round($res_enf_a,1),round($suma_enf_a_aux,1),round($res_opex_a,1));
+           if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
+            array_push($array_a,0,0,0);
+            }else{
+                array_push($array_a,round($res_enf_a,1),round($suma_enf_a_aux,1),round($res_opex_a,1));
+            }
+
+
            }
 
            if($num_enf->num_enf === 3){
@@ -4608,8 +4780,12 @@ class ResultadosController extends Controller
            }
 
            //$total_opex_b = $suma_enf_b_aux + $res_opex_b;
+           if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
+            array_push($array_b,0,0,0);
+            }else{
+            array_push($array_b,round($res_enf_b,1),round($suma_enf_b_aux,1),round($res_opex_b,1));
+            }
 
-            array_push( $array_b,round($res_enf_b,1),round($suma_enf_b_aux,1),round($res_opex_b,1));
            }
         }
 
@@ -4905,6 +5081,43 @@ class ResultadosController extends Controller
         ->first()->inflacion_rate;
         $inflacion_rate =  $inflacion_rate_aux/100 + 1;
 
+
+        $tipo_mant_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_2 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_2 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_3 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_3 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
         foreach( $num_enfs as $num_enf){
            if($num_enf->num_enf === 1){
             //capex
@@ -4970,8 +5183,11 @@ class ResultadosController extends Controller
             }
 
             //$total_opex_base = $suma_enf_base_aux + $res_opex_base;
-
-            array_push( $array_base,round($res_enf_base,1),round($suma_enf_base_aux,1),round($res_opex_base,1));
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'infiniguard' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'cobre_cobre' || $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
+                array_push($array_base,0,0,0);
+            }else{
+                array_push( $array_base,round($res_enf_base,1),round($suma_enf_base_aux,1),round($res_opex_base,1));
+            }
         }
 
            if($num_enf->num_enf === 2){
@@ -5038,8 +5254,12 @@ class ResultadosController extends Controller
            }
 
            //$total_opex_a = $suma_enf_a_aux + $res_opex_a;
+           if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+            array_push($array_a,0,0,0);
+            }else{
+                array_push($array_a,round($res_enf_a,1),round($suma_enf_a_aux,1),round($res_opex_a,1));
+            }
 
-            array_push( $array_a,round($res_enf_a,1),round($suma_enf_a_aux,1),round($res_opex_a,1));
            }
 
            if($num_enf->num_enf === 3){
@@ -5107,7 +5327,12 @@ class ResultadosController extends Controller
 
             $total_opex_b = $suma_enf_b_aux + $res_opex_b;
 
-            array_push( $array_b,round($res_enf_b,1),round($suma_enf_b_aux,1),round($res_opex_b,1));
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+                array_push($array_b,0,0,0);
+                }else{
+                array_push($array_b,round($res_enf_b,1),round($suma_enf_b_aux,1),round($res_opex_b,1));
+                }
+
            }
         }
 
