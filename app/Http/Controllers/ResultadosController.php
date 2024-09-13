@@ -4780,7 +4780,7 @@ class ResultadosController extends Controller
            }
 
            //$total_opex_b = $suma_enf_b_aux + $res_opex_b;
-           if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
+           if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
             array_push($array_b,0,0,0);
             }else{
             array_push($array_b,round($res_enf_b,1),round($suma_enf_b_aux,1),round($res_opex_b,1));
