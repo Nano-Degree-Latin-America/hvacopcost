@@ -588,7 +588,7 @@
                         <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_1_2','proteccion_condensador_1_2_value','tipo_ambiente_1_2');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_2" id="proteccion_condensador_1_2">
                         </select>
                         <input  id="proteccion_condensador_1_2_count" name="proteccion_condensador_1_2_count" type="number" class="hidden" value="1">
-                        <input  id="proteccion_condensador_1_2_value" name="proteccion_condensador_1_2_count" type="text" class="hidden">
+                        <input  id="proteccion_condensador_1_2_value" name="proteccion_condensador_1_2_value" type="text" class="">
                     </div>
                 </div>
             </div>

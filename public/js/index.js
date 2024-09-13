@@ -4208,7 +4208,43 @@ function trans_sols_valid_ab(idm,sol){
 
         }
 
-       var count_inps_1_1 = tipo_equipo_1_1_count + capacidad_total_1_1_count + costo_elec_1_1_count + dr_1_1_count + csStd_cant_1_1_count + tipo_control_1_count + csMantenimiento_1_1_count + csDisenio_1_1_count + hrsEnfriado_1_1_count + cheValorS_1_1_count  + ventilacion_1_1_count + filtracion_1_1_count;
+        ////
+        var tipo_ambiente_1_1 =$('#tipo_ambiente_1_1');
+        var tipo_ambiente_1_1_count = $('#tipo_ambiente_1_1_count').val();
+
+        if(tipo_ambiente_1_1.val() == 0 || tipo_ambiente_1_1.val() == null){
+
+        tipo_ambiente_1_1.css("border-color", "red")
+        tipo_ambiente_1_1_count = 1;
+         $('#tipo_ambiente_1_1_count').val(tipo_ambiente_1_1_count);
+
+        }else if (tipo_ambiente_1_1.val() != 0 || tipo_ambiente_1_1.val() != null) {
+
+            tipo_ambiente_1_1_count = 0;
+         $('#tipo_ambiente_1_1_count').val(tipo_ambiente_1_1_count);
+
+        }
+        ////
+
+        ////
+        var proteccion_condensador_1_1 =$('#proteccion_condensador_1_1');
+        var proteccion_condensador_1_1_count = $('#proteccion_condensador_1_1_count').val();
+
+        if(proteccion_condensador_1_1.val() == 0 || proteccion_condensador_1_1.val() == null){
+
+            proteccion_condensador_1_1.css("border-color", "red")
+        proteccion_condensador_1_1_count = 1;
+         $('#proteccion_condensador_1_1_count').val(proteccion_condensador_1_1_count);
+
+        }else if (proteccion_condensador_1_1.val() != 0 || proteccion_condensador_1_1.val() != null) {
+
+            proteccion_condensador_1_1_count = 0;
+         $('#proteccion_condensador_1_1_count').val(proteccion_condensador_1_1_count);
+
+        }
+        ////
+
+       var count_inps_1_1 =  tipo_ambiente_1_1_count + proteccion_condensador_1_1_count + tipo_equipo_1_1_count + capacidad_total_1_1_count + costo_elec_1_1_count + dr_1_1_count + csStd_cant_1_1_count + tipo_control_1_count + csMantenimiento_1_1_count + csDisenio_1_1_count + hrsEnfriado_1_1_count + cheValorS_1_1_count  + ventilacion_1_1_count + filtracion_1_1_count;
 
        if(count_inps_1_1>0){
         trans_sols_valid(idm);
@@ -4412,11 +4448,47 @@ function trans_sols_valid_ab(idm,sol){
 
         }
 
+        ////
+        var tipo_ambiente_1_2 =$('#tipo_ambiente_1_2');
+        var tipo_ambiente_1_2_count = $('#tipo_ambiente_1_2_count').val();
+
+        if(tipo_ambiente_1_2.val() == 0 || tipo_ambiente_1_2.val() == null){
+
+        tipo_ambiente_1_2.css("border-color", "red")
+        tipo_ambiente_1_2_count = 1;
+         $('#tipo_ambiente_1_2_count').val(tipo_ambiente_1_2_count);
+
+        }else if (tipo_ambiente_1_2.val() != 0 || tipo_ambiente_1_2.val() != null) {
+
+            tipo_ambiente_1_2_count = 0;
+         $('#tipo_ambiente_1_2_count').val(tipo_ambiente_1_2_count);
+
+        }
+        ////
+
+        ////
+        var proteccion_condensador_1_2 =$('#proteccion_condensador_1_2');
+        var proteccion_condensador_1_2_count = $('#proteccion_condensador_1_2_count').val();
+
+        if(proteccion_condensador_1_2.val() == 0 || proteccion_condensador_1_2.val() == null){
+
+            proteccion_condensador_1_2.css("border-color", "red")
+        proteccion_condensador_1_2_count = 1;
+         $('#proteccion_condensador_1_2_count').val(proteccion_condensador_1_2_count);
+
+        }else if (proteccion_condensador_1_2.val() != 0 || proteccion_condensador_1_2.val() != null) {
+
+            proteccion_condensador_1_2_count = 0;
+         $('#proteccion_condensador_1_2_count').val(proteccion_condensador_1_2_count);
+
+        }
+        ////
+
             var count_inps_1_2 = csTipo_1_2_count +
             capacidad_tota_1_2_count + costo_elec_1_2_count
             + dr_1_2_count + csStd_1_2_count +
             tipo_control_1_2_count + csMantenimiento_1_2_count +
-            csDisenio_1_2_count + hrsEnfriado_1_2_count + cheValorS_1_2_count+ ventilacion_1_2_count + filtracion_1_2_count;
+            csDisenio_1_2_count + hrsEnfriado_1_2_count + cheValorS_1_2_count+ ventilacion_1_2_count + filtracion_1_2_count + tipo_ambiente_1_2_count + proteccion_condensador_1_2_count;
             if(count_inps_1_2>0){
                 trans_sols_valid(idm);
                         return false;
@@ -4792,8 +4864,44 @@ function trans_sols_valid_ab(idm,sol){
 
                     }
 
+                           ////
+        var tipo_ambiente_2_1 =$('#tipo_ambiente_2_1');
+        var tipo_ambiente_2_1_count = $('#tipo_ambiente_2_1_count').val();
+
+        if(tipo_ambiente_2_1.val() == 0 || tipo_ambiente_2_1.val() == null){
+
+            tipo_ambiente_2_1.css("border-color", "red")
+        tipo_ambiente_2_1_count = 1;
+         $('#tipo_ambiente_2_1_count').val(tipo_ambiente_2_1_count);
+
+        }else if (tipo_ambiente_2_1.val() != 0 || tipo_ambiente_2_1.val() != null) {
+
+            tipo_ambiente_2_1_count = 0;
+         $('#tipo_ambiente_2_1_count').val(tipo_ambiente_2_1_count);
+
+        }
+        ////
+
+        ////
+        var proteccion_condensador_2_1 =$('#proteccion_condensador_2_1');
+        var proteccion_condensador_2_1_count = $('#proteccion_condensador_2_1_count').val();
+
+        if(proteccion_condensador_2_1.val() == 0 || proteccion_condensador_2_1.val() == null){
+
+            proteccion_condensador_2_1.css("border-color", "red")
+        proteccion_condensador_2_1_count = 1;
+         $('#proteccion_condensador_2_1_count').val(proteccion_condensador_2_1_count);
+
+        }else if (proteccion_condensador_2_1.val() != 0 || proteccion_condensador_2_1.val() != null) {
+
+            proteccion_condensador_2_1_count = 0;
+         $('#proteccion_condensador_2_1_count').val(proteccion_condensador_2_1_count);
+
+        }
+        ////
+
                 var count_inps_2_1 = cheTipo_2_1_count + capacidad_total_2_1_count + costo_elec_2_1_count + dr_2_1_count + csStd_cant_2_1_count + tipo_control_2_1_count + csMantenimiento_2_1_count + cheDisenio_2_1_count +
-                hrsEnfriado_2_1_count + cheValorS_2_1_count + ventilacion_2_1_count + filtracion_2_1_count;
+                hrsEnfriado_2_1_count + cheValorS_2_1_count + ventilacion_2_1_count + filtracion_2_1_count + tipo_ambiente_2_1_count + proteccion_condensador_2_1_count;
               /*       alert(count_inps_2_1); */
                 if(count_inps_2_1>0){
                     trans_sols_valid_ab(idm,'A')
@@ -5009,13 +5117,50 @@ function trans_sols_valid_ab(idm,sol){
 
                     }
 
+                           ////
+                           var tipo_ambiente_2_2 =$('#tipo_ambiente_2_2');
+                           var tipo_ambiente_2_2_count = $('#tipo_ambiente_2_2_count').val();
+
+                           if(tipo_ambiente_2_2.val() == 0 || tipo_ambiente_2_2.val() == null){
+
+                               tipo_ambiente_2_2.css("border-color", "red")
+                               tipo_ambiente_2_2_count = 1;
+                            $('#tipo_ambiente_2_2_count').val(tipo_ambiente_2_2_count);
+
+                           }else if (tipo_ambiente_2_2.val() != 0 || tipo_ambiente_2_2.val() != null) {
+
+                               tipo_ambiente_2_2_count = 0;
+                            $('#tipo_ambiente_2_2_count').val(tipo_ambiente_2_2_count);
+
+                           }
+                           ////
+
+                           ////
+                           var proteccion_condensador_2_2 =$('#proteccion_condensador_2_2');
+                           var proteccion_condensador_2_2_count = $('#proteccion_condensador_2_2_count').val();
+
+                           if(proteccion_condensador_2_2.val() == 0 || proteccion_condensador_2_2.val() == null){
+
+                               proteccion_condensador_2_2.css("border-color", "red")
+                           proteccion_condensador_2_2_count = 1;
+                            $('#proteccion_condensador_2_2_count').val(proteccion_condensador_2_2_count);
+
+                           }else if (proteccion_condensador_2_2.val() != 0 || proteccion_condensador_2_2.val() != null) {
+
+                               proteccion_condensador_2_2_count = 0;
+                            $('#proteccion_condensador_2_2_count').val(proteccion_condensador_2_2_count);
+
+                           }
+                           ////
+
+
                     /*       alert(count_inps_2_1); */
                 var count_inps_2_2 = cheTipo_2_2_count
                 + capacidad_total_2_2_count
                 + costo_elec_2_2_count
                 + dr_2_2_count + csStd_cant_2_2_count
                  + tipo_control_2_2_count + cheMantenimiento_2_2_count
-                 + cheDisenio_2_2_count + hrsEnfriado_2_2_count + cheValorS_2_2_count+ventilacion_2_2_count+filtracion_2_2_count;
+                 + cheDisenio_2_2_count + hrsEnfriado_2_2_count + cheValorS_2_2_count+ventilacion_2_2_count+filtracion_2_2_count+tipo_ambiente_2_2_count+proteccion_condensador_2_2_count;
 
                 if(count_inps_2_2>0){
                     trans_sols_valid_ab(idm,'A')
@@ -5396,7 +5541,45 @@ function trans_sols_valid_ab(idm,sol){
 
                     }
 
-                var count_inps_3_1 = cheTipo_3_1_count + capacidad_total_3_1_count + costo_elec_3_1_count + dr_3_1_count + cheStd_3_1_count + tipo_control_3_1_count + cheMantenimiento_3_1_count + cheDisenio_3_1_count + hrsEnfriado_3_1_count + cheValorS_3_1_count+ventilacion_3_1_count+filtracion_3_1_count;
+
+
+                    ////
+                    var tipo_ambiente_3_1 =$('#tipo_ambiente_3_1');
+                    var tipo_ambiente_3_1_count = $('#tipo_ambiente_3_1_count').val();
+
+                    if(tipo_ambiente_3_1.val() == 0 || tipo_ambiente_3_1.val() == null){
+
+                        tipo_ambiente_3_1.css("border-color", "red")
+                        tipo_ambiente_3_1_count = 1;
+                    $('#tipo_ambiente_3_1_count').val(tipo_ambiente_3_1_count);
+
+                    }else if (tipo_ambiente_3_1.val() != 0 || tipo_ambiente_3_1.val() != null) {
+
+                        tipo_ambiente_3_1_count = 0;
+                    $('#tipo_ambiente_3_1_count').val(tipo_ambiente_3_1_count);
+
+                    }
+                           ////
+
+                           ////
+                    var proteccion_condensador_3_1 =$('#proteccion_condensador_3_1');
+                    var proteccion_condensador_3_1_count = $('#proteccion_condensador_3_1_count').val();
+
+                    if(proteccion_condensador_3_1.val() == 0 || proteccion_condensador_3_1.val() == null){
+
+                    proteccion_condensador_3_1.css("border-color", "red")
+                    proteccion_condensador_3_1_count = 1;
+                    $('#proteccion_condensador_3_1_count').val(proteccion_condensador_3_1_count);
+
+                    }else if (proteccion_condensador_3_1.val() != 0 || proteccion_condensador_3_1.val() != null) {
+
+                         proteccion_condensador_3_1_count = 0;
+                    $('#proteccion_condensador_3_1_count').val(proteccion_condensador_3_1_count);
+
+                    }
+                           ////
+
+                var count_inps_3_1 = cheTipo_3_1_count + capacidad_total_3_1_count + costo_elec_3_1_count + dr_3_1_count + cheStd_3_1_count + tipo_control_3_1_count + cheMantenimiento_3_1_count + cheDisenio_3_1_count + hrsEnfriado_3_1_count + cheValorS_3_1_count+ventilacion_3_1_count+filtracion_3_1_count + tipo_ambiente_3_1_count + proteccion_condensador_3_1_count;
               /*       alert(count_inps_2_1); */
                 if(count_inps_3_1>0){
                     trans_sols_valid_ab(idm,'B');
@@ -5613,7 +5796,41 @@ function trans_sols_valid_ab(idm,sol){
                     }
 
 
+                    ////
+                    var tipo_ambiente_3_2 =$('#tipo_ambiente_3_2');
+                    var tipo_ambiente_3_2_count = $('#tipo_ambiente_3_2_count').val();
 
+                    if(tipo_ambiente_3_2.val() == 0 || tipo_ambiente_3_2.val() == null){
+
+                        tipo_ambiente_3_2.css("border-color", "red")
+                        tipo_ambiente_3_2_count = 1;
+                    $('#tipo_ambiente_3_2_count').val(tipo_ambiente_3_2_count);
+
+                    }else if (tipo_ambiente_3_2.val() != 0 || tipo_ambiente_3_2.val() != null) {
+
+                        tipo_ambiente_3_2_count = 0;
+                    $('#tipo_ambiente_3_2_count').val(tipo_ambiente_3_2_count);
+
+                    }
+                        ////
+
+                        ////
+                    var proteccion_condensador_3_2 =$('#proteccion_condensador_3_2');
+                    var proteccion_condensador_3_2_count = $('#proteccion_condensador_3_2_count').val();
+
+                    if(proteccion_condensador_3_2.val() == 0 || proteccion_condensador_3_2.val() == null){
+
+                    proteccion_condensador_3_2.css("border-color", "red")
+                    proteccion_condensador_3_2_count = 1;
+                    $('#proteccion_condensador_3_2_count').val(proteccion_condensador_3_2_count);
+
+                    }else if (proteccion_condensador_3_2.val() != 0 || proteccion_condensador_3_2.val() != null) {
+
+                        proteccion_condensador_3_2_count = 0;
+                    $('#proteccion_condensador_3_2_count').val(proteccion_condensador_3_2_count);
+
+                    }
+                        ////
 
 
 
@@ -5621,7 +5838,7 @@ function trans_sols_valid_ab(idm,sol){
                 capacidad_total_3_2_count + costo_elec_3_2_count +
                 dr_3_2_count + csStd_cant_3_2_count + tipo_control_3_2_count +
                 cheMantenimiento_3_2_count + cheDisenio_3_2_count +
-                hrsEnfriado_3_2_count + cheValorS2_3_2_count;
+                hrsEnfriado_3_2_count + cheValorS2_3_2_count +tipo_ambiente_3_2_count +proteccion_condensador_3_2_count;
               /*       alert(count_inps_2_1); */
                 if(count_inps_3_2>0){
                     trans_sols_valid_ab(idm,'B');
@@ -6701,7 +6918,46 @@ function check_form_retro(idm,fecha_project,action){
 
                     }
 
-                var count_inps_1_1 = tipo_equipo_1_1_count + marca_1_1_retro_count + modelo_1_1_retro_count + yrs_vida_1_1_retro_count + csStd_retro_1_1_count + capacidad_total_1_1_retro_count + csDisenio_1_1_retro_count + costo_elec_1_1_retro_count + hrsEnfriado_1_1_retro_count + tipo_control_1_1_retro_count + dr_1_1_retro_count + csMantenimiento_1_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_1_1_retro_count + const_an_rep_1_1_count +ventilacion_1_1_retro_count+filtracion_1_1_retro_count;
+
+                    ////tipo_ambiente_1_1_retro
+
+                    var tipo_ambiente_1_1_retro =$('#tipo_ambiente_1_1_retro');
+                    var tipo_ambiente_1_1_retro_count = $('#tipo_ambiente_1_1_retro_count').val();
+
+                    if(tipo_ambiente_1_1_retro.val() == 0 || tipo_ambiente_1_1_retro.val() == null){
+
+                        tipo_ambiente_1_1_retro.css("border-color", "red")
+                        tipo_ambiente_1_1_retro_count = 1;
+                    $('#tipo_ambiente_1_1_retro_count').val(tipo_ambiente_1_1_retro_count);
+
+                    }else if (tipo_ambiente_1_1_retro.val() != null) {
+
+                        tipo_ambiente_1_1_retro_count = 0;
+                    $('#tipo_ambiente_1_1_retro_count').val(tipo_ambiente_1_1_retro_count);
+
+                    }
+                        ////
+
+                        ////
+                    var proteccion_condensador_1_1_retro =$('#proteccion_condensador_1_1_retro');
+                    var proteccion_condensador_1_1_retro_count = $('#proteccion_condensador_1_1_retro_count').val();
+
+                    if(proteccion_condensador_1_1_retro.val() == 0 || proteccion_condensador_1_1_retro.val() == null){
+
+                    proteccion_condensador_1_1_retro.css("border-color", "red")
+                    proteccion_condensador_1_1_retro_count = 1;
+                    $('#proteccion_condensador_1_1_retro_count').val(proteccion_condensador_1_1_retro_count);
+
+                    }else if (proteccion_condensador_1_1_retro.val() != 0 || proteccion_condensador_1_1_retro.val() != null) {
+
+                        proteccion_condensador_1_1_retro_count = 0;
+                    $('#proteccion_condensador_1_1_retro_count').val(proteccion_condensador_1_1_retro_count);
+
+                    }
+                        ////
+
+
+                var count_inps_1_1 = tipo_equipo_1_1_count + marca_1_1_retro_count + modelo_1_1_retro_count + yrs_vida_1_1_retro_count + csStd_retro_1_1_count + capacidad_total_1_1_retro_count + csDisenio_1_1_retro_count + costo_elec_1_1_retro_count + hrsEnfriado_1_1_retro_count + tipo_control_1_1_retro_count + dr_1_1_retro_count + csMantenimiento_1_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_1_1_retro_count + const_an_rep_1_1_count +ventilacion_1_1_retro_count+filtracion_1_1_retro_count  +  tipo_ambiente_1_1_retro_count  +  proteccion_condensador_1_1_retro_count;
 
                 if(count_inps_1_1>0){
                     trans_sols_valid(idm);
@@ -6983,25 +7239,44 @@ function check_form_retro(idm,fecha_project,action){
 
                     }
                     /////////////////////////////////////
-                    /* var const_an_rep_2_1 =$('#const_an_rep_2_1');
-                    var const_an_rep_2_1_retro_count = $('#const_an_rep_2_1_retro_count').val();
-                    const myArray_const_an_rep_2_1 = const_an_rep_2_1.val().split('$');
-                    var var_const_an_rep_2_1 =  myArray_const_an_rep_2_1[1];
+////tipo_ambiente_1_1_retro
 
-                    if(var_const_an_rep_2_1 <= 0 || const_an_rep_2_1.val() == ""){
+                    var tipo_ambiente_2_1_retro =$('#tipo_ambiente_2_1_retro');
+                    var tipo_ambiente_2_1_retro_count = $('#tipo_ambiente_2_1_retro_count').val();
 
-                        const_an_rep_2_1.css("border-color", "red")
-                        const_an_rep_2_1_retro_count = 1;
+                    if(tipo_ambiente_2_1_retro.val() == 0 || tipo_ambiente_2_1_retro.val() == null){
 
-                        $('#const_an_rep_2_1_retro_count').val(const_an_rep_2_1_retro_count);
-                    }else if (const_an_rep_2_1 > 0 || const_an_rep_2_1.val() != null) {
+                        tipo_ambiente_2_1_retro.css("border-color", "red")
+                        tipo_ambiente_2_1_retro_count = 1;
+                    $('#tipo_ambiente_2_1_retro_count').val(tipo_ambiente_2_1_retro_count);
 
-                        const_an_rep_2_1_retro_count = 0;
-                    $('#const_an_rep_2_1_retro_count').val(const_an_rep_2_1_retro_count);
+                    }else if (tipo_ambiente_2_1_retro.val() != null) {
 
-                    } */
+                        tipo_ambiente_2_1_retro_count = 0;
+                    $('#tipo_ambiente_2_1_retro_count').val(tipo_ambiente_2_1_retro_count);
 
-                var count_inps_2_1 = cheTipo_2_1_count_retro + marca_2_1_retro_count + modelo_2_1_retro_count + yrs_vida_2_1_retro_count + csStd_2_1_retro_count + capacidad_total_2_1_retro_count + cheDisenio_2_1_retro_count + costo_elec_2_1_retro_count + hrsEnfriado_2_1_retro_count + tipo_control_2_1_retro_count + dr_2_1_retro_count + csMantenimiento_2_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_2_1_retro_count +ventilacion_2_1_retro_count+filtracion_2_1_retro_count;
+                    }
+                        ////
+
+                        ////
+                    var proteccion_condensador_2_1_retro =$('#proteccion_condensador_2_1_retro');
+                    var proteccion_condensador_2_1_retro_count = $('#proteccion_condensador_2_1_retro_count').val();
+
+                    if(proteccion_condensador_2_1_retro.val() == 0 || proteccion_condensador_2_1_retro.val() == null){
+
+                    proteccion_condensador_2_1_retro.css("border-color", "red")
+                    proteccion_condensador_2_1_retro_count = 1;
+                    $('#proteccion_condensador_2_1_retro_count').val(proteccion_condensador_2_1_retro_count);
+
+                    }else if (proteccion_condensador_2_1_retro.val() != 0 || proteccion_condensador_2_1_retro.val() != null) {
+
+                        proteccion_condensador_2_1_retro_count = 0;
+                    $('#proteccion_condensador_2_1_retro_count').val(proteccion_condensador_2_1_retro_count);
+
+                    }
+    /////
+
+                var count_inps_2_1 = cheTipo_2_1_count_retro + marca_2_1_retro_count + modelo_2_1_retro_count + yrs_vida_2_1_retro_count + csStd_2_1_retro_count + capacidad_total_2_1_retro_count + cheDisenio_2_1_retro_count + costo_elec_2_1_retro_count + hrsEnfriado_2_1_retro_count + tipo_control_2_1_retro_count + dr_2_1_retro_count + csMantenimiento_2_1_retro_count + costo_recu_1_1_retro_count + maintenance_cost_2_1_retro_count +ventilacion_2_1_retro_count+filtracion_2_1_retro_count +  tipo_ambiente_2_1_retro_count + proteccion_condensador_2_1_retro_count;
 
                 if(count_inps_2_1>0){
                     trans_sols_valid_ab(idm,'A')
@@ -7284,26 +7559,45 @@ function check_form_retro(idm,fecha_project,action){
                     $('#maintenance_cost_3_1_retro_count').val(maintenance_cost_3_1_retro_count);
 
                     }
-                    /////////////////////////////////////
-                   /*  var const_an_rep_3_1 =$('#const_an_rep_3_1');
-                    var const_an_rep_3_1_retro_count = $('#const_an_rep_3_1_retro_count').val();
-                    const myArray_const_an_rep_2_1 = const_an_rep_3_1.val().split('$');
-                    var var_const_an_rep_2_1 =  myArray_const_an_rep_2_1[1];
+ /////////////////////////////////////
+////tipo_ambiente_1_1_retro
 
-                    if(var_const_an_rep_2_1 <= 0 || const_an_rep_3_1.val() == ""){
+var tipo_ambiente_3_1_retro =$('#tipo_ambiente_3_1_retro');
+var tipo_ambiente_3_1_retro_count = $('#tipo_ambiente_3_1_retro_count').val();
 
-                        const_an_rep_3_1.css("border-color", "red")
-                        const_an_rep_3_1_retro_count = 1;
+if(tipo_ambiente_3_1_retro.val() == 0 || tipo_ambiente_3_1_retro.val() == null){
 
-                        $('#const_an_rep_3_1_retro_count').val(const_an_rep_3_1_retro_count);
-                    }else if (const_an_rep_3_1 > 0 || const_an_rep_3_1.val() != null) {
+    tipo_ambiente_3_1_retro.css("border-color", "red")
+    tipo_ambiente_3_1_retro_count = 1;
+$('#tipo_ambiente_3_1_retro_count').val(tipo_ambiente_3_1_retro_count);
 
-                        const_an_rep_3_1_retro_count = 0;
-                    $('#const_an_rep_3_1_retro_count').val(const_an_rep_3_1_retro_count);
+}else if (tipo_ambiente_3_1_retro.val() != null) {
 
-                    } */
+    tipo_ambiente_3_1_retro_count = 0;
+$('#tipo_ambiente_3_1_retro_count').val(tipo_ambiente_3_1_retro_count);
 
-                var count_inps_3_1 = cheTipo_3_1_retro_count + marca_3_1_retro_count + modelo_3_1_retro_count + yrs_vida_3_1_retro_count + cheStd_3_1_retro_count + capacidad_total_3_1_retro_count + cheDisenio_3_1_retro_count + costo_elec_3_1_retro_count + hrsEnfriado_3_1_retro_count + tipo_control_3_1_retro_count + dr_3_1_retro_count + cheMantenimiento_3_1_retro_count + costo_recu_3_1_retro_count + maintenance_cost_3_1_retro_count+ventilacion_3_1_retro_count+filtracion_3_1_retro_count;
+}
+    ////
+
+    ////
+var proteccion_condensador_3_1_retro =$('#proteccion_condensador_3_1_retro');
+var proteccion_condensador_3_1_retro_count = $('#proteccion_condensador_3_1_retro_count').val();
+
+if(proteccion_condensador_3_1_retro.val() == 0 || proteccion_condensador_3_1_retro.val() == null){
+
+proteccion_condensador_3_1_retro.css("border-color", "red")
+proteccion_condensador_3_1_retro_count = 1;
+$('#proteccion_condensador_3_1_retro_count').val(proteccion_condensador_3_1_retro_count);
+
+}else if (proteccion_condensador_3_1_retro.val() != 0 || proteccion_condensador_3_1_retro.val() != null) {
+
+    proteccion_condensador_3_1_retro_count = 0;
+$('#proteccion_condensador_3_1_retro_count').val(proteccion_condensador_3_1_retro_count);
+
+}
+/////
+
+                var count_inps_3_1 = cheTipo_3_1_retro_count + marca_3_1_retro_count + modelo_3_1_retro_count + yrs_vida_3_1_retro_count + cheStd_3_1_retro_count + capacidad_total_3_1_retro_count + cheDisenio_3_1_retro_count + costo_elec_3_1_retro_count + hrsEnfriado_3_1_retro_count + tipo_control_3_1_retro_count + dr_3_1_retro_count + cheMantenimiento_3_1_retro_count + costo_recu_3_1_retro_count + maintenance_cost_3_1_retro_count+ventilacion_3_1_retro_count+filtracion_3_1_retro_count +tipo_ambiente_3_1_retro_count+proteccion_condensador_3_1_retro_count;
 
                 if(count_inps_3_1>0){
                     trans_sols_valid_ab(idm,'B')

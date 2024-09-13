@@ -255,7 +255,7 @@ $solution_enf1->confort = $nivel_confotr_1_1;
                 }
 
                 $solution_enf2_2->tipo_ambiente=$request->get('tipo_ambiente_1_2');
-                $solution_enf2_2->proteccion_condensador=floatval($request->get('proteccion_condensador_1_2'));
+                $solution_enf2_2->proteccion_condensador=$request->get('proteccion_condensador_1_2');
                 $solution_enf2_2->proteccion_condensador_val=floatval($request->get('proteccion_condensador_1_2_value'));
 
                 $solution_enf2_2->costo_mantenimiento=floatval($aux_cost_mant_1_2);
@@ -268,6 +268,7 @@ $solution_enf1->confort = $nivel_confotr_1_1;
                 $cost_energ =  $solution_enf2_2->costo_elec;
 
                 $am =$solution_enf2_2->proteccion_condensador_val;
+
                 $eficiencia_cant = floatval($request->get('csStd_cant_2_1'));
                 $factor_s = $request->get('lblCsTipo_2_1');
                 $factor_d = floatval($request->get('csDisenio_1_2'));
@@ -380,8 +381,8 @@ $solution_enf1->confort = $nivel_confotr_1_1;
                 $solution_enf2_1->status=1;
                 $solution_enf2_1->id_empresa=Auth::user()->id_empresa;
                 $solution_enf2_1->id_user=Auth::user()->id;
-
                 $am =$solution_enf2_1->proteccion_condensador_val;
+
                 $cooling_hrs =  $solution_enf2_1->coolings_hours;
                 $cost_energ =  $solution_enf2_1->costo_elec;
                 $eficiencia_cant = floatval($request->get('csStd_cant_2_1'));
