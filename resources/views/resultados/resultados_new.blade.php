@@ -3050,6 +3050,51 @@ $costo_b
 
                                 <div class="flex w-full mx-1">
                                     <div class="w-1/2 flex justify-start">
+                                        <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">Tipo Ambiente</p>
+                                    </div>
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols capitalize" for="">
+
+                                        @if ($solution->tipo_ambiente == 'no_agresivo')
+                                            No Agresivo
+                                        @endif
+
+                                        @if ($solution->tipo_ambiente == 'marino')
+                                            Marino
+                                        @endif
+
+                                        @if ($solution->tipo_ambiente == 'contaminado')
+                                            Contaminado
+                                        @endif
+                                        </p>
+                                    </div>
+                                </div>
+
+
+                                <div class="flex w-full mx-1">
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">Protección Condensador</p>
+                                    </div>
+                                    <div class="w-1/2 flex justify-start">
+                                        <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols capitalize" for="">
+
+                                        @if ($solution->proteccion_condensador == 'sin_proteccion')
+                                           Sin Protección
+                                        @endif
+
+                                        @if ($solution->proteccion_condensador == 'infiniguard')
+                                            Infiniguard®
+                                        @endif
+
+                                        @if ($solution->proteccion_condensador == 'cobre_cobre')
+                                            Cobre Cobre
+                                        @endif
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex w-full mx-1">
+                                    <div class="w-1/2 flex justify-start">
                                         <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.inversion inicial') }} (CAPEX)</p>
                                     </div>
                                     <div class="w-1/2 flex justify-start">
@@ -3344,6 +3389,50 @@ $costo_b
                                         </div>
                                         <div class="w-1/2 flex justify-start">
                                             <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->mantenimiento}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">Tipo Ambiente</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols capitalize" for="">
+
+                                            @if ($solution->tipo_ambiente == 'no_agresivo')
+                                                No Agresivo
+                                            @endif
+
+                                            @if ($solution->tipo_ambiente == 'marino')
+                                                Marino
+                                            @endif
+
+                                            @if ($solution->tipo_ambiente == 'contaminado')
+                                                Contaminado
+                                            @endif
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">Protección Condensador</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols capitalize" for="">
+
+                                            @if ($solution->proteccion_condensador == 'sin_proteccion')
+                                               Sin Protección
+                                            @endif
+
+                                            @if ($solution->proteccion_condensador == 'infiniguard')
+                                                Infiniguard®
+                                            @endif
+
+                                            @if ($solution->proteccion_condensador == 'cobre_cobre')
+                                                Cobre Cobre
+                                            @endif
+                                            </p>
                                         </div>
                                     </div>
 
@@ -3643,6 +3732,51 @@ $costo_b
                                         </div>
                                         <div class="w-1/2 flex justify-start">
                                             <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols" for="">{{$solution->mantenimiento}}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">Tipo Ambiente</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols capitalize" for="">
+
+                                            @if ($solution->tipo_ambiente == 'no_agresivo')
+                                                No Agresivo
+                                            @endif
+
+                                            @if ($solution->tipo_ambiente == 'marino')
+                                                Marino
+                                            @endif
+
+                                            @if ($solution->tipo_ambiente == 'contaminado')
+                                                Contaminado
+                                            @endif
+                                            </p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="flex w-full mx-1">
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">Protección Condensador</p>
+                                        </div>
+                                        <div class="w-1/2 flex justify-start">
+                                            <p class="uppercase font-roboto text-blue-600 font-bold tam_info_sols capitalize" for="">
+
+                                            @if ($solution->proteccion_condensador == 'sin_proteccion')
+                                               Sin Protección
+                                            @endif
+
+                                            @if ($solution->proteccion_condensador == 'infiniguard')
+                                                Infiniguard®
+                                            @endif
+
+                                            @if ($solution->proteccion_condensador == 'cobre_cobre')
+                                                Cobre Cobre
+                                            @endif
+                                            </p>
                                         </div>
                                     </div>
 
