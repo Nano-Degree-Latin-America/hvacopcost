@@ -2217,7 +2217,7 @@ public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$efici
 }
 
 //roi_s_ene
-public function roi($dif_cost,$inflacion,$inv_ini){
+public function roi($dif_cost,$inflacion,$inv_ini,$cant){
     $array_res = [];
     $año_3 = 0;
     $año_3_res = 0;
@@ -2235,6 +2235,9 @@ public function roi($dif_cost,$inflacion,$inv_ini){
     $año_15_res = 0;
     $año_15_suma = 0;
     $año_15_res_suma = 0;
+
+
+
     for ($i = 1; $i <= 15; $i++) {
         if($i == 1){
             $año_3_suma =  $dif_cost + $año_3_suma;
@@ -2272,17 +2275,23 @@ public function roi($dif_cost,$inflacion,$inv_ini){
             }
 
             if($i === 10){
-                $año_10_res =  $dif_cost;
-                $año_10_res_suma = $año_10_suma ;
-                /* $año_10 = intval($año_10_res_suma/$inv_ini * 100); */
-                $año_10 = $año_10_res_suma - $inv_ini;
-                $año_10_mult_invini =$año_10 / $inv_ini;
-                $año_10_res =  $año_10_mult_invini * 100;
-                array_push($array_res,intval($año_10_res));
+                if($cant >=  10){
+                    $año_10_res =  $dif_cost;
+                    $año_10_res_suma = $año_10_suma ;
+                    /* $año_10 = intval($año_10_res_suma/$inv_ini * 100); */
+                    $año_10 = $año_10_res_suma - $inv_ini;
+                    $año_10_mult_invini =$año_10 / $inv_ini;
+                    $año_10_res =  $año_10_mult_invini * 100;
+                    array_push($array_res,intval($año_10_res));
+                }else{
+                    array_push($array_res,null);
+                }
+
 
             }
 
             if($i === 15){
+                if($cant > 10){
                 $año_15_res =  $dif_cost;
                 $año_15_res_suma = $año_15_suma ;
                 /* $año_15 = intval($año_15_res_suma/$inv_ini * 100); */
@@ -2290,6 +2299,10 @@ public function roi($dif_cost,$inflacion,$inv_ini){
                 $año_15_mult_invini =$año_15 / $inv_ini;
                 $año_15_res =  $año_15_mult_invini * 100;
                 array_push($array_res,intval($año_15_res));
+                }else{
+
+                array_push($array_res,null);
+                }
                 //dd($array_res);
             }
     //me quede checando la formula
@@ -2299,7 +2312,7 @@ public function roi($dif_cost,$inflacion,$inv_ini){
     return $array_res;
     }
 
-    public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo){
+    public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo,$cant){
 
         $funciones = new funciones();
         $array_roi_base_ene_solo_ene = $funciones->roi_base_a_retro_new_nojson($id_projecto,$dif_cost,$inv_ini);
@@ -2380,20 +2393,34 @@ public function roi($dif_cost,$inflacion,$inv_ini){
 
                 }
 
+
+
+
+
                 if($i === 10){
+                 if($cant >=  10){
                     $año_10_res =  $prod_m_prode;
                     $año_10_res_suma = $año_10_suma ;
                     $año_10 = intval($año_10_res_suma/$inv_ini * 100);
                     array_push($array_sums_res,intval($año_10_res_suma));
 
+                 }else{
+                    array_push($array_sums_res,null);
+                 }
                 }
 
                 if($i === 15){
+                 if($cant > 10){
+
                     $año_15_res =  $prod_m_prode;
                     $año_15_res_suma = $año_15_suma ;
                     $año_15 = intval($año_15_res_suma/$inv_ini * 100);
                     array_push($array_sums_res,intval($año_15_res_suma));
-                    //dd($array_res);
+                 }else{
+
+                    array_push($array_sums_res,null);
+                 }
+
                 }
 
 
@@ -2404,10 +2431,15 @@ public function roi($dif_cost,$inflacion,$inv_ini){
         for ($i = 0; $i <= $count_arry; $i++) {
 
             //$suma = $array_sums_res[$i] + $array_roi_base_ene_solo_ene[$i];
-            $suma = $array_sums_res[$i] +  $array_sumas[$i];
-            $div_Result = $suma / $inv_ini * 100;
+            if($array_sums_res[$i] == null){
+                array_push($array_res,null);
+            }else{
+                $suma = $array_sums_res[$i] +  $array_sumas[$i];
+                $div_Result = $suma / $inv_ini * 100;
 
-            array_push($array_res,intval($div_Result));
+                array_push($array_res,intval($div_Result));
+            }
+
         }
 
         return $array_res;

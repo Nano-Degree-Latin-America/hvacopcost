@@ -5801,12 +5801,49 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
     $array_res = [];
 
 
-    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a);
+    $tipo_mant_2 = DB::table('solutions_project')
+    ->where('solutions_project.id_project','=',$id_projecto)
+    ->where('solutions_project.num_enf','=',2)
+    ->where('solutions_project.num_sol','=',1)
+    ->first()->tipo_ambiente;
+
+    $prot_cond_2 = DB::table('solutions_project')
+    ->where('solutions_project.id_project','=',$id_projecto)
+    ->where('solutions_project.num_enf','=',2)
+    ->where('solutions_project.num_sol','=',1)
+    ->first()->proteccion_condensador;
+
+    $tipo_mant_3 = DB::table('solutions_project')
+    ->where('solutions_project.id_project','=',$id_projecto)
+    ->where('solutions_project.num_enf','=',3)
+    ->where('solutions_project.num_sol','=',1)
+    ->first()->tipo_ambiente;
+
+    $prot_cond_3 = DB::table('solutions_project')
+    ->where('solutions_project.id_project','=',$id_projecto)
+    ->where('solutions_project.num_enf','=',3)
+    ->where('solutions_project.num_sol','=',1)
+    ->first()->proteccion_condensador;
+
+    if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+        $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,10);
+    }else{
+        $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,15);
+    }
+
+
 
     if($dif_2_cost == 0 || $inv_ini_3 == 0){
         $array_c = [0,0,0,0];
     }else{
-        $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b);
+
+        if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+            $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,10);
+        }else{
+            $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,15);
+        }
+
+
     }
 
 
@@ -5922,6 +5959,42 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
         ->first()->inflacion;
         //ince_an_ene
 
+        $tipo_mant_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_2 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_2 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_3 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_3 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
         if( floatval($inflacion_aux) > 0){
             $inflacion =  floatval($inflacion_aux)/100 + 1;
         }else if( floatval($inflacion_aux) <= 0){
@@ -5929,11 +6002,25 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
         }
 
 
-        $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini);
+        if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+            $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini,10);
+        }else{
+            $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini,15);
+        }
+
+
         if($dif_cost_c == 0 || $inv_ini_c == 0){
             $array_c = [0,0,0,0];
         }else{
-            $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c);
+
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+                $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c,10);
+            }else{
+                $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c,15);
+            }
+
+
+
         }
         array_push($array_res,$array_a,$array_b,$array_c);
 
