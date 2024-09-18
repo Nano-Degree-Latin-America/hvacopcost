@@ -324,7 +324,7 @@ $idm = App::getLocale();
                                                     <div class="flex w-full">
                                                         <label  class="labels_index font-roboto" for=""><b>{{ __('index.region') }}:</b></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select onchange="check_input(this.value,this.id,'paises_warning');traer_ciudad_edit(this.value);check_inp_count('count_paises','paises_edit');" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="paises_edit" id="paises_edit">
+                                                    <select onchange="check_input(this.value,this.id,'paises_warning');traer_ciudad_edit(this.value);check_inp_count('count_paises','paises_edit');clean_tipo_ambiente();" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="paises_edit" id="paises_edit">
                                                        {{--  @foreach ($paises as $pais)
                                                         @if ($project_edit->region == $pais->pais)
                                                         <option selected value="{{$pais->idPais}}">{{$pais->pais}}</option>

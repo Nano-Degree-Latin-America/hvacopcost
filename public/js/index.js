@@ -14421,3 +14421,15 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima,pais)
 
 
 
+function clean_tipo_ambiente(){
+    $("#tipo_ambiente_1_1").trigger('change');
+    $("#tipo_ambiente_1_2").trigger('change');
+    $("#tipo_ambiente_2_1").trigger('change');
+    $("#tipo_ambiente_2_2").trigger('change');
+    $("#tipo_ambiente_3_1").trigger('change');
+    $("#tipo_ambiente_3_2").trigger('change');
+
+    $("#tipo_ambiente_1_1_retro").trigger('change');
+    $("#tipo_ambiente_2_1_retro").trigger('change');
+    $("#tipo_ambiente_3_1_retro").trigger('change');
+}
