@@ -283,7 +283,7 @@
                         <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_1_1','new');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_1_1" id="tipo_ambiente_1_1">
+                        <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_1_1','new',3,'paises_edit');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_1_1" id="tipo_ambiente_1_1">
                             <option selected value="0">{{ __('index.seleccionar') }}</option>
                             <option value="no_agresivo">No Agresivo</option>
                             <option value="marino">Marino</option>
@@ -599,7 +599,7 @@
                         <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_1_2','new');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_1_2" id="tipo_ambiente_1_2">
+                        <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_1_2','new',3,'paises_edit');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_1_2" id="tipo_ambiente_1_2">
                             <option selected value="0">{{ __('index.seleccionar') }}</option>
                             <option value="no_agresivo">No Agresivo</option>
                             <option value="marino">Marino</option>
@@ -1224,7 +1224,7 @@
                                 <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_2_1','new');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_1" id="tipo_ambiente_2_1">
+                                <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_2_1','new',3,'paises_edit');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_1" id="tipo_ambiente_2_1">
                                     <option selected value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="no_agresivo">No Agresivo</option>
                                     <option value="marino">Marino</option>
@@ -1533,7 +1533,7 @@
                             <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                         </div>
                         <div class="flex w-full justify-start">
-                            <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_2_2','new');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_2" id="tipo_ambiente_2_2">
+                            <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_2_2','new',3,'paises_edit');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_2_2" id="tipo_ambiente_2_2">
                                 <option selected value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="no_agresivo">No Agresivo</option>
                                 <option value="marino">Marino</option>
@@ -2169,7 +2169,7 @@
                                 <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_3_1','new');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_1" id="tipo_ambiente_3_1">
+                                <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_3_1','new',3,'paises_edit');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_1" id="tipo_ambiente_3_1">
                                     <option selected value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="no_agresivo">No Agresivo</option>
                                     <option value="marino">Marino</option>
@@ -2476,7 +2476,7 @@
                             <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                         </div>
                         <div class="flex w-full justify-start">
-                            <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_3_2','new');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_2" id="tipo_ambiente_3_2">
+                            <select onchange="valida_selects_inps(this.id);show_prot_cond(this.value,'proteccion_condensador_3_2','new',3,'paises_edit');"  style="width: 77%;margin-left:0px;" class="border-2 border-color-inps rounded-md py-1" name="tipo_ambiente_3_2" id="tipo_ambiente_3_2">
                                 <option selected value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="no_agresivo">No Agresivo</option>
                                 <option value="marino">Marino</option>

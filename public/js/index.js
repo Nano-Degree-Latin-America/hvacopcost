@@ -7678,7 +7678,7 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 $("#"+filtracion).find('option[value="' + res.val_unidad.filtracion + '"]').attr("selected", "selected");
 
                 $("#"+tipo_ambiente_1_1).find('option[value="' + res.val_unidad.tipo_ambiente + '"]').attr("selected", "selected");
-                show_prot_cond(res.val_unidad.tipo_ambiente,proteccion_condensador_1_1,'new',3)
+                show_prot_cond(res.val_unidad.tipo_ambiente,proteccion_condensador_1_1,'new',3,'paises_edit')
 
                 $("#"+proteccion_condensador_1_1).find('option[value="' + res.val_unidad.proteccion_condensador + '"]').attr("selected", "selected");
                 $("#"+proteccion_condensador_value).val(res.val_unidad.proteccion_condensador_val);
@@ -7764,7 +7764,7 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 $("#"+yrs_vida).val(res.val_unidad.yrs_vida);
 
                 $("#"+tipo_ambiente).find('option[value="' + res.val_unidad.tipo_ambiente + '"]').attr("selected", "selected");
-                show_prot_cond(res.val_unidad.tipo_ambiente,proteccion_condensador,'retro',res.val_unidad.yrs_vida)
+                show_prot_cond(res.val_unidad.tipo_ambiente,proteccion_condensador,'retro',res.val_unidad.yrs_vida,'paises_edit')
 
                 $("#"+proteccion_condensador).find('option[value="' + res.val_unidad.proteccion_condensador + '"]').attr("selected", "selected");
                 $("#"+proteccion_condensador_value).val(res.val_unidad.proteccion_condensador_val);
@@ -14171,17 +14171,18 @@ function  send_seer_to_nexts_seers(id_input_b){
      }
 
 
-function show_prot_cond(tipo_ambiente_id,id_prot_comp,tipo_proyect,yrs){
+function show_prot_cond(tipo_ambiente_id,id_prot_comp,tipo_proyect,yrs,pais){
     var ima =  $('#idioma').val();
+    var pais_val = $('#'+pais).val();
 
     switch (tipo_proyect) {
         case 'new':
-            options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima);
+            options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais_val);
         break;
 
         case 'retro':
 
-            options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima);
+            options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima,pais_val);
         break;
 
         default:
@@ -14191,7 +14192,7 @@ function show_prot_cond(tipo_ambiente_id,id_prot_comp,tipo_proyect,yrs){
 }
 
 
-function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima){
+function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais){
 
     switch (tipo_ambiente_id) {
         case 'no_agresivo':
@@ -14201,10 +14202,13 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima){
                 text: 'Sin Protección'
             }));
 
-            $('#'+id_prot_comp).append($('<option>', {
-                value: 'infiniguard',
-                text: 'Infiniguard®'
-            }));
+            if(pais == 17){
+                $('#'+id_prot_comp).append($('<option>', {
+                    value: 'infiniguard',
+                    text: 'Infiniguard®'
+                }));
+            }
+
 
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'cobre_cobre',
@@ -14221,10 +14225,12 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima){
                 text: 'Sin Protección'
             }));
 
-            $('#'+id_prot_comp).append($('<option>', {
-                value: 'infiniguard',
-                text: 'Infiniguard®'
-            }));
+            if(pais == 17){
+                $('#'+id_prot_comp).append($('<option>', {
+                    value: 'infiniguard',
+                    text: 'Infiniguard®'
+                }));
+            }
 
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'cobre_cobre',
@@ -14239,10 +14245,12 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima){
                 text: 'Sin Protección'
             }));
 
-            $('#'+id_prot_comp).append($('<option>', {
-                value: 'infiniguard',
-                text: 'Infiniguard®'
-            }));
+            if(pais == 17){
+                $('#'+id_prot_comp).append($('<option>', {
+                    value: 'infiniguard',
+                    text: 'Infiniguard®'
+                }));
+            }
 
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'cobre_cobre',
@@ -14341,7 +14349,7 @@ break
 
 }
 
-function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima){
+function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima,pais){
     var yrs_val =  $('#'+yrs).val();
     switch (tipo_ambiente_id) {
         case 'no_agresivo':
@@ -14351,10 +14359,12 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima){
                 text: 'Sin Protección'
             }));
 
-            $('#'+id_prot_comp).append($('<option>', {
-                value: 'infiniguard',
-                text: 'Infiniguard®'
-            }));
+            if(pais == 17){
+                $('#'+id_prot_comp).append($('<option>', {
+                    value: 'infiniguard',
+                    text: 'Infiniguard®'
+                }));
+            }
 
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'cobre_cobre',
@@ -14371,10 +14381,12 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima){
                 text: 'Sin Protección'
             }));
 
-            $('#'+id_prot_comp).append($('<option>', {
-                value: 'infiniguard',
-                text: 'Infiniguard®'
-            }));
+            if(pais == 17){
+                $('#'+id_prot_comp).append($('<option>', {
+                    value: 'infiniguard',
+                    text: 'Infiniguard®'
+                }));
+            }
 
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'cobre_cobre',
@@ -14389,10 +14401,12 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima){
                 text: 'Sin Protección'
             }));
 
-            $('#'+id_prot_comp).append($('<option>', {
-                value: 'infiniguard',
-                text: 'Infiniguard®'
-            }));
+            if(pais == 17){
+                $('#'+id_prot_comp).append($('<option>', {
+                    value: 'infiniguard',
+                    text: 'Infiniguard®'
+                }));
+            }
 
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'cobre_cobre',
