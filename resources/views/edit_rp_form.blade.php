@@ -324,6 +324,10 @@
                                 <input  id="proteccion_condensador_1_1_retro_count" name="proteccion_condensador_1_1_retro_count" type="number" class="hidden" value="1">
                                 <input  id="proteccion_condensador_1_1_retro_value" name="proteccion_condensador_1_1_retro_value" type="text" class="hidden">
                             </div>
+                            @include('modal_sin_proteccion_retro')
+                            <div class="mt-1">
+                                <a onclick="mostrar_modal('modal_sin_proteccion_retro');" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                            </div>
                         </div>
                     </div>
 

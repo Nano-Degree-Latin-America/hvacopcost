@@ -282,7 +282,7 @@
                     </div>
                 </div>
 
-
+                @include('modal_sin_proteccion')
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                      <div class="flex w-1/3 justify-start text-left">
                         <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
@@ -292,6 +292,9 @@
                         </select>
                         <input  id="proteccion_condensador_1_1_count" name="proteccion_condensador_1_1_count" type="number" class="hidden" value="1">
                         <input  id="proteccion_condensador_1_1_value" name="proteccion_condensador_1_1_value" type="text" class="hidden">
+                    </div>
+                    <div class="mt-1">
+                        <a onclick="mostrar_modal('modal_sin_proteccion');" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                     </div>
                 </div>
             </div>
