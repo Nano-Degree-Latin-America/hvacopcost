@@ -5825,20 +5825,24 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
     ->where('solutions_project.num_sol','=',1)
     ->first()->proteccion_condensador;
 
-    if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+
+    if($tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+        $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,5);
+    }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre'){
         $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,10);
     }else{
         $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,15);
     }
 
 
-
     if($dif_2_cost == 0 || $inv_ini_3 == 0){
         $array_c = [0,0,0,0];
     }else{
 
-        if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
-            $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,10);
+        if($tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+            $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,5);
+        }else if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre'){
+             $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,10);
         }else{
             $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,15);
         }
@@ -6002,7 +6006,9 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
         }
 
 
-        if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+        if($tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+            $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini,5);
+        }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre'){
             $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini,10);
         }else{
             $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini,15);
@@ -6013,7 +6019,9 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
             $array_c = [0,0,0,0];
         }else{
 
-            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+            if($tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+                $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c,5);
+            }else if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre'){
                 $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c,10);
             }else{
                 $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c,15);
