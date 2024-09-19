@@ -1204,19 +1204,19 @@ $idm = App::getLocale();
                                     <br>
 
                                     <div class="w-full mt-2 flex justify-start mt-7">
-                                        <div id="div_next" name="div_next" class="w-1/2 text-center">
+                                        <div id="div_next" name="div_next" style="width: 45%;" class="text-start">
                                             <button type="button" id="next" name="next"
                                             style="background-color:#1B17BB;"
                                                 onclick="buton_check_edit();"
-                                                class="w-32 focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
+                                                class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
                                             >{{ __('index.siguiente') }}</button>
                                         </div>
-                                        <div id="div_next_h" name="div_next_h" class="w-1/2 text-center">
+                                        <div id="div_next_h" name="div_next_h" style="width: 45%;" class="text-start">
                                                 <button  type="button" id="next_h" name="next_h"
                                                 style="background-color:#1B17BB;"
                                                     x-show="step < 2"
                                                     @click="step++"
-                                                    class="w-32 focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
+                                                    class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
                                                 >{{ __('index.siguiente') }}</button>
                                         </div>
 
@@ -1330,8 +1330,8 @@ $idm = App::getLocale();
                 </div>
                 <div  x-show="step === 2" class="w-1/2 flex" style=" justify-content: center;">
 
-                <button style="background-color:#1B17BB;" x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
-                <button style="background-color:#1B17BB;" x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
+                <button style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
+                <button style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
 
             </div>
             </div>
