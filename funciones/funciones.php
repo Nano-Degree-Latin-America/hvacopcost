@@ -2389,8 +2389,6 @@ public function roi($dif_cost,$inflacion,$inv_ini,$cant){
                     $suma_años_5 = $año_3_res_suma+intval($array_sumas[1]);
                     //$año_5 = intval($año_5_res_suma/$inv_ini * 100);
                     array_push($array_sums_res,intval($año_5_res_suma));
-
-
                 }
 
 
@@ -2431,7 +2429,7 @@ public function roi($dif_cost,$inflacion,$inv_ini,$cant){
         for ($i = 0; $i <= $count_arry; $i++) {
 
             //$suma = $array_sums_res[$i] + $array_roi_base_ene_solo_ene[$i];
-            if($array_sums_res[$i] == null){
+            if($array_sums_res[$i] === null){
                 array_push($array_res,null);
             }else{
                 $suma = $array_sums_res[$i] +  $array_sumas[$i];
