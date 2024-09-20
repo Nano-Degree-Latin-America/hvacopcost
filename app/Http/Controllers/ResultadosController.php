@@ -1515,7 +1515,7 @@ class ResultadosController extends Controller
         ->where('solutions_project.num_sol','=',1)
         ->first();
 
-        $prot_cond_3 = DB::table('solutions_project')
+        $prot_cond_3_set = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',3)
         ->where('solutions_project.num_sol','=',1)
@@ -3094,7 +3094,7 @@ class ResultadosController extends Controller
         ->where('solutions_project.num_sol','=',1)
         ->first();
 
-        $prot_cond_3 = DB::table('solutions_project')
+        $prot_cond_3_set = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',3)
         ->where('solutions_project.num_sol','=',1)
@@ -4623,7 +4623,7 @@ class ResultadosController extends Controller
         ->where('solutions_project.num_sol','=',1)
         ->first();
 
-        $prot_cond_3 = DB::table('solutions_project')
+        $prot_cond_3_set = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',3)
         ->where('solutions_project.num_sol','=',1)
@@ -5194,7 +5194,7 @@ class ResultadosController extends Controller
         ->where('solutions_project.num_sol','=',1)
         ->first();
 
-        $prot_cond_3 = DB::table('solutions_project')
+        $prot_cond_3_set = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',3)
         ->where('solutions_project.num_sol','=',1)
