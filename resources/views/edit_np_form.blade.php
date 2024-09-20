@@ -1284,7 +1284,7 @@
         {{-- 2.1 --}}
         {{-- 2.2 --}}
 
-        <div class="grid w-full hidden"  id="sol_2_2" name="sol_2_2">
+        <div class="grid w-full hidden  mt-2"  id="sol_2_2" name="sol_2_2">
 
         <div class="mx-2">
             <hr>
@@ -2232,7 +2232,7 @@
         </div>
         {{-- 3.1 --}}
         {{-- 3.2 --}}
-      <div class="grid w-full hidden"  id="sol_3_2" name="sol_3_2">
+      <div class="grid w-full hidden mt-2"  id="sol_3_2" name="sol_3_2">
         <div class="mx-2">
             <hr>
         </div>

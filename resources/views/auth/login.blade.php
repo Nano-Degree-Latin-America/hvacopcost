@@ -26,10 +26,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('login-assets/css/main.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/css">
-    	.container-login100
+/*     	.container-login100
     	{
-    		/* background-image: url("{{asset('assets/images/backgrond_login.PNG')}}"); */
-    	}
+    		background-image: url("{{asset('assets/images/portada_1.jpg')}}");
+    	} */
     </style>
     <title>Desprosoft Hvacopcost</title>
 </head>
@@ -39,6 +39,8 @@
         <div class="container-login100">
             <div class="wrap-login100 p-b-20">
                 <div class="w-full flex justify-center">
+                    {{-- <img src="{{asset('assets\images\Logotipo-HVACOPCOST.png')}}" class="mr-10" style="height:350px; width:700px;" > --}}
+
                     <img src="{{asset('assets\images\Logotipo-HVACOPCOST_blanco.png')}}" class="mr-10" style="height:350px; width:700px;" >
                 </div>
                 <div class="w-full flex justify-center">

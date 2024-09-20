@@ -27,7 +27,7 @@
     <a class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('cerrar_session') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-                <button>
+                <button class="mt-1">
                     {{ __('index.logout') }}
                     </button>
             </a>
