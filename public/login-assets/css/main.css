@@ -200,7 +200,7 @@ iframe {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-color: #1B17BB;
+    /* background-color: #1B17BB; */
     /* position: relative; */
     z-index: 1;
 }

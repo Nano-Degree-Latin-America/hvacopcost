@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Redirect;
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'IndexController@check_user');
+Route::get('/home', 'IndexController@check_user')->name('home');
 
 Route::get('/', 'HomeController@redirect_login');
 
-Route::get('check_usr/{email}', 'UserController@check_usr')->name('check_usr');;
+Route::get('check_usr/{email}', 'UserController@check_usr')->name('check_usr');
 
-Route::get('/prueba', function () {
+/* Route::get('/prueba', function () {
     // if (Session::get('idUsuario'))
     // {
         return view('home');
@@ -49,7 +49,7 @@ Route::get('/resultados', function () {
 
 Route::get('/lo_gin', function () {
     return view('login');
-})->name('lo_gin');
+})->name('lo_gin'); */
 
 
 
@@ -65,7 +65,7 @@ Route::get('/lo_gout', 'UserController@lo_gout')->name('lo_gout');
 
 
 //rutas index
-Route::post('/getPaises','IndexController@getPaises');
+Route::post('/getPaises','IndexController@getPaises')->name('getPaises');
 Route::post('/getCiudades','IndexController@getCiudades');
 Route::post('/getDegreeHrs','IndexController@getdegreeHrs');
 Route::get('/getDegreeHrsadd/{id}','IndexController@getDegreeHrsadd');
@@ -86,7 +86,7 @@ Route::post('/edit_usr/{id}', 'UserController@update')->name('update');
 Route::post('users_store', 'UserController@users_store')->name('users_store');
 Route::post('/getLogo','UserController@getLogo');
 Route::post('/actualizarLogo','UserController@actualizarLogo')->name('setLogo');
-Route::get('/users', 'UserController@users');
+Route::get('/users', 'UserController@users')->name('users');
 //rutas settings
 Route::post('/setDegreeHrs','SettingsController@setDegreeHrs');
 
@@ -115,9 +115,9 @@ Route::get('create_sucursal/{id}', 'SucursalesController@create');
 Route::get('sucursal_empresa_edit/{id}', 'SucursalesController@edit');
 // projects
 Route::get('project/{id_project}', 'ResultadosController@project');
-Route::get('get_cat_edi', 'ProjectController@categories_paieses');
+Route::get('get_cat_edi', 'ProjectController@categories_paieses')->name('get_cat_edi');
 Route::get('get_cat_edi/{id}', 'ProjectController@get_cat_edi');
-Route::get('mis_projectos', 'ProjectController@mis_projectos');
+Route::get('mis_projectos', 'ProjectController@mis_projectos')->name('mis_projectos');
 Route::get('porcents_aux/{id}', 'ProjectController@porcents_aux');
 Route::get('edit_project/{id_project}', 'ResultadosController@edit_project');
 Route::get('get_ciudades/{pais}', 'ProjectController@get_ciudades');

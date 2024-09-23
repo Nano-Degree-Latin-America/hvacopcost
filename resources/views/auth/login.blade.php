@@ -26,10 +26,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('login-assets/css/main.css')}}">
     <script src="https://cdn.tailwindcss.com"></script>
     <style type="text/css">
-/*     	.container-login100
+    	.container-login100
     	{
-    		background-image: url("{{asset('assets/images/portada_1.jpg')}}");
-    	} */
+    		background-image: url("{{asset('assets/images/portada_2.jpg')}}");
+    	}
     </style>
     <title>Desprosoft Hvacopcost</title>
 </head>
