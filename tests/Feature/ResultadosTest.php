@@ -29,11 +29,13 @@ class ResultadosTest extends TestCase
        /*  $response = $this->get('/login'); */
         $user = user::find(14);
         $response = $this->actingAs($user)->get('get_cat_edi');
-        $response->assertJsonStructure([
-            ['id','name']
-        ]);
-       /*  $response->assertStatus(302)->assertSee('/users'); */
         $response->assertStatus(200);
+        $response->assertJsonStructure([
+            ['id','name','id_user']
+        ]);
+        $response->assertJsonCount(14);
+        /* $response->assertJsonStructure(['name' => 'Oficina']); */
+
     }
 
 
