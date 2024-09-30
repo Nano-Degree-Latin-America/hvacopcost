@@ -311,14 +311,14 @@
                         <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_1_1_retro','proteccion_condensador_1_1_retro_value','tipo_ambiente_1_1_retro');"  style="margin-left: 15px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1_retro" id="proteccion_condensador_1_1_retro">
+                        <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_1_1_retro','proteccion_condensador_1_1_retro_value','tipo_ambiente_1_1_retro');red_alert_retro('tipo_ambiente_1_1_retro','proteccion_condensador_1_1_retro');"  style="margin-left: 15px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1_retro" id="proteccion_condensador_1_1_retro">
                         </select>
                         <input  id="proteccion_condensador_1_1_retro_count" name="proteccion_condensador_1_1_retro_count" type="number" class="hidden" value="1">
                         <input  id="proteccion_condensador_1_1_retro_value" name="proteccion_condensador_1_1_retro_value" type="text" class="hidden">
                     </div>
                     @include('modal_sin_proteccion_retro')
                     <div class="mt-1">
-                        <a onclick="mostrar_modal('modal_sin_proteccion_retro');" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                        <a onclick="mostrar_modal('modal_sin_proteccion_retro');" id="red_alert_retro" name="red_alert_retro" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                     </div>
                 </div>
             </div>
@@ -568,7 +568,11 @@
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
                 <h2 style="margin-right: 75px;" class="text-white font-bold justify-start text-3xl">{{ __('index.solucion') }} A</h2>
             </div>
-
+            <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
+                <button  onclick="copiar_solucion_tarjet('E','A');" type="button"  class="rounded-xl p-1 m-0 text-3xl">
+                    <i  class="fa-solid fa-file-import text-orange-500"></i>
+                </button>
+            </div>
         </div>
         <div class="border-r-2 border-l-2 border-blue-500">
 
@@ -905,9 +909,11 @@
                 <h2 style="margin-right: 75px;" class="text-white font-bold  text-3xl ">{{ __('index.solucion') }} B</h2>
             </div>
 
-          {{--   <div cslass="w-1/2 flex justify-start">
-                <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
-            </div> --}}
+            <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
+                <button  onclick="copiar_solucion_tarjet('E','A');" type="button"  class="rounded-xl p-1 m-0 text-3xl">
+                    <i class="fa-solid fa-file-import text-orange-500"></i>
+                </button>
+            </div>
         </div>
         <div class="border-r-2 border-l-2 border-color-inps">
 

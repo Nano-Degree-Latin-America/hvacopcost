@@ -183,6 +183,7 @@ align-items: center;
 cursor: pointer;
 }
 
+
 .dropbtn {
   background-color: #3498DB;
   color: white;
@@ -1001,7 +1002,7 @@ window.onclick = function(event) {
 
 function app() {
 			return {
-				step: 1,
+				step: 2,
 				passwordStrengthText: '',
 				togglePassword: false,
 				gender: 'Male',

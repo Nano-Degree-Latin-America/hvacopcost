@@ -757,7 +757,7 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
 
                   }
 
-                  console.log(arry_vent);
+
 
                   var arry_filt = set_filtracion(value);
                     const myObj_filt= JSON.parse(arry_filt);
@@ -2987,7 +2987,7 @@ return arry_vent;
                      }));
                  });
 
-                 var marca_1_2 = 'marca_1_2';
+                 /* var marca_1_2 = 'marca_1_2';
                  check_val_text(marca_1_2,ima);
 
                  response.map((marca, i) => {
@@ -3035,7 +3035,7 @@ return arry_vent;
                          value: marca.id,
                          text: marca.marca,
                      }));
-                 });
+                 }); */
 
    //retro modal
                  var marca_1_1_retro = 'marca_1_1_retro';
@@ -3048,7 +3048,7 @@ return arry_vent;
                      }));
                  });
 
-                 var marca_2_1_retro = 'marca_2_1_retro';
+                 /* var marca_2_1_retro = 'marca_2_1_retro';
                  check_val_text(marca_2_1_retro,ima);
 
                  response.map((marca, i) => {
@@ -3066,7 +3066,7 @@ return arry_vent;
                          value: marca.id,
                          text: marca.marca,
                      }));
-                 });
+                 }); */
 
             },
             error: function (responsetext) {
@@ -13687,8 +13687,8 @@ cUnidad_3_3 */
             url: '/send_marcas_equipo/'+value,
             success: function (response) {
                 //retro_1_1
-               /*  $('#marca_1_1_retro').empty();
-                $('#marca_1_1_retro').append($('<option>', {
+                //$('#'+equipo).empty();
+                /* $('#'+equipo).append($('<option>', {
                     value: '',
                     text: 'Seleccionar'
                 })); */
@@ -14433,3 +14433,51 @@ function clean_tipo_ambiente(){
     $("#tipo_ambiente_2_1_retro").trigger('change');
     $("#tipo_ambiente_3_1_retro").trigger('change');
 }
+
+function copiar_solucion_tarjet(sol_copy,sol_paste){
+    switch (sol_copy) {
+        case 'Base':
+            copiar_form_base_a(sol_paste);
+        break;
+
+        default:
+            break;
+    }
+}
+
+function copiar_form_base_a(sol_paste){
+
+/*     var select_sistema = $('#cUnidad_1_1').val();
+    $("#cUnidad_2_1").find('option[value="'+select_sistema+'"]').attr("selected", true);
+    $("#cUnidad_2_1").trigger('change');
+
+    var select_unidad = $('#csTipo').val();
+    $("#cheTipo_2_1").find('option[value="'+select_unidad+'"]').attr("selected", true);
+    $("#cheTipo_2_1").trigger('change');
+
+    var select_marca = $('#marca_1_1').val();
+    $("#marca_2_1").find('option[value="'+select_marca+'"]').attr("selected", true);
+    $("#marca_2_1").trigger('change'); */
+}
+
+function red_alert(tipo_ambiente,proteccion_condensador){
+        var tipo_ambiente = $('#'+tipo_ambiente).val();
+        var proteccion_condensador = $('#'+proteccion_condensador).val();
+
+        if(tipo_ambiente == 'marino' && proteccion_condensador == 'sin_proteccion'){
+            $('#red_alert').css('background-color','red');
+        }else{
+            $('#red_alert').css('background-color','#3182ce');
+        }
+    }
+
+function red_alert_retro(tipo_ambiente,proteccion_condensador){
+        var tipo_ambiente = $('#'+tipo_ambiente).val();
+        var proteccion_condensador = $('#'+proteccion_condensador).val();
+
+        if(tipo_ambiente == 'marino' && proteccion_condensador == 'sin_proteccion'){
+            $('#red_alert_retro').css('background-color','red');
+        }else{
+            $('#red_alert_retro').css('background-color','#3182ce');
+        }
+    }

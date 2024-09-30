@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 rounded-md py-2 border-color-inps" onchange="valida_form_calc(1);unidadHvac(this.value,1,'csTipo','csDisenio_1_1');check_chiller(this.value,'csStd',1);send_value_equipo_marca_form(this.id,'equipo_modal',this.value);"">
+                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 rounded-md py-2 border-color-inps" onchange="valida_form_calc(1);unidadHvac(this.value,1,'csTipo','csDisenio_1_1');check_chiller(this.value,'csStd',1);send_value_equipo_marca_form(this.id,'equipo_modal',this.value);">
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_1_1');send_marca_to_modal(this.value,'marcas_modal');check_type_set_mant('type_p','marca_2_1','marca_3_1',this.value);" name="marca_1_1" id="marca_1_1" class="w-full border-2 border-color-inps rounded-md py-2">
+                        <select onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_1_1');send_marca_to_modal(this.value,'marcas_modal');alert(this.value)" name="marca_1_1" id="marca_1_1" class="w-full border-2 border-color-inps rounded-md py-2">
                         </select>
                         <input  id="marca_1_1_count" name="marca_1_1_count" type="number" class="hidden" value="1">
 
@@ -288,13 +288,13 @@
                         <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_1_1','proteccion_condensador_1_1_value','tipo_ambiente_1_1');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1" id="proteccion_condensador_1_1">
+                        <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_1_1','proteccion_condensador_1_1_value','tipo_ambiente_1_1');red_alert('tipo_ambiente_1_1','proteccion_condensador_1_1');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1" id="proteccion_condensador_1_1">
                         </select>
                         <input  id="proteccion_condensador_1_1_count" name="proteccion_condensador_1_1_count" type="number" class="hidden" value="1">
                         <input  id="proteccion_condensador_1_1_value" name="proteccion_condensador_1_1_value" type="text" class="hidden">
                     </div>
                     <div class="mt-1">
-                        <a onclick="mostrar_modal('modal_sin_proteccion');" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                        <a onclick="mostrar_modal('modal_sin_proteccion');" id="red_alert" name="red_alert" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                     </div>
                 </div>
             </div>
@@ -942,9 +942,11 @@
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
                 <h2 style="margin-right: 75px;" class="text-white font-bold justify-start text-3xl">{{ __('index.solucion') }} B</h2>
             </div>
-          {{--   <div cslass="w-1/2 flex justify-start">
-                <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
-            </div> --}}
+            <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
+                <button  onclick="copiar_solucion_tarjet('Base','A');" type="button"  class="rounded-xl p-1 m-0 text-3xl">
+                    <i style="color:#1B17BB;" class="fa-solid fa-file-import"></i>
+                </button>
+            </div>
         </div>
         <div class="border-r-2 border-l-2 border-blue-500" id="2_border_bottom" name="2_border_bottom">
 
@@ -997,7 +999,7 @@
                             </div>
 
                             <div class="w-1/2 flex justify-start">
-                                <select name="marca_2_1" id="marca_2_1" class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_2_1');send_marca_to_modal(this.value,'marcas_modal_2_1');">
+                                <select name="marca_2_1" id="marca_2_1" class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_2_1');send_marca_to_modal(this.value,'marcas_modal_2_1');alert(this.value)">
 
                                 </select>
                             <input  id="marca_2_1_count" name="marca_2_1_count" type="number" class="hidden" value="1">
@@ -1824,9 +1826,11 @@
             <div class="2xl:ml-0 xl:ml-0 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
                 <h2 style="margin-right: 75px;" class="text-white font-bold  text-3xl ">{{ __('index.solucion') }} C</h2>
             </div>
-          {{--   <div cslass="w-1/2 flex justify-start">
-                <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
-            </div> --}}
+            <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
+                <button  onclick="copiar_solucion_tarjet('A','B');" type="button"  class="rounded-xl p-1 m-0 text-3xl">
+                    <i style="color:#1B17BB;" class="fa-solid fa-file-import"></i>
+                </button>
+            </div>
         </div>
         <div class="border-r-2 border-l-2 border-color-inps" id="3_border_bottom" name="3_border_bottom">
 
