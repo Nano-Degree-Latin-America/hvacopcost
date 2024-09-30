@@ -558,15 +558,15 @@
 </div>
     <div style="width: 100%" class="mx-1">
         {{-- 2.1 --}}
-        <div style="background-color: #233064;" class="text-white rounded-t-xl w-80 bg-orange-500  2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
+        <div style="background-color: #1B17BB;" class="text-white rounded-t-xl w-80 bg-orange-500  2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
             <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
                 <a href="#final2">
                     <button onclick="active_display_retro('sol_2_retro');" type="button"  class="rounded-xl p-1 m-0 hover-button-plus text-3xl">{{-- <i class="fa-solid fa-plus text-white "></i> --}}</button>
                 </a>
             <input type="number" class="hidden" value="2" id="cont_sol_2_retro" name="cont_sol_2">
             </div>
-            <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
-                <h2 style="margin-right: 75px;" class="text-white font-bold justify-start text-3xl">{{ __('index.solucion') }} A</h2>
+            <div class=" w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
+                <h2 style="margin-right: 10px;" class="text-white font-bold justify-start text-3xl">{{ __('index.solucion') }} A</h2>
             </div>
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
                 <button  onclick="copiar_solucion_tarjet('E','A');" type="button"  class="rounded-xl p-1 m-0 text-3xl">
@@ -898,7 +898,7 @@
 
     <div style="width: 100%" class="mx-1">
          {{-- 3.1 --}}
-         <div style="background-color: #233064;" class="text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
+         <div style="background-color: #1B17BB;" class="text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
             <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
                 <a href="#final3">
                     <button onclick="active_display_retro('sol_3_retro');" type="button"  class="rounded-xl p-1 m-0 hover-button-plus text-3xl">{{-- <i class="fa-solid fa-plus text-white"></i> --}}</button>
@@ -906,7 +906,7 @@
                 <input type="number" class="hidden" value="2" id="cont_sol_3_retro" name="cont_sol_3_retro">
             </div>
             <div class="2xl:ml-0 xl:ml-0 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
-                <h2 style="margin-right: 75px;" class="text-white font-bold  text-3xl ">{{ __('index.solucion') }} B</h2>
+                <h2 style="margin-right: 10px;" class="text-white font-bold  text-3xl ">{{ __('index.solucion') }} B</h2>
             </div>
 
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">

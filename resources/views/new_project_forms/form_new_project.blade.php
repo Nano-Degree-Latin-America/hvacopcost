@@ -939,7 +939,7 @@
                 </a>
             <input type="number" class="hidden" value="2" id="cont_sol_2" name="cont_sol_2">
             </div>
-            <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
+            <div class="2xl:ml-11 xl:ml-11 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
                 <h2 style="margin-right: 75px;" class="text-white font-bold justify-start text-3xl">{{ __('index.solucion') }} B</h2>
             </div>
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
@@ -1823,7 +1823,7 @@
                 </a>
                 <input type="number" class="hidden" value="2" id="cont_sol_3" name="cont_sol_3">
             </div>
-            <div class="2xl:ml-0 xl:ml-0 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
+            <div class="2xl:ml-11 xl:ml-11 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
                 <h2 style="margin-right: 75px;" class="text-white font-bold  text-3xl ">{{ __('index.solucion') }} C</h2>
             </div>
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
