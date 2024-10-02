@@ -74,7 +74,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_1_1');send_marca_to_modal(this.value,'marcas_modal');alert(this.value)" name="marca_1_1" id="marca_1_1" class="w-full border-2 border-color-inps rounded-md py-2">
+                        <select onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_1_1');send_marca_to_modal(this.value,'marcas_modal')" name="marca_1_1" id="marca_1_1" class="w-full border-2 border-color-inps rounded-md py-2">
                         </select>
                         <input  id="marca_1_1_count" name="marca_1_1_count" type="number" class="hidden" value="1">
 
@@ -591,7 +591,7 @@
                         <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_1_2','proteccion_condensador_1_2_value','tipo_ambiente_1_2');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_2" id="proteccion_condensador_1_2">
                         </select>
                         <input  id="proteccion_condensador_1_2_count" name="proteccion_condensador_1_2_count" type="number" class="hidden" value="1">
-                        <input  id="proteccion_condensador_1_2_value" name="proteccion_condensador_1_2_value" type="text" class="">
+                        <input  id="proteccion_condensador_1_2_value" name="proteccion_condensador_1_2_value" type="text" class="hidden">
                     </div>
                 </div>
             </div>
@@ -943,7 +943,7 @@
                 <h2 style="margin-right: 75px;" class="text-white font-bold justify-start text-3xl">{{ __('index.solucion') }} B</h2>
             </div>
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
-                <button  onclick="copiar_solucion_tarjet('Base','A');" type="button"  class="rounded-xl p-1 m-0 text-3xl">
+                <button  onclick="copiar_form_base_a('Base');" type="button" title="Copiar Solucion A" class="rounded-xl p-1 m-0 text-3xl">
                     <i style="color:#1B17BB;" class="fa-solid fa-file-import"></i>
                 </button>
             </div>
@@ -999,7 +999,7 @@
                             </div>
 
                             <div class="w-1/2 flex justify-start">
-                                <select name="marca_2_1" id="marca_2_1" class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_2_1');send_marca_to_modal(this.value,'marcas_modal_2_1');alert(this.value)">
+                                <select name="marca_2_1" id="marca_2_1" class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);send_modelos(this.value,'modelo_2_1');send_marca_to_modal(this.value,'marcas_modal_2_1');">
 
                                 </select>
                             <input  id="marca_2_1_count" name="marca_2_1_count" type="number" class="hidden" value="1">
@@ -1827,7 +1827,7 @@
                 <h2 style="margin-right: 75px;" class="text-white font-bold  text-3xl ">{{ __('index.solucion') }} C</h2>
             </div>
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
-                <button  onclick="copiar_solucion_tarjet('A','B');" type="button"  class="rounded-xl p-1 m-0 text-3xl">
+                <button  onclick="copiar_form_a_b('A','B');" type="button" title="Copiar Solucion B" class="rounded-xl p-1 m-0 text-3xl">
                     <i style="color:#1B17BB;" class="fa-solid fa-file-import"></i>
                 </button>
             </div>

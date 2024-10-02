@@ -58,6 +58,10 @@
                                 traer_unidad_hvac('{{$id_project}}',1,1,'cUnidad_1_1','csTipo','csDisenio_1_1','tipo_control_1_1','dr_1_1','csMantenimiento','lblCsTipo_1_1'
                                 ,'capacidad_total','costo_elec','csStd_cant_1_1','cheValorS_1_1','','','csStd','maintenance_cost_1_1','marca_1_1','modelo_1_1','ventilacion_1_1','filtracion_1_1','tipo_ambiente_1_1','proteccion_condensador_1_1','proteccion_condensador_1_1_value');
                                 }
+
+                                setTimeout(function() {
+                                    red_alert('tipo_ambiente_1_1','proteccion_condensador_1_1');
+                                }, 3000);
                             });
                             </script>
 
@@ -300,7 +304,7 @@
                     </div>
                     <div class="flex w-full justify-start">
 
-                        <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_1_1','proteccion_condensador_1_1_value','tipo_ambiente_1_1');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1" id="proteccion_condensador_1_1">
+                        <select onchange="valida_selects_inps(this.id);red_alert('tipo_ambiente_1_1','proteccion_condensador_1_1');send_value_box('proteccion_condensador_1_1','proteccion_condensador_1_1_value','tipo_ambiente_1_1');"  style="margin-left: 16px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1" id="proteccion_condensador_1_1">
                         </select>
 
                         <input  id="proteccion_condensador_1_1_count" name="proteccion_condensador_1_1_count" type="number" class="hidden" value="1">

@@ -50,8 +50,11 @@
                                                 ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','','tipo_ambiente_1_1_retro','proteccion_condensador_1_1_retro','proteccion_condensador_1_1_retro_value');
                                             }
 
+                                            setTimeout(function() {
+                                                red_alert_retro('tipo_ambiente_1_1_retro','proteccion_condensador_1_1_retro')
+                                            }, 3000);
 
-                                            });
+                                        });
 
                                         </script>
                                 </select>
@@ -319,14 +322,14 @@
                                 <label class="labels" for=""><b>{{ __('index.proteccion_condensador') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);send_value_box('proteccion_condensador_1_1_retro','proteccion_condensador_1_1_retro_value','tipo_ambiente_1_1_retro');"  style="margin-left: 13px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1_retro" id="proteccion_condensador_1_1_retro">
+                                <select onchange="valida_selects_inps(this.id);red_alert_retro('tipo_ambiente_1_1_retro','proteccion_condensador_1_1_retro');send_value_box('proteccion_condensador_1_1_retro','proteccion_condensador_1_1_retro_value','tipo_ambiente_1_1_retro');"  style="margin-left: 13px;" class="w-full border-2 border-color-inps rounded-md py-2" name="proteccion_condensador_1_1_retro" id="proteccion_condensador_1_1_retro">
                                 </select>
                                 <input  id="proteccion_condensador_1_1_retro_count" name="proteccion_condensador_1_1_retro_count" type="number" class="hidden" value="1">
                                 <input  id="proteccion_condensador_1_1_retro_value" name="proteccion_condensador_1_1_retro_value" type="text" class="hidden">
                             </div>
                             @include('modal_sin_proteccion_retro')
                             <div class="mt-1">
-                                <a onclick="mostrar_modal('modal_sin_proteccion_retro');" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                                <a onclick="mostrar_modal('modal_sin_proteccion_retro');" id="red_alert_retro" name="red_alert_retro" class="btn_roundf_retro" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                             </div>
                         </div>
                     </div>
@@ -369,7 +372,7 @@
 </div>
 <div style="width: 100%" class="mx-1">
     {{-- 2.1 --}}
-    <div style="background-color: #233064;" class="text-white rounded-t-xl w-80 bg-orange-500  2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
+    <div style="background-color: #1B17BB;" class="text-white rounded-t-xl w-80 bg-orange-500  2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
         <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
             <a href="#final2">
                 <button onclick="active_display_retro('sol_2_retro');" type="button"  class="rounded-xl p-1 m-0 hover-button-plus text-3xl">{{-- <i class="fa-solid fa-plus text-white "></i> --}}</button>
@@ -419,6 +422,8 @@
                                         ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1','action_submit_2_1_retro','tipo_ambiente_2_1_retro','proteccion_condensador_2_1_retro','proteccion_condensador_2_1_retro_value');
                                         }
                                         verifica_solution(2,1,'action_submit_2_1_retro','{{$id_project}}',2);
+
+
                                     });
                                     </script>
                             </select>
@@ -739,7 +744,7 @@
 
 <div style="width: 100%" class="mx-1">
     {{-- 3.1 --}}
-    <div style="background-color: #233064;" class="text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
+    <div style="background-color: #1B17BB;" class="text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
        <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
            <a href="#final3">
                <button onclick="active_display_retro('sol_3_retro');" type="button"  class="rounded-xl p-1 m-0 hover-button-plus text-3xl">{{-- <i class="fa-solid fa-plus text-white"></i> --}}</button>
@@ -792,6 +797,7 @@
                                     ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro','tipo_ambiente_3_1_retro','proteccion_condensador_3_1_retro','proteccion_condensador_3_1_retro_value');
                                     }
                                     verifica_solution(3,1,'action_submit_3_1_retro','{{$id_project}}',2);
+
                                 });
                                 </script>
                            </select>

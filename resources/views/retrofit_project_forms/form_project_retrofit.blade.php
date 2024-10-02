@@ -569,7 +569,7 @@
                 <h2 style="margin-right: 10px;" class="text-white font-bold justify-start text-3xl">{{ __('index.solucion') }} A</h2>
             </div>
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
-                <button  onclick="copiar_solucion_tarjet('E','A');" type="button"  class="rounded-xl p-1 m-0 text-3xl">
+                <button  onclick="copiar_form_base_a_retro();" type="button"  class="rounded-xl p-1 m-0 text-3xl">
                     <i  class="fa-solid fa-file-import text-orange-500"></i>
                 </button>
             </div>
@@ -910,7 +910,7 @@
             </div>
 
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
-                <button  onclick="copiar_solucion_tarjet('E','A');" type="button"  class="rounded-xl p-1 m-0 text-3xl">
+                <button  onclick="copiar_form_a_b_retro('E');" type="button"  class="rounded-xl p-1 m-0 text-3xl">
                     <i class="fa-solid fa-file-import text-orange-500"></i>
                 </button>
             </div>

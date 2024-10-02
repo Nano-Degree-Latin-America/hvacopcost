@@ -2038,7 +2038,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                             @endif
 
                                             @else
-                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
                                             @endif
                                         @endif
                                     </div>
@@ -2225,7 +2225,7 @@ $costo_b
                                     @endif
 
                                     @else
-                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_na">N/A</b>
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
                                     @endif
                                    </div>
                                 </div>

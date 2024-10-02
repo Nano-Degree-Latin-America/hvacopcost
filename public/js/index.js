@@ -3134,6 +3134,7 @@ return arry_vent;
             });
                 return false;
           }else{
+
             $.ajax({
                 type: 'get',
                 url: '/send_modelos/'+value,
@@ -14447,7 +14448,7 @@ function copiar_solucion_tarjet(sol_copy,sol_paste){
 
 function copiar_form_base_a(sol_paste){
 
-/*     var select_sistema = $('#cUnidad_1_1').val();
+    var select_sistema = $('#cUnidad_1_1').val();
     $("#cUnidad_2_1").find('option[value="'+select_sistema+'"]').attr("selected", true);
     $("#cUnidad_2_1").trigger('change');
 
@@ -14457,7 +14458,444 @@ function copiar_form_base_a(sol_paste){
 
     var select_marca = $('#marca_1_1').val();
     $("#marca_2_1").find('option[value="'+select_marca+'"]').attr("selected", true);
-    $("#marca_2_1").trigger('change'); */
+    send_marcas_to('marca_2_1',select_marca,select_sistema)
+    valida_selects_inps('marca_2_1');
+    send_marca_to_modal(select_marca,'marcas_modal_2_1');
+
+    var select_modelo = $('#modelo_1_1').val();
+    $("#modelo_2_1").find('option[value="'+select_modelo+'"]').attr("selected", true);
+    send_modelo_edit(select_marca,'modelo_2_1',select_modelo);
+    $("#modelo_2_1").trigger('change');
+
+    var capacidad_total = $('#capacidad_total').val();
+    $('#capacidad_total_2_1').val(capacidad_total);
+    $("#capacidad_total_2_1").trigger('change');
+
+    var eficiencia = $('#csStd_cant_1_1').val();
+    $('#csStd_cant_2_1').val(eficiencia);
+    $("#csStd_cant_2_1").trigger('change');
+
+
+    var csDisenio_1_1 = $('#csDisenio_1_1').val();
+    $("#cheDisenio_2_1").find('option[value="'+csDisenio_1_1+'"]').attr("selected", true);
+    $("#cheDisenio_2_1").trigger('change');
+
+
+    var tipo_control_1_1 = $('#tipo_control_1_1').val();
+    $("#tipo_control_2_1").find('option[value="'+tipo_control_1_1+'"]').attr("selected", true);
+    $("#tipo_control_2_1").trigger('change');
+
+    var dr_1_1 = $('#dr_1_1').val();
+    $("#dr_2_1").find('option[value="'+dr_1_1+'"]').attr("selected", true);
+    $("#dr_2_1").trigger('change');
+
+    var ventilacion_1_1 = $('#ventilacion_1_1').val();
+    $("#ventilacion_2_1").find('option[value="'+ventilacion_1_1+'"]').attr("selected", true);
+    $("#ventilacion_2_1").trigger('change');
+
+    var filtracion_1_1 = $('#filtracion_1_1').val();
+    $("#filtracion_2_1").find('option[value="'+filtracion_1_1+'"]').attr("selected", true);
+    $("#filtracion_2_1").trigger('change');
+
+    var csMantenimiento = $('#csMantenimiento').val();
+    $("#csMantenimiento_2_1").find('option[value="'+csMantenimiento+'"]').attr("selected", true);
+    $("#csMantenimiento_2_1").trigger('change');
+
+    var tipo_ambiente_1_1 = $('#tipo_ambiente_1_1').val();
+    $("#tipo_ambiente_2_1").find('option[value="'+tipo_ambiente_1_1+'"]').attr("selected", true);
+    $("#tipo_ambiente_2_1").trigger('change');
+
+    var proteccion_condensador_1_1 = $('#proteccion_condensador_1_1').val();
+    $("#proteccion_condensador_2_1").find('option[value="'+proteccion_condensador_1_1+'"]').attr("selected", true);
+    $("#proteccion_condensador_2_1").trigger('change');
+
+    var cheValorS_1_1 = $('#cheValorS_1_1').val();
+    $('#cheValorS_2_1').val(cheValorS_1_1);
+    $("#cheValorS_2_1").trigger('change');
+
+
+    var maintenance_cost_1_1 = $('#maintenance_cost_1_1').val();
+    $('#maintenance_cost_2_1').val(maintenance_cost_1_1);
+    $("#maintenance_cost_2_1").trigger('change');
+
+    if($('#cUnidad_1_2').val() >  0){
+        copiar_form_a_2(sol_paste);
+    }
+
+}
+
+function copiar_form_a_2(sol_paste){
+    active_display('sol_2');
+    var cUnidad_1_2 = $('#cUnidad_1_2').val();
+    $("#cUnidad_2_2").find('option[value="'+cUnidad_1_2+'"]').attr("selected", true);
+    $("#cUnidad_2_2").trigger('change');
+
+    var csTipo_1_2 = $('#csTipo_1_2').val();
+    $("#cheTipo_2_2").find('option[value="'+csTipo_1_2+'"]').attr("selected", true);
+    $("#cheTipo_2_2").trigger('change');
+
+    var marca_1_2 = $('#marca_1_2').val();
+    $("#marca_2_2").find('option[value="'+marca_1_2+'"]').attr("selected", true);
+    send_marcas_to('marca_2_2',marca_1_2,cUnidad_1_2)
+    valida_selects_inps('marca_2_2');
+    send_marca_to_modal(marca_1_2,'marca_2_2');
+
+    var modelo_1_2 = $('#modelo_1_2').val();
+    $("#modelo_2_2").find('option[value="'+modelo_1_2+'"]').attr("selected", true);
+    send_modelo_edit(marca_1_2,'modelo_2_2',modelo_1_2);
+    $("#modelo_2_2").trigger('change');
+
+    var capacidad_total_1_2 = $('#capacidad_total_1_2').val();
+    $('#capacidad_total_2_2').val(capacidad_total_1_2);
+    $("#capacidad_total_2_2").trigger('change');
+
+    var csStd_cant_1_2 = $('#csStd_cant_1_2').val();
+    $('#csStd_cant_2_2').val(csStd_cant_1_2);
+    $("#csStd_cant_2_2").trigger('change');
+
+
+    var csDisenio_1_2 = $('#csDisenio_1_2').val();
+    $("#cheDisenio_2_2").find('option[value="'+csDisenio_1_2+'"]').attr("selected", true);
+    $("#cheDisenio_2_2").trigger('change');
+
+
+    var tipo_control_1_2 = $('#tipo_control_1_2').val();
+    $("#tipo_control_2_2").find('option[value="'+tipo_control_1_2+'"]').attr("selected", true);
+    $("#tipo_control_2_2").trigger('change');
+
+    var dr_1_2 = $('#dr_1_2').val();
+    $("#dr_2_2").find('option[value="'+dr_1_2+'"]').attr("selected", true);
+    $("#dr_2_2").trigger('change');
+
+    var ventilacion_1_2 = $('#ventilacion_1_2').val();
+    $("#ventilacion_2_2").find('option[value="'+ventilacion_1_2+'"]').attr("selected", true);
+    $("#ventilacion_2_2").trigger('change');
+
+    var filtracion_1_2 = $('#filtracion_1_2').val();
+    $("#filtracion_2_2").find('option[value="'+filtracion_1_2+'"]').attr("selected", true);
+    $("#filtracion_2_2").trigger('change');
+
+    var csMantenimiento_1_2 = $('#csMantenimiento_1_2').val();
+    $("#cheMantenimiento_2_2").find('option[value="'+csMantenimiento_1_2+'"]').attr("selected", true);
+    $("#cheMantenimiento_2_2").trigger('change');
+
+    var tipo_ambiente_1_2 = $('#tipo_ambiente_1_2').val();
+    $("#tipo_ambiente_2_2").find('option[value="'+tipo_ambiente_1_2+'"]').attr("selected", true);
+    $("#tipo_ambiente_2_2").trigger('change');
+
+    var proteccion_condensador_1_2 = $('#proteccion_condensador_1_2').val();
+    $("#proteccion_condensador_2_2").find('option[value="'+proteccion_condensador_1_2+'"]').attr("selected", true);
+    $("#proteccion_condensador_2_2").trigger('change');
+
+    var cheValorS_1_2 = $('#cheValorS_1_2').val();
+    $('#cheValorS_2_2').val(cheValorS_1_2);
+    $("#cheValorS_2_2").trigger('change');
+
+
+    var maintenance_cost_1_2 = $('#maintenance_cost_1_2').val();
+    $('#maintenance_cost_2_2').val(maintenance_cost_1_2);
+    $("#maintenance_cost_2_2").trigger('change');
+}
+
+function copiar_form_a_b(sol_paste){
+
+    var cUnidad_2_1 = $('#cUnidad_2_1').val();
+    $("#cUnidad_3_1").find('option[value="'+cUnidad_2_1+'"]').attr("selected", true);
+    $("#cUnidad_3_1").trigger('change');
+
+    var cheTipo_2_1 = $('#cheTipo_2_1').val();
+    $("#cheTipo_3_1").find('option[value="'+cheTipo_2_1+'"]').attr("selected", true);
+    $("#cheTipo_3_1").trigger('change');
+
+    var marca_2_1 = $('#marca_2_1').val();
+    $("#marca_3_1").find('option[value="'+marca_2_1+'"]').attr("selected", "selected");
+    send_marcas_to('marca_3_1',marca_2_1,cUnidad_2_1)
+    valida_selects_inps('marca_3_1');
+    send_marca_to_modal(marca_2_1,'marcas_modal_3_1');
+
+    var modelo_2_1 = $('#modelo_2_1').val();
+    $("#modelo_3_1").find('option[value="'+modelo_2_1+'"]').attr("selected", "selected");
+    send_modelo_edit(marca_2_1,'modelo_3_1',modelo_2_1);
+    $("#modelo_3_1").trigger('change');
+
+    var capacidad_total_2_1 = $('#capacidad_total_2_1').val();
+    $('#capacidad_total_3_1').val(capacidad_total_2_1);
+    $("#capacidad_total_3_1").trigger('change');
+
+    var eficiencia = $('#csStd_cant_2_1').val();
+    $('#cheStd_3_1').val(eficiencia);
+    $("#cheStd_3_1").trigger('change');
+
+
+    var cheDisenio_2_1 = $('#cheDisenio_2_1').val();
+    $("#cheDisenio_3_1").find('option[value="'+cheDisenio_2_1+'"]').attr("selected", true);
+    $("#cheDisenio_3_1").trigger('change');
+
+
+    var tipo_control_2_1 = $('#tipo_control_2_1').val();
+    $("#tipo_control_3_1").find('option[value="'+tipo_control_2_1+'"]').attr("selected", true);
+    $("#tipo_control_3_1").trigger('change');
+
+    var dr_2_1 = $('#dr_2_1').val();
+    $("#dr_3_1").find('option[value="'+dr_2_1+'"]').attr("selected", true);
+    $("#dr_3_1").trigger('change');
+
+    var ventilacion_2_1 = $('#ventilacion_2_1').val();
+    $("#ventilacion_3_1").find('option[value="'+ventilacion_2_1+'"]').attr("selected", true);
+    $("#ventilacion_3_1").trigger('change');
+
+    var filtracion_2_1 = $('#filtracion_2_1').val();
+    $("#filtracion_3_1").find('option[value="'+filtracion_2_1+'"]').attr("selected", true);
+    $("#filtracion_3_1").trigger('change');
+
+    var csMantenimiento_2_1 = $('#csMantenimiento_2_1').val();
+    $("#cheMantenimiento_3_1").find('option[value="'+csMantenimiento_2_1+'"]').attr("selected", true);
+    $("#cheMantenimiento_3_1").trigger('change');
+
+    var tipo_ambiente_2_1 = $('#tipo_ambiente_2_1').val();
+    $("#tipo_ambiente_3_1").find('option[value="'+tipo_ambiente_2_1+'"]').attr("selected", true);
+    $("#tipo_ambiente_3_1").trigger('change');
+
+    var proteccion_condensador_2_1 = $('#proteccion_condensador_2_1').val();
+    $("#proteccion_condensador_3_1").find('option[value="'+proteccion_condensador_2_1+'"]').attr("selected", true);
+    $("#proteccion_condensador_3_1").trigger('change');
+
+    var cheValorS_2_1 = $('#cheValorS_2_1').val();
+    $('#cheValorS_3_1').val(cheValorS_2_1);
+    $("#cheValorS_3_1").trigger('change');
+
+
+    var maintenance_cost_2_1 = $('#maintenance_cost_2_1').val();
+    $('#maintenance_cost_3_1').val(maintenance_cost_2_1);
+    $("#maintenance_cost_3_1").trigger('change');
+
+    if($('#cUnidad_2_2').val() >  0){
+        copiar_form_b_2(sol_paste);
+    }
+
+}
+
+function copiar_form_b_2(sol_paste){
+    active_display('sol_3');
+    var cUnidad_2_2 = $('#cUnidad_2_2').val();
+    $("#cUnidad_3_2").find('option[value="'+cUnidad_2_2+'"]').attr("selected", true);
+    $("#cUnidad_3_2").trigger('change');
+
+    var cheTipo_2_2 = $('#cheTipo_2_2').val();
+    $("#cheTipo_3_2").find('option[value="'+cheTipo_2_2+'"]').attr("selected", true);
+    $("#cheTipo_3_2").trigger('change');
+
+    var select_marca = $('#marca_2_2').val();
+
+    $("#marca_3_2").find('option[value="'+select_marca+'"]').attr("selected", "selected");
+    $("#marca_3_2").trigger('change');
+    send_marcas_to('marca_3_2',select_marca,cUnidad_2_2)
+    valida_selects_inps('marca_3_2');
+    send_marca_to_modal(select_marca,'marcas_modal_3_2');
+
+    var select_modelo = $('#modelo_2_2').val();
+    $("#modelo_3_2").find('option[value="'+select_modelo+'"]').attr("selected", true);
+    send_modelo_edit(select_marca,'modelo_3_2',select_modelo);
+    $("#modelo_3_2").trigger('change');
+
+    var capacidad_total_2_2 = $('#capacidad_total_2_2').val();
+    $('#capacidad_total_3_2').val(capacidad_total_2_2);
+    $("#capacidad_total_3_2").trigger('change');
+
+    var csStd_cant_2_2 = $('#csStd_cant_2_2').val();
+    $('#csStd_cant_3_2').val(csStd_cant_2_2);
+    $("#csStd_cant_3_2").trigger('change');
+
+
+    var cheDisenio_2_2 = $('#cheDisenio_2_2').val();
+    $("#cheDisenio_3_2").find('option[value="'+cheDisenio_2_2+'"]').attr("selected", true);
+    $("#cheDisenio_3_2").trigger('change');
+
+
+    var tipo_control_2_2 = $('#tipo_control_2_2').val();
+    $("#tipo_control_3_2").find('option[value="'+tipo_control_2_2+'"]').attr("selected", true);
+    $("#tipo_control_3_2").trigger('change');
+
+    var dr_2_2 = $('#dr_2_2').val();
+    $("#dr_3_2").find('option[value="'+dr_2_2+'"]').attr("selected", true);
+    $("#dr_3_2").trigger('change');
+
+    var ventilacion_2_2 = $('#ventilacion_2_2').val();
+    $("#ventilacion_3_2").find('option[value="'+ventilacion_2_2+'"]').attr("selected", true);
+    $("#ventilacion_3_2").trigger('change');
+
+    var filtracion_2_2 = $('#filtracion_2_2').val();
+    $("#filtracion_3_2").find('option[value="'+filtracion_2_2+'"]').attr("selected", true);
+    $("#filtracion_3_2").trigger('change');
+
+    var cheMantenimiento_2_2 = $('#cheMantenimiento_2_2').val();
+    $("#cheMantenimiento_3_2").find('option[value="'+cheMantenimiento_2_2+'"]').attr("selected", true);
+    $("#cheMantenimiento_3_2").trigger('change');
+
+    var tipo_ambiente_2_2 = $('#tipo_ambiente_2_2').val();
+    $("#tipo_ambiente_3_2").find('option[value="'+tipo_ambiente_2_2+'"]').attr("selected", true);
+    $("#tipo_ambiente_3_2").trigger('change');
+
+    var proteccion_condensador_2_2 = $('#proteccion_condensador_2_2').val();
+    $("#proteccion_condensador_3_2").find('option[value="'+proteccion_condensador_2_2+'"]').attr("selected", true);
+    $("#proteccion_condensador_3_2").trigger('change');
+
+    var cheValorS_2_2 = $('#cheValorS_2_2').val();
+    $('#cheValorS2_3_2').val(cheValorS_2_2);
+    $("#cheValorS2_3_2").trigger('change');
+
+
+    var maintenance_cost_2_2 = $('#maintenance_cost_2_2').val();
+    $('#maintenance_cost_3_2').val(maintenance_cost_2_2);
+    $("#maintenance_cost_3_2").trigger('change');
+}
+
+function copiar_form_base_a_retro(sol_paste){
+
+    var select_sistema = $('#cUnidad_1_1_retro').val();
+    $("#cUnidad_2_1_retro").find('option[value="'+select_sistema+'"]').attr("selected", true);
+    $("#cUnidad_2_1_retro").trigger('change');
+
+    var select_unidad = $('#csTipo_1_1_retro').val();
+    $("#cheTipo_2_1_retro").find('option[value="'+select_unidad+'"]').attr("selected", true);
+    $("#cheTipo_2_1_retro").trigger('change');
+
+    var select_marca = $('#marca_1_1_retro').val();
+    $("#marca_2_1_retro").find('option[value="'+select_marca+'"]').attr("selected", true);
+    send_marcas_to('marca_2_1_retro',select_marca,select_sistema)
+    valida_selects_inps('marca_2_1_retro');
+    send_marca_to_modal(select_marca,'marcas_modal_2_1_retro');
+
+    var select_modelo = $('#modelo_1_1_retro').val();
+    $("#modelo_2_1_retro").find('option[value="'+select_modelo+'"]').attr("selected", true);
+    send_modelo_edit(select_marca,'modelo_2_1_retro',select_modelo);
+    $("#modelo_2_1_retro").trigger('change');
+
+    var yrs_vida_1_1_retro = $('#yrs_vida_1_1_retro').val();
+    $('#yrs_vida_2_1_retro').val(yrs_vida_1_1_retro);
+    $("#yrs_vida_2_1_retro").trigger('change');
+
+    var capacidad_total = $('#capacidad_total_1_1_retro').val();
+    $('#capacidad_total_2_1_retro').val(capacidad_total);
+    $("#capacidad_total_2_1_retro").trigger('change');
+
+    var eficiencia = $('#csStd_retro_1_1_cant').val();
+    $('#csStd_cant_2_1_retro').val(eficiencia);
+    $("#csStd_cant_2_1_retro").trigger('change');
+
+
+    var csDisenio_1_1_retro = $('#csDisenio_1_1_retro').val();
+    $("#cheDisenio_2_1_retro").find('option[value="'+csDisenio_1_1_retro+'"]').attr("selected", true);
+    $("#cheDisenio_2_1_retro").trigger('change');
+
+
+    var tipo_control_1_1_retro = $('#tipo_control_1_1_retro').val();
+    $("#tipo_control_2_1_retro").find('option[value="'+tipo_control_1_1_retro+'"]').attr("selected", true);
+    $("#tipo_control_2_1_retro").trigger('change');
+
+    var dr_1_1_retro = $('#dr_1_1_retro').val();
+    $("#dr_2_1_retro").find('option[value="'+dr_1_1_retro+'"]').attr("selected", true);
+    $("#dr_2_1_retro").trigger('change');
+
+    var ventilacion_1_1_retro = $('#ventilacion_1_1_retro').val();
+    $("#ventilacion_2_1_retro").find('option[value="'+ventilacion_1_1_retro+'"]').attr("selected", true);
+    $("#ventilacion_2_1_retro").trigger('change');
+
+    var filtracion_1_1_retro = $('#filtracion_1_1_retro').val();
+    $("#filtracion_2_1_retro").find('option[value="'+filtracion_1_1_retro+'"]').attr("selected", true);
+    $("#filtracion_2_1_retro").trigger('change');
+
+    var csMantenimiento = $('#csMantenimiento_1_1_retro').val();
+    $("#csMantenimiento_2_1_retro").find('option[value="'+csMantenimiento+'"]').attr("selected", true);
+    $("#csMantenimiento_2_1_retro").trigger('change');
+
+    var tipo_ambiente_1_1_retro = $('#tipo_ambiente_1_1_retro').val();
+    $("#tipo_ambiente_2_1_retro").find('option[value="'+tipo_ambiente_1_1_retro+'"]').attr("selected", true);
+    $("#tipo_ambiente_2_1_retro").trigger('change');
+
+    var proteccion_condensador_1_1_retro = $('#proteccion_condensador_1_1_retro').val();
+    $("#proteccion_condensador_2_1_retro").find('option[value="'+proteccion_condensador_1_1_retro+'"]').attr("selected", true);
+    $("#proteccion_condensador_2_1_retro").trigger('change');
+
+    var maintenance_cost_1_1_retro = $('#maintenance_cost_1_1_retro').val();
+    $('#maintenance_cost_2_1_retro').val(maintenance_cost_1_1_retro);
+    $("#maintenance_cost_2_1_retro").trigger('change');
+
+}
+
+function copiar_form_a_b_retro(sol_paste){
+
+    var select_sistema = $('#cUnidad_2_1_retro').val();
+    $("#cUnidad_3_1_retro").find('option[value="'+select_sistema+'"]').attr("selected", true);
+    $("#cUnidad_3_1_retro").trigger('change');
+
+    var select_unidad = $('#cheTipo_2_1_retro').val();
+    $("#cheTipo_3_1_retro").find('option[value="'+select_unidad+'"]').attr("selected", true);
+    $("#cheTipo_3_1_retro").trigger('change');
+
+    var select_marca = $('#marca_2_1_retro').val();
+    $("#marca_3_1_retro").find('option[value="'+select_marca+'"]').attr("selected", true);
+    send_marcas_to('marca_3_1_retro',select_marca,select_sistema)
+    valida_selects_inps('marca_3_1_retro');
+    send_marca_to_modal(select_marca,'marcas_modal_3_1_retro');
+
+    var select_modelo = $('#modelo_2_1_retro').val();
+    $("#modelo_3_1_retro").find('option[value="'+select_modelo+'"]').attr("selected", true);
+    send_modelo_edit(select_marca,'modelo_3_1_retro',select_modelo);
+    $("#modelo_3_1_retro").trigger('change');
+
+    var yrs_vida_2_1_retro = $('#yrs_vida_2_1_retro').val();
+    $('#yrs_vida_3_1_retro').val(yrs_vida_2_1_retro);
+    $("#yrs_vida_3_1_retro").trigger('change');
+
+    var capacidad_total = $('#capacidad_total_2_1_retro').val();
+    $('#capacidad_total_3_1_retro').val(capacidad_total);
+    $("#capacidad_total_3_1_retro").trigger('change');
+
+    var eficiencia = $('#csStd_cant_2_1_retro').val();
+    $('#csStd_cant_3_1_retro').val(eficiencia);
+    $("#csStd_cant_3_1_retro").trigger('change');
+
+    var csDisenio_2_1_retro = $('#cheDisenio_2_1_retro').val();
+    $("#cheDisenio_3_1_retro").find('option[value="'+csDisenio_2_1_retro+'"]').attr("selected", true);
+    $("#cheDisenio_3_1_retro").trigger('change');
+
+    var tipo_control_2_1_retro = $('#tipo_control_2_1_retro').val();
+    $("#tipo_control_3_1_retro").find('option[value="'+tipo_control_2_1_retro+'"]').attr("selected", true);
+    $("#tipo_control_3_1_retro").trigger('change');
+
+    var dr_2_1_retro = $('#dr_2_1_retro').val();
+    $("#dr_3_1_retro").find('option[value="'+dr_2_1_retro+'"]').attr("selected", true);
+    $("#dr_3_1_retro").trigger('change');
+
+    var ventilacion_2_1_retro = $('#ventilacion_2_1_retro').val();
+    $("#ventilacion_3_1_retro").find('option[value="'+ventilacion_2_1_retro+'"]').attr("selected", true);
+    $("#ventilacion_3_1_retro").trigger('change');
+
+    var filtracion_2_1_retro = $('#filtracion_2_1_retro').val();
+    $("#filtracion_3_1_retro").find('option[value="'+filtracion_2_1_retro+'"]').attr("selected", true);
+    $("#filtracion_3_1_retro").trigger('change');
+
+    var csMantenimiento = $('#csMantenimiento_2_1_retro').val();
+    $("#cheMantenimiento_3_1_retro").find('option[value="'+csMantenimiento+'"]').attr("selected", true);
+    $("#cheMantenimiento_3_1_retro").trigger('change');
+
+    var tipo_ambiente_2_1_retro = $('#tipo_ambiente_2_1_retro').val();
+    $("#tipo_ambiente_3_1_retro").find('option[value="'+tipo_ambiente_2_1_retro+'"]').attr("selected", true);
+    $("#tipo_ambiente_3_1_retro").trigger('change');
+
+    var proteccion_condensador_2_1_retro = $('#proteccion_condensador_2_1_retro').val();
+    $("#proteccion_condensador_3_1_retro").find('option[value="'+proteccion_condensador_2_1_retro+'"]').attr("selected", true);
+    $("#proteccion_condensador_3_1_retro").trigger('change');
+
+    var maintenance_cost_2_1_retro = $('#maintenance_cost_2_1_retro').val();
+    $('#maintenance_cost_3_1_retro').val(maintenance_cost_2_1_retro);
+    $("#maintenance_cost_3_1_retro").trigger('change');
+
+    var costo_recu_2_1_retro = $('#costo_recu_2_1_retro').val();
+    $('#costo_recu_3_1_retro').val(costo_recu_2_1_retro);
+    $("#costo_recu_3_1_retro").trigger('change');
+
 }
 
 function red_alert(tipo_ambiente,proteccion_condensador){
@@ -14477,7 +14915,9 @@ function red_alert_retro(tipo_ambiente,proteccion_condensador){
 
         if(tipo_ambiente == 'marino' && proteccion_condensador == 'sin_proteccion'){
             $('#red_alert_retro').css('background-color','red');
+
         }else{
+
             $('#red_alert_retro').css('background-color','#3182ce');
         }
     }
