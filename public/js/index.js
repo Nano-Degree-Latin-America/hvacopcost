@@ -1948,6 +1948,150 @@ function set_ventilacion(value){
 return arry_vent;
 }
 
+function set_ventilacion_sin_doa(value){
+
+    switch (value) {
+
+        case "basico":
+
+             var arry_vent = '{ "arry_vent" : [' +
+              '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+              '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+              '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
+
+        case "c_economizador":
+
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+
+        case "w_heat_rec":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+          break;
+
+        case "manejadora":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
+
+        case "fancoil":
+
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+              '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
+
+        case "fancoil_lsp_spt":
+
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+      break;
+
+        case "ca_pi_te":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15}]}';
+        break;
+
+        case "fancoil_lsp":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15}]}';
+        break;
+
+        case "ca":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15}]}';
+         break;
+
+         case "man":
+
+         var arry_vent = '{ "arry_vent" : [' +
+         '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
+         '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+         '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+         break;
+
+         case "fancoil_hsp":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+         break;
+
+         case "man_doa":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.08},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+         break;
+
+       case "horz":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+      break;
+
+      case "vert":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+      break;
+
+      case "agu_cir_cer":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+      break;
+
+      case "agu_cir_abr":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+      break;
+
+      case "pa_pi_te":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
+
+      case "duc_con":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
+
+        case "cass":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
+      default:
+        // code block
+        }
+
+return arry_vent;
+}
+
 /*
 
 
@@ -7673,11 +7817,11 @@ function traer_unidad_hvac(id_project,num_sol,num_enf,cUnidad,csTipo,csDisenio,t
                 $("#"+csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').attr("selected", "selected");
                 change_diseño(res.val_unidad.tipo_equipo,1,csDisenio,tipo_control,dr,ventilacion,filtracion,lblCsTipo);
                 $("#"+csDisenio).find('option[value="' + res.val_unidad.tipo_diseño + '"]').attr("selected", "selected");
+                $("#"+csDisenio).trigger('change');
                 $("#"+tipo_control).find('option[value="' + res.val_unidad.tipo_control + '"]').attr("selected", "selected");
                 $("#"+dr).find('option[value="' + res.val_unidad.dr + '"]').attr("selected", "selected");
                 $("#"+ventilacion).find('option[value="' + res.val_unidad.ventilacion + '"]').attr("selected", "selected");
                 $("#"+filtracion).find('option[value="' + res.val_unidad.filtracion + '"]').attr("selected", "selected");
-
                 $("#"+tipo_ambiente_1_1).find('option[value="' + res.val_unidad.tipo_ambiente + '"]').attr("selected", "selected");
                 show_prot_cond(res.val_unidad.tipo_ambiente,proteccion_condensador_1_1,'new',3,'paises_edit')
 
@@ -7837,6 +7981,7 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
 
 
                 $("#"+csDisenio).find('option[value="' + res.val_unidad.tipo_diseño + '"]').attr("selected", "selected");
+                $("#"+csDisenio).trigger('change');
                 $("#"+tipo_control).find('option[value="' + res.val_unidad.tipo_control + '"]').attr("selected", "selected");
                 $("#"+dr).find('option[value="' + res.val_unidad.dr + '"]').attr("selected", "selected");
                 $("#"+ventilacion).find('option[value="' + res.val_unidad.ventilacion + '"]').attr("selected", "selected");
@@ -14921,3 +15066,40 @@ function red_alert_retro(tipo_ambiente,proteccion_condensador){
             $('#red_alert_retro').css('background-color','#3182ce');
         }
     }
+
+function check_sin_doa(sin,select_id,equipo_id){
+    if(sin.options[sin.selectedIndex].text == 'Sin Unidad DOA'){
+        var value = $('#'+equipo_id).val();
+        $('#'+select_id).empty();
+        var arry_vent = set_ventilacion_sin_doa(value);
+
+        $('#'+select_id).append($('<option>', {
+            value: '',
+            text: '-Seleccionar-'
+        }));
+        const myObj_vent = JSON.parse(arry_vent);
+        for (let i = 0; i < myObj_vent.arry_vent.length; i++) {
+          $('#'+select_id).append($('<option>', {
+              value:  myObj_vent.arry_vent[i].value,
+              text:  myObj_vent.arry_vent[i].text
+          }));
+        }
+
+    }else{
+        var value = $('#'+equipo_id).val();
+        $('#'+select_id).empty();
+        var arry_vent = set_ventilacion(value);
+
+        $('#'+select_id).append($('<option>', {
+            value: '',
+            text: '-Seleccionar-'
+        }));
+        const myObj_vent = JSON.parse(arry_vent);
+        for (let i = 0; i < myObj_vent.arry_vent.length; i++) {
+          $('#'+select_id).append($('<option>', {
+              value:  myObj_vent.arry_vent[i].value,
+              text:  myObj_vent.arry_vent[i].text
+          }));
+        }
+    }
+}

@@ -213,7 +213,7 @@
                             </div>
 
                             <div class="w-1/2 flex justify-start">
-                                <select onchange="valida_selects_inps(this.id);send_name(this.id);check_type_set_mant('type_p','cheDisenio_2_1_retro','cheDisenio_3_1_retro',this.value);" name="csDisenio_1_1_retro" id="csDisenio_1_1_retro" class="w-full border-2 border-color-inps rounded-md py-2">
+                                <select onchange="valida_selects_inps(this.id);send_name(this.id);check_type_set_mant('type_p','cheDisenio_2_1_retro','cheDisenio_3_1_retro',this.value);check_sin_doa(this,'ventilacion_1_1_retro','csTipo_1_1_retro');" name="csDisenio_1_1_retro" id="csDisenio_1_1_retro" class="w-full border-2 border-color-inps rounded-md py-2">
                                 </select>
                             </div>
                             <input type="text" style="display: none" id="lblCsDisenio" name="lblCsDisenio" value="ASHRAE 55/62.1/90.1">
@@ -380,9 +380,13 @@
         <input type="number" class="hidden" value="2" id="cont_sol_2_retro" name="cont_sol_2">
         </div>
         <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
-            <h2 style="margin-right: 75px;" class="text-white font-bold justify-start text-3xl">{{ __('index.solucion') }} A</h2>
+            <h2 style="margin-right: 10px;" class="text-white font-bold justify-start text-3xl">{{ __('index.solucion') }} A</h2>
         </div>
-
+        <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
+            <button  onclick="copiar_form_base_a_retro();" type="button"  class="rounded-xl p-1 m-0 text-3xl">
+                <i  class="fa-solid fa-file-import text-orange-500"></i>
+            </button>
+        </div>
     </div>
     <div class="border-r-2 border-l-2 border-blue-500">
 
@@ -571,7 +575,7 @@
                             <label  class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);" name="cheDisenio_2_1_retro" id="cheDisenio_2_1_retro">
+                            <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);check_sin_doa(this,'ventilacion_2_1_retro','cheTipo_2_1_retro');" name="cheDisenio_2_1_retro" id="cheDisenio_2_1_retro">
 
                             </select>
                         </div>
@@ -752,12 +756,13 @@
            <input type="number" class="hidden" value="2" id="cont_sol_3_retro" name="cont_sol_3_retro">
        </div>
        <div class="2xl:ml-0 xl:ml-0 lg:ml-10 w-full flex 2xl:justify-center xl:justify-center lg:justify-center py-1">
-           <h2 style="margin-right: 75px;" class="text-white font-bold  text-3xl ">{{ __('index.solucion') }} B</h2>
+           <h2 style="margin-right: 10px;" class="text-white font-bold  text-3xl ">{{ __('index.solucion') }} B</h2>
        </div>
-
-     {{--   <div cslass="w-1/2 flex justify-start">
-           <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
-       </div> --}}
+       <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
+            <button  onclick="copiar_form_a_b_retro('E');" type="button"  class="rounded-xl p-1 m-0 text-3xl">
+                <i class="fa-solid fa-file-import text-orange-500"></i>
+            </button>
+        </div>
    </div>
    <div class="border-r-2 border-l-2 border-color-inps">
 
@@ -951,7 +956,7 @@
                         <label  class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                     </div>
                     <div class="w-1/2 flex justify-start">
-                        <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);" name="cheDisenio_3_1_retro" id="cheDisenio_3_1_retro">
+                        <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);check_sin_doa(this,'ventilacion_3_1_retro','cheTipo_3_1_retro');" name="cheDisenio_3_1_retro" id="cheDisenio_3_1_retro">
 
                         </select>
                     </div>
