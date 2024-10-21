@@ -1111,6 +1111,12 @@ $base_red_an = $sumaopex_1*$tar_ele->costo_elec;
 
 
 
+if($result1 ==! null){
+  $base_red_an = $sumaopex_1*$tar_ele->costo_elec;
+}else{
+  $base_red_an = 0;
+}
+
 if($result2 ==! null){
   $a_red_an = $sumaopex_2*$tar_ele->costo_elec;
 }else{
@@ -2054,7 +2060,7 @@ if($counter == 2){
                             </div>
 
                         </div>
-
+{{-- {{$val_base_red_ene}}_{{$val_a_red_ene}}_{{$val_b_red_ene}} --}}
                         <div class="flex w-full justify-start gap-x-3 mb-3">
 
                             <div  class="flex justify-start w-2/5  my-1">
@@ -2074,8 +2080,59 @@ if($counter == 2){
                             <div   class="flex  rounded-md justify-center w-1/4  ">
                                 <div  class="grid justify-items-center  rounded-md place-items-center">
                                   <div style="" class="w-full mx-3 my-1 flex justify-center">
-                                    <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;"  class="payback_cants_green rounded-md font-roboto font-bold rounded-md padding_pay">N/A</b>
-                                  </div>
+{{--                                     <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;"  class="payback_cants_green rounded-md font-roboto font-bold rounded-md padding_pay">N/A</b>
+ --}}
+                                                @if ( true == ( isset( $val_base_red_ene ) ? $val_base_red_ene : null ) )
+
+                                                @if($val_base_red_ene === 0)
+                                                <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                                @endif
+
+                                                @if($val_base_red_ene !== 0)
+                                                <?php  $pay_back_base=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$val_base_red_ene) ?>
+                                                @if ($pay_back_base >= 1)
+                                                    @if ((strlen(number_format($pay_back_base,1))) == 1 )
+                                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_base,1)}}</b>
+                                                    @endif
+
+                                                    @if ((strlen(number_format($pay_back_base,1))) == 2 )
+                                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_base,1)}}</b>
+                                                    @endif
+
+                                                    @if ((strlen(number_format($pay_back_base,1))) == 3 )
+                                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_base,1)}}</b>
+                                                    @endif
+
+                                                    @if ((strlen(number_format($pay_back_base,1))) == 4 )
+                                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_base,1)}}</b>
+                                                    @endif
+
+                                                    @if ((strlen(number_format($pay_back_base,1))) == 5 )
+                                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_base,1)}}</b>
+                                                    @endif
+
+                                                    @if ((strlen(number_format($pay_back_base,1))) == 6 )
+                                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_base,1)}}</b>
+                                                    @endif
+
+                                                    @if ((strlen(number_format($pay_back_base,1))) == 7 )
+                                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_base,1)}}</b>
+                                                    @endif
+
+                                                @endif
+
+                                                @if ($pay_back_base < 1)
+                                                <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
+                                                @endif
+
+                                                @endif
+
+
+                                                @else
+                                                <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                                @endif
+
+                                    </div>
                                 </div>
                             </div>
 
@@ -2106,41 +2163,47 @@ if($counter == 2){
                                     @if ($result2 != null)
 
                                         @if ( true == ( isset( $val_a_red_ene ) ? $val_a_red_ene : null ) )
-                                        <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$val_a_red_ene) ?>
 
-                                        @if ($pay_back_a >= 1)
+                                            @if($val_a_red_ene === 0)
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                            @endif
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 1 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_a,1)}}</b>
-                                        @endif
+                                            @if($val_a_red_ene !== 0)
+                                            <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$val_a_red_ene) ?>
+                                            @if ($pay_back_a >= 1)
+                                                @if ((strlen(number_format($pay_back_a,1))) == 1 )
+                                                <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_a,1)}}</b>
+                                                @endif
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 2 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_a,1)}}</b>
-                                        @endif
+                                                @if ((strlen(number_format($pay_back_a,1))) == 2 )
+                                                <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_a,1)}}</b>
+                                                @endif
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 3 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_a,1)}}</b>
-                                        @endif
+                                                @if ((strlen(number_format($pay_back_a,1))) == 3 )
+                                                <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_a,1)}}</b>
+                                                @endif
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 4 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_a,1)}}</b>
-                                        @endif
+                                                @if ((strlen(number_format($pay_back_a,1))) == 4 )
+                                                <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_a,1)}}</b>
+                                                @endif
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 5 )
-                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a,1)}}</b>
-                                        @endif
+                                                @if ((strlen(number_format($pay_back_a,1))) == 5 )
+                                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a,1)}}</b>
+                                                @endif
 
-                                        @endif
+                                            @endif
 
-                                        @if ($pay_back_a < 1)
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
-                                        @endif
+                                            @if ($pay_back_a < 1)
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
+                                            @endif
+                                            @endif
+
 
                                         @else
-                                         <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
                                         @endif
 
-                                        @endif
+                                    @endif
 
                                     </div>
                                 </div>
@@ -2172,6 +2235,13 @@ if($counter == 2){
 
                                     @if ($result3 != null)
                                         @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
+
+                                        @if ($val_b_red_ene === 0)
+                                        <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;"  class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                        @endif
+
+                                        @if ($val_b_red_ene !== 0)
+
                                         <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$val_b_red_ene) ?>
 
                                         @if ($pay_back_b >= 1)
@@ -2200,6 +2270,10 @@ if($counter == 2){
                                          @if ($pay_back_b < 1)
                                         <b style="border:solid  3px;border-color:#1B17BB;color:#ea0000;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
                                         @endif
+
+                                        @endif
+
+
 
                                         @else
                                         <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;"  class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
@@ -2261,15 +2335,43 @@ if($counter == 2){
                             <div style="" class="flex  rounded-md justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center place-items-center">
                                     <div  class="w-full mx-3 flex justify-center">
-                                    <?php  $pay_back_base=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,0,$costo_base) ?>
+                                    <?php
+                                        $array_val_vals =  [intval($val_base_red_ene),intval($val_a_red_ene),intval($val_b_red_ene)];
+                                        $counter_val = 0;
+                                        for ($i=0; $i < count($array_val_vals); $i++) {
+                                            if($array_val_vals[$i] == 0){
+                                                $counter_val = $i;
+                                            }
+                                        }
+                                        if(  $counter_val == 0){
+                                           /*  $pay_back_base=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_base_red_ene,$costo_base); */
+                                           $pay_back_base='NA';
+                                        }
 
-                                    @if ($pay_back_base > 1)
-                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_base),1}}</b>
-                                    @endif
+                                        if(  $counter_val == 1){
+                                            $pay_back_base=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_a,$val_base_red_ene,$costo_base);
+                                        }
 
-                                    @if ($pay_back_base <= 1)
+                                        if(  $counter_val == 2){
+                                            $pay_back_base=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_b,$val_base_red_ene,$costo_base);
+                                        }
+
+                                        ?>
+
+
+
+                                    @if ($pay_back_base === 'NA')
                                     <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                    @else
+                                        @if ($pay_back_base > 1)
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_base),1}}</b>
+                                        @endif
+                                        @if ($pay_back_base < 1)
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay"> < 1 </b>
+                                        @endif
                                     @endif
+
+
 
 
                                     </div>
@@ -2309,29 +2411,50 @@ $costo_b
 
                                 @if ($result2 != null)
                                     @if ( true == ( isset( $val_a_red_ene ) ? $val_a_red_ene : null ) )
-                                    <?php  $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_a_red_ene,$costo_a) ?>
+                                    <?php
+
+                                           $array_val_vals =  [intval($val_base_red_ene),intval($val_a_red_ene),intval($val_b_red_ene)];
+                                           $counter_val = 0;
+                                           for ($i=0; $i < count($array_val_vals); $i++) {
+                                               if($array_val_vals[$i] == 0){
+                                                   $counter_val = $i;
+                                               }
+                                           }
+                                           if(  $counter_val == 0){
+                                            $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_a_red_ene,$costo_a);
+                                           }
+
+                                           if(  $counter_val == 1){
+                                            $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_a,$val_a_red_ene,$costo_a);
+                                           }
+
+                                           if(  $counter_val == 2){
+                                            $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_b,$val_a_red_ene,$costo_a);
+                                           }
+
+                                    ?>
 
                                         @if ($pay_back_a >= 1)
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 1 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_a,1)}}</b>
-                                        @endif
+                                            @if ((strlen(number_format($pay_back_a,1))) == 1 )
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_a,1)}}</b>
+                                            @endif
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 2 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_a,1)}}</b>
-                                        @endif
+                                            @if ((strlen(number_format($pay_back_a,1))) == 2 )
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_a,1)}}</b>
+                                            @endif
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 3 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_a,1)}}</b>
-                                        @endif
+                                            @if ((strlen(number_format($pay_back_a,1))) == 3 )
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_a,1)}}</b>
+                                            @endif
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 4 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_a,1)}}</b>
-                                        @endif
+                                            @if ((strlen(number_format($pay_back_a,1))) == 4 )
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_a,1)}}</b>
+                                            @endif
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 5 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a,1)}}</b>
-                                        @endif
+                                            @if ((strlen(number_format($pay_back_a,1))) == 5 )
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a,1)}}</b>
+                                            @endif
 
                                         @endif
 
@@ -2374,7 +2497,27 @@ $costo_b
 
                                 @if ($result3 != null)
                                     @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
-                                        <?php  $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_b_red_ene,$costo_b) ?>
+                                        <?php
+                                        $array_val_vals =  [intval($val_base_red_ene),intval($val_a_red_ene),intval($val_b_red_ene)];
+                                           $counter_val = 0;
+                                           for ($i=0; $i < count($array_val_vals); $i++) {
+                                               if($array_val_vals[$i] == 0){
+                                                   $counter_val = $i;
+                                               }
+                                           }
+                                           if(  $counter_val == 0){
+                                            $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_b_red_ene,$costo_b);
+                                           }
+
+                                           if(  $counter_val == 1){
+                                            $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_a,$val_b_red_ene,$costo_b);
+                                           }
+
+                                           if(  $counter_val == 2){
+                                            $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_b,$val_b_red_ene,$costo_b);
+                                           }
+
+                                        ?>
                                         @if ($pay_back_b >= 1)
 
                                         @if ((strlen(number_format($pay_back_b,1))) == 1 )
