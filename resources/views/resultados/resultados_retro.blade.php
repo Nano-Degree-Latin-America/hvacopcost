@@ -893,12 +893,14 @@ cursor: pointer;
                                     <?php  $unid_med_1=$smasolutions->unid_med($id_project,$result1->num_enf) ?>
                                     <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
                                     <?php  $inv_ini_1=$smasolutions->inv_ini($id_project,$result1->num_enf) ?>
+                                     <input type="number" class="hidden" id="inv_ini_1" name="inv_ini_1" value="{{$inv_ini_1}}">
                                     @elseif($result1 === null)
                                     <?php $sumaopex_1=0?>
                                     <?php $sumacap_term_1=0?>
                                      <?php $unid_med_1=""?>
                                      <?php  $result_area_1=0 ?>
                                      <?php $inv_ini_1=0?>
+                                     <input type="number" class="hidden" id="inv_ini_1" name="inv_ini_1" value="{{$inv_ini_1}}">
                                     @endif
                                     <div class="flex w-full justify-center gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_1)}}</p><b class="unit_style">Kwh</b>
@@ -1066,9 +1068,13 @@ cursor: pointer;
 
 $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_elec,$sumaopex_3*$tar_ele->costo_elec];
 
-  $base_red_an = $sumaopex_1*$tar_ele->costo_elec;
 
 
+    if($result1 ==! null){
+    $base_red_an = $sumaopex_1*$tar_ele->costo_elec;
+    }else{
+    $base_red_an = 0;
+    }
 
   if($result2 ==! null){
     $a_red_an = $sumaopex_2*$tar_ele->costo_elec;
@@ -1094,15 +1100,15 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
   if($counter == 0){
 
     if($result1 ==! null){
-        if($result2 == null && $result3 == null){
-            $val_base_red_ene = 0;
-        }else{
-            $val_base_red_ene =  0;
-        }
+      if($result2 == null && $result3 == null){
+          $val_base_red_ene = 0;
+      }else{
+          $val_base_red_ene =  0;
+      }
 
-    }else{
-        $val_base_red_ene =  0;
-    }
+  }else{
+      $val_base_red_ene =  0;
+  }
 
 
 
@@ -1976,8 +1982,55 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                             <div   class="flex  rounded-md justify-center w-1/4  ">
                                 <div  class="grid justify-items-center  rounded-md place-items-center">
                                   <div style="" class="w-full mx-3 my-1  flex justify-center">
-                                    <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;"  class="payback_cants_green rounded-md font-roboto font-bold rounded-md padding_pay">N/A</b>
-                                  </div>
+                                    @if ( true == ( isset( $val_base_red_ene ) ? $val_base_red_ene : null ) )
+
+                                    @if($val_base_red_ene === 0)
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                    @endif
+
+                                    @if($val_base_red_ene !== 0)
+                                    <?php  $pay_back_base=$smasolutions->pay_back($inv_ini_1,$inv_ini_1,$val_base_red_ene) ?>
+                                    @if ($pay_back_base >= 1)
+                                        @if ((strlen(number_format($pay_back_base,1))) == 1 )
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_base,1)}}</b>
+                                        @endif
+
+                                        @if ((strlen(number_format($pay_back_base,1))) == 2 )
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_base,1)}}</b>
+                                        @endif
+
+                                        @if ((strlen(number_format($pay_back_base,1))) == 3 )
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_base,1)}}</b>
+                                        @endif
+
+                                        @if ((strlen(number_format($pay_back_base,1))) == 4 )
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_base,1)}}</b>
+                                        @endif
+
+                                        @if ((strlen(number_format($pay_back_base,1))) == 5 )
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_base,1)}}</b>
+                                        @endif
+
+                                        @if ((strlen(number_format($pay_back_base,1))) == 6 )
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_base,1)}}</b>
+                                        @endif
+
+                                        @if ((strlen(number_format($pay_back_base,1))) == 7 )
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_base,1)}}</b>
+                                        @endif
+
+                                    @endif
+
+                                    @if ($pay_back_base < 1)
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
+                                    @endif
+
+                                    @endif
+
+
+                                    @else
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                    @endif                                  </div>
                                 </div>
                             </div>
 
@@ -2110,9 +2163,35 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                         </div>
 
                     </div>
-                    <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$val_a_red_ene}}">
+                    <?php
+                    $array_val_vals =  [intval($val_base_red_ene),intval($val_a_red_ene),intval($val_b_red_ene)];
+                    $counter_val_prod_ene = 0;
+                    for ($i=0; $i < count($array_val_vals); $i++) {
+                        if($array_val_vals[$i] == 0){
+                            $counter_val_prod_ene = $i;
+                        }
+                    }
 
-                    <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$val_b_red_ene}}">
+
+                    ?>
+
+                    @if ($counter_val_prod_ene == 0)
+                        <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$val_a_red_ene}}">
+                        <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$val_b_red_ene}}">
+                        <input type="number" class="hidden" id="counter_val_prod_ene" name="counter_val_prod_ene" value="{{$counter_val_prod_ene}}">
+                    @endif
+
+                    @if ($counter_val_prod_ene == 1)
+                        <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$val_base_red_ene}}">
+                        <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$val_b_red_ene}}">
+                        <input type="number" class="hidden" id="counter_val_prod_ene" name="counter_val_prod_ene" value="{{$counter_val_prod_ene}}">
+                    @endif
+
+                    @if ($counter_val_prod_ene == 2)
+                        <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$val_base_red_ene}}">
+                        <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$val_a_red_ene}}">
+                        <input type="number" class="hidden" id="counter_val_prod_ene" name="counter_val_prod_ene" value="{{$counter_val_prod_ene}}">
+                    @endif
                     <div class="w-1/2">
                         <div id="chart_roi_base_a" name="chart_roi_base_a" style="width: 600px;"></div>
                         <div class="hidden" style="height:250px;"  id="chart_roi_base_a_print" name="chart_roi_base_a_print"></div>
@@ -2732,9 +2811,9 @@ window.onload = function() {
       $('#modal_loding').addClass("hidden");
       $('#caja_principal').removeClass("hidden");
       roi_s_ene('{{$id_project}}');
-      roi_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}','{{$costo_b}}');
+      roi_ene_prod('{{$id_project}}');
       roi_s_ene_print('{{$id_project}}');
-      roi_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}','{{$costo_b}}');
+      roi_ene_prod_print('{{$id_project}}');
       /* roi_base_b_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
       roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
       roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
@@ -4351,15 +4430,32 @@ function cap_op_10_retro(id_project,unidad){
 }
 
 function roi_s_ene(id_project){
-    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+    var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
+
+if(counter_val_prod_ene == 0){
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+}
 
-    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
-    var inv_ini_3 = document.getElementById('inv_ini_3').value
+if(counter_val_prod_ene == 1){
+    var inv_ini_2 = document.getElementById('inv_ini_1').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+}
 
-    $.ajax({
-        type: 'get',
-        url: "/roi_s_ene/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 + '/' + dif_2_cost + '/' + inv_ini_3,
+if(counter_val_prod_ene == 2){
+    var inv_ini_2 = document.getElementById('inv_ini_1').value;
+    var inv_ini_3 = document.getElementById('inv_ini_2').value;
+}
+
+var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+
+var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+
+
+
+$.ajax({
+    type: 'get',
+    url: "/roi_s_ene/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 + '/' + dif_2_cost + '/' + inv_ini_3 + '/'+ counter_val_prod_ene,
         success: function (res) {
 
     var options = {
@@ -4501,14 +4597,45 @@ function roi_s_ene(id_project){
     });
 }
 
-function roi_ene_prod(id_project,costo_base,costo_a,costo_b){
-    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+function roi_ene_prod(id_project){
+    var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
+
+
+
+if(counter_val_prod_ene == 0){
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    var costo_base = '{{$costo_base}}';
+    var costo_a = '{{$costo_a}}';
+    var costo_b = '{{$costo_b}}';
+}
+
+if(counter_val_prod_ene == 1){
+    var inv_ini_2 = document.getElementById('inv_ini_1').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    var costo_base = '{{$costo_a}}';
+    var costo_a = '{{$costo_base}}';
+    var costo_b = '{{$costo_b}}';
+}
+if(counter_val_prod_ene == 2){
+    var inv_ini_2 = document.getElementById('inv_ini_1').value;
+    var inv_ini_3 = document.getElementById('inv_ini_2').value;
+    var costo_base = '{{$costo_b}}';
+    var costo_a = '{{$costo_base}}';
+    var costo_b = '{{$costo_a}}';
+}
+
+var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+
+var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+
+    /* var dif_1_cost = document.getElementById('dif_cost_base_a').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     var dif_2_cost = document.getElementById('dif_cost_base_b').value;
-    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value; */
     $.ajax({
         type: 'get',
-        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b,
+        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b +'/'+counter_val_prod_ene,
         success: function (res) {
 
 
@@ -7408,14 +7535,32 @@ function roi_base_b_print(id_project){
 }
 
 function roi_s_ene_print(id_project){
-    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
-    var inv_ini_2 = document.getElementById('inv_ini_2').value;
-    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
-    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
 
-    $.ajax({
-        type: 'get',
-        url: "/roi_s_ene/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 + '/' + dif_2_cost + '/' + inv_ini_3,
+if(counter_val_prod_ene == 0){
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+}
+
+if(counter_val_prod_ene == 1){
+    var inv_ini_2 = document.getElementById('inv_ini_1').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+}
+
+if(counter_val_prod_ene == 2){
+    var inv_ini_2 = document.getElementById('inv_ini_1').value;
+    var inv_ini_3 = document.getElementById('inv_ini_2').value;
+}
+
+var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+
+var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+
+
+
+$.ajax({
+    type: 'get',
+    url: "/roi_s_ene/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 + '/' + dif_2_cost + '/' + inv_ini_3 + '/'+ counter_val_prod_ene,
         success: function (res) {
 
 
@@ -7560,13 +7705,44 @@ function roi_s_ene_print(id_project){
 }
 
 function roi_ene_prod_print(id_project,costo_base,costo_a,costo_b){
-    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+    var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
+
+
+
+if(counter_val_prod_ene == 0){
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    var costo_base = '{{$costo_base}}';
+    var costo_a = '{{$costo_a}}';
+    var costo_b = '{{$costo_b}}';
+}
+
+if(counter_val_prod_ene == 1){
+    var inv_ini_2 = document.getElementById('inv_ini_1').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    var costo_base = '{{$costo_a}}';
+    var costo_a = '{{$costo_base}}';
+    var costo_b = '{{$costo_b}}';
+}
+if(counter_val_prod_ene == 2){
+    var inv_ini_2 = document.getElementById('inv_ini_1').value;
+    var inv_ini_3 = document.getElementById('inv_ini_2').value;
+    var costo_base = '{{$costo_b}}';
+    var costo_a = '{{$costo_base}}';
+    var costo_b = '{{$costo_a}}';
+}
+
+var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+
+var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+
+    /* var dif_1_cost = document.getElementById('dif_cost_base_a').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     var dif_2_cost = document.getElementById('dif_cost_base_b').value;
-    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value; */
     $.ajax({
         type: 'get',
-        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b,
+        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b +'/'+counter_val_prod_ene,
         success: function (res) {
 
 
