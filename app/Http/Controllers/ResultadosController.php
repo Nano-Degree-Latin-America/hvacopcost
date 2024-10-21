@@ -6078,9 +6078,9 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
     } */
 
 
-     public function roi_s_ene($id_projecto,$dif_cost,$inv_ini,$dif_cost_c,$inv_ini_c){
+     public function roi_s_ene($id_projecto,$dif_cost,$inv_ini,$dif_cost_c,$inv_ini_c,$counter_val){
         $funciones = new funciones();
-        $array_a = [0,0,0,0];
+        $array_a = [];
         $array_b = [];
         $array_c = [];
         $array_res = [];
@@ -6095,17 +6095,17 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
         ->first()->inflacion;
         //ince_an_ene
 
-        $tipo_mant_1 = DB::table('solutions_project')
+        $tipo_mant_1_set = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',1)
         ->where('solutions_project.num_sol','=',1)
-        ->first()->tipo_ambiente;
+        ->first();
 
-        $prot_cond_1 = DB::table('solutions_project')
+        $prot_cond_1_set = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',1)
         ->where('solutions_project.num_sol','=',1)
-        ->first()->proteccion_condensador;
+        ->first();
 
         $tipo_mant_2_set = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id_projecto)
@@ -6130,6 +6130,14 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
         ->where('solutions_project.num_enf','=',3)
         ->where('solutions_project.num_sol','=',1)
         ->first();
+
+        if($tipo_mant_1_set){
+            $tipo_mant_1 = $tipo_mant_1_set->tipo_ambiente;
+            $prot_cond_1 = $prot_cond_1_set->proteccion_condensador;
+        }else{
+            $tipo_mant_1 = null;
+            $prot_cond_1 = null;
+        }
 
 
         if($tipo_mant_2_set){
@@ -6156,31 +6164,56 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
             $inflacion = 1;
         }
 
-
-        if($tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
-            $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini,5);
-        }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre'){
-            $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini,10);
+        if($counter_val == 0){
+            $array_a = [0,0,0,0];
         }else{
-            $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini,15);
+            if($tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
+                $array_a = $funciones->roi($dif_cost,$inflacion,$inv_ini,5);
+            }else if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'infiniguard' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'cobre_cobre'){
+                $array_a = $funciones->roi($dif_cost,$inflacion,$inv_ini,10);
+            }else{
+                $array_a = $funciones->roi($dif_cost,$inflacion,$inv_ini,15);
+            }
+        }
+
+        if($counter_val == 1){
+            $array_b = [0,0,0,0];
+        }else{
+            if($tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+                $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini,5);
+            }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre'){
+                $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini,10);
+            }else{
+                $array_b = $funciones->roi($dif_cost,$inflacion,$inv_ini,15);
+            }
         }
 
 
-        if(intval($dif_cost_c) === 0 || intval($inv_ini_c) === 0){
+        if($counter_val == 2){
             $array_c = [0,0,0,0];
         }else{
-
-            if($tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
-                $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c,5);
-            }else if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre'){
-                $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c,10);
+            if(intval($dif_cost_c) === 0 || intval($inv_ini_c) === 0){
+                $array_c = [0,0,0,0];
             }else{
-                $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c,15);
+
+                if($tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+                    $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c,5);
+                }else if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre'){
+                    $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c,10);
+                }else{
+                    $array_c = $funciones->roi($dif_cost_c,$inflacion,$inv_ini_c,15);
+                }
+
+
+
             }
-
-
-
         }
+
+
+
+
+
+
         array_push($array_res,$array_a,$array_b,$array_c);
 
         return response()->json($array_res);

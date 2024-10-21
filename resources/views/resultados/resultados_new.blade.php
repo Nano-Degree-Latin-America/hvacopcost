@@ -2287,9 +2287,38 @@ if($counter == 2){
                         </div>
 
                     </div>
-                    <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$val_a_red_ene}}">
 
-                    <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$val_b_red_ene}}">
+                    <?php
+                    $array_val_vals =  [intval($val_base_red_ene),intval($val_a_red_ene),intval($val_b_red_ene)];
+                    $counter_val_prod_ene = 0;
+                    for ($i=0; $i < count($array_val_vals); $i++) {
+                        if($array_val_vals[$i] == 0){
+                            $counter_val_prod_ene = $i;
+                        }
+                    }
+
+
+                    ?>
+
+                    @if ($counter_val_prod_ene == 0)
+                        <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$val_a_red_ene}}">
+                        <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$val_b_red_ene}}">
+                        <input type="number" class="hidden" id="counter_val_prod_ene" name="counter_val_prod_ene" value="{{$counter_val_prod_ene}}">
+                    @endif
+
+                    @if ($counter_val_prod_ene == 1)
+                        <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$val_base_red_ene}}">
+                        <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$val_b_red_ene}}">
+                        <input type="number" class="hidden" id="counter_val_prod_ene" name="counter_val_prod_ene" value="{{$counter_val_prod_ene}}">
+                    @endif
+
+                    @if ($counter_val_prod_ene == 2)
+                        <input type="number" class="hidden" id="dif_cost_base_a" name="dif_cost_base_a" value="{{$val_base_red_ene}}">
+                        <input type="number" class="hidden" id="dif_cost_base_b" name="dif_cost_base_b" value="{{$val_a_red_ene}}">
+                        <input type="number" class="hidden" id="counter_val_prod_ene" name="counter_val_prod_ene" value="{{$counter_val_prod_ene}}">
+                    @endif
+
+
                     <div class="w-1/2">
                         <div id="chart_roi_base_a" name="chart_roi_base_a" style="width: 600px;"></div>
                         <div class="hidden" style="height:250px;"  id="chart_roi_base_a_print" name="chart_roi_base_a_print"></div>
@@ -6269,9 +6298,11 @@ function roi_s_ene(id_project){
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     var dif_2_cost = document.getElementById('dif_cost_base_b').value;
     var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
+
     $.ajax({
         type: 'get',
-        url: "/roi_s_ene/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 + '/' + dif_2_cost + '/' + inv_ini_3,
+        url: "/roi_s_ene/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 + '/' + dif_2_cost + '/' + inv_ini_3 + '/'+ counter_val_prod_ene,
         success: function (res) {
 
     var options = {
