@@ -151,7 +151,7 @@ Route::get('roi_s_ene/{id_project}/{dif_cost}/{inv_ini}/{dif_cost_2}/{inv_ini_2}
 Route::get('roi_base_a_retro/{id_project}/{dif_cost}/{inv_ini}', 'ResultadosController@roi_base_a_retro');
 Route::get('roi_base_a_retro_new/{id_project}/{dif_cost}/{inv_ini}', 'ResultadosController@roi_base_a_retro_new');
 Route::get('roi_base_a_retro_ene_prod/{id_project}/{dif_cost}/{inv_ini}/{costobase}/{costo}', 'ResultadosController@roi_base_a_retro_ene_prod');
-Route::get('roi_ene_prod/{id_project}/{dif_cost}/{inv_ini}/{costobase}/{costo_a}/{dif_cost_2}/{inv_ini_2}/{costo_b}', 'ResultadosController@roi_ene_prod');
+Route::get('roi_ene_prod/{id_project}/{dif_cost}/{inv_ini}/{costobase}/{costo_a}/{dif_cost_2}/{inv_ini_2}/{costo_b}/{counter_val}', 'ResultadosController@roi_ene_prod');
 Route::get('red_hu_carb_grafic/{dif}/{dif_2}', 'ResultadosController@red_hu_carb_grafic');
 Route::get('red_en_mw_grafic/{dif}/{dif_2}', 'ResultadosController@red_en_mw_grafic');
 Route::post('cerrar_session', 'IndexController@cerrar_session')->name('cerrar_session');
