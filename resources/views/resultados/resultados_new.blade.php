@@ -929,12 +929,14 @@ cursor: pointer;
                                     <?php  $unid_med_1=$smasolutions->unid_med($id_project,$result1->num_enf) ?>
                                     <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
                                     <?php  $inv_ini_1=$smasolutions->inv_ini($id_project,$result1->num_enf) ?>
+                                     <input type="number" class="hidden" id="inv_ini_1" name="inv_ini_1" value="{{$inv_ini_1}}">
                                     @elseif($result1 === null)
                                     <?php $sumaopex_1=0?>
                                     <?php $sumacap_term_1=0?>
                                      <?php $unid_med_1=""?>
                                      <?php  $result_area_1=0 ?>
                                      <?php $inv_ini_1=0?>
+                                      <input type="number" class="hidden" id="inv_ini_1" name="inv_ini_1" value="{{$inv_ini_1}}">
                                     @endif
                                     <div class="flex w-full justify-center gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_1)}}</p><b class="unit_style">Kwh</b>
@@ -6294,11 +6296,28 @@ var vals_min_string = vals_min.toString();
 } */
 
 function roi_s_ene(id_project){
-    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
-    var inv_ini_2 = document.getElementById('inv_ini_2').value;
-    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
-    var inv_ini_3 = document.getElementById('inv_ini_3').value;
     var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
+
+    if(counter_val_prod_ene == 0){
+        var inv_ini_2 = document.getElementById('inv_ini_2').value;
+        var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    }
+
+    if(counter_val_prod_ene == 1){
+        var inv_ini_2 = document.getElementById('inv_ini_1').value;
+        var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    }
+
+    if(counter_val_prod_ene == 2){
+        var inv_ini_2 = document.getElementById('inv_ini_1').value;
+        var inv_ini_3 = document.getElementById('inv_ini_2').value;
+    }
+
+    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+
+    var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+
+
 
     $.ajax({
         type: 'get',
