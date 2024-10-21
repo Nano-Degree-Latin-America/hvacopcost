@@ -9943,14 +9943,45 @@ function roi_base_a_ene_prod_print(id_project,costo_base,costo){
     });
 }
 
-function roi_ene_prod_print(id_project,costo_base,costo_a,costo_b){
-    var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+function roi_ene_prod_print(id_project){
+    var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
+
+
+
+if(counter_val_prod_ene == 0){
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    var costo_base = '{{$costo_base}}';
+    var costo_a = '{{$costo_a}}';
+    var costo_b = '{{$costo_b}}';
+}
+
+if(counter_val_prod_ene == 1){
+    var inv_ini_2 = document.getElementById('inv_ini_1').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    var costo_base = '{{$costo_a}}';
+    var costo_a = '{{$costo_base}}';
+    var costo_b = '{{$costo_b}}';
+}
+if(counter_val_prod_ene == 2){
+    var inv_ini_2 = document.getElementById('inv_ini_1').value;
+    var inv_ini_3 = document.getElementById('inv_ini_2').value;
+    var costo_base = '{{$costo_b}}';
+    var costo_a = '{{$costo_base}}';
+    var costo_b = '{{$costo_a}}';
+}
+
+var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+
+var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+
+    /* var dif_1_cost = document.getElementById('dif_cost_base_a').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     var dif_2_cost = document.getElementById('dif_cost_base_b').value;
-    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value; */
     $.ajax({
         type: 'get',
-        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b,
+        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b +'/'+counter_val_prod_ene,
         success: function (res) {
 
 
