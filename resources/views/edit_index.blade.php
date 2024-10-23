@@ -534,6 +534,21 @@ $idm = App::getLocale();
                                                                 @endif
                                                             @endif
 
+                                                            @if($pais->pais === 'Arizona')
+                                                            <?php  $check_pais=$paises_empresa->check_pais('Centro América'); ?>
+                                                            @if ($check_pais)
+                                                                    @if($check_pais->pais === $pais->pais)
+                                                                        @if ($project_edit->region == $pais->pais)
+                                                                        <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif
+                                                                        @if ($project_edit->region != $pais->pais)
+                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                                        @endif                                                                        @endif
+                                                            @else
+                                                                <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
+                                                            @endif
+                                                        @endif
+
                                                             @endforeach
                                                     </select>
                                                     <input id="count_paises" name="count_paises" type="number" class="hidden" value="1">

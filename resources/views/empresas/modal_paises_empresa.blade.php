@@ -17,6 +17,14 @@
               <div class="mt-2 w-full flex gap-x-3">
                 <div class="grid w-1/2">
                         <div class="w-full flex gap-x-2">
+                            <?php  $Arizona=$pais_empresa->paises_empresa($empresa->id,'Arizona') ?>
+                            @if ($Arizona === null)
+                                <input type="checkbox" onclick="change_pais({{$empresa->id}},'Arizona')"><label class="mt-1">Arizona</label>
+                                    @elseif($Arizona !== null)
+                                <input type="checkbox" onclick="change_pais({{$empresa->id}},'Arizona')" checked><label for="" class="mt-1">Arizona</label>
+                            @endif
+                        </div>
+                        <div class="w-full flex gap-x-2">
                             <?php  $Argentina=$pais_empresa->paises_empresa($empresa->id,'Argentina') ?>
                               @if ($Argentina === null)
                                 <input type="checkbox" onclick="change_pais({{$empresa->id}},'Argentina')"><label class="mt-1">Argentina</label>
