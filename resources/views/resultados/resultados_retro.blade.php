@@ -294,6 +294,10 @@
             font-size: 2.5rem;
         }
 
+        .payback_cants_green_6{
+            font-size: 2.3rem;
+        }
+
         .mt_titles{
             margin-top:2.5rem;
         }
@@ -331,6 +335,12 @@
         .padding_pay_5{
           padding-right:15px;
           padding-left:15px;
+        }
+
+        .padding_pay_6
+        {
+            padding-right:0px;
+            padding-left:0px;
         }
 @media print{
   @page { margin: 0; }
@@ -526,6 +536,10 @@
             font-size: 14px;
         }
 
+        .payback_cants_green_6{
+            font-size: 13px;
+        }
+
          .img_ahorro{
             height:40px;
             width:40px;
@@ -579,6 +593,12 @@
         {
             padding-right:13px;
             padding-left:13px;
+        }
+
+        .padding_pay_6
+        {
+            padding-right:8px;
+            padding-left:8px;
         }
 
         .img_payback{
@@ -2012,11 +2032,11 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_base,1))) == 6 )
-                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_base,1)}}</b>
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green_6 font-roboto font-bold rounded-md padding_pay_6">{{number_format($pay_back_base,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_base,1))) == 7 )
-                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_base,1)}}</b>
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green_6 font-roboto font-bold rounded-md padding_pay_6">{{number_format($pay_back_base,1)}}</b>
                                         @endif
 
                                     @endif
@@ -2084,6 +2104,14 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                             <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a,1)}}</b>
                                             @endif
 
+                                            @if ((strlen(number_format($pay_back_a,1))) == 6 )
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green_6 font-roboto font-bold rounded-md padding_pay_6">{{number_format($pay_back_a,1)}}</b>
+                                            @endif
+
+                                            @if ((strlen(number_format($pay_back_a,1))) == 6 )
+                                            <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green_6 font-roboto font-bold rounded-md padding_pay_6">{{number_format($pay_back_a,1)}}</b>
+                                            @endif
+
                                         @endif
 
                                             @if ($pay_back_a < 1)
@@ -2145,6 +2173,16 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                                     @if ((strlen(number_format($pay_back_b,1))) == 5 )
                                                     <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_b,1)}}</b>
                                                     @endif
+
+                                                    @if ((strlen(number_format($pay_back_b,1))) == 6 )
+                                                    <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green_6 font-roboto font-bold rounded-md padding_pay_6">{{number_format($pay_back_b,1)}}</b>
+                                                    @endif
+
+                                                    @if ((strlen(number_format($pay_back_b,1))) == 7 )
+                                                    <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green_6 font-roboto font-bold rounded-md padding_pay_6">{{number_format($pay_back_b,1)}}</b>
+                                                    @endif
+
+
                                                 @endif
 
                                                 @if ($pay_back_b < 1)

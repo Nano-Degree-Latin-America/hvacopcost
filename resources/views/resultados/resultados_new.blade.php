@@ -315,6 +315,10 @@
             font-size: 2.5rem;
         }
 
+        .payback_cants_green_6{
+            font-size: 2.3rem;
+        }
+
         .mt_titles{
             margin-top:2.5rem;
         }
@@ -354,6 +358,12 @@
         {
             padding-right:15px;
             padding-left:15px;
+        }
+
+        .padding_pay_6
+        {
+            padding-right:0px;
+            padding-left:0px;
         }
 
 @media print{
@@ -571,6 +581,10 @@
             font-size: 14px;
         }
 
+        .payback_cants_green_6{
+            font-size: 13px;
+        }
+
          .img_ahorro{
             height:40px;
             width:40px;
@@ -623,6 +637,12 @@
         {
             padding-right:15px;
             padding-left:15px;
+        }
+
+        .padding_pay_6
+        {
+            padding-right:8px;
+            padding-left:8px;
         }
 
 
@@ -2172,6 +2192,7 @@ if($counter == 2){
 
                                             @if($val_a_red_ene !== 0)
                                             <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$val_a_red_ene) ?>
+
                                             @if ($pay_back_a >= 1)
                                                 @if ((strlen(number_format($pay_back_a,1))) == 1 )
                                                 <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_a,1)}}</b>
@@ -2191,6 +2212,14 @@ if($counter == 2){
 
                                                 @if ((strlen(number_format($pay_back_a,1))) == 5 )
                                                     <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a,1)}}</b>
+                                                @endif
+
+                                                @if ((strlen(number_format($pay_back_a,1))) == 6 )
+                                                <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green_6 font-roboto font-bold rounded-md padding_pay_6">{{number_format($pay_back_a,1)}}</b>
+                                                @endif
+
+                                                @if ((strlen(number_format($pay_back_a,1))) == 7 )
+                                                <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green_6 font-roboto font-bold rounded-md padding_pay_6">{{number_format($pay_back_a,1)}}</b>
                                                 @endif
 
                                             @endif
@@ -2266,6 +2295,14 @@ if($counter == 2){
 
                                             @if ((strlen(number_format($pay_back_b,1))) == 5 )
                                             <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_b,1)}}</b>
+                                            @endif
+
+                                            @if ((strlen(number_format($pay_back_b,1))) == 6 )
+                                            <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green_6 font-roboto font-bold rounded-md padding_pay_6">{{number_format($pay_back_b,1)}}</b>
+                                            @endif
+
+                                            @if ((strlen(number_format($pay_back_b,1))) == 7 )
+                                            <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green_6 font-roboto font-bold rounded-md padding_pay_6">{{number_format($pay_back_b,1)}}</b>
                                             @endif
                                         @endif
 
