@@ -908,7 +908,7 @@ cursor: pointer;
                     <div class="w-1/3 grid justify-items-center gap-y-2">
                         <?php  $capacidad2=$smasolutions->sumacap_term($id_project,2) ?>
                             <label style="margin-right:100px;" class="solucions_style_name  font-bold">Solución B</label>
-                            <p  style="margin-right:100px;" class="font-bold font-roboto cant_2">{{number_format($capacidad2)}}</p>
+                            <p  style="margin-right:100px;" class="font-bold font-roboto cant_2">{{$capacidad2}}</p>
                     </div>
 
 
