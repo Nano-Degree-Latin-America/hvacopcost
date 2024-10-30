@@ -384,17 +384,7 @@ function active_display(value){
             $('#base_border_bottom').css('border-bottom-right-radius', '2px');
             $('#base_border_bottom').css('border-bottom-left-radius', '2px');
 
-        }/* else if(cont_sol_1 == 3){
-            set_sol_1 =  set_sol_1 + 1;
-            cont_sol_1 =  cont_sol_1 + 1;
-            $('#set_sol_1').val(set_sol_1);
-            $('#cont_sol_1').val(cont_sol_1);
-            $( "#sol_1_2" ).removeClass( "hidden" );
-            $( "#sol_1_3" ).removeClass( "hidden" );
-
-        } */
-
-
+        }
     }else if(value == 'sol_2') {
 
         if(cont_sol_2 == 2){
@@ -406,12 +396,7 @@ function active_display(value){
              $('#2_border_bottom').css("border-color","#3182ce");
              $('#2_border_bottom').css('border-bottom-right-radius', '2px');
              $('#2_border_bottom').css('border-bottom-left-radius', '2px');
-        }/* else if(cont_sol_2 == 3){
-            cont_sol_2 =  cont_sol_2 + 1;
-            $('#cont_sol_2').val(cont_sol_2);
-            $( "#sol_2_2" ).removeClass( "hidden" );
-            $( "#sol_2_3" ).removeClass( "hidden" );
-        } */
+        }
 
     }else if(value == 'sol_3') {
         if(cont_sol_3 == 2){
@@ -423,12 +408,7 @@ function active_display(value){
             $('#3_border_bottom').css("border-color","#3182ce");
             $('#3_border_bottom').css('border-bottom-right-radius', '2px');
             $('#3_border_bottom').css('border-bottom-left-radius', '2px');
-        }/* else if(cont_sol_3 == 3){
-            cont_sol_3 =  cont_sol_3 + 1;
-            $('#cont_sol_3').val(cont_sol_3);
-            $( "#sol_3_2" ).removeClass( "hidden" );
-            $( "#sol_3_3" ).removeClass( "hidden" );
-        } */
+        }
 
     }
 }
@@ -641,9 +621,12 @@ function set_unit_type(value){
 
         case "2":
         var arry = '{ "arr" : [' +
-        '{ "text":"Manejadora" , "value":"manejadora" },' +
-        '{ "text":"Fancoil M/HSP" , "value":"fancoil" },' +
-        '{"text":"Fancoil LSP" , "value":"fancoil_lsp_spt" } ]}';
+        '{ "text":"Manejadora (Hasta 7.5 m)" , "value":"manejadora" },' +
+        '{ "text":"Manejadora (7.6 a 30 m)" , "value":"manejadora2" },' +
+        '{ "text":"Fancoil M/HSP (Hasta 7.5 m)" , "value":"fancoil" },' +
+        '{ "text":"Fancoil M/HSP (7.6 a 15 m)" , "value":"fancoil2" },' +
+        '{ "text":"Fancoil LSP (Hasta 7.5 m)" , "value":"fancoil_lsp_spt" },' +
+        '{ "text":"Fancoil LSP (7.6 a 15 m)" , "value":"fancoil_lsp_spt2" } ]}';
         break;
         case "3":
         var arry = '{ "arr" : [' +
@@ -682,11 +665,15 @@ function set_unit_type(value){
         break;
         case "7":
         var arry =  '{ "arr" : [' +
-        '{ "text":"Pared - Piso - Techo" , "value":"pa_pi_te" },' +
-        '{ "text":"Ductado (Concealed)" , "value":"duc_con" },' +
-        '{ "text":"Cassette" , "value":"cass" }' +
+        '{ "text":"Pared - Piso - Techo (Hasta 7.5 m)" , "value":"pa_pi_te" },' +
+        '{ "text":"Pared - Piso - Techo (7.6 a 15 m)" , "value":"pa_pi_te2" },' +
+        '{ "text":"Concealed (Hasta 7.5 m)" , "value":"duc_con" },' +
+        '{ "text":"Concealed (7.6 a 15 m)" , "value":"duc_con2" },' +
+        '{ "text":"Cassette (Hasta 7.5 m)" , "value":"cass" },' +
+        '{ "text":"Cassette (7.6 a 15 m)" , "value":"cass2" }' +
         ']}';
         break;
+
         /* case "8":
             var arry = '{ "arr" : [' +
             '{ "text":"Manejadora" , "value":"man_scholl_const" },' +
@@ -931,7 +918,25 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
          '{ "text":"Inyección y Retorno Ductado" , "value":0} ]}';
     break;
 
+    case "manejadora2":
+
+      var arry_disenio = '{ "arry_diseño" : [' +
+         '{ "text":"Descarga Directa Sin Ductar" , "value":0.08},' +
+         '{ "text":"Descarga Directa Ductada" , "value":0.05},' +
+         '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.11},' +
+         '{ "text":"Inyección y Retorno Ductado" , "value":0} ]}';
+    break;
+
     case "fancoil":
+
+      var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Descarga Directa Sin Ductar" , "value":0.08},' +
+          '{ "text":"Descarga Directa Ductada" , "value":0.05},' +
+          '{ "text":"Ducto Flex. y Plenum Retorno" , "value":0.12},' +
+          '{"text":"Inyección y Retorno Ductado" , "value":0 } ]}';
+    break;
+
+    case "fancoil2":
 
       var arry_disenio = '{ "arry_diseño" : [' +
           '{ "text":"Descarga Directa Sin Ductar" , "value":0.08},' +
@@ -947,7 +952,16 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
           '{ "text":"Descarga Directa Ductada" , "value":0.06},' +
           '{"text":"Ducto Flex. y Plenum Retorno" , "value":0.12 } ]}';
 
-  break;
+    break;
+
+    case "fancoil_lsp_spt2":
+
+    var arry_disenio = '{ "arry_diseño" : [' +
+          '{ "text":"Descarga Directa Sin Ductar" , "value":0.08},' +
+          '{ "text":"Descarga Directa Ductada" , "value":0.06},' +
+          '{"text":"Ducto Flex. y Plenum Retorno" , "value":0.12 } ]}';
+
+    break;
 
     case "ca_pi_te":
       var arry_disenio = '{ "arry_diseño" : [' +
@@ -1029,6 +1043,13 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
       '{ "text":"Condensador Arriba" , "value":0.12},' +
       '{ "text":"Condensador Abajo" , "value":0.1},' +
       '{ "text":"Espalda con Espalda" , "value":0} ]}';
+    break;
+
+    case "pa_pi_te2":
+        var arry_disenio = '{ "arry_diseño" : [' +
+        '{ "text":"Condensador Arriba" , "value":0.12},' +
+        '{ "text":"Condensador Abajo" , "value":0.1},' +
+        '{ "text":"Espalda con Espalda" , "value":0} ]}';
       break;
 
     case "duc_con":
@@ -1037,11 +1058,23 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
       '{ "text":"Inyección Ductada y Plenum Retorno" , "value":0.07} ]}';
       break;
 
+      case "duc_con2":
+        var arry_disenio = '{ "arry_diseño" : [' +
+        '{ "text":"Inyección y Retorno Ductado" , "value":0},' +
+        '{ "text":"Inyección Ductada y Plenum Retorno" , "value":0.07} ]}';
+        break;
+
       case "cass":
           var arry_disenio = '{ "arry_diseño" : [' +
           '{ "text":"Condensador Arriba" , "value":0.12},' +
           '{ "text":"Condensador Abajo" , "value":0.1} ]}';
       break;
+
+      case "cass2":
+        var arry_disenio = '{ "arry_diseño" : [' +
+        '{ "text":"Condensador Arriba" , "value":0.12},' +
+        '{ "text":"Condensador Abajo" , "value":0.1} ]}';
+    break;
 
 
    case "man_scholl_const":
@@ -1155,6 +1188,14 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
             '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
         break;
 
+        case "manejadora2":
+
+        var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
+            '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+            '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+        break;
+
         case "fancoil":
 
         var arry_control = '{ "arry_control" : [' +
@@ -1163,8 +1204,22 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
             '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
         break;
 
-        case "fancoil_lsp_spt":
+        case "fancoil2":
 
+        var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
+            '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+            '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+        break;
+
+        case "fancoil_lsp_spt":
+        var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
+            '{ "text":"Termostato en Zona de Confort" , "value":1},' +
+            '{"text":"Termostato Inteligente en Zona" , "value":0.95 } ]}';
+        break;
+
+        case "fancoil_lsp_spt2":
         var arry_control = '{ "arry_control" : [' +
             '{ "text":"Termostato Fuera Zona de Confort" , "value":1.06},' +
             '{ "text":"Termostato en Zona de Confort" , "value":1},' +
@@ -1276,13 +1331,30 @@ function change_diseño(value,num_div,id_select,id_tipo_control,id_dr,id_tipo_ve
         '{"text":"Termostato Interno" , "value":1.04 }  ]}';
         break;
 
+        case "pa_pi_te2":
+            var arry_control = '{ "arry_control" : [' +
+            '{"text":"Termostato Interno" , "value":1.04 }  ]}';
+        break;
+
         case "duc_con":
         var arry_control = '{ "arry_control" : [' +
         '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.06},' +
         '{"text":"Termostato Inteligente en Zona" , "value":0.94 }  ]}';
         break;
 
+        case "duc_con2":
+            var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Inteligente Fuera Zona" , "value":1.06},' +
+            '{"text":"Termostato Inteligente en Zona" , "value":0.94 }  ]}';
+            break;
+
         case "cass":
+            var arry_control = '{ "arry_control" : [' +
+            '{ "text":"Termostato Interno" , "value":1.04},' +
+            '{"text":"Termostato Inteligente en Zona" , "value":0.94 }  ]}';
+        break;
+
+        case "cass2":
             var arry_control = '{ "arry_control" : [' +
             '{ "text":"Termostato Interno" , "value":1.04},' +
             '{"text":"Termostato Inteligente en Zona" , "value":0.94 }  ]}';
@@ -1404,6 +1476,16 @@ function set_dr(value,equipo_value){
 
         break;
 
+        case "manejadora2":
+            var arry_dr = '{ "arry_dr" : [' +
+             '{ "text":"No Aplica" , "value":0},' +
+             '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
+             '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+            $('#'+equipo_value).val(1.06);
+
+        break;
+
         case "fancoil":
 
           var arry_dr = '{ "arry_dr" : [' +
@@ -1411,19 +1493,38 @@ function set_dr(value,equipo_value){
               '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
-            $('#'+equipo_value).val(1.05);
+            $('#'+equipo_value).val(1.045);
+        break;
+
+        case "fancoil2":
+
+          var arry_dr = '{ "arry_dr" : [' +
+              '{ "text":"No Aplica" , "value":0},' +
+              '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
+              '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+            $('#'+equipo_value).val(1.065);
         break;
 
         case "fancoil_lsp_spt":
-
         var arry_dr = '{ "arry_dr" : [' +
               '{ "text":"No Aplica" , "value":0},' +
               '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
               '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
 
-          $('#'+equipo_value).val(1.09);
+          $('#'+equipo_value).val(1.055);
 
-      break;
+        break;
+
+        case "fancoil_lsp_spt2":
+            var arry_dr = '{ "arry_dr" : [' +
+                  '{ "text":"No Aplica" , "value":0},' +
+                  '{ "text":"Cumple ASHRAE Standard 70" , "value":-0.01},' +
+                  '{"text":"No Cumple ASHRAE Standard 70" , "value":0.11 } ]}';
+
+              $('#'+equipo_value).val(1.075);
+
+        break;
 
         case "ca_pi_te":
           var arry_dr = '{ "arry_dr" : [' +
@@ -1550,6 +1651,14 @@ function set_dr(value,equipo_value){
 
         break;
 
+        case "pa_pi_te2":
+            var arry_dr = '{ "arry_dr" : [' +
+            '{"text":"No Aplica" , "value":0.08 } ]}';
+
+            $('#'+equipo_value).val(0.95);
+
+            break;
+
       case "duc_con":
         var arry_dr = '{ "arry_dr" : [' +
         '{"text":"No Aplica" , "value":0.08 } ]}';
@@ -1558,7 +1667,23 @@ function set_dr(value,equipo_value){
 
         break;
 
+        case "duc_con2":
+            var arry_dr = '{ "arry_dr" : [' +
+            '{"text":"No Aplica" , "value":0.08 } ]}';
+
+            $('#'+equipo_value).val(0.92);
+
+            break;
+
         case "cass":
+            var arry_dr = '{ "arry_dr" : [' +
+            '{"text":"No Aplica" , "value":0.08 } ]}';
+
+            $('#'+equipo_value).val(0.93);
+
+        break;
+
+        case "cass2":
             var arry_dr = '{ "arry_dr" : [' +
             '{"text":"No Aplica" , "value":0.08 } ]}';
 
@@ -1673,7 +1798,24 @@ function set_filtracion(value){
             '{"text":"Sin Filtros" , "value":1.12 } ]}';
         break;
 
+        case "manejadora2":
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+            '{ "text":"Metalicos Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
+        break;
+
         case "fancoil":
+
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+            '{ "text":"Metalicos Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.2 } ]}';
+        break;
+
+        case "fancoil2":
 
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
@@ -1690,6 +1832,15 @@ function set_filtracion(value){
             '{ "text":"Metalicos Lavables" , "value":1.08},' +
             '{"text":"Sin Filtros" , "value":1.12 } ]}';
       break;
+
+      case "fancoil_lsp_spt2":
+
+      var arry_filt = '{ "arry_filt" : [' +
+      '{ "text":"MERV ≥ 7" , "value":1},' +
+      '{ "text":"MERV ≥ 7 Lavables" , "value":1.04},' +
+      '{ "text":"Metalicos Lavables" , "value":1.08},' +
+      '{"text":"Sin Filtros" , "value":1.12 } ]}';
+        break;
 
         case "ca_pi_te":
             var arry_filt = '{ "arry_filt" : [' +
@@ -1782,6 +1933,13 @@ function set_filtracion(value){
         '{"text":"Sin Filtros" , "value":1.12 } ]}';
         break;
 
+        case "pa_pi_te2":
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV < 7  Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
+            break;
+
       case "duc_con":
         var arry_filt = '{ "arry_filt" : [' +
         '{ "text":"MERV ≥ 7" , "value":1},' +
@@ -1789,7 +1947,21 @@ function set_filtracion(value){
         '{"text":"Sin Filtros" , "value":1.12 } ]}';
         break;
 
+        case "duc_con2":
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV < 7  Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
+            break;
+
         case "cass":
+            var arry_filt = '{ "arry_filt" : [' +
+            '{ "text":"MERV ≥ 7" , "value":1},' +
+            '{ "text":"MERV < 7  Lavables" , "value":1.08},' +
+            '{"text":"Sin Filtros" , "value":1.12 } ]}';
+        break;
+
+        case "cass2":
             var arry_filt = '{ "arry_filt" : [' +
             '{ "text":"MERV ≥ 7" , "value":1},' +
             '{ "text":"MERV < 7  Lavables" , "value":1.08},' +
@@ -1834,7 +2006,22 @@ function set_ventilacion(value){
             '{"text":"Sin Ventilación" , "value":0.1 } ]}';
         break;
 
+        case "manejadora2":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
+
         case "fancoil":
+
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+              '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
+
+        case "fancoil2":
 
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
@@ -1849,6 +2036,14 @@ function set_ventilacion(value){
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
             '{"text":"Sin Ventilación" , "value":0.1 } ]}';
       break;
+
+      case "fancoil_lsp_spt2":
+
+      var arry_vent = '{ "arry_vent" : [' +
+      '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+      '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+      '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+    break;
 
         case "ca_pi_te":
             var arry_vent = '{ "arry_vent" : [' +
@@ -1928,6 +2123,13 @@ function set_ventilacion(value){
         '{"text":"Sin Ventilación" , "value":0.1 } ]}';
         break;
 
+        case "pa_pi_te2":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+            break;
+
       case "duc_con":
         var arry_vent = '{ "arry_vent" : [' +
         '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
@@ -1935,7 +2137,21 @@ function set_ventilacion(value){
         '{"text":"Sin Ventilación" , "value":0.1 } ]}';
         break;
 
+        case "duc_con2":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+            break;
+
         case "cass":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
+
+        case "cass2":
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
@@ -1981,7 +2197,22 @@ function set_ventilacion_sin_doa(value){
             '{"text":"Sin Ventilación" , "value":0.1 } ]}';
         break;
 
+        case "manejadora2":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
+
         case "fancoil":
+
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+              '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
+
+        case "fancoil2":
 
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
@@ -1996,6 +2227,13 @@ function set_ventilacion_sin_doa(value){
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
             '{"text":"Sin Ventilación" , "value":0.1 } ]}';
       break;
+
+        case "fancoil_lsp_spt2":
+        var arry_vent = '{ "arry_vent" : [' +
+        '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+        '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+        '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
 
         case "ca_pi_te":
             var arry_vent = '{ "arry_vent" : [' +
@@ -2072,6 +2310,14 @@ function set_ventilacion_sin_doa(value){
         '{"text":"Sin Ventilación" , "value":0.1 } ]}';
         break;
 
+
+        case "pa_pi_te2":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+            break;
+
       case "duc_con":
         var arry_vent = '{ "arry_vent" : [' +
         '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
@@ -2079,7 +2325,21 @@ function set_ventilacion_sin_doa(value){
         '{"text":"Sin Ventilación" , "value":0.1 } ]}';
         break;
 
+        case "duc_con2":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+            break;
+
         case "cass":
+            var arry_vent = '{ "arry_vent" : [' +
+            '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
+            '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
+            '{"text":"Sin Ventilación" , "value":0.1 } ]}';
+        break;
+
+        case "cass2":
             var arry_vent = '{ "arry_vent" : [' +
             '{ "text":"Aire Exterior Constante" , "value":-0.05},' +
             '{ "text":"Aire Exterior y Sensor CO2" , "value":-0.15},' +
@@ -7948,7 +8208,7 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 }));
                 $("#"+cUnidad).append($('<option>', {
                     value: 7,
-                    text: 'Minisplit Inverter'
+                    text: 'MS Inverter'
                 }));
 /*                 $("#"+cUnidad).append($('<option>', {
                     value: 8,
@@ -7970,7 +8230,7 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                                     <option value="4">VRF Ductados</option>
                                     <option value="5">PTAC/VTAC</option>
                                     <option value="6">WSHP</option>
-                                    <option value="7">Minisplit Inverter</option>
+                                    <option value="7">MS Inverter</option>
                                     <option value="8">Chiller - Aire - Scroll Constante</option>
                                     <option value="9">Chiller - Aire - Scroll Variable</option>
                                     <option value="10">Chiller - Aire - Tornillo 4 Etapas</option>
@@ -13680,7 +13940,7 @@ cUnidad_3_3 */
                 }));
                 $("#cUnidad_1_1_retro").append($('<option>', {
                     value: 7,
-                    text: 'Minisplit Inverter'
+                    text: 'MS Inverter'
                 }));
   /*               $("#cUnidad_1_1_retro").append($('<option>', {
                     value: 8,
@@ -14470,6 +14730,93 @@ switch (tipo_ambiente_val) {
          case 'sin_proteccion':
 
          var value_sin_p =  Math.pow(1 - 0.015, 3);
+         $('#'+id_get).val(value_sin_p);
+         break;
+
+         case 'infiniguard':
+             $('#'+id_get).val(0.985);
+         break;
+
+         case 'cobre_cobre':
+             $('#'+id_get).val(1);
+         break;
+
+         default:
+         break;
+     }
+
+break
+
+
+    default:
+    break;
+}
+
+
+}
+
+function send_value_box_retro(id_set,id_get,tipo_ambiente,yrs){
+    tipo_ambiente_val =  $('#'+tipo_ambiente).val();
+
+    yrs =  $('#'+yrs).val();
+    alert(parseInt(yrs));
+switch (tipo_ambiente_val) {
+    case 'no_agresivo':
+
+        value = $('#'+id_set).val();
+        switch (value) {
+             case 'sin_proteccion':
+              $('#'+id_get).val(1);
+             break;
+
+             case 'infiniguard':
+
+                 $('#'+id_get).val(0.99);
+             break;
+
+             case 'cobre_cobre':
+                 $('#'+id_get).val(1);
+             break;
+
+             default:
+             break;
+         }
+
+    break;
+
+    case 'marino':
+
+        value = $('#'+id_set).val();
+        switch (value) {
+             case 'sin_proteccion':
+
+             var value_sin_p =  Math.pow(1 - 0.04, parseInt(yrs));
+             $('#'+id_get).val(value_sin_p);
+             break;
+
+             case 'infiniguard':
+                 $('#'+id_get).val(0.98);
+             break;
+
+             case 'cobre_cobre':
+                 $('#'+id_get).val(1);
+             break;
+
+             default:
+             break;
+         }
+
+    break;
+
+
+
+    case 'contaminado':
+
+    value = $('#'+id_set).val();
+    switch (value) {
+         case 'sin_proteccion':
+
+         var value_sin_p =  Math.pow(1 - 0.015, parseInt(yrs));
          $('#'+id_get).val(value_sin_p);
          break;
 

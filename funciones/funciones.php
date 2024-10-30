@@ -172,8 +172,12 @@ class funciones {
     }
 
     public function cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f,$am){
-        //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
+
+        //(((Kw / 3.5) x 12000 )x (Cooling Hours)) / (SEER x (1-Z)^Años de vida) x AM) / 1000
                   //(((Kw / 3.5)
+
+
+
                   //$kw =  $solution_enf1->capacidad_tot;
 
                   $kw_3_5 = $kw / 3.5;
@@ -623,7 +627,8 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
 
         if($equipo_conf_1_1 === 'basico' || $equipo_conf_1_1 === 'c_economizador'
          || $equipo_conf_1_1 === 'agu_cir_cer' || $equipo_conf_1_1 === 'agu_cir_abr'
-         || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'fancoil'
+         || $equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'manejadora2'
+         || $equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'fancoil2'
          || $equipo_conf_1_1 === 'man_scholl_const' || $equipo_conf_1_1 === 'man_doa'
          || $equipo_conf_1_1 === 'fan_hsp_doa' || $equipo_conf_1_1 === 'man_doa_hr'
          || $equipo_conf_1_1 === 'fan_hsp_doa_hr'){
@@ -692,7 +697,7 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
                 }
             }
 
-            if($equipo_conf_1_1 === 'manejadora'){
+            if($equipo_conf_1_1 === 'manejadora' || $equipo_conf_1_1 === 'manejadora2'){
                 switch ($diseno_conf_1_1) {
                     case 'Descarga Directa Sin Ductar':
                         $val_conf_dis_1_1 = 2;
@@ -756,7 +761,7 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
             }
 
             ///////////////fancoil////
-            if($equipo_conf_1_1 === 'fancoil'){
+            if($equipo_conf_1_1 === 'fancoil' || $equipo_conf_1_1 === 'fancoil2'){
                 switch ($diseno_conf_1_1) {
                     case 'Descarga Directa Sin Ductar':
                         $val_conf_dis_1_1 = 2;
@@ -1178,10 +1183,10 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
             }
         }
 
-        if($equipo_conf_1_1 === 'fancoil_lsp_spt' || $equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'ca' || $equipo_conf_1_1 === 'fancoil_lsp' || $equipo_conf_1_1 === 'vert'){
+        if($equipo_conf_1_1 === 'fancoil_lsp_spt' || $equipo_conf_1_1 === 'fancoil_lsp_spt2' || $equipo_conf_1_1 === 'ca_pi_te' || $equipo_conf_1_1 === 'ca' || $equipo_conf_1_1 === 'fancoil_lsp' || $equipo_conf_1_1 === 'vert'){
             $val_conf_equipo_1_1 = 4;
             ///////////////fancoil lsp spt////
-            if($equipo_conf_1_1 === 'fancoil_lsp_spt'){
+            if($equipo_conf_1_1 === 'fancoil_lsp_spt' || $equipo_conf_1_1 === 'fancoil_lsp_spt2'){
                 switch ($diseno_conf_1_1) {
                     case 'Descarga Directa Sin Ductar':
                         $val_conf_dis_1_1 = 2;
@@ -1475,10 +1480,10 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
             }
         }
 
-        if($equipo_conf_1_1 === 'duc_con' || $equipo_conf_1_1 === 'fan_hsp_scholl_const'){
+        if($equipo_conf_1_1 === 'duc_con' || $equipo_conf_1_1 === 'duc_con2' || $equipo_conf_1_1 === 'fan_hsp_scholl_const'){
             $val_conf_equipo_1_1 = 4.2;
 
-            if($equipo_conf_1_1 === 'duc_con'){
+            if($equipo_conf_1_1 === 'duc_con' || $equipo_conf_1_1 === 'duc_con2'){
 
                 switch ($diseno_conf_1_1) {
                     case 'Inyección y Retorno Ductado':
@@ -1584,7 +1589,7 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
               }
         }
 
-        if($equipo_conf_1_1 === 'horz' || $equipo_conf_1_1 === 'pa_pi_te' || $equipo_conf_1_1 === 'cass'){
+        if($equipo_conf_1_1 === 'horz' || $equipo_conf_1_1 === 'pa_pi_te' || $equipo_conf_1_1 === 'pa_pi_te2' || $equipo_conf_1_1 === 'cass' || $equipo_conf_1_1 === 'cass2'){
             $val_conf_equipo_1_1 = 3.5;
               if($equipo_conf_1_1 === 'horz'){
                   switch ($diseno_conf_1_1) {
@@ -1615,7 +1620,7 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
 
               }
 
-              if($equipo_conf_1_1 === 'pa_pi_te'){
+              if($equipo_conf_1_1 === 'pa_pi_te' || $equipo_conf_1_1 === 'pa_pi_te2'){
 
                   switch ($diseno_conf_1_1) {
                       case 'Condensador Arriba':
@@ -1663,7 +1668,7 @@ $res_ene_apl_tot_enf_1 = $tr_mul_twelve_div_efi_z_yrs_l_mul_cooling_hrs / 0.75;
 
           }
 
-          if($equipo_conf_1_1 === 'cass'){
+          if($equipo_conf_1_1 === 'cass' || $equipo_conf_1_1 === 'cass2'){
 
             $val_conf_equipo_1_1 = 3.8;
 

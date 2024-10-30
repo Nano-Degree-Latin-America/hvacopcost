@@ -3039,7 +3039,7 @@ $costo_b
                                             WSHP
                                             @endif
                                             @if ($solution->unidad_hvac == 7)
-                                            Minisplit Inverter
+                                            MS Inverter
                                             @endif
                                             @if ($solution->unidad_hvac == 8)
                                             Chiller - Aire - Scroll Constante
@@ -3073,15 +3073,27 @@ $costo_b
                                             @endif
 
                                             @if ($solution->tipo_equipo == 'manejadora')
-                                            Manejadora
+                                            Manejadora (Hasta 7.5 m)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'manejadora2')
+                                            Manejadora (7.6 a 30 m)
                                             @endif
 
                                             @if ($solution->tipo_equipo == 'fancoil')
-                                            Fancoil M/HSP
+                                            Fancoil M/HSP (Hasta 7.5 m)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil2')
+                                            Fancoil M/HSP (7.6 a 15 m)
                                             @endif
 
                                             @if ($solution->tipo_equipo == 'fancoil_lsp_spt')
-                                            Fancoil LSP
+                                            Fancoil LSP (Hasta 7.5 m)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'fancoil_lsp_spt2')
+                                            Fancoil LSP (7.6 a 15 m)
                                             @endif
 
                                             @if ($solution->tipo_equipo == 'unid_pred')
@@ -3141,7 +3153,11 @@ $costo_b
                                             @endif
 
                                             @if ($solution->tipo_equipo == 'pa_pi_te')
-                                            Pared - Piso - Techo
+                                            Pared/Piso/Techo (Hasta 7.5 m)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'pa_pi_te2')
+                                            Pared/Piso/Techo (7.6 a 15m)
                                             @endif
 
                                             @if ($solution->tipo_equipo == 'duc_con')
@@ -3149,7 +3165,11 @@ $costo_b
                                             @endif
 
                                             @if ($solution->tipo_equipo == 'cass')
-                                            Cassette
+                                            Cassette (Hasta 7.5 m)
+                                            @endif
+
+                                            @if ($solution->tipo_equipo == 'cass2')
+                                            Cassette (7.6 a 15m)
                                             @endif
 
                                             @if ($solution->tipo_equipo == 'man_scholl_const')
@@ -3383,7 +3403,7 @@ $costo_b
                                                 WSHP
                                                 @endif
                                                 @if ($solution->unidad_hvac == 7)
-                                                Minisplit Inverter
+                                                MS Inverter
                                                 @endif
                                                 @if ($solution->unidad_hvac == 8)
                                                 Chiller - Aire - Scroll Constante
@@ -3417,15 +3437,27 @@ $costo_b
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'manejadora')
-                                                Manejadora
+                                                Manejadora (Hasta 7.5 m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'manejadora2')
+                                                Manejadora (7.6 a 30 m)
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'fancoil')
-                                                Fancoil M/HSP
+                                                Fancoil M/HSP (Hasta 7.5 m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fancoil2')
+                                                Fancoil M/HSP (7.6 a 15 m)
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'fancoil_lsp_spt')
-                                                Fancoil LSP
+                                                Fancoil LSP (Hasta 7.5 m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fancoil_lsp_spt2')
+                                                Fancoil LSP (7.6 a 15 m)
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'unid_pred')
@@ -3485,15 +3517,27 @@ $costo_b
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                Pared - Piso - Techo
+                                                Pared/Piso/Techo (Hasta 7.5 m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'pa_pi_te2')
+                                                Pared/Piso/Techo (7.6 a 15m)
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'duc_con')
-                                                Ductado (Concealed)
+                                                Concealed (Hasta 7.5 m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'duc_con2')
+                                                Concealed (7.6 a 15m)
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'cass')
-                                                Cassette
+                                                Cassette (Hasta 7.5 m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'cass2')
+                                                Cassette (7.6 a 15m)
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'man_scholl_const')
@@ -3726,7 +3770,7 @@ $costo_b
                                                 WSHP
                                                 @endif
                                                 @if ($solution->unidad_hvac == 7)
-                                                Minisplit Inverter
+                                                MS Inverter
                                                 @endif
                                                 @if ($solution->unidad_hvac == 8)
                                                 Chiller - Aire - Scroll Constante
@@ -3760,15 +3804,27 @@ $costo_b
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'manejadora')
-                                                Manejadora
+                                                Manejadora (Hasta 7.5 m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'manejadora2')
+                                                Manejadora (7.6 a 30 m)
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'fancoil')
-                                                Fancoil M/HSP
+                                                Fancoil M/HSP (Hasta 7.5 m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fancoil2')
+                                                Fancoil M/HSP (7.6 a 15 m)
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'fancoil_lsp_spt')
-                                                Fancoil LSP
+                                                Fancoil LSP (Hasta 7.5 m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'fancoil_lsp_spt2')
+                                                Fancoil LSP (7.6 a 15 m)
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'unid_pred')
@@ -3828,15 +3884,31 @@ $costo_b
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'pa_pi_te')
-                                                Pared - Piso - Techo
+                                                Pared/Piso/Techo (Hasta 7.5 m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'pa_pi_te2')
+                                                Pared/Piso/Techo (7.6 a 15m)
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'duc_con')
-                                                Ductado (Concealed)
+                                                Concealed (Hasta 7.5 m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'duc_con2')
+                                                Concealed (7.6 a 15m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'duc_con2')
+                                                Concealed (7.6 a 15m)
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'cass')
-                                                Cassette
+                                                Cassette (Hasta 7.5 m)
+                                                @endif
+
+                                                @if ($solution->tipo_equipo == 'cass2')
+                                                Cassette (7.6 a 15m)
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'man_scholl_const')
