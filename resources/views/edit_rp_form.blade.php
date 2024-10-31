@@ -412,7 +412,7 @@
                                 <option value="4">VRF Ductados</option>
                                 <option value="5">PTAC/VTAC</option>
                                 <option value="6">WSHP</option>
-                                <option value="7">MS Inverter</option>
+                                <option value="7">Minisplit Inverter</option>
 {{--                             <option value="8">Chiller - Aire - Scroll Constante</option>
                             <option value="9">Chiller - Aire - Scroll Variable</option>
                             <option value="10">Chiller - Aire - Tornillo 4 Etapas</option> --}}
@@ -788,7 +788,7 @@
                                <option value="4">VRF Ductados</option>
                                <option value="5">PTAC/VTAC</option>
                                <option value="6">WSHP</option>
-                               <option value="7">MS Inverter</option>
+                               <option value="7">Minisplit Inverter</option>
 {{--                             <option value="8">Chiller - Aire - Scroll Constante</option>
                             <option value="9">Chiller - Aire - Scroll Variable</option>
                             <option value="10">Chiller - Aire - Tornillo 4 Etapas</option> --}}

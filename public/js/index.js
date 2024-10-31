@@ -622,15 +622,15 @@ function set_unit_type(value){
         case "2":
         var arry = '{ "arr" : [' +
         '{ "text":"Manejadora (Hasta 7.5 m)" , "value":"manejadora" },' +
-        '{ "text":"Manejadora (7.6 a 30 m)" , "value":"manejadora2" },' +
+        '{ "text":"Manejadora (Hasta a 30 m)" , "value":"manejadora2" },' +
         '{ "text":"Fancoil M/HSP (Hasta 7.5 m)" , "value":"fancoil" },' +
-        '{ "text":"Fancoil M/HSP (7.6 a 15 m)" , "value":"fancoil2" },' +
+        '{ "text":"Fancoil M/HSP (Hasta a 15 m)" , "value":"fancoil2" },' +
         '{ "text":"Fancoil LSP (Hasta 7.5 m)" , "value":"fancoil_lsp_spt" },' +
-        '{ "text":"Fancoil LSP (7.6 a 15 m)" , "value":"fancoil_lsp_spt2" } ]}';
+        '{ "text":"Fancoil LSP (Hasta a 15 m)" , "value":"fancoil_lsp_spt2" } ]}';
         break;
         case "3":
         var arry = '{ "arr" : [' +
-        '{ "text":"Pared - Piso - Techo" , "value":"ca_pi_te" },' +
+        '{ "text":"Pared/Piso/Techo" , "value":"ca_pi_te" },' +
         '{ "text":"Fancoil (LSP)" , "value":"fancoil_lsp" },' +
         '{ "text":"Cassette" , "value":"ca" }' +
         ']}';
@@ -665,12 +665,12 @@ function set_unit_type(value){
         break;
         case "7":
         var arry =  '{ "arr" : [' +
-        '{ "text":"Pared - Piso - Techo (Hasta 7.5 m)" , "value":"pa_pi_te" },' +
-        '{ "text":"Pared - Piso - Techo (7.6 a 15 m)" , "value":"pa_pi_te2" },' +
+        '{ "text":"Pared/Piso/Techo (Hasta 7.5 m)" , "value":"pa_pi_te" },' +
+        '{ "text":"Pared/Piso/Techo (Hasta a 15 m)" , "value":"pa_pi_te2" },' +
         '{ "text":"Concealed (Hasta 7.5 m)" , "value":"duc_con" },' +
-        '{ "text":"Concealed (7.6 a 15 m)" , "value":"duc_con2" },' +
+        '{ "text":"Concealed (Hasta a 15 m)" , "value":"duc_con2" },' +
         '{ "text":"Cassette (Hasta 7.5 m)" , "value":"cass" },' +
-        '{ "text":"Cassette (7.6 a 15 m)" , "value":"cass2" }' +
+        '{ "text":"Cassette (Hasta a 15 m)" , "value":"cass2" }' +
         ']}';
         break;
 
@@ -8208,7 +8208,7 @@ function traer_unidad_hvac_edit(id_project,num_sol,num_enf,cUnidad,csTipo,csDise
                 }));
                 $("#"+cUnidad).append($('<option>', {
                     value: 7,
-                    text: 'MS Inverter'
+                    text: 'Minisplit Inverter'
                 }));
 /*                 $("#"+cUnidad).append($('<option>', {
                     value: 8,
@@ -13940,7 +13940,7 @@ cUnidad_3_3 */
                 }));
                 $("#cUnidad_1_1_retro").append($('<option>', {
                     value: 7,
-                    text: 'MS Inverter'
+                    text: 'Minisplit Inverter'
                 }));
   /*               $("#cUnidad_1_1_retro").append($('<option>', {
                     value: 8,

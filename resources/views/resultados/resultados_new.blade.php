@@ -3039,7 +3039,7 @@ $costo_b
                                             WSHP
                                             @endif
                                             @if ($solution->unidad_hvac == 7)
-                                            MS Inverter
+                                            Minisplit Inverter
                                             @endif
                                             @if ($solution->unidad_hvac == 8)
                                             Chiller - Aire - Scroll Constante
@@ -3101,7 +3101,7 @@ $costo_b
                                             @endif
 
                                             @if ($solution->tipo_equipo == 'ca_pi_te')
-                                            Pared - Piso - Techo
+                                            Pared/Piso/Techo
                                             @endif
 
                                             @if ($solution->tipo_equipo == 'fancoil_lsp')
@@ -3403,7 +3403,7 @@ $costo_b
                                                 WSHP
                                                 @endif
                                                 @if ($solution->unidad_hvac == 7)
-                                                MS Inverter
+                                                Minisplit Inverter
                                                 @endif
                                                 @if ($solution->unidad_hvac == 8)
                                                 Chiller - Aire - Scroll Constante
@@ -3465,7 +3465,7 @@ $costo_b
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                Pared - Piso - Techo
+                                                Pared/Piso/Techo
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'fancoil_lsp')
@@ -3770,7 +3770,7 @@ $costo_b
                                                 WSHP
                                                 @endif
                                                 @if ($solution->unidad_hvac == 7)
-                                                MS Inverter
+                                                Minisplit Inverter
                                                 @endif
                                                 @if ($solution->unidad_hvac == 8)
                                                 Chiller - Aire - Scroll Constante
@@ -3832,7 +3832,7 @@ $costo_b
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'ca_pi_te')
-                                                Pared - Piso - Techo
+                                                Pared/Piso/Techo
                                                 @endif
 
                                                 @if ($solution->tipo_equipo == 'fancoil_lsp')
