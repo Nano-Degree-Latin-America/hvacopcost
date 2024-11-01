@@ -622,11 +622,11 @@ function set_unit_type(value){
         case "2":
         var arry = '{ "arr" : [' +
         '{ "text":"Manejadora (Hasta 7.5 m)" , "value":"manejadora" },' +
-        '{ "text":"Manejadora (Hasta a 30 m)" , "value":"manejadora2" },' +
+        '{ "text":"Manejadora (Hasta 30 m)" , "value":"manejadora2" },' +
         '{ "text":"Fancoil M/HSP (Hasta 7.5 m)" , "value":"fancoil" },' +
-        '{ "text":"Fancoil M/HSP (Hasta a 15 m)" , "value":"fancoil2" },' +
+        '{ "text":"Fancoil M/HSP (Hasta 15 m)" , "value":"fancoil2" },' +
         '{ "text":"Fancoil LSP (Hasta 7.5 m)" , "value":"fancoil_lsp_spt" },' +
-        '{ "text":"Fancoil LSP (Hasta a 15 m)" , "value":"fancoil_lsp_spt2" } ]}';
+        '{ "text":"Fancoil LSP (Hasta 15 m)" , "value":"fancoil_lsp_spt2" } ]}';
         break;
         case "3":
         var arry = '{ "arr" : [' +
@@ -666,11 +666,11 @@ function set_unit_type(value){
         case "7":
         var arry =  '{ "arr" : [' +
         '{ "text":"Pared/Piso/Techo (Hasta 7.5 m)" , "value":"pa_pi_te" },' +
-        '{ "text":"Pared/Piso/Techo (Hasta a 15 m)" , "value":"pa_pi_te2" },' +
+        '{ "text":"Pared/Piso/Techo (Hasta 15 m)" , "value":"pa_pi_te2" },' +
         '{ "text":"Concealed (Hasta 7.5 m)" , "value":"duc_con" },' +
-        '{ "text":"Concealed (Hasta a 15 m)" , "value":"duc_con2" },' +
+        '{ "text":"Concealed (Hasta 15 m)" , "value":"duc_con2" },' +
         '{ "text":"Cassette (Hasta 7.5 m)" , "value":"cass" },' +
-        '{ "text":"Cassette (Hasta a 15 m)" , "value":"cass2" }' +
+        '{ "text":"Cassette (Hasta 15 m)" , "value":"cass2" }' +
         ']}';
         break;
 
@@ -3611,11 +3611,12 @@ function send_modelo_edit(value,id,id_modelo){
 
 
 
-function new_model_or_marck_add(modelo,marcas_mod,eficiencia_modal, equipo) {
+function new_model_or_marck_add(modelo,marcas_mod,eficiencia_modal,equipo,eficiencia_cant) {
     var modelo = $('#'+modelo).val();
 
     var marca = $('#'+marcas_mod).val();
     var eficiencia = $('#'+eficiencia_modal).val();
+    var eficiencia_can = $('#'+eficiencia_cant).val();
     //var equipo  = $('#cUnidad_1_1_retro').val();
 
     if(marca == ''){
@@ -3628,7 +3629,7 @@ function new_model_or_marck_add(modelo,marcas_mod,eficiencia_modal, equipo) {
     var token = $("._token").val();
     $.ajax({
         type: 'GET',
-        url: '/store_new_model/'+ marca +'/'+ modelo +"/"+ eficiencia +"/"+ equipo,
+        url: '/store_new_model/'+ marca +'/'+ modelo +"/"+ eficiencia +"/"+ equipo +"/"+eficiencia_can,
         success: function (response) {
 
             Swal.fire({
@@ -14124,26 +14125,39 @@ cUnidad_3_3 */
 }
 
 
-function send_efi(value,id_input){
-
-
+function send_efi(value,id_input,id_input_cant){
     $.ajax({
         type: 'get',
         url: '/send_efi/'+ value,
         success: function (response) {
           /*   $("#"+id_input).find('option[value="' + response + '"]').prop('selected', true);
             $("#"+id_input).trigger("change"); */
+            //console.log(id_input_cant);
 
             $('#'+id_input).empty();
             $('#'+id_input).append($('<option>', {
-                value: response,
-                text: response
+                value: response.eficiencia,
+                text: response.eficiencia
             }));
+            $('#'+id_input_cant).val(response.eficiencia_cantidad);
            if(response == 'IPLV (Kw/TR)'){
 
            }else{
                $("#"+id_input).trigger("change");
            }
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function send_efi_cant(value,id_input_cant){
+    $.ajax({
+        type: 'get',
+        url: '/send_efi/'+ value,
+        success: function (response) {
+            $('#'+id_input_cant).val(response.eficiencia_cantidad);
         },
         error: function (responsetext) {
             console.log(responsetext);
@@ -14759,7 +14773,7 @@ function send_value_box_retro(id_set,id_get,tipo_ambiente,yrs){
     tipo_ambiente_val =  $('#'+tipo_ambiente).val();
 
     yrs =  $('#'+yrs).val();
-    alert(parseInt(yrs));
+
 switch (tipo_ambiente_val) {
     case 'no_agresivo':
 

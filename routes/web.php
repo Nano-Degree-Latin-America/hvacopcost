@@ -168,7 +168,7 @@ Route::get('check_marca/{value}', 'ResultadosController@check_marca');
 
 
 Route::post('store_new_marc/{value}', 'ResultadosController@store_new_marc');
-Route::get('store_new_model/{value}/{marca}/{eficiencia}/{equipo}', 'ResultadosController@store_new_model');
+Route::get('store_new_model/{value}/{marca}/{eficiencia}/{equipo}/{eficiencia_cant}', 'ResultadosController@store_new_model');
 Route::get('send_modelos_datalist/{value}/{equipo}', 'ResultadosController@send_modelos_datalist');
 Route::get('send_efi/{value}', 'ResultadosController@send_efi');
 

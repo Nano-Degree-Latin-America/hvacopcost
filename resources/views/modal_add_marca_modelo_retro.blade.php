@@ -9,7 +9,7 @@
           </div>
           <!-- Contenedor del modal -->
           <div style="width: 45%" class="border-2 border-blue-600 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 justify-items-center" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-            <div class="bg-white px-4 pt-5 pb-4">
+            <div class="bg-white px-4 pt-5 pb-4 w-full">
               <div class="grid w-full">
 
                 <div class="flex w-full" >
@@ -39,9 +39,9 @@
                                 <option value="5">PTAC/VTAC</option>
                                 <option value="6">WSHP</option>
                                 <option value="7">Minisplit Inverter</option>
-                                <option value="8">Chiller - Aire - Scroll Constante</option>
+{{--                                 <option value="8">Chiller - Aire - Scroll Constante</option>
                                 <option value="9">Chiller - Aire - Scroll Variable</option>
-                                <option value="10">Chiller - Aire - Tornillo 4 Etapas</option>
+                                <option value="10">Chiller - Aire - Tornillo 4 Etapas</option> --}}
                             </select>
 
                         </div>
@@ -92,18 +92,26 @@
                         <div class="w-1/2 flex justify-start text-left">
                             <label  class="labels" for=""><b>Eficiencia</b> </label>
                         </div>
-                        <div class="w-full flex justify-start">
-                            <select name="eficiencia_modal_retro" id="eficiencia_modal_retro" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-left">
+
+                        <div class="flex w-full gap-x-2">
+                            <div class="w-1/2 flex justify-start">
+                                <input type="text"  type="text" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="cantidad_eficiencia_retro" id="cantidad_eficiencia_retro" >
+
+                            </div>
+
+                            <div class="w-1/2 flex justify-start">
+                                <select name="eficiencia_modal_retro" id="eficiencia_modal_retro" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-left">
 
 
-                            </select>
+                                </select>
 
+                            </div>
                         </div>
 
                     </div>
 
                     <div style="margin-top:23px;">
-                        <a onclick="new_model_or_marck_add('nuevo_modelo_modal_retro','marca_modal_retro','eficiencia_modal_retro',document.getElementById('equipo_modal').value);" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
+                        <a onclick="new_model_or_marck_add('nuevo_modelo_modal_retro','marca_modal_retro','eficiencia_modal_retro',document.getElementById('equipo_modal').value,'cantidad_eficiencia_retro');" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
                     </div> {{-- onclick="new_model_or_marck_add('nuevo_modelo_modal','marca_modal','eficiencia_modal');" --}}
                 </div>
 

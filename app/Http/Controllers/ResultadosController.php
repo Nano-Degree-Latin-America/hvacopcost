@@ -7009,7 +7009,7 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
         ->where('modelos_empresa.id','=',$value)
         ->first();
 
-        return $marca->eficiencia;
+        return response()->json($marca);
     }
 
 
@@ -7044,7 +7044,7 @@ public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a
 } */
 
 
-public function store_new_model($marca,$modelo,$eficiencia,$equipo){
+public function store_new_model($marca,$modelo,$eficiencia,$equipo,$eficiencia_cant){
     if($marca == 'empty'){
         $value = 'vacio marca';
         return false;
@@ -7084,6 +7084,7 @@ public function store_new_model($marca,$modelo,$eficiencia,$equipo){
                     }else{
                         $new_model->eficiencia = $eficiencia;
                     }
+                    $new_model->eficiencia_cantidad = $eficiencia_cant;
                     $new_model->save();
                 }
             }
@@ -7117,6 +7118,7 @@ public function store_new_model($marca,$modelo,$eficiencia,$equipo){
                     }else{
                         $new_model->eficiencia = $eficiencia;
                     }
+                    $new_model->eficiencia_cantidad = $eficiencia_cant;
                     $new_model->save();
                 }
             }

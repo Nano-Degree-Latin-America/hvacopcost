@@ -87,7 +87,7 @@
                         <label class="labels" for=""><b>{{ __('index.modelo') }}</b></label>
                     </div>
                     <div class="w-full flex justify-start">
-                        <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_type_set_mant('type_p','modelo_2_1_retro','modelo_3_1_retro',this.value);send_efi(this.value,'csStd_1_1_retro');" class="w-full border-2 border-color-inps rounded-md py-2"   name="modelo_1_1_retro" id="modelo_1_1_retro">
+                        <select style="font-size: 14px" onchange="valida_selects_inps(this.id);check_type_set_mant('type_p','modelo_2_1_retro','modelo_3_1_retro',this.value);send_efi(this.value,'csStd_1_1_retro');send_efi_cant(this.value,'csStd_retro_1_1_cant')" class="w-full border-2 border-color-inps rounded-md py-2"   name="modelo_1_1_retro" id="modelo_1_1_retro">
                         </select>
                     </div>
 
@@ -638,7 +638,7 @@
                                 <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
-                                <select style="font-size: 14px" class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd_2_1_retro',this.id,'cUnidad_1_1_retro');"  name="modelo_2_1_retro" id="modelo_2_1_retro">
+                                <select style="font-size: 14px" class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);check_enfi_mod(this.value,'csStd_2_1_retro',this.id,'cUnidad_1_1_retro');send_efi_cant(this.value,'csStd_cant_2_1_retro')"  name="modelo_2_1_retro" id="modelo_2_1_retro">
                                 </select>
                             <input  id="modelo_2_1_retro_count" name="modelo_2_1_retro_count" type="number" class="hidden" value="1">
 
@@ -979,7 +979,7 @@
                                 <label class="labels" for=""><b>{{ __('index.modelo') }}</b> </label>
                             </div>
                             <div class="w-full flex justify-start">
-                                <select style="font-size: 14px" onchange="valida_selects_inps(this.id);send_efi(this.value,'csStd_1_1_retro');" class="w-full border-2 border-color-inps rounded-md py-2"   name="modelo_3_1_retro" id="modelo_3_1_retro">
+                                <select style="font-size: 14px" onchange="valida_selects_inps(this.id);send_efi(this.value,'csStd_1_1_retro');send_efi_cant(this.value,'csStd_cant_3_1_retro')" class="w-full border-2 border-color-inps rounded-md py-2"   name="modelo_3_1_retro" id="modelo_3_1_retro">
                                 </select>
                             </div>
                             <input  id="modelo_3_1_retro_count" name="modelo_3_1_retro_count" type="number" class="hidden" value="1">
