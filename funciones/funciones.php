@@ -92,7 +92,7 @@ class funciones {
     }
 
 
-    public function form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f,$am){
+    public function form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_zm,$factor_v,$factor_f,$am){
         //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
         //((TR /3.5) x (Cooling Hours) x (Costo Energía) / IPVL)/ 1000
        //((TR x cant)
@@ -104,21 +104,24 @@ class funciones {
        if($eficiencia_ene == 'IPLV' || $eficiencia_ene == 'IPLV (Kw/TR)'){
         $cant_aux = 3.5;
        }
+
+       //(TR x 12000)
        $res_trx_cant = $tr * $cant_aux;
+
        //((TR x cant) x (Cooling Hours)
        $res_1er_parent = $res_trx_cant * $cooling_hrs;
        //((TR x 12000) x (Cooling Hours)  / (SEER x ((1-Z)^Años de vida) x AM )/
 
        //(1-Z)^Años de vida
-       if($factor_m == 'ASHRAE 180'){
+       if($factor_zm == 'ASHRAE 180'){
         $z = 0.01;
        }
 
-       if($factor_m == 'Deficiente'){
+       if($factor_zm == 'Deficiente'){
         $z = 0.017;
        }
 
-       if($factor_m == 'Sin Mantenimiento'){
+       if($factor_zm == 'Sin Mantenimiento'){
         $z = 0.035;
        }
 
@@ -155,7 +158,7 @@ class funciones {
         //(FE x Factor M)
         $funciones = new funciones();
 
-        $factor_m = $funciones->factor_m($t_e,$factor_m);
+        $factor_m = $funciones->factor_m($t_e,$factor_zm);
 
         $res_5_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_m);
 
@@ -171,7 +174,7 @@ class funciones {
        return $res_res_fact_m;
     }
 
-    public function cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$factor_v,$factor_f,$am){
+    public function cost_op_an_form_kw_no_chiller($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_zm,$factor_v,$factor_f,$am){
 
         //(((Kw / 3.5) x 12000 )x (Cooling Hours)) / (SEER x (1-Z)^Años de vida) x AM) / 1000
                   //(((Kw / 3.5)
@@ -186,15 +189,15 @@ class funciones {
                   $res_dividiendo = $kw_a * $cooling_hrs;
                   //(((Kw / 3.5) x 12000 )x (Cooling Hours)
 
-                  if($factor_m == 'ASHRAE 180'){
+                  if($factor_zm == 'ASHRAE 180'){
                     $z = 0.01;
                    }
 
-                   if($factor_m == 'Deficiente'){
+                   if($factor_zm == 'Deficiente'){
                     $z = 0.017;
                    }
 
-                   if($factor_m == 'Sin Mantenimiento'){
+                   if($factor_zm == 'Sin Mantenimiento'){
                     $z = 0.035;
                    }
 
@@ -227,7 +230,7 @@ class funciones {
                     //(FE x Factor M)
                     $funciones = new funciones();
 
-                    $factor_m = $funciones->factor_m($t_e,$factor_m);
+                    $factor_m = $funciones->factor_m($t_e,$factor_zm);
 
                     $res_5_parent1= $res_div_seer_a * floatval($factor_m);
 
