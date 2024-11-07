@@ -108,6 +108,10 @@ Route::get('add_marcas_empresasvrf', 'EmpresasController@add_marcas_empresasvrf'
 Route::get('add_marcas_empresaschillers', 'EmpresasController@add_marcas_empresaschillers');
 Route::get('add_genericos', 'EmpresasController@add_genericos');
 Route::get('delete_marcas_empresa/{value}', 'EmpresasController@delete_marcas_empresa');
+Route::get('check_marcas_def', 'EmpresasController@check_marcas_def');
+Route::get('check_marcas_def_vrf', 'EmpresasController@check_marcas_def_vrf');
+Route::post('delete_modele/{marca}/{modelo}/{equipo}', 'EmpresasController@delete_modele');
+Route::post('delete_marke/{marca}/{modelo}/{equipo}', 'EmpresasController@delete_marke');
 //sucursales
 Route::get('sucursales_emp/{id}', 'SucursalesController@sucursales_empresa');
 Route::resource('sucursales', 'SucursalesController');

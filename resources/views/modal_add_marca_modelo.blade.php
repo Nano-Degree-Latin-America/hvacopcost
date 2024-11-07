@@ -19,6 +19,53 @@ datalist.option {
   font-size: 18px;
   cursor: pointer;
 }
+
+.btn_del_model{
+border:1px solid #ffff;
+background: #ce3153;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
+.btn_del_model:hover {
+border:1px solid #4299e1;
+background: #4299e1;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
+
+.btn_del_model:active {
+border:1px solid #ffffff;
+background: #ce3153;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
     </style>
         <div class="flex  items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <!-- Fondo oscuro -->
@@ -123,7 +170,7 @@ datalist.option {
 
                         <div class="flex w-full gap-x-2">
                             <div class="w-1/2 flex justify-start">
-                                <input type="text"  type="text" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="cantidad_eficiencia" id="cantidad_eficiencia" >
+                                <input type="text" value="0" type="text" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="cantidad_eficiencia" id="cantidad_eficiencia" >
 
                             </div>
 
@@ -138,8 +185,9 @@ datalist.option {
 
                     </div>
 
-                    <div style="margin-top:23px;">
-                        <a onclick="new_model_or_marck_add('nuevo_modelo_modal','marca_modal','eficiencia_modal',document.getElementById('equipo_modal').value,'cantidad_eficiencia');" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
+                    <div style="margin-top:28px;" class="flex gap-x-1">
+                        <a onclick="new_model_or_marck_add('nuevo_modelo_modal','marca_modal','eficiencia_modal',document.getElementById('equipo_modal').value,'cantidad_eficiencia','equipo_modal');" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
+                        <a onclick="delete_mark('marca_modal','nuevo_modelo_modal','equipo_modal','cantidad_eficiencia');" class="btn_del_model" title="Borrar Modelo" alt="Borrar Modelo"><i class="fa-solid fa-trash"></i></a>
                     </div> {{-- onclick="new_model_or_marck_add('nuevo_modelo_modal','marca_modal','eficiencia_modal');" --}}
                 </div>
 

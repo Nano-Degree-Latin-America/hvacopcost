@@ -3611,7 +3611,7 @@ function send_modelo_edit(value,id,id_modelo){
 
 
 
-function new_model_or_marck_add(modelo,marcas_mod,eficiencia_modal,equipo,eficiencia_cant) {
+function new_model_or_marck_add(modelo,marcas_mod,eficiencia_modal,equipo,eficiencia_cant,equipo_id) {
     var modelo = $('#'+modelo).val();
 
     var marca = $('#'+marcas_mod).val();
@@ -3633,18 +3633,84 @@ function new_model_or_marck_add(modelo,marcas_mod,eficiencia_modal,equipo,eficie
         success: function (response) {
 
             Swal.fire({
-                title: '¡Exito!',
+                title: '¡Success!',
                 icon: 'success',
-                text:'Nuevo Modelo Guardado'
+                text:'New Model Added'
 
             })
             $('#nuevo_modelo_modal').val('');
+            $('#nuevo_modelo_modal_retro').val('');
+            $('#'+marcas_mod).val('');
+            $('#'+eficiencia_modal).val('');
+            $('#'+eficiencia_cant).val(0);
+            //$("#"+equipo_id).find('option[value="0"]').attr("selected", "selected");
             send_marcas_equipo(equipo);
+
         },
         error: function (responsetext) {
             console.log(responsetext);
         }
     });
+}
+
+function delete_mark(id_marc,id_model,equipo,eficiencia) {
+    var marca = $("#"+id_marc).val();
+    var modelo = $("#"+id_model).val();
+    var equipo_name = $("#"+equipo).val();
+    Swal.fire({
+        title: '¿Eliminar?',
+        text: "",
+        showDenyButton: true,
+        showConfirmButton: true,
+        icon: 'warning',
+        showCancelButton: true,
+        cancelButtonColor: '#FF6600',
+        denyButtonText: `Eliminar Modelo:`+modelo,
+        confirmButtonText:`Eliminar Marca:`+marca,
+        confirmButtonColor: '#3182ce',
+
+    }).then((result) => {
+        var token = $("#token").val();
+        if (result.isDenied) {
+            $.ajax({
+                url: "/delete_modele/" + marca +"/"+modelo  +"/"+equipo_name,
+                headers: { 'X-CSRF-TOKEN': token },
+                type: 'post',
+                dataType: 'json',
+                success: function (response) {
+                    $("#"+id_marc).trigger("change");
+                    $("#"+eficiencia).val('0');
+                    Swal.fire(
+                        'Eliminado!',
+                        'success'
+                    )
+                    /* $('#marca_modal').val('');
+                    send_marcas(); */
+                }
+            });
+        }
+
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "/delete_marke/" + marca +"/"+"_"+"/"+equipo_name,
+                headers: { 'X-CSRF-TOKEN': token },
+                type: 'post',
+                dataType: 'json',
+                success: function (response) {
+                    $("#"+equipo).trigger("change");
+                    $('#'+id_model).val('');
+                    $("#"+eficiencia).val(0);
+                    Swal.fire(
+                        'Eliminado!',
+                        'success'
+                    )
+                    /* $('#marca_modal').val('');
+                    send_marcas(); */
+                }
+            });
+        }
+
+    })
 }
 
   //FUNCION PARA PERMITIR SOLO NUMEROS

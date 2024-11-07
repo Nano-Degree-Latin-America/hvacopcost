@@ -95,7 +95,7 @@
 
                         <div class="flex w-full gap-x-2">
                             <div class="w-1/2 flex justify-start">
-                                <input type="text"  type="text" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="cantidad_eficiencia_retro" id="cantidad_eficiencia_retro" >
+                                <input type="text"  value="0"  type="text" class="text-black 2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-blue-600 rounded-md py-2 text-center"  name="cantidad_eficiencia_retro" id="cantidad_eficiencia_retro" >
 
                             </div>
 
@@ -110,8 +110,9 @@
 
                     </div>
 
-                    <div style="margin-top:23px;">
-                        <a onclick="new_model_or_marck_add('nuevo_modelo_modal_retro','marca_modal_retro','eficiencia_modal_retro',document.getElementById('equipo_modal').value,'cantidad_eficiencia_retro');" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
+                    <div style="margin-top:28px;" class="flex gap-x-1">
+                        <a onclick="new_model_or_marck_add('nuevo_modelo_modal_retro','marca_modal_retro','eficiencia_modal_retro',document.getElementById('equipo_modal_retro').value,'cantidad_eficiencia_retro','equipo_modal_retro');" class="btn_roundf_retro" title="Guardar Modelo" alt="Guardar Modelo"><i class="fa-solid fa-plus"></i></a>
+                        <a onclick="delete_mark('marca_modal_retro','nuevo_modelo_modal_retro','equipo_modal_retro','cantidad_eficiencia_retro');" class="btn_del_model" title="Delete Model" alt="Delete"><i class="fa-solid fa-trash"></i></a>
                     </div> {{-- onclick="new_model_or_marck_add('nuevo_modelo_modal','marca_modal','eficiencia_modal');" --}}
                 </div>
 

@@ -395,6 +395,45 @@ class EmpresasController extends Controller
         return $submit;
     }
 
+
+    public function check_marcas_def(){
+
+        //$array_paquetes = ['1','2','5','6','7'];
+        $marcas_paquetes = ['Carrier','Trane','JCI','Lennox','Rheem','Aoon','Genérico'];
+        $all_marcas = MarcasEmpresaModel::get();
+
+        foreach ($all_marcas as $marca) {
+
+            for ($i=0; $i < count($marcas_paquetes) ; $i++) {
+                    if($marcas_paquetes[$i] === $marca->marca){
+                        $update_defecto = MarcasEmpresaModel::find($marca->id);
+                        $update_defecto->defecto = 1;
+                        $update_defecto->update();
+                    }
+            }
+        }
+
+        dd('save');
+    }
+
+    public function check_marcas_def_vrf(){
+        $marcas_paquetes = ['Daikin','Hitachi','Samsung','Midea','Toshiba','Mitsubishi','LG','Genérico'];
+        $all_marcas = MarcasEmpresaModel::get();
+
+        foreach ($all_marcas as $marca) {
+
+            for ($i=0; $i < count($marcas_paquetes) ; $i++) {
+                    if($marcas_paquetes[$i] === $marca->marca){
+                        $update_defecto = MarcasEmpresaModel::find($marca->id);
+                        $update_defecto->defecto = 1;
+                        $update_defecto->update();
+                    }
+            }
+        }
+
+        dd('save');
+    }
+
     public function add_marcas_empresas($id_empresa){
 
         $array_paquetes = ['1','2','5','6','7'];
@@ -410,6 +449,7 @@ class EmpresasController extends Controller
                     $new_marca= new MarcasEmpresaModel;
                     $new_marca->marca = $marcas_paquetes[$i];
                     $new_marca->equipo = $array_paquetes[$z];
+                    $new_marca->defecto = 1;
                     $new_marca->id_empresa = $id_empresa;
                     $new_marca->id_user = Auth::user()->id;
                     $new_marca->save();
@@ -420,14 +460,11 @@ class EmpresasController extends Controller
 
     }
 
+
     public function add_marcas_empresasvrf($id_empresa){
 
         $array_paquetes = ['3','4'];
         $marcas_paquetes = ['Daikin','Hitachi','Samsung','Midea','Toshiba','Mitsubishi','LG','Genérico'];
-
-
-
-
 
             for ($z=0; $z < count($array_paquetes) ; $z++) {
 
@@ -435,6 +472,7 @@ class EmpresasController extends Controller
                     $new_marca= new MarcasEmpresaModel;
                     $new_marca->marca = $marcas_paquetes[$i];
                     $new_marca->equipo = $array_paquetes[$z];
+                    $new_marca->defecto = 1;
                     $new_marca->id_empresa = $id_empresa;
                     $new_marca->id_user = Auth::user()->id;
                     $new_marca->save();
@@ -482,6 +520,7 @@ class EmpresasController extends Controller
                     $new_marca= new MarcasEmpresaModel;
                     $new_marca->marca = $marcas_paquetes[$i];
                     $new_marca->equipo = $array_paquetes[$z];
+                    $new_marca->defecto = 1;
                     $new_marca->id_empresa = $empresas[$a]->id;
                     $new_marca->id_user = Auth::user()->id;
                     $new_marca->save();
@@ -560,4 +599,61 @@ for ($a=0; $a < count($empresas) ; $a++) {
         dd('genericos modelos');
 
     }
+
+    public function delete_modele($marca_name,$modelo_name,$equipo){
+
+        $id_marca = MarcasEmpresaModel::where('marca','=',$marca_name)
+        ->where('equipo','=',$equipo)
+        ->where('id_empresa','=',Auth::user()->id_empresa)
+        ->first()->id;
+
+        $id_modelo = ModelosEmpresaModel::where('modelo','=',$modelo_name)
+        ->where('id_marca','=',$id_marca)
+        ->where('id_empresa','=',Auth::user()->id_empresa)
+        ->first()->id;
+
+        $delete_modelo = ModelosEmpresaModel::find($id_modelo);
+        $delete_modelo->delete();
+
+        if($delete_modelo){
+            return true;
+        }else{
+            return false;
+        }
+
+
+}
+
+public function delete_marke($marca_name,$modelo_name,$equipo){
+
+    $marca = MarcasEmpresaModel::where('marca','=',$marca_name)
+    ->where('equipo','=',$equipo)
+    ->where('id_empresa','=',Auth::user()->id_empresa)
+    ->first();
+
+    if(intval($marca->defecto) !== 1){
+
+        $check_delete_modelo =  EmpresasController::delete_models_mark($marca->id);
+        $delete_marca = MarcasEmpresaModel::find($marca->id);
+        $delete_marca->delete();
+    }
+
+    return $check_delete_modelo;
+
+
+}
+
+public function delete_models_mark($id_marca){
+    $modelos = ModelosEmpresaModel::where('id_marca','=',$id_marca)
+    ->get();
+
+    foreach($modelos as $modelo){
+        $delete_modelo = ModelosEmpresaModel::find($modelo->id);
+        $delete_modelo->delete();
+
+    }
+
+    return true;
+
+}
 }

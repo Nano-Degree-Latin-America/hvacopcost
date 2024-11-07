@@ -243,7 +243,7 @@ input[type=number]::-webkit-outer-spin-button {
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 <div class="bg-white" x-data="app()" x-cloak>
     <div class="w-full px-2">
-
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
         <div x-show.transition="step === 'complete'">
             <div class="bg-white rounded-lg p-10 flex items-center shadow justify-between">
                 <div>

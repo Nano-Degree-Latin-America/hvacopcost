@@ -7112,7 +7112,7 @@ public function store_new_model($marca,$modelo,$eficiencia,$equipo,$eficiencia_c
                     $new_model = new ModelosEmpresaModel;
                     $new_model->modelo = $modelo;
                     $new_model->id_empresa = Auth::user()->id_empresa;
-                    $new_model->id_marca = $check_m->id;
+                    $new_model->id_marca = $new_marc->id;
                     if($eficiencia == 'IPLV'){
                         $new_model->eficiencia = 'IPLV (Kw/TR)';
                     }else{
