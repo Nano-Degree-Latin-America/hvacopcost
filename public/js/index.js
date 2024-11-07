@@ -3665,8 +3665,8 @@ function delete_mark(id_marc,id_model,equipo,eficiencia) {
         icon: 'warning',
         showCancelButton: true,
         cancelButtonColor: '#FF6600',
-        denyButtonText: `Eliminar Modelo:`+modelo,
-        confirmButtonText:`Eliminar Marca:`+marca,
+        denyButtonText: `Eliminar Modelo: `+modelo,
+        confirmButtonText:`Eliminar Marca: `+marca,
         confirmButtonColor: '#3182ce',
 
     }).then((result) => {
