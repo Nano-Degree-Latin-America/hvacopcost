@@ -137,6 +137,8 @@ Route::get('/del_project/{id}', 'ProjectController@del_project')->name('del_proj
 Route::get('edit_project_copy/{id_project}', 'ResultadosController@edit_project_copy');
 Route::get('resultados_retrofit/{id_project}', 'ResultadosController@resultados_retrofit');
 Route::post('elimina_project_demo/{id_project}', 'ResultadosController@elimina_project_demo');
+Route::get('traer_unidades/{equipo}', 'ResultadosController@traer_unidades');
+
 ///asigna tipo, existente
 Route::get('asigna_tipos', 'ResultadosController@asiga_typos');
 Route::get('asigna_empresas_tipo', 'ResultadosController@asigna_empresas_tipo');

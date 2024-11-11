@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 rounded-md py-2 border-color-inps" onchange="valida_form_calc(1);unidadHvac(this.value,1,'csTipo','csDisenio_1_1');check_chiller(this.value,'csStd',1);">
+                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 rounded-md py-2 border-color-inps" onchange="valida_form_calc(1);unidadHvac(this.value,1,'csTipo','csDisenio_1_1');check_chiller(this.value,'csStd',1);send_value_equipo_marcas(this.id,this.value,'marca_1_1');">
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>

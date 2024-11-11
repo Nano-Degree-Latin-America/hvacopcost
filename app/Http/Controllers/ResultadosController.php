@@ -11,6 +11,7 @@ use App\ProjectsModel;
 use App\ResultsProjectModel;
 use App\MarcasEmpresaModel;
 use App\ModelosEmpresaModel;
+use App\UnidadesModel;
 use App\TipoEdificioModel;
 use App\TypeProjectModel;
 use Illuminate\Support\Facades\Redirect;
@@ -9766,5 +9767,10 @@ if($eficiencia_ene == 'EER'){
         ->first();
 
         return $solution;
+    }
+
+    public function traer_unidades($equipo){
+        $unidades = UnidadesModel::where('equipo','=',$equipo)->get();
+        return response()->json($unidades);
     }
 }
