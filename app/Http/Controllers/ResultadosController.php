@@ -12,6 +12,11 @@ use App\ResultsProjectModel;
 use App\MarcasEmpresaModel;
 use App\ModelosEmpresaModel;
 use App\UnidadesModel;
+use App\DisenoModel;
+use App\ControlesModel;
+use App\DrModel;
+use App\FiltracionModel;
+use App\VentilacionModel;
 use App\TipoEdificioModel;
 use App\TypeProjectModel;
 use Illuminate\Support\Facades\Redirect;
@@ -9772,5 +9777,43 @@ if($eficiencia_ene == 'EER'){
     public function traer_unidades($equipo){
         $unidades = UnidadesModel::where('equipo','=',$equipo)->get();
         return response()->json($unidades);
+    }
+
+    public function traer_disenos($referencia){
+        $disenos = DisenoModel::where('referencia','=',$referencia)->get();
+        return response()->json($disenos);
+    }
+
+    public function traer_controles($referencia){
+        $controles = ControlesModel::where('referencia','=',$referencia)->get();
+        return response()->json($controles);
+    }
+
+    public function traer_drs($referencia){
+        $drs = DrModel::where('referencia','=',$referencia)->get();
+        return response()->json($drs);
+    }
+
+    public function traer_ventilaciones($referencia){
+        $ventilaciones = VentilacionModel::where('referencia','=',$referencia)->get();
+        return response()->json($ventilaciones);
+
+    }
+
+    public function traer_ventilaciones_no_doa($referencia){
+        $ventilaciones = VentilacionModel::where('referencia','=',$referencia)
+        ->where('ventilacion','!=','Sin Ventilación')->get();
+        return response()->json($ventilaciones);
+
+    }
+
+    public function traer_filtraciones($referencia){
+        $filtraciones = FiltracionModel::where('referencia','=',$referencia)->get();
+        return response()->json($filtraciones);
+    }
+
+    public function traer_valor_unidad($value){
+        $val = UnidadesModel::where('identificador','=',$value)->first()->valor;
+        return response()->json($val);
     }
 }

@@ -488,45 +488,23 @@ class DisenoSeeder extends Seeder
         $new_equipo->valor = 0;
         $new_equipo->save();
 
-        //pa_pi_te
+        //pa_pi_te2
         $new_equipo = new DisenoModel;
         $new_equipo->id_unidad = 21;
-        $new_equipo->referencia = 'pa_pi_te';
+        $new_equipo->referencia = 'pa_pi_te2';
         $new_equipo->diseno = 'Condensador Arriba';
         $new_equipo->valor = 0.12;
         $new_equipo->save();
 
         $new_equipo = new DisenoModel;
         $new_equipo->id_unidad =21;
-        $new_equipo->referencia = 'pa_pi_te';
+        $new_equipo->referencia = 'pa_pi_te2';
         $new_equipo->diseno = 'Condensador Abajo';
         $new_equipo->valor = 0.1;
         $new_equipo->save();
 
         $new_equipo = new DisenoModel;
         $new_equipo->id_unidad = 21;
-        $new_equipo->referencia = 'pa_pi_te';
-        $new_equipo->diseno = 'Espalda con Espalda';
-        $new_equipo->valor = 0;
-        $new_equipo->save();
-
-        //pa_pi_te2
-        $new_equipo = new DisenoModel;
-        $new_equipo->id_unidad = 22;
-        $new_equipo->referencia = 'pa_pi_te2';
-        $new_equipo->diseno = 'Condensador Arriba';
-        $new_equipo->valor = 0.12;
-        $new_equipo->save();
-
-        $new_equipo = new DisenoModel;
-        $new_equipo->id_unidad =22;
-        $new_equipo->referencia = 'pa_pi_te2';
-        $new_equipo->diseno = 'Condensador Abajo';
-        $new_equipo->valor = 0.1;
-        $new_equipo->save();
-
-        $new_equipo = new DisenoModel;
-        $new_equipo->id_unidad = 22;
         $new_equipo->referencia = 'pa_pi_te2';
         $new_equipo->diseno = 'Espalda con Espalda';
         $new_equipo->valor = 0;
@@ -534,14 +512,14 @@ class DisenoSeeder extends Seeder
 
         //duc_con
         $new_equipo = new DisenoModel;
-        $new_equipo->id_unidad = 23;
+        $new_equipo->id_unidad = 22;
         $new_equipo->referencia = 'duc_con';
         $new_equipo->diseno = 'Inyección y Retorno Ductado';
         $new_equipo->valor = 0;
         $new_equipo->save();
 
         $new_equipo = new DisenoModel;
-        $new_equipo->id_unidad =23;
+        $new_equipo->id_unidad =22;
         $new_equipo->referencia = 'duc_con';
         $new_equipo->diseno = 'Inyección Ductada y Plenum Retorno';
         $new_equipo->valor = 0.07;
@@ -549,14 +527,14 @@ class DisenoSeeder extends Seeder
 
         //duc_con2
         $new_equipo = new DisenoModel;
-        $new_equipo->id_unidad = 24;
+        $new_equipo->id_unidad = 23;
         $new_equipo->referencia = 'duc_con2';
         $new_equipo->diseno = 'Inyección y Retorno Ductado';
         $new_equipo->valor = 0;
         $new_equipo->save();
 
         $new_equipo = new DisenoModel;
-        $new_equipo->id_unidad =24;
+        $new_equipo->id_unidad =23;
         $new_equipo->referencia = 'duc_con2';
         $new_equipo->diseno = 'Inyección Ductada y Plenum Retorno';
         $new_equipo->valor = 0.07;
@@ -564,14 +542,14 @@ class DisenoSeeder extends Seeder
 
         //cass
         $new_equipo = new DisenoModel;
-        $new_equipo->id_unidad = 25;
+        $new_equipo->id_unidad = 24;
         $new_equipo->referencia = 'cass';
         $new_equipo->diseno = 'Condensador Arriba';
         $new_equipo->valor = 0.12;
         $new_equipo->save();
 
         $new_equipo = new DisenoModel;
-        $new_equipo->id_unidad =25;
+        $new_equipo->id_unidad =24;
         $new_equipo->referencia = 'cass';
         $new_equipo->diseno = 'Condensador Abajo';
         $new_equipo->valor = 0.1;
@@ -579,14 +557,14 @@ class DisenoSeeder extends Seeder
 
         //cass2
         $new_equipo = new DisenoModel;
-        $new_equipo->id_unidad = 26;
+        $new_equipo->id_unidad = 25;
         $new_equipo->referencia = 'cass2';
         $new_equipo->diseno = 'Condensador Arriba';
         $new_equipo->valor = 0.12;
         $new_equipo->save();
 
         $new_equipo = new DisenoModel;
-        $new_equipo->id_unidad =26;
+        $new_equipo->id_unidad =25;
         $new_equipo->referencia = 'cass2';
         $new_equipo->diseno = 'Condensador Abajo';
         $new_equipo->valor = 0.1;

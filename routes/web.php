@@ -138,7 +138,13 @@ Route::get('edit_project_copy/{id_project}', 'ResultadosController@edit_project_
 Route::get('resultados_retrofit/{id_project}', 'ResultadosController@resultados_retrofit');
 Route::post('elimina_project_demo/{id_project}', 'ResultadosController@elimina_project_demo');
 Route::get('traer_unidades/{equipo}', 'ResultadosController@traer_unidades');
-
+Route::get('traer_disenos/{equipo}', 'ResultadosController@traer_disenos');
+Route::get('traer_controles/{equipo}', 'ResultadosController@traer_controles');
+Route::get('traer_drs/{equipo}', 'ResultadosController@traer_drs');
+Route::get('traer_ventilaciones/{equipo}', 'ResultadosController@traer_ventilaciones');
+Route::get('traer_ventilaciones_no_doa/{equipo}', 'ResultadosController@traer_ventilaciones_no_doa');
+Route::get('traer_filtraciones/{equipo}', 'ResultadosController@traer_filtraciones');
+Route::get('traer_valor_unidad/{value}', 'ResultadosController@traer_valor_unidad');
 ///asigna tipo, existente
 Route::get('asigna_tipos', 'ResultadosController@asiga_typos');
 Route::get('asigna_empresas_tipo', 'ResultadosController@asigna_empresas_tipo');

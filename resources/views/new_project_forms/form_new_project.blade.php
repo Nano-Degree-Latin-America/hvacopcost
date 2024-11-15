@@ -176,7 +176,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select onchange="valida_selects_inps(this.id);send_name(this.id);check_sin_doa(this,'ventilacion_1_1','csTipo');" name="csDisenio_1_1" id="csDisenio_1_1" class="w-full border-2 border-color-inps rounded-md py-2">
+                        <select onchange="valida_selects_inps(this.id);send_name(this.id);check_sin_doa(this.id,'ventilacion_1_1','csTipo');" name="csDisenio_1_1" id="csDisenio_1_1" class="w-full border-2 border-color-inps rounded-md py-2">
                         </select>
                     </div>
                     <input type="text" style="display: none" id="lblCsDisenio" name="lblCsDisenio" value="ASHRAE 55/62.1/90.1">
@@ -943,7 +943,7 @@
                 <h2 style="margin-right: 75px;" class="text-white font-bold justify-start text-3xl">{{ __('index.solucion') }} B</h2>
             </div>
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
-                <button  onclick="copiar_form_base_a('Base');" type="button" title="Copiar Solucion A" class="rounded-xl p-1 m-0 text-3xl">
+                <button  onclick="copy_base_a();" type="button" title="Copiar Solucion A" class="rounded-xl p-1 m-0 text-3xl">
                     <i style="color:#1B17BB;" class="fa-solid fa-file-import"></i>
                 </button>
             </div>
