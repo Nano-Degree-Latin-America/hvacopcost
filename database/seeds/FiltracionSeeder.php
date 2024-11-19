@@ -420,28 +420,28 @@ class FiltracionSeeder extends Seeder
          //man_doa
          $new_equipo = new FiltracionModel;
          $new_equipo->id_unidad = 15;
-         $new_equipo->referencia = 'man_doa';
+         $new_equipo->referencia = 'man_doa_hr';
          $new_equipo->filtracion = 'MERV ≥ 7';
          $new_equipo->valor = 1;
          $new_equipo->save();
 
          $new_equipo = new FiltracionModel;
          $new_equipo->id_unidad = 15;
-         $new_equipo->referencia = 'man_doa';
+         $new_equipo->referencia = 'man_doa_hr';
          $new_equipo->filtracion = 'MERV ≥ 7 Lavables';
          $new_equipo->valor = 1.04;
          $new_equipo->save();
 
          $new_equipo = new FiltracionModel;
          $new_equipo->id_unidad = 15;
-         $new_equipo->referencia = 'man_doa';
+         $new_equipo->referencia = 'man_doa_hr';
          $new_equipo->filtracion = 'Metalicos Lavables';
          $new_equipo->valor = 1.08;
          $new_equipo->save();
 
          $new_equipo = new FiltracionModel;
          $new_equipo->id_unidad = 15;
-         $new_equipo->referencia = 'man_doa';
+         $new_equipo->referencia = 'man_doa_hr';
          $new_equipo->filtracion = 'Sin Filtros';
          $new_equipo->valor = 1.12;
          $new_equipo->save();

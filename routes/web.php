@@ -187,7 +187,7 @@ Route::get('send_efi/{value}', 'ResultadosController@send_efi');
 Route::get('verifica_solucion/{num_disp}/{num_sol}/{id_project}/{type}', 'ProjectController@verifica_solucion');
 Route::get('delete_all_disp_sol_thre', 'ResultadosController@delete_all_disp_sol_thre');
 
-
+Route::get('unidades_valores', 'UnidadesValoresController@index');
 //lang
 Route::get('locale/{locale}', function($locale){
    session()->put('locale',$locale);

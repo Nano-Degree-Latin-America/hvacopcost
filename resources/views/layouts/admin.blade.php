@@ -109,6 +109,12 @@
           </li>
 
           <li>
+            <a href="/unidades_valores">
+              <span>Unidades y Valores</span>
+            </a>
+          </li>
+
+          <li>
             <a href="/home">
               <span>Nuevo Proyecto</span>
             </a>

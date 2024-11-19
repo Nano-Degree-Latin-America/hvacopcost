@@ -16,7 +16,7 @@ class ControlesSeeder extends Seeder
         $new_equipo->id_unidad = 1;
         $new_equipo->referencia = 'basico';
         $new_equipo->control = 'Termostato Fuera Zona de Confort';
-        $new_equipo->valor = 0.06;
+        $new_equipo->valor = 1.06;
         $new_equipo->save();
 
         $new_equipo = new ControlesModel;
@@ -45,7 +45,7 @@ class ControlesSeeder extends Seeder
         $new_equipo->id_unidad = 2;
         $new_equipo->referencia = 'c_economizador';
         $new_equipo->control = 'Termostato Fuera Zona de Confort';
-        $new_equipo->valor = 0.06;
+        $new_equipo->valor = 1.06;
         $new_equipo->save();
 
         $new_equipo = new ControlesModel;
@@ -74,7 +74,7 @@ class ControlesSeeder extends Seeder
         $new_equipo->id_unidad = 3;
         $new_equipo->referencia = 'w_heat_rec';
         $new_equipo->control = 'Termostato Fuera Zona de Confort';
-        $new_equipo->valor = 0.06;
+        $new_equipo->valor = 1.06;
         $new_equipo->save();
 
         $new_equipo = new ControlesModel;
@@ -264,7 +264,7 @@ class ControlesSeeder extends Seeder
         $new_equipo->id_unidad = 11;
         $new_equipo->referencia = 'fancoil_lsp';
         $new_equipo->control = 'Termostato Inteligente en Zona';
-        $new_equipo->valor = 0.95;
+        $new_equipo->valor = 1;
         $new_equipo->save();
 
         $new_equipo = new ControlesModel;
@@ -315,7 +315,7 @@ class ControlesSeeder extends Seeder
         $new_equipo->id_unidad = 13;
         $new_equipo->referencia = 'man';
         $new_equipo->control = 'Termostato en Red / DDC en Zona';
-        $new_equipo->valor = 0.94;
+        $new_equipo->valor = 0.93;
         $new_equipo->save();
 
         //fancoil_hsp
