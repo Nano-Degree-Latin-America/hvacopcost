@@ -56,7 +56,7 @@
 
                                 if(type_p_edit_1_1 == 1 ||  type_p_edit_1_1 == 0){
                                 traer_unidad_hvac('{{$id_project}}',1,1,'cUnidad_1_1','csTipo','csDisenio_1_1','tipo_control_1_1','dr_1_1','csMantenimiento','lblCsTipo_1_1'
-                                ,'capacidad_total','costo_elec','csStd_cant_1_1','cheValorS_1_1','','','csStd','maintenance_cost_1_1','marca_1_1','modelo_1_1','ventilacion_1_1','filtracion_1_1','tipo_ambiente_1_1','proteccion_condensador_1_1','proteccion_condensador_1_1_value');
+                                ,'capacidad_total','costo_elec','csStd_cant_1_1','cheValorS_1_1','','','csStd','maintenance_cost_1_1','marca_1_1','modelo_1_1','ventilacion_1_1','filtracion_1_1','tipo_ambiente_1_1','proteccion_condensador_1_1','proteccion_condensador_1_1_value','unidad_capacidad_tot');
                                 }
 
                                 setTimeout(function() {
@@ -388,7 +388,7 @@
                                             if(type_p_edit_1_2 == 1 ||  type_p_edit_2_1 == 0){
                                 traer_unidad_hvac('{{$id_project}}',2,1,'cUnidad_1_2','csTipo_1_2','csDisenio_1_2'
                                 ,'tipo_control_1_2','dr_1_2','csMantenimiento_1_2','lblCsTipo_1_2','capacidad_total_1_2'
-                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2','action_submit_1_2','csStd_1_2','maintenance_cost_1_2','marca_1_2','modelo_1_2','ventilacion_1_2','filtracion_1_2','tipo_ambiente_1_2','proteccion_condensador_1_2','proteccion_condensador_1_2_value');
+                                ,'costo_elec_1_2','csStd_cant_1_2','cheValorS_1_2','sol_1_2','action_submit_1_2','csStd_1_2','maintenance_cost_1_2','marca_1_2','modelo_1_2','ventilacion_1_2','filtracion_1_2','tipo_ambiente_1_2','proteccion_condensador_1_2','proteccion_condensador_1_2_value','_');
                                             }
 
                                             setTimeout(function() {
@@ -1013,7 +1013,7 @@
                                         if(type_p_edit_2_1 == 1 ||  type_p_edit_2_1 == 0){
                                         traer_unidad_hvac('{{$id_project}}',1,2,'cUnidad_2_1','cheTipo_2_1','cheDisenio_2_1'
                                         ,'tipo_control_2_1','dr_2_1','csMantenimiento_2_1','lblCsTipo_2_1','capacidad_total_2_1'
-                                        ,'costo_elec_2_1','csStd_cant_2_1','cheValorS_2_1','2_1','action_submit_2_1','csStd_2_1','maintenance_cost_2_1','marca_2_1','modelo_2_1','ventilacion_2_1','filtracion_2_1','tipo_ambiente_2_1','proteccion_condensador_2_1','proteccion_condensador_2_1_value');
+                                        ,'costo_elec_2_1','csStd_cant_2_1','cheValorS_2_1','2_1','action_submit_2_1','csStd_2_1','maintenance_cost_2_1','marca_2_1','modelo_2_1','ventilacion_2_1','filtracion_2_1','tipo_ambiente_2_1','proteccion_condensador_2_1','proteccion_condensador_2_1_value','_');
                                         }
 
                                         verifica_solution(2,1,'action_submit_2_1','{{$id_project}}',1);
@@ -1326,7 +1326,7 @@
                                     traer_unidad_hvac('{{$id_project}}',2,2,'cUnidad_2_2','cheTipo_2_2','cheDisenio_2_2'
                                     ,'tipo_control_2_2','dr_2_2','cheMantenimiento_2_2','lblCsTipo_2_2',
                                     'capacidad_total_2_2','costo_elec_2_2','csStd_cant_2_2','cheValorS_2_2'
-                                    ,'sol_2_2','action_submit_2_2','csStd_2_2','maintenance_cost_2_2','marca_2_2','modelo_2_2','ventilacion_2_2','filtracion_2_2','tipo_ambiente_2_2','proteccion_condensador_2_2','proteccion_condensador_2_2_value');
+                                    ,'sol_2_2','action_submit_2_2','csStd_2_2','maintenance_cost_2_2','marca_2_2','modelo_2_2','ventilacion_2_2','filtracion_2_2','tipo_ambiente_2_2','proteccion_condensador_2_2','proteccion_condensador_2_2_value','_');
                                         }
                                 });
                                 </script>
@@ -1961,7 +1961,7 @@
                                         if(type_p_edit_3_1 == 1 ||  type_p_edit_3_1 == 0){
                                         traer_unidad_hvac('{{$id_project}}',1,3,'cUnidad_3_1','cheTipo_3_1','cheDisenio_3_1'
                                         ,'tipo_control_3_1','dr_3_1','cheMantenimiento_3_1','lblCsTipo_3_1','capacidad_total_3_1'
-                                        ,'costo_elec_3_1','cheStd_3_1','cheValorS_3_1','3_1','action_submit_3_1','csStd2_3_1','maintenance_cost_3_1','marca_3_1','modelo_3_1','ventilacion_3_1','filtracion_3_1','tipo_ambiente_3_1','proteccion_condensador_3_1','proteccion_condensador_3_1_value');
+                                        ,'costo_elec_3_1','cheStd_3_1','cheValorS_3_1','3_1','action_submit_3_1','csStd2_3_1','maintenance_cost_3_1','marca_3_1','modelo_3_1','ventilacion_3_1','filtracion_3_1','tipo_ambiente_3_1','proteccion_condensador_3_1','proteccion_condensador_3_1_value','_');
                                         }
 
                                         verifica_solution(3,1,'action_submit_3_1','{{$id_project}}',1);
@@ -2275,7 +2275,7 @@
                                         if(type_p_edit_3_2 == 1 ||  type_p_edit_3_2 == 0){
                                     traer_unidad_hvac('{{$id_project}}',2,3,'cUnidad_3_2','cheTipo_3_2','cheDisenio_3_2'
                                     ,'tipo_control_3_2','dr_3_2','cheMantenimiento_3_2','lblCsTipo_3_2','capacidad_total_3_2'
-                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2','action_submit_3_2','csStd_3_2','maintenance_cost_3_2','marca_3_2','modelo_3_2','ventilacion_3_2','filtracion_3_2','tipo_ambiente_3_2','proteccion_condensador_3_2','proteccion_condensador_3_2_value');
+                                    ,'costo_elec_3_2','csStd_cant_3_2','cheValorS2_3_2','sol_3_2','action_submit_3_2','csStd_3_2','maintenance_cost_3_2','marca_3_2','modelo_3_2','ventilacion_3_2','filtracion_3_2','tipo_ambiente_3_2','proteccion_condensador_3_2','proteccion_condensador_3_2_value','_');
                                         }
                                 });
                                 </script>
