@@ -188,6 +188,8 @@ Route::get('verifica_solucion/{num_disp}/{num_sol}/{id_project}/{type}', 'Projec
 Route::get('delete_all_disp_sol_thre', 'ResultadosController@delete_all_disp_sol_thre');
 
 Route::get('unidades_valores', 'UnidadesValoresController@index');
+Route::get('change_valor_reg/{tipo}/{id}/{txt_val}/{identi}', 'UnidadesValoresController@change_valor_reg');
+
 //lang
 Route::get('locale/{locale}', function($locale){
    session()->put('locale',$locale);

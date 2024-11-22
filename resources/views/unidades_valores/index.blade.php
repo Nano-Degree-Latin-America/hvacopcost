@@ -36,8 +36,39 @@ span{
   transform:scale(1);
 }
 
+.box-table:hover{
+    text-decoration: underline;
+    cursor: pointer;
+    }
+
+.box-table:hover{
+    text-decoration: underline;
+        cursor: pointer;
+    }
+
+.txt-size-s{
+    font-size:10px;
+    cursor: pointer;
+}
+
 .txt-size-p{
     font-size:9px;
+    cursor: pointer;
+}
+
+.txt-size-val{
+    font-size:9px;
+    color: #3b82f6;
+    cursor: pointer;
+}
+
+.txt-size-val:hover {
+  color: red;
+}
+
+.text-refes{
+    font-size:12px;
+    cursor: pointer;
 }
 
 table {
@@ -52,14 +83,21 @@ td, th {
   padding: 8px;
 }
 
-tr:nth-child(even) {
+/* tr:nth-child(even) {
   background-color: #dddddd;
+} */
+
+
+.no-border{
+    border: none;
 }
   </style>
 {{--   @inject('unidades','app\Http\Controllers\UnidadesValoresController') --}}
   <?php
   $idm = App::getLocale();
   ?>
+  @include('unidades_valores.modal_cambio_valor')
+  <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
   <div class="my-3 mx-3 font-semibold text-gray-700 flex-1">
     <nav class="flex" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-3">
@@ -80,205 +118,227 @@ tr:nth-child(even) {
                             </button>
                     </a>
 
-                     </div>
+         </div>
       </nav>
 </div>
 <hr>
 <?php
-$arry_sistemas = ['','Unidad Paquete (RTU)','Split DX','VRF No Ductados','VRF Ductados','PTAC / VTAC','WSHP','MS Inverter']
+$arry_vals_name = ['','Unidad Hvac','Diseño','DR','Ventilación','Filtración','Control'];
+$arry_sistemas = ['','Unidad Paquete (RTU)','Split DX','VRF No Ductados','VRF Ductados','PTAC / VTAC','WSHP'];
 ?>
 
   <div class="w-full h-full my-5 mx-1">
     <!-- This example requires Tailwind CSS v2.0+ -->
     <table>
-        <tr>
-          <th>Sistema Hvac</th>
-          <th>Unidad Hvac</th>
-          <th>Diseño</th>
-          <th>DR</th>
-          <th>Ventilación</th>
-          <th>Filtración</th>
-          <th>Control</th>
-         {{--  <th>Mantenimiento</th> --}}
-        </tr>
+
         @for ($i=1;$i < count($arry_sistemas);$i++)
-        <tr>
-            <td><p class="txt-size-p font-bold">{{$arry_sistemas[$i]}}</p>
+        <tr class="tr_gray">
+            <td class="sis_tds"><p class="txt-size-s font-bold">{{$arry_sistemas[$i]}}</p>
             </td>
-            <td>
-               <div class="grid">
-                  @foreach ($unidades as $unidad)
-                  @if ($unidad->equipo == $i)
-                      <div class="flex gap-x-1">
-                          <p class="txt-size-p font-bold">Unidad: {{$unidad->unidad}}</p>,
-                          <p class="txt-size-p font-bold text-blue-500">Valor: {{$unidad->valor}}</p>
-                         {{--  <p class="txt-size-p font-bold text-blue-500 mt-1">Valor:</p> <input id="{{$unidad->identificador}}_{{$unidad->id}}" name="{{$unidad->identificador}}_{{$unidad->id}}" class="txt-size-p font-bold text-blue-500 w-8" type="text" value="{{$unidad->valor}}"> --}}
-                      </div>
-                  @endif
-                  @endforeach
-               </div>
-            </td>
-            <td>
-              <div class="grid">
-                  @foreach ($disenos as $diseno)
-                  @if ($diseno->id_unidad == $i)
-                      <div class="flex gap-x-1">
-                          <p class="txt-size-p font-bold">Diseño: {{$diseno->diseno}}</p>,
-                          <p class="txt-size-p font-bold text-blue-500">Valor: {{$diseno->valor}}</p>
-                      </div>
-                  @endif
-                  @endforeach
-               </div>
-            </td>
-            <td>
-              <div class="grid">
-                  @foreach ($drs as $dr)
-                  @if ($dr->id_unidad == $i)
-                      <div class="flex gap-x-1">
-                          <p class="txt-size-p font-bold">Dr: {{$dr->dr}}</p>,
-                          <p class="txt-size-p font-bold text-blue-500">Valor: {{$dr->valor}}</p>
-                      </div>
-                  @endif
-                  @endforeach
-               </div>
-            </td>
-            <td>
-              <div class="grid">
-                  @foreach ($ventilaciones as $ventilacion)
-                  @if ($ventilacion->id_unidad == $i)
-                      <div class="flex gap-x-1">
-                          <p class="txt-size-p font-bold">Ventilación: {{$ventilacion->ventilacion}}</p>,
-                          <p class="txt-size-p font-bold text-blue-500">Valor: {{$ventilacion->valor}}</p>
-                      </div>
-                  @endif
-                  @endforeach
-               </div>
-            </td>
-            <td>
-              <div class="grid">
-                  @foreach ($filtraciones as $filtracion)
-                  @if ($filtracion->id_unidad == $i)
-                      <div class="flex gap-x-1">
-                          <p class="txt-size-p font-bold">Filtracion: {{$filtracion->filtracion}}</p>,
-                          <p class="txt-size-p font-bold text-blue-500">Valor: {{$filtracion->valor}}</p>
-                      </div>
-                  @endif
-                  @endforeach
-               </div>
-            </td>
-            <td>
-              <div class="grid">
-                  @foreach ($controles as $control)
-                  @if ($control->id_unidad == $i)
-                      <div class="flex gap-x-1">
-                          <p class="txt-size-p font-bold">Control: {{$control->control}}</p>,
-                          <p class="txt-size-p font-bold text-blue-500">Valor: {{$control->valor}}</p>
-                      </div>
-                  @endif
-                  @endforeach
-               </div>
-            </td>
-            {{-- <td>
-                <div class="grid">
-                        <div class="flex gap-x-1">
-                            <p class="txt-size-p font-bold">Mantenimiento: ASHRAE 180</p>,
-                            <p class="txt-size-p font-bold text-blue-500">Valor: -0.1</p>
-                        </div>
+            <td  class="no-border">
+                <table class="h-full">
+                    @foreach ($unidades as $unidad)
+                    @if ($unidad->equipo == $i)
+                            <tr>
+                                <td class="gap-y-2">
+                                    <p class="text-refes  text-blue-800">Unidades</p>
+                                    <div class="flex gap-x-1">
+                                        <p class="txt-size-p font-bold">Unidad: {{$unidad->unidad}},</p>
+                                        <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$unidad->unidad}}','{{$unidad->identificador}}',{{$unidad->valor}},{{$unidad->id}},'unidades')" class="txt-size-val font-bold">Valor: {{$unidad->valor}}</p>
+                                    </div>
+                                </td>
 
-                        <div class="flex gap-x-1">
-                            <p class="txt-size-p font-bold">Deficiente</p>,
-                            <p class="txt-size-p font-bold text-blue-500">Valor: 0.11</p>
-                        </div>
+                                <td>
+                                    <table cellspacing="0" cellpadding="0" class="no-border">
+                                        <tr>
+                                            <td class="no-border gap-y-2">
+                                                <p class="text-refes  text-blue-800">Diseños: {{$unidad->unidad}}</p>
+                                                    @if ($unidad->equipo == $i)
+                                                        @foreach ($disenos as $diseno)
+                                                        @if ($diseno->id_unidad == $unidad->id)
+                                                            <div class="flex gap-x-1 box-table my-1">
+                                                                <p class="txt-size-p font-bold">Diseño: {{$diseno->diseno}},</p>
+                                                                <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$diseno->diseno}}','{{$diseno->referencia}}',{{$diseno->valor}},{{$diseno->id}},'diseños')" class="txt-size-val font-bold">Valor: {{$diseno->valor}}</p>
+                                                            </div>
 
-                        <div class="flex gap-x-1">
-                            <p class="txt-size-p font-bold">Sin Mantenimiento</p>,
-                            <p class="txt-size-p font-bold text-blue-500"> 0.18</p>
-                        </div>
-                 </div>
-              </td> --}}
+                                                        @endif
+                                                        @endforeach
+                                                    @endif
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td>
+                                    <table cellspacing="0" cellpadding="0" class="no-border">
+                                        <tr>
+                                            <td class="no-border">
+                                                <p class="text-refes  text-blue-800">D/Rs: {{$unidad->unidad}}</p>
+                                                    @if ($unidad->equipo == $i)
+                                                            @foreach ($drs as $dr)
+                                                            @if ($dr->id_unidad == $unidad->id)
+                                                                <div class="flex gap-x-1 box-table">
+                                                                    <p class="txt-size-p font-bold">Dr: {{$dr->dr}},</p>
+                                                                    <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$dr->dr}}','{{$dr->referencia}}',{{$dr->valor}},{{$dr->id}},'drs')" class="txt-size-val font-bold">Valor: {{$dr->valor}}</p>
+                                                                </div>
+                                                            @endif
+                                                            @endforeach
+                                                    @endif
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td>
+                                    <table cellspacing="0" cellpadding="0" class="no-border">
+                                        <tr>
+                                            <td  class="no-border">
+                                                <p class="text-refes text-blue-800">Ventilaciones: {{$unidad->unidad}}</p>
+                                                    @if ($unidad->equipo == $i)
+                                                            @foreach ($ventilaciones as $ventilacion)
+                                                            @if ($ventilacion->id_unidad == $unidad->id)
+                                                                <div class="flex gap-x-1 box-table">
+                                                                    <p class="txt-size-p font-bold">Ventilación: {{$ventilacion->ventilacion}},</p>
+                                                                    <p  onclick="mostrar_modal_set_info('modal_cambio_valor','{{$ventilacion->ventilacion}}','{{$ventilacion->referencia}}',{{$ventilacion->valor}},{{$ventilacion->id}},'ventilaciones')" class="txt-size-val font-bold">Valor: {{$ventilacion->valor}}</p>
+                                                                </div>
+                                                            @endif
+                                                            @endforeach
+                                                    @endif
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td>
+                                    <table cellspacing="0" cellpadding="0" class="no-border">
+                                        <tr>
+                                            <td class="no-border">
+                                                <p class="text-refes text-blue-800">Filtraciones: {{$unidad->unidad}}</p>
+                                                    @if ($unidad->equipo == $i)
+                                                            @foreach ($filtraciones as $filtracion)
+                                                            @if ($filtracion->id_unidad == $unidad->id)
+                                                                <div class="flex gap-x-1 box-table">
+                                                                    <p class="txt-size-p font-bold">Filtracion: {{$filtracion->filtracion}},</p>
+                                                                    <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$filtracion->filtracion}}','{{$filtracion->referencia}}',{{$filtracion->valor}},{{$filtracion->id}},'filtraciones')" class="txt-size-val font-bold">Valor: {{$filtracion->valor}}</p>
+                                                                </div>
+                                                            @endif
+                                                            @endforeach
+                                                    @endif
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+
+                                <td>
+                                    <table cellspacing="0" cellpadding="0" class="no-border">
+                                        <tr>
+                                            <td class="no-border">
+                                                <p class="text-refes text-blue-800">Controles: {{$unidad->unidad}}</p>
+                                                    @if ($unidad->equipo == $i)
+                                                    @foreach ($controles as $control)
+                                                    @if ($control->id_unidad == $unidad->id)
+                                                        <div class="flex gap-x-1 box-table">
+                                                            <p class="txt-size-p font-bold">Control: {{$control->control}},</p>
+                                                            <p  onclick="mostrar_modal_set_info('modal_cambio_valor','{{$control->control}}','{{$control->referencia}}',{{$control->valor}},{{$control->id}},'controles')" class="txt-size-val font-bold">Valor: {{$control->valor}}</p>
+                                                        </div>
+                                                    @endif
+                                                    @endforeach
+                                                    @endif
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                    @endif
+                    @endforeach
+                </table>
+            </td>
           </tr>
         @endfor
-        {{-- <tr>
-          <td><p class="txt-size-p font-bold">Unidad Paquete (RTU)</p>
-          </td>
-          <td>
-             <div class="grid">
-                @foreach ($unidades as $unidad)
-                @if ($unidad->equipo == 1)
-                    <div class="flex gap-x-1">
-                        <p class="txt-size-p font-bold">Unidad: {{$unidad->unidad}}</p>,
-                        <p class="txt-size-p font-bold text-blue-500">Valor: {{$unidad->valor}}</p>
-                    </div>
-                @endif
-                @endforeach
-             </div>
-          </td>
-          <td>
-            <div class="grid">
-                @foreach ($disenos as $diseno)
-                @if ($diseno->id_unidad == 1)
-                    <div class="flex gap-x-1">
-                        <p class="txt-size-p font-bold">Diseño: {{$diseno->diseno}}</p>,
-                        <p class="txt-size-p font-bold text-blue-500">Valor: {{$diseno->valor}}</p>
-                    </div>
-                @endif
-                @endforeach
-             </div>
-          </td>
-          <td>
-            <div class="grid">
-                @foreach ($drs as $dr)
-                @if ($dr->id_unidad == 1)
-                    <div class="flex gap-x-1">
-                        <p class="txt-size-p font-bold">Dr: {{$dr->dr}}</p>,
-                        <p class="txt-size-p font-bold text-blue-500">Valor: {{$dr->valor}}</p>
-                    </div>
-                @endif
-                @endforeach
-             </div>
-          </td>
-          <td>
-            <div class="grid">
-                @foreach ($ventilaciones as $ventilacion)
-                @if ($ventilacion->id_unidad == 1)
-                    <div class="flex gap-x-1">
-                        <p class="txt-size-p font-bold">Ventilación: {{$ventilacion->ventilacion}}</p>,
-                        <p class="txt-size-p font-bold text-blue-500">Valor: {{$ventilacion->valor}}</p>
-                    </div>
-                @endif
-                @endforeach
-             </div>
-          </td>
-          <td>
-            <div class="grid">
-                @foreach ($filtraciones as $filtracion)
-                @if ($filtracion->id_unidad == 1)
-                    <div class="flex gap-x-1">
-                        <p class="txt-size-p font-bold">Filtracion: {{$filtracion->filtracion}}</p>,
-                        <p class="txt-size-p font-bold text-blue-500">Valor: {{$filtracion->valor}}</p>
-                    </div>
-                @endif
-                @endforeach
-             </div>
-          </td>
-          <td>
-            <div class="grid">
-                @foreach ($controles as $control)
-                @if ($control->id_unidad == 1)
-                    <div class="flex gap-x-1">
-                        <p class="txt-size-p font-bold">Control: {{$control->control}}</p>,
-                        <p class="txt-size-p font-bold text-blue-500">Valor: {{$control->valor}}</p>
-                    </div>
-                @endif
-                @endforeach
-             </div>
-          </td>
-        </tr> --}}
-
       </table>
   </div>
 
 <script>
+function mostrar_modal_set_info(id,unidad,identi,txt_val,id_reg,tipo){
+    $("#"+id).removeClass("hidden");
+    $("#unidad").html(unidad);
+    $("#valor").val(txt_val);
+    $("#identificador").val(identi);
+    $("#id_reg").val(id_reg);
+    $("#tipo").val(tipo);
 
+    switch (tipo) {
+        case 'unidades':
+            $("#tipo").html('Unidad:');
+        break;
+
+        case 'diseños':
+            $("#tipo").html('Diseño:');
+        break;
+
+        case 'drs':
+            $("#tipo").html('D/R:');
+        break;
+
+        case 'ventilaciones':
+            $("#tipo").html('Ventilación:');
+        break;
+
+        case 'filtraciones':
+            $("#tipo").html('Filtración:');
+        break;
+
+        case 'controles':
+            $("#tipo").html('Control:');
+        break;
+        default:
+            break;
+    }
+
+
+}
+
+function save_valor(){
+
+    var unidad =  $("#unidad").val();
+    var identi = $("#identificador").val();
+    var txt_val =  $("#valor").val();
+    var id_reg = $("#id_reg").val();
+    var tipo =  $("#tipo").val();
+
+    var token = $("._token").val();
+
+    Swal.fire({
+        icon: 'question',
+        title: 'Cambiar Valor ?',
+        showDenyButton: true,
+        confirmButtonText: 'Si',
+      }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '/change_valor_reg/'+ tipo +'/'+ id_reg +"/"+ txt_val +"/"+ identi,
+                headers: { 'X-CSRF-TOKEN': token },
+                type: 'get',
+                dataType: 'json',
+                success: function () {
+                    Swal.fire(
+                        'Guardado!',
+                        '',
+                        'success'
+                    )
+                    setTimeout(() => {
+                        location.reload()
+                    }, 1000);
+
+                }
+            });
+        }
+      })
+
+}
+
+function ocultar_modal(id){
+    $("#"+id).addClass("hidden");
+}
 </script>
 @endsection
