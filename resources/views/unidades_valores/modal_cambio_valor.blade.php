@@ -9,36 +9,43 @@
           </div>
           <!-- Contenedor del modal -->
           <div style="width: 25%" class="border-2 border-blue-600 inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 justify-items-center" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
-            <div class="bg-white px-4 pt-5 pb-4 w-full">
-              <div class="grid w-full">
+            <form action="" method="POST" id="formulario" name="formulario" class="w-full">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+                <div class="bg-white px-4 pt-5 pb-4 w-full">
+                    <div class="grid w-full">
 
-                <div class="flex w-full" >
-                    <div class="mt-1 w-full py-2 border-b-2 border-blue-600">
-                        <div>
-                            <label for="" class="text-2xl text-black font-roboto">Cambiar Valor</label>
+                      <div class="flex w-full" >
+                          <div class="mt-1 w-full py-2 border-b-2 border-blue-600">
+                              <div>
+                                  <label for="" class="text-2xl text-black font-roboto">Cambiar Valor</label>
+                              </div>
+
+                          </div>
+                      </div>
+
+
+                      <div id="valores" name="valores" class="grid w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-y-1">
+
+                        {{-- <div  id="tipos" name="tipos" class="flex w-full gap-x-1">
+                            <Label id="tipo" name="tipo" class="w-1/4 text-xl mt-1"></Label>
+                            <Label id="unidad" name="unidad" class="w-auto text-xl mt-1 text-blue-500"></Label>
+                        </div> --}}
+                          {{--
+                          <div class="flex w-full gap-x-1">
+                              <Label class="w-1/4 text-xl mt-1">Valor:</Label>
+                              <input  id="valor" name="valor" class="w-1/4 text-black border-2 border-blue-600 rounded-md py-1 text-center" type="text">
+
+                          </div> --}}
+                          {{-- <input id="identificador" name="identificador" type="text" class="hidden">
+                          <input id="id_reg" name="id_reg" type="text" class="hidden">
+                          <input id="tipo" name="tipo" type="text" class="hidden"> --}}
                         </div>
+                        <input id="id_unidad_val" name="id_unidad_val" type="text"  class="hidden">
+                        <input id="tipo_val" name="tipo_val" type="text"  class="hidden">
 
                     </div>
-                </div>
-
-
-                <div class="grid w-full 2xl:mt-3 xl:mt-3 lg:mt-0 gap-y-1">
-                    <div class="flex w-full gap-x-1">
-                        <Label id="tipo" name="tipo" class="w-1/4 text-xl mt-1"></Label>
-                        <Label id="unidad" name="unidad" class="w-auto text-xl mt-1 text-blue-500"></Label>
-                    </div>
-                    <div class="flex w-full gap-x-1">
-                        <Label class="w-1/4 text-xl mt-1">Valor:</Label>
-                        <input  id="valor" name="valor" class="w-1/4 text-black border-2 border-blue-600 rounded-md py-1 text-center" type="text">
-
-                    </div>
-                    <input id="identificador" name="identificador" type="text" class="hidden">
-                    <input id="id_reg" name="id_reg" type="text" class="hidden">
-                    <input id="tipo" name="tipo" type="text" class="hidden">
-                </div>
-
-              </div>
-            </div>
+                  </div>
+            </form>
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse w-full">
               <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
                 <button type="button" onclick="save_valor();" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-blue-600 text-base leading-6 font-medium text-white shadow-sm hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue transition ease-in-out duration-150 sm:text-sm sm:leading-5" >

@@ -96,8 +96,8 @@ td, th {
   <?php
   $idm = App::getLocale();
   ?>
-  @include('unidades_valores.modal_cambio_valor')
   <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
+  @include('unidades_valores.modal_cambio_valor')
   <div class="my-3 mx-3 font-semibold text-gray-700 flex-1">
     <nav class="flex" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-3">
@@ -141,10 +141,10 @@ $arry_sistemas = ['','Unidad Paquete (RTU)','Split DX','VRF No Ductados','VRF Du
                     @if ($unidad->equipo == $i)
                             <tr>
                                 <td class="gap-y-2">
-                                    <p class="text-refes  text-blue-800">Unidades</p>
+                                    <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$unidad->id}}','unidades')" class="text-refes  text-blue-800">Unidades</p>
                                     <div class="flex gap-x-1">
                                         <p class="txt-size-p font-bold">Unidad: {{$unidad->unidad}},</p>
-                                        <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$unidad->unidad}}','{{$unidad->identificador}}',{{$unidad->valor}},{{$unidad->id}},'unidades')" class="txt-size-val font-bold">Valor: {{$unidad->valor}}</p>
+                                        <p class="txt-size-val font-bold">Valor: {{$unidad->valor}}</p>
                                     </div>
                                 </td>
 
@@ -152,13 +152,13 @@ $arry_sistemas = ['','Unidad Paquete (RTU)','Split DX','VRF No Ductados','VRF Du
                                     <table cellspacing="0" cellpadding="0" class="no-border">
                                         <tr>
                                             <td class="no-border gap-y-2">
-                                                <p class="text-refes  text-blue-800">Diseños: {{$unidad->unidad}}</p>
+                                                <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$unidad->id}}','diseños')"  class="text-refes  text-blue-800">Diseños: {{$unidad->unidad}}</p>
                                                     @if ($unidad->equipo == $i)
                                                         @foreach ($disenos as $diseno)
                                                         @if ($diseno->id_unidad == $unidad->id)
                                                             <div class="flex gap-x-1 box-table my-1">
                                                                 <p class="txt-size-p font-bold">Diseño: {{$diseno->diseno}},</p>
-                                                                <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$diseno->diseno}}','{{$diseno->referencia}}',{{$diseno->valor}},{{$diseno->id}},'diseños')" class="txt-size-val font-bold">Valor: {{$diseno->valor}}</p>
+                                                                <p {{-- onclick="mostrar_modal_set_info('modal_cambio_valor','{{$diseno->diseno}}','{{$diseno->referencia}}',{{$diseno->valor}},{{$diseno->id}},'diseños')"  --}}class="txt-size-val font-bold">Valor: {{$diseno->valor}}</p>
                                                             </div>
 
                                                         @endif
@@ -173,13 +173,13 @@ $arry_sistemas = ['','Unidad Paquete (RTU)','Split DX','VRF No Ductados','VRF Du
                                     <table cellspacing="0" cellpadding="0" class="no-border">
                                         <tr>
                                             <td class="no-border">
-                                                <p class="text-refes  text-blue-800">D/Rs: {{$unidad->unidad}}</p>
+                                                <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$unidad->id}}','drs')" class="text-refes  text-blue-800">D/Rs: {{$unidad->unidad}}</p>
                                                     @if ($unidad->equipo == $i)
                                                             @foreach ($drs as $dr)
                                                             @if ($dr->id_unidad == $unidad->id)
                                                                 <div class="flex gap-x-1 box-table">
                                                                     <p class="txt-size-p font-bold">Dr: {{$dr->dr}},</p>
-                                                                    <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$dr->dr}}','{{$dr->referencia}}',{{$dr->valor}},{{$dr->id}},'drs')" class="txt-size-val font-bold">Valor: {{$dr->valor}}</p>
+                                                                    <p class="txt-size-val font-bold">Valor: {{$dr->valor}}</p>
                                                                 </div>
                                                             @endif
                                                             @endforeach
@@ -193,13 +193,13 @@ $arry_sistemas = ['','Unidad Paquete (RTU)','Split DX','VRF No Ductados','VRF Du
                                     <table cellspacing="0" cellpadding="0" class="no-border">
                                         <tr>
                                             <td  class="no-border">
-                                                <p class="text-refes text-blue-800">Ventilaciones: {{$unidad->unidad}}</p>
+                                                <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$unidad->id}}','ventilaciones')" class="text-refes text-blue-800">Ventilaciones: {{$unidad->unidad}}</p>
                                                     @if ($unidad->equipo == $i)
                                                             @foreach ($ventilaciones as $ventilacion)
                                                             @if ($ventilacion->id_unidad == $unidad->id)
                                                                 <div class="flex gap-x-1 box-table">
                                                                     <p class="txt-size-p font-bold">Ventilación: {{$ventilacion->ventilacion}},</p>
-                                                                    <p  onclick="mostrar_modal_set_info('modal_cambio_valor','{{$ventilacion->ventilacion}}','{{$ventilacion->referencia}}',{{$ventilacion->valor}},{{$ventilacion->id}},'ventilaciones')" class="txt-size-val font-bold">Valor: {{$ventilacion->valor}}</p>
+                                                                    <p   class="txt-size-val font-bold">Valor: {{$ventilacion->valor}}</p>
                                                                 </div>
                                                             @endif
                                                             @endforeach
@@ -213,13 +213,13 @@ $arry_sistemas = ['','Unidad Paquete (RTU)','Split DX','VRF No Ductados','VRF Du
                                     <table cellspacing="0" cellpadding="0" class="no-border">
                                         <tr>
                                             <td class="no-border">
-                                                <p class="text-refes text-blue-800">Filtraciones: {{$unidad->unidad}}</p>
+                                                <p  onclick="mostrar_modal_set_info('modal_cambio_valor','{{$unidad->id}}','filtraciones')"  class="text-refes text-blue-800">Filtraciones: {{$unidad->unidad}}</p>
                                                     @if ($unidad->equipo == $i)
                                                             @foreach ($filtraciones as $filtracion)
                                                             @if ($filtracion->id_unidad == $unidad->id)
                                                                 <div class="flex gap-x-1 box-table">
                                                                     <p class="txt-size-p font-bold">Filtracion: {{$filtracion->filtracion}},</p>
-                                                                    <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$filtracion->filtracion}}','{{$filtracion->referencia}}',{{$filtracion->valor}},{{$filtracion->id}},'filtraciones')" class="txt-size-val font-bold">Valor: {{$filtracion->valor}}</p>
+                                                                    <p class="txt-size-val font-bold">Valor: {{$filtracion->valor}}</p>
                                                                 </div>
                                                             @endif
                                                             @endforeach
@@ -233,16 +233,16 @@ $arry_sistemas = ['','Unidad Paquete (RTU)','Split DX','VRF No Ductados','VRF Du
                                     <table cellspacing="0" cellpadding="0" class="no-border">
                                         <tr>
                                             <td class="no-border">
-                                                <p class="text-refes text-blue-800">Controles: {{$unidad->unidad}}</p>
+                                                <p onclick="mostrar_modal_set_info('modal_cambio_valor','{{$unidad->id}}','controles')" class="text-refes text-blue-800">Controles: {{$unidad->unidad}}</p>
                                                     @if ($unidad->equipo == $i)
-                                                    @foreach ($controles as $control)
-                                                    @if ($control->id_unidad == $unidad->id)
-                                                        <div class="flex gap-x-1 box-table">
-                                                            <p class="txt-size-p font-bold">Control: {{$control->control}},</p>
-                                                            <p  onclick="mostrar_modal_set_info('modal_cambio_valor','{{$control->control}}','{{$control->referencia}}',{{$control->valor}},{{$control->id}},'controles')" class="txt-size-val font-bold">Valor: {{$control->valor}}</p>
-                                                        </div>
-                                                    @endif
-                                                    @endforeach
+                                                        @foreach ($controles as $control)
+                                                        @if ($control->id_unidad == $unidad->id)
+                                                            <div class="flex gap-x-1 box-table">
+                                                                <p class="txt-size-p font-bold">Control: {{$control->control}},</p>
+                                                                <p class="txt-size-val font-bold">Valor: {{$control->valor}}</p>
+                                                            </div>
+                                                        @endif
+                                                        @endforeach
                                                     @endif
                                             </td>
                                         </tr>
@@ -259,54 +259,112 @@ $arry_sistemas = ['','Unidad Paquete (RTU)','Split DX','VRF No Ductados','VRF Du
   </div>
 
 <script>
-function mostrar_modal_set_info(id,unidad,identi,txt_val,id_reg,tipo){
+function mostrar_modal_set_info(id,id_reg,tipo){
     $("#"+id).removeClass("hidden");
-    $("#unidad").html(unidad);
-    $("#valor").val(txt_val);
-    $("#identificador").val(identi);
-    $("#id_reg").val(id_reg);
-    $("#tipo").val(tipo);
+   var valores = $('#valores');
+   var tipos = $('#tipos');
 
-    switch (tipo) {
-        case 'unidades':
-            $("#tipo").html('Unidad:');
-        break;
+            $.ajax({
+                url: '/set_array_modal_valores/'+ id_reg +'/'+ tipo,
+                headers: { 'X-CSRF-TOKEN': token },
+                type: 'get',
+                dataType: 'json',
+                success: function (res) {
+                    valores.empty();
+                    res.map((reg, i) => {
 
-        case 'diseños':
-            $("#tipo").html('Diseño:');
-        break;
+                    switch (tipo) {
+                    case 'unidades':
+                        var tipo_val = reg.unidad;
+                        $('#id_unidad_val').val(reg.id);
+                        $('#tipo_val').val(tipo);
+                    break;
 
-        case 'drs':
-            $("#tipo").html('D/R:');
-        break;
+                    case 'diseños':
+                        var tipo_val = reg.diseno;
+                        $('#id_unidad_val').val(reg.id_unidad);
+                        $('#tipo_val').val(tipo);
+                    break;
 
-        case 'ventilaciones':
-            $("#tipo").html('Ventilación:');
-        break;
+                    case 'drs':
+                        var tipo_val = reg.dr;
+                        $('#id_unidad_val').val(reg.id_unidad);
+                        $('#tipo_val').val(tipo);
+                    break;
 
-        case 'filtraciones':
-            $("#tipo").html('Filtración:');
-        break;
+                    case 'ventilaciones':
+                         var tipo_val = reg.ventilacion;
+                         $('#id_unidad_val').val(reg.id_unidad);
+                         $('#tipo_val').val(tipo);
+                    break;
 
-        case 'controles':
-            $("#tipo").html('Control:');
-        break;
-        default:
-            break;
-    }
+                    case 'filtraciones':
+                        var tipo_val = reg.filtracion;
+                        $('#id_unidad_val').val(reg.id_unidad);
+                        $('#tipo_val').val(tipo);
+                    break;
+
+                    case 'controles':
+                        var tipo_val = reg.control;
+                        $('#id_unidad_val').val(reg.id_unidad);
+                        $('#tipo_val').val(tipo);
+                    break;
+                    default:
+                        break;
+                    }
+                        valores.append('<div class="flex w-full gap-x-1">'+'<Label id="tipo_'+reg.id+'" name="tipo_'+reg.id+'"class="w-1/4 text-xl mt-1"></Label>'+'<Label id="unidad_'+reg.id+'" name="unidad_'+reg.id+'" class="w-auto text-xl mt-1 text-blue-500">'+tipo_val+'</Label>'+'</div>'+'<div class="flex w-full gap-x-1">'+'<Label id="txt_val_'+reg.id+'" name="txt_val_'+reg.id+'" class="w-1/4 text-xl mt-1">Valor: </Label>'+'<input  id="valor_'+reg.id+'" name="valor_'+reg.id+'" class="w-1/4 text-black border-2 border-blue-600 rounded-md py-1 text-center" value="'+reg.valor+'" type="text">'+'</div>'+'<hr>');
+
+
+                        /* valores.html('<Label id="tipo_'+reg.id+'" name="tipo_'+reg.id+'"class="w-1/4 text-xl mt-1">'+identi+'</Label>'+'<Label id="unidad" name="unidad" class="w-auto text-xl mt-1 text-blue-500">'+reg.unidad+'</Label>'+'</div>'); */
+
+                    switch (tipo) {
+                    case 'unidades':
+                        $("#tipo_"+reg.id+"").html('Unidad:');
+                    break;
+
+                    case 'diseños':
+                        $("#tipo_"+reg.id+"").html('Diseño:');
+                    break;
+
+                    case 'drs':
+                        $("#tipo_"+reg.id+"").html('D/R:');
+                    break;
+
+                    case 'ventilaciones':
+                        $("#tipo_"+reg.id+"").html('Ventilación:');
+                    break;
+
+                    case 'filtraciones':
+                        $("#tipo_"+reg.id+"").html('Filtración:');
+                    break;
+
+                    case 'controles':
+                        $("#tipo_"+reg.id+"").html('Control:');
+                    break;
+                    default:
+                        break;
+                    }
+
+                    });
+
+
+                }
+            });
+
 
 
 }
 
 function save_valor(){
 
-    var unidad =  $("#unidad").val();
+/*     var unidad =  $("#unidad").val();
     var identi = $("#identificador").val();
     var txt_val =  $("#valor").val();
-    var id_reg = $("#id_reg").val();
-    var tipo =  $("#tipo").val();
+    */
+    var id_reg = $("#id_unidad_val").val();
+    var tipo =  $("#tipo_val").val();
 
-    var token = $("._token").val();
+    var token = $("#token").val();
 
     Swal.fire({
         icon: 'question',
@@ -315,11 +373,13 @@ function save_valor(){
         confirmButtonText: 'Si',
       }).then((result) => {
         if (result.isConfirmed) {
+            var dataString = $('#formulario').serialize(); // carga todos
             $.ajax({
-                url: '/change_valor_reg/'+ tipo +'/'+ id_reg +"/"+ txt_val +"/"+ identi,
+                url: '/change_valor_reg/'+ tipo +'/'+ id_reg,
                 headers: { 'X-CSRF-TOKEN': token },
-                type: 'get',
-                dataType: 'json',
+                type: "POST",
+                method: 'post',
+                data: dataString,
                 success: function () {
                     Swal.fire(
                         'Guardado!',

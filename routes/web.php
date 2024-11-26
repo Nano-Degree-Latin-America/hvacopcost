@@ -178,7 +178,6 @@ Route::get('send_marcas_equipo/{value}', 'ResultadosController@send_marcas_equip
 Route::get('send_modelos/{value}', 'ResultadosController@send_modelos');
 Route::get('check_marca/{value}', 'ResultadosController@check_marca');
 
-
 Route::post('store_new_marc/{value}', 'ResultadosController@store_new_marc');
 Route::get('store_new_model/{value}/{marca}/{eficiencia}/{equipo}/{eficiencia_cant}', 'ResultadosController@store_new_model');
 Route::get('send_modelos_datalist/{value}/{equipo}', 'ResultadosController@send_modelos_datalist');
@@ -188,7 +187,8 @@ Route::get('verifica_solucion/{num_disp}/{num_sol}/{id_project}/{type}', 'Projec
 Route::get('delete_all_disp_sol_thre', 'ResultadosController@delete_all_disp_sol_thre');
 
 Route::get('unidades_valores', 'UnidadesValoresController@index');
-Route::get('change_valor_reg/{tipo}/{id}/{txt_val}/{identi}', 'UnidadesValoresController@change_valor_reg');
+Route::post('change_valor_reg/{tipo}/{id}', 'UnidadesValoresController@change_valor_reg');
+Route::get('set_array_modal_valores/{id}/{identi}', 'UnidadesValoresController@set_array_modal_valores');
 
 //lang
 Route::get('locale/{locale}', function($locale){
