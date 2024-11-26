@@ -278,36 +278,42 @@ function mostrar_modal_set_info(id,id_reg,tipo){
                         var tipo_val = reg.unidad;
                         $('#id_unidad_val').val(reg.id);
                         $('#tipo_val').val(tipo);
+                        $("#title_vals").html('Valor de '+tipo_val+':');
                     break;
 
                     case 'diseños':
                         var tipo_val = reg.diseno;
                         $('#id_unidad_val').val(reg.id_unidad);
                         $('#tipo_val').val(tipo);
+                        $("#title_vals").html('Diseños de '+reg.unidad+':');
                     break;
 
                     case 'drs':
                         var tipo_val = reg.dr;
                         $('#id_unidad_val').val(reg.id_unidad);
                         $('#tipo_val').val(tipo);
+                        $("#title_vals").html('D/Rs de '+reg.unidad+':');
                     break;
 
                     case 'ventilaciones':
                          var tipo_val = reg.ventilacion;
                          $('#id_unidad_val').val(reg.id_unidad);
                          $('#tipo_val').val(tipo);
+                         $("#title_vals").html('Ventilaciones de '+reg.unidad+':');
                     break;
 
                     case 'filtraciones':
                         var tipo_val = reg.filtracion;
                         $('#id_unidad_val').val(reg.id_unidad);
                         $('#tipo_val').val(tipo);
+                        $("#title_vals").html('Filtraciones de '+reg.unidad+':');
                     break;
 
                     case 'controles':
                         var tipo_val = reg.control;
                         $('#id_unidad_val').val(reg.id_unidad);
                         $('#tipo_val').val(tipo);
+                        $("#title_vals").html('Controles de '+reg.unidad+':');
                     break;
                     default:
                         break;

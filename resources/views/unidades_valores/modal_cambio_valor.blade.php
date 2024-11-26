@@ -17,7 +17,7 @@
                       <div class="flex w-full" >
                           <div class="mt-1 w-full py-2 border-b-2 border-blue-600">
                               <div>
-                                  <label for="" class="text-2xl text-black font-roboto">Cambiar Valor</label>
+                                  <label id="title_vals" name="title_vals" for="" class="text-2xl text-black font-roboto"></label>
                               </div>
 
                           </div>

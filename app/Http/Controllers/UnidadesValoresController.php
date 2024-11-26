@@ -164,30 +164,40 @@ class UnidadesValoresController extends Controller
 
             case 'diseños':
                 $diseno = DisenoModel::where('id_unidad','=',$id)
+                ->join('unidades','unidades.id','=','id_unidad')
+                ->select('disenos.*','unidades.unidad')
                 ->get();
                 return $diseno;
             break;
 
             case 'drs':
                 $dr = DrModel::where('id_unidad','=',$id)
+                ->join('unidades','unidades.id','=','id_unidad')
+                ->select('dr.*','unidades.unidad')
                 ->get();
                 return $dr;
             break;
 
             case 'ventilaciones':
                 $vent = VentilacionModel::where('id_unidad','=',$id)
+                ->join('unidades','unidades.id','=','id_unidad')
+                ->select('ventilacion.*','unidades.unidad')
                 ->get();
                 return $vent;
             break;
 
             case 'filtraciones':
                 $filtraciones = FiltracionModel::where('id_unidad','=',$id)
+                ->join('unidades','unidades.id','=','id_unidad')
+                ->select('filtracion.*','unidades.unidad')
                 ->get();
                 return $filtraciones;
             break;
 
             case 'controles':
                 $controles = ControlesModel::where('id_unidad','=',$id)
+                ->join('unidades','unidades.id','=','id_unidad')
+                ->select('controles.*','unidades.unidad')
                 ->get();
                 return $controles;
             break;
