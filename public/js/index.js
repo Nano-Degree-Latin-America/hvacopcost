@@ -13285,7 +13285,7 @@ async function copiar_form_base_a_retro(sol_paste){
     var select_modelo = $('#modelo_1_1_retro').val();
     $("#modelo_2_1_retro").find('option[value="'+select_modelo+'"]').attr("selected", true);
     send_modelo_edit(select_marca,'modelo_2_1_retro',select_modelo);
-    $("#modelo_2_1_retro").trigger('change');
+    //$("#modelo_2_1_retro").trigger('change');
 
     var yrs_vida_1_1_retro = $('#yrs_vida_1_1_retro').val();
     $('#yrs_vida_2_1_retro').val(yrs_vida_1_1_retro);
@@ -13359,7 +13359,7 @@ async function copiar_form_a_b_retro(sol_paste){
     var select_modelo = $('#modelo_2_1_retro').val();
     $("#modelo_3_1_retro").find('option[value="'+select_modelo+'"]').attr("selected", true);
     send_modelo_edit(select_marca,'modelo_3_1_retro',select_modelo);
-    $("#modelo_3_1_retro").trigger('change');
+    //$("#modelo_3_1_retro").trigger('change');
 
     var yrs_vida_2_1_retro = $('#yrs_vida_2_1_retro').val();
     $('#yrs_vida_3_1_retro').val(yrs_vida_2_1_retro);
