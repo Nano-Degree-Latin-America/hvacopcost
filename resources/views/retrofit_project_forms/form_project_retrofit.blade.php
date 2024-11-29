@@ -210,11 +210,11 @@
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                   {{--    --}}
-                    <div class="flex justify-start w-1/3 text-left">
+                    <div class="flex justify-start w-1/2 text-left">
                         <label  class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
                     </div>
 
-                    <div class="flex justify-start w-1/2">
+                    <div class="flex justify-start w-full">
                         <select class="w-full border-2 border-color-inps rounded-md py-2"   onchange="valida_selects_inps(this.id);send_name_t_c(this.id);check_type_set_mant('type_p','tipo_control_2_1_retro','tipo_control_3_1_retro',this.value);" name="tipo_control_1_1_retro" id="tipo_control_1_1_retro">
                         </select>
                         <input  id="tipo_control_1_1_retro_count" name="tipo_control_1_1_retro_count" type="number" class="hidden" value="1">
@@ -749,10 +749,10 @@
                         </div>
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                            <div class="flex justify-start text-left w-1/3">
+                            <div class="flex justify-start text-left w-1/2">
                                 <label class="labels" for=""><b>{{ __('index.tipo control') }}</b> </label>
                             </div>
-                            <div class="flex justify-start w-1/2">
+                            <div class="flex justify-start w-full">
                             <select class="w-full border-2 border-color-inps rounded-md py-2"  onchange="valida_selects_inps(this.id);send_name_t_c(this.id);"  name="tipo_control_2_1_retro" id="tipo_control_2_1_retro">
                             </select>
                             <input  id="tipo_control_2_1_retro_count" name="tipo_control_2_1_retro_count" type="number" class="hidden" value="1">
@@ -1100,10 +1100,10 @@
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
 
-                            <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/3">
+                            <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
                                 <label  class="labels text-left" for=""><b>{{ __('index.tipo control') }}</b> </label>
                             </div>
-                                <div class="flex justify-start w-1/2">
+                                <div class="flex justify-start w-full">
                                     <select class="w-full border-2 border-color-inps rounded-md py-2"  onchange="valida_selects_inps(this.id);send_name_t_c(this.id);"  name="tipo_control_3_1_retro" id="tipo_control_3_1_retro">
 
                                     </select>

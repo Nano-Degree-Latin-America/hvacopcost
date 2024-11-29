@@ -12957,12 +12957,15 @@ function copiar_solucion_tarjet(sol_copy,sol_paste){
     var select_modelo = $('#modelo_1_1').val();
     $("#modelo_2_1").find('option[value="'+select_modelo+'"]').prop("selected", true);
     send_modelo_edit(select_marca,'modelo_2_1',select_modelo);
-    $("#modelo_2_1").trigger('change');
+    /* check_enfi_mod(this.value,'csStd_2_1',this.id,'cUnidad_1_1');
+    send_efi_cant(this.value,'csStd_cant_2_1') */
+    //$("#modelo_2_1").trigger('change');
 
     var capacidad_total = $('#capacidad_total').val();
     $('#capacidad_total_2_1').val(capacidad_total);
-    $("#capacidad_total_2_1").trigger('change');
 
+    //$("#capacidad_total_2_1").trigger('change');
+    //format_nums_no_$(capacidad_total,'capacidad_total_2_1');
     var eficiencia = $('#csStd_cant_1_1').val();
     $('#csStd_cant_2_1').val(eficiencia);
     $("#csStd_cant_2_1").trigger('change');
@@ -13009,7 +13012,9 @@ function copiar_solucion_tarjet(sol_copy,sol_paste){
     $('#maintenance_cost_2_1').val(maintenance_cost_1_1);
     $("#maintenance_cost_2_1").trigger('change');
 
+
     if($('#cUnidad_1_2').val() >  0){
+
         await copiar_form_a_2();
     }
 }
@@ -13017,11 +13022,11 @@ function copiar_solucion_tarjet(sol_copy,sol_paste){
 async function copiar_form_a_2(){
 
     active_display('sol_2');
-
+    active_display_Edit('sol_2');
     var cUnidad_1_2 = $('#cUnidad_1_2').val();
     $("#cUnidad_2_2").find('option[value="'+cUnidad_1_2+'"]').attr("selected", true);
     await unidadHvac(cUnidad_1_2,2,'cheTipo_2_2');
-
+    check_chiller(cUnidad_1_2,'csStd_2_2',1)
     var csTipo_1_2 = $('#csTipo_1_2').val();
     $("#cheTipo_2_2").find('option[value="'+csTipo_1_2+'"]').attr("selected", true);
     await change_diseño(csTipo_1_2,2,'cheDisenio_2_2','tipo_control_2_2','dr_2_2','ventilacion_2_2','filtracion_2_2','lblCsTipo_2_2');
@@ -13035,7 +13040,7 @@ async function copiar_form_a_2(){
     var modelo_1_2 = $('#modelo_1_2').val();
     $("#modelo_2_2").find('option[value="'+modelo_1_2+'"]').attr("selected", true);
     send_modelo_edit(marca_1_2,'modelo_2_2',modelo_1_2);
-    $("#modelo_2_2").trigger('change');
+    //$("#modelo_2_2").trigger('change');
 
     var capacidad_total_1_2 = $('#capacidad_total_1_2').val();
     $('#capacidad_total_2_2').val(capacidad_total_1_2);
@@ -13121,11 +13126,11 @@ async function copiar_form_a_b(sol_paste){
     var modelo_2_1 = $('#modelo_2_1').val();
     $("#modelo_3_1").find('option[value="'+modelo_2_1+'"]').attr("selected", "selected");
     send_modelo_edit(marca_2_1,'modelo_3_1',modelo_2_1);
-    $("#modelo_3_1").trigger('change');
+    //$("#modelo_3_1").trigger('change');
 
     var capacidad_total_2_1 = $('#capacidad_total_2_1').val();
     $('#capacidad_total_3_1').val(capacidad_total_2_1);
-    $("#capacidad_total_3_1").trigger('change');
+    //$("#capacidad_total_3_1").trigger('change');
 
     var eficiencia = $('#csStd_cant_2_1').val();
     $('#cheStd_3_1').val(eficiencia);
@@ -13183,6 +13188,7 @@ async function copiar_form_a_b(sol_paste){
 
 async function copiar_form_b_2(sol_paste){
     active_display('sol_3');
+    active_display_Edit('sol_3');
     var cUnidad_2_2 = $('#cUnidad_2_2').val();
     $("#cUnidad_3_2").find('option[value="'+cUnidad_2_2+'"]').attr("selected", true);
     await unidadHvac(cUnidad_2_2,1,'cheTipo_3_2');
@@ -13202,7 +13208,9 @@ async function copiar_form_b_2(sol_paste){
     var select_modelo = $('#modelo_2_2').val();
     $("#modelo_3_2").find('option[value="'+select_modelo+'"]').attr("selected", true);
     send_modelo_edit(select_marca,'modelo_3_2',select_modelo);
-    $("#modelo_3_2").trigger('change');
+
+    check_chiller(cUnidad_2_2,'csStd_3_2',1);
+    //$("#modelo_3_2").trigger('change');
 
     var capacidad_total_2_2 = $('#capacidad_total_2_2').val();
     $('#capacidad_total_3_2').val(capacidad_total_2_2);
@@ -13262,6 +13270,7 @@ async function copiar_form_base_a_retro(sol_paste){
     var select_sistema = $('#cUnidad_1_1_retro').val();
     $("#cUnidad_2_1_retro").find('option[value="'+select_sistema+'"]').attr("selected", true);
      await unidadHvac(select_sistema,1,'cheTipo_2_1_retro');
+     check_chiller(select_sistema,'csStd_2_1_retro',2)
 
     var select_unidad = $('#csTipo_1_1_retro').val();
     $("#cheTipo_2_1_retro").find('option[value="'+select_unidad+'"]').attr("selected", true);
@@ -13336,7 +13345,7 @@ async function copiar_form_a_b_retro(sol_paste){
     var select_sistema = $('#cUnidad_2_1_retro').val();
     $("#cUnidad_3_1_retro").find('option[value="'+select_sistema+'"]').attr("selected", true);
     await unidadHvac(select_sistema,1,'cheTipo_3_1_retro');
-
+    check_chiller(select_sistema,'csStd_3_1_retro',2);
     var select_unidad = $('#cheTipo_2_1_retro').val();
     $("#cheTipo_3_1_retro").find('option[value="'+select_unidad+'"]').attr("selected", true);
     await change_diseño(select_unidad,1,'cheDisenio_3_1_retro','tipo_control_3_1_retro','dr_3_1_retro','ventilacion_3_1_retro','filtracion_3_1_retro','lblCsTipo_3_1_retro');

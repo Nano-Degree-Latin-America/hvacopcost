@@ -975,7 +975,7 @@
                 <h2 style="margin-right: 75px;" class="text-white font-bold justify-start text-3xl">{{ __('index.solucion') }} B</h2>
             </div>
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
-                <button  onclick="copiar_form_base_a('Base');" type="button" title="Copiar Solucion A" class="rounded-xl p-1 m-0 text-3xl">
+                <button  onclick="copy_base_a()" type="button" title="Copiar Solucion A" class="rounded-xl p-1 m-0 text-3xl">
                     <i style="color:#1B17BB;" class="fa-solid fa-file-import"></i>
                 </button>
             </div>
@@ -1076,7 +1076,7 @@
                             </div>
                             <div class="flex w-1/2 justify-start gap-x-2">
                                 <div class="w-full">
-                                    <input name="capacidad_total_2_1" id="capacidad_total_2_1" style="margin-left: 2.3px;"  onchange="format_nums_no_$(this.value,this.id);"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md py-2 text-center" >
+                                    <input name="capacidad_total_2_1" id="capacidad_total_2_1" style="margin-left: 2.3px;"  {{-- onchange="format_nums_no_$(this.value,this.id);" --}}  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md py-2 text-center" >
                                 </div>
                                     <input  id="capacidad_total_2_1_count" name="capacidad_total_2_1_count" type="number" class="hidden" value="1">
 
