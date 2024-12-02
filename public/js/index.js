@@ -6154,7 +6154,7 @@ async function traer_unidad_hvac(id_project, num_sol, num_enf, cUnidad, csTipo, 
             $("#" + ventilacion).find('option[value="' + res.val_unidad.ventilacion + '"]').prop("selected", "selected");
             $("#" + filtracion).find('option[value="' + res.val_unidad.filtracion + '"]').prop("selected", "selected");
             $("#" + tipo_ambiente_1_1).find('option[value="' + res.val_unidad.tipo_ambiente + '"]').prop("selected", "selected");
-            show_prot_cond(res.val_unidad.tipo_ambiente, proteccion_condensador_1_1, 'new', 3, 'paises_edit');
+            await show_prot_cond(res.val_unidad.tipo_ambiente, proteccion_condensador_1_1, 'new', 3, 'paises_edit');
             $("#" + proteccion_condensador_1_1).find('option[value="' + res.val_unidad.proteccion_condensador + '"]').prop("selected", "selected");
             $("#" + proteccion_condensador_value).val(res.val_unidad.proteccion_condensador_val);
             $("#" + Mantenimiento).find('option[value="' + res.val_unidad.mantenimiento + '"]').prop("selected", "selected");
@@ -6213,7 +6213,7 @@ async function traer_unidad_hvac(id_project, num_sol, num_enf, cUnidad, csTipo, 
                 $("#"+yrs_vida).val(res.val_unidad.yrs_vida);
 
                 $("#"+tipo_ambiente).find('option[value="' + res.val_unidad.tipo_ambiente + '"]').attr("selected", "selected");
-                show_prot_cond(res.val_unidad.tipo_ambiente,proteccion_condensador,'retro',res.val_unidad.yrs_vida,'paises_edit')
+                await show_prot_cond(res.val_unidad.tipo_ambiente,proteccion_condensador,'retro',res.val_unidad.yrs_vida,'paises_edit')
 
                 $("#"+proteccion_condensador).find('option[value="' + res.val_unidad.proteccion_condensador + '"]').attr("selected", "selected");
                 $("#"+proteccion_condensador_value).val(res.val_unidad.proteccion_condensador_val);
@@ -7164,7 +7164,6 @@ toggle between hiding and showing the dropdown content */
 
             if(type_p == 1){
                 check_ant_equipo('csStd',id_select,equipo,'cUnidad_1_1');
-
             }
 
             if(type_p == 2){
@@ -7554,6 +7553,7 @@ toggle between hiding and showing the dropdown content */
                             }));
                             $("#csStd_1_2").find('option[value="'+val_2_1+'"]').attr("selected", "selected");
                             $('#'+id_select).prop('disabled', true);
+
                         }
 
                         if( Unidad_2_1 > 7){
@@ -12576,7 +12576,7 @@ function  send_seer_to_nexts_seers(id_input_b){
      }
 
 
-function show_prot_cond(tipo_ambiente_id,id_prot_comp,tipo_proyect,yrs,pais){
+async function show_prot_cond(tipo_ambiente_id,id_prot_comp,tipo_proyect,yrs,pais){
     var ima =  $('#idioma').val();
     var pais_val = $('#'+pais).val();
 
@@ -12942,7 +12942,7 @@ function copiar_solucion_tarjet(sol_copy,sol_paste){
     var select_sistema = $('#cUnidad_1_1').val();
     $("#cUnidad_2_1").find('option[value="'+select_sistema+'"]').prop("selected", true);
     await unidadHvac(select_sistema,1,'cheTipo_2_1');
-
+    check_chiller(select_sistema,'csStd_2_1',1);
     var select_unidad = $('#csTipo').val();
     $("#cheTipo_2_1").find('option[value="'+select_unidad+'"]').prop("selected", true);
     await change_diseño(select_unidad,1,'cheDisenio_2_1','tipo_control_2_1','dr_2_1','ventilacion_2_1','filtracion_2_1','lblCsTipo_2_1');
@@ -13024,7 +13024,7 @@ async function copiar_form_a_2(){
     active_display('sol_2');
     active_display_Edit('sol_2');
     var cUnidad_1_2 = $('#cUnidad_1_2').val();
-    $("#cUnidad_2_2").find('option[value="'+cUnidad_1_2+'"]').attr("selected", true);
+    $("#cUnidad_2_2").find('option[value="'+cUnidad_1_2+'"]').prop("selected", true);
     await unidadHvac(cUnidad_1_2,2,'cheTipo_2_2');
     check_chiller(cUnidad_1_2,'csStd_2_2',1)
     var csTipo_1_2 = $('#csTipo_1_2').val();
@@ -13112,7 +13112,7 @@ async function copiar_form_a_b(sol_paste){
     var cUnidad_2_1 = $('#cUnidad_2_1').val();
     $("#cUnidad_3_1").find('option[value="'+cUnidad_2_1+'"]').attr("selected", true);
     await unidadHvac(cUnidad_2_1,1,'cheTipo_3_1');
-
+    check_chiller(cUnidad_2_1,'csStd2_3_1',1)
     var cheTipo_2_1 = $('#cheTipo_2_1').val();
     $("#cheTipo_3_1").find('option[value="'+cheTipo_2_1+'"]').attr("selected", true);
     await change_diseño(cheTipo_2_1,1,'cheDisenio_3_1','tipo_control_3_1','dr_3_1','ventilacion_3_1','filtracion_3_1','lblCsTipo_3_1');
@@ -13190,7 +13190,7 @@ async function copiar_form_b_2(sol_paste){
     active_display('sol_3');
     active_display_Edit('sol_3');
     var cUnidad_2_2 = $('#cUnidad_2_2').val();
-    $("#cUnidad_3_2").find('option[value="'+cUnidad_2_2+'"]').attr("selected", true);
+    $("#cUnidad_3_2").find('option[value="'+cUnidad_2_2+'"]').prop("selected", true);
     await unidadHvac(cUnidad_2_2,1,'cheTipo_3_2');
 
     var cheTipo_2_2 = $('#cheTipo_2_2').val();

@@ -503,7 +503,7 @@ class ProjectController extends Controller
 
 
                 $solution_enf1_2->tipo_ambiente=$request->get('tipo_ambiente_1_2');
-                $solution_enf1_2->proteccion_condensador=floatval($request->get('proteccion_condensador_1_2'));
+                $solution_enf1_2->proteccion_condensador=$request->get('proteccion_condensador_1_2');
                 $solution_enf1_2->proteccion_condensador_val=floatval($request->get('proteccion_condensador_1_2_value'));
 
                 $solution_enf1_2->costo_mantenimiento=floatval($aux_cost_mant_1_2);
