@@ -333,13 +333,13 @@ class funciones {
                       $res_div_seer_a = $res_div_seer / 1000;
                       //(((Kw / 3.5) x 12000 )x (Cooling Hours)  / SEER ) / 1000
 
-       //energia aplicada proccess
+                      //energia aplicada proccess
                       //((Fórmula Energía x Factor S) + (Fórmula Energía x Factor D) + (Fórmula Energía x Factor T)) x Factor C
 
-                      //(Fórmula Energía x Factor S)
-                      $res_1_parent1= $res_div_seer_a * floatval($factor_s);
-                      // (Fórmula Energía x Factor D)
-                      $res_2_parent1= $res_div_seer_a * floatval($factor_d);
+                        //(Fórmula Energía x Factor S)
+                          $res_1_parent1= $res_div_seer_a * floatval($factor_s);
+                          // (Fórmula Energía x Factor D)
+                          $res_2_parent1= $res_div_seer_a * floatval($factor_d);
                           //(Fórmula Energía x Factor T)
                           $res_3_parent1= $res_div_seer_a * floatval($factor_t);
                           //(FE x Factor V)
@@ -2224,6 +2224,43 @@ public function cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$efici
    $new_result->save();
 }
 
+public function update_results($enf,$id_project,$action_submit_send){
+
+    $res_sum = 0;
+    $cants = SolutionsProjectModel::where('id_project','=',$id_project)
+    ->get();
+
+    foreach($cants as $cant){
+        $res_sum = $res_sum + $cant->cost_op_an;
+    }
+
+    $id_result = ResultsProjectModel::where('id_project','=',$id_project)
+    ->where('num_enf','=',$enf)
+    ->first();
+
+    if($action_submit_send == 'store'){
+        $new_result=new ResultsProjectModel;
+    }else if($action_submit_send == 'update'){
+        /* $id_solution_1_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_project)
+        ->where('solutions_project.num_enf','=',$enf)
+        ->where('solutions_project.num_sol','=',$sol)
+        ->first(); */
+        $new_result = ResultsProjectModel::find($id_result->id);
+    }
+   $new_result->num_enf = $enf;
+   $new_result->cost_op_an = $res_sum;
+
+   $new_result->id_project = $id_project;
+   $new_result->id_empresa=Auth::user()->id_empresa;
+   $new_result->id_user=Auth::user()->id;
+   if($action_submit_send == 'store'){
+    $new_result->save();
+}else if($action_submit_send == 'update'){
+    $new_result->update();
+}
+}
+//resultados trait //////////////////////////////////////////
 //roi_s_ene
 public function roi($dif_cost,$inflacion,$inv_ini,$cant){
     $array_res = [];
