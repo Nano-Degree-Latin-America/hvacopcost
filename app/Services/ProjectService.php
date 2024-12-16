@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Services\SolutionService;
 use App\Services\SolutionServiceRetrofit;
-use App\Services\solutionServiceEdit;
+use App\Services\SolutionServiceEdit;
 use App\Services\SolutionServiceEditRetro;
 
 use App\SolutionsProjectModel;
