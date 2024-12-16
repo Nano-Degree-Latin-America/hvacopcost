@@ -21,11 +21,17 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Imports\TypeEdificio;
 use App\Exports\CoolingCitiesExport;
 use funciones\funciones;
+use App\Traits\FormusTrait;
+use App\Traits\ConfortTrait;
+use App\Traits\SaveResultsTrait;
 
 class SolutionServiceRetrofit
 {
+
+    use FormusTrait,ConfortTrait,SaveResultsTrait;
+
     public function new_project_save_retrofit(Request $request,$id_project){
-        $funciones = new funciones();
+
         $enfriamiento1_retro = intval($request->get('cUnidad_1_1_retro'));
         $enfriamiento2_retro = intval($request->get('cUnidad_2_1_retro'));
         $enfriamiento3_retro =intval($request->get('cUnidad_3_1_retro'));
@@ -40,7 +46,7 @@ class SolutionServiceRetrofit
                 $sal_an_prom_aux = SolutionServiceRetrofit::save_solution_1_1_retro($request,$id_project);
             }
 
-            $save_results =$funciones->save_results(1,$id_project);
+            $save_results =$this->save_results(1,$id_project);
         }
 
 
@@ -52,7 +58,7 @@ class SolutionServiceRetrofit
                 $sal_an_prom_aux = SolutionServiceRetrofit::save_solution_2_1_retro($request,$id_project);
             }
 
-             $save_results =$funciones->save_results(2,$id_project);
+             $save_results =$this->save_results(2,$id_project);
         }
 
         if ($enfriamiento3_retro !== 0) {
@@ -63,14 +69,13 @@ class SolutionServiceRetrofit
                 $sal_an_prom_aux = SolutionServiceRetrofit::save_solution_3_1_retro($request,$id_project);
             }
 
-             $save_results =$funciones->save_results(3,$id_project);
+             $save_results =$this->save_results(3,$id_project);
         }
 
 
     }
 
     public function save_solution_1_1_retro(Request $request,$id_project){
-        $funciones = new funciones();
 
         $solution_enf1=new SolutionsProjectModel;
                     $solution_enf1->type_p=2;
@@ -86,14 +91,14 @@ class SolutionServiceRetrofit
                     $solution_enf1->eficencia_ene_cant=$request->get('csStd_retro_1_1_cant');
                     $solution_enf1->name_disenio=$request->get('name_diseno_1_1_retro');
                     $solution_enf1->tipo_diseño= $request->get('csDisenio_1_1_retro');
-                    $cap_tot_aux1_1_retro =$funciones->num_form($request->get('capacidad_total_1_1_retro'));
+                    $cap_tot_aux1_1_retro =$this->num_form($request->get('capacidad_total_1_1_retro'));
                     $solution_enf1->capacidad_tot=floatval($cap_tot_aux1_1_retro);
                     $solution_enf1->unid_med=$request->get('unidad_capacidad_tot_1_1_retro');
     //separa cadena
-                    $costo_elec_aux =$funciones->price_form($request->get('costo_elec_1_1_retro'));
+                    $costo_elec_aux =$this->price_form($request->get('costo_elec_1_1_retro'));
                     $solution_enf1->costo_elec=floatval($costo_elec_aux);
      //separa cadena
-                    $cooling_hours_aux =$funciones->num_form($request->get('hrsEnfriado_1_1_retro'));
+                    $cooling_hours_aux =$this->num_form($request->get('hrsEnfriado_1_1_retro'));
                     $solution_enf1->coolings_hours=intval($cooling_hours_aux);
 
                     $solution_enf1->tipo_control=$request->get('tipo_control_1_1_retro');
@@ -112,20 +117,20 @@ class SolutionServiceRetrofit
                     $solution_enf1->mantenimiento = $request->get('csMantenimiento_1_1_retro');
 
                     if($request->get('costo_recu_1_1_retro') != null){
-                        $val_aprox_aux =$funciones->price_form($request->get('costo_recu_1_1_retro'));
+                        $val_aprox_aux =$this->price_form($request->get('costo_recu_1_1_retro'));
                     }else  if($request->get('costo_recu_1_1_retro') == null){
                         $val_aprox_aux = 0;
                     }
 
                     if($request->get('maintenance_cost_1_1_retro') != null){
-                        $aux_cost_mant =$funciones->price_form($request->get('maintenance_cost_1_1_retro'));
+                        $aux_cost_mant =$this->price_form($request->get('maintenance_cost_1_1_retro'));
                     }else  if($request->get('maintenance_cost_1_1_retro') == null){
                         $aux_cost_mant = 0;
 
                     }
 
                     if($request->get('const_an_rep_1_1') != null){
-                        $aux__cost_an_rep_1_1 =$funciones->price_form($request->get('const_an_rep_1_1'));
+                        $aux__cost_an_rep_1_1 =$this->price_form($request->get('const_an_rep_1_1'));
                     }else  if($request->get('const_an_rep_1_1') == null){
                         $aux__cost_an_rep_1_1 = 0;
 
@@ -160,14 +165,14 @@ class SolutionServiceRetrofit
                    if ($solution_enf1->unid_med == 'TR') {
 
                     $tr = $solution_enf1->capacidad_tot;
-                    $res_1_1_retro =$funciones->cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+                    $res_1_1_retro =$this->cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
 
 
                 }else if($solution_enf1->unid_med == 'KW'){
                     $kw = $solution_enf1->capacidad_tot;
 
-                    $res_1_1_retro =$funciones->cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+                    $res_1_1_retro =$this->cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf1->cost_op_an =  floatval(number_format($res_1_1_retro,2, '.', ''));
 
                     //$solution_enf1->cost_op_an = floatval(number_format($res_div_seer_a,2, '.', ''));
@@ -182,7 +187,7 @@ class SolutionServiceRetrofit
       $dr_conf_1_1 = $solution_enf1->dr_name;
       $mant_conf_1_1 = $solution_enf1->mantenimiento;
 
-      $nivel_confotr_1_1_retro =$funciones->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
+      $nivel_confotr_1_1_retro =$this->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
       $solution_enf1->confort = $nivel_confotr_1_1_retro;
 
 
@@ -192,7 +197,6 @@ class SolutionServiceRetrofit
     }
 
         public function save_solution_2_1_retro(Request $request,$id_project){
-            $funciones = new funciones();
 
             $solution_enf_2_1_retro=new SolutionsProjectModel;
                     $solution_enf_2_1_retro->type_p=2;
@@ -208,15 +212,15 @@ class SolutionServiceRetrofit
                     $solution_enf_2_1_retro->name_disenio=$request->get('name_diseno_2_1_retro');
                     $solution_enf_2_1_retro->tipo_diseño= $request->get('cheDisenio_2_1_retro');
 
-                    $cap_tot_aux2_1_retro =$funciones->num_form($request->get('capacidad_total_2_1_retro'));
+                    $cap_tot_aux2_1_retro =$this->num_form($request->get('capacidad_total_2_1_retro'));
                     $solution_enf_2_1_retro->capacidad_tot=floatval($cap_tot_aux2_1_retro);
 
                     $solution_enf_2_1_retro->unid_med=$request->get('unidad_capacidad_tot_2_1_retro');
     //separa cadena
-                    $costo_elec_aux =$funciones->price_form($request->get('costo_elec_2_1_retro'));
+                    $costo_elec_aux =$this->price_form($request->get('costo_elec_2_1_retro'));
                     $solution_enf_2_1_retro->costo_elec=floatval($costo_elec_aux);
      //separa cadena
-                    $cooling_hours_aux =$funciones->num_form($request->get('hrsEnfriado_2_1_retro'));
+                    $cooling_hours_aux =$this->num_form($request->get('hrsEnfriado_2_1_retro'));
                     $solution_enf_2_1_retro->coolings_hours=intval($cooling_hours_aux);
 
                     $solution_enf_2_1_retro->tipo_control=$request->get('tipo_control_2_1_retro');
@@ -235,20 +239,20 @@ class SolutionServiceRetrofit
                     $solution_enf_2_1_retro->mantenimiento = $request->get('csMantenimiento_2_1_retro');
 
                     if($request->get('costo_recu_2_1_retro') != null){
-                        $val_aprox_aux =$funciones->price_form($request->get('costo_recu_2_1_retro'));
+                        $val_aprox_aux =$this->price_form($request->get('costo_recu_2_1_retro'));
                     }else  if($request->get('costo_recu_2_1_retro') == null){
                         $val_aprox_aux = 0;
                     }
 
                     if($request->get('maintenance_cost_2_1_retro') != null){
-                        $aux_cost_mant =$funciones->price_form($request->get('maintenance_cost_2_1_retro'));
+                        $aux_cost_mant =$this->price_form($request->get('maintenance_cost_2_1_retro'));
                     }else  if($request->get('maintenance_cost_2_1_retro') == null){
                         $aux_cost_mant = 0;
 
                     }
 
                     if($request->get('const_an_rep_2_1') != null){
-                        $aux__cost_an_rep_1_1 =$funciones->price_form($request->get('const_an_rep_2_1'));
+                        $aux__cost_an_rep_1_1 =$this->price_form($request->get('const_an_rep_2_1'));
                     }else  if($request->get('const_an_rep_2_1') == null){
                         $aux__cost_an_rep_1_1 = 0;
 
@@ -283,11 +287,11 @@ class SolutionServiceRetrofit
                     $unidad_hvac_aux = $solution_enf_2_1_retro->unidad_hvac;
                    if ($solution_enf_2_1_retro->unid_med == 'TR') {
                      $tr = $solution_enf_2_1_retro->capacidad_tot;
-                     $res_2_1_retro =$funciones->cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+                     $res_2_1_retro =$this->cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                      $solution_enf_2_1_retro->cost_op_an =  floatval(number_format($res_2_1_retro,2, '.', ''));
                 }else if($solution_enf_2_1_retro->unid_med == 'KW'){
                     $kw = $solution_enf_2_1_retro->capacidad_tot;
-                    $res_2_1_retro =$funciones->cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+                    $res_2_1_retro =$this->cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf_2_1_retro->cost_op_an = floatval(number_format($res_2_1_retro,2, '.', ''));
                 }
 
@@ -299,7 +303,7 @@ class SolutionServiceRetrofit
       $dr_conf_1_1 = $solution_enf_2_1_retro->dr_name;
       $mant_conf_1_1 = $solution_enf_2_1_retro->mantenimiento;
 
-      $nivel_confotr_2_1_retro =$funciones->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
+      $nivel_confotr_2_1_retro =$this->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
       $solution_enf_2_1_retro->confort = $nivel_confotr_2_1_retro;
 
 
@@ -308,7 +312,6 @@ class SolutionServiceRetrofit
         }
 
         public function save_solution_3_1_retro(Request $request,$id_project){
-            $funciones = new funciones();
 
             $solution_enf_3_1_retro=new SolutionsProjectModel;
             $solution_enf_3_1_retro->type_p=2;
@@ -324,15 +327,15 @@ class SolutionServiceRetrofit
             $solution_enf_3_1_retro->name_disenio=$request->get('name_diseno_3_1_retro');
             $solution_enf_3_1_retro->tipo_diseño= $request->get('cheDisenio_3_1_retro');
 
-            $cap_tot_aux3_1_retro =$funciones->num_form($request->get('capacidad_total_3_1_retro'));
+            $cap_tot_aux3_1_retro =$this->num_form($request->get('capacidad_total_3_1_retro'));
             $solution_enf_3_1_retro->capacidad_tot=floatval($cap_tot_aux3_1_retro);
 
             $solution_enf_3_1_retro->unid_med=$request->get('unidad_capacidad_tot_3_1_retro');
 //separa cadena
-            $costo_elec_aux =$funciones->price_form($request->get('costo_elec_3_1_retro'));
+            $costo_elec_aux =$this->price_form($request->get('costo_elec_3_1_retro'));
             $solution_enf_3_1_retro->costo_elec=floatval($costo_elec_aux);
 //separa cadena
-            $cooling_hours_aux =$funciones->num_form($request->get('hrsEnfriado_3_1_retro'));
+            $cooling_hours_aux =$this->num_form($request->get('hrsEnfriado_3_1_retro'));
             $solution_enf_3_1_retro->coolings_hours=intval($cooling_hours_aux);
 
             $solution_enf_3_1_retro->tipo_control=$request->get('tipo_control_3_1_retro');
@@ -351,20 +354,20 @@ class SolutionServiceRetrofit
             $solution_enf_3_1_retro->mantenimiento = $request->get('cheMantenimiento_3_1_retro');
 
             if($request->get('costo_recu_3_1_retro') != null){
-                $val_aprox_aux =$funciones->price_form($request->get('costo_recu_3_1_retro'));
+                $val_aprox_aux =$this->price_form($request->get('costo_recu_3_1_retro'));
             }else  if($request->get('costo_recu_3_1_retro') == null){
                 $val_aprox_aux = 0;
             }
 
             if($request->get('maintenance_cost_3_1_retro') != null){
-                $aux_cost_mant =$funciones->price_form($request->get('maintenance_cost_3_1_retro'));
+                $aux_cost_mant =$this->price_form($request->get('maintenance_cost_3_1_retro'));
             }else  if($request->get('maintenance_cost_3_1_retro') == null){
                 $aux_cost_mant = 0;
 
             }
 
             if($request->get('const_an_rep_3_1') != null){
-                $aux__cost_an_rep_1_1 =$funciones->price_form($request->get('const_an_rep_3_1'));
+                $aux__cost_an_rep_1_1 =$this->price_form($request->get('const_an_rep_3_1'));
             }else  if($request->get('const_an_rep_3_1') == null){
                 $aux__cost_an_rep_1_1 = 0;
 
@@ -400,11 +403,11 @@ class SolutionServiceRetrofit
             $yrs_l = $solution_enf_3_1_retro->yrs_vida;
            if ($solution_enf_3_1_retro->unid_med == 'TR') {
             $tr = $solution_enf_3_1_retro->capacidad_tot;
-            $res_3_1_retro =$funciones->cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+            $res_3_1_retro =$this->cost_op_an_retro_tr($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
             $solution_enf_3_1_retro->cost_op_an =  floatval(number_format($res_3_1_retro,2, '.', ''));
         }else if($solution_enf_3_1_retro->unid_med == 'KW'){
             $kw = $solution_enf_3_1_retro->capacidad_tot;
-            $res_3_1_retro =$funciones->cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+            $res_3_1_retro =$this->cost_op_an_form_kw_retro($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$yrs_l,$unidad_hvac_aux,$factor_v,$factor_f,$am);
             $solution_enf_3_1_retro->cost_op_an = floatval(number_format($res_3_1_retro,2, '.', ''));
         }
 
@@ -416,7 +419,7 @@ class SolutionServiceRetrofit
             $dr_conf_1_1 = $solution_enf_3_1_retro->dr_name;
             $mant_conf_1_1 = $solution_enf_3_1_retro->mantenimiento;
 
-            $nivel_confotr_3_1_retro =$funciones->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
+            $nivel_confotr_3_1_retro =$this->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
             $solution_enf_3_1_retro->confort = $nivel_confotr_3_1_retro;
 
 

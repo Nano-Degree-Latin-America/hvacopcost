@@ -27,12 +27,15 @@ use App\Exports\CoolingCitiesExport;
 use funciones\funciones;
 use App\Controllerss\ResultadosController;
 use App\Controllerss\ProjectController;
-
+use App\Traits\FormusTrait;
+use App\Traits\ConfortTrait;
+use App\Traits\SaveResultsTrait;
 class ProjectService
 {
 
+use FormusTrait,ConfortTrait,SaveResultsTrait;
+
     public function CreateProject(Request $request): ProjectsModel {
-        $funciones = new funciones();
 
         $mew_project = new ProjectsModel;
         $mew_project->name=$request->get('name_pro');
@@ -62,7 +65,7 @@ class ProjectService
         }
 
 
-        $cap_tot_ar =$funciones->num_form($request->get('ar_project'));
+        $cap_tot_ar =$this->num_form($request->get('ar_project'));
         $mew_project->area = floatval($cap_tot_ar);
         $mew_project->unidad=$request->get('unidad');
         $mew_project->region=$request->get('pais');
@@ -78,14 +81,14 @@ class ProjectService
         if($request->get('n_empleados') == ''){
             $mew_project->n_empleados = 0;
         }else if($request->get('n_empleados') != '' || $request->get('n_empleados') >= 0){
-            $n_empleados_aux =$funciones->num_form($request->get('n_empleados'));
+            $n_empleados_aux =$this->num_form($request->get('n_empleados'));
             $mew_project->n_empleados = $n_empleados_aux;
         }
 
         if($request->get('sal_an_prom') == ''){
             $mew_project->sal_an_prom = 0;
         }else if($request->get('sal_an_prom') != '' || $request->get('sal_an_prom') >= 0){
-            $sal_an_prom_aux =$funciones->price_form($request->get('sal_an_prom'));
+            $sal_an_prom_aux =$this->price_form($request->get('sal_an_prom'));
             $mew_project->sal_an_prom = $sal_an_prom_aux;
         }
 
@@ -117,7 +120,7 @@ class ProjectService
     }
 
     public function udpate_project(Request $request,$id): ProjectsModel {
-        $funciones = new funciones();
+
 
         $update_project= ProjectsModel::find($id);
         $update_project->name=$request->get('name_pro');
@@ -128,14 +131,14 @@ class ProjectService
         if($request->get('n_empleados') == ''){
             $update_project->n_empleados = 0;
         }else if($request->get('n_empleados') != '' || $request->get('n_empleados') >= 0){
-            $n_empleados_aux = $funciones->num_form($request->get('n_empleados'));
+            $n_empleados_aux = $this->num_form($request->get('n_empleados'));
             $update_project->n_empleados = $n_empleados_aux;
         }
 
         if($request->get('sal_an_prom') == ''){
             $update_project->sal_an_prom = 0;
         }else if($request->get('sal_an_prom') != '' || $request->get('sal_an_prom') >= 0){
-            $sal_an_prom_aux = $funciones->price_form($request->get('sal_an_prom'));
+            $sal_an_prom_aux = $this->price_form($request->get('sal_an_prom'));
             $update_project->sal_an_prom = $sal_an_prom_aux;
         }
 
@@ -163,7 +166,7 @@ class ProjectService
 
         $update_project->id_cat_edifico=$request->get('cat_ed_edit');
 
-        $cap_tot_ar = $funciones->num_form($request->get('ar_project'));
+        $cap_tot_ar = $this->num_form($request->get('ar_project'));
         $update_project->area = floatval($cap_tot_ar);
         $update_project->unidad=$request->get('unidad');
         $pais = DB::table('pais')
@@ -175,9 +178,6 @@ class ProjectService
         ->first()->ciudad;
         $update_project->type_p= $request->get('type_p');
         $update_project->ciudad=$region;
-
-
-
 
         $aux_porcent = explode("%",   $request->get('porcent_hvac'));
         if(count($aux_porcent) == 2){

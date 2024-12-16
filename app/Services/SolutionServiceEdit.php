@@ -20,13 +20,15 @@ use Dompdf\Options;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Imports\TypeEdificio;
 use App\Exports\CoolingCitiesExport;
-use funciones\funciones;
+use App\Traits\FormusTrait;
+use App\Traits\ConfortTrait;
+use App\Traits\SaveResultsTrait;
 
 class SolutionServiceEdit
 {
-
+ use FormusTrait,ConfortTrait,SaveResultsTrait;
     public function solution_update_new(Request $request,$id_project){
-        $funciones = new funciones();
+
         //guardar soluciones
         $type_p = intval($request->get('type_p'));
         $action_submit_send = $request->get('action_submit_send');
@@ -46,7 +48,7 @@ class SolutionServiceEdit
                 SolutionServiceEdit::update_solution_1_2($request,$id_project,$action_submit_send);
             }
 
-            $funciones->update_results(1,$id_project,$action_submit_send);
+            $this->update_results(1,$id_project,$action_submit_send);
         }
 
 
@@ -62,7 +64,7 @@ class SolutionServiceEdit
                 SolutionServiceEdit::update_solution_2_2($request,$id_project,$action_submit_send);
           }
 
-              $funciones->update_results(2,$id_project,$action_submit_send);
+              $this->update_results(2,$id_project,$action_submit_send);
         }
 
 
@@ -79,14 +81,13 @@ class SolutionServiceEdit
                 SolutionServiceEdit::update_solution_3_2($request,$id_project,$action_submit_send);
             }
 
-            $funciones->update_results(3,$id_project,$action_submit_send);
+            $this->update_results(3,$id_project,$action_submit_send);
 
         }
 
     }
 
     public function update_solution_1_1(Request $request,$id_project,$action_submit_send){
-        $funciones = new funciones();
             if($action_submit_send == 'store'){
                 $solution_enf1=new SolutionsProjectModel;
             }else if($action_submit_send == 'update'){
@@ -106,15 +107,15 @@ class SolutionServiceEdit
             $solution_enf1->id_modelo=$request->get('modelo_1_1');
             $solution_enf1->tipo_diseño	=$request->get('csDisenio_1_1');
 
-            $cap_tot_aux = $funciones->num_form($request->get('capacidad_total')); //
+            $cap_tot_aux = $this->num_form($request->get('capacidad_total')); //
 
             $solution_enf1->capacidad_tot=floatval($cap_tot_aux);
             $solution_enf1->unid_med=$request->get('unidad_capacidad_tot');
 //separa cadena
-            $costo_elec_aux = $funciones->price_form($request->get('costo_elec'));
+            $costo_elec_aux = $this->price_form($request->get('costo_elec'));
             $solution_enf1->costo_elec=floatval($costo_elec_aux);
 //separa cadena
-            $cooling_hours_aux = $funciones->num_form($request->get('hrsEnfriado'));
+            $cooling_hours_aux = $this->num_form($request->get('hrsEnfriado'));
 
             $solution_enf1->coolings_hours=intval($cooling_hours_aux);
 
@@ -138,14 +139,14 @@ class SolutionServiceEdit
 
             if($request->get('cheValorS_1_1') != null){
 
-                $val_aprox_aux = $funciones->price_form($request->get('cheValorS_1_1'));
+                $val_aprox_aux = $this->price_form($request->get('cheValorS_1_1'));
 
             }else  if($request->get('cheValorS_1_1') == null){
                 $val_aprox_aux = 0;
             }
 
             if($request->get('maintenance_cost_1_1') != null){
-                $aux_cost_mant = $funciones->price_form($request->get('maintenance_cost_1_1'));
+                $aux_cost_mant = $this->price_form($request->get('maintenance_cost_1_1'));
 
 
             }else  if($request->get('maintenance_cost_1_1') == null){
@@ -183,13 +184,12 @@ class SolutionServiceEdit
            if ($solution_enf1->unid_med == 'TR') {
 
            $tr = $solution_enf1->capacidad_tot;
-           $res_1_1 = $funciones->cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+           $res_1_1 = $this->cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
            $solution_enf1->cost_op_an = floatval(number_format($res_1_1,2, '.', ''));
-
         }else if($solution_enf1->unid_med == 'KW'){
 
            $kw = $solution_enf1->capacidad_tot;
-           $res_1_1 = $funciones->cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+           $res_1_1 = $this->cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
            $solution_enf1->cost_op_an = floatval(number_format($res_1_1,2, '.', ''));
         }
 
@@ -201,8 +201,7 @@ class SolutionServiceEdit
         $dr_conf_1_1 = $solution_enf1->dr_name;
         $mant_conf_1_1 = $solution_enf1->mantenimiento;
 
-        $funciones = new funciones();
-        $nivel_confotr_1_1 = $funciones->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
+        $nivel_confotr_1_1 = $this->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
         $solution_enf1->confort = $nivel_confotr_1_1;
 
         if($action_submit_send == 'store'){
@@ -217,8 +216,6 @@ class SolutionServiceEdit
 
 
     public function update_solution_1_2(Request $request,$id_project,$action_submit_send){
-        $funciones = new funciones();
-
 
         $action_submit =  $request->get('action_submit_1_2');
                 if($action_submit == 'store'){
@@ -241,7 +238,7 @@ class SolutionServiceEdit
                 $solution_enf1_2->tipo_diseño	= $request->get('csDisenio_1_2');
 
 
-                $cap_tot_aux_1_2 = $funciones->num_form($request->get('capacidad_total_1_2'));
+                $cap_tot_aux_1_2 = $this->num_form($request->get('capacidad_total_1_2'));
                 $solution_enf1_2->capacidad_tot =floatval($cap_tot_aux_1_2);
 
                 $solution_enf1_2->unid_med = $request->get('unidad_capacidad_tot_1_2');
@@ -255,10 +252,10 @@ class SolutionServiceEdit
                 $solution_enf1_2->filtracion_name=$request->get('filtracion_name_1_2');
                 $solution_enf1_2->filtracion	=$request->get('filtracion_1_2');
 
-                $costo_elec_aux = $funciones->price_form($request->get('costo_elec_1_2'));
+                $costo_elec_aux = $this->price_form($request->get('costo_elec_1_2'));
                 $solution_enf1_2->costo_elec = floatval($costo_elec_aux);
 
-                $aux_cooling_hours_1_2 = $funciones->num_form($request->get('hrsEnfriado_1_2'));
+                $aux_cooling_hours_1_2 = $this->num_form($request->get('hrsEnfriado_1_2'));
                 $solution_enf1_2->coolings_hours =intval($aux_cooling_hours_1_2);
 
 
@@ -278,13 +275,13 @@ class SolutionServiceEdit
                 $solution_enf1_2->mantenimiento = $request->get('csMantenimiento_1_2');
 
                 if($request->get('cheValorS_1_2') != null){
-                    $val_aprox_aux_1_2 = $funciones->price_form($request->get('cheValorS_1_2'));
+                    $val_aprox_aux_1_2 = $this->price_form($request->get('cheValorS_1_2'));
                 }else  if($request->get('cheValorS_1_2') == null){
                     $val_aprox_aux_1_2 = 0;
                 }
 
                 if($request->get('maintenance_cost_1_2') != null){
-                    $aux_cost_mant_1_2 = $funciones->price_form($request->get('maintenance_cost_1_2'));
+                    $aux_cost_mant_1_2 = $this->price_form($request->get('maintenance_cost_1_2'));
                 }else  if($request->get('maintenance_cost_1_2') == null){
                     $aux_cost_mant_1_2 = 0;
 
@@ -319,13 +316,13 @@ class SolutionServiceEdit
                 $unidad_hvac_aux = $solution_enf1_2->unidad_hvac;
                if ($solution_enf1_2->unid_med == 'TR') {
                 $tr = $solution_enf1_2->capacidad_tot;
-                $res_1_2 = $funciones->cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+                $res_1_2 = $this->cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                 $solution_enf1_2->cost_op_an = floatval(number_format($res_1_2,2, '.', ''));
             }else if($solution_enf1_2->unid_med == 'KW'){
                 //(((Kw / 3.5) x 12000 )x (Cooling Hours) x (Costo Energía) ) / SEER ) / 1000
                   //(((Kw / 3.5)
                   $kw =  $solution_enf1_2->capacidad_tot;
-                  $res_1_2 = $funciones->cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+                  $res_1_2 = $this->cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                   $solution_enf1_2->cost_op_an =floatval(number_format($res_1_2,2, '.', ''));
                 }
 
@@ -337,8 +334,8 @@ class SolutionServiceEdit
             $dr_conf_1_1 = $solution_enf1_2->dr_name;
             $mant_conf_1_1 = $solution_enf1_2->mantenimiento;
 
-            $funciones = new funciones();
-            $nivel_confotr_1_2 = $funciones->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
+
+            $nivel_confotr_1_2 = $this->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
             $solution_enf1_2->confort = $nivel_confotr_1_2;
 
 
@@ -356,7 +353,7 @@ class SolutionServiceEdit
 
 public function update_solution_2_1(Request $request,$id_project,$action_submit_send){
 
-    $funciones = new funciones();
+
 
     $action_submit =  $request->get('action_submit_2_1');
     if($action_submit == 'store'){
@@ -380,7 +377,7 @@ public function update_solution_2_1(Request $request,$id_project,$action_submit_
     $solution_enf2_1->id_modelo=$request->get('modelo_2_1');
     $solution_enf2_1->tipo_diseño	=$request->get('cheDisenio_2_1');
 
-    $cap_tot_aux_2_1 = $funciones->num_form($request->get('capacidad_total_2_1'));
+    $cap_tot_aux_2_1 = $this->num_form($request->get('capacidad_total_2_1'));
     $solution_enf2_1->capacidad_tot=floatval($cap_tot_aux_2_1);
     $solution_enf2_1->unid_med=$request->get('unidad_capacidad_tot_2_1');
 
@@ -388,10 +385,10 @@ public function update_solution_2_1(Request $request,$id_project,$action_submit_
     $solution_enf2_1->name_t_control=$request->get('name_t_control_2_1');
     $solution_enf2_1->dr_name=$request->get('dr_name_2_1');
 
-    $costo_elec_aux_2_1 = $funciones->price_form($request->get('costo_elec_2_1'));
+    $costo_elec_aux_2_1 = $this->price_form($request->get('costo_elec_2_1'));
     $solution_enf2_1->costo_elec=floatval($costo_elec_aux_2_1);
 
-    $aux_cooling_hours_2_1 = $funciones->num_form($request->get('hrsEnfriado_2_1'));
+    $aux_cooling_hours_2_1 = $this->num_form($request->get('hrsEnfriado_2_1'));
     $solution_enf2_1->coolings_hours=intval($aux_cooling_hours_2_1);
     if($request->get('csStd_2_1') == null){
         $solution_enf2_1->eficencia_ene=$request->get('csStd');
@@ -416,18 +413,18 @@ public function update_solution_2_1(Request $request,$id_project,$action_submit_
 
 
     if($request->get('cheValorS_2_1') != null){
-        $val_aprox_aux_2_1 = $funciones->price_form($request->get('cheValorS_2_1'));
+        $val_aprox_aux_2_1 = $this->price_form($request->get('cheValorS_2_1'));
     }else  if($request->get('cheValorS_2_1') == null){
             $val_aprox_aux_2_1 = 0;
     }
 
     if($request->get('maintenance_cost_2_1') != null){
-        $aux_cost_mant_2_1 = $funciones->price_form($request->get('maintenance_cost_2_1'));
+        $aux_cost_mant_2_1 = $this->price_form($request->get('maintenance_cost_2_1'));
 
     }else  if($request->get('maintenance_cost_2_1') == null){
         $aux_cost_mant_2_1 = 0;
     }
-  /*   dd($request->get('proteccion_condensador_2_1_value')); */
+
     $solution_enf2_1->tipo_ambiente=$request->get('tipo_ambiente_2_1');
     $solution_enf2_1->proteccion_condensador=$request->get('proteccion_condensador_2_1');
     $solution_enf2_1->proteccion_condensador_val=floatval($request->get('proteccion_condensador_2_1_value'));
@@ -455,12 +452,12 @@ public function update_solution_2_1(Request $request,$id_project,$action_submit_
     $unidad_hvac_aux = $solution_enf2_1->unidad_hvac;
    if ($solution_enf2_1->unid_med == 'TR') {
         $tr = $solution_enf2_1->capacidad_tot;
-        $res_2_1 =$funciones->cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+        $res_2_1 =$this->cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
         $solution_enf2_1->cost_op_an =  floatval(number_format($res_2_1,2, '.', ''));
     }else if($solution_enf2_1->unid_med == 'KW'){
          //(((Kw / 3.5)
          $kw =  $solution_enf2_1->capacidad_tot;
-         $res_2_1 = $funciones->cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+         $res_2_1 = $this->cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
          $solution_enf2_1->cost_op_an =floatval(number_format($res_2_1,2, '.', ''));
         }
 
@@ -472,8 +469,8 @@ public function update_solution_2_1(Request $request,$id_project,$action_submit_
         $dr_conf_1_1 = $solution_enf2_1->dr_name;
         $mant_conf_1_1 = $solution_enf2_1->mantenimiento;
 
-        $funciones = new funciones();
-        $nivel_confotr_2_1 = $funciones->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
+
+        $nivel_confotr_2_1 = $this->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
         $solution_enf2_1->confort = $nivel_confotr_2_1;
 
         if($action_submit == 'store'){
@@ -486,7 +483,7 @@ public function update_solution_2_1(Request $request,$id_project,$action_submit_
 }
 
     public function update_solution_2_2(Request $request,$id_project,$action_submit_send){
-        $funciones = new funciones();
+
 
         $action_submit =  $request->get('action_submit_2_2');
 
@@ -510,7 +507,7 @@ public function update_solution_2_1(Request $request,$id_project,$action_submit_
         $solution_enf2_2->id_modelo=$request->get('modelo_2_2');
         $solution_enf2_2->tipo_diseño = $request->get('cheDisenio_2_2');
 
-        $cap_tot_aux_2_2 = $funciones->num_form($request->get('capacidad_total_2_2'));
+        $cap_tot_aux_2_2 = $this->num_form($request->get('capacidad_total_2_2'));
         $solution_enf2_2->capacidad_tot = floatval($cap_tot_aux_2_2);
 
         $solution_enf2_2->unid_med = $request->get('unidad_capacidad_tot_2_2');
@@ -519,10 +516,10 @@ public function update_solution_2_1(Request $request,$id_project,$action_submit_
         $solution_enf2_2->name_t_control=$request->get('name_t_control_2_2');
         $solution_enf2_2->dr_name=$request->get('dr_name_2_2');
 
-        $costo_elec_aux_2_2 = $funciones->price_form($request->get('costo_elec_2_2'));
+        $costo_elec_aux_2_2 = $this->price_form($request->get('costo_elec_2_2'));
         $solution_enf2_2->costo_elec = floatval($costo_elec_aux_2_2);
 
-        $aux_cooling_hours_2_2 = $funciones->num_form($request->get('hrsEnfriado_2_2'));
+        $aux_cooling_hours_2_2 = $this->num_form($request->get('hrsEnfriado_2_2'));
         $solution_enf2_2->coolings_hours = intval($aux_cooling_hours_2_2);
 
 
@@ -548,13 +545,13 @@ public function update_solution_2_1(Request $request,$id_project,$action_submit_
         $solution_enf2_2->mantenimiento = $request->get('cheMantenimiento_2_2');
 
         if($request->get('cheValorS_2_2') != null){
-             $val_aprox_aux_2_2 = $funciones->price_form($request->get('cheValorS_2_2'));
+             $val_aprox_aux_2_2 = $this->price_form($request->get('cheValorS_2_2'));
         }else  if($request->get('cheValorS_2_2') == null){
                 $val_aprox_aux_2_2 = 0;
         }
 
         if($request->get('maintenance_cost_2_2') != null){
-             $aux_cost_mant_2_2 = $funciones->price_form($request->get('maintenance_cost_2_2'));
+             $aux_cost_mant_2_2 = $this->price_form($request->get('maintenance_cost_2_2'));
         }else  if($request->get('maintenance_cost_2_2') == null){
             $aux_cost_mant_2_2 = 0;
 
@@ -586,11 +583,11 @@ public function update_solution_2_1(Request $request,$id_project,$action_submit_
         $unidad_hvac_aux = $solution_enf2_2->unidad_hvac;
        if ($solution_enf2_2->unid_med == 'TR') {
         $tr = $solution_enf2_2->capacidad_tot;
-        $res_2_2 = $funciones->cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+        $res_2_2 = $this->cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
         $solution_enf2_2->cost_op_an =  floatval(number_format($res_2_2,2, '.', ''));
     }else if($solution_enf2_2->unid_med == 'KW'){
         $kw =  $solution_enf2_2->capacidad_tot;
-        $res_2_2 = $funciones->cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+        $res_2_2 = $this->cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
         $solution_enf2_2->cost_op_an =floatval(number_format($res_2_2,2, '.', ''));
     }
 
@@ -603,8 +600,7 @@ public function update_solution_2_1(Request $request,$id_project,$action_submit_
     $dr_conf_1_1 = $solution_enf2_2->dr_name;
     $mant_conf_1_1 = $solution_enf2_2->mantenimiento;
 
-    $funciones = new funciones();
-    $nivel_confotr_2_2 = $funciones->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
+    $nivel_confotr_2_2 = $this->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
     $solution_enf2_2->confort = $nivel_confotr_2_2;
 
 
@@ -620,7 +616,7 @@ public function update_solution_2_1(Request $request,$id_project,$action_submit_
 }
 
 public function update_solution_3_1(Request $request,$id_project,$action_submit_send){
-    $funciones = new funciones();
+
 
     $action_submit =  $request->get('action_submit_3_1');
                 if($action_submit == 'store'){
@@ -642,7 +638,7 @@ public function update_solution_3_1(Request $request,$id_project,$action_submit_
                  $solution_enf3_1->id_modelo=$request->get('modelo_3_1');
                  $solution_enf3_1->tipo_diseño	=$request->get('cheDisenio_3_1');
 
-                 $cap_tot_aux_3_1 = $funciones->num_form($request->get('capacidad_total_3_1'));
+                 $cap_tot_aux_3_1 = $this->num_form($request->get('capacidad_total_3_1'));
                  $solution_enf3_1->capacidad_tot=floatval($cap_tot_aux_3_1);
                  $solution_enf3_1->unid_med=$request->get('unidad_capacidad_tot_3_1');
 
@@ -650,10 +646,10 @@ public function update_solution_3_1(Request $request,$id_project,$action_submit_
                  $solution_enf3_1->name_t_control=$request->get('name_t_control_3_1');
                  $solution_enf3_1->dr_name=$request->get('dr_name_3_1');
 
-                 $costo_elec_aux_3_1 = $funciones->price_form($request->get('costo_elec_3_1'));
+                 $costo_elec_aux_3_1 = $this->price_form($request->get('costo_elec_3_1'));
                  $solution_enf3_1->costo_elec=floatval($costo_elec_aux_3_1);
 
-                 $aux_cooling_hours_3_1 = $funciones->num_form($request->get('hrsEnfriado_3_1'));
+                 $aux_cooling_hours_3_1 = $this->num_form($request->get('hrsEnfriado_3_1'));
 
                  $solution_enf3_1->coolings_hours=intval($aux_cooling_hours_3_1);
 
@@ -679,13 +675,13 @@ public function update_solution_3_1(Request $request,$id_project,$action_submit_
                  $solution_enf3_1->mantenimiento=$request->get('cheMantenimiento_3_1');
 
                  if($request->get('cheValorS_3_1') != null){
-                    $val_aprox_aux_3_1 = $funciones->price_form($request->get('cheValorS_3_1'));
+                    $val_aprox_aux_3_1 = $this->price_form($request->get('cheValorS_3_1'));
                 }else  if($request->get('cheValorS_3_1') == null){
                         $val_aprox_aux_3_1 = 0;
                 }
 
                 if($request->get('maintenance_cost_3_1') != null){
-                    $aux_cost_mant_3_1 = $funciones->price_form($request->get('maintenance_cost_3_1'));
+                    $aux_cost_mant_3_1 = $this->price_form($request->get('maintenance_cost_3_1'));
 
                 }else  if($request->get('maintenance_cost_3_1') == null){
                     $aux_cost_mant_3_1 = 0;
@@ -718,11 +714,11 @@ public function update_solution_3_1(Request $request,$id_project,$action_submit_
                  $unidad_hvac_aux = $solution_enf3_1->unidad_hvac;
                 if ($solution_enf3_1->unid_med == 'TR') {
                     $tr = $solution_enf3_1->capacidad_tot;
-                    $res_3_1 =$funciones->cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+                    $res_3_1 =$this->cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                     $solution_enf3_1->cost_op_an =  floatval(number_format($res_3_1,2, '.', ''));
              }else if($solution_enf3_1->unid_med == 'KW'){
                 $kw =  $solution_enf3_1->capacidad_tot;
-                $res_3_1 = $funciones->cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+                $res_3_1 = $this->cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                 $solution_enf3_1->cost_op_an =floatval(number_format($res_3_1,2, '.', ''));
              }
              //confort
@@ -733,8 +729,8 @@ public function update_solution_3_1(Request $request,$id_project,$action_submit_
              $dr_conf_1_1 = $solution_enf3_1->dr_name;
              $mant_conf_1_1 = $solution_enf3_1->mantenimiento;
 
-             $funciones = new funciones();
-             $nivel_confotr_3_1 = $funciones->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
+
+             $nivel_confotr_3_1 = $this->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
              $solution_enf3_1->confort = $nivel_confotr_3_1;
 
 
@@ -751,7 +747,6 @@ public function update_solution_3_1(Request $request,$id_project,$action_submit_
 
 
 public function update_solution_3_2(Request $request,$id_project,$action_submit_send){
-    $funciones = new funciones();
 
     $action_submit =  $request->get('action_submit_3_2');
 
@@ -775,7 +770,7 @@ public function update_solution_3_2(Request $request,$id_project,$action_submit_
                 $solution_enf3_2->id_modelo=$request->get('modelo_3_2');
                 $solution_enf3_2->tipo_diseño = $request->get('cheDisenio_3_2');
 
-                $cap_tot_aux_3_2 = $funciones->num_form($request->get('capacidad_total_3_2'));
+                $cap_tot_aux_3_2 = $this->num_form($request->get('capacidad_total_3_2'));
                 $solution_enf3_2->capacidad_tot = floatval($cap_tot_aux_3_2);
                 $solution_enf3_2->unid_med = $request->get('unidad_capacidad_tot_3_2');
 
@@ -784,10 +779,10 @@ public function update_solution_3_2(Request $request,$id_project,$action_submit_
                 $solution_enf3_2->dr_name=$request->get('dr_name_3_2');
 
 
-                $costo_elec_aux_3_2 = $funciones->price_form($request->get('costo_elec_3_2'));
+                $costo_elec_aux_3_2 = $this->price_form($request->get('costo_elec_3_2'));
                 $solution_enf3_2->costo_elec = floatval($costo_elec_aux_3_2);
 
-                $aux_cooling_hours_3_2 = $funciones->num_form($request->get('hrsEnfriado_3_2'));
+                $aux_cooling_hours_3_2 = $this->num_form($request->get('hrsEnfriado_3_2'));
                 $solution_enf3_2->coolings_hours = intval($aux_cooling_hours_3_2);
 
                 if($request->get('csStd_3_2') == null){
@@ -811,14 +806,14 @@ public function update_solution_3_2(Request $request,$id_project,$action_submit_
                 $solution_enf3_2->mantenimiento = $request->get('cheMantenimiento_3_2');
 
                 if($request->get('cheValorS2_3_2') != null){
-                   $val_aprox_aux_3_2 = $funciones->price_form($request->get('cheValorS2_3_2'));
+                   $val_aprox_aux_3_2 = $this->price_form($request->get('cheValorS2_3_2'));
                }else  if($request->get('cheValorS2_3_2') == null){
                        $val_aprox_aux_3_2 = 0;
                }
 
 
                if($request->get('maintenance_cost_3_2') != null){
-                $aux_cost_mant_3_2 = $funciones->price_form($request->get('maintenance_cost_3_2'));
+                $aux_cost_mant_3_2 = $this->price_form($request->get('maintenance_cost_3_2'));
             }else  if($request->get('maintenance_cost_3_2') == null){
                 $aux_cost_mant_3_2 = 0;
 
@@ -850,11 +845,11 @@ public function update_solution_3_2(Request $request,$id_project,$action_submit_
                 $unidad_hvac_aux = $solution_enf3_2->unidad_hvac;
                if ($solution_enf3_2->unid_med == 'TR') {
                 $tr = $solution_enf3_2->capacidad_tot;
-                $res_3_2 = $funciones->cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+                $res_3_2 = $this->cost_op_an_form($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                 $solution_enf3_2->cost_op_an =  floatval(number_format($res_3_2,2, '.', ''));
             }else if($solution_enf3_2->unid_med == 'KW'){
                $kw =  $solution_enf3_2->capacidad_tot;
-               $res_3_2 = $funciones->cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
+               $res_3_2 = $this->cost_op_an_form_kw($kw,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_m,$unidad_hvac_aux,$factor_v,$factor_f,$am);
                $solution_enf3_2->cost_op_an =floatval(number_format($res_3_2,2, '.', ''));
             }
 
@@ -866,8 +861,8 @@ public function update_solution_3_2(Request $request,$id_project,$action_submit_
             $dr_conf_1_1 = $solution_enf3_2->dr_name;
             $mant_conf_1_1 = $solution_enf3_2->mantenimiento;
 
-            $funciones = new funciones();
-            $nivel_confotr_3_2 = $funciones->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
+
+            $nivel_confotr_3_2 = $this->calc_confort($unidad_conf_1_1,$equipo_conf_1_1,$diseno_conf_1_1,$t_control_conf_1_1,$dr_conf_1_1,$mant_conf_1_1);
             $solution_enf3_2->confort = $nivel_confotr_3_2;
 
             if($action_submit == 'store'){
