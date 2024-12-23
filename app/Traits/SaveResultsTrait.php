@@ -25,7 +25,6 @@ public function save_results($enf,$id_project){
        $new_result->cost_op_an = $res_sum;
        $new_result->id_project = $id_project;
        $new_result->id_empresa=Auth::user()->id_empresa;
-
        $new_result->id_user=Auth::user()->id;
        $new_result->save();
 }
@@ -52,7 +51,12 @@ if($action_submit_send == 'store'){
     ->where('solutions_project.num_enf','=',$enf)
     ->where('solutions_project.num_sol','=',$sol)
     ->first(); */
-    $new_result = ResultsProjectModel::find($id_result->id);
+    $new_result = ResultsProjectModel::findorfail($id_result->id);
+    if($new_result){
+
+    }else{
+        $this->save_results($enf,$id_project);
+    }
 }
 $new_result->num_enf = $enf;
 $new_result->cost_op_an = $res_sum;

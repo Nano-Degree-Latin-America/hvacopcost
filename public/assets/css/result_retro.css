@@ -1,0 +1,671 @@
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa&family=Dongle&family=Montserrat:wght@500;600&family=Rubik:wght@300&display=swap');
+
+    .ancho{
+        width:75%;
+    }
+
+
+        .font-roboto{
+            font-family: 'ABeeZee', sans-serif;
+        }
+
+        .info_project{
+            font-size: 20px;
+            font-family: 'ABeeZee', sans-serif;
+            color:#2c5282;
+            font-weight: bold;
+
+        }
+
+        .info_project_res{
+            font-size: 20px;
+            font-family: 'ABeeZee', sans-serif;
+            color:#3182ce;
+            font-weight: bold;
+         }
+
+         .img_projec{
+            height: 120px;
+            width:230px;
+         }
+
+
+         .titulos_style{
+            font-size:30px;
+            color: white;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+         }
+
+         .solucions_style_name{
+            font-size: 2.25rem;
+            color: #1B17BB;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+        }
+
+        .cant_style{
+            font-size: 3rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+        }
+
+        .cant_style_minim{
+            font-size: 2.5rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+        }
+
+        .unit_style{
+            font-size: 1.3rem;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            margin-top:1.5rem;
+        }
+
+        .style_grafica_khw2{
+            width:350px;
+            height: 280px;
+        }
+
+        .eui_energy_style{
+            margin-top: 2rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            margin-right: .25rem;
+            font-size: 2.25rem;
+        }
+
+        .eui_energy_val_style{
+            margin-top: .75rem;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            font-size: 4rem;
+        }
+
+        .energy_star_style_img{
+            margin-left: .5rem;
+            margin-right: .5rem;
+            margin-top: 1.5rem;
+            width:120px;
+            height:75px;
+        }
+
+        .ashrae_style_img{
+            margin-left: .5rem;
+            margin-right: .5rem;
+            margin-top: 1.5rem;
+            width: 115px;
+            height: 75px;
+        }
+
+        .img_red_ene{
+            width:80px;
+             height:80px;
+              z-index:1;
+        }
+
+        .red_energetica_style{
+            font-size: 2.25rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            margin-top:5px;
+        }
+
+        .margin_new_page{
+            margin-top:.5rem;
+        }
+
+        .ancho_rang{
+            width:1.3rem;
+            height:3rem;
+        }
+
+        .puntero_medidas{
+              width: 85px; height:65px;
+            margin-top:5px;
+        }
+
+        .size_solutions_confort{
+            font-size:2rem;
+            color: #2c5282;
+        }
+
+        .size_solutions_confort_enermaspro{
+            font-size:1.78rem;
+            color: #2c5282;
+        }
+
+        .size_solutions_payback{
+            font-size:2.5rem;
+        }
+
+        .style_grafics_marr{
+            width:600px;
+            height:320px;
+        }
+
+        .per_cos{
+            font-size: 2.25rem;
+        }
+
+        .img_porject{
+            height:150px;
+            width:350px;
+         }
+
+         .img_persona{
+            height:125px;
+            width:105px;
+         }
+
+         .img_tr{
+            height:95px;
+            width:90px;
+         }
+
+         .img_huella{
+            height:90px;
+            width:85px;
+         }
+
+
+
+         .img_payback{
+            height:80px;
+            width:80px;
+         }
+
+
+         .img_prod_lab{
+            height:115px;
+            width:95px;
+         }
+
+         .img_ahorro{
+            height:80px;
+            width:80px;
+         }
+
+         .padding_space_white{
+            padding-left: 2.85rem;
+            padding-right: 2.85rem;
+         }
+
+         .cant_2{
+            font-size:3.5rem;
+            color:#2c5282;
+        }
+
+        .cant_2_l{
+            font-size:3.5rem;
+            color:#2c5282;
+            margin-left:110px;
+        }
+
+        .cant_2_v{
+            font-size:3.5rem;
+            color:#33cc33;
+        }
+
+        .cant_2_cero{
+            font-size:3.5rem;
+            color:#33cc33;
+            margin-left:100px;
+        }
+
+        .cant_2_cero_des{
+            font-size:3.5rem;
+            color:#2c5282;
+            margin-left:130px;
+        }
+
+
+        .payback_cants{
+            font-size:2.5rem
+        }
+
+
+        .payback_cants_min{
+            font-size:2rem
+        }
+
+        .payback_cants_green{
+            font-size: 2.5rem;
+        }
+
+        .payback_cants_green_6{
+            font-size: 2.3rem;
+        }
+
+        .mt_titles{
+            margin-top:2.5rem;
+        }
+
+        .padding_na{
+          padding-left: .75rem;
+          padding-right: .75rem;
+        }
+
+        .padding_pay{
+          padding-right:33px;
+          padding-left:33px;
+        }
+
+        .padding_pay_1{
+          padding-right:80px;
+          padding-left:80px;
+        }
+
+        .padding_pay_2{
+          padding-right:25px;
+          padding-left:25px;
+        }
+
+        .padding_pay_3{
+          padding-right:37px;
+          padding-left:37px;
+        }
+
+        .padding_pay_4{
+          padding-right:25px;
+          padding-left:25px;
+        }
+
+        .padding_pay_5{
+          padding-right:15px;
+          padding-left:15px;
+        }
+
+        .padding_pay_6
+        {
+            padding-right:0px;
+            padding-left:0px;
+        }
+@media print{
+  @page { margin: 0; }
+
+  .ancho{
+    width:95%;
+  }
+
+  .info_project{
+    font-size: 14px;
+    font-family: 'ABeeZee', sans-serif;
+    color:#2c5282;
+    font-weight: bold;
+  }
+
+  .info_project_res{
+    font-size: 14px;
+    font-family: 'ABeeZee', sans-serif;
+    font-weight: bold;
+  }
+
+  .img_porject{
+            height:100px;
+            width:180px;
+         }
+
+  .titulos_style{
+            font-size:20px;
+            color: white;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+         }
+   .solucions_style_name{
+        font-size: 1.2rem;
+        color: #2c5282;
+        font-weight: bold;
+        font-family: 'ABeeZee', sans-serif;
+   }
+
+   .cant_style{
+            font-size: 1.7rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+   }
+
+   .cant_style_minim{
+            font-size: 1.4rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+        }
+
+   .unit_style{
+            font-size: .8rem;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            margin-top:.8rem;
+   }
+
+   .style_grafica_khw2{
+    width:300px;
+    height: 250px;
+   }
+
+   .eui_energy_style{
+    margin-top: 2rem;
+    color: #2c5282;
+    font-weight: bold;
+    font-family: 'ABeeZee', sans-serif;
+    margin-right: .15rem;
+    font-size: 1.3rem;
+   }
+
+   .eui_energy_val_style{
+    margin-top: 1.2rem;
+    font-weight: bold;
+    font-family: 'ABeeZee', sans-serif;
+    font-size: 2.1rem;
+   }
+
+   .energy_star_style_img{
+       margin-left: .5rem;
+       margin-right: .5rem;
+       margin-top: 1.5rem;
+       width:80px;
+       height:50px;
+   }
+
+   .ashrae_style_img{
+        margin-left: .5rem;
+        margin-right: .5rem;
+        margin-top: 1.5rem;
+        width: 80px;
+        height:50px;
+   }
+
+   .img_red_ene{
+            width:50px;
+             height:35px;
+              z-index:1;
+        }
+
+   .red_energetica_style{
+            font-size: 1rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            margin-top:15px;
+        }
+
+        .margin_new_page{
+            margin-top: 0rem;
+        }
+
+        .ancho_rang{
+            width:.8rem;
+            height:1.8rem;
+        }
+
+        .puntero_medidas{
+            width: 38px; height:40px;
+            margin-top:5px;
+        }
+
+        .size_solutions_confort{
+            font-size:1.1rem;
+        }
+
+        .size_solutions_payback{
+            font-size:1.5rem;
+        }
+
+
+        .style_grafics_marr{
+            width:400px;
+            height:250px;
+        }
+
+        .per_cos{
+            font-size: 1.8rem;
+        }
+
+        .padding_space_white{
+            padding-left: 1.85rem;
+            padding-right: 1.85rem;
+         }
+
+         .img_persona{
+            height:45px;
+            width:40px;
+         }
+
+         .img_tr{
+            height:55px;
+            width:50px;
+         }
+
+
+         .cant_2{
+            font-size:2rem;
+            color:#2c5282;
+        }
+
+        .cant_2_cero{
+            font-size:2rem;
+            color:#33cc33;
+            margin-left:50px;
+        }
+
+        .cant_2_cero_des{
+            font-size:2rem;
+            color:#2c5282;
+            margin-left:60px;
+        }
+
+        .cant_2_l{
+            font-size:2rem;
+            color:#2c5282;
+            margin-left:85px;
+        }
+
+        .cant_2_v{
+            font-size:2rem;
+            color:#33cc33;
+        }
+
+        .payback_cants{
+            font-size: 14px;
+        }
+
+        .payback_cants_green{
+            font-size: 14px;
+        }
+
+        .payback_cants_green_6{
+            font-size: 13px;
+        }
+
+         .img_ahorro{
+            height:40px;
+            width:40px;
+         }
+
+         .img_prod_lab{
+            height:65px;
+            width:55px;
+         }
+
+         .mt_titles{
+            margin-top:0rem;
+        }
+
+        .payback_cants_min{
+            font-size:1rem
+        }
+
+        .padding_na{
+          padding-left: .75rem;
+          padding-right: .75rem;
+        }
+
+        .padding_pay{
+           padding-left: 1.2rem;
+          padding-right: 1.2rem;
+        }
+
+        .padding_pay_1{
+          padding-right:80px;
+          padding-left:80px;
+        }
+
+        .padding_pay_2{
+          padding-right:25px;
+          padding-left:25px;
+        }
+
+        .padding_pay_3{
+          padding-right:20px;
+          padding-left:20px;
+        }
+
+        .padding_pay_4
+        {
+          padding-right:15px;
+          padding-left:15px;
+        }
+
+        .padding_pay_5
+        {
+            padding-right:13px;
+            padding-left:13px;
+        }
+
+        .padding_pay_6
+        {
+            padding-right:8px;
+            padding-left:8px;
+        }
+
+        .img_payback{
+            height:45px;
+            width:40px;
+            margin-top:10px;
+         }
+
+}
+
+/* md	768px */
+
+@media (min-width: 600px) {
+            .js_charts_style{
+                width: 250px;
+                height: 200px;
+                margin: 0px auto;
+            }
+        }
+
+
+        @media (min-width: 768px) {
+            .js_charts_style{
+                width: 250px;
+                height: 200px;
+                margin: 0px auto;
+            }
+        }
+
+
+        @media (min-width: 950px) {
+            .js_charts_style{
+                width: 280px;
+                height: 200px;
+                margin: 0px auto;
+            }
+        }
+        /* lg	1024px */
+        @media (min-width: 1024px) {
+            .js_charts_style{
+                width: 280px;
+                height: 200px;
+                margin: 0px auto;
+            }
+
+        }
+
+        @media (min-width: 1024px) {
+            .js_charts_style{
+                width: 300px;
+                height: 200px;
+                margin: 0px auto;
+            }
+
+        }
+
+        @media (min-width: 1800px) {
+            .js_charts_style{
+                width: 410px;
+                height: 210px;
+                margin: 0px auto;
+            }
+        }
+
+        @media (min-width: 1890px) {
+            .js_charts_style{
+                width: 410px;
+                height: 210px;
+                margin: 0px auto;
+            }
+        }
+
+        @media (min-width: 1900px) {
+            .js_charts_style{
+                width: 410px;
+                height: 210px;
+                margin: 0px auto;
+            }
+        }
+
+        .btn_roundf_retro{
+border:1px solid #ffff;
+background: #ffff;
+color:#3182ce;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
+.btn_roundf_retro:hover {
+border:1px solid #4299e1;
+background: #4299e1;
+color:#ffff;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}
+
+.btn_roundf_retro:active {
+border:1px solid #ffff;
+background: #ffff;
+color:#4299e1;
+border-radius: 50%;
+width: 30px;
+height: 30px;
+z-index: 90090;
+display: flex;
+align-content: center;
+justify-content: center;
+text-align: center;
+align-items: center;
+cursor: pointer;
+}

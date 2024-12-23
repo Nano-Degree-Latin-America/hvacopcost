@@ -30,6 +30,7 @@
     <!-- hoja de estilos -->
 {{--     <link rel="stylesheet" type="text/css" href="assets/css/styles.css"> --}}
     <link rel="stylesheet" href="{{asset("assets/css/styles.css")}}">
+
     {{-- <link href="assets/css/styles.css?v=<?php echo time(); ?>" rel="stylesheet"> --}}
     <link rel=»canonical» href=»https://hvacopcostla.sarsoftware.com/»/>
     {{-- select 2  --}}

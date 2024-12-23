@@ -72,10 +72,11 @@
                 </div>
             </div>
         </nav> --}}
-
+        @stack('grafics')
         <main class="py-4">
             @yield('content')
         </main>
+
     </div>
 </body>
 </html>

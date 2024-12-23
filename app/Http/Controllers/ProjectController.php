@@ -117,9 +117,6 @@ class ProjectController extends Controller
             }
         }
 
-
-
-
         return view('mis_projectos',['id_empresa'=>$id_empresa,'mis_projectos'=>$mis_projectos,"searchText"=>$query,"empresa_name"=>$empresa_name]);
     }
 

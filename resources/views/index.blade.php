@@ -291,7 +291,7 @@ input[type=number]::-webkit-outer-spin-button {
                 <div x-show.transition.in="step === 2">
 
                     <div  class="ancho">
-
+<input type="text" value="update" class="hidden" id="action_submit_send" name="action_submit_send">
                           {{--   <hr style="width: 100%;"> --}}
                                 <div id="display_nuevo_project" class="hidden">
                                     @include('form_projecto_nuevo')
