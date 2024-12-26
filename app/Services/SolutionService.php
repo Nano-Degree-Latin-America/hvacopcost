@@ -42,7 +42,7 @@ class SolutionService
 
         if ($enfriamiento1 !== 0) {
             if ($sol_1_1 !== 0) {
-                $sal_an_prom_aux = SolutionService::update_solution_1_1($request,$id_project,$action_submit_send);
+                $sal_an_prom_aux = SolutionService::save_solution_1_1($request,$id_project,$action_submit_send);
             }
 
             if ($sol_1_2 !== 0) {
