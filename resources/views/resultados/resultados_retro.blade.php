@@ -1341,6 +1341,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                                     @if($val_base_red_ene !== 0)
                                     <?php  $pay_back_base=$smasolutions->pay_back($inv_ini_1,$inv_ini_1,$val_base_red_ene) ?>
+
                                     @if ($pay_back_base >= 1)
                                         @if ((strlen(number_format($pay_back_base,1))) == 1 )
                                         <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_base,1)}}</b>
@@ -1439,7 +1440,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                             <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green_6 font-roboto font-bold rounded-md padding_pay_6">{{number_format($pay_back_a,1)}}</b>
                                             @endif
 
-                                            @if ((strlen(number_format($pay_back_a,1))) == 6 )
+                                            @if ((strlen(number_format($pay_back_a,1))) == 7 )
                                             <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green_6 font-roboto font-bold rounded-md padding_pay_6">{{number_format($pay_back_a,1)}}</b>
                                             @endif
 
