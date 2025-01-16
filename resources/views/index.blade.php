@@ -280,8 +280,6 @@ input[type=number]::-webkit-outer-spin-button {
                         <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
 
                         @include('form_project')
-
-
                     </div>
 
 
@@ -292,7 +290,7 @@ input[type=number]::-webkit-outer-spin-button {
 
                     <div  class="ancho">
                     <input type="text" value="store" class="hidden" id="action_submit_send" name="action_submit_send">
-                          {{--   <hr style="width: 100%;"> --}}
+
                                 <div id="display_nuevo_project" class="hidden">
                                     @include('form_projecto_nuevo')
                                 </div>
@@ -303,10 +301,8 @@ input[type=number]::-webkit-outer-spin-button {
 
                                 <div class="clearfix">
                                     <div class="my-5 gap-x-3">
-                                 {{--      <input type="file" id="file" name="file"> --}}
-{{--                                       <a class="btn btn-secondary font-roboto" id="btn-reset">Reset</a>
- --}}                                  </div>
-                            </div>
+                                    </div>
+                                </div>
 
                            {{--  <div class="banner banner-giga" style="width: 80%">
                                 <a href="https://www.desprosoft.com/" target="_blank"><img src="{{asset('assets/images/banners/desprosoft.jpg')}}" alt="Desprosoft"></a>
