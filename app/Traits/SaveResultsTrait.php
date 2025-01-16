@@ -52,7 +52,7 @@ if($action_submit_send == 'store'){
     ->where('solutions_project.num_sol','=',$sol)
     ->first(); */
 
-    if($id_result->id){
+    if($id_result){
         $new_result = ResultsProjectModel::findorfail($id_result->id);
     }else{
         $this->save_results($enf,$id_project);
