@@ -1119,6 +1119,7 @@ async function set_ventilaciones_no_doa(value) {
   }
 
   async function check_form_proy(value,new_p,retro_p,button_np,button_rp,action,type_p_aux){
+
     var pn = document.getElementById("pn");
     var pr = document.getElementById("pr");
     var man = document.getElementById("man");
@@ -1127,31 +1128,45 @@ async function set_ventilaciones_no_doa(value) {
     if(document.getElementById("id_project")){
         var id_project = document.getElementById("id_project").value;
     }
-    if(value == 'pn'){
-        pn.checked = true;
-        pr.checked = false;
-        man.checked = false;
-        type_p.value = 1;
-        //si tipo es igual a 2
-        if(parseInt(type_p_aux) === 2 || parseInt(type_p_aux) === 3 ){
-            action_submit_send.value = 'store';
-            //se da de alta nuevas soluciones tipo proyecto retrofit
-        }
-        //si tipo es igual a 1
-        if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 0){
-            action_submit_send.value = 'update';
-            //se actualiza proyecto nuevo
-        }
-        $('#'+retro_p).addClass("hidden");
-        $('#'+new_p).removeClass("hidden");
-        $('#'+button_np).removeClass("hidden");
-        $('#'+button_rp).addClass("hidden");
-        inactive_tarjets_retro('pn');
-    }else if(value == 'pr'){
-        type_p.value = 2;
-        pn.checked = false;
+
+    switch (value) {
+        case 'pn':
+
+            $('#simulaciones').addClass("hidden");
+            $('#ene_fin_pro_form_project').removeClass("hidden");
+            $('#mantenimiento_form_project').addClass("hidden");
+            type_p.value = 1;
+
+            /* pn.checked = true;
+            pr.checked = false;
+            man.checked = false; */
+            //si tipo es igual a 2
+            if(parseInt(type_p_aux) === 2 || parseInt(type_p_aux) === 3 ){
+                action_submit_send.value = 'store';
+                //se da de alta nuevas soluciones tipo proyecto retrofit
+            }
+            //si tipo es igual a 1
+            if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 0){
+                action_submit_send.value = 'update';
+                //se actualiza proyecto nuevo
+            }
+            $('#'+retro_p).addClass("hidden");
+            $('#'+new_p).removeClass("hidden");
+            $('#'+button_np).removeClass("hidden");
+            $('#'+button_rp).addClass("hidden");
+            inactive_tarjets_retro('pn');
+        break;
+
+        case 'pr':
+            $('#simulaciones').addClass("hidden");
+            $('#ene_fin_pro_form_project').removeClass("hidden");
+            $('#mantenimiento_form_project').addClass("hidden");
+            $('#'+retro_p).removeClass("hidden");
+            type_p.value = 2;
+
+       /*  pn.checked = false;
         pr.checked = true;
-        man.checked = false;
+        man.checked = false; */
 
         if(action == 'edit'){
 
@@ -1200,8 +1215,13 @@ async function set_ventilaciones_no_doa(value) {
         $('#button_inactive_3_1_retro').removeClass("hidden");
         $('#button_inactive_3_1_mant').addClass("hidden");
 
-    }else if(value == 'man'){
-        type_p.value = 3;
+        break;
+
+        case 'man':
+            $('#simulaciones').addClass("hidden");
+            $('#ene_fin_pro_form_project').addClass("hidden");
+            $('#mantenimiento_form_project').removeClass("hidden");
+           /*  type_p.value = 3;
         pn.checked = false;
         pr.checked = false;
         man.checked = true;
@@ -1252,8 +1272,15 @@ async function set_ventilaciones_no_doa(value) {
         $('#button_inactive_2_1_mant').removeClass("hidden");
         $('#button_inactive_2_1_retro').addClass("hidden");
         $('#button_inactive_3_1_retro').addClass("hidden");
-        $('#button_inactive_3_1_mant').removeClass("hidden");
+        $('#button_inactive_3_1_mant').removeClass("hidden"); */
+        break;
+
+        default:
+            break;
     }
+
+
+
   }
 
   async function check_form_proy_edit(type_p,id_project){
@@ -13479,4 +13506,10 @@ function red_alert_retro(tipo_ambiente,proteccion_condensador){
                  }));
             }
     }
+}
+
+function back_begin(){
+    $('#simulaciones').removeClass("hidden");
+    $('#ene_fin_pro_form_project').addClass("hidden");
+    $('#mantenimiento_form_project').addClass("hidden");
 }

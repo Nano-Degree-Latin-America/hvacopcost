@@ -1,22 +1,3 @@
-<div class=" xl:ml-5 col-6">
-    <h2 id="lblMapa">{{-- Da Clic en el Mapa --}}</h2>
-<img  class="mapa_img" style="margin-top:100px;" src="{{asset('assets\images\mapa-azul_1.png')}}" alt="" usemap="#mapa" {{-- onClick="cambiarLblMapa('Mapa')" --}}>
-<map class="w-full" name="mapa">
-    {{-- <area shape="polygon" coords="2,3, 67,5, 98,19, 121,43, 129,81, 174,65, 150,91, 139,112, 78,93, 29,54, 8,27" onclick="getCiudades(17); cambiarLblMapa('México')" alt="México">
-    <area shape="polygon" coords="144,108, 155,96, 155,89, 175,84, 232,133, 216,150, 179,131, 171,117" onclick="getCiudades(28); cambiarLblMapa('Centro América')" alt="Centro América">
-    <area shape="polygon" coords="187,59,210,55,237,66,272,76,302,83,302,91,260,95,226,92" onclick="getCiudades(27); cambiarLblMapa('Caribe')" alt="Caribe">
-    <area shape="polygon" coords="227,142,234,139,244,126,258,120,256,128,253,136,258,142,266,146,272,148,279,152,285,151,285,158,285,167,280,171,274,173,271,182,273,193,256,193,241,181,233,179,224,173" onclick="getCiudades(5); cambiarLblMapa('Colombia')" alt="Colombia">
-    <area shape="polygon" coords="223,175,229,179,237,179,241,185,236,192,227,196,222,203,214,202,210,192,213,179" onclick="getCiudades(8); cambiarLblMapa('Ecuador')"  alt="Ecuador">
-    <area shape="polygon" coords="270,274,277,265,275,257,278,247,276,238,268,236,256,229,249,219,256,207,269,200,267,193,257,194,244,183,235,194,228,197,225,203,209,204,215,216,236,254,249,264" onclick="getCiudades(21); cambiarLblMapa('Perú')"  alt="Perú">
-    <area shape="polygon" coords="278,237,287,237,299,231,301,240,309,246,327,255,329,265,339,267,340,282,333,281,319,282,315,295,306,295,297,294,288,297,283,282,279,270" onclick="getCiudades(2); cambiarLblMapa('Bolivia')"  alt="Bolivia">
-    <area shape="polygon" coords="275,273,270,278,268,304,262,335,262,346,261,364,250,388,241,451,243,491,256,508,281,516,276,496,260,492,253,482,252,471,259,462,263,442,260,424,260,403,265,395,264,382,270,376,271,365,270,353,272,342,274,335,279,324,281,312,287,305,290,299,283,296" onclick="getCiudades(4); cambiarLblMapa('Chile')"  alt="Chile">
-    <area shape="polygon" coords="319,307,314,297,307,300,297,296,292,300,289,307,283,311,283,320,278,331,274,346,273,365,272,376,266,386,266,403,262,408,263,430,264,441,260,464,255,470,261,485,281,493,280,479,297,462,298,449,292,447,298,436,309,423,318,411,327,397,346,389,352,378,339,365,341,343,351,331,336,327,340,314" onclick="getCiudades(1); cambiarLblMapa('Argentina')"  alt="Argentina">
-    <area shape="polygon" coords="341,365,342,356,345,344,356,349,363,352,369,358,369,366,360,372,349,370" onclick="getCiudades(25); cambiarLblMapa('Uruguay')"  alt="Uruguay">
-    <area shape="polygon" coords="373,355,361,348,351,344,351,335,364,325,369,320,363,313,358,302,351,296,343,296,343,279,345,271,339,264,328,255,301,236,292,230,280,236,269,236,270,229,261,229,254,220,263,205,273,202,276,185,289,176,303,176,310,171,318,159,332,159,331,169,335,174,347,172,373,171,380,160,403,184,451,196,478,216,471,233,451,253,451,278,432,302,421,303,398,316,396,333,386,347" onclick="getCiudades(3); cambiarLblMapa('Brasil')"  alt="Brasil">
-    <area shape="polygon" coords="340,324,348,326,356,325,361,316,360,307,354,302,349,297,342,297,340,285,332,281,321,283,318,291,316,296,322,299,326,303,333,308,345,313" onclick="getCiudades(19); cambiarLblMapa('Paraguay')"  alt="Paraguay">
-    <area shape="polygon" coords="266,119,260,123,256,131,260,136,261,142,274,145,279,148,289,148,291,171,301,172,308,167,304,159,314,158,324,154,333,157,334,166,343,170,358,168,374,166,375,156,349,149,326,133,313,126,292,126" onclick="getCiudades(26); cambiarLblMapa('Venezuela/Guyana/Suniam')"  alt="Venezuela"> --}}
-</map>
-</div>
 <div class="col-4 ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
     {{-- <ul style="padding-bottom: 60px; text-align: justify; font-size: 15px; font-style: italic; font-weight: 400">
         <li>Horas de Enfriamiento por Región y Ciudad de Latin América </li>
@@ -44,14 +25,12 @@
 
 
          </div> --}}
-         <form action="{{route('resultados')}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
-            @csrf
+
             <div class="my-8">
                 <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight" for="">{{ __('index.análisis energético y financiero') }} <br> {{ __('index.de sistemas HVAC') }}</label>
             </div>
          <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
-            <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
-            <input type="number" class="hidden" id="type_p" name="type_p">
+
             <div class="flex w-full gap-x-10 my-2 mx-1 justify-center">
 
                 <div class="grid justify-items-end h-full gap-y-3 w-1/2">
@@ -276,55 +255,66 @@
 
         </div>
 
-     {{-- <div class="bullets">
-       <h2><i class="far fa-snowflake"></i> Consulta</h2>
-        <div>
-            <span><i class="fas fa-check"></i> Horas de Enfriamiento por Región y Ciudad en Latin America</span>
-            <span><i class="fas fa-check"></i> Análisis ROI por Sistema Propuesto HVAC</span>
-        </div>
-        <h2><i class="far fa-snowflake"></i> Calcula</h2>
-        <div>
-            <span><i class="fas fa-check"></i> Costo Operativo Anual por Sistema</span>
-            <span><i class="fas fa-check"></i> Ahorro Financiero Acumulado del Sistema Propuesto</span>
-        </div>
-        <h2><i class="far fa-snowflake"></i> Compara</h2>
-        <div>
-            <span><i class="fas fa-check"></i> Tipos de Sistemas HVAC</span>
-            <span><i class="fas fa-check"></i> Mantenimientos de Sistemas HVAC</span>
-        </div>
-    </div> --}}
-
-   {{--  <table id="tabla-region" style="float: left; ">
-        <tr>
-            <td colspan="2"><b style="font-size: 20px">Selecciona tu Región y Ciudad.</b></td>
-        </tr>
-        <tr>
-            <td><label>Región</label></td>
-            <td style="position: relative; top: 7px">
-                <select class="fcontrol" name="paises" id="paises">
-                    <option value="0">-Selecciona tu región-</option>
-                </select>
-            </td>
-        </tr>
-
-        <tr>
-            <td><label>Ciudad</label></td>
-            <td style="position: relative; top: 7px">
-                <select class="fcontrol" name="ciudades" id="ciudades">
-                    <option value="0">-Selecciona tu ciudad-</option>
-                </select>
-            </td>
-        </tr>
-    </table> --}}
 
 
-    <div class="clearfix"></div>
-    {{-- <div class="banner banner-h-sm" style="margin: 0px 0px !important">
-        <a href="https://www.universidadhvac.com/" target="_blank"><img src="{{asset('assets/images/banners/universidad.jpg')}}" alt="Universidad hvac"></a>
-        <span class="lbl-banner">Visitar</span>
-    </div> --}}
+
+
 </div>
-<div class="col-6 mx-1 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
+
+
+<div class="col-3 mx-1 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="w-full grid justify-items-start gap-y-2">
+        <div id="div_next" name="div_next" style="width: 80%;" class="">
+            <button type="button"  id="next" name="next"
+                onclick="buton_check('{{App::getLocale()}}');"
+                style="background-color:#1B17BB;"
+                class="w-full  hover_button_blue focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+            >{{ __('index.siguiente') }}</button>
+        </div>
+        <div id="div_next_h" name="div_next_h" style="width: 80%;" class="">
+                <button  type="button"  id="next_h" name="next_h"
+                    x-show="step < 2"
+                    @click="step++"
+                    style="background-color:#1B17BB;"
+                    class="w-full  hover_button_blue focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                >{{ __('index.siguiente') }}</button>
+        </div>
+        <div id="div_inicio" name="div_inicio" style="width: 80%;" class="">
+            <button  type="button"  id="inicio" name="inicio"
+                x-show="step < 2"
+                style="background-color:#1B17BB;"
+                onclick="back_begin();"
+                class="w-full hover_button_blue focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+            >{{ __('index.inicio') }}</button>
+        </div>
+    </div>
+</div>
+
+{{-- <div class="col-6 mx-1 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
     <div class="grid gap-y-3 type_proy_pos">
 
 
@@ -465,21 +455,7 @@
             <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
         </div>
         @endif
-{{--         <div class="flex ">
-            <input disabled class="check_style" id="agua_fria" type="checkbox"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">Sistemas de Agua Fría</label>
-        </div> --}}
-        {{-- @if (Auth::user()->tipo_user === 5)
-        <div class="flex">
-            <input  class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
-        </div>
-        @else
-        <div class="flex">
-            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
-        </div>
-        @endif --}}
+
         </div>
         <br>
         <br>
@@ -511,5 +487,5 @@
             </div>
         </div>
 
-</div>
+</div> --}}
 

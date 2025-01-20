@@ -1,0 +1,458 @@
+<div class="col-4 ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
+
+            <div class="my-8">
+                <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight text-center" for="">{{ __('mantenimiento.calculo_analisis_precios') }} <br> {{ __('mantenimiento.contratos_mantenimiento_hvac') }}</label>
+            </div>
+         <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
+
+            <div class="flex w-full gap-x-10 my-2 mx-1 justify-center">
+
+                <div class="grid justify-items-end h-full gap-y-1 w-1/2">
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                        <div class="flex w-full">
+                            <div class="flex w-full">
+                                <label class="labels_index_mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.cliente_prospecto') }}</b></label>
+                                <label class="text-red-500 m-0">*</label>
+                            </div>
+                        </div>
+                        <input wire:model="cliente_pro_mantenimiento" onchange="check_input(this.value,this.id,'cliente_pro_warning_mantenimiento');check_inp_count('count_cliente_pro_mantenimiento','cliente_pro_mantenimiento');" name="cliente_pro_mantenimiento" id="cliente_pro_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input id="count_cliente_pro_mantenimiento" name="count_cliente_pro_mantenimiento" type="number" class="hidden" value="0">
+                        <span id="cliente_pro_warning_mantenimiento" name="cliente_pro_warning_mantenimiento" class="text-red-500"></span>
+                    </div>
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                        <div class="flex w-full">
+                            <label class="font-roboto labels_index_mantenimiento  text-left m-0" for=""><b>{{ __('mantenimiento.categoria_edificio') }}</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                        <select wire:model="cat_edi_id_mantenimiento" name="cat_edi_id_mantenimiento" id="cat_edi_id_mantenimiento" onchange="check_input(this.value,this.id,'cat_ed_warning_mantenimiento');check_inp_count('count_cat_ed_mantenimiento','cat_edi_id_mantenimiento');" wire:change="traer_t_edif($event.target.value)" class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
+                            <option value="0">-{{ __('index.seleccionar') }}-</option>
+                            {{-- @forelse ($categorias_edificios as $edificio)
+                            <option value="{{$edificio->id}}" wire:key="{{$edificio->id}}">{{$edificio->name}}</option>
+                            @empty
+
+                            @endforelse --}}
+                        </select>
+                        <input id="count_cat_ed_mantenimiento" name="count_cat_ed_mantenimiento" type="number" class="hidden" value="0">
+                        <span id="cat_ed_warning_mantenimiento" name="cat_ed_warning_mantenimiento" class="text-red-500"></span>
+                    </div>
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                        <div class="flex w-full">
+                            <label class="labels_index_mantenimiento  font-roboto text-left m-0" for=""><b>{{ __('index.region') }}</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                        <select wire:model="pais_id_mantenimiento" wire:change="traer_t_ciudades($event.target.value)" onchange="check_input(this.value,this.id,'paises_warning_mantenimiento');check_inp_count('count_paises_mantenimiento','paises_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="paises_mantenimiento" id="paises_mantenimiento">
+                            <option selected value="0">-{{ __('mantenimiento.selecciona_region') }}-</option>
+                            @foreach ($all_paises as $pais)
+                            <option class="font-roboto" value="{{$pais->id}}" wire:key="{{$edificio->id}}">{{$pais->name}}</option>
+                            @endforeach
+                        </select>
+                        <input id="count_paises_mantenimiento" name="count_paises_mantenimiento" type="number" class="hidden" value="0">
+                        <span id="paises_warning_mantenimiento" name="paises_warning_mantenimiento" class="text-red-500"></span>
+                    </div>
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                        <div class="flex w-full">
+                            <label class="labels_index_mantenimiento  text-left font-roboto font-bold m-0" for=""><b>{{ __('mantenimiento.distancia_sitio') }}</b></label>
+                            <label class="text-red-500 text-left m-0"></label>
+                        </div>
+                        <input wire:model="distancia_sitio_mantenimiento" onkeypress="return soloNumeros(event)" value="0" onchange="check_input(this.value,this.id,'distancia_sitio_warning_mantenimiento');change_to(this.value,'kms',this.id);check_inp_count('count_distancia_sitio_mantenimiento','distancia_sitio_mantenimiento');" name="distancia_sitio_mantenimiento" id="distancia_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input id="count_distancia_sitio_mantenimiento" name="count_distancia_sitio_mantenimiento" type="number" class="hidden" value="0">
+                        <span id="distancia_sitio_warning_mantenimiento" name="distancia_sitio_warning_mantenimiento" class="text-red-500"></span>
+                    </div>
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                        <div class="flex w-full">
+                            <label class="labels_index_mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.yrs_life_ed') }}:</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                        <input wire:model="yrs_life_ed_mantenimiento" onkeypress="return soloNumeros(event)" value="0" onchange="check_input(this.value,this.id,'yrs_life_ed_warning_mantenimiento');" name="yrs_life_ed_mantenimiento" id="yrs_life_ed_mantenimiento" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input id="count_yrs_life_ed_mantenimiento" name="count_yrs_life_ed_mantenimiento" type="number" class="hidden" value="0">
+                        <span id="yrs_life_ed_warning_mantenimiento" name="yrs_life_ed_warning_mantenimiento" class="text-red-500"></span>
+                    </div>
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                        <div class="flex w-3/5">
+                            <label class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.tipo_ambiente') }}:</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                        <select wire:model="tipo_ambiente_mantenimiento" onchange="check_input(this.value,this.id,'tipo_ambiente_warning_mantenimiento');check_inp_count('count_tipo_ambiente_mantenimiento','tipo_ambiente_mantenimiento');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="tipo_ambiente_mantenimiento" id="tipo_ambiente_mantenimiento">
+                            <option value="">-{{ __('index.seleccionar') }}-</option>
+                            <option value="limpio">{{ __('mantenimiento.limpio') }}</option>
+                            <option value="sucio">{{ __('mantenimiento.sucio') }}</option>
+                            <option value="promedio">{{ __('mantenimiento.promedio') }}</option>
+                        </select>
+                        <input id="count_tipo_ambiente_mantenimiento" name="count_tipo_ambiente_mantenimiento" type="number" class="hidden" value="0">
+                        <span id="tipo_ambiente_warning_mantenimiento" name="tipo_ambiente_warning_mantenimiento" class="text-red-500"></span>
+                    </div>
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                        <div class="flex w-full">
+                            <label class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.cant_hrs_eme') }}:</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                        <select wire:model="cant_hrs_eme_mantenimiento" onchange="check_input(this.value,this.id,'cant_hrs_eme_warning_mantenimiento');check_inp_count('count_cant_hrs_eme_mantenimiento','cant_hrs_eme_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="cant_hrs_eme_mantenimiento" id="cant_hrs_eme_mantenimiento">
+                            <option value="">-{{ __('mantenimiento.sin_emergencia') }}-</option>
+                            <option value="10">10% Horas Mant.</option>
+                            <option value="20">20% Horas Mant.</option>
+                            <option value="30">30% Horas Mant.</option>
+                            <option value="40">40% Horas Mant.</option>
+                        </select>
+                        <input id="count_cant_hrs_eme_mantenimiento" name="count_cant_hrs_eme_mantenimiento" type="number" class="hidden" value="0">
+                        <span id="cant_hrs_eme_warning_mantenimiento" name="cant_hrs_eme_warning_mantenimiento" class="text-red-500"></span>
+                    </div>
+
+                </div>
+
+                <div class="grid justify-items-start h-full gap-y-1 w-1/2">
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                        <div class="flex w-full">
+                            <label class="labels_index_mantenimiento _mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.nombre_sitio') }}</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                        <input wire:model="name_sitio_mantenimiento" onchange="check_input(this.value,this.id,'name_sitio_warning_mantenimiento');check_inp_count('count_name_sitio_mantenimiento','name_sitio_mantenimiento');" name="name_sitio_mantenimiento" id="name_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input id="count_name_sitio_mantenimiento" name="count_name_sitio_mantenimiento" type="number" class="hidden" value="0">
+                        <span id="name_sitio_warning_mantenimiento" name="name_sitio_warning_mantenimiento" class="text-red-500"></span>
+                    </div>
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                        <div class="flex w-full">
+                            <label class="labels_index_mantenimiento  text-left font-roboto m-0" for=""><b>{{ __('mantenimiento.tipo_edificio') }}</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                        <select wire:model="tipo_edificio_mantenimiento" name="tipo_edificio_mantenimiento" id="tipo_edificio_mantenimiento" onchange="check_input(this.value,this.id,'tipo_edificio_warning_mantenimiento');check_inp_count('count_tipo_edificio_mantenimiento','tipo_edificio_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <option value="0">-{{ __('index.seleccionar') }}-</option>
+                            {{-- @foreach ($tipo_edificios as $tipo_edificio)
+                            <option value="{{$tipo_edificio->id}}">{{$tipo_edificio->name}}</option>
+                            @endforeach --}}
+                        </select>
+                        <input id="count_tipo_edificio_mantenimiento" name="count_tipo_edificio_mantenimiento" type="number" class="hidden" value="0">
+                        <span id="tipo_edificio_warning_mantenimiento" name="tipo_edificio_warning_mantenimiento" class="text-red-500"></span>
+                    </div>
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                        <div class="flex w-full">
+                            <label class="labels_index_mantenimiento  text-left font-roboto m-0" for=""><b>{{ __('index.ciudad') }}</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                        <select wire:model="id_ciudad_mantenimiento" onchange="check_input(this.value,this.id,'ciudad_warning_mantenimiento');check_inp_count('count_ciudad_mantenimiento','ciudades_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ciudades_mantenimiento" id="ciudades_mantenimiento">
+                            <option selected value="0">-{{ __('mantenimiento.selecciona_ciudad') }}-</option>
+                            {{-- @foreach ($ciudades as $ciudad)
+                            <option value="{{$ciudad->id}}">{{$ciudad->name}}</option>
+                            @endforeach --}}
+                        </select>
+                        <input id="count_ciudad_mantenimiento" name="count_ciudad_mantenimiento" type="number" class="hidden" value="0">
+                        <span id="ciudad_warning_mantenimiento" name="ciudad_warning_mantenimiento" class="text-red-500"></span>
+                    </div>
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                        <div class="flex w-full">
+                            <label class="labels_index_mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.velocidad_promedio') }}:</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                        <select wire:model="velocidad_promedio_mantenimiento" onchange="check_input(this.value,this.id,'velocidad_promedio_warning_mantenimiento');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="velocidad_promedio_mantenimiento" id="velocidad_promedio_mantenimiento">
+                            @for ($i = 0; $i <= 120; $i = $i + 10)
+                            <option value="{{$i}}">{{$i}}</option>
+                            @endfor
+                        </select>
+                        <input id="count_velocidad_promedio_mantenimiento" name="count_velocidad_promedio_mantenimiento" type="number" class="hidden" value="0">
+                        <span id="velocidad_promedio_warning_mantenimiento" name="velocidad_promedio_warning_mantenimiento" class="text-red-500"></span>
+                    </div>
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                        <div class="flex w-full justify-start">
+                            <label class="font-roboto font-bold text-left labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.ocupacion_semanal') }}</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                        <select wire:model="ocupacion_semanal_mantenimiento" wire:change="$emitTo('lista-equipos','set_horas_diarias',$event.target.value)" onchange="set_horas_diarias();check_input(this.value,this.id,'ocupacion_semanal_warning_mantenimiento');check_inp_count('count_ocupacion_semanal_mantenimiento','ocupacion_semanal_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ocupacion_semanal_mantenimiento" id="ocupacion_semanal_mantenimiento">
+                            <option value="">-{{ __('index.seleccionar') }}-</option>
+                            <option value="m_50">{{ __('mantenimiento.menos_50') }}.</option>
+                            <option value="18">{{ __('mantenimiento.18hrs') }}.</option>
+                            <option value="51_167">{{ __('mantenimiento.51_167') }}.</option>
+                        </select>
+                        <input id="count_ocupacion_semanal_mantenimiento" name="count_ocupacion_semanal_mantenimiento" type="number" class="hidden"<div class="grid justify-items-end h-full gap-y-1 w-1/2">
+                    </div>
+
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                        <div class="flex w-full">
+                            <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.personal_enviado') }}:</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                            <select wire:model="personal_enviado" onchange="check_input(this.value,this.id,'personal_enviado_warning');check_inp_count('count_personal_enviado','personal_enviado');" class="w-1/2 border-2 border-color-inps  rounded-md p-1 my-1 font-roboto" name="personal_enviado"  id="personal_enviado">
+                                <option value="">-{{ __('index.seleccionar') }}-</option>
+                                <option value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
+                                <option value="tecnico_ayudante ">{{ __('mantenimiento.tecnico_ayudante') }}</option>
+                            </select>
+                            <input id="count_personal_enviado" name="count_personal_enviado" type="number" class="hidden" value="0">
+                            <span id="personal_enviado_warning" name="personal_enviado_warning" class="text-red-500"></span>
+                    </div>
+
+
+                        <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                            <div class="flex w-full">
+                                <label  class="font-roboto text-left labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.porcentaje_inflacion') }}:</b></label>
+                                <label class="text-red-500 m-0"></label>
+                            </div>
+                            <div class="flex w-full">
+
+                                <input wire:model="inflacion" type="text" onkeypress="return soloNumeros(event)" onchange="check_porcent_max_min(this.value,this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion" id="inflacion">
+                                <input id="count_inflacion" name="count_inflacion" type="number" class="hidden" value="0">
+
+                            </div>
+                            <span id="inflacion_warning" name="inflacion_warning" class="text-red-500"></span>
+                        </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+     {{-- <div class="bullets">
+       <h2><i class="far fa-snowflake"></i> Consulta</h2>
+        <div>
+            <span><i class="fas fa-check"></i> Horas de Enfriamiento por Región y Ciudad en Latin America</span>
+            <span><i class="fas fa-check"></i> Análisis ROI por Sistema Propuesto HVAC</span>
+        </div>
+        <h2><i class="far fa-snowflake"></i> Calcula</h2>
+        <div>
+            <span><i class="fas fa-check"></i> Costo Operativo Anual por Sistema</span>
+            <span><i class="fas fa-check"></i> Ahorro Financiero Acumulado del Sistema Propuesto</span>
+        </div>
+        <h2><i class="far fa-snowflake"></i> Compara</h2>
+        <div>
+            <span><i class="fas fa-check"></i> Tipos de Sistemas HVAC</span>
+            <span><i class="fas fa-check"></i> Mantenimientos de Sistemas HVAC</span>
+        </div>
+    </div> --}}
+
+   {{--  <table id="tabla-region" style="float: left; ">
+        <tr>
+            <td colspan="2"><b style="font-size: 20px">Selecciona tu Región y Ciudad.</b></td>
+        </tr>
+        <tr>
+            <td><label>Región</label></td>
+            <td style="position: relative; top: 7px">
+                <select class="fcontrol" name="paises" id="paises">
+                    <option value="0">-Selecciona tu región-</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label>Ciudad</label></td>
+            <td style="position: relative; top: 7px">
+                <select class="fcontrol" name="ciudades" id="ciudades">
+                    <option value="0">-Selecciona tu ciudad-</option>
+                </select>
+            </td>
+        </tr>
+    </table> --}}
+
+    {{-- <div class="banner banner-h-sm" style="margin: 0px 0px !important">
+        <a href="https://www.universidadhvac.com/" target="_blank"><img src="{{asset('assets/images/banners/universidad.jpg')}}" alt="Universidad hvac"></a>
+        <span class="lbl-banner">Visitar</span>
+    </div> --}}
+
+<div style="width:16%" class="col-6 mx-1 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
+    {{-- <div class="grid gap-y-3 type_proy_pos">
+
+
+        @if ( $check_types_pn == 1 &&  $check_types_pr == 1 &&  $check_types_m == 1)
+        <div class="flex">
+            <input class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
+        </div>
+
+        <div class="flex">
+            <input class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
+        </div>
+
+        <div class="flex ">
+            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
+        </div>
+        @endif
+
+        @if ( $check_types_pn == 1 &&  $check_types_pr == 0 &&  $check_types_m == 0)
+        <div class="flex">
+            <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
+        </div>
+
+        <div class="flex">
+            <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
+        </div>
+
+        <div class="flex">
+            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
+        </div>
+        @endif
+
+        @if ( $check_types_pn == 0 &&  $check_types_pr == 1 &&  $check_types_m == 0)
+        <div class="flex">
+            <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"   class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
+        </div>
+
+        <div class="flex">
+            <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
+        </div>
+
+        <div class="flex ">
+            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
+        </div>
+        @endif
+
+        @if ( $check_types_pn == 0 &&  $check_types_pr == 0 &&  $check_types_m == 1)
+        <div class="flex">
+            <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"   class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
+        </div>
+
+        <div class="flex">
+            <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
+        </div>
+
+        <div class="flex ">
+            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
+        </div>
+        @endif
+
+        @if ( $check_types_pn == 0 &&  $check_types_pr == 1 &&  $check_types_m == 1)
+        <div class="flex">
+            <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"   class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
+        </div>
+
+        <div class="flex">
+            <input  class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
+        </div>
+
+        <div class="flex ">
+            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
+        </div>
+        @endif
+
+        @if ( $check_types_pn == 1 &&  $check_types_pr == 1 &&  $check_types_m == 0)
+        <div class="flex">
+            <input  class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox" checked  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
+        </div>
+
+        <div class="flex">
+            <input  class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
+        </div>
+
+        <div class="flex ">
+            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
+        </div>
+        @endif
+
+        @if ( $check_types_pn == 1 &&  $check_types_pr == 0 &&  $check_types_m == 1)
+        <div class="flex">
+            <input  class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox" checked  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
+        </div>
+
+        <div class="flex">
+            <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
+        </div>
+
+        <div class="flex ">
+            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
+        </div>
+        @endif
+
+        @if ( !$check_types_pn && !$check_types_pr && !$check_types_m)
+        <?php  $check_types_pn = 0?>
+        <?php  $check_types_pr = 0?>
+        <div class="flex">
+            <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
+        </div>
+
+        <div class="flex">
+            <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
+        </div>
+
+        <div class="flex ">
+            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
+        </div>
+        @endif
+
+        </div> --}}
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="w-full grid justify-items-center gap-y-1">
+            {{-- <div id="div_next" name="div_next" style="width: 80%;" class="">
+                <button type="button"  id="next" name="next"
+                    onclick="buton_check('{{App::getLocale()}}');"
+                    style="background-color:#1B17BB;"
+                    class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                >{{ __('index.siguiente') }}</button>
+            </div>
+            <div id="div_next_h" name="div_next_h" style="width: 80%;" class="">
+                    <button  type="button"  id="next_h" name="next_h"
+                        x-show="step < 2"
+                        @click="step++"
+                        style="background-color:#1B17BB;"
+                        class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                    >{{ __('index.siguiente') }}</button>
+            </div> --}}
+
+            <div id="div_atras_mant" name="div_atras_mant" style="width: 80%;" class="">
+                <button  type="button"  id="next_h_mant" name="next_h_mant"
+                    x-show="step < 2"
+
+                     onclick="back_begin();"
+                    style="background-color:#1B17BB;"
+                    class="w-full hover_button_blue focus:outline-none py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                >{{ __('index.inicio') }}</button>
+            </div>
+        </div>
+
+</div>

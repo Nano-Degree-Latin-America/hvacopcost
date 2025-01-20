@@ -1,0 +1,112 @@
+
+.hover_button_blue{
+    border: 2px solid transparent;
+}
+
+
+.hover_button_blue:hover{
+    border: 2px solid red;
+}
+
+
+@media (min-width: 1400px) {
+
+    .margin-title-top-simulaciones{
+        margin-top: 2.5rem;
+    }
+
+    .title_simulaciones_index{
+        font-size: 1.8rem;
+        color:#1B17BB !important;
+    }
+
+}
+
+
+
+
+@media (min-width: 1420px) {
+
+    .margin-title-top-simulaciones{
+        margin-top: 2.5rem;
+    }
+
+    .title_simulaciones_index{
+        font-size: 1.8rem;
+        color:#1B17BB !important;
+    }
+
+}
+
+
+@media (min-width: 1500px) {
+
+    .margin-title-top-simulaciones{
+        margin-top: 1.4rem;
+    }
+
+    .title_simulaciones_index{
+        font-size: 2rem;
+        color:#1B17BB !important;
+    }
+
+}
+
+
+@media (min-width: 1540px) {
+
+    .width-buttons-simulaciones{
+        width: 75%;
+    }
+
+    .margin-title-top-simulaciones{
+        margin-top: 1.4rem;
+    }
+
+    .title_simulaciones_index{
+        font-size: 2rem;
+        color:#1B17BB !important;
+    }
+
+}
+
+@media (min-width: 1640px) {
+
+    .width-buttons-simulaciones{
+        width: 80%;
+    }
+
+    .margin-title-top-simulaciones{
+        margin-top:  2rem;
+    }
+}
+
+@media (min-width: 1760px) {
+
+    .title_simulaciones_index{
+        font-size: 2.5rem;
+        color:#1B17BB !important;
+    }
+
+
+    .margin-title-top-simulaciones{
+        margin-top:  2rem;
+    }
+}
+
+@media (min-width: 1940px) {
+
+    .width-buttons-simulaciones{
+        width: 80%;
+    }
+
+    .margin-title-top-simulaciones{
+        margin-top: 2rem;
+    }
+
+    .title_simulaciones_index{
+        font-size: 2.5rem;
+        color:#1B17BB !important;
+    }
+
+}
