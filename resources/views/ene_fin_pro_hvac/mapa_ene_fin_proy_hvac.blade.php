@@ -1,4 +1,4 @@
-<img  class="mapa_img" style="margin-left:70px;;margin-top:50px;" src="{{asset('assets\images\mapa-azul_1.png')}}" alt="" usemap="#mapa" {{-- onClick="cambiarLblMapa('Mapa')" --}}>
+<img  class="mapa_img" style="margin-left:60px;;margin-top:50px;" src="{{asset('assets\images\mapa-azul_1.png')}}" alt="" usemap="#mapa" {{-- onClick="cambiarLblMapa('Mapa')" --}}>
     <map class="w-full" name="mapa">
         {{-- <area shape="polygon" coords="2,3, 67,5, 98,19, 121,43, 129,81, 174,65, 150,91, 139,112, 78,93, 29,54, 8,27" onclick="getCiudades(17); cambiarLblMapa('México')" alt="México">
         <area shape="polygon" coords="144,108, 155,96, 155,89, 175,84, 232,133, 216,150, 179,131, 171,117" onclick="getCiudades(28); cambiarLblMapa('Centro América')" alt="Centro América">

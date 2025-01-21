@@ -263,6 +263,8 @@ input[type=number]::-webkit-outer-spin-button {
                             @csrf
                             <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
                             <input type="number" class="hidden" id="type_p" name="type_p">
+                            <input type="text" value="store" class="hidden" id="action_submit_send" name="action_submit_send">
+
                         @include('simulaciones')
                     </div>
 
@@ -273,7 +275,6 @@ input[type=number]::-webkit-outer-spin-button {
                 <div x-show.transition.in="step === 2">
 
                     <div  class="ancho">
-                    <input type="text" value="store" class="hidden" id="action_submit_send" name="action_submit_send">
                                 @include('forms_projects');
 
 

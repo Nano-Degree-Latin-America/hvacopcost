@@ -26,12 +26,12 @@
 
          </div> --}}
 
-            <div class="my-8">
-                <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight" for="">{{ __('index.análisis energético y financiero') }} <br> {{ __('index.de sistemas HVAC') }}</label>
+            <div class="my-5">
+                <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight" for="">{{ __('index.análisis energético y financiero') }} <br> {{ __('index.de sistemas HVAC') }} <p id="type_project_name" name="type_project_name"></p></label>
             </div>
-         <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
+         <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-1">
 
-            <div class="flex w-full gap-x-10 my-2 mx-1 justify-center">
+            <div class="flex w-full gap-x-10 my-1 mx-1 justify-center">
 
                 <div class="grid justify-items-end h-full gap-y-3 w-1/2">
 
@@ -292,7 +292,7 @@
             <button type="button"  id="next" name="next"
                 onclick="buton_check('{{App::getLocale()}}');"
                 style="background-color:#1B17BB;"
-                class="w-full  hover_button_blue focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                class="w-full py-4 px-7 rounded-lg shadow-sm text-center text-white hover_button_blue text-xl font-roboto"
             >{{ __('index.siguiente') }}</button>
         </div>
         <div id="div_next_h" name="div_next_h" style="width: 80%;" class="">
@@ -300,15 +300,15 @@
                     x-show="step < 2"
                     @click="step++"
                     style="background-color:#1B17BB;"
-                    class="w-full  hover_button_blue focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                    class="w-full py-4 px-7 rounded-lg shadow-sm text-center text-white hover_button_blue text-xl font-roboto"
                 >{{ __('index.siguiente') }}</button>
         </div>
         <div id="div_inicio" name="div_inicio" style="width: 80%;" class="">
             <button  type="button"  id="inicio" name="inicio"
                 x-show="step < 2"
-                style="background-color:#1B17BB;"
+
                 onclick="back_begin();"
-                class="w-full hover_button_blue focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                class="w-full focus:outline-none bg-gray-500 border-2 border-color-inps py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-xl font-roboto"
             >{{ __('index.inicio') }}</button>
         </div>
     </div>
