@@ -511,7 +511,7 @@ class ResultadosController extends Controller
         ->get();
 
 
-        return view('edit_index',['id_project'=>$id,'project_edit'=>$project_edit,
+        return view('index_edit',['id_project'=>$id,'project_edit'=>$project_edit,
                         'cate_edificio'=>$cate_edificio,'paises'=>$paises,'id_ciudad_ini'=>$id_ciudad_ini,
                          'type_p'=> $type_p,'marcas'=>$marcas
         ]);
@@ -539,7 +539,7 @@ class ResultadosController extends Controller
         ->get();
 
 
-        return view('edit_copy',['id_project'=>$id,'project_edit'=>$project_edit,
+        return view('ene_fin_pro_hvac.edit_copy',['id_project'=>$id,'project_edit'=>$project_edit,
                         'cate_edificio'=>$cate_edificio,'paises'=>$paises,'id_ciudad_ini'=>$id_ciudad_ini,
                          'type_p'=> $type_p,'marcas'=>$marcas
         ]);

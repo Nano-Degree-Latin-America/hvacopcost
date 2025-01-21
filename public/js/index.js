@@ -1119,6 +1119,7 @@ async function set_ventilaciones_no_doa(value) {
   }
 
   async function check_form_proy(value,new_p,retro_p,button_np,button_rp,action,type_p_aux){
+
     var pn = document.getElementById("pn");
     var pr = document.getElementById("pr");
     var man = document.getElementById("man");
@@ -1127,31 +1128,66 @@ async function set_ventilaciones_no_doa(value) {
     if(document.getElementById("id_project")){
         var id_project = document.getElementById("id_project").value;
     }
-    if(value == 'pn'){
-        pn.checked = true;
-        pr.checked = false;
-        man.checked = false;
-        type_p.value = 1;
-        //si tipo es igual a 2
-        if(parseInt(type_p_aux) === 2 || parseInt(type_p_aux) === 3 ){
-            action_submit_send.value = 'store';
-            //se da de alta nuevas soluciones tipo proyecto retrofit
-        }
-        //si tipo es igual a 1
-        if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 0){
-            action_submit_send.value = 'update';
-            //se actualiza proyecto nuevo
-        }
-        $('#'+retro_p).addClass("hidden");
-        $('#'+new_p).removeClass("hidden");
-        $('#'+button_np).removeClass("hidden");
-        $('#'+button_rp).addClass("hidden");
-        inactive_tarjets_retro('pn');
-    }else if(value == 'pr'){
-        type_p.value = 2;
-        pn.checked = false;
+
+    switch (value) {
+        case 'pn':
+
+            $('#simulaciones').addClass("hidden");
+            $('#ene_fin_pro_form_project').removeClass("hidden");
+            $('#mantenimiento_form_project').addClass("hidden");
+
+            $('#simulaciones_update').addClass("hidden");
+            $('#ene_fin_pro_hvac_update').removeClass("hidden");
+
+            $('#type_project_name').text('Nuevo');
+
+
+            type_p.value = 1;
+
+            $('#'+retro_p).addClass("hidden");
+            $('#'+new_p).removeClass("hidden");
+            $('#'+button_np).removeClass("hidden");
+            $('#'+button_rp).addClass("hidden");
+            //$('#'+button_np).prop("disabled", true);
+
+            inactive_tarjets_retro('pn');
+
+            /* pn.checked = true;
+            pr.checked = false;
+            man.checked = false; */
+            //si tipo es igual a 2
+            if(parseInt(type_p_aux) === 2 || parseInt(type_p_aux) === 3 ){
+                action_submit_send.value = 'store';
+                //se da de alta nuevas soluciones tipo proyecto retrofit
+            }
+            //si tipo es igual a 1
+            if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 0){
+                action_submit_send.value = 'update';
+                //se actualiza proyecto nuevo
+            }
+
+        break;
+
+        case 'pr':
+            $('#simulaciones').addClass("hidden");
+            $('#ene_fin_pro_form_project').removeClass("hidden");
+            $('#mantenimiento_form_project').addClass("hidden");
+
+            $('#type_project_name').text('Retrofit');
+
+            $('#simulaciones_update').addClass("hidden");
+            $('#ene_fin_pro_hvac_update').removeClass("hidden");
+            $('#'+retro_p).removeClass("hidden");
+            type_p.value = 2;
+            $('#'+retro_p).removeClass("hidden");
+            $('#'+new_p).addClass("hidden");
+            $('#'+button_rp).removeClass("hidden");
+            $('#'+button_np).addClass("hidden");
+            inactive_tarjets_retro('pr');
+
+       /*  pn.checked = false;
         pr.checked = true;
-        man.checked = false;
+        man.checked = false; */
 
         if(action == 'edit'){
 
@@ -1184,13 +1220,10 @@ async function set_ventilaciones_no_doa(value) {
             ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro','tipo_ambiente_2_1_retro','proteccion_condensador_2_1_retro');
             //se actualiza proyecto retro
         }
-        $('#'+retro_p).removeClass("hidden");
-        $('#'+new_p).addClass("hidden");
-        $('#'+button_rp).removeClass("hidden");
-        $('#'+button_np).addClass("hidden");
+
         $('#costo_anual_reparaciones_2_1_retro').addClass("hidden");
         $('#costo_anual_reparaciones_3_1_retro').addClass("hidden");
-        inactive_tarjets_retro('pr');
+
         $('#inv_ini_capex_2_1_retro').removeClass("hidden");
         $('#inv_ini_capex_2_1_mant').addClass("hidden");
         $('#inv_ini_capex_3_1_retro').removeClass("hidden");
@@ -1200,8 +1233,13 @@ async function set_ventilaciones_no_doa(value) {
         $('#button_inactive_3_1_retro').removeClass("hidden");
         $('#button_inactive_3_1_mant').addClass("hidden");
 
-    }else if(value == 'man'){
-        type_p.value = 3;
+        break;
+
+        case 'man':
+            $('#simulaciones').addClass("hidden");
+            $('#ene_fin_pro_form_project').addClass("hidden");
+            $('#mantenimiento_form_project').removeClass("hidden");
+           /*  type_p.value = 3;
         pn.checked = false;
         pr.checked = false;
         man.checked = true;
@@ -1252,17 +1290,26 @@ async function set_ventilaciones_no_doa(value) {
         $('#button_inactive_2_1_mant').removeClass("hidden");
         $('#button_inactive_2_1_retro').addClass("hidden");
         $('#button_inactive_3_1_retro').addClass("hidden");
-        $('#button_inactive_3_1_mant').removeClass("hidden");
+        $('#button_inactive_3_1_mant').removeClass("hidden"); */
+        break;
+
+        default:
+            break;
     }
+
+
+
   }
 
   async function check_form_proy_edit(type_p,id_project){
+
     calcular_p_n = $('#calcular_p_n_Edit');
     calcular_p_r = $('#calcular_p_r_Edit');
     if(type_p == 1 || type_p == 0){
         $('#display_nuevo_project_edit').removeClass("hidden");
         $('#display_nuevo_retrofit_edit').addClass("hidden");
         $('#type_p').val(1);
+        $('#type_project_name').text('Retrofit');
         calcular_p_n.removeClass("hidden");
         calcular_p_r.addClass("hidden");
 
@@ -1272,7 +1319,9 @@ async function set_ventilaciones_no_doa(value) {
         $('#display_nuevo_retrofit_edit').removeClass("hidden");
         $('#display_nuevo_project_edit').addClass("hidden");
         $('#type_p').val(type_p);
+        $('#type_project_name').text('Retrofit');
         calcular_p_n.addClass("hidden");
+        //calcular_p_n.attr('disabled', 'disabled');
         calcular_p_r.removeClass("hidden");
         await traer_unidad_hvac_edit(id_project,1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','ventilacion_1_1_retro','filtracion_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
         ,'capacidad_total_1_1_retro','costo_elec_1_1_retro','csStd_retro_1_1_cant','costo_recu_1_1_retro','csStd_1_1_retro'
@@ -2442,6 +2491,7 @@ function trans_sols_valid_ab(idm,sol){
  function check_form_submit(p_type,idm,action,id_project,fecha_project){
 
 
+
     if(action == 'update'){
         const fechaUno = new Date(fecha_project); // Primera fecha
         const fechaDos = new Date('2024-07-12 00:00:00'); //
@@ -2725,6 +2775,9 @@ function trans_sols_valid_ab(idm,sol){
                     return false;
                     }
 
+    }else{
+        trans_sols_valid(idm);
+        return false;
     }
 
     //////////////////////////////////////////////////////////////
@@ -5438,6 +5491,9 @@ function check_form_retro(idm,fecha_project,action){
                                 return false;
                                 }
 
+                }else{
+                    trans_sols_valid(idm);
+                    return false;
                 }
                 //////////2_1
                 if (sol_2_1_retro.val() != '0'){
@@ -13479,4 +13535,24 @@ function red_alert_retro(tipo_ambiente,proteccion_condensador){
                  }));
             }
     }
+}
+
+function back_begin(){
+
+    $('#simulaciones').removeClass("hidden");
+    $('#ene_fin_pro_form_project').addClass("hidden");
+    $('#mantenimiento_form_project').addClass("hidden");
+
+    $('#simulaciones_update').removeClass("hidden");
+    $('#ene_fin_pro_hvac_update').addClass("hidden");
+    //$('#mantenimiento_form_project').addClass("hidden");
+
+
+}
+
+function back_show_form_project(){
+
+    $('#simulaciones_update').addClass("hidden");
+    $('#ene_fin_pro_hvac_update').removeClass("hidden");
+
 }

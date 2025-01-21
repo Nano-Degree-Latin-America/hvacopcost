@@ -62,7 +62,7 @@
 <div id="navbar"  name="navbar" class="bg-blue-900 w-full flex justify-center" style="background-color:#1B17BB ;">
     <div class="w-1/3 flex h-full">
         <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
-        <h1 style=" font-size: 4.3rem;" class="text-white font-roboto" >2.0</h1>
+        <h1 style=" font-size: 4.3rem;" class="text-white font-roboto" >3.0</h1>
     </div>
     <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
         {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
@@ -71,7 +71,7 @@
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
-    <button class="bg-orange-500  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/edit_project_copy/{{$id_project}}'"><p class="mx-1">{{ __('index.edit_proj') }}</p></button>
+    <button class="bg-orange-500  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/edit_project/{{$id_project}}'"><p class="mx-1">{{ __('index.edit_proj') }}</p></button>
 
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
 {{--     <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" onclick="window.open('/generatePDF/{{$id_project}}', '_blank');" ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
