@@ -1,6 +1,26 @@
 <?php
 
 return [
+
+    'titulo1_simulaciones'=>'Software de Análisis Energético y',
+    'titulo2_simulaciones'=>'Simulación Para Sistemas HVAC',
+
+    'eneretico_financiero_projectos_hvac'=>'Energético y Financiero de Proyectos HVAC',
+    'nuevo'=>'Nuevo',
+    'retrofit'=>'Retrofit',
+    'chillers'=>'Chillers',
+    'mantenimiento_index'=>'Mantenimiento',
+    'servicios'=>'Servicios',
+    'proyectos'=>'Proyectos',
+    'calculo_precios_havc'=>'Cálculo de Precios HVAC',
+    'cargas_termicas'=>'Cargas Térmicas',
+    'metodo_rts'=>'Método RTS',
+    'residencial'=>'Residencial',
+    'formulas_calculos__rapidos'=>'Fórmulas y Cálculos Rápidos',
+    'equivalencia'=>'Equivalencia',
+    'ingenieria'=>'Ingeniería',
+    'inicio'=>'Inicio',
+
     'análisis energético y financiero' => 'Simulador Energético y',
     'de sistemas HVAC' => 'Financiero de Sistemas de HVAC',
     'nombre projecto' => 'Nombre Proyecto',

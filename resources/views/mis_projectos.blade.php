@@ -152,7 +152,7 @@ span{
 <div class="bg-blue-900 w-full flex justify-center" style="background-color:#1B17BB ;">
     <div class="w-1/3 flex h-full">
         <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
-        <h1 style=" font-size: 4.3rem;margin-top:.80rem;" class="text-white font-roboto" >2.0</h1>
+        <h1 style=" font-size: 4.3rem;margin-top:.80rem;" class="text-white font-roboto" >3.0</h1>
     </div>
     <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
         {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}

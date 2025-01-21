@@ -1,0 +1,26 @@
+<?php
+
+return [
+    'calculo_analisis_precios'=>'Cálculo Análisis de Precios de',
+    'contratos_mantenimiento_hvac'=>'Contratos de Mantenimiento HVAC',
+    'cliente_prospecto'=>'Cliente Prospecto',
+    'nombre_sitio'=>'Nombre del Sitio',
+    'categoria_edificio'=>'Categoría del Edificio',
+    'tipo_edificio'=>'Tipo de Edificio',
+    'distancia_sitio'=>'Distancia Sitio',
+    'velocidad_promedio'=>'Velocidad Promedio',
+    'yrs_life_ed'=>'Años de Vida',
+    'ocupacion_semanal'=>'Ocupación Semanal',
+    'tipo_ambiente'=>'Tipo Ambiente',
+    'personal_enviado'=>'Personal Enviado',
+    'cant_hrs_eme'=>'Cantidad Horas Emergencia',
+    'porcentaje_inflacion'=>'Porcentaje Inflación',
+    'selecciona_region' => 'Selecciona tu región',
+    'selecciona_ciudad' => 'Selecciona tu ciudad',
+    'menos_50' => 'Menos de 50 Hrs',
+    '18hrs' => '18 Hrs',
+    '51_167' => '51 a 137 HRs',
+    'tecnico' => 'Técnico',
+    'tecnico_ayudante' => 'Técnico + Ayudante',
+    'sin_emergencia'=>'Sin Emergencia',
+];

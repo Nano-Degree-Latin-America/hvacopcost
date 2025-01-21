@@ -244,24 +244,6 @@ input[type=number]::-webkit-outer-spin-button {
 <div class="bg-white" x-data="app()" x-cloak>
     <div class="w-full px-2">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-        <div x-show.transition="step === 'complete'">
-            <div class="bg-white rounded-lg p-10 flex items-center shadow justify-between">
-                <div>
-                    <svg class="mb-4 h-20 w-20 text-green-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-
-                    <h2 class="text-2xl mb-4 text-gray-800 text-center font-bold">Registration Success</h2>
-
-                    <div class="text-gray-600 mb-8">
-                        Thank you. We have sent you an email to demo@demo.test. Please click the link in the message to activate your account.
-                    </div>
-
-                    <button
-                        @click="step = 1"
-                        class="w-40 block mx-auto focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 font-medium border"
-                    >Back to home</button>
-                </div>
-            </div>
-        </div>
         @inject('paises_empresa','app\Http\Controllers\IndexController')
         @inject('all_paises','app\Http\Controllers\IndexController')
         @inject('usuario_pais','app\Http\Controllers\IndexController')
@@ -272,14 +254,18 @@ input[type=number]::-webkit-outer-spin-button {
         <div x-show.transition="step != 'complete'">
             <div class="">
                 <div x-show.transition.in="step === 1">
-                    <h3><i></i></h3>
 
                     <div id="mapa-div">
                         <?php  $check_types_pn=$check_types_p->check_p_type_pn(Auth::user()->id_empresa); ?>
                         <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
                         <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
+                        <form action="{{route('resultados')}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
+                            @csrf
+                            <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
+                            <input type="number" class="hidden" id="type_p" name="type_p">
+                            <input type="text" value="store" class="hidden" id="action_submit_send" name="action_submit_send">
 
-                        @include('form_project')
+                        @include('simulaciones')
                     </div>
 
 
@@ -289,27 +275,13 @@ input[type=number]::-webkit-outer-spin-button {
                 <div x-show.transition.in="step === 2">
 
                     <div  class="ancho">
-                    <input type="text" value="store" class="hidden" id="action_submit_send" name="action_submit_send">
+                                @include('forms_projects');
 
-                                <div id="display_nuevo_project" class="hidden">
-                                    @include('form_projecto_nuevo')
-                                </div>
-
-                                <div id="display_nuevo_retrofit" class="hidden">
-                                    @include('form_projecto_retrofit')
-                                </div>
 
                                 <div class="clearfix">
                                     <div class="my-5 gap-x-3">
                                     </div>
                                 </div>
-
-                           {{--  <div class="banner banner-giga" style="width: 80%">
-                                <a href="https://www.desprosoft.com/" target="_blank"><img src="{{asset('assets/images/banners/desprosoft.jpg')}}" alt="Desprosoft"></a>
-                                <span class="lbl-banner hidden">Visitar</span>
-                            </div> --}}
-
-
 
                         </form>
                         {{-- form --}}
@@ -322,7 +294,7 @@ input[type=number]::-webkit-outer-spin-button {
                 {{-- espacio --}}
                 <br>
                 <br>
-        </div>
+            </div>
             <!-- / Step Content -->
         </div>
     </div>
@@ -836,7 +808,7 @@ input[type=number]::-webkit-outer-spin-button {
         width: 25px;height: 25px;
     }
     .title_index{
-    font-size: 3rem;
+    font-size: 2.2rem;
   }
 
   .unit_style{
@@ -857,21 +829,28 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#1B17BB !important;"
     }
-    .mapa_img{
-        width: 480px; height:630px;
- }
 
- .type_proyect_label{
-    font-size:18px;
- }
+    .labels_index_mantenimiento{
+            font-size: 19px;
+            color:#1B17BB !important;"
+    }
+
+
+    .mapa_img{
+        width: 550px; height:700px;
+    }
+
+    .type_proyect_label{
+        font-size:18px;
+    }
 
  .check_style{
         width: 30px;height: 30px;
     }
     .title_index{
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .unit_style{
@@ -892,7 +871,12 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#1B17BB !important;"
+    }
+
+    .labels_index_mantenimiento{
+            font-size: 19px;
+            color:#1B17BB !important;"
     }
     .mapa_img{
         width: 500px; height:650px;
@@ -927,11 +911,16 @@ input[type=number]::-webkit-outer-spin-button {
             }
             .labels_index{
             font-size: 20px;
-            color:#2c5282 !important;"
+            color:#1B17BB !important;"
+            }
+
+            .labels_index_mantenimiento{
+            font-size: 19px;
+            color:#1B17BB !important;"
             }
 
             .mapa_img{
-                width: 500px; height:650px;
+                width: 650px; height:650px;
         }
         .type_proyect_label{
             font-size:20px;
@@ -959,6 +948,12 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 20px;
     color:#1B17BB !important;"
     }
+
+    .labels_index_mantenimiento{
+    font-size: 19px;
+    color:#1B17BB !important;"
+    }
+
     .labels{
         font-size:14px;
     }
