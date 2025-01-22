@@ -26,7 +26,15 @@
                     </label>
                 </div>
                 <div class="w-full flex justify-center gap-x-3">
-                    <button  {{-- onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  --}}style="width: 80%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.mantenimiento_index') }}</button>
+                    @if (Auth::user()->tipo_user == 5)
+                    <button  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" style="width: 80%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.mantenimiento_index') }}</button>
+                    @endif
+
+                    @if (Auth::user()->tipo_user != 5)
+                    <button  {{-- onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" --}} style="width: 80%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.mantenimiento_index') }}</button>
+                    @endif
+
+
                     <button style="width: 80%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.servicios') }}</button>
                     <button style="width: 80%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.proyectos') }}</button>
                 </div>
