@@ -1174,12 +1174,15 @@ async function set_ventilaciones_no_doa(value) {
 
             $('#forms_ene_fin_proy').removeClass("hidden");
             $('#ene_fin_pro_form_project').removeClass("hidden");
+            $('#img_ene_fin_proy_hvac').removeClass("hidden");
             //mantenimiento
             $('#mantenimiento_form_project').addClass("hidden");
             $('#'+mant_p).addClass("hidden");
             $('#simulaciones_update').addClass("hidden");
             $('#ene_fin_pro_hvac_update').removeClass("hidden");
             $('#mant_prev').addClass("hidden");
+            $('#img_mantenimiento').addClass("hidden");
+
 
 
             $('#type_project_name').text('Nuevo');
@@ -1215,12 +1218,13 @@ async function set_ventilaciones_no_doa(value) {
             $('#simulaciones').addClass("hidden");
             $('#forms_ene_fin_proy').removeClass("hidden");
             $('#ene_fin_pro_form_project').removeClass("hidden");
+            $('#img_ene_fin_proy_hvac').removeClass("hidden");
 
             $('#'+mant_p).addClass("hidden");
             $('#mantenimiento_form_project').addClass("hidden");
             $('#mant_prev').addClass("hidden");
             $('#type_project_name').text('Retrofit');
-
+            $('#img_mantenimiento').addClass("hidden");
             $('#simulaciones_update').addClass("hidden");
             $('#ene_fin_pro_hvac_update').removeClass("hidden");
             $('#'+retro_p).removeClass("hidden");
@@ -1289,6 +1293,10 @@ async function set_ventilaciones_no_doa(value) {
             $('#ene_fin_pro_form_project').addClass("hidden");
             $('#mantenimiento_form_project').removeClass("hidden");
             $('#mant_prev').removeClass("hidden");
+
+            $('#img_ene_fin_proy_hvac').addClass("hidden");
+            $('#img_mantenimiento').removeClass("hidden");
+            alert('mantenimiento');
            /*  type_p.value = 3;
         pn.checked = false;
         pr.checked = false;
@@ -13603,6 +13611,8 @@ function back_begin(){
 
     $('#simulaciones_update').removeClass("hidden");
     $('#ene_fin_pro_hvac_update').addClass("hidden");
+    $('#img_ene_fin_proy_hvac').removeClass("hidden");
+    $('#img_mantenimiento').addClass("hidden");
     //$('#mantenimiento_form_project').addClass("hidden");
 
 
