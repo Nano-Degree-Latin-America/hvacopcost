@@ -1296,7 +1296,6 @@ async function set_ventilaciones_no_doa(value) {
 
             $('#img_ene_fin_proy_hvac').addClass("hidden");
             $('#img_mantenimiento').removeClass("hidden");
-            alert('mantenimiento');
            /*  type_p.value = 3;
         pn.checked = false;
         pr.checked = false;
