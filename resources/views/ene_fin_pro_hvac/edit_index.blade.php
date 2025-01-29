@@ -288,7 +288,8 @@ $idm = App::getLocale();
                                     <?php  $check_types_pn=$check_types_p->check_p_type_pn(Auth::user()->id_empresa); ?>
                                     <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
                                     <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
-{{--
+
+                                    {{--
                                     @if ( $check_types_pn == 1 &&  $check_types_pr == 1 &&  $check_types_m == 1)
                                     <div class="flex">
                                         @if ($type_p == 1 || $type_p == 0)
