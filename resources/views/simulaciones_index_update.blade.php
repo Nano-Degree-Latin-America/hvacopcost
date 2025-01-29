@@ -13,8 +13,8 @@
                     </label>
                 </div>
                 <div class="w-full flex justify-center gap-x-3">
-                    <button  onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" style="background-color:#1B17BB;width: 80%;" type="button" class="py-2 px-6 rounded-lg shadow-sm text-center text-white hover_button_blue text-2xl font-roboto ">{{ __('index.nuevo') }}</button>
-                    <button  onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" style="background-color:#1B17BB;width: 80%;" type="button" class="py-2 px-6 rounded-lg shadow-sm text-center text-white hover_button_blue text-2xl font-roboto ">{{ __('index.retrofit') }}</button>
+                    <button  onclick="check_form_proy('pn','display_nuevo_project_edit','display_nuevo_retrofit_edit','display_mant','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" style="background-color:#1B17BB;width: 80%;" type="button" class="py-2 px-6 rounded-lg shadow-sm text-center text-white hover_button_blue text-2xl font-roboto ">{{ __('index.nuevo') }}</button>
+                    <button  onclick="check_form_proy('pr','display_nuevo_project_edit','display_nuevo_retrofit_edit','display_mant','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');" style="background-color:#1B17BB;width: 80%;" type="button" class="py-2 px-6 rounded-lg shadow-sm text-center text-white hover_button_blue text-2xl font-roboto ">{{ __('index.retrofit') }}</button>
                     <button style="width: 80%;" type="button" class="bg-gray-500 border-2 border-color-inps focus:outline-none  py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-xl font-roboto ">{{ __('index.chillers') }}</button>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="w-full flex justify-center gap-x-3">
                     @if (Auth::user()->tipo_user == 5)
-                    <button  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" style="width: 80%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.mantenimiento_index') }}</button>
+                    <button  onclick="check_form_proy('man','display_nuevo_project_edit','display_nuevo_retrofit_edit','display_mant','calcular_p_n_Edit','calcular_p_r_Edit','store');" style="width: 80%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.mantenimiento_index') }}</button>
                     @endif
 
                     @if (Auth::user()->tipo_user != 5)

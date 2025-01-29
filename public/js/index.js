@@ -19,7 +19,11 @@ $(document).ready(function () {
  /*    $('#next').attr('disabled', true); */
     //selecciona pais -> pinta ciudades de ese pais en el select
     $('#paises').on('change', function () {
-        getCiudades($('#paises').val());
+        getCiudades($('#paises').val(),'ciudades');
+    });
+
+    $('#paises_mantenimiento').on('change', function () {
+        getCiudades($('#paises').val(),'ciudades_mantenimiento');
     });
 
     $('#btn-reset').on('click', function () {
@@ -230,9 +234,9 @@ function getPaises() {
     });
 }
 
-function getCiudades(idPais) {
+function getCiudades(idPais,id) {
 
-    $('#ciudades').trigger('click');
+    $('#'+id).trigger('click');
     $("#paises").val(idPais);
     $('#pais').val($('#paises option:selected').text());
     $('#pais_retro').val($('#paises option:selected').text());
@@ -248,15 +252,15 @@ function getCiudades(idPais) {
         },
         success: function (response) {
 
-            $('#ciudades').empty();
-            $('#ciudades').append($('<option>', {
+            $('#'+id).empty();
+            $('#'+id).append($('<option>', {
                 value: 0,
                 text: '-Selecciona tu ciudad-'
             }));
-            $('#count_ciudad').val(0);
+            $('#count_'+id).val(0);
             checksuma();
             response.map((ciudad, i) => {
-                $('#ciudades').append($('<option>', {
+                $('#'+id).append($('<option>', {
                     value: ciudad.idCiudad,
                     text: ciudad.ciudad
                 }));
@@ -554,9 +558,26 @@ function active_display_retro(value){
  }
 
 
-async function unidadHvac(value,num_div,id_select){
+ async function unidadHvac(value,num_div,id_select,module){
+    var ima =  $('#idioma').val();
+    switch (module) {
+        case 1:
 
-  var ima =  $('#idioma').val();
+            await unidades_module_1(value,num_div,id_select,ima);
+        break;
+
+        case 2:
+            await unidades_module_2(value,id_select,ima);
+        break;
+
+        default:
+            break;
+    }
+  }
+
+async function unidades_module_1(value,num_div,id_select,ima){
+
+
     if( num_div == 1){
             check_val_text(id_select,ima);
             const arry = await set_unidades(value);
@@ -597,6 +618,23 @@ async function unidadHvac(value,num_div,id_select){
    var costo_elec = $('#costo_elec_1_1_retro');
    $('#costo_elec_2_1_retro').val(costo_elec.val());
    $('#costo_elec_3_1_retro').val(costo_elec.val());
+
+}
+
+async function unidades_module_2(value,id_select,ima){
+
+
+    check_val_text(id_select,ima);
+    const arry = await set_unidades(value);
+
+    const myObj = JSON.parse(arry);
+              for (let i = 0; i < myObj.length; i++) {
+                $('#'+id_select).append($('<option>', {
+                    value:  myObj[i].value,
+                    text:  myObj[i].text
+                }));
+}
+
 }
 
 async function set_unidades(value) {
@@ -1118,7 +1156,7 @@ async function set_ventilaciones_no_doa(value) {
     checksuma();
   }
 
-  async function check_form_proy(value,new_p,retro_p,button_np,button_rp,action,type_p_aux){
+  async function check_form_proy(value,new_p,retro_p,mant_p,button_np,button_rp,action,type_p_aux){
 
     var pn = document.getElementById("pn");
     var pr = document.getElementById("pr");
@@ -1133,11 +1171,16 @@ async function set_ventilaciones_no_doa(value) {
         case 'pn':
 
             $('#simulaciones').addClass("hidden");
-            $('#ene_fin_pro_form_project').removeClass("hidden");
-            $('#mantenimiento_form_project').addClass("hidden");
 
+            $('#forms_ene_fin_proy').removeClass("hidden");
+            $('#ene_fin_pro_form_project').removeClass("hidden");
+            //mantenimiento
+            $('#mantenimiento_form_project').addClass("hidden");
+            $('#'+mant_p).addClass("hidden");
             $('#simulaciones_update').addClass("hidden");
             $('#ene_fin_pro_hvac_update').removeClass("hidden");
+            $('#mant_prev').addClass("hidden");
+
 
             $('#type_project_name').text('Nuevo');
 
@@ -1170,9 +1213,12 @@ async function set_ventilaciones_no_doa(value) {
 
         case 'pr':
             $('#simulaciones').addClass("hidden");
+            $('#forms_ene_fin_proy').removeClass("hidden");
             $('#ene_fin_pro_form_project').removeClass("hidden");
-            $('#mantenimiento_form_project').addClass("hidden");
 
+            $('#'+mant_p).addClass("hidden");
+            $('#mantenimiento_form_project').addClass("hidden");
+            $('#mant_prev').addClass("hidden");
             $('#type_project_name').text('Retrofit');
 
             $('#simulaciones_update').addClass("hidden");
@@ -1237,8 +1283,12 @@ async function set_ventilaciones_no_doa(value) {
 
         case 'man':
             $('#simulaciones').addClass("hidden");
+            $('#forms_ene_fin_proy').addClass("hidden");
+            $('#'+mant_p).removeClass("hidden");  //mantenimiento form
+            $('#forms_cal_pre').removeClass("hidden");
             $('#ene_fin_pro_form_project').addClass("hidden");
             $('#mantenimiento_form_project').removeClass("hidden");
+            $('#mant_prev').removeClass("hidden");
            /*  type_p.value = 3;
         pn.checked = false;
         pr.checked = false;
@@ -1874,6 +1924,13 @@ function traer_categorias_edif() {
                 }));
             });
 
+            response.map((cat_ed, i) => {
+                $('#cat_edi_mantenimiento').append($('<option>', {
+                    value: cat_ed.id,
+                    text: cat_ed.name
+                }));
+            });
+
         },
         error: function (responsetext) {
 
@@ -1881,7 +1938,8 @@ function traer_categorias_edif() {
     });
 }
 
-function traer_t_edif(id_cat,ima) {
+function traer_t_edif(id_cat,id,ima) {
+
     var ima =  $('#idioma').val();
 
     $.ajax({
@@ -1892,10 +1950,10 @@ function traer_t_edif(id_cat,ima) {
 
             var tipo_edificio = 'tipo_edificio';
             check_val_text(tipo_edificio,ima);
-            $('#count_tipo_edificio').val(0);
+            $('#count_'+id).val(0);
             checksuma();
             response.map((cat_ed, i) => {
-                $('#tipo_edificio').append($('<option>', {
+                $('#'+id).append($('<option>', {
                     value: cat_ed.id,
                     text: cat_ed.name
                 }));
@@ -6200,7 +6258,7 @@ async function traer_unidad_hvac(id_project, num_sol, num_enf, cUnidad, csTipo, 
             $("#" + cheValorS).val('$' + dollarUSLocale.format(res.val_unidad.val_aprox));
             $("#" + maintenance_cost).val('$' + dollarUSLocale.format(res.val_unidad.costo_mantenimiento));
             $("#" + cUnidad).find('option[value="' + res.val_unidad.unidad_hvac + '"]').prop("selected", "selected");
-            await unidadHvac(res.val_unidad.unidad_hvac, 1, csTipo, csDisenio);
+            await unidadHvac(res.val_unidad.unidad_hvac, 1, csTipo,1);
             $("#" + csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').prop("selected", "selected");
             await change_diseño(res.val_unidad.tipo_equipo, 1, csDisenio, tipo_control, dr, ventilacion, filtracion, lblCsTipo);
             $("#" + csDisenio).find('option[value="' + res.val_unidad.tipo_diseño + '"]').prop("selected", "selected");
@@ -6312,7 +6370,7 @@ async function traer_unidad_hvac(id_project, num_sol, num_enf, cUnidad, csTipo, 
                 }));
 
                 $("#"+cUnidad).find('option[value="' + res.val_unidad.unidad_hvac + '"]').prop("selected", "selected");
-                await unidadHvac(res.val_unidad.unidad_hvac,1,csTipo,csDisenio);
+                await unidadHvac(res.val_unidad.unidad_hvac,1,csTipo,1);
                 $("#"+csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').prop("selected", "selected");
                 await change_diseño(res.val_unidad.tipo_equipo,1,csDisenio,tipo_control,dr,ventilacion,filtracion,lblCsTipo);
                 $("#"+csDisenio).find('option[value="' + res.val_unidad.tipo_diseño + '"]').prop("selected", "selected");
@@ -12997,7 +13055,7 @@ function copiar_solucion_tarjet(sol_copy,sol_paste){
 
     var select_sistema = $('#cUnidad_1_1').val();
     $("#cUnidad_2_1").find('option[value="'+select_sistema+'"]').prop("selected", true);
-    await unidadHvac(select_sistema,1,'cheTipo_2_1');
+    await unidadHvac(select_sistema,1,'cheTipo_2_1',1);
     check_chiller(select_sistema,'csStd_2_1',1);
     var select_unidad = $('#csTipo').val();
     $("#cheTipo_2_1").find('option[value="'+select_unidad+'"]').prop("selected", true);
@@ -13081,7 +13139,7 @@ async function copiar_form_a_2(){
     active_display_Edit('sol_2');
     var cUnidad_1_2 = $('#cUnidad_1_2').val();
     $("#cUnidad_2_2").find('option[value="'+cUnidad_1_2+'"]').prop("selected", true);
-    await unidadHvac(cUnidad_1_2,2,'cheTipo_2_2');
+    await unidadHvac(cUnidad_1_2,2,'cheTipo_2_2',1);
     check_chiller(cUnidad_1_2,'csStd_2_2',1)
     var csTipo_1_2 = $('#csTipo_1_2').val();
     $("#cheTipo_2_2").find('option[value="'+csTipo_1_2+'"]').attr("selected", true);
@@ -13167,7 +13225,7 @@ async function copiar_form_a_b(sol_paste){
 
     var cUnidad_2_1 = $('#cUnidad_2_1').val();
     $("#cUnidad_3_1").find('option[value="'+cUnidad_2_1+'"]').attr("selected", true);
-    await unidadHvac(cUnidad_2_1,1,'cheTipo_3_1');
+    await unidadHvac(cUnidad_2_1,1,'cheTipo_3_1',1);
     check_chiller(cUnidad_2_1,'csStd2_3_1',1)
     var cheTipo_2_1 = $('#cheTipo_2_1').val();
     $("#cheTipo_3_1").find('option[value="'+cheTipo_2_1+'"]').attr("selected", true);
@@ -13247,7 +13305,7 @@ async function copiar_form_b_2(sol_paste){
     active_display_Edit('sol_3');
     var cUnidad_2_2 = $('#cUnidad_2_2').val();
     $("#cUnidad_3_2").find('option[value="'+cUnidad_2_2+'"]').prop("selected", true);
-    await unidadHvac(cUnidad_2_2,1,'cheTipo_3_2');
+    await unidadHvac(cUnidad_2_2,1,'cheTipo_3_2',1);
 
     var cheTipo_2_2 = $('#cheTipo_2_2').val();
     $("#cheTipo_3_2").find('option[value="'+cheTipo_2_2+'"]').attr("selected", true);
@@ -13325,7 +13383,7 @@ async function copiar_form_base_a_retro(sol_paste){
 
     var select_sistema = $('#cUnidad_1_1_retro').val();
     $("#cUnidad_2_1_retro").find('option[value="'+select_sistema+'"]').attr("selected", true);
-     await unidadHvac(select_sistema,1,'cheTipo_2_1_retro');
+     await unidadHvac(select_sistema,1,'cheTipo_2_1_retro',1);
      check_chiller(select_sistema,'csStd_2_1_retro',2)
 
     var select_unidad = $('#csTipo_1_1_retro').val();
@@ -13400,7 +13458,7 @@ async function copiar_form_a_b_retro(sol_paste){
 
     var select_sistema = $('#cUnidad_2_1_retro').val();
     $("#cUnidad_3_1_retro").find('option[value="'+select_sistema+'"]').attr("selected", true);
-    await unidadHvac(select_sistema,1,'cheTipo_3_1_retro');
+    await unidadHvac(select_sistema,1,'cheTipo_3_1_retro',1);
     check_chiller(select_sistema,'csStd_3_1_retro',2);
     var select_unidad = $('#cheTipo_2_1_retro').val();
     $("#cheTipo_3_1_retro").find('option[value="'+select_unidad+'"]').attr("selected", true);
@@ -13556,3 +13614,288 @@ function back_show_form_project(){
     $('#ene_fin_pro_hvac_update').removeClass("hidden");
 
 }
+
+function set_horas_diarias(){
+
+    const ocupacionMap = {
+        'm_50': 'Menor de 50 Hrs.',
+        '18': '18 Hrs.',
+        '51_167': '51 a 137 Hrs.'
+    };
+
+    const ocupacion = $("#ocupacion_semanal_mantenimiento").val();
+    if (ocupacionMap[ocupacion]) {
+        $("#horas_diarias_mantenimiento").val(ocupacionMap[ocupacion]);
+    }
+}
+
+function check_form_mantenimiento_tarjet(idm){
+
+    /////////////////////////////////////
+    var sistema =$('#sistema_mantenimiento');
+    var sistema_count = $('#sistema_mantenimiento_count').val();
+
+    if(sistema.val() == 0){
+
+       sistema.css("border-color", "red")
+       sistema_count = 1;
+     $('#sistema_mantenimiento_count').val(sistema_count);
+
+    }else if (sistema.val() != 0) {
+
+       sistema_count = 0;
+     $('#sistema_mantenimiento_count').val(sistema_count);
+
+    }
+    ////////////////////
+    /////////////////////////////////////
+    var unidad =$('#unidad_mantenimiento');
+    var unidad_count = $('#unidad_mantenimiento_count').val();
+
+    if(unidad.val() == 0){
+
+       unidad.css("border-color", "red")
+       unidad_count = 1;
+     $('#unidad_mantenimiento_count').val(unidad_count);
+
+    }else if (unidad.val() != 0) {
+
+       unidad_count = 0;
+     $('#unidad_mantenimiento_count').val(unidad_count);
+
+    }
+    /////////////////////////////////////
+     /////////////////////////////////////
+     var marca =$('#marca_mantenimiento');
+     var marca_count = $('#marca_mantenimiento_count').val();
+
+     if(marca.val() == 0){
+
+     marca.css("border-color", "red")
+     marca_count = 1;
+     $('#marca_mantenimiento_count').val(marca_count);
+
+         }else if (marca.val() != 0) {
+
+     marca_count = 0;
+     $('#marca_mantenimiento_count').val(marca_count);
+
+     }
+         /////////////////////////////////////
+     /////////////////////////////////////
+     var modelo_equipo =$('#modelo_mantenimiento');
+     var modelo_equipo_count = $('#modelo_mantenimiento_count').val();
+
+     if(modelo_equipo.val() == 0){
+
+       modelo_equipo.css("border-color", "red")
+       modelo_equipo_count = 1;
+     $('#modelo_mantenimiento_count').val(modelo_equipo_count);
+
+         }else if (modelo_equipo.val() != 0) {
+
+           modelo_equipo_count = 0;
+     $('#modelo_mantenimiento_count').val(modelo_equipo_count);
+
+     }
+   /////////////////////////////////////
+
+         /////////////////////////////////////
+     /*     var modelo_equipo =$('#modelo_equipo');
+         var modelo_equipo_count = $('#modelo_equipo_count').val();
+
+         if(modelo_equipo.val() == 0){
+
+           modelo_equipo.css("border-color", "red")
+           modelo_equipo_count = 1;
+         $('#modelo_equipo_count').val(modelo_equipo_count);
+
+             }else if (modelo_equipo.val() != 0) {
+
+               modelo_equipo_count = 0;
+         $('#modelo_equipo_count').val(modelo_equipo_count);
+
+         } */
+       /////////////////////////////////////
+       /////////////////////////////////////
+       var  capacidad_termica=$('#capacidad_termica_mantenimiento');
+       var capacidad_termica_count = $('#capacidad_termica_mantenimiento_count').val();
+
+       if(capacidad_termica.val() == 0 || capacidad_termica.val() == ''){
+
+           capacidad_termica.css("border-color", "red")
+           capacidad_termica_count = 1;
+       $('#capacidad_termica_mantenimiento_count').val(capacidad_termica_count);
+
+       }else if (capacidad_termica.val() != 0 && capacidad_termica.val() != '') {
+           capacidad_termica_count = 0;
+       $('#capacidad_termica_mantenimiento_count').val(capacidad_termica_count);
+
+       }
+       /////////////////////////////////////
+       /////////////////////////////////////
+       var  tipo_acceso=$('#tipo_acceso_mantenimiento');
+       var tipo_acceso_count = $('#tipo_acceso_mantenimiento_count').val();
+
+       if(tipo_acceso.val() == 0){
+
+           tipo_acceso.css("border-color", "red")
+           tipo_acceso_count = 1;
+       $('#tipo_acceso_mantenimiento_count').val(tipo_acceso_count);
+
+       }else if (tipo_acceso.val() != 0) {
+           tipo_acceso_count = 0;
+       $('#tipo_acceso_mantenimiento_count').val(tipo_acceso_count);
+
+       }
+       /////////////////////////////////////
+       /////////////////////////////////////
+       var  estado_unidad=$('#estado_unidad_mantenimiento');
+       var estado_unidad_count = $('#estado_unidad_mantenimiento_count').val();
+
+       if(estado_unidad.val() == 0){
+
+           estado_unidad.css("border-color", "red")
+           estado_unidad_count = 1;
+       $('#estado_unidad_mantenimiento_count').val(estado_unidad_count);
+
+       }else if (estado_unidad.val() != 0) {
+           estado_unidad_count = 0;
+       $('#estado_unidad_mantenimiento_count').val(estado_unidad_count);
+
+       }
+       //////////////////////////////////
+       /////////////////////////////////////
+       var cambio_filtros=$('#cambio_filtros_mantenimiento');
+       var cambio_filtros_count = $('#cambio_filtros_mantenimiento_count').val();
+
+       if(cambio_filtros.val() == 0){
+
+           cambio_filtros.css("border-color", "red")
+           cambio_filtros_count = 1;
+       $('#cambio_filtros_mantenimiento_count').val(cambio_filtros_count);
+
+       }else if (cambio_filtros.val() != 0) {
+           cambio_filtros_count = 0;
+       $('#cambio_filtros_mantenimiento_count').val(cambio_filtros_count);
+
+       }
+       //////////////////////////////////
+       /////////////////////////////////////
+       var costo_filtro=$('#costo_filtro_mantenimiento');
+       var costo_filtro_count = $('#costo_filtro_mantenimiento_count').val();
+
+       if(costo_filtro.val() == 0){
+
+           costo_filtro.css("border-color", "red")
+           costo_filtro_count = 1;
+       $('#costo_filtro_mantenimiento_count').val(costo_filtro_count);
+
+       }else if (costo_filtro.val() != 0) {
+           costo_filtro_count = 0;
+       $('#costo_filtro_mantenimiento_count').val(costo_filtro_count);
+
+       }
+       ////////////////////////////////
+       /////////////////////////////////////
+       var  cantidad_filtros=$('#cantidad_filtros_mantenimiento');
+       var cantidad_filtros_count = $('#cantidad_filtros_mantenimiento_count').val();
+
+       if(cantidad_filtros.val() == 0 || cantidad_filtros.val() == ''){
+
+           cantidad_filtros.css("border-color", "red")
+           cantidad_filtros_count = 1;
+       $('#cantidad_filtros_mantenimiento_count').val(cantidad_filtros_count);
+
+       }else if (cantidad_filtros.val() != 0 && cantidad_filtros.val() != '') {
+           cantidad_filtros_count = 0;
+       $('#cantidad_filtros_mantenimiento_count').val(cantidad_filtros_count);
+
+       }
+       /////////////////////////////////////
+       /////////////////////////////////////
+       var  cantidad_unidades=$('#cantidad_unidades_mantenimiento');
+       var cantidad_unidades_count = $('#cantidad_unidades_mantenimiento_count').val();
+
+       if(cantidad_unidades.val() == 0 || cantidad_unidades.val() == ''){
+
+           cantidad_unidades.css("border-color", "red")
+           cantidad_unidades_count = 1;
+       $('#cantidad_unidades_mantenimiento_count').val(cantidad_unidades_count);
+
+       }else if (cantidad_unidades.val() != 0 && cantidad_unidades.val() != '') {
+           cantidad_unidades_count = 0;
+       $('#cantidad_unidades_mantenimiento_count').val(cantidad_unidades_count);
+
+       }
+
+       var count_inps = sistema_count + unidad_count + marca_count + modelo_equipo_count + modelo_equipo_count + capacidad_termica_count + tipo_acceso_count + estado_unidad_count + cambio_filtros_count + cantidad_filtros_count + cantidad_unidades_count;
+
+      if(count_inps>0){
+       trans_sols_valid(idm);
+                   return false;
+       }else if(count_inps==0){
+
+        var valuesArray = [];
+
+        var ids = [
+            'contador_table',
+            'sistema_mantenimiento',
+            'unidad_mantenimiento',
+            'marca_mantenimiento',
+            'modelo_mantenimiento',
+            'capacidad_termica_mantenimiento',
+            'cantidad_unidades_mantenimiento',
+            ,'yrs_vida_mantenimiento',
+            ,'tipo_acceso_mantenimiento',
+            ,'estado_unidad_mantenimiento',
+        ];
+
+        var countador_table = $('#contador_table').val();
+        countador_table = parseInt(countador_table) + 1;
+        $('#contador_table').val(countador_table);
+
+        //valuesArray.push(countador_table);
+
+        ids.forEach(function(id) {
+            var value = $('#' + id).val();
+            valuesArray.push(value);
+        });
+
+        // Enviar valuesArray por medio de AJAX
+        var token = $("#token").val();
+    $.ajax({
+        url: '/traer_datos_tarjeta', // Reemplaza con la URL de tu endpoint
+        type: 'POST',
+
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            values: valuesArray
+        },
+        success: function(response) {
+
+            var newRow = '<tr>';
+            for (var i = 0; i < response.length; i++) {
+                var value = response[i];
+
+                newRow += '<td><input id="'+ids[i]+countador_table+'" style="border-color:#1B17BB;!important; width:100%;" disabled type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+            }
+            newRow += '<td style="width:40px;" class=""><button type="button" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
+            newRow += '</tr>';
+            $('#tbody_equipos').append(newRow);
+
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+
+
+
+
+       }
+       /////////////////////////////////////
+   //Livewire.emit('save_equipo')
+}
+
+

@@ -23,4 +23,5 @@ return [
     'tecnico' => 'Técnico',
     'tecnico_ayudante' => 'Técnico + Ayudante',
     'sin_emergencia'=>'Sin Emergencia',
+    'tipo_mantenimiento'=>'Tipo de Mantenimiento',
 ];

@@ -49,6 +49,12 @@ span{
   transform:scale(1);
 }
 
+.border-blue{
+border: 2px;
+border-color: #1B17BB;
+border-radius: 10px;
+}
+
 [x-cloak] {
 			display: none;
 		}
@@ -241,6 +247,7 @@ input[type=number]::-webkit-outer-spin-button {
     </style>
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <div class="bg-white" x-data="app()" x-cloak>
     <div class="w-full px-2">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
@@ -259,6 +266,9 @@ input[type=number]::-webkit-outer-spin-button {
                         <?php  $check_types_pn=$check_types_p->check_p_type_pn(Auth::user()->id_empresa); ?>
                         <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
                         <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
+                        <?php  $module_1=1?>
+                        <?php  $module_2=2?>
+                        <?php  $module_3=3?>
                         <form action="{{route('resultados')}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
                             @csrf
                             <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
@@ -267,15 +277,39 @@ input[type=number]::-webkit-outer-spin-button {
 
                         @include('simulaciones')
                     </div>
-
-
                     {{-- /////////////////////////////////////////////////////////////////////////////////////////////////// --}}
-
                 </div>
-                <div x-show.transition.in="step === 2">
-
                     <div  class="ancho">
-                                @include('forms_projects');
+
+
+
+                            <div x-show.transition.in="step === 2">
+                                <div id="forms_ene_fin_proy" class="hidden">
+                                    @include('forms_ene_fin_proy')
+                                </div>
+                                <div id="forms_cal_pre" class="hidden">
+                                    @include('forms_cal_pre')
+                                </div>
+                            </div>
+
+
+                            <div x-show.transition.in="step === 3">
+                                <div class="w-full h-full font-roboto flex ">
+
+                                    <div class="w-full">
+                                        <div id="mant_prev" class="flex w-full  gap-x-3 m-3">
+                                            <div class="w-1/2 h-full flex  justify-center">
+                                                    @include('mantenimiento.man_pre_sin_emergencias')
+                                            </div>
+
+                                            <div class="w-1/2  h-full flex">
+                                                     @include('mantenimiento.man_prev_eme')
+                                            </div>
+                                        </div>
+
+                                       </div>
+                                    </div>
+                            </div>
 
 
                                 <div class="clearfix">
@@ -286,9 +320,6 @@ input[type=number]::-webkit-outer-spin-button {
                         </form>
                         {{-- form --}}
                     </div>
-
-                </div>
-
             </div>
             <div class="grid w-full justify-items-center rounded-md">
                 {{-- espacio --}}
@@ -378,6 +409,10 @@ input[type=number]::-webkit-outer-spin-button {
 .title_index{
               color:#1B17BB !important;"
         }
+
+.text_blue{
+    color:#1B17BB !important;
+}
 @media (min-width: 640px) {
     .labels{
         font-size:11px;

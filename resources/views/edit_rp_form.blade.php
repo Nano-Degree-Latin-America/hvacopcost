@@ -1,6 +1,7 @@
 <div id="content" style=" display: flex; justify-content: center;" class="font-roboto">
     <div style="width: 100%; text-align: -webkit-right;" class="mx-1">
         <div class="bg-orange-500 text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
+            <?php  $module_1=1?>
             <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
              <a href="#final1">   <button onclick="active_display_Edit('sol_1');" type="button" class="rounded-xl p-1 m-0 hover-button-plus text-3xl"></button></a>
              <?php  $num_tarjets=$num_tarjets->num_tarjets($id_project,1) ?>
@@ -37,7 +38,7 @@
                             </div>
 
                             <div class="w-1/2 flex justify-start">
-                                <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro','csDisenio_1_1_retro');check_chiller(this.value,'csStd_1_1_retro',2);check_type_set_mant('type_p','cUnidad_2_1_retro','cUnidad_3_1_retro',this.value);send_value_equipo_marca_form(this.id,'equipo_modal',this.value);">
+                                <select name="cUnidad_1_1_retro" id="cUnidad_1_1_retro" class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_form_calc(2);unidadHvac(this.value,1,'csTipo_1_1_retro',{{$module_1}});check_chiller(this.value,'csStd_1_1_retro',2);check_type_set_mant('type_p','cUnidad_2_1_retro','cUnidad_3_1_retro',this.value);send_value_equipo_marca_form(this.id,'equipo_modal',this.value);">
                                     <option value="0">{{ __('index.seleccionar') }}</option>
 
                                     <script>
