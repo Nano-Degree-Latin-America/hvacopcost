@@ -36,7 +36,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 rounded-md py-2 border-color-inps" onchange="valida_form_calc(1);unidadHvac(this.value,1,'csTipo','csDisenio_1_1');check_chiller(this.value,'csStd',1);send_value_equipo_marcas(this.id,this.value,'marca_1_1');">
+                        <select name="cUnidad_1_1" id="cUnidad_1_1" class="w-full border-2 rounded-md py-2 border-color-inps" onchange="valida_form_calc(1);unidadHvac(this.value,1,'csTipo',{{$module_1}});check_chiller(this.value,'csStd',1);send_value_equipo_marcas(this.id,this.value,'marca_1_1');">
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -353,7 +353,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select  class="w-full border-2 border-color-inps rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2');check_chiller(this.value,'csStd_1_2',1);send_value_equipo_marcas(this.id,this.value,'marca_1_2');" name="cUnidad_1_2" id="cUnidad_1_2" >
+                        <select  class="w-full border-2 border-color-inps rounded-md p-2" onchange="unidadHvac(this.value,2,'csTipo_1_2',{{$module_1}});check_chiller(this.value,'csStd_1_2',1);send_value_equipo_marcas(this.id,this.value,'marca_1_2');" name="cUnidad_1_2" id="cUnidad_1_2" >
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -962,7 +962,7 @@
                                 <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-color-inps rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1');check_chiller(this.value,'csStd_2_1',1);send_value_equipo_marcas(this.id,this.value,'marca_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
+                                <select class="w-full border-2 border-color-inps rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1',{{$module_1}});check_chiller(this.value,'csStd_2_1',1);send_value_equipo_marcas(this.id,this.value,'marca_2_1');"  name="cUnidad_2_1" id="cUnidad_2_1" >
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -1250,7 +1250,7 @@
                             <label class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select style="margin-left:1px;" class="w-full border-2 border-color-inps rounded-md p-2"  onchange="unidadHvac(this.value,2,'cheTipo_2_2');check_chiller(this.value,'csStd_2_2',1);send_value_equipo_marcas(this.id,this.value,'marca_2_2');"  name="cUnidad_2_2" id="cUnidad_2_2" >
+                            <select style="margin-left:1px;" class="w-full border-2 border-color-inps rounded-md p-2"  onchange="unidadHvac(this.value,2,'cheTipo_2_2',{{$module_1}});check_chiller(this.value,'csStd_2_2',1);send_value_equipo_marcas(this.id,this.value,'marca_2_2');"  name="cUnidad_2_2" id="cUnidad_2_2" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -1846,7 +1846,7 @@
                                 <label  class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-color-inps rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1');check_chiller(this.value,'csStd2_3_1',1);send_value_equipo_marcas(this.id,this.value,'marca_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
+                                <select class="w-full border-2 border-color-inps rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1',{{$module_1}});check_chiller(this.value,'csStd2_3_1',1);send_value_equipo_marcas(this.id,this.value,'marca_3_1');" name="cUnidad_3_1" id="cUnidad_3_1" >
                                     <option value="0">{{ __('index.seleccionar') }}</option>
                                     <option value="1">Paquetes (RTU)</option>
                                     <option value="2">Split DX</option>
@@ -2133,7 +2133,7 @@
                             <label  class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-color-inps rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_3_2');check_chiller(this.value,'csStd_3_2',1);send_value_equipo_marcas(this.id,this.value,'marca_3_2');" name="cUnidad_3_2" id="cUnidad_3_2" >
+                            <select class="w-full border-2 border-color-inps rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_3_2',{{$module_1}});check_chiller(this.value,'csStd_3_2',1);send_value_equipo_marcas(this.id,this.value,'marca_3_2');" name="cUnidad_3_2" id="cUnidad_3_2" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>

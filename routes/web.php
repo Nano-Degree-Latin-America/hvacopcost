@@ -190,6 +190,8 @@ Route::get('unidades_valores', 'UnidadesValoresController@index');
 Route::post('change_valor_reg/{tipo}/{id}', 'UnidadesValoresController@change_valor_reg');
 Route::get('set_array_modal_valores/{id}/{identi}', 'UnidadesValoresController@set_array_modal_valores');
 
+////mamntenimiento
+Route::post('traer_datos_tarjeta', 'MantenimientoController@traer_datos_tarjeta');
 //lang
 Route::get('locale/{locale}', function($locale){
    session()->put('locale',$locale);

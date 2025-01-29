@@ -62,11 +62,11 @@
                             <div class="flex w-full">
                                 <label  class="labels_index text-left font-roboto" for=""><b>{{ __('index.ciudad') }}</b></label><label class="text-red-500">*</label>
                             </div>
-                            <select onchange="check_input(this.value,this.id,'ciudad_warning');check_inp_count('count_ciudad','ciudades');" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto"  name="ciudades" id="ciudades">
+                            <select onchange="check_input(this.value,this.id,'ciudad_warning');check_inp_count('count_ciudades','ciudades');" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto"  name="ciudades" id="ciudades">
                                 <option value="0">-{{ __('index.selecciona tu ciudad') }}-</option>
                             </select>
-                            <input id="count_ciudad" name="count_ciudad" type="number" class="hidden" value="0" >
-                            <span id="ciudad_warning" name="ciudad_warning" class="text-red-500"></span>
+                            <input id="count_ciudades" name="count_ciudades" type="number" class="hidden" value="0" >
+                            <span id="ciudades_warning" name="ciudades_warning" class="text-red-500"></span>
                         </div>
 
                         <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
@@ -107,7 +107,7 @@
                         <div class="flex w-full">
                             <label  class="font-roboto labels_index  text-left" for=""><b>{{ __('index.categoria edificio') }}</b></label></label><label class="text-red-500">*</label>
                         </div>
-                        <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value,'{{App::getLocale()}}');check_input(this.value,this.id,'cat_ed_warning');check_inp_count('count_cat_ed','cat_ed');"  class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
+                        <select  name="cat_ed" id="cat_ed" onchange="traer_t_edif(this.value,'tipo_edificio','{{App::getLocale()}}');check_input(this.value,this.id,'cat_ed_warning');check_inp_count('count_cat_ed','cat_ed');"  class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
                         <option value="0">-{{ __('index.seleccionar') }}-</option>
                         </select>
                         <input id="count_cat_ed" name="count_cat_ed" type="number" class="hidden" value="0">
