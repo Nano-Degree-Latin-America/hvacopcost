@@ -24,7 +24,7 @@
 
        <div class="flex w-full">
         <div class="w-full mt-2 mx-2 rounded-md">
-          <div class="grid gap-y-1 my-2 ">
+          <div class="grid my-2 ">
 
             <div class="flex w-full">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2 ">
@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+            <div class="flex w-full 2xl:mt-2 xl:mt-2 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
                         <label class="labels" for=""><b>{{ __('index.marca') }}</b> </label>
@@ -89,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+            <div class="flex w-full 2xl:mt-2 xl:mt-2 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="flex justify-start w-1/3 ">
                         <label class="labels" for=""><b>{{ __('index.yrs_life') }}</b> </label>
@@ -121,7 +121,7 @@
                 </div>
             </div>
 
-            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+            <div class="flex w-full 2xl:mt-2 xl:mt-2 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
                         <label class="labels" for=""><b>Horas Diarias</b> </label>
@@ -150,7 +150,7 @@
                 </div>
             </div>
 
-            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+            <div class="flex w-full 2xl:mt-2 xl:mt-2 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
                         <label class="labels" for=""><b>Estado Unidad</b> </label>
@@ -183,7 +183,7 @@
                 </div>
             </div>
 
-            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+            <div class="flex w-full 2xl:mt-2 xl:mt-2 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
                         <label class="labels" for=""><b>Costo por Filtro</b> </label>
@@ -207,7 +207,7 @@
                 </div>
             </div>
 
-            <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
+            <div class="flex w-full 2xl:mt-2 xl:mt-2 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
                         <label class="labels" for=""><b>Cantidad de Unidades</b> </label>
