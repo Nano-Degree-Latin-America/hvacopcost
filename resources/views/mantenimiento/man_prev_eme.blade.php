@@ -41,7 +41,7 @@
                 Servicos de Emergencias
             </p>
         </div>
-        <div class="w-1/2 flex justify-start3">
+        <div class="w-1/2 flex justify-start">
             <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
         </div>
     </div>
@@ -52,7 +52,7 @@
                 Acceso al Edificio
             </p>
         </div>
-        <div class="w-1/2 flex justify-start3">
+        <div class="w-1/2 flex justify-start">
             <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
         </div>
     </div>
@@ -63,7 +63,7 @@
                 Curso de Seguridad y Otros
             </p>
         </div>
-        <div class="w-1/2 flex justify-start3">
+        <div class="w-1/2 flex justify-start">
             <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
         </div>
     </div>
@@ -74,7 +74,7 @@
                 Lavado de Filtros de Aire
             </p>
         </div>
-        <div class="w-1/2 flex justify-start3">
+        <div class="w-1/2 flex justify-start">
             <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
         </div>
     </div>
@@ -85,7 +85,7 @@
                 Lavado Evaporadores
             </p>
         </div>
-        <div class="w-1/2 flex justify-start3">
+        <div class="w-1/2 flex justify-start">
             <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
         </div>
     </div>
@@ -96,7 +96,7 @@
                 Lavado Extra Condensadores
             </p>
         </div>
-        <div class="w-1/2 flex justify-start3">
+        <div class="w-1/2 flex justify-start">
             <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
         </div>
     </div>
@@ -107,7 +107,7 @@
                 Lavado de Ventiladores
             </p>
         </div>
-        <div class="w-1/2 flex justify-start3">
+        <div class="w-1/2 flex justify-start">
             <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
         </div>
     </div>
@@ -118,7 +118,7 @@
                 Limpieza de Grasa (Cocina)
             </p>
         </div>
-        <div class="w-1/2 flex justify-start3">
+        <div class="w-1/2 flex justify-start">
             <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
         </div>
     </div>
@@ -129,11 +129,17 @@
                 Paquete de Refacciones
             </p>
         </div>
-        <div class="w-1/2 flex justify-start3">
+        <div class="w-1/2 flex justify-start">
             <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
         </div>
     </div>
 
+    <button  type="button" id="next_h_mantenimiento" name="next_h_mantenimiento"
+                    style="background-color:#1B17BB;"
+                        x-show="step < 4"
+                        @click="step++"
+                        class="ocus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                    >{{ __('index.siguiente') }}</button>
 
 
 </div>

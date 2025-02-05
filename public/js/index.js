@@ -1175,6 +1175,8 @@ async function set_ventilaciones_no_doa(value) {
             $('#forms_ene_fin_proy').removeClass("hidden");
             $('#ene_fin_pro_form_project').removeClass("hidden");
             $('#img_ene_fin_proy_hvac').removeClass("hidden");
+            $('#button_calcular_ene_fin').removeClass("hidden");
+
             //mantenimiento
             $('#mantenimiento_form_project').addClass("hidden");
             $('#'+mant_p).addClass("hidden");
@@ -1219,6 +1221,8 @@ async function set_ventilaciones_no_doa(value) {
             $('#forms_ene_fin_proy').removeClass("hidden");
             $('#ene_fin_pro_form_project').removeClass("hidden");
             $('#img_ene_fin_proy_hvac').removeClass("hidden");
+            $('#button_calcular_ene_fin').removeClass("hidden");
+
 
             $('#'+mant_p).addClass("hidden");
             $('#mantenimiento_form_project').addClass("hidden");
@@ -1291,6 +1295,8 @@ async function set_ventilaciones_no_doa(value) {
             $('#'+mant_p).removeClass("hidden");  //mantenimiento form
             $('#forms_cal_pre').removeClass("hidden");
             $('#ene_fin_pro_form_project').addClass("hidden");
+            $('#button_calcular_ene_fin').addClass("hidden");
+
             $('#mantenimiento_form_project').removeClass("hidden");
             $('#mant_prev').removeClass("hidden");
 
@@ -13844,9 +13850,9 @@ function check_form_mantenimiento_tarjet(idm){
        trans_sols_valid(idm);
                    return false;
        }else if(count_inps==0){
-
+        $('#tr_exampe').addClass('hidden');
         var valuesArray = [];
-
+        $('#tbody_equipos').empty();
         var ids = [
             'contador_table',
             'sistema_mantenimiento',
@@ -13855,9 +13861,9 @@ function check_form_mantenimiento_tarjet(idm){
             'modelo_mantenimiento',
             'capacidad_termica_mantenimiento',
             'cantidad_unidades_mantenimiento',
-            ,'yrs_vida_mantenimiento',
-            ,'tipo_acceso_mantenimiento',
-            ,'estado_unidad_mantenimiento',
+            'yrs_vida_mantenimiento',
+            'tipo_acceso_mantenimiento',
+            'estado_unidad_mantenimiento',
         ];
 
         var countador_table = $('#contador_table').val();
@@ -13883,15 +13889,22 @@ function check_form_mantenimiento_tarjet(idm){
         },
         success: function(response) {
 
-            var newRow = '<tr>';
-            for (var i = 0; i < response.length; i++) {
-                var value = response[i];
 
-                newRow += '<td><input id="'+ids[i]+countador_table+'" style="border-color:#1B17BB;!important; width:100%;" disabled type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+
+            for (var i = 0; i < response.length; i++) {
+                const arregloInterno = response[i];
+                var newRow = '<tr id='+i+'>';
+                for (let j = 0; j < arregloInterno.length; j++) {
+                    var value = arregloInterno[j];
+
+                    newRow += '<td id="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" style="border-color:#1B17BB;!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                }
+                newRow += '<td style="width:40px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
+                newRow += '</tr>';
+                $('#tbody_equipos').append(newRow);
+
             }
-            newRow += '<td style="width:40px;" class=""><button type="button" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
-            newRow += '</tr>';
-            $('#tbody_equipos').append(newRow);
+
 
         },
         error: function(xhr, status, error) {
@@ -13899,12 +13912,63 @@ function check_form_mantenimiento_tarjet(idm){
         }
     });
 
-
-
-
        }
        /////////////////////////////////////
    //Livewire.emit('save_equipo')
 }
 
+async function del_td_tr(tr) {
+    var ids = [
+        'contador_table',
+        'sistema_mantenimiento',
+        'unidad_mantenimiento',
+        'marca_mantenimiento',
+        'modelo_mantenimiento',
+        'capacidad_termica_mantenimiento',
+        'cantidad_unidades_mantenimiento',
+        'yrs_vida_mantenimiento',
+        'tipo_acceso_mantenimiento',
+        'estado_unidad_mantenimiento',
+    ];
 
+    // Enviar valuesArray por medio de AJAX
+    var token = $("#token").val();
+    $.ajax({
+        url: '/delete_reg_table_equipos/'+tr, // Reemplaza con la URL de tu endpoint
+        type: 'POST',
+
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            values: ids,
+        },
+        success: function(response) {
+
+            $('#tbody_equipos').empty();
+
+            for (var i = 0; i < response.length; i++) {
+                const arregloInterno = response[i];
+                var newRow = '<tr id='+i+'>';
+                for (let j = 0; j < arregloInterno.length; j++) {
+                    var value = arregloInterno[j];
+
+                    newRow += '<td id="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" style="border-color:#1B17BB;!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                }
+                newRow += '<td style="width:40px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
+                newRow += '</tr>';
+                $('#tbody_equipos').append(newRow);
+
+            }
+
+
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+
+    alert(tr);
+}
+
+async function trCounts(countador_table) {
+
+}
