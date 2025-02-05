@@ -1,6 +1,6 @@
 <div class="w-full grid  h-full font-roboto">
     <div class="w-full flex justify-center">
-        <h1 style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-bold font-roboto">Análisis de Costos Adicionales</h1>
+        <h1 style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-bold font-roboto">Análisis de Costos de Mantenimiento</h1>
     </div>
 
     <div class="w-full flex gap-x-3  h-full">
