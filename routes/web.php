@@ -192,6 +192,7 @@ Route::get('set_array_modal_valores/{id}/{identi}', 'UnidadesValoresController@s
 
 ////mamntenimiento
 Route::post('traer_datos_tarjeta', 'MantenimientoController@traer_datos_tarjeta');
+Route::post('delete_reg_table_equipos/{id}', 'MantenimientoController@delete_reg_table_equipos');
 //lang
 Route::get('locale/{locale}', function($locale){
    session()->put('locale',$locale);

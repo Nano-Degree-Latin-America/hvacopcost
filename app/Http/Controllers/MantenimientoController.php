@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\MarcasEmpresaModel;
 use App\ModelosEmpresaModel;
 use App\UnidadesModel;
+use Illuminate\Support\Facades\Session;
 class MantenimientoController extends Controller
 {
     public function __construct()
@@ -51,6 +52,58 @@ class MantenimientoController extends Controller
             strtoupper($request->values[9])
         );
 
-        return response()->json($array_to_response);
+        // Obtener el contenido actual de array_sistemas de la sesión
+        $array_sistemas = Session::get('array_sistemas', []);
+
+        //reorder contenido array table_count
+
+
+
+        // Agregar los nuevos elementos a array_sistemas
+        $array_sistemas[] = $array_to_response;
+
+        // Guardar el array actualizado en la sesión
+        session(['array_sistemas' => $array_sistemas]);
+
+
+         // Obtener array_sistemas de la sesión
+        $array_sistemas = Session::get('array_sistemas');
+
+        for ($i = 0; $i < count($array_sistemas); $i++) {
+            if (is_array($array_sistemas[$i]) && count($array_sistemas[$i]) > 0) {
+                $array_sistemas[$i][0] = $i+1; // Editar el primer elemento
+            }
+        }
+
+        return response()->json($array_sistemas);
+    }
+
+    public function delete_reg_table_equipos(Request  $request,$id){
+        $array_sistemas = Session::get('array_sistemas');
+        $id = $id + 1;
+
+        for ($i = 0; $i < count($array_sistemas); $i++) {
+            if($array_sistemas[$i][0] == $id){
+                unset($array_sistemas[$i]);
+            }
+        }
+
+        // Reindexar el array y actualizar el primer elemento de cada subarreglo
+        $array_sistemas = array_values($array_sistemas);
+        for ($i = 0; $i < count($array_sistemas); $i++) {
+            if (is_array($array_sistemas[$i]) && count($array_sistemas[$i]) > 0) {
+                $array_sistemas[$i][0] = $i + 1; // Editar el primer elemento
+            }
+        }
+
+
+        // Guardar el array actualizado en la sesión
+        session(['array_sistemas' => $array_sistemas]);
+
+
+         // Obtener array_sistemas de la sesión
+        $array_sistemas = Session::get('array_sistemas');
+        return response()->json($array_sistemas);
+
     }
 }

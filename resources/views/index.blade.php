@@ -296,20 +296,54 @@ input[type=number]::-webkit-outer-spin-button {
                             <div x-show.transition.in="step === 3">
                                 <div class="w-full h-full font-roboto flex ">
 
-                                    <div class="w-full">
-                                        <div id="mant_prev" class="flex w-full  gap-x-3 m-3">
-                                            <div class="w-1/2 h-full flex  justify-center">
-                                                    @include('mantenimiento.man_pre_sin_emergencias')
+                                    <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 m-3">
+                                        @include('mantenimiento.costos_adicionales')
+                                    </div>
+
+                                     {{-- <div class="w-full">
+                                            <div id="mant_prev" class="flex w-full  gap-x-3 m-3">
+                                                <div class="w-1/2 h-full flex  justify-center">
+                                                        @include('mantenimiento.man_pre_sin_emergencias')
+                                                </div>
+
+                                                <div class="w-1/2  h-full flex">
+                                                        @include('mantenimiento.man_prev_eme')
+                                                </div>
                                             </div>
 
-                                            <div class="w-1/2  h-full flex">
-                                                     @include('mantenimiento.man_prev_eme')
-                                            </div>
-                                        </div>
+                                       </div> --}}
+                                </div>
+                            </div>
 
-                                       </div>
+                            <div x-show.transition.in="step === 4">
+
+                                    <div id="ana_cost_mant" class="flex w-full  gap-x-3 m-3">
+                                        @include('mantenimiento.costos_mant')
                                     </div>
                             </div>
+
+                            <div x-show.transition.in="step === 5">
+
+                                <div id="spend_plan" class="flex w-full  gap-x-3 m-3 mt-5">
+                                    <div class="w-1/2 h-full grid  justify-items-center">
+                                        <div class="w-full h-full grid justify-items-center font-roboto gap-y-1">
+                                            <div class="grid justify-items-center">
+                                                <h1 class="text-3xl  font-bold">Spend Plan 40% Gross Profit</h1>
+                                            </div>
+                                        </div>
+                                        @include('mantenimiento.spend_plan_gross')
+                                    </div>
+
+                                    <div class="w-1/2 h-full grid  justify-items-center">
+                                        <div class="w-full h-full grid justify-center font-roboto gap-y-1">
+                                            <div class="flex justify-center mr-20">
+                                                <h1 class="text-3xl text_blue font-bold">Spend Plan</h1> <input class="w-20 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center mx-1" type="text"><h1  class="text-3xl  font-bold"> Gross Profit</h1>
+                                            </div>
+                                        </div>
+                                        @include('mantenimiento.spend_plan_gross_blank')
+                                    </div>
+                                </div>
+                        </div>
 
 
                                 <div class="clearfix">
@@ -387,9 +421,21 @@ input[type=number]::-webkit-outer-spin-button {
 
                 @endif --}}
 
+                <div id="button_calcular_ene_fin" class="hidden">
+                    <button style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1,'{{App::getLocale()}}','store','','');" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
+                    <button style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r" id="calcular_p_r" onclick="check_form_submit(2,'{{App::getLocale()}}','store','','');" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto hidden">{{ __('index.calcular') }}</button>
+                </div>
 
-                <button style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1,'{{App::getLocale()}}','store','','');" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
-                <button style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r" id="calcular_p_r" onclick="check_form_submit(2,'{{App::getLocale()}}','store','','');" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto hidden">{{ __('index.calcular') }}</button>
+                <div id="button_sigiuente_mantenimiento" class="hidden">
+{{--                     <button style="background-color:#1B17BB;width: 20%;" x-if="step > 1 || step != 2" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1,'{{App::getLocale()}}','store','','');" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
+ --}}            <button  type="button" id="next_h_mantenimiento" name="next_h_mantenimiento"
+                    style="background-color:#1B17BB;"
+                        x-show="step < 2"
+                        @click="step++"
+                        class="ocus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                    >{{ __('index.siguiente') }}</button>
+                </div>
+
 
 
 
