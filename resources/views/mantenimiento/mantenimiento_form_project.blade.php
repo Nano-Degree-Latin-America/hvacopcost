@@ -465,8 +465,8 @@
                     x-show="step < 2"
 
                      onclick="back_begin();"
-                    style="background-color:#1B17BB;"
-                    class="w-full hover_button_blue focus:outline-none py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+
+                    class="w-full focus:outline-none bg-gray-500 border-2 border-color-inps py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-xl font-roboto"
                 >{{ __('index.inicio') }}</button>
             </div>
         </div>

@@ -248,7 +248,7 @@ input[type=number]::-webkit-outer-spin-button {
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<div class="bg-white" x-data="app()" x-cloak>
+<div class="bg-white s" x-data="app()" x-cloak>
     <div class="w-full px-2">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
         @inject('paises_empresa','app\Http\Controllers\IndexController')
@@ -259,7 +259,7 @@ input[type=number]::-webkit-outer-spin-button {
         $idm = App::getLocale();
         ?>
         <div x-show.transition="step != 'complete'">
-            <div class="">
+            <div class="overscroll-none">
                 <div x-show.transition.in="step === 1">
 
                     <div id="mapa-div">
@@ -317,14 +317,14 @@ input[type=number]::-webkit-outer-spin-button {
 
                             <div x-show.transition.in="step === 4">
 
-                                    <div id="ana_cost_mant" class="flex w-full  gap-x-3 m-3">
+                                    <div id="ana_cost_mant" class="flex w-full  gap-x-3">
                                         @include('mantenimiento.costos_mant')
                                     </div>
                             </div>
 
                             <div x-show.transition.in="step === 5">
 
-                                <div id="spend_plan" class="flex w-full  gap-x-3 m-3 mt-5">
+                                <div id="spend_plan" class="flex w-full  gap-x-3 mt-5">
                                     <div class="w-1/2 h-full grid  justify-items-center">
                                         <div class="w-full h-full grid justify-items-center font-roboto gap-y-1">
                                             <div class="grid justify-items-center">
@@ -428,15 +428,20 @@ input[type=number]::-webkit-outer-spin-button {
 
                 <div id="button_sigiuente_mantenimiento" class="hidden">
 {{--                     <button style="background-color:#1B17BB;width: 20%;" x-if="step > 1 || step != 2" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1,'{{App::getLocale()}}','store','','');" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
- --}}            <button  type="button" id="next_h_mantenimiento" name="next_h_mantenimiento"
+ --}}
+
+
+
+
+
+                    <button  type="button" id="next_h_mantenimiento" name="next_h_mantenimiento"
                     style="background-color:#1B17BB;"
-                        x-show="step < 2"
+                        x-show="step > 2 && step < 5"
                         @click="step++"
                         class="ocus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('index.siguiente') }}</button>
+                    </div>
                 </div>
-
-
 
 
 
