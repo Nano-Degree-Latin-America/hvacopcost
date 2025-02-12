@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\MarcasEmpresaModel;
 use App\ModelosEmpresaModel;
+use App\ConfiguracionesMantenimientoModel;
 use App\UnidadesModel;
 use Illuminate\Support\Facades\Session;
 class MantenimientoController extends Controller
@@ -13,6 +14,29 @@ class MantenimientoController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function index(){
+
+        $configuraciones = ConfiguracionesMantenimientoModel::all();
+
+        return view('admin.index',['configuraciones'=>$configuraciones]);
+    }
+
+    public function get_configuracion($id_configuracion){
+        $configuracion = ConfiguracionesMantenimientoModel::find($id_configuracion);
+       return response()->json($configuracion);
+    }
+
+    public function store_configuracion(Request $request){
+
+        $upadte_configuracion = ConfiguracionesMantenimientoModel::find(intval($request->get('id_configuracion')));
+        $upadte_configuracion->configuracion = $request->get('configuracion');
+        $upadte_configuracion->valor = $request->get('valor');
+        $upadte_configuracion->unidad = $request->get('unidad');
+        $upadte_configuracion->update();
+
+       return $upadte_configuracion;
     }
 
     public function traer_datos_tarjeta(Request $request)

@@ -13973,7 +13973,7 @@ async function del_td_tr(tr) {
         }
     });
 
-    alert(tr);
+
 }
 
 async function trCounts(countador_table) {

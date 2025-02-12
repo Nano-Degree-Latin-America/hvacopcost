@@ -185,6 +185,84 @@ class UnidadesSeeder extends Seeder
         $new_equipo->valor = 0.94;
         $new_equipo->equipo = 7;
         $new_equipo->save();
+
+        ////////////////////////
+        $equipos = [8,9,10,11];
+       for ($i=0; $i < count($equipos) ; $i++) {
+
+            $new_equipo = new UnidadesModel;
+            $new_equipo->unidad = 'Confort - Constante';
+            $new_equipo->identificador = 'confort_constante_'.$equipos[$i];
+            $new_equipo->valor = 0;
+            $new_equipo->equipo = $equipos[$i];
+            $new_equipo->save();
+
+            $new_equipo = new UnidadesModel;
+            $new_equipo->unidad = 'Confort - Variable';
+            $new_equipo->identificador = 'confort_variable_'.$equipos[$i];
+            $new_equipo->valor = 0;
+            $new_equipo->equipo = $equipos[$i];
+            $new_equipo->save();
+
+            $new_equipo = new UnidadesModel;
+            $new_equipo->unidad = 'Proceso';
+            $new_equipo->identificador = 'proceso_'.$equipos[$i];
+            $new_equipo->valor = 0;
+            $new_equipo->equipo = $equipos[$i];
+            $new_equipo->save();
+        }
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Axial Directo';
+        $new_equipo->identificador = 'axial_directo_extractor';
+        $new_equipo->valor = 0;
+        $new_equipo->equipo = 12;
+        $new_equipo->save();
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Axial Polea';
+        $new_equipo->identificador = 'axial_polea_extractor';
+        $new_equipo->valor = 0.94;
+        $new_equipo->equipo = 12;
+        $new_equipo->save();
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Centrífugo Polea';
+        $new_equipo->identificador = 'centrifugo_polea_extractor';
+        $new_equipo->valor = 0;
+        $new_equipo->equipo = 12;
+        $new_equipo->save();
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Campana (Techo)';
+        $new_equipo->identificador = 'campana_extractor';
+        $new_equipo->valor = 0;
+        $new_equipo->equipo = 12;
+        $new_equipo->save();
+
+        /////
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Axial Directo';
+        $new_equipo->identificador = 'axial_directo_inyector';
+        $new_equipo->valor = 0;
+        $new_equipo->equipo = 13;
+        $new_equipo->save();
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Axial Polea';
+        $new_equipo->identificador = 'axial_polea_inyector';
+        $new_equipo->valor = 0;
+        $new_equipo->equipo = 13;
+        $new_equipo->save();
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Centrífugo Polea';
+        $new_equipo->identificador = 'centrifugo_polea_inyector';
+        $new_equipo->valor = 0;
+        $new_equipo->equipo = 13;
+        $new_equipo->save();
+
     }
 }
 

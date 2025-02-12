@@ -262,61 +262,46 @@ input[type=number]::-webkit-outer-spin-button {
             <div class="overscroll-none">
                 <div x-show.transition.in="step === 1">
 
-                    <div id="mapa-div">
-                        <?php  $check_types_pn=$check_types_p->check_p_type_pn(Auth::user()->id_empresa); ?>
-                        <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
-                        <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
-                        <?php  $module_1=1?>
-                        <?php  $module_2=2?>
-                        <?php  $module_3=3?>
-                        <form action="{{route('resultados')}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
-                            @csrf
-                            <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
-                            <input type="number" class="hidden" id="type_p" name="type_p">
-                            <input type="text" value="store" class="hidden" id="action_submit_send" name="action_submit_send">
+                        <div id="mapa-div">
+                            <?php  $check_types_pn=$check_types_p->check_p_type_pn(Auth::user()->id_empresa); ?>
+                            <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
+                            <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
+                            <?php  $module_1=1?>
+                            <?php  $module_2=2?>
+                            <?php  $module_3=3?>
+                            <form action="{{route('resultados')}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
+                                @csrf
+                                <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
+                                <input type="number" class="hidden" id="type_p" name="type_p">
+                                <input type="text" value="store" class="hidden" id="action_submit_send" name="action_submit_send">
 
-                        @include('simulaciones')
+                            @include('simulaciones')
+                        </div>
+                        {{-- /////////////////////////////////////////////////////////////////////////////////////////////////// --}}
                     </div>
-                    {{-- /////////////////////////////////////////////////////////////////////////////////////////////////// --}}
-                </div>
                     <div  class="ancho">
 
-
-
                             <div x-show.transition.in="step === 2">
-                                <div id="forms_ene_fin_proy" class="hidden">
-                                    @include('forms_ene_fin_proy')
-                                </div>
-                                <div id="forms_cal_pre" class="hidden">
-                                    @include('forms_cal_pre')
-                                </div>
+                                <div class="w-full h-full font-roboto flex mt-2">
+                                    <div id="forms_ene_fin_proy" class="hidden">
+                                        @include('forms_ene_fin_proy')
+                                    </div>
+                                    <div id="forms_cal_pre" class="hidden">
+                                        @include('forms_cal_pre')
+                                    </div>
+                                 </div>
                             </div>
 
 
                             <div x-show.transition.in="step === 3">
                                 <div class="w-full h-full font-roboto flex ">
-
                                     <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 m-3">
                                         @include('mantenimiento.costos_adicionales')
                                     </div>
-
-                                     {{-- <div class="w-full">
-                                            <div id="mant_prev" class="flex w-full  gap-x-3 m-3">
-                                                <div class="w-1/2 h-full flex  justify-center">
-                                                        @include('mantenimiento.man_pre_sin_emergencias')
-                                                </div>
-
-                                                <div class="w-1/2  h-full flex">
-                                                        @include('mantenimiento.man_prev_eme')
-                                                </div>
-                                            </div>
-
-                                       </div> --}}
                                 </div>
                             </div>
 
                             <div x-show.transition.in="step === 4">
-
                                     <div id="ana_cost_mant" class="flex w-full  gap-x-3">
                                         @include('mantenimiento.costos_mant')
                                     </div>
@@ -344,7 +329,6 @@ input[type=number]::-webkit-outer-spin-button {
                                     </div>
                                 </div>
                         </div>
-
 
                                 <div class="clearfix">
                                     <div class="my-5 gap-x-3">
