@@ -125,6 +125,12 @@
               <span>Marcas</span>
             </a>
           </li>
+
+          <li>
+            <a href="/configuraciones_mantenimiento">
+              <span>Configuraciones Mantenimiento</span>
+            </a>
+          </li>
         </ul>
       </li>
     </ul>
