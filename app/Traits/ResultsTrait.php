@@ -7,6 +7,8 @@ use App\Services\ProjectService;
 use App\SolutionsProjectModel;
 use App\ProjectsModel;
 use App\ResultsProjectModel;
+use App\MarcasEmpresaModel;
+use App\ModelosEmpresaModel;
 
 trait  ResultsTrait{
 

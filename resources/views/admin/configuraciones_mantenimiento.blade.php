@@ -69,21 +69,6 @@ span{
     <div class="container mx-auto">
       <div class="flex flex-col">
           <div class="w-full">
-            <div class="flex w-full my-3">
-                <div class="w-1/2">
-                    <a href="/create_empresa" >
-                        <button class="mx-5 py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 cursor-pointer">
-                            Crear nuevo
-                         </button>
-
-                    </a>
-                </div>
-
-
-            </div>
-
-
-
               <div class="card has-table">
  {{--                <header class="card-header">
                   <p class="card-header-title">
@@ -93,64 +78,54 @@ span{
 
                 </header> --}}
                 <div class="card-content">
-                  <table id="tabla_configuraciones">
-                    <thead>
-                    <tr>
+                    <table id="tabla_configuraciones" class="display">
+                        <thead>
+                        <tr>
 
-                      <th>Configuracion</th>
-                      <th>Valor</th>
-                      <th>Unidad</th>
-                      <th>Captura</th>
-                      <th>Fecha de registro</th>
-                      <th>Ultima Actualizacion</th>
-                      <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                          <th>Configuracion</th>
+                          <th>Valor</th>
+                          <th>Unidad</th>
+                          <th>Captura</th>
+                          <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                        @foreach ($configuraciones  as $configuracion)
-                    <tr>
+                            @foreach ($configuraciones  as $configuracion)
+                        <tr>
 
 
 
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                {{$configuracion->configuracion}}
+                                <td >
+                                    {{$configuracion->configuracion}}
+                                </td>
+                                <td >
+                                    {{number_format($configuracion->valor,2)}}
+                                </td>
+
+                                <td >
+                                    {{$configuracion->unidad}}
+                                </td>
+
+                                <td >
+                                 --
+                                </td>
+
+
+
+                            <td class="actions-cell">
+                                <div class="buttons right nowrap">
+                                    <button  onclick="mostrar_modal_configuracion('modal_configuraciones','{{$configuracion->id}}');" class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+                                        <span class="icon"><i class="mdi mdi-pencil"></i></span>
+                                    </button>
+                                </div>
                             </td>
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                {{number_format($configuracion->valor,2)}}
-                            </td>
-
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                                {{$configuracion->unidad}}
-                            </td>
-
-                            <td class="px-6 py-4 text-sm text-gray-500">
-                             --
-                            </td>
-
-                            <td class="px-6 py-2">
-                                <div class="text-xm text-gray-500">{{$configuracion->created_at}}</div>
-                            </td>
-
-                            <td class="px-6 py-2 text-xm text-gray-500">
-                                {{$configuracion->updated_at}}
-                            </td>
-
-
-
-                        <td class="actions-cell">
-                            <div class="buttons right nowrap">
-                                <button  onclick="mostrar_modal_configuracion('modal_configuraciones','{{$configuracion->id}}');" class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                                    <span class="icon"><i class="mdi mdi-pencil"></i></span>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
-{{--                     @include('empresas.modal_paises_empresa')
-                    @include('empresas.modal_type_p_empresas') --}}
-                    @endforeach
-                </tbody>
-            </table>
+                        </tr>
+    {{--                     @include('empresas.modal_paises_empresa')
+                        @include('empresas.modal_type_p_empresas') --}}
+                        @endforeach
+                    </tbody>
+                </table>
             @include('admin.modal_configuraciones')
             <div class="table-pagination">
                 <div class="flex items-center justify-between">
@@ -166,7 +141,8 @@ span{
 </div>
 <script>
 window.onload = function() {
-    let table = new DataTable('#tabla_configuraciones');
+    $('#tabla_configuraciones').DataTable();
+
 };
 
 function ocultar_modal(id){
