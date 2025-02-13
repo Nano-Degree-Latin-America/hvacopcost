@@ -1,6 +1,6 @@
 <div class="col-5 ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 h-full justify-items-center">
     <div class="margin-title-top-simulaciones">
-        <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight" for="">{{ __('index.titulo1_simulaciones') }} <br> {{ __('index.titulo2_simulaciones') }}
+        <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight uppercase" for="">{{ __('index.titulo1_simulaciones') }} <br> {{ __('index.titulo2_simulaciones') }}
         </label>
     </div>
 

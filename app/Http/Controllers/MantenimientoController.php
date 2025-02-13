@@ -7,7 +7,13 @@ use Illuminate\Http\Request;
 use App\MarcasEmpresaModel;
 use App\ModelosEmpresaModel;
 use App\ConfiguracionesMantenimientoModel;
+use App\BaseCalculoModel;
 use App\UnidadesModel;
+use App\FactorAccesoModel;
+use App\FactorAmbienteModel;
+use App\FactorEstadoUnidad;
+use App\FactorGarantiaModel;
+use App\FactorHorasDiariasModel;
 use Illuminate\Support\Facades\Session;
 class MantenimientoController extends Controller
 {
@@ -20,7 +26,58 @@ class MantenimientoController extends Controller
 
         $configuraciones = ConfiguracionesMantenimientoModel::all();
 
-        return view('admin.index',['configuraciones'=>$configuraciones]);
+        return view('admin.configuraciones_mantenimiento',['configuraciones'=>$configuraciones]);
+    }
+
+    public function configuraciones(){
+
+
+
+        $user = Auth::user();
+
+        return view('admin.base_calculo_rapido',['user'=>$user]);
+}
+
+
+public function factores_mantenimiento(){
+
+    $factor_acceso = FactorAccesoModel::all();
+    $factor_ambiente = FactorAmbienteModel::all();
+    $factor_estado_unidad = FactorEstadoUnidad::all();
+    $factor_garantia = FactorGarantiaModel::all();
+    $factor_horas_diarias = FactorHorasDiariasModel::all();
+
+    return view('admin.factores_mantenimiento',[
+         'factor_acceso'=>$factor_acceso
+        ,'factor_ambiente'=>$factor_ambiente
+        ,'factor_estado_unidad'=>$factor_estado_unidad
+        ,'factor_garantia'=>$factor_garantia
+        ,'factor_horas_diarias'=>$factor_horas_diarias
+    ]);
+}
+
+    public function base_calculo_rapido(){
+
+        $sistemas = [
+            ['value' => 1, 'text' => "Paquetes (RTU)"],
+            ['value' => 2, 'text' => "Split DX"],
+            ['value' => 3, 'text' => "VRF No Ductados"],
+            ['value' => 4, 'text' => "VRF Ductados"],
+            ['value' => 5, 'text' => "PTAC/VTAC"],
+            ['value' => 6, 'text' => "WSHP"],
+            ['value' => 7, 'text' => "Minisplit Inverter"],
+            ['value' => 8, 'text' => "Chiller Scroll - Aire"],
+            ['value' => 9, 'text' => "Chiller Scroll - Agua"],
+            ['value' => 10, 'text' => "Chiller Tornillo - Aire"],
+            ['value' => 11, 'text' => "Chiller Tornillo - Agua"],
+            ['value' => 12, 'text' => "Extractor"],
+            ['value' => 13, 'text' => "Inyector"],
+        ];
+
+        $bases = BaseCalculoModel::join('unidades','unidades.id','=','id_unidad')
+        ->select('base_calculo_rapido.*','unidades.unidad as unidad_name')->get();
+
+        return view('admin.base_calculo_rapido',['bases'=>$bases,'sistemas'=>$sistemas,]);
     }
 
     public function get_configuracion($id_configuracion){
@@ -130,4 +187,5 @@ class MantenimientoController extends Controller
         return response()->json($array_sistemas);
 
     }
+
 }
