@@ -17,9 +17,8 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png"/>
   <link rel="mask-icon" href="safari-pinned-tab.svg" color="#00b4b6"/>
 
-  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.css" />
-
-  <script src="https://cdn.datatables.net/2.0.2/js/dataTables.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130795909-1"></script>
   <script>
@@ -131,6 +130,19 @@
               <span>Configuraciones Mantenimiento</span>
             </a>
           </li>
+
+          <li>
+            <a href="/base_calculo_rapido">
+              <span>Base Calculo Rapido</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="/factores_mantenimiento">
+              <span>Factores Mantenimiento</span>
+            </a>
+          </li>
+
         </ul>
       </li>
     </ul>

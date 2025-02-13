@@ -191,7 +191,9 @@ Route::post('change_valor_reg/{tipo}/{id}', 'UnidadesValoresController@change_va
 Route::get('set_array_modal_valores/{id}/{identi}', 'UnidadesValoresController@set_array_modal_valores');
 
 ////mamntenimiento
+Route::get('base_calculo_rapido', 'MantenimientoController@base_calculo_rapido');
 Route::get('configuraciones_mantenimiento', 'MantenimientoController@index');
+Route::get('factores_mantenimiento', 'MantenimientoController@factores_mantenimiento');
 Route::get('get_configuracion/{id}', 'MantenimientoController@get_configuracion');
 Route::post('traer_datos_tarjeta', 'MantenimientoController@traer_datos_tarjeta');
 Route::post('delete_reg_table_equipos/{id}', 'MantenimientoController@delete_reg_table_equipos');
