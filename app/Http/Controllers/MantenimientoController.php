@@ -95,6 +95,81 @@ public function factores_mantenimiento(){
        return $upadte_configuracion;
     }
 
+    public function store_base_calculo(Request $request){
+
+        $upadte_base_calculo = BaseCalculoModel::find(intval($request->get('id_calculo_base')));
+        $upadte_base_calculo->costo_instalacion = $request->get('costo_instalado');
+        $upadte_base_calculo->unidad_costo_instalacion = $request->get('unidad');
+        $upadte_base_calculo->update();
+
+       return $upadte_base_calculo;
+    }
+
+    public function store_factor(Request $request){
+
+        $id = $request->get('id_factor');
+        $factor = $request->get('tipo_factor');
+
+        if($factor == 'factor_ambiente'){
+            $factor_update = FactorAmbienteModel::find($id);
+        }
+
+        if($factor == 'factor_acceso'){
+            $factor_update = FactorAccesoModel::find($id);
+        }
+
+        if($factor == 'factor_estado_unidad'){
+            $factor_update = FactorEstadoUnidad::find($id);
+        }
+
+        if($factor == 'factor_estado_unidad'){
+            $factor_update = FactorEstadoUnidad::find($id);
+        }
+
+        if($factor == 'factor_garantia'){
+            $factor_update = FactorGarantiaModel::find($id);
+        }
+
+        if($factor == 'factor_horas_diarias'){
+            $factor_update = FactorHorasDiariasModel::find($id);
+        }
+
+/*         $factor_update->costo_instalacion = $request->get('costo_instalado');
+ */        $factor_update->valor = $request->get('valor');
+           $factor_update->update();
+
+       return $factor_update;
+    }
+
+    public function get_factor($id,$factor){
+        if($factor == 'factor_ambiente'){
+            $factor_set = FactorAmbienteModel::find($id);
+        }
+
+        if($factor == 'factor_acceso'){
+            $factor_set = FactorAccesoModel::find($id);
+        }
+
+        if($factor == 'factor_estado_unidad'){
+            $factor_set = FactorEstadoUnidad::find($id);
+        }
+
+        if($factor == 'factor_estado_unidad'){
+            $factor_set = FactorEstadoUnidad::find($id);
+        }
+
+        if($factor == 'factor_garantia'){
+            $factor_set = FactorGarantiaModel::find($id);
+        }
+
+        if($factor == 'factor_horas_diarias'){
+            $factor_set = FactorHorasDiariasModel::find($id);
+        }
+
+
+        return response()->json($factor_set);
+    }
+
     public function traer_datos_tarjeta(Request $request)
     {
 
@@ -186,5 +261,7 @@ public function factores_mantenimiento(){
         return response()->json($array_sistemas);
 
     }
+
+
 
 }
