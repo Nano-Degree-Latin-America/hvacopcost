@@ -86,7 +86,7 @@ span{
 
                         @forelse ($bases as $base)
                         <tr class="font-roboto  bg-slate-200 place-content-center">
-                            <td class="px-6 py-4 text-sm text-gray-800">
+                            <td class="px-6  text-sm text-gray-800">
                                {{--  @foreach ($sistemas as $sistema)
                                     @if ($base->sistema ==  $sistema->id)
                                     {{$sistema->name}}
@@ -95,19 +95,19 @@ span{
                                {{$base->sistema_name}}
                             </td>
 
-                            <td class="px-6 py-4 text-sm text-gray-800">
+                            <td class="px-6  text-sm text-gray-800">
                                {{$base->unidad_name}}
                             </td>
 
-                            <td class="px-6 py-4 text-sm text-gray-800">
+                            <td class="px-6  text-sm text-gray-800">
                                 ${{number_format($base->costo_instalacion)}}
                             </td>
 
-                            <td class="px-6 py-4 text-sm text-gray-800">
+                            <td class="px-6  text-sm text-gray-800">
                                 {{$base->unidad_costo_instalacion}}
                             </td>
 
-                            <td class="px-6 py-4 text-sm text-gray-800">
+                            <td class="px-6  text-sm text-gray-800">
                                 {{$base->rav}}
                             </td>
 
@@ -154,24 +154,11 @@ function mostrar_modal_base_calculo(id_modal,id_base){
                 type: 'get',
                 url: '/get_calculo_base/'+ id_base,
                 success: function (response) {
-                    //$('#configuracion').val(response.id);/*
-
                     $('#sistema').val(response.sistema_name);
-                },
-                error: function (responsetext) {
-
-                }
-            });
-}
-
-
-
-function change_pais(id_empresa,pais){
-
-    $.ajax({
-                type: 'get',
-                url: '/change_pais/'+ id_empresa+'/'+pais,
-                success: function (response) {
+                    $('#equipo').val(response.unidad_name);
+                    $('#costo_instalado').val(response.costo_instalacion);
+                    $('#unidad').val(response.unidad_costo_instalacion);
+                    $('#id_calculo_base').val(response.id);
 
                 },
                 error: function (responsetext) {
@@ -180,64 +167,18 @@ function change_pais(id_empresa,pais){
             });
 }
 
-function change_type_project(id_empresa,type_p){
 
-$.ajax({
-            type: 'get',
-            url: '/change_type_project/'+ id_empresa+'/'+type_p,
-            success: function (response) {
 
-            },
-            error: function (responsetext) {
 
-            }
-        });
-}
 
-function change_empresa(id_empresa){
-
-    Swal.fire({
-        title: '¿Administrar?',
-        text: "",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#0dcaf0',
-        cancelButtonColor: 'orange',
-        confirmButtonText: 'SI'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // var route = ruta_global + "/" + aux + "/" + id + "";
-            var token = $("#_token").val();
-            $.ajax({
-                type: 'get',
-                url: '/change_empresa/'+ id_empresa,
-                success: function (response) {
-                    Swal.fire(
-                        'Exito!',
-                        '',
-                        'success'
-                    )
-                },
-                error: function (responsetext) {
-
-                }
-            });
-
-            setTimeout(function () { window.location.href='mis_projectos' }, 1000);
-
-            //location.reload();
-        }
-    })
-}
-
-/* function save_configuracion(){
+function save_base_calculo(){
 
     // Enviar valuesArray por medio de AJAX
     var token = $("#token").val();
-    var formData = $("#configuraciones_form").serialize(); // Serializar los datos del formulario
+    var formData = $("#base_calculo_form").serialize(); // Serializar los datos del formulario
 
     $.ajax({
-        url: '/store_configuracion', // Reemplaza con la URL de tu endpoint
+        url: '/store_base_calculo', // Reemplaza con la URL de tu endpoint
         type: 'POST',
 
         headers: { 'X-CSRF-TOKEN': token },
@@ -256,6 +197,6 @@ function change_empresa(id_empresa){
             console.error('Error al enviar los datos:', error);
         }
      });
-}*/
+}
 </script>
 @endsection

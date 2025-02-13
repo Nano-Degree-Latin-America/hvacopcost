@@ -77,18 +77,27 @@ span{
                         <tr>
                           <th class="text-center">Factor</th>
                           <th class="text-center">Valor</th>
+                          <th></th>
+
                         </tr>
                         </thead>
                         <tbody>
-                            @forelse ($factor_acceso as $acceso)
+                            @forelse ($factor_ambiente as $ambiente)
                             <tr>
                                 <td class="px-6 py-4 text-sm text-gray-800  text-center">
-                                {{$acceso->factor}}
+                                {{$ambiente->factor}}
                                 </td>
 
                                 <td class="px-6 py-4 text-sm text-gray-800  text-center">
-                                    {{$acceso->valor}}
+                                    {{$ambiente->valor}}
                                 </td>
+                                <td class="actions-cell">
+                                    <div class="buttons right nowrap">
+                                        <button  onclick="mostrar_modal_factores('modal_factores','{{$ambiente->id}}','factor_ambiente','Factor Ambiente (FA)');" class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+                                            <span class="icon"><i class="mdi mdi-pencil"></i></span>
+                                        </button>
+                                    </div>
+                                 </td>
                             </tr>
                             @empty
 
@@ -104,18 +113,27 @@ span{
                             <tr>
                               <th class="text-center">Factor</th>
                               <th class="text-center">Valor</th>
+                              <th></th>
+
                             </tr>
                             </thead>
                             <tbody>
-                                @forelse ($factor_ambiente as $ambiente)
+                                @forelse ($factor_acceso as $acceso)
                                 <tr>
                                 <td class="px-6 py-4 text-sm text-gray-800  text-center">
-                                  {{$ambiente->factor}}
+                                  {{$acceso->factor}}
                                 </td>
 
                                 <td class="px-6 py-4 text-sm text-gray-800  text-center">
-                                    {{$ambiente->valor}}
+                                    {{$acceso->valor}}
                                   </td>
+                                  <td class="actions-cell">
+                                    <div class="buttons right nowrap">
+                                        <button  onclick="mostrar_modal_factores('modal_factores','{{$acceso->id}}','factor_acceso','Factor Tipo Acceso (FTA)');" class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+                                            <span class="icon"><i class="mdi mdi-pencil"></i></span>
+                                        </button>
+                                    </div>
+                                 </td>
                                 </tr>
                                 @empty
 
@@ -131,6 +149,8 @@ span{
                             <tr>
                               <th class="text-center">Factor</th>
                               <th class="text-center">Valor</th>
+                              <th></th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -143,6 +163,13 @@ span{
                                 <td class="px-6 py-4 text-sm text-gray-800  text-center">
                                     {{$estado_unidad->valor}}
                                   </td>
+                                  <td class="actions-cell">
+                                    <div class="buttons right nowrap">
+                                        <button  onclick="mostrar_modal_factores('modal_factores','{{$estado_unidad->id}}','factor_estado_unidad','Factor Estado Unidad (FEU)');" class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+                                            <span class="icon"><i class="mdi mdi-pencil"></i></span>
+                                        </button>
+                                    </div>
+                                 </td>
                                 </tr>
                                 @empty
 
@@ -151,67 +178,84 @@ span{
                     </table>
                  </div>
 
+                 <div class="w-1/4 bg-gray-100 border-2 border-gray-500">
+                    <h1 class="font-bold font-roboto text-xl">Factor Garantia (FG)</h1>
+                    <table id="factor_garantia_table">
+                      <thead>
+                          <tr>
+                            <th class="text-center">Factor</th>
+                            <th class="text-center">Valor</th>
+                            <th></th>
 
-
-                @include('admin.modal_configuraciones')
-            </div>
-
-            <div class="grid w-full">
-                <div class="flex w-full gap-x-3">
-                   <div class="w-1/4 bg-gray-100 border-2 border-gray-500">
-                      <h1 class="font-bold font-roboto text-xl">Factor Garantia (FG)</h1>
-                      <table id="factor_garantia_table">
-                        <thead>
+                          </tr>
+                          </thead>
+                          <tbody>
+                            @forelse ($factor_garantia as $garantia)
                             <tr>
-                              <th class="text-center">Factor</th>
-                              <th class="text-center">Valor</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($factor_horas_diarias as $horas_diarias)
-                                <tr>
-                                <td class="px-6 py-4 text-sm text-gray-800  text-center">
-                                  {{$horas_diarias->factor}}
-                                </td>
-
-                                <td class="px-6 py-4 text-sm text-gray-800  text-center">
-                                    {{$horas_diarias->valor}}
-                                  </td>
-                                </tr>
-                                @empty
-
-                                @endforelse
-                            </tbody>
-                      </table>
-                   </div>
-                   <div class="w-1/4 bg-gray-100  border-2 border-gray-500">
-                    <h1 class="font-bold font-roboto text-xl">Factor Horas Diarias (FHD)</h1>
-                    <table id="factor_horas_diarias_table">
-                        <thead>
-                            <tr>
-                              <th class="text-center">Factor</th>
-                              <th class="text-center">Valor</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @forelse ($factor_garantia as $garantia)
-                                <tr>
-                                <td class="px-6 py-4 text-sm text-gray-800  text-center">
+                              <td class="px-6 py-4 text-sm text-gray-800  text-center">
                                   {{$garantia->factor}}
-                                </td>
+                              </td>
 
-                                <td class="px-6 py-4 text-sm text-gray-800  text-center">
-                                    {{$garantia->valor}}
-                                  </td>
-                                </tr>
-                                @empty
-
-                                @endforelse
-                            </tbody>
+                              <td class="px-6 py-4 text-sm text-gray-800  text-center">
+                                  {{$garantia->valor}}
+                               </td>
+                               <td class="actions-cell">
+                                  <div class="buttons right nowrap">
+                                      <button  onclick="mostrar_modal_factores('modal_factores','{{$garantia->id}}','factor_garantia','Factor Garantia (FG)');"  class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+                                          <span class="icon"><i class="mdi mdi-pencil"></i></span>
+                                      </button>
+                                  </div>
+                               </td>
+                            </tr>
+                            @empty
+                            @endforelse
+                          </tbody>
                     </table>
                  </div>
-                </div>
+                 <div class="w-1/4 bg-gray-100  border-2 border-gray-500">
+                  <h1 class="font-bold font-roboto text-xl">Factor Horas Diarias (FHD)</h1>
+                  <table id="factor_horas_diarias_table">
+                      <thead>
+                          <tr>
+                            <th class="text-center">Factor</th>
+                            <th class="text-center">Valor</th>
+                            <th></th>
+                          </tr>
+                          </thead>
+                          <tbody>
+
+
+
+                              @forelse ($factor_horas_diarias as $horas_diarias)
+                              <tr>
+                              <td class="px-6 py-4 text-sm text-gray-800  text-center">
+                                {{$horas_diarias->factor}}
+                              </td>
+
+                              <td class="px-6 py-4 text-sm text-gray-800  text-center">
+                                  {{$horas_diarias->valor}}
+                                </td>
+                                <td class="actions-cell">
+                                    <div class="buttons right nowrap">
+                                        <button  onclick="mostrar_modal_factores('modal_factores','{{$horas_diarias->id}}','factor_horas_diarias','Factor Horas Diarias (FHD)');" class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+                                            <span class="icon"><i class="mdi mdi-pencil"></i></span>
+                                        </button>
+                                    </div>
+                                 </td>
+                              </tr>
+                              @empty
+
+                              @endforelse
+                          </tbody>
+                  </table>
+               </div>
+
+
+
+                @include('admin.modal_factores')
             </div>
+
+
             {{-- ghajsdgashdgj --}}
           </div>
       </div>
@@ -230,5 +274,52 @@ function ocultar_modal(id){
     $("#"+id).addClass("hidden");
 }
 
+function mostrar_modal_factores(id_modal,id,tipo_factor,titulo){
+    $("#"+id_modal).removeClass("hidden");
+    $.ajax({
+                type: 'get',
+                url: '/get_factor/'+ id +  '/' +tipo_factor,
+                success: function (response) {
+                    $('#titulo_modal').text(titulo);
+                    $('#factor').val(response.factor);
+                    $('#valor').val(response.valor);
+                    $('#tipo_factor').val(tipo_factor);
+                    $('#id_factor').val(response.id);
+
+                },
+                error: function (responsetext) {
+
+                }
+            });
+}
+
+function save_factores(){
+
+// Enviar valuesArray por medio de AJAX
+var token = $("#token").val();
+var formData = $("#factor_form").serialize(); // Serializar los datos del formulario
+
+$.ajax({
+    url: '/store_factor', // Reemplaza con la URL de tu endpoint
+    type: 'POST',
+
+    headers: { 'X-CSRF-TOKEN': token },
+    data: formData,
+    success: function(response) {
+        Swal.fire(
+                    'Guardado!',
+                    'El registro ha guardado.',
+                    'success'
+                )
+        setTimeout(function () { location.reload() }, 500);
+        ocultar_modal('modal_configuraciones');
+
+    },
+    error: function(xhr, status, error) {
+        console.error('Error al enviar los datos:', error);
+    }
+ });
+}
+save_factores
 </script>
 @endsection
