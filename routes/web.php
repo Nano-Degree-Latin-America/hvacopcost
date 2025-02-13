@@ -198,6 +198,8 @@ Route::get('get_configuracion/{id}', 'MantenimientoController@get_configuracion'
 Route::post('traer_datos_tarjeta', 'MantenimientoController@traer_datos_tarjeta');
 Route::post('delete_reg_table_equipos/{id}', 'MantenimientoController@delete_reg_table_equipos');
 Route::post('store_configuracion', 'MantenimientoController@store_configuracion');
+Route::post('store_configuracion', 'MantenimientoController@store_configuracion');
+Route::get('get_calculo_base/{id}', 'MantenimientoController@get_calculo_base');
 
 
 //lang

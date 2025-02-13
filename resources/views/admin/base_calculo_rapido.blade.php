@@ -87,11 +87,12 @@ span{
                         @forelse ($bases as $base)
                         <tr class="font-roboto  bg-slate-200 place-content-center">
                             <td class="px-6 py-4 text-sm text-gray-800">
-                                @foreach ($sistemas as $sistema)
-                                    @if ($base->sistema ==  $sistema['value'])
-                                    {{$sistema['text']}}
+                               {{--  @foreach ($sistemas as $sistema)
+                                    @if ($base->sistema ==  $sistema->id)
+                                    {{$sistema->name}}
                                     @endif
-                               @endforeach
+                               @endforeach --}}
+                               {{$base->sistema_name}}
                             </td>
 
                             <td class="px-6 py-4 text-sm text-gray-800">
@@ -112,7 +113,7 @@ span{
 
                             <td class="actions-cell">
                                 <div class="buttons right nowrap">
-                                    <button  onclick="mostrar_modal_configuracion('modal_configuraciones','{{$base->id}}');" class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
+                                    <button  onclick="mostrar_modal_base_calculo('modal_base_calculo','{{$base->id}}');" class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
                                         <span class="icon"><i class="mdi mdi-pencil"></i></span>
                                     </button>
                                 </div>
@@ -125,7 +126,7 @@ span{
                 </tbody>
             </table>
 
-            @include('admin.modal_configuraciones')
+            @include('admin.modal_base_calculo')
             <div class="table-pagination">
                 <div class="flex items-center justify-between">
                     {{-- {{ $empresas->links() }} --}}
@@ -147,17 +148,15 @@ function ocultar_modal(id){
     $("#"+id).addClass("hidden");
 }
 
-function mostrar_modal_configuracion(id_modal,id_configuracion){
+function mostrar_modal_base_calculo(id_modal,id_base){
     $("#"+id_modal).removeClass("hidden");
     $.ajax({
                 type: 'get',
-                url: '/get_configuracion/'+ id_configuracion,
+                url: '/get_calculo_base/'+ id_base,
                 success: function (response) {
-                    $('#configuracion').val(response.configuracion);
-                    $('#valor').val(response.valor);
-                    $('#unidad').val(response.unidad);
-                    $('#id_configuracion').val(response.id);
+                    //$('#configuracion').val(response.id);/*
 
+                    $('#sistema').val(response.sistema_name);
                 },
                 error: function (responsetext) {
 
