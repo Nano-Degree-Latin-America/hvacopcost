@@ -14,6 +14,7 @@ use App\FactorAmbienteModel;
 use App\FactorEstadoUnidad;
 use App\FactorGarantiaModel;
 use App\FactorHorasDiariasModel;
+use App\SistemasModel;
 use Illuminate\Support\Facades\Session;
 class MantenimientoController extends Controller
 {
@@ -32,11 +33,10 @@ class MantenimientoController extends Controller
     public function configuraciones(){
 
 
-
         $user = Auth::user();
 
         return view('admin.base_calculo_rapido',['user'=>$user]);
-}
+    }
 
 
 public function factores_mantenimiento(){
@@ -58,31 +58,30 @@ public function factores_mantenimiento(){
 
     public function base_calculo_rapido(){
 
-        $sistemas = [
-            ['value' => 1, 'text' => "Paquetes (RTU)"],
-            ['value' => 2, 'text' => "Split DX"],
-            ['value' => 3, 'text' => "VRF No Ductados"],
-            ['value' => 4, 'text' => "VRF Ductados"],
-            ['value' => 5, 'text' => "PTAC/VTAC"],
-            ['value' => 6, 'text' => "WSHP"],
-            ['value' => 7, 'text' => "Minisplit Inverter"],
-            ['value' => 8, 'text' => "Chiller Scroll - Aire"],
-            ['value' => 9, 'text' => "Chiller Scroll - Agua"],
-            ['value' => 10, 'text' => "Chiller Tornillo - Aire"],
-            ['value' => 11, 'text' => "Chiller Tornillo - Agua"],
-            ['value' => 12, 'text' => "Extractor"],
-            ['value' => 13, 'text' => "Inyector"],
-        ];
+        $sistemas = SistemasModel::all();
 
-        $bases = BaseCalculoModel::join('unidades','unidades.id','=','id_unidad')
-        ->select('base_calculo_rapido.*','unidades.unidad as unidad_name')->get();
+
+        $bases = BaseCalculoModel::join('sistemas_hvac','sistemas_hvac.id','=','sistema')
+        ->join('unidades','unidades.id','=','id_unidad')
+        ->select('base_calculo_rapido.*','unidades.unidad as unidad_name','sistemas_hvac.name as sistema_name')
+        ->get();
 
         return view('admin.base_calculo_rapido',['bases'=>$bases,'sistemas'=>$sistemas,]);
     }
 
     public function get_configuracion($id_configuracion){
         $configuracion = ConfiguracionesMantenimientoModel::find($id_configuracion);
-       return response()->json($configuracion);
+        return response()->json($configuracion);
+    }
+
+    public function get_calculo_base($id_base){
+
+        $base_calculo = BaseCalculoModel::where('base_calculo_rapido.id','=',$id_base)->join('sistemas_hvac','sistemas_hvac.id','=','sistema')
+        ->join('unidades','unidades.id','=','id_unidad')
+        ->select('base_calculo_rapido.*','unidades.unidad as unidad_name','sistemas_hvac.name as sistema_name')
+        ->first();
+
+        return response()->json($base_calculo);
     }
 
     public function store_configuracion(Request $request){

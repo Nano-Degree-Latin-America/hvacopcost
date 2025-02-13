@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        $this->call(SistemasSeeder::class);
         //$this->call(categorias_edificios_seeder::class);
         //$this->call(UnidadesSeeder::class);
         //$this->call(DisenoSeeder::class);
@@ -24,7 +26,7 @@ class DatabaseSeeder extends Seeder
          //$this->call(FactorEstadoUnidadSeeder::class);
          //$this->call(FactorHorasDiariasSeeder::class);
          //$this->call(FactorGarantiaSeeder::class);
-         $this->call(BaseCalculoSeeder::class);
+         //$this->call(BaseCalculoSeeder::class);
 
 
     }
