@@ -112,6 +112,8 @@ Route::get('check_marcas_def', 'EmpresasController@check_marcas_def');
 Route::get('check_marcas_def_vrf', 'EmpresasController@check_marcas_def_vrf');
 Route::post('delete_modele/{marca}/{modelo}/{equipo}', 'EmpresasController@delete_modele');
 Route::post('delete_marke/{marca}/{modelo}/{equipo}', 'EmpresasController@delete_marke');
+Route::get('configuraciones', 'EmpresasController@configuraciones_mantenimiento');
+Route::post('store_configuracion', 'EmpresasController@store_configuracion');
 //sucursales
 Route::get('sucursales_emp/{id}', 'SucursalesController@sucursales_empresa');
 Route::resource('sucursales', 'SucursalesController');
@@ -197,7 +199,6 @@ Route::get('factores_mantenimiento', 'MantenimientoController@factores_mantenimi
 Route::get('get_configuracion/{id}', 'MantenimientoController@get_configuracion');
 Route::post('traer_datos_tarjeta', 'MantenimientoController@traer_datos_tarjeta');
 Route::post('delete_reg_table_equipos/{id}', 'MantenimientoController@delete_reg_table_equipos');
-Route::post('store_configuracion', 'MantenimientoController@store_configuracion');
 Route::post('store_base_calculo', 'MantenimientoController@store_base_calculo');
 Route::get('get_calculo_base/{id}', 'MantenimientoController@get_calculo_base');
 Route::get('get_factor/{id}/{factor}', 'MantenimientoController@get_factor');
