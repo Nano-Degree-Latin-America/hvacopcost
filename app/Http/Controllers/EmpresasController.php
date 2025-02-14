@@ -16,6 +16,7 @@ use App\ProjectsModel;
 use App\SucursalesModel;
 use App\MarcasEmpresaModel;
 use App\ModelosEmpresaModel;
+use App\ConfiguracionesMantenimientoModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
@@ -48,6 +49,24 @@ class EmpresasController extends Controller
         ->first()->name;
 
         return view('empresas.index',["emps"=>$emps,"empresas"=>$empresas,"empresa_admin"=>$empresa_admin,"searchText"=>$query]);
+    }
+
+    public function configuraciones_mantenimiento(){
+
+        $configuraciones = ConfiguracionesMantenimientoModel::where('id_empresa','=',Auth::user()->id_empresa)->get();
+
+        return view('empresas.configuraciones_mantenimiento',['configuraciones'=>$configuraciones]);
+    }
+
+    public function store_configuracion(Request $request){
+
+        $upadte_configuracion = ConfiguracionesMantenimientoModel::find(intval($request->get('id_configuracion')));
+        $upadte_configuracion->configuracion = $request->get('configuracion');
+        $upadte_configuracion->valor = $request->get('valor');
+        $upadte_configuracion->unidad = $request->get('unidad');
+        $upadte_configuracion->update();
+
+       return $upadte_configuracion;
     }
 
     /**

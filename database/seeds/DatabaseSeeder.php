@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        $this->call(SistemasSeeder::class);
+        //$this->call(SistemasSeeder::class);
         //$this->call(categorias_edificios_seeder::class);
         //$this->call(UnidadesSeeder::class);
         //$this->call(DisenoSeeder::class);
@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         //$this->call(DrSeeder::class);
         //$this->call(FiltracionSeeder::class);
         //$this->call(VentilacionSeeder::class);
-         //$this->call(ConfiguracionesMantenimientoSeeder::class);
+         $this->call(ConfiguracionesMantenimientoSeeder::class);
          //$this->call(FactorAmbienteSeed::class);
          //$this->call(FactorAccesoSeeder::class);
          //$this->call(FactorEstadoUnidadSeeder::class);

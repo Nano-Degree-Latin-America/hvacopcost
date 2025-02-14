@@ -15,6 +15,7 @@ use App\FactorEstadoUnidad;
 use App\FactorGarantiaModel;
 use App\FactorHorasDiariasModel;
 use App\SistemasModel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 class MantenimientoController extends Controller
 {
@@ -28,14 +29,6 @@ class MantenimientoController extends Controller
         $configuraciones = ConfiguracionesMantenimientoModel::all();
 
         return view('admin.configuraciones_mantenimiento',['configuraciones'=>$configuraciones]);
-    }
-
-    public function configuraciones(){
-
-
-        $user = Auth::user();
-
-        return view('admin.base_calculo_rapido',['user'=>$user]);
     }
 
 
@@ -82,17 +75,6 @@ public function factores_mantenimiento(){
         ->first();
 
         return response()->json($base_calculo);
-    }
-
-    public function store_configuracion(Request $request){
-
-        $upadte_configuracion = ConfiguracionesMantenimientoModel::find(intval($request->get('id_configuracion')));
-        $upadte_configuracion->configuracion = $request->get('configuracion');
-        $upadte_configuracion->valor = $request->get('valor');
-        $upadte_configuracion->unidad = $request->get('unidad');
-        $upadte_configuracion->update();
-
-       return $upadte_configuracion;
     }
 
     public function store_base_calculo(Request $request){
