@@ -87,11 +87,6 @@ span{
                         @forelse ($bases as $base)
                         <tr class="font-roboto  bg-slate-200 place-content-center">
                             <td class="px-6  text-sm text-gray-800">
-                               {{--  @foreach ($sistemas as $sistema)
-                                    @if ($base->sistema ==  $sistema->id)
-                                    {{$sistema->name}}
-                                    @endif
-                               @endforeach --}}
                                {{$base->sistema_name}}
                             </td>
 
