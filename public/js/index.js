@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
 
     $('#paises_mantenimiento').on('change', function () {
-        getCiudades($('#paises').val(),'ciudades_mantenimiento');
+        getCiudades($('#paises_mantenimiento').val(),'ciudades_mantenimiento');
     });
 
     $('#btn-reset').on('click', function () {
@@ -1309,6 +1309,9 @@ async function set_ventilaciones_no_doa(value) {
 
             $('#img_ene_fin_proy_hvac').addClass("hidden");
             $('#img_mantenimiento').removeClass("hidden");
+            set_options_factor_mantenimiento();
+            set_options_factor_acceso();
+            set_options_estado_unidad();
            /*  type_p.value = 3;
         pn.checked = false;
         pr.checked = false;
@@ -11861,25 +11864,25 @@ cUnidad_3_3 */
 
      }
 
-     function change_to_porcent(porcent){
+     function change_to_porcent(porcent,id){
 
-        var input_select = $('#porcent_hvac');
         const myArray = porcent.split('%');
         if (myArray.length > 1) {
-            check_porcent_max_min(myArray[0]);
+            check_porcent_max_min(myArray[0],id);
             //var value_set = myArray[0];
             //input_select.val(value_set + '%');
 
         }
 
         if (myArray.length==1) {
-            check_porcent_max_min(porcent);
+            check_porcent_max_min(porcent,id);
             //input_select.val(porcent + '%');
         }
      }
 
-     function check_porcent_max_min(porcent){
-        var input_select = $('#porcent_hvac');
+     function check_porcent_max_min(porcent,id){
+
+        var input_select = $('#'+id);
         if(porcent > 80){
             input_select.empty();
             input_select.val(80 + '%');
@@ -13641,7 +13644,7 @@ function set_horas_diarias(){
 
     const ocupacionMap = {
         'm_50': 'Menor de 50 Hrs.',
-        '18': '18 Hrs.',
+        '168': '168 Hrs.',
         '51_167': '51 a 137 Hrs.'
     };
 
@@ -13651,7 +13654,7 @@ function set_horas_diarias(){
     }
 }
 
-function check_form_mantenimiento_tarjet(idm){
+async function check_form_mantenimiento_tarjet(idm){
 
     /////////////////////////////////////
     var sistema =$('#sistema_mantenimiento');
@@ -13884,6 +13887,8 @@ function check_form_mantenimiento_tarjet(idm){
             valuesArray.push(value);
         });
 
+
+
         // Enviar valuesArray por medio de AJAX
         var token = $("#token").val();
     $.ajax({
@@ -13894,9 +13899,9 @@ function check_form_mantenimiento_tarjet(idm){
         data: {
             values: valuesArray
         },
-        success: function(response) {
+        success: async function(response) {
 
-
+            var res_formula = await formula_calculo_mantenimiento();
 
             for (var i = 0; i < response.length; i++) {
                 const arregloInterno = response[i];
@@ -13904,13 +13909,15 @@ function check_form_mantenimiento_tarjet(idm){
                 for (let j = 0; j < arregloInterno.length; j++) {
                     var value = arregloInterno[j];
 
-                    newRow += '<td id="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" style="border-color:#1B17BB;!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                    newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border-color:#1B17BB;!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                 }
+                newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
                 newRow += '<td style="width:40px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
                 newRow += '</tr>';
                 $('#tbody_equipos').append(newRow);
 
             }
+
 
 
         },
@@ -13976,6 +13983,223 @@ async function del_td_tr(tr) {
 
 }
 
-async function trCounts(countador_table) {
+async function formula_calculo_mantenimiento() {
+    var token = $("#token").val();
+    var endpoint = "/get_data_form/";
+    var formData = {};
 
+    // Serializar todos los elementos cuyo nombre termina en '_mantenimiento' o contiene '_mantenimiento_'
+    /* check this  $("input[name$='_mantenimiento'], select[name$='_mantenimiento'], input[name*='_mantenimiento_'], input[name*='precio_']").each */
+
+    try {
+        $("input[name$='_mantenimiento'], select[name$='_mantenimiento']").each(function() {
+            formData[$(this).attr('name')] = $(this).val();
+        });
+        let response = await $.ajax({
+            url: endpoint,
+            type: 'POST',
+            headers: { 'X-CSRF-TOKEN': token },
+            data: formData
+        });
+
+        return response;
+    } catch (error) {
+        console.error('Error al enviar los datos:', error);
+    }
 }
+
+function set_options_factor_mantenimiento(){
+
+    var token = $("#token").val();
+    var endpoint = "/set_options_factor_mantenimiento";
+    var ima =  $('#idioma').val();
+    $.ajax({
+        url: endpoint,
+        type: 'get',
+
+        headers: { 'X-CSRF-TOKEN': token },
+        success: function(response) {
+            $('#tipo_ambiente_mantenimiento').empty();
+            check_val_text('tipo_ambiente_mantenimiento',ima)
+
+            response.forEach(res => {
+                $('#tipo_ambiente_mantenimiento').append($('<option>', {
+                    value: res.id,
+                    text: res.factor
+                }));
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+}
+
+function set_options_factor_acceso(){
+
+    var token = $("#token").val();
+    var endpoint = "/set_options_factor_acceso";
+    var ima =  $('#idioma').val();
+    $.ajax({
+        url: endpoint,
+        type: 'get',
+
+        headers: { 'X-CSRF-TOKEN': token },
+        success: function(response) {
+            $('#tipo_acceso_mantenimiento').empty();
+            check_val_text('tipo_acceso_mantenimiento',ima)
+
+            response.forEach(res => {
+                $('#tipo_acceso_mantenimiento').append($('<option>', {
+                    value: res.id,
+                    text: res.factor
+                }));
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+}
+
+function set_options_factor_estado_unidad(){
+
+    var token = $("#token").val();
+    var endpoint = "/set_options_factor_estado_unidad";
+    var ima =  $('#idioma').val();
+    $.ajax({
+        url: endpoint,
+        type: 'get',
+
+        headers: { 'X-CSRF-TOKEN': token },
+        success: function(response) {
+            $('#estado_unidad_mantenimiento').empty();
+            check_val_text('estado_unidad_mantenimiento',ima)
+
+            response.forEach(res => {
+                $('#estado_unidad_mantenimiento').append($('<option>', {
+                    value: res.id,
+                    text: res.factor
+                }));
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+}
+
+function set_options_estado_unidad(){
+    var token = $("#token").val();
+    var endpoint = "/set_options_factor_estado_unidad";
+    var ima =  $('#idioma').val();
+    $.ajax({
+        url: endpoint,
+        type: 'get',
+
+        headers: { 'X-CSRF-TOKEN': token },
+        success: function(response) {
+            $('#estado_unidad_mantenimiento').empty();
+            check_val_text('estado_unidad_mantenimiento',ima)
+
+            response.forEach(res => {
+                $('#estado_unidad_mantenimiento').append($('<option>', {
+                    value: res.id,
+                    text: res.factor
+                }));
+            });
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+}
+
+function change_to(value,unidad,id){
+
+    const myArray = value.split(unidad);
+
+    if (myArray.length > 1) {
+
+            check_porcent_max_min_kms(myArray[0],id,unidad);
+
+        //var value_set = myArray[0];
+        //input_select.val(value_set + '%');
+
+    }
+
+    if (myArray.length==1) {
+        check_porcent_max_min_kms(value,id,unidad);
+        //input_select.val(porcent + '%');
+    }
+}
+
+function check_porcent_max_min_kms(value,id,unidad){
+    var input_select = $('#'+id);
+
+    switch (unidad) {
+        case 'kms':
+            var maxim = 300;
+            var min = 0;
+        break;
+
+        case 'km/h':
+            var maxim = 120;
+            var min = 0;
+        break;
+
+        case '%':
+            var maxim = 100;
+            var min = 0;
+        break;
+
+        default:
+            break;
+    }
+    if(value > maxim){
+        input_select.empty();
+        input_select.val(maxim+unidad);
+        return false;
+    }
+
+    if(value >= min && value <= maxim){
+
+        input_select.empty();
+        input_select.val(value+unidad);
+
+        return false;
+    }
+
+    if(value < min){
+        input_select.empty();
+        input_select.val(min+unidad);
+        return false;
+    }
+ }
+
+
+
+ function calcular_speendplan_base(){
+    var token = $("#token").val();
+    var formData = {};
+    $("input[name$='_mantenimiento'], select[name$='_mantenimiento'], textarea[name$='_mantenimiento'], input[name*='_mantenimiento_']").each(function() {
+        formData[$(this).attr('name')] = $(this).val();
+    });
+
+    $.ajax({
+        url: '/spend_plan_basee', // Reemplaza con la URL de tu endpoint
+        type: 'POST',
+
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            values: valuesArray
+        },
+        success: async function(response) {
+
+
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+ }

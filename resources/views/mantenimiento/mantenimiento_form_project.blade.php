@@ -82,9 +82,7 @@
                         </div>
                         <select onchange="check_input(this.value,this.id,'tipo_ambiente_warning_mantenimiento');check_inp_count('count_tipo_ambiente_mantenimiento','tipo_ambiente_mantenimiento');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="tipo_ambiente_mantenimiento" id="tipo_ambiente_mantenimiento">
                             <option value="">-{{ __('index.seleccionar') }}-</option>
-                            <option value="limpio">{{ __('mantenimiento.limpio') }}</option>
-                            <option value="sucio">{{ __('mantenimiento.sucio') }}</option>
-                            <option value="promedio">{{ __('mantenimiento.promedio') }}</option>
+
                         </select>
                         <input id="count_tipo_ambiente_mantenimiento" name="count_tipo_ambiente_mantenimiento" type="number" class="hidden" value="0">
                         <span id="tipo_ambiente_warning_mantenimiento" name="tipo_ambiente_warning_mantenimiento" class="text-red-500"></span>
@@ -157,7 +155,7 @@
                         </div>
                         <select onchange="check_input(this.value,this.id,'velocidad_promedio_warning_mantenimiento');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="velocidad_promedio_mantenimiento" id="velocidad_promedio_mantenimiento">
                             @for ($i = 0; $i <= 120; $i = $i + 10)
-                            <option value="{{$i}}">{{$i}}</option>
+                            <option value="{{$i}}">{{$i}} Km/h</option>
                             @endfor
                         </select>
                         <input id="count_velocidad_promedio_mantenimiento" name="count_velocidad_promedio_mantenimiento" type="number" class="hidden" value="0">
@@ -172,7 +170,7 @@
                         <select onchange="set_horas_diarias();check_input(this.value,this.id,'ocupacion_semanal_warning_mantenimiento');check_inp_count('count_ocupacion_semanal_mantenimiento','ocupacion_semanal_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ocupacion_semanal_mantenimiento" id="ocupacion_semanal_mantenimiento">
                             <option value="">-{{ __('index.seleccionar') }}-</option>
                             <option value="m_50">{{ __('mantenimiento.menos_50') }}.</option>
-                            <option value="18">{{ __('mantenimiento.18hrs') }}.</option>
+                            <option value="168">{{ __('mantenimiento.168hrs') }}.</option>
                             <option value="51_167">{{ __('mantenimiento.51_167') }}.</option>
                         </select>
                         <input id="count_ocupacion_semanal_mantenimiento" name="count_ocupacion_semanal_mantenimiento" type="number" class="hidden"<div class="grid justify-items-end h-full gap-y-1 w-1/2">
@@ -201,7 +199,7 @@
                             </div>
                             <div class="flex w-full">
 
-                                <input type="text" onkeypress="return soloNumeros(event)" onchange="check_porcent_max_min(this.value,this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion" id="inflacion">
+                                <input type="text" onkeypress="return soloNumeros(event)" onchange="change_to_porcent(this.value,this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion" id="inflacion">
                                 <input id="count_inflacion" name="count_inflacion" type="number" class="hidden" value="0">
 
                             </div>
