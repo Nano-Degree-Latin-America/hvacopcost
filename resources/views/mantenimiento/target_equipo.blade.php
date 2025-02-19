@@ -141,9 +141,7 @@
                     <div class="w-full flex justify-start">
                         <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md py-2" name="tipo_acceso_mantenimiento" id="tipo_acceso_mantenimiento">
                             <option selected value="0">&nbsp;Seleccionar</option>
-                            <option value="facil" class="">&nbsp;Fácil</option>
-                            <option value="medio" class="">&nbsp;Medio</option>
-                            <option value="dificil" class="">&nbsp;Difícil</option>
+
                         </select>
                     </div>
                     <input id="tipo_acceso_count_mantenimiento" name="tipo_acceso_count_mantenimiento" type="number" class="hidden" value="1">
@@ -159,9 +157,6 @@
                     <div class="w-1/2 flex justify-start">
                         <select onchange="valida_selects_inps(this.id);" name="estado_unidad_mantenimiento" id="estado_unidad_mantenimiento" class="w-full border-2 border-color-inps rounded-md py-2">
                             <option selected value="0">&nbsp;Seleccionar</option>
-                            <option value="bueno" class="">&nbsp;Bueno</option>
-                            <option value="deficiente" class="">&nbsp;Deficiente</option>
-                            <option value="medio" class="">&nbsp;Medio</option>
                         </select>
                         <input id="estado_unidad_count_mantenimiento" name="estado_unidad_count_mantenimiento" type="number" class="hidden" value="1">
                     </div>

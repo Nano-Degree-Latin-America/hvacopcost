@@ -17,6 +17,7 @@ use App\FactorHorasDiariasModel;
 use App\SistemasModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+
 class MantenimientoController extends Controller
 {
     public function __construct()
@@ -244,6 +245,129 @@ public function factores_mantenimiento(){
 
     }
 
+    public function get_data_form(Request $request){
+        if ($request->ajax()) {
+
+            $sistema = $request->get('sistema_mantenimiento');
+            $unidad = $request->get('unidad_mantenimiento');
+            $capacidad_termica_mantenimiento = $request->get('capacidad_termica_mantenimiento');
+            $cantidad_unidades_mantenimiento = $request->get('cantidad_unidades_mantenimiento');
+            $yrs_vida_mantenimiento = $request->get('yrs_vida_mantenimiento');
+            $tipo_acceso_mantenimiento = $request->get('tipo_acceso_mantenimiento');
+            $estado_unidad_mantenimiento = $request->get('estado_unidad_mantenimiento');
+            $cambio_filtros_mantenimiento = $request->get('cambio_filtros_mantenimiento');
+            $tipo_ambiente_mantenimiento = $request->get('tipo_ambiente_mantenimiento');
+            $ocupacion_semanal_mantenimiento = $request->get('ocupacion_semanal_mantenimiento');
+
+
+            $fg = 1.03;
+            $costo_instalado = $this->obtener_costo_instalado($unidad);
+            $rav = $this->obtener_rav($unidad);
+            $fa = $this->obtener_fa($tipo_ambiente_mantenimiento);
+            $fta = $this->obtener_fta($tipo_acceso_mantenimiento);
+            $feu = $this->obtener_feu($estado_unidad_mantenimiento);
+            $fav = $this->obtener_fav($yrs_vida_mantenimiento);
+            $fhd = $this->obtener_fhd($ocupacion_semanal_mantenimiento);
+
+
+
+
+             $res_formula_calculo = $this->formula_calculo($capacidad_termica_mantenimiento,$cantidad_unidades_mantenimiento,$costo_instalado,$rav,$fa,$fta,$feu,$fav,$fhd,$fg);
+
+           /*  dd($request->all()); */
+             /* dd($capacidad_termica_mantenimiento.'_'.$cantidad_unidades_mantenimiento.'_'.$costo_instalado.'_'.$rav.'_'.$fa.'_'.$fta.'_'.$feu.'_'.$fav.'_'.$fhd); */
+            // La petición es una petición AJAX
+            return $res_formula_calculo;
+        } else {
+            // La petición no es una petición AJAX
+            return response()->json(['message' => 'No es una petición AJAX']);
+        }
+    }
+
+   public function obtener_costo_instalado($unidad){
+        $id_unidad = UnidadesModel::where('identificador','=',$unidad)->first()->id;
+        $costo_instalado = BaseCalculoModel::where('id_unidad','=',$id_unidad)->first()->costo_instalacion;
+        return $costo_instalado;
+   }
+
+   public function obtener_rav($unidad){
+    $id_unidad = UnidadesModel::where('identificador','=',$unidad)->first()->id;
+    $rav = BaseCalculoModel::where('id_unidad','=',$id_unidad)->first()->rav;
+    return $rav;
+   }
+
+
+   public function obtener_fa($tipo_ambiente_mantenimiento){
+    $fa = FactorAmbienteModel::find($tipo_ambiente_mantenimiento)->valor;
+    return $fa;
+   }
+
+   public function obtener_fta($tipo_acceso_mantenimiento){
+    $fta = FactorAccesoModel::find($tipo_acceso_mantenimiento)->valor;
+    return $fta;
+   }
+
+
+   public function obtener_feu($estado_unidad_mantenimiento){
+    $feu = FactorEstadoUnidad::find($estado_unidad_mantenimiento)->valor;
+    return $feu;
+   }
+
+   public function obtener_fav($yrs_vida_mantenimiento){
+        //1/((1-0.012)^Años de vida)
+
+        //(1-0.012)
+        $resta = 1-0.012;
+
+        //restsa^Años de vida
+        $resta_pot_yrs_life = pow($resta,$yrs_vida_mantenimiento);
+
+        //1/resta_pot_yrs_life
+        $fav = 1/$resta_pot_yrs_life;
+
+    return $fav;
+   }
+
+   public function obtener_fhd($ocupacion_semanal_mantenimiento){
+        switch ($ocupacion_semanal_mantenimiento) {
+            case 'm_50':
+                return 0.95;
+            break;
+
+            case '168':
+                return 1.08;
+            break;
+
+            case '51_167':
+                return 1;
+            break;
+            default:
+
+            break;
+        }
+   }
+
+   public function set_options_factor_mantenimiento(){
+     $fta = FactorAmbienteModel::all();
+     return response()->json($fta);
+   }
+
+   public function set_options_factor_acceso(){
+    $fta = FactorAccesoModel::all();
+    return response()->json($fta);
+  }
+
+  public function set_options_factor_estado_unidad(){
+    $feu = FactorEstadoUnidad::all();
+    return response()->json($feu);
+  }
+
+  public function formula_calculo($capacidad_termica_mantenimiento,$cantidad_unidades_mantenimiento,$costo_instalado,$rav,$fa,$fta,$feu,$fav,$fhd,$fg){
+             //(Capacidad Térmica) x (Cantidad de Equipos) x (Costo Instalado)  x RAV x FA x FTA x FEU x FAV x FHD x FG
+ $res = $capacidad_termica_mantenimiento*$cantidad_unidades_mantenimiento*$costo_instalado*$rav*$fa*$fta*$feu*$fav*$fhd*$fg;
+
+    return $res;
+  }
 
 
 }

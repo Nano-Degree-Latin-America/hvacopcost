@@ -203,6 +203,11 @@ Route::post('store_base_calculo', 'MantenimientoController@store_base_calculo');
 Route::get('get_calculo_base/{id}', 'MantenimientoController@get_calculo_base');
 Route::get('get_factor/{id}/{factor}', 'MantenimientoController@get_factor');
 Route::post('store_factor', 'MantenimientoController@store_factor');
+Route::post('get_data_form', 'MantenimientoController@get_data_form');
+Route::get('set_options_factor_mantenimiento', 'MantenimientoController@set_options_factor_mantenimiento');
+Route::get('set_options_factor_acceso', 'MantenimientoController@set_options_factor_acceso');
+Route::get('set_options_factor_estado_unidad', 'MantenimientoController@set_options_factor_estado_unidad');
+
 
 
 //lang
