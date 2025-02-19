@@ -18,10 +18,14 @@ return [
     'selecciona_region' => 'Selecciona tu región',
     'selecciona_ciudad' => 'Selecciona tu ciudad',
     'menos_50' => 'Menos de 50 Hrs',
-    '18hrs' => '18 Hrs',
+    '168hrs' => '168 Hrs',
     '51_167' => '51 a 137 HRs',
     'tecnico' => 'Técnico',
     'tecnico_ayudante' => 'Técnico + Ayudante',
     'sin_emergencia'=>'Sin Emergencia',
     'tipo_mantenimiento'=>'Tipo de Mantenimiento',
+
+    'estandar' => 'Estandar',
+    'marino'=>'Marino',
+    'contaminado'=>'Contaminado',
 ];
