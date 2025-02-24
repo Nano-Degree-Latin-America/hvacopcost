@@ -1,6 +1,6 @@
 <div style="height:80%" class="w-full overflow-y-auto overflow-x-hidden">
    {{--  @inject('marcas_modelos','App\Http\Controllers\MarcasController') --}}
-    <table class="table-fin-04 w-full table-auto">
+    <table class="table-fin-04 w-full">
         <thead>
             <tr>
                 <th style="width:60px;" class="font-roboto font-bold text-center"></th>

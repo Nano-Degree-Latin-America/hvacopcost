@@ -286,7 +286,7 @@ input[type=number]::-webkit-outer-spin-button {
                                     <div id="forms_ene_fin_proy" class="hidden">
                                         @include('forms_ene_fin_proy')
                                     </div>
-                                    <div id="forms_cal_pre" class="hidden">
+                                    <div id="forms_cal_pre" class="hidden w-full">
                                         @include('forms_cal_pre')
                                     </div>
                                  </div>

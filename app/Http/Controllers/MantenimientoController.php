@@ -175,6 +175,8 @@ public function factores_mantenimiento(){
         $marca = MarcasEmpresaModel::find($id_marca);
         $modelo = ModelosEmpresaModel::find($id_modelo);
         $unidad_aux = UnidadesModel::where('identificador','=',$unidad)->first()->unidad;
+        $acceso = FactorAccesoModel::where('id','=',$request->values[8])->first()->factor;
+        $estado = FactorEstadoUnidad::where('id','=',$request->values[9])->first()->factor;
 
         array_push(
             $array_to_response,
@@ -186,16 +188,13 @@ public function factores_mantenimiento(){
             $request->values[5],
             $request->values[6],
             $request->values[7],
-            strtoupper($request->values[8]),
-            strtoupper($request->values[9])
+            strtoupper($acceso),
+            strtoupper($estado)
         );
-
         // Obtener el contenido actual de array_sistemas de la sesión
         $array_sistemas = Session::get('array_sistemas', []);
 
         //reorder contenido array table_count
-
-
 
         // Agregar los nuevos elementos a array_sistemas
         $array_sistemas[] = $array_to_response;
@@ -364,10 +363,136 @@ public function factores_mantenimiento(){
 
   public function formula_calculo($capacidad_termica_mantenimiento,$cantidad_unidades_mantenimiento,$costo_instalado,$rav,$fa,$fta,$feu,$fav,$fhd,$fg){
              //(Capacidad Térmica) x (Cantidad de Equipos) x (Costo Instalado)  x RAV x FA x FTA x FEU x FAV x FHD x FG
- $res = $capacidad_termica_mantenimiento*$cantidad_unidades_mantenimiento*$costo_instalado*$rav*$fa*$fta*$feu*$fav*$fhd*$fg;
+             $rav_porcent = $rav/100;
+             $res = $capacidad_termica_mantenimiento*$cantidad_unidades_mantenimiento*$costo_instalado*$rav_porcent*$fa*$fta*$feu*$fav*$fhd;
 
     return $res;
   }
+
+  public function spend_plan_base(Request $request)
+{
+
+    $analisis_costo_mant_array = [];
+
+    // Obtener el array del request
+    $data = $request->values;
+
+    // Array para almacenar los valores que terminan en _0
+    $filteredData = [];
+
+    // Recorrer el array
+    foreach ($data as $key => $value) {
+        // Verificar si la clave contiene 'precio_' seguido de un número
+        if (preg_match('/^precio_\d+$/', $key)) {
+            // Agregar al array filtrado
+            $filteredData[$key] = $value;
+        }
+    }
+
+    $suma_precios = 0;
+
+    for ($i=0; $i < count($filteredData) ; $i++) {
+        $suma_precios = $suma_precios + $filteredData['precio_'.$i];
+    }
+
+    $materiales_porcent =0.09;
+    $equipos_porcent =0;
+    $mano_obra_porcent = 0.25;
+    $vehiculos_porcent =0.07;
+    $contratistas_porcent =0;
+    $viaticos_porcent =0;
+    $burden_porcent = 0.19;
+    $ga_porcent =0.12;
+    $ventas_porcent =0.06;
+    $financiamiento_porcent = 0.04;
+
+    $materiales = $materiales_porcent * $suma_precios;
+    $equipos = $equipos_porcent * $suma_precios;
+    $mano_obra = $mano_obra_porcent * $suma_precios;
+    $vehiculos = $vehiculos_porcent * $suma_precios;
+    $contratistas = $contratistas_porcent * $suma_precios;
+    $viaticos = $viaticos_porcent * $suma_precios;
+    $burden = $burden_porcent * $suma_precios;
+
+    $ga = $ga_porcent * $suma_precios;
+    $ventas = $ventas_porcent * $suma_precios;
+    $financiamiento = $financiamiento_porcent * $suma_precios;
+
+    $results = [];
+    $total = $materiales + $equipos + $mano_obra + $vehiculos + $contratistas + $viaticos + $burden;
+    $total_porcent = $materiales_porcent + $equipos_porcent + $mano_obra_porcent + $vehiculos_porcent + $contratistas_porcent + $viaticos_porcent + $burden_porcent;
+
+    $ganancia_porcent=1-$total_porcent-$ga_porcent-$ventas_porcent-$financiamiento_porcent;
+    $ganancia = $ganancia_porcent * $suma_precios;
+    array_push($results,$total,$total_porcent);
+
+    //calculo manual de mano de obra
+    $configuraciones = ConfiguracionesMantenimientoModel::where('id_empresa','=',Auth::user()->id_empresa)->get();
+
+
+    //formula tiempo ppara mantenimiento
+    //=(mano de obra/tecnico ayudante configurasciones)*0.65
+    $valor_tecnico_ayudante = ConfiguracionesMantenimientoModel::where('slug','=','mo-tecnico-y-ayudante')
+    ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+    $mano_obra_div_tecnico_ayudante = $mano_obra/$valor_tecnico_ayudante;
+    $tiempo_mantenimiento = $mano_obra_div_tecnico_ayudante*0.65;
+
+    // $dias_mantenimiento = */
+    //tiempo_mantenimiento/(valor_horas_utiles-0.5)
+    $valor_horas_utiles = ConfiguracionesMantenimientoModel::where('slug','=','horas-utiles-dia')
+    ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+    //valor_horas_utiles-0.5
+    $valor_horas_utiles_menos_05 = intval($valor_horas_utiles) - 0.5;
+    //tiempo_mantenimiento/(valor_horas_utiles-0.5)
+    $dias_mantenimiento = $tiempo_mantenimiento/$valor_horas_utiles_menos_05;
+
+
+    //dias_mantenimiento*distancia_sitio_mantenimiento*2/velocidad_promedio_mantenimiento
+    $distancia_sitio_mantenimiento_aux = explode('kms',$request->values['distancia_sitio_mantenimiento']);
+    $distancia_sitio_mantenimiento= intval($distancia_sitio_mantenimiento_aux[0]);
+    $velocidad_promedio_mantenimiento = $request->values['velocidad_promedio_mantenimiento'];
+
+    $valor_tiempos_traslados = ConfiguracionesMantenimientoModel::where('slug','=','horas-utiles-dia')
+    ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+
+    $tiempo_traslados = $dias_mantenimiento*$distancia_sitio_mantenimiento*2/$velocidad_promedio_mantenimiento;
+
+    //tiempo acceeso edificio
+    $tiempo_acceso_edificio = $dias_mantenimiento;
+
+    //tiempo_garantias
+    $valor_mano_obra_tecnico = ConfiguracionesMantenimientoModel::where('slug','=','mano-obra-tecnico')
+    ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+    //(mano_obra/valor_mano_obra_tecnico)-tiempo_traslados-tiempo_acceso_edificio-tiempo_mantenimiento
+
+    //(mano_obra/valor_mano_obra_tecnico)
+    $mano_obra_div_valor_mano_obra_tecnico = $mano_obra/$valor_mano_obra_tecnico;
+    $tiempo_garantias = $mano_obra_div_valor_mano_obra_tecnico-$tiempo_traslados-$tiempo_acceso_edificio-$tiempo_mantenimiento;
+
+
+    ///////////////////////calculo vehiculos
+    $costo_teorico = $vehiculos;
+
+    //cossto_pracrtico
+    //dias_mantenimiento*$distancia_sitio_mantenimiento*valor_vehiculo
+    $valor_vehiculo = ConfiguracionesMantenimientoModel::where('slug','=','valor-vehiculo')
+    ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+    $costo_practico = $dias_mantenimiento*$distancia_sitio_mantenimiento*$valor_vehiculo;
+
+
+    array_push($analisis_costo_mant_array,number_format($suma_precios,2),intval($dias_mantenimiento),intval($tiempo_mantenimiento),intval($tiempo_traslados),intval($tiempo_acceso_edificio),intval($tiempo_garantias));
+   /*  $results_ganancias = [];
+
+    $ganancia = $ga+$ventas+$financiamiento;
+    $ganancia_porcent = $ga_porcent + $ventas_porcent + $financiamiento_porcent;
+    array_push($results_ganancias,$ganancia,$ganancia_porcent);
+
+    $all_results = [];
+    array_push($all_results,$results,$results_ganancias); */
+
+    // Devolver el array filtrado como respuesta JSON
+    return response()->json($analisis_costo_mant_array);
+}
 
 
 }
