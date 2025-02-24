@@ -13909,7 +13909,7 @@ async function check_form_mantenimiento_tarjet(idm){
                 for (let j = 0; j < arregloInterno.length; j++) {
                     var value = arregloInterno[j];
 
-                    newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border-color:#1B17BB;!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                    newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                 }
                 newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
                 newRow += '<td style="width:40px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
@@ -13955,7 +13955,9 @@ async function del_td_tr(tr) {
         data: {
             values: ids,
         },
-        success: function(response) {
+        success: async function(response) {
+
+            var res_formula = await formula_calculo_mantenimiento();
 
             $('#tbody_equipos').empty();
 
@@ -13964,9 +13966,9 @@ async function del_td_tr(tr) {
                 var newRow = '<tr id='+i+'>';
                 for (let j = 0; j < arregloInterno.length; j++) {
                     var value = arregloInterno[j];
-
-                    newRow += '<td id="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" style="border-color:#1B17BB;!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                    newRow += '<td id="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border-color:#1B17BB;!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                 }
+                newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
                 newRow += '<td style="width:40px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
                 newRow += '</tr>';
                 $('#tbody_equipos').append(newRow);
@@ -14182,21 +14184,25 @@ function check_porcent_max_min_kms(value,id,unidad){
  function calcular_speendplan_base(){
     var token = $("#token").val();
     var formData = {};
-    $("input[name$='_mantenimiento'], select[name$='_mantenimiento'], textarea[name$='_mantenimiento'], input[name*='_mantenimiento_']").each(function() {
+    $("input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_'], input[name*='precio_']").each(function() {
         formData[$(this).attr('name')] = $(this).val();
     });
 
     $.ajax({
-        url: '/spend_plan_basee', // Reemplaza con la URL de tu endpoint
+        url: '/spend_plan_base', // Reemplaza con la URL de tu endpoint
         type: 'POST',
 
         headers: { 'X-CSRF-TOKEN': token },
         data: {
-            values: valuesArray
+            values: formData
         },
         success: async function(response) {
-
-
+            $('#valor_contrato_anual').val(response[0]);
+            $('#dias_mantenimiento').val(response[1]);
+            $('#tiempo_mantenimiento').val(response[2]);
+            $('#tiempo_traslados').val(response[3]);
+            $('#tiempo_acceso_edificio').val(response[4]);
+            $('#tiempo_garantias').val(response[5]);
         },
         error: function(xhr, status, error) {
             console.error('Error al enviar los datos:', error);

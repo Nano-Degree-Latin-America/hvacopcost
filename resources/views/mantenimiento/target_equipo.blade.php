@@ -15,7 +15,7 @@
             </div>
 
         </div>
-        <div style="border-color:#233064;" class="border-r-2 border-l-2">
+        <div style="border-color:#233064;" class="border-r-2 border-l-2 border-b-2">
 
 
         <div class="grid w-full" id="sol_1_1" name="sol_1_1">
