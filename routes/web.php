@@ -207,6 +207,7 @@ Route::post('get_data_form', 'MantenimientoController@get_data_form');
 Route::get('set_options_factor_mantenimiento', 'MantenimientoController@set_options_factor_mantenimiento');
 Route::get('set_options_factor_acceso', 'MantenimientoController@set_options_factor_acceso');
 Route::get('set_options_factor_estado_unidad', 'MantenimientoController@set_options_factor_estado_unidad');
+Route::post('spend_plan_base', 'MantenimientoController@spend_plan_base');
 
 
 
