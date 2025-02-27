@@ -14209,3 +14209,34 @@ function check_porcent_max_min_kms(value,id,unidad){
         }
     });
  }
+
+
+ function calcular_speendplan_base_adicionales(){
+    var token = $("#token").val();
+    var formData = {};
+    $("input[name$='_adicionales'],input[name$='_mantenimiento'], select[name$='_mantenimiento']").each(function() {
+        formData[$(this).attr('name')] = $(this).val();
+    });
+
+    $.ajax({
+        url: '/spend_plan_base_adicionales', // Reemplaza con la URL de tu endpoint
+        type: 'POST',
+
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            values: formData
+        },
+        success: async function(response) {
+            $('#valor_contrato_anual_adicionales').val(response[0]);
+            $('#dias_mantenimiento_adicionales').val(response[1]);
+            $('#tiempo_mantenimiento_adicionales').val(response[2]);
+            $('#tiempo_traslados_adicionales').val(response[3]);
+            $('#tiempo_acceso_edificio_adicionales').val(response[4]);
+            $('#tiempo_garantias_adicionales').val(response[5]);
+        },
+
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+ }
