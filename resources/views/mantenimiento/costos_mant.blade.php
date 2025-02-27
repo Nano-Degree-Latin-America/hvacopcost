@@ -132,7 +132,7 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center">
-                    <input id="dias_mantenimiento" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs</label>
+                    <input id="dias_mantenimiento_adicionales" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs</label>
                 </div>
             </div>
 
@@ -143,7 +143,7 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center">
-                    <input id="tiempo_mantenimiento" name="tiempo_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs</label>
+                    <input id="tiempo_mantenimiento_adicionales" name="tiempo_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs</label>
                 </div>
             </div>
 
@@ -154,7 +154,7 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center">
-                    <input id="tiempo_traslados" name="tiempo_traslados_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs</label>
+                    <input id="tiempo_traslados_adicionales" name="tiempo_traslados_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs</label>
                 </div>
             </div>
 
@@ -165,7 +165,7 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center">
-                    <input id="tiempo_acceso_edificio" name="tiempo_acceso_edificio_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs</label>
+                    <input id="tiempo_acceso_edificio_adicionales" name="tiempo_acceso_edificio_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs</label>
                 </div>
             </div>
 
@@ -176,7 +176,7 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center">
-                    <input  id="tiempo_garantias" name="tiempo_garantias_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs</label>
+                    <input  id="tiempo_garantias_adicionales" name="tiempo_garantias_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs</label>
                 </div>
             </div>
 

@@ -411,20 +411,23 @@ input[type=number]::-webkit-outer-spin-button {
                 </div>
 
                 <div id="button_sigiuente_mantenimiento" class="hidden">
-{{--                     <button style="background-color:#1B17BB;width: 20%;" x-if="step > 1 || step != 2" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1,'{{App::getLocale()}}','store','','');" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
- --}}
-
-
-
-
 
                     <button  type="button" id="next_h_mantenimiento" name="next_h_mantenimiento"
                     style="background-color:#1B17BB;"
-                        x-show="step > 2 && step < 5"
+                        x-show="step > 2 && step < 2"
                         @click="step++"
-                        class="ocus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('index.siguiente') }}</button>
-                    </div>
+
+                    <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
+                    onclick="calcular_speendplan_base_adicionales();"
+                    style="background-color:#1B17BB;"
+                        x-show="step == 3"
+                        @click="step++"
+                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                    >{{ __('index.siguiente') }}</button>
+
+                   </div>
                 </div>
 
 

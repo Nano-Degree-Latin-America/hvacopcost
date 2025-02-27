@@ -374,6 +374,8 @@ public function factores_mantenimiento(){
 
     $analisis_costo_mant_array = [];
 
+    $array_speed_plan = [];
+
     // Obtener el array del request
     $data = $request->values;
 
@@ -479,20 +481,171 @@ public function factores_mantenimiento(){
     ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
     $costo_practico = $dias_mantenimiento*$distancia_sitio_mantenimiento*$valor_vehiculo;
 
+    //guardar en array_speed_plan
+    array_push($array_speed_plan,$materiales,$equipos,$mano_obra,$vehiculos,$contratistas,$viaticos,$burden,$ga,$ventas,$financiamiento);
+    // Guardar el array actualizado en la sesión
+    session(['array_speed_plan' => $array_speed_plan]);
 
     array_push($analisis_costo_mant_array,number_format($suma_precios,2),intval($dias_mantenimiento),intval($tiempo_mantenimiento),intval($tiempo_traslados),intval($tiempo_acceso_edificio),intval($tiempo_garantias));
-   /*  $results_ganancias = [];
 
-    $ganancia = $ga+$ventas+$financiamiento;
-    $ganancia_porcent = $ga_porcent + $ventas_porcent + $financiamiento_porcent;
-    array_push($results_ganancias,$ganancia,$ganancia_porcent);
-
-    $all_results = [];
-    array_push($all_results,$results,$results_ganancias); */
-
-    // Devolver el array filtrado como respuesta JSON
     return response()->json($analisis_costo_mant_array);
 }
 
+public function spend_plan_base_adicionales(Request $request)
+{
+    $analisis_costo_mant_array = [];
+     // Obtener array_sistemas de la sesión
+    $array_speed_plan = Session::get('array_speed_plan');
+    $paquete_refacciones = 0;
+    $pruebas_especiales = 0;
+
+    $mariales_adicionales = $request->values['costos_filtro_aire_adicionales']+$paquete_refacciones+$pruebas_especiales;
+    $costos_filtro_aire_adicionales = $request->values['costos_filtro_aire_adicionales'];
+    $servicio_emergencias_adicionales = $request->values['servicio_emergencias_adicionales'];
+    $tiempo_adicional_accesos_adicionales = $request->values['tiempo_adicional_accesos_adicionales'];
+    $curso_seguridad_otros_adicionales = $request->values['curso_seguridad_otros_adicionales'];
+    $lavado_filtros_aire_adicionales = $request->values['lavado_filtros_aire_adicionales'];
+    $lavado_evaporadores_adicionales = $request->values['lavado_evaporadores_adicionales'];
+    $lavado_extra_condensadores_adicionales = $request->values['lavado_extra_condensadores_adicionales'];
+    $lavado_ventiladores_adicionales = $request->values['lavado_ventiladores_adicionales'];
+    $limpieza_grasa_adicionales = $request->values['limpieza_grasa_adicionales'];
+    $seguristas_supervicion_adicionales = $request->values['seguristas_supervicion_adicionales'];
+    $contratistas_adicionales = $request->values['contratistas_adicionales'];
+    $viaticos_adicionales = $request->values['viaticos_adicionales'];
+    $mo_tecnico_yudante = ConfiguracionesMantenimientoModel::where('slug','=','mo-tecnico-y-ayudante')->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+    $segurista_supervisor = ConfiguracionesMantenimientoModel::where('slug','=','segurista-supervisor')
+    ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+    $valor_burden = ConfiguracionesMantenimientoModel::where('slug','=','valor-burden')
+    ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+    $valor_horas_utiles = ConfiguracionesMantenimientoModel::where('slug','=','horas-utiles-dia')
+    ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+    $valor_mano_obra_tecnico = ConfiguracionesMantenimientoModel::where('slug','=','mano-obra-tecnico')
+    ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+    $valor_vehiculo = ConfiguracionesMantenimientoModel::where('slug','=','valor-vehiculo')
+    ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+
+    $materiales = $array_speed_plan[0];
+    $equipos = 0;
+    $vehiculos = $array_speed_plan[3];
+    $contratistas = $array_speed_plan[4];
+    $viaticos = $array_speed_plan[5];
+    $burden = $array_speed_plan[6];
+
+    $ga =$array_speed_plan[7];
+    $ventas =$array_speed_plan[8];
+    $financiamiento =$array_speed_plan[9];
+
+    //////////////////////materiales
+    $materiales_sp_adicionales =  $materiales+$mariales_adicionales;
+
+    ///////////////////equipos
+    $equipos_sp_adicionales = $equipos;
+
+    /////////////////////mano de obra adcionales
+
+    //$array_speed_plan[2]+((servicio_emergencias_adicionales+tiempo_adicional_accesos_adicionales+curso_seguridad_otros_adicionales+lavado_filtros_aire_adicionales++lavado_evaporadores_adicionales+lavado_extra_condensadores_adicionales+lavado_ventiladores_adicionales+limpieza_grasa_adicionales)*mo_tecnico_yudante)+(M19*Configuraciones!H9)
+
+
+    //$array_speed_plan[2]+((servicio_emergencias_adicionales+tiempo_adicional_accesos_adicionales+curso_seguridad_otros_adicionales+lavado_filtros_aire_adicionales++lavado_evaporadores_adicionales+lavado_extra_condensadores_adicionales+lavado_ventiladores_adicionales+limpieza_grasa_adicionales)
+    $suma_ = $array_speed_plan[2]+$servicio_emergencias_adicionales+$tiempo_adicional_accesos_adicionales+$curso_seguridad_otros_adicionales+$lavado_filtros_aire_adicionales+$lavado_evaporadores_adicionales+$lavado_extra_condensadores_adicionales+$lavado_ventiladores_adicionales+$limpieza_grasa_adicionales;
+
+    //$suma_*mo_tecnico_yudante)+($seguristas_supervicion_adicionales*Configuraciones!H9)
+    $multi_mano_obra = $suma_*$mo_tecnico_yudante;
+
+    //multi_mano_obra+($seguristas_supervicion_adicionales*$mano_obra =$array_speed_plan[2]
+    $seguristas_mult_mano_obra =$seguristas_supervicion_adicionales*$array_speed_plan[2];
+
+    //multi_mano_obra+($seguristas_supervicion_adicionales*$mano_obra =$array_speed_plan[2]
+    $mano_de_obra_sp_adicionales = $multi_mano_obra+$seguristas_mult_mano_obra;
+
+    //////////////////////vehiculos
+    $vehiculos_sp_adicionales = $vehiculos*1.2;
+
+    //////////////////////contratistas
+    //contratistas_adicionales+(seguristas_supervicion_adicionales*seguristas_supervicion)
+
+    $seguristas_supervicion_adicionales_multi_seguristas_supervicion = $seguristas_supervicion_adicionales*$segurista_supervisor;
+
+    $contratistas_sp_adicionales = $contratistas_adicionales+$seguristas_supervicion_adicionales_multi_seguristas_supervicion;
+
+    //////////////////////viaticos
+    $viaticos_sp_adicionales = $viaticos_adicionales;
+
+
+     //////////////////////burden
+     //$burden+((suma_burden)*valor_burden)
+
+     $suma_burden =$servicio_emergencias_adicionales+$tiempo_adicional_accesos_adicionales+$curso_seguridad_otros_adicionales+$lavado_filtros_aire_adicionales+$lavado_evaporadores_adicionales+$lavado_extra_condensadores_adicionales+$lavado_ventiladores_adicionales+$limpieza_grasa_adicionales;
+
+     //(suma_burden)*valor_burden)
+     $suma_burden_multi_valor_burden = $suma_burden*$valor_burden;
+     //$burden+((suma_burden)*valor_burden)
+     $burden_sp_adicionales = $burden+$suma_burden_multi_valor_burden;
+
+
+     $total = $materiales_sp_adicionales + $equipos + $mano_de_obra_sp_adicionales + $vehiculos_sp_adicionales + $contratistas_sp_adicionales + $viaticos_sp_adicionales + $burden_sp_adicionales;
+
+    ////////////////////////////////////porcentajes
+    //materiales_sp_adicionales*1/$total
+    $materiales_sp_porcent =$materiales_sp_adicionales*1/$total;
+    $equipos_sp_porcent = $equipos_sp_adicionales*1/$total;
+
+    $mano_obra_sp_porcent = $mano_de_obra_sp_adicionales*1/$total;
+    $vehiculos_sp_porcent = $vehiculos_sp_adicionales*1/$total;
+    $contratistas_sp_porcent =  $contratistas_sp_adicionales*1/$total;
+    $viaticos_sp_porcent = $viaticos_sp_adicionales*1/$total;
+    $burden_sp_porcent = $burden_sp_adicionales*1/$total;
+
+    $suma_sp_porcent = $materiales_sp_porcent+$equipos_sp_porcent+$mano_obra_sp_porcent+$vehiculos_sp_porcent+$contratistas_sp_porcent+$viaticos_sp_porcent+$burden_sp_porcent;
+
+
+    $ga_sp_porcent =0.12;
+    $ventas_sp_porcent =0.06;
+    $financiamiento_sp_porcent = 0.04;
+
+    $ganancia_sp_porcent=1-$suma_sp_porcent-$ga_sp_porcent-$ventas_sp_porcent-$financiamiento_sp_porcent;
+    $ganancia_sp = $ganancia_sp_porcent * $total;
+
+    ////////////////////////tieempo de mantenimiento
+    //(D7/Configuraciones!H5)*0.65
+    $tiempo_mantenimiento_sp = $mano_de_obra_sp_adicionales/$mo_tecnico_yudante;
+
+    //////////////////////dias de manteenimiento
+    //tiempo_mantenimiento_sp/(valor_horas_utiles-0.5)
+
+    $horas_utiles_menos_0_5 = $valor_horas_utiles-0.5;
+    //tiempo_mantenimiento_sp/horas_utiles_menos_0_5
+    $dias_mantenimiento_sp = $tiempo_mantenimiento_sp/$horas_utiles_menos_0_5;
+
+    /////////////////////tiempo traslados
+    //dias_mantenimiento_sp*distancia_sitio_mantenimiento*2/velocidad_promedio_mantenimiento
+    $distancia_sitio_mantenimiento_aux = explode('kms',$request->values['distancia_sitio_mantenimiento']);
+    $distancia_sitio_mantenimiento= intval($distancia_sitio_mantenimiento_aux[0]);
+    $velocidad_promedio_mantenimiento = $request->values['velocidad_promedio_mantenimiento'];
+
+    $tiempo_traslados = $dias_mantenimiento_sp*$distancia_sitio_mantenimiento*2/$velocidad_promedio_mantenimiento;
+
+    /////////////////////tiempo acceso edificio
+    //dias_mantenimiento_sp + tiempo_adicional_accesos_adicionales
+    $tiempo_acceso_edificio = $dias_mantenimiento_sp+$tiempo_adicional_accesos_adicionales;
+
+    ///////////////////tiempo de garantias
+    //(mano_obra_sp_porcent/valor_mano_obra_tecnico)-tiempo_traslados-tiempo_acceso_edificio-tiempo_mantenimiento_sp
+    $mano_obra_div_valor_mano_obra_tecnico = $mano_obra_sp_porcent/$valor_mano_obra_tecnico;
+    $tiempo_garantias = $mano_obra_div_valor_mano_obra_tecnico-$tiempo_traslados-$tiempo_acceso_edificio-$tiempo_mantenimiento_sp;
+
+
+    //////////////////costo teeorico
+    $costo_teorico = $vehiculos_sp_adicionales;
+
+    //////////////////costo practico
+    //dias_mantenimiento_sp*$distancia_sitio_mantenimiento*valor_vehiculo
+    $costo_practico = $dias_mantenimiento_sp*$distancia_sitio_mantenimiento*$valor_vehiculo;
+
+    array_push($analisis_costo_mant_array,number_format($total,2),intval($dias_mantenimiento_sp),intval($tiempo_mantenimiento_sp),intval($tiempo_traslados),intval($tiempo_acceso_edificio),intval($tiempo_garantias));
+
+    return response()->json($analisis_costo_mant_array);
+}
 
 }
+
