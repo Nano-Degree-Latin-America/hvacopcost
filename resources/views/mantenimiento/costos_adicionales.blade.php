@@ -1,5 +1,5 @@
 <div class="w-full grid  h-full">
-    <div class="w-full flex justify-center my-5">
+    <div class="w-full flex justify-center my-8">
         <h1 style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-bold font-roboto">Análisis de Costos Adicionales</h1>
     </div>
 
@@ -23,7 +23,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="servicio_emergencias_adicionales" name="servicio_emergencias_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="servicio_emergencias_adicionales" name="servicio_emergencias_adicionales" value="0" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -34,7 +34,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="tiempo_adicional_accesos_adicionales" name="tiempo_adicional_accesos_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="tiempo_adicional_accesos_adicionales" name="tiempo_adicional_accesos_adicionales" value="0" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -46,7 +46,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="curso_seguridad_otros_adicionales" name="curso_seguridad_otros_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="curso_seguridad_otros_adicionales" name="curso_seguridad_otros_adicionales" type="text" value="0" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -57,7 +57,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="lavado_filtros_aire_adicionales" name="lavado_filtros_aire_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="lavado_filtros_aire_adicionales" name="lavado_filtros_aire_adicionales" type="text" value="0" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -68,7 +68,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="lavado_evaporadores_adicionales" name="lavado_evaporadores_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="lavado_evaporadores_adicionales" name="lavado_evaporadores_adicionales" type="text" value="0" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -79,7 +79,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="lavado_extra_condensadores_adicionales" name="lavado_extra_condensadores_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="lavado_extra_condensadores_adicionales" name="lavado_extra_condensadores_adicionales" type="text" value="0" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -90,7 +90,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="lavado_ventiladores_adicionales" name="lavado_ventiladores_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="lavado_ventiladores_adicionales" name="lavado_ventiladores_adicionales" type="text" value="0" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -101,7 +101,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input  id="limpieza_grasa_adicionales" name="limpieza_grasa_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input  id="limpieza_grasa_adicionales" name="limpieza_grasa_adicionales" type="text" value="0" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -112,7 +112,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input  id="seguristas_supervicion_adicionales" name="seguristas_supervicion_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input  id="seguristas_supervicion_adicionales" name="seguristas_supervicion_adicionales" type="text" value="0" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -137,7 +137,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="costos_filtro_aire_adicionales" name="costos_filtro_aire_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="costos_filtro_aire_adicionales" name="costos_filtro_aire_adicionales" type="text" value="$0" onchange="format_num(this.value,'costos_filtro_aire_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -148,7 +148,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="servicios_emergencias_adicionales" name="servicios_emergencias_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="servicios_emergencias_adicionales" name="servicios_emergencias_adicionales" type="text" value="$0" onchange="format_num(this.value,'servicios_emergencias_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
         </div>
@@ -171,7 +171,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="andamios_gruas_adicionales" name="andamios_gruas_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="andamios_gruas_adicionales" name="andamios_gruas_adicionales" type="text" value="0" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -182,7 +182,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="0" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -193,7 +193,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="contratistas_adicionales" name="contratistas_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="contratistas_adicionales" name="contratistas_adicionales" type="text" value="0" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -204,7 +204,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="viaticos_adicionales" name="viaticos_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="viaticos_adicionales" name="viaticos_adicionales" type="text" value="0" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 

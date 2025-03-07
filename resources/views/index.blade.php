@@ -322,7 +322,7 @@ input[type=number]::-webkit-outer-spin-button {
                                     <div class="w-1/2 h-full grid  justify-items-center">
                                         <div class="w-full h-full grid justify-center font-roboto gap-y-1">
                                             <div class="flex justify-center mr-20">
-                                                <h1 class="text-3xl text_blue font-bold">Spend Plan</h1> <input class="w-20 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center mx-1" type="text"><h1  class="text-3xl  font-bold"> Gross Profit</h1>
+                                                <h1 class="text-3xl text_blue font-bold">Spend Plan</h1> <input class="w-20 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center mx-1" onchange="calcular_speendplan_base_adicional_gp(this.value);" type="text"><h1  class="text-3xl  font-bold"> Gross Profit</h1>
                                             </div>
                                         </div>
                                         @include('mantenimiento.spend_plan_gross_blank')
@@ -423,6 +423,13 @@ input[type=number]::-webkit-outer-spin-button {
                     onclick="calcular_speendplan_base_adicionales();"
                     style="background-color:#1B17BB;"
                         x-show="step == 3"
+                        @click="step++"
+                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                    >{{ __('index.siguiente') }}</button>
+
+                    <button  type="button" id="button_next_an_cost_mant" name="button_next_an_cost_mant"
+                    style="background-color:#1B17BB;"
+                        x-show="step == 4"
                         @click="step++"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('index.siguiente') }}</button>

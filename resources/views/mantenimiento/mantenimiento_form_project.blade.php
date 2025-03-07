@@ -170,8 +170,8 @@
                         <select onchange="set_horas_diarias();check_input(this.value,this.id,'ocupacion_semanal_warning_mantenimiento');check_inp_count('count_ocupacion_semanal_mantenimiento','ocupacion_semanal_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ocupacion_semanal_mantenimiento" id="ocupacion_semanal_mantenimiento">
                             <option value="">-{{ __('index.seleccionar') }}-</option>
                             <option value="m_50">{{ __('mantenimiento.menos_50') }}.</option>
-                            <option value="168">{{ __('mantenimiento.168hrs') }}.</option>
                             <option value="51_167">{{ __('mantenimiento.51_167') }}.</option>
+                            <option value="168">{{ __('mantenimiento.168hrs') }}.</option>
                         </select>
                         <input id="count_ocupacion_semanal_mantenimiento" name="count_ocupacion_semanal_mantenimiento" type="number" class="hidden"<div class="grid justify-items-end h-full gap-y-1 w-1/2">
                     </div>

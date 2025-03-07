@@ -1,98 +1,100 @@
+
 <div class="w-full h-full grid justify-items-center font-roboto gap-y-1">
+
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
-        <div class="w-1/2 grid justify-items-start place-items-center ">
+        <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text_blue text-xl font-bold">
                 Materiales
             </p>
         </div>
-        <div class="w-1/2 flex justify-start place-items-center gap-x-3">
-            <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+        <div class="w-2/3 flex justify-start place-items-center gap-x-3">
+            <input id="materiales_gp" name="materiales_gp" type="text" class="w-2/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
             <div class="w-full flex place-items-end gap-x-1">
-                <input class="w-1/5 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
+                <input  id="materiales_porcent_gp" name="materiales_porcent_gp" class="w-1/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
             </div>
         </div>
     </div>
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
-        <div class="w-1/2 grid justify-items-start place-items-center ">
+        <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text_blue text-xl font-bold">
                 Equipos
             </p>
         </div>
-        <div class="w-1/2 flex justify-start place-items-center gap-x-3">
-            <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+        <div class="w-2/3 flex justify-start place-items-center gap-x-3">
+            <input id="equipos_gp" name="equipos_gp" type="text" class="w-2/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
             <div class="w-full flex place-items-end gap-x-1">
-                <input class="w-1/5 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
+                <input id="equipos_porcent_gp" name="equipos_porcent_gp" class="w-1/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
             </div>
         </div>
     </div>
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
-        <div class="w-1/2 grid justify-items-start place-items-center ">
+        <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text_blue text-xl font-bold">
                 Mano de Obra
             </p>
         </div>
-        <div class="w-1/2 flex justify-start place-items-center gap-x-3">
-            <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+        <div class="w-2/3 flex justify-start place-items-center gap-x-3">
+            <input id="mano_obra_gp" name="mano_obra_gp" type="text" class="w-2/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
             <div class="w-full flex place-items-end gap-x-1">
-                <input class="w-1/5 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
+                <input id="mano_obra_porcent_gp" name="mano_obra_porcent_gp" class="w-1/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
             </div>
         </div>
     </div>
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
-        <div class="w-1/2 grid justify-items-start place-items-center ">
+        <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text_blue text-xl font-bold">
                 Vehículos
             </p>
         </div>
-        <div class="w-1/2 flex justify-start place-items-center gap-x-3">
-            <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+        <div class="w-2/3 flex justify-start place-items-center gap-x-3">
+            <input  id="vehiculo_gp" name="vehiculo_gp" type="text" class="w-2/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
             <div class="w-full flex place-items-end gap-x-1">
-                <input class="w-1/5 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
+                <input id="vehiculo_porcent_gp" name="vehiculo_porcent_gp" class="w-1/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
             </div>
         </div>
     </div>
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
-        <div class="w-1/2 grid justify-items-start place-items-center ">
+        <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text_blue text-xl font-bold">
                 Contratista
             </p>
         </div>
-        <div class="w-1/2 flex justify-start place-items-center gap-x-3">
-            <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+        <div class="w-2/3 flex justify-start place-items-center gap-x-3">
+            <input  id="contratista_gp" name="contratista_gp" type="text" class="w-2/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
             <div class="w-full flex place-items-end gap-x-1">
-                <input class="w-1/5 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
+                <input id="contratista_porcent_gp" name="contratista_porcent_gp" class="w-1/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
             </div>
         </div>
     </div>
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
-        <div class="w-1/2 grid justify-items-start place-items-center ">
+        <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text_blue text-xl font-bold">
                 Viaticos
             </p>
         </div>
-        <div class="w-1/2 flex justify-start place-items-center gap-x-3">
-            <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+        <div class="w-2/3 flex justify-start place-items-center gap-x-3">
+            <input  id="viaticos_gp" name="viaticos_gp" type="text" class="w-2/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
             <div class="w-full flex place-items-end gap-x-1">
-                <input class="w-1/5 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
+                <input id="viaticos_porcent_gp" name="viaticos_porcent_gp" class="w-1/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
             </div>
         </div>
     </div>
 
     <div style="width:65%;" class="gap-x-3 flex py-2 justify-center">
-        <div class="w-1/2 grid justify-items-start place-items-center ">
+        <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text_blue text-xl font-bold">
                 Burden
             </p>
         </div>
-        <div class="w-1/2 flex justify-start place-items-center gap-x-3">
-            <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+        <div class="w-2/3 flex justify-start place-items-center gap-x-3">
+            <input id="burden_gp" name="burden_gp" type="text" class="w-2/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
             <div class="w-full flex place-items-end gap-x-1">
-                <input class="w-1/5 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
+                <input id="burden_porcent_gp" name="burden_porcent_gp" class="w-1/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
             </div>
         </div>
     </div>
@@ -102,43 +104,43 @@
     </div>
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
-        <div class="w-1/2 grid justify-items-start place-items-center ">
+        <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text_blue text-xl font-bold">
                 G&A
             </p>
         </div>
-        <div class="w-1/2 flex justify-start place-items-center gap-x-3">
-            <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+        <div class="w-2/3 flex justify-start place-items-center gap-x-3">
+            <input id="ga_gp" name="ga_gp" type="text" class="w-2/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
             <div class="w-full flex place-items-end gap-x-1">
-                <input class="w-1/5 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
+                <input  id="ga_porcent_gp" name="ga_porcent_gp" class="w-1/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
             </div>
         </div>
     </div>
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
-        <div class="w-1/2 grid justify-items-start place-items-center ">
+        <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text_blue text-xl font-bold">
                 Ventas
             </p>
         </div>
-        <div class="w-1/2 flex justify-start place-items-center gap-x-3">
-            <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+        <div class="w-2/3 flex justify-start place-items-center gap-x-3">
+            <input id="ventas_gp" name="ventas_gp"  type="text" class="w-2/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
             <div class="w-full flex place-items-end gap-x-1">
-                <input class="w-1/5 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
+                <input id="ventas_porcent_gp" name="ventas_porcent_gp" class="w-1/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
             </div>
         </div>
     </div>
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
-        <div class="w-1/2 grid justify-items-start place-items-center ">
+        <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text_blue text-xl font-bold">
                 Financiamiento
             </p>
         </div>
-        <div class="w-1/2 flex justify-start place-items-center gap-x-3">
-            <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+        <div class="w-2/3 flex justify-start place-items-center gap-x-3">
+            <input id="financiamiento_gp" name="financiamiento_gp" type="text" class="w-2/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
             <div class="w-full flex place-items-end gap-x-1">
-                <input class="w-1/5 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
+                <input id="financiamiento_porcent_gp" name="financiamiento_porcent_gp" class="w-1/3 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
             </div>
         </div>
     </div>
@@ -148,29 +150,46 @@
     </div>
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
-        <div class="w-1/2 grid justify-items-start place-items-center ">
+        <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text-2xl font-bold">
-                Valor de Veenta
+                Valor de Venta
             </p>
         </div>
-        <div class="w-1/2 flex justify-start">
-            <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+        <div class="w-2/3 flex justify-start">
+            <input  id="valor_venta_gp" name="valor_venta_gp" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
         </div>
     </div>
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
-        <div class="w-1/2 grid justify-items-start place-items-center ">
+        <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text-2xl font-bold">
                 Ganancia
             </p>
         </div>
-        <div class="w-1/2 flex justify-start place-items-center gap-x-3">
-            <input type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+        <div class="w-2/3 flex justify-start place-items-center gap-x-3">
+            <input  id="ganancia_gp" name="ganancia_gp" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
             <div class="w-full flex place-items-end gap-x-1">
-                <input class="w-1/5 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
-                <p class="text-xl text_blue font-bold">.%</p>
+                <input id="ganancia_porcent_gp" name="ganancia_porcent_gp" class="w-1/5 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text">
             </div>
         </div>
     </div>
 
+
+
+
+
+
+<style>
+    .alto_caja_blue{
+        height:50% !important;
+    }
+
+    .alto_caja{
+        height:98% ;
+    }
+
+    .act_var{
+        height:60% ;
+    }
+</style>
 </div>
