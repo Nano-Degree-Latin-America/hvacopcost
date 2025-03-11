@@ -14348,7 +14348,7 @@ function check_porcent_max_min_kms(value,id,unidad){
         break;
 
         case 2:
-            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:220px; width:290px;" src="/assets/images/sistemas/split.png" alt="sistemas">');
+            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:220px; width:290px;" src="/assets/images/sistemas/splitdx.png" alt="sistemas">');
         break;
 
         case 3:
