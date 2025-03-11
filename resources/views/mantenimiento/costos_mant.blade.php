@@ -23,7 +23,7 @@
                 <div  class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
                         <p class="text_blue text-2xl font-bold">
-                            Mantenimiento Preventivo ASHRAE 180 - Base
+                            Mantenimiento Preventivo ASHRAE 180 - Base *
                         </p>
                     </div>
                     <div class="w-1/4 flex justify-start">
@@ -133,7 +133,7 @@
             <div class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-2xl font-bold">
-                        Mantenimiento Preventivo Costos Adicionales
+                        Mantenimiento Preventivo Costos Adicionales *
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
