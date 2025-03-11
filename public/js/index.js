@@ -13966,7 +13966,7 @@ async function del_td_tr(tr) {
                 var newRow = '<tr id='+i+'>';
                 for (let j = 0; j < arregloInterno.length; j++) {
                     var value = arregloInterno[j];
-                    newRow += '<td id="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border-color:#1B17BB;!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                    newRow += '<td id="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border-color:#1B17BB;!important; width:100%;" readonly type="text" class="text-center border-2 text-sm font-bold h-8" value="' + value + '"></td>';
                 }
                 newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
                 newRow += '<td style="width:40px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
@@ -14348,7 +14348,7 @@ function check_porcent_max_min_kms(value,id,unidad){
         break;
 
         case 2:
-            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/sistemas/split.png" alt="sistemas">');
+            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:220px; width:290px;" src="/assets/images/sistemas/split.png" alt="sistemas">');
         break;
 
         case 3:
@@ -14378,4 +14378,19 @@ function check_porcent_max_min_kms(value,id,unidad){
         default:
             break;
     }
+ }
+
+ function send_costo_cambio_filtros(){
+
+    var costo_aux = $('#costo_filtro_mantenimiento').val();
+   // Separar la cadena usando "$" como delimitador
+    var partes = costo_aux.split("$");
+
+    // Obtener el contenido después del primer "$"
+    var costo = partes[1]; // Esto devuelve "1"
+
+    var cantidad = $('#cantidad_filtros_mantenimiento').val();
+    var total = costo * cantidad;
+
+    $('#costos_filtro_aire_adicionales').val('$'+total);
  }

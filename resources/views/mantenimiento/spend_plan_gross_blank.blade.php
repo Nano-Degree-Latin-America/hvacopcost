@@ -1,5 +1,5 @@
 
-<div class="w-full h-full grid justify-items-center font-roboto gap-y-1">
+<div class="w-full h-full grid justify-items-center font-roboto  mt-1">
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    <div style="width:65%;" class="gap-x-3 flex py-2 justify-center">
+    <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
             <p class="text_blue text-xl font-bold">
                 Burden

@@ -28,4 +28,5 @@ return [
     'estandar' => 'Estandar',
     'marino'=>'Marino',
     'contaminado'=>'Contaminado',
+    'speend_plan'=>'Spend Plan',
 ];
