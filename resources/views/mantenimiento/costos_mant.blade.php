@@ -17,96 +17,118 @@
 
     <div class="w-full flex gap-x-3  h-full">
         {{-- mant_prev --}}
-        <div class="w-1/3 grid justify-items-center gap-y-1  h-auto self-start">
+        <div class="grid  w-1/3">
+            <div style="border-color:#1B17BB;" class="w-full grid justify-items-center gap-y-1  h-auto self-start border-2 rounded-xl">
 
-            <div  class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
-                <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-2xl font-bold">
-                        Mantenimiento Preventivo ASHRAE 180 - Base
-                    </p>
+                <div  class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
+                    <div class="w-3/4 grid justify-items-start place-items-center">
+                        <p class="text_blue text-2xl font-bold">
+                            Mantenimiento Preventivo ASHRAE 180 - Base
+                        </p>
+                    </div>
+                    <div class="w-1/4 flex justify-start">
+                    </div>
                 </div>
-                <div class="w-1/4 flex justify-start">
+
+                <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
+                    <div class="w-3/4 grid justify-items-start place-items-center">
+                        <p class="text_blue text-xl font-bold">
+                           Valor Contrato Anual
+                        </p>
+                    </div>
+                    <div class="w-1/3 flex justify-start place-items-center">
+                        <input  type="text" id="valor_contrato_anual" name="valor_contrato_anual" class="inp_valor_contrato_anual text-blue-800 border-2 border-color-inps text-lg rounded-md py-2 text-center"> {{-- <label  class="font-bold  font-roboto text_blue" for="">Días</label> --}}
+                    </div>
                 </div>
+
+                <div class="gap-x-3 flex py-2 justify-start width_tiempos_operacionales">
+                    <div class="w-3/4 grid justify-items-start place-items-center">
+                        <p class="text_blue text-2xl font-bold">
+                           Tiempos Operacionales
+                        </p>
+                    </div>
+                </div>
+
+                <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
+                    <div class="w-3/4 grid justify-items-start place-items-center">
+                        <p class="text_blue text-xl font-bold">
+                           Días de Mantenimiento
+                        </p>
+                    </div>
+                    <div class="w-1/3 flex justify-start place-items-center gap-x-1">
+                        <input id="dias_mantenimiento" name="dias_mantenimiento" type="text" class="inps_tiempos_operacionales text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <div>
+                            <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
+                    <div class="w-3/4 grid justify-items-start place-items-center">
+                        <p class="text_blue text-xl font-bold">
+                           Tiempo Mantenimiento
+                        </p>
+                    </div>
+                    <div class="w-1/3 flex justify-start place-items-center gap-x-1">
+                        <input id="tiempo_mantenimiento" name="tiempo_mantenimiento" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <div>
+                            <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
+                    <div class="w-3/4 grid justify-items-start place-items-center">
+                        <p class="text_blue text-xl font-bold">
+                           Tiempo Traslados
+                        </p>
+                    </div>
+                    <div class="w-1/3 flex justify-start place-items-center gap-x-1">
+                        <input id="tiempo_traslados" name="tiempo_traslados" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <div>
+                            <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
+                    <div class="w-3/4 grid justify-items-start place-items-center">
+                        <p class="text_blue text-xl font-bold">
+                           Tiempo Acceso Edificio
+                        </p>
+                    </div>
+                    <div class="w-1/3 flex justify-start place-items-center gap-x-1">
+                        <input id="tiempo_acceso_edificio" name="tiempo_acceso_edificio" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <div>
+                            <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales mb-2">
+                    <div class="w-3/4 grid justify-items-start place-items-center">
+                        <p class="text_blue text-xl font-bold">
+                           Tiempo Para Garantías
+                        </p>
+                    </div>
+                    <div class="w-1/3 flex justify-start place-items-center gap-x-1">
+                        <input  id="tiempo_garantias" name="tiempo_garantias" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <div>
+                            <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
-                <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
-                       Valor Contrato Anual
-                    </p>
-                </div>
-                <div class="w-1/3 flex justify-start place-items-center">
-                    <input  type="text" id="valor_contrato_anual" name="valor_contrato_anual" class="inp_valor_contrato_anual bg-blue-800 text-white border-2 border-color-inps text-lg rounded-md py-2 text-center"> {{-- <label  class="font-bold  font-roboto text_blue" for="">Días</label> --}}
-                </div>
-            </div>
-
-            <div class="gap-x-3 flex py-2 justify-start width_tiempos_operacionales">
-                <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-2xl font-bold">
-                       Tiempos Operacionales
-                    </p>
-                </div>
-            </div>
-
-            <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
-                <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
-                       Días de Mantenimiento
-                    </p>
-                </div>
-                <div class="w-1/3 flex justify-start place-items-center">
-                    <input id="dias_mantenimiento" name="dias_mantenimiento" type="text" class="inps_tiempos_operacionales text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Días</label>
-                </div>
-            </div>
-
-            <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
-                <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
-                       Tiempo Mantenimiento
-                    </p>
-                </div>
-                <div class="w-1/3 flex justify-start place-items-center">
-                    <input id="tiempo_mantenimiento" name="tiempo_mantenimiento" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs&nbsp;</label>
-                </div>
-            </div>
-
-            <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
-                <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
-                       Tiempo Traslados
-                    </p>
-                </div>
-                <div class="w-1/3 flex justify-start place-items-center">
-                    <input id="tiempo_traslados" name="tiempo_traslados" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs&nbsp;</label>
-                </div>
-            </div>
-
-            <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
-                <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
-                       Tiempo Acceso Edificio
-                    </p>
-                </div>
-                <div class="w-1/3 flex justify-start place-items-center">
-                    <input id="tiempo_acceso_edificio" name="tiempo_acceso_edificio" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs&nbsp;</label>
-                </div>
-            </div>
-
-            <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
-                <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
-                       Tiempo Para Garantías
-                    </p>
-                </div>
-                <div class="w-1/3 flex justify-start place-items-center">
-                    <input  id="tiempo_garantias" name="tiempo_garantias" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs&nbsp;</label>
-                </div>
-            </div>
+           <div class="flex justify-start my-2">
+                <label  class="text-xl text_blue font-bold" for="">* Basado en ASHRAE 180-2018</label>
+           </div>
 
         </div>
 
         {{--Materiales  --}}
-        <div class="w-1/3 grid justify-items-center gap-y-1  h-auto self-start">
+        <div style="border-color:#1B17BB;" class="w-1/3 grid justify-items-center gap-y-1 h-auto self-start border-2 rounded-xl">
 
             <div class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
@@ -181,7 +203,7 @@
                 </div>
             </div>
 
-            <div  class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
+            <div  class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales mb-2">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-xl font-bold">
                        Tiempo Para Garantías

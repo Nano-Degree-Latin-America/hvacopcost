@@ -411,7 +411,7 @@
             <div class="flex w-full">
                 <select onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'mantenimiento_realizado_warning');check_inp_count('count_mantenimiento_realizado','mantenimiento_realizado');" class="w-full bg-orange-500 border-2 border-color-tipo-calculo rounded-md p-1 my-1 font-roboto text-white" name="mantenimiento_realizado" id="mantenimiento_realizado">
                     <option value="0">-{{ __('index.seleccionar') }}-</option>
-                    <option value="1">Cálculo Rapido</option>
+                    <option  selected value="1">Cálculo Rapido</option>
                     <option value="2">Cálculo Detallado</option>
                 </select>
                 {{-- <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');change_to_porcent(this.value);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac" id="porcent_hvac">

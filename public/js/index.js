@@ -14338,3 +14338,44 @@ function check_porcent_max_min_kms(value,id,unidad){
     });
 
  }
+
+
+ function change_img(value){
+
+    switch (parseInt(value)) {
+        case 1:
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:130px; width:280px;" src="/assets/images/sistemas/paquetes.png" alt="sistemas">');
+        break;
+
+        case 2:
+            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/sistemas/split.png" alt="sistemas">');
+        break;
+
+        case 3:
+            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:150px; width:280px;" src="/assets/images/sistemas/vrfs_n.png" alt="sistemas">');
+        break;
+
+        case 4:
+            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:150px; width:280px;" src="/assets/images/sistemas/vrfs.png" alt="sistemas">');
+        break;
+
+        case 5:
+            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:150px; width:280px;" src="/assets/images/sistemas/ptac.png" alt="sistemas">');
+        break;
+
+        case 5:
+            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:150px; width:280px;" src="/assets/images/sistemas/wshp.png" alt="sistemas">');
+        break;
+
+        case 6:
+            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:150px; width:280px;" src="/assets/images/sistemas/whsp.png" alt="sistemas">');
+        break;
+
+        case 7:
+            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:150px; width:280px;" src="/assets/images/sistemas/mini_split.png" alt="sistemas">');
+        break;
+
+        default:
+            break;
+    }
+ }
