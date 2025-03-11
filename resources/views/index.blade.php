@@ -157,7 +157,7 @@ text-align: center;
 align-items: center;
 cursor: pointer;
 }
-.btn_roundf_retro:hover {
+.btn_roundf_retro,.btn_roundf:hover {
     border:1px solid #4299e1;
 background: #4299e1;
 color:#ffff;
@@ -173,7 +173,7 @@ align-items: center;
 cursor: pointer;
 }
 
-.btn_roundf_retro:active {
+.btn_roundf_retro,.btn_roundf:active {
     border:1px solid #3182ce;
 background: #3182ce;
 color:#ffff;

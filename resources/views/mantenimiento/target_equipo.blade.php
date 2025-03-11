@@ -33,7 +33,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select onchange="unidadHvac(this.value,'','unidad_mantenimiento',{{$module_2}});send_value_equipo_marcas(this.id,this.value,'marca_mantenimiento');valida_selects_inps(this.id);" name="sistema_mantenimiento" id="sistema_mantenimiento" class="w-full border-2 border-color-inps rounded-md py-2">
+                        <select onchange="unidadHvac(this.value,'','unidad_mantenimiento',{{$module_2}});send_value_equipo_marcas(this.id,this.value,'marca_mantenimiento');valida_selects_inps(this.id);change_img(this.value);" name="sistema_mantenimiento" id="sistema_mantenimiento" class="w-full border-2 border-color-inps rounded-md py-2">
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             <option value="1">Paquetes (RTU)</option>
                             <option value="2">Split DX</option>
@@ -91,8 +91,8 @@
 
             <div class="flex w-full 2xl:mt-2 xl:mt-2 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                    <div class="flex justify-start w-1/3 ">
-                        <label class="labels" for=""><b>{{ __('index.yrs_life') }}</b> </label>
+                    <div class="flex justify-start w-1/3 text-left">
+                        <label class="labels" for=""><b>{{ __('mantenimiento.yrs_life_equipo') }}</b> </label>
                     </div>
 
                     <div class="flex justify-start w-1/3">
@@ -181,7 +181,7 @@
             <div class="flex w-full 2xl:mt-2 xl:mt-2 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label class="labels" for=""><b>Costo por Filtro</b> </label>
+                        <label style="font-size:12px;" for=""><b>Costo Cambio Filtros</b> </label>
                     </div>
 
                     <div class="flex justify-start w-1/3">
@@ -192,7 +192,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label class="labels" for=""><b>Cantidad de Filtros</b> </label>
+                        <label class="labels" for=""><b>Cambios Anuales</b> </label>
                     </div>
 
                     <div class="flex justify-start w-1/2">
@@ -205,7 +205,7 @@
             <div class="flex w-full 2xl:mt-2 xl:mt-2 lg:mt-0">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <div class="w-1/3 flex justify-start text-left">
-                        <label class="labels" for=""><b>Cantidad de Unidades</b> </label>
+                        <label class="labels" for=""><b>Cantidad Unidades</b> </label>
                     </div>
 
                     <div class="flex justify-start w-1/3">
@@ -233,15 +233,8 @@
     </div>
     </div>
 
-   <div class="mt-5  flex justify-center">
-    <img style="height:620; width:220px;" src="{{asset('images\equipo_retro.png')}}" alt="">
+   <div class="mt-5  flex justify-center w-full">
+       <div id="img_sistemas" name="img_sistemas"></div>
    </div>
 </div>
-{{-- @include('livewire.lista_equipos.modal_add_marca_modelo')
-<script>
 
-
-        function enviar_horas(){
-            Livewire.emit('set_horas_diarias',$("#horas_diarias_w").val());
-        }
-</script> --}}
