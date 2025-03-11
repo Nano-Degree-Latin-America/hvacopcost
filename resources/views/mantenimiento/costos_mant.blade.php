@@ -9,6 +9,9 @@
         width: 95%;
 
     }
+    .tarjets_mant{
+        width: 29%;
+    }
 </style>
 <div class="w-full grid  h-full font-roboto">
     <div class="w-full flex justify-center my-8">
@@ -17,7 +20,7 @@
 
     <div class="w-full flex gap-x-3  h-full">
         {{-- mant_prev --}}
-        <div class="grid  w-1/3">
+        <div class="grid  tarjets_mant">
             <div style="border-color:#1B17BB;" class="w-full grid justify-items-center gap-y-1  h-auto self-start border-2 rounded-xl">
 
                 <div  class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
@@ -128,7 +131,7 @@
         </div>
 
         {{--Materiales  --}}
-        <div style="border-color:#1B17BB;" class="w-1/3 grid justify-items-center gap-y-1 h-auto self-start border-2 rounded-xl">
+        <div style="border-color:#1B17BB;" class="tarjets_mant grid justify-items-center gap-y-1 h-auto self-start border-2 rounded-xl">
 
             <div class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
@@ -165,8 +168,10 @@
                        Días de Mantenimiento
                     </p>
                 </div>
-                <div class="w-1/3 flex justify-start place-items-center">
-                    <input id="dias_mantenimiento_adicionales" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Días</label>
+                <div class="w-1/3 flex justify-start place-items-center gap-x-1">
+                    <input id="dias_mantenimiento_adicionales" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <div>
+                        <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                    </div>
                 </div>
             </div>
 
@@ -176,8 +181,11 @@
                        Tiempo Mantenimiento
                     </p>
                 </div>
-                <div class="w-1/3 flex justify-start place-items-center">
-                    <input id="tiempo_mantenimiento_adicionales" name="tiempo_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs&nbsp;</label>
+                <div class="w-1/3 flex justify-start place-items-center gap-x-1">
+                    <input id="tiempo_mantenimiento_adicionales" name="tiempo_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <div>
+                        <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                    </div>
                 </div>
             </div>
 
@@ -187,8 +195,10 @@
                        Tiempo Traslados
                     </p>
                 </div>
-                <div class="w-1/3 flex justify-start place-items-center">
-                    <input id="tiempo_traslados_adicionales" name="tiempo_traslados_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs&nbsp;</label>
+                <div class="w-1/3 flex justify-start place-items-center gap-x-1">
+                    <input id="tiempo_traslados_adicionales" name="tiempo_traslados_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <div>
+                        <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                    </div>
                 </div>
             </div>
 
@@ -198,8 +208,11 @@
                        Tiempo Acceso Edificio
                     </p>
                 </div>
-                <div class="w-1/3 flex justify-start place-items-center">
-                    <input id="tiempo_acceso_edificio_adicionales" name="tiempo_acceso_edificio_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs&nbsp;</label>
+                <div class="w-1/3 flex justify-start place-items-center gap-x-1">
+                    <input id="tiempo_acceso_edificio_adicionales" name="tiempo_acceso_edificio_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <div>
+                        <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                    </div>
                 </div>
             </div>
 
@@ -209,8 +222,10 @@
                        Tiempo Para Garantías
                     </p>
                 </div>
-                <div class="w-1/3 flex justify-start place-items-center">
-                    <input  id="tiempo_garantias_adicionales" name="tiempo_garantias_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <label class="font-bold  font-roboto text_blue"  for="">Hrs&nbsp;</label>
+                <div class="w-1/3 flex justify-start place-items-center gap-x-1">
+                    <input  id="tiempo_garantias_adicionales" name="tiempo_garantias_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <div>
+                        <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                    </div>
                 </div>
             </div>
 

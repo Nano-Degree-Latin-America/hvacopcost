@@ -1,7 +1,7 @@
 <div class="">
     <div class="w-full h-full font-roboto flex ">
         <?php  $module_2=2?>
-        <div class="flex w-full gap-x-3">
+        <div class="flex w-full gap-x-3 mx-5">
 
             <div style="width: 29%" class="h-full flex">
                 @include('mantenimiento.target_equipo')

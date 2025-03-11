@@ -498,11 +498,20 @@ public function spend_plan_base_adicionales(Request $request)
     $analisis_costo_mant_array = [];
      // Obtener array_sistemas de la sesión
     $array_speed_plan = Session::get('array_speed_plan');
-    $paquete_refacciones = 500;
-    $pruebas_especiales = 0;
+    $paquete_refacciones_aux = explode('$',$request->values['paquete_refacciones_adicionales']);
+    $paquete_refacciones = $paquete_refacciones_aux[1];
+
+    $pruebas_especiales_aux = explode('$',$request->values['pruebas_especiales_adicionales']);;
+    $pruebas_especiales = $pruebas_especiales_aux[1];
 
     $costos_costos_filtro_aire_adicionales_aux = explode('$',$request->values['costos_filtro_aire_adicionales']);
     $mariales_adicionales =  $costos_costos_filtro_aire_adicionales_aux[1]+$paquete_refacciones+$pruebas_especiales;
+
+
+    /* andamios_gruas_adicionales
+    pruebas_especiales_adicionales */
+
+
     //$costos_filtro_aire_adicionales = $request->values['costos_filtro_aire_adicionales'];
     $servicio_emergencias_adicionales =  $request->values['servicio_emergencias_adicionales'];
     $tiempo_adicional_accesos_adicionales = $request->values['tiempo_adicional_accesos_adicionales'];
@@ -513,8 +522,12 @@ public function spend_plan_base_adicionales(Request $request)
     $lavado_ventiladores_adicionales = $request->values['lavado_ventiladores_adicionales'];
     $limpieza_grasa_adicionales = $request->values['limpieza_grasa_adicionales'];
     $seguristas_supervicion_adicionales = $request->values['seguristas_supervicion_adicionales'];
-    $contratistas_adicionales = $request->values['contratistas_adicionales'];
-    $viaticos_adicionales = $request->values['viaticos_adicionales'];
+
+    $contratistas_adicionales_aux =  explode('$',$request->values['contratistas_adicionales']);
+    $contratistas_adicionales = $contratistas_adicionales_aux[1];
+
+    $viaticos_adicionales_aux = explode('$',$request->values['viaticos_adicionales']);
+    $viaticos_adicionales = $viaticos_adicionales_aux[1];
 
     $mo_tecnico_yudante = ConfiguracionesMantenimientoModel::where('slug','=','mo-tecnico-y-ayudante')->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
     $segurista_supervisor = ConfiguracionesMantenimientoModel::where('slug','=','segurista-supervisor')
@@ -716,8 +729,12 @@ public function spend_plan_base_adicionales(Request $request)
        $lavado_ventiladores_adicionales = $request->values['lavado_ventiladores_adicionales'];
        $limpieza_grasa_adicionales = $request->values['limpieza_grasa_adicionales'];
        $seguristas_supervicion_adicionales = $request->values['seguristas_supervicion_adicionales'];
-       $contratistas_adicionales = $request->values['contratistas_adicionales'];
-       $viaticos_adicionales = $request->values['viaticos_adicionales'];
+
+       $contratistas_adicionales_aux =  explode('$',$request->values['contratistas_adicionales']);
+       $contratistas_adicionales = $contratistas_adicionales_aux[1];
+
+       $viaticos_adicionales_aux = explode('$',$request->values['viaticos_adicionales']);
+       $viaticos_adicionales = $viaticos_adicionales_aux[1];
 
        $mo_tecnico_yudante = ConfiguracionesMantenimientoModel::where('slug','=','mo-tecnico-y-ayudante')->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
        $segurista_supervisor = ConfiguracionesMantenimientoModel::where('slug','=','segurista-supervisor')
