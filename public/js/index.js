@@ -14267,6 +14267,7 @@ function check_porcent_max_min_kms(value,id,unidad){
                         $('#valor_venta_gp_40').val(response[0]);
                         $('#ganancia_porcent_gp_40').val(response[26]);
                         $('#ganancia_gp_40').val(response[27]);
+                        chart_vals_mant(response[28],response[29],response[30],response[31]);
                     },
 
                 });
@@ -14394,3 +14395,64 @@ function check_porcent_max_min_kms(value,id,unidad){
 
     $('#costos_filtro_aire_adicionales').val('$'+total);
  }
+
+
+ function chart_vals_mant(rav_minimo,rav_maximo,base,c_adicionaes){
+
+    $('#chart_vals_mant').empty();
+    var options = {
+         series: [{
+        name: "Costo",
+         data: [parseFloat(c_adicionaes).toFixed(0),parseFloat(base).toFixed(0),parseFloat(rav_maximo).toFixed(0),parseFloat(rav_minimo).toFixed(0) ]
+       }],
+         chart: {
+         type: 'bar',
+         height: 350
+       },
+       plotOptions: {
+         bar: {
+           borderRadius: 4,
+           borderRadiusApplication: 'end',
+           horizontal: true,
+         }
+       },
+       dataLabels: {
+         enabled: false
+       },
+       legend: {
+      show: false, // Ocultar la leyenda
+        },
+       xaxis: {
+         categories: ['C/Adicionales', 'Base', 'Rav Máximo','Rav Minimo'
+         ],
+         labels: {
+               style: {
+                   colors: [],
+                   fontSize: '14px',
+                   fontFamily: 'ABeeZee, sans-serif',
+                   fontWeight: "bold",
+                   cssClass: 'apexcharts-yaxis-label',
+               },
+           },
+           formatter: function (value) {
+            // Formatear los valores del eje X como moneda
+            return '$'+value;
+          },
+       },
+       yaxis:{
+           labels: {
+               style: {
+                   colors: [],
+                   fontSize: '16px',
+                   fontFamily: 'ABeeZee, sans-serif',
+                   fontWeight: "bold",
+                   cssClass: 'apexcharts-yaxis-label',
+               },
+           },
+       },
+
+       };
+
+       var chart = new ApexCharts(document.querySelector("#chart_vals_mant"), options);
+       chart.render();
+   }
