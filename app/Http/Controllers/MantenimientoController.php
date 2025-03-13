@@ -484,7 +484,8 @@ public function factores_mantenimiento(){
     $costo_practico = $dias_mantenimiento*$distancia_sitio_mantenimiento*$valor_vehiculo;
 
     //guardar en array_speed_plan
-    array_push($array_speed_plan,$materiales,$equipos,$mano_obra,$vehiculos,$contratistas,$viaticos,$burden,$ga,$ventas,$financiamiento);
+
+    array_push($array_speed_plan,$materiales,$equipos,$mano_obra,$vehiculos,$contratistas,$viaticos,$burden,$ga,$ventas,$financiamiento,$suma_precios);
     // Guardar el array actualizado en la sesión
     session(['array_speed_plan' => $array_speed_plan]);
 
@@ -496,8 +497,9 @@ public function factores_mantenimiento(){
 public function spend_plan_base_adicionales(Request $request)
 {
     $analisis_costo_mant_array = [];
-     // Obtener array_sistemas de la sesión
+    // Obtener array_sistemas de la sesión
     $array_speed_plan = Session::get('array_speed_plan');
+
     $paquete_refacciones_aux = explode('$',$request->values['paquete_refacciones_adicionales']);
     $paquete_refacciones = $paquete_refacciones_aux[1];
 
@@ -675,6 +677,18 @@ public function spend_plan_base_adicionales(Request $request)
     //dias_mantenimiento_sp*$distancia_sitio_mantenimiento*valor_vehiculo
     $costo_practico = $dias_mantenimiento_sp*$distancia_sitio_mantenimiento*$valor_vehiculo;
 
+
+    //valores para grafica costos mantenimiento
+    $id_unidad = UnidadesModel::where('identificador','=',$request->values['unidad_mantenimiento'])->first()->id;
+    $costo_instalado = BaseCalculoModel::where('id_unidad','=',$id_unidad)->first()->costo_instalacion;
+    $capacidad_termica =  $request->values['capacidad_termica_mantenimiento'];
+    $cantidad_unidades_mantenimiento =  $request->values['cantidad_unidades_mantenimiento'];
+    $arry_grafic = [];
+
+    //obtiene el valor de grafica_costos_mantenimiento
+    $arry_grafic = $this->grafica_costos_mantenimiento($cantidad_unidades_mantenimiento,$costo_instalado,$capacidad_termica,$precio_venta,$array_speed_plan[10]);
+
+    //guardar en array_speed_plan
     array_push($analisis_costo_mant_array
     ,$format_total_money
     ,number_format($dias_mantenimiento_sp)
@@ -704,6 +718,10 @@ public function spend_plan_base_adicionales(Request $request)
     ,number_format($financiamiento_sp_porcent*100).'%'
     ,number_format($ganancia_sp_porcent*100).'%'
     ,number_format($ganancia_sp)
+    ,$arry_grafic[0]
+    ,$arry_grafic[1]
+    ,$arry_grafic[2]
+    ,$arry_grafic[3]
 );
 
     return response()->json($analisis_costo_mant_array);
@@ -922,6 +940,18 @@ public function spend_plan_base_adicionales(Request $request)
    );
 
        return response()->json($analisis_costo_mant_array);
+    }
+
+    public function grafica_costos_mantenimiento($cantidad_unidades_mantenimiento,$costo_instalado,         $capacidad_termica,$precio_venta,$suma_precios){
+
+        $arry_grafica_costos_mantenimiento = [];
+        $costo_equipamiento_instalado = $cantidad_unidades_mantenimiento*$costo_instalado*$capacidad_termica;
+        $rav_minimo = 0.03 * $costo_equipamiento_instalado;
+        $rav_maximo = 0.06 * $costo_equipamiento_instalado;
+        $base = $suma_precios;
+        $c_adicionales = $precio_venta;
+        array_push($arry_grafica_costos_mantenimiento,$rav_minimo,$rav_maximo,$base,$c_adicionales);
+        return $arry_grafica_costos_mantenimiento;
     }
 
 }
