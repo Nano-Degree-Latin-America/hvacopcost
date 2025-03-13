@@ -251,57 +251,5 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        chart_vals_mant();
-    });
 
-    function chart_vals_mant(){
-
-     var options = {
-          series: [{
-          data: [400, 430, 448, 470]
-        }],
-          chart: {
-          type: 'bar',
-          height: 350
-        },
-        plotOptions: {
-          bar: {
-            borderRadius: 4,
-            borderRadiusApplication: 'end',
-            horizontal: true,
-          }
-        },
-        dataLabels: {
-          enabled: false
-        },
-        xaxis: {
-          categories: ['C/Adicionales', 'Base', 'Rav Máximo','Rav Minimo'
-          ],
-          labels: {
-                style: {
-                    colors: [],
-                    fontSize: '14px',
-                    fontFamily: 'ABeeZee, sans-serif',
-                    fontWeight: "bold",
-                    cssClass: 'apexcharts-yaxis-label',
-                },
-            },
-        },
-        yaxis:{
-            labels: {
-                style: {
-                    colors: [],
-                    fontSize: '16px',
-                    fontFamily: 'ABeeZee, sans-serif',
-                    fontWeight: "bold",
-                    cssClass: 'apexcharts-yaxis-label',
-                },
-            },
-        },
-        };
-
-        var chart = new ApexCharts(document.querySelector("#chart_vals_mant"), options);
-        chart.render();
-    }
 </script>

@@ -68,7 +68,7 @@
 
                     <div class="w-1/2 flex justify-start">
                         <select onchange="send_modelos(this.value,'modelo_mantenimiento');valida_selects_inps(this.id);" name="marca_mantenimiento" id="marca_mantenimiento" class="w-full border-2 border-color-inps rounded-md py-2">
-                            {{--  --}}
+
                         </select>
                         <input id="marca_count_mantenimiento" name="marca_count_mantenimiento" type="number" class="hidden" value="1">
                     </div>
