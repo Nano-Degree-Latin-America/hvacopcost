@@ -212,7 +212,6 @@ Route::post('spend_plan_base_adicionales', 'MantenimientoController@spend_plan_b
 Route::post('spend_plan_base_adicionales_gp/{porcent}', 'MantenimientoController@spend_plan_base_adicionales_gp');
 
 
-
 //lang
 Route::get('locale/{locale}', function($locale){
    session()->put('locale',$locale);

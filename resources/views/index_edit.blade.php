@@ -284,8 +284,44 @@ $idm = App::getLocale();
                             </div>
                         </form>
                     </div>
-
                 </div>
+
+                <div x-show.transition.in="step === 3">
+                    <div class="w-full h-full font-roboto flex ">
+                        <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
+                            @include('mantenimiento.costos_adicionales')
+                        </div>
+                    </div>
+                </div>
+
+                <div x-show.transition.in="step === 4">
+                        <div id="ana_cost_mant" class="flex w-full  gap-x-3 mx-2 overflow-x-hidden">
+                            @include('mantenimiento.costos_mant')
+                        </div>
+                </div>
+
+                <div x-show.transition.in="step === 5">
+
+                    <div id="spend_plan" class="flex w-full  gap-x-3 mt-5">
+                        <div class="w-1/2 h-full grid  justify-items-center">
+                            <div class="w-full h-full grid justify-items-center font-roboto gap-y-1">
+                                <div class="grid justify-items-center">
+                                    <h1 class="text-3xl  font-bold">Spend Plan 40% Gross Profit</h1>
+                                </div>
+                            </div>
+                            @include('mantenimiento.spend_plan_gross')
+                        </div>
+
+                        <div class="w-1/2 h-full grid  justify-items-center">
+                            <div class="w-full h-full grid justify-center font-roboto gap-y-1">
+                                <div class="flex justify-center mr-20">
+                                    <h1 class="text-3xl text_blue font-bold">Spend Plan</h1> <input class="w-20 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center mx-1" onchange="calcular_speendplan_base_adicional_gp(this.value);" type="text"><h1  class="text-3xl  font-bold"> Gross Profit</h1>
+                                </div>
+                            </div>
+                            @include('mantenimiento.spend_plan_gross_blank')
+                        </div>
+                    </div>
+                 </div>
 
             </div>
             <!-- / Step Content -->
@@ -933,6 +969,7 @@ $idm = App::getLocale();
 <script>
 
 window.onload = function() {
+
     check_form_proy_edit('{{$type_p}}','{{ $project_edit->id }}');
     val = '{{ $project_edit->id_cat_edifico }}';
     id_tipo_edi = '{{ $project_edit->id_tipo_edificio }}';
@@ -953,23 +990,34 @@ window.onload = function() {
    setTimeout(function() {
     checksuma();
 }, 1000);
+
+
 };
 
 
-function app() {
 
+function app() {
+    var type_project = '{{$type_p}}';
 var val_pais = $('select[name="paises_edit"] option:selected').val();
 
-if(parseInt(val_pais) === 0){
+/* if(parseInt(val_pais) === 0){
 
     var page = 1;
 }else if(parseInt(val_pais) > 0){
 
     var page = 2;
+} */
+
+if(parseInt(type_project) === 1 || parseInt(type_project) === 2){
+    var page = 2;
+}
+
+if(parseInt(type_project) === 3){
+    var page = 1;
 }
 
         return {
-            step: 2,
+            step: page,
             passwordStrengthText: '',
             togglePassword: false,
             password: '',

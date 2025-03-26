@@ -15,6 +15,7 @@ use App\FactorEstadoUnidad;
 use App\FactorGarantiaModel;
 use App\FactorHorasDiariasModel;
 use App\SistemasModel;
+use App\ProjectsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -30,6 +31,18 @@ class MantenimientoController extends Controller
         $configuraciones = ConfiguracionesMantenimientoModel::all();
 
         return view('admin.configuraciones_mantenimiento',['configuraciones'=>$configuraciones]);
+    }
+
+    public function edit_project_manteinance($id){
+
+        $project =  ProjectsModel::where('projects.id','=',$id)
+        ->join('mantenimiento_projects','mantenimiento_projects.id_project','=','projects.id')
+        ->join('mano_obra_horas','mano_obra_horas.id_project','=','projects.id')
+        ->select('projects.*','mantenimiento_projects.*','mano_obra_horas.*')
+        ->get();
+
+
+        return view('mantenimiento.edit',['project'=>$project]);
     }
 
 
@@ -953,6 +966,8 @@ public function spend_plan_base_adicionales(Request $request)
         array_push($arry_grafica_costos_mantenimiento,$rav_minimo,$rav_maximo,$base,$c_adicionales);
         return $arry_grafica_costos_mantenimiento;
     }
+
+
 
 }
 
