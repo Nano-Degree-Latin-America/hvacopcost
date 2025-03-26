@@ -140,7 +140,7 @@
                                 <span id="ar_project_warning" name="ar_project_warning" class="text-red-500"></span>
                         </div>
 
-                    <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                        <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                             <div class="flex">
                                 <div>
                                         <div class="flex w-full">

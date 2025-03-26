@@ -67,6 +67,7 @@ class ResultadosController extends Controller
         exit(); */
 /* dd('guardando'); */
         //terminar tipos
+
         $mew_project = $projectService->CreateProject($request);
 
         if($mew_project->type_p == 1){
@@ -77,6 +78,11 @@ class ResultadosController extends Controller
         if($mew_project->type_p == 2){
             return Redirect::to('/resultados_retrofit/' . $mew_project->id);
 
+        }
+
+        if($mew_project->type_p == 3){
+            //return Redirect::to('/resultados_retrofit/' . $mew_project->id);
+            return Redirect::to('/edit_project/' . $mew_project->id);
         }
        /*
        Mantenimiento por si se usa  de nuevo
@@ -494,27 +500,54 @@ class ResultadosController extends Controller
         ->where('projects.id','=',$id)
         ->first();
 
-        $cate_edificio = DB::table('categorias_edificios')->get();
+        if($project_edit->type_p == 1 || $project_edit->type_p == 2){
+            $cate_edificio = DB::table('categorias_edificios')->get();
 
-        $paises = DB::table('pais')->get();
+            $paises = DB::table('pais')->get();
 
-        $id_ciudad_ini = DB::table('ciudad')
-        ->where('ciudad','=',$project_edit->ciudad)
-        ->first()->idCiudad;
+            $id_ciudad_ini = DB::table('ciudad')
+            ->where('ciudad','=',$project_edit->ciudad)
+            ->first()->idCiudad;
 
-        $type_p = DB::table('solutions_project')
-        ->where('solutions_project.id_project','=',$id)
-        ->first()->type_p;
+            $type_p = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id)
+            ->first()->type_p;
 
-        $marcas = DB::table('marcas_empresa')
-        ->where('id_empresa','=',Auth::user()->id_empresa)
-        ->get();
+            $marcas = DB::table('marcas_empresa')
+            ->where('id_empresa','=',Auth::user()->id_empresa)
+            ->get();
 
 
-        return view('index_edit',['id_project'=>$id,'project_edit'=>$project_edit,
-                        'cate_edificio'=>$cate_edificio,'paises'=>$paises,'id_ciudad_ini'=>$id_ciudad_ini,
-                         'type_p'=> $type_p,'marcas'=>$marcas
-        ]);
+            return view('index_edit',['id_project'=>$id,'project_edit'=>$project_edit,
+                            'cate_edificio'=>$cate_edificio,'paises'=>$paises,'id_ciudad_ini'=>$id_ciudad_ini,
+                             'type_p'=> $type_p,'marcas'=>$marcas
+            ]);
+
+        }
+
+        if($project_edit->type_p == 3){
+            $cate_edificio = DB::table('categorias_edificios')->get();
+
+            $paises = DB::table('pais')->get();
+
+            $id_ciudad_ini = DB::table('ciudad')
+            ->where('ciudad','=',$project_edit->ciudad)
+            ->first()->idCiudad;
+
+            $type_p = $project_edit->type_p;
+
+            $marcas = DB::table('marcas_empresa')
+            ->where('id_empresa','=',Auth::user()->id_empresa)
+            ->get();
+
+
+            return view('index_edit',['id_project'=>$id,'project_edit'=>$project_edit,
+                            'cate_edificio'=>$cate_edificio,'paises'=>$paises,'id_ciudad_ini'=>$id_ciudad_ini,
+                             'type_p'=> $type_p,'marcas'=>$marcas
+            ]);
+        }
+
+
     }
 
     public function edit_project_copy($id){
