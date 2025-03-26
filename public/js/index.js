@@ -1297,6 +1297,7 @@ async function set_ventilaciones_no_doa(value) {
 
         case 'man':
             $('#simulaciones').addClass("hidden");
+            $('#simulaciones_update').addClass("hidden");
             $('#forms_ene_fin_proy').addClass("hidden");
             $('#'+mant_p).removeClass("hidden");  //mantenimiento form
             $('#forms_cal_pre').removeClass("hidden");
@@ -1312,6 +1313,7 @@ async function set_ventilaciones_no_doa(value) {
             set_options_factor_mantenimiento();
             set_options_factor_acceso();
             set_options_estado_unidad();
+            type_p.value = 3;
            /*  type_p.value = 3;
         pn.checked = false;
         pr.checked = false;
@@ -1373,8 +1375,8 @@ async function set_ventilaciones_no_doa(value) {
 
 
   }
-
-  async function check_form_proy_edit(type_p,id_project){
+                                       //value,new_p,retro_p,mant_p,button_np,button_rp,action,type_p_aux
+  async function check_form_proy_edit(type_p,id_project,display_mant){
 
     calcular_p_n = $('#calcular_p_n_Edit');
     calcular_p_r = $('#calcular_p_r_Edit');
@@ -1412,9 +1414,31 @@ async function set_ventilaciones_no_doa(value) {
         $('#inv_ini_capex_3_1_retro').removeClass("hidden");
         $('#inv_ini_capex_3_1_mant').addClass("hidden");
     }else if(type_p == 3){
-        $('#display_nuevo_retrofit_edit').removeClass("hidden");
+        $('#display_nuevo_retrofit_edit').addClass("hidden");
         $('#display_nuevo_project_edit').addClass("hidden");
         $('#type_p').val(type_p);
+
+
+            $('#simulaciones_update').removeClass("hidden");
+            $('#forms_ene_fin_proy').addClass("hidden");
+/*             $('#img_ene_fin_proy_hvac').addClass("hidden");
+            $('#img_mantenimiento').removeClass("hidden"); */
+            //$('#'+mant_p).removeClass("hidden");  //mantenimiento form
+            $('#forms_cal_pre').removeClass("hidden");
+            $('#ene_fin_pro_form_project').addClass("hidden");
+            $('#button_calcular_ene_fin').addClass("hidden");
+
+            //$('#mantenimiento_form_project_update').removeClass("hidden");
+            $('#mant_prev').removeClass("hidden");
+            $('#button_sigiuente_mantenimiento').removeClass("hidden");
+
+
+            set_options_factor_mantenimiento();
+            set_options_factor_acceso();
+            set_options_estado_unidad();
+            type_p.value = 3;
+
+
         calcular_p_n.addClass("hidden");
         calcular_p_r.removeClass("hidden");
         $('#costo_anual_reparaciones_2_1_retro').removeClass("hidden");
@@ -14456,3 +14480,201 @@ function check_porcent_max_min_kms(value,id,unidad){
        var chart = new ApexCharts(document.querySelector("#chart_vals_mant"), options);
        chart.render();
    }
+
+
+   function save_mantenimiento(){
+
+                formulario = document.getElementById('formulario');
+                formulario.submit();
+   }
+
+   function calcular_justificacion_financiera(value){
+
+    var check_ashrae = $('#estandar_ashrae_checked');
+    var check_merv = $('#filtros_merv_checked');
+    var check_filtros = $('#remplazo_filtros_checked');
+    var check_mant_prev = $('#mant_preven_checked');
+
+    if(check_ashrae.prop('checked')){
+        var valor_ashrae = 0.08
+    }else{
+        var valor_ashrae = 0;
+    }
+
+    if(check_merv.prop('checked')){
+        var valor_merv = 0.07;
+    }else{
+        var valor_merv = 0;
+    }
+
+    if(check_filtros.prop('checked')){
+        var valor_filtros = 0.06;
+    }else{
+        var valor_filtros = 0;
+    }
+
+    if(check_mant_prev.prop('checked')){
+        var valor_mant_prev = 0.09;
+    }else{
+        var valor_mant_prev = 0;
+    }
+
+
+        let dollarUSLocale = Intl.NumberFormat('en-US');
+        var area = $('#ar_project_mantenimiento').val();
+        var area_aux = change_number_format_to_int(area);
+
+        var porcent_hvac = $('#porcent_hvac_mantenimiento').val();
+        var tarifa_electrica = 0.12;
+        var consumo_energia_edificio_aux = $('#consumo_energia_edificio_mantenimiento').val();
+        var consumo_energia_edificio = money_format_to_integer(consumo_energia_edificio_aux);
+
+        //formula Eui
+        //(35000 / 0.12) x 3.412 / (1000 x 10.7639)
+        //area x 10.7639
+        var area_x_10  = area_aux * 10.7639;
+        var consumo_energia_edificio_div_tarifa_electrica  = consumo_energia_edificio / tarifa_electrica;
+        var consumo_energia_edificio_div_tarifa_electrica_mult_3_412 = consumo_energia_edificio_div_tarifa_electrica * 3.412;
+
+
+        var res_aux = consumo_energia_edificio_div_tarifa_electrica_mult_3_412 / area_x_10;
+        var res = parseFloat(res_aux).toFixed(1)
+        $('#eui_mantenimiento').val(res);
+
+        //reduccion desperdicio eneregtico
+        //consumo_energia_edificio_div_tarifa_electrica - (consumo_energia_edificio_div_tarifa_electrica x porcent_hvac x (0.08+0.07+0.06)
+        var porcent_hvac_aux = change_porcent_to_num(porcent_hvac);
+        var porcent_porcent = porcent_hvac_aux / 100;
+        var suma_oprtunidades = valor_ashrae +  valor_merv +  valor_filtros +  valor_mant_prev;
+        //consumo_energia_edificio_div_tarifa_electrica x porcent_hvac x (0.08+0.07+0.06)
+        var multi_parent = consumo_energia_edificio * porcent_porcent * suma_oprtunidades;
+        //consumo_energia_edificio_div_tarifa_electrica - (consumo_energia_edificio_div_tarifa_electrica x porcent_hvac x (0.08+0.07+0.06
+        var resta_consumo_edificio = consumo_energia_edificio - multi_parent;
+        var consumo_edificio_cantidad = dollarUSLocale.format(resta_consumo_edificio);
+        $('#consumo_energia_edificio_mantenimiento_financiero').val(consumo_edificio_cantidad);
+        ///////////////
+        //reduccion energetica
+        var reduccion_energetica = consumo_energia_edificio - resta_consumo_edificio;
+        var reduccion_energetica_cantidad = dollarUSLocale.format(reduccion_energetica);
+        $('#reduccion_energetica_mantenimiento_financiero').val(reduccion_energetica_cantidad);
+        reduccion_gastos_reparaciones();
+   }
+
+
+   function reduccion_gastos_reparaciones(){
+
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+
+    var check_ashrae = $('#estandar_ashrae_checked');
+    var check_merv = $('#filtros_merv_checked');
+    var check_filtros = $('#remplazo_filtros_checked');
+    var check_mant_prev = $('#mant_preven_checked');
+
+    if(check_ashrae.prop('checked')){
+        var valor_ashrae = 0.08
+    }else{
+        var valor_ashrae = 0;
+    }
+
+    if(check_merv.prop('checked')){
+        var valor_merv = 0.07;
+    }else{
+        var valor_merv = 0;
+    }
+
+    if(check_filtros.prop('checked')){
+        var valor_filtros = 0.06;
+    }else{
+        var valor_filtros = 0;
+    }
+
+    if(check_mant_prev.prop('checked')){
+        var valor_mant_prev = 0.09;
+    }else{
+        var valor_mant_prev = 0;
+    }
+    var monto_anual_reparaciones_aux =  $('#monto_actual_mantenimiento_financiero').val();
+    var monto_anual_reparaciones = money_format_to_integer(monto_anual_reparaciones_aux);
+
+    var suma_oportunidades_ene = valor_ashrae +  valor_merv +  valor_filtros +  valor_mant_prev;
+    var monto_anual_mult_suma_ene = monto_anual_reparaciones * suma_oportunidades_ene;
+    var reduc_reparaciones =  monto_anual_mult_suma_ene / 1.02;
+    var res_num = parseInt(reduc_reparaciones);
+    var reduc_reparaciones_cantidad = dollarUSLocale.format(res_num);
+    $('#reduccion_reparaciones_mantenimiento_financiero').val(reduc_reparaciones_cantidad);
+   }
+
+
+   function change_number_format_to_int(val){
+
+    const myArray_coma =val.split(',');
+
+    if (myArray_coma.length > 1) {
+        if (myArray_coma.length == 2) {
+           num = myArray_coma[0] + myArray_coma[1];
+        }
+
+        if (myArray_coma.length == 3) {
+            num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2];
+         }
+
+         if (myArray_coma.length == 4) {
+            num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3];
+         }
+
+         if (myArray_coma.length == 5) {
+            num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3] + myArray_coma[4];
+         }
+
+         if (myArray_coma.length == 6) {
+            num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3] + myArray_coma[4] + myArray_coma[6];
+         }
+         return num;
+        }
+        return val;
+   }
+
+
+   function change_porcent_to_num(porcent){
+
+    const myArray = porcent.split('%');
+    if (myArray.length > 1) {
+       return  myArray[0]
+    }
+ }
+
+ function money_format_to_integer(value){
+    const myArray = value.split('$');
+
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+    if (myArray.length > 1) {
+        var num = parseFloat(myArray[1]);
+        const myArray_coma =myArray[1].split(',');
+
+        if (myArray_coma.length > 1) {
+            if (myArray_coma.length == 2) {
+               num = myArray_coma[0] + myArray_coma[1];
+            }
+
+            if (myArray_coma.length == 3) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2];
+             }
+
+             if (myArray_coma.length == 4) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3];
+             }
+
+             if (myArray_coma.length == 5) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3] + myArray_coma[4];
+             }
+
+             if (myArray_coma.length == 6) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3] + myArray_coma[4] + myArray_coma[6];
+             }
+
+        }
+        return num;
+    }else{
+        return value;
+    }
+ }

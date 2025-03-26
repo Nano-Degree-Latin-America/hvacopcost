@@ -248,6 +248,8 @@ input[type=number]::-webkit-outer-spin-button {
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" integrity="sha256-+8RZJua0aEWg+QVVKg4LEzEEm/8RFez5Tb4JBNiV5xA=" crossorigin="anonymous"></script>
+<script src="https://code.jscharting.com/latest/jscharting.js"></script>
 <div class="bg-white s" x-data="app()" x-cloak>
     <div class="w-full px-2">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
@@ -302,12 +304,20 @@ input[type=number]::-webkit-outer-spin-button {
                             </div>
 
                             <div x-show.transition.in="step === 4">
+                                <div class="w-full h-full font-roboto flex ">
+                                    <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
+                                        @include('mantenimiento.just_financiera')
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div x-show.transition.in="step === 5">
                                     <div id="ana_cost_mant" class="flex w-full  gap-x-3 mx-2 overflow-x-hidden">
                                         @include('mantenimiento.costos_mant')
                                     </div>
                             </div>
 
-                            <div x-show.transition.in="step === 5">
+                            <div x-show.transition.in="step === 6">
 
                                 <div id="spend_plan" class="flex w-full  gap-x-3 mt-5">
                                     <div class="w-1/2 h-full grid  justify-items-center">
@@ -328,7 +338,7 @@ input[type=number]::-webkit-outer-spin-button {
                                         @include('mantenimiento.spend_plan_gross_blank')
                                     </div>
                                 </div>
-                        </div>
+                             </div>
 
                                 <div class="clearfix">
                                     <div class="my-5 gap-x-3">
@@ -422,17 +432,21 @@ input[type=number]::-webkit-outer-spin-button {
                     <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
                      onclick="calcular_speendplan_base();"
                     style="background-color:#1B17BB;"
-                        x-show="step == 2"
+                        x-show="step == 2 || step == 4"
                         @click="step++"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('index.siguiente') }}</button>
 
                     <button  type="button" id="button_next_an_cost_mant" name="button_next_an_cost_mant"
                     style="background-color:#1B17BB;"
-                        x-show="step == 4"
+                        x-show="step == 5"
                         @click="step++"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('mantenimiento.speend_plan') }}</button>
+
+                    <button style="background-color:#1B17BB;width: 20%;"  x-show="step == 6" type="button"
+                    onclick="save_mantenimiento();" name="guardar_mantenimiento" id="guardar_mantenimiento" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
+
 
                    </div>
                 </div>

@@ -23,8 +23,8 @@
 </div>
 
 {{-- calculos precios hvac form --}}
-{{-- <div id="mantenimiento_form_project" class="hidden">
+<div id="mantenimiento_form_project" class="hidden">
     @include('mantenimiento.mantenimiento_form_project')
-</div> --}}
+</div>
 
 

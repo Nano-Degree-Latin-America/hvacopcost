@@ -104,6 +104,43 @@
                         <span id="cant_hrs_eme_warning_mantenimiento" name="cant_hrs_eme_warning_mantenimiento" class="text-red-500"></span>
                     </div>
 
+                    <div class="flex  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-start gap-x-3">
+                        <div class="grid w-1/2 justify-items-start">
+                                <div class="flex w-full">
+                                    <label  class="font-roboto labels_index" for=""><b>{{ __('index.area') }}:</b></label><label class="text-red-500">*</label>
+                                </div>
+                                <input onchange="check_input(this.value,this.id,'ar_project_warning_mantenimiento');format_nums_no_$(this.value,this.id);check_inp_count('count_ar_project_mantenimiento','ar_project_mantenimiento');"  name="ar_project_mantenimiento" id="ar_project_mantenimiento"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" >
+                                <input id="count_ar_project_mantenimiento" name="count_ar_project_mantenimiento" type="number" class="hidden" value="0">
+                                <span id="ar_project_warning_mantenimiento" name="ar_project_warning_mantenimiento" class="text-red-500"></span>
+                        </div>
+
+                        <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                            <div class="flex">
+                                <div>
+                                        <div class="flex w-full">
+                                            <label  class="font-roboto labels_index" for=""><b>{{ __('index.unidad') }}:</b></label><label class="text-red-500">*</label>
+                                        </div>
+                                        <div class="flex gap-x-3 mt-3">
+                                        <div class="flex">
+                                            <input  id="check_mc_mantenimiento"  {{-- onclick="check_unidad('mc');" --}} type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="check_mc_mantenimiento" class="ml-2 unit_style font-medium text-gray-900 dark:text-gray-300 font-roboto">m²</label>
+                                        </div>
+
+                                        <div class="flex">
+                                            <input  id="check_ft_mantenimiento"  {{-- onclick="check_unidad('ft'); "--}} disabled type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <label for="check_ft_mantenimiento"   class="ml-2 unit_style font-medium text-gray-900 dark:text-gray-300 font-roboto">ft²</label>
+                                        </div>
+                                        </div>
+
+                                </div>
+                            </div>
+                            <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-color-inps rounded-xl"  name="unidad" id="unidad" value="0">
+                            <input id="count_unidad" name="count_unidad" type="number" class="hidden" value="0">
+
+                        {{-- <input type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-xl"  name="nombre_projecto" id="nombre_projecto"> --}}
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="grid justify-items-start h-full gap-y-1 w-1/2">
@@ -204,6 +241,22 @@
 
                             </div>
                             <span id="inflacion_warning" name="inflacion_warning" class="text-red-500"></span>
+                        </div>
+
+                        @include('modal_energia_hvac')
+
+                        <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                            <div class="flex w-full">
+                                <label  class="font-roboto text-left labels_index" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
+                            </div>
+                            <div class="flex w-full">
+                                <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning_mantenimiento');check_inp_count('count_porcent_hvac_mantenimiento','porcent_hvac_mantenimiento');change_to_porcent(this.value,this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac_mantenimiento" id="porcent_hvac_mantenimiento">
+                                <input id="count_porcent_hvac_mantenimiento" name="count_porcent_hvac_mantenimiento" type="number" class="hidden" value="0">
+                                <div class="ml-2" style="margin-top: 5.5px;">
+                                    <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                                </div>
+                            </div>
+                            <span id="por_hvac_warning_mantenimiento" name="por_hvac_warning_mantenimiento" class="text-red-500"></span>
                         </div>
 
 

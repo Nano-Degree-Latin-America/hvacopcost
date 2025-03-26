@@ -603,6 +603,7 @@ class ComposerStaticInit22ba1415f53e39972f76e4c42d651c6e
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\ResultsProjectModel' => __DIR__ . '/../..' . '/app/ResultsProjectModel.php',
+        'App\\Services\\MantenimientoServer' => __DIR__ . '/../..' . '/app/Services/MantenimientoServer.php',
         'App\\Services\\ProjectService' => __DIR__ . '/../..' . '/app/Services/ProjectService.php',
         'App\\Services\\SolutionService' => __DIR__ . '/../..' . '/app/Services/SolutionService.php',
         'App\\Services\\SolutionServiceEdit' => __DIR__ . '/../..' . '/app/Services/SolutionServiceEdit.php',
