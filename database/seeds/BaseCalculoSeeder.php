@@ -13,159 +13,93 @@ class BaseCalculoSeeder extends Seeder
      */
     public function run()
     {
+        // Mapeo de identificadores a configuraciones de costo y RAV
+        $configurations = [
+            'basico' => ['costo_instalacion' => 2000, 'rav' => 3.5],
+            'c_economizador' => ['costo_instalacion' => 2200, 'rav' => 3.5],
+            'w_heat_rec' => ['costo_instalacion' => 2500, 'rav' => 3.5],
+            'mochila_pared' => ['costo_instalacion' => 1200, 'rav' => 3.5],
+            'manejadora' => ['costo_instalacion' => 1500, 'rav' => 4.0],
+            'manejadora2' => ['costo_instalacion' => 1500, 'rav' => 4.0],
+            'fancoil' => ['costo_instalacion' => 1800, 'rav' => 4.0],
+            'fancoil2' => ['costo_instalacion' => 1800, 'rav' => 4.0],
+            'fancoil_lsp_spt' => ['costo_instalacion' => 1800, 'rav' => 4.0],
+            'fancoil_lsp_spt2' => ['costo_instalacion' => 1800, 'rav' => 4.0],
+            'ca_pi_te' => ['costo_instalacion' => 1500, 'rav' => 4.5],
+            'fancoil_lsp' => ['costo_instalacion' => 1800, 'rav' => 4.5],
+            'ca' => ['costo_instalacion' => 2200, 'rav' => 4.5],
+            'man' => ['costo_instalacion' => 2400, 'rav' => 4.5],
+            'fancoil_hsp' => ['costo_instalacion' => 1700, 'rav' => 4.5],
+            'man_doa_hr' => ['costo_instalacion' => 1700, 'rav' => 4.5],
+            'horz' => ['costo_instalacion' => 1000, 'rav' => 3.5],
+            'vert' => ['costo_instalacion' => 1100, 'rav' => 3.5],
+            'agu_cir_cer' => ['costo_instalacion' => 1950, 'rav' => 4.0],
+            'agu_cir_abr' => ['costo_instalacion' => 2100, 'rav' => 4.0],
+            'pa_pi_te' => ['costo_instalacion' => 800, 'rav' => 4.0],
+            'pa_pi_te2' => ['costo_instalacion' => 800, 'rav' => 4.0],
+            'duc_con' => ['costo_instalacion' => 900, 'rav' => 4.0],
+            'duc_con2' => ['costo_instalacion' => 900, 'rav' => 4.0],
+            'condensadora_unidad' => ['costo_instalacion' => 1499, 'rav' => 4.5],
+            'condensador_unidad' => ['costo_instalacion' => 1499, 'rav' => 4.5],
+            'manejadora_unidad' => ['costo_instalacion' => 1499, 'rav' => 4.5],
+            'paquete_unidad' => ['costo_instalacion' => 1499, 'rav' => 4.5],
+            'gabinete_unidad' => ['costo_instalacion' => 1499, 'rav' => 4.5],
+            'enfriado_aire_scroll' => ['costo_instalacion' => 1020, 'rav' => 4.0],
+            'enfriado_agua_scroll' => ['costo_instalacion' => 1050, 'rav' => 4.0],
+            'portatil_proceso_scroll' => ['costo_instalacion' => 1100, 'rav' => 4.0],
+            'enfriado_aire_tornillo' => ['costo_instalacion' => 1200, 'rav' => 4.5],
+            'enfriado_agua_tornillo' => ['costo_instalacion' => 1300, 'rav' => 4.5],
+            'enfriado_aire_turbocor' => ['costo_instalacion' => 1190, 'rav' => 4.5],
+            'enfriado_agua_turbocor' => ['costo_instalacion' => 1285, 'rav' => 4.5],
+            'manejadora_equipamiento_agua_fria' => ['costo_instalacion' => 500, 'rav' => 4.0],
+            'fan_coil_lsp_equipamiento_agua_fria' => ['costo_instalacion' => 500, 'rav' => 4.0],
+            'fan_coil_hsp_equipamiento_agua_fria' => ['costo_instalacion' => 500, 'rav' => 4.0],
+            'bomba_agua_equipamiento_agua_fria' => ['costo_instalacion' => 501, 'rav' => 104.0],
+            'bomba_standby_equipamiento_agua_fria' => ['costo_instalacion' => 500, 'rav' => 4.0],
+            'abierta_torres_enfriamiento' => ['costo_instalacion' => 1100, 'rav' => 6.0],
+            'cerrada_torres_enfriamiento' => ['costo_instalacion' => 1200, 'rav' => 6.0],
+            'extractor_bano_ventilacion' => ['costo_instalacion' => 1.00, 'rav' => 3.5],
+            'axial_polea_ventilacion' => ['costo_instalacion' => 0.90, 'rav' => 3.5],
+            'axial_directo_ventilacion' => ['costo_instalacion' => 0.80, 'rav' => 3.5],
+            'centrifugo_polea_ventilacion' => ['costo_instalacion' => 1.10, 'rav' => 3.5],
+            'centrifugo_directo_ventilacion' => ['costo_instalacion' => 1.15, 'rav' => 3.5],
+            'campana_techo_ventilacion' => ['costo_instalacion' => 1.30, 'rav' => 3.5],
+            'campana_pared_ventilacion' => ['costo_instalacion' => 1.38, 'rav' => 3.5],
+            'eolico_ventilacion' => ['costo_instalacion' => 1.00, 'rav' => 3.5],
+            'doa_basica_ventilacion' => ['costo_instalacion' => 1.40, 'rav' => 3.5],
+            'doa_hr_ventilacion' => ['costo_instalacion' => 1.55, 'rav' => 3.5],
+            'termostato_basico_accesorios' => ['costo_instalacion' => 7.00, 'rav' => 100.0],
+            'termostato_inteligente_accesorios' => ['costo_instalacion' => 25.00, 'rav' => 100.0],
+            'caja_vav_basica_accesorios' => ['costo_instalacion' => 20.00, 'rav' => 100.0],
+            'caja_vav_avanzada_accesorios' => ['costo_instalacion' => 24.00, 'rav' => 100.0],
+            'damper_manual_accesorios' => ['costo_instalacion' => 15.00, 'rav' => 100.0],
+            'damper_motorizado_accesorios' => ['costo_instalacion' => 45.00, 'rav' => 100.0],
+            'cortinas_aire_accesorios' => ['costo_instalacion' => 15.00, 'rav' => 100.0],
 
-        $array_equipo = [];
-       /*  $array_equipo =  ['basico_1','c/ economizador_1','c/ Heat Recovery_1','Manejadora_2','Fan Coil M/HSP_2','Fan Coil LSP_2','No Ductado_3','Ductado_3','Combinado_3','Horizontal_4','Vertical_4','Torre Cerrada_5','Torre Abierta_5','Pared - Piso - Techo_6','Concealed_6','Casette_6','Confort - Constante_7','Confort - Variable_7','Proceso_7','Confort - Constante_8','Confort - Variable_8','Proceso_8','Confort - Constante_9','Confort - Variable_9','Proceso_9','Confort - Constante_10','Confort - Variable_10','Proceso_10','Axial Directo_11','Axial Polea_11','Centrífugo Polea_11','Campana (Techo)_11','Axial Directo_12','Axial Polea_12','Centrífugo Polea_12']; */
+        ];
 
+        // Obtener todas las unidades
         $unidades_aux = UnidadesModel::get();
 
-        foreach($unidades_aux as $unidad_aux){
-            //$parts = explode('_', $array_equipo[$i]);
-
+        foreach ($unidades_aux as $unidad_aux) {
             $new_equipo = new BaseCalculoModel;
             $new_equipo->sistema = $unidad_aux->equipo;
             $new_equipo->id_unidad = $unidad_aux->id;
-            $new_equipo->costo_instalacion = 0;
-            $new_equipo->rav = 0;
 
-            if($unidad_aux->identificador== 'basico'){
-                $new_equipo->costo_instalacion = 2000;
-                $new_equipo->rav = 3.5;
-            }
-
-            if($unidad_aux->identificador== 'c_economizador'){
-                $new_equipo->costo_instalacion = 2200;
-                $new_equipo->rav = 3.5;
-            }
-
-            if($unidad_aux->identificador== 'w_heat_rec'){
-                $new_equipo->costo_instalacion = 2500;
-                $new_equipo->rav = 3.5;
-            }
-
-            if($unidad_aux->identificador== 'horz' || $unidad_aux->identificador== 'vert'){
-                $new_equipo->costo_instalacion = 1000;
-                $new_equipo->rav = 3.5;
-            }
-
-            if($unidad_aux->identificador== 'agu_cir_cer'){
-                $new_equipo->costo_instalacion = 1950;
-                $new_equipo->rav = 4.0;
-            }
-
-            if($unidad_aux->identificador== 'agu_cir_abr'){
-                $new_equipo->costo_instalacion = 2100;
-                $new_equipo->rav = 4.0;
-            }
-
-
-            if($unidad_aux->identificador== 'confort_constante_8'){
-                $new_equipo->costo_instalacion = 2500;
-                $new_equipo->rav = 4.0;
-            }
-
-            if($unidad_aux->identificador== 'confort_variable_8'){
-                $new_equipo->costo_instalacion = 2800;
-                $new_equipo->rav = 4.0;
-            }
-
-            if($unidad_aux->identificador== 'proceso_8'){
-                $new_equipo->costo_instalacion = 2000;
-                $new_equipo->rav = 4.0;
-            }
-
-            if($unidad_aux->identificador== 'confort_constante_9'){
-                $new_equipo->costo_instalacion = 2700;
-                $new_equipo->rav = 4.5;
-            }
-
-            if($unidad_aux->identificador== 'confort_variable_9'){
-                $new_equipo->costo_instalacion = 3000;
-                $new_equipo->rav = 4.5;
-            }
-
-            if($unidad_aux->identificador== 'proceso_9'){
-                $new_equipo->costo_instalacion = 2200;
-                $new_equipo->rav = 4.5;
-            }
-
-            if($unidad_aux->identificador== 'proceso_10'){
+            // Asignar configuración basada en el identificador
+            if (isset($configurations[$unidad_aux->identificador])) {
+                $new_equipo->costo_instalacion = $configurations[$unidad_aux->identificador]['costo_instalacion'];
+                $new_equipo->rav = $configurations[$unidad_aux->identificador]['rav'];
+            } else {
+                // Valores predeterminados si no hay configuración específica
                 $new_equipo->costo_instalacion = 0;
-                $new_equipo->rav = 4.5;
+                $new_equipo->rav = 0;
             }
 
-            if($unidad_aux->identificador== 'confort_constante_10'){
-                $new_equipo->costo_instalacion = 0;
-                $new_equipo->rav = 4.5;
-            }
+            // Asignar unidad de costo de instalación
+            $new_equipo->unidad_costo_instalacion = ($unidad_aux->equipo == 12 || $unidad_aux->equipo == 13) ? '$/cfm' : '$/TR';
 
-            if($unidad_aux->identificador== 'confort_variable_10'){
-                $new_equipo->costo_instalacion = 0;
-                $new_equipo->rav = 4.5;
-            }
-
-            if($unidad_aux->identificador== 'proceso_11'){
-                $new_equipo->costo_instalacion = 0;
-                $new_equipo->rav = 5.0;
-            }
-
-            if($unidad_aux->identificador== 'confort_constante_11'){
-                $new_equipo->costo_instalacion = 0;
-                $new_equipo->rav = 5.0;
-            }
-
-            if($unidad_aux->identificador== 'confort_variable_11'){
-                $new_equipo->costo_instalacion = 0;
-                $new_equipo->rav = 5.0;
-            }
-
-
-            if($unidad_aux->identificador== 'axial_directo_extractor'){
-                $new_equipo->costo_instalacion = 1;
-                $new_equipo->rav = 4.0;
-            }
-
-            if($unidad_aux->identificador== 'axial_polea_extractor'){
-                $new_equipo->costo_instalacion = 0.8;
-                $new_equipo->rav = 4.0;
-            }
-
-            if($unidad_aux->identificador== 'centrifugo_polea_extractor'){
-                $new_equipo->costo_instalacion = 0;
-                $new_equipo->rav = 4.0;
-            }
-
-            if($unidad_aux->identificador== 'campana_extractor'){
-                $new_equipo->costo_instalacion = 0;
-                $new_equipo->rav = 4.0;
-            }
-
-            if($unidad_aux->identificador== 'axial_directo_inyector'){
-                $new_equipo->costo_instalacion = 0.8;
-                $new_equipo->rav = 4.0;
-            }
-
-            if($unidad_aux->identificador== 'axial_polea_inyector'){
-                $new_equipo->costo_instalacion = 0;
-                $new_equipo->rav = 4.0;
-            }
-
-            if($unidad_aux->identificador== 'centrifugo_polea_inyector'){
-                $new_equipo->costo_instalacion = 0;
-                $new_equipo->rav = 4.0;
-            }
-
-
-
-
-
-
-            if($unidad_aux->equipo == 12 || $unidad_aux->equipo == 13){
-                $new_equipo->unidad_costo_instalacion = '$/cfm';
-            }else{
-                $new_equipo->unidad_costo_instalacion = '$/TR';
-            }
-
+            // Guardar el nuevo equipo
             $new_equipo->save();
         }
     }
