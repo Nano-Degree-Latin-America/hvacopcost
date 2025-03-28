@@ -36,7 +36,7 @@
                         <select onchange="unidadHvac(this.value,'','unidad_mantenimiento',{{$module_2}});send_value_equipo_marcas(this.id,this.value,'marca_mantenimiento');valida_selects_inps(this.id);change_img(this.value);" name="sistema_mantenimiento" id="sistema_mantenimiento" class="w-full border-2 border-color-inps rounded-md py-2">
                             <option value="0">{{ __('index.seleccionar') }}</option>
                             @foreach ($sistemas as $sistema)
-                            <option value="{{ $sistema->id }}">{{ $sistema->name }}</option>
+                            <option value="{{$sistema->id}}">{{$sistema->name}}</option>
                             @endforeach
                         </select>
                         <input id="sistema_count_mantenimiento" name="sistema_count_mantenimiento" type="number" class="hidden" value="1">

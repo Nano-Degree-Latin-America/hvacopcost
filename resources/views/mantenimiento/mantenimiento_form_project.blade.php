@@ -88,7 +88,7 @@
                         <span id="tipo_ambiente_warning_mantenimiento" name="tipo_ambiente_warning_mantenimiento" class="text-red-500"></span>
                     </div>
 
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                    {{-- <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                         <div class="flex w-full">
                             <label class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.cant_hrs_eme') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
@@ -102,7 +102,7 @@
                         </select>
                         <input id="count_cant_hrs_eme_mantenimiento" name="count_cant_hrs_eme_mantenimiento" type="number" class="hidden" value="0">
                         <span id="cant_hrs_eme_warning_mantenimiento" name="cant_hrs_eme_warning_mantenimiento" class="text-red-500"></span>
-                    </div>
+                    </div> --}}
 
                     <div class="flex  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-start gap-x-3">
                         <div class="grid w-1/2 justify-items-start">
@@ -134,7 +134,7 @@
 
                                 </div>
                             </div>
-                            <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-color-inps rounded-xl"  name="unidad_mantenimiento" id="unidad_mantenimiento" value="0">
+                            <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-color-inps rounded-xl"  name="unidad_area_mantenimiento" id="unidad_area_mantenimiento" value="0">
                             <input id="count_unidad" name="count_unidad" type="number" class="hidden" value="0">
 
                         {{-- <input type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-xl"  name="nombre_projecto" id="nombre_projecto"> --}}
@@ -229,7 +229,7 @@
                     </div>
 
 
-                        <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                       {{--  <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                             <div class="flex w-full">
                                 <label  class="font-roboto text-left labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.porcentaje_inflacion') }}:</b></label>
                                 <label class="text-red-500 m-0"></label>
@@ -241,7 +241,7 @@
 
                             </div>
                             <span id="inflacion_warning" name="inflacion_warning" class="text-red-500"></span>
-                        </div>
+                        </div> --}}
 
                         @include('modal_energia_hvac')
 

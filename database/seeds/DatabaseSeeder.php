@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
 
         //$this->call(SistemasSeeder::class);
         //$this->call(categorias_edificios_seeder::class);
-        $this->call(UnidadesSeeder::class);
+        //$this->call(UnidadesSeeder::class);
         //$this->call(DisenoSeeder::class);
         //$this->call(ControlesSeeder::class);
         //$this->call(DrSeeder::class);
@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
          //$this->call(FactorEstadoUnidadSeeder::class);
          //$this->call(FactorHorasDiariasSeeder::class);
          //$this->call(FactorGarantiaSeeder::class);
-         //$this->call(BaseCalculoSeeder::class);
+         $this->call(BaseCalculoSeeder::class);
 
 
     }

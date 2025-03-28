@@ -253,7 +253,7 @@
                 </div>
             </div>
 
-            <div class="w-full  mt-10">
+            {{-- <div class="w-full  mt-10">
                 <div id="div_next" name="div_next" class="w-full flex justify-center">
                     <button type="button"  id="next" name="next"
                         onclick="calcular_speendplan_base_adicionales();"
@@ -263,7 +263,7 @@
                         class="w-1/4 focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-2xl font-roboto"
                     >{{ __('index.calcular') }}</button>
                 </div>
-            </div>
+            </div> --}}
 
         </div>
     </div>
