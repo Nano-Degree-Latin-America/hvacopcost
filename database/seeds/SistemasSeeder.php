@@ -21,12 +21,14 @@ class SistemasSeeder extends Seeder
             ['text' => "PTAC/VTAC"],
             ['text' => "WSHP"],
             ['text' => "Minisplit Inverter"],
-            ['text' => "Chiller Scroll - Aire"],
-            ['text' => "Chiller Scroll - Agua"],
-            ['text' => "Chiller Tornillo - Aire"],
-            ['text' => "Chiller Tornillo - Agua"],
-            ['text' => "Extractor"],
-            ['text' => "Inyector"],
+            ['text' => "Unidades Presición"],
+            ['text' => "Chiller Scroll"],
+            ['text' => "Chiller de Tornillo"],
+            ['text' => "Chiller Turbocor"],
+            ['text' => "Equipamiento Agua Fría"],
+            ['text' => "Torres de Enfriamiento"],
+            ['text' => "Ventilación"],
+            ['text' => "Accesorios"],
         ];
 
         /* for ($i=0; $i < count($array_sistemas) ; $i++) {

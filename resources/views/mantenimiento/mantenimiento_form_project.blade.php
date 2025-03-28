@@ -134,7 +134,7 @@
 
                                 </div>
                             </div>
-                            <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-color-inps rounded-xl"  name="unidad" id="unidad" value="0">
+                            <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-color-inps rounded-xl"  name="unidad_mantenimiento" id="unidad_mantenimiento" value="0">
                             <input id="count_unidad" name="count_unidad" type="number" class="hidden" value="0">
 
                         {{-- <input type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-xl"  name="nombre_projecto" id="nombre_projecto"> --}}
