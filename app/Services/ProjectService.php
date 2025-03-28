@@ -44,7 +44,7 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
         if($request->get('type_p') == 1 || $request->get('type_p') == 2){
             $mew_project->name=$request->get('name_pro');
 
-
+            $mew_project->type_p= $request->get('type_p');
             $mew_project->inflacion_rate=intval($request->get('inflation_rate'));
             $mew_project->inflacion=intval($request->get('inc_ene'));
             $hrs_tiempo = $request->get('tiempo_porcent');

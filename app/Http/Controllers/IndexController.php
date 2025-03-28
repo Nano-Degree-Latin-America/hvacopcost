@@ -8,6 +8,8 @@ use DB;
 use Illuminate\Support\Facades\Storage;
 use Input;
 use App\User;
+use App\UnidadesModel;
+use App\SistemasModel;
 use Illuminate\Support\Facades\Auth;
 class IndexController extends Controller
 {
@@ -201,6 +203,11 @@ class IndexController extends Controller
         } else {
             return response()->json($fecha_project);
         }
+    }
+
+    public function sistemas(){
+        $sistemas = SistemasModel::all();
+        return $sistemas;
     }
 
 
