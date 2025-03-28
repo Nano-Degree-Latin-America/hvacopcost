@@ -628,7 +628,9 @@ async function unidades_module_2(value,id_select,ima){
     const arry = await set_unidades(value);
 
     const myObj = JSON.parse(arry);
+
               for (let i = 0; i < myObj.length; i++) {
+
                 $('#'+id_select).append($('<option>', {
                     value:  myObj[i].value,
                     text:  myObj[i].text
@@ -646,7 +648,10 @@ async function set_unidades(value) {
             type: 'get',
             url: '/traer_unidades/' + value,
             success: function (response) {
+
+
                 for (let i = 0; i < response.length; i++) {
+
                     arr.push({ text: response[i].unidad, value: response[i].identificador });
                 }
                 // Convertir el arreglo a JSON y resolver la promesa
@@ -14488,12 +14493,38 @@ function check_porcent_max_min_kms(value,id,unidad){
                 formulario.submit();
    }
 
+   function eui_justificacion_financiera(value){
+
+    var area = $('#ar_project_mantenimiento').val();
+    var area_aux = change_number_format_to_int(area);
+
+    var tarifa_electrica = 0.12;
+    var consumo_energia_edificio_aux = $('#consumo_energia_edificio_mantenimiento').val();
+    var consumo_energia_edificio = money_format_to_integer(consumo_energia_edificio_aux);
+
+    //formula Eui
+    //(35000 / 0.12) x 3.412 / (1000 x 10.7639)
+    //area x 10.7639
+    var area_x_10  = area_aux * 10.7639;
+    var consumo_energia_edificio_div_tarifa_electrica  = consumo_energia_edificio / tarifa_electrica;
+    var consumo_energia_edificio_div_tarifa_electrica_mult_3_412 = consumo_energia_edificio_div_tarifa_electrica * 3.412;
+
+
+    var res_aux = consumo_energia_edificio_div_tarifa_electrica_mult_3_412 / area_x_10;
+    var res = parseFloat(res_aux).toFixed(1)
+    $('#eui_mantenimiento').val(res);
+   }
+
    function calcular_justificacion_financiera(value){
 
+    let dollarUSLocale = Intl.NumberFormat('en-US');
     var check_ashrae = $('#estandar_ashrae_checked');
     var check_merv = $('#filtros_merv_checked');
     var check_filtros = $('#remplazo_filtros_checked');
     var check_mant_prev = $('#mant_preven_checked');
+    var porcent_hvac = $('#porcent_hvac_mantenimiento').val();
+    var consumo_energia_edificio_aux = $('#consumo_energia_edificio_mantenimiento').val();
+    var consumo_energia_edificio = money_format_to_integer(consumo_energia_edificio_aux);
 
     if(check_ashrae.prop('checked')){
         var valor_ashrae = 0.08
@@ -14519,27 +14550,6 @@ function check_porcent_max_min_kms(value,id,unidad){
         var valor_mant_prev = 0;
     }
 
-
-        let dollarUSLocale = Intl.NumberFormat('en-US');
-        var area = $('#ar_project_mantenimiento').val();
-        var area_aux = change_number_format_to_int(area);
-
-        var porcent_hvac = $('#porcent_hvac_mantenimiento').val();
-        var tarifa_electrica = 0.12;
-        var consumo_energia_edificio_aux = $('#consumo_energia_edificio_mantenimiento').val();
-        var consumo_energia_edificio = money_format_to_integer(consumo_energia_edificio_aux);
-
-        //formula Eui
-        //(35000 / 0.12) x 3.412 / (1000 x 10.7639)
-        //area x 10.7639
-        var area_x_10  = area_aux * 10.7639;
-        var consumo_energia_edificio_div_tarifa_electrica  = consumo_energia_edificio / tarifa_electrica;
-        var consumo_energia_edificio_div_tarifa_electrica_mult_3_412 = consumo_energia_edificio_div_tarifa_electrica * 3.412;
-
-
-        var res_aux = consumo_energia_edificio_div_tarifa_electrica_mult_3_412 / area_x_10;
-        var res = parseFloat(res_aux).toFixed(1)
-        $('#eui_mantenimiento').val(res);
 
         //reduccion desperdicio eneregtico
         //consumo_energia_edificio_div_tarifa_electrica - (consumo_energia_edificio_div_tarifa_electrica x porcent_hvac x (0.08+0.07+0.06)
