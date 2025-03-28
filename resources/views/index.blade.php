@@ -257,6 +257,7 @@ input[type=number]::-webkit-outer-spin-button {
         @inject('all_paises','app\Http\Controllers\IndexController')
         @inject('usuario_pais','app\Http\Controllers\IndexController')
         @inject('check_types_p','app\Http\Controllers\IndexController')
+        @inject('sistemas','app\Http\Controllers\IndexController')
         <?php
         $idm = App::getLocale();
         ?>
@@ -268,6 +269,7 @@ input[type=number]::-webkit-outer-spin-button {
                             <?php  $check_types_pn=$check_types_p->check_p_type_pn(Auth::user()->id_empresa); ?>
                             <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
                             <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
+                            <?php  $sistemas=$sistemas->sistemas(); ?>
                             <?php  $module_1=1?>
                             <?php  $module_2=2?>
                             <?php  $module_3=3?>
