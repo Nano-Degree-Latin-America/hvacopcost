@@ -323,20 +323,11 @@ input[type=number]::-webkit-outer-spin-button {
 
                                 <div id="spend_plan" class="flex w-full  gap-x-3 mt-5">
                                     <div class="w-1/2 h-full grid  justify-items-center">
-                                        <div class="w-full h-full grid justify-items-center font-roboto gap-y-1">
-                                            <div class="grid justify-items-center">
-                                                <h1 class="text-3xl  font-bold">Spend Plan 40% Gross Profit</h1>
-                                            </div>
-                                        </div>
                                         @include('mantenimiento.spend_plan_gross')
                                     </div>
 
                                     <div class="w-1/2 h-full grid  justify-items-center">
-                                        <div class="w-full h-full grid justify-center font-roboto gap-y-1">
-                                            <div class="flex justify-center mr-20">
-                                                <h1 class="text-3xl text_blue font-bold">Spend Plan</h1> <input class="w-20 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center mx-1" onchange="calcular_speendplan_base_adicional_gp(this.value);" type="text"><h1  class="text-3xl  font-bold"> Gross Profit</h1>
-                                            </div>
-                                        </div>
+
                                         @include('mantenimiento.spend_plan_gross_blank')
                                     </div>
                                 </div>

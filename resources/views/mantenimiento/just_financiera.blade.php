@@ -11,18 +11,18 @@
         <h1 style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-bold font-roboto">Justificación Financiera</h1>
     </div>
 
-    <div class="w-full grid gap-x-3  h-full mx-10">
+    <div class="w-full grid gap-x-3 gap-y-3  h-full mx-10">
 
         <div class="w-full flex  place-items-end">
 
-            <div class="w-1/3 ">
+            <div class="w-1/3">
                 <div class="w-full  flex justify-start">
                     <h1  class="text_blue text-4xl font-bold">
-                        Actual
+                        Energía Actual
                     </h1>
                 </div>
                 <div class="w-full flex gap-x-3">
-                    <label class="text_blue text-xl font-bold">Consumo de Energía del Edificio</label>
+                    <label class="text_blue text-xl font-bold">Consumo Anual del Edificio</label>
                     <input onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);eui_justificacion_financiera(this.value);" type="text" id="consumo_energia_edificio_mantenimiento" name="consumo_energia_edificio_mantenimiento" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 h-10 text-center">
                 </div>
             </div>
