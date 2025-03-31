@@ -294,7 +294,18 @@ trait  ResultsTrait{
        ->where('projects.id','=',$id)
        ->first();
 
+       $unidad = $proj->unidad;
+
+       if($unidad == 'mc'){
         $res = $sumaopex/$proj->area;
+       }
+
+       if($unidad == 'ft'){
+        $area = $proj->area / 10.764;
+        $res = $sumaopex/$area;
+       }
+
+
         return $res;
     }
 
@@ -385,18 +396,13 @@ trait  ResultsTrait{
     public function valor_eui_aux($sumaopex,$costo_elec,$area,$porcent_hvac,$energy_star,$unidad){
         /*  ((sumaopex*100%/50%)*3.412)/(area*10.764) */
 
-         $val = $sumaopex * $costo_elec;
+    //(((sumaopex/costo_elec))*3.412)/(area*10.764)
 
-        $ConsumoAnualOPEX = $val/$costo_elec;
-         /* ((sumaopex*100%/50%)*3.412) */
+        //(sumaopex/costo_elec)
+        // $ConsumoAnualOPEX = $sumaopex / $costo_elec;
 
-         /* (sumaopex*100%/50%) */
-
-         $porcent= $porcent_hvac / 100;
-         /* sumaopex*100%/50% */
-         $div_porcent =  $ConsumoAnualOPEX / $porcent;
-
-         $mult_rers_1erapt =  $div_porcent * 3.412;
+        //(sumaopex/costo_elec))*3.412)
+         $ConsumoAnualOPEX =  $sumaopex * 3.412;
         /*  (2000*10.764) */
 
         //validar area mc y ft
@@ -408,7 +414,7 @@ trait  ResultsTrait{
              $area_res = $area;
          }
 
-         $res =  $mult_rers_1erapt/$area_res;
+         $res =  $ConsumoAnualOPEX/$area_res;
         return $res;
      }
 
