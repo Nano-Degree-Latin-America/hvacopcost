@@ -14142,6 +14142,11 @@ function set_options_estado_unidad(){
     });
 }
 
+function no_cero(value,id){
+    var input_select = $('#'+id);
+    input_select.val(parseInt(value));
+}
+
 function change_to(value,unidad,id){
 
     const myArray = value.split(unidad);
@@ -14155,6 +14160,12 @@ function change_to(value,unidad,id){
         check_porcent_max_min_kms(value,id,unidad);
         //input_select.val(porcent + '%');
     }
+}
+
+function set_yrs_tarjet(value,id){
+    var input_select = $('#'+id);
+    input_select.val(parseInt(value));
+
 }
 
 function check_porcent_max_min_kms(value,id,unidad){
@@ -14182,19 +14193,19 @@ function check_porcent_max_min_kms(value,id,unidad){
 
     if(value > maxim){
         input_select.empty();
-        input_select.val(maxim+unidad);
+        input_select.val(parseInt(maxim)+unidad);
         return false;
     }
 
     if(value >= min && value <= maxim){
         input_select.empty();
-        input_select.val(value+unidad);
+        input_select.val(parseInt(value)+unidad);
         return false;
     }
 
     if(value < min){
         input_select.empty();
-        input_select.val(min+unidad);
+        input_select.val(parseInt(min)+unidad);
         return false;
     }
 
@@ -14442,7 +14453,7 @@ function check_porcent_max_min_kms(value,id,unidad){
       show: false, // Ocultar la leyenda
         },
        xaxis: {
-         categories: ['C/Adicionales', 'Base', 'Rav Máximo','Rav Minimo'
+         categories: ['Base','C/Adicionales','Rav Minimo', 'Rav Máximo'
          ],
          labels: {
                style: {
@@ -14551,12 +14562,12 @@ function check_porcent_max_min_kms(value,id,unidad){
         //consumo_energia_edificio_div_tarifa_electrica - (consumo_energia_edificio_div_tarifa_electrica x porcent_hvac x (0.08+0.07+0.06
         var resta_consumo_edificio = consumo_energia_edificio - multi_parent;
         var consumo_edificio_cantidad = dollarUSLocale.format(resta_consumo_edificio);
-        $('#consumo_energia_edificio_mantenimiento_financiero').val(consumo_edificio_cantidad);
+        $('#consumo_energia_edificio_mantenimiento_financiero').val('$'+consumo_edificio_cantidad);
         ///////////////
         //reduccion energetica
         var reduccion_energetica = consumo_energia_edificio - resta_consumo_edificio;
         var reduccion_energetica_cantidad = dollarUSLocale.format(reduccion_energetica);
-        $('#reduccion_energetica_mantenimiento_financiero').val(reduccion_energetica_cantidad);
+        $('#reduccion_energetica_mantenimiento_financiero').val('$'+reduccion_energetica_cantidad);
         reduccion_gastos_reparaciones();
    }
 
@@ -14601,7 +14612,7 @@ function check_porcent_max_min_kms(value,id,unidad){
     var reduc_reparaciones =  monto_anual_mult_suma_ene / 1.02;
     var res_num = parseInt(reduc_reparaciones);
     var reduc_reparaciones_cantidad = dollarUSLocale.format(res_num);
-    $('#reduccion_reparaciones_mantenimiento_financiero').val(reduc_reparaciones_cantidad);
+    $('#reduccion_reparaciones_mantenimiento_financiero').val('$'+reduc_reparaciones_cantidad);
    }
 
 

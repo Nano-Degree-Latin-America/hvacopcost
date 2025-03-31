@@ -150,7 +150,7 @@
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-2xl font-bold">
-                        Materiales
+                        Costo de Materiales
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
@@ -160,7 +160,7 @@
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-xl font-bold">
-                        Costos de Filtro de Aire
+                        Filtros de Aire
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
@@ -174,11 +174,53 @@
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-xl font-bold">
-                        Paquete de Refacciones
+                        Filtros Adicionales
+                    </p>
+                </div>
+                <div class="w-1/4 flex justify-start">
+                    <input id="filtro_adicionales_adicionales" name="filtro_adicionales_adicionales" type="text" value="$0" onchange="format_num(this.value,'costos_filtro_aire_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
+                <div>
+                    <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                </div>
+            </div>
+
+            <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
+                <div class="w-3/4 grid justify-items-start place-items-center">
+                    <p class="text_blue text-xl font-bold">
+                        Refacciones Básicas
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
                     <input id="paquete_refacciones_adicionales" name="paquete_refacciones_adicionales" type="text" value="$0" onchange="format_num(this.value,'paquete_refacciones_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
+                <div>
+                    <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                </div>
+            </div>
+
+            <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
+                <div class="w-3/4 grid justify-items-start place-items-center">
+                    <p class="text_blue text-xl font-bold">
+                        Filtros de Aceite Chiller
+                    </p>
+                </div>
+                <div class="w-1/4 flex justify-start">
+                    <input id="filtro_aceite_chiller_adicionales" name="filtro_aceite_chiller_adicionales" type="text" value="$0" onchange="format_num(this.value,'costos_filtro_aire_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
+                <div>
+                    <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                </div>
+            </div>
+
+            <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
+                <div class="w-3/4 grid justify-items-start place-items-center">
+                    <p class="text_blue text-xl font-bold">
+                        Filtros Secador Chiller
+                    </p>
+                </div>
+                <div class="w-1/4 flex justify-start">
+                    <input id="filtro_secador_chiller_adicionales" name="filtro_secador_chiller_adicionales" type="text" value="$0" onchange="format_num(this.value,'costos_filtro_aire_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -190,7 +232,7 @@
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-2xl font-bold">
-                        Otros
+                        Otros Costos
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
@@ -214,11 +256,11 @@
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-xl font-bold">
-                        Pruebas Especiales
+                        Viaticos
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="viaticos_adicionales" name="viaticos_adicionales" type="text" value="$0" onchange="format_num(this.value,'viaticos_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -242,16 +284,118 @@
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-xl font-bold">
-                        Viaticos
+                        Pruebas Acidez Básica
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="viaticos_adicionales" name="viaticos_adicionales" type="text" value="$0" onchange="format_num(this.value,'viaticos_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                 </div>
             </div>
+
+            <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
+                <div class="w-3/4 grid justify-items-start place-items-center">
+                    <p class="text_blue text-xl font-bold">
+                        Pruebas Aceite Laboratorio
+                    </p>
+                </div>
+                <div class="w-1/4 flex justify-start">
+                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
+                <div>
+                    <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                </div>
+            </div>
+
+            <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
+                <div class="w-3/4 grid justify-items-start place-items-center">
+                    <p class="text_blue text-xl font-bold">
+                        Pruebas de Refigerante
+                    </p>
+                </div>
+                <div class="w-1/4 flex justify-start">
+                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
+                <div>
+                    <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                </div>
+            </div>
+
+            <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
+                <div class="w-3/4 grid justify-items-start place-items-center">
+                    <p class="text_blue text-xl font-bold">
+                        Eddy Current Test
+                    </p>
+                </div>
+                <div class="w-1/4 flex justify-start">
+                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
+                <div>
+                    <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                </div>
+            </div>
+
+            <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
+                <div class="w-3/4 grid justify-items-start place-items-center">
+                    <p class="text_blue text-md font-bold">
+                       Limpieza Evaporador Chiller
+                    </p>
+                </div>
+                <div class="w-1/4 flex justify-start">
+                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
+                <div>
+                    <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                </div>
+            </div>
+
+            <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
+                <div class="w-3/4 grid justify-items-start place-items-center">
+                    <p class="text_blue text-md font-bold">
+                       Limpieza Condensador Agua
+                    </p>
+                </div>
+                <div class="w-1/4 flex justify-start">
+                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
+                <div>
+                    <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                </div>
+            </div>
+
+            <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
+                <div class="w-3/4 grid justify-items-start place-items-center">
+                    <p class="text_blue text-xl font-bold">
+                       Cambio de Aceite Chillers
+                    </p>
+                </div>
+                <div class="w-1/4 flex justify-start">
+                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
+                <div>
+                    <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                </div>
+            </div>
+
+            <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
+                <div class="w-3/4 grid justify-items-start place-items-center">
+                    <p class="text_blue text-xl font-bold">
+                       Limpieza Anual Torres Enf.
+                    </p>
+                </div>
+                <div class="w-1/4 flex justify-start">
+                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
+                <div>
+                    <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                </div>
+            </div>
+
+
+
+
 
             {{-- <div class="w-full  mt-10">
                 <div id="div_next" name="div_next" class="w-full flex justify-center">

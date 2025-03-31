@@ -184,6 +184,9 @@
                         <input type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-color-inps rounded-md py-1 text-center" id="costo_filtro_mantenimiento" name="costo_filtro_mantenimiento" onkeypress="return soloNumeros(event)" onchange="valida_selects_inps(this.id);format_num(this.value,this.id);send_costo_cambio_filtros();">
                         <input id="costo_filtro_count_mantenimiento" name="costo_filtro_count_mantenimiento" type="number" class="hidden" value="1">
                     </div>
+                    <div class="" style="margin-top: 5.5px;">
+                        <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                    </div>
                 </div>
 
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
@@ -207,6 +210,9 @@
                     <div class="flex justify-start w-1/3">
                         <input type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-color-inps rounded-md py-1 text-center" id="cantidad_unidades_mantenimiento" name="cantidad_unidades_mantenimiento" onkeypress="return soloNumeros(event)" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)">
                         <input id="cantidad_unidades_count_mantenimiento" name="cantidad_unidades_count_mantenimiento" type="number" class="hidden" value="1">
+                    </div>
+                    <div class="" style="margin-top: 5.5px;">
+                        <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                     </div>
                 </div>
 
