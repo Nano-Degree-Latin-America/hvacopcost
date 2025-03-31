@@ -71,9 +71,9 @@ trait  FormusTrait{
         $cant_aux = 12000;
        }
 
-       if($eficiencia_ene == 'IPLV' || $eficiencia_ene == 'IPLV (Kw/TR)'){
+       /* if($eficiencia_ene == 'IPLV' || $eficiencia_ene == 'IPLV (Kw/TR)'){
         $cant_aux = 3.5;
-       }
+       } */
 
        //(TR x 12000)
        $res_trx_cant = $tr * $cant_aux;
