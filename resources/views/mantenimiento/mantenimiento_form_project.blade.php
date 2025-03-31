@@ -88,21 +88,6 @@
                         <span id="tipo_ambiente_warning_mantenimiento" name="tipo_ambiente_warning_mantenimiento" class="text-red-500"></span>
                     </div>
 
-                    {{-- <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
-                        <div class="flex w-full">
-                            <label class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.cant_hrs_eme') }}:</b></label>
-                            <label class="text-red-500 m-0">*</label>
-                        </div>
-                        <select onchange="check_input(this.value,this.id,'cant_hrs_eme_warning_mantenimiento');check_inp_count('count_cant_hrs_eme_mantenimiento','cant_hrs_eme_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="cant_hrs_eme_mantenimiento" id="cant_hrs_eme_mantenimiento">
-                            <option value="">-{{ __('mantenimiento.sin_emergencia') }}-</option>
-                            <option value="10">10% Horas Mant.</option>
-                            <option value="20">20% Horas Mant.</option>
-                            <option value="30">30% Horas Mant.</option>
-                            <option value="40">40% Horas Mant.</option>
-                        </select>
-                        <input id="count_cant_hrs_eme_mantenimiento" name="count_cant_hrs_eme_mantenimiento" type="number" class="hidden" value="0">
-                        <span id="cant_hrs_eme_warning_mantenimiento" name="cant_hrs_eme_warning_mantenimiento" class="text-red-500"></span>
-                    </div> --}}
 
                     <div class="flex  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-start gap-x-3">
                         <div class="grid w-1/2 justify-items-start">

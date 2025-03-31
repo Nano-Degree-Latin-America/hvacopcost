@@ -649,7 +649,6 @@ async function set_unidades(value) {
             url: '/traer_unidades/' + value,
             success: function (response) {
 
-
                 for (let i = 0; i < response.length; i++) {
 
                     arr.push({ text: response[i].unidad, value: response[i].identificador });
@@ -11898,15 +11897,12 @@ cUnidad_3_3 */
         const myArray = porcent.split('%');
         if (myArray.length > 1) {
             check_porcent_max_min(myArray[0],id);
-            //var value_set = myArray[0];
-            //input_select.val(value_set + '%');
-
         }
 
         if (myArray.length==1) {
             check_porcent_max_min(porcent,id);
-            //input_select.val(porcent + '%');
         }
+
      }
 
      function check_porcent_max_min(porcent,id){
@@ -14153,10 +14149,6 @@ function change_to(value,unidad,id){
     if (myArray.length > 1) {
 
             check_porcent_max_min_kms(myArray[0],id,unidad);
-
-        //var value_set = myArray[0];
-        //input_select.val(value_set + '%');
-
     }
 
     if (myArray.length==1) {
@@ -14185,8 +14177,9 @@ function check_porcent_max_min_kms(value,id,unidad){
         break;
 
         default:
-            break;
+        break;
     }
+
     if(value > maxim){
         input_select.empty();
         input_select.val(maxim+unidad);
@@ -14194,10 +14187,8 @@ function check_porcent_max_min_kms(value,id,unidad){
     }
 
     if(value >= min && value <= maxim){
-
         input_select.empty();
         input_select.val(value+unidad);
-
         return false;
     }
 
@@ -14206,9 +14197,8 @@ function check_porcent_max_min_kms(value,id,unidad){
         input_select.val(min+unidad);
         return false;
     }
+
  }
-
-
 
  function calcular_speendplan_base(){
     var token = $("#token").val();
