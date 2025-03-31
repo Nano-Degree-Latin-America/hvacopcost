@@ -1,5 +1,11 @@
 
-<div class="w-full h-full grid justify-items-center font-roboto  mt-1">
+<div class="w-full h-full grid justify-items-center font-roboto  mt-3">
+
+    <div  style="width:65%;" class=" h-full grid justify-items-start font-roboto gap-y-1">
+        <div class="flex justify-center mr-20">
+            <h1 class="text-3xl text_blue font-bold">Spend Plan</h1> <input class="w-20 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center mx-1" onchange="calcular_speendplan_base_adicional_gp(this.value);" type="text"><h1  class="text-3xl  font-bold"> Gross Profit</h1>
+        </div>
+    </div>
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
@@ -99,7 +105,7 @@
         </div>
     </div>
 
-    <div style="width:65%;" class="gap-x-3 flex my-1 justify-center">
+    <div style="width:65%;" class="gap-x-3 flex my-2 justify-center">
 
     </div>
 
@@ -156,7 +162,7 @@
             </p>
         </div>
         <div class="w-2/3 flex justify-start">
-            <input  id="valor_venta_gp" name="valor_venta_gp" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center" type="text" >
+            <input  id="valor_venta_gp" name="valor_venta_gp" type="text" class="w-1/2 bg-blue-800 text-white border-2 border-color-inps text-lg rounded-md text-center py-1" type="text" >
         </div>
     </div>
 

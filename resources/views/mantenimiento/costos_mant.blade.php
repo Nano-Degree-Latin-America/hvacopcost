@@ -18,7 +18,7 @@
         <h1 style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-bold font-roboto">Análisis de Costos de Mantenimiento</h1>
     </div>
 
-    <div class="w-full flex gap-x-3  h-full">
+    <div class="w-full flex gap-x-3 h-full mx-5">
         {{-- mant_prev --}}
         <div class="grid  tarjets_mant">
             <div style="border-color:#1B17BB;" class="w-full grid justify-items-center gap-y-1  h-auto self-start border-2 rounded-xl">
@@ -169,9 +169,8 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                    <input id="dias_mantenimiento_adicionales" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <div>
-                        <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
-                    </div>
+                    <input id="dias_mantenimiento_adicionales" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+
                 </div>
             </div>
 
@@ -183,9 +182,7 @@
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
                     <input id="tiempo_mantenimiento_adicionales" name="tiempo_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
-                    <div>
-                        <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
-                    </div>
+
                 </div>
             </div>
 
@@ -196,9 +193,8 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                    <input id="tiempo_traslados_adicionales" name="tiempo_traslados_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <div>
-                        <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
-                    </div>
+                    <input id="tiempo_traslados_adicionales" name="tiempo_traslados_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+
                 </div>
             </div>
 
@@ -210,9 +206,7 @@
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
                     <input id="tiempo_acceso_edificio_adicionales" name="tiempo_acceso_edificio_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
-                    <div>
-                        <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
-                    </div>
+
                 </div>
             </div>
 
@@ -223,9 +217,8 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                    <input  id="tiempo_garantias_adicionales" name="tiempo_garantias_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center"> <div>
-                        <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
-                    </div>
+                    <input  id="tiempo_garantias_adicionales" name="tiempo_garantias_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+
                 </div>
             </div>
 

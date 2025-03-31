@@ -19,7 +19,7 @@ return [
     'selecciona_ciudad' => 'Selecciona tu ciudad',
     'menos_50' => 'Menos de 50 Hrs',
     '168hrs' => '168 Hrs',
-    '51_167' => '51 a 168 Hrs',
+    '51_167' => '51 a 167 Hrs',
     'tecnico' => 'Técnico',
     'tecnico_ayudante' => 'Técnico + Ayudante',
     'sin_emergencia'=>'Sin Emergencia',
