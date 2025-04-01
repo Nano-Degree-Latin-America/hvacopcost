@@ -306,16 +306,16 @@ input[type=number]::-webkit-outer-spin-button {
                             </div>
 
                             <div x-show.transition.in="step === 4">
-                                <div class="w-full h-full font-roboto flex ">
-                                    <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
-                                        @include('mantenimiento.just_financiera')
-                                    </div>
+                                <div id="ana_cost_mant" class="flex w-full  gap-x-3 mx-2 overflow-x-hidden">
+                                    @include('mantenimiento.costos_mant')
                                 </div>
                             </div>
 
                             <div x-show.transition.in="step === 5">
-                                    <div id="ana_cost_mant" class="flex w-full  gap-x-3 mx-2 overflow-x-hidden">
-                                        @include('mantenimiento.costos_mant')
+                                    <div class="w-full h-full font-roboto flex ">
+                                        <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
+                                            @include('mantenimiento.just_financiera')
+                                        </div>
                                     </div>
                             </div>
 
@@ -425,10 +425,19 @@ input[type=number]::-webkit-outer-spin-button {
                     <button  type="button" id="button_next_mantenimiento_noadicionales" name="button_next_mantenimiento_noadicionales"
                      onclick="calcular_speendplan_base();"
                     style="background-color:#1B17BB;"
-                        x-show="step == 2 || step == 4"
+                        x-show="step == 2"
                         @click="step++"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('index.siguiente') }}</button>
+
+
+                    <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
+
+                   style="background-color:#1B17BB;"
+                       x-show="step == 4"
+                       @click="step++"
+                       class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                   >{{ __('mantenimiento.justificacion_financiera') }}</button>
 
                     <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
                     onclick="calcular_speendplan_base_adicionales();"

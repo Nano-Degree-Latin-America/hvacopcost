@@ -13832,7 +13832,7 @@ async function check_form_mantenimiento_tarjet(idm){
        }
        //////////////////////////////////
        /////////////////////////////////////
-       var costo_filtro=$('#costo_filtro_mantenimiento');
+      /*  var costo_filtro=$('#costo_filtro_mantenimiento');
        var costo_filtro_count = $('#costo_filtro_mantenimiento_count').val();
 
        if(costo_filtro.val() == 0){
@@ -13845,10 +13845,10 @@ async function check_form_mantenimiento_tarjet(idm){
            costo_filtro_count = 0;
        $('#costo_filtro_mantenimiento_count').val(costo_filtro_count);
 
-       }
+       } */
        ////////////////////////////////
        /////////////////////////////////////
-       var  cantidad_filtros=$('#cantidad_filtros_mantenimiento');
+       /* var  cantidad_filtros=$('#cantidad_filtros_mantenimiento');
        var cantidad_filtros_count = $('#cantidad_filtros_mantenimiento_count').val();
 
        if(cantidad_filtros.val() == 0 || cantidad_filtros.val() == ''){
@@ -13861,10 +13861,10 @@ async function check_form_mantenimiento_tarjet(idm){
            cantidad_filtros_count = 0;
        $('#cantidad_filtros_mantenimiento_count').val(cantidad_filtros_count);
 
-       }
+       } */
        /////////////////////////////////////
        /////////////////////////////////////
-       var  cantidad_unidades=$('#cantidad_unidades_mantenimiento');
+       /* var  cantidad_unidades=$('#cantidad_unidades_mantenimiento');
        var cantidad_unidades_count = $('#cantidad_unidades_mantenimiento_count').val();
 
        if(cantidad_unidades.val() == 0 || cantidad_unidades.val() == ''){
@@ -13877,9 +13877,9 @@ async function check_form_mantenimiento_tarjet(idm){
            cantidad_unidades_count = 0;
        $('#cantidad_unidades_mantenimiento_count').val(cantidad_unidades_count);
 
-       }
+       } */
 
-       var count_inps = sistema_count + unidad_count + marca_count + modelo_equipo_count + modelo_equipo_count + capacidad_termica_count + tipo_acceso_count + estado_unidad_count + cambio_filtros_count + cantidad_filtros_count + cantidad_unidades_count;
+       var count_inps = sistema_count + unidad_count + marca_count + modelo_equipo_count + modelo_equipo_count + capacidad_termica_count + tipo_acceso_count + estado_unidad_count  /* cambio_filtros_count + cantidad_filtros_count + cantidad_unidades_count */;
 
       if(count_inps>0){
        trans_sols_valid(idm);
@@ -14219,7 +14219,7 @@ function check_porcent_max_min_kms(value,id,unidad){
     });
 
     $.ajax({
-        url: '/spend_plan_base', // Reemplaza con la URL de tu endpoint
+        url: '/spend_plan_base',
         type: 'POST',
 
         headers: { 'X-CSRF-TOKEN': token },
@@ -14413,17 +14413,19 @@ function check_porcent_max_min_kms(value,id,unidad){
 
  function send_costo_cambio_filtros(){
 
-    var costo_aux = $('#costo_filtro_mantenimiento').val();
-   // Separar la cadena usando "$" como delimitador
-    var partes = costo_aux.split("$");
+    let dollarUSLocale = Intl.NumberFormat('en-US');
 
-    // Obtener el contenido después del primer "$"
-    var costo = partes[1]; // Esto devuelve "1"
+    var costo_aux = $('#costo_filtro_mantenimiento').val();
+    var num_unidades = $('#cantidad_unidades_mantenimiento').val();
+
+   // Separar la cadena usando "$" como delimitador
+    var costo = money_format_to_integer(costo_aux);
 
     var cantidad = $('#cantidad_filtros_mantenimiento').val();
-    var total = costo * cantidad;
+    var mult_costo_catidad = costo * cantidad;
+    var total = mult_costo_catidad * num_unidades;
 
-    $('#costos_filtro_aire_adicionales').val('$'+total);
+    $('#costos_filtro_aire_adicionales').val('$'+dollarUSLocale.format(total));
  }
 
 
