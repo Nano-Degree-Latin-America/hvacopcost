@@ -76,13 +76,13 @@
 
         <div class="w-full  flex justify-start mt-10">
             <h1  class="text_blue text-4xl font-bold">
-                Reducción Desperdicio Energético
+                Energía Futura Estimada
             </h1>
         </div>
         <div class="w-full flex ">
 
             <div class="w-1/3 flex gap-x-3">
-                <label class="text_blue text-xl font-bold">Consumo de Energía del Edificio</label>
+                <label class="text_blue text-xl font-bold">Consumo Anual Edificio</label>
                 <input readonly id="consumo_energia_edificio_mantenimiento_financiero" name="consumo_energia_edificio_mantenimiento_financiero" type="text" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
             </div>
 
@@ -99,7 +99,7 @@
 
         <div class="w-full  flex justify-start mt-10">
             <h1  class="text_blue text-4xl font-bold">
-                Reducción de Gastos de Reparaciones
+                Costo Actual Reparaciones
             </h1>
         </div>
         <div class="w-full flex gap-x-3">
