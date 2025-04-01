@@ -452,7 +452,7 @@ public function factores_mantenimiento(){
     $valor_tecnico_ayudante = ConfiguracionesMantenimientoModel::where('slug','=','mo-tecnico-y-ayudante')
     ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
     $mano_obra_div_tecnico_ayudante = $mano_obra/$valor_tecnico_ayudante;
-    $tiempo_mantenimiento = $mano_obra_div_tecnico_ayudante*0.65;
+    $tiempo_mantenimiento = $mano_obra_div_tecnico_ayudante*0.72;
 
     // $dias_mantenimiento = */
     //tiempo_mantenimiento/(valor_horas_utiles-0.5)
@@ -480,11 +480,13 @@ public function factores_mantenimiento(){
     //tiempo_garantias
     $valor_mano_obra_tecnico = ConfiguracionesMantenimientoModel::where('slug','=','mano-obra-tecnico')
     ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
-    //(mano_obra/valor_mano_obra_tecnico)-tiempo_traslados-tiempo_acceso_edificio-tiempo_mantenimiento
+    //((mano_obra/valor_mano_obra_tecnico)*0.28)-C25-C26
+    //(mano_obra/valor_mano_obra_tecnico)*0.28)-tiempo_traslados-tiempo_acceso_edificio
 
     //(mano_obra/valor_mano_obra_tecnico)
     $mano_obra_div_valor_mano_obra_tecnico = $mano_obra/$valor_mano_obra_tecnico;
-    $tiempo_garantias = $mano_obra_div_valor_mano_obra_tecnico-$tiempo_traslados-$tiempo_acceso_edificio-$tiempo_mantenimiento;
+    $mult_mano_obra_div_valor_mano_obra_tecnico = $mano_obra_div_valor_mano_obra_tecnico*0.28;
+    $tiempo_garantias = $mult_mano_obra_div_valor_mano_obra_tecnico-$tiempo_traslados-$tiempo_acceso_edificio;
 
 
     ///////////////////////calculo vehiculos
@@ -516,12 +518,12 @@ public function spend_plan_base_adicionales(Request $request)
     $paquete_refacciones_aux = explode('$',$request->values['paquete_refacciones_adicionales']);
     $paquete_refacciones = $paquete_refacciones_aux[1];
 
-    $pruebas_especiales_aux = explode('$',$request->values['pruebas_especiales_adicionales']);;
+    $pruebas_especiales_aux = explode('$',$request->values['pruebas_especiales_adicionales']);
     $pruebas_especiales = $pruebas_especiales_aux[1];
 
     $costos_costos_filtro_aire_adicionales_aux = explode('$',$request->values['costos_filtro_aire_adicionales']);
-    $mariales_adicionales =  $costos_costos_filtro_aire_adicionales_aux[1]+$paquete_refacciones+$pruebas_especiales;
 
+    $mariales_adicionales =  intval($costos_costos_filtro_aire_adicionales_aux[1])+$paquete_refacciones+$pruebas_especiales;
 
     /* andamios_gruas_adicionales
     pruebas_especiales_adicionales */
@@ -745,11 +747,15 @@ public function spend_plan_base_adicionales(Request $request)
         $analisis_costo_mant_array = [];
         // Obtener array_sistemas de la sesión
        $array_speed_plan = Session::get('array_speed_plan');
-       $paquete_refacciones = 500;
-       $pruebas_especiales = 0;
+
+       $paquete_refacciones_aux = explode('$',$request->values['paquete_refacciones_adicionales']);
+       $paquete_refacciones = $paquete_refacciones_aux[1];
+
+       $pruebas_especiales_aux = explode('$',$request->values['pruebas_especiales_adicionales']);
+       $pruebas_especiales = $pruebas_especiales_aux[1];
 
        $costos_costos_filtro_aire_adicionales_aux = explode('$',$request->values['costos_filtro_aire_adicionales']);
-       $mariales_adicionales =  $costos_costos_filtro_aire_adicionales_aux[1]+$paquete_refacciones+$pruebas_especiales;
+       $mariales_adicionales = intval($costos_costos_filtro_aire_adicionales_aux[1])+$paquete_refacciones+$pruebas_especiales;
        //$costos_filtro_aire_adicionales = $request->values['costos_filtro_aire_adicionales'];
        $servicio_emergencias_adicionales =  $request->values['servicio_emergencias_adicionales'];
        $tiempo_adicional_accesos_adicionales = $request->values['tiempo_adicional_accesos_adicionales'];
