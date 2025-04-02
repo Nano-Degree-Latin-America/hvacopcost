@@ -280,10 +280,6 @@ public function factores_mantenimiento(){
             $feu = $this->obtener_feu($estado_unidad_mantenimiento);
             $fav = $this->obtener_fav($yrs_vida_mantenimiento);
             $fhd = $this->obtener_fhd($ocupacion_semanal_mantenimiento);
-
-
-
-
              $res_formula_calculo = $this->formula_calculo($capacidad_termica_mantenimiento,$cantidad_unidades_mantenimiento,$costo_instalado,$rav,$fa,$fta,$feu,$fav,$fhd,$fg);
 
            /*  dd($request->all()); */
@@ -431,6 +427,7 @@ public function factores_mantenimiento(){
     $viaticos = $viaticos_porcent * $suma_precios;
     $burden = $burden_porcent * $suma_precios;
 
+
     $ga = $ga_porcent * $suma_precios;
     $ventas = $ventas_porcent * $suma_precios;
     $financiamiento = $financiamiento_porcent * $suma_precios;
@@ -448,7 +445,8 @@ public function factores_mantenimiento(){
 
 
     //formula tiempo ppara mantenimiento
-    //=(mano de obra/tecnico ayudante configurasciones)*0.65
+
+    //(mano_obra/valor_tecnico_ayudante)*0.72
     $valor_tecnico_ayudante = ConfiguracionesMantenimientoModel::where('slug','=','mo-tecnico-y-ayudante')
     ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
     $mano_obra_div_tecnico_ayudante = $mano_obra/$valor_tecnico_ayudante;
@@ -478,13 +476,8 @@ public function factores_mantenimiento(){
     $tiempo_acceso_edificio = $dias_mantenimiento;
 
     //tiempo_garantias
-    $valor_mano_obra_tecnico = ConfiguracionesMantenimientoModel::where('slug','=','mano-obra-tecnico')
-    ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
-    //((mano_obra/valor_mano_obra_tecnico)*0.28)-C25-C26
-    //(mano_obra/valor_mano_obra_tecnico)*0.28)-tiempo_traslados-tiempo_acceso_edificio
-
-    //(mano_obra/valor_mano_obra_tecnico)
-    $mano_obra_div_valor_mano_obra_tecnico = $mano_obra/$valor_mano_obra_tecnico;
+    //((mano_obra/valor_tecnico_ayudante)*0.28)-tiempo_traslados-tiempo_acceso_edificio
+    $mano_obra_div_valor_mano_obra_tecnico = $mano_obra/$valor_tecnico_ayudante;
     $mult_mano_obra_div_valor_mano_obra_tecnico = $mano_obra_div_valor_mano_obra_tecnico*0.28;
     $tiempo_garantias = $mult_mano_obra_div_valor_mano_obra_tecnico-$tiempo_traslados-$tiempo_acceso_edificio;
 
@@ -504,7 +497,8 @@ public function factores_mantenimiento(){
     // Guardar el array actualizado en la sesión
     session(['array_speed_plan' => $array_speed_plan]);
 
-    array_push($analisis_costo_mant_array,$format_suma_precios,intval($dias_mantenimiento),intval($tiempo_mantenimiento),intval($tiempo_traslados),intval($tiempo_acceso_edificio),intval($tiempo_garantias));
+    //ceil reondea a entero superior
+    array_push($analisis_costo_mant_array,$format_suma_precios,ceil($dias_mantenimiento),ceil($tiempo_mantenimiento),ceil($tiempo_traslados),ceil($tiempo_acceso_edificio),ceil($tiempo_garantias));
 
     return response()->json($analisis_costo_mant_array);
 }
@@ -515,15 +509,17 @@ public function spend_plan_base_adicionales(Request $request)
     // Obtener array_sistemas de la sesión
     $array_speed_plan = Session::get('array_speed_plan');
 
-    $paquete_refacciones_aux = explode('$',$request->values['paquete_refacciones_adicionales']);
-    $paquete_refacciones = $paquete_refacciones_aux[1];
+    ///$paquete_refacciones_aux = explode('$',$request->values['paquete_refacciones_adicionales']);
 
-    $pruebas_especiales_aux = explode('$',$request->values['pruebas_especiales_adicionales']);
-    $pruebas_especiales = $pruebas_especiales_aux[1];
+    $paquete_refacciones = $this->precio_to_integer($request->values['paquete_refacciones_adicionales']);
 
-    $costos_costos_filtro_aire_adicionales_aux = explode('$',$request->values['costos_filtro_aire_adicionales']);
+    //$pruebas_especiales_aux = explode('$',$request->values['pruebas_especiales_adicionales']);
+    $pruebas_especiales =  $this->precio_to_integer($request->values['pruebas_especiales_adicionales']);
 
-    $mariales_adicionales =  intval($costos_costos_filtro_aire_adicionales_aux[1])+$paquete_refacciones+$pruebas_especiales;
+    //$costos_costos_filtro_aire_adicionales_aux = explode('$',$request->values['costos_filtro_aire_adicionales']);
+    $costos_costos_filtro_aire_adicionales_aux = $this->precio_to_integer($request->values['costos_filtro_aire_adicionales']);
+
+    $mariales_adicionales =  intval($costos_costos_filtro_aire_adicionales_aux)+$paquete_refacciones+$pruebas_especiales;
 
     /* andamios_gruas_adicionales
     pruebas_especiales_adicionales */
@@ -540,11 +536,11 @@ public function spend_plan_base_adicionales(Request $request)
     $limpieza_grasa_adicionales = $request->values['limpieza_grasa_adicionales'];
     $seguristas_supervicion_adicionales = $request->values['seguristas_supervicion_adicionales'];
 
-    $contratistas_adicionales_aux =  explode('$',$request->values['contratistas_adicionales']);
-    $contratistas_adicionales = $contratistas_adicionales_aux[1];
+    //$contratistas_adicionales_aux =  explode('$',$request->values['contratistas_adicionales']);
+    $contratistas_adicionales = $this->precio_to_integer($request->values['contratistas_adicionales']);
 
-    $viaticos_adicionales_aux = explode('$',$request->values['viaticos_adicionales']);
-    $viaticos_adicionales = $viaticos_adicionales_aux[1];
+    //$viaticos_adicionales_aux = explode('$',$request->values['viaticos_adicionales']);
+    $viaticos_adicionales = $this->precio_to_integer($request->values['viaticos_adicionales']);
 
     $mo_tecnico_yudante = ConfiguracionesMantenimientoModel::where('slug','=','mo-tecnico-y-ayudante')->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
     $segurista_supervisor = ConfiguracionesMantenimientoModel::where('slug','=','segurista-supervisor')
@@ -602,6 +598,7 @@ public function spend_plan_base_adicionales(Request $request)
     $seguristas_supervicion_adicionales_multi_seguristas_supervicion = $seguristas_supervicion_adicionales*$segurista_supervisor;
 
     $contratistas_sp_adicionales = $contratistas_adicionales+$seguristas_supervicion_adicionales_multi_seguristas_supervicion;
+
     //////////////////////viaticos
     $viaticos_sp_adicionales = $viaticos_adicionales;
 
@@ -656,8 +653,8 @@ public function spend_plan_base_adicionales(Request $request)
     $ganancia_sp = $precio_venta*$ganancia_sp_porcent;
 
     ////////////////////////tieempo de mantenimiento
-    //(D7/Configuraciones!H5)*0.65
-    $tiempo_mantenimiento_sp = $mano_de_obra_sp_adicionales/$mo_tecnico_yudante*0.65;
+    //(D7/Configuraciones!H5)*0.72
+    $tiempo_mantenimiento_sp = $mano_de_obra_sp_adicionales/$mo_tecnico_yudante*0.72;
 
     //////////////////////dias de manteenimiento
     //tiempo_mantenimiento_sp/(valor_horas_utiles-0.5)
@@ -679,11 +676,13 @@ public function spend_plan_base_adicionales(Request $request)
     $tiempo_acceso_edificio = $dias_mantenimiento_sp+$tiempo_adicional_accesos_adicionales;
 
     ///////////////////tiempo de garantias
+
+    //((mano_de_obra_sp_adicionales/mo_tecnico_yudante)*0.28)-C25-C26
     //(mano_obra_sp_porcent/valor_mano_obra_tecnico)-tiempo_traslados-tiempo_acceso_edificio-tiempo_mantenimiento_sp
-    $mano_obra_div_valor_mano_obra_tecnico = $mano_de_obra_sp_adicionales/$valor_mano_obra_tecnico;
+    $mano_obra_div_valor_mano_obra_tecnico = $mano_de_obra_sp_adicionales/$mo_tecnico_yudante;
+    $mult_mano_obra_div_valor_mano_obra_tecnico = $mano_obra_div_valor_mano_obra_tecnico*0.28;
 
-    $tiempo_garantias = $mano_obra_div_valor_mano_obra_tecnico-$tiempo_traslados-$tiempo_acceso_edificio-$tiempo_mantenimiento_sp;
-
+    $tiempo_garantias = $mult_mano_obra_div_valor_mano_obra_tecnico-$tiempo_traslados-$tiempo_acceso_edificio;
 
     //////////////////costo teeorico
     $costo_teorico = $vehiculos_sp_adicionales;
@@ -691,7 +690,6 @@ public function spend_plan_base_adicionales(Request $request)
     //////////////////costo practico
     //dias_mantenimiento_sp*$distancia_sitio_mantenimiento*valor_vehiculo
     $costo_practico = $dias_mantenimiento_sp*$distancia_sitio_mantenimiento*$valor_vehiculo;
-
 
     //valores para grafica costos mantenimiento
     $id_unidad = UnidadesModel::where('identificador','=',$request->values['unidad_mantenimiento'])->first()->id;
@@ -748,14 +746,15 @@ public function spend_plan_base_adicionales(Request $request)
         // Obtener array_sistemas de la sesión
        $array_speed_plan = Session::get('array_speed_plan');
 
-       $paquete_refacciones_aux = explode('$',$request->values['paquete_refacciones_adicionales']);
-       $paquete_refacciones = $paquete_refacciones_aux[1];
+       //$paquete_refacciones_aux = explode('$',$request->values['paquete_refacciones_adicionales']);
+       $paquete_refacciones = $this->precio_to_integer($request->values['paquete_refacciones_adicionales']);
 
-       $pruebas_especiales_aux = explode('$',$request->values['pruebas_especiales_adicionales']);
-       $pruebas_especiales = $pruebas_especiales_aux[1];
+       //$pruebas_especiales_aux = explode('$',$request->values['pruebas_especiales_adicionales']);
+       $pruebas_especiales = $this->precio_to_integer($request->values['pruebas_especiales_adicionales']);
 
-       $costos_costos_filtro_aire_adicionales_aux = explode('$',$request->values['costos_filtro_aire_adicionales']);
-       $mariales_adicionales = intval($costos_costos_filtro_aire_adicionales_aux[1])+$paquete_refacciones+$pruebas_especiales;
+       $costos_costos_filtro_aire_adicionales_aux = $this->precio_to_integer($request->values['costos_filtro_aire_adicionales']);
+
+       $mariales_adicionales = intval($costos_costos_filtro_aire_adicionales_aux)+$paquete_refacciones+$pruebas_especiales;
        //$costos_filtro_aire_adicionales = $request->values['costos_filtro_aire_adicionales'];
        $servicio_emergencias_adicionales =  $request->values['servicio_emergencias_adicionales'];
        $tiempo_adicional_accesos_adicionales = $request->values['tiempo_adicional_accesos_adicionales'];
@@ -767,11 +766,11 @@ public function spend_plan_base_adicionales(Request $request)
        $limpieza_grasa_adicionales = $request->values['limpieza_grasa_adicionales'];
        $seguristas_supervicion_adicionales = $request->values['seguristas_supervicion_adicionales'];
 
-       $contratistas_adicionales_aux =  explode('$',$request->values['contratistas_adicionales']);
-       $contratistas_adicionales = $contratistas_adicionales_aux[1];
+       //$contratistas_adicionales_aux =  explode('$',$request->values['contratistas_adicionales']);
+       $contratistas_adicionales = $this->precio_to_integer($request->values['contratistas_adicionales']);
 
-       $viaticos_adicionales_aux = explode('$',$request->values['viaticos_adicionales']);
-       $viaticos_adicionales = $viaticos_adicionales_aux[1];
+       //$viaticos_adicionales_aux = explode('$',$request->values['viaticos_adicionales']);
+       $viaticos_adicionales = $this->precio_to_integer($request->values['viaticos_adicionales']);
 
        $mo_tecnico_yudante = ConfiguracionesMantenimientoModel::where('slug','=','mo-tecnico-y-ayudante')->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
        $segurista_supervisor = ConfiguracionesMantenimientoModel::where('slug','=','segurista-supervisor')
@@ -973,6 +972,30 @@ public function spend_plan_base_adicionales(Request $request)
         return $arry_grafica_costos_mantenimiento;
     }
 
+    public function precio_to_integer($precio){
+        $aux = explode("$",   $precio);
+
+        if(count($aux) == 2){
+            $precio = $aux[1];
+
+
+            $aux_comillas= explode(",", $precio);
+
+            if(count($aux_comillas) == 1){
+                $precio_entero = $precio;
+            }else if(count($aux_comillas)==2){
+                $precio_entero = $aux_comillas[0].$aux_comillas[1];
+            }else if(count($aux_comillas)==3){
+                $precio_entero = $aux_comillas[0].$aux_comillas[1].$aux_comillas[2];
+            }else if(count($aux_comillas)==4){
+                $precio_entero = $aux_comillas[0].$aux_comillas[1].$aux_comillas[2].$aux_comillas[3];
+            }
+
+        }else if(count($aux)==1){
+            $precio_entero =  $precio;
+        }
+        return $precio_entero;
+    }
 
 
 }
