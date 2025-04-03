@@ -217,7 +217,8 @@
                 </div>
 
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
-                    <button onclick="check_form_mantenimiento_tarjet('{{App::getLocale()}}')" style="background-color:#1B17BB;" type="button" name="save__button_mantenimiento" id="save__button_mantenimiento" class="w-32 focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">Guardar</button>
+                    <button onclick="edit_registro_tabla('{{App::getLocale()}}')" style="background-color:#1B17BB;" type="button" name="save__button_mantenimiento" id="save__button_mantenimiento" class=" focus:outline-none border border-transparent py-2 px-3 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-lg font-roboto">Guardar</button>
+                    <button onclick="check_form_mantenimiento_tarjet('{{App::getLocale()}}')" style="" type="button" name="save__button_mantenimiento" id="save__button_mantenimiento" class="bg-orange-500  focus:outline-none border border-transparent py-2 px-3 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-lg font-roboto">Nuevo</button>
 
                     <div class="flex justify-end">
                         <button style="background-color:#1B17BB;" type="button" title="Limpiar Tarjeta" class="py-1 px-3 border-2 rounded-md text-xl text-white hover:text-gray-200"><i class="fas fa-trash"></i></button>
@@ -235,7 +236,7 @@
     </div>
     </div>
 
-   <div class="mt-8 flex justify-center w-full">
+   <div class="mt-10 flex justify-center w-full">
        <div id="img_sistemas" name="img_sistemas"></div>
    </div>
 </div>
