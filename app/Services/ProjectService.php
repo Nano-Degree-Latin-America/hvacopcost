@@ -104,8 +104,17 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
 
         if($request->get('type_p') == 3){
             $mew_project->type_p= $request->get('type_p');
-            $mew_project->region=$request->get('paises_mantenimiento');
-            $mew_project->ciudad=$request->get('ciudades_mantenimiento');
+
+            $pais = DB::table('pais')
+            ->where('pais.idPais','=',$request->get('paises_mantenimiento'))
+            ->first()->pais;
+
+            $ciudad = DB::table('ciudad')
+            ->where('ciudad.idCiudad','=',$request->get('ciudades_mantenimiento'))
+            ->first()->ciudad;
+
+            $mew_project->region=$pais;
+            $mew_project->ciudad=$ciudad;
             $mew_project->id_tipo_edificio=$request->get('tipo_edificio_mantenimiento');
             $mew_project->id_cat_edifico=$request->get('cat_edi_mantenimiento');
         }
