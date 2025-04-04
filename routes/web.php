@@ -197,7 +197,7 @@ Route::get('base_calculo_rapido', 'MantenimientoController@base_calculo_rapido')
 Route::get('configuraciones_mantenimiento', 'MantenimientoController@index');
 Route::get('factores_mantenimiento', 'MantenimientoController@factores_mantenimiento');
 Route::get('get_configuracion/{id}', 'MantenimientoController@get_configuracion');
-Route::get('traer_datos_tarjeta', 'MantenimientoController@traer_datos_tarjeta');
+Route::post('traer_datos_tarjeta', 'MantenimientoController@traer_datos_tarjeta');
 Route::post('delete_reg_table_equipos/{id}', 'MantenimientoController@delete_reg_table_equipos');
 Route::post('store_base_calculo', 'MantenimientoController@store_base_calculo');
 Route::get('get_calculo_base/{id}', 'MantenimientoController@get_calculo_base');
