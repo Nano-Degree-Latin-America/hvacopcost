@@ -13928,7 +13928,7 @@ async function check_form_mantenimiento_tarjet(idm){
             var token = $("#token").val();
         $.ajax({
             url: '/traer_datos_tarjeta', // Reemplaza con la URL de tu endpoint
-            type: 'get',
+            type: 'post',
 
             headers: { 'X-CSRF-TOKEN': token },
             data: {
