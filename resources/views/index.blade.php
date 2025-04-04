@@ -321,6 +321,14 @@ input[type=number]::-webkit-outer-spin-button {
                             </div>
 
                             <div x-show.transition.in="step === 6">
+                                <div class="w-full h-full font-roboto flex ">
+                                    <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
+                                        @include('mantenimiento.justificacion')
+                                    </div>
+                                </div>
+                        </div>
+
+                            <div x-show.transition.in="step === 7">
 
                                 <div id="spend_plan" class="flex w-full  gap-x-3 mt-5">
                                     <div class="w-1/2 h-full grid  justify-items-center">
@@ -448,14 +456,22 @@ input[type=number]::-webkit-outer-spin-button {
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                    >{{ __('index.siguiente') }}</button>
 
+                   <button  type="button" id="button_next_mantenimiento_justificacion" name="button_next_mantenimiento_justificacion"
+
+                  style="background-color:#1B17BB;"
+                      x-show="step == 5"
+                      @click="step++"
+                      class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                  >{{ __('index.siguiente') }}</button>
+
                     <button  type="button" id="button_next_an_cost_mant" name="button_next_an_cost_mant"
                     style="background-color:#1B17BB;"
-                        x-show="step == 5"
+                        x-show="step == 6"
                         @click="step++"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('mantenimiento.speend_plan') }}</button>
 
-                    <button style="background-color:#1B17BB;width: 20%;"  x-show="step == 6" type="button"
+                    <button style="background-color:#1B17BB;width: 20%;"  x-show="step == 7" type="button"
                     onclick="save_mantenimiento();" name="guardar_mantenimiento" id="guardar_mantenimiento" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
 
 

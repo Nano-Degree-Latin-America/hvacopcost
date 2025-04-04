@@ -13908,6 +13908,7 @@ async function check_form_mantenimiento_tarjet(idm){
                 'cambio_filtros_mantenimiento',
                 'costo_filtro_mantenimiento',
                 'cantidad_filtros_mantenimiento',
+                'unidad_aux_mantenimiento',
             ];
 
             var countador_table = $('#contador_table').val();
@@ -13927,7 +13928,7 @@ async function check_form_mantenimiento_tarjet(idm){
             var token = $("#token").val();
         $.ajax({
             url: '/traer_datos_tarjeta', // Reemplaza con la URL de tu endpoint
-            type: 'POST',
+            type: 'get',
 
             headers: { 'X-CSRF-TOKEN': token },
             data: {
@@ -14019,6 +14020,7 @@ async function del_td_tr(tr) {
             'cambio_filtros_mantenimiento',
             'costo_filtro_mantenimiento',
             'cantidad_filtros_mantenimiento',
+            'unidad_aux_mantenimiento',
     ];
 
     // Enviar valuesArray por medio de AJAX
@@ -14091,6 +14093,7 @@ async function edit_regstro(tr) {
             'cambio_filtros_mantenimiento',
             'costo_filtro_mantenimiento',
             'cantidad_filtros_mantenimiento',
+            'unidad_aux_mantenimiento',
     ];
 
 
@@ -14235,7 +14238,7 @@ async function formula_calculo_mantenimiento() {
     /* check this  $("input[name$='_mantenimiento'], select[name$='_mantenimiento'], input[name*='_mantenimiento_'], input[name*='precio_']").each */
 
     try {
-        $("input[name$='_mantenimiento'], select[name$='_mantenimiento']").each(function() {
+        $("input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_0']").each(function() {
             formData[$(this).attr('name')] = $(this).val();
         });
         let response = await $.ajax({
@@ -14436,7 +14439,7 @@ function check_porcent_max_min_kms(value,id,unidad){
 
     $.ajax({
         url: '/spend_plan_base',
-        type: 'POST',
+        type: 'get',
 
         headers: { 'X-CSRF-TOKEN': token },
         data: {
@@ -14463,7 +14466,7 @@ function check_porcent_max_min_kms(value,id,unidad){
     var token = $("#token").val();
     var formData = {};
     var only_adicionales = {};
-    $("input[name$='_adicionales'],input[name$='_mantenimiento'], select[name$='_mantenimiento']").each(function() {
+    $("input[name$='_adicionales'],input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_0']").each(function() {
         formData[$(this).attr('name')] = $(this).val();
     });
 
@@ -14477,7 +14480,7 @@ function check_porcent_max_min_kms(value,id,unidad){
             if (value !== '0' && value !== '$0' && value !== '') {
                 $.ajax({
                     url: '/spend_plan_base_adicionales', // Reemplaza con la URL de tu endpoint
-                    type: 'POST',
+                    type: 'get',
 
                     headers: { 'X-CSRF-TOKEN': token },
                     data: {
@@ -14551,7 +14554,7 @@ function check_porcent_max_min_kms(value,id,unidad){
 
     $.ajax({
         url: '/spend_plan_base_adicionales_gp'+'/'+porcent, // Reemplaza con la URL de tu endpoint
-        type: 'POST',
+        type: 'get',
         headers: { 'X-CSRF-TOKEN': token },
         data: {
             values: formData
