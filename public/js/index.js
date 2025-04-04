@@ -13899,6 +13899,10 @@ async function check_form_mantenimiento_tarjet(idm){
             'yrs_vida_mantenimiento',
             'tipo_acceso_mantenimiento',
             'estado_unidad_mantenimiento',
+            'horas_diarias_mantenimiento',
+            'cambio_filtros_mantenimiento',
+            'costo_filtro_mantenimiento',
+            'cantidad_filtros_mantenimiento',
         ];
 
         var countador_table = $('#contador_table').val();
@@ -13932,20 +13936,23 @@ async function check_form_mantenimiento_tarjet(idm){
                 const arregloInterno = response[i];
                 var newRow = '<tr id='+i+'>';
                 for (let j = 0; j < arregloInterno.length; j++) {
+
                     var value = arregloInterno[j];
 
-                    newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                    if (String(value).endsWith('_hidden')) {
+                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                    }else{
+                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                    }
+
+
                 }
                 newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
                 newRow += '<td style="width:30px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
-                newRow += '<td style="width:30px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>';
+                newRow += '<td style="width:30px;" class=""><button type="button" onclick="edit_regstro('+i+')" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>';
                 newRow += '</tr>';
                 $('#tbody_equipos').append(newRow);
-
             }
-
-
-
         },
         error: function(xhr, status, error) {
             console.error('Error al enviar los datos:', error);
@@ -13958,17 +13965,23 @@ async function check_form_mantenimiento_tarjet(idm){
 }
 
 async function del_td_tr(tr) {
+
+
     var ids = [
-        'contador_table',
-        'sistema_mantenimiento',
-        'unidad_mantenimiento',
-        'marca_mantenimiento',
-        'modelo_mantenimiento',
-        'capacidad_termica_mantenimiento',
-        'cantidad_unidades_mantenimiento',
-        'yrs_vida_mantenimiento',
-        'tipo_acceso_mantenimiento',
-        'estado_unidad_mantenimiento',
+            'contador_table',
+            'sistema_mantenimiento',
+            'unidad_mantenimiento',
+            'marca_mantenimiento',
+            'modelo_mantenimiento',
+            'capacidad_termica_mantenimiento',
+            'cantidad_unidades_mantenimiento',
+            'yrs_vida_mantenimiento',
+            'tipo_acceso_mantenimiento',
+            'estado_unidad_mantenimiento',
+            'horas_diarias_mantenimiento',
+            'cambio_filtros_mantenimiento',
+            'costo_filtro_mantenimiento',
+            'cantidad_filtros_mantenimiento',
     ];
 
     // Enviar valuesArray por medio de AJAX
@@ -13991,11 +14004,18 @@ async function del_td_tr(tr) {
                 const arregloInterno = response[i];
                 var newRow = '<tr id='+i+'>';
                 for (let j = 0; j < arregloInterno.length; j++) {
+
                     var value = arregloInterno[j];
-                    newRow += '<td id="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border-color:#1B17BB;!important; width:100%;" readonly type="text" class="text-center border-2 text-sm font-bold h-8" value="' + value + '"></td>';
+
+                    if (String(value).endsWith('_hidden')) {
+                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                    }else{
+                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                    }
                 }
                 newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
                 newRow += '<td style="width:40px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
+                newRow += '<td style="width:30px;" class=""><button type="button" onclick="edit_regstro('+i+')" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>';
                 newRow += '</tr>';
                 $('#tbody_equipos').append(newRow);
 
@@ -14008,6 +14028,149 @@ async function del_td_tr(tr) {
         }
     });
 
+
+    var countador_table = $('#contador_table').val();
+    countador_table = parseInt(countador_table) - 1;
+    $('#contador_table').val(countador_table);
+
+}
+
+async function edit_regstro(tr) {
+
+    var valuesArray = [];
+
+    var ids = [
+            'contador_table',
+            'sistema_mantenimiento',
+            'unidad_mantenimiento',
+            'marca_mantenimiento',
+            'modelo_mantenimiento',
+            'capacidad_termica_mantenimiento',
+            'cantidad_unidades_mantenimiento',
+            'yrs_vida_mantenimiento',
+            'tipo_acceso_mantenimiento',
+            'estado_unidad_mantenimiento',
+            'horas_diarias_mantenimiento',
+            'cambio_filtros_mantenimiento',
+            'costo_filtro_mantenimiento',
+            'cantidad_filtros_mantenimiento',
+    ];
+
+
+    /* var countador_table = $('#contador_table').val();
+    countador_table = parseInt(countador_table) + 1;
+    $('#contador_table').val(countador_table); */
+
+    //valuesArray.push(countador_table);
+
+    ids.forEach(function(id) {
+        var value = $('#' + id).val();
+        valuesArray.push(value);
+    });
+
+
+    // Enviar valuesArray por medio de AJAX
+    var token = $("#token").val();
+    $.ajax({
+        url: '/edit_regstro/'+tr, // Reemplaza con la URL de tu endpoint
+        type: 'POST',
+
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            values: valuesArray,
+        },
+        success: async function(response) {
+
+
+            $('#indice_tabla_edit').val(response[0]);
+            $("#sistema_mantenimiento").find('option[value="' + response[1] + '"]').prop("selected", "selected");
+            await unidadHvac(response[1],'','unidad_mantenimiento',2);
+
+            $("#unidad_mantenimiento").find('option[value="' + response[2] + '"]').prop("selected", "selected");
+
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+
+
+}
+
+function edit_registro_tabla(){
+    var indice = $('#indice_tabla_edit').val();
+    $('#tbody_equipos').empty();
+    var valuesArray = [];
+
+    var ids = [
+            'contador_table',
+            'sistema_mantenimiento',
+            'unidad_mantenimiento',
+            'marca_mantenimiento',
+            'modelo_mantenimiento',
+            'capacidad_termica_mantenimiento',
+            'cantidad_unidades_mantenimiento',
+            'yrs_vida_mantenimiento',
+            'tipo_acceso_mantenimiento',
+            'estado_unidad_mantenimiento',
+            'horas_diarias_mantenimiento',
+            'cambio_filtros_mantenimiento',
+            'costo_filtro_mantenimiento',
+            'cantidad_filtros_mantenimiento',
+    ];
+
+
+    /* var countador_table = $('#contador_table').val();
+    countador_table = parseInt(countador_table) + 1;
+    $('#contador_table').val(countador_table); */
+
+    //valuesArray.push(countador_table);
+
+    ids.forEach(function(id) {
+        var value = $('#' + id).val();
+        valuesArray.push(value);
+    });
+
+    var token = $("#token").val();
+    $.ajax({
+        url: '/update_registro/'+indice, // Reemplaza con la URL de tu endpoint
+        type: 'POST',
+
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            values: valuesArray,
+        },
+        success: async function(response) {
+
+            var res_formula = await formula_calculo_mantenimiento();
+
+            for (var i = 0; i < response.length; i++) {
+                const arregloInterno = response[i];
+                var newRow = '<tr id='+i+'>';
+                for (let j = 0; j < arregloInterno.length; j++) {
+
+                    var value = arregloInterno[j];
+
+                    if (String(value).endsWith('_hidden')) {
+                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                    }else{
+                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                    }
+
+
+                }
+                newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
+                newRow += '<td style="width:30px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
+                newRow += '<td style="width:30px;" class=""><button type="button" onclick="edit_regstro('+i+')" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>';
+                newRow += '</tr>';
+                $('#tbody_equipos').append(newRow);
+            }
+
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
 
 }
 
@@ -14692,3 +14855,5 @@ function check_porcent_max_min_kms(value,id,unidad){
         return value;
     }
  }
+
+
