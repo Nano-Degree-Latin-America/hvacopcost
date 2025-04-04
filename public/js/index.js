@@ -1753,7 +1753,7 @@ function send_modelo_edit(value,id,id_modelo){
                     text: marca.modelo,
                 }));
             });
-            alert(value+'-'+id+'-'+id_modelo);
+
             $("#"+id).find('option[value="' + id_modelo + '"]').attr("selected", "selected");
 
         },
