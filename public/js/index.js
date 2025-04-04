@@ -13969,7 +13969,7 @@ async function check_form_mantenimiento_tarjet(idm){
 
         setTimeout(() => {
             clean_form_tarjet_mantenimiento();
-        }, 1000);
+        }, 5000);
 
 ////////////////////////////////
         }else if(indice_tabla > 0 || indice_tabla != ''){
