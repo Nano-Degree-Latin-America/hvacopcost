@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="flex justify-start w-1/3">
-                        <input name="yrs_vida_mantenimiento" id="yrs_vida_mantenimiento" onchange="valida_selects_inps(this.id);check_type_set_mant_inp('type_p','yrs_vida_2_1_retro_mantenimiento','yrs_vida_3_1_retro_mantenimiento',this.value);" onkeypress="return soloNumeros(event)" type="text" class="text-center w-full border-2 border-color-inps rounded-md">
+                        <input name="yrs_vida_mantenimiento" id="yrs_vida_mantenimiento" readonly onchange="valida_selects_inps(this.id);check_type_set_mant_inp('type_p','yrs_vida_2_1_retro_mantenimiento','yrs_vida_3_1_retro_mantenimiento',this.value);" onkeypress="return soloNumeros(event)" type="text" class="text-center w-full border-2 border-color-inps rounded-md">
 
                         <input id="yrs_vida_count_mantenimiento" name="yrs_vida_count_mantenimiento" type="number" class="hidden" value="1">
                     </div>
@@ -137,7 +137,7 @@
                     </div>
                     <div class="w-full flex justify-start">
                         <select style="font-size: 14px" onchange="valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md py-2" name="tipo_acceso_mantenimiento" id="tipo_acceso_mantenimiento">
-                            <option selected value="0">&nbsp;Seleccionar</option>
+                            <option selected value="">&nbsp;Seleccionar</option>
 
                         </select>
                     </div>
@@ -153,7 +153,7 @@
 
                     <div class="w-1/2 flex justify-start">
                         <select onchange="valida_selects_inps(this.id);" name="estado_unidad_mantenimiento" id="estado_unidad_mantenimiento" class="w-full border-2 border-color-inps rounded-md py-2">
-                            <option selected value="0">&nbsp;Seleccionar</option>
+                            <option selected value="">&nbsp;Seleccionar</option>
                         </select>
                         <input id="estado_unidad_count_mantenimiento" name="estado_unidad_count_mantenimiento" type="number" class="hidden" value="1">
                     </div>
@@ -218,11 +218,10 @@
                 </div>
 
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
-                    <button onclick="edit_registro_tabla('{{App::getLocale()}}')" style="background-color:#1B17BB;" type="button" name="save__button_mantenimiento" id="save__button_mantenimiento" class=" focus:outline-none border border-transparent py-2 px-3 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-lg font-roboto">Guardar</button>
-                    <button onclick="check_form_mantenimiento_tarjet('{{App::getLocale()}}')" style="" type="button" name="save__button_mantenimiento" id="save__button_mantenimiento" class="bg-orange-500  focus:outline-none border border-transparent py-2 px-3 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-lg font-roboto">Nuevo</button>
+                    <button onclick="check_form_mantenimiento_tarjet('{{App::getLocale()}}')"style="background-color:#1B17BB;" type="button" name="save__button_mantenimiento" id="save__button_mantenimiento" class=" focus:outline-none border border-transparent py-2 px-3 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-lg font-roboto">Guardar</button>
 
                     <div class="flex justify-end">
-                        <button style="background-color:#1B17BB;" type="button" title="Limpiar Tarjeta" class="py-1 px-3 border-2 rounded-md text-xl text-white hover:text-gray-200"><i class="fas fa-trash"></i></button>
+                        <button onclick="clean_form_tarjet_mantenimiento();" type="button" title="Limpiar Tarjeta" class="py-1 px-3 border-2 rounded-md text-xl bg-orange-500 text-white hover:text-gray-200"><i class="fas fa-trash"></i></button>
                     </div>
                 </div>
             </div>

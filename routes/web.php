@@ -213,6 +213,8 @@ Route::post('spend_plan_base_adicionales_gp/{porcent}', 'MantenimientoController
 Route::post('edit_regstro/{index}', 'MantenimientoController@edit_regstro');
 Route::get('check_counter_storage', 'MantenimientoController@check_counter_storage');
 Route::post('update_registro/{index}', 'MantenimientoController@update_registro');
+Route::get('reset_local_storage', 'MantenimientoController@reset_local_storage');
+
 
 
 //lang

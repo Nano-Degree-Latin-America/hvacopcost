@@ -1180,8 +1180,7 @@ async function set_ventilaciones_no_doa(value) {
             $('#ene_fin_pro_form_project').removeClass("hidden");
             $('#img_ene_fin_proy_hvac').removeClass("hidden");
             $('#button_calcular_ene_fin').removeClass("hidden");
-
-
+            $('#forms_cal_pre').addClass("hidden");
             //mantenimiento
             $('#mantenimiento_form_project').addClass("hidden");
             $('#'+mant_p).addClass("hidden");
@@ -1227,7 +1226,7 @@ async function set_ventilaciones_no_doa(value) {
             $('#ene_fin_pro_form_project').removeClass("hidden");
             $('#img_ene_fin_proy_hvac').removeClass("hidden");
             $('#button_calcular_ene_fin').removeClass("hidden");
-
+            $('#forms_cal_pre').addClass("hidden");
 
             $('#'+mant_p).addClass("hidden");
             $('#mantenimiento_form_project').addClass("hidden");
@@ -1307,7 +1306,6 @@ async function set_ventilaciones_no_doa(value) {
             $('#forms_cal_pre').removeClass("hidden");
             $('#ene_fin_pro_form_project').addClass("hidden");
             $('#button_calcular_ene_fin').addClass("hidden");
-
             $('#mantenimiento_form_project').removeClass("hidden");
             $('#mant_prev').removeClass("hidden");
             $('#button_sigiuente_mantenimiento').removeClass("hidden");
@@ -1476,7 +1474,8 @@ async function set_ventilaciones_no_doa(value) {
                         text: marca.marca,
                     }));
                 });
-                $("#"+id).find('option[value="' + val + '"]').attr("selected", "selected");
+
+                $("#"+id).find('option[value="' + val + '"]').prop("selected", "selected");
             },
             error: function (responsetext) {
 
@@ -1754,6 +1753,7 @@ function send_modelo_edit(value,id,id_modelo){
                     text: marca.modelo,
                 }));
             });
+            alert(value+'-'+id+'-'+id_modelo);
             $("#"+id).find('option[value="' + id_modelo + '"]').attr("selected", "selected");
 
         },
@@ -13885,83 +13885,120 @@ async function check_form_mantenimiento_tarjet(idm){
        trans_sols_valid(idm);
                    return false;
        }else if(count_inps==0){
-        $('#tr_exampe').addClass('hidden');
-        var valuesArray = [];
-        $('#tbody_equipos').empty();
-        var ids = [
-            'contador_table',
-            'sistema_mantenimiento',
-            'unidad_mantenimiento',
-            'marca_mantenimiento',
-            'modelo_mantenimiento',
-            'capacidad_termica_mantenimiento',
-            'cantidad_unidades_mantenimiento',
-            'yrs_vida_mantenimiento',
-            'tipo_acceso_mantenimiento',
-            'estado_unidad_mantenimiento',
-            'horas_diarias_mantenimiento',
-            'cambio_filtros_mantenimiento',
-            'costo_filtro_mantenimiento',
-            'cantidad_filtros_mantenimiento',
-        ];
 
-        var countador_table = $('#contador_table').val();
-        countador_table = parseInt(countador_table) + 1;
-        $('#contador_table').val(countador_table);
+        var indice_tabla =  $('#indice_tabla_edit').val();
+        if( indice_tabla == 0 || indice_tabla == ''){
 
-        //valuesArray.push(countador_table);
 
-        ids.forEach(function(id) {
-            var value = $('#' + id).val();
-            valuesArray.push(value);
+            $('#tr_exampe').addClass('hidden');
+            var valuesArray = [];
+            $('#tbody_equipos').empty();
+            var ids = [
+                'contador_table',
+                'sistema_mantenimiento',
+                'unidad_mantenimiento',
+                'marca_mantenimiento',
+                'modelo_mantenimiento',
+                'capacidad_termica_mantenimiento',
+                'cantidad_unidades_mantenimiento',
+                'yrs_vida_mantenimiento',
+                'tipo_acceso_mantenimiento',
+                'estado_unidad_mantenimiento',
+                'horas_diarias_mantenimiento',
+                'cambio_filtros_mantenimiento',
+                'costo_filtro_mantenimiento',
+                'cantidad_filtros_mantenimiento',
+            ];
+
+            var countador_table = $('#contador_table').val();
+            countador_table = parseInt(countador_table) + 1;
+            $('#contador_table').val(countador_table);
+
+            //valuesArray.push(countador_table);
+
+            ids.forEach(function(id) {
+                var value = $('#' + id).val();
+                valuesArray.push(value);
+            });
+
+
+
+            // Enviar valuesArray por medio de AJAX
+            var token = $("#token").val();
+        $.ajax({
+            url: '/traer_datos_tarjeta', // Reemplaza con la URL de tu endpoint
+            type: 'POST',
+
+            headers: { 'X-CSRF-TOKEN': token },
+            data: {
+                values: valuesArray
+            },
+            success: async function(response) {
+
+                var res_formula = await formula_calculo_mantenimiento();
+
+                for (var i = 0; i < response.length; i++) {
+                    const arregloInterno = response[i];
+                    var newRow = '<tr id='+i+'>';
+                    for (let j = 0; j < arregloInterno.length; j++) {
+
+                        var value = arregloInterno[j];
+
+                        if (String(value).endsWith('_hidden')) {
+                            newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                        }else{
+                            newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                        }
+
+
+                    }
+                    newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
+                    newRow += '<td style="width:30px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
+                    newRow += '<td style="width:30px;" class=""><button type="button" onclick="edit_regstro('+i+')" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>';
+                    newRow += '</tr>';
+                    $('#tbody_equipos').append(newRow);
+                }
+                $('#indice_tabla_edit').val('');
+                clean_form_tarjet_mantenimiento();
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al enviar los datos:', error);
+            }
         });
 
-
-
-        // Enviar valuesArray por medio de AJAX
-        var token = $("#token").val();
-    $.ajax({
-        url: '/traer_datos_tarjeta', // Reemplaza con la URL de tu endpoint
-        type: 'POST',
-
-        headers: { 'X-CSRF-TOKEN': token },
-        data: {
-            values: valuesArray
-        },
-        success: async function(response) {
-
-            var res_formula = await formula_calculo_mantenimiento();
-
-            for (var i = 0; i < response.length; i++) {
-                const arregloInterno = response[i];
-                var newRow = '<tr id='+i+'>';
-                for (let j = 0; j < arregloInterno.length; j++) {
-
-                    var value = arregloInterno[j];
-
-                    if (String(value).endsWith('_hidden')) {
-                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
-                    }else{
-                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
-                    }
-
-
-                }
-                newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
-                newRow += '<td style="width:30px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
-                newRow += '<td style="width:30px;" class=""><button type="button" onclick="edit_regstro('+i+')" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>';
-                newRow += '</tr>';
-                $('#tbody_equipos').append(newRow);
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error('Error al enviar los datos:', error);
+////////////////////////////////
+        }else if(indice_tabla > 0 || indice_tabla != ''){
+            edit_registro_tabla();
+            clean_form_tarjet_mantenimiento();
         }
-    });
+
+
+
+
 
        }
+
        /////////////////////////////////////
    //Livewire.emit('save_equipo')
+}
+
+async function clean_form_tarjet_mantenimiento(){
+    $("#sistema_mantenimiento").find('option[value="' + 0 + '"]').prop("selected", "selected");
+    //await unidadHvac(response[1],'','unidad_mantenimiento',2);
+    $("#unidad_mantenimiento").find('option[value=""]').prop("selected", "selected");
+    $("#marca_mantenimiento").find('option[value=""]').prop("selected", "selected");
+    $("#modelo_mantenimiento").find('option[value=""]').prop("selected", "selected");
+    /* send_marcas_to('marca_mantenimiento', response[3], response[1]);
+    send_modelo_edit(response[2], 'modelo_mantenimiento', response[4]); */
+    $('#capacidad_termica_mantenimiento').val('');
+    $('#cantidad_unidades_mantenimiento').val(0);
+
+    $("#tipo_acceso_mantenimiento").find('option[value=""]').prop("selected", "selected");
+    $("#estado_unidad_mantenimiento").find('option[value=""]').prop("selected", "selected");
+    $("#cambio_filtros_mantenimiento").find('option[value="0"]').prop("selected", "selected");
+    $('#costo_filtro_mantenimiento').val(0);
+    $('#cantidad_filtros_mantenimiento').val(0);
+
 }
 
 async function del_td_tr(tr) {
@@ -14085,8 +14122,23 @@ async function edit_regstro(tr) {
             $('#indice_tabla_edit').val(response[0]);
             $("#sistema_mantenimiento").find('option[value="' + response[1] + '"]').prop("selected", "selected");
             await unidadHvac(response[1],'','unidad_mantenimiento',2);
-
             $("#unidad_mantenimiento").find('option[value="' + response[2] + '"]').prop("selected", "selected");
+            send_marcas_to('marca_mantenimiento', response[3], response[1]);
+            send_modelo_edit(response[3], 'modelo_mantenimiento', response[4]);
+
+
+           /*  send_marcas_to(marca, res.val_unidad.id_marca, res.val_unidad.unidad_hvac);
+            send_modelo_edit(res.val_unidad.id_marca, modelo, res.val_unidad.id_modelo); */
+
+
+            $('#capacidad_termica_mantenimiento').val(response[5]);
+            $('#cantidad_unidades_mantenimiento').val(response[6]);
+            $('#yrs_vida_mantenimiento').val(response[7]);
+            $("#tipo_acceso_mantenimiento").find('option[value="' + response[8] + '"]').prop("selected", "selected");
+            $("#estado_unidad_mantenimiento").find('option[value="' + response[9] + '"]').prop("selected", "selected");
+            $("#cambio_filtros_mantenimiento").find('option[value="' + response[11] + '"]').prop("selected", "selected");
+            $('#costo_filtro_mantenimiento').val(response[12]);
+            $('#cantidad_filtros_mantenimiento').val(response[13]);
 
         },
         error: function(xhr, status, error) {
@@ -14165,7 +14217,7 @@ function edit_registro_tabla(){
                 newRow += '</tr>';
                 $('#tbody_equipos').append(newRow);
             }
-
+            $('#indice_tabla_edit').val('');
         },
         error: function(xhr, status, error) {
             console.error('Error al enviar los datos:', error);
