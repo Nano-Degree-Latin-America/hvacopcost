@@ -194,16 +194,22 @@ public function factores_mantenimiento(){
         array_push(
             $array_to_response,
             $request->values[0],
-            $sistema,
-            $unidad_aux,
-            $marca->marca,
-            $modelo->modelo,
-            $request->values[5],
-            $request->values[6],
-            $request->values[7],
-            strtoupper($acceso),
-            strtoupper($estado)
+            $sistema,   //sistema_mantenimiento
+            $unidad_aux,  //unidad_mantenimiento
+            $marca->marca,  //marca_mantenimiento
+            $modelo->modelo,  //modelo_mantenimiento
+            $request->values[5],  //capacidad_termica_mantenimiento
+            $request->values[6],  //cantidad_unidades_mantenimiento
+            $request->values[7],  //yrs_vida_mantenimiento
+            strtoupper($acceso),  //tipo_acceso_mantenimiento
+            strtoupper($estado),  //estado_unidad_mantenimiento
+            $request->values[10].'_hidden',  //horas_diarias_mantenimiento
+            $request->values[11].'_hidden',   //cambio_filtros_mantenimiento
+            $request->values[12].'_hidden',   //costo_filtro_mantenimiento
+            $request->values[13].'_hidden',    //cantidad_filtros_mantenimiento
         );
+
+        //dd($array_to_response);
         // Obtener el contenido actual de array_sistemas de la sesión
         $array_sistemas = Session::get('array_sistemas', []);
 
@@ -226,6 +232,163 @@ public function factores_mantenimiento(){
         }
 
         return response()->json($array_sistemas);
+    }
+
+    public function edit_regstro(Request  $request,$id){
+        $array_sistemas = Session::get('array_sistemas');
+        $arry_res_sistema = [];
+        $id = $id + 1;
+
+
+      /*   $sistemas = [
+            'Paquetes (RTU)' => '1',
+            'Split DX' => '2',
+            'VRF No Ductados' => '3',
+            'VRF Ductados' => '4',
+            'PTAC/VTAC' => '5',
+            'WSHP' => '6',
+            'Minisplit Inverter' => '7'
+        ];
+
+
+
+        $unidad = $request->values[2];
+        $id_marca = $request->values[3];
+        $id_modelo = $request->values[4];
+        $marca = MarcasEmpresaModel::find($id_marca);
+        $modelo = ModelosEmpresaModel::find($id_modelo);
+        $unidad_aux = UnidadesModel::where('identificador','=',$unidad)->first()->unidad;
+        $acceso = FactorAccesoModel::where('id','=',$request->values[8])->first()->factor;
+        $estado = FactorEstadoUnidad::where('id','=',$request->values[9])->first()->factor; */
+
+        for ($i = 0; $i < count($array_sistemas); $i++) {
+            if($array_sistemas[$i][0] == $id){
+
+                $id_sistema = SistemasModel::where('name','=',$array_sistemas[$i][1])->first()->id;
+                $id_unidad = UnidadesModel::where('unidad','=',$array_sistemas[$i][2])->first()->identificador;
+                $marca = MarcasEmpresaModel::where('marca','=',$array_sistemas[$i][3])
+                ->where('id_empresa','=',Auth::user()->id_empresa)
+                ->first()->id;
+                $modelo = ModelosEmpresaModel::where('modelo','=',$array_sistemas[$i][4])
+                ->where('id_empresa','=',Auth::user()->id_empresa)
+                ->first()->id;
+
+                $acceso = FactorAccesoModel::where('factor','=',ucfirst($array_sistemas[$i][8]))->first()->id;
+                $estado = FactorEstadoUnidad::where('factor','=',ucfirst( $array_sistemas[$i][9]))->first()->id;
+
+                $horas_diarias_aux = explode('_',$array_sistemas[$i][10]);
+                $horas_diarias = $horas_diarias_aux[0];
+
+                $cambio_filtros_aux = explode('_',$array_sistemas[$i][11]);
+                $cambio_filtros = $cambio_filtros_aux[0];
+
+                $costo_filtros_aux = explode('_', $array_sistemas[$i][12]);
+                $costo_filtros = $costo_filtros_aux[0];
+
+                $cantidad_filtros_aux = explode('_', $array_sistemas[$i][13]);
+                $cantidad_filtros = $cantidad_filtros_aux[0];
+
+                array_push(
+                    $arry_res_sistema,
+                    $array_sistemas[$i][0],
+                    $id_sistema,  //sistema_mantenimiento
+                    $id_unidad,  //unidad_mantenimiento
+                    $marca,  //marca_mantenimiento
+                    $modelo,  //modelo_mantenimiento
+                    $array_sistemas[$i][5],  //capacidad_termica_mantenimiento
+                    $array_sistemas[$i][6],  //cantidad_unidades_mantenimiento
+                    $array_sistemas[$i][7],  //yrs_vida_mantenimiento
+                    $acceso,  //tipo_acceso_mantenimiento
+                    $estado,  //estado_unidad_mantenimiento
+                    $horas_diarias,  //horas_diarias_mantenimiento
+                    $cambio_filtros,   //cambio_filtros_mantenimiento
+                    $costo_filtros,   //costo_filtro_mantenimiento
+                    $cantidad_filtros,    //cantidad_filtros_mantenimiento
+                );
+            }
+        }
+
+
+        return response()->json($arry_res_sistema);
+
+    }
+
+    public function update_registro(Request  $request,$id){
+        $array_sistemas = Session::get('array_sistemas');
+
+        $sistemas = [
+            '1' => 'Paquetes (RTU)',
+            '2' => 'Split DX',
+            '3' => 'VRF No Ductados',
+            '4' => 'VRF Ductados',
+            '5' => 'PTAC/VTAC',
+            '6' => 'WSHP',
+            '7' => 'Minisplit Inverter'
+];
+
+        $sistema = $sistemas[$request->values[1]];
+        $unidad = $request->values[2];
+        $id_marca = $request->values[3];
+        $id_modelo = $request->values[4];
+        $marca = MarcasEmpresaModel::find($id_marca);
+        $modelo = ModelosEmpresaModel::find($id_modelo);
+        $unidad_aux = UnidadesModel::where('identificador','=',$unidad)->first()->unidad;
+        $acceso = FactorAccesoModel::where('id','=',$request->values[8])->first()->factor;
+        $estado = FactorEstadoUnidad::where('id','=',$request->values[9])->first()->factor;
+
+       /*  array_push(
+            $array_to_response,
+            $request->values[0],
+            $sistema,   //sistema_mantenimiento
+            $unidad_aux,  //unidad_mantenimiento
+            $marca->marca,  //marca_mantenimiento
+            $modelo->modelo,  //modelo_mantenimiento
+            $request->values[5],  //capacidad_termica_mantenimiento
+            $request->values[6],  //cantidad_unidades_mantenimiento
+            $request->values[7],  //yrs_vida_mantenimiento
+            strtoupper($acceso),  //tipo_acceso_mantenimiento
+            strtoupper($estado),  //estado_unidad_mantenimiento
+            $request->values[10].'_hidden',  //horas_diarias_mantenimiento
+            $request->values[11].'_hidden',   //cambio_filtros_mantenimiento
+            $request->values[12].'_hidden',   //costo_filtro_mantenimiento
+            $request->values[13].'_hidden',    //cantidad_filtros_mantenimiento
+        ); */
+
+        for ($i = 0; $i < count($array_sistemas); $i++) {
+            if($array_sistemas[$i][0] == $id){
+                $array_sistemas[$i][1] = $sistema;
+                $array_sistemas[$i][2] = $unidad_aux;
+                $array_sistemas[$i][3] = $marca->marca;
+                $array_sistemas[$i][4] = $modelo->modelo;
+                $array_sistemas[$i][5] = $request->values[5];  //capacidad_termica_mantenimiento;
+                $array_sistemas[$i][6] = $request->values[6];  //cantidad_unidades_mantenimiento
+                $array_sistemas[$i][7] = $request->values[7];  //cantidad_unidades_mantenimiento
+                $array_sistemas[$i][8] =  strtoupper($acceso);  //cantidad_unidades_mantenimiento
+                $array_sistemas[$i][9] =  strtoupper($estado);  //cantidad_unidades_mantenimiento
+                $array_sistemas[$i][10] = $request->values[10].'_hidden';  //cantidad_unidades_mantenimiento
+                $array_sistemas[$i][11] = $request->values[11].'_hidden';  //cantidad_unidades_mantenimiento
+                $array_sistemas[$i][12] = $request->values[12].'_hidden';  //cantidad_unidades_mantenimiento
+                $array_sistemas[$i][13] = $request->values[13].'_hidden';  //cantidad_unidades_mantenimiento
+            }
+        }
+
+        // Reindexar el array y actualizar el primer elemento de cada subarreglo
+        $array_sistemas = array_values($array_sistemas);
+        for ($i = 0; $i < count($array_sistemas); $i++) {
+            if (is_array($array_sistemas[$i]) && count($array_sistemas[$i]) > 0) {
+                $array_sistemas[$i][0] = $i + 1; // Editar el primer elemento
+            }
+        }
+
+
+        // Guardar el array actualizado en la sesión
+        session(['array_sistemas' => $array_sistemas]);
+
+
+         // Obtener array_sistemas de la sesión
+        $array_sistemas = Session::get('array_sistemas');
+        return response()->json($array_sistemas);
+
     }
 
     public function delete_reg_table_equipos(Request  $request,$id){
@@ -997,6 +1160,10 @@ public function spend_plan_base_adicionales(Request $request)
         return $precio_entero;
     }
 
+    public function check_counter_storage(){
+        $array_sistemas = Session::get('array_sistemas');
+        return count($array_sistemas);
+    }
 
 }
 

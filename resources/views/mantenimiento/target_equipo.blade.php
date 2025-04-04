@@ -5,6 +5,7 @@
              <a href="#final1">   <button onclick="active_display_retro('sol_1_retro');" type="button" class="rounded-xl p-1 m-0 hover-button-plus text-3xl">{{-- <i class="fa-solid fa-plus text-white"></i> --}}</button></a>
                 <input type="text" class="hidden" value="2" id="cont_sol_1_retro" name="cont_sol_1_retro">
                 <input type="text" class="hidden" value="1" id="set_sol_1_retro" name="set_sol_1_retro">
+                <input type="text" class="hidden" value="" id="indice_tabla_edit" name="indice_tabla_edit">
             </div>
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex  2xl:justify-center xl:justify-center lg:justify-center  py-1">
                 <h2 style="color:#1B17BB;" class="font-bold text-3xl">{{ __('index.sis_ext') }}</h2>
@@ -125,7 +126,7 @@
 
                     <div class="flex justify-start w-1/2">
                         <input readonly type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-color-inps rounded-md py-1 text-center bg-gray-400" id="horas_diarias_mantenimiento" name="horas_diarias_mantenimiento" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);">
-                        <input type="text" style="font-size: 14px;margin-left:1px;" class="hidden w-full border-2 border-color-inps rounded-md py-1 text-center bg-gray-400" id="horas_diarias_mantenimiento" name="horas_diarias_mantenimiento" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);">
+                        {{-- <input type="text" style="font-size: 14px;margin-left:1px;" class="hidden w-full border-2 border-color-inps rounded-md py-1 text-center bg-gray-400" id="horas_diarias_mantenimiento" name="horas_diarias_mantenimiento" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);"> --}}
                         <input id="horas_diarias_count_mantenimiento" name="horas_diarias_count_mantenimiento" type="number" class="hidden" value="1">
                     </div>
                 </div>
