@@ -424,7 +424,7 @@ public function factores_mantenimiento(){
     }
 
     public function get_data_form(Request $request){
-        if ($request->ajax()) {
+
 
             $sistema = $request->get('sistema_mantenimiento');
             $unidad = $request->get('unidad_mantenimiento');
@@ -452,10 +452,7 @@ public function factores_mantenimiento(){
              /* dd($capacidad_termica_mantenimiento.'_'.$cantidad_unidades_mantenimiento.'_'.$costo_instalado.'_'.$rav.'_'.$fa.'_'.$fta.'_'.$feu.'_'.$fav.'_'.$fhd); */
             // La petición es una petición AJAX
             return $res_formula_calculo;
-        } else {
-            // La petición no es una petición AJAX
-            return response()->json(['message' => 'No es una petición AJAX']);
-        }
+
     }
 
    public function obtener_costo_instalado($unidad){
