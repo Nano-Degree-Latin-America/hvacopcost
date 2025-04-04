@@ -13966,7 +13966,11 @@ async function check_form_mantenimiento_tarjet(idm){
                 console.error('Error al enviar los datos:', error);
             }
         });
-        clean_form_tarjet_mantenimiento();
+
+        setTimeout(() => {
+            clean_form_tarjet_mantenimiento();
+        }, 1000);
+
 ////////////////////////////////
         }else if(indice_tabla > 0 || indice_tabla != ''){
             edit_registro_tabla();
