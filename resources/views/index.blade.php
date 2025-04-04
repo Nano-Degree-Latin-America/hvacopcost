@@ -1077,6 +1077,25 @@ input[type=number]::-webkit-outer-spin-button {
     $(document).ready(function () {
         set_ser_to_sers('SEER');
         mostrar_type_p('{{$check_types_pn}}','{{$check_types_pr}}');
+
+        if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+            var endpoint = "/reset_local_storage";
+            $.ajax({
+                url: endpoint,
+                type: 'get',
+
+                success: function(response) {
+
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error al enviar los datos:', error);
+                }
+            });
+        // Aquí puedes agregar el código que necesites ejecutar al recargar la página
+        } else {
+            console.log("La página se ha cargado por primera vez.");
+        }
+
     });
 
 function myFunction() {

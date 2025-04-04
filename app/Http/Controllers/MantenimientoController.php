@@ -1165,5 +1165,10 @@ public function spend_plan_base_adicionales(Request $request)
         return count($array_sistemas);
     }
 
+    public function reset_local_storage(){
+        Session::forget('array_sistemas');
+        Session::forget('array_speed_plan');
+    }
+
 }
 
