@@ -14443,7 +14443,7 @@ function check_porcent_max_min_kms(value,id,unidad){
 
     $.ajax({
         url: '/spend_plan_base',
-        type: 'post',
+        type: 'get',
 
         headers: { 'X-CSRF-TOKEN': token },
         data: {
