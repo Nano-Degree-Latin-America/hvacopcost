@@ -14247,7 +14247,7 @@ async function formula_calculo_mantenimiento() {
         });
         let response = await $.ajax({
             url: endpoint,
-            type: 'POST',
+            type: 'get',
             headers: { 'X-CSRF-TOKEN': token },
             data: formData
         });
@@ -14443,7 +14443,7 @@ function check_porcent_max_min_kms(value,id,unidad){
 
     $.ajax({
         url: '/spend_plan_base',
-        type: 'get',
+        type: 'post',
 
         headers: { 'X-CSRF-TOKEN': token },
         data: {
