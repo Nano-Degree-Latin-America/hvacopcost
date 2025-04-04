@@ -288,7 +288,7 @@ input[type=number]::-webkit-outer-spin-button {
 
                             <div x-show.transition.in="step === 2">
                                 <div class="w-full h-full font-roboto flex mt-2">
-                                    <div id="forms_ene_fin_proy" class="hidden">
+                                    <div id="forms_ene_fin_proy" class="hidden w-full">
                                         @include('forms_ene_fin_proy')
                                     </div>
                                     <div id="forms_cal_pre" class="hidden w-full">
