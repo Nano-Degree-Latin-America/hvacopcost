@@ -181,6 +181,8 @@ public function factores_mantenimiento(){
                     '7' => 'Minisplit Inverter'
         ];
 
+
+
         $sistema = $sistemas[$request->values[1]];
         $unidad = $request->values[2];
         $id_marca = $request->values[3];
@@ -206,7 +208,8 @@ public function factores_mantenimiento(){
             $request->values[10].'_hidden',  //horas_diarias_mantenimiento
             $request->values[11].'_hidden',   //cambio_filtros_mantenimiento
             $request->values[12].'_hidden',   //costo_filtro_mantenimiento
-            $request->values[13].'_hidden',    //cantidad_filtros_mantenimiento
+            $request->values[13].'_hidden',//cantidad_filtros_mantenimiento
+            $unidad.'_hidden',
         );
 
         //dd($array_to_response);
@@ -445,7 +448,7 @@ public function factores_mantenimiento(){
             $fhd = $this->obtener_fhd($ocupacion_semanal_mantenimiento);
              $res_formula_calculo = $this->formula_calculo($capacidad_termica_mantenimiento,$cantidad_unidades_mantenimiento,$costo_instalado,$rav,$fa,$fta,$feu,$fav,$fhd,$fg);
 
-           /*  dd($request->all()); */
+
              /* dd($capacidad_termica_mantenimiento.'_'.$cantidad_unidades_mantenimiento.'_'.$costo_instalado.'_'.$rav.'_'.$fa.'_'.$fta.'_'.$feu.'_'.$fav.'_'.$fhd); */
             // La petición es una petición AJAX
             return $res_formula_calculo;
@@ -543,6 +546,8 @@ public function factores_mantenimiento(){
 
   public function spend_plan_base(Request $request)
 {
+
+
 
     $analisis_costo_mant_array = [];
 
@@ -668,6 +673,9 @@ public function factores_mantenimiento(){
 
 public function spend_plan_base_adicionales(Request $request)
 {
+
+
+
     $analisis_costo_mant_array = [];
     // Obtener array_sistemas de la sesión
     $array_speed_plan = Session::get('array_speed_plan');
@@ -855,10 +863,11 @@ public function spend_plan_base_adicionales(Request $request)
     $costo_practico = $dias_mantenimiento_sp*$distancia_sitio_mantenimiento*$valor_vehiculo;
 
     //valores para grafica costos mantenimiento
-    $id_unidad = UnidadesModel::where('identificador','=',$request->values['unidad_mantenimiento'])->first()->id;
+    $id_unidad_aux = explode('_',$request->values['unidad_aux_mantenimiento_0']);
+    $id_unidad = UnidadesModel::where('identificador','=',$id_unidad_aux[0])->first()->id;
     $costo_instalado = BaseCalculoModel::where('id_unidad','=',$id_unidad)->first()->costo_instalacion;
-    $capacidad_termica =  $request->values['capacidad_termica_mantenimiento'];
-    $cantidad_unidades_mantenimiento =  $request->values['cantidad_unidades_mantenimiento'];
+    $capacidad_termica =  $request->values['capacidad_termica_mantenimiento_0'];
+    $cantidad_unidades_mantenimiento =  $request->values['cantidad_unidades_mantenimiento_0'];
     $arry_grafic = [];
 
     //obtiene el valor de grafica_costos_mantenimiento
