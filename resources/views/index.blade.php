@@ -432,7 +432,7 @@ input[type=number]::-webkit-outer-spin-button {
                     >{{ __('index.siguiente') }}</button> --}}
 
                     <button  type="button" id="button_next_mantenimiento_noadicionales" name="button_next_mantenimiento_noadicionales"
-                     onclick="calcular_speendplan_base();"
+                     {{-- onclick="calcular_speendplan_base();" --}}
                     style="background-color:#1B17BB;"
                         x-show="step == 2"
                         @click="step++"
