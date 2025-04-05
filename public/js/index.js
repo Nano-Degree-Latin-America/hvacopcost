@@ -14247,7 +14247,7 @@ async function formula_calculo_mantenimiento() {
         });
         let response = await $.ajax({
             url: endpoint,
-            type: 'get',
+            type: 'post',
             headers: { 'X-CSRF-TOKEN': token },
             data: formData
         });
