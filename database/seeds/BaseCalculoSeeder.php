@@ -76,6 +76,13 @@ class BaseCalculoSeeder extends Seeder
             'damper_motorizado_accesorios' => ['costo_instalacion' => 45.00, 'rav' => 100.0],
             'cortinas_aire_accesorios' => ['costo_instalacion' => 15.00, 'rav' => 100.0],
 
+            'condensadora_vrf_vrv' => ['costo_instalacion' => 1499, 'rav' => 4.5],
+            'papisotecho_vrf_vrv' => ['costo_instalacion' => 1500, 'rav' => 4.5],
+            'fancoil_lsp_vrf_vrv' => ['costo_instalacion' => 1800, 'rav' => 4.5],
+            'fancoil_hsp_vrf_vrv' => ['costo_instalacion' => 1700, 'rav' => 4.5],
+            'cassette_vrf_vrv' => ['costo_instalacion' => 2200, 'rav' => 4.5],
+            'manejadora_vrf_vrv' => ['costo_instalacion' => 2400, 'rav' => 4.5],
+
         ];
 
         // Obtener todas las unidades

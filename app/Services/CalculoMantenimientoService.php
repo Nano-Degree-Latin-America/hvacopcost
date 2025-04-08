@@ -26,6 +26,9 @@ class CalculoMantenimientoService
     public function new_calculo_mantenimiento_save(Request $request,$id_project)
     {
 
+
+
+
                 $new_mantenimiento_project = new MantenimientoProjectsModel;
                 $new_mantenimiento_project->id_project=$id_project;
                 $new_mantenimiento_project->cliente_prospecto=$request->get('cliente_pro_mantenimiento');

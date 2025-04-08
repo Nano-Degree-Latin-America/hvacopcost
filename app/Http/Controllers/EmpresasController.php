@@ -453,37 +453,17 @@ class EmpresasController extends Controller
         dd('save');
     }
 
-    public function add_marcas_empresas($id_empresa){
+    public function add_marcas_empresas(){
 
-        $array_paquetes = ['1','2','5','6','7'];
+        //$array_paquetes = ['1','2','5','6','7'];
+        $array_paquetes = ['8','12','13','14','15'];
         $marcas_paquetes = ['Carrier','Trane','JCI','Lennox','Rheem','Aoon','Genérico'];
         $empresas = DB::table('empresas')
         ->get();
 
 
 
-            for ($z=0; $z < count($array_paquetes) ; $z++) {
-
-                for ($i=0; $i < count($marcas_paquetes) ; $i++) {
-                    $new_marca= new MarcasEmpresaModel;
-                    $new_marca->marca = $marcas_paquetes[$i];
-                    $new_marca->equipo = $array_paquetes[$z];
-                    $new_marca->defecto = 1;
-                    $new_marca->id_empresa = $id_empresa;
-                    $new_marca->id_user = Auth::user()->id;
-                    $new_marca->save();
-
-                }
-            }
-
-
-    }
-
-
-    public function add_marcas_empresasvrf($id_empresa){
-
-        $array_paquetes = ['3','4'];
-        $marcas_paquetes = ['Daikin','Hitachi','Samsung','Midea','Toshiba','Mitsubishi','LG','Genérico'];
+        for ($a=0; $a < count($empresas) ; $a++) {
 
             for ($z=0; $z < count($array_paquetes) ; $z++) {
 
@@ -492,12 +472,71 @@ class EmpresasController extends Controller
                     $new_marca->marca = $marcas_paquetes[$i];
                     $new_marca->equipo = $array_paquetes[$z];
                     $new_marca->defecto = 1;
-                    $new_marca->id_empresa = $id_empresa;
+                    $new_marca->id_empresa = $empresas[$a]->id;
                     $new_marca->id_user = Auth::user()->id;
                     $new_marca->save();
 
                 }
            }
+        }
+
+
+            /* for ($z=0; $z < count($array_paquetes) ; $z++) {
+
+                for ($i=0; $i < count($marcas_paquetes) ; $i++) {
+                    $new_marca= new MarcasEmpresaModel;
+                    $new_marca->marca = $marcas_paquetes[$i];
+                    $new_marca->equipo = $array_paquetes[$z];
+                    $new_marca->defecto = 1;
+                    $new_marca->id_empresa = $id_empresa;
+                    $new_marca->id_user = Auth::user()->id;
+                    $new_marca->save();
+
+                }
+            } */
+
+
+    }
+
+
+    public function add_marcas_empresasvrf(){
+
+        $array_paquetes = ['16'];
+
+        $marcas_paquetes = ['Daikin','Hitachi','Samsung','Midea','Toshiba','Mitsubishi','LG','Genérico'];
+        $empresas = DB::table('empresas')
+        ->get();
+
+         /*    for ($z=0; $z < count($array_paquetes) ; $z++) {
+
+                for ($i=0; $i < count($marcas_paquetes) ; $i++) {
+                    $new_marca= new MarcasEmpresaModel;
+                    $new_marca->marca = $marcas_paquetes[$i];
+                    $new_marca->equipo = $array_paquetes[$z];
+                    $new_marca->defecto = 1;
+                    $new_marca->id_empresa = $id_empresa;
+                    $new_marca->id_user = Auth::user()->id;
+                    $new_marca->save();
+
+                }
+           } */
+
+           for ($a=0; $a < count($empresas) ; $a++) {
+
+            for ($z=0; $z < count($array_paquetes) ; $z++) {
+
+                for ($i=0; $i < count($marcas_paquetes) ; $i++) {
+                    $new_marca= new MarcasEmpresaModel;
+                    $new_marca->marca = $marcas_paquetes[$i];
+                    $new_marca->equipo = $array_paquetes[$z];
+                    $new_marca->defecto = 1;
+                    $new_marca->id_empresa = $empresas[$a]->id;
+                    $new_marca->id_user = Auth::user()->id;
+                    $new_marca->save();
+
+                }
+           }
+        }
 
         /* $marcas_generico = DB::table('marcas_empresa')->get();
 
@@ -525,7 +564,8 @@ class EmpresasController extends Controller
 
     public function add_marcas_empresaschillers(){
 
-        $array_paquetes = ['8','9','10'];
+        //$array_paquetes = ['8','9','10'];
+        $array_paquetes = ['9','10','11'];
         $marcas_paquetes = ['Carrier','Trane','York','Daikin','McQuay','Mitsubishi','Génerico'];
         $empresas = DB::table('empresas')
         ->get();
@@ -571,10 +611,26 @@ class EmpresasController extends Controller
 
     public function add_genericos(){
 
-        $array_paquetes = ['8','9','10'];
-        $marcas_paquetes = ['Carrier','Trane','York','Daikin','McQuay','Mitsubishi','Génerico'];
+        $array_paquetes = ['8','9','11','12','13','14','15','16'];
+        $marcas_paquetes = ['Génerico'];
         $empresas = DB::table('empresas')
         ->get();
+
+      /*   for ($a=0; $a < count($empresas) ; $a++) {
+
+            for ($z=0; $z < count($array_paquetes) ; $z++) {
+
+                for ($i=0; $i < count($marcas_paquetes) ; $i++) {
+                    $new_marca= new MarcasEmpresaModel;
+                    $new_marca->marca = $marcas_paquetes[$i];
+                    $new_marca->equipo = $array_paquetes[$z];
+                    $new_marca->id_empresa = $empresas[$a]->id;
+                    $new_marca->id_user = Auth::user()->id;
+                    $new_marca->save();
+
+                }
+            }
+        } */
 
 
 for ($a=0; $a < count($empresas) ; $a++) {
@@ -599,21 +655,7 @@ for ($a=0; $a < count($empresas) ; $a++) {
             # code...
         } */
 
-        /* for ($a=0; $a < count($empresas) ; $a++) {
 
-            for ($z=0; $z < count($array_paquetes) ; $z++) {
-
-                for ($i=0; $i < count($marcas_paquetes) ; $i++) {
-                    $new_marca= new MarcasEmpresaModel;
-                    $new_marca->marca = $marcas_paquetes[$i];
-                    $new_marca->equipo = $array_paquetes[$z];
-                    $new_marca->id_empresa = $empresas[$a]->id;
-                    $new_marca->id_user = Auth::user()->id;
-                    $new_marca->save();
-
-                }
-            }
-        } */
 
         dd('genericos modelos');
 
