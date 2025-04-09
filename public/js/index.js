@@ -13909,6 +13909,11 @@ async function check_form_mantenimiento_tarjet(idm){
                 'costo_filtro_mantenimiento',
                 'cantidad_filtros_mantenimiento',
                 'unidad_aux_mantenimiento',
+                'costo_adicionales_aux_mantenimiento',
+                'tipo_ambiente_mantenimiento',
+                'ocupacion_semanal_mantenimiento',
+                'precio',
+
             ];
 
             var countador_table = $('#contador_table').val();
@@ -13936,15 +13941,16 @@ async function check_form_mantenimiento_tarjet(idm){
             },
             success: async function(response) {
 
-                var res_formula = await formula_calculo_mantenimiento();
+                //var res_formula = await formula_calculo_mantenimiento();
 
                 for (var i = 0; i < response.length; i++) {
+
                     const arregloInterno = response[i];
                     var newRow = '<tr id='+i+'>';
                     for (let j = 0; j < arregloInterno.length; j++) {
 
-                        var value = arregloInterno[j];
 
+                        var value = arregloInterno[j];
                         if (String(value).endsWith('_hidden')) {
                             newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                         }else{
@@ -13953,7 +13959,7 @@ async function check_form_mantenimiento_tarjet(idm){
 
 
                     }
-                    newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
+                    /* newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">'; */
                     newRow += '<td style="width:30px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
                     newRow += '<td style="width:30px;" class=""><button type="button" onclick="edit_regstro('+i+')" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>';
                     newRow += '</tr>';
@@ -13967,11 +13973,11 @@ async function check_form_mantenimiento_tarjet(idm){
             }
         });
 
-         setTimeout(() => {
+/*          setTimeout(() => {
             calcular_speendplan_base()
-        }, 2500);
+        }, 2500); */
 
-        setTimeout(() => {
+         setTimeout(() => {
             clean_form_tarjet_mantenimiento();
         }, 2500);
 
@@ -14005,12 +14011,48 @@ async function clean_form_tarjet_mantenimiento(){
     $("#tipo_acceso_mantenimiento").find('option[value=""]').prop("selected", "selected");
     $("#estado_unidad_mantenimiento").find('option[value=""]').prop("selected", "selected");
     $("#cambio_filtros_mantenimiento").find('option[value="0"]').prop("selected", "selected");
-    $('#costo_filtro_mantenimiento').val(0);
+    $('#costo_filtro_mantenimiento').val('$0');
     $('#cantidad_filtros_mantenimiento').val(0);
 
 }
 
 async function del_td_tr(tr) {
+   var costo_cambio_filtros_aux = $('#costo_adicionales_aux_mantenimiento_'+tr).val();
+   var costos_filtro_aire_adicionales_aux = $('#costos_filtro_aire_adicionales').val();
+
+   const mival_filtros_costos = costo_cambio_filtros_aux.split('_hidden');
+   const costo_filtro_airee = costos_filtro_aire_adicionales_aux.split('$');
+
+
+
+   const myArray_coma =costo_filtro_airee[1].split(',');
+
+        if (myArray_coma.length > 1) {
+            if (myArray_coma.length == 2) {
+               num = myArray_coma[0] + myArray_coma[1];
+            }
+
+            if (myArray_coma.length == 3) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2];
+             }
+
+             if (myArray_coma.length == 4) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3];
+             }
+
+             if (myArray_coma.length == 5) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3] + myArray_coma[4];
+             }
+
+             if (myArray_coma.length == 6) {
+                num = myArray_coma[0] + myArray_coma[1] + myArray_coma[2] + myArray_coma[3] + myArray_coma[4] + myArray_coma[6];
+             }
+
+        }else{
+            num = costo_filtro_airee[1];
+        }
+
+        var resta = parseInt(mival_filtros_costos[0]) - parseInt(num);
 
 
     var ids = [
@@ -14029,6 +14071,10 @@ async function del_td_tr(tr) {
             'costo_filtro_mantenimiento',
             'cantidad_filtros_mantenimiento',
             'unidad_aux_mantenimiento',
+            'costo_adicionales_aux_mantenimiento',
+            'tipo_ambiente_mantenimiento',
+            'ocupacion_semanal_mantenimiento',
+            'precio',
     ];
 
     // Enviar valuesArray por medio de AJAX
@@ -14043,7 +14089,7 @@ async function del_td_tr(tr) {
         },
         success: async function(response) {
 
-            var res_formula = await formula_calculo_mantenimiento();
+            //var res_formula = await formula_calculo_mantenimiento();
 
             $('#tbody_equipos').empty();
 
@@ -14060,7 +14106,7 @@ async function del_td_tr(tr) {
                         newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                     }
                 }
-                newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
+                //newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
                 newRow += '<td style="width:40px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
                 newRow += '<td style="width:30px;" class=""><button type="button" onclick="edit_regstro('+i+')" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>';
                 newRow += '</tr>';
@@ -14102,6 +14148,10 @@ async function edit_regstro(tr) {
             'costo_filtro_mantenimiento',
             'cantidad_filtros_mantenimiento',
             'unidad_aux_mantenimiento',
+            'costo_adicionales_aux_mantenimiento',
+            'tipo_ambiente_mantenimiento',
+            'ocupacion_semanal_mantenimiento',
+            'precio',
     ];
 
 
@@ -14180,6 +14230,11 @@ function edit_registro_tabla(){
             'cambio_filtros_mantenimiento',
             'costo_filtro_mantenimiento',
             'cantidad_filtros_mantenimiento',
+            'unidad_aux_mantenimiento',
+            'costo_adicionales_aux_mantenimiento',
+            'tipo_ambiente_mantenimiento',
+            'ocupacion_semanal_mantenimiento',
+            'precio',
     ];
 
 
@@ -14205,7 +14260,7 @@ function edit_registro_tabla(){
         },
         success: async function(response) {
 
-            var res_formula = await formula_calculo_mantenimiento();
+            //var res_formula = await formula_calculo_mantenimiento();
 
             for (var i = 0; i < response.length; i++) {
                 const arregloInterno = response[i];
@@ -14222,7 +14277,7 @@ function edit_registro_tabla(){
 
 
                 }
-                newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
+                //newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
                 newRow += '<td style="width:30px;" class=""><button type="button" onclick="del_td_tr('+i+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
                 newRow += '<td style="width:30px;" class=""><button type="button" onclick="edit_regstro('+i+')" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>';
                 newRow += '</tr>';
@@ -14235,17 +14290,17 @@ function edit_registro_tabla(){
         }
     });
 
-    setTimeout(() => {
+   /*  setTimeout(() => {
         calcular_speendplan_base()
-    }, 2500);
+    }, 2500); */
 
-    setTimeout(() => {
+    /* setTimeout(() => {
         clean_form_tarjet_mantenimiento();
-    }, 2500);
+    }, 2500); */
 
 }
 
-async function formula_calculo_mantenimiento() {
+async function formula_calculo_mantenimiento(i) {
     var token = $("#token").val();
     var endpoint = "/get_data_form/";
     var formData = {};
@@ -14254,7 +14309,7 @@ async function formula_calculo_mantenimiento() {
     /* check this  $("input[name$='_mantenimiento'], select[name$='_mantenimiento'], input[name*='_mantenimiento_'], input[name*='precio_']").each */
 
     try {
-        $("input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_0']").each(function() {
+        $("input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_"+i+"']").each(function() {
             formData[$(this).attr('name')] = $(this).val();
         });
         let response = await $.ajax({
@@ -14468,6 +14523,8 @@ function check_porcent_max_min_kms(value,id,unidad){
             $('#tiempo_traslados').val(response[3]);
             $('#tiempo_acceso_edificio').val(response[4]);
             $('#tiempo_garantias').val(response[5]);
+            $('#costos_filtro_aire_adicionales').val(response[6]);
+
         },
         error: function(xhr, status, error) {
             console.error('Error al enviar los datos:', error);
