@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ManoObraHoras extends Migration
+class Adicionales extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class ManoObraHoras extends Migration
      */
     public function up()
     {
-        Schema::create('mano_obra_horas', function (Blueprint $table) {
+        Schema::create('adicionales', function (Blueprint $table) {
             $table->id();
             $table->integer('id_project');
             $table->integer('servicios_emergencias');
@@ -26,11 +26,21 @@ class ManoObraHoras extends Migration
             $table->integer('limpieza_grasa');
             $table->integer('seguristas_supervicion');
             $table->integer('costos_filtros_aire');
-            $table->integer('paquete_refacciones');
+            $table->integer('filtros_adicionales');
+            $table->integer('refacciones_basicas');
+            $table->integer('filtros_aceite_chiller');
+            $table->integer('filtros_secador_chiller');
             $table->integer('andamos_gruas_etc');
-            $table->integer('pruebas_especiales');
-            $table->integer('contratistas');
             $table->integer('viaticos');
+            $table->integer('contratistas');
+            $table->integer('pruebas_acidez_basica');
+            $table->integer('pruebas_aceite_laboratorio');
+            $table->integer('pruebas_refirgerante');
+            $table->integer('eddy_current_test');
+            $table->integer('limpieza_evaporador_chiller');
+            $table->integer('limpieza_condensador_agua');
+            $table->integer('cambio_aceite_chillers');
+            $table->integer('limpieza_anual_torres_enf');
             $table->timestamps();
         });
     }
@@ -42,6 +52,6 @@ class ManoObraHoras extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mano_obra_horas');
+        Schema::dropIfExists('adicionales');
     }
 }

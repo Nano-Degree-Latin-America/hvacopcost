@@ -13,7 +13,7 @@ use App\MarcasEmpresaModel;
 use App\ModelosEmpresaModel;
 use App\TipoEdificioModel;
 use App\TypeProjectModel;
-use App\ManoObraHorasModel;
+use App\AdicionalesModel;
 use App\MantenimientoProjectsModel;
 
 use Illuminate\Support\Facades\Redirect;
@@ -26,6 +26,7 @@ class CalculoMantenimientoService
     public function new_calculo_mantenimiento_save(Request $request,$id_project)
     {
 
+
                 $new_mantenimiento_project = new MantenimientoProjectsModel;
                 $new_mantenimiento_project->id_project=$id_project;
                 $new_mantenimiento_project->cliente_prospecto=$request->get('cliente_pro_mantenimiento');
@@ -37,7 +38,6 @@ class CalculoMantenimientoService
                 $new_mantenimiento_project->ocupacion_semanal=$request->get('ocupacion_semanal_mantenimiento');
                 $new_mantenimiento_project->medio_ambiente=$request->get('tipo_ambiente_mantenimiento');
                 $new_mantenimiento_project->personal_enviado=$request->get('personal_enviado');
-                $new_mantenimiento_project->cant_hrs_eme=$request->get('cant_hrs_eme_mantenimiento');
                 $new_mantenimiento_project->type_mant=1;
                 $new_mantenimiento_project->save();
 
@@ -45,7 +45,7 @@ class CalculoMantenimientoService
                     // si se guardda el proyecto de mantenimiento se guarda la mano de obra
                     if($new_mantenimiento_project->save()){
 
-                        $new_mano_obra_hora = new ManoObraHorasModel;
+                        $new_mano_obra_hora = new AdicionalesModel;
                         $new_mano_obra_hora->id_project=$id_project;
                         $new_mano_obra_hora->servicios_emergencias=$request->get('servicio_emergencias_adicionales');
                         $new_mano_obra_hora->tipo_adicional_accesos=$request->get('tiempo_adicional_accesos_adicionales');

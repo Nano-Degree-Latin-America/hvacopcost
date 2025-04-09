@@ -178,7 +178,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="filtro_adicionales_adicionales" name="filtro_adicionales_adicionales" type="text" value="$0" onchange="format_num(this.value,'costos_filtro_aire_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="filtro_adicionales_adicionales" name="filtro_adicionales_adicionales" type="text" value="$0" onchange="format_num(this.value,'filtro_adicionales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -192,7 +192,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="paquete_refacciones_adicionales" name="paquete_refacciones_adicionales" type="text" value="$0" onchange="format_num(this.value,'paquete_refacciones_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="refacciones_basicas_adicionales" name="refacciones_basicas_adicionales" type="text" value="$0" onchange="format_num(this.value,'refacciones_basicas_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -206,7 +206,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="filtro_aceite_chiller_adicionales" name="filtro_aceite_chiller_adicionales" type="text" value="$0" onchange="format_num(this.value,'costos_filtro_aire_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="filtro_aceite_chiller_adicionales" name="filtro_aceite_chiller_adicionales" type="text" value="$0" onchange="format_num(this.value,'filtro_aceite_chiller_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -220,7 +220,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="filtro_secador_chiller_adicionales" name="filtro_secador_chiller_adicionales" type="text" value="$0" onchange="format_num(this.value,'costos_filtro_aire_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="filtro_secador_chiller_adicionales" name="filtro_secador_chiller_adicionales" type="text" value="$0" onchange="format_num(this.value,'filtro_secador_chiller_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -288,7 +288,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="pruebas_acidez_basoca_adicionales" name="pruebas_acidez_basoca_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_acidez_basoca_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -302,7 +302,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="pruebas_aceite_laboratorio_adicionales" name="pruebas_aceite_laboratorio_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_aceite_laboratorio_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -312,11 +312,11 @@
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-xl font-bold">
-                        Pruebas de Refigerante
+                        Pruebas de Refrigerante
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="pruebas_refrigerante_adicionales" name="pruebas_refrigerante_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_refrigerante_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -330,7 +330,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="eddy_current_test_adicionales" name="eddy_current_test_adicionales" type="text" value="$0" onchange="format_num(this.value,'eddy_current_test_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -344,7 +344,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="limpieza_evaporador_chiller_adicionales" name="limpieza_evaporador_chiller_adicionales" type="text" value="$0" onchange="format_num(this.value,'limpieza_evaporador_chiller_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -358,7 +358,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="limpeza_condenzador_agua_adicionales" name="limpeza_condenzador_agua_adicionales" type="text" value="$0" onchange="format_num(this.value,'limpeza_condenzador_agua_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -372,7 +372,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="cambio_aceite_chillers_adicionales" name="cambio_aceite_chillers_adicionales" type="text" value="$0" onchange="format_num(this.value,'cambio_aceite_chillers_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -386,7 +386,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="pruebas_especiales_adicionales" name="pruebas_especiales_adicionales" type="text" value="$0" onchange="format_num(this.value,'pruebas_especiales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="limpieza_anual_torres_adicionales" name="limpieza_anual_torres_adicionales" type="text" value="$0" onchange="format_num(this.value,'limpieza_anual_torres_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>

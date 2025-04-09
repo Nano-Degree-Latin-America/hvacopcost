@@ -8,7 +8,7 @@
 </style>
 <div class="w-full grid  h-full font-roboto">
     <div class="w-full flex justify-center mt-8">
-        <h1 style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-bold font-roboto">Justificación Financiera</h1>
+        <h1 style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-bold font-roboto">Análisis de Costos Operativos</h1>
     </div>
 
     <div class="w-full grid gap-x-3 gap-y-3  h-full mx-10">
@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <div class="w-full  flex justify-start mt-10">
+        <div class="w-full  flex justify-start mt-5">
             <h1  class="text_blue text-4xl font-bold">
                 Oportunidades
             </h1>
@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <div class="w-full  flex justify-start mt-10">
+        <div class="w-full  flex justify-start mt-5">
             <h1  class="text_blue text-4xl font-bold">
                 Energía Futura Estimada
             </h1>
@@ -97,7 +97,7 @@
             </div>
         </div>
 
-        <div class="w-full  flex justify-start mt-10">
+        <div class="w-full  flex justify-start mt-5">
             <h1  class="text_blue text-4xl font-bold">
                 Costo Actual Reparaciones
             </h1>
@@ -105,15 +105,35 @@
         <div class="w-full flex gap-x-3">
 
             <div class="w-1/3 flex gap-x-3">
-                <label class="text_blue text-xl font-bold">Monto Actual Reparaciones</label>
+                <label class="text_blue text-xl font-bold">Costo Reparaciónes</label>
                 <input value="0" id="monto_actual_mantenimiento_financiero" name="monto_actual_mantenimiento_financiero" type="text"  onkeypress="return soloNumeros(event)" onchange="reduccion_gastos_reparaciones();format_num(this.value,this.id)" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
             </div>
 
             <div class="w-1/3 flex gap-x-3 justify-center">
                 <div class="flex justify-start w-full gap-x-3">
                     <label class="text_blue text-xl font-bold">Reducción Reparaciónes</label>
-                    <input readonly id="reduccion_reparaciones_mantenimiento_financiero" name="reduccion_reparaciones_mantenimiento_financiero" type="text" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input onchange="format_num(this.value,this.id);" id="reduccion_reparaciones_mantenimiento_financiero" name="reduccion_reparaciones_mantenimiento_financiero" type="text" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
+            </div>
+            <div class="w-1/3">
+
+            </div>
+        </div>
+
+        <div class="w-full  flex justify-start mt-5">
+            <h1  class="text_blue text-4xl font-bold">
+                Costo Actual Mantenimiento
+            </h1>
+        </div>
+        <div class="w-full flex gap-x-3">
+
+            <div class="w-1/3 flex gap-x-3">
+                <label class="text_blue text-xl font-bold">Costo de Mantenimiento</label>
+                <input value="0" id="costo_mantenimiento_mantenimiento_financiero" name="costo_mantenimiento_mantenimiento_financiero" type="text"  onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);justificacion_financiera_send_mant(this.value);" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+            </div>
+
+            <div class="w-1/3 flex gap-x-3 justify-center">
+
             </div>
             <div class="w-1/3">
 

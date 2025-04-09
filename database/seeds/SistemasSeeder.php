@@ -29,6 +29,7 @@ class SistemasSeeder extends Seeder
             ['text' => "Torres de Enfriamiento"],
             ['text' => "Ventilación"],
             ['text' => "Accesorios"],
+            ['text' => "VRF / VRV"],
         ];
 
         /* for ($i=0; $i < count($array_sistemas) ; $i++) {

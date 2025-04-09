@@ -14235,6 +14235,14 @@ function edit_registro_tabla(){
         }
     });
 
+    setTimeout(() => {
+        calcular_speendplan_base()
+    }, 2500);
+
+    setTimeout(() => {
+        clean_form_tarjet_mantenimiento();
+    }, 2500);
+
 }
 
 async function formula_calculo_mantenimiento() {
@@ -14447,7 +14455,7 @@ function check_porcent_max_min_kms(value,id,unidad){
 
     $.ajax({
         url: '/spend_plan_base',
-        type: 'post',
+        type: 'get',
 
         headers: { 'X-CSRF-TOKEN': token },
         data: {
@@ -14488,7 +14496,7 @@ function check_porcent_max_min_kms(value,id,unidad){
             if (value !== '0' && value !== '$0' && value !== '') {
                 $.ajax({
                     url: '/spend_plan_base_adicionales', // Reemplaza con la URL de tu endpoint
-                    type: 'post',
+                    type: 'get',
 
                     headers: { 'X-CSRF-TOKEN': token },
                     data: {
@@ -14496,34 +14504,35 @@ function check_porcent_max_min_kms(value,id,unidad){
                     },
                     success: async function(response) {
                         $('#valor_contrato_anual_adicionales').val(response[0]);
+                        $('#mantenimiento_justificacion_financiera_futuro').val(response[0]);
                         $('#dias_mantenimiento_adicionales').val(response[1]);
                         $('#tiempo_mantenimiento_adicionales').val(response[2]);
                         $('#tiempo_traslados_adicionales').val(response[3]);
                         $('#tiempo_acceso_edificio_adicionales').val(response[4]);
                         $('#tiempo_garantias_adicionales').val(response[5]);
-                        $('#materiales_gp_40').val(response[6]);
-                        $('#equipos_gp_40').val(response[7]);
-                        $('#mano_obra_gp_40').val(response[8]);
-                        $('#vehiculo_gp_40').val(response[9]);
-                        $('#contratista_gp_40').val(response[10]);
-                        $('#viaticos_gp_40').val(response[11]);
-                        $('#burden_gp_40').val(response[12]);
-                        $('#ga_gp_40').val(response[13]);
-                        $('#ventas_gp_40').val(response[14]);
-                        $('#financiamiento_gp_40').val(response[15]);
-                        $('#materiales_porcent_gp_40').val(response[16]);
-                        $('#equipos_porcent_gp_40').val(response[17]);
-                        $('#mano_obra_porcent_gp_40').val(response[18]);
-                        $('#vehiculo_porcent_gp_40').val(response[19]);
-                        $('#contratista_porcent_gp_40').val(response[20]);
-                        $('#viaticos_porcent_gp_40').val(response[21]);
-                        $('#burden_porcent_gp_40').val(response[22]);
-                        $('#ga_gp_porcent_40').val(response[23]);
-                        $('#ventas_porcent_gp_40').val(response[24]);
-                        $('#financiamiento_porcent_gp_40').val(response[25]);
+                        $('#materiales_gp_40').val('$'+response[6]);
+                        $('#equipos_gp_40').val('$'+response[7]);
+                        $('#mano_obra_gp_40').val('$'+response[8]);
+                        $('#vehiculo_gp_40').val('$'+response[9]);
+                        $('#contratista_gp_40').val('$'+response[10]);
+                        $('#viaticos_gp_40').val('$'+response[11]);
+                        $('#burden_gp_40').val('$'+response[12]);
+                        $('#ga_gp_40').val('$'+response[13]);
+                        $('#ventas_gp_40').val('$'+response[14]);
+                        $('#financiamiento_gp_40').val('$'+response[15]);
+                        $('#materiales_porcent_gp_40').val('$'+response[16]);
+                        $('#equipos_porcent_gp_40').val('$'+response[17]);
+                        $('#mano_obra_porcent_gp_40').val('$'+response[18]);
+                        $('#vehiculo_porcent_gp_40').val('$'+response[19]);
+                        $('#contratista_porcent_gp_40').val('$'+response[20]);
+                        $('#viaticos_porcent_gp_40').val('$'+response[21]);
+                        $('#burden_porcent_gp_40').val('$'+response[22]);
+                        $('#ga_gp_porcent_40').val('$'+response[23]);
+                        $('#ventas_porcent_gp_40').val('$'+response[24]);
+                        $('#financiamiento_porcent_gp_40').val('$'+response[25]);
                         $('#valor_venta_gp_40').val(response[0]);
                         $('#ganancia_porcent_gp_40').val(response[26]);
-                        $('#ganancia_gp_40').val(response[27]);
+                        $('#ganancia_gp_40').val('$'+response[27]);
                         chart_vals_mant(response[28],response[29],response[30],response[31]);
                     },
 
@@ -14568,29 +14577,29 @@ function check_porcent_max_min_kms(value,id,unidad){
             values: formData
         },
         success: async function(response) {
-            $('#materiales_gp ').val(response[6]);
-            $('#equipos_gp ').val(response[7]);
-            $('#mano_obra_gp ').val(response[8]);
-            $('#vehiculo_gp ').val(response[9]);
-            $('#contratista_gp ').val(response[10]);
-            $('#viaticos_gp ').val(response[11]);
-            $('#burden_gp ').val(response[12]);
-            $('#ga_gp ').val(response[13]);
-            $('#ventas_gp ').val(response[14]);
-            $('#financiamiento_gp ').val(response[15]);
-            $('#materiales_porcent_gp').val(response[16]);
-            $('#equipos_porcent_gp').val(response[17]);
-            $('#mano_obra_porcent_gp').val(response[18]);
-            $('#vehiculo_porcent_gp').val(response[19]);
-            $('#contratista_porcent_gp').val(response[20]);
-            $('#viaticos_porcent_gp').val(response[21]);
-            $('#burden_porcent_gp').val(response[22]);
-            $('#ga_porcent_gp').val(response[23]);
-            $('#ventas_porcent_gp').val(response[24]);
-            $('#financiamiento_porcent_gp').val(response[25]);
+            $('#materiales_gp').val('$'+response[6]);
+            $('#equipos_gp ').val('$'+response[7]);
+            $('#mano_obra_gp ').val('$'+response[8]);
+            $('#vehiculo_gp ').val('$'+response[9]);
+            $('#contratista_gp ').val('$'+response[10]);
+            $('#viaticos_gp ').val('$'+response[11]);
+            $('#burden_gp ').val('$'+response[12]);
+            $('#ga_gp ').val('$'+response[13]);
+            $('#ventas_gp ').val('$'+response[14]);
+            $('#financiamiento_gp ').val('$'+response[15]);
+            $('#materiales_porcent_gp').val('$'+response[16]);
+            $('#equipos_porcent_gp').val('$'+response[17]);
+            $('#mano_obra_porcent_gp').val('$'+response[18]);
+            $('#vehiculo_porcent_gp').val('$'+response[19]);
+            $('#contratista_porcent_gp').val('$'+response[20]);
+            $('#viaticos_porcent_gp').val('$'+response[21]);
+            $('#burden_porcent_gp').val('$'+response[22]);
+            $('#ga_porcent_gp').val('$'+response[23]);
+            $('#ventas_porcent_gp').val('$'+response[24]);
+            $('#financiamiento_porcent_gp').val('$'+response[25]);
             $('#valor_venta_gp').val(response[0]);
             $('#ganancia_porcent_gp').val(response[26]);
-            $('#ganancia_gp').val(response[27]);
+            $('#ganancia_gp').val('$'+response[27]);
         },
 
     });
@@ -14718,7 +14727,6 @@ function check_porcent_max_min_kms(value,id,unidad){
 
 
    function save_mantenimiento(){
-
                 formulario = document.getElementById('formulario');
                 formulario.submit();
    }
@@ -14732,6 +14740,8 @@ function check_porcent_max_min_kms(value,id,unidad){
     var consumo_energia_edificio_aux = $('#consumo_energia_edificio_mantenimiento').val();
     var consumo_energia_edificio = money_format_to_integer(consumo_energia_edificio_aux);
 
+    //enviar energia actual a justificacion eneergia
+    $('#energia_justificacion_mantenimiento').val(consumo_energia_edificio_aux);
     //formula Eui
     //(35000 / 0.12) x 3.412 / (1000 x 10.7639)
     //area x 10.7639
@@ -14792,6 +14802,7 @@ function check_porcent_max_min_kms(value,id,unidad){
         var resta_consumo_edificio = consumo_energia_edificio - multi_parent;
         var consumo_edificio_cantidad = dollarUSLocale.format(resta_consumo_edificio);
         $('#consumo_energia_edificio_mantenimiento_financiero').val('$'+consumo_edificio_cantidad);
+        $('#energia_justificacion_financiera_futuro').val('$'+consumo_edificio_cantidad);
         ///////////////
         //reduccion energetica
         var reduccion_energetica = consumo_energia_edificio - resta_consumo_edificio;
@@ -14833,8 +14844,11 @@ function check_porcent_max_min_kms(value,id,unidad){
     }else{
         var valor_mant_prev = 0;
     }
-    var monto_anual_reparaciones_aux =  $('#monto_actual_mantenimiento_financiero').val();
+    var monto_anual_reparaciones_aux = $('#monto_actual_mantenimiento_financiero').val();
     var monto_anual_reparaciones = money_format_to_integer(monto_anual_reparaciones_aux);
+
+    //send costo reparaciones a justificacion
+  $('#reparaciones_justificacion_mantenimiento').val('$'+dollarUSLocale.format(monto_anual_reparaciones));
 
     var suma_oportunidades_ene = valor_ashrae +  valor_merv +  valor_filtros +  valor_mant_prev;
     var monto_anual_mult_suma_ene = monto_anual_reparaciones * suma_oportunidades_ene;
@@ -14919,4 +14933,398 @@ function check_porcent_max_min_kms(value,id,unidad){
     }
  }
 
+ function valida_formulario_mantenimiento(){
+    /////////////////////////////////////
+    var cliente =$('#cliente_pro_mantenimiento');
+    var cliente_count = $('#count_cliente_pro_mantenimiento').val();
+
+    if(cliente.val() == ''){
+
+        cliente.css("border-color", "red")
+        cliente_count = 1;
+     $('#count_cliente_pro_mantenimiento').val(cliente_count);
+
+    }else if (cliente.val() != '') {
+
+        cliente_count = 0;
+     $('#count_cliente_pro_mantenimiento').val(cliente_count);
+
+    }
+    ////////////////////////////////////////////
+    ////////////////////
+
+    var cat_edi_mant =$('#cat_edi_mantenimiento');
+    var cat_edi_mant_count = $('#count_cat_ed_mantenimiento').val();
+
+    if(cat_edi_mant.val() == 0){
+
+        cat_edi_mant.css("border-color", "red")
+        cat_edi_mant_count = 1;
+     $('#count_cat_ed_mantenimiento').val(cat_edi_mant_count);
+
+    }else if (cat_edi_mant.val() != 0) {
+
+        cat_edi_mant_count = 0;
+     $('#count_cat_ed_mantenimiento').val(cat_edi_mant_count);
+
+    }
+
+    ////////////////////
+
+
+    ////////////////////
+    var cat_edi_mant =$('#cat_edi_mantenimiento');
+    var cat_edi_mant_count = $('#count_cat_ed_mantenimiento').val();
+
+    if(cat_edi_mant.val() == 0){
+
+        cat_edi_mant.css("border-color", "red")
+        cat_edi_mant_count = 1;
+     $('#count_cat_ed_mantenimiento').val(cat_edi_mant_count);
+
+    }else if (cat_edi_mant.val() != 0) {
+
+        cat_edi_mant_count = 0;
+     $('#count_cat_ed_mantenimiento').val(cat_edi_mant_count);
+
+    }
+    ////////////////////
+
+        ////////////////////
+        var pais_mant =$('#paises_mantenimiento');
+        var pais_mant_mant_count = $('#count_paises_mantenimiento').val();
+
+        if(pais_mant.val() == 0){
+
+            pais_mant.css("border-color", "red")
+            pais_mant_mant_count = 1;
+         $('#count_paises_mantenimiento').val(pais_mant_mant_count);
+
+        }else if (pais_mant.val() != 0) {
+
+            pais_mant_mant_count = 0;
+         $('#count_paises_mantenimiento').val(pais_mant_mant_count);
+
+        }
+        ////////////////////
+
+        ////////////////////
+        var ciudad_mantenimiento =$('#ciudades_mantenimiento');
+        var count_ciudad_mantenimiento_count = $('#count_ciudad_mantenimiento').val();
+
+        if(ciudad_mantenimiento.val() == 0){
+
+            ciudad_mantenimiento.css("border-color", "red")
+            count_ciudad_mantenimiento_count = 1;
+         $('#count_ciudad_mantenimiento').val(count_ciudad_mantenimiento_count);
+
+        }else if (ciudad_mantenimiento.val() != 0) {
+
+            count_ciudad_mantenimiento_count = 0;
+         $('#count_ciudad_mantenimiento').val(count_ciudad_mantenimiento_count);
+
+        }
+        ////////////////////
+
+         ////////////////////
+         var velocidad_promedio_mantenimiento =$('#velocidad_promedio_mantenimiento');
+         var count_velocidad_promedio_mantenimiento = $('#count_velocidad_promedio_mantenimiento').val();
+
+         if(velocidad_promedio_mantenimiento.val() == 0){
+
+            velocidad_promedio_mantenimiento.css("border-color", "red")
+             count_velocidad_promedio_mantenimiento = 1;
+          $('#count_velocidad_promedio_mantenimiento').val(count_velocidad_promedio_mantenimiento);
+
+         }else if (velocidad_promedio_mantenimiento.val() != 0) {
+
+            count_velocidad_promedio_mantenimiento = 0;
+          $('#count_velocidad_promedio_mantenimiento').val(count_velocidad_promedio_mantenimiento);
+
+         }
+         ////////////////////
+
+         ////////////////////
+         var name_sitio_mantenimiento =$('#name_sitio_mantenimiento');
+         var count_name_sitio_mantenimiento = $('#count_name_sitio_mantenimiento').val();
+
+         if(name_sitio_mantenimiento.val() == 0){
+
+            name_sitio_mantenimiento.css("border-color", "red")
+            count_name_sitio_mantenimiento = 1;
+          $('#count_name_sitio_mantenimiento').val(count_name_sitio_mantenimiento);
+
+         }else if (name_sitio_mantenimiento.val() != 0) {
+
+            count_name_sitio_mantenimiento = 0;
+          $('#count_name_sitio_mantenimiento').val(count_name_sitio_mantenimiento);
+
+         }
+         ////////////////////
+
+         ////////////////////
+         var tipo_edificio_mantenimiento =$('#tipo_edificio_mantenimiento');
+         var count_tipo_edificio_mantenimiento = $('#count_tipo_edificio_mantenimiento').val();
+
+         if(tipo_edificio_mantenimiento.val() == 0){
+
+            tipo_edificio_mantenimiento.css("border-color", "red")
+            count_tipo_edificio_mantenimiento = 1;
+          $('#count_tipo_edificio_mantenimiento').val(count_tipo_edificio_mantenimiento);
+
+         }else if (tipo_edificio_mantenimiento.val() != 0) {
+
+            count_tipo_edificio_mantenimiento = 0;
+          $('#count_tipo_edificio_mantenimiento').val(count_tipo_edificio_mantenimiento);
+
+         }
+         ////////////////////
+
+         ////////////////////
+         var tipo_edificio_mantenimiento =$('#tipo_edificio_mantenimiento');
+         var count_tipo_edificio_mantenimiento = $('#count_tipo_edificio_mantenimiento').val();
+
+         if(tipo_edificio_mantenimiento.val() == 0){
+
+            tipo_edificio_mantenimiento.css("border-color", "red")
+            count_tipo_edificio_mantenimiento = 1;
+          $('#count_tipo_edificio_mantenimiento').val(count_tipo_edificio_mantenimiento);
+
+         }else if (tipo_edificio_mantenimiento.val() != 0) {
+
+            count_tipo_edificio_mantenimiento = 0;
+          $('#count_tipo_edificio_mantenimiento').val(count_tipo_edificio_mantenimiento);
+
+         }
+         ////////////////////
+
+         ////////////////////
+         var distancia_sitio_mantenimiento =$('#distancia_sitio_mantenimiento');
+         var count_distancia_sitio_mantenimiento = $('#count_distancia_sitio_mantenimiento').val();
+
+         if(distancia_sitio_mantenimiento.val() == 0){
+
+            distancia_sitio_mantenimiento.css("border-color", "red")
+            count_distancia_sitio_mantenimiento = 1;
+          $('#count_distancia_sitio_mantenimiento').val(count_distancia_sitio_mantenimiento);
+
+         }else if (distancia_sitio_mantenimiento.val() != 0) {
+
+            count_distancia_sitio_mantenimiento = 0;
+          $('#count_distancia_sitio_mantenimiento').val(count_distancia_sitio_mantenimiento);
+
+         }
+         ////////////////////
+        /////////////////
+         var yrs_life_ed_mantenimiento =$('#yrs_life_ed_mantenimiento');
+         var count_yrs_life_ed_mantenimiento = $('#count_yrs_life_ed_mantenimiento').val();
+
+         if(yrs_life_ed_mantenimiento.val() == 0){
+
+            yrs_life_ed_mantenimiento.css("border-color", "red")
+            count_yrs_life_ed_mantenimiento = 1;
+          $('#count_yrs_life_ed_mantenimiento').val(count_yrs_life_ed_mantenimiento);
+
+         }else if (yrs_life_ed_mantenimiento.val() != 0) {
+
+            count_yrs_life_ed_mantenimiento = 0;
+          $('#count_yrs_life_ed_mantenimiento').val(count_yrs_life_ed_mantenimiento);
+
+         }
+         ////////////////////
+
+         /////////////////
+         var tipo_ambiente_mantenimiento =$('#tipo_ambiente_mantenimiento');
+         var count_tipo_ambiente_mantenimiento = $('#count_tipo_ambiente_mantenimiento').val();
+
+         if(tipo_ambiente_mantenimiento.val() == 0){
+
+            tipo_ambiente_mantenimiento.css("border-color", "red")
+            count_tipo_ambiente_mantenimiento = 1;
+          $('#count_tipo_ambiente_mantenimiento').val(count_tipo_ambiente_mantenimiento);
+
+         }else if (tipo_ambiente_mantenimiento.val() != 0) {
+
+            count_tipo_ambiente_mantenimiento = 0;
+          $('#count_tipo_ambiente_mantenimiento').val(count_tipo_ambiente_mantenimiento);
+
+         }
+         ////////////////////
+
+          /////////////////
+          var personal_enviado =$('#personal_enviado');
+          var count_personal_enviado = $('#count_personal_enviado').val();
+
+          if(personal_enviado.val() == 0){
+
+            personal_enviado.css("border-color", "red")
+             count_personal_enviado = 1;
+           $('#count_personal_enviado').val(count_personal_enviado);
+
+          }else if (personal_enviado.val() != 0) {
+
+            count_personal_enviado = 0;
+           $('#count_personal_enviado').val(count_personal_enviado);
+
+          }
+          ////////////////////
+
+          /////////////////
+          var ar_project_mantenimiento =$('#ar_project_mantenimiento');
+          var count_ar_project_mantenimiento = $('#count_ar_project_mantenimiento').val();
+
+          if(ar_project_mantenimiento.val() == ''){
+
+            ar_project_mantenimiento.css("border-color", "red")
+            count_ar_project_mantenimiento = 1;
+           $('#count_ar_project_mantenimiento').val(count_ar_project_mantenimiento);
+
+          }else if (ar_project_mantenimiento.val() != '') {
+
+            count_ar_project_mantenimiento = 0;
+           $('#count_ar_project_mantenimiento').val(count_ar_project_mantenimiento);
+
+          }
+          ////////////////////
+
+          /////////////////
+          var porcent_hvac_mantenimiento =$('#porcent_hvac_mantenimiento');
+          var count_porcent_hvac_mantenimiento = $('#count_porcent_hvac_mantenimiento').val();
+
+          if(porcent_hvac_mantenimiento.val() == ''){
+
+            porcent_hvac_mantenimiento.css("border-color", "red")
+            count_porcent_hvac_mantenimiento = 1;
+           $('#count_porcent_hvac_mantenimiento').val(count_porcent_hvac_mantenimiento);
+
+          }else if (porcent_hvac_mantenimiento.val() != '') {
+
+            count_porcent_hvac_mantenimiento = 0;
+           $('#count_porcent_hvac_mantenimiento').val(count_porcent_hvac_mantenimiento);
+
+          }
+          ////////////////////
+
+          /////////////////
+          var ocupacion_semanal_mantenimiento =$('#ocupacion_semanal_mantenimiento');
+          var count_ocupacion_semanal_mantenimiento = $('#count_ocupacion_semanal_mantenimiento').val();
+
+          if(ocupacion_semanal_mantenimiento.val() == ''){
+
+            ocupacion_semanal_mantenimiento.css("border-color", "red")
+            count_ocupacion_semanal_mantenimiento = 1;
+           $('#count_ocupacion_semanal_mantenimiento').val(count_ocupacion_semanal_mantenimiento);
+
+          }else if (ocupacion_semanal_mantenimiento.val() != '') {
+
+            count_ocupacion_semanal_mantenimiento = 0;
+           $('#count_ocupacion_semanal_mantenimiento').val(count_ocupacion_semanal_mantenimiento);
+
+          }
+          ////////////////////
+
+
+
+
+
+
+        var count_inps = cliente_count + cat_edi_mant_count + pais_mant_mant_count  +  count_ciudad_mantenimiento_count + count_velocidad_promedio_mantenimiento + count_name_sitio_mantenimiento + count_tipo_edificio_mantenimiento + count_distancia_sitio_mantenimiento + count_yrs_life_ed_mantenimiento + count_tipo_ambiente_mantenimiento + count_personal_enviado + count_ar_project_mantenimiento;
+
+      if(count_inps>0){
+
+                   return false;
+       }else if(count_inps==0){
+        $('#div_next_h_mantenimiento').addClass("hidden");
+        $('#div_next_mantenimiento').removeClass("hidden");
+       }
+
+ }
+
+ function justificacion_financiera_send(){
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+    var reduccion_reparaciones_mantenimiento_financiero_aux = $('#reduccion_reparaciones_mantenimiento_financiero').val();
+    var reduccion_reparaciones_mantenimiento_financiero = money_format_to_integer(reduccion_reparaciones_mantenimiento_financiero_aux);
+
+    var reparacioness_mantenimiento_adicionales_aux = $('#reparaciones_justificacion_mantenimiento').val();
+    var reparacioness_mantenimiento_adicionales =  money_format_to_integer(reparacioness_mantenimiento_adicionales_aux)
+
+    var total_reparaciones = parseInt(reparacioness_mantenimiento_adicionales) - parseInt(reduccion_reparaciones_mantenimiento_financiero);
+
+    $('#reparaciones_justificacion_financiera_futuro').val('$'+dollarUSLocale.format(total_reparaciones));
+
+    //////////////suma costos actuales
+    var mantenimiento_justificacion_mantenimiento_aux = $('#mantenimiento_justificacion_mantenimiento').val();
+    var mantenimiento_justificacion_mantenimiento = money_format_to_integer(mantenimiento_justificacion_mantenimiento_aux);
+
+    var energia_justificacion_mantenimiento_aux = $('#energia_justificacion_mantenimiento').val();
+    var energia_justificacion_mantenimiento = money_format_to_integer(energia_justificacion_mantenimiento_aux);
+
+    var reparacioness_mantenimiento_adicionales_aux = $('#reparaciones_justificacion_mantenimiento').val();
+    var reparacioness_mantenimiento_adicionales_a =  money_format_to_integer(reparacioness_mantenimiento_adicionales_aux);
+
+    var total_justificacion_mantenimiento = parseInt(mantenimiento_justificacion_mantenimiento) + parseInt(energia_justificacion_mantenimiento) + parseInt(reparacioness_mantenimiento_adicionales_a);
+
+    ///resultado suma actual
+    $('#total_justificacion_mantenimiento').val('$'+dollarUSLocale.format(total_justificacion_mantenimiento));
+
+
+    /////////////suma costos futuros
+
+    var mantenimiento_justificacion_financiera_futuro_aux = $('#mantenimiento_justificacion_financiera_futuro').val();
+    var mantenimiento_justificacion_financiera_futuro = money_format_to_integer(mantenimiento_justificacion_financiera_futuro_aux);
+
+
+    var energia_justificacion_financiera_futuro_aux = $('#energia_justificacion_financiera_futuro').val();
+    var energia_justificacion_financiera_futuro = money_format_to_integer(energia_justificacion_financiera_futuro_aux);
+
+    var reparaciones_justificacion_financiera_futuro_aux = $('#reparaciones_justificacion_financiera_futuro').val();
+    var reparaciones_justificacion_financiera_futuro = money_format_to_integer(reparaciones_justificacion_financiera_futuro_aux);
+
+    var total_justificacion_mantenimiento_futuras = parseInt(mantenimiento_justificacion_financiera_futuro) + parseInt(energia_justificacion_financiera_futuro) + parseInt(reparaciones_justificacion_financiera_futuro);
+
+    $('#total_mantenimiento_justificacion_futuro').val('$'+dollarUSLocale.format(total_justificacion_mantenimiento_futuras));
+
+ }
+
+ function justificacion_financiera_send_mant(value){
+
+    $('#mantenimiento_justificacion_mantenimiento').val(value);
+ }
+
+
+ function suma_mantenimiento(){
+
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+
+   var mantenimiento_justificacion_mantenimiento_aux = $('#mantenimiento_justificacion_mantenimiento').val();
+   var mantenimiento_justificacion_mantenimiento = money_format_to_integer(mantenimiento_justificacion_mantenimiento_aux)
+
+   var energia_justificacion_mantenimiento = $('#energia_justificacion_mantenimiento').val();
+   var reparacioness_mantenimiento_adicionales_aux = $('#reparaciones_justificacion_mantenimiento').val();
+   var reparacioness_mantenimiento_adicionales =  money_format_to_integer(reparacioness_mantenimiento_adicionales_aux)
+
+   var total_justificacion_mantenimiento = parseInt(mantenimiento_justificacion_mantenimiento) + parseInt(energia_justificacion_mantenimiento) + parseInt(reparacioness_mantenimiento_adicionales);
+   $('#total_justificacion_mantenimiento').val('$'+dollarUSLocale.format(total_justificacion_mantenimiento));
+   $('#mantenimiento_justificacion_financiera_futuro').val('$'+dollarUSLocale.format(total_justificacion_mantenimiento));
+
+
+   var reduccion_reparaciones_mantenimiento_financiero_aux = $('#reduccion_reparaciones_mantenimiento_financiero').val();
+   var reduccion_reparaciones_mantenimiento_financiero = money_format_to_integer(reduccion_reparaciones_mantenimiento_financiero_aux);
+
+
+   var  reparaciones_futuras = parseInt(reparacioness_mantenimiento_adicionales) - parseInt(reduccion_reparaciones_mantenimiento_financiero);
+
+   $('#reparaciones_justificacion_financiera_futuro').val(reparaciones_futuras);
+
+   var mantenimiento_futuro_aux = $('#mantenimiento_justificacion_financiera_futuro').val();
+   var mantenimiento_futuro = money_format_to_integer(mantenimiento_futuro_aux);
+
+   var energia_justificacion_financiera_futuro_aux = $('#energia_justificacion_financiera_futuro').val();
+   var energia_justificacion_financiera_futuro = money_format_to_integer(energia_justificacion_financiera_futuro_aux);
+
+   var total_mantenimiento_justificacion_futuro = parseInt(reparaciones_futuras) + parseInt(mantenimiento_futuro) +  parseInt(energia_justificacion_financiera_futuro);
+
+   $('#total_mantenimiento_justificacion_futuro').val('$'+dollarUSLocale.format(total_mantenimiento_justificacion_futuro));
+
+ }
 

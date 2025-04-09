@@ -207,13 +207,14 @@ Route::post('get_data_form', 'MantenimientoController@get_data_form');
 Route::get('set_options_factor_mantenimiento', 'MantenimientoController@set_options_factor_mantenimiento');
 Route::get('set_options_factor_acceso', 'MantenimientoController@set_options_factor_acceso');
 Route::get('set_options_factor_estado_unidad', 'MantenimientoController@set_options_factor_estado_unidad');
-Route::post('spend_plan_base', 'MantenimientoController@spend_plan_base');
-Route::post('spend_plan_base_adicionales', 'MantenimientoController@spend_plan_base_adicionales');
+Route::get('spend_plan_base', 'MantenimientoController@spend_plan_base');
+Route::get('spend_plan_base_adicionales', 'MantenimientoController@spend_plan_base_adicionales');
 Route::post('spend_plan_base_adicionales_gp/{porcent}', 'MantenimientoController@spend_plan_base_adicionales_gp');
 Route::post('edit_regstro/{index}', 'MantenimientoController@edit_regstro');
 Route::get('check_counter_storage', 'MantenimientoController@check_counter_storage');
 Route::post('update_registro/{index}', 'MantenimientoController@update_registro');
 Route::get('reset_local_storage', 'MantenimientoController@reset_local_storage');
+Route::get('guardar_mantenimiento', 'ResultadosController@getResultados');
 
 
 

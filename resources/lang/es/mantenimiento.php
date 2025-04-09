@@ -30,4 +30,5 @@ return [
     'contaminado'=>'Contaminado',
     'speend_plan'=>'Spend Plan',
     'justificacion_financiera'=>'Justificación Financiera',
+    'costos_operativos'=>'Análisis Costos Operativos',
 ];

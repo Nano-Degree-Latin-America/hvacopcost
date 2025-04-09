@@ -15,7 +15,7 @@
 </style>
 <div class="w-full grid  h-full font-roboto">
     <div class="w-full flex justify-center my-8">
-        <h1 style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-bold font-roboto">Justificación</h1>
+        <h1 style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-bold font-roboto">Justificación Financiera</h1>
     </div>
 
     <div class="w-full flex gap-x-3 h-full mx-5 justify-center gap-x-10">
@@ -31,16 +31,6 @@
                     </div>
                 </div>
 
-                <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
-                    <div class="w-3/4 grid justify-items-start place-items-center">
-                        <p class="text_blue text-xl font-bold">
-                            Costos Actuales
-                        </p>
-                    </div>
-                    <div class="w-1/3 flex justify-start place-items-center">
-                        <input type="text" id="valor_contrato_anual_adicionales" name="valor_contrato_anual_adicionales" class="w-full bg-blue-800 text-white border-2 border-color-inps text-lg rounded-md py-2 text-center"> {{-- <label  class="font-bold  font-roboto text_blue" for="">Días</label> --}}
-                    </div>
-                </div>
 
                 <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
@@ -49,7 +39,7 @@
                         </p>
                     </div>
                     <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                        <input id="dias_mantenimiento_adicionales" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <input onchange="suma_mantenimiento();" id="mantenimiento_justificacion_mantenimiento" name="mantenimiento_justificacion_mantenimiento" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
 
                     </div>
                 </div>
@@ -61,7 +51,7 @@
                         </p>
                     </div>
                     <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                        <input id="dias_mantenimiento_adicionales" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <input  id="energia_justificacion_mantenimiento" name="energia_justificacion_mantenimiento" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
 
                     </div>
                 </div>
@@ -73,8 +63,19 @@
                         </p>
                     </div>
                     <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                        <input id="dias_mantenimiento_adicionales" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <input onchange="format_num(this.value,this.id);suma_mantenimiento();" id="reparaciones_justificacion_mantenimiento" name="reparaciones_justificacion_mantenimiento" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
 
+                    </div>
+                </div>
+
+                <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
+                    <div class="w-3/4 grid justify-items-start place-items-center">
+                        <p class="text_blue text-xl font-bold">
+                            Total Mantenimiento
+                        </p>
+                    </div>
+                    <div class="w-1/3 flex justify-start place-items-center">
+                        <input type="text" id="total_justificacion_mantenimiento" name="total_justificacion_mantenimiento" class="w-full bg-blue-800 text-white border-2 border-color-inps text-lg rounded-md py-2 text-center"> {{-- <label  class="font-bold  font-roboto text_blue" for="">Días</label> --}}
                     </div>
                 </div>
 
@@ -88,21 +89,11 @@
                 <div  class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-center place-items-center">
                         <p class="text_blue text-2xl font-bold">
-                            Costos Actuales
+                            Costos Futuros
                         </p>
                     </div>
                 </div>
 
-                <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
-                    <div class="w-3/4 grid justify-items-start place-items-center">
-                        <p class="text_blue text-xl font-bold">
-                            Costos Actuales
-                        </p>
-                    </div>
-                    <div class="w-1/3 flex justify-start place-items-center">
-                        <input type="text" id="valor_contrato_anual_adicionales" name="valor_contrato_anual_adicionales" class="w-full bg-blue-800 text-white border-2 border-color-inps text-lg rounded-md py-2 text-center"> {{-- <label  class="font-bold  font-roboto text_blue" for="">Días</label> --}}
-                    </div>
-                </div>
 
                 <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
@@ -111,7 +102,7 @@
                         </p>
                     </div>
                     <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                        <input id="dias_mantenimiento_adicionales" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <input id="mantenimiento_justificacion_financiera_futuro" name="mantenimiento_justificacion_financiera_futuro" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
 
                     </div>
                 </div>
@@ -123,7 +114,7 @@
                         </p>
                     </div>
                     <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                        <input id="dias_mantenimiento_adicionales" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <input id="energia_justificacion_financiera_futuro" name="energia_justificacion_financiera_futuro" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
 
                     </div>
                 </div>
@@ -135,8 +126,19 @@
                         </p>
                     </div>
                     <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                        <input id="dias_mantenimiento_adicionales" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <input   id="reparaciones_justificacion_financiera_futuro" name="reparaciones_justificacion_financiera_futuro" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
 
+                    </div>
+                </div>
+
+                <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
+                    <div class="w-3/4 grid justify-items-start place-items-center">
+                        <p class="text_blue text-xl font-bold">
+                            Total Mantenimiento
+                        </p>
+                    </div>
+                    <div class="w-1/3 flex justify-start place-items-center">
+                        <input type="text" id="total_mantenimiento_justificacion_futuro" name="total_mantenimiento_justificacion_futuro" class="w-full bg-blue-800 text-white border-2 border-color-inps text-lg rounded-md py-2 text-center"> {{-- <label  class="font-bold  font-roboto text_blue" for="">Días</label> --}}
                     </div>
                 </div>
 
