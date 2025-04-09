@@ -458,6 +458,51 @@ class UnidadesSeeder extends Seeder
         $new_equipo->save();
 
 
+
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Condensadora';
+        $new_equipo->identificador = 'condensadora_vrf_vrv';
+        $new_equipo->valor = 1;
+        $new_equipo->equipo = 16;
+        $new_equipo->save();
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Pared/Piso/Techo';
+        $new_equipo->identificador = 'papisotecho_vrf_vrv';
+        $new_equipo->valor = 1;
+        $new_equipo->equipo = 16;
+        $new_equipo->save();
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Fan Coil (LSP)';
+        $new_equipo->identificador = 'fancoil_lsp_vrf_vrv';
+        $new_equipo->valor = 1;
+        $new_equipo->equipo = 16;
+        $new_equipo->save();
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Fan Coil (M/HSP)';
+        $new_equipo->identificador = 'fancoil_hsp_vrf_vrv';
+        $new_equipo->valor = 1;
+        $new_equipo->equipo = 16;
+        $new_equipo->save();
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Cassette';
+        $new_equipo->identificador = 'cassette_vrf_vrv';
+        $new_equipo->valor = 1;
+        $new_equipo->equipo = 16;
+        $new_equipo->save();
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Manejadora';
+        $new_equipo->identificador = 'manejadora_vrf_vrv';
+        $new_equipo->valor = 1;
+        $new_equipo->equipo = 16;
+        $new_equipo->save();
+
+
        /*  $equipos = [8,9,10,11];
        for ($i=0; $i < count($equipos) ; $i++) {
 

@@ -174,14 +174,19 @@ public function factores_mantenimiento(){
         $sistemas = [
                     '1' => 'Paquetes (RTU)',
                     '2' => 'Split DX',
-                    '3' => 'VRF No Ductados',
-                    '4' => 'VRF Ductados',
+                    '16' => 'VRF / VRV',
                     '5' => 'PTAC/VTAC',
                     '6' => 'WSHP',
-                    '7' => 'Minisplit Inverter'
+                    '7' => 'Minisplit Inverter',
+                    '8' => 'Unidades Presición',
+                    '9' => 'Chiller Scroll',
+                    '10' => 'Chiller Scroll',
+                    '11' => 'Chiller Turbocor',
+                    '12' => 'Equipamiento Agua Fría',
+                    '13' => 'Torres de Enfriamiento',
+                    '14' => 'Ventilación',
+                    '15' => 'Accesorios',
         ];
-
-
 
         $sistema = $sistemas[$request->values[1]];
         $unidad = $request->values[2];
@@ -322,11 +327,18 @@ public function factores_mantenimiento(){
         $sistemas = [
             '1' => 'Paquetes (RTU)',
             '2' => 'Split DX',
-            '3' => 'VRF No Ductados',
-            '4' => 'VRF Ductados',
+            '16' => 'VRF / VRV',
             '5' => 'PTAC/VTAC',
             '6' => 'WSHP',
-            '7' => 'Minisplit Inverter'
+            '7' => 'Minisplit Inverter',
+            '8' => 'Unidades Presición',
+            '9' => 'Chiller Scroll',
+            '10' => 'Chiller Scroll',
+            '11' => 'Chiller Turbocor',
+            '12' => 'Equipamiento Agua Fría',
+            '13' => 'Torres de Enfriamiento',
+            '14' => 'Ventilación',
+            '15' => 'Accesorios',
 ];
 
         $sistema = $sistemas[$request->values[1]];
@@ -677,17 +689,15 @@ public function spend_plan_base_adicionales(Request $request)
     // Obtener array_sistemas de la sesión
     $array_speed_plan = Session::get('array_speed_plan');
 
-    ///$paquete_refacciones_aux = explode('$',$request->values['paquete_refacciones_adicionales']);
+    //materiales
 
-    $paquete_refacciones = $this->precio_to_integer($request->values['paquete_refacciones_adicionales']);
-
-    //$pruebas_especiales_aux = explode('$',$request->values['pruebas_especiales_adicionales']);
-    $pruebas_especiales =  $this->precio_to_integer($request->values['pruebas_especiales_adicionales']);
-
-    //$costos_costos_filtro_aire_adicionales_aux = explode('$',$request->values['costos_filtro_aire_adicionales']);
     $costos_costos_filtro_aire_adicionales_aux = $this->precio_to_integer($request->values['costos_filtro_aire_adicionales']);
+    $filtro_adicionales = $this->precio_to_integer($request->values['filtro_adicionales_adicionales']);
+    $refacciones_basicas =  $this->precio_to_integer($request->values['refacciones_basicas_adicionales']);
+    $filtro_aceite_chiller = $this->precio_to_integer($request->values['filtro_aceite_chiller_adicionales']);
+    $filtro_secador_chiller =  $this->precio_to_integer($request->values['filtro_secador_chiller_adicionales']);
 
-    $mariales_adicionales =  intval($costos_costos_filtro_aire_adicionales_aux)+$paquete_refacciones+$pruebas_especiales;
+    $mariales_adicionales =  intval($costos_costos_filtro_aire_adicionales_aux)+$filtro_adicionales+$refacciones_basicas+$filtro_aceite_chiller+ $filtro_secador_chiller;
 
     /* andamios_gruas_adicionales
     pruebas_especiales_adicionales */
@@ -705,7 +715,26 @@ public function spend_plan_base_adicionales(Request $request)
     $seguristas_supervicion_adicionales = $request->values['seguristas_supervicion_adicionales'];
 
     //$contratistas_adicionales_aux =  explode('$',$request->values['contratistas_adicionales']);
-    $contratistas_adicionales = $this->precio_to_integer($request->values['contratistas_adicionales']);
+
+
+    $andamios_gruas = $this->precio_to_integer($request->values['andamios_gruas_adicionales']);
+    $viaticos = $this->precio_to_integer($request->values['viaticos_adicionales']);
+    $contratistas =  $this->precio_to_integer($request->values['contratistas_adicionales']);
+    $pruebas_acidez_basoca = $this->precio_to_integer($request->values['pruebas_acidez_basoca_adicionales']);
+    $pruebas_aceite_laboratorio =  $this->precio_to_integer($request->values['pruebas_aceite_laboratorio_adicionales']);
+    $pruebas_refrigerante_adicionales = $this->precio_to_integer($request->values['pruebas_refrigerante_adicionales']);
+    $eddy_current_test_adicionales = $this->precio_to_integer($request->values['eddy_current_test_adicionales']);
+    $limpieza_evaporador_chiller =  $this->precio_to_integer($request->values['limpieza_evaporador_chiller_adicionales']);
+    $limpeza_condenzador_agua_adicionales = $this->precio_to_integer($request->values['limpeza_condenzador_agua_adicionales']);
+    $cambio_aceite_chillers_adicionales =  $this->precio_to_integer($request->values['cambio_aceite_chillers_adicionales']);
+    $limpieza_anual_torres_adicionales =  $this->precio_to_integer($request->values['limpieza_anual_torres_adicionales']);
+
+
+    $contratistas_adicionales = $andamios_gruas+$viaticos+$contratistas+$pruebas_acidez_basoca+$pruebas_aceite_laboratorio+$pruebas_refrigerante_adicionales+$eddy_current_test_adicionales+$limpieza_evaporador_chiller+$limpeza_condenzador_agua_adicionales+$cambio_aceite_chillers_adicionales+$limpieza_anual_torres_adicionales;
+
+    //contratistras adicioonales
+
+
 
     //$viaticos_adicionales_aux = explode('$',$request->values['viaticos_adicionales']);
     $viaticos_adicionales = $this->precio_to_integer($request->values['viaticos_adicionales']);
@@ -762,10 +791,10 @@ public function spend_plan_base_adicionales(Request $request)
 
     //////////////////////contratistas
     //contratistas_adicionales+(seguristas_supervicion_adicionales*seguristas_supervicion)
+    //$seguristas_supervicion_adicionales_multi_seguristas_supervicion = $seguristas_supervicion_adicionales*$segurista_supervisor;
 
-    $seguristas_supervicion_adicionales_multi_seguristas_supervicion = $seguristas_supervicion_adicionales*$segurista_supervisor;
-
-    $contratistas_sp_adicionales = $contratistas_adicionales+$seguristas_supervicion_adicionales_multi_seguristas_supervicion;
+    //$contratistas+M21
+    $contratistas_sp_adicionales = $contratistas+$contratistas_adicionales;
 
     //////////////////////viaticos
     $viaticos_sp_adicionales = $viaticos_adicionales;
@@ -785,6 +814,9 @@ public function spend_plan_base_adicionales(Request $request)
 
      $precio_venta = 1*$total/0.6;
      $format_total_money = '$'.number_format($precio_venta);
+
+     ///// envia mantenimienot a justificacion
+
 
     ////////////////////////////////////porcentajes
     //materiales_sp_adicionales*1/$total
@@ -860,7 +892,7 @@ public function spend_plan_base_adicionales(Request $request)
     $costo_practico = $dias_mantenimiento_sp*$distancia_sitio_mantenimiento*$valor_vehiculo;
 
     //valores para grafica costos mantenimiento
-    $id_unidad_aux = explode('_',$request->values['unidad_aux_mantenimiento_0']);
+    $id_unidad_aux = explode('_hidden',$request->values['unidad_aux_mantenimiento_0']);
     $id_unidad = UnidadesModel::where('identificador','=',$id_unidad_aux[0])->first()->id;
     $costo_instalado = BaseCalculoModel::where('id_unidad','=',$id_unidad)->first()->costo_instalacion;
     $capacidad_termica =  $request->values['capacidad_termica_mantenimiento_0'];
@@ -873,33 +905,33 @@ public function spend_plan_base_adicionales(Request $request)
     //guardar en array_speed_plan
     array_push($analisis_costo_mant_array
     ,$format_total_money
-    ,number_format($dias_mantenimiento_sp)
-    ,number_format($tiempo_mantenimiento_sp)
-    ,number_format($tiempo_traslados)
-    ,number_format($tiempo_acceso_edificio)
-    ,number_format($tiempo_garantias)
-    ,number_format($materiales_sp_adicionales)
-    ,number_format($equipos_sp_adicionales)
-    ,number_format($mano_de_obra_sp_adicionales)
-    ,number_format($vehiculos_sp_adicionales)
-    ,number_format($contratistas_sp_adicionales)
-    ,number_format($viaticos_sp_adicionales)
-    ,number_format($burden_sp_adicionales)
-    ,number_format($ga_sp)
-    ,number_format($ventas_sp)
-    ,number_format($financiamiento_sp)
-    ,number_format($materiales_sp_porcent*100).'%'
-    ,number_format($equipos_sp_porcent*100).'%'
-    ,number_format($mano_obra_sp_porcent*100).'%'
-    ,number_format($vehiculos_sp_porcent*100).'%'
-    ,number_format($contratistas_sp_porcent*100).'%'
-    ,number_format($viaticos_sp_porcent*100).'%'
-    ,number_format($burden_sp_porcent*100).'%'
-    ,number_format($ga_sp_porcent*100).'%'
-    ,number_format($ventas_sp_porcent*100).'%'
-    ,number_format($financiamiento_sp_porcent*100).'%'
-    ,number_format($ganancia_sp_porcent*100).'%'
-    ,number_format($ganancia_sp)
+    ,ceil($dias_mantenimiento_sp)
+    ,ceil($tiempo_mantenimiento_sp)
+    ,ceil($tiempo_traslados)
+    ,ceil($tiempo_acceso_edificio)
+    ,ceil($tiempo_garantias)
+    ,ceil($materiales_sp_adicionales)
+    ,ceil($equipos_sp_adicionales)
+    ,ceil($mano_de_obra_sp_adicionales)
+    ,ceil($vehiculos_sp_adicionales)
+    ,ceil($contratistas_sp_adicionales)
+    ,ceil($viaticos_sp_adicionales)
+    ,ceil($burden_sp_adicionales)
+    ,ceil($ga_sp)
+    ,ceil($ventas_sp)
+    ,ceil($financiamiento_sp)
+    ,ceil($materiales_sp_porcent*100).'%'
+    ,ceil($equipos_sp_porcent*100).'%'
+    ,ceil($mano_obra_sp_porcent*100).'%'
+    ,ceil($vehiculos_sp_porcent*100).'%'
+    ,ceil($contratistas_sp_porcent*100).'%'
+    ,ceil($viaticos_sp_porcent*100).'%'
+    ,ceil($burden_sp_porcent*100).'%'
+    ,ceil($ga_sp_porcent*100).'%'
+    ,ceil($ventas_sp_porcent*100).'%'
+    ,ceil($financiamiento_sp_porcent*100).'%'
+    ,ceil($ganancia_sp_porcent*100).'%'
+    ,ceil($ganancia_sp)
     ,$arry_grafic[0]
     ,$arry_grafic[1]
     ,$arry_grafic[2]
@@ -915,15 +947,14 @@ public function spend_plan_base_adicionales(Request $request)
         // Obtener array_sistemas de la sesión
        $array_speed_plan = Session::get('array_speed_plan');
 
-       //$paquete_refacciones_aux = explode('$',$request->values['paquete_refacciones_adicionales']);
-       $paquete_refacciones = $this->precio_to_integer($request->values['paquete_refacciones_adicionales']);
-
-       //$pruebas_especiales_aux = explode('$',$request->values['pruebas_especiales_adicionales']);
-       $pruebas_especiales = $this->precio_to_integer($request->values['pruebas_especiales_adicionales']);
-
        $costos_costos_filtro_aire_adicionales_aux = $this->precio_to_integer($request->values['costos_filtro_aire_adicionales']);
+       $filtro_adicionales = $this->precio_to_integer($request->values['filtro_adicionales_adicionales']);
+       $refacciones_basicas =  $this->precio_to_integer($request->values['refacciones_basicas_adicionales']);
+       $filtro_aceite_chiller = $this->precio_to_integer($request->values['filtro_aceite_chiller_adicionales']);
+       $filtro_secador_chiller =  $this->precio_to_integer($request->values['filtro_secador_chiller_adicionales']);
 
-       $mariales_adicionales = intval($costos_costos_filtro_aire_adicionales_aux)+$paquete_refacciones+$pruebas_especiales;
+       $mariales_adicionales =  intval($costos_costos_filtro_aire_adicionales_aux)+$filtro_adicionales+$refacciones_basicas+$filtro_aceite_chiller+ $filtro_secador_chiller;
+
        //$costos_filtro_aire_adicionales = $request->values['costos_filtro_aire_adicionales'];
        $servicio_emergencias_adicionales =  $request->values['servicio_emergencias_adicionales'];
        $tiempo_adicional_accesos_adicionales = $request->values['tiempo_adicional_accesos_adicionales'];
@@ -936,7 +967,20 @@ public function spend_plan_base_adicionales(Request $request)
        $seguristas_supervicion_adicionales = $request->values['seguristas_supervicion_adicionales'];
 
        //$contratistas_adicionales_aux =  explode('$',$request->values['contratistas_adicionales']);
-       $contratistas_adicionales = $this->precio_to_integer($request->values['contratistas_adicionales']);
+       $andamios_gruas = $this->precio_to_integer($request->values['andamios_gruas_adicionales']);
+        $viaticos = $this->precio_to_integer($request->values['viaticos_adicionales']);
+        $contratistas =  $this->precio_to_integer($request->values['contratistas_adicionales']);
+        $pruebas_acidez_basoca = $this->precio_to_integer($request->values['pruebas_acidez_basoca_adicionales']);
+        $pruebas_aceite_laboratorio =  $this->precio_to_integer($request->values['pruebas_aceite_laboratorio_adicionales']);
+        $pruebas_refrigerante_adicionales = $this->precio_to_integer($request->values['pruebas_refrigerante_adicionales']);
+        $eddy_current_test_adicionales = $this->precio_to_integer($request->values['eddy_current_test_adicionales']);
+        $limpieza_evaporador_chiller =  $this->precio_to_integer($request->values['limpieza_evaporador_chiller_adicionales']);
+        $limpeza_condenzador_agua_adicionales = $this->precio_to_integer($request->values['limpeza_condenzador_agua_adicionales']);
+        $cambio_aceite_chillers_adicionales =  $this->precio_to_integer($request->values['cambio_aceite_chillers_adicionales']);
+        $limpieza_anual_torres_adicionales =  $this->precio_to_integer($request->values['limpieza_anual_torres_adicionales']);
+
+
+        $contratistas_adicionales = $andamios_gruas+$viaticos+$contratistas+$pruebas_acidez_basoca+$pruebas_aceite_laboratorio+$pruebas_refrigerante_adicionales+$eddy_current_test_adicionales+$limpieza_evaporador_chiller+$limpeza_condenzador_agua_adicionales+$cambio_aceite_chillers_adicionales+$limpieza_anual_torres_adicionales;
 
        //$viaticos_adicionales_aux = explode('$',$request->values['viaticos_adicionales']);
        $viaticos_adicionales = $this->precio_to_integer($request->values['viaticos_adicionales']);
@@ -996,7 +1040,8 @@ public function spend_plan_base_adicionales(Request $request)
 
        $seguristas_supervicion_adicionales_multi_seguristas_supervicion = $seguristas_supervicion_adicionales*$segurista_supervisor;
 
-       $contratistas_sp_adicionales = $contratistas_adicionales+$seguristas_supervicion_adicionales_multi_seguristas_supervicion;
+       $contratistas_sp_adicionales = $contratistas+$contratistas_adicionales;
+
        //////////////////////viaticos
        $viaticos_sp_adicionales = $viaticos_adicionales;
 
@@ -1097,39 +1142,39 @@ public function spend_plan_base_adicionales(Request $request)
 
        array_push($analisis_costo_mant_array
        ,$format_total_money
-       ,number_format($dias_mantenimiento_sp)
-       ,number_format($tiempo_mantenimiento_sp)
-       ,number_format($tiempo_traslados)
-       ,number_format($tiempo_acceso_edificio)
-       ,number_format($tiempo_garantias)
-       ,number_format($materiales_sp_adicionales)
-       ,number_format($equipos_sp_adicionales)
-       ,number_format($mano_de_obra_sp_adicionales)
-       ,number_format($vehiculos_sp_adicionales)
-       ,number_format($contratistas_sp_adicionales)
-       ,number_format($viaticos_sp_adicionales)
-       ,number_format($burden_sp_adicionales)
-       ,number_format($ga_sp)
-       ,number_format($ventas_sp)
-       ,number_format($financiamiento_sp)
-       ,number_format($materiales_sp_porcent*100).'%'
-       ,number_format($equipos_sp_porcent*100).'%'
-       ,number_format($mano_obra_sp_porcent*100).'%'
-       ,number_format($vehiculos_sp_porcent*100).'%'
-       ,number_format($contratistas_sp_porcent*100).'%'
-       ,number_format($viaticos_sp_porcent*100).'%'
-       ,number_format($burden_sp_porcent*100).'%'
-       ,number_format($ga_sp_porcent*100).'%'
-       ,number_format($ventas_sp_porcent*100).'%'
-       ,number_format($financiamiento_sp_porcent*100).'%'
-       ,number_format($ganancia_sp_porcent*100).'%'
-       ,number_format($ganancia_sp)
+       ,ceil($dias_mantenimiento_sp)
+       ,ceil($tiempo_mantenimiento_sp)
+       ,ceil($tiempo_traslados)
+       ,ceil($tiempo_acceso_edificio)
+       ,ceil($tiempo_garantias)
+       ,ceil($materiales_sp_adicionales)
+       ,ceil($equipos_sp_adicionales)
+       ,ceil($mano_de_obra_sp_adicionales)
+       ,ceil($vehiculos_sp_adicionales)
+       ,ceil($contratistas_sp_adicionales)
+       ,ceil($viaticos_sp_adicionales)
+       ,ceil($burden_sp_adicionales)
+       ,ceil($ga_sp)
+       ,ceil($ventas_sp)
+       ,ceil($financiamiento_sp)
+       ,ceil($materiales_sp_porcent*100).'%'
+       ,ceil($equipos_sp_porcent*100).'%'
+       ,ceil($mano_obra_sp_porcent*100).'%'
+       ,ceil($vehiculos_sp_porcent*100).'%'
+       ,ceil($contratistas_sp_porcent*100).'%'
+       ,ceil($viaticos_sp_porcent*100).'%'
+       ,ceil($burden_sp_porcent*100).'%'
+       ,ceil($ga_sp_porcent*100).'%'
+       ,ceil($ventas_sp_porcent*100).'%'
+       ,ceil($financiamiento_sp_porcent*100).'%'
+       ,ceil($ganancia_sp_porcent*100).'%'
+       ,ceil($ganancia_sp)
    );
 
        return response()->json($analisis_costo_mant_array);
     }
 
-    public function grafica_costos_mantenimiento($cantidad_unidades_mantenimiento,$costo_instalado,         $capacidad_termica,$precio_venta,$suma_precios){
+    public function grafica_costos_mantenimiento($cantidad_unidades_mantenimiento,$costo_instalado,$capacidad_termica,$precio_venta,$suma_precios){
 
         $arry_grafica_costos_mantenimiento = [];
         $costo_equipamiento_instalado = $cantidad_unidades_mantenimiento*$costo_instalado*$capacidad_termica;

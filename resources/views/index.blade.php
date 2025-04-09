@@ -446,7 +446,7 @@ input[type=number]::-webkit-outer-spin-button {
                        x-show="step == 4"
                        @click="step++"
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
-                   >{{ __('mantenimiento.justificacion_financiera') }}</button>
+                   >{{ __('mantenimiento.costos_operativos') }}</button>
 
                     <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
                     onclick="calcular_speendplan_base_adicionales();"
@@ -461,8 +461,9 @@ input[type=number]::-webkit-outer-spin-button {
                   style="background-color:#1B17BB;"
                       x-show="step == 5"
                       @click="step++"
+                      onclick="justificacion_financiera_send();"
                       class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
-                  >{{ __('index.siguiente') }}</button>
+                  >{{ __('mantenimiento.justificacion_financiera') }}</button>
 
                     <button  type="button" id="button_next_an_cost_mant" name="button_next_an_cost_mant"
                     style="background-color:#1B17BB;"

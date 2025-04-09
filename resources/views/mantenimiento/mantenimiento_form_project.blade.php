@@ -235,7 +235,7 @@
                                 <label  class="font-roboto text-left labels_index" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
                             </div>
                             <div class="flex w-full">
-                                <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning_mantenimiento');check_inp_count('count_porcent_hvac_mantenimiento','porcent_hvac_mantenimiento');change_to_porcent(this.value,this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac_mantenimiento" id="porcent_hvac_mantenimiento">
+                                <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning_mantenimiento');check_inp_count('count_porcent_hvac_mantenimiento','porcent_hvac_mantenimiento');change_to_porcent(this.value,this.id);valida_formulario_mantenimiento();" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac_mantenimiento" id="porcent_hvac_mantenimiento">
                                 <input id="count_porcent_hvac_mantenimiento" name="count_porcent_hvac_mantenimiento" type="number" class="hidden" value="0">
                                 <div class="ml-2" style="margin-top: 5.5px;">
                                     <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -487,21 +487,28 @@
                     >{{ __('index.siguiente') }}</button>
             </div> --}}
 
-            <div id="div_next_h" name="div_next_h" style="width: 80%;" class="">
-                <button  type="button"  id="next_h" name="next_h"
+            <div id="div_next_h_mantenimiento" name="div_next_h_mantenimiento" style="width: 80%;" class="">
+                <button  type="button"  id="next_h_mantenimiento" name="next_h_mantenimiento"
+                    x-show="step < 2"
+                    onclick="valida_formulario_mantenimiento();"
+                    style="background-color:#1B17BB;"
+                    class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                >{{ __('index.siguiente') }}</button>
+            </div>
+
+            <div id="div_next_mantenimiento" name="div_next_mantenimiento" style="width: 80%;" class="hidden">
+                <button  type="button"  id="next_mantenimiento" name="next_mantenimiento"
                     x-show="step < 2"
                     @click="step++"
                     style="background-color:#1B17BB;"
                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                 >{{ __('index.siguiente') }}</button>
-        </div>
+            </div>
 
             <div id="div_atras_mant" name="div_atras_mant" style="width: 80%;" class="">
                 <button  type="button"  id="next_h_mant" name="next_h_mant"
                     x-show="step < 2"
-
                      onclick="back_begin();"
-
                     class="w-full focus:outline-none bg-gray-500 border-2 border-color-inps py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-xl font-roboto"
                 >{{ __('index.inicio') }}</button>
             </div>
