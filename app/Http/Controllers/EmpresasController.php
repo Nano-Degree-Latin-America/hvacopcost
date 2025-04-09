@@ -565,7 +565,7 @@ class EmpresasController extends Controller
     public function add_marcas_empresaschillers(){
 
         //$array_paquetes = ['8','9','10'];
-        $array_paquetes = ['9','10','11'];
+        $array_paquetes = ['11'];
         $marcas_paquetes = ['Carrier','Trane','York','Daikin','McQuay','Mitsubishi','Génerico'];
         $empresas = DB::table('empresas')
         ->get();
