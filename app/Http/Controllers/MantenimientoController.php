@@ -171,6 +171,31 @@ public function factores_mantenimiento(){
 
         $array_to_response = [];
 
+
+            $sistema = $request->values[1];
+            $unidad = $request->values[2];
+            $capacidad_termica_mantenimiento = $request->values[5];
+            $cantidad_unidades_mantenimiento = $request->values[6];
+            $yrs_vida_mantenimiento = $request->values[7];
+            $tipo_acceso_mantenimiento = $request->values[8];
+            $estado_unidad_mantenimiento = $request->values[9];
+            $cambio_filtros_mantenimiento = $request->values[11];
+            $tipo_ambiente_mantenimiento = $request->values[16];
+            $ocupacion_semanal_mantenimiento = $request->values[17];
+
+
+            $fg = 1.03;
+            $costo_instalado = $this->obtener_costo_instalado($unidad);
+            $rav = $this->obtener_rav($unidad);
+            $fa = $this->obtener_fa($tipo_ambiente_mantenimiento);
+            $fta = $this->obtener_fta($tipo_acceso_mantenimiento);
+            $feu = $this->obtener_feu($estado_unidad_mantenimiento);
+            $fav = $this->obtener_fav($yrs_vida_mantenimiento);
+            $fhd = $this->obtener_fhd($ocupacion_semanal_mantenimiento);
+             $res_formula_calculo = $this->formula_calculo(intval($capacidad_termica_mantenimiento),intval($cantidad_unidades_mantenimiento),$costo_instalado,$rav,$fa,$fta,$feu,$fav,$fhd,$fg);
+
+
+
         $sistemas = [
                     '1' => 'Paquetes (RTU)',
                     '2' => 'Split DX',
@@ -197,6 +222,8 @@ public function factores_mantenimiento(){
         $unidad_aux = UnidadesModel::where('identificador','=',$unidad)->first()->unidad;
         $acceso = FactorAccesoModel::where('id','=',$request->values[8])->first()->factor;
         $estado = FactorEstadoUnidad::where('id','=',$request->values[9])->first()->factor;
+        $costo_cambio_filtros_aux = explode('$',$request->values[12]);
+        $suma_adicionales = $costo_cambio_filtros_aux[1] * $request->values[13] * $request->values[6];
 
         array_push(
             $array_to_response,
@@ -215,6 +242,10 @@ public function factores_mantenimiento(){
             $request->values[12].'_hidden',   //costo_filtro_mantenimiento
             $request->values[13].'_hidden',//cantidad_filtros_mantenimiento
             $unidad.'_hidden',
+            $suma_adicionales.'_hidden',
+            ''.'_hidden',
+            ''.'_hidden',
+            $res_formula_calculo.'_hidden'
         );
 
         //dd($array_to_response);
@@ -296,6 +327,9 @@ public function factores_mantenimiento(){
                 $cantidad_filtros_aux = explode('_', $array_sistemas[$i][13]);
                 $cantidad_filtros = $cantidad_filtros_aux[0];
 
+                /* $costo_cambio_filtros_aux = explode('$',$request->values[12]);
+                $suma_adicionales = $costo_cambio_filtros_aux[1] * $request->values[13] * $request->values[6]; */
+
                 array_push(
                     $arry_res_sistema,
                     $array_sistemas[$i][0],
@@ -324,6 +358,28 @@ public function factores_mantenimiento(){
     public function update_registro(Request  $request,$id){
         $array_sistemas = Session::get('array_sistemas');
 
+            $sistema = $request->values[1];
+            $unidad = $request->values[2];
+            $capacidad_termica_mantenimiento = $request->values[5];
+            $cantidad_unidades_mantenimiento = $request->values[6];
+            $yrs_vida_mantenimiento = $request->values[7];
+            $tipo_acceso_mantenimiento = $request->values[8];
+            $estado_unidad_mantenimiento = $request->values[9];
+            $cambio_filtros_mantenimiento = $request->values[11];
+            $tipo_ambiente_mantenimiento = $request->values[16];
+            $ocupacion_semanal_mantenimiento = $request->values[17];
+
+
+            $fg = 1.03;
+            $costo_instalado = $this->obtener_costo_instalado($unidad);
+            $rav = $this->obtener_rav($unidad);
+            $fa = $this->obtener_fa($tipo_ambiente_mantenimiento);
+            $fta = $this->obtener_fta($tipo_acceso_mantenimiento);
+            $feu = $this->obtener_feu($estado_unidad_mantenimiento);
+            $fav = $this->obtener_fav($yrs_vida_mantenimiento);
+            $fhd = $this->obtener_fhd($ocupacion_semanal_mantenimiento);
+             $res_formula_calculo = $this->formula_calculo(intval($capacidad_termica_mantenimiento),intval($cantidad_unidades_mantenimiento),$costo_instalado,$rav,$fa,$fta,$feu,$fav,$fhd,$fg);
+
         $sistemas = [
             '1' => 'Paquetes (RTU)',
             '2' => 'Split DX',
@@ -351,6 +407,9 @@ public function factores_mantenimiento(){
         $acceso = FactorAccesoModel::where('id','=',$request->values[8])->first()->factor;
         $estado = FactorEstadoUnidad::where('id','=',$request->values[9])->first()->factor;
 
+        $costo_cambio_filtros_aux = explode('$',$request->values[12]);
+        $suma_adicionales = $costo_cambio_filtros_aux[1] * $request->values[13] * $request->values[6];
+
        /*  array_push(
             $array_to_response,
             $request->values[0],
@@ -366,8 +425,15 @@ public function factores_mantenimiento(){
             $request->values[10].'_hidden',  //horas_diarias_mantenimiento
             $request->values[11].'_hidden',   //cambio_filtros_mantenimiento
             $request->values[12].'_hidden',   //costo_filtro_mantenimiento
-            $request->values[13].'_hidden',    //cantidad_filtros_mantenimiento
-        ); */
+            $request->values[13].'_hidden',//cantidad_filtros_mantenimiento
+            $unidad.'_hidden',
+            $suma_adicionales.'_hidden',
+            ''.'_hidden',
+            ''.'_hidden',
+            $res_formula_calculo.'_hidden'
+        );
+ */
+
 
         for ($i = 0; $i < count($array_sistemas); $i++) {
             if($array_sistemas[$i][0] == $id){
@@ -375,15 +441,20 @@ public function factores_mantenimiento(){
                 $array_sistemas[$i][2] = $unidad_aux;
                 $array_sistemas[$i][3] = $marca->marca;
                 $array_sistemas[$i][4] = $modelo->modelo;
-                $array_sistemas[$i][5] = $request->values[5];  //capacidad_termica_mantenimiento;
+                $array_sistemas[$i][5] = $request->values[5];  //cantidad_unidades_mantenimiento;
                 $array_sistemas[$i][6] = $request->values[6];  //cantidad_unidades_mantenimiento
-                $array_sistemas[$i][7] = $request->values[7];  //cantidad_unidades_mantenimiento
-                $array_sistemas[$i][8] =  strtoupper($acceso);  //cantidad_unidades_mantenimiento
-                $array_sistemas[$i][9] =  strtoupper($estado);  //cantidad_unidades_mantenimiento
-                $array_sistemas[$i][10] = $request->values[10].'_hidden';  //cantidad_unidades_mantenimiento
-                $array_sistemas[$i][11] = $request->values[11].'_hidden';  //cantidad_unidades_mantenimiento
-                $array_sistemas[$i][12] = $request->values[12].'_hidden';  //cantidad_unidades_mantenimiento
-                $array_sistemas[$i][13] = $request->values[13].'_hidden';  //cantidad_unidades_mantenimiento
+                $array_sistemas[$i][7] = $request->values[7];  //yrs_vida_mantenimiento
+                $array_sistemas[$i][8] =  strtoupper($acceso);  //tipo_acceso_mantenimiento
+                $array_sistemas[$i][9] =  strtoupper($estado);  //estado_unidad_mantenimiento
+                $array_sistemas[$i][10] = $request->values[10].'_hidden';  //horas_diarias_mantenimiento
+                $array_sistemas[$i][11] = $request->values[11].'_hidden';  //cambio_filtros_mantenimiento
+                $array_sistemas[$i][12] = $request->values[12].'_hidden';  //costo_filtro_mantenimiento
+                $array_sistemas[$i][13] = $request->values[13].'_hidden';  //cantidad_filtros_mantenimiento
+                $array_sistemas[$i][14] = $unidad.'_hidden';  //unidad_aux
+                $array_sistemas[$i][15] = $suma_adicionales.'_hidden';  //costo_suma
+                $array_sistemas[$i][16] = ''.'_hidden';  //costo_suma
+                $array_sistemas[$i][17] = ''.'_hidden';  //costo_suma
+                $array_sistemas[$i][18] = $res_formula_calculo.'_hidden';  //costo_suma
             }
         }
 
@@ -568,6 +639,9 @@ public function factores_mantenimiento(){
     // Array para almacenar los valores que terminan en _0
     $filteredData = [];
 
+
+    /////sumar los  precios//////////////////////////
+    $suma_precios = 0;
     // Recorrer el array
     foreach ($data as $key => $value) {
         // Verificar si la clave contiene 'precio_' seguido de un número
@@ -577,13 +651,39 @@ public function factores_mantenimiento(){
         }
     }
 
-    $suma_precios = 0;
-
     for ($i=0; $i < count($filteredData) ; $i++) {
-        $suma_precios = $suma_precios + $filteredData['precio_'.$i];
+
+        $precio_aux = explode('_hidden',$filteredData['precio_'.$i]);
+
+        //$suma_costos = $suma_costos + $precio_aux[0];
+        $suma_precios = $suma_precios + $precio_aux[0];
     }
 
+/////////////////////////////////////////////////////
+
+
+/////sumar los costos//////////////////////////
+$suma_costos = 0;
+// Recorrer el array
+foreach ($data as $key => $value) {
+    // Verificar si la clave contiene 'precio_' seguido de un número
+    if (preg_match('/^costo_adicionales_aux_mantenimiento_\d+$/', $key)) {
+        // Agregar al array filtrado
+        $filteredData_costos[$key] = $value;
+    }
+}
+
+for ($i=0; $i < count($filteredData_costos) ; $i++) {
+    $costo_aux = explode('_hidden',$filteredData_costos['costo_adicionales_aux_mantenimiento_'.$i]);
+
+    $suma_costos = $suma_costos + $costo_aux[0];
+}
+/////////////////////////////////////////////////////
+
+
     $format_suma_precios = '$'.number_format($suma_precios);
+
+    $format_suma_costos = '$'.number_format($suma_costos);
 
     $materiales_porcent =0.09;
     $equipos_porcent =0;
@@ -675,7 +775,7 @@ public function factores_mantenimiento(){
     session(['array_speed_plan' => $array_speed_plan]);
 
     //ceil reondea a entero superior
-    array_push($analisis_costo_mant_array,$format_suma_precios,ceil($dias_mantenimiento),ceil($tiempo_mantenimiento),ceil($tiempo_traslados),ceil($tiempo_acceso_edificio),ceil($tiempo_garantias));
+    array_push($analisis_costo_mant_array,$format_suma_precios,ceil($dias_mantenimiento),ceil($tiempo_mantenimiento),ceil($tiempo_traslados),ceil($tiempo_acceso_edificio),ceil($tiempo_garantias),$format_suma_costos);
 
     return response()->json($analisis_costo_mant_array);
 }
