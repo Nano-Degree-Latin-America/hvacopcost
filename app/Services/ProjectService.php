@@ -39,7 +39,7 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
 
     public function CreateProject(Request $request): ProjectsModel {
 
-        dd($request->all());
+
 
         $mew_project = new ProjectsModel;
 
