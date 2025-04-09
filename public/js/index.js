@@ -14455,7 +14455,7 @@ function check_porcent_max_min_kms(value,id,unidad){
 
     $.ajax({
         url: '/spend_plan_base',
-        type: 'get',
+        type: 'post',
 
         headers: { 'X-CSRF-TOKEN': token },
         data: {
@@ -14496,7 +14496,7 @@ function check_porcent_max_min_kms(value,id,unidad){
             if (value !== '0' && value !== '$0' && value !== '') {
                 $.ajax({
                     url: '/spend_plan_base_adicionales', // Reemplaza con la URL de tu endpoint
-                    type: 'get',
+                    type: 'post',
 
                     headers: { 'X-CSRF-TOKEN': token },
                     data: {
