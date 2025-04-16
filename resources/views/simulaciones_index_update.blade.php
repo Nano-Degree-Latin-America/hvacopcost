@@ -27,7 +27,7 @@
                 </div>
                 <div class="w-full flex justify-center gap-x-3">
                     @if (Auth::user()->tipo_user == 5)
-                    <button  onclick="check_form_proy('man','display_nuevo_project_edit','display_nuevo_retrofit_edit','display_mant','calcular_p_n_Edit','calcular_p_r_Edit','store');" style="width: 80%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.mantenimiento_index') }}</button>
+                    <button   onclick="check_form_proy('man','display_nuevo_project_edit','display_nuevo_retrofit_edit','display_mant','calcular_p_n_Edit','calcular_p_r_Edit','store');" style="background-color:#1B17BB;width: 80%;width: 80%;" type="button" class="py-2 px-6 rounded-lg shadow-sm text-center text-white hover_button_blue text-2xl font-roboto ">{{ __('index.mantenimiento_index') }}</button>
                     @endif
 
                     @if (Auth::user()->tipo_user != 5)

@@ -717,4 +717,15 @@ public function delete_models_mark($id_marca){
     return true;
 
 }
+
+    public function delete_models_reps($equipo){
+        $empresas = DB::table('empresas')
+        ->get();
+
+
+
+
+
+    }
+
 }

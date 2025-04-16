@@ -222,6 +222,9 @@ cursor: pointer;
 
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" integrity="sha256-+8RZJua0aEWg+QVVKg4LEzEEm/8RFez5Tb4JBNiV5xA=" crossorigin="anonymous"></script>
+<script src="https://code.jscharting.com/latest/jscharting.js"></script>
 @inject('traer_unidad_hvac','app\Http\Controllers\ResultadosController')
 @inject('num_tarjets','app\Http\Controllers\ResultadosController')
 @inject('num_tarjets_2','app\Http\Controllers\ResultadosController')
@@ -229,6 +232,8 @@ cursor: pointer;
 @inject('paises_empresa','app\Http\Controllers\ResultadosController')
 @inject('all_paises','app\Http\Controllers\ResultadosController')
 @inject('check_types_p','app\Http\Controllers\ResultadosController')
+@inject('mantenimiento_project','app\Http\Controllers\ResultadosController')
+@inject('mantenimiento_equipos','app\Http\Controllers\ResultadosController')
 <?php
 $idm = App::getLocale();
 ?>
@@ -261,7 +266,12 @@ $idm = App::getLocale();
                                     <?php  $check_types_pn=$check_types_p->check_p_type_pn(Auth::user()->id_empresa); ?>
                                     <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
                                     <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
-                    <form action="{{url('/edit_project', [$id_project])}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
+                                    <?php  $module_1=1?>
+                                    <?php  $module_2=2?>
+                                    <?php  $module_3=3?>
+                                    <?php  $mantenimiento_project=$mantenimiento_project->mantenimiento_project($project_edit->id); ?>
+                                    <?php  $mantenimiento_equipos=$mantenimiento_equipos->mantenimiento_equipos($project_edit->id); ?>
+            <form action="{{url('/edit_project', [$id_project])}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
                         @csrf
                                     <input type="text" value="update" class="hidden" id="action_submit_send" name="action_submit_send">
                                     <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
@@ -270,54 +280,57 @@ $idm = App::getLocale();
                     </div>
                     {{-- /////////////////////////////////////////////////////////////////////////////////////////////////// --}}
                 </div>
-                <div x-show.transition.in="step === 2">
 
-                    <div class="ancho">
-                            @include('forms_projects_update')
-                            <div class="clearfix">
-                                <div class="my-5 gap-x-3">
-                                    {{--   <input type="file" id="file" name="file"> --}}
-                                  </div>
-                            </div>
-                            <div class="grid w-full justify-items-center mt-8s rounded-md  p-10">
-                                {{-- espacio --}}
-                            </div>
-                        </form>
-                    </div>
+                <div x-show.transition.in="step === 2">
+                    <div class="w-full h-full font-roboto flex mt-2">
+                        <div id="forms_ene_fin_proy"  name="forms_ene_fin_proy" class="hidden w-full">
+                            @include('forms_ene_fin_proy')
+                        </div>
+                        <div id="forms_cal_pre"  name="forms_cal_pre" class="hidden w-full">
+                            @include('forms_cal_pre_edit')
+                        </div>
+                     </div>
                 </div>
 
                 <div x-show.transition.in="step === 3">
                     <div class="w-full h-full font-roboto flex ">
                         <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
-                            @include('mantenimiento.costos_adicionales')
+                            @include('mantenimiento.costos_adicionales_edit')
                         </div>
                     </div>
                 </div>
 
                 <div x-show.transition.in="step === 4">
-                        <div id="ana_cost_mant" class="flex w-full  gap-x-3 mx-2 overflow-x-hidden">
-                            @include('mantenimiento.costos_mant')
-                        </div>
+                    <div id="ana_cost_mant" class="flex w-full  gap-x-3 mx-2 overflow-x-hidden">
+                        @include('mantenimiento.costos_mant')
+                    </div>
                 </div>
 
                 <div x-show.transition.in="step === 5">
+                        <div class="w-full h-full font-roboto flex ">
+                            <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
+                                @include('mantenimiento.just_financiera_edit')
+                            </div>
+                        </div>
+                </div>
+
+                <div x-show.transition.in="step === 6">
+                    <div class="w-full h-full font-roboto flex ">
+                        <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
+                            @include('mantenimiento.justificacion')
+                        </div>
+                    </div>
+                </div>
+
+                <div x-show.transition.in="step === 7">
 
                     <div id="spend_plan" class="flex w-full  gap-x-3 mt-5">
                         <div class="w-1/2 h-full grid  justify-items-center">
-                            <div class="w-full h-full grid justify-items-center font-roboto gap-y-1">
-                                <div class="grid justify-items-center">
-                                    <h1 class="text-3xl  font-bold">Spend Plan 40% Gross Profit</h1>
-                                </div>
-                            </div>
                             @include('mantenimiento.spend_plan_gross')
                         </div>
 
                         <div class="w-1/2 h-full grid  justify-items-center">
-                            <div class="w-full h-full grid justify-center font-roboto gap-y-1">
-                                <div class="flex justify-center mr-20">
-                                    <h1 class="text-3xl text_blue font-bold">Spend Plan</h1> <input class="w-20 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center mx-1" onchange="calcular_speendplan_base_adicional_gp(this.value);" type="text"><h1  class="text-3xl  font-bold"> Gross Profit</h1>
-                                </div>
-                            </div>
+
                             @include('mantenimiento.spend_plan_gross_blank')
                         </div>
                     </div>
@@ -333,37 +346,58 @@ $idm = App::getLocale();
         <div class="w-full mx-auto px-4">
             <div class="flex  w-full">
                 <div class="w-1/2">
-                    @if (strlen(__('index.atras')) > 6)
-                    <button
-                    onclick="back_show_form_project();"
-                    x-show="step > 1"
-                    @click="step--"
-                        class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-md border font-roboto">
-                        {{__('index.atras') }}
-                    </button>
+                    @if ($type_p == 1 || $type_p == 2)
+                        @if (strlen(__('index.atras')) > 6)
+                        <button
+                        type="button"
+                        onclick="back_show_form_project();"
+                        x-show="step > 1"
+                        @click="step--"
+                            class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-md border font-roboto">
+                            {{__('index.atras') }}
+                        </button>
+                        @endif
+
+                        @if (strlen(__('index.atras')) == 6)
+                        <button
+                        type="button"
+                        onclick="back_show_form_project();"
+                        x-show="step > 1"
+                        @click="step--"
+                            class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto">
+                            {{__('index.atras') }}
+                        </button>
+                        @endif
                     @endif
 
-                    @if (strlen(__('index.atras')) == 6)
-                    <button
-                    onclick="back_show_form_project();"
-                    x-show="step > 1"
-                    @click="step--"
-                        class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto">
-                        {{__('index.atras') }}
-                    </button>
+                    @if ($type_p == 3)
+                        <button
+                        type="button"
+                        x-show="step > 1"
+                        @click="step--"
+                            class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-md border font-roboto">
+                            {{__('index.atras') }}
+                        </button>
                     @endif
 
-                    @if ($type_p == 1 || $type_p == 0)
+
+
+                    @if ($type_p === 1 || $type_p === 0)
                     <a href="/project/{{$id_project}}">
-                    @endif
-
-                    @if ($type_p == 2 || $type_p == 3)
-                    <a href="/resultados_retrofit/{{$id_project}}">
-                    @endif
                         <button
                         x-show="step == 1"
                         class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
                     >{{ __('index.resultado') }}</button>
+                    @endif
+
+                    @if ($type_p === 2)
+                    <a href="/resultados_retrofit/{{$id_project}}">
+                        <button
+                        x-show="step == 1"
+                        class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
+                    >{{ __('index.resultado') }}</button>
+                    @endif
+
                     </a>
                 </div>
 
@@ -387,11 +421,59 @@ $idm = App::getLocale();
                           </ul>
                         </div>
                 </div>
+                @if ($type_p == 1 || $type_p == 2)
                 <div  x-show="step === 2" class="w-1/2 flex" style=" justify-content: center;">
 
                     <button  style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
                     <button  style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
                 </div>
+                @endif
+
+                @if ($type_p == 3)
+                <div  class="w-1/2 flex" style=" justify-content: center;">
+
+                    <button  type="button" id="button_next_mantenimiento_noadicionales" name="button_next_mantenimiento_noadicionales"
+                    {{-- onclick="calcular_speendplan_base();" --}}
+                    style="background-color:#1B17BB;"
+                        x-show="step == 2"
+                        @click="step++"
+                        onclick="calcular_speendplan_base_edit({{ $project_edit->id }});"
+                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                    >{{ __('index.siguiente') }}</button>
+
+                    <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
+                    onclick="calcular_speendplan_base_adicionales_edit({{ $project_edit->id }});"
+                   style="background-color:#1B17BB;"
+                       x-show="step == 3"
+                       @click="step++"
+                       class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                   >{{ __('index.siguiente') }}</button>
+
+                   <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
+
+                   style="background-color:#1B17BB;"
+                       x-show="step == 4"
+                       @click="step++"
+                       class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                   >{{ __('mantenimiento.costos_operativos') }}</button>
+
+                   <button  type="button" id="button_next_mantenimiento_justificacion" name="button_next_mantenimiento_justificacion"
+
+                   style="background-color:#1B17BB;"
+                       x-show="step == 5"
+                       @click="step++"
+                       onclick="justificacion_financiera_send_mant_edit($('#costo_mantenimiento_mantenimiento_financiero').val());justificacion_financiera_send();"
+                       class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                   >{{ __('mantenimiento.justificacion_financiera') }}</button>
+
+                   <button  type="button" id="button_next_an_cost_mant" name="button_next_an_cost_mant"
+                    style="background-color:#1B17BB;"
+                        x-show="step == 6"
+                        @click="step++"
+                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                    >{{ __('mantenimiento.speend_plan') }}</button>
+                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -975,6 +1057,7 @@ window.onload = function() {
     id_tipo_edi = '{{ $project_edit->id_tipo_edificio }}';
     pais_id ='{{ $project_edit->region }}';
     id_ciudad ='{{ $project_edit->ciudad }}';
+    id_ambiente ='{{ $mantenimiento_project->medio_ambiente }}';
     traer_t_edif_Edit(val,id_tipo_edi);
     traer_ciudad(pais_id,id_ciudad);
     caed_Edi_val_ini ='{{ $project_edit->ciudad }}';
@@ -982,6 +1065,7 @@ window.onload = function() {
     traer_porcent_ini(val,porcent);
     id_ciudad_ini =  '{{ $id_ciudad_ini }}';
     traer_horas_enf_edit('{{ $project_edit->id }}');
+    set_options_factor_mantenimiento_edit();
     //let cost_ele = $('#costo_elec_1_1_retro').val();
    /*  asign_cos_ele(cost_ele); */
     let dollarUSLocale = Intl.NumberFormat('en-US');
@@ -1053,12 +1137,26 @@ function traer_t_edif_Edit(val,id_tipo_edi) {
                     value: cat_ed.id,
                     text: cat_ed.name
                 }));
-                $("#tipo_edificio_edit").find('option[value="' + cat_ed.id + '"]').attr("selected", "selected");;
-                }else if(id_tipo_edi != cat_ed.id){
+
+                $('#tipo_edificio_mantenimiento').append($('<option>', {
+                    value: cat_ed.id,
+                    text: cat_ed.name
+                }));
+
+                $("#tipo_edificio_edit").find('option[value="' + cat_ed.id + '"]').attr("selected", "selected");
+                $("#tipo_edificio_mantenimiento").find('option[value="' + cat_ed.id + '"]').attr("selected", "selected");
+
+            }else if(id_tipo_edi != cat_ed.id){
                     $('#tipo_edificio_edit').append($('<option>', {
                     value: cat_ed.id,
                     text: cat_ed.name
                 }));
+
+                $('#tipo_edificio_mantenimiento').append($('<option>', {
+                    value: cat_ed.id,
+                    text: cat_ed.name
+                }));
+
                 }
 
 
@@ -1120,12 +1218,24 @@ function traer_ciudad(pais,id_ciudad) {
                         value: ciudades.idCiudad,
                         text: ciudades.ciudad
                     }));
-                    $("#ciudades_edit").find('option[value="' + ciudades.idCiudad + '"]').attr("selected", "selected");;
+                    //mantenimiento
+                    $('#ciudades_mantenimiento').append($('<option>', {
+                        value: ciudades.idCiudad,
+                        text: ciudades.ciudad
+                    }));
+                    $("#ciudades_edit").find('option[value="' + ciudades.idCiudad + '"]').attr("selected", "selected");
+                    $("#ciudades_mantenimiento").find('option[value="' + ciudades.idCiudad + '"]').attr("selected", "selected");;
+
                     }else if(id_ciudad != ciudades.ciudad){
                         $('#ciudades_edit').append($('<option>', {
                         value: ciudades.idCiudad,
                         text: ciudades.ciudad
-                    }));
+                        }));
+
+                        $('#ciudades_mantenimiento').append($('<option>', {
+                        value: ciudades.idCiudad,
+                        text: ciudades.ciudad
+                        }));
                     }
             });
 
@@ -1137,6 +1247,35 @@ function traer_ciudad(pais,id_ciudad) {
         }
     });
 
+}
+
+function set_options_factor_mantenimiento_edit(){
+
+var token = $("#token").val();
+var endpoint = "/set_options_factor_mantenimiento";
+var ima =  $('#idioma').val();
+$.ajax({
+    url: endpoint,
+    type: 'get',
+
+    headers: { 'X-CSRF-TOKEN': token },
+    success: function(response) {
+        $('#tipo_ambiente_mantenimiento').empty();
+        check_val_text('tipo_ambiente_mantenimiento',ima)
+
+        response.forEach(res => {
+            $('#tipo_ambiente_mantenimiento').append($('<option>', {
+                value: res.id,
+                text: res.factor
+            }));
+        });
+
+        $("#tipo_ambiente_mantenimiento").find('option[value="' + id_ambiente + '"]').prop("selected", "selected");;
+    },
+    error: function(xhr, status, error) {
+        console.error('Error al enviar los datos:', error);
+    }
+});
 }
 
 function traer_ciudad_edit(pais) {
