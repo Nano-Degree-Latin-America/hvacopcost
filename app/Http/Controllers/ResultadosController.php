@@ -1065,6 +1065,55 @@ class ResultadosController extends Controller
         return response()->json($val);
     }
 
+    public function mantenimiento_project($id_project){
+        $mantenimiento = DB::table('mantenimiento_projects')
+        ->where('mantenimiento_projects.id_project','=',$id_project)
+        ->first();
+
+        return $mantenimiento;
+
+    }
+
+    public function mantenimiento_equipos($id_project){
+        $mantenimiento_equipos = DB::table('mantenimiento_equipos')
+        ->where('mantenimiento_equipos.id_project','=',$id_project)
+        ->join('sistemas_hvac','sistemas_hvac.id','=','mantenimiento_equipos.sistema')
+        ->join('unidades','unidades.identificador','=','mantenimiento_equipos.unidad')
+        ->join('marcas_empresa','marcas_empresa.id','=','mantenimiento_equipos.id_marca')
+        ->join('modelos_empresa','modelos_empresa.id','=','mantenimiento_equipos.id_modelo')
+        ->join('factor_acceso','factor_acceso.id','=','mantenimiento_equipos.acceso')
+        ->join('factor_estado_unidad','factor_estado_unidad.id','=','mantenimiento_equipos.estado_unidad')
+        ->select('mantenimiento_equipos.*'
+        ,'sistemas_hvac.name as sistema_name'
+        ,'unidades.unidad as unidad_name'
+        ,'marcas_empresa.marca as marca_name'
+        ,'modelos_empresa.modelo as modelo_name'
+        ,'factor_acceso.factor as factor_name_acceso'
+        ,'factor_estado_unidad.factor as factor_name_estado'
+        )
+        ->get();
+
+        return $mantenimiento_equipos;
+
+    }
+
+    public function costos_adicionales($id_project){
+        $mantenimiento = DB::table('adicionales')
+        ->where('adicionales.id_project','=',$id_project)
+        ->first();
+
+        return $mantenimiento;
+
+    }
+
+    public function costos_operativos($id_project){
+        $costos_operativos = DB::table('analisis_costos_operativos')
+        ->where('analisis_costos_operativos.id_project','=',$id_project)
+        ->first();
+
+        return $costos_operativos;
+
+    }
 
 
 /*     public function inv_ini_ca_ar($id,$num_enf){

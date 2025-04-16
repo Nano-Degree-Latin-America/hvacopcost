@@ -548,6 +548,7 @@ class ComposerStaticInit22ba1415f53e39972f76e4c42d651c6e
     );
 
     public static $classMap = array (
+        'App\\AdicionalesModel' => __DIR__ . '/../..' . '/app/AdicionalesModel.php',
         'App\\BaseCalculoModel' => __DIR__ . '/../..' . '/app/BaseCalculoModel.php',
         'App\\ConfiguracionesMantenimientoModel' => __DIR__ . '/../..' . '/app/ConfiguracionesMantenimientoModel.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
