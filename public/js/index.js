@@ -1386,16 +1386,18 @@ async function set_ventilaciones_no_doa(value) {
         $('#display_nuevo_project_edit').removeClass("hidden");
         $('#display_nuevo_retrofit_edit').addClass("hidden");
         $('#type_p').val(1);
+        $('#forms_cal_pre').addClass("hidden");
         $('#type_project_name').text('Retrofit');
         calcular_p_n.removeClass("hidden");
         calcular_p_r.addClass("hidden");
-
+        $('#display_mant').addClass("hidden");
     }
 
     if(type_p == 2 ){
         $('#display_nuevo_retrofit_edit').removeClass("hidden");
         $('#display_nuevo_project_edit').addClass("hidden");
         $('#type_p').val(type_p);
+        $('#display_mant').addClass("hidden");
         $('#type_project_name').text('Retrofit');
         calcular_p_n.addClass("hidden");
         //calcular_p_n.attr('disabled', 'disabled');
@@ -1405,6 +1407,7 @@ async function set_ventilaciones_no_doa(value) {
         ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','','tipo_ambiente_1_1_retro','proteccion_condensador_1_1_retro');
 
         inactive_tarjets_retro('pr');
+        $('#forms_cal_pre').addClass("hidden");
         $('#costo_anual_reparaciones_2_1_retro').addClass("hidden");
         $('#costo_anual_reparaciones_3_1_retro').addClass("hidden");
         $('#button_inactive_2_1_mant').addClass("hidden");
@@ -1415,22 +1418,25 @@ async function set_ventilaciones_no_doa(value) {
         $('#inv_ini_capex_2_1_mant').addClass("hidden");
         $('#inv_ini_capex_3_1_retro').removeClass("hidden");
         $('#inv_ini_capex_3_1_mant').addClass("hidden");
-    }else if(type_p == 3){
+    }
+
+    if(type_p == 3){
+
         $('#display_nuevo_retrofit_edit').addClass("hidden");
         $('#display_nuevo_project_edit').addClass("hidden");
         $('#type_p').val(type_p);
 
-
-            $('#simulaciones_update').removeClass("hidden");
+        $('#display_mant').removeClass("hidden");
+            $('#simulaciones_update').addClass("hidden");
             $('#forms_ene_fin_proy').addClass("hidden");
-/*             $('#img_ene_fin_proy_hvac').addClass("hidden");
-            $('#img_mantenimiento').removeClass("hidden"); */
+            $('#img_ene_fin_proy_hvac').addClass("hidden");
+            $('#img_mantenimiento').removeClass("hidden");
             //$('#'+mant_p).removeClass("hidden");  //mantenimiento form
             $('#forms_cal_pre').removeClass("hidden");
             $('#ene_fin_pro_form_project').addClass("hidden");
             $('#button_calcular_ene_fin').addClass("hidden");
 
-            //$('#mantenimiento_form_project_update').removeClass("hidden");
+            $('#mantenimiento_form_project').removeClass("hidden");
             $('#mant_prev').removeClass("hidden");
             $('#button_sigiuente_mantenimiento').removeClass("hidden");
 
@@ -1442,7 +1448,7 @@ async function set_ventilaciones_no_doa(value) {
 
 
         calcular_p_n.addClass("hidden");
-        calcular_p_r.removeClass("hidden");
+        calcular_p_r.addClass("hidden");
         $('#costo_anual_reparaciones_2_1_retro').removeClass("hidden");
         $('#costo_anual_reparaciones_3_1_retro').removeClass("hidden");
         inactive_tarjets_retro('man');
@@ -14006,7 +14012,7 @@ async function clean_form_tarjet_mantenimiento(){
     /* send_marcas_to('marca_mantenimiento', response[3], response[1]);
     send_modelo_edit(response[2], 'modelo_mantenimiento', response[4]); */
     $('#capacidad_termica_mantenimiento').val('');
-    $('#cantidad_unidades_mantenimiento').val(0);
+    $('#cantidad_unidades_mantenimiento').val(1);
 
     $("#tipo_acceso_mantenimiento").find('option[value=""]').prop("selected", "selected");
     $("#estado_unidad_mantenimiento").find('option[value=""]').prop("selected", "selected");
@@ -14532,6 +14538,68 @@ function check_porcent_max_min_kms(value,id,unidad){
     });
  }
 
+ function calcular_speendplan_base_edit(id_project){
+    var token = $("#token").val();
+    var formData = {};
+    $("input[name$='_mantenimiento'], select[name$='_mantenimiento']").each(function() {
+        formData[$(this).attr('name')] = $(this).val();
+    });
+
+    $.ajax({
+        url: '/spend_plan_base_edit/'+id_project, // Reemplaza con la URL de tu endpoint
+        type: 'post',
+
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            values: formData
+        },
+        success: async function(response) {
+            $('#valor_contrato_anual').val(response[0]);
+            $('#dias_mantenimiento').val(response[1]);
+            $('#tiempo_mantenimiento').val(response[2]);
+            $('#tiempo_traslados').val(response[3]);
+            $('#tiempo_acceso_edificio').val(response[4]);
+            $('#tiempo_garantias').val(response[5]);
+            $('#costos_filtro_aire_adicionales').val(response[6]);
+
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+ }
+
+ function calcular_speendplan_base_edit(id_project){
+    var token = $("#token").val();
+    var formData = {};
+    $("input[name$='_mantenimiento'], select[name$='_mantenimiento']").each(function() {
+        formData[$(this).attr('name')] = $(this).val();
+    });
+
+    $.ajax({
+        url: '/spend_plan_base_edit/'+id_project, // Reemplaza con la URL de tu endpoint
+        type: 'post',
+
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            values: formData
+        },
+        success: async function(response) {
+            $('#valor_contrato_anual').val(response[0]);
+            $('#dias_mantenimiento').val(response[1]);
+            $('#tiempo_mantenimiento').val(response[2]);
+            $('#tiempo_traslados').val(response[3]);
+            $('#tiempo_acceso_edificio').val(response[4]);
+            $('#tiempo_garantias').val(response[5]);
+            $('#costos_filtro_aire_adicionales').val(response[6]);
+
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+ }
+
 
  function calcular_speendplan_base_adicionales(){
 
@@ -14613,6 +14681,86 @@ function check_porcent_max_min_kms(value,id,unidad){
     }
  }
 
+
+ function calcular_speendplan_base_adicionales_edit(id){
+
+
+    var token = $("#token").val();
+    var formData = {};
+    var only_adicionales = {};
+    $("input[name$='_adicionales'],input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_0']").each(function() {
+        formData[$(this).attr('name')] = $(this).val();
+    });
+
+    $("input[name$='_adicionales']").each(function() {
+        only_adicionales[$(this).attr('name')] = $(this).val();
+    });
+
+    for (var key in only_adicionales) {
+        if (only_adicionales.hasOwnProperty(key)) {
+            var value = only_adicionales[key];
+            if (value !== '0' && value !== '$0' && value !== '') {
+                $.ajax({
+                    url: '/spend_plan_base_adicionales_edit/'+id, // Reemplaza con la URL de tu endpoint
+                    type: 'post',
+
+                    headers: { 'X-CSRF-TOKEN': token },
+                    data: {
+                        values: formData
+                    },
+                    success: async function(response) {
+                        $('#valor_contrato_anual_adicionales').val(response[0]);
+                        $('#mantenimiento_justificacion_financiera_futuro').val(response[0]);
+                        $('#dias_mantenimiento_adicionales').val(response[1]);
+                        $('#tiempo_mantenimiento_adicionales').val(response[2]);
+                        $('#tiempo_traslados_adicionales').val(response[3]);
+                        $('#tiempo_acceso_edificio_adicionales').val(response[4]);
+                        $('#tiempo_garantias_adicionales').val(response[5]);
+                        $('#materiales_gp_40').val('$'+response[6]);
+                        $('#equipos_gp_40').val('$'+response[7]);
+                        $('#mano_obra_gp_40').val('$'+response[8]);
+                        $('#vehiculo_gp_40').val('$'+response[9]);
+                        $('#contratista_gp_40').val('$'+response[10]);
+                        $('#viaticos_gp_40').val('$'+response[11]);
+                        $('#burden_gp_40').val('$'+response[12]);
+                        $('#ga_gp_40').val('$'+response[13]);
+                        $('#ventas_gp_40').val('$'+response[14]);
+                        $('#financiamiento_gp_40').val('$'+response[15]);
+                        $('#materiales_porcent_gp_40').val('$'+response[16]);
+                        $('#equipos_porcent_gp_40').val('$'+response[17]);
+                        $('#mano_obra_porcent_gp_40').val('$'+response[18]);
+                        $('#vehiculo_porcent_gp_40').val('$'+response[19]);
+                        $('#contratista_porcent_gp_40').val('$'+response[20]);
+                        $('#viaticos_porcent_gp_40').val('$'+response[21]);
+                        $('#burden_porcent_gp_40').val('$'+response[22]);
+                        $('#ga_gp_porcent_40').val('$'+response[23]);
+                        $('#ventas_porcent_gp_40').val('$'+response[24]);
+                        $('#financiamiento_porcent_gp_40').val('$'+response[25]);
+                        $('#valor_venta_gp_40').val(response[0]);
+                        $('#ganancia_porcent_gp_40').val(response[26]);
+                        $('#ganancia_gp_40').val('$'+response[27]);
+                        chart_vals_mant(response[28],response[29],response[30],response[31]);
+                    },
+
+                });
+            }else{
+                var valor_contrato_anual = $('#valor_contrato_anual').val();
+                var dias_mantenimiento = $('#dias_mantenimiento').val();
+                var tiempo_mantenimiento = $('#tiempo_mantenimiento').val();
+                var tiempo_traslados = $('#tiempo_traslados').val();
+                var tiempo_acceso_edificio = $('#tiempo_acceso_edificio').val();
+                var tiempo_garantias = $('#tiempo_garantias').val();
+
+                $('#valor_contrato_anual_adicionales').val(valor_contrato_anual);
+               $('#dias_mantenimiento_adicionales').val(dias_mantenimiento);
+               $('#tiempo_mantenimiento_adicionales').val(tiempo_mantenimiento);
+               $('#tiempo_traslados_adicionales').val(tiempo_traslados);
+               $('#tiempo_acceso_edificio_adicionales').val(tiempo_acceso_edificio);
+               $('#tiempo_garantias_adicionales').val(tiempo_garantias);
+            }
+        }
+    }
+ }
 
  function calcular_speendplan_base_adicional_gp(porcent){
     var token = $("#token").val();
@@ -15346,6 +15494,14 @@ function check_porcent_max_min_kms(value,id,unidad){
  function justificacion_financiera_send_mant(value){
 
     $('#mantenimiento_justificacion_mantenimiento').val(value);
+ }
+
+ function justificacion_financiera_send_mant_edit(value){
+
+    $('#mantenimiento_justificacion_mantenimiento').val(value);
+    $('#energia_justificacion_mantenimiento').val($('#consumo_energia_edificio_mantenimiento').val());
+    $('#reparaciones_justificacion_mantenimiento').val($('#monto_actual_mantenimiento_financiero').val());
+    $('#energia_justificacion_financiera_futuro').val('$'+$('#consumo_energia_edificio_mantenimiento_financiero').val());
  }
 
 

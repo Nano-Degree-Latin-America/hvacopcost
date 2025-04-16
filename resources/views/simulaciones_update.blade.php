@@ -24,7 +24,7 @@
 
 {{-- calculos precios hvac form --}}
 <div id="mantenimiento_form_project" class="hidden">
-    @include('mantenimiento.mantenimiento_form_project')
+    @include('mantenimiento.mantenimiento_form_project_edit')
 </div>
 
 

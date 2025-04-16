@@ -10,7 +10,6 @@ use App\Services\SolutionServiceRetrofit;
 use App\Services\SolutionServiceEdit;
 use App\Services\SolutionServiceEditRetro;
 use App\Services\CalculoMantenimientoService;
-
 use App\SolutionsProjectModel;
 use App\ProjectsModel;
 use App\ResultsProjectModel;
@@ -19,6 +18,7 @@ use App\ModelosEmpresaModel;
 use App\TipoEdificioModel;
 use App\TypeProjectModel;
 use App\MantenimientoProjectsModel;
+use App\MantenimientoEquiposModel;
 use Illuminate\Support\Facades\Redirect;
 //use Excel;
 use Dompdf\Dompdf;
@@ -32,14 +32,14 @@ use App\Controllerss\ProjectController;
 use App\Traits\FormusTrait;
 use App\Traits\ConfortTrait;
 use App\Traits\SaveResultsTrait;
+use Illuminate\Support\Facades\Session;
+
 class ProjectService
 {
 
 use FormusTrait,ConfortTrait,SaveResultsTrait;
 
     public function CreateProject(Request $request): ProjectsModel {
-
-
 
         $mew_project = new ProjectsModel;
 
@@ -72,9 +72,6 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
             }
 
 
-            $cap_tot_ar =$this->num_form($request->get('ar_project'));
-            $mew_project->area = floatval($cap_tot_ar);
-
             if($request->get('n_empleados') == ''){
                 $mew_project->n_empleados = 0;
             }else if($request->get('n_empleados') != '' || $request->get('n_empleados') >= 0){
@@ -92,7 +89,11 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
             $mew_project->unidad=$request->get('unidad');
             $mew_project->region=$request->get('pais');
             $mew_project->ciudad=$request->get('ciudad');
+            $cap_tot_ar =$this->num_form($request->get('ar_project'));
+            $mew_project->area = floatval($cap_tot_ar);
         }
+
+
 
         $aux_porcent = explode("%",   $request->get('porcent_hvac'));
         if(count($aux_porcent) == 2){
@@ -119,6 +120,8 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
             $mew_project->ciudad=$ciudad;
             $mew_project->id_tipo_edificio=$request->get('tipo_edificio_mantenimiento');
             $mew_project->id_cat_edifico=$request->get('cat_edi_mantenimiento');
+            $cap_tot_ar_mant =$this->num_form($request->get('ar_project_mantenimiento'));
+            $mew_project->area = floatval($cap_tot_ar_mant);
         }
 
 
@@ -146,7 +149,12 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
             }
 
             if($type_p == 3){
-                $calculoMantenimientoService->new_calculo_mantenimiento_save($request,$mew_project->id);
+                $mantenimiento =  $calculoMantenimientoService->new_calculo_mantenimiento_save($request,$mew_project->id);
+                if($mantenimiento ==  true){
+                    Session::forget('array_sistemas');
+                    Session::forget('array_speed_plan');
+                }
+
             }
             //$solutions = $solutionService->CreateSolutions($request,$mew_project->id);
 
