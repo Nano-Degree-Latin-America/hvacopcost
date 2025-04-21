@@ -1,4 +1,6 @@
 <div class="col-4 ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
+    @if ($type_p === 3)
+
 
             <div class="my-8">
                 <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight text-center" for="">{{ __('mantenimiento.calculo_analisis_precios') }} <br> {{ __('mantenimiento.contratos_mantenimiento_hvac') }}</label>
@@ -490,7 +492,7 @@
                 </div>
             </div>
         </div>
-
+        @endif
         </div>
 
      {{-- <div class="bullets">
@@ -740,6 +742,7 @@
             <div id="div_next_mantenimiento" name="div_next_mantenimiento" style="width: 80%;" class="hidden">
                 <button  type="button"  id="next_mantenimiento" name="next_mantenimiento"
                     x-show="step < 2"
+                    onclick="listar_mantenimiento_equipos({{ $project_edit->id }});"
                     @click="step++"
                     style="background-color:#1B17BB;"
                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"

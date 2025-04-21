@@ -19,7 +19,7 @@
 
         <tbody id="tbody_equipos" name="tbody_equipos">
 
-                @foreach ($mantenimiento_equipos as $equipo)
+                {{-- @foreach ($mantenimiento_equipos as $equipo)
                 <tr  id="tr_exampe" name="tr_exampe"  class="">
                     <td></td>
                     <td><input style="border: 2px solid; border-color:#1B17BB!important; width:100%;" value="{{ $equipo->sistema_name }}" disabled type="text" class="text-center text-sm font-bold h-8"></td>
@@ -31,11 +31,11 @@
                     <td><input style="border: 2px solid; border-color:#1B17BB!important; width:100%;" value="{{ $equipo->yrs_life }}" disabled type="text" class="text-center text-sm font-bold h-8"></td>
                     <td><input style="border: 2px solid; border-color:#1B17BB!important; width:100%;" value="{{ $equipo->factor_name_acceso }}" disabled type="text" class="text-center text-sm font-bold h-8"></td>
                     <td><input style="border: 2px solid; border-color:#1B17BB!important; width:100%;" value="{{ $equipo->factor_name_estado }}" disabled type="text" class="text-center text-sm font-bold h-8"></td>
-                    <td style="width:30px;" class=""><button type="button" onclick="del_td_tr({{ $equipo->id }})" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>
-                    <td style="width:30px;" class=""><button type="button" onclick="edit_regstro({{ $equipo->id }})" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>
+                    <td style="width:30px;" class=""><button type="button" onclick="del_td_tr_edit({{ $equipo->id }})" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>
+                    <td style="width:30px;" class=""><button type="button" onclick="edit_regstro_edit({{ $equipo->id }})" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>
 
                 </tr>
-                @endforeach
+                @endforeach --}}
         </tbody>
 
     <input id="contador_table" type="number" value="0" class="hidden">
