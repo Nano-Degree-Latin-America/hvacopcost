@@ -1708,5 +1708,132 @@ public function spend_plan_base_adicionales_edit(Request $request,$id_project)
         Session::forget('array_speed_plan');
     }
 
+    public function traer_mantenimiento_equipos($id_project){
+        $mantenimiento_equipos = MantenimientoEquiposModel::where('id_project','=',$id_project)->get();
+        $ids = [];
+        foreach($mantenimiento_equipos as $id_mant){
+            array_push($ids,$id_mant->id);
+        }
+
+        $array_equipo = [];
+        $array_to_response = [];
+
+        $counter = 0;
+
+        foreach($ids as $id){
+        $counter = $counter + 1;
+            $mantenimiento = MantenimientoEquiposModel::find($id);
+            if($mantenimiento->id === $id){
+            $sistema = SistemasModel::find($mantenimiento->sistema);
+            $unidad = UnidadesModel::where('identificador','=',$mantenimiento->unidad)->first()->unidad;
+            $marca = MarcasEmpresaModel::find($mantenimiento->id_marca)->marca;
+            $modelo = ModelosEmpresaModel::find($mantenimiento->id_modelo)->modelo;
+            $acceso = FactorAccesoModel::find($mantenimiento->acceso)->first()->factor;
+            $estado = FactorEstadoUnidad::find($mantenimiento->estado_unidad)->first()->factor;
+            $suma_adicionales = $mantenimiento->costo_total_filtros;
+
+
+                    array_push(
+                        $array_equipo,
+                        $counter,
+                        $sistema->name,   //sistema_mantenimiento
+                        $unidad,  //unidad_mantenimiento
+                        $marca,  //marca_mantenimiento
+                        $modelo,  //modelo_mantenimiento
+                        $mantenimiento->capacidad,  //capacidad_termica_mantenimiento
+                        $mantenimiento->cantidad,  //cantidad_unidades_mantenimiento
+                        $mantenimiento->yrs_life,  //yrs_vida_mantenimiento
+                        strtoupper($acceso),  //tipo_acceso_mantenimiento
+                        strtoupper($estado),  //estado_unidad_mantenimiento
+                        $mantenimiento->hrs_diarias.'_hidden',  //horas_diarias_mantenimiento
+                        $mantenimiento->cambio_filtros.'_hidden',   //cambio_filtros_mantenimiento
+                        $mantenimiento->costo_cambio_filtros.'_hidden',   //costo_filtro_mantenimiento
+                        $mantenimiento->cambios_anuales.'_hidden',//cantidad_filtros_mantenimiento
+                        $mantenimiento->unidad.'_hidden',
+                        $suma_adicionales.'_hidden',
+                        ''.'_hidden',
+                        ''.'_hidden',
+                        $mantenimiento->precio.'_hidden',
+                        $mantenimiento->id.'_hidden',
+                    );
+
+                }
+
+            array_push($array_to_response,$array_equipo);
+            $array_equipo = [];
+
+        }
+
+return response()->json($array_to_response);
+    }
+
+    //delete mantenimiento equipo
+    public function delete_mantenimiento_equipo($id){
+        $mantenimiento = MantenimientoEquiposModel::find($id);
+        $id_project = $mantenimiento->id_project;
+        if($mantenimiento->delete()){
+            return response()->json($id_project);
+        }else{
+            return response()->json(['status' => 'error']);
+        }
+
+    }
+
+    public function edit_regstro_edit(Request  $request,$id){
+
+                $arry_res_sistema = [];
+
+                $mantenimiento = MantenimientoEquiposModel::find($id);
+
+                //$id_sistema = SistemasModel::where('name','=',$array_sistemas[$i][1])->first()->id;
+                $id_unidad = UnidadesModel::where('unidad','=',$mantenimiento->unidad)->first()->identificador;
+               /*  $marca = MarcasEmpresaModel::where('marca','=',$array_sistemas[$i][3])
+                ->where('id_empresa','=',Auth::user()->id_empresa)
+                ->first()->id;
+                $modelo = ModelosEmpresaModel::where('modelo','=',$array_sistemas[$i][4])
+                ->where('id_empresa','=',Auth::user()->id_empresa)
+                ->first()->id; */
+
+                /* $acceso = FactorAccesoModel::where('factor','=',ucfirst($array_sistemas[$i][8]))->first()->id;
+                $estado = FactorEstadoUnidad::where('factor','=',ucfirst( $array_sistemas[$i][9]))->first()->id;
+
+                $horas_diarias_aux = explode('_',$array_sistemas[$i][10]);
+                $horas_diarias = $horas_diarias_aux[0];
+
+                $cambio_filtros_aux = explode('_',$array_sistemas[$i][11]);
+                $cambio_filtros = $cambio_filtros_aux[0];
+
+                $costo_filtros_aux = explode('_', $array_sistemas[$i][12]);
+                $costo_filtros = $costo_filtros_aux[0];
+
+                $cantidad_filtros_aux = explode('_', $array_sistemas[$i][13]);
+                $cantidad_filtros = $cantidad_filtros_aux[0]; */
+
+                /* $costo_cambio_filtros_aux = explode('$',$request->values[12]);
+                $suma_adicionales = $costo_cambio_filtros_aux[1] * $request->values[13] * $request->values[6]; */
+
+                array_push(
+                    $arry_res_sistema,
+                    $id,
+                    $mantenimiento->sistema,  //sistema_mantenimiento
+                    $id_unidad,  //unidad_mantenimiento
+                    $mantenimiento->marca,  //marca_mantenimiento
+                    $mantenimiento->modelo,  //modelo_mantenimiento
+                    $mantenimiento->capacidad,  //capacidad_termica_mantenimiento
+                    $mantenimiento->cantidad,  //cantidad_unidades_mantenimiento
+                    $mantenimiento->yrs_life,  //yrs_vida_mantenimiento
+                    $mantenimiento->acceso,  //tipo_acceso_mantenimiento
+                    $mantenimiento->estado_unidad,  //estado_unidad_mantenimiento
+                    $mantenimiento->hrs_diarias,  //horas_diarias_mantenimiento
+                    $mantenimiento->cambio_filtros,   //cambio_filtros_mantenimiento
+                    $mantenimiento->costo_cambio_filtros,//costo_filtro_mantenimiento
+                    $mantenimiento->cambios_anuales,   //cantidad_filtros_mantenimiento
+                );
+
+
+            return response()->json($arry_res_sistema);
+
+
+    }
 }
 

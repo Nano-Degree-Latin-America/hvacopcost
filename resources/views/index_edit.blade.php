@@ -269,8 +269,15 @@ $idm = App::getLocale();
                                     <?php  $module_1=1?>
                                     <?php  $module_2=2?>
                                     <?php  $module_3=3?>
-                                    <?php  $mantenimiento_project=$mantenimiento_project->mantenimiento_project($project_edit->id); ?>
-                                    <?php  $mantenimiento_equipos=$mantenimiento_equipos->mantenimiento_equipos($project_edit->id); ?>
+
+                                    <?php
+                                    if($type_p === 3){
+
+                                        $mantenimiento_project=$mantenimiento_project->mantenimiento_project($project_edit->id);
+                                        $mantenimiento_equipos=$mantenimiento_equipos->mantenimiento_equipos($project_edit->id);
+                                    }
+                                     ?>
+
             <form action="{{url('/edit_project', [$id_project])}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
                         @csrf
                                     <input type="text" value="update" class="hidden" id="action_submit_send" name="action_submit_send">
@@ -283,8 +290,8 @@ $idm = App::getLocale();
 
                 <div x-show.transition.in="step === 2">
                     <div class="w-full h-full font-roboto flex mt-2">
-                        <div id="forms_ene_fin_proy"  name="forms_ene_fin_proy" class="hidden w-full">
-                            @include('forms_ene_fin_proy')
+                        <div id="forms_ene_fin_proy_edit"  name="forms_ene_fin_proy_edit" class="hidden w-full">
+                            @include('forms_projects_update')
                         </div>
                         <div id="forms_cal_pre"  name="forms_cal_pre" class="hidden w-full">
                             @include('forms_cal_pre_edit')
@@ -295,7 +302,9 @@ $idm = App::getLocale();
                 <div x-show.transition.in="step === 3">
                     <div class="w-full h-full font-roboto flex ">
                         <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
+                             @if ($type_p === 3)
                             @include('mantenimiento.costos_adicionales_edit')
+                             @endif
                         </div>
                     </div>
                 </div>
@@ -309,7 +318,9 @@ $idm = App::getLocale();
                 <div x-show.transition.in="step === 5">
                         <div class="w-full h-full font-roboto flex ">
                             <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
+                                  @if ($type_p === 3)
                                 @include('mantenimiento.just_financiera_edit')
+                                @endif
                             </div>
                         </div>
                 </div>
@@ -1048,8 +1059,8 @@ $idm = App::getLocale();
 }
 
     </style>
+{{--    id_ambiente ='{{ $mantenimiento_project->medio_ambiente }}'; --}}
 <script>
-
 window.onload = function() {
 
     check_form_proy_edit('{{$type_p}}','{{ $project_edit->id }}');
@@ -1057,7 +1068,9 @@ window.onload = function() {
     id_tipo_edi = '{{ $project_edit->id_tipo_edificio }}';
     pais_id ='{{ $project_edit->region }}';
     id_ciudad ='{{ $project_edit->ciudad }}';
-    id_ambiente ='{{ $mantenimiento_project->medio_ambiente }}';
+
+
+
     traer_t_edif_Edit(val,id_tipo_edi);
     traer_ciudad(pais_id,id_ciudad);
     caed_Edi_val_ini ='{{ $project_edit->ciudad }}';
@@ -1065,7 +1078,7 @@ window.onload = function() {
     traer_porcent_ini(val,porcent);
     id_ciudad_ini =  '{{ $id_ciudad_ini }}';
     traer_horas_enf_edit('{{ $project_edit->id }}');
-    set_options_factor_mantenimiento_edit();
+    //set_options_factor_mantenimiento_edit();
     //let cost_ele = $('#costo_elec_1_1_retro').val();
    /*  asign_cos_ele(cost_ele); */
     let dollarUSLocale = Intl.NumberFormat('en-US');
@@ -1249,7 +1262,7 @@ function traer_ciudad(pais,id_ciudad) {
 
 }
 
-function set_options_factor_mantenimiento_edit(){
+/* function set_options_factor_mantenimiento_edit(){
 
 var token = $("#token").val();
 var endpoint = "/set_options_factor_mantenimiento";
@@ -1276,7 +1289,7 @@ $.ajax({
         console.error('Error al enviar los datos:', error);
     }
 });
-}
+} */
 
 function traer_ciudad_edit(pais) {
     $.ajax({
