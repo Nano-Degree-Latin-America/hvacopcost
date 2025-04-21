@@ -217,8 +217,9 @@ Route::get('check_counter_storage', 'MantenimientoController@check_counter_stora
 Route::post('update_registro/{index}', 'MantenimientoController@update_registro');
 Route::get('reset_local_storage', 'MantenimientoController@reset_local_storage');
 Route::get('guardar_mantenimiento', 'ResultadosController@getResultados');
-
-
+Route::post('traer_mantenimiento_equipos/{id_project}', 'MantenimientoController@traer_mantenimiento_equipos');
+Route::post('delete_mantenimiento_equipo/{id_project}', 'MantenimientoController@delete_mantenimiento_equipo');
+Route::post('edit_regstro_edit/{index}', 'MantenimientoController@edit_regstro_edit');
 
 //lang
 Route::get('locale/{locale}', function($locale){

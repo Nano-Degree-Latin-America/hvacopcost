@@ -1383,17 +1383,21 @@ async function set_ventilaciones_no_doa(value) {
     calcular_p_n = $('#calcular_p_n_Edit');
     calcular_p_r = $('#calcular_p_r_Edit');
     if(type_p == 1 || type_p == 0){
+        $('#forms_ene_fin_proy_edit').removeClass("hidden");
         $('#display_nuevo_project_edit').removeClass("hidden");
         $('#display_nuevo_retrofit_edit').addClass("hidden");
+
         $('#type_p').val(1);
         $('#forms_cal_pre').addClass("hidden");
         $('#type_project_name').text('Retrofit');
         calcular_p_n.removeClass("hidden");
         calcular_p_r.addClass("hidden");
         $('#display_mant').addClass("hidden");
+
     }
 
     if(type_p == 2 ){
+        $('#forms_ene_fin_proy_edit').removeClass("hidden");
         $('#display_nuevo_retrofit_edit').removeClass("hidden");
         $('#display_nuevo_project_edit').addClass("hidden");
         $('#type_p').val(type_p);
@@ -1421,7 +1425,7 @@ async function set_ventilaciones_no_doa(value) {
     }
 
     if(type_p == 3){
-
+        $('#forms_ene_fin_proy_edit').addClass("hidden");
         $('#display_nuevo_retrofit_edit').addClass("hidden");
         $('#display_nuevo_project_edit').addClass("hidden");
         $('#type_p').val(type_p);
@@ -15541,3 +15545,133 @@ function check_porcent_max_min_kms(value,id,unidad){
 
  }
 
+ function listar_mantenimiento_equipos(id){
+    $('#tbody_equipos').empty();
+
+    var ids = [
+        'contador_table',
+        'sistema_mantenimiento',
+        'unidad_mantenimiento',
+        'marca_mantenimiento',
+        'modelo_mantenimiento',
+        'capacidad_termica_mantenimiento',
+        'cantidad_unidades_mantenimiento',
+        'yrs_vida_mantenimiento',
+        'tipo_acceso_mantenimiento',
+        'estado_unidad_mantenimiento',
+        'horas_diarias_mantenimiento',
+        'cambio_filtros_mantenimiento',
+        'costo_filtro_mantenimiento',
+        'cantidad_filtros_mantenimiento',
+        'unidad_aux_mantenimiento',
+        'costo_adicionales_aux_mantenimiento',
+        'tipo_ambiente_mantenimiento',
+        'ocupacion_semanal_mantenimiento',
+        'precio',
+];
+
+    var token = $("#token").val();
+        $.ajax({
+            url: '/traer_mantenimiento_equipos/'+id, // Reemplaza con la URL de tu endpoint
+            type: 'post',
+
+            headers: { 'X-CSRF-TOKEN': token },
+            success: async function(response) {
+
+                //var res_formula = await formula_calculo_mantenimiento();
+
+                for (var i = 0; i < response.length; i++) {
+
+                    const arregloInterno = response[i];
+                    var newRow = '<tr id='+i+'>';
+                    for (let j = 0; j < arregloInterno.length; j++) {
+
+
+                        var value = arregloInterno[j];
+                        const id_aux = arregloInterno[19].split('_');
+                        var id = id_aux[0];
+
+                        if (String(value).endsWith('_hidden')) {
+                            newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                        }else{
+                            newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                        }
+
+
+                    }
+                    /* newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">'; */
+                    newRow += '<td style="width:30px;" class=""><button type="button" onclick="del_td_tr_edit('+id+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
+                    newRow += '<td style="width:30px;" class=""><button type="button" onclick="edit_regstro_edit('+id+')" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>';
+                    newRow += '</tr>';
+                    $('#tbody_equipos').append(newRow);
+                }
+                $('#indice_tabla_edit').val('');
+
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al enviar los datos:', error);
+            }
+        });
+ }
+
+ function del_td_tr_edit(id){
+    var token = $("#token").val();
+    $.ajax({
+        type: 'POST',
+        url: '/delete_mantenimiento_equipo/'+id,
+        headers: { 'X-CSRF-TOKEN': token },
+        success: function (response) {
+
+                listar_mantenimiento_equipos(response);
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+ }
+
+ async function edit_regstro_edit(id){
+
+
+        // Enviar valuesArray por medio de AJAX
+        var token = $("#token").val();
+        $.ajax({
+            url: '/edit_regstro_edit/'+id, // Reemplaza con la URL de tu endpoint
+            type: 'POST',
+
+            headers: { 'X-CSRF-TOKEN': token },
+
+            success: async function(response) {
+
+
+                $('#indice_tabla_edit').val(response[0]);
+                $("#sistema_mantenimiento").find('option[value="' + response[1] + '"]').prop("selected", "selected");
+                await unidadHvac(response[1],'','unidad_mantenimiento',2);
+                $("#unidad_mantenimiento").find('option[value="' + response[2] + '"]').prop("selected", "selected");
+                send_marcas_to('marca_mantenimiento', response[3], response[1]);
+                send_modelo_edit(response[3], 'modelo_mantenimiento', response[4]);
+
+
+               /*  send_marcas_to(marca, res.val_unidad.id_marca, res.val_unidad.unidad_hvac);
+                send_modelo_edit(res.val_unidad.id_marca, modelo, res.val_unidad.id_modelo); */
+
+
+                $('#capacidad_termica_mantenimiento').val(response[5]);
+                $('#cantidad_unidades_mantenimiento').val(response[6]);
+                $('#yrs_vida_mantenimiento').val(response[7]);
+                $("#tipo_acceso_mantenimiento").find('option[value="' + response[8] + '"]').prop("selected", "selected");
+                $("#estado_unidad_mantenimiento").find('option[value="' + response[9] + '"]').prop("selected", "selected");
+                $("#cambio_filtros_mantenimiento").find('option[value="' + response[11] + '"]').prop("selected", "selected");
+                $('#costo_filtro_mantenimiento').val(response[12]);
+                $('#cantidad_filtros_mantenimiento').val(response[13]);
+
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al enviar los datos:', error);
+            }
+        });
+
+
+
+ }
