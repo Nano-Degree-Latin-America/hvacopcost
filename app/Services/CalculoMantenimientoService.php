@@ -38,8 +38,8 @@ class CalculoMantenimientoService
 
         //guardar_aquipos manyenimiento
         $array_sistemas = Session::get('array_sistemas', []);
-        for ($i = 0; $i < count($array_sistemas); $i++) {
 
+        for ($i = 0; $i < count($array_sistemas); $i++) {
 
             $id_sistema = SistemasModel::where('name','=',$array_sistemas[$i][1])->first()->id;
             $unidad = UnidadesModel::where('unidad','=',$array_sistemas[$i][2])->first()->identificador;
@@ -87,6 +87,7 @@ class CalculoMantenimientoService
             $new_equipo_mantenimiento->costo_cambio_filtros = $costo_filtros_price;
             $new_equipo_mantenimiento->costo_total_filtros = $costo_total_filtros;
             $new_equipo_mantenimiento->cantidad = $array_sistemas[$i][6];
+            $new_equipo_mantenimiento->cambios_anuales = $cantidad_filtros;
             $new_equipo_mantenimiento->precio = $precio;
             $new_equipo_mantenimiento->id_empresa = Auth::user()->id_empresa;
             $new_equipo_mantenimiento->save();

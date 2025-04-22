@@ -48,7 +48,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-md font-bold">
                        Curso de Seguridad y Otros
                     </p>
                 </div>

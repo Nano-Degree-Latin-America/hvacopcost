@@ -4,7 +4,7 @@
         <div class="flex w-full gap-x-3 mx-5">
 
             <div style="width: 29%" class="h-full flex">
-                @include('mantenimiento.target_equipo')
+                @include('mantenimiento.tarjet_equipo_edit')
             </div>
 
             <div  style="width: 71%" class="">
