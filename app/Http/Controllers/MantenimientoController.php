@@ -17,6 +17,7 @@ use App\FactorHorasDiariasModel;
 use App\MantenimientoEquiposModel;
 use App\SistemasModel;
 use App\ProjectsModel;
+use App\MantenimientoProjectsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -1728,8 +1729,8 @@ public function spend_plan_base_adicionales_edit(Request $request,$id_project)
             $unidad = UnidadesModel::where('identificador','=',$mantenimiento->unidad)->first()->unidad;
             $marca = MarcasEmpresaModel::find($mantenimiento->id_marca)->marca;
             $modelo = ModelosEmpresaModel::find($mantenimiento->id_modelo)->modelo;
-            $acceso = FactorAccesoModel::find($mantenimiento->acceso)->first()->factor;
-            $estado = FactorEstadoUnidad::find($mantenimiento->estado_unidad)->first()->factor;
+            $acceso = FactorAccesoModel::find($mantenimiento->acceso)->factor;
+            $estado = FactorEstadoUnidad::find($mantenimiento->estado_unidad)->factor;
             $suma_adicionales = $mantenimiento->costo_total_filtros;
 
 
@@ -1782,36 +1783,9 @@ return response()->json($array_to_response);
     public function edit_regstro_edit(Request  $request,$id){
 
                 $arry_res_sistema = [];
-
                 $mantenimiento = MantenimientoEquiposModel::find($id);
 
-                //$id_sistema = SistemasModel::where('name','=',$array_sistemas[$i][1])->first()->id;
-                $id_unidad = UnidadesModel::where('unidad','=',$mantenimiento->unidad)->first()->identificador;
-               /*  $marca = MarcasEmpresaModel::where('marca','=',$array_sistemas[$i][3])
-                ->where('id_empresa','=',Auth::user()->id_empresa)
-                ->first()->id;
-                $modelo = ModelosEmpresaModel::where('modelo','=',$array_sistemas[$i][4])
-                ->where('id_empresa','=',Auth::user()->id_empresa)
-                ->first()->id; */
-
-                /* $acceso = FactorAccesoModel::where('factor','=',ucfirst($array_sistemas[$i][8]))->first()->id;
-                $estado = FactorEstadoUnidad::where('factor','=',ucfirst( $array_sistemas[$i][9]))->first()->id;
-
-                $horas_diarias_aux = explode('_',$array_sistemas[$i][10]);
-                $horas_diarias = $horas_diarias_aux[0];
-
-                $cambio_filtros_aux = explode('_',$array_sistemas[$i][11]);
-                $cambio_filtros = $cambio_filtros_aux[0];
-
-                $costo_filtros_aux = explode('_', $array_sistemas[$i][12]);
-                $costo_filtros = $costo_filtros_aux[0];
-
-                $cantidad_filtros_aux = explode('_', $array_sistemas[$i][13]);
-                $cantidad_filtros = $cantidad_filtros_aux[0]; */
-
-                /* $costo_cambio_filtros_aux = explode('$',$request->values[12]);
-                $suma_adicionales = $costo_cambio_filtros_aux[1] * $request->values[13] * $request->values[6]; */
-
+                $id_unidad = $mantenimiento->unidad;
                 array_push(
                     $arry_res_sistema,
                     $id,
@@ -1835,5 +1809,145 @@ return response()->json($array_to_response);
 
 
     }
+
+    public function traer_mantenimiento_medio_ambiente($id){
+        $mantenimiento = MantenimientoProjectsModel::where('id_project','=',$id)
+        ->first()->medio_ambiente;
+        return $mantenimiento;
+    }
+
+    public function nuevo_equipo_mantenimeinto(Request  $request,$id_project){
+
+            $sistema = $request->values[1];
+            $unidad = $request->values[2];
+            $capacidad_termica_mantenimiento = $request->values[5];
+            $cantidad_unidades_mantenimiento = $request->values[6];
+            $yrs_vida_mantenimiento = $request->values[7];
+            $tipo_acceso_mantenimiento = $request->values[8];
+            $estado_unidad_mantenimiento = $request->values[9];
+            $cambio_filtros_mantenimiento = $request->values[11];
+            $tipo_ambiente_mantenimiento = $request->values[16];
+            $ocupacion_semanal_mantenimiento = $request->values[17];
+
+
+            $fg = 1.03;
+            $costo_instalado = $this->obtener_costo_instalado($unidad);
+            $rav = $this->obtener_rav($unidad);
+            $fa = $this->obtener_fa($tipo_ambiente_mantenimiento);
+            $fta = $this->obtener_fta($tipo_acceso_mantenimiento);
+            $feu = $this->obtener_feu($estado_unidad_mantenimiento);
+            $fav = $this->obtener_fav($yrs_vida_mantenimiento);
+            $fhd = $this->obtener_fhd($ocupacion_semanal_mantenimiento);
+             $res_formula_calculo = $this->formula_calculo(intval($capacidad_termica_mantenimiento),intval($cantidad_unidades_mantenimiento),$costo_instalado,$rav,$fa,$fta,$feu,$fav,$fhd,$fg);
+
+
+            $id_sistema = $request->values[1];
+            $unidad = $request->values[2];
+            $marca = $request->values[3];
+            $modelo = $request->values[4];
+
+            $acceso = $request->values[8];
+            $estado = $request->values[9];
+
+            $horas_diarias = $request->values[10];
+
+            $cambio_filtros = $request->values[11];
+
+            $costo_filtros_price = $this->precio_to_integer($request->values[12]);
+
+            $cantidad_filtros = $request->values[13];
+
+            $suma_adicionales = $costo_filtros_price * intval($request->values[13]) * intval($request->values[6]);
+
+            $new_equipo_mantenimiento = new MantenimientoEquiposModel;
+            $new_equipo_mantenimiento->id_project =$id_project;;
+            $new_equipo_mantenimiento->sistema = $id_sistema;
+            $new_equipo_mantenimiento->unidad = $unidad;
+            $new_equipo_mantenimiento->id_marca = $marca;
+            $new_equipo_mantenimiento->id_modelo = $modelo;
+            $new_equipo_mantenimiento->yrs_life = $request->values[7];
+            $new_equipo_mantenimiento->capacidad = $request->values[5];
+            $new_equipo_mantenimiento->capacidad_unidad = 'TR';
+            $new_equipo_mantenimiento->hrs_diarias = $horas_diarias;
+            $new_equipo_mantenimiento->acceso = $acceso;
+            $new_equipo_mantenimiento->estado_unidad = $estado;
+            $new_equipo_mantenimiento->cambio_filtros = $cambio_filtros;
+            $new_equipo_mantenimiento->costo_cambio_filtros = $costo_filtros_price;
+            $new_equipo_mantenimiento->costo_total_filtros = $suma_adicionales;
+            $new_equipo_mantenimiento->cantidad = $request->values[6];
+            $new_equipo_mantenimiento->cambios_anuales = $cantidad_filtros;
+            $new_equipo_mantenimiento->precio = $res_formula_calculo;
+            $new_equipo_mantenimiento->id_empresa = Auth::user()->id_empresa;
+            $new_equipo_mantenimiento->save();
+
+    }
+
+    public function update_registro_edit(Request  $request,$id_equipo){
+
+
+        $sistema = $request->values[1];
+        $unidad = $request->values[2];
+        $capacidad_termica_mantenimiento = $request->values[5];
+        $cantidad_unidades_mantenimiento = $request->values[6];
+        $yrs_vida_mantenimiento = $request->values[7];
+        $tipo_acceso_mantenimiento = $request->values[8];
+        $estado_unidad_mantenimiento = $request->values[9];
+        $cambio_filtros_mantenimiento = $request->values[11];
+        $tipo_ambiente_mantenimiento = $request->values[16];
+        $ocupacion_semanal_mantenimiento = $request->values[17];
+
+
+        $fg = 1.03;
+        $costo_instalado = $this->obtener_costo_instalado($unidad);
+        $rav = $this->obtener_rav($unidad);
+        $fa = $this->obtener_fa($tipo_ambiente_mantenimiento);
+        $fta = $this->obtener_fta($tipo_acceso_mantenimiento);
+        $feu = $this->obtener_feu($estado_unidad_mantenimiento);
+        $fav = $this->obtener_fav($yrs_vida_mantenimiento);
+        $fhd = $this->obtener_fhd($ocupacion_semanal_mantenimiento);
+         $res_formula_calculo = $this->formula_calculo(intval($capacidad_termica_mantenimiento),intval($cantidad_unidades_mantenimiento),$costo_instalado,$rav,$fa,$fta,$feu,$fav,$fhd,$fg);
+
+
+        $id_sistema = $request->values[1];
+        $unidad = $request->values[2];
+        $marca = $request->values[3];
+        $modelo = $request->values[4];
+
+        $acceso = $request->values[8];
+        $estado = $request->values[9];
+
+        $horas_diarias = $request->values[10];
+
+        $cambio_filtros = $request->values[11];
+
+        $costo_filtros_price = $this->precio_to_integer($request->values[12]);
+
+        $cantidad_filtros = $request->values[13];
+
+        $suma_adicionales = $costo_filtros_price * intval($request->values[13]) * intval($request->values[6]);
+
+        $new_equipo_mantenimiento = MantenimientoEquiposModel::find($id_equipo);
+        $new_equipo_mantenimiento->sistema = $id_sistema;
+        $new_equipo_mantenimiento->unidad = $unidad;
+        $new_equipo_mantenimiento->id_marca = $marca;
+        $new_equipo_mantenimiento->id_modelo = $modelo;
+        $new_equipo_mantenimiento->yrs_life = $request->values[7];
+        $new_equipo_mantenimiento->capacidad = $request->values[5];
+        $new_equipo_mantenimiento->capacidad_unidad = 'TR';
+        $new_equipo_mantenimiento->hrs_diarias = $horas_diarias;
+        $new_equipo_mantenimiento->acceso = $acceso;
+        $new_equipo_mantenimiento->estado_unidad = $estado;
+        $new_equipo_mantenimiento->cambio_filtros = $cambio_filtros;
+        $new_equipo_mantenimiento->costo_cambio_filtros = $costo_filtros_price;
+        $new_equipo_mantenimiento->costo_total_filtros = $suma_adicionales;
+        $new_equipo_mantenimiento->cantidad = $request->values[6];
+        $new_equipo_mantenimiento->cambios_anuales = $cantidad_filtros;
+        $new_equipo_mantenimiento->precio = $res_formula_calculo;
+        $new_equipo_mantenimiento->id_empresa = Auth::user()->id_empresa;
+        $new_equipo_mantenimiento->update();
+
+        return $new_equipo_mantenimiento->id_project;
+
+}
 }
 

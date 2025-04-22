@@ -19,7 +19,7 @@
 
             <div class="w-1/3">
                 <div class="w-full  flex justify-start">
-                    <h1  class="text_blue text-4xl font-bold">
+                    <h1  class="text_blue text-3xl font-bold">
                         Energía Actual
                     </h1>
                 </div>
@@ -46,8 +46,8 @@
             </div>
         </div>
 
-        <div class="w-full  flex justify-start mt-5">
-            <h1  class="text_blue text-4xl font-bold">
+        <div class="w-full  flex justify-start mt-3">
+            <h1  class="text_blue text-3xl font-bold">
                 Oportunidades
             </h1>
         </div>
@@ -95,8 +95,8 @@
             </div>
         </div>
 
-        <div class="w-full  flex justify-start mt-5">
-            <h1  class="text_blue text-4xl font-bold">
+        <div class="w-full  flex justify-start mt-3">
+            <h1  class="text_blue text-3xl font-bold">
                 Energía Futura Estimada
             </h1>
         </div>
@@ -104,13 +104,13 @@
 
             <div class="w-1/3 flex gap-x-3">
                 <label class="text_blue text-xl font-bold">Consumo Anual Edificio</label>
-                <input value="{{ number_format($costos_operativos->consumo_anual_edificio_futura) }}" readonly id="consumo_energia_edificio_mantenimiento_financiero" name="consumo_energia_edificio_mantenimiento_financiero" type="text" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                <input value="${{ number_format($costos_operativos->consumo_anual_edificio_futura) }}" readonly id="consumo_energia_edificio_mantenimiento_financiero" name="consumo_energia_edificio_mantenimiento_financiero" type="text" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
             </div>
 
             <div class="w-1/3 flex gap-x-3 justify-center">
                 <div class="flex justify-start w-full gap-x-3">
                     <label class="text_blue text-xl font-bold">Reducción Energética</label>
-                    <input value="{{ number_format($costos_operativos->reduccion_energetica) }}" readonly type="text" type="text" id="reduccion_energetica_mantenimiento_financiero" name="reduccion_energetica_mantenimiento_financiero" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input value="${{ number_format($costos_operativos->reduccion_energetica) }}" readonly type="text" type="text" id="reduccion_energetica_mantenimiento_financiero" name="reduccion_energetica_mantenimiento_financiero" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
             <div class="w-1/3">
@@ -118,8 +118,8 @@
             </div>
         </div>
 
-        <div class="w-full  flex justify-start mt-5">
-            <h1  class="text_blue text-4xl font-bold">
+        <div class="w-full  flex justify-start mt-3">
+            <h1  class="text_blue text-3xl font-bold">
                 Costo Actual Reparaciones
             </h1>
         </div>
@@ -141,8 +141,8 @@
             </div>
         </div>
 
-        <div class="w-full  flex justify-start mt-5">
-            <h1  class="text_blue text-4xl font-bold">
+        <div class="w-full  flex justify-start mt-3">
+            <h1  class="text_blue text-3xl font-bold">
                 Costo Actual Mantenimiento
             </h1>
         </div>

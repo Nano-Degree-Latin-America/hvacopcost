@@ -1059,7 +1059,8 @@ $idm = App::getLocale();
 }
 
     </style>
-{{--    id_ambiente ='{{ $mantenimiento_project->medio_ambiente }}'; --}}
+{{--    --}}
+
 <script>
 window.onload = function() {
 
@@ -1068,9 +1069,6 @@ window.onload = function() {
     id_tipo_edi = '{{ $project_edit->id_tipo_edificio }}';
     pais_id ='{{ $project_edit->region }}';
     id_ciudad ='{{ $project_edit->ciudad }}';
-
-
-
     traer_t_edif_Edit(val,id_tipo_edi);
     traer_ciudad(pais_id,id_ciudad);
     caed_Edi_val_ini ='{{ $project_edit->ciudad }}';
@@ -1078,7 +1076,7 @@ window.onload = function() {
     traer_porcent_ini(val,porcent);
     id_ciudad_ini =  '{{ $id_ciudad_ini }}';
     traer_horas_enf_edit('{{ $project_edit->id }}');
-    //set_options_factor_mantenimiento_edit();
+
     //let cost_ele = $('#costo_elec_1_1_retro').val();
    /*  asign_cos_ele(cost_ele); */
     let dollarUSLocale = Intl.NumberFormat('en-US');
@@ -1262,34 +1260,6 @@ function traer_ciudad(pais,id_ciudad) {
 
 }
 
-/* function set_options_factor_mantenimiento_edit(){
-
-var token = $("#token").val();
-var endpoint = "/set_options_factor_mantenimiento";
-var ima =  $('#idioma').val();
-$.ajax({
-    url: endpoint,
-    type: 'get',
-
-    headers: { 'X-CSRF-TOKEN': token },
-    success: function(response) {
-        $('#tipo_ambiente_mantenimiento').empty();
-        check_val_text('tipo_ambiente_mantenimiento',ima)
-
-        response.forEach(res => {
-            $('#tipo_ambiente_mantenimiento').append($('<option>', {
-                value: res.id,
-                text: res.factor
-            }));
-        });
-
-        $("#tipo_ambiente_mantenimiento").find('option[value="' + id_ambiente + '"]').prop("selected", "selected");;
-    },
-    error: function(xhr, status, error) {
-        console.error('Error al enviar los datos:', error);
-    }
-});
-} */
 
 function traer_ciudad_edit(pais) {
     $.ajax({

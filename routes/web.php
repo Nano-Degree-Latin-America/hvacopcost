@@ -220,6 +220,9 @@ Route::get('guardar_mantenimiento', 'ResultadosController@getResultados');
 Route::post('traer_mantenimiento_equipos/{id_project}', 'MantenimientoController@traer_mantenimiento_equipos');
 Route::post('delete_mantenimiento_equipo/{id_project}', 'MantenimientoController@delete_mantenimiento_equipo');
 Route::post('edit_regstro_edit/{index}', 'MantenimientoController@edit_regstro_edit');
+Route::get('traer_mantenimiento_medio_ambiente/{id}', 'MantenimientoController@traer_mantenimiento_medio_ambiente');
+Route::post('nuevo_equipo_mantenimeinto/{id_project}', 'MantenimientoController@nuevo_equipo_mantenimeinto');
+Route::post('update_registro_edit/{id_project}', 'MantenimientoController@update_registro_edit');
 
 //lang
 Route::get('locale/{locale}', function($locale){
