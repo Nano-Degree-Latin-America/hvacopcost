@@ -194,6 +194,10 @@ class ProjectController extends Controller
             return Redirect::to('/resultados_retrofit/' . $id);
 
         }
+
+        if($update_project->type_p == 3){
+            return Redirect::to('/edit_project/' . $id);
+        }
     }
 
     public function traer_unidad_hvac($id,$num_sol,$num_enf){
