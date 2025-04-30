@@ -26,8 +26,10 @@ class DatabaseSeeder extends Seeder
          //$this->call(FactorEstadoUnidadSeeder::class);
          //$this->call(FactorHorasDiariasSeeder::class);
          //$this->call(FactorGarantiaSeeder::class);
-         $this->call(BaseCalculoSeeder::class);
-
+         //$this->call(BaseCalculoSeeder::class);
+         //$this->call(UnidadesTrSeeder::class);
+         //$this->call(UnidadesCfmSeeder::class);
+          //$this->call(UnidadesUnidadSeeder::class);
 
     }
 }
