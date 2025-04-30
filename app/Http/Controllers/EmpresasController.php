@@ -20,6 +20,11 @@ use App\ConfiguracionesMantenimientoModel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use App\User;
+use App\UnidadesTrModel;
+use App\UnidadesCfmModel;
+use App\UnidadesUnidadModel;
+
+
 class EmpresasController extends Controller
 {
 
@@ -721,11 +726,32 @@ public function delete_models_mark($id_marca){
     public function delete_models_reps($equipo){
         $empresas = DB::table('empresas')
         ->get();
+    }
 
 
+    public function base_calculo_horas(){
 
+        $id_empresa = Auth::user()->id_empresa;
 
+        $unidades_tr = UnidadesTrModel::join('unidades','unidades.id','=','unidades_tr.id_unidad')
+        ->join('sistemas_hvac','sistemas_hvac.id','=','unidades.equipo')
+        ->select('unidades_tr.*','unidades.unidad as nombre_unidad','sistemas_hvac.name as nombre_sistema')
+        ->orderBy('unidades_tr.id','asc')
+        ->get();
 
+        $unidades_cfm = UnidadesCfmModel::join('unidades','unidades.id','=','unidades_cfm.id_unidad')
+        ->join('sistemas_hvac','sistemas_hvac.id','=','unidades.equipo')
+        ->select('unidades_cfm.*','unidades.unidad as nombre_unidad','sistemas_hvac.name as nombre_sistema')
+        ->orderBy('unidades_cfm.id','asc')
+        ->get();
+
+        $unidades_unidad = UnidadesUnidadModel::join('unidades','unidades.id','=','unidades_unidad.id_unidad')
+        ->join('sistemas_hvac','sistemas_hvac.id','=','unidades.equipo')
+        ->select('unidades_unidad.*','unidades.unidad as nombre_unidad','sistemas_hvac.name as nombre_sistema')
+        ->orderBy('unidades_unidad.id','asc')
+        ->get();
+
+        return view('mantenimiento.base_calculo_horas',["unidades_tr"=>$unidades_tr,"unidades_cfm"=>$unidades_cfm,"unidades_unidad"=>$unidades_unidad]);
     }
 
 }

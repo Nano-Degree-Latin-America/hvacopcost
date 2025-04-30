@@ -40,6 +40,13 @@ class UnidadesSeeder extends Seeder
         $new_equipo->save();
 
         $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Condensadora';
+        $new_equipo->identificador = 'condensadora_split';
+        $new_equipo->valor = 1;
+        $new_equipo->equipo = 2;
+        $new_equipo->save();
+
+        $new_equipo = new UnidadesModel;
         $new_equipo->unidad = 'Manejadora (Hasta 7.5 m)';
         $new_equipo->identificador = 'manejadora';
         $new_equipo->valor = 1.04;
@@ -149,6 +156,13 @@ class UnidadesSeeder extends Seeder
         $new_equipo->identificador = 'agu_cir_abr';
         $new_equipo->valor = 0.96;
         $new_equipo->equipo = 6;
+        $new_equipo->save();
+
+        $new_equipo = new UnidadesModel;
+        $new_equipo->unidad = 'Condensadora';
+        $new_equipo->identificador = 'condensadora_minisplit';
+        $new_equipo->valor = 1;
+        $new_equipo->equipo = 7;
         $new_equipo->save();
 
         $new_equipo = new UnidadesModel;
@@ -456,8 +470,6 @@ class UnidadesSeeder extends Seeder
         $new_equipo->valor = 1;
         $new_equipo->equipo = 15;
         $new_equipo->save();
-
-
 
 
         $new_equipo = new UnidadesModel;
