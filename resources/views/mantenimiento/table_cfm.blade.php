@@ -10,13 +10,11 @@
                 <th class="p-3 text-left"><span class="text-lg">10,000 - 49,999</span></th>
                 <th class="p-3 text-left"><span class="text-lg">50,000 y más</span></th>
                 <th class="p-3 text-left"><span class="text-lg">Periodo</span></th>
-                <th class="p-3 text-left"><span class="text-lg">Editar</span></th>
             </tr>
         </thead>
         <tbody class="">
             @foreach ($unidades_cfm  as $unidad)
                 <tr>
-
                         <td class="border-grey-light border hover:bg-gray-100 text-center">
                             {{$unidad->nombre_sistema}}
                         </td>
@@ -26,35 +24,27 @@
                         </td>
 
                         <td class="border-grey-light border hover:bg-gray-100 text-center">
-                            {{$unidad->one}}
+                            <input type="text" readonly value="{{$unidad->one}}" class="text-center width_inputs" id="one_cfm_{{$unidad->id}}" name="one_cfm_{{$unidad->id}}" onclick="disabled_input(this.id)" onchange="edit_unidad({{$unidad->id}},'one','cfm',this.value,this.id)" >
                         </td>
 
                         <td class="border-grey-light border hover:bg-gray-100 text-center">
-                            {{$unidad->two}}
+                            <input type="text" readonly value="{{$unidad->two}}" class="text-center width_inputs" id="two_cfm_{{$unidad->id}}" name="two_cfm_{{$unidad->id}}" onclick="disabled_input(this.id)" onchange="edit_unidad({{$unidad->id}},'two','cfm',this.value,this.id)" >
                         </td>
 
                         <td class="border-grey-light border hover:bg-gray-100 text-center">
-                            {{$unidad->three}}
+                            <input type="text" readonly value="{{$unidad->three}}" class="text-center width_inputs" id="three_cfm_{{$unidad->id}}" name="three_cfm_{{$unidad->id}}" onclick="disabled_input(this.id)" onchange="edit_unidad({{$unidad->id}},'three','cfm',this.value,this.id)" >
                         </td>
 
                         <td class="border-grey-light border hover:bg-gray-100 text-center">
-                            {{$unidad->four}}
+                            <input type="text" readonly value="{{$unidad->four}}" class="text-center width_inputs" id="four_cfm_{{$unidad->id}}" name="four_cfm_{{$unidad->id}}" onclick="disabled_input(this.id)" onchange="edit_unidad({{$unidad->id}},'four','cfm',this.value,this.id)" >
                         </td>
 
                         <td class="border-grey-light border hover:bg-gray-100 text-center">
-                            {{$unidad->five}}
+                            <input type="text" readonly value="{{$unidad->five}}" class="text-center width_inputs" id="five_cfm_{{$unidad->id}}" name="five_cfm_{{$unidad->id}}" onclick="disabled_input(this.id)" onchange="edit_unidad({{$unidad->id}},'five','cfm',this.value,this.id)" >
                         </td>
 
                         <td class="border-grey-light border hover:bg-gray-100 text-center">
-                            {{$unidad->periodo}}
-                        </td>
-
-                        <td class="border-grey-light border hover:bg-gray-100 text-center">
-                            <div class="">
-                                <button  class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                                    <span class="icon"><i class="text-blue-600 text-3xl far fa-edit hover:text-gray-500"></i></span>
-                                </button>
-                            </div>
+                            <input type="text" readonly value="{{$unidad->periodo}}" class="text-center width_inputs" id="periodo_cfm_{{$unidad->id}}" name="periodo_cfm_{{$unidad->id}}" onclick="disabled_input(this.id)" onchange="edit_unidad({{$unidad->id}},'periodo','cfm',this.value,this.id)" >
                         </td>
                 </tr>
 

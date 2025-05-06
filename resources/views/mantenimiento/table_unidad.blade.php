@@ -6,7 +6,6 @@
                 <th class="p-3 text-left"><span class="text-lg">Unidad HVAC</span></th>
                 <th class="p-3 text-left"><span class="text-lg">Unidad</span></th>
                 <th class="p-3 text-left"><span class="text-lg">Periodo</span></th>
-                <th class="p-3 text-left"><span class="text-lg">Editar</span></th>
             </tr>
         </thead>
         <tbody class="">
@@ -15,6 +14,7 @@
 
                         <td class="border-grey-light border hover:bg-gray-100 text-center">
                             {{$unidad->nombre_sistema}}
+
                         </td>
 
                         <td class="border-grey-light border hover:bg-gray-100 text-center">
@@ -22,19 +22,11 @@
                         </td>
 
                         <td class="border-grey-light border hover:bg-gray-100 text-center">
-                            {{$unidad->one}}
+                            <input type="text" readonly value="{{$unidad->one}}" class="text-center width_inputs" id="one_unidad_{{$unidad->id}}" name="one_unidad_{{$unidad->id}}" onclick="disabled_input(this.id)" onchange="edit_unidad({{$unidad->id}},'one','unidad',this.value,this.id)" >
                         </td>
 
                         <td class="border-grey-light border hover:bg-gray-100 text-center">
-                            {{$unidad->periodo}}
-                        </td>
-
-                        <td class="border-grey-light border hover:bg-gray-100 text-center">
-                            <div class="">
-                                <button  class="button small blue --jb-modal"  data-target="sample-modal-2" type="button">
-                                    <span class="icon"><i class="text-blue-600 text-3xl far fa-edit hover:text-gray-500"></i></span>
-                                </button>
-                            </div>
+                            <input type="text" readonly value="{{$unidad->periodo}}" class="text-center width_inputs" id="periodo_unidad_{{$unidad->id}}" name="periodo_unidad_{{$unidad->id}}" onclick="disabled_input(this.id)" onchange="edit_unidad({{$unidad->id}},'periodo','unidad',this.value,this.id)" >
                         </td>
                 </tr>
 

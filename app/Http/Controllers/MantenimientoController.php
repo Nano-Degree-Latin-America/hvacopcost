@@ -17,6 +17,9 @@ use App\FactorHorasDiariasModel;
 use App\MantenimientoEquiposModel;
 use App\SistemasModel;
 use App\ProjectsModel;
+use App\UnidadesTrModel;
+use App\UnidadesCfmModel;
+use App\UnidadesUnidadModel;
 use App\MantenimientoProjectsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -1882,7 +1885,7 @@ return response()->json($array_to_response);
 
     }
 
-    public function update_registro_edit(Request  $request,$id_equipo){
+    public function update_registro_edit(Request $request,$id_equipo){
 
 
         $sistema = $request->values[1];
@@ -1949,5 +1952,54 @@ return response()->json($array_to_response);
         return $new_equipo_mantenimiento->id_project;
 
 }
+
+    public function edit_unidades_horas(Request $request,$id_equipo){
+
+        $id_aux = explode('_',$id_equipo);
+        $id = $id_aux[2];
+        $tipo = $request->tipo;
+        $registro = $request->registro;
+        $value = $request->value;
+        switch ($tipo) {
+
+            case 'tr':
+                $unidad_tr_update = UnidadesTrModel::find($id);
+                $unidad_tr_update->$registro = $request->value;
+                $unidad_tr_update->update();
+                if ($unidad_tr_update->update()){
+                    return response()->json(['status' => 'success']);
+                }else{
+                    return response()->json(['status' => 'error']);
+                }
+            break;
+
+            case 'cfm':
+                $unidad_tr_update = UnidadesCfmModel::find($id);
+                $unidad_tr_update->$registro = $request->value;
+                $unidad_tr_update->update();
+                if ($unidad_tr_update->update()){
+                    return response()->json(['status' => 'success']);
+                }else{
+                    return response()->json(['status' => 'error']);
+                }
+            break;
+
+            case 'unidad':
+                $unidad_tr_update = UnidadesUnidadModel::find($id);
+                $unidad_tr_update->$registro = $request->value;
+                $unidad_tr_update->update();
+                if ($unidad_tr_update->update()){
+                    return response()->json(['status' => 'success']);
+                }else{
+                    return response()->json(['status' => 'error']);
+                }
+            break;
+
+            default:
+                # code...
+            break;
+        }
+    }
+
 }
 

@@ -174,9 +174,36 @@ span{
       {{--   @include('search') --}}
         <div class="grid my-3 rounded-md shadow-xl w-full">
 
-           {{--  @include('mantenimiento.table_unidades_tr') --}}
-          {{--   @include('mantenimiento.table_cfm') --}}
-            @include('mantenimiento.table_unidad')
+              <div class="w-full">
+                <div class="border-b border-gray-200">
+                  <ul class="flex">
+                    <li class="mr-1">
+                      <a class="bg-white inline-block py-2 px-4 text-blue-500 font-semibold border-l border-t border-r rounded-t" href="#tab1">Unidades TR</a>
+                    </li>
+                    <li class="mr-1">
+                      <a class="bg-gray-200 inline-block py-2 px-4 text-blue-500 font-semibold hover:bg-white border-l border-t border-r rounded-t" href="#tab2">Unidades CFM</a>
+                    </li>
+                    <li class="mr-1">
+                      <a class="bg-gray-200 inline-block py-2 px-4 text-blue-500 font-semibold hover:bg-white border-l border-t border-r rounded-t" href="#tab3">Unidades Unidad</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="bg-white p-4 border-l border-r border-b rounded-b">
+                  <div id="tab1" class="tab-content">
+                    @include('mantenimiento.table_unidades_tr')
+                  </div>
+                  <div id="tab2" class="tab-content hidden">
+                    @include('mantenimiento.table_cfm')
+                  </div>
+                  <div id="tab3" class="tab-content hidden">
+                    @include('mantenimiento.table_unidad')
+                  </div>
+                </div>
+              </div>
+
+           {{--  --}}
+          {{--    --}}
+
 
         </div>
        {{--  {{ $mis_projectos->render() }} --}}
@@ -184,6 +211,18 @@ span{
 </div>
 
 <script>
+
+
+document.querySelectorAll('a[href^="#tab"]').forEach(tab => {
+                  tab.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+                    document.querySelector(this.getAttribute('href')).classList.remove('hidden');
+                    document.querySelectorAll('a[href^="#tab"]').forEach(tab => tab.classList.remove('bg-white', 'border-b-0'));
+                    this.classList.add('bg-white', 'border-b-0');
+                  });
+                });
+
     window.onload = function() {
 
 

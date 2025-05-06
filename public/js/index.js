@@ -2424,6 +2424,7 @@ function buton_check_edit(){
 }
 
 function check_input(value,id,id_warning){
+
     var inpt = $("#"+id);
     if (inpt.val() == '' || inpt.val() == '0') {
         change(id_warning);
@@ -7205,7 +7206,30 @@ toggle between hiding and showing the dropdown content */
 
     }
 
-    function checksuma(){
+    function check_inp_count_mantenimiento(count_id,id){
+        var inp = $("#"+id).val();
+        var inp_cont = $("#"+count_id);
+        var suma_inps = 0;
+
+
+        if(inp == "" || inp == 0){
+             if(id == 'paises'){
+                 $('#count_ciudad').val(0);
+             }
+         inp_cont.val(0);
+        }
+
+        if(inp != "" && inp != 0){
+             inp_cont.val(1);
+
+        }
+
+        checksuma_mant();
+
+     }
+
+
+     function checksuma(){
         count_name_pro = $('#count_name_pro').val();
         count_paises = $('#count_paises').val();
         count_ciudad = $('#count_ciudad').val();
@@ -7227,6 +7251,38 @@ toggle between hiding and showing the dropdown content */
        if(suma_inps < 9){
         $('#div_next').removeClass("hidden");
         $('#div_next_h').addClass("hidden");
+       }
+
+    }
+
+    function checksuma_mant(){
+        count_cliente_pro_mantenimiento = $('#count_cliente_pro_mantenimiento').val();
+        count_cat_edi_mantenimiento = $('#count_cat_edi_mantenimiento').val();
+        count_paises_mantenimiento = $('#count_paises_mantenimiento').val();
+        count_tipo_ambiente_mantenimiento = $('#count_tipo_ambiente_mantenimiento').val();
+        count_ar_project_mantenimiento = $('#count_ar_project_mantenimiento').val();
+        count_name_sitio_mantenimiento = $('#count_name_sitio_mantenimiento').val();
+        count_tipo_edificio_mantenimiento = $('#count_tipo_edificio_mantenimiento').val();
+        count_ciudad_mantenimiento = $('#count_ciudad_mantenimiento').val();
+        count_velocidad_promedio_mantenimiento = $('#count_velocidad_promedio_mantenimiento').val();
+        count_ocupacion_semanal_mantenimiento = $('#count_ocupacion_semanal_mantenimiento').val();
+        count_personal_enviado = $('#count_personal_enviado').val();
+        count_porcent_hvac_mantenimiento = $('#count_porcent_hvac_mantenimiento').val();
+
+       suma_inps = parseInt(count_cliente_pro_mantenimiento) + parseInt(count_cat_edi_mantenimiento) + parseInt(count_paises_mantenimiento)
+       + parseInt(count_tipo_ambiente_mantenimiento) + parseInt(count_ar_project_mantenimiento) + parseInt(count_name_sitio_mantenimiento) + parseInt(count_tipo_edificio_mantenimiento)   + parseInt(count_ciudad_mantenimiento)
+       + parseInt(count_velocidad_promedio_mantenimiento) + parseInt(count_ocupacion_semanal_mantenimiento) + parseInt(count_personal_enviado) + parseInt(count_porcent_hvac_mantenimiento);
+
+       if(suma_inps == 12){
+        $('#div_next_mantenimiento').removeClass("hidden");
+        $('#div_next_h_mantenimiento').addClass("hidden");
+
+       }
+
+       if(suma_inps < 12){
+        $('#div_next_mantenimiento').addClass("hidden");
+        $('#div_next_h_mantenimiento').removeClass("hidden");
+
        }
 
     }
@@ -16091,7 +16147,29 @@ function check_porcent_max_min_kms(value,id,unidad){
                 console.error('Error al enviar los datos:', error);
             }
         });
+ }
 
+ function disabled_input(id){
+    $('#'+id).attr('readonly', false);
+ }
 
+ function edit_unidad(id,registro,tipo,value,id){
+    var token = $("#token").val();
+    $.ajax({
+        type: 'get',
+        url: '/edit_unidades_horas/'+id,
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            registro: registro,
+            tipo: tipo,
+            value: value,
+        },
+        success: function (response) {
+            $('#'+id).attr('readonly', true);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
 
  }
