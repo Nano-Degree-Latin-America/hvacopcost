@@ -443,9 +443,7 @@ class ProjectController extends Controller
 
 
     public function type_project($id_project){
-        $type_proy = DB::table('solutions_project')
-        ->where('solutions_project.id_project','=',$id_project)
-        ->first();
+        $type_proy = ProjectsModel::find($id_project);
 
         return $type_proy;
     }
@@ -480,6 +478,18 @@ class ProjectController extends Controller
             return $type_check->mant;
         }else{
             return false;
+        }
+    }
+
+    public function name_mant($id){
+        $name = DB::table('mantenimiento_projects')
+        ->where('id_project','=',$id)
+        ->first()->cliente_prospecto;
+
+        if($name){
+            return $name;
+        }else{
+            return 'Sin Nombre';
         }
     }
 
