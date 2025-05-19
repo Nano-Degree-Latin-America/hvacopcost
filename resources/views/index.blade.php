@@ -297,7 +297,6 @@ input[type=number]::-webkit-outer-spin-button {
                                  </div>
                             </div>
 
-
                             <div x-show.transition.in="step === 3">
                                 <div class="w-full h-full font-roboto flex ">
                                     <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
@@ -326,7 +325,7 @@ input[type=number]::-webkit-outer-spin-button {
                                         @include('mantenimiento.justificacion')
                                     </div>
                                 </div>
-                        </div>
+                            </div>
 
                             <div x-show.transition.in="step === 7">
 

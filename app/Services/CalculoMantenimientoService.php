@@ -68,8 +68,17 @@ class CalculoMantenimientoService
             $costo_total_filtros_aux = explode('_hidden', $array_sistemas[$i][15]);
             $costo_total_filtros = $costo_total_filtros_aux[0];
 
-            $precio_aux = explode('_hidden', $array_sistemas[$i][18]);
-            $precio = $precio_aux[0];
+            $total_horas_aux = explode('_hidden', $array_sistemas[$i][18]);
+            $total_horas = $total_horas_aux[0];
+
+            $hora_dia_aux = explode('_hidden', $array_sistemas[$i][19]);
+            $hora_dia = $hora_dia_aux[0];
+
+            $dias_aux = explode('_hidden', $array_sistemas[$i][20]);
+            $dias = $dias_aux[0];
+
+            $idas_ajustados_aux = explode('_hidden', $array_sistemas[$i][21]);
+            $idas_ajustados = $idas_ajustados_aux[0];
 
             $new_equipo_mantenimiento = new MantenimientoEquiposModel;
             $new_equipo_mantenimiento->id_project =$id_project;;
@@ -88,7 +97,10 @@ class CalculoMantenimientoService
             $new_equipo_mantenimiento->costo_total_filtros = $costo_total_filtros;
             $new_equipo_mantenimiento->cantidad = $array_sistemas[$i][6];
             $new_equipo_mantenimiento->cambios_anuales = $cantidad_filtros;
-            $new_equipo_mantenimiento->precio = $precio;
+            $new_equipo_mantenimiento->total_horas = $total_horas;
+            $new_equipo_mantenimiento->hora_dia = $hora_dia;
+            $new_equipo_mantenimiento->dias = $dias;
+            $new_equipo_mantenimiento->idas_ajustados = $idas_ajustados;
             $new_equipo_mantenimiento->id_empresa = Auth::user()->id_empresa;
             $new_equipo_mantenimiento->save();
         }
@@ -104,7 +116,7 @@ class CalculoMantenimientoService
                 $new_mantenimiento_project->yrs_edificio=$request->get('yrs_vida_mantenimiento');
                 $new_mantenimiento_project->ocupacion_semanal=$request->get('ocupacion_semanal_mantenimiento');
                 $new_mantenimiento_project->medio_ambiente=$request->get('tipo_ambiente_mantenimiento');
-                $new_mantenimiento_project->personal_enviado=$request->get('personal_enviado');
+                $new_mantenimiento_project->personal_enviado=$request->get('personal_enviado_mantenimiento');
                 $new_mantenimiento_project->type_mant=1;
                 $new_mantenimiento_project->save();
 
@@ -215,7 +227,7 @@ class CalculoMantenimientoService
                     $update_mantenimiento_project->yrs_edificio=$request->get('yrs_vida_mantenimiento');
                     $update_mantenimiento_project->ocupacion_semanal=$request->get('ocupacion_semanal_mantenimiento');
                     $update_mantenimiento_project->medio_ambiente=$request->get('tipo_ambiente_mantenimiento');
-                    $update_mantenimiento_project->personal_enviado=$request->get('personal_enviado');
+                    $update_mantenimiento_project->personal_enviado=$request->get('personal_enviado_mantenimiento');
                     $update_mantenimiento_project->type_mant=1;
                     $update_mantenimiento_project->update();
 

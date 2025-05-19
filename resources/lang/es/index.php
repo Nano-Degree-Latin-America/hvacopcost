@@ -57,7 +57,7 @@ return [
     'logout' => 'Cerrar Sesión',
     'mis proyectos' => 'Mis Proyectos',
     'nuevo projecto' => 'Nuevo Proyecto',
-    'type_man' => 'Sistemas de Agua Fría',
+    'type_man' => 'Ventas',
     'idioma' => 'Idioma',
     'logout' => 'Cerrar Sesión',
     'mis proyectos' => 'Mis Proyectos',

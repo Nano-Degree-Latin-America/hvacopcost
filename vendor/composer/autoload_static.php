@@ -629,6 +629,7 @@ class ComposerStaticInit22ba1415f53e39972f76e4c42d651c6e
         'App\\UnidadesCfmModel' => __DIR__ . '/../..' . '/app/UnidadesCfmModel.php',
         'App\\UnidadesModel' => __DIR__ . '/../..' . '/app/UnidadesModel.php',
         'App\\UnidadesTrModel' => __DIR__ . '/../..' . '/app/UnidadesTrModel.php',
+        'App\\UnidadesUnidadModel' => __DIR__ . '/../..' . '/app/UnidadesUnidadModel.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
         'App\\UserPaisModel' => __DIR__ . '/../..' . '/app/UserPaisModel.php',
         'App\\VentilacionModel' => __DIR__ . '/../..' . '/app/VentilacionModel.php',

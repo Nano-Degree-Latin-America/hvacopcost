@@ -169,138 +169,29 @@ span{
 <div class="w-full flex justify-center">
     <div class="w-5/4">
         <div style="color: #1B17BB;" class="w-full flex justify-center mt-3 text-4xl font-roboto font-bold">
-            <p>Base para Cálculo Horas</p>
+            <p>Coordinacion</p>
         </div>
       {{--   @include('search') --}}
         <div class="grid my-3 rounded-md shadow-xl w-full">
 
-              <div class="w-full">
-                <div class="border-b border-gray-200">
-                  <ul class="flex">
-                    <li class="mr-1">
-                      <a class="bg-white inline-block py-2 px-4 text-blue-500 font-semibold border-l border-t border-r rounded-t" href="#tab1">Unidades TR</a>
-                    </li>
-                    <li class="mr-1">
-                      <a class="bg-gray-200 inline-block py-2 px-4 text-blue-500 font-semibold hover:bg-white border-l border-t border-r rounded-t" href="#tab2">Unidades CFM</a>
-                    </li>
-                    <li class="mr-1">
-                      <a class="bg-gray-200 inline-block py-2 px-4 text-blue-500 font-semibold hover:bg-white border-l border-t border-r rounded-t" href="#tab3">Unidades Unidad</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="bg-white p-4 border-l border-r border-b rounded-b">
-                  <div id="tab1" class="tab-content">
-                    @include('mantenimiento.table_unidades_tr')
-                  </div>
-                  <div id="tab2" class="tab-content hidden">
-                    @include('mantenimiento.table_cfm')
-                  </div>
-                  <div id="tab3" class="tab-content hidden">
-                    @include('mantenimiento.table_unidad')
-                  </div>
-                </div>
-              </div>
-
-           {{--  --}}
-          {{--    --}}
-
 
         </div>
-       {{--  {{ $mis_projectos->render() }} --}}
+
     </div>
 </div>
 
 <script>
 
 
-document.querySelectorAll('a[href^="#tab"]').forEach(tab => {
-                  tab.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
-                    document.querySelector(this.getAttribute('href')).classList.remove('hidden');
-                    document.querySelectorAll('a[href^="#tab"]').forEach(tab => tab.classList.remove('bg-white', 'border-b-0'));
-                    this.classList.add('bg-white', 'border-b-0');
-                  });
-                });
+window.onload = function() {
 
-    window.onload = function() {
-
-
-  /*   new DataTable('#table_projects', {
-        "language": {
-
-
-    "lengthMenu":     "Mostrar _MENU_ Proyectos",
-    "search":         "Buscar:",
-    "zeroRecords":    "No matching records found",
-    "paginate": {
-
-        "next":       "Siguiente",
-        "previous":   "Anterior"
-    },
-
-        },
-
-    layout: {
-        bottomStart: {
-            info: {
-                text: 'Mostrar: _START_ de _END_ total _TOTAL_ Proyectos'
-            }
-        }
-    }
-}); */
 };
 
-/* function ocultar_modal(id){
-    $("#"+id).addClass("hidden");
-} */
-
-function mostrar_modal_configuracion(id_modal,id_configuracion){
-    $("#"+id_modal).removeClass("hidden");
-    $.ajax({
-                type: 'get',
-                url: '/get_configuracion/'+ id_configuracion,
-                success: function (response) {
-                    $('#configuracion').val(response.configuracion);
-                    $('#valor').val(response.valor);
-                    $('#unidad').val(response.unidad);
-                    $('#id_configuracion').val(response.id);
-
-                },
-                error: function (responsetext) {
-
-                }
-            });
-}
 
 
-function save_configuracion(){
 
-    // Enviar valuesArray por medio de AJAX
-    var token = $("#token").val();
-    var formData = $("#configuraciones_form").serialize(); // Serializar los datos del formulario
 
-    $.ajax({
-        url: '/store_configuracion', // Reemplaza con la URL de tu endpoint
-        type: 'POST',
 
-        headers: { 'X-CSRF-TOKEN': token },
-        data: formData,
-        success: function(response) {
-            Swal.fire(
-                        'Guardado!',
-                        'El registro ha guardado.',
-                        'success'
-                    )
-            setTimeout(function () { location.reload() }, 500);
-            ocultar_modal('modal_configuraciones');
-
-        },
-        error: function(xhr, status, error) {
-            console.error('Error al enviar los datos:', error);
-        }
-    });
-}
 
 
 </script>
