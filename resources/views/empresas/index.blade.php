@@ -140,30 +140,6 @@ span{
                                 {{$empresa->updated_at}}
                             </td>
 
-                       {{--  <td class="px-6 py-2">
-                            <a href="{{URL::action('UserController@edit',$empresa->id)}}" class=" inline-block text-center">
-                             <i class="fa-solid fa-pen-to-square  text-green-600  text-[25px]"></i>
-                         </a>
-                        </td>
-
-
-
-                        @if($empresa->status == 1)
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-
-                            <td class="px-6 py-2">
-                                <a  onclick=inactivar('{{$empresa->id}}','del_usr'); class=" inline-block text-center">
-                                 <i class="fa-sharp fa-solid fa-trash text-red-600  text-[25px]"></i>
-                                </a>
-                            </td>
-
-
-                            @else
-                            <td>No aplica</td>
-
-                            @endif
- --}}
-
                         <td class="actions-cell">
                             <div class="buttons right nowrap">
 

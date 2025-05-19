@@ -440,7 +440,7 @@
                             <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.personal_enviado') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                            <select  onchange="check_input(this.value,this.id,'personal_enviado_warning');check_inp_count('count_personal_enviado','personal_enviado');" class="w-full border-2 border-color-inps  rounded-md p-1 my-1 font-roboto" name="personal_enviado"  id="personal_enviado">
+                            <select  onchange="check_input(this.value,this.id,'personal_enviado_mantenimiento_warning');check_inp_count('count_personal_enviado_mantenimiento','personal_enviado_mantenimiento');" class="w-full border-2 border-color-inps  rounded-md p-1 my-1 font-roboto" name="personal_enviado_mantenimiento"  id="personal_enviado_mantenimiento">
                                 @if ($mantenimiento_project->personal_enviado == 'tecnico')
                                     <option selected value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
                                     <option value="tecnico_ayudante ">{{ __('mantenimiento.tecnico_ayudante') }}</option>
@@ -452,8 +452,8 @@
                                 @endif
 
                             </select>
-                            <input id="count_personal_enviado" name="count_personal_enviado" type="number" class="hidden" value="0">
-                            <span id="personal_enviado_warning" name="personal_enviado_warning" class="text-red-500"></span>
+                            <input id="count_personal_enviado_mantenimiento" name="count_personal_enviado_mantenimiento" type="number" class="hidden" value="0">
+                            <span id="personal_enviado_mantenimiento_warning" name="personal_enviado_mantenimiento_warning" class="text-red-500"></span>
                     </div>
 
 

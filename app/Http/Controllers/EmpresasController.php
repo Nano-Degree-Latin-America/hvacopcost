@@ -40,11 +40,9 @@ class EmpresasController extends Controller
      */
     public function index(Request $request)
     {
-        $query=trim($request->GET('searchText'));
+
 
         $empresas = DB::table('empresas')
-                ->join('users','users.id','=','empresas.id_user')
-                ->select('empresas.*','users.name as name_user')
                 ->orderBy('created_at','desc')
                 ->get();
         $emps = DB::table('empresas')
@@ -53,7 +51,7 @@ class EmpresasController extends Controller
         ->where('empresas.id','=',Auth::user()->id_empresa)
         ->first()->name;
 
-        return view('empresas.index',["emps"=>$emps,"empresas"=>$empresas,"empresa_admin"=>$empresa_admin,"searchText"=>$query]);
+        return view('empresas.index',["emps"=>$emps,"empresas"=>$empresas,"empresa_admin"=>$empresa_admin]);
     }
 
     public function configuraciones_mantenimiento(){
@@ -110,12 +108,13 @@ class EmpresasController extends Controller
                 $new_permiso = new TypeProjectModel;
                 $new_permiso->p_n = 1;
                 $new_permiso->p_r = 1;
-                $new_permiso->mant = 1;
+                $new_permiso->mant = 0;
                 $new_permiso->id_empresa = $empresa_p->id;
                 $new_permiso->save();
 
                 EmpresasController::add_marcas_empresas($empresa_p->id);
                 EmpresasController::add_marcas_empresasvrf($empresa_p->id);
+                EmpresasController::add_marcas_empresaschillers($empresa_p->id);
                 EmpresasController::add_genericos_renew($empresa_p->id);
                 return redirect('/empresas');
 
@@ -458,17 +457,30 @@ class EmpresasController extends Controller
         dd('save');
     }
 
-    public function add_marcas_empresas(){
+    public function add_marcas_empresas($id_empresa){
 
         //$array_paquetes = ['1','2','5','6','7'];
-        $array_paquetes = ['8','12','13','14','15'];
+        $array_paquetes = ['1','2','5','6','7','8','12','13','14','15'];
         $marcas_paquetes = ['Carrier','Trane','JCI','Lennox','Rheem','Aoon','Genérico'];
         $empresas = DB::table('empresas')
         ->get();
 
 
+        for ($z=0; $z < count($array_paquetes) ; $z++) {
 
-        for ($a=0; $a < count($empresas) ; $a++) {
+                for ($i=0; $i < count($marcas_paquetes) ; $i++) {
+                    $new_marca= new MarcasEmpresaModel;
+                    $new_marca->marca = $marcas_paquetes[$i];
+                    $new_marca->equipo = $array_paquetes[$z];
+                    $new_marca->defecto = 1;
+                    $new_marca->id_empresa = $id_empresa;
+                    $new_marca->id_user = Auth::user()->id;
+                    $new_marca->save();
+
+                }
+            }
+
+     /*    for ($a=0; $a < count($empresas) ; $a++) {
 
             for ($z=0; $z < count($array_paquetes) ; $z++) {
 
@@ -483,36 +495,19 @@ class EmpresasController extends Controller
 
                 }
            }
-        }
-
-
-            /* for ($z=0; $z < count($array_paquetes) ; $z++) {
-
-                for ($i=0; $i < count($marcas_paquetes) ; $i++) {
-                    $new_marca= new MarcasEmpresaModel;
-                    $new_marca->marca = $marcas_paquetes[$i];
-                    $new_marca->equipo = $array_paquetes[$z];
-                    $new_marca->defecto = 1;
-                    $new_marca->id_empresa = $id_empresa;
-                    $new_marca->id_user = Auth::user()->id;
-                    $new_marca->save();
-
-                }
-            } */
-
-
+        } */
     }
 
 
-    public function add_marcas_empresasvrf(){
+    public function add_marcas_empresasvrf($id_empresa){
 
-        $array_paquetes = ['16'];
+        $array_paquetes = ['3','4','16'];
 
         $marcas_paquetes = ['Daikin','Hitachi','Samsung','Midea','Toshiba','Mitsubishi','LG','Genérico'];
         $empresas = DB::table('empresas')
         ->get();
 
-         /*    for ($z=0; $z < count($array_paquetes) ; $z++) {
+            for ($z=0; $z < count($array_paquetes) ; $z++) {
 
                 for ($i=0; $i < count($marcas_paquetes) ; $i++) {
                     $new_marca= new MarcasEmpresaModel;
@@ -524,9 +519,9 @@ class EmpresasController extends Controller
                     $new_marca->save();
 
                 }
-           } */
+           }
 
-           for ($a=0; $a < count($empresas) ; $a++) {
+           /* for ($a=0; $a < count($empresas) ; $a++) {
 
             for ($z=0; $z < count($array_paquetes) ; $z++) {
 
@@ -541,7 +536,7 @@ class EmpresasController extends Controller
 
                 }
            }
-        }
+        } */
 
         /* $marcas_generico = DB::table('marcas_empresa')->get();
 
@@ -567,16 +562,16 @@ class EmpresasController extends Controller
 
     }
 
-    public function add_marcas_empresaschillers(){
+    public function add_marcas_empresaschillers($id_empresa){
 
         //$array_paquetes = ['8','9','10'];
-        $array_paquetes = ['11'];
+        $array_paquetes = ['9','10','11'];
         $marcas_paquetes = ['Carrier','Trane','York','Daikin','McQuay','Mitsubishi','Génerico'];
         $empresas = DB::table('empresas')
         ->get();
 
 
-        for ($a=0; $a < count($empresas) ; $a++) {
+
 
             for ($z=0; $z < count($array_paquetes) ; $z++) {
 
@@ -585,15 +580,15 @@ class EmpresasController extends Controller
                     $new_marca->marca = $marcas_paquetes[$i];
                     $new_marca->equipo = $array_paquetes[$z];
                     $new_marca->defecto = 1;
-                    $new_marca->id_empresa = $empresas[$a]->id;
+                    $new_marca->id_empresa = $id_empresa;
                     $new_marca->id_user = Auth::user()->id;
                     $new_marca->save();
 
                 }
             }
-        }
 
-        dd('chillers');
+
+
 
     }
 

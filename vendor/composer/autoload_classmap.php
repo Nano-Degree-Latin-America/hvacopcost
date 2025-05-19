@@ -87,6 +87,7 @@ return array(
     'App\\UnidadesCfmModel' => $baseDir . '/app/UnidadesCfmModel.php',
     'App\\UnidadesModel' => $baseDir . '/app/UnidadesModel.php',
     'App\\UnidadesTrModel' => $baseDir . '/app/UnidadesTrModel.php',
+    'App\\UnidadesUnidadModel' => $baseDir . '/app/UnidadesUnidadModel.php',
     'App\\User' => $baseDir . '/app/User.php',
     'App\\UserPaisModel' => $baseDir . '/app/UserPaisModel.php',
     'App\\VentilacionModel' => $baseDir . '/app/VentilacionModel.php',

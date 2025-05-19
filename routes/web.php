@@ -225,6 +225,7 @@ Route::get('traer_mantenimiento_medio_ambiente/{id}', 'MantenimientoController@t
 Route::post('nuevo_equipo_mantenimeinto/{id_project}', 'MantenimientoController@nuevo_equipo_mantenimeinto');
 Route::post('update_registro_edit/{id_project}', 'MantenimientoController@update_registro_edit');
 Route::get('edit_unidades_horas/{id_project}', 'MantenimientoController@edit_unidades_horas');
+Route::get('coordinacion_mantenimiento', 'MantenimientoController@coordinacion_mantenimiento');
 
 
 //lang
