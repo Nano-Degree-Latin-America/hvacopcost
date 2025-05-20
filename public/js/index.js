@@ -1466,9 +1466,9 @@ async function set_ventilaciones_no_doa(value) {
         $('#inv_ini_capex_2_1_mant').removeClass("hidden");
         $('#inv_ini_capex_3_1_retro').addClass("hidden");
         $('#inv_ini_capex_3_1_mant').removeClass("hidden");
-        set_horas_diarias();
         set_yrs_tarjet($('#yrs_life_ed_mantenimiento').val(),'yrs_vida_mantenimiento');
         set_options_factor_mantenimiento_edit(medio_ambiente);
+        set_horas_diarias();
     }
 
   }
@@ -13794,6 +13794,21 @@ function set_horas_diarias(){
     }
 }
 
+function set_horas_diarias_edit(value){
+
+    if(value == 'm_50'){
+        $("#horas_diarias_mantenimiento").val('Menor de 50 Hrs.');
+    }
+
+    if(value == '168'){
+        $("#horas_diarias_mantenimiento").val('168 Hrs.');
+    }
+
+    if(value == '51_167'){
+        $("#horas_diarias_mantenimiento").val('51 a 137 Hrs.');
+    }
+}
+
 async function check_form_mantenimiento_tarjet(idm){
 
     /////////////////////////////////////
@@ -14772,7 +14787,10 @@ var ids = [
         'costo_adicionales_aux_mantenimiento',
         'tipo_ambiente_mantenimiento',
         'ocupacion_semanal_mantenimiento',
-        'precio',
+        'total_horas',
+        'hora_dia',
+        'dias',
+        'idas_ajustados',
 ];
 
 
@@ -16034,7 +16052,7 @@ function check_porcent_max_min_kms(value,id,unidad){
 
  }
 
- function listar_mantenimiento_equipos(id){
+ function listar_mantenimiento_equipos(id_p){
     $('#tbody_equipos').empty();
 
     var ids = [
@@ -16060,11 +16078,12 @@ function check_porcent_max_min_kms(value,id,unidad){
         'hora_dia',
         'dias',
         'idas_ajustados',
+        'id',
 ];
 
     var token = $("#token").val();
         $.ajax({
-            url: '/traer_mantenimiento_equipos/'+id, // Reemplaza con la URL de tu endpoint
+            url: '/traer_mantenimiento_equipos/'+id_p, // Reemplaza con la URL de tu endpoint
             type: 'post',
 
             headers: { 'X-CSRF-TOKEN': token },
@@ -16080,7 +16099,7 @@ function check_porcent_max_min_kms(value,id,unidad){
 
 
                         var value = arregloInterno[j];
-                        const id_aux = arregloInterno[19].split('_');
+                        const id_aux = arregloInterno[22].split('_');
                         var id = id_aux[0];
 
                         if (String(value).endsWith('_hidden')) {

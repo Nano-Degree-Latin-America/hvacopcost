@@ -144,7 +144,6 @@
 
                     <div class="flex justify-start w-1/2">
                         <input readonly type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-color-inps rounded-md py-1 text-center bg-gray-400" id="horas_diarias_mantenimiento" name="horas_diarias_mantenimiento" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);">
-                        {{-- <input type="text" style="font-size: 14px;margin-left:1px;" class="hidden w-full border-2 border-color-inps rounded-md py-1 text-center bg-gray-400" id="horas_diarias_mantenimiento" name="horas_diarias_mantenimiento" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);"> --}}
                         <input id="horas_diarias_count_mantenimiento" name="horas_diarias_count_mantenimiento" type="number" class="hidden" value="1">
                     </div>
                 </div>
