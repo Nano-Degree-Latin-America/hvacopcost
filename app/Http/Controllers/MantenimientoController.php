@@ -200,7 +200,7 @@ public function factores_mantenimiento(){
 
             $fg = 1.03;
             //$costo_instalado = $this->obtener_costo_instalado($unidad);
-            $rav = $this->obtener_rav($unidad);
+            //$rav = $this->obtener_rav($unidad);
             $fa = $this->obtener_fa($tipo_ambiente_mantenimiento);
             $fta = $this->obtener_fta($tipo_acceso_mantenimiento);
             $feu = $this->obtener_feu($estado_unidad_mantenimiento);
@@ -401,7 +401,7 @@ public function factores_mantenimiento(){
             $periodo = $this->periodo($capacidad_termica_mantenimiento,$unidad);
             $fg = 1.03;
             //$costo_instalado = $this->obtener_costo_instalado($unidad);
-            $rav = $this->obtener_rav($unidad);
+            //$rav = $this->obtener_rav($unidad);
             $fa = $this->obtener_fa($tipo_ambiente_mantenimiento);
             $fta = $this->obtener_fta($tipo_acceso_mantenimiento);
             $feu = $this->obtener_feu($estado_unidad_mantenimiento);
@@ -542,7 +542,7 @@ public function factores_mantenimiento(){
 
             $fg = 1.03;
             //$costo_instalado = $this->obtener_costo_instalado($unidad);
-            $rav = $this->obtener_rav($unidad);
+            //$rav = $this->obtener_rav($unidad);
             $fa = $this->obtener_fa($tipo_ambiente_mantenimiento);
             $fta = $this->obtener_fta($tipo_acceso_mantenimiento);
             $feu = $this->obtener_feu($estado_unidad_mantenimiento);
@@ -2071,7 +2071,7 @@ return response()->json($array_to_response);
 
             $fg = 1.03;
             //$costo_instalado = $this->obtener_costo_instalado($unidad);
-            $rav = $this->obtener_rav($unidad);
+            //$rav = $this->obtener_rav($unidad);
             $fa = $this->obtener_fa($tipo_ambiente_mantenimiento);
             $fta = $this->obtener_fta($tipo_acceso_mantenimiento);
             $feu = $this->obtener_feu($estado_unidad_mantenimiento);
@@ -2138,7 +2138,7 @@ return response()->json($array_to_response);
         $periodo = $this->periodo($capacidad_termica_mantenimiento,$unidad);
         $fg = 1.03;
         //$costo_instalado = $this->obtener_costo_instalado($unidad);
-        $rav = $this->obtener_rav($unidad);
+        //$rav = $this->obtener_rav($unidad);
         $fa = $this->obtener_fa($tipo_ambiente_mantenimiento);
         $fta = $this->obtener_fta($tipo_acceso_mantenimiento);
         $feu = $this->obtener_feu($estado_unidad_mantenimiento);
