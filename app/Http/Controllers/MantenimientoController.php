@@ -2261,37 +2261,69 @@ return response()->json($array_to_response);
 
                 if($capacidad_termica_mantenimiento == 1 && $capacidad_termica_mantenimiento < 2.9){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->one;
+                    if($horas == null || $horas == 'NA'){
+                        $horas = 0;
+                    }
+                    return $horas;
                 }
 
                 if($capacidad_termica_mantenimiento > 3 && $capacidad_termica_mantenimiento < 7.4){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->two;
+                    if($horas == null || $horas == 'NA'){
+                        $horas = 0;
+                    }
+                    return $horas;
                 }
 
                 if($capacidad_termica_mantenimiento > 7.5 && $capacidad_termica_mantenimiento < 14.9){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->three;
+                    if($horas == null || $horas == 'NA'){
+                        $horas = 0;
+                    }
+                    return $horas;
                 }
 
                 if($capacidad_termica_mantenimiento > 15 && $capacidad_termica_mantenimiento < 24.9){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->four;
+                    if($horas == null || $horas == 'NA'){
+                        $horas = 0;
+                    }
+                    return $horas;
                 }
 
                 if($capacidad_termica_mantenimiento > 25 && $capacidad_termica_mantenimiento < 49.9){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->five;
+                    if($horas == null || $horas == 'NA'){
+                        $horas = 0;
+                    }
+                    return $horas;
                 }
 
                 if($capacidad_termica_mantenimiento > 50 && $capacidad_termica_mantenimiento < 99.9){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->six;
+                    if($horas == null || $horas == 'NA'){
+                        $horas = 0;
+                    }
+                    return $horas;
                 }
 
                 if($capacidad_termica_mantenimiento > 100 && $capacidad_termica_mantenimiento < 199.9){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->seven;
+                    if($horas == null || $horas == 'NA'){
+                        $horas = 0;
+                    }
+                    return $horas;
                 }
 
                 if($capacidad_termica_mantenimiento > 200 && $capacidad_termica_mantenimiento < 350){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->eight;
+                    if($horas == null || $horas == 'NA'){
+                        $horas = 0;
+                    }
+                    return $horas;
                 }
 
-                return $horas;
+                return 0;
 
                 break;
             case 'CFM':
