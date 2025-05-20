@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 use App\MarcasEmpresaModel;
 use App\ModelosEmpresaModel;
 use App\ConfiguracionesMantenimientoModel;
@@ -2133,8 +2134,8 @@ return response()->json($array_to_response);
         $cambio_filtros_mantenimiento = $request->values[11];
         $tipo_ambiente_mantenimiento = $request->values[16];
         $ocupacion_semanal_mantenimiento = $request->values[17];
-
-
+        $horas = $this->horas($capacidad_termica_mantenimiento,$unidad);
+        $periodo = $this->periodo($capacidad_termica_mantenimiento,$unidad);
         $fg = 1.03;
         $costo_instalado = $this->obtener_costo_instalado($unidad);
         $rav = $this->obtener_rav($unidad);
@@ -2143,8 +2144,16 @@ return response()->json($array_to_response);
         $feu = $this->obtener_feu($estado_unidad_mantenimiento);
         $fav = $this->obtener_fav($yrs_vida_mantenimiento);
         $fhd = $this->obtener_fhd($ocupacion_semanal_mantenimiento);
-        $total_horas = $this->formula_total_horas(intval($cantidad_unidades_mantenimiento),$fa,$fta,$feu,$fav,$fhd,$fg);
+        $total_horas = $this->formula_total_horas(intval($horas),intval($cantidad_unidades_mantenimiento),$fa,$fta,$feu,$fav,$fhd,$fg);
+//coordinacion resultados
+        $hora_dia_aux = $this->div_horas_periodo($total_horas,$periodo);
+        $hora_dia = $this->total_horas_periodo($hora_dia_aux,$periodo);
 
+        $dias_aux =$hora_dia_aux/7;
+        $dias = $this->total_dias_periodo($dias_aux,$periodo);
+
+        $idas_ajustados_aux = 2;
+        $idas_ajustados = $this->total_idas_periodo($idas_ajustados_aux,$periodo);
 
         $id_sistema = $request->values[1];
         $unidad = $request->values[2];
@@ -2180,7 +2189,10 @@ return response()->json($array_to_response);
         $new_equipo_mantenimiento->costo_total_filtros = $suma_adicionales;
         $new_equipo_mantenimiento->cantidad = $request->values[6];
         $new_equipo_mantenimiento->cambios_anuales = $cantidad_filtros;
-        $new_equipo_mantenimiento->precio = $total_horas;
+        $new_equipo_mantenimiento->total_horas = $total_horas;
+        $new_equipo_mantenimiento->hora_dia = $hora_dia;
+        $new_equipo_mantenimiento->dias = $dias;
+        $new_equipo_mantenimiento->idas_ajustados = $idas_ajustados;
         $new_equipo_mantenimiento->id_empresa = Auth::user()->id_empresa;
         $new_equipo_mantenimiento->update();
 
@@ -2236,8 +2248,12 @@ return response()->json($array_to_response);
         }
     }
 
-    public function horas($capacidad_termica_mantenimiento,$unidad){
-        $id_unidad = UnidadesModel::where('unidad','=',$unidad)->first()->id;
+    public function horas($capacidad_termica_mantenimiento,$unidad_indentificador){
+
+        $id_unidad = DB::table('unidades')
+        ->where('identificador','=',$unidad_indentificador)
+        ->first()->id;
+
         $unidad = 'TR';
 
         switch ($unidad) {
@@ -2293,7 +2309,7 @@ return response()->json($array_to_response);
     }
 
     public function periodo($capacidad_termica_mantenimiento,$unidad){
-        $id_unidad = UnidadesModel::where('unidad','=',$unidad)->first()->id;
+        $id_unidad = UnidadesModel::where('identificador','=',$unidad)->first()->id;
         $unidad = 'TR';
 
         switch ($unidad) {

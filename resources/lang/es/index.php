@@ -13,7 +13,7 @@ return [
     'operaciones'=>'Operaciones',
     'servicios'=>'Servicios',
     'proyectos'=>'Tareas',
-    'calculo_precios_havc'=>'Cálculo Contrato de Mantenimiento',
+    'calculo_precios_havc'=>'Contratos de Mantenimiento - ASHRAE 180',
     'cargas_termicas'=>'Cargas Térmicas',
     'metodo_rts'=>'Método RTS',
     'residencial'=>'Residencial',
