@@ -15316,37 +15316,257 @@ function check_porcent_max_min_kms(value,id,unidad){
 
  function change_img(value){
 
-    switch (parseInt(value)) {
-        case 1:
-          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:130px; width:280px;" src="/assets/images/sistemas/paquetes.png" alt="sistemas">');
+    switch (value) {
+        case 'basico':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:130px; width:280px;" src="/assets/images/equipos/basico.png" alt="sistemas">');
         break;
 
-        case 2:
-            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:220px; width:290px;" src="/assets/images/sistemas/splitdx.png" alt="sistemas">');
+        case 'c_economizador':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:130px; width:280px;" src="/assets/images/equipos/ceconomizador.png" alt="sistemas">');
         break;
 
-        case 3:
-            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:150px; width:280px;" src="/assets/images/sistemas/vrfs_n.png" alt="sistemas">');
+        case 'w_heat_rec':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:130px; width:280px;" src="/assets/images/equipos/heatrecovery.png" alt="sistemas">');
         break;
 
-        case 4:
-            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:150px; width:280px;" src="/assets/images/sistemas/vrfs.png" alt="sistemas">');
+        case 'mochila_pared':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:250px; width:200px;" src="/assets/images/equipos/mochila.png" alt="sistemas">');
         break;
 
-        case 5:
-            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:150px; width:280px;" src="/assets/images/sistemas/ptac.png" alt="sistemas">');
+        case 'condensadora_split':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:130px; width:280px;" src="/assets/images/equipos/mochila.png" alt="sistemas">');
         break;
 
-        case 5:
-            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:150px; width:280px;" src="/assets/images/sistemas/wshp.png" alt="sistemas">');
+        case 'manejadora':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/manejadora.png" alt="sistemas">');
         break;
 
-        case 6:
-            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:150px; width:280px;" src="/assets/images/sistemas/whsp.png" alt="sistemas">');
+        case 'manejadora2':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/manejadora.png" alt="sistemas">');
         break;
 
-        case 7:
-            $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:150px; width:280px;" src="/assets/images/sistemas/mini_split.png" alt="sistemas">');
+        case 'fancoil':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/fancoilmhsp.png" alt="sistemas">');
+        break;
+
+        case 'fancoil2':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/fancoilmhsp.png" alt="sistemas">');
+        break;
+
+        case 'fancoil_lsp_spt':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/fancoillsp.png" alt="sistemas">');
+        break;
+
+        case 'fancoil_lsp_spt2':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/fancoillsp.png" alt="sistemas">');
+        break;
+
+        case 'condensadora_vrf_vrv':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:250px; width:200px;" src="/assets/images/equipos/condensadora.png" alt="sistemas">');
+        break;
+
+        case 'papisotecho_vrf_vrv':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/pared_piso_techo.png" alt="sistemas">');
+        break;
+
+        case 'fancoil_lsp_vrf_vrv':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/fancoilvrf.png" alt="sistemas">');
+        break;
+
+        case 'fancoil_hsp_vrf_vrv':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/fancoilmhspvrf.png" alt="sistemas">');
+        break;
+
+        case 'cassette_vrf_vrv':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/casssete.png" alt="sistemas">');
+        break;
+
+        case 'manejadora_vrf_vrv':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/manejadoravrf.png" alt="sistemas">');
+        break;
+
+        case 'horz':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:250px; width:200px;" src="/assets/images/equipos/vtac.png" alt="sistemas">');
+        break;
+
+        case 'vert':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/ptac.png" alt="sistemas">');
+        break;
+
+        case 'agu_cir_cer':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/horizontal.png" alt="sistemas">');
+        break;
+
+        case 'agu_cir_abr':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:250px; width:200px;" src="/assets/images/equipos/vertical.png" alt="sistemas">');
+        break;
+
+        case 'pa_pi_te':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/pared_piso_techominisplit.png" alt="sistemas">');
+        break;
+
+        case 'pa_pi_te2':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/pared_piso_techominisplit.png" alt="sistemas">');
+        break;
+
+        case 'duc_con':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/conceledminisplit.png" alt="sistemas">');
+        break;
+
+        case 'duc_con2':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/conceledminisplit.png" alt="sistemas">');
+        break;
+
+        case 'cass':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/casseeteminisplit.png" alt="sistemas">');
+        break;
+
+        case 'cass2':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/casseeteminisplit.png" alt="sistemas">');
+        break;
+
+        case 'condensadora_unidad':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:250px; width:200px;" src="/assets/images/equipos/condensadoraunidades.png" alt="sistemas">');
+        break;
+
+        case 'condensador_unidad':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/condensadorunidades.png" alt="sistemas">');
+        break;
+
+        case 'manejadora_unidad':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:250px; width:200px;" src="/assets/images/equipos/manejadoraunidadpresision.png" alt="sistemas">');
+        break;
+
+        case 'paquete_unidad':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:250px; width:200px;" src="/assets/images/equipos/paqueteunidad.png" alt="sistemas">');
+        break;
+
+        case 'gabinete_unidad':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:250px; width:200px;" src="/assets/images/equipos/gabinete.png" alt="sistemas">');
+        break;
+
+        case 'enfriado_aire_scroll':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/enfriadoairechiller.png" alt="sistemas">');
+        break;
+
+        case 'enfriado_agua_scroll':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/enfriadoagua.png" alt="sistemas">');
+        break;
+
+        case 'portatil_proceso_scroll':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/portatilchiller.png" alt="sistemas">');
+        break;
+
+        case 'manejadora_equipamiento_agua_fria':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/manejadoraaguafria.png" alt="sistemas">');
+        break;
+
+        case 'fan_coil_lsp_equipamiento_agua_fria':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/fancoillspaguafria.png" alt="sistemas">');
+        break;
+
+        case 'fan_coil_hsp_equipamiento_agua_fria':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/fancoilhspaguafria.png" alt="sistemas">');
+        break;
+
+        case 'bomba_agua_equipamiento_agua_fria':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/bombaagua.png" alt="sistemas">');
+        break;
+
+        case 'bomba_standby_equipamiento_agua_fria':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/bombaagua.png" alt="sistemas">');
+        break;
+
+        case 'abierta_torres_enfriamiento':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/abiertatorre.png" alt="sistemas">');
+        break;
+
+        case 'cerrada_torres_enfriamiento':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:250px; width:200px;" src="/assets/images/equipos/cerradatorre.png" alt="sistemas">');
+        break;
+
+        case 'extractor_bano_ventilacion':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/extractorbano.png" alt="sistemas">');
+        break;
+
+        case 'axial_polea_ventilacion':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/axialpoleaventilacion.png" alt="sistemas">');
+        break;
+
+        case 'axial_directo_ventilacion':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/axialdirectoventilacion.png" alt="sistemas">');
+        break;
+
+        case 'centrifugo_polea_ventilacion':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/centrifugopoleaventilacion.png" alt="sistemas">');
+        break;
+
+        case 'centrifugo_directo_ventilacion':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/centrifugoventilacion.png" alt="sistemas">');
+        break;
+
+        case 'campana_techo_ventilacion':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/campanatechoventilalacion.png" alt="sistemas">');
+        break;
+
+        case 'campana_pared_ventilacion':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/campanaventilacion.png" alt="sistemas">');
+        break;
+
+        case 'eolico_ventilacion':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/eolicoceentilacion.png" alt="sistemas">');
+        break;
+
+        case 'doa_basica_ventilacion':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/doabasicaventilacion.png" alt="sistemas">');
+        break;
+
+        case 'doa_hr_ventilacion':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/daohrventilacion.png" alt="sistemas">');
+        break;
+
+        case 'termostato_basico_accesorios':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/termostatobasicoaccesorios.png" alt="sistemas">');
+        break;
+
+        case 'termostato_inteligente_accesorios':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/termostatointeligenteaccesorio.png" alt="sistemas">');
+        break;
+
+        case 'caja_vav_basica_accesorios':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/cajavavaccesorios.png" alt="sistemas">');
+        break;
+
+        case 'caja_vav_avanzada_accesorios':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/cajavavavanzadaaccesorios.png" alt="sistemas">');
+        break;
+
+        case 'damper_manual_accesorios':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/dampermanualaccesorios.png" alt="sistemas">');
+        break;
+
+        case 'damper_motorizado_accesorios':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/dampermotorizadoaccesorios.png" alt="sistemas">');
+        break;
+
+        case 'cortinas_aire_accesorios':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/cortinaaireaccesorios.png" alt="sistemas">');
+        break;
+
+        case 'enfriado_aire_tornillo':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/enfiradoairetornillo.png" alt="sistemas">');
+        break;
+
+        case 'enfriado_agua_tornillo':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/enfriadoaguatornillo.png" alt="sistemas">');
+        break;
+
+        case 'enfriado_aire_turbocor':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/enfriadoaireturbocor.png" alt="sistemas">');
+        break;
+
+        case 'enfriado_agua_turbocor':
+          $('#img_sistemas').html( '<img id="img_sistemas" name="img_sistemas" style="height:200px; width:280px;" src="/assets/images/equipos/enfriadoaguaturbocor.png" alt="sistemas">');
         break;
 
         default:
