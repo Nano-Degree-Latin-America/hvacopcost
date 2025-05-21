@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select onchange="unidadHvac(this.value,'','unidad_mantenimiento',{{$module_2}});send_value_equipo_marcas(this.id,this.value,'marca_mantenimiento');valida_selects_inps(this.id);change_img(this.value);" name="sistema_mantenimiento" id="sistema_mantenimiento" class="w-full border-2 border-color-inps rounded-md py-2">
+                        <select onchange="unidadHvac(this.value,'','unidad_mantenimiento',{{$module_2}});send_value_equipo_marcas(this.id,this.value,'marca_mantenimiento');valida_selects_inps(this.id);" name="sistema_mantenimiento" id="sistema_mantenimiento" class="w-full border-2 border-color-inps rounded-md py-2">
                             <option value="0">{{ __('index.seleccionar') }}</option>
                            {{--  @foreach ($sistemas as $sistema)
                             <option value="{{$sistema->id}}">{{$sistema->name}}</option>
@@ -67,7 +67,7 @@
                         <label class="labels" for=""><b>{{ __('index.tipo equipo') }}</b> </label>
                     </div>
                     <div class="w-full flex justify-start">
-                        <select style="font-size: 14px" class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);" name="unidad_mantenimiento" id="unidad_mantenimiento">
+                        <select style="font-size: 14px" class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);change_img(this.value);" name="unidad_mantenimiento" id="unidad_mantenimiento">
 
                         </select>
                     </div>
@@ -254,7 +254,7 @@
     </div>
     </div>
 
-   <div class="mt-10 flex justify-center w-full">
+   <div class="mt-5 flex justify-center w-full">
        <div id="img_sistemas" name="img_sistemas"></div>
    </div>
 </div>
