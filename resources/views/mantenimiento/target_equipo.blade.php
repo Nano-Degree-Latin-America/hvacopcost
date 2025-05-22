@@ -111,7 +111,7 @@
                     </div>
 
                     <div class="flex justify-start w-1/3">
-                        <input name="yrs_vida_mantenimiento" id="yrs_vida_mantenimiento" readonly onchange="valida_selects_inps(this.id);check_type_set_mant_inp('type_p','yrs_vida_2_1_retro_mantenimiento','yrs_vida_3_1_retro_mantenimiento',this.value);" onkeypress="return soloNumeros(event)" type="text" class="text-center w-full border-2 border-color-inps rounded-md">
+                        <input name="yrs_vida_mantenimiento" id="yrs_vida_mantenimiento" onchange="valida_selects_inps(this.id);check_type_set_mant_inp('type_p','yrs_vida_2_1_retro_mantenimiento','yrs_vida_3_1_retro_mantenimiento',this.value);" onkeypress="return soloNumeros(event)" type="text" class="text-center w-full border-2 border-color-inps rounded-md">
 
                         <input id="yrs_vida_count_mantenimiento" name="yrs_vida_count_mantenimiento" type="number" class="hidden" value="1">
                     </div>
