@@ -692,8 +692,8 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
         $suma_horas_hombre = 0;
         // Recorrer el array
         foreach ($data as $key => $value) {
-            // Verificar si la clave contiene 'hora_dia_' seguido de un número
-            if (preg_match('/^hora_dia_\d+$/', $key)) {
+            // Verificar si la clave contiene 'total_horas_' seguido de un número
+            if (preg_match('/^total_horas_\d+$/', $key)) {
                 // Agregar al array filtrado
                 $filtered_horas_hombre[$key] = $value;
             }
@@ -701,10 +701,10 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
 
         for ($i=0; $i < count($filtered_horas_hombre) ; $i++) {
 
-            $suma_horas_aux = explode('_hidden',$filtered_horas_hombre['hora_dia_'.$i]);
+            $suma_horas_aux = explode('_hidden',$filtered_horas_hombre['total_horas_'.$i]);
 
             //$suma_costos = $suma_costos + $precio_aux[0];
-            $suma_horas_hombre = intval($suma_horas_hombre) + intval($suma_horas_aux[0]);
+            $suma_horas_hombre = $suma_horas_hombre + $suma_horas_aux[0];
         }
 
         //dias
@@ -756,8 +756,7 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
     if($request->values['personal_enviado_mantenimiento'] == 'tecnico_ayudante'){
     $temnico_tecnico_ayudante = 1.3;
     }
-    $horas_hombre_mantenimiento_aux = $suma_horas_hombre / $temnico_tecnico_ayudante;
-    $horas_hombre_mantenimiento = ceil($horas_hombre_mantenimiento_aux);
+    $horas_hombre_mantenimiento= $suma_horas_hombre / $temnico_tecnico_ayudante;
 
     //horass_hombres_ingresos_eegresos
     $horas_hombre_ingresos_egresos = $suma_idas * 2;
@@ -775,7 +774,7 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
 
     //horas_hombres_garanti a
     $horas_hombre_garantia_aux = $horas_hombre_mantenimiento * 0.15;
-    $horas_hombre_garantia = intval($horas_hombre_garantia_aux);
+    $horas_hombre_garantia = $horas_hombre_garantia_aux;
 
 
     //total horas
@@ -793,12 +792,14 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
     ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
     }
 
-    $mano_obra = $total_horas * $personal_enviado;
+    $mano_obra_aux = $total_horas * $personal_enviado;
+    $mano_obra = ceil($mano_obra_aux);
 
 
     ////////////Materiales/////////////////////////////////////////////
     ////formula: $mano_obra / 6
     $materiales = $mano_obra / 6;
+
 
     ////////////Equipos/////////////////////////////////////////////
     $equipos = 0;
@@ -821,7 +822,6 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
     ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
 
     $burden = $total_horas * $valor_burden;
-
 
     ///suma_precios
     $suma_precios = intval($materiales) + intval($equipos) + intval($mano_obra) + intval($vehiculos) + intval($contratistas) + intval($viaticos) + intval($burden);
@@ -998,8 +998,7 @@ public function spend_plan_base_edit(Request $request,$id_project)
     if($request->values['personal_enviado_mantenimiento'] == 'tecnico_ayudante'){
     $temnico_tecnico_ayudante = 1.3;
     }
-    $horas_hombre_mantenimiento_aux = $suma_horas_hombre / $temnico_tecnico_ayudante;
-    $horas_hombre_mantenimiento = ceil($horas_hombre_mantenimiento_aux);
+    $horas_hombre_mantenimiento = $suma_total_horas / $temnico_tecnico_ayudante;
 
     //horass_hombres_ingresos_eegresos
     $horas_hombre_ingresos_egresos = $suma_idas * 2;
@@ -1016,8 +1015,7 @@ public function spend_plan_base_edit(Request $request,$id_project)
 
 
     //horas_hombres_garanti a
-    $horas_hombre_garantia_aux = $horas_hombre_mantenimiento * 0.15;
-    $horas_hombre_garantia = intval($horas_hombre_garantia_aux);
+    $horas_hombre_garantia = $horas_hombre_mantenimiento * 0.15;
 
 
     //total horas
@@ -1035,8 +1033,8 @@ public function spend_plan_base_edit(Request $request,$id_project)
     ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
     }
 
-    $mano_obra = $total_horas * $personal_enviado;
-
+    $mano_obra_aux = $total_horas * $personal_enviado;
+    $mano_obra = ceil($mano_obra_aux);
 
     ////////////Materiales/////////////////////////////////////////////
     ////formula: $mano_obra / 6

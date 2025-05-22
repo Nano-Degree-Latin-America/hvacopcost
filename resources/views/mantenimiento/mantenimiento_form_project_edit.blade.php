@@ -738,16 +738,18 @@
                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                 >{{ __('index.siguiente') }}</button>
             </div>
-
+            @if ($type_p == 3)
             <div id="div_next_mantenimiento" name="div_next_mantenimiento" style="width: 80%;" class="hidden">
                 <button  type="button"  id="next_mantenimiento" name="next_mantenimiento"
                     x-show="step < 2"
-                    onclick="listar_mantenimiento_equipos({{ $project_edit->id }});"
+                    onclick="listar_mantenimiento_equipos({{ $project_edit->id }});set_horas_diarias_edit('{{ $mantenimiento_project->ocupacion_semanal }}');"
                     @click="step++"
                     style="background-color:#1B17BB;"
                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                 >{{ __('index.siguiente') }}</button>
             </div>
+            @endif
+
 
             <div id="div_atras_mant" name="div_atras_mant" style="width: 80%;" class="">
                 <button  type="button"  id="next_h_mant" name="next_h_mant"
