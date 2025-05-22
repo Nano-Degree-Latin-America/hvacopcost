@@ -15116,10 +15116,14 @@ function check_porcent_max_min_kms(value,id,unidad){
         only_adicionales[$(this).attr('name')] = $(this).val();
     });
 
+
     for (var key in only_adicionales) {
         if (only_adicionales.hasOwnProperty(key)) {
             var value = only_adicionales[key];
-            if (value !== '0' && value !== '$0' && value !== '') {
+
+
+            if (value !== '0' && value !== '$0' && value !== "") {
+
                 $.ajax({
                     url: '/spend_plan_base_adicionales', // Reemplaza con la URL de tu endpoint
                     type: 'post',
@@ -15129,13 +15133,13 @@ function check_porcent_max_min_kms(value,id,unidad){
                         values: formData
                     },
                     success: async function(response) {
-                        $('#valor_contrato_anual_adicionales').val(response[0]);
+                        $('#valor_contrato_anual_adicionales_prev').val(response[0]);
                         $('#mantenimiento_justificacion_financiera_futuro').val(response[0]);
-                        $('#dias_mantenimiento_adicionales').val(response[1]);
-                        $('#tiempo_mantenimiento_adicionales').val(response[2]);
-                        $('#tiempo_traslados_adicionales').val(response[3]);
-                        $('#tiempo_acceso_edificio_adicionales').val(response[4]);
-                        $('#tiempo_garantias_adicionales').val(response[5]);
+                        $('#dias_mantenimiento_adicionales_prev').val(response[1]);
+                        $('#tiempo_mantenimiento_adicionales_prev').val(response[2]);
+                        $('#tiempo_traslados_adicionales_prev').val(response[3]);
+                        $('#tiempo_acceso_edificio_adicionales_prev').val(response[4]);
+                        $('#tiempo_garantias_adicionales_prev').val(response[5]);
                         $('#materiales_gp_40').val('$'+dollarUSLocale.format(response[6]));
                         $('#equipos_gp_40').val('$'+dollarUSLocale.format(response[7]));
                         $('#mano_obra_gp_40').val('$'+dollarUSLocale.format(response[8]));
@@ -15164,6 +15168,7 @@ function check_porcent_max_min_kms(value,id,unidad){
 
                 });
             }else{
+
                 var valor_contrato_anual = $('#valor_contrato_anual').val();
                 var dias_mantenimiento = $('#dias_mantenimiento').val();
                 var tiempo_mantenimiento = $('#tiempo_mantenimiento').val();
@@ -15171,12 +15176,13 @@ function check_porcent_max_min_kms(value,id,unidad){
                 var tiempo_acceso_edificio = $('#tiempo_acceso_edificio').val();
                 var tiempo_garantias = $('#tiempo_garantias').val();
 
-                $('#valor_contrato_anual_adicionales').val(valor_contrato_anual);
-               $('#dias_mantenimiento_adicionales').val(dias_mantenimiento);
-               $('#tiempo_mantenimiento_adicionales').val(tiempo_mantenimiento);
-               $('#tiempo_traslados_adicionales').val(tiempo_traslados);
-               $('#tiempo_acceso_edificio_adicionales').val(tiempo_acceso_edificio);
-               $('#tiempo_garantias_adicionales').val(tiempo_garantias);
+                $('#valor_contrato_anual_adicionales_prev').val(valor_contrato_anual);
+               $('#dias_mantenimiento_adicionales_prev').val(dias_mantenimiento);
+               $('#tiempo_mantenimiento_adicionales_prev').val(tiempo_mantenimiento);
+               $('#tiempo_traslados_adicionales_prev').val(tiempo_traslados);
+               $('#tiempo_acceso_edificio_adicionales_prev').val(tiempo_acceso_edificio);
+               $('#tiempo_garantias_adicionales_prev').val(tiempo_garantias);
+
             }
         }
     }
@@ -15209,13 +15215,13 @@ function check_porcent_max_min_kms(value,id,unidad){
                         values: formData
                     },
                     success: async function(response) {
-                        $('#valor_contrato_anual_adicionales').val(response[0]);
+                        $('#valor_contrato_anual_adicionales_prev').val(response[0]);
                         $('#mantenimiento_justificacion_financiera_futuro').val(response[0]);
-                        $('#dias_mantenimiento_adicionales').val(response[1]);
-                        $('#tiempo_mantenimiento_adicionales').val(response[2]);
-                        $('#tiempo_traslados_adicionales').val(response[3]);
-                        $('#tiempo_acceso_edificio_adicionales').val(response[4]);
-                        $('#tiempo_garantias_adicionales').val(response[5]);
+                        $('#dias_mantenimiento_adicionales_prev').val(response[1]);
+                        $('#tiempo_mantenimiento_adicionales_prev').val(response[2]);
+                        $('#tiempo_traslados_adicionales_prev').val(response[3]);
+                        $('#tiempo_acceso_edificio_adicionales_prev').val(response[4]);
+                        $('#tiempo_garantias_adicionales_prev').val(response[5]);
                         $('#materiales_gp_40').val('$'+dollarUSLocale.format(response[6]));
                         $('#equipos_gp_40').val('$'+dollarUSLocale.format(response[7]));
                         $('#mano_obra_gp_40').val('$'+dollarUSLocale.format(response[8]));
@@ -15251,12 +15257,12 @@ function check_porcent_max_min_kms(value,id,unidad){
                 var tiempo_acceso_edificio = $('#tiempo_acceso_edificio').val();
                 var tiempo_garantias = $('#tiempo_garantias').val();
 
-                $('#valor_contrato_anual_adicionales').val(valor_contrato_anual);
-               $('#dias_mantenimiento_adicionales').val(dias_mantenimiento);
-               $('#tiempo_mantenimiento_adicionales').val(tiempo_mantenimiento);
-               $('#tiempo_traslados_adicionales').val(tiempo_traslados);
-               $('#tiempo_acceso_edificio_adicionales').val(tiempo_acceso_edificio);
-               $('#tiempo_garantias_adicionales').val(tiempo_garantias);
+                $('#valor_contrato_anual_adicionales_prev').val(valor_contrato_anual);
+               $('#dias_mantenimiento_adicionales_prev').val(dias_mantenimiento);
+               $('#tiempo_mantenimiento_adicionales_prev').val(tiempo_mantenimiento);
+               $('#tiempo_traslados_adicionales_prev').val(tiempo_traslados);
+               $('#tiempo_acceso_edificio_adicionales_prev').val(tiempo_acceso_edificio);
+               $('#tiempo_garantias_adicionales_prev').val(tiempo_garantias);
             }
         }
     }

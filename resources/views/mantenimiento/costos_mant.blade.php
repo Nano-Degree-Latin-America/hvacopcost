@@ -150,7 +150,7 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center">
-                    <input type="text" id="valor_contrato_anual_adicionales" name="valor_contrato_anual_adicionales" class="w-full bg-blue-800 text-white border-2 border-color-inps text-lg rounded-md py-2 text-center"> {{-- <label  class="font-bold  font-roboto text_blue" for="">Días</label> --}}
+                    <input type="text" id="valor_contrato_anual_adicionales_prev" name="valor_contrato_anual_adicionales_prev" class="w-full bg-blue-800 text-white border-2 border-color-inps text-lg rounded-md py-2 text-center"> {{-- <label  class="font-bold  font-roboto text_blue" for="">Días</label> --}}
                 </div>
             </div>
 
@@ -169,7 +169,7 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                    <input id="dias_mantenimiento_adicionales" name="dias_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="dias_mantenimiento_adicionales_prev" name="dias_mantenimiento_adicionales_prev" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
 
                 </div>
             </div>
@@ -181,7 +181,7 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                    <input id="tiempo_mantenimiento_adicionales" name="tiempo_mantenimiento_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="tiempo_mantenimiento_adicionales_prev" name="tiempo_mantenimiento_adicionales_prev" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
 
                 </div>
             </div>
@@ -193,7 +193,7 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                    <input id="tiempo_traslados_adicionales" name="tiempo_traslados_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="tiempo_traslados_adicionales_prev" name="tiempo_traslados_adicionales_prev" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
 
                 </div>
             </div>
@@ -205,7 +205,7 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                    <input id="tiempo_acceso_edificio_adicionales" name="tiempo_acceso_edificio_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="tiempo_acceso_edificio_adicionales_prev" name="tiempo_acceso_edificio_adicionales_prev" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
 
                 </div>
             </div>
@@ -217,7 +217,7 @@
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
-                    <input  id="tiempo_garantias_adicionales" name="tiempo_garantias_adicionales" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input  id="tiempo_garantias_adicionales_prev" name="tiempo_garantias_adicionales_prev" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
 
                 </div>
             </div>
