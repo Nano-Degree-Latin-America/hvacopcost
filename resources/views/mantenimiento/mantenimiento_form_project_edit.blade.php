@@ -28,7 +28,7 @@
                             <label class="font-roboto labels_index_mantenimiento  text-left m-0" for=""><b>{{ __('mantenimiento.categoria_edificio') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select name="cat_edi_mantenimiento" id="cat_edi_mantenimiento" onchange="traer_t_edif(this.value,'tipo_edificio_mantenimiento','{{App::getLocale()}}');check_input(this.value,this.id,'cat_ed_warning_mantenimiento');check_inp_count('count_cat_ed_mantenimiento','cat_edi_id_mantenimiento');" wire:change="traer_t_edif($event.target.value)" class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
+                        <select name="cat_edi_mantenimiento" id="cat_edi_mantenimiento" onchange="traer_t_edif_edd(this.value,'tipo_edificio_mantenimiento','count_tipo_edificio_mantenimiento');check_input(this.value,this.id,'cat_ed_warning_mantenimiento');check_inp_count('count_cat_ed_mantenimiento','cat_edi_id_mantenimiento');" wire:change="traer_t_edif($event.target.value)" class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
                             @foreach ($cate_edificio as $cat_edi)
                             @if ($project_edit->id_cat_edifico == $cat_edi->id)
                             <option selected value="{{$cat_edi->id}}">{{$cat_edi->name}}</option>
@@ -742,7 +742,7 @@
             <div id="div_next_mantenimiento" name="div_next_mantenimiento" style="width: 80%;" class="hidden">
                 <button  type="button"  id="next_mantenimiento" name="next_mantenimiento"
                     x-show="step < 2"
-                    onclick="listar_mantenimiento_equipos({{ $project_edit->id }});set_horas_diarias_edit('{{ $mantenimiento_project->ocupacion_semanal }}');"
+                    onclick="listar_mantenimiento_equipos({{ $project_edit->id }});"
                     @click="step++"
                     style="background-color:#1B17BB;"
                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
