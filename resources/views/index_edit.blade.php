@@ -410,10 +410,8 @@ $idm = App::getLocale();
                     @endif
 
                     </a>
-                </div>
 
-
-                <div  x-show="step < 2" class="w-1/2 flex" style=" justify-content: left;">
+                    <div  x-show="step < 2" class="w-full flex" style=" justify-content: left;">
                     <div  x-show="step < 2" class="w-full flex" style=" justify-content: left;">
                         <label style="font-size:10px;" class=" text-gray-500 font-montserrat"  for="">
                             De acuerdo a:
@@ -432,6 +430,10 @@ $idm = App::getLocale();
                           </ul>
                         </div>
                 </div>
+                </div>
+
+
+
                 @if ($type_p == 1 || $type_p == 2)
                 <div  x-show="step === 2" class="w-1/2 flex" style=" justify-content: center;">
 
@@ -1186,20 +1188,20 @@ function traer_t_edif_Edit(val,id_tipo_edi) {
     });
 }
 
-function traer_t_edif_edd(id_cat) {
+function traer_t_edif_edd(id_cat,id_tipo_edi,id_tipo_edi_count) {
     $.ajax({
         type: 'get',
         url: '/get_cat_edi/'+ id_cat,
         success: function (response) {
-            $('#tipo_edificio_edit').empty();
-            $('#tipo_edificio_edit').append($('<option>', {
+            $('#'+id_tipo_edi).empty();
+            $('#'+id_tipo_edi).append($('<option>', {
                 value: 0,
                 text: 'Seleccionar'
             }));
-            $('#count_tipo_edificio').val(0);
+            $('#'+id_tipo_edi_count).val(0);
             checksuma();
             response.map((cat_ed, i) => {
-                $('#tipo_edificio_edit').append($('<option>', {
+                $('#'+id_tipo_edi).append($('<option>', {
                     value: cat_ed.id,
                     text: cat_ed.name
                 }));
