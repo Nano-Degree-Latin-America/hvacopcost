@@ -323,7 +323,7 @@
                                                     <div class="flex w-full">
                                                         <label class="labels_index font-roboto" for=""><b>{{ __('index.categoria edificio') }}</b></label></label><label class="text-red-500">*</label>
                                                     </div>
-                                                    <select  name="cat_ed_edit" id="cat_ed_edit"onchange="traer_t_edif_edd(this.value);set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');"  class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
+                                                    <select  name="cat_ed_edit" id="cat_ed_edit"onchange="traer_t_edif_edd(this.value,'tipo_edificio_edit','count_tipo_edificio');set_porcent_hvac(this.value);check_input(this.value,this.id,'cat_ed_warning');"  class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
                                                         @foreach ($cate_edificio as $cat_edi)
                                                         @if ($project_edit->id_cat_edifico == $cat_edi->id)
                                                         <option selected value="{{$cat_edi->id}}">{{$cat_edi->name}}</option>
