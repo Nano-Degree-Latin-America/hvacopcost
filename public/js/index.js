@@ -13795,7 +13795,6 @@ function set_horas_diarias(){
 }
 
 function set_horas_diarias_edit(value){
-
     if(value == 'm_50'){
         $("#horas_diarias_mantenimiento").val('Menor de 50 Hrs.');
     }
