@@ -1366,7 +1366,8 @@ public function spend_plan_base_adicionales(Request $request)
 
     ////////////////////////tieempo de mantenimiento
     /////formula:$array_speed_plan[12]+'suma_mano_obta
-    $tiempo_mantenimiento_sp = $array_speed_plan[12]+$suma_mano_obra;
+    $suma_mano_obra_para_tiempo_mantenimiento = $curso_seguridad_otros_adicionales+$lavado_filtros_aire_adicionales+$lavado_evaporadores_adicionales+$lavado_extra_condensadores_adicionales+$lavado_ventiladores_adicionales+$limpieza_grasa_adicionales;
+    $tiempo_mantenimiento_sp = $array_speed_plan[12]+$suma_mano_obra_para_tiempo_mantenimiento;
 
     /////////////////////tiempo traslados
     /////formula:dias_mantenimiento*distancia_sitio_mantenimiento*2/velocidad_promedio_mantenimiento
@@ -1608,7 +1609,8 @@ public function spend_plan_base_adicionales_edit(Request $request,$id_project)
 
     ////////////////////////tieempo de mantenimiento
     /////formula:$array_speed_plan[12]+'suma_mano_obta
-    $tiempo_mantenimiento_sp = $array_speed_plan[12]+$suma_mano_obra;
+     $suma_mano_obra_para_tiempo_mantenimiento = $curso_seguridad_otros_adicionales+$lavado_filtros_aire_adicionales+$lavado_evaporadores_adicionales+$lavado_extra_condensadores_adicionales+$lavado_ventiladores_adicionales+$limpieza_grasa_adicionales;
+    $tiempo_mantenimiento_sp = $array_speed_plan[12]+$suma_mano_obra_para_tiempo_mantenimiento;
 
     /////////////////////tiempo traslados
     /////formula:dias_mantenimiento*distancia_sitio_mantenimiento*2/velocidad_promedio_mantenimiento
