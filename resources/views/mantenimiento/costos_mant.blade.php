@@ -69,7 +69,7 @@
                 <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
                         <p class="text_blue text-xl font-bold">
-                           Tiempo Mantenimiento
+                           Horas Mantenimiento
                         </p>
                     </div>
                     <div class="w-1/3 flex justify-start place-items-center gap-x-1">
@@ -83,7 +83,7 @@
                 <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
                         <p class="text_blue text-xl font-bold">
-                           Tiempo Traslados
+                           Horas Traslados
                         </p>
                     </div>
                     <div class="w-1/3 flex justify-start place-items-center gap-x-1">
@@ -97,7 +97,7 @@
                 <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
                         <p class="text_blue text-xl font-bold">
-                           Tiempo Acceso Edificio
+                           Horas Acceso Edificio
                         </p>
                     </div>
                     <div class="w-1/3 flex justify-start place-items-center gap-x-1">
@@ -111,7 +111,7 @@
                 <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales mb-2">
                     <div class="w-3/4 grid justify-items-start place-items-center">
                         <p class="text_blue text-xl font-bold">
-                           Tiempo Para Garantías
+                           Horas Para Garantías
                         </p>
                     </div>
                     <div class="w-1/3 flex justify-start place-items-center gap-x-1">
@@ -177,7 +177,7 @@
             <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-xl font-bold">
-                       Tiempo Mantenimiento
+                       Horas Mantenimiento
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
@@ -189,7 +189,7 @@
             <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-xl font-bold">
-                       Tiempo Traslados
+                       Horas Traslados
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
@@ -201,7 +201,7 @@
             <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-xl font-bold">
-                       Tiempo Acceso Edificio
+                       Horas Acceso Edificio
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
@@ -213,7 +213,7 @@
             <div  class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales mb-2">
                 <div class="w-3/4 grid justify-items-start place-items-center">
                     <p class="text_blue text-xl font-bold">
-                       Tiempo Para Garantías
+                       Horas Para Garantías
                     </p>
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
