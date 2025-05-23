@@ -756,7 +756,9 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
     if($request->values['personal_enviado_mantenimiento'] == 'tecnico_ayudante'){
     $temnico_tecnico_ayudante = 1.3;
     }
-    $horas_hombre_mantenimiento= $suma_horas_hombre / $temnico_tecnico_ayudante;
+
+    $horas_hombre_mantenimiento_aux= $suma_horas_hombre / $temnico_tecnico_ayudante;
+    $horas_hombre_mantenimiento = ceil($horas_hombre_mantenimiento_aux);
 
     //horass_hombres_ingresos_eegresos
     $horas_hombre_ingresos_egresos = $suma_idas * 2;
@@ -798,8 +800,8 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
 
     ////////////Materiales/////////////////////////////////////////////
     ////formula: $mano_obra / 6
-    $materiales = $mano_obra / 6;
-
+    $materiales_aux = $mano_obra / 6;
+    $materiales = ceil($materiales_aux);
 
     ////////////Equipos/////////////////////////////////////////////
     $equipos = 0;
@@ -887,16 +889,17 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
 
     /////////////////GA
     /////formula: $ga_porcent * $precio_venta
-    $ga = $ga_porcent * $precio_venta;
+    $ga_aux = $ga_porcent * $precio_venta;
+    $ga = ceil($ga_aux);
 
     ////////////ventas
     ///formula: $ventas_porcent * $precio_venta
-    $ventas = $ventas_porcent * $precio_venta;
-
+    $ventas_aux = $ventas_porcent * $precio_venta;
+    $ventas = ceil($ventas_aux);
     ////////////financiamiento
     ////formula: $financiamiento_porcent * $precio_venta
-    $financiamiento = $financiamiento_porcent * $precio_venta;
-
+    $financiamiento_aux = $financiamiento_porcent * $precio_venta;
+    $financiamiento = ceil($financiamiento_aux);
 
     ////////////ganancia_porcent
     //////formula: 1-$total_porcent-$ga_porcent-$ventas_porcent-$financiamiento_porcent
@@ -998,8 +1001,8 @@ public function spend_plan_base_edit(Request $request,$id_project)
     if($request->values['personal_enviado_mantenimiento'] == 'tecnico_ayudante'){
     $temnico_tecnico_ayudante = 1.3;
     }
-    $horas_hombre_mantenimiento = $suma_total_horas / $temnico_tecnico_ayudante;
-
+    $horas_hombre_mantenimiento_aux = $suma_total_horas / $temnico_tecnico_ayudante;
+    $horas_hombre_mantenimiento = ceil($horas_hombre_mantenimiento_aux);
     //horass_hombres_ingresos_eegresos
     $horas_hombre_ingresos_egresos = $suma_idas * 2;
 
@@ -1038,8 +1041,8 @@ public function spend_plan_base_edit(Request $request,$id_project)
 
     ////////////Materiales/////////////////////////////////////////////
     ////formula: $mano_obra / 6
-    $materiales = $mano_obra / 6;
-
+    $materiales_aux = $mano_obra / 6;
+    $materiales = ceil($materiales_aux);
     ////////////Equipos/////////////////////////////////////////////
     $equipos = 0;
 
@@ -1127,15 +1130,17 @@ public function spend_plan_base_edit(Request $request,$id_project)
 
     /////////////////GA
     /////formula: $ga_porcent * $precio_venta
-    $ga = $ga_porcent * $precio_venta;
-
+    $ga_aux = $ga_porcent * $precio_venta;
+    $ga = ceil($ga_aux);
     ////////////ventas
     ///formula: $ventas_porcent * $precio_venta
-    $ventas = $ventas_porcent * $precio_venta;
+    $ventas_aux = $ventas_porcent * $precio_venta;
+    $ventas = ceil($ventas_aux);
 
     ////////////financiamiento
     ////formula: $financiamiento_porcent * $precio_venta
-    $financiamiento = $financiamiento_porcent * $precio_venta;
+    $financiamiento_aux = $financiamiento_porcent * $precio_venta;
+    $financiamiento = ceil($financiamiento_aux);
 
 
     ////////////ganancia_porcent
@@ -1291,7 +1296,7 @@ public function spend_plan_base_adicionales(Request $request)
 
     $suma_mano_obra = $servicio_emergencias_adicionales+$tiempo_adicional_accesos_adicionales+$curso_seguridad_otros_adicionales+$lavado_filtros_aire_adicionales+$lavado_evaporadores_adicionales+$lavado_extra_condensadores_adicionales+$lavado_ventiladores_adicionales+$limpieza_grasa_adicionales;
 
-    $mano_de_obra_sp_adicionales = ($total_horas+$suma_mano_obra+$tiempo_adicional_accesos_adicionales+$servicio_emergencias_adicionales)*$personal_enviado;
+    $mano_de_obra_sp_adicionales = ($total_horas+$suma_mano_obra)*$personal_enviado;
 
     //////////////////////vehiculos
     //////formula: distancia_sitio_mantenimiento*2*dias_mantenimiento*1.2
@@ -1534,8 +1539,7 @@ public function spend_plan_base_adicionales_edit(Request $request,$id_project)
 
     $suma_mano_obra = $servicio_emergencias_adicionales+$tiempo_adicional_accesos_adicionales+$curso_seguridad_otros_adicionales+$lavado_filtros_aire_adicionales+$lavado_evaporadores_adicionales+$lavado_extra_condensadores_adicionales+$lavado_ventiladores_adicionales+$limpieza_grasa_adicionales;
 
-    $mano_de_obra_sp_adicionales = ($total_horas+$suma_mano_obra+$tiempo_adicional_accesos_adicionales+$servicio_emergencias_adicionales)*$personal_enviado;
-
+    $mano_de_obra_sp_adicionales = ($total_horas+$suma_mano_obra)*$personal_enviado;
     //////////////////////vehiculos
     //////formula: distancia_sitio_mantenimiento*2*dias_mantenimiento*1.2
 
