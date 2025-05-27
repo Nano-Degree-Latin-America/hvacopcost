@@ -31,7 +31,7 @@
 
             <div class="w-1/3">
                 <div class="flex justify-start w-full gap-x-3">
-                    <label class="text_blue text-xl font-bold">Valor EUI (Kbtu/ft2)</label>
+                    <label class="text_blue text-xl font-bold">Indice EUI (Kbtu/ft2)</label>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" readonly id="eui_mantenimiento" name="eui_mantenimiento"  type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
 

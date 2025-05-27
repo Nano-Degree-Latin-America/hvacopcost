@@ -227,6 +227,17 @@
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                 </div>
             </div>
+
+            <div style="width: 65%;margin-top:120px;" class="gap-x-3 grid justify-items-center">
+                <div class="w-full flex justify-center place-items-center">
+                    <p class="text_blue text-xl font-bold">
+                        Costo Estimado del Sistema  HVAC
+                    </p>
+                </div>
+                <div class="w-1/2 flex justify-start">
+                    <input id="costo_estimado_sistema_adicionales" name="costo_estimado_sistema_adicionales" type="text"  value="${{ number_format($costos_adicionales->costo_estimado_hvac)}}" onchange="format_num(this.value,'costo_estimado_sistema_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
+            </div>
         </div>
           {{--Otros  --}}
         <div class="w-1/3 grid justify-items-center gap-y-1 h-auto self-start">

@@ -342,6 +342,20 @@
                         </div>
                     </div>
 
+                    <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                        <div class="flex w-full">
+                            <label  class="font-roboto text-left labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.porcentaje_inflacion') }}:</b></label>
+                            <label class="text-red-500 m-0"></label>
+                        </div>
+                        <div class="flex w-full">
+
+                            <input type="text" value="{{$mantenimiento_project->porcent_inflacion}}%" onkeypress="return soloNumeros(event)" onchange="change_to_porcent_mantenimiento(this.value,this.id);" class="w-1/4 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion_mantenimiento" id="inflacion_mantenimiento">
+                            <input id="count_inflacion_mantenimiento" name="count_inflacion_mantenimiento" type="number" class="hidden" value="0">
+
+                        </div>
+                        <span id="inflacion_warning_mantenimiento" name="inflacion_warning_mantenimiento" class="text-red-500"></span>
+                    </div>
+
                 </div>
 
                 <div class="grid justify-items-start h-full gap-y-1 w-1/2">

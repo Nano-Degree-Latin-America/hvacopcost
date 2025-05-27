@@ -117,6 +117,8 @@ class CalculoMantenimientoService
                 $new_mantenimiento_project->ocupacion_semanal=$request->get('ocupacion_semanal_mantenimiento');
                 $new_mantenimiento_project->medio_ambiente=$request->get('tipo_ambiente_mantenimiento');
                 $new_mantenimiento_project->personal_enviado=$request->get('personal_enviado_mantenimiento');
+                $porcent_mantenimiento_aux = explode('%',$request->get('inflacion_mantenimiento'));
+                $new_mantenimiento_project->porcent_inflacion=$porcent_mantenimiento_aux[0];
                 $new_mantenimiento_project->type_mant=1;
                 $new_mantenimiento_project->save();
 
@@ -171,6 +173,8 @@ class CalculoMantenimientoService
                         $new_mano_obra_hora->cambio_aceite_chillers=$this->precio_to_integer($request->get('cambio_aceite_chillers_adicionales'));
 
                         $new_mano_obra_hora->limpieza_anual_torres_enf=$this->precio_to_integer($request->get('limpieza_anual_torres_adicionales'));
+
+                        $new_mano_obra_hora->costo_estimado_hvac=$this->precio_to_integer($request->get('costo_estimado_sistema_adicionales'));
 
                         $new_mano_obra_hora->save();
 
@@ -228,6 +232,8 @@ class CalculoMantenimientoService
                     $update_mantenimiento_project->ocupacion_semanal=$request->get('ocupacion_semanal_mantenimiento');
                     $update_mantenimiento_project->medio_ambiente=$request->get('tipo_ambiente_mantenimiento');
                     $update_mantenimiento_project->personal_enviado=$request->get('personal_enviado_mantenimiento');
+                    $porcent_mantenimiento_aux = explode('%',$request->get('inflacion_mantenimiento'));
+                    $update_mantenimiento_project->porcent_inflacion=$porcent_mantenimiento_aux[0];
                     $update_mantenimiento_project->type_mant=1;
                     $update_mantenimiento_project->update();
 
@@ -283,6 +289,8 @@ class CalculoMantenimientoService
                             $update_mano_obra_hora->cambio_aceite_chillers=$this->precio_to_integer($request->get('cambio_aceite_chillers_adicionales'));
 
                             $update_mano_obra_hora->limpieza_anual_torres_enf=$this->precio_to_integer($request->get('limpieza_anual_torres_adicionales'));
+
+                            $update_mano_obra_hora->costo_estimado_hvac=$this->precio_to_integer($request->get('costo_estimado_sistema_adicionales'));
 
                             $update_mano_obra_hora->update();
 
