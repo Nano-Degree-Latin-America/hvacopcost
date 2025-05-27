@@ -150,7 +150,7 @@
             {{--Otros  --}}
         </div>
     <div class="w-1/2 grid place-items-center">
-        <div id="chart" name="chart" style="width: 600px;"></div>
+        <div id="chart_justificacion_financiera" name="chart_justificacion_financiera" style="width: 600px;"></div>
     </div>
  </div>
 
@@ -158,16 +158,45 @@
 
 <script>
     $(document).ready(function() {
-        justidicacion_financiera_chart();
+
 
 });
-function justidicacion_financiera_chart(){
+function justidicacion_financiera_chart(total_justificacion_mantenimiento,total_justificacion_mantenimiento_futuras,porcent_aux){
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+    let costo_actual = total_justificacion_mantenimiento;
+    let costo_futuro = total_justificacion_mantenimiento_futuras;
+    let porcent = porcent_aux/100;
+    console.log(porcent);
+
+    ////costo_actual_2
+    ///formula: costo_actual+(costo_actual*pocent)
+    let costo_actual_2 = costo_actual+(costo_actual*porcent);
+
+    ////costo_actual_3
+    ///formula: costo_actual_2+(costo_actual_2*porcent)
+    let costo_actual_3 = costo_actual_2+(costo_actual_2*porcent);
+
+
+    ///////////////////////costo_futuro_2
+    ///formula: (costo_futuro*0.95)+(costo_futuro*0.95*pocent)
+    let costo_futuro_2 = (costo_futuro*0.95)+(costo_futuro*0.95*porcent);
+
+    ///////////////////////costo_futuro_3
+    ///formula: (costo_futuro_2*0.95)+(costo_futuro_2*0.95*porcent)
+    let costo_futuro_3 = (costo_futuro_2*0.95)+(costo_futuro_2*0.95*porcent);
+
 
     var options = {
-          series: [{
-            name: "Desktops",
-            data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-        }],
+         series: [
+          {
+            name: "Costo Actual",
+            data: [parseInt(costo_actual), parseInt(costo_actual), parseInt(costo_actual_2), parseInt(costo_actual_3)]
+          },
+          {
+            name: "Costo Futuro",
+            data: [parseInt(costo_actual), parseInt(costo_futuro), parseInt(costo_futuro_2), parseInt(costo_futuro_3)]
+          }
+        ],
           chart: {
           height: 350,
           type: 'line',
@@ -175,15 +204,28 @@ function justidicacion_financiera_chart(){
             enabled: false
           }
         },
+        colors: ['#ff00ff', '#545454'],
         dataLabels: {
-          enabled: false
+                enabled: true,
+                style: {
+                fontSize: '14px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
         },
         stroke: {
-          curve: 'straight'
+          curve: 'smooth'
         },
         title: {
-          text: 'Product Trends by Month',
-          align: 'left'
+          text: 'Expectativa a 3 años',
+          align: 'left',
+          style: {
+            fontSize: '18px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
         },
         grid: {
           row: {
@@ -191,12 +233,62 @@ function justidicacion_financiera_chart(){
             opacity: 0.5
           },
         },
+        markers: {
+          size: 2
+        },
         xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+          tickPlacement: 'between',
+          categories: [0,1,2,3],
+          range:4,
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          formatter: function (val) {
+              return dollarUSLocale.format(val);
+            },
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '12px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#ff00ff', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
         }
         };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        var chart = new ApexCharts(document.querySelector("#chart_justificacion_financiera"), options);
         chart.render();
 }
 </script>
