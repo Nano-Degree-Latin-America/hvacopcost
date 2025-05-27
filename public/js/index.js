@@ -12020,6 +12020,13 @@ cUnidad_3_3 */
 
      }
 
+     function change_to_porcent_mantenimiento(porcent,id){
+        var input_select = $('#'+id);
+        const myArray = porcent.split('%');
+
+            input_select.val(myArray[0] + '%');
+     }
+
      function check_porcent_max_min(porcent,id){
 
         var input_select = $('#'+id);
@@ -15163,7 +15170,8 @@ function check_porcent_max_min_kms(value,id,unidad){
                         $('#valor_venta_gp_40').val(response[0]);
                         $('#ganancia_porcent_gp_40').val(response[26]);
                         $('#ganancia_gp_40').val('$'+dollarUSLocale.format(response[27]));
-                        chart_vals_mant(response[28],response[29],response[30],response[31]);
+
+                        chart_vals_mant(response[28],response[29],response[30],response[31],response[32]);
                     },
 
                 });
@@ -15245,7 +15253,7 @@ function check_porcent_max_min_kms(value,id,unidad){
                         $('#valor_venta_gp_40').val(response[0]);
                         $('#ganancia_porcent_gp_40').val(response[26]);
                         $('#ganancia_gp_40').val('$'+dollarUSLocale.format(response[27]));
-                        chart_vals_mant(response[28],response[29],response[30],response[31]);
+                        chart_vals_mant(response[28],response[29],response[30],response[31],response[32]);
                     },
 
                 });
@@ -15597,13 +15605,13 @@ function check_porcent_max_min_kms(value,id,unidad){
  }
 
 
- function chart_vals_mant(rav_minimo,rav_maximo,base,c_adicionaes){
+ function chart_vals_mant(ideal,tipico,malo,base,c_adicionaes){
 
     $('#chart_vals_mant').empty();
     var options = {
          series: [{
         name: "Costo",
-         data: [parseFloat(c_adicionaes).toFixed(0),parseFloat(base).toFixed(0),parseFloat(rav_maximo).toFixed(0),parseFloat(rav_minimo).toFixed(0) ]
+         data: [parseFloat(c_adicionaes).toFixed(0),parseFloat(base).toFixed(0),parseFloat(malo).toFixed(0),parseFloat(tipico).toFixed(0),parseFloat(ideal).toFixed(0) ]
        }],
          chart: {
          type: 'bar',
@@ -15623,7 +15631,7 @@ function check_porcent_max_min_kms(value,id,unidad){
       show: false, // Ocultar la leyenda
         },
        xaxis: {
-         categories: ['Base','C/Adicionales','Rav Minimo', 'Rav Máximo'
+         categories: ['C/Adicionales','Base','Malo','Tipico','Ideal'
          ],
          labels: {
                style: {
@@ -16220,9 +16228,13 @@ function check_porcent_max_min_kms(value,id,unidad){
     var reparaciones_justificacion_financiera_futuro = money_format_to_integer(reparaciones_justificacion_financiera_futuro_aux);
 
     var total_justificacion_mantenimiento_futuras = parseInt(mantenimiento_justificacion_financiera_futuro) + parseInt(energia_justificacion_financiera_futuro) + parseInt(reparaciones_justificacion_financiera_futuro);
+    var porcent_inflacion =  $('#inflacion_mantenimiento').val();
+    const porcent_array = porcent_inflacion.split('%');
+
+
 
     $('#total_mantenimiento_justificacion_futuro').val('$'+dollarUSLocale.format(total_justificacion_mantenimiento_futuras));
-
+    justidicacion_financiera_chart(total_justificacion_mantenimiento,total_justificacion_mantenimiento_futuras,porcent_array[0]);
  }
 
  function justificacion_financiera_send_mant(value){
