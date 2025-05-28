@@ -1385,7 +1385,7 @@ public function spend_plan_base_adicionales(Request $request)
 
 
     //valores para grafica costos mantenimiento
-    $costo_estimado_sistema_adicionales = $this->precio_to_integer($request->values['costo_estimado_sistema_adicionales']);
+    $costo_estimado_sistema_adicionales = $this->precio_to_integer($request->values['costo_estimado_sistema_hvac']);
     $valor_contrato_anual_base = $array_speed_plan[14];
     $arry_grafic = [];
 
@@ -1626,7 +1626,7 @@ public function spend_plan_base_adicionales_edit(Request $request,$id_project)
 
     //valores para grafica costos mantenimiento
     //valores para grafica costos mantenimiento
-    $costo_estimado_sistema_adicionales = $this->precio_to_integer($request->values['costo_estimado_sistema_adicionales']);
+    $costo_estimado_sistema_adicionales = $this->precio_to_integer($request->values['costo_estimado_sistema_hvac']);
     $valor_contrato_anual_base = $array_speed_plan[14];
     $arry_grafic = [];
 
@@ -1680,7 +1680,7 @@ public function spend_plan_base_adicionales_edit(Request $request,$id_project)
        $array_speed_plan = Session::get('array_speed_plan');
 
        ////////////////////////////materiales
-       ////////////formula 'Cálculo Spen Plan 40%'!D5+'Cálculo Spen Plan X% + Adi (2)'!I8
+        ////////////formula '$materiales_sp+'Cálculo Spen Plan 40% + Adic'!I8
 
         $costos_costos_filtro_aire_adicionales_aux = $this->precio_to_integer($request->values['costos_filtro_aire_adicionales']);
         $filtro_adicionales = $this->precio_to_integer($request->values['filtro_adicionales_adicionales']);
@@ -1759,7 +1759,7 @@ public function spend_plan_base_adicionales_edit(Request $request,$id_project)
        $financiamiento =$array_speed_plan[9];
        $total_horas = $array_speed_plan[11];
 
-    //////////////////////materiales
+   //////////////////////materiales
     $materiales_sp_adicionales =  $materiales+$mariales_adicionales;
 
     //////////////////////equipos
@@ -1770,7 +1770,7 @@ public function spend_plan_base_adicionales_edit(Request $request,$id_project)
 
     $suma_mano_obra = $servicio_emergencias_adicionales+$tiempo_adicional_accesos_adicionales+$curso_seguridad_otros_adicionales+$lavado_filtros_aire_adicionales+$lavado_evaporadores_adicionales+$lavado_extra_condensadores_adicionales+$lavado_ventiladores_adicionales+$limpieza_grasa_adicionales;
 
-    $mano_de_obra_sp_adicionales = ($total_horas+$suma_mano_obra+$tiempo_adicional_accesos_adicionales+$servicio_emergencias_adicionales)*$personal_enviado;
+    $mano_de_obra_sp_adicionales = ($total_horas+$suma_mano_obra)*$personal_enviado;
 
     //////////////////////vehiculos
     //////formula: distancia_sitio_mantenimiento*2*dias_mantenimiento*1.2
@@ -1794,8 +1794,6 @@ public function spend_plan_base_adicionales_edit(Request $request,$id_project)
 
 
      $total = $materiales_sp_adicionales + $equipos_sp_adicionales + $mano_de_obra_sp_adicionales + $vehiculos_sp_adicionales + $contratistas_sp_adicionales + $viaticos_sp_adicionales + $burden_sp_adicionales;
-
-
 
 
     //////////////////////precio_venta

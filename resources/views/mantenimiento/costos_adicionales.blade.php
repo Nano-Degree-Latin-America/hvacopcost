@@ -253,7 +253,7 @@
                     </p>
                 </div>
                 <div class="w-1/2 flex justify-start">
-                    <input id="costo_estimado_sistema_adicionales" name="costo_estimado_sistema_adicionales" type="text" value="$0" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,'costo_estimado_sistema_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input id="costo_estimado_sistema_hvac" name="costo_estimado_sistema_hvac" type="text" value="$0" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,'costo_estimado_sistema_hvac')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
         </div>

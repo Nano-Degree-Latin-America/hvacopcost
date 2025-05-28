@@ -170,7 +170,9 @@
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
                     <input id="dias_mantenimiento_adicionales_prev" name="dias_mantenimiento_adicionales_prev" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
-
+                    <div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
                 </div>
             </div>
 
@@ -182,7 +184,9 @@
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
                     <input id="tiempo_mantenimiento_adicionales_prev" name="tiempo_mantenimiento_adicionales_prev" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
-
+                    <div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
                 </div>
             </div>
 
@@ -194,7 +198,9 @@
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
                     <input id="tiempo_traslados_adicionales_prev" name="tiempo_traslados_adicionales_prev" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
-
+                    <div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
                 </div>
             </div>
 
@@ -206,7 +212,9 @@
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
                     <input id="tiempo_acceso_edificio_adicionales_prev" name="tiempo_acceso_edificio_adicionales_prev" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
-
+                    <div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
                 </div>
             </div>
 
@@ -218,7 +226,9 @@
                 </div>
                 <div class="w-1/3 flex justify-start place-items-center gap-x-1">
                     <input  id="tiempo_garantias_adicionales_prev" name="tiempo_garantias_adicionales_prev" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
-
+                    <div>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
                 </div>
             </div>
 
@@ -226,13 +236,12 @@
           {{--Otros  --}}
         <div class="w-1/3 grid justify-items-center gap-y-1 h-auto self-start">
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
-                <div class="w-3/4 grid justify-items-start place-items-center">
+                <div class="w-full grid justify-items-start place-items-center">
                     <p class="text_blue text-2xl font-bold">
                         Comparativa de Costos de Mantenimieto
                     </p>
                 </div>
-                <div class="w-1/4 flex justify-start">
-                </div>
+
             </div>
 
             <div style="width:90%;" id="chart_vals_mant" name="chart_vals_mant" class="mt-5">

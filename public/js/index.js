@@ -15115,7 +15115,7 @@ function check_porcent_max_min_kms(value,id,unidad){
     var token = $("#token").val();
     var formData = {};
     var only_adicionales = {};
-    $("input[name$='_adicionales'],input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_0']").each(function() {
+    $("input[name$='_adicionales'],input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_0'],input[name*='costo_estimado_sistema_hvac']").each(function() {
         formData[$(this).attr('name')] = $(this).val();
     });
 
@@ -15202,7 +15202,7 @@ function check_porcent_max_min_kms(value,id,unidad){
     var token = $("#token").val();
     var formData = {};
     var only_adicionales = {};
-    $("input[name$='_adicionales'],input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_0']").each(function() {
+    $("input[name$='_adicionales'],input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_0'],input[name*='costo_estimado_sistema_hvac']").each(function() {
         formData[$(this).attr('name')] = $(this).val();
     });
 
@@ -15276,7 +15276,11 @@ function check_porcent_max_min_kms(value,id,unidad){
     }
  }
 
- function calcular_speendplan_base_adicional_gp(porcent){
+ function calcular_speendplan_base_adicional_gp(porcent_aux){
+    const myArray = porcent_aux.split('%');
+    let porcent = myArray[0];
+    console.log(porcent);
+    
     let dollarUSLocale = Intl.NumberFormat('en-US');
     var token = $("#token").val();
     var formData = {};
