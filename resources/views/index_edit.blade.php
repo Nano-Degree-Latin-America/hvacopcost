@@ -499,7 +499,11 @@ $idm = App::getLocale();
 <style>
 .title_index{
               color:#1B17BB !important;"
-        }
+}
+
+.text_blue{
+    color:#1B17BB !important;
+}
 @media (min-width: 640px) {
     .labels{
         font-size:11px;

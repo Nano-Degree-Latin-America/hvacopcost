@@ -3,7 +3,7 @@
 
     <div  style="width:65%;" class=" h-full grid justify-items-start font-roboto gap-y-1">
         <div class="flex justify-center mr-20">
-            <h1 class="text-3xl text_blue font-bold">Spend Plan</h1> <input class="w-20 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center mx-1" onchange="calcular_speendplan_base_adicional_gp(this.value);" type="text"><h1  class="text-3xl  font-bold"> Gross Profit</h1>
+            <h1 class="text-3xl text_blue font-bold">Spend Plan</h1> <input class="w-20 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center mx-1" id="spend_plan_porcent" name="spend_plan_porcent" onchange="change_to_porcent_mantenimiento(this.value,this.id);calcular_speendplan_base_adicional_gp(this.value);" type="text"><h1  class="text-3xl  font-bold"> Gross Profit</h1>
         </div>
     </div>
 

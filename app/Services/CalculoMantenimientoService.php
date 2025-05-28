@@ -174,7 +174,7 @@ class CalculoMantenimientoService
 
                         $new_mano_obra_hora->limpieza_anual_torres_enf=$this->precio_to_integer($request->get('limpieza_anual_torres_adicionales'));
 
-                        $new_mano_obra_hora->costo_estimado_hvac=$this->precio_to_integer($request->get('costo_estimado_sistema_adicionales'));
+                        $new_mano_obra_hora->costo_estimado_hvac=$this->precio_to_integer($request->get('costo_estimado_sistema_hvac'));
 
                         $new_mano_obra_hora->save();
 
@@ -290,7 +290,7 @@ class CalculoMantenimientoService
 
                             $update_mano_obra_hora->limpieza_anual_torres_enf=$this->precio_to_integer($request->get('limpieza_anual_torres_adicionales'));
 
-                            $update_mano_obra_hora->costo_estimado_hvac=$this->precio_to_integer($request->get('costo_estimado_sistema_adicionales'));
+                            $update_mano_obra_hora->costo_estimado_hvac=$this->precio_to_integer($request->get('costo_estimado_sistema_hvac'));
 
                             $update_mano_obra_hora->update();
 

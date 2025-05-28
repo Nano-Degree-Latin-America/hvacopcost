@@ -24,7 +24,7 @@
         <div class="w-1/2 grid gap-x-3 h-full justify-items-center gap-y-3 ">
             {{-- mant_prev --}}
             <div class="grid w-3/4">
-                <div style="border-color:#1B17BB;" class="w-full grid justify-items-center gap-y-1  h-auto self-start border-2 rounded-xl py-5">
+                <div style="border-color:#1B17BB;" class="w-full grid bg-gray-100 justify-items-center gap-y-1 h-auto self-start border-2 rounded-xl py-5 shadow-lg">
 
                     <div  class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                         <div class="w-3/4 grid justify-items-center place-items-center">
@@ -87,7 +87,7 @@
 
             {{--Materiales  --}}
             <div class="grid w-3/4">
-                <div style="border-color:#1B17BB;" class="w-full grid justify-items-center gap-y-1  h-auto self-start border-2 rounded-xl py-5">
+                <div style="border-color:#1B17BB;" class="w-full grid bg-gray-100 justify-items-center gap-y-1  h-auto self-start border-2 rounded-xl py-5 shadow-lg">
 
                     <div  class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                         <div class="w-3/4 grid justify-items-center place-items-center">
@@ -198,7 +198,7 @@ function justidicacion_financiera_chart(total_justificacion_mantenimiento,total_
           }
         ],
           chart: {
-          height: 350,
+          height: 450,
           type: 'line',
           zoom: {
             enabled: false
@@ -218,13 +218,13 @@ function justidicacion_financiera_chart(total_justificacion_mantenimiento,total_
         },
         title: {
           text: 'Expectativa a 3 años',
-          align: 'left',
+          align: 'center',
           style: {
-            fontSize: '18px',
+            fontSize: '22px',
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: "bold",
             cssClass: 'apexcharts-yaxis-label',
-            color: '#000',
+            color: '#1B17BB',
           },
         },
         grid: {
@@ -249,6 +249,9 @@ function justidicacion_financiera_chart(total_justificacion_mantenimiento,total_
                     cssClass: 'apexcharts-xaxis-label',
                 },
           },
+          formatter: function (value) {
+            return value + "$";
+          },
         },
         yaxis: {
           labels:{
@@ -260,10 +263,10 @@ function justidicacion_financiera_chart(total_justificacion_mantenimiento,total_
                     cssClass: 'apexcharts-yaxis-label',
                 },
           },
-          formatter: function (val) {
-              return dollarUSLocale.format(val);
-            },
-
+          formatter: function (value) {
+            return value + "$";
+          },
+            range:2,
         },
         legend: {
           position: 'top',
