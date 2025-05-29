@@ -225,6 +225,8 @@ cursor: pointer;
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" integrity="sha256-+8RZJua0aEWg+QVVKg4LEzEEm/8RFez5Tb4JBNiV5xA=" crossorigin="anonymous"></script>
 <script src="https://code.jscharting.com/latest/jscharting.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 @inject('traer_unidad_hvac','app\Http\Controllers\ResultadosController')
 @inject('num_tarjets','app\Http\Controllers\ResultadosController')
 @inject('num_tarjets_2','app\Http\Controllers\ResultadosController')

@@ -24,8 +24,12 @@
                     </h1>
                 </div>
                 <div class="w-full flex gap-x-3">
-                    <label class="text_blue text-xl font-bold">Consumo Anual Edificio</label>
-                    <input value="${{number_format($costos_operativos->consumo_anual_edificio) }}" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);eui_justificacion_financiera(this.value);" type="text" id="consumo_energia_edificio_mantenimiento" name="consumo_energia_edificio_mantenimiento" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 h-10 text-center">
+                    <div class="w-2/5 flex">
+                            <label class="text_blue text-xl font-bold">Consumo Anual Edificio</label>
+                    </div>
+                    <div class="w-1/2 flex">
+                        <input value="${{number_format($costos_operativos->consumo_anual_edificio) }}" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);eui_justificacion_financiera(this.value);" type="text" id="consumo_energia_edificio_mantenimiento" name="consumo_energia_edificio_mantenimiento" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 h-10 text-center">
+                    </div>
                 </div>
             </div>
 
@@ -33,16 +37,18 @@
 
             <div class="w-1/3">
                 <div class="flex justify-start w-full gap-x-3">
-                    <label class="text_blue text-xl font-bold">Indice EUI (Kbtu/ft2)</label>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input value="{{ number_format($costos_operativos->eui,1) }}" type="text" readonly id="eui_mantenimiento" name="eui_mantenimiento"  type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <div class="w-2/5 flex">
+                        <label class="text_blue text-xl font-bold">Indice EUI (Kbtu/ft2)</label>
+                    </div>
+                    <div class="w-1/2 flex">
+                        <input value="{{ number_format($costos_operativos->eui,1) }}" type="text" readonly id="eui_mantenimiento" name="eui_mantenimiento"  type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    </div>
                 </div>
 
             </div>
 
             <div class="w-1/3">
-                <div id="chartDiv" name="chartDiv" class="js_charts_style">
-
-                </div>
+                 <div id="chart_div" style="width: 500px; height: 120px;"></div>
             </div>
         </div>
 
@@ -103,14 +109,22 @@
         <div class="w-full flex ">
 
             <div class="w-1/3 flex gap-x-3">
-                <label class="text_blue text-xl font-bold">Consumo Anual Edificio</label>
-                <input value="${{ number_format($costos_operativos->consumo_anual_edificio_futura) }}" readonly id="consumo_energia_edificio_mantenimiento_financiero" name="consumo_energia_edificio_mantenimiento_financiero" type="text" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                <div class="w-2/5 flex">
+                    <label class="text_blue text-xl font-bold">Consumo Anual Edificio</label>
+                </div>
+                <div class="w-1/2 flex">
+                    <input value="${{ number_format($costos_operativos->consumo_anual_edificio_futura) }}" readonly id="consumo_energia_edificio_mantenimiento_financiero" name="consumo_energia_edificio_mantenimiento_financiero" type="text" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
             </div>
 
             <div class="w-1/3 flex gap-x-3 justify-center">
                 <div class="flex justify-start w-full gap-x-3">
-                    <label class="text_blue text-xl font-bold">Reducción Energética</label>
-                    &nbsp;&nbsp;&nbsp;<input value="${{ number_format($costos_operativos->reduccion_energetica) }}" readonly type="text" type="text" id="reduccion_energetica_mantenimiento_financiero" name="reduccion_energetica_mantenimiento_financiero" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <div class="w-2/5 flex">
+                      <label class="text_blue text-xl font-bold">Reducción Energética</label>
+                    </div>
+                    <div class="w-1/2 flex">
+                        <input value="${{ number_format($costos_operativos->reduccion_energetica) }}" readonly type="text" type="text" id="reduccion_energetica_mantenimiento_financiero" name="reduccion_energetica_mantenimiento_financiero" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    </div>
                 </div>
             </div>
             <div class="w-1/3">
@@ -126,14 +140,22 @@
         <div class="w-full flex">
 
             <div class="w-1/3 flex gap-x-3">
-                <label class="text_blue text-xl font-bold">Costo Reparaciónes</label>
-                &nbsp;&nbsp;&nbsp;&nbsp;<input value="${{number_format($costos_operativos->costo_reparaciones) }}" id="monto_actual_mantenimiento_financiero" name="monto_actual_mantenimiento_financiero" type="text"  onkeypress="return soloNumeros(event)" onchange="reduccion_gastos_reparaciones();format_num(this.value,this.id)" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                <div class="w-2/5 flex">
+                    <label class="text_blue text-xl font-bold">Costo Reparaciónes</label>
+                </div>
+                <div class="w-1/2 flex">
+                    <input value="${{number_format($costos_operativos->costo_reparaciones) }}" id="monto_actual_mantenimiento_financiero" name="monto_actual_mantenimiento_financiero" type="text"  onkeypress="return soloNumeros(event)" onchange="reduccion_gastos_reparaciones();format_num(this.value,this.id)" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
             </div>
 
             <div class="w-1/3 flex gap-x-3 justify-center">
                 <div class="flex justify-start w-full gap-x-3">
-                    <label class="text_blue text-xl font-bold">Reducción Reparaciónes</label>
-                    <input value="${{number_format($costos_operativos->reduccion_reparaciones) }}" onchange="format_num(this.value,this.id);" id="reduccion_reparaciones_mantenimiento_financiero" name="reduccion_reparaciones_mantenimiento_financiero" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <div class="w-2/5 flex">
+                        <label class="text_blue text-xl font-bold">Reducción Reparaciónes</label>
+                    </div>
+                    <div class="w-1/2 flex">
+                        <input readonly value="${{number_format($costos_operativos->reduccion_reparaciones) }}" onchange="format_num(this.value,this.id);" id="reduccion_reparaciones_mantenimiento_financiero" name="reduccion_reparaciones_mantenimiento_financiero" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    </div>
                 </div>
             </div>
             <div class="w-1/3">
@@ -149,8 +171,12 @@
         <div class="w-full flex gap-x-3">
 
             <div class="w-1/3 flex gap-x-3">
-                <label class="text_blue text-xl font-bold">Costo Mantenimiento</label>
-                &nbsp;<input value="${{number_format($costos_operativos->costo_mantenimiento) }}" id="costo_mantenimiento_mantenimiento_financiero" name="costo_mantenimiento_mantenimiento_financiero" type="text"  onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);justificacion_financiera_send_mant(this.value);" type="text" class="w-1/4 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                <div class="w-2/5 flex">
+                        <label class="text_blue text-xl font-bold">Costo Mantenimiento</label>
+                </div>
+                <div class="w-1/2 flex">
+                    <input value="${{number_format($costos_operativos->costo_mantenimiento) }}" id="costo_mantenimiento_mantenimiento_financiero" name="costo_mantenimiento_mantenimiento_financiero" type="text"  onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);justificacion_financiera_send_mant(this.value);" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                </div>
             </div>
 
             <div class="w-1/3 flex gap-x-3 justify-center">
@@ -167,59 +193,30 @@
 <script>
 
 $(document).ready(function() {
-    con_ene_hvac_ar_Base();
-
+    google.charts.load('current', {'packages':['gauge']});
+    google.charts.setOnLoadCallback(grafica_eui_analisis_costos);
+$('#consumo_energia_edificio_mantenimiento').on('change', function () {
+     google.charts.setOnLoadCallback(grafica_eui_analisis_costos);
+ });
 });
 
+function grafica_eui_analisis_costos(){
 
+    var eui = $('#eui_mantenimiento').val();
+    var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['EUI', parseInt(eui)]
+        ]);
 
-function con_ene_hvac_ar_Base(){
-        // JS
+        var options = {
+          width: 500, height: 200,
+          redFrom: 90, redTo: 100,
+          yellowFrom:75, yellowTo: 90,
+          minorTicks: 5
+        };
 
-       // JS
-var chart = JSC.chart('chartDiv', {
-  debug: true,
-  type: 'gauge',
-  legend_visible: false,
-  height:220,
-  xAxis: { spacingPercentage: 0.25 },
-  yAxis: {
-    defaultTick: {
-      padding: -5,
-      label_style_fontSize: '14px'
-    },
-    line: {
-      width: 9,
-      color: 'smartPalette',
-      breaks_gap: 0.06
-    },
-    scale_range: [0, 100]
-  },
-  palette: {
-    pointValue: '{%value/100}',
-    colors: ['green', 'yellow', 'red']
-  },
-  defaultTooltip_enabled: false,
-  defaultSeries: {
-    angle: { sweep: 180 },
-    shape: {
-      innerSize: '70%',
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
 
-      label: {
-        text:
-          '<span color="%color">{%sum:n1}</span><br/><span color="#696969" fontSize="20px">kW</span>',
-        style_fontSize: '46px',
-        verticalAlign: 'middle'
-      }
+        chart.draw(data, options);
     }
-  },
-  series: [
-    {
-      type: 'column roundcaps',
-      points: [{ id: '1', x: 'speed', y: 0 }]
-    }
-  ],
-
-});
-        }
 </script>
