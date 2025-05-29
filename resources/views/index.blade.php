@@ -251,6 +251,8 @@ input[type=number]::-webkit-outer-spin-button {
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js" integrity="sha256-+8RZJua0aEWg+QVVKg4LEzEEm/8RFez5Tb4JBNiV5xA=" crossorigin="anonymous"></script>
 <script src="https://code.jscharting.com/latest/jscharting.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <div class="bg-white s" x-data="app()" x-cloak>
     <div class="w-full px-2">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
