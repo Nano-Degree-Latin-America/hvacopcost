@@ -210,9 +210,12 @@ function grafica_eui_analisis_costos(){
 
         var options = {
           width: 500, height: 200,
-          redFrom: 90, redTo: 100,
-          yellowFrom:75, yellowTo: 90,
-          minorTicks: 5
+          greenFrom:1,greenTo:200,
+          redFrom: 300, redTo: 400,
+          yellowFrom:200, yellowTo: 300,
+          minorTicks: 5,
+          max:400,
+          min:1,
         };
 
         var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
