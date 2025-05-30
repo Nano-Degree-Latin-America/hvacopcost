@@ -67,7 +67,7 @@ class UserController extends Controller
         $user->name=$request->get('nombre');
         $user->email=$request->get('email');
         $user->id_empresa=$request->get('empresa');
-        $user->password=Hash::make('12345678');
+        $user->password=Hash::make($request->get('password'));
         $user->tipo_user=$request->get('type_user');
         $user->fecha_inicio=$request->get('fecha_inicio');
         $user->fecha_termino=$request->get('fecha_termino');
@@ -124,6 +124,12 @@ class UserController extends Controller
         $user_update->name=$request->get('nombre');
         $user_update->email=$request->get('email');
         $user_update->id_empresa=$request->get('empresa');
+        if($request->get('password') != ''){
+            $user_update->password=Hash::make($request->get('password'));
+        }else{
+            $user_update->password=$user_update->password;
+        }
+
         $user_update->tipo_user=$request->get('type_user');
         $user_update->fecha_inicio=$request->get('fecha_inicio');
         $user_update->fecha_termino=$request->get('fecha_termino');
