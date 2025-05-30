@@ -112,6 +112,15 @@
                 <div class="flex w-full mt-3 gap-x-4">
                     <div class="w-3/4">
                         <div class="w-full flex">
+                            <label class="text-[16px]" style="color: #102E52">Contraseña<span class="text-red-500">*</span></label>
+                        </div>
+                        <input id="password" name="password" type="password" required placeholder="Ingrese nueva contraseña" class="w-full border-2 border-blue-500 rounded-md">
+                    </div>
+                </div>
+
+                <div class="flex w-full mt-3 gap-x-4">
+                    <div class="w-3/4">
+                        <div class="w-full flex">
                             <label class="text-[16px]" style="color: #102E52">Correo<span class="text-red-500">*</span></label>
                         </div>
                         <input id="email" name="email" type="email" value="{{$user_edit->email}}" required placeholder="Ingrese correo" class="w-full border-2 border-blue-500 rounded-md">
