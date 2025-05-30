@@ -40,7 +40,7 @@
                         <label class="text_blue text-xl font-bold">Indice EUI (Kbtu/ft2)</label>
                     </div>
                     <div class="w-1/2 flex">
-                        <input type="text" readonly id="eui_mantenimiento" name="eui_mantenimiento"  type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center ml-2">
+                        <input type="text" readonly id="eui_mantenimiento" name="eui_mantenimiento"  value="0"  type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center ml-2">
 
                     </div>
                 </div>
@@ -175,10 +175,36 @@
 <script>
 
 $(document).ready(function() {
+    google.charts.load('current', {'packages':['gauge']});
+    google.charts.setOnLoadCallback(grafica_eui_analisis_costos);
 
+    $('#consumo_energia_edificio_mantenimiento').on('change', function () {
+     google.charts.setOnLoadCallback(grafica_eui_analisis_costos);
+    });
 });
 
+function grafica_eui_analisis_costos(){
 
+    var eui = $('#eui_mantenimiento').val();
+    var data = google.visualization.arrayToDataTable([
+          ['Label', 'Value'],
+          ['EUI', parseInt(eui)]
+        ]);
+
+        var options = {
+          width: 500, height: 200,
+          greenFrom:1,greenTo:200,
+          redFrom: 300, redTo: 400,
+          yellowFrom:200, yellowTo: 300,
+          minorTicks: 5,
+          max:400,
+          min:1,
+        };
+
+        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+        chart.draw(data, options);
+    }
 
 
 </script>

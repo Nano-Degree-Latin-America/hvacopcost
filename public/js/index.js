@@ -15703,30 +15703,11 @@ function check_porcent_max_min_kms(value,id,unidad){
     var res = parseFloat(res_aux).toFixed(1);
     $('#eui_mantenimiento').val(res);
 
-    google.charts.load('current', {'packages':['gauge']});
-    google.charts.setOnLoadCallback(grafica_eui_analisis_costos);
+    /*  */
 
    }
 
-   function grafica_eui_analisis_costos(){
 
-    var eui = $('#eui_mantenimiento').val();
-    var data = google.visualization.arrayToDataTable([
-          ['Label', 'Value'],
-          ['EUI', parseInt(eui)]
-        ]);
-
-        var options = {
-          width: 500, height: 200,
-          redFrom: 90, redTo: 100,
-          yellowFrom:75, yellowTo: 90,
-          minorTicks: 5
-        };
-
-        var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
-
-        chart.draw(data, options);
-    }
 
    function calcular_justificacion_financiera(value){
 
