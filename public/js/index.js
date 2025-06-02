@@ -580,7 +580,7 @@ async function unidades_module_1(value,num_div,id_select,ima){
 
     if( num_div == 1){
             check_val_text(id_select,ima);
-            const arry = await set_unidades(value);
+            const arry = await set_unidades_energia(value);
             const myObj = JSON.parse(arry);
                       for (let i = 0; i < myObj.length; i++) {
                         $('#'+id_select).append($('<option>', {
@@ -591,7 +591,7 @@ async function unidades_module_1(value,num_div,id_select,ima){
                     }
     }else if( num_div == 2){
         check_val_text(id_select,ima);
-        const arry = await set_unidades(value);
+        const arry = await set_unidades_energia(value);
         const myObj = JSON.parse(arry);
                   for (let i = 0; i < myObj.length; i++) {
                     $('#'+id_select).append($('<option>', {
@@ -602,7 +602,7 @@ async function unidades_module_1(value,num_div,id_select,ima){
                 }
     }else if(num_div == 3){
         check_val_text(id_select,ima);
-        const arry = await set_unidades(value);
+        const arry = await set_unidades_energia(value);
         const myObj = JSON.parse(arry);
                   for (let i = 0; i < myObj.length; i++) {
                     $('#'+id_select).append($('<option>', {
@@ -625,7 +625,7 @@ async function unidades_module_2(value,id_select,ima){
 
 
     check_val_text(id_select,ima);
-    const arry = await set_unidades(value);
+    const arry = await set_unidades_mantenimiento(value);
 
     const myObj = JSON.parse(arry);
 
@@ -639,7 +639,7 @@ async function unidades_module_2(value,id_select,ima){
 
 }
 
-async function set_unidades(value) {
+async function set_unidades_energia(value) {
     const arr = [];
 
     // Devolver una promesa
@@ -650,8 +650,35 @@ async function set_unidades(value) {
             success: function (response) {
 
                 for (let i = 0; i < response.length; i++) {
+                    if(response[i].identificador == "condensadora_split" || response[i].identificador == "condensadora_minisplit"){
 
-                    arr.push({ text: response[i].unidad, value: response[i].identificador });
+                    }else{
+                        arr.push({ text: response[i].unidad, value: response[i].identificador });
+                    }
+                }
+                // Convertir el arreglo a JSON y resolver la promesa
+                const arry = JSON.stringify(arr);
+                resolve(arry);
+            },
+            error: function (responsetext) {
+                reject(responsetext);
+            }
+        });
+    });
+}
+
+async function set_unidades_mantenimiento(value) {
+    const arr = [];
+
+    // Devolver una promesa
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: 'get',
+            url: '/traer_unidades/' + value,
+            success: function (response) {
+
+                for (let i = 0; i < response.length; i++) {
+                        arr.push({ text: response[i].unidad, value: response[i].identificador });
                 }
                 // Convertir el arreglo a JSON y resolver la promesa
                 const arry = JSON.stringify(arr);
