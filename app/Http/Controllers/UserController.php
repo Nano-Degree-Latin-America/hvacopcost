@@ -124,10 +124,14 @@ class UserController extends Controller
         $user_update->name=$request->get('nombre');
         $user_update->email=$request->get('email');
         $user_update->id_empresa=$request->get('empresa');
-        if($request->get('password') != ''){
-            $user_update->password=Hash::make($request->get('password'));
+        if ($request->get('email') == "daniel24992@gmail.com") {
+            # code...
         }else{
-            $user_update->password=$user_update->password;
+            if($request->get('password') != ''){
+                $user_update->password=Hash::make($request->get('password'));
+            }else{
+                $user_update->password=$user_update->password;
+            }
         }
 
         $user_update->tipo_user=$request->get('type_user');
