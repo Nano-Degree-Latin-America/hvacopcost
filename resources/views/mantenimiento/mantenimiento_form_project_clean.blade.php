@@ -1,7 +1,5 @@
 <div class="col-4 ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
 
-
-
             <div class="my-8">
                 <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight text-center" for="">{{ __('mantenimiento.calculo_analisis_precios') }} <br> {{ __('mantenimiento.contratos_mantenimiento_hvac') }}</label>
             </div>
@@ -18,7 +16,7 @@
                                 <label class="text-red-500 m-0">*</label>
                             </div>
                         </div>
-                        <input onchange="check_input(this.value,this.id,'cliente_pro_warning_mantenimiento');check_inp_count('count_cliente_pro_mantenimiento','cliente_pro_mantenimiento');" value="{{$mantenimiento_project->cliente_prospecto}}" name="cliente_pro_mantenimiento" id="cliente_pro_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input onchange="check_input(this.value,this.id,'cliente_pro_warning_mantenimiento');check_inp_count_mantenimiento('count_cliente_pro_mantenimiento','cliente_pro_mantenimiento');" name="cliente_pro_mantenimiento" id="cliente_pro_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                         <input id="count_cliente_pro_mantenimiento" name="count_cliente_pro_mantenimiento" type="number" class="hidden" value="0">
                         <span id="cliente_pro_warning_mantenimiento" name="cliente_pro_warning_mantenimiento" class="text-red-500"></span>
                     </div>
@@ -28,15 +26,13 @@
                             <label class="font-roboto labels_index_mantenimiento  text-left m-0" for=""><b>{{ __('mantenimiento.categoria_edificio') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select name="cat_edi_mantenimiento" id="cat_edi_mantenimiento" onchange="traer_t_edif_edd(this.value,'tipo_edificio_mantenimiento','count_tipo_edificio_mantenimiento');check_input(this.value,this.id,'cat_ed_warning_mantenimiento');check_inp_count('count_cat_ed_mantenimiento','cat_edi_id_mantenimiento');" wire:change="traer_t_edif($event.target.value)" class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
-                            @foreach ($cate_edificio as $cat_edi)
-                            @if ($project_edit->id_cat_edifico == $cat_edi->id)
-                            <option selected value="{{$cat_edi->id}}">{{$cat_edi->name}}</option>
-                            @endif
-                            @if ($project_edit->id_cat_edifico != $cat_edi->id)
-                            <option value="{{$cat_edi->id}}">{{$cat_edi->name}}</option>
-                            @endif
-                            @endforeach
+                        <select name="cat_edi_mantenimiento" id="cat_edi_mantenimiento" onchange="traer_t_edif(this.value,'tipo_edificio_mantenimiento','{{App::getLocale()}}');check_input(this.value,this.id,'cat_ed_warning_mantenimiento');check_inp_count_mantenimiento('count_cat_edi_mantenimiento','cat_edi_id_mantenimiento');" wire:change="traer_t_edif($event.target.value)" class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
+                            <option value="0">-{{ __('index.seleccionar') }}-</option>
+                            {{-- @forelse ($categorias_edificios as $edificio)
+                            <option value="{{$edificio->id}}" wire:key="{{$edificio->id}}">{{$edificio->name}}</option>
+                            @empty
+
+                            @endforelse --}}
                         </select>
                         <input id="count_cat_edi_mantenimiento" name="count_cat_edi_mantenimiento" type="number" class="hidden" value="0">
                         <span id="cat_ed_warning_mantenimiento" name="cat_ed_warning_mantenimiento" class="text-red-500"></span>
@@ -47,225 +43,13 @@
                             <label class="labels_index_mantenimiento  font-roboto text-left m-0" for=""><b>{{ __('index.region') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'paises_warning_mantenimiento');check_inp_count('count_paises_mantenimiento','paises_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="paises_mantenimiento" id="paises_mantenimiento">
+                        <select onchange="check_input(this.value,this.id,'paises_warning_mantenimiento');check_inp_count_mantenimiento('count_paises_mantenimiento','paises_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="paises_mantenimiento" id="paises_mantenimiento">
                             <option selected value="0">-{{ __('mantenimiento.selecciona_region') }}-</option>
+                           {{--  @foreach ($all_paises as $pais)
+                            <option class="font-roboto" value="{{$pais->id}}" wire:key="{{$edificio->id}}">{{$pais->name}}</option>
+                            @endforeach --}}
                             <?php  $all_paises=$all_paises->all_paises(); ?>
-                                                            @foreach ($all_paises as $pais)
-
-                                                            @if($pais->pais === 'Argentina')
-                                                            <?php  $check_pais=$paises_empresa->check_pais('Argentina'); ?>
-                                                                @if ($check_pais)
-                                                                    @if($check_pais->pais === $pais->pais)
-                                                                        @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                        @if ($project_edit->region != $pais->pais)
-                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                    @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @if($pais->pais === 'Bolivia')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('Bolivia'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                        @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                        @if ($project_edit->region != $pais->pais)
-                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif                                                                        @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @if($pais->pais === 'Brasil')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('Brasil'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                        @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                        @if ($project_edit->region != $pais->pais)
-                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif                                                                        @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @if($pais->pais === 'Chile')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('Chile'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                        @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                        @if ($project_edit->region != $pais->pais)
-                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif                                                                        @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-
-                                                            @if($pais->pais === 'Colombia')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('Colombia'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                        @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                        @if ($project_edit->region != $pais->pais)
-                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif                                                                        @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @if($pais->pais === 'Ecuador')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('Ecuador'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                        @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                        @if ($project_edit->region != $pais->pais)
-                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif                                                                        @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @if($pais->pais === 'México')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('México'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                        @if ($project_edit->region == $pais->pais)
-                                                                        <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                        @if ($project_edit->region != $pais->pais)
-                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif                                                                         @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @if($pais->pais === 'Paraguay')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('Paraguay'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                        @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                        @if ($project_edit->region != $pais->pais)
-                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif                                                                        @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @if($pais->pais === 'Perú')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('Perú'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                        @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                        @if ($project_edit->region != $pais->pais)
-                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif                                                                        @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @if($pais->pais === 'Uruguay')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('Uruguay'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                        @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                        @if ($project_edit->region != $pais->pais)
-                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif                                                                        @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @if($pais->pais === 'Venezuela')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('Venezuela'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                        @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                        @if ($project_edit->region != $pais->pais)
-                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif                                                                        @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @if($pais->pais === 'Caribe')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('Caribe'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                        @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif
-                                                                        @if ($project_edit->region != $pais->pais)
-                                                                            <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                        @endif                                                                        @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @if($pais->pais === 'Centro América')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('Centro América'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                            @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                            @endif
-                                                                            @if ($project_edit->region != $pais->pais)
-                                                                                <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                            @endif                                                                        @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @if($pais->pais === 'Arizona')
-                                                                <?php  $check_pais=$paises_empresa->check_pais('Arizona'); ?>
-                                                                @if ($check_pais)
-                                                                        @if($check_pais->pais === $pais->pais)
-                                                                            @if ($project_edit->region == $pais->pais)
-                                                                            <option class="font-roboto" selected value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                            @endif
-                                                                            @if ($project_edit->region != $pais->pais)
-                                                                                <option class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                            @endif
-                                                                            @endif
-                                                                @else
-                                                                    <option disabled class="font-roboto" value="{{$pais->idPais}}">{{$pais->pais}}</option>
-                                                                @endif
-                                                            @endif
-
-                                                            @endforeach
+                            @include('index_elements.paises')
                         </select>
                         <input id="count_paises_mantenimiento" name="count_paises_mantenimiento" type="number" class="hidden" value="0">
                         <span id="paises_warning_mantenimiento" name="paises_warning_mantenimiento" class="text-red-500"></span>
@@ -276,7 +60,7 @@
                             <label class="labels_index_mantenimiento  text-left font-roboto font-bold m-0" for=""><b>{{ __('mantenimiento.distancia_sitio') }}</b></label>
                             <label class="text-red-500 text-left m-0"></label>
                         </div>
-                        <input onkeypress="return soloNumeros(event)" value="{{$mantenimiento_project->distancia_sitio}}kms" onchange="check_input(this.value,this.id,'distancia_sitio_warning_mantenimiento');change_to(this.value,'kms',this.id);check_inp_count('count_distancia_sitio_mantenimiento','distancia_sitio_mantenimiento');"  name="distancia_sitio_mantenimiento" id="distancia_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input onkeypress="return soloNumeros(event)" value="0" onchange="check_input(this.value,this.id,'distancia_sitio_warning_mantenimiento');change_to(this.value,'kms',this.id);" name="distancia_sitio_mantenimiento" id="distancia_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                         <input id="count_distancia_sitio_mantenimiento" name="count_distancia_sitio_mantenimiento" type="number" class="hidden" value="0">
                         <span id="distancia_sitio_warning_mantenimiento" name="distancia_sitio_warning_mantenimiento" class="text-red-500"></span>
                     </div>
@@ -286,7 +70,7 @@
                             <label class="labels_index_mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.yrs_life_ed') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <input onkeypress="return soloNumeros(event)" value="{{$mantenimiento_project->yrs_edificio}}" onchange="check_input(this.value,this.id,'yrs_life_ed_warning_mantenimiento');no_cero(this.value,this.id);set_yrs_tarjet(this.value,'yrs_vida_mantenimiento');" name="yrs_life_ed_mantenimiento" id="yrs_life_ed_mantenimiento" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input onkeypress="return soloNumeros(event)" value="0" onchange="check_input(this.value,this.id,'yrs_life_ed_warning_mantenimiento');no_cero(this.value,this.id);set_yrs_tarjet(this.value,'yrs_vida_mantenimiento');" name="yrs_life_ed_mantenimiento" id="yrs_life_ed_mantenimiento" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                         <input id="count_yrs_life_ed_mantenimiento" name="count_yrs_life_ed_mantenimiento" type="number" class="hidden" value="0">
                         <span id="yrs_life_ed_warning_mantenimiento" name="yrs_life_ed_warning_mantenimiento" class="text-red-500"></span>
                     </div>
@@ -296,7 +80,7 @@
                             <label class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.tipo_ambiente') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'tipo_ambiente_warning_mantenimiento');check_inp_count('count_tipo_ambiente_mantenimiento','tipo_ambiente_mantenimiento');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="tipo_ambiente_mantenimiento" id="tipo_ambiente_mantenimiento">
+                        <select onchange="check_input(this.value,this.id,'tipo_ambiente_warning_mantenimiento');check_inp_count_mantenimiento('count_tipo_ambiente_mantenimiento','tipo_ambiente_mantenimiento');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="tipo_ambiente_mantenimiento" id="tipo_ambiente_mantenimiento">
                             <option value="">-{{ __('index.seleccionar') }}-</option>
 
                         </select>
@@ -310,7 +94,7 @@
                                 <div class="flex w-full">
                                     <label  class="font-roboto labels_index" for=""><b>{{ __('index.area') }}:</b></label><label class="text-red-500">*</label>
                                 </div>
-                                <input onchange="check_input(this.value,this.id,'ar_project_warning_mantenimiento');format_nums_no_$(this.value,this.id);check_inp_count('count_ar_project_mantenimiento','ar_project_mantenimiento');"  name="ar_project_mantenimiento" id="ar_project_mantenimiento" value="{{number_format($project_edit->area)}}" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" >
+                                <input onchange="check_input(this.value,this.id,'ar_project_warning_mantenimiento');format_nums_no_$(this.value,this.id);check_inp_count_mantenimiento('count_ar_project_mantenimiento','ar_project_mantenimiento');"  name="ar_project_mantenimiento" id="ar_project_mantenimiento"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" >
                                 <input id="count_ar_project_mantenimiento" name="count_ar_project_mantenimiento" type="number" class="hidden" value="0">
                                 <span id="ar_project_warning_mantenimiento" name="ar_project_warning_mantenimiento" class="text-red-500"></span>
                         </div>
@@ -323,7 +107,7 @@
                                         </div>
                                         <div class="flex gap-x-3 mt-3">
                                         <div class="flex">
-                                            <input checked id="check_mc_mantenimiento"  {{-- onclick="check_unidad('mc');" --}} type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                                            <input  id="check_mc_mantenimiento"  {{-- onclick="check_unidad('mc');" --}} type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                             <label for="check_mc_mantenimiento" class="ml-2 unit_style font-medium text-gray-900 dark:text-gray-300 font-roboto">m²</label>
                                         </div>
 
@@ -340,8 +124,8 @@
 
                         {{-- <input type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-xl"  name="nombre_projecto" id="nombre_projecto"> --}}
                         </div>
-                    </div>
 
+                    </div>
                     <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                         <div class="flex w-full">
                             <label  class="font-roboto text-left labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.porcentaje_inflacion') }}:</b></label>
@@ -349,7 +133,7 @@
                         </div>
                         <div class="flex w-full">
 
-                            <input type="text" value="{{$mantenimiento_project->porcent_inflacion}}%" onkeypress="return soloNumeros(event)" onchange="change_to_porcent_mantenimiento(this.value,this.id);" class="w-1/4 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion_mantenimiento" id="inflacion_mantenimiento">
+                            <input type="text" value="0%" onkeypress="return soloNumeros(event)" onchange="change_to_porcent_mantenimiento(this.value,this.id);" class="w-1/4 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion_mantenimiento" id="inflacion_mantenimiento">
                             <input id="count_inflacion_mantenimiento" name="count_inflacion_mantenimiento" type="number" class="hidden" value="0">
 
                         </div>
@@ -365,7 +149,7 @@
                             <label class="labels_index_mantenimiento _mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.nombre_sitio') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <input value="{{$mantenimiento_project->nombre_propiedad}}" onchange="check_input(this.value,this.id,'name_sitio_warning_mantenimiento');check_inp_count('count_name_sitio_mantenimiento','name_sitio_mantenimiento');" name="name_sitio_mantenimiento" id="name_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input onchange="check_input(this.value,this.id,'name_sitio_warning_mantenimiento');check_inp_count_mantenimiento('count_name_sitio_mantenimiento','name_sitio_mantenimiento');" name="name_sitio_mantenimiento" id="name_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                         <input id="count_name_sitio_mantenimiento" name="count_name_sitio_mantenimiento" type="number" class="hidden" value="0">
                         <span id="name_sitio_warning_mantenimiento" name="name_sitio_warning_mantenimiento" class="text-red-500"></span>
                     </div>
@@ -375,8 +159,8 @@
                             <label class="labels_index_mantenimiento  text-left font-roboto m-0" for=""><b>{{ __('mantenimiento.tipo_edificio') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select name="tipo_edificio_mantenimiento" id="tipo_edificio_mantenimiento" onchange="check_input(this.value,this.id,'tipo_edificio_warning_mantenimiento');check_inp_count('count_tipo_edificio_mantenimiento','tipo_edificio_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
-                            <option value="0">-{{ __('index.seleccionar') }}-</option>
+                        <select onchange="check_input(this.value,this.id,'tipo_edificio_warning_mantenimiento');check_inp_count_mantenimiento('count_tipo_edificio_mantenimiento','tipo_edificio_mantenimiento');" name="tipo_edificio_mantenimiento" id="tipo_edificio_mantenimiento"  class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <option value="">-{{ __('index.seleccionar') }}-</option>
                             {{-- @foreach ($tipo_edificios as $tipo_edificio)
                             <option value="{{$tipo_edificio->id}}">{{$tipo_edificio->name}}</option>
                             @endforeach --}}
@@ -390,7 +174,7 @@
                             <label class="labels_index_mantenimiento  text-left font-roboto m-0" for=""><b>{{ __('index.ciudad') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'ciudad_warning_mantenimiento');check_inp_count('count_ciudad_mantenimiento','ciudades_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ciudades_mantenimiento" id="ciudades_mantenimiento">
+                        <select onchange="check_input(this.value,this.id,'ciudad_warning_mantenimiento');check_inp_count_mantenimiento('count_ciudad_mantenimiento','ciudades_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ciudades_mantenimiento" id="ciudades_mantenimiento">
                             <option selected value="0">-{{ __('mantenimiento.selecciona_ciudad') }}-</option>
                             {{-- @foreach ($ciudades as $ciudad)
                             <option value="{{$ciudad->id}}">{{$ciudad->name}}</option>
@@ -405,13 +189,9 @@
                             <label class="labels_index_mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.velocidad_promedio') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'velocidad_promedio_warning_mantenimiento');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="velocidad_promedio_mantenimiento" id="velocidad_promedio_mantenimiento">
+                        <select onchange="check_input(this.value,this.id,'velocidad_promedio_warning_mantenimiento');check_inp_count_mantenimiento('count_velocidad_promedio_mantenimiento','velocidad_promedio_mantenimiento');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="velocidad_promedio_mantenimiento" id="velocidad_promedio_mantenimiento">
                             @for ($i = 0; $i <= 120; $i = $i + 10)
-                                @if ($mantenimiento_project->velocidad == $i)
-                                    <option selected value="{{$i}}">{{$i}} Km/h</option>
-                                @else
-                                    <option  value="{{$i}}">{{$i}} Km/h</option>
-                                @endif
+                            <option value="{{$i}}">{{$i}} Km/h</option>
                             @endfor
                         </select>
                         <input id="count_velocidad_promedio_mantenimiento" name="count_velocidad_promedio_mantenimiento" type="number" class="hidden" value="0">
@@ -423,31 +203,14 @@
                             <label class="font-roboto font-bold text-left labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.ocupacion_semanal') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="set_horas_diarias();check_input(this.value,this.id,'ocupacion_semanal_warning_mantenimiento');check_inp_count('count_ocupacion_semanal_mantenimiento','ocupacion_semanal_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ocupacion_semanal_mantenimiento" id="ocupacion_semanal_mantenimiento">
-                                                        @switch($mantenimiento_project->ocupacion_semanal)
-                                                            @case('m_50')
-                                                            <option selected value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                            <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
-                                                            <option value="168">168 Hrs.</option>
-                                                            @break
-
-                                                            @case('51_167')
-                                                            <option  value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                            <option selected value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
-                                                            <option value="168">168 Hrs.</option>
-                                                            @break
-
-                                                            @case('168')
-                                                            <option value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                            <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
-                                                            <option selected value="168">168 Hrs.</option>
-                                                            @break
-
-                                                            @default
-
-                                                        @endswitch
+                        <select onchange="set_horas_diarias();check_input(this.value,this.id,'ocupacion_semanal_warning_mantenimiento');check_inp_count_mantenimiento('count_ocupacion_semanal_mantenimiento','ocupacion_semanal_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ocupacion_semanal_mantenimiento" id="ocupacion_semanal_mantenimiento">
+                            <option value="">-{{ __('index.seleccionar') }}-</option>
+                            <option value="m_50">{{ __('mantenimiento.menos_50') }}.</option>
+                            <option value="51_167">{{ __('mantenimiento.51_167') }}.</option>
+                            <option value="168">{{ __('mantenimiento.168hrs') }}.</option>
                         </select>
-                        <input id="count_ocupacion_semanal_mantenimiento" name="count_ocupacion_semanal_mantenimiento" type="number" class="hidden"<div class="grid justify-items-end h-full gap-y-1 w-1/2">
+                        <input value="0" id="count_ocupacion_semanal_mantenimiento" name="count_ocupacion_semanal_mantenimiento" type="number" class="hidden"<div class="grid justify-items-end h-full gap-y-1 w-1/2">
+                        <span id="ocupacion_semanal_warning_mantenimiento" name="ocupacion_semanal_warning_mantenimiento" class="text-red-500"></span>
                     </div>
 
 
@@ -456,17 +219,10 @@
                             <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.personal_enviado') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                            <select  onchange="check_input(this.value,this.id,'personal_enviado_mantenimiento_warning');check_inp_count('count_personal_enviado_mantenimiento','personal_enviado_mantenimiento');" class="w-full border-2 border-color-inps  rounded-md p-1 my-1 font-roboto" name="personal_enviado_mantenimiento"  id="personal_enviado_mantenimiento">
-                                @if ($mantenimiento_project->personal_enviado == 'tecnico')
-                                    <option selected value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
-                                    <option value="tecnico_ayudante ">{{ __('mantenimiento.tecnico_ayudante') }}</option>
-                                @endif
-
-                                @if ($mantenimiento_project->personal_enviado == 'tecnico_ayudante')
-                                    <option  value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
-                                    <option selected value="tecnico_ayudante ">{{ __('mantenimiento.tecnico_ayudante') }}</option>
-                                @endif
-
+                            <select  onchange="check_input(this.value,this.id,'personal_enviado_warning');check_inp_count_mantenimiento('count_personal_enviado','personal_enviado_mantenimiento');" class="w-full border-2 border-color-inps  rounded-md p-1 my-1 font-roboto" name="personal_enviado_mantenimiento"  id="personal_enviado_mantenimiento">
+                                <option value="">-{{ __('index.seleccionar') }}-</option>
+                                <option value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
+                                <option value="tecnico_ayudante ">{{ __('mantenimiento.tecnico_ayudante') }}</option>
                             </select>
                             <input id="count_personal_enviado_mantenimiento" name="count_personal_enviado_mantenimiento" type="number" class="hidden" value="0">
                             <span id="personal_enviado_mantenimiento_warning" name="personal_enviado_mantenimiento_warning" class="text-red-500"></span>
@@ -494,7 +250,7 @@
                                 <label  class="font-roboto text-left labels_index" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
                             </div>
                             <div class="flex w-full">
-                                <input type="text" value="{{$project_edit->porcent_hvac}}%" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning_mantenimiento');check_inp_count('count_porcent_hvac_mantenimiento','porcent_hvac_mantenimiento');change_to_porcent(this.value,this.id);valida_formulario_mantenimiento();" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac_mantenimiento" id="porcent_hvac_mantenimiento">
+                                <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning_mantenimiento');check_inp_count_mantenimiento('count_porcent_hvac_mantenimiento','porcent_hvac_mantenimiento');change_to_porcent(this.value,this.id);valida_formulario_mantenimiento();" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac_mantenimiento" id="porcent_hvac_mantenimiento">
                                 <input id="count_porcent_hvac_mantenimiento" name="count_porcent_hvac_mantenimiento" type="number" class="hidden" value="0">
                                 <div class="ml-2" style="margin-top: 5.5px;">
                                     <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -706,12 +462,12 @@
                 <label  class="font-roboto text-left labels_index" for=""><b>{{ __('mantenimiento.tipo_mantenimiento') }}:</b></label><label class="text-red-500">*</label>
             </div>
             <div class="flex w-full">
-                <select onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'mantenimiento_realizado_warning');check_inp_count('count_mantenimiento_realizado','mantenimiento_realizado');" class="w-full bg-orange-500 border-2 border-color-tipo-calculo rounded-md p-1 my-1 font-roboto text-white" name="mantenimiento_realizado" id="mantenimiento_realizado">
+                <select onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'mantenimiento_realizado_warning');check_inp_count_mantenimiento('count_mantenimiento_realizado','mantenimiento_realizado');" class="w-full bg-orange-500 border-2 border-color-tipo-calculo rounded-md p-1 my-1 font-roboto text-white" name="mantenimiento_realizado" id="mantenimiento_realizado">
                     <option value="0">-{{ __('index.seleccionar') }}-</option>
                     <option  selected value="1">Cálculo Rapido</option>
                     <option value="2">Cálculo Detallado</option>
                 </select>
-                {{-- <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');change_to_porcent(this.value);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac" id="porcent_hvac">
+                {{-- <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count_mantenimiento('count_porcent_hvac','porcent_hvac');change_to_porcent(this.value);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac" id="porcent_hvac">
                 <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="0"> --}}
                 <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="0">
             </div>
@@ -754,18 +510,15 @@
                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                 >{{ __('index.siguiente') }}</button>
             </div>
-            @if ($type_p == 3)
+
             <div id="div_next_mantenimiento" name="div_next_mantenimiento" style="width: 80%;" class="hidden">
                 <button  type="button"  id="next_mantenimiento" name="next_mantenimiento"
                     x-show="step < 2"
-                    onclick="listar_mantenimiento_equipos({{ $project_edit->id }});set_horas_diarias_edit('{{ $mantenimiento_project->ocupacion_semanal }}');"
                     @click="step++"
                     style="background-color:#1B17BB;"
                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                 >{{ __('index.siguiente') }}</button>
             </div>
-            @endif
-
 
             <div id="div_atras_mant" name="div_atras_mant" style="width: 80%;" class="">
                 <button  type="button"  id="next_h_mant" name="next_h_mant"
