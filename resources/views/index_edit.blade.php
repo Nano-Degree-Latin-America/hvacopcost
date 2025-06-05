@@ -260,7 +260,7 @@ $idm = App::getLocale();
                 </div>
             </div>
         </div>
-
+        <input type="text" id="type_project_selected" name="type_project_selected">
         <div x-show.transition="step != 'complete'">
             <div class="">
                 <div x-show.transition.in="step === 1">
@@ -363,7 +363,7 @@ $idm = App::getLocale();
                         @if (strlen(__('index.atras')) > 6)
                         <button
                         type="button"
-                        onclick="back_show_form_project();"
+                        onclick="back_show_form_project($('#type_project_selected').val());"
                         x-show="step > 1"
                         @click="step--"
                             class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-md border font-roboto">
@@ -374,7 +374,7 @@ $idm = App::getLocale();
                         @if (strlen(__('index.atras')) == 6)
                         <button
                         type="button"
-                        onclick="back_show_form_project();"
+                        onclick="back_show_form_project($('#type_project_selected').val());"
                         x-show="step > 1"
                         @click="step--"
                             class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto">
@@ -413,7 +413,11 @@ $idm = App::getLocale();
 
                     </a>
 
-                    <div  x-show="step < 2" class="w-full flex" style=" justify-content: left;">
+
+                </div>
+
+                <div class="w-1/2 flex justify-end">
+                    <div  x-show="step < 2" class="w-full flex" style=" justify-content: right;">
                     <div  x-show="step < 2" class="w-full flex" style=" justify-content: left;">
                         <label style="font-size:10px;" class=" text-gray-500 font-montserrat"  for="">
                             De acuerdo a:
@@ -432,8 +436,8 @@ $idm = App::getLocale();
                           </ul>
                         </div>
                 </div>
-                </div>
 
+                </div>
 
 
                 @if ($type_p == 1 || $type_p == 2)
