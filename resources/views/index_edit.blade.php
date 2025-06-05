@@ -305,7 +305,7 @@ $idm = App::getLocale();
                     <div class="w-full h-full font-roboto flex ">
                         <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
                              @if ($type_p === 3)
-                            @include('mantenimiento.costos_adicionales_edit')
+                            @include('mantenimiento.costos_adicionales')
                              @endif
                         </div>
                     </div>
@@ -492,8 +492,8 @@ $idm = App::getLocale();
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('mantenimiento.speend_plan') }}</button>
 
-                    <button style="background-color:#1B17BB;width: 20%;"  x-show="step == 7" type="button"
-                    onclick="update_mantenimiento();" name="guardar_mantenimiento" id="guardar_mantenimiento" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
+                    {{-- <button style="background-color:#1B17BB;width: 20%;"  x-show="step == 7" type="button"
+                    onclick="update_mantenimiento();" name="guardar_mantenimiento" id="guardar_mantenimiento" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button> --}}
 
                 </div>
                 @endif
