@@ -16,17 +16,23 @@ use App\FactorEstadoUnidad;
 use App\FactorGarantiaModel;
 use App\FactorHorasDiariasModel;
 use App\MantenimientoEquiposModel;
+use App\Services\CalculoMantenimientoService;
+use Illuminate\Support\Facades\Redirect;
 use App\SistemasModel;
 use App\ProjectsModel;
 use App\UnidadesTrModel;
 use App\UnidadesCfmModel;
 use App\UnidadesUnidadModel;
+use App\Traits\FormusTrait;
 use App\MantenimientoProjectsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class MantenimientoController extends Controller
 {
+
+    use FormusTrait;
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -940,7 +946,10 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
     session(['array_speed_plan' => $array_speed_plan]);
 
     //ceil reondea a entero superior
-   array_push($analisis_costo_mant_array,$format_precio_venta,ceil($dias_mantenimiento),ceil($tiempo_mantenimiento),ceil($tiempo_traslados),ceil($tiempo_acceso_edificio),ceil($tiempo_garantias),$format_suma_costos);
+   $id_new_project = $this->save_mantenimiento_project($request);
+
+   array_push($analisis_costo_mant_array,$format_precio_venta,ceil($dias_mantenimiento),ceil($tiempo_mantenimiento),ceil($tiempo_traslados),ceil($tiempo_acceso_edificio),ceil($tiempo_garantias),$format_suma_costos,$id_new_project);
+
 
     return response()->json($analisis_costo_mant_array);
 }
@@ -2489,6 +2498,59 @@ return response()->json($array_to_response);
                     # code...
                 break;
             }
+   }
+
+   public function save_mantenimiento_project(Request $request){
+
+         $mew_project = new ProjectsModel;
+
+
+            $mew_project->type_p= 3;
+
+            $pais = DB::table('pais')
+            ->where('pais.idPais','=',$request->values['paises_mantenimiento'])
+            ->first()->pais;
+
+            $ciudad = DB::table('ciudad')
+            ->where('ciudad.idCiudad','=',$request->values['ciudades_mantenimiento'])
+            ->first()->ciudad;
+
+            $mew_project->region=$pais;
+            $mew_project->ciudad=$ciudad;
+            $mew_project->id_tipo_edificio=$request->values['tipo_edificio_mantenimiento'];
+            $mew_project->id_cat_edifico=$request->values['cat_edi_mantenimiento'];
+            $cap_tot_ar_mant =$this->num_form($request->values['ar_project_mantenimiento']);
+            $mew_project->area = floatval($cap_tot_ar_mant);
+
+            $aux_porcent = explode("%", $request->values['porcent_hvac_mantenimiento']);
+            if(count($aux_porcent) == 2){
+                $mew_project->porcent_hvac=intval($aux_porcent[0]);
+            }else{
+                $mew_project->porcent_hvac=10;
+            }
+
+            $mew_project->status=1;
+            $mew_project->id_empresa=Auth::user()->id_empresa;
+            $mew_project->id_user=Auth::user()->id;
+
+        $mew_project->save();
+
+        if( $mew_project->save()){
+
+
+            $calculoMantenimientoService = new CalculoMantenimientoService();
+
+            $mantenimiento =  $calculoMantenimientoService->new_calculo_mantenimiento_save($request,$mew_project->id);
+                if($mantenimiento ==  true){
+                    Session::forget('array_sistemas');
+                    Session::forget('array_speed_plan');
+                }
+
+
+            //$solutions = $solutionService->CreateSolutions($request,$mew_project->id);
+
+            return $mew_project->id;
+        }
    }
 
 }
