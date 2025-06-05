@@ -1221,7 +1221,7 @@ async function set_ventilaciones_no_doa(value) {
             $('#mant_prev').addClass("hidden");
             $('#img_mantenimiento').addClass("hidden");
             $('#button_sigiuente_mantenimiento').addClass("hidden");
-            alert('asds');
+
 
             $('#type_project_name').text('Nuevo');
 
