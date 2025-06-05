@@ -15083,7 +15083,26 @@ function check_porcent_max_min_kms(value,id,unidad){
         formData[$(this).attr('name')] = $(this).val();
     });
 
-    $.ajax({
+
+    Swal.fire({
+        title: 'Guardar?',
+        text: "",
+        showDenyButton: true,
+        showConfirmButton: true,
+        icon: 'question',
+        showCancelButton: true,
+        cancelButtonColor: '#FF6600',
+        confirmButtonText:`Guardar`,
+        confirmButtonColor: '#3182ce',
+
+    }).then((result) => {
+        var token = $("#token").val();
+        if (result.isDenied) {
+           return false;
+        }
+
+        if (result.isConfirmed) {
+            $.ajax({
         url: '/spend_plan_base',
         type: 'post',
 
@@ -15100,11 +15119,21 @@ function check_porcent_max_min_kms(value,id,unidad){
             $('#tiempo_garantias').val(response[5]);
             $('#costos_filtro_aire_adicionales').val(response[6]);
 
+             Swal.fire({
+                title: '¡Exito!',
+                icon: 'success',
+                text:'Guardado'
+
+            })
+            window.location.href = 'edit_project/' + response[7];
         },
         error: function(xhr, status, error) {
             console.error('Error al enviar los datos:', error);
         }
     });
+        }
+
+    })
  }
 
  function calcular_speendplan_base_edit(id_project){
@@ -16505,6 +16534,31 @@ function check_porcent_max_min_kms(value,id,unidad){
             registro: registro,
             tipo: tipo,
             value: value,
+        },
+        success: function (response) {
+            $('#'+id).attr('readonly', true);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+
+ }
+
+  function save_project_mantenimiento(){
+    var token = $("#token").val();
+     var formData = {};
+    $("input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_'], input[name*='precio_'], input[name*='total_horas_'], input[name*='hora_dia_'], input[name*='dias_'], input[name*='idas_ajustados_']").each(function() {
+        formData[$(this).attr('name')] = $(this).val();
+    });
+    console.log(formData);
+    return false;
+    $.ajax({
+        type: 'post',
+        url: '/save_project_mantenimiento',
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            values: formData
         },
         success: function (response) {
             $('#'+id).attr('readonly', true);

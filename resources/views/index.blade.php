@@ -436,10 +436,10 @@ input[type=number]::-webkit-outer-spin-button {
                      {{-- onclick="calcular_speendplan_base();" --}}
                     style="background-color:#1B17BB;"
                         x-show="step == 2"
-                        @click="step++"
+                        {{-- @click="step++" --}}
                         onclick="calcular_speendplan_base();"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
-                    >{{ __('index.siguiente') }}</button>
+                    >{{ __('index.guardar') }}</button>
 
 
                     <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
