@@ -247,9 +247,7 @@ public function factores_mantenimiento(){
         $dias_aux =$hora_dia_aux/7;
         $dias = $this->total_dias_periodo($dias_aux,$periodo);
 
-        $idas_ajustados_aux = 2;
-        $idas_ajustados = $this->total_idas_periodo($idas_ajustados_aux,$periodo);
-
+        $idas_ajustados = $this->total_idas_periodo($dias_aux,$periodo);
 
         array_push(
             $array_to_response,
@@ -447,7 +445,7 @@ public function factores_mantenimiento(){
         $dias = $this->total_dias_periodo($dias_aux,$periodo);
 
         $idas_ajustados_aux = 2;
-        $idas_ajustados = $this->total_idas_periodo($idas_ajustados_aux,$periodo);
+        $idas_ajustados = $this->total_idas_periodo($dias_aux,$periodo);
 
 
 
@@ -2147,7 +2145,7 @@ return response()->json($array_to_response);
         $dias = $this->total_dias_periodo($dias_aux,$periodo);
 
         $idas_ajustados_aux = 2;
-        $idas_ajustados = $this->total_idas_periodo($idas_ajustados_aux,$periodo);
+        $idas_ajustados = $this->total_idas_periodo($dias_aux,$periodo);
 
         $id_sistema = $request->values[1];
         $unidad = $request->values[2];
@@ -2414,17 +2412,19 @@ return response()->json($array_to_response);
                 switch ($periodo) {
                 case 'T':
                     $dias_periodo = $dias_aux*4;
-                    return intval($dias_periodo);
+
+                    return $dias_periodo;
                 break;
 
                 case 'S':
                     $dias_periodo = $dias_aux*2;
-                    return intval($dias_periodo);
+
+                    return $dias_periodo;
                 break;
 
                 case 'A':
                     $dias_periodo = $dias_aux;
-                    return intval($dias_periodo);
+                    return $dias_periodo;
                 break;
 
                 default:
@@ -2436,18 +2436,53 @@ return response()->json($array_to_response);
    public function total_idas_periodo($idas_ajustados_aux,$periodo){
                 switch ($periodo) {
                 case 'T':
-                    $idas_ajustados_periodo = $idas_ajustados_aux*4;
-                    return intval($idas_ajustados_periodo);
+
+                    $ida_redondeo = floor($idas_ajustados_aux * 10) / 10;
+                    $ida_primer_numero = explode('.',$ida_redondeo);
+                    $cinco = 5;
+                    $rango_1 = $ida_primer_numero[0];
+                    $rango_1_2 = $ida_primer_numero[0].'.6';
+                    $rango_2 = $ida_primer_numero[0].'.61';
+                    $rango_2_2 = ceil($ida_redondeo);
+
+                    if($ida_redondeo>$rango_1 && $ida_redondeo<$rango_1_2){
+                        $idas_auxa = $rango_1.'.'.$cinco;
+                    }
+
+                    if($ida_redondeo>$rango_2 && $ida_redondeo<$rango_2_2){
+                        $idas_auxa = ceil($ida_redondeo);
+                    }
+
+                    $idas_ajustados_periodo = $idas_auxa*4;
+
+                    return $idas_ajustados_periodo;
                 break;
 
                 case 'S':
-                    $idas_ajustados_periodo = $idas_ajustados_aux*2;
-                    return intval($idas_ajustados_periodo);
+
+                    $ida_redondeo = floor($idas_ajustados_aux * 10) / 10;
+                    $ida_primer_numero = explode('.',$ida_redondeo);
+                    $cinco = 5;
+                    $rango_1 = $ida_primer_numero[0];
+                    $rango_1_2 = $ida_primer_numero[0].'.6';
+                    $rango_2 = $ida_primer_numero[0].'.61';
+                    $rango_2_2 = ceil($ida_redondeo);
+
+                    if($ida_redondeo>$rango_1 && $ida_redondeo<$rango_1_2){
+                        $idas_auxa = $rango_1.'.'.$cinco;
+                    }
+
+                    if($ida_redondeo>$rango_2 && $ida_redondeo<$rango_2_2){
+                        $idas_auxa = ceil($ida_redondeo);
+                    }
+
+                    $idas_ajustados_periodo = $idas_auxa*2;
+                    return $idas_ajustados_periodo;
                 break;
 
                 case 'A':
                     $idas_ajustados_periodo = $idas_ajustados_aux;
-                    return intval($idas_ajustados_periodo);
+                    return $idas_ajustados_periodo;
                 break;
 
                 default:
