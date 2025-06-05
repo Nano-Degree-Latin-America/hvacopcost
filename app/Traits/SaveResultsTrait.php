@@ -55,7 +55,14 @@ if($action_submit_send == 'store'){
     if($id_result){
         $new_result = ResultsProjectModel::findorfail($id_result->id);
     }else{
-        $this->save_results($enf,$id_project);
+        $this->save_results($enf, $id_project);
+        $new_result = ResultsProjectModel::where('id_project', '=', $id_project)
+            ->where('num_enf', '=', $enf)
+            ->first();
+        if(!$new_result){
+            // Si por alguna razón no se creó, inicializa uno nuevo
+            $new_result = new ResultsProjectModel;
+        }
     }
 }
 $new_result->num_enf = $enf;
