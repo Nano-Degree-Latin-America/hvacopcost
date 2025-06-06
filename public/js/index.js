@@ -13860,6 +13860,7 @@ function set_horas_diarias(){
     if (ocupacionMap[ocupacion]) {
         $("#horas_diarias_mantenimiento").val(ocupacionMap[ocupacion]);
     }
+
 }
 
 function set_horas_diarias_edit(value){
