@@ -249,11 +249,10 @@ public function factores_mantenimiento(){
         //coordinacion resultados
         $hora_dia_aux = $this->div_horas_periodo($total_horas,$periodo);
         $hora_dia = $this->total_horas_periodo($hora_dia_aux,$periodo);
-
         $dias_aux =$hora_dia_aux/7;
-        $dias = $this->total_dias_periodo($dias_aux,$periodo);
-
-        $idas_ajustados = $this->total_idas_periodo($dias_aux,$periodo);
+        $dias = $this->redondeo_dias($dias_aux);
+        $dias_ajustados = $this->total_dias_periodo($dias,$periodo);
+        $idas_ajustados = $this->total_idas_periodo($dias,$periodo);
 
         array_push(
             $array_to_response,
@@ -277,7 +276,7 @@ public function factores_mantenimiento(){
             ''.'_hidden',
             $total_horas.'_hidden',
             number_format($hora_dia,1).'_hidden',
-            floatval(number_format($dias,1)).'_hidden',
+            floatval(number_format($dias_ajustados,1)).'_hidden',
             $idas_ajustados.'_hidden',
         );
 
@@ -446,12 +445,12 @@ public function factores_mantenimiento(){
 
         $hora_dia_aux = $this->div_horas_periodo($total_horas,$periodo);
         $hora_dia = $this->total_horas_periodo($hora_dia_aux,$periodo);
-
         $dias_aux =$hora_dia_aux/7;
-        $dias = $this->total_dias_periodo($dias_aux,$periodo);
+        $dias = $this->redondeo_dias($dias_aux);
+        $dias_ajustados = $this->total_dias_periodo($dias,$periodo);
+        $idas_ajustados = $this->total_idas_periodo($dias,$periodo);
 
-        $idas_ajustados_aux = 2;
-        $idas_ajustados = $this->total_idas_periodo($dias_aux,$periodo);
+
 
 
 
@@ -476,7 +475,7 @@ public function factores_mantenimiento(){
                 $array_sistemas[$i][17] = ''.'_hidden';  //costo_suma
                 $array_sistemas[$i][18] = $total_horas.'_hidden';  //costo_suma
                 $array_sistemas[$i][19] = number_format($hora_dia,1).'_hidden';
-                $array_sistemas[$i][20] = floatval(number_format($dias,1)).'_hidden';
+                $array_sistemas[$i][20] = floatval(number_format($dias_ajustados,1)).'_hidden';
                 $array_sistemas[$i][21] = $idas_ajustados.'_hidden';
             }
         }
@@ -716,8 +715,8 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
         $suma_dias = 0;
         // Recorrer el array
         foreach ($data as $key => $value) {
-            // Verificar si la clave contiene 'dias_' seguido de un número
-            if (preg_match('/^dias_\d+$/', $key)) {
+            // Verificar si la clave contiene 'dias_ajustados_' seguido de un número
+            if (preg_match('/^dias_ajustados_\d+$/', $key)) {
                 // Agregar al array filtrado
                 $filtered_dias[$key] = $value;
             }
@@ -725,7 +724,7 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
 
         for ($i=0; $i < count($filtered_dias) ; $i++) {
 
-            $suma_dias_aux = explode('_hidden',$filtered_dias['dias_'.$i]);
+            $suma_dias_aux = explode('_hidden',$filtered_dias['dias_ajustados_'.$i]);
 
             //$suma_costos = $suma_costos + $precio_aux[0];
             $suma_dias = intval($suma_dias) + intval($suma_dias_aux[0]);
@@ -1002,14 +1001,18 @@ public function spend_plan_base_edit(Request $request,$id_project)
 
 
     //horas hombre mantenimiento
+    //formula: 7*suma_dias/temnico_tecnico_ayudante
     if($request->values['personal_enviado_mantenimiento'] == 'tecnico'){
     $temnico_tecnico_ayudante = 1;
     }
     if($request->values['personal_enviado_mantenimiento'] == 'tecnico_ayudante'){
     $temnico_tecnico_ayudante = 1.3;
     }
-    $horas_hombre_mantenimiento_aux = $suma_total_horas / $temnico_tecnico_ayudante;
+
+    $horas_hombre_mantenimiento_aux = 7*$suma_dias/$temnico_tecnico_ayudante;
     $horas_hombre_mantenimiento = ceil($horas_hombre_mantenimiento_aux);
+
+
     //horass_hombres_ingresos_eegresos
     $horas_hombre_ingresos_egresos = $suma_idas * 2;
 
@@ -1165,7 +1168,7 @@ public function spend_plan_base_edit(Request $request,$id_project)
     ////////////////////////Calculo anual de mano de obra
 
     //////////Dias mantenimiento
-     $dias_mantenimiento = $suma_idas;
+     $dias_mantenimiento = $suma_dias;
 
     //////////tiempo mantenimiento
     $tiempo_mantenimiento = $horas_hombre_mantenimiento;
@@ -2069,17 +2072,24 @@ return response()->json($array_to_response);
             $tipo_ambiente_mantenimiento = $request->values[16];
             $ocupacion_semanal_mantenimiento = $request->values[17];
 
+        $horas = $this->horas($capacidad_termica_mantenimiento,$unidad);
+        $periodo = $this->periodo($capacidad_termica_mantenimiento,$unidad);
+        $fg = 1.03;
+        //$costo_instalado = $this->obtener_costo_instalado($unidad);
+        //$rav = $this->obtener_rav($unidad);
+        $fa = $this->obtener_fa($tipo_ambiente_mantenimiento);
+        $fta = $this->obtener_fta($tipo_acceso_mantenimiento);
+        $feu = $this->obtener_feu($estado_unidad_mantenimiento);
+        $fav = $this->obtener_fav($yrs_vida_mantenimiento);
+        $fhd = $this->obtener_fhd($ocupacion_semanal_mantenimiento);
+        $total_horas = $this->formula_total_horas(intval($horas),intval($cantidad_unidades_mantenimiento),$fa,$fta,$feu,$fav,$fhd,$fg);
 
-            $fg = 1.03;
-            //$costo_instalado = $this->obtener_costo_instalado($unidad);
-            //$rav = $this->obtener_rav($unidad);
-            $fa = $this->obtener_fa($tipo_ambiente_mantenimiento);
-            $fta = $this->obtener_fta($tipo_acceso_mantenimiento);
-            $feu = $this->obtener_feu($estado_unidad_mantenimiento);
-            $fav = $this->obtener_fav($yrs_vida_mantenimiento);
-            $fhd = $this->obtener_fhd($ocupacion_semanal_mantenimiento);
-            $total_horas = $this->formula_total_horas(intval($cantidad_unidades_mantenimiento),$fa,$fta,$feu,$fav,$fhd,$fg);
-
+                  $hora_dia_aux = $this->div_horas_periodo($total_horas,$periodo);
+                  $hora_dia = $this->total_horas_periodo($hora_dia_aux,$periodo);
+                  $dias_aux =$hora_dia_aux/7;
+                  $dias = $this->redondeo_dias($dias_aux);
+                  $dias_ajustados = $this->total_dias_periodo($dias,$periodo);
+                  $idas_ajustados = $this->total_idas_periodo($dias,$periodo);
 
             $id_sistema = $request->values[1];
             $unidad = $request->values[2];
@@ -2116,7 +2126,10 @@ return response()->json($array_to_response);
             $new_equipo_mantenimiento->costo_total_filtros = $suma_adicionales;
             $new_equipo_mantenimiento->cantidad = $request->values[6];
             $new_equipo_mantenimiento->cambios_anuales = $cantidad_filtros;
-            $new_equipo_mantenimiento->precio = $total_horas;
+            $new_equipo_mantenimiento->total_horas = $total_horas;
+            $new_equipo_mantenimiento->hora_dia = $hora_dia;
+            $new_equipo_mantenimiento->dias = $dias_ajustados;
+            $new_equipo_mantenimiento->idas_ajustados = $idas_ajustados;
             $new_equipo_mantenimiento->id_empresa = Auth::user()->id_empresa;
             $new_equipo_mantenimiento->save();
 
@@ -2149,12 +2162,10 @@ return response()->json($array_to_response);
 //coordinacion resultados
         $hora_dia_aux = $this->div_horas_periodo($total_horas,$periodo);
         $hora_dia = $this->total_horas_periodo($hora_dia_aux,$periodo);
-
         $dias_aux =$hora_dia_aux/7;
-        $dias = $this->total_dias_periodo($dias_aux,$periodo);
-
-        $idas_ajustados_aux = 2;
-        $idas_ajustados = $this->total_idas_periodo($dias_aux,$periodo);
+        $dias = $this->redondeo_dias($dias_aux);
+        $dias_ajustados = $this->total_dias_periodo($dias,$periodo);
+        $idas_ajustados = $this->total_idas_periodo($dias,$periodo);
 
         $id_sistema = $request->values[1];
         $unidad = $request->values[2];
@@ -2192,7 +2203,7 @@ return response()->json($array_to_response);
         $new_equipo_mantenimiento->cambios_anuales = $cantidad_filtros;
         $new_equipo_mantenimiento->total_horas = $total_horas;
         $new_equipo_mantenimiento->hora_dia = $hora_dia;
-        $new_equipo_mantenimiento->dias = $dias;
+        $new_equipo_mantenimiento->dias = $dias_ajustados;
         $new_equipo_mantenimiento->idas_ajustados = $idas_ajustados;
         $new_equipo_mantenimiento->id_empresa = Auth::user()->id_empresa;
         $new_equipo_mantenimiento->update();
@@ -2397,11 +2408,42 @@ return response()->json($array_to_response);
    public function total_horas_periodo($hora_dia_aux,$periodo){
             switch ($periodo) {
                 case 'T':
-                    $horas_periodo = $hora_dia_aux*4;
+                    $hora_redondeo = floor($hora_dia_aux * 10) / 10;  // Mostrar solo un decimal
+                    $hora_primer_numero = explode('.',$hora_redondeo);
+                    $cinco = 5;
+                    $rango_1 = $hora_primer_numero[0];
+                    $rango_1_2 = $hora_primer_numero[0].'.5';
+                    $rango_2 = $hora_primer_numero[0].'.5';
+                    $rango_2_2 = ceil($hora_redondeo);
+
+                    if($hora_redondeo>$rango_1 && $hora_redondeo<$rango_1_2){
+                        $horas_auxa = $rango_1.'.'.$cinco;
+                    }
+
+                    if($hora_redondeo>=$rango_2 && $hora_redondeo<$rango_2_2){
+                        $horas_auxa = ceil($hora_redondeo);
+                    }
+
+                    $horas_periodo = $horas_auxa*4;
                     return intval($horas_periodo);
                 break;
 
                 case 'S':
+                    $hora_redondeo = floor($hora_dia_aux * 10) / 10;  // Mostrar solo un decimal
+                    $hora_primer_numero = explode('.',$hora_redondeo);
+                    $cinco = 5;
+                    $rango_1 = $hora_primer_numero[0];
+                    $rango_1_2 = $hora_primer_numero[0].'.5';
+                    $rango_2 = $hora_primer_numero[0].'.5';
+                    $rango_2_2 = ceil($hora_redondeo);
+
+                    if($hora_redondeo>$rango_1 && $hora_redondeo<$rango_1_2){
+                        $horas_auxa = $rango_1.'.'.$cinco;
+                    }
+
+                    if($hora_redondeo>=$rango_2 && $hora_redondeo<$rango_2_2){
+                        $horas_auxa = ceil($hora_redondeo);
+                    }
                     $horas_periodo = $hora_dia_aux*2;
                     return intval($horas_periodo);
                 break;
@@ -2446,22 +2488,22 @@ return response()->json($array_to_response);
                 switch ($periodo) {
                 case 'T':
 
-                    $ida_redondeo = floor($idas_ajustados_aux * 10) / 10;
+                    $ida_redondeo = floor($idas_ajustados_aux * 10) / 10;  // Mostrar solo un decimal
                     $ida_primer_numero = explode('.',$ida_redondeo);
                     $cinco = 5;
                     $rango_1 = $ida_primer_numero[0];
-                    $rango_1_2 = $ida_primer_numero[0].'.6';
-                    $rango_2 = $ida_primer_numero[0].'.61';
+                    $rango_1_2 = $ida_primer_numero[0].'.5';
+                    $rango_2 = $ida_primer_numero[0].'.5';
                     $rango_2_2 = ceil($ida_redondeo);
 
-                    if($ida_redondeo>$rango_1 && $ida_redondeo<$rango_1_2){
+                    if($ida_redondeo>floatval($rango_1) && $ida_redondeo <= floatval($rango_1_2) || $ida_redondeo == floatval($rango_1_2)){
                         $idas_auxa = $rango_1.'.'.$cinco;
                     }
 
-                    if($ida_redondeo>$rango_2 && $ida_redondeo<$rango_2_2){
+                    if($ida_redondeo >= floatval($rango_2) && $ida_redondeo <=  floatval($rango_2_2) || $ida_redondeo == floatval($rango_2_2)){
                         $idas_auxa = ceil($ida_redondeo);
                     }
-
+                    //dd($ida_redondeo."_".$rango_1."_".$rango_1_2."_".$rango_2."_".$rango_2_2);
                     $idas_ajustados_periodo = $idas_auxa*4;
 
                     return $idas_ajustados_periodo;
@@ -2473,15 +2515,15 @@ return response()->json($array_to_response);
                     $ida_primer_numero = explode('.',$ida_redondeo);
                     $cinco = 5;
                     $rango_1 = $ida_primer_numero[0];
-                    $rango_1_2 = $ida_primer_numero[0].'.6';
-                    $rango_2 = $ida_primer_numero[0].'.61';
+                    $rango_1_2 = $ida_primer_numero[0].'.5';
+                    $rango_2 = $ida_primer_numero[0].'.5';
                     $rango_2_2 = ceil($ida_redondeo);
 
-                    if($ida_redondeo>$rango_1 && $ida_redondeo<$rango_1_2){
+                    if($ida_redondeo > floatval($rango_1) && $ida_redondeo< $rango_1_2){
                         $idas_auxa = $rango_1.'.'.$cinco;
                     }
 
-                    if($ida_redondeo>$rango_2 && $ida_redondeo<$rango_2_2){
+                    if($ida_redondeo >= floatval($rango_2) && $ida_redondeo < floatval($rango_2_2)){
                         $idas_auxa = ceil($ida_redondeo);
                     }
 
@@ -2551,6 +2593,28 @@ return response()->json($array_to_response);
 
             return $mew_project->id;
         }
+   }
+
+   public function redondeo_dias($dias){
+                    $dias_redondeo = floor($dias * 10) / 10;  // Mostrar solo un decimal
+                    $dia_primer_numero = explode('.',$dias_redondeo);
+                    $cinco = 5;
+                    $rango_1 = $dia_primer_numero[0];
+
+                    $rango_1_2 = $dia_primer_numero[0].'.5';
+                    $rango_2 = $dia_primer_numero[0].'.5';
+                    $rango_2_2 = ceil($dias_redondeo);
+
+                    if($dias_redondeo>$rango_1 && $dias_redondeo<$rango_1_2){
+                        $dias_auxa = $rango_1.'.'.$cinco;
+                    }
+
+                    if($dias_redondeo>=$rango_2 && $dias_redondeo<$rango_2_2){
+                        $dias_auxa = ceil($dias_redondeo);
+                    }
+
+                   return $dias_auxa;
+
    }
 
 }
