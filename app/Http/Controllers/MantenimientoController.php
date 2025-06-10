@@ -387,6 +387,7 @@ public function factores_mantenimiento(){
     }
 
     public function update_registro(Request  $request,$id){
+
         $array_sistemas = Session::get('array_sistemas');
 
             $sistema = $request->values[1];
@@ -1053,12 +1054,13 @@ public function spend_plan_base_edit(Request $request,$id_project)
     ////formula: $mano_obra / 6
     $materiales_aux = $mano_obra / 6;
     $materiales = ceil($materiales_aux);
+
     ////////////Equipos/////////////////////////////////////////////
     $equipos = 0;
 
     ////////////Vehiculos/////////////////////////////////////////////
     /////formula: $distancia_sitio_mantenimiento*2*$suma_idas*1.2
-    $vehiculos = $distancia_sitio_mantenimiento * 2 * $suma_idas * 1.2;
+    $vehiculos = $distancia_sitio_mantenimiento * 2 * $suma_dias * 1.2;
 
 
     ////////////Contratistas/////////////////////////////////////////////
@@ -1078,6 +1080,7 @@ public function spend_plan_base_edit(Request $request,$id_project)
 
     ///suma_precios
     $suma_precios = intval($materiales) + intval($equipos) + intval($mano_obra) + intval($vehiculos) + intval($contratistas) + intval($viaticos) + intval($burden);
+
     ///////////precio venta
     ///formula:$suma_precios*1/(100-40)
     $porcent_100_40_aux =  100-40;
@@ -1549,6 +1552,7 @@ public function spend_plan_base_adicionales_edit(Request $request,$id_project)
     $suma_mano_obra = $servicio_emergencias_adicionales+$tiempo_adicional_accesos_adicionales+$curso_seguridad_otros_adicionales+$lavado_filtros_aire_adicionales+$lavado_evaporadores_adicionales+$lavado_extra_condensadores_adicionales+$lavado_ventiladores_adicionales+$limpieza_grasa_adicionales;
 
     $mano_de_obra_sp_adicionales = ($total_horas+$suma_mano_obra)*$personal_enviado;
+
     //////////////////////vehiculos
     //////formula: distancia_sitio_mantenimiento*2*dias_mantenimiento*1.2
 
@@ -2150,6 +2154,7 @@ return response()->json($array_to_response);
         $ocupacion_semanal_mantenimiento = $request->values[17];
         $horas = $this->horas($capacidad_termica_mantenimiento,$unidad);
         $periodo = $this->periodo($capacidad_termica_mantenimiento,$unidad);
+
         $fg = 1.03;
         //$costo_instalado = $this->obtener_costo_instalado($unidad);
         //$rav = $this->obtener_rav($unidad);
