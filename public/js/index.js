@@ -13800,7 +13800,7 @@ function set_horas_diarias(){
     const ocupacionMap = {
         'm_50': 'Menor de 50 Hrs.',
         '168': '168 Hrs.',
-        '51_167': '51 a 137 Hrs.'
+        '51_167': '51 a 167 Hrs.'
     };
 
     const ocupacion = $("#ocupacion_semanal_mantenimiento").val();
@@ -13820,7 +13820,7 @@ function set_horas_diarias_edit(value){
     }
 
     if(value == '51_167'){
-        $("#horas_diarias_mantenimiento").val('51 a 137 Hrs.');
+        $("#horas_diarias_mantenimiento").val('51 a 167 Hrs.');
     }
 }
 
