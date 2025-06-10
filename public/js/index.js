@@ -1249,7 +1249,7 @@ async function set_ventilaciones_no_doa(value) {
                 action_submit_send.value = 'update';
                 //se actualiza proyecto nuevo
             }
-             $('#type_project_selected').val(1);
+             //$('#type_project_selected').val(1);
         break;
 
         case 'pr':
@@ -1331,7 +1331,7 @@ async function set_ventilaciones_no_doa(value) {
         $('#button_inactive_2_1_retro').removeClass("hidden");
         $('#button_inactive_3_1_retro').removeClass("hidden");
         $('#button_inactive_3_1_mant').addClass("hidden");
-        $('#type_project_selected').val(2);
+        //$('#type_project_selected').val(2);
         break;
 
         case 'man':
@@ -1356,59 +1356,6 @@ async function set_ventilaciones_no_doa(value) {
             set_options_factor_acceso();
             set_options_estado_unidad();
             type_p.value = 3;
-           /*  type_p.value = 3;
-        pn.checked = false;
-        pr.checked = false;
-        man.checked = true;
-
-        if(action == 'edit'){
-
-        }
-        if(action != 'edit'){
-
-            $('#csStd_1_1_retro').prop('disabled', false);
-            send_marcas();
-        }
-         //si tipo es igual a 1
-        if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 0 || parseInt(type_p_aux) === 2) {
-            action_submit_send.value = 'store';
-             //se da de alta nuevas soluciones tipo proyecto nuevo
-             clean_form_retro(0);
-        }
-        //si tipo es igual a 2
-        if(parseInt(type_p_aux) === 3){
-            action_submit_send.value = 'update';
-
-            //1_1
-            traer_unidad_hvac_edit(id_project,1,1,'cUnidad_1_1_retro','csTipo_1_1_retro','csDisenio_1_1_retro','tipo_control_1_1_retro','dr_1_1_retro','csMantenimiento_1_1_retro','lblCsTipo_1_1_retro'
-            ,'capacidad_total_1_1_retro','costo_elec_1_1_retro','csStd_retro_1_1_cant','costo_recu_1_1_retro','csStd_1_1_retro'
-            ,'maintenance_cost_1_1_retro','marca_1_1_retro','modelo_1_1_retro','yrs_vida_1_1_retro','const_an_rep_1_1','','tipo_ambiente_1_1_retro','proteccion_condensador_1_1_retro');
-            //2_1
-            traer_unidad_hvac_edit(id_project,1,2,'cUnidad_2_1_retro','cheTipo_2_1_retro','cheDisenio_2_1_retro','tipo_control_2_1_retro','dr_2_1_retro','csMantenimiento_2_1_retro','lblCsTipo_2_1_retro'
-            ,'capacidad_total_2_1_retro','costo_elec_2_1_retro','csStd_cant_2_1_retro','costo_recu_2_1_retro','csStd_2_1_retro'
-            ,'maintenance_cost_2_1_retro','marca_2_1_retro','modelo_2_1_retro','yrs_vida_2_1_retro','const_an_rep_2_1','action_submit_2_1_retro','tipo_ambiente_2_1_retro','proteccion_condensador_2_1_retro');
-            //3_1
-            traer_unidad_hvac_edit(id_project,1,3,'cUnidad_3_1_retro','cheTipo_3_1_retro','cheDisenio_3_1_retro','tipo_control_3_1_retro','dr_3_1_retro','cheMantenimiento_3_1_retro','lblCsTipo_3_1_retro'
-            ,'capacidad_total_3_1_retro','costo_elec_3_1_retro','csStd_cant_3_1_retro','costo_recu_3_1_retro','csStd_3_1_retro'
-            ,'maintenance_cost_3_1_retro','marca_3_1_retro','modelo_3_1_retro','yrs_vida_3_1_retro','const_an_rep_3_1','action_submit_3_1_retro','tipo_ambiente_3_1_retro','proteccion_condensador_3_1_retro');
-            //se act+ualiza proyecto retro
-        }
-        $('#'+retro_p).removeClass("hidden");
-        $('#'+new_p).addClass("hidden");
-        $('#'+button_rp).removeClass("hidden");
-        $('#'+button_np).addClass("hidden");
-        $('#costo_anual_reparaciones_2_1_retro').removeClass("hidden");
-        $('#costo_anual_reparaciones_3_1_retro').removeClass("hidden");
-        inactive_tarjets_retro('man');
-        $('#inv_ini_capex_2_1_retro').addClass("hidden");
-        $('#inv_ini_capex_2_1_mant').removeClass("hidden");
-        $('#inv_ini_capex_3_1_retro').addClass("hidden");
-        $('#inv_ini_capex_3_1_mant').removeClass("hidden");
-        $('#button_inactive_2_1_mant').removeClass("hidden");
-        $('#button_inactive_2_1_retro').addClass("hidden");
-        $('#button_inactive_3_1_retro').addClass("hidden");
-        $('#button_inactive_3_1_mant').removeClass("hidden"); */
-         $('#type_project_selected').val(3);
         break;
 
         default:
@@ -13860,6 +13807,7 @@ function set_horas_diarias(){
     if (ocupacionMap[ocupacion]) {
         $("#horas_diarias_mantenimiento").val(ocupacionMap[ocupacion]);
     }
+
 }
 
 function set_horas_diarias_edit(value){
@@ -14111,7 +14059,7 @@ async function check_form_mantenimiento_tarjet(idm){
                 'ocupacion_semanal_mantenimiento',
                 'total_horas',
                 'hora_dia',
-                'dias',
+                'dias_ajustados',
                 'idas_ajustados',
             ];
 
@@ -14432,7 +14380,7 @@ async function check_form_mantenimiento_tarjet_edit(id_project,idm){
                 'ocupacion_semanal_mantenimiento',
                 'total_horas',
                 'hora_dia',
-                'dias',
+                'dias_ajustados',
                 'idas_ajustados',
             ];
 
@@ -14571,7 +14519,7 @@ async function del_td_tr(tr) {
                 'ocupacion_semanal_mantenimiento',
                 'total_horas',
                 'hora_dia',
-                'dias',
+                'dias_ajustados',
                 'idas_ajustados',
     ];
 
@@ -14651,7 +14599,7 @@ async function edit_regstro(tr) {
                 'ocupacion_semanal_mantenimiento',
                 'total_horas',
                 'hora_dia',
-                'dias',
+                'dias_ajustados',
                 'idas_ajustados',
     ];
 
@@ -14737,7 +14685,7 @@ function edit_registro_tabla(){
                 'ocupacion_semanal_mantenimiento',
                 'total_horas',
                 'hora_dia',
-                'dias',
+                'dias_ajustados',
                 'idas_ajustados',
     ];
 
@@ -14856,7 +14804,7 @@ var ids = [
         'ocupacion_semanal_mantenimiento',
         'total_horas',
         'hora_dia',
-        'dias',
+        'dias_ajustados',
         'idas_ajustados',
 ];
 
@@ -15079,7 +15027,7 @@ function check_porcent_max_min_kms(value,id,unidad){
  function calcular_speendplan_base(){
     var token = $("#token").val();
     var formData = {};
-    $("input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_'], input[name*='precio_'], input[name*='total_horas_'], input[name*='hora_dia_'], input[name*='dias_'], input[name*='idas_ajustados_']").each(function() {
+    $("input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_'], input[name*='precio_'], input[name*='total_horas_'], input[name*='hora_dia_'], input[name*='dias_ajustados_'], input[name*='idas_ajustados_']").each(function() {
         formData[$(this).attr('name')] = $(this).val();
     });
 
@@ -15136,7 +15084,8 @@ function check_porcent_max_min_kms(value,id,unidad){
     })
  }
 
- function calcular_speendplan_base_edit(id_project){
+/*  function calcular_speendplan_base_edit(id_project){
+
     var token = $("#token").val();
     var formData = {};
     $("input[name$='_mantenimiento'], select[name$='_mantenimiento']").each(function() {
@@ -15165,9 +15114,10 @@ function check_porcent_max_min_kms(value,id,unidad){
             console.error('Error al enviar los datos:', error);
         }
     });
- }
+ } */
 
  function calcular_speendplan_base_edit(id_project){
+
     var token = $("#token").val();
     var formData = {};
     $("input[name$='_mantenimiento'], select[name$='_mantenimiento']").each(function() {
@@ -15361,6 +15311,7 @@ function check_porcent_max_min_kms(value,id,unidad){
                $('#tiempo_traslados_adicionales_prev').val(tiempo_traslados);
                $('#tiempo_acceso_edificio_adicionales_prev').val(tiempo_acceso_edificio);
                $('#tiempo_garantias_adicionales_prev').val(tiempo_garantias);
+                chart_vals_mant(0,0,0,0,0);
             }
         }
     }
@@ -16412,7 +16363,7 @@ function check_porcent_max_min_kms(value,id,unidad){
         'ocupacion_semanal_mantenimiento',
         'total_horas',
         'hora_dia',
-        'dias',
+        'dias_ajustados',
         'idas_ajustados',
         'id',
 ];
@@ -16568,4 +16519,16 @@ function check_porcent_max_min_kms(value,id,unidad){
         }
     });
 
+ }
+
+ function show_buttons_type_project(type){
+    if(type == 1 || type == 2){
+        $('#buttons_energy').removeClass('hidden');
+        $('#buttons_mantainance').addClass('hidden');
+    }
+
+    if(type == 3){
+        $('#buttons_energy').addClass('hidden');
+        $('#buttons_mantainance').removeClass('hidden');
+    }
  }
