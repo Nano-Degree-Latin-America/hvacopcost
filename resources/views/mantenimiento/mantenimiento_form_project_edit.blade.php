@@ -427,19 +427,19 @@
                                                         @switch($mantenimiento_project->ocupacion_semanal)
                                                             @case('m_50')
                                                             <option selected value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                            <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
+                                                            <option value="51_167">{{ __('index.51 a 167 hrs') }}.</option>
                                                             <option value="168">168 Hrs.</option>
                                                             @break
 
                                                             @case('51_167')
                                                             <option  value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                            <option selected value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
+                                                            <option selected value="51_167">{{ __('index.51 a 167 hrs') }}.</option>
                                                             <option value="168">168 Hrs.</option>
                                                             @break
 
                                                             @case('168')
                                                             <option value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                            <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
+                                                            <option value="51_167">{{ __('index.51 a 167 hrs') }}.</option>
                                                             <option selected value="168">168 Hrs.</option>
                                                             @break
 
