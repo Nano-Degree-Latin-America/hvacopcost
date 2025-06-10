@@ -143,7 +143,23 @@
                     </div>
 
                     <div class="flex justify-start w-1/2">
-                        <input readonly type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-color-inps rounded-md py-1 text-center bg-gray-400" id="horas_diarias_mantenimiento" name="horas_diarias_mantenimiento" onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);">
+                        <input readonly type="text" style="font-size: 14px;margin-left:1px;" class="w-full border-2 border-color-inps rounded-md py-1 text-center bg-gray-400" id="horas_diarias_mantenimiento" name="horas_diarias_mantenimiento"
+                        @if ($type_p == 3) {{-- para que no lance error en proyectos energia --}}
+                            @if($mantenimiento_project->ocupacion_semanal == "m_50")
+                            value="{{ __('index.menos de 50 hrs') }}."
+                            @endif
+
+                            @if($mantenimiento_project->ocupacion_semanal == "51_167")
+                                value="{{ __('index.51 a 167 hrs') }}."
+                            @endif
+
+                            @if($mantenimiento_project->ocupacion_semanal == "168")
+                                value="168 Hrs."
+                            @endif
+                        @endif
+                        
+
+                        onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);">
                         <input id="horas_diarias_count_mantenimiento" name="horas_diarias_count_mantenimiento" type="number" class="hidden" value="1">
                     </div>
                 </div>

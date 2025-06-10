@@ -260,7 +260,7 @@ $idm = App::getLocale();
                 </div>
             </div>
         </div>
-        <input type="text" id="type_project_selected" name="type_project_selected">
+        {{-- <input type="text" id="type_project_selected" name="type_project_selected"> --}}
         <div x-show.transition="step != 'complete'">
             <div class="">
                 <div x-show.transition.in="step === 1">
@@ -305,7 +305,9 @@ $idm = App::getLocale();
                     <div class="w-full h-full font-roboto flex ">
                         <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
                              @if ($type_p === 3)
-                            @include('mantenimiento.costos_adicionales')
+                              @include('mantenimiento.costos_adicionales')
+                             @else
+                               @include('mantenimiento.costos_adicionales')
                              @endif
                         </div>
                     </div>
@@ -320,8 +322,10 @@ $idm = App::getLocale();
                 <div x-show.transition.in="step === 5">
                         <div class="w-full h-full font-roboto flex ">
                             <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
-                                  @if ($type_p === 3)
-                                @include('mantenimiento.just_financiera_edit')
+                                @if ($type_p === 3)
+                                    @include('mantenimiento.just_financiera_edit')
+                                @else
+                                    @include('mantenimiento.just_financiera')
                                 @endif
                             </div>
                         </div>
@@ -416,40 +420,19 @@ $idm = App::getLocale();
 
                 </div>
 
-                <div class="w-1/2 flex justify-end">
-                    <div  x-show="step < 2" class="w-full flex" style=" justify-content: right;">
-                    <div  x-show="step < 2" class="w-full flex" style=" justify-content: left;">
-                        <label style="font-size:10px;" class=" text-gray-500 font-montserrat"  for="">
-                            De acuerdo a:
-                        </label>
-                        <ul class="mt-3">
-                            <li class="flex items-center w-full">
-                              <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
-                              <p style="font-size:9px;" class="text-gray-500">ASHRAE Standard 100–2018,  ASHRAE Standard 169–2021, ASHRAE Standard 90.1–2019 , ASHRAE Standard 70–2006, ASHRAE Standard 180–2018, ASHRAE Standard 55–2020 y ASHRAE Standard 62.1-2019.</p>
-                            </li>
-
-                            <li class="flex items-center w-full">
-                              <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
-                              <p style="font-size:9px;" class="text-gray-500">1-100 Energy Star Score,  Energy Star Portfolio Manager ,EIA – CBECS–2018 Cooling Degree Days por Degreedays.net y NOAA.gov.</p>
-                            </li>
-
-                          </ul>
-                        </div>
-                </div>
-
-                </div>
 
 
-                @if ($type_p == 1 || $type_p == 2)
-                <div  x-show="step === 2" class="w-1/2 flex" style=" justify-content: center;">
+
+                <div id="buttons_energy" name="buttons_energy" x-show="step === 2" class="w-1/2 flex hidden" style=" justify-content: center;">
 
                     <button  style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
+
                     <button  style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
                 </div>
-                @endif
 
-                @if ($type_p == 3)
-                <div  class="w-1/2 flex" style=" justify-content: center;">
+
+
+                <div id="buttons_mantainance" name="buttons_mantainance" class="w-1/2 flex hidden" style=" justify-content: center;">
 
                     <button  type="button" id="button_next_mantenimiento_noadicionales" name="button_next_mantenimiento_noadicionales"
                     {{-- onclick="calcular_speendplan_base();" --}}
@@ -494,9 +477,28 @@ $idm = App::getLocale();
 
                     {{-- <button style="background-color:#1B17BB;width: 20%;"  x-show="step == 7" type="button"
                     onclick="update_mantenimiento();" name="guardar_mantenimiento" id="guardar_mantenimiento" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button> --}}
+                    <div  x-show="step < 2" class="w-full flex" style=" justify-content: right;">
+                        <div  x-show="step < 2" class="w-full flex" style=" justify-content: left;">
+                        <label style="font-size:10px;" class=" text-gray-500 font-montserrat"  for="">
+                            De acuerdo a:
+                        </label>
+                        <ul class="mt-3">
+                            <li class="flex items-center w-full">
+                              <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
+                              <p style="font-size:9px;" class="text-gray-500">ASHRAE Standard 100–2018,  ASHRAE Standard 169–2021, ASHRAE Standard 90.1–2019 , ASHRAE Standard 70–2006, ASHRAE Standard 180–2018, ASHRAE Standard 55–2020 y ASHRAE Standard 62.1-2019.</p>
+                            </li>
+
+                            <li class="flex items-center w-full">
+                              <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
+                              <p style="font-size:9px;" class="text-gray-500">1-100 Energy Star Score,  Energy Star Portfolio Manager ,EIA – CBECS–2018 Cooling Degree Days por Degreedays.net y NOAA.gov.</p>
+                            </li>
+
+                          </ul>
+                        </div>
+                    </div>
 
                 </div>
-                @endif
+
             </div>
         </div>
     </div>
@@ -1092,7 +1094,7 @@ window.onload = function() {
     traer_porcent_ini(val,porcent);
     id_ciudad_ini =  '{{ $id_ciudad_ini }}';
     traer_horas_enf_edit('{{ $project_edit->id }}');
-
+    show_buttons_type_project('{{$type_p}}');
     //let cost_ele = $('#costo_elec_1_1_retro').val();
    /*  asign_cos_ele(cost_ele); */
     let dollarUSLocale = Intl.NumberFormat('en-US');
