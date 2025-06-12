@@ -663,7 +663,7 @@ return $res;
   public function spend_plan_base(Request $request)
 {
 
-
+/*
     $analisis_costo_mant_array = [];
 
     $array_speed_plan = [];
@@ -946,7 +946,7 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
 
     array_push($array_speed_plan,$materiales,$equipos,$mano_obra,$vehiculos,$contratistas,$viaticos,$burden,$ga,$ventas,$financiamiento,$suma_precios,$total_horas,$tiempo_mantenimiento,$tiempo_garantias,$precio_venta);
     // Guardar el array actualizado en la sesión
-    session(['array_speed_plan' => $array_speed_plan]);
+    session(['array_speed_plan' => $array_speed_plan]); */
 
     //ceil reondea a entero superior
    $id_new_project = $this->save_mantenimiento_project($request);
@@ -2445,11 +2445,11 @@ return response()->json($array_to_response);
                     $rango_2 = $hora_primer_numero[0].'.5';
                     $rango_2_2 = ceil($hora_redondeo);
 
-                    if($hora_redondeo>$rango_1 && $hora_redondeo<$rango_1_2){
+                    if($hora_redondeo>$rango_1 && $hora_redondeo<$rango_1_2 || $hora_redondeo == floatval($rango_1_2)){
                         $horas_auxa = $rango_1.'.'.$cinco;
                     }
 
-                    if($hora_redondeo>=$rango_2 && $hora_redondeo<$rango_2_2){
+                    if($hora_redondeo>=$rango_2 && $hora_redondeo<$rango_2_2 || $hora_redondeo == floatval($rango_2_2)){
                         $horas_auxa = ceil($hora_redondeo);
                     }
                     $horas_periodo = $hora_dia_aux*2;
@@ -2527,7 +2527,7 @@ return response()->json($array_to_response);
                     $rango_2 = $ida_primer_numero[0].'.5';
                     $rango_2_2 = ceil($ida_redondeo);
 
-                    if($ida_redondeo > floatval($rango_1) && $ida_redondeo< $rango_1_2  || $ida_redondeo == floatval($rango_1_2)){
+                    if($ida_redondeo > floatval($rango_1) && $ida_redondeo < $rango_1_2  || $ida_redondeo == floatval($rango_1_2)){
                         $idas_auxa = $rango_1.'.'.$cinco;
                     }
 
