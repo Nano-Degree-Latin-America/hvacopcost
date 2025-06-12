@@ -5,7 +5,7 @@
              <a href="#final1">   <button onclick="active_display_retro('sol_1_retro');" type="button" class="rounded-xl p-1 m-0 hover-button-plus text-3xl">{{-- <i class="fa-solid fa-plus text-white"></i> --}}</button></a>
                 <input type="text" class="hidden" value="2" id="cont_sol_1_retro" name="cont_sol_1_retro">
                 <input type="text" class="hidden" value="1" id="set_sol_1_retro" name="set_sol_1_retro">
-                <input type="text" class="hidden" value="" id="id_tabla_edit" name="id_tabla_edit">
+                <input type="text" class="hidden" value="" id="indice_tabla_edit" name="indice_tabla_edit">
             </div>
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex  2xl:justify-center xl:justify-center lg:justify-center  py-1">
                 <h2 style="color:#1B17BB;" class="font-bold text-3xl">{{ __('index.sis_ext') }}</h2>
@@ -157,7 +157,7 @@
                                 value="168 Hrs."
                             @endif
                         @endif
-                        
+
 
                         onchange="valida_selects_inps(this.id);format_nums_no_$(this.value,this.id);">
                         <input id="horas_diarias_count_mantenimiento" name="horas_diarias_count_mantenimiento" type="number" class="hidden" value="1">
@@ -251,7 +251,11 @@
                 </div>
 
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
-                    <button onclick="check_form_mantenimiento_tarjet_edit('{{$project_edit->id}}','{{App::getLocale()}}')"style="background-color:#1B17BB;" type="button" name="save__button_mantenimiento" id="save__button_mantenimiento" class=" focus:outline-none border border-transparent py-2 px-3 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-lg font-roboto">Guardar</button>
+
+                    <button onclick="check_form_mantenimiento_tarjet_edit('{{$project_edit->id}}','{{App::getLocale()}}')"style="background-color:#1B17BB;" type="button" name="save_button_mantenimiento_edit" id="save_button_mantenimiento_edit" class=" focus:outline-none border border-transparent py-2 px-3 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-lg font-roboto hidden">Guardar</button>
+
+                    <button onclick="check_form_mantenimiento_tarjet('{{App::getLocale()}}')"
+                    style="background-color:#1B17BB;" type="button" name="save_button_mantenimiento" id="save_button_mantenimiento" class=" focus:outline-none border border-transparent py-2 px-3 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-lg font-roboto hidden">Guardar</button>
 
                     <div class="flex justify-end">
                         <button onclick="clean_form_tarjet_mantenimiento();" type="button" title="Limpiar Tarjeta" class="py-1 px-3 border-2 rounded-md text-xl bg-orange-500 text-white hover:text-gray-200"><i class="fas fa-trash"></i></button>
