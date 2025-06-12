@@ -2424,11 +2424,11 @@ return response()->json($array_to_response);
                     $rango_2 = $hora_primer_numero[0].'.5';
                     $rango_2_2 = ceil($hora_redondeo);
 
-                    if($hora_redondeo>$rango_1 && $hora_redondeo<$rango_1_2){
+                    if($hora_redondeo>$rango_1 && $hora_redondeo<$rango_1_2 || $hora_redondeo == floatval($rango_1_2)){
                         $horas_auxa = $rango_1.'.'.$cinco;
                     }
 
-                    if($hora_redondeo>=$rango_2 && $hora_redondeo<$rango_2_2){
+                    if($hora_redondeo>=$rango_2 && $hora_redondeo<$rango_2_2 || $hora_redondeo == floatval($rango_2_2)){
                         $horas_auxa = ceil($hora_redondeo);
                     }
 
@@ -2613,11 +2613,11 @@ return response()->json($array_to_response);
                     $rango_2 = $dia_primer_numero[0].'.5';
                     $rango_2_2 = ceil($dias_redondeo);
 
-                    if($dias_redondeo>$rango_1 && $dias_redondeo<$rango_1_2){
+                    if($dias_redondeo>$rango_1 && $dias_redondeo<$rango_1_2  || $dias_redondeo == floatval($rango_1_2)){
                         $dias_auxa = $rango_1.'.'.$cinco;
                     }
 
-                    if($dias_redondeo>=$rango_2 && $dias_redondeo<$rango_2_2){
+                    if($dias_redondeo>=$rango_2 && $dias_redondeo<$rango_2_2  || $dias_redondeo == floatval($rango_2_2)){
                         $dias_auxa = ceil($dias_redondeo);
                     }
 
@@ -2632,6 +2632,11 @@ return response()->json($array_to_response);
             } else {
                 return 2;
             }
+   }
+
+   public function switch_proyecto_mantenimiento($id_project){
+        $extract_type_project = ProjectsModel::find($id_project)->type_p;
+        dd($extract_type_project);
    }
 
 }

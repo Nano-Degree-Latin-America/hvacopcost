@@ -236,7 +236,8 @@
                 </div>
 
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
-                    <button onclick="check_form_mantenimiento_tarjet('{{App::getLocale()}}')"style="background-color:#1B17BB;" type="button" name="save__button_mantenimiento" id="save__button_mantenimiento" class=" focus:outline-none border border-transparent py-2 px-3 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-lg font-roboto">Guardar</button>
+                    <button onclick="check_form_mantenimiento_tarjet('{{App::getLocale()}}')"
+                    style="background-color:#1B17BB;" type="button" name="save__button_mantenimiento" id="save__button_mantenimiento" class=" focus:outline-none border border-transparent py-2 px-3 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-lg font-roboto">Guardar</button>
 
                     <div class="flex justify-end">
                         <button onclick="clean_form_tarjet_mantenimiento();" type="button" title="Limpiar Tarjeta" class="py-1 px-3 border-2 rounded-md text-xl bg-orange-500 text-white hover:text-gray-200"><i class="fas fa-trash"></i></button>
