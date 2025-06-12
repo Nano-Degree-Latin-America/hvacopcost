@@ -15096,13 +15096,7 @@ function check_porcent_max_min_kms(value,id,unidad){
                                 values: formData
                             },
                             success: async function(response) {
-                                $('#valor_contrato_anual').val(response[0]);
-                                $('#dias_mantenimiento').val(response[1]);
-                                $('#tiempo_mantenimiento').val(response[2]);
-                                $('#tiempo_traslados').val(response[3]);
-                                $('#tiempo_acceso_edificio').val(response[4]);
-                                $('#tiempo_garantias').val(response[5]);
-                                $('#costos_filtro_aire_adicionales').val(response[6]);
+
 
                                 Swal.fire({
                                     title: '¡Exito!',
@@ -15110,7 +15104,7 @@ function check_porcent_max_min_kms(value,id,unidad){
                                     text:'Guardado'
 
                                 })
-                                window.location.href = 'edit_project/' + response[7];
+                                window.location.href = 'edit_project/' + response;
                             },
                             error: function(xhr, status, error) {
                                 console.error('Error al enviar los datos:', error);
