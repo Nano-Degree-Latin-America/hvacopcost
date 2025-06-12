@@ -1524,6 +1524,7 @@ async function set_ventilaciones_no_doa(value) {
                         text: marca.marca,
                     }));
                 });
+                console.log(id,val,equipo);
 
                 $("#"+id).find('option[value="' + val + '"]').prop("selected", "selected");
             },
@@ -14628,11 +14629,13 @@ async function edit_regstro(tr) {
         },
         success: async function(response) {
 
+            console.log(response);
 
             $('#indice_tabla_edit').val(response[0]);
             $("#sistema_mantenimiento").find('option[value="' + response[1] + '"]').prop("selected", "selected");
             await unidadHvac(response[1],'','unidad_mantenimiento',2);
             $("#unidad_mantenimiento").find('option[value="' + response[2] + '"]').prop("selected", "selected");
+
             send_marcas_to('marca_mantenimiento', response[3], response[1]);
             send_modelo_edit(response[3], 'modelo_mantenimiento', response[4]);
 
@@ -16441,6 +16444,7 @@ function check_porcent_max_min_kms(value,id,unidad){
             headers: { 'X-CSRF-TOKEN': token },
 
             success: async function(response) {
+
 
 
                 $('#id_tabla_edit').val(response[0]);
