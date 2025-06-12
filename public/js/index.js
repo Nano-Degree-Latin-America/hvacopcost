@@ -1335,6 +1335,17 @@ async function set_ventilaciones_no_doa(value) {
         break;
 
         case 'man':
+
+        if(parseInt(type_p_aux) === 1 || parseInt(type_p_aux) === 2 ){
+                action_submit_send.value = 'store';
+                //se da de alta nuevas soluciones tipo proyecto retrofit
+            }
+         //si tipo es igual a 1
+        if(parseInt(type_p_aux) === 3 ){
+                action_submit_send.value = 'update';
+                //se actualiza proyecto nuevo
+        }
+
             $('#simulaciones').addClass("hidden");
             $('#simulaciones_update').addClass("hidden");
             $('#forms_ene_fin_proy').addClass("hidden");
@@ -1355,6 +1366,9 @@ async function set_ventilaciones_no_doa(value) {
             set_options_factor_mantenimiento();
             set_options_factor_acceso();
             set_options_estado_unidad();
+
+
+
             type_p.value = 3;
         break;
 
@@ -1370,6 +1384,7 @@ async function set_ventilaciones_no_doa(value) {
 
     calcular_p_n = $('#calcular_p_n_Edit');
     calcular_p_r = $('#calcular_p_r_Edit');
+
     if(type_p == 1 || type_p == 0){
         $('#forms_ene_fin_proy_edit').removeClass("hidden");
         $('#display_nuevo_project_edit').removeClass("hidden");
@@ -1381,6 +1396,12 @@ async function set_ventilaciones_no_doa(value) {
         calcular_p_n.removeClass("hidden");
         calcular_p_r.addClass("hidden");
         $('#display_mant').addClass("hidden");
+
+        $('#button_next_mantenimiento_noadicionales').removeClass("hidden");
+        $('#button_next_mantenimiento_noadicionales_edit').addClass("hidden");
+
+        $('#save_button_mantenimiento_edit').addClass("hidden");
+        $('#save_button_mantenimiento').removeClass("hidden");
 
     }
 
@@ -1410,6 +1431,12 @@ async function set_ventilaciones_no_doa(value) {
         $('#inv_ini_capex_2_1_mant').addClass("hidden");
         $('#inv_ini_capex_3_1_retro').removeClass("hidden");
         $('#inv_ini_capex_3_1_mant').addClass("hidden");
+
+        $('#button_next_mantenimiento_noadicionales').removeClass("hidden");
+        $('#button_next_mantenimiento_noadicionales_edit').addClass("hidden");
+
+        $('#save_button_mantenimiento_edit').addClass("hidden");
+        $('#save_button_mantenimiento').removeClass("hidden");
 
     }
 
@@ -1458,6 +1485,12 @@ async function set_ventilaciones_no_doa(value) {
         set_yrs_tarjet($('#yrs_life_ed_mantenimiento').val(),'yrs_vida_mantenimiento');
         set_options_factor_mantenimiento_edit(medio_ambiente);
         set_horas_diarias();
+
+        $('#button_next_mantenimiento_noadicionales').addClass("hidden");
+        $('#button_next_mantenimiento_noadicionales_edit').removeClass("hidden");
+
+        $('#save_button_mantenimiento_edit').removeClass("hidden");
+        $('#save_button_mantenimiento').addClass("hidden");
 
     }
 
@@ -15071,6 +15104,77 @@ function check_porcent_max_min_kms(value,id,unidad){
                                 $('#tiempo_garantias').val(response[5]);
                                 $('#costos_filtro_aire_adicionales').val(response[6]);
 
+                                Swal.fire({
+                                    title: '¡Exito!',
+                                    icon: 'success',
+                                    text:'Guardado'
+
+                                })
+                                window.location.href = 'edit_project/' + response[7];
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error al enviar los datos:', error);
+                            }
+                        });
+                    }
+
+                })
+            }else if (res == 2){
+                Swal.fire({
+                    title: 'Atención!',
+                    icon: 'warning',
+                    text:'No se ha guardado ningun elemento'
+                })
+                return false;
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+
+}
+
+function calcular_speendplan_base_update(id_project){
+    var token = $("#token").val();
+    var formData = {};
+    $("input[name$='_mantenimiento'], select[name$='_mantenimiento'],input[name*='_mantenimiento_'], input[name*='precio_'], input[name*='total_horas_'], input[name*='hora_dia_'], input[name*='dias_ajustados_'], input[name*='idas_ajustados_'] , input[name*='action_submit_send'], input[name*='type_p']").each(function() {
+        formData[$(this).attr('name')] = $(this).val();
+    });
+
+    $.ajax({
+        url: '/verifica_unidades_mantenimiento', // Reemplaza con la URL de tu endpoint
+        type: 'get',
+        success: async function(res) {
+            if (res == 1) {
+              Swal.fire({
+                    title: 'Guardar?',
+                    text: "",
+                    showDenyButton: true,
+                    showConfirmButton: true,
+                    icon: 'question',
+                    showCancelButton: true,
+                    cancelButtonColor: '#FF6600',
+                    confirmButtonText:`Guardar`,
+                    confirmButtonColor: '#3182ce',
+
+                }).then((result) => {
+                    var token = $("#token").val();
+                    if (result.isDenied) {
+                    return false;
+                    }
+
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            url: '/switch_proyecto_mantenimiento/'+id_project,
+                            type: 'post',
+
+                            headers: { 'X-CSRF-TOKEN': token },
+                            data: {
+                                values: formData
+                            },
+                            success: async function(response) {
                                 Swal.fire({
                                     title: '¡Exito!',
                                     icon: 'success',

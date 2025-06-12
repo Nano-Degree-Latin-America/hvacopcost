@@ -282,7 +282,7 @@ $idm = App::getLocale();
 
             <form action="{{url('/edit_project', [$id_project])}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
                         @csrf
-                                    <input type="text" value="update" class="hidden" id="action_submit_send" name="action_submit_send">
+                                    <input type="text" value="update" class="" id="action_submit_send" name="action_submit_send">
                                     <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
                                     <input type="number" class="hidden" id="type_p" name="type_p">
                                     @include('simulaciones_update')
@@ -401,7 +401,7 @@ $idm = App::getLocale();
 
                     @if ($type_p === 1 || $type_p === 0)
                     <a href="/project/{{$id_project}}">
-                        <button
+                        <button type="button"
                         x-show="step == 1"
                         class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
                     >{{ __('index.resultado') }}</button>
@@ -409,7 +409,7 @@ $idm = App::getLocale();
 
                     @if ($type_p === 2)
                     <a href="/resultados_retrofit/{{$id_project}}">
-                        <button
+                        <button type="button"
                         x-show="step == 1"
                         class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto"
                     >{{ __('index.resultado') }}</button>
@@ -434,7 +434,7 @@ $idm = App::getLocale();
 
                 <div id="buttons_mantainance" name="buttons_mantainance" class="w-1/2 flex hidden" style=" justify-content: center;">
 
-                    <button  type="button" id="button_next_mantenimiento_noadicionales" name="button_next_mantenimiento_noadicionales"
+                    <button  type="button" id="button_next_mantenimiento_noadicionales_edit" name="button_next_mantenimiento_noadicionales_edit"
                     {{-- onclick="calcular_speendplan_base();" --}}
                     style="background-color:#1B17BB;"
                         x-show="step == 2"
@@ -442,6 +442,16 @@ $idm = App::getLocale();
                         onclick="calcular_speendplan_base_edit({{ $project_edit->id }});"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('index.siguiente') }}</button>
+
+
+                    {{-- button siguiente mantenimiento --}}
+                    <button  type="button" id="button_next_mantenimiento_noadicionales" name="button_next_mantenimiento_noadicionales"
+                    style="background-color:#1B17BB;"
+                        x-show="step == 2"
+                        onclick="calcular_speendplan_base_update({{ $project_edit->id }});"
+                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto hidden"
+                    >{{ __('index.guardar') }}</button>
+                    {{-- button siguiente mantenimiento --}}
 
                     <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
                     onclick="calcular_speendplan_base_adicionales_edit({{ $project_edit->id }});"
@@ -1081,6 +1091,24 @@ $idm = App::getLocale();
 
 <script>
 window.onload = function() {
+
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+            var endpoint = "/reset_local_storage";
+            $.ajax({
+                url: endpoint,
+                type: 'get',
+
+                success: function(response) {
+
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error al enviar los datos:', error);
+                }
+            });
+        // Aquí puedes agregar el código que necesites ejecutar al recargar la página
+        } else {
+            console.log("La página se ha cargado por primera vez.");
+        }
 
     check_form_proy_edit('{{$type_p}}','{{ $project_edit->id }}');
     val = '{{ $project_edit->id_cat_edifico }}';
