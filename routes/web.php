@@ -226,6 +226,8 @@ Route::post('nuevo_equipo_mantenimeinto/{id_project}', 'MantenimientoController@
 Route::post('update_registro_edit/{id_project}', 'MantenimientoController@update_registro_edit');
 Route::get('edit_unidades_horas/{id_project}', 'MantenimientoController@edit_unidades_horas');
 Route::get('coordinacion_mantenimiento', 'MantenimientoController@coordinacion_mantenimiento');
+Route::get('verifica_unidades_mantenimiento', 'MantenimientoController@verifica_unidades_mantenimiento');
+
 
 
 //lang

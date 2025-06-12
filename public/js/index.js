@@ -13772,9 +13772,7 @@ function back_begin(){
 }
 
 function back_show_form_project(val){
-    if(val == ""){
-        var val  = $('#type_p').val();
-    }
+
 
     switch (parseInt(val)) {
         case 1:
@@ -13785,7 +13783,6 @@ function back_show_form_project(val){
         case 2:
             $('#simulaciones_update').addClass("hidden");
             $('#ene_fin_pro_hvac_update').removeClass("hidden");
-             alert(val);
         break;
 
         default:
@@ -15034,58 +15031,76 @@ function check_porcent_max_min_kms(value,id,unidad){
         formData[$(this).attr('name')] = $(this).val();
     });
 
+    $.ajax({
+        url: '/verifica_unidades_mantenimiento', // Reemplaza con la URL de tu endpoint
+        type: 'get',
+        success: async function(res) {
+            if (res == 1) {
+              Swal.fire({
+                    title: 'Guardar?',
+                    text: "",
+                    showDenyButton: true,
+                    showConfirmButton: true,
+                    icon: 'question',
+                    showCancelButton: true,
+                    cancelButtonColor: '#FF6600',
+                    confirmButtonText:`Guardar`,
+                    confirmButtonColor: '#3182ce',
 
-    Swal.fire({
-        title: 'Guardar?',
-        text: "",
-        showDenyButton: true,
-        showConfirmButton: true,
-        icon: 'question',
-        showCancelButton: true,
-        cancelButtonColor: '#FF6600',
-        confirmButtonText:`Guardar`,
-        confirmButtonColor: '#3182ce',
+                }).then((result) => {
+                    var token = $("#token").val();
+                    if (result.isDenied) {
+                    return false;
+                    }
 
-    }).then((result) => {
-        var token = $("#token").val();
-        if (result.isDenied) {
-           return false;
-        }
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: '/spend_plan_base',
+                            type: 'post',
 
-        if (result.isConfirmed) {
-            $.ajax({
-        url: '/spend_plan_base',
-        type: 'post',
+                            headers: { 'X-CSRF-TOKEN': token },
+                            data: {
+                                values: formData
+                            },
+                            success: async function(response) {
+                                $('#valor_contrato_anual').val(response[0]);
+                                $('#dias_mantenimiento').val(response[1]);
+                                $('#tiempo_mantenimiento').val(response[2]);
+                                $('#tiempo_traslados').val(response[3]);
+                                $('#tiempo_acceso_edificio').val(response[4]);
+                                $('#tiempo_garantias').val(response[5]);
+                                $('#costos_filtro_aire_adicionales').val(response[6]);
 
-        headers: { 'X-CSRF-TOKEN': token },
-        data: {
-            values: formData
-        },
-        success: async function(response) {
-            $('#valor_contrato_anual').val(response[0]);
-            $('#dias_mantenimiento').val(response[1]);
-            $('#tiempo_mantenimiento').val(response[2]);
-            $('#tiempo_traslados').val(response[3]);
-            $('#tiempo_acceso_edificio').val(response[4]);
-            $('#tiempo_garantias').val(response[5]);
-            $('#costos_filtro_aire_adicionales').val(response[6]);
+                                Swal.fire({
+                                    title: '¡Exito!',
+                                    icon: 'success',
+                                    text:'Guardado'
 
-             Swal.fire({
-                title: '¡Exito!',
-                icon: 'success',
-                text:'Guardado'
+                                })
+                                window.location.href = 'edit_project/' + response[7];
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error al enviar los datos:', error);
+                            }
+                        });
+                    }
 
-            })
-            window.location.href = 'edit_project/' + response[7];
+                })
+            }else if (res == 2){
+                Swal.fire({
+                    title: 'Atención!',
+                    icon: 'warning',
+                    text:'No se ha guardado ningun elemento'
+                })
+                return false;
+            }
         },
         error: function(xhr, status, error) {
             console.error('Error al enviar los datos:', error);
         }
     });
-        }
 
-    })
- }
+}
 
 /*  function calcular_speendplan_base_edit(id_project){
 

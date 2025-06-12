@@ -2625,5 +2625,14 @@ return response()->json($array_to_response);
 
    }
 
+   public function verifica_unidades_mantenimiento(){
+            //verifica si existe array_sistemas en la session
+            if (Session::has('array_sistemas') && is_array(Session::get('array_sistemas'))) {
+                return 1;
+            } else {
+                return 2;
+            }
+   }
+
 }
 
