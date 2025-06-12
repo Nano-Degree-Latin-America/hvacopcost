@@ -367,7 +367,7 @@ $idm = App::getLocale();
                         @if (strlen(__('index.atras')) > 6)
                         <button
                         type="button"
-                        onclick="back_show_form_project($('#type_project_selected').val());"
+                        onclick="back_show_form_project($('#type_p').val());"
                         x-show="step > 1"
                         @click="step--"
                             class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-md border font-roboto">
@@ -378,7 +378,7 @@ $idm = App::getLocale();
                         @if (strlen(__('index.atras')) == 6)
                         <button
                         type="button"
-                        onclick="back_show_form_project($('#type_project_selected').val());"
+                        onclick="back_show_form_project($('#type_p').val());"
                         x-show="step > 1"
                         @click="step--"
                             class="w-32 focus:outline-none py-2 px-5 rounded-lg shadow-sm text-center text-gray-600 bg-white hover:bg-gray-100 text-xl border font-roboto">
