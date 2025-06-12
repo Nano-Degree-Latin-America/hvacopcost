@@ -2527,11 +2527,11 @@ return response()->json($array_to_response);
                     $rango_2 = $ida_primer_numero[0].'.5';
                     $rango_2_2 = ceil($ida_redondeo);
 
-                    if($ida_redondeo > floatval($rango_1) && $ida_redondeo< $rango_1_2){
+                    if($ida_redondeo > floatval($rango_1) && $ida_redondeo< $rango_1_2  || $ida_redondeo == floatval($rango_1_2)){
                         $idas_auxa = $rango_1.'.'.$cinco;
                     }
 
-                    if($ida_redondeo >= floatval($rango_2) && $ida_redondeo < floatval($rango_2_2)){
+                    if($ida_redondeo >= floatval($rango_2) && $ida_redondeo < floatval($rango_2_2) || $ida_redondeo == floatval($rango_2_2)){
                         $idas_auxa = ceil($ida_redondeo);
                     }
 
