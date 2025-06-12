@@ -43,11 +43,15 @@ class CalculoMantenimientoService
 
             $id_sistema = SistemasModel::where('name','=',$array_sistemas[$i][1])->first()->id;
             $unidad = UnidadesModel::where('unidad','=',$array_sistemas[$i][2])->first()->identificador;
+
             $marca = MarcasEmpresaModel::where('marca','=',$array_sistemas[$i][3])
             ->where('id_empresa','=',Auth::user()->id_empresa)
+            ->where('equipo','=',$id_sistema)
             ->first()->id;
+
             $modelo = ModelosEmpresaModel::where('modelo','=',$array_sistemas[$i][4])
             ->where('id_empresa','=',Auth::user()->id_empresa)
+            ->where('id_marca','=',$marca)
             ->first()->id;
 
             $acceso = FactorAccesoModel::where('factor','=',ucfirst($array_sistemas[$i][8]))->first()->id;

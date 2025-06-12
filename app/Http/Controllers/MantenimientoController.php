@@ -335,12 +335,15 @@ public function factores_mantenimiento(){
             if($array_sistemas[$i][0] == $id){
 
                 $id_sistema = SistemasModel::where('name','=',$array_sistemas[$i][1])->first()->id;
+
                 $id_unidad = UnidadesModel::where('unidad','=',$array_sistemas[$i][2])->first()->identificador;
                 $marca = MarcasEmpresaModel::where('marca','=',$array_sistemas[$i][3])
                 ->where('id_empresa','=',Auth::user()->id_empresa)
+                ->where('equipo','=',$id_sistema)
                 ->first()->id;
                 $modelo = ModelosEmpresaModel::where('modelo','=',$array_sistemas[$i][4])
                 ->where('id_empresa','=',Auth::user()->id_empresa)
+                ->where('id_marca','=',$marca)
                 ->first()->id;
 
                 $acceso = FactorAccesoModel::where('factor','=',ucfirst($array_sistemas[$i][8]))->first()->id;
@@ -2038,8 +2041,8 @@ return response()->json($array_to_response);
                     $id,
                     $mantenimiento->sistema,  //sistema_mantenimiento
                     $id_unidad,  //unidad_mantenimiento
-                    $mantenimiento->marca,  //marca_mantenimiento
-                    $mantenimiento->modelo,  //modelo_mantenimiento
+                    $mantenimiento->id_marca,  //marca_mantenimiento
+                    $mantenimiento->id_modelo,  //modelo_mantenimiento
                     $mantenimiento->capacidad,  //capacidad_termica_mantenimiento
                     $mantenimiento->cantidad,  //cantidad_unidades_mantenimiento
                     $mantenimiento->yrs_life,  //yrs_vida_mantenimiento
