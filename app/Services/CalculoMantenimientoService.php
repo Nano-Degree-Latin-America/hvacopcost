@@ -227,23 +227,23 @@ class CalculoMantenimientoService
 
                     $update_mantenimiento_project = MantenimientoProjectsModel::find($id_mantenimiento_project);
                     $update_mantenimiento_project->id_project=$id_project;
-                    $update_mantenimiento_project->cliente_prospecto=$request->get('cliente_pro_mantenimiento');
-                    $update_mantenimiento_project->nombre_propiedad=$request->get('name_sitio_mantenimiento');
-                    $update_mantenimiento_project_aux = explode('kms',$request->get('distancia_sitio_mantenimiento'));
+                    $update_mantenimiento_project->cliente_prospecto=$request->values['cliente_pro_mantenimiento'];
+                    $update_mantenimiento_project->nombre_propiedad=$request->values['name_sitio_mantenimiento'];
+                    $update_mantenimiento_project_aux = explode('kms',$request->values['distancia_sitio_mantenimiento']);
                     $update_mantenimiento_project->distancia_sitio=$update_mantenimiento_project_aux[0];
-                    $update_mantenimiento_project->velocidad=$request->get('velocidad_promedio_mantenimiento');
-                    $update_mantenimiento_project->yrs_edificio=$request->get('yrs_vida_mantenimiento');
-                    $update_mantenimiento_project->ocupacion_semanal=$request->get('ocupacion_semanal_mantenimiento');
-                    $update_mantenimiento_project->medio_ambiente=$request->get('tipo_ambiente_mantenimiento');
-                    $update_mantenimiento_project->personal_enviado=$request->get('personal_enviado_mantenimiento');
-                    $porcent_mantenimiento_aux = explode('%',$request->get('inflacion_mantenimiento'));
+                    $update_mantenimiento_project->velocidad=$request->values['velocidad_promedio_mantenimiento'];
+                    $update_mantenimiento_project->yrs_edificio=$request->values['yrs_vida_mantenimiento'];
+                    $update_mantenimiento_project->ocupacion_semanal=$request->values['ocupacion_semanal_mantenimiento'];
+                    $update_mantenimiento_project->medio_ambiente=$request->values['tipo_ambiente_mantenimiento'];
+                    $update_mantenimiento_project->personal_enviado=$request->values['personal_enviado_mantenimiento'];
+                    $porcent_mantenimiento_aux = explode('%',$request->values['inflacion_mantenimiento']);
                     $update_mantenimiento_project->porcent_inflacion=$porcent_mantenimiento_aux[0];
                     $update_mantenimiento_project->type_mant=1;
                     $update_mantenimiento_project->update();
 
 
                         // si se guardda el proyecto de mantenimiento se guarda la mano de obra
-                        if($update_mantenimiento_project->update()){
+                        /* if($update_mantenimiento_project->update()){
 
 
                             ///guardar adicionales
@@ -334,7 +334,7 @@ class CalculoMantenimientoService
 
 
                             return true;
-                        }
+                        } */
                 }
 
                 public function precio_to_integer($precio){
