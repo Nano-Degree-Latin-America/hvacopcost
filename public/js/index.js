@@ -1443,6 +1443,9 @@ async function set_ventilaciones_no_doa(value) {
     if(type_p == 3){
         await traer_mantenimiento_medio_ambiente(id_project);
 
+        $('#save_button_mantenimiento_edit').removeClass("hidden");
+        $('#save_button_mantenimiento').addClass("hidden");
+
         $('#forms_ene_fin_proy_edit').addClass("hidden");
         $('#display_nuevo_retrofit_edit').addClass("hidden");
         $('#display_nuevo_project_edit').addClass("hidden");
@@ -1489,8 +1492,7 @@ async function set_ventilaciones_no_doa(value) {
         $('#button_next_mantenimiento_noadicionales').addClass("hidden");
         $('#button_next_mantenimiento_noadicionales_edit').removeClass("hidden");
 
-        $('#save_button_mantenimiento_edit').removeClass("hidden");
-        $('#save_button_mantenimiento').addClass("hidden");
+
 
     }
 
@@ -15175,7 +15177,7 @@ function calcular_speendplan_base_update(id_project){
                                     text:'Guardado'
 
                                 })
-                                window.location.href = 'edit_project/' + response[7];
+                                window.location.href = '/edit_project/' + response;
                             },
                             error: function(xhr, status, error) {
                                 console.error('Error al enviar los datos:', error);

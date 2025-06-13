@@ -285,7 +285,10 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
 
             if($type_p == 3){
                 $mantenimiento =  $calculoMantenimientoService->update_calculo_mantenimiento_update($request,$update_project->id);
-
+                if($mantenimiento ==  true){
+                    Session::forget('array_sistemas');
+                    Session::forget('array_speed_plan');
+                }
 
             }
 

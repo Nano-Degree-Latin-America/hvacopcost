@@ -938,8 +938,9 @@ public function update_solution_3_2(Request $request,$id_project,$action_submit_
     public function save_new_project_mantainance($request,$id_project){
 
         $calculoMantenimientoService = new CalculoMantenimientoService();
-
+        $update_project= ProjectsModel::find($id_project);
         $aux_porcent = explode("%", $request->values['porcent_hvac_mantenimiento']);
+
         if(count($aux_porcent) == 2){
             $update_project->porcent_hvac=intval($aux_porcent[0]);
         }else{
@@ -970,7 +971,8 @@ public function update_solution_3_2(Request $request,$id_project,$action_submit_
 
         $update_project->update();
         if($update_project->update()){
-            $mantenimiento =  $calculoMantenimientoService->update_calculo_mantenimiento_update($request,$update_project->id);
+            $mantenimiento =  $calculoMantenimientoService->new_calculo_mantenimiento_save($request,$update_project->id);
+            return true;
         }
     }
 }
