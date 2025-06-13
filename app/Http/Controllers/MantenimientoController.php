@@ -27,6 +27,8 @@ use App\Traits\FormusTrait;
 use App\MantenimientoProjectsModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use App\Services\ProjectService;
+use App\Services\SolutionServiceEdit;
 
 class MantenimientoController extends Controller
 {
@@ -2280,7 +2282,7 @@ return response()->json($array_to_response);
         switch ($unidad) {
             case 'TR':
 
-                if(intval($capacidad_termica_mantenimiento) >= 1 && intval($capacidad_termica_mantenimiento) < 2.9){
+                if(intval($capacidad_termica_mantenimiento) >= 1 && intval($capacidad_termica_mantenimiento) <= 2.9){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->one;
                     if($horas == null || $horas == 'NA'){
                         $horas = 0;
@@ -2288,7 +2290,7 @@ return response()->json($array_to_response);
                     return $horas;
                 }
 
-                if(intval($capacidad_termica_mantenimiento) > 3 && intval($capacidad_termica_mantenimiento) < 7.4){
+                if(intval($capacidad_termica_mantenimiento) >= 3 && intval($capacidad_termica_mantenimiento) <= 7.4){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->two;
                     if($horas == null || $horas == 'NA'){
                         $horas = 0;
@@ -2296,7 +2298,7 @@ return response()->json($array_to_response);
                     return $horas;
                 }
 
-                if(intval($capacidad_termica_mantenimiento) > 7.5 && intval($capacidad_termica_mantenimiento) < 14.9){
+                if(intval($capacidad_termica_mantenimiento) >= 7.5 && intval($capacidad_termica_mantenimiento) <= 14.9){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->three;
                     if($horas == null || $horas == 'NA'){
                         $horas = 0;
@@ -2304,7 +2306,7 @@ return response()->json($array_to_response);
                     return $horas;
                 }
 
-                if(intval($capacidad_termica_mantenimiento) > 15 && intval($capacidad_termica_mantenimiento) < 24.9){
+                if(intval($capacidad_termica_mantenimiento) >= 15 && intval($capacidad_termica_mantenimiento) <= 24.9){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->four;
                     if($horas == null || $horas == 'NA'){
                         $horas = 0;
@@ -2312,7 +2314,7 @@ return response()->json($array_to_response);
                     return $horas;
                 }
 
-                if(intval($capacidad_termica_mantenimiento) > 25 && intval($capacidad_termica_mantenimiento) < 49.9){
+                if(intval($capacidad_termica_mantenimiento) >= 25 && intval($capacidad_termica_mantenimiento) <= 49.9){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->five;
                     if($horas == null || $horas == 'NA'){
                         $horas = 0;
@@ -2320,7 +2322,7 @@ return response()->json($array_to_response);
                     return $horas;
                 }
 
-                if(intval($capacidad_termica_mantenimiento) > 50 && intval($capacidad_termica_mantenimiento) < 99.9){
+                if(intval($capacidad_termica_mantenimiento) >= 50 && intval($capacidad_termica_mantenimiento) <= 99.9){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->six;
                     if($horas == null || $horas == 'NA'){
                         $horas = 0;
@@ -2328,7 +2330,7 @@ return response()->json($array_to_response);
                     return $horas;
                 }
 
-                if(intval($capacidad_termica_mantenimiento) > 100 && intval($capacidad_termica_mantenimiento) < 199.9){
+                if(intval($capacidad_termica_mantenimiento) >= 100 && intval($capacidad_termica_mantenimiento) <= 199.9){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->seven;
                     if($horas == null || $horas == 'NA'){
                         $horas = 0;
@@ -2336,7 +2338,7 @@ return response()->json($array_to_response);
                     return $horas;
                 }
 
-                if(intval($capacidad_termica_mantenimiento) > 200 && intval($capacidad_termica_mantenimiento) < 350){
+                if(intval($capacidad_termica_mantenimiento) >= 200 && intval($capacidad_termica_mantenimiento) <= 350){
                     $horas = UnidadesTrModel::where('id_unidad','=',$id_unidad)->first()->eight;
                     if($horas == null || $horas == 'NA'){
                         $horas = 0;
@@ -2635,9 +2637,23 @@ return response()->json($array_to_response);
             }
    }
 
-   public function switch_proyecto_mantenimiento($id_project){
+   public function switch_proyecto_mantenimiento(Request $request,$id_project){
+
+        $solutionServiceEdit = new SolutionServiceEdit();
         $extract_type_project = ProjectsModel::find($id_project)->type_p;
-        dd($extract_type_project);
+        $action_submit_send = $request->values['action_submit_send'];
+
+        if($action_submit_send == 'store'){
+
+            $solutionServiceEdit->clean_project($id_project);
+            $solutionServiceEdit->save_new_project_mantainance($request,$id_project);
+                //elimina soluciones
+            $del_functions = $solutionServiceEdit->del_solutions($id_project);
+
+            }else if($action_submit_send == 'update'){
+                //nada
+        }
+
    }
 
 }
