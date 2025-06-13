@@ -2654,6 +2654,11 @@ return response()->json($array_to_response);
                 //nada
         }
 
+                    Session::forget('array_sistemas');
+                    Session::forget('array_speed_plan');
+
+        return $id_project;
+
    }
 
 }
