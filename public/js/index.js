@@ -14385,7 +14385,7 @@ async function check_form_mantenimiento_tarjet_edit(id_project,idm){
                    return false;
        }else if(count_inps==0){
 
-        var indice_tabla =  $('#id_tabla_edit').val();
+        var indice_tabla =  $('#indice_tabla_edit').val();
         if( indice_tabla == 0 || indice_tabla == ''){
 
 
@@ -14814,7 +14814,7 @@ async function formula_calculo_mantenimiento(i) {
 
 function edit_registro_tabla_edit(){
 
-var indice = $('#id_tabla_edit').val();
+var indice = $('#indice_tabla_edit').val();
 $('#tbody_equipos').empty();
 var valuesArray = [];
 
@@ -16562,7 +16562,7 @@ function calcular_speendplan_base_update(id_project){
 
 
 
-                $('#id_tabla_edit').val(response[0]);
+                $('#indice_tabla_edit').val(response[0]);
                 $("#sistema_mantenimiento").find('option[value="' + response[1] + '"]').prop("selected", "selected");
                 await unidadHvac(response[1],'','unidad_mantenimiento',2);
                 $("#unidad_mantenimiento").find('option[value="' + response[2] + '"]').prop("selected", "selected");
