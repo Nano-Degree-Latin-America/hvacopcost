@@ -16252,13 +16252,13 @@ function calcular_speendplan_base_update(id_project){
          var tipo_ambiente_mantenimiento =$('#tipo_ambiente_mantenimiento');
          var count_tipo_ambiente_mantenimiento = $('#count_tipo_ambiente_mantenimiento').val();
 
-         if(tipo_ambiente_mantenimiento.val() == 0){
+         if(tipo_ambiente_mantenimiento.val() == ""){
 
             tipo_ambiente_mantenimiento.css("border-color", "red")
             count_tipo_ambiente_mantenimiento = 1;
           $('#count_tipo_ambiente_mantenimiento').val(count_tipo_ambiente_mantenimiento);
 
-         }else if (tipo_ambiente_mantenimiento.val() != 0) {
+         }else if (tipo_ambiente_mantenimiento.val() != "") {
 
             count_tipo_ambiente_mantenimiento = 0;
           $('#count_tipo_ambiente_mantenimiento').val(count_tipo_ambiente_mantenimiento);

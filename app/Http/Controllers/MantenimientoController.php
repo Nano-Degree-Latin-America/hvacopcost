@@ -215,7 +215,7 @@ public function factores_mantenimiento(){
             $fav = $this->obtener_fav($yrs_vida_mantenimiento);
             $fhd = $this->obtener_fhd($ocupacion_semanal_mantenimiento);
             //$res_formula_calculo = $this->formula_calculo(intval($capacidad_termica_mantenimiento),intval($cantidad_unidades_mantenimiento),$costo_instalado,$rav,$fa,$fta,$feu,$fav,$fhd,$fg);
-            $total_horas = $this->formula_total_horas(intval($horas),intval($cantidad_unidades_mantenimiento),$fa,$fta,$feu,$fav,$fhd,$fg);
+            $total_horas = $this->formula_total_horas(floatval($horas),intval($cantidad_unidades_mantenimiento),$fa,$fta,$feu,$fav,$fhd,$fg);
 
 
 
@@ -653,7 +653,7 @@ public function factores_mantenimiento(){
 
   public function formula_total_horas($horas,$cantidad_unidades_mantenimiento,$fa,$fta,$feu,$fav,$fhd,$fg){
 
-
+    //dd($horas.'_'.$cantidad_unidades_mantenimiento.'_'.$fa.'_'.$fta.'_'.$feu.'_'.$fav.'_'.$fhd);
     //((Horas) + (Horas x FA) + (Horas x FHD) + (Horas x FEU)) x  FVA x FTA x Cantidad de Equipos
     //(Horas) + (Horas x FA) + (Horas x FHD) + (Horas x FEU)
     $suma_horas = $horas + ($horas*$fa) + ($horas*$fhd) + ($horas*$feu);
@@ -1568,7 +1568,6 @@ public function spend_plan_base_adicionales_edit(Request $request,$id_project)
 
     $vehiculos_sp_adicionales = $distancia_sitio_mantenimiento*2*$dias_mantenimiento*1.2;
 
-
     //////////////////////contratistas
     $contratistas_sp_adicionales = $contratistas_adicionales;
 
@@ -2092,7 +2091,7 @@ return response()->json($array_to_response);
         $feu = $this->obtener_feu($estado_unidad_mantenimiento);
         $fav = $this->obtener_fav($yrs_vida_mantenimiento);
         $fhd = $this->obtener_fhd($ocupacion_semanal_mantenimiento);
-        $total_horas = $this->formula_total_horas(intval($horas),intval($cantidad_unidades_mantenimiento),$fa,$fta,$feu,$fav,$fhd,$fg);
+        $total_horas = $this->formula_total_horas(floatval($horas),intval($cantidad_unidades_mantenimiento),$fa,$fta,$feu,$fav,$fhd,$fg);
 
                   $hora_dia_aux = $this->div_horas_periodo($total_horas,$periodo);
                   $hora_dia = $this->total_horas_periodo($hora_dia_aux,$periodo);
