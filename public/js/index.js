@@ -559,6 +559,8 @@ function active_display_retro(value){
 
 
  async function unidadHvac(value,num_div,id_select,module){
+    console.log(module);
+
     var ima =  $('#idioma').val();
     switch (module) {
         case 1:

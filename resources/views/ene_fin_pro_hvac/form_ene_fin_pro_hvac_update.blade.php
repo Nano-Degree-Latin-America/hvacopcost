@@ -406,28 +406,36 @@
                                                         </div>
 {{--                                                     <input onchange="check_input(this.value,this.id,'tiempo_porcent_warning');" value="{{$project_edit->hrs_tiempo}}"  name="tiempo_porcent" id="tiempo_porcent" type="text" style="font-size: 14px;" class="w-full border-2  border-color-inps rounded-md p-1 my-1 font-roboto" >
  --}}                                               <select onchange="check_inp_count('count_tiempo_porcent','tiempo_porcent');" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="tiempo_porcent" id="tiempo_porcent">
-                                                        @switch($project_edit->hrs_tiempo)
-                                                            @case(30)
-                                                            <option selected value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                            <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
-                                                            <option value="168">168 Hrs.</option>
-                                                            @break
+                                                        @if ($project_edit->hrs_tiempo)
+                                                            @switch($project_edit->hrs_tiempo)
+                                                                @case(30)
+                                                                <option selected value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
+                                                                <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
+                                                                <option value="168">168 Hrs.</option>
+                                                                @break
 
-                                                            @case(80)
-                                                            <option  value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
-                                                            <option selected value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
-                                                            <option value="168">168 Hrs.</option>
-                                                            @break
+                                                                @case(80)
+                                                                <option  value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
+                                                                <option selected value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
+                                                                <option value="168">168 Hrs.</option>
+                                                                @break
 
-                                                            @case(168)
+                                                                @case(168)
+                                                                <option value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
+                                                                <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
+                                                                <option selected value="168">168 Hrs.</option>
+                                                                @break
+
+                                                                @default
+
+                                                            @endswitch
+                                                        @else
+                                                            <option value="">-{{ __('index.seleccionar horas') }}-</option>
                                                             <option value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
                                                             <option value="51_167 ">{{ __('index.51 a 167 hrs') }}.</option>
-                                                            <option selected value="168">168 Hrs.</option>
-                                                            @break
+                                                            <option value="168">{{ __('index.168 hrs') }}.</option>
+                                                        @endif
 
-                                                            @default
-
-                                                        @endswitch
 
 
                                                     </select>

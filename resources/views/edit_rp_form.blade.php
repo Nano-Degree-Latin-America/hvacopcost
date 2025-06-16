@@ -405,7 +405,7 @@
                         <input type="text" value="" class="hidden" id="action_submit_2_1_retro" name="action_submit_2_1_retro">
 
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-color-inps rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro');valida_update_store_solution('action_submit_2_1_retro');check_chiller(this.value,'csStd_2_1_retro',2);send_value_equipo_marcas(this.id,this.value,'marca_2_1_retro');"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
+                            <select class="w-full border-2 border-color-inps rounded-md p-2" onchange="unidadHvac(this.value,1,'cheTipo_2_1_retro',{{$module_1}});valida_update_store_solution('action_submit_2_1_retro');check_chiller(this.value,'csStd_2_1_retro',2);send_value_equipo_marcas(this.id,this.value,'marca_2_1_retro');"  name="cUnidad_2_1_retro" id="cUnidad_2_1_retro" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
@@ -781,7 +781,7 @@
                            <label  class="labels" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                        </div>
                        <div class="w-1/2 flex justify-start">
-                           <select class="w-full border-2 border-color-inps rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro');valida_update_store_solution('action_submit_3_1_retro');check_chiller(this.value,'csStd_3_1_retro',2);send_value_equipo_marcas(this.id,this.value,'marca_3_1_retro');" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
+                           <select class="w-full border-2 border-color-inps rounded-md p-2"  onchange="unidadHvac(this.value,1,'cheTipo_3_1_retro',{{$module_1}});valida_update_store_solution('action_submit_3_1_retro');check_chiller(this.value,'csStd_3_1_retro',2);send_value_equipo_marcas(this.id,this.value,'marca_3_1_retro');" name="cUnidad_3_1_retro" id="cUnidad_3_1_retro" >
                                <option value="0">{{ __('index.seleccionar') }}</option>
                                <option value="1">Paquetes (RTU)</option>
                                <option value="2">Split DX</option>

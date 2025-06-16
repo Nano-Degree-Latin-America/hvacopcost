@@ -168,98 +168,130 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
     public function udpate_project(Request $request,$id): ProjectsModel {
 
 
-        $update_project= ProjectsModel::find($id);
-        if($request->get('type_p') == 1 || $request->get('type_p') == 2){
-        $update_project->type_p= $request->get('type_p');
-        $update_project->name=$request->get('name_pro');
-        $update_project->id_tipo_edificio=$request->get('tipo_edificio_edit');
-        $update_project->inflacion=intval($request->get('inc_ene'));
-        $update_project->inflacion_rate=intval($request->get('inflation_rate'));
 
-        if($request->get('n_empleados') == ''){
-            $update_project->n_empleados = 0;
-        }else if($request->get('n_empleados') != '' || $request->get('n_empleados') >= 0){
-            $n_empleados_aux = $this->num_form($request->get('n_empleados'));
-            $update_project->n_empleados = $n_empleados_aux;
-        }
-
-        if($request->get('sal_an_prom') == ''){
-            $update_project->sal_an_prom = 0;
-        }else if($request->get('sal_an_prom') != '' || $request->get('sal_an_prom') >= 0){
-            $sal_an_prom_aux = $this->price_form($request->get('sal_an_prom'));
-            $update_project->sal_an_prom = $sal_an_prom_aux;
-        }
-
-        $hrs_tiempo = $request->get('tiempo_porcent');
-
-        switch ($hrs_tiempo) {
-            case 'm_50':
-                //si llega m_50 el valor es igual a 30 que es menor que 50 Nota! puede ser cualquier numero menor que 50
-                $update_project->hrs_tiempo=30;
-
-                break;
-            case '51_167':
-                //si es de 51 a 157 , 80 esta entre el rango
-                $update_project->hrs_tiempo=80;
-
-                break;
-            case '168':
-                 //si es igual a 168
-                $update_project->hrs_tiempo=168;
-
-                break;
-        }
-
-
-
-        $update_project->id_cat_edifico=$request->get('cat_ed_edit');
-
-        $cap_tot_ar = $this->num_form($request->get('ar_project'));
-        $update_project->area = floatval($cap_tot_ar);
-        $update_project->unidad=$request->get('unidad');
-        $pais = DB::table('pais')
-        ->where('pais.idPais','=',$request->get('paises_edit'))
-        ->first()->pais;
-        $update_project->region=$pais;
-        $region = DB::table('ciudad')
-        ->where('ciudad.idCiudad','=',$request->get('ciudades_edit'))
-        ->first()->ciudad;
-
-        $update_project->ciudad=$region;
-    }
-
-
-
-        $aux_porcent = explode("%",   $request->get('porcent_hvac'));
-        if(count($aux_porcent) == 2){
-            $update_project->porcent_hvac=intval($aux_porcent[0]);
-        }else{
-            $update_project->porcent_hvac=10;
-        }
-        $update_project->status=1;
-        $update_project->id_empresa=Auth::user()->id_empresa;
-        $update_project->id_user=Auth::user()->id;
-
+        $type_project_check = ProjectsModel::find($id)->type_p;
+        $type_project_modify=$request->get('type_p');
         $action_submit_send = $request->get('action_submit_send');
+        $solutionServiceEdit = new SolutionServiceEdit();
+        ////limpiar proyecto si es diferente
+        if($type_project_check == $type_project_modify){
 
-        if($request->get('type_p') == 3){
-            $update_project->type_p= $request->get('type_p');
+        }else{
+            if($type_project_modify == 1 || $type_project_modify == 2){
+                    if($type_project_check == 1 || $type_project_check == 2){
+                        if($action_submit_send == 'store'){
+                         //elimina soluciones
+                        $del_functions = $solutionServiceEdit->del_solutions($id);
+                        }else if($action_submit_send == 'update'){
+                            //nada
+                        }
+                    }
 
-            $pais = DB::table('pais')
-            ->where('pais.idPais','=',$request->get('paises_mantenimiento'))
-            ->first()->pais;
+                     if($type_project_check == 3){
+                       if($action_submit_send == 'store'){
+                         //elimina soluciones
 
-            $ciudad = DB::table('ciudad')
-            ->where('ciudad.idCiudad','=',$request->get('ciudades_mantenimiento'))
-            ->first()->ciudad;
+                        $del_functions = $solutionServiceEdit->del_ventas_regis($id);
 
-            $update_project->region=$pais;
-            $update_project->ciudad=$ciudad;
-            $update_project->id_tipo_edificio=$request->get('tipo_edificio_mantenimiento');
-            $update_project->id_cat_edifico=$request->get('cat_edi_mantenimiento');
-            $cap_tot_ar_mant =$this->num_form($request->get('ar_project_mantenimiento'));
-            $update_project->area = floatval($cap_tot_ar_mant);
+                        }else if($action_submit_send == 'update'){
+                            //nada
+                        }
+
+                     }
+            }
         }
+        //actualizar project informaicon
+
+            if($type_project_modify == 1 || $type_project_modify == 2){
+
+                    $update_project= ProjectsModel::find($id);
+                    $update_project->type_p= $request->get('type_p');
+                    $update_project->name=$request->get('name_pro');
+                    $update_project->id_tipo_edificio=$request->get('tipo_edificio_edit');
+                    $update_project->inflacion=intval($request->get('inc_ene'));
+                    $update_project->inflacion_rate=intval($request->get('inflation_rate'));
+
+                    if($request->get('n_empleados') == ''){
+                        $update_project->n_empleados = 0;
+                    }else if($request->get('n_empleados') != '' || $request->get('n_empleados') >= 0){
+                        $n_empleados_aux = $this->num_form($request->get('n_empleados'));
+                        $update_project->n_empleados = $n_empleados_aux;
+                    }
+
+                    if($request->get('sal_an_prom') == ''){
+                        $update_project->sal_an_prom = 0;
+                    }else if($request->get('sal_an_prom') != '' || $request->get('sal_an_prom') >= 0){
+                        $sal_an_prom_aux = $this->price_form($request->get('sal_an_prom'));
+                        $update_project->sal_an_prom = $sal_an_prom_aux;
+                    }
+
+                    $hrs_tiempo = $request->get('tiempo_porcent');
+
+                    switch ($hrs_tiempo) {
+                        case 'm_50':
+                            //si llega m_50 el valor es igual a 30 que es menor que 50 Nota! puede ser cualquier numero menor que 50
+                            $update_project->hrs_tiempo=30;
+
+                            break;
+                        case '51_167':
+                            //si es de 51 a 157 , 80 esta entre el rango
+                            $update_project->hrs_tiempo=80;
+
+                            break;
+                        case '168':
+                            //si es igual a 168
+                            $update_project->hrs_tiempo=168;
+
+                            break;
+                    }
+
+
+
+                    $update_project->id_cat_edifico=$request->get('cat_ed_edit');
+
+                    $cap_tot_ar = $this->num_form($request->get('ar_project'));
+                    $update_project->area = floatval($cap_tot_ar);
+                    $update_project->unidad=$request->get('unidad');
+                    $pais = DB::table('pais')
+                    ->where('pais.idPais','=',$request->get('paises_edit'))
+                    ->first()->pais;
+                    $update_project->region=$pais;
+                    $region = DB::table('ciudad')
+                    ->where('ciudad.idCiudad','=',$request->get('ciudades_edit'))
+                    ->first()->ciudad;
+
+                    $update_project->ciudad=$region;
+
+                    $aux_porcent = explode("%",   $request->get('porcent_hvac'));
+                    if(count($aux_porcent) == 2){
+                        $update_project->porcent_hvac=intval($aux_porcent[0]);
+                    }else{
+                        $update_project->porcent_hvac=10;
+                    }
+                    $update_project->status=1;
+                    $update_project->id_empresa=Auth::user()->id_empresa;
+                    $update_project->id_user=Auth::user()->id;
+            }
+
+            if($type_project_modify == 3){
+                $update_project->type_p= $request->get('type_p');
+
+                $pais = DB::table('pais')
+                ->where('pais.idPais','=',$request->get('paises_mantenimiento'))
+                ->first()->pais;
+
+                $ciudad = DB::table('ciudad')
+                ->where('ciudad.idCiudad','=',$request->get('ciudades_mantenimiento'))
+                ->first()->ciudad;
+
+                $update_project->region=$pais;
+                $update_project->ciudad=$ciudad;
+                $update_project->id_tipo_edificio=$request->get('tipo_edificio_mantenimiento');
+                $update_project->id_cat_edifico=$request->get('cat_edi_mantenimiento');
+                $cap_tot_ar_mant =$this->num_form($request->get('ar_project_mantenimiento'));
+                $update_project->area = floatval($cap_tot_ar_mant);
+            }
+
 
         $update_project->update();
         if($update_project->update()){
@@ -267,13 +299,6 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
             $solutionServiceEdit = new SolutionServiceEdit();
             $SolutionServiceEditRetro = new SolutionServiceEditRetro();
             $calculoMantenimientoService = new CalculoMantenimientoService();
-
-            if($action_submit_send == 'store'){
-                //elimina soluciones
-               $del_functions = $solutionServiceEdit->del_solutions($update_project->id);
-            }else if($action_submit_send == 'update'){
-                //nada
-            }
 
             if($type_p === 1){
                 $solutions = $solutionServiceEdit->solution_update_new($request,$update_project->id);
