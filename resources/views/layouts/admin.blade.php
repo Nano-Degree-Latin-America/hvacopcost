@@ -127,8 +127,8 @@
           </li>
 
           <li>
-            <a href="/configuraciones_mantenimiento">
-              <span>Configuraciones Mantenimiento</span>
+            <a href="/base_calculo_horas">
+              <span>Calculo Horas</span>
             </a>
           </li>
 
