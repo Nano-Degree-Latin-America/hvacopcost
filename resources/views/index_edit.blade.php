@@ -282,9 +282,9 @@ $idm = App::getLocale();
 
             <form action="{{url('/edit_project', [$id_project])}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
                         @csrf
-                                    <input type="text" value="update" class="" id="action_submit_send" name="action_submit_send">
+                                    <input type="text" value="update" class="hidden" id="action_submit_send" name="action_submit_send">
                                     <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
-                                    <input type="number" class="" id="type_p" name="type_p">
+                                    <input type="number" class="hidden" id="type_p" name="type_p">
                                     @include('simulaciones_update')
                     </div>
                     {{-- /////////////////////////////////////////////////////////////////////////////////////////////////// --}}
