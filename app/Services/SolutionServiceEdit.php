@@ -11,6 +11,8 @@ use App\ProjectsModel;
 use App\ResultsProjectModel;
 use App\MarcasEmpresaModel;
 use App\ModelosEmpresaModel;
+use App\MantenimientoProjectsModel;
+use App\MantenimientoEquiposModel;
 use App\TipoEdificioModel;
 use App\TypeProjectModel;
 use Illuminate\Support\Facades\Redirect;
@@ -974,5 +976,50 @@ public function update_solution_3_2(Request $request,$id_project,$action_submit_
             $mantenimiento =  $calculoMantenimientoService->new_calculo_mantenimiento_save($request,$update_project->id);
             return true;
         }
+    }
+
+    public function del_ventas_regis($id){
+
+        $mantenimiento_projects = DB::table('mantenimiento_projects')
+        ->where('mantenimiento_projects.id_project','=',$id)
+        ->get();
+
+        $mant_equipos = DB::table('mantenimiento_equipos')
+        ->where('mantenimiento_equipos.id_project','=',$id)
+        ->get();
+
+
+        $delete_state = false;
+
+        foreach($mantenimiento_projects as $mant){
+            $mant=MantenimientoProjectsModel::find($mant->id);
+            $mant->delete();
+        }
+
+
+        foreach($mant_equipos as $equipo){
+            $mant=MantenimientoEquiposModel::find($equipo->id);
+            $mant->delete();
+        }
+
+        $mant_proj_check = DB::table('mantenimiento_projects')
+        ->where('mantenimiento_projects.id_project','=',$id)
+        ->get();
+
+        $mant_equipos = DB::table('mantenimiento_equipos')
+        ->where('mantenimiento_equipos.id_project','=',$id)
+        ->get();
+        ///solutions check
+        if (count($mant_proj_check)>0 && count($mant_equipos)>0){
+            $delete_state = false;
+            return $delete_state;
+        }
+
+        if (count($mant_proj_check)==0 && count($mant_equipos)==0){
+            $delete_state = true;
+            return $delete_state;
+        }
+
+
     }
 }

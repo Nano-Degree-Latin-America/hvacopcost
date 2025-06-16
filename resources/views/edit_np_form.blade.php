@@ -2256,7 +2256,7 @@
                             <label class="labels" class="" for=""><b>{{ __('index.unidadhvac') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full py-1 border-2 border-color-inps rounded-md" onchange="unidadHvac(this.value,1,'cheTipo_3_2','{{App::getLocale()}}');check_chiller(this.value,'csStd_3_2',1);send_value_equipo_marcas(this.id,this.value,'marca_3_2');" name="cUnidad_3_2" id="cUnidad_3_2" >
+                            <select class="w-full py-1 border-2 border-color-inps rounded-md" onchange="unidadHvac(this.value,1,'cheTipo_3_2',{{$module_1}});check_chiller(this.value,'csStd_3_2',1);send_value_equipo_marcas(this.id,this.value,'marca_3_2');" name="cUnidad_3_2" id="cUnidad_3_2" >
                                 <option value="0">{{ __('index.seleccionar') }}</option>
                                 <option value="1">Paquetes (RTU)</option>
                                 <option value="2">Split DX</option>
