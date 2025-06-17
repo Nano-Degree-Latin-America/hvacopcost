@@ -6,13 +6,14 @@
                 <input type="text" class="hidden" value="2" id="cont_sol_1_retro" name="cont_sol_1_retro">
                 <input type="text" class="hidden" value="1" id="set_sol_1_retro" name="set_sol_1_retro">
                 <input type="text" class="hidden" value="" id="indice_tabla_edit" name="indice_tabla_edit">
+                <input type="text" class="hidden" value="" id="tr_val" name="tr_val">
             </div>
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex  2xl:justify-center xl:justify-center lg:justify-center  py-1">
                 <h2 style="color:#1B17BB;" class="font-bold text-3xl">{{ __('index.sis_ext') }}</h2>
             </div>
-
+            @include('mantenimiento.modal_add_marca_modelo_mantenimiento')
             <div class="mr-5 2xl:w-20 xl:w-auto lg:w-1/4 flex justify-end">
-                <button id="button_modal" name="button_modal" {{-- onclick="mostrar_modal('modal_add_marca_modelo');send_marcas_to_datalist();" --}} type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning_blue.png')}}" style="width:75px!important; height:45px;" /></button>
+                <button id="button_modal" name="button_modal" onclick="mostrar_modal('modal_add_marca_modelo_mantenimiento');send_marcas_to_datalist();" type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning_blue.png')}}" style="width:75px!important; height:45px;" /></button>
             </div>
 
         </div>

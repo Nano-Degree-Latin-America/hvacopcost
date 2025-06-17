@@ -6342,7 +6342,7 @@ $('#proteccion_condensador_3_1_retro_count').val(proteccion_condensador_3_1_retr
 
 function valida_selects_inps(id_input){
    input_select = $('#'+id_input);
-   if (input_select.val() != 0 || input_select.val() != null){
+   if (input_select.val() != 0 || input_select.val() != null ){
     input_select.css('border-color','#1B17BB');
    }else if (input_select.val() == 0 || input_select.val() == null){
     input_select.css("border-color", "red");
@@ -7294,12 +7294,13 @@ toggle between hiding and showing the dropdown content */
         count_ciudad_mantenimiento = $('#count_ciudad_mantenimiento').val();
         count_velocidad_promedio_mantenimiento = $('#count_velocidad_promedio_mantenimiento').val();
         count_ocupacion_semanal_mantenimiento = $('#count_ocupacion_semanal_mantenimiento').val();
-        count_personal_enviado = $('#count_personal_enviado').val();
+        count_personal_enviado = $('#count_personal_enviado_mantenimiento').val();
         count_porcent_hvac_mantenimiento = $('#count_porcent_hvac_mantenimiento').val();
 
        suma_inps = parseInt(count_cliente_pro_mantenimiento) + parseInt(count_cat_edi_mantenimiento) + parseInt(count_paises_mantenimiento)
-       + parseInt(count_tipo_ambiente_mantenimiento) + parseInt(count_ar_project_mantenimiento) + parseInt(count_name_sitio_mantenimiento) + parseInt(count_tipo_edificio_mantenimiento)   + parseInt(count_ciudad_mantenimiento)
+       + parseInt(count_tipo_ambiente_mantenimiento) + parseInt(count_ar_project_mantenimiento) + parseInt(count_name_sitio_mantenimiento) + parseInt(count_tipo_edificio_mantenimiento) + parseInt(count_ciudad_mantenimiento)
        + parseInt(count_velocidad_promedio_mantenimiento) + parseInt(count_ocupacion_semanal_mantenimiento) + parseInt(count_personal_enviado) + parseInt(count_porcent_hvac_mantenimiento);
+        console.log(count_personal_enviado);
 
        if(suma_inps == 12){
         $('#div_next_mantenimiento').removeClass("hidden");
@@ -14663,8 +14664,6 @@ async function edit_regstro(tr) {
         },
         success: async function(response) {
 
-            console.log(response);
-
             $('#indice_tabla_edit').val(response[0]);
             $("#sistema_mantenimiento").find('option[value="' + response[1] + '"]').prop("selected", "selected");
             await unidadHvac(response[1],'','unidad_mantenimiento',2);
@@ -14686,7 +14685,8 @@ async function edit_regstro(tr) {
             $("#cambio_filtros_mantenimiento").find('option[value="' + response[11] + '"]').prop("selected", "selected");
             $('#costo_filtro_mantenimiento').val(response[12]);
             $('#cantidad_filtros_mantenimiento').val(response[13]);
-
+            $('#'+tr).find('input').css('border-color', '#ed8936');
+            $('#tr_val').val(tr);
         },
         error: function(xhr, status, error) {
             console.error('Error al enviar los datos:', error);
@@ -14772,6 +14772,9 @@ function edit_registro_tabla(){
                 newRow += '</tr>';
                 $('#tbody_equipos').append(newRow);
             }
+            var input_name_tr = $('#tr_val').val();
+            $('#'+input_name_tr).find('input').css('border-color', '#1B17BB');
+            $('#tr_val').val('');
             $('#indice_tabla_edit').val('');
         },
         error: function(xhr, status, error) {
@@ -14868,6 +14871,10 @@ $.ajax({
     },
     success: async function(response) {
         listar_mantenimiento_equipos(response);
+        var input_name_tr = $('#tr_val').val();
+        $('#'+input_name_tr).find('input').css('border-color', '#1B17BB');
+        $('#tr_val').val('');
+        $('#indice_tabla_edit').val('');
         $('#id_tabla_edit').val('');
     },
     error: function(xhr, status, error) {
@@ -16269,19 +16276,19 @@ function calcular_speendplan_base_update(id_project){
          ////////////////////
 
           /////////////////
-          var personal_enviado =$('#personal_enviado');
-          var count_personal_enviado = $('#count_personal_enviado').val();
+          var personal_enviado =$('#personal_enviado_mantenimiento');
+          var count_personal_enviado = $('#count_personal_enviado_mantenimiento').val();
 
           if(personal_enviado.val() == 0){
 
             personal_enviado.css("border-color", "red")
              count_personal_enviado = 1;
-           $('#count_personal_enviado').val(count_personal_enviado);
+           $('#count_personal_enviado_mantenimiento').val(count_personal_enviado);
 
           }else if (personal_enviado.val() != 0) {
 
             count_personal_enviado = 0;
-           $('#count_personal_enviado').val(count_personal_enviado);
+           $('#count_personal_enviado_mantenimiento').val(count_personal_enviado);
 
           }
           ////////////////////
@@ -16519,7 +16526,7 @@ function calcular_speendplan_base_update(id_project){
                     }
                     /* newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">'; */
                     newRow += '<td style="width:30px;" class=""><button type="button" onclick="del_td_tr_edit('+id+')" class="px-1 border-2 border-red-500 rounded-md text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fas fa-trash"></i></i></button></td>';
-                    newRow += '<td style="width:30px;" class=""><button type="button" onclick="edit_regstro_edit('+id+')" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>';
+                    newRow += '<td style="width:30px;" class=""><button type="button" onclick="edit_regstro_edit('+id+','+i+')" class="px-1 border-2 border-blue-500 rounded-md text-lg text-blue-400 hover:text-white hover:bg-blue-200"><i class="fas fa-edit"></i></i></button></td>';
                     newRow += '</tr>';
                     $('#tbody_equipos').append(newRow);
                 }
@@ -16549,7 +16556,7 @@ function calcular_speendplan_base_update(id_project){
     });
  }
 
- async function edit_regstro_edit(id){
+ async function edit_regstro_edit(id,tr_id){
 
 
         // Enviar valuesArray por medio de AJAX
@@ -16584,7 +16591,8 @@ function calcular_speendplan_base_update(id_project){
                 $("#cambio_filtros_mantenimiento").find('option[value="' + response[11] + '"]').prop("selected", "selected");
                 $('#costo_filtro_mantenimiento').val('$'+response[12]);
                 $('#cantidad_filtros_mantenimiento').val(response[13]);
-
+                $('#'+tr_id).find('input').css('border-color', '#ed8936');
+                $('#tr_val').val(tr_id);
             },
             error: function(xhr, status, error) {
                 console.error('Error al enviar los datos:', error);

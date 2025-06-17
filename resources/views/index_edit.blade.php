@@ -1130,6 +1130,7 @@ window.onload = function() {
     $('#sal_an_prom').val('$'+num_aux);
    setTimeout(function() {
     checksuma();
+    checksuma_mant();
 }, 1000);
 
 
