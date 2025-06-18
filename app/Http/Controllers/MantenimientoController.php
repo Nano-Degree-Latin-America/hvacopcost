@@ -248,12 +248,16 @@ public function factores_mantenimiento(){
         $costo_cambio_filtros_aux = $this->precio_to_integer($request->values[12]);
         $suma_adicionales = $costo_cambio_filtros_aux * $request->values[13] * $request->values[6];
 
-        //coordinacion resultados
+        //////////////////////////////////////////////////////coordinacion resultados///////////////////////////////////////////
+        //hora hombre
         $hora_dia_aux = $this->div_horas_periodo($total_horas,$periodo);
         $hora_dia = $this->total_horas_periodo($hora_dia_aux,$periodo);
+
         $dias_aux =$hora_dia_aux/7;
         $dias = $this->redondeo_dias($dias_aux);
+
         $dias_ajustados = $this->total_dias_periodo($dias,$periodo);
+
         $idas_ajustados = $this->total_idas_periodo($dias,$periodo);
 
         array_push(
@@ -273,13 +277,13 @@ public function factores_mantenimiento(){
             $request->values[12].'_hidden',//costo_filtro_mantenimiento
             $request->values[13].'_hidden',//cantidad_filtros_mantenimiento
             $unidad.'_hidden',
-            $suma_adicionales.'_hidden',
+            $suma_adicionales.'_hidden', //suma adciolnales
             ''.'_hidden',
             ''.'_hidden',
-            $total_horas.'_hidden',
-            number_format($hora_dia,1).'_hidden',
-            floatval(number_format($dias_ajustados,1)).'_hidden',
-            $idas_ajustados.'_hidden',
+            $total_horas.'_hidden', //total horas
+            number_format($hora_dia,1).'_hidden', //hora dia
+            floatval(number_format($dias_ajustados,1)).'_hidden', //dias ajustados
+            $idas_ajustados.'_hidden', //idas ajustados
         );
 
 
@@ -296,6 +300,7 @@ public function factores_mantenimiento(){
          // Obtener array_sistemas de la sesión
         $array_sistemas = Session::get('array_sistemas');
 
+        //actualizar indice del arregglo
         for ($i = 0; $i < count($array_sistemas); $i++) {
             if (is_array($array_sistemas[$i]) && count($array_sistemas[$i]) > 0) {
                 $array_sistemas[$i][0] = $i+1; // Editar el primer elemento
@@ -652,8 +657,6 @@ public function factores_mantenimiento(){
   }
 
   public function formula_total_horas($horas,$cantidad_unidades_mantenimiento,$fa,$fta,$feu,$fav,$fhd,$fg){
-
-    //dd($horas.'_'.$cantidad_unidades_mantenimiento.'_'.$fa.'_'.$fta.'_'.$feu.'_'.$fav.'_'.$fhd);
     //((Horas) + (Horas x FA) + (Horas x FHD) + (Horas x FEU)) x  FVA x FTA x Cantidad de Equipos
     //(Horas) + (Horas x FA) + (Horas x FHD) + (Horas x FEU)
     $suma_horas = $horas + ($horas*$fa) + ($horas*$fhd) + ($horas*$feu);
@@ -664,6 +667,10 @@ return $res;
 
   public function spend_plan_base(Request $request)
 {
+
+
+     $id_new_project = $this->save_mantenimiento_project($request);
+    return $id_new_project;
 
 /*
     $analisis_costo_mant_array = [];
@@ -951,13 +958,13 @@ for ($i=0; $i < count($filteredData_costos) ; $i++) {
     session(['array_speed_plan' => $array_speed_plan]); */
 
     //ceil reondea a entero superior
-   $id_new_project = $this->save_mantenimiento_project($request);
+
 
    /* array_push($analisis_costo_mant_array,$format_precio_venta,ceil($dias_mantenimiento),ceil($tiempo_mantenimiento),ceil($tiempo_traslados),ceil($tiempo_acceso_edificio),ceil($tiempo_garantias),$format_suma_costos,$id_new_project);
 
 
     */
-     return $id_new_project;
+
 }
 
 public function spend_plan_base_edit(Request $request,$id_project)
@@ -1034,7 +1041,7 @@ public function spend_plan_base_edit(Request $request,$id_project)
 
 
 
-    //horas_hombres_garanti a
+    //horas_hombres_energencias
     $horas_hombre_garantia = $horas_hombre_mantenimiento * 0.15;
 
 
@@ -1519,6 +1526,8 @@ public function spend_plan_base_adicionales_edit(Request $request,$id_project)
     $personal_enviado = ConfiguracionesMantenimientoModel::where('slug','=','mo-tecnico-y-ayudante')
     ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
     }
+
+    ///configuraciones
     $segurista_supervisor = ConfiguracionesMantenimientoModel::where('slug','=','segurista-supervisor')
     ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
     $valor_burden = ConfiguracionesMantenimientoModel::where('slug','=','valor-burden')

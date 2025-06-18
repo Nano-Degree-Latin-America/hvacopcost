@@ -435,7 +435,7 @@ $idm = App::getLocale();
                 <div id="buttons_mantainance" name="buttons_mantainance" class="w-1/2 flex hidden" style=" justify-content: center;">
 
                     <button  type="button" id="button_next_mantenimiento_noadicionales_edit" name="button_next_mantenimiento_noadicionales_edit"
-                    {{-- onclick="calcular_speendplan_base();" --}}
+
                     style="background-color:#1B17BB;"
                         x-show="step == 2"
                         @click="step++"
