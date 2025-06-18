@@ -18,11 +18,13 @@
 </div>
 
 {{-- calculos Energético y Financiero Proyectos form --}}
+{{-- formulario de proyecto nuevo y retrofit --}}
 <div id="ene_fin_pro_form_project" class="hidden">
      @include('ene_fin_pro_hvac.form_ene_fin_pro_hvac')
 </div>
 
 {{-- calculos precios hvac form --}}
+{{-- formulario de ventas --}}
 <div id="mantenimiento_form_project" class="hidden">
     @include('mantenimiento.mantenimiento_form_project')
 </div>

@@ -14012,53 +14012,7 @@ async function check_form_mantenimiento_tarjet(idm){
 
        }
        //////////////////////////////////
-       /////////////////////////////////////
-      /*  var costo_filtro=$('#costo_filtro_mantenimiento');
-       var costo_filtro_count = $('#costo_filtro_mantenimiento_count').val();
 
-       if(costo_filtro.val() == 0){
-
-           costo_filtro.css("border-color", "red")
-           costo_filtro_count = 1;
-       $('#costo_filtro_mantenimiento_count').val(costo_filtro_count);
-
-       }else if (costo_filtro.val() != 0) {
-           costo_filtro_count = 0;
-       $('#costo_filtro_mantenimiento_count').val(costo_filtro_count);
-
-       } */
-       ////////////////////////////////
-       /////////////////////////////////////
-       /* var  cantidad_filtros=$('#cantidad_filtros_mantenimiento');
-       var cantidad_filtros_count = $('#cantidad_filtros_mantenimiento_count').val();
-
-       if(cantidad_filtros.val() == 0 || cantidad_filtros.val() == ''){
-
-           cantidad_filtros.css("border-color", "red")
-           cantidad_filtros_count = 1;
-       $('#cantidad_filtros_mantenimiento_count').val(cantidad_filtros_count);
-
-       }else if (cantidad_filtros.val() != 0 && cantidad_filtros.val() != '') {
-           cantidad_filtros_count = 0;
-       $('#cantidad_filtros_mantenimiento_count').val(cantidad_filtros_count);
-
-       } */
-       /////////////////////////////////////
-       /////////////////////////////////////
-       /* var  cantidad_unidades=$('#cantidad_unidades_mantenimiento');
-       var cantidad_unidades_count = $('#cantidad_unidades_mantenimiento_count').val();
-
-       if(cantidad_unidades.val() == 0 || cantidad_unidades.val() == ''){
-
-           cantidad_unidades.css("border-color", "red")
-           cantidad_unidades_count = 1;
-       $('#cantidad_unidades_mantenimiento_count').val(cantidad_unidades_count);
-
-       }else if (cantidad_unidades.val() != 0 && cantidad_unidades.val() != '') {
-           cantidad_unidades_count = 0;
-       $('#cantidad_unidades_mantenimiento_count').val(cantidad_unidades_count);
-
-       } */
 
        var count_inps = sistema_count + unidad_count + marca_count + modelo_equipo_count + modelo_equipo_count + capacidad_termica_count + tipo_acceso_count + estado_unidad_count  /* cambio_filtros_count + cantidad_filtros_count + cantidad_unidades_count */;
 
@@ -14103,8 +14057,8 @@ async function check_form_mantenimiento_tarjet(idm){
             countador_table = parseInt(countador_table) + 1;
             $('#contador_table').val(countador_table);
 
-            //valuesArray.push(countador_table);
 
+            //extrae valor de cada  id de ids y guarda los valores en valuesArray
             ids.forEach(function(id) {
                 var value = $('#' + id).val();
                 valuesArray.push(value);
@@ -15099,7 +15053,7 @@ function check_porcent_max_min_kms(value,id,unidad){
 
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: '/spend_plan_base',
+                            url: '/spend_plan_base',  //
                             type: 'post',
 
                             headers: { 'X-CSRF-TOKEN': token },
@@ -15211,37 +15165,6 @@ function calcular_speendplan_base_update(id_project){
 
 }
 
-/*  function calcular_speendplan_base_edit(id_project){
-
-    var token = $("#token").val();
-    var formData = {};
-    $("input[name$='_mantenimiento'], select[name$='_mantenimiento']").each(function() {
-        formData[$(this).attr('name')] = $(this).val();
-    });
-
-    $.ajax({
-        url: '/spend_plan_base_edit/'+id_project, // Reemplaza con la URL de tu endpoint
-        type: 'post',
-
-        headers: { 'X-CSRF-TOKEN': token },
-        data: {
-            values: formData
-        },
-        success: async function(response) {
-            $('#valor_contrato_anual').val(response[0]);
-            $('#dias_mantenimiento').val(response[1]);
-            $('#tiempo_mantenimiento').val(response[2]);
-            $('#tiempo_traslados').val(response[3]);
-            $('#tiempo_acceso_edificio').val(response[4]);
-            $('#tiempo_garantias').val(response[5]);
-            $('#costos_filtro_aire_adicionales').val(response[6]);
-
-        },
-        error: function(xhr, status, error) {
-            console.error('Error al enviar los datos:', error);
-        }
-    });
- } */
 
  function calcular_speendplan_base_edit(id_project){
 
@@ -15860,7 +15783,7 @@ function calcular_speendplan_base_update(id_project){
     //enviar energia actual a justificacion eneergia
     $('#energia_justificacion_mantenimiento').val(consumo_energia_edificio_aux);
     //formula Eui
-    //(35000 / 0.12) x 3.412 / (1000 x 10.7639)
+    //(Consumo Anual Edificio / 0.12) x 3.412 / (area x 10.7639)
     //area x 10.7639
     var area_x_10  = area_aux * 10.7639;
     var consumo_energia_edificio_div_tarifa_electrica  = consumo_energia_edificio / tarifa_electrica;
