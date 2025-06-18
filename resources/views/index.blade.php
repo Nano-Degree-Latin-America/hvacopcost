@@ -281,7 +281,7 @@ input[type=number]::-webkit-outer-spin-button {
                                 <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
                                 <input type="number" class="hidden" id="type_p" name="type_p">
                                 <input type="text" value="store" class="hidden" id="action_submit_send" name="action_submit_send">
-
+                             {{-- que tipo de proyecto va a trabajar el usuario en simulaciones --}}
                             @include('simulaciones')
                         </div>
                         {{-- /////////////////////////////////////////////////////////////////////////////////////////////////// --}}
@@ -425,18 +425,9 @@ input[type=number]::-webkit-outer-spin-button {
 
                 <div id="button_sigiuente_mantenimiento" class="hidden">
 
-                    {{-- <button  type="button" id="next_h_mantenimiento" name="next_h_mantenimiento"
-                    style="background-color:#1B17BB;"
-                        x-show="step > 1 && step < 3"
-                        @click="step++"
-                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
-                    >{{ __('index.siguiente') }}</button> --}}
-
                     <button  type="button" id="button_next_mantenimiento_noadicionales" name="button_next_mantenimiento_noadicionales"
-                     {{-- onclick="calcular_speendplan_base();" --}}
                     style="background-color:#1B17BB;"
                         x-show="step == 2"
-                        {{-- @click="step++" --}}
                         onclick="calcular_speendplan_base();"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('index.guardar') }}</button>
