@@ -1378,8 +1378,6 @@ async function set_ventilaciones_no_doa(value) {
             break;
     }
 
- console.log($('#type_project_selected').val());
-
   }
                                        //value,new_p,retro_p,mant_p,button_np,button_rp,action,type_p_aux
   async function check_form_proy_edit(type_p,id_project,display_mant){
@@ -15845,14 +15843,14 @@ function calcular_speendplan_base_update(id_project){
         var multi_parent = consumo_energia_edificio * porcent_porcent * suma_oprtunidades;
         //consumo_energia_edificio_div_tarifa_electrica - (consumo_energia_edificio_div_tarifa_electrica x porcent_hvac x (0.08+0.07+0.06
         var resta_consumo_edificio = consumo_energia_edificio - multi_parent;
-        var consumo_edificio_cantidad = dollarUSLocale.format(resta_consumo_edificio);
+        var consumo_edificio_cantidad = dollarUSLocale.format(parseInt(resta_consumo_edificio));
 
         $('#consumo_energia_edificio_mantenimiento_financiero').val('$'+consumo_edificio_cantidad);
         $('#energia_justificacion_financiera_futuro').empty();
         $('#energia_justificacion_financiera_futuro').val('$'+consumo_edificio_cantidad);
         ///////////////
         //reduccion energetica
-        var reduccion_energetica = consumo_energia_edificio - resta_consumo_edificio;
+        var reduccion_energetica = consumo_energia_edificio - parseInt(resta_consumo_edificio);
         var reduccion_energetica_cantidad = dollarUSLocale.format(reduccion_energetica);
         $('#reduccion_energetica_mantenimiento_financiero').val('$'+reduccion_energetica_cantidad);
         reduccion_gastos_reparaciones();
@@ -16617,8 +16615,6 @@ function calcular_speendplan_base_update(id_project){
         formData[$(this).attr('name')] = $(this).val();
     });
 
-    console.log(formData);
-
     $.ajax({
         type: 'post',
         url: '/save_adicionales/'+id_project,
@@ -16636,18 +16632,21 @@ function calcular_speendplan_base_update(id_project){
 
  }
 
- /* function save_justificacion_financiera(id_project){
+ function save_justificacion_financiera(id_project){
     var token = $("#token").val();
     var formData = {};
-    $("input[name$='_adicionales'],input[name$='costo_estimado_sistema_hvac']").each(function() {
+    $("input[name$='consumo_energia_edificio_mantenimiento'],input[name$='eui_mantenimiento'],input[name$='consumo_energia_edificio_mantenimiento_financiero'],input[name$='reduccion_energetica_mantenimiento_financiero'],input[name$='monto_actual_mantenimiento_financiero'],input[name$='reduccion_reparaciones_mantenimiento_financiero'],input[name$='costo_mantenimiento_mantenimiento_financiero']").each(function() {
         formData[$(this).attr('name')] = $(this).val();
     });
 
-    console.log(formData);
+    $("input[name$='estandar_ashrae_checked'],input[name$='filtros_merv_checked'],input[name$='remplazo_filtros_checked'],input[name$='mant_preven_checked']").each(function() {
+        formData[$(this).attr('name')] = $(this).prop('checked') ? "on" : "off";
+    });
+
 
     $.ajax({
         type: 'post',
-        url: '/save_adicionales/'+id_project,
+        url: '/save_justificacion_financiera/'+id_project,
         headers: { 'X-CSRF-TOKEN': token },
         data: {
             values: formData
@@ -16660,5 +16659,5 @@ function calcular_speendplan_base_update(id_project){
         }
     });
 
- } */
+ }
 

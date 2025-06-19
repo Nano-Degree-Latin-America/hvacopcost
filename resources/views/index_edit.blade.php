@@ -305,7 +305,7 @@ $idm = App::getLocale();
                     <div class="w-full h-full font-roboto flex ">
                         <div id="costos_adicionaless" class="flex w-full  h-full  gap-x-3 mx-3">
                              @if ($type_p === 3)
-                              @include('mantenimiento.costos_adicionales')
+                              @include('mantenimiento.costos_adicionales_edit')
                              @else
                                @include('mantenimiento.costos_adicionales')
                              @endif

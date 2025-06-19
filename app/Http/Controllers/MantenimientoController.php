@@ -2704,5 +2704,12 @@ return response()->json($array_to_response);
 
    }
 
+   public function save_justificacion_financiera(Request $request,$id_project){
+
+     $calculoMantenimientoService = new CalculoMantenimientoService();
+     $calculoMantenimientoService->save_justificacion_financiera($request,$id_project);
+
+   }
+
 }
 
