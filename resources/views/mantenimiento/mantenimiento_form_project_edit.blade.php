@@ -758,7 +758,7 @@
             <div id="div_next_mantenimiento" name="div_next_mantenimiento" style="width: 80%;" class="hidden">
                 <button  type="button"  id="next_mantenimiento" name="next_mantenimiento"
                     x-show="step < 2"
-                    onclick="listar_mantenimiento_equipos({{ $project_edit->id }});"
+                    onclick="save_form_mantenimiento({{ $project_edit->id }});listar_mantenimiento_equipos({{ $project_edit->id }});"
                     @click="step++"
                     style="background-color:#1B17BB;"
                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"

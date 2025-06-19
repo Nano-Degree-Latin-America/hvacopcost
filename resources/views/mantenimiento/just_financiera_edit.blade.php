@@ -28,7 +28,7 @@
                             <label class="text_blue text-xl font-bold">Consumo Anual Edificio</label>
                     </div>
                     <div class="w-1/2 flex">
-                        <input  onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);eui_justificacion_financiera(this.value);" type="text" id="consumo_energia_edificio_mantenimiento" name="consumo_energia_edificio_mantenimiento" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 h-10 text-center">
+                        <input value="${{number_format($costos_operativos->consumo_anual_edificio) }}" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);eui_justificacion_financiera(this.value);" type="text" id="consumo_energia_edificio_mantenimiento" name="consumo_energia_edificio_mantenimiento" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 h-10 text-center">
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
                         <label class="text_blue text-xl font-bold">Indice EUI (Kbtu/ft2)</label>
                     </div>
                     <div class="w-1/2 flex">
-                        <input  type="text" readonly id="eui_mantenimiento" name="eui_mantenimiento"  type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <input value="{{ number_format($costos_operativos->eui,1) }}" type="text" readonly id="eui_mantenimiento" name="eui_mantenimiento"  type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                     </div>
                 </div>
 
@@ -60,22 +60,38 @@
         <div class="w-full flex">
 
             <div class="w-1/6 flex gap-x-3">
-                <input id="estandar_ashrae_checked" name="estandar_ashrae_checked" type="checkbox" onclick="calcular_justificacion_financiera(0.08)" class="w-6 h-6 text_blue border-2 border-color-inps text-lg rounded-md p-2 text-center">
+                @if ($costos_operativos->estandar_ashrae == 'on')
+                <input checked id="estandar_ashrae_checked" name="estandar_ashrae_checked" type="checkbox" onclick="calcular_justificacion_financiera(0.08)" class="w-6 h-6 text_blue border-2 border-color-inps text-lg rounded-md p-2 text-center">
+                @else
+                <input  id="estandar_ashrae_checked" name="estandar_ashrae_checked" type="checkbox" onclick="calcular_justificacion_financiera(0.08)" class="w-6 h-6 text_blue border-2 border-color-inps text-lg rounded-md p-2 text-center">
+                @endif
                 <label class="text_blue text-xl font-bold">Estandar ASHRAE 180</label>
             </div>
 
             <div class="w-1/6 flex gap-x-3">
+                @if ($costos_operativos->filtros_merv_7 == 'on')
+                <input checked id="filtros_merv_checked" name="filtros_merv_checked" type="checkbox" onclick="calcular_justificacion_financiera(0.07)" class="w-6 h-6 text_blue border-2 border-color-inps text-lg rounded-md p-2 text-center">
+                @else
                 <input id="filtros_merv_checked" name="filtros_merv_checked" type="checkbox" onclick="calcular_justificacion_financiera(0.07)" class="w-6 h-6 text_blue border-2 border-color-inps text-lg rounded-md p-2 text-center">
+                @endif
                 <label class="text_blue text-xl font-bold">Filtros MERV > 7</label>
             </div>
 
             <div class="w-1/6 flex gap-x-3">
+                @if ($costos_operativos->remplazo_filtros == 'on')
+                <input checked id="remplazo_filtros_checked" name="remplazo_filtros_checked" type="checkbox" onclick="calcular_justificacion_financiera(0.06)" class="w-6 h-6 text_blue border-2 border-color-inps text-lg rounded-md p-2 text-center">
+                @else
                 <input id="remplazo_filtros_checked" name="remplazo_filtros_checked" type="checkbox" onclick="calcular_justificacion_financiera(0.06)" class="w-6 h-6 text_blue border-2 border-color-inps text-lg rounded-md p-2 text-center">
+                @endif
                 <label class="text_blue text-xl font-bold">Reemplazo Filtros</label>
             </div>
 
             <div class="w-1/6 flex gap-x-3">
+                @if ($costos_operativos->mantenimiento_proactivo == 'on')
+                <input checked id="mant_preven_checked" name="mant_preven_checked" type="checkbox" onclick="calcular_justificacion_financiera(0.09)" class="w-6 h-6 text_blue border-2 border-color-inps text-lg rounded-md p-2 text-center">
+                @else
                 <input id="mant_preven_checked" name="mant_preven_checked" type="checkbox" onclick="calcular_justificacion_financiera(0.09)" class="w-6 h-6 text_blue border-2 border-color-inps text-lg rounded-md p-2 text-center">
+                @endif
                 <label class="text_blue text-xl font-bold">Mantenimiento Proactivo</label>
             </div>
             <div class="w-1/4 flex gap-x-3">
@@ -94,7 +110,7 @@
                     <label class="text_blue text-xl font-bold">Consumo Anual Edificio</label>
                 </div>
                 <div class="w-1/2 flex">
-                    <input  readonly id="consumo_energia_edificio_mantenimiento_financiero" name="consumo_energia_edificio_mantenimiento_financiero" type="text" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input value="${{ number_format($costos_operativos->consumo_anual_edificio_futura) }}" readonly id="consumo_energia_edificio_mantenimiento_financiero" name="consumo_energia_edificio_mantenimiento_financiero" type="text" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -104,7 +120,7 @@
                       <label class="text_blue text-xl font-bold">Reducción Energética</label>
                     </div>
                     <div class="w-1/2 flex">
-                        <input  readonly type="text" type="text" id="reduccion_energetica_mantenimiento_financiero" name="reduccion_energetica_mantenimiento_financiero" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <input value="${{ number_format($costos_operativos->reduccion_energetica) }}" readonly type="text" type="text" id="reduccion_energetica_mantenimiento_financiero" name="reduccion_energetica_mantenimiento_financiero" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                     </div>
                 </div>
             </div>
@@ -125,7 +141,7 @@
                     <label class="text_blue text-xl font-bold">Costo Reparaciónes</label>
                 </div>
                 <div class="w-1/2 flex">
-                    <input  id="monto_actual_mantenimiento_financiero" name="monto_actual_mantenimiento_financiero" type="text"  onkeypress="return soloNumeros(event)" onchange="reduccion_gastos_reparaciones();format_num(this.value,this.id)" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input value="${{number_format($costos_operativos->costo_reparaciones) }}" id="monto_actual_mantenimiento_financiero" name="monto_actual_mantenimiento_financiero" type="text"  onkeypress="return soloNumeros(event)" onchange="reduccion_gastos_reparaciones();format_num(this.value,this.id)" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
@@ -135,7 +151,7 @@
                         <label class="text_blue text-xl font-bold">Reducción Reparaciónes</label>
                     </div>
                     <div class="w-1/2 flex">
-                        <input readonly  onchange="format_num(this.value,this.id);" id="reduccion_reparaciones_mantenimiento_financiero" name="reduccion_reparaciones_mantenimiento_financiero" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                        <input readonly value="${{number_format($costos_operativos->reduccion_reparaciones) }}" onchange="format_num(this.value,this.id);" id="reduccion_reparaciones_mantenimiento_financiero" name="reduccion_reparaciones_mantenimiento_financiero" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                     </div>
                 </div>
             </div>
@@ -156,7 +172,7 @@
                         <label class="text_blue text-xl font-bold">Costo Mantenimiento</label>
                 </div>
                 <div class="w-1/2 flex">
-                    <input  id="costo_mantenimiento_mantenimiento_financiero" name="costo_mantenimiento_mantenimiento_financiero" type="text"  onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);justificacion_financiera_send_mant(this.value);" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
+                    <input value="${{number_format($costos_operativos->costo_mantenimiento) }}" id="costo_mantenimiento_mantenimiento_financiero" name="costo_mantenimiento_mantenimiento_financiero" type="text"  onkeypress="return soloNumeros(event)" onchange="format_num(this.value,this.id);justificacion_financiera_send_mant(this.value);" type="text" class="w-1/2 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center">
                 </div>
             </div>
 
