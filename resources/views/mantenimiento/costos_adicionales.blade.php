@@ -74,7 +74,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="lavado_filtros_aire_adicionales" name="lavado_filtros_aire_adicionales" type="text" value="0" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center input-adicionales-uniforme">
+                    <input id="lavado_filtros_aire_adicionales" name="lavado_filtros_aire_adicionales" type="text" value="0" onkeypress="return soloNumeros(event)" onchange="no_cero(this.value,this.id);" class="w-full text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>

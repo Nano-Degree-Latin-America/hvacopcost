@@ -32,7 +32,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="servicio_emergencias_adicionales" name="servicio_emergencias_adicionales" value="{{number_format($costos_adicionales->servicios_emergencias)}}" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="servicio_emergencias_adicionales" name="servicio_emergencias_adicionales" value="{{number_format($costos_adicionales->servicios_emergencias)}}" onkeypress="return soloNumeros(event)" onchange="no_cero(this.value,this.id);" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -46,7 +46,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="tiempo_adicional_accesos_adicionales" name="tiempo_adicional_accesos_adicionales" value="{{ number_format($costos_adicionales->tipo_adicional_accesos)}}" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="tiempo_adicional_accesos_adicionales" name="tiempo_adicional_accesos_adicionales" value="{{ number_format($costos_adicionales->tipo_adicional_accesos)}}" onkeypress="return soloNumeros(event)" onchange="no_cero(this.value,this.id);" type="text" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -61,7 +61,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="curso_seguridad_otros_adicionales" name="curso_seguridad_otros_adicionales" type="text" value="{{ number_format($costos_adicionales->curso_seguridad_otros)}}" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="curso_seguridad_otros_adicionales" name="curso_seguridad_otros_adicionales" type="text" value="{{ number_format($costos_adicionales->curso_seguridad_otros)}}"  onkeypress="return soloNumeros(event)" onchange="no_cero(this.value,this.id);" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -75,7 +75,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="lavado_filtros_aire_adicionales" name="lavado_filtros_aire_adicionales" type="text" value="{{ number_format($costos_adicionales->lavado_filtros_aire)}}" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="lavado_filtros_aire_adicionales" name="lavado_filtros_aire_adicionales" type="text" value="{{ number_format($costos_adicionales->lavado_filtros_aire)}}"  onkeypress="return soloNumeros(event)" onchange="no_cero(this.value,this.id);" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -89,7 +89,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="lavado_evaporadores_adicionales" name="lavado_evaporadores_adicionales" type="text" value="{{ number_format($costos_adicionales->lavado_evaporadores)}}" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="lavado_evaporadores_adicionales" name="lavado_evaporadores_adicionales" type="text" value="{{ number_format($costos_adicionales->lavado_evaporadores)}}" onkeypress="return soloNumeros(event)" onchange="no_cero(this.value,this.id);" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -103,7 +103,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="lavado_extra_condensadores_adicionales" name="lavado_extra_condensadores_adicionales" type="text" value="{{ number_format($costos_adicionales->lavado_extra_condensadores)}}" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="lavado_extra_condensadores_adicionales" name="lavado_extra_condensadores_adicionales" type="text" value="{{ number_format($costos_adicionales->lavado_extra_condensadores)}}" onkeypress="return soloNumeros(event)" onchange="no_cero(this.value,this.id);" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -117,7 +117,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="lavado_ventiladores_adicionales" name="lavado_ventiladores_adicionales" type="text" value="{{ number_format($costos_adicionales->lavado_ventiladores)}}" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="lavado_ventiladores_adicionales" name="lavado_ventiladores_adicionales" type="text" value="{{ number_format($costos_adicionales->lavado_ventiladores)}}"  onkeypress="return soloNumeros(event)" onchange="no_cero(this.value,this.id);" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -131,7 +131,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input  id="limpieza_grasa_adicionales" name="limpieza_grasa_adicionales" type="text" value="{{number_format($costos_adicionales->limpieza_grasa)}}" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input  id="limpieza_grasa_adicionales" name="limpieza_grasa_adicionales" type="text" value="{{number_format($costos_adicionales->limpieza_grasa)}}"  onkeypress="return soloNumeros(event)" onchange="no_cero(this.value,this.id);" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -145,7 +145,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input  id="seguristas_supervicion_adicionales" name="seguristas_supervicion_adicionales" type="text" value="{{ number_format($costos_adicionales->seguristas_supervicion)}}" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input  id="seguristas_supervicion_adicionales" name="seguristas_supervicion_adicionales" type="text" value="{{ number_format($costos_adicionales->seguristas_supervicion)}}" onkeypress="return soloNumeros(event)" onchange="no_cero(this.value,this.id);" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -184,7 +184,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="costos_filtro_aire_adicionales" name="costos_filtro_aire_adicionales" type="text" value="${{ number_format($costos_adicionales->costos_filtros_aire)}}" onchange="format_num(this.value,'costos_filtro_aire_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="costos_filtro_aire_adicionales" name="costos_filtro_aire_adicionales" type="text" value="${{ number_format($costos_adicionales->costos_filtros_aire)}}" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,'costos_filtro_aire_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -198,7 +198,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="filtro_adicionales_adicionales" name="filtro_adicionales_adicionales" type="text" value="${{ number_format($costos_adicionales->filtros_adicionales)}}" onchange="format_num(this.value,'filtro_adicionales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="filtro_adicionales_adicionales" name="filtro_adicionales_adicionales" type="text" value="${{ number_format($costos_adicionales->filtros_adicionales)}}" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,'filtro_adicionales_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -212,7 +212,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="refacciones_basicas_adicionales" name="refacciones_basicas_adicionales" type="text" value="${{ number_format($costos_adicionales->refacciones_basicas)}}" onchange="format_num(this.value,'refacciones_basicas_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="refacciones_basicas_adicionales" name="refacciones_basicas_adicionales" type="text" value="${{ number_format($costos_adicionales->refacciones_basicas)}}" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,'refacciones_basicas_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -226,7 +226,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="filtro_aceite_chiller_adicionales" name="filtro_aceite_chiller_adicionales" type="text" value="${{ number_format($costos_adicionales->filtros_aceite_chiller)}}" onchange="format_num(this.value,'filtro_aceite_chiller_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="filtro_aceite_chiller_adicionales" name="filtro_aceite_chiller_adicionales" type="text" value="${{ number_format($costos_adicionales->filtros_aceite_chiller)}}" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,'filtro_aceite_chiller_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -240,7 +240,7 @@
                     </p>
                 </div>
                 <div class="w-1/4 flex justify-start">
-                    <input id="filtro_secador_chiller_adicionales" name="filtro_secador_chiller_adicionales" type="text" value="${{ number_format($costos_adicionales->filtros_secador_chiller)}}" onchange="format_num(this.value,'filtro_secador_chiller_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="filtro_secador_chiller_adicionales" name="filtro_secador_chiller_adicionales" type="text" value="${{ number_format($costos_adicionales->filtros_secador_chiller)}}" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,'filtro_secador_chiller_adicionales')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
                 <div>
                     <a onclick="mostrar_modal_energia_hvac('modal_seer');" class="btn_roundf mt-1" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -254,7 +254,7 @@
                     </p>
                 </div>
                 <div class="w-1/2 flex justify-start">
-                    <input id="costo_estimado_sistema_hvac" name="costo_estimado_sistema_hvac" type="text"  value="${{ number_format($costos_adicionales->costo_estimado_hvac)}}" onchange="format_num(this.value,'costo_estimado_sistema_hvac')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
+                    <input id="costo_estimado_sistema_hvac" name="costo_estimado_sistema_hvac" type="text"  value="${{ number_format($costos_adicionales->costo_estimado_hvac)}}" onkeypress="return soloNumeros(event)" onchange="format_num(this.value,'costo_estimado_sistema_hvac')" class="w-full text_blue border-2 border-color-inps text-lg rounded-md text-center input-adicionales-uniforme">
                 </div>
             </div>
         </div>

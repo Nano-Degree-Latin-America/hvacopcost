@@ -228,8 +228,9 @@ Route::get('edit_unidades_horas/{id_project}', 'MantenimientoController@edit_uni
 Route::get('coordinacion_mantenimiento', 'MantenimientoController@coordinacion_mantenimiento');
 Route::get('verifica_unidades_mantenimiento', 'MantenimientoController@verifica_unidades_mantenimiento');
 Route::post('switch_proyecto_mantenimiento/{id_project}', 'MantenimientoController@switch_proyecto_mantenimiento');
-
-
+Route::post('update_form_project_mantenimiento/{id_project}', 'MantenimientoController@update_form_project_mantenimiento');
+Route::post('save_adicionales/{id_project}', 'MantenimientoController@save_adicionales');
+Route::post('save_justificacion_financiera/{id_project}', 'MantenimientoController@save_justificacion_financiera');
 
 //lang
 Route::get('locale/{locale}', function($locale){

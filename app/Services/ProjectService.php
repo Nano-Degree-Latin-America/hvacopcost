@@ -201,10 +201,10 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
             }
         }
         //actualizar project informaicon
-
+            $update_project= ProjectsModel::find($id);
             if($type_project_modify == 1 || $type_project_modify == 2){
 
-                    $update_project= ProjectsModel::find($id);
+
                     $update_project->type_p= $request->get('type_p');
                     $update_project->name=$request->get('name_pro');
                     $update_project->id_tipo_edificio=$request->get('tipo_edificio_edit');
