@@ -454,7 +454,7 @@ $idm = App::getLocale();
                     {{-- button siguiente mantenimiento --}}
 
                     <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
-                    onclick="calcular_speendplan_base_adicionales_edit({{ $project_edit->id }});"
+                    onclick="calcular_speendplan_base_adicionales_edit({{ $project_edit->id }});save_adicionales({{ $project_edit->id }});"
                    style="background-color:#1B17BB;"
                        x-show="step == 3"
                        @click="step++"
@@ -474,7 +474,7 @@ $idm = App::getLocale();
                    style="background-color:#1B17BB;"
                        x-show="step == 5"
                        @click="step++"
-                       onclick="justificacion_financiera_send_mant_edit($('#costo_mantenimiento_mantenimiento_financiero').val());justificacion_financiera_send();"
+                       onclick="justificacion_financiera_send_mant_edit($('#costo_mantenimiento_mantenimiento_financiero').val());justificacion_financiera_send();save_justificacion_financiera({{ $project_edit->id }});"
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                    >{{ __('mantenimiento.justificacion_financiera') }}</button>
 

@@ -337,6 +337,106 @@ class CalculoMantenimientoService
                         } */
                 }
 
+                public function  save_adicionales(Request $request,$id_project){
+                            $id_adicionales = AdicionalesModel::where('id_project','=',$id_project)->first();
+
+                            if($id_adicionales){
+                                $update_mano_obra_hora = AdicionalesModel::find($id_adicionales->id);
+                            }else{
+                                $update_mano_obra_hora = new AdicionalesModel();
+                            }
+
+
+                            $update_mano_obra_hora->id_project=$id_project;
+                            $update_mano_obra_hora->servicios_emergencias=$request->values['servicio_emergencias_adicionales'];
+                            $update_mano_obra_hora->tipo_adicional_accesos=$request->values['tiempo_adicional_accesos_adicionales'];
+                            $update_mano_obra_hora->curso_seguridad_otros=$request->values['curso_seguridad_otros_adicionales'];
+                            $update_mano_obra_hora->lavado_filtros_aire=$request->values['lavado_filtros_aire_adicionales'];
+                            $update_mano_obra_hora->lavado_evaporadores=$request->values['lavado_evaporadores_adicionales'];
+                            $update_mano_obra_hora->lavado_extra_condensadores=$request->values['lavado_extra_condensadores_adicionales'];
+                            $update_mano_obra_hora->lavado_ventiladores=$request->values['lavado_ventiladores_adicionales'];
+                            $update_mano_obra_hora->limpieza_grasa=$request->values['limpieza_grasa_adicionales'];
+                            $update_mano_obra_hora->seguristas_supervicion=$request->values['seguristas_supervicion_adicionales'];
+
+
+                            $update_mano_obra_hora->costos_filtros_aire= $this->precio_to_integer($request->values['costos_filtro_aire_adicionales']);
+
+                            $update_mano_obra_hora->filtros_adicionales=$this->precio_to_integer($request->values['filtro_adicionales_adicionales']);
+
+                            $update_mano_obra_hora->refacciones_basicas=$this->precio_to_integer($request->values['refacciones_basicas_adicionales']);
+
+                            $update_mano_obra_hora->filtros_aceite_chiller=$this->precio_to_integer($request->values['filtro_aceite_chiller_adicionales']);
+
+                            $update_mano_obra_hora->filtros_secador_chiller=$this->precio_to_integer($request->values['filtro_secador_chiller_adicionales']);
+
+                            $update_mano_obra_hora->andamos_gruas_etc=$this->precio_to_integer($request->values['andamios_gruas_adicionales']);
+
+                            $update_mano_obra_hora->viaticos=$this->precio_to_integer($request->values['viaticos_adicionales']);
+
+                            $update_mano_obra_hora->contratistas=$this->precio_to_integer($request->values['contratistas_adicionales']);
+
+                            $update_mano_obra_hora->pruebas_acidez_basica=$this->precio_to_integer($request->values['pruebas_acidez_basica_adicionales']);
+
+                            $update_mano_obra_hora->pruebas_aceite_laboratorio=$this->precio_to_integer($request->values['pruebas_aceite_laboratorio_adicionales']);
+
+                            $update_mano_obra_hora->pruebas_refirgerante=$this->precio_to_integer($request->values['pruebas_refrigerante_adicionales']);
+
+                            $update_mano_obra_hora->eddy_current_test=$this->precio_to_integer($request->values['eddy_current_test_adicionales']);
+
+                            $update_mano_obra_hora->limpieza_evaporador_chiller=$this->precio_to_integer($request->values['limpieza_evaporador_chiller_adicionales']);
+
+                            $update_mano_obra_hora->limpieza_condensador_agua=$this->precio_to_integer($request->values['limpeza_condenzador_agua_adicionales']);
+
+                            $update_mano_obra_hora->cambio_aceite_chillers=$this->precio_to_integer($request->values['cambio_aceite_chillers_adicionales']);
+
+                            $update_mano_obra_hora->limpieza_anual_torres_enf=$this->precio_to_integer($request->values['limpieza_anual_torres_adicionales']);
+
+                            $update_mano_obra_hora->costo_estimado_hvac=$this->precio_to_integer($request->values['costo_estimado_sistema_hvac']);
+
+
+                            if($id_adicionales){
+                                $update_mano_obra_hora->update();
+                            }else{
+                                $update_mano_obra_hora->save();
+                            }
+
+                             ///guardar analisis de costos operativos
+
+                           /*  $id_analisis_costos_operativos = AnalisisCostosOperativosModel::where('id_project','=',$id_project)->first()->id;
+
+                             $upadte_analisis_costos_operativos = AnalisisCostosOperativosModel::find($id_analisis_costos_operativos);
+                             $upadte_analisis_costos_operativos->id_project=$id_project;
+
+                             $upadte_analisis_costos_operativos->consumo_anual_edificio=$this->precio_to_integer($request->get('consumo_energia_edificio_mantenimiento'));
+
+                             $upadte_analisis_costos_operativos->eui=$request->get('eui_mantenimiento');
+
+                             $upadte_analisis_costos_operativos->estandar_ashrae=$request->get('estandar_ashrae_checked');
+
+                             $upadte_analisis_costos_operativos->filtros_merv_7=$request->get('filtros_merv_checked');
+
+                             $upadte_analisis_costos_operativos->remplazo_filtros=$request->get('remplazo_filtros_checked');
+
+                             $upadte_analisis_costos_operativos->mantenimiento_proactivo=$request->get('mant_preven_checked');
+
+                             $upadte_analisis_costos_operativos->consumo_anual_edificio_futura=$this->precio_to_integer($request->get('consumo_energia_edificio_mantenimiento_financiero'));
+
+                             $upadte_analisis_costos_operativos->reduccion_energetica=$this->precio_to_integer($request->get('reduccion_energetica_mantenimiento_financiero'));
+
+                             $upadte_analisis_costos_operativos->costo_reparaciones=$this->precio_to_integer($request->get('monto_actual_mantenimiento_financiero'));
+
+                             $upadte_analisis_costos_operativos->reduccion_reparaciones=$this->precio_to_integer($request->get('reduccion_reparaciones_mantenimiento_financiero'));
+
+                             $upadte_analisis_costos_operativos->costo_mantenimiento=$this->precio_to_integer($request->get('costo_mantenimiento_mantenimiento_financiero'));
+
+                             $upadte_analisis_costos_operativos->id_empresa = Auth::user()->id_empresa;
+
+                             $upadte_analisis_costos_operativos->update(); */
+
+
+                            return true;
+                }
+
                 public function precio_to_integer($precio){
                     $aux = explode("$",   $precio);
 

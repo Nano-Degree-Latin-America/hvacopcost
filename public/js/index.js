@@ -16584,3 +16584,81 @@ function calcular_speendplan_base_update(id_project){
         $('#buttons_mantainance').removeClass('hidden');
     }
  }
+
+ function save_form_mantenimiento(id_project){
+    var token = $("#token").val();
+    var formData = {};
+    $("input[name$='cliente_pro_mantenimiento'],input[name$='name_sitio_mantenimiento'],select[name$='velocidad_promedio_mantenimiento'],input[name$='distancia_sitio_mantenimiento'],input[name$='yrs_vida_mantenimiento'],select[name$='ocupacion_semanal_mantenimiento'],select[name$='tipo_ambiente_mantenimiento'],select[name$='personal_enviado_mantenimiento'],input[name$='inflacion_mantenimiento'],input[name$='ar_project_mantenimiento'],input[name$='porcent_hvac_mantenimiento'],select[name$='cat_edi_mantenimiento'],select[name$='paises_mantenimiento'],select[name$='tipo_edificio_mantenimiento'],select[name$='ciudades_mantenimiento']").each(function() {
+        formData[$(this).attr('name')] = $(this).val();
+    });
+
+
+    $.ajax({
+        type: 'post',
+        url: '/update_form_project_mantenimiento/'+id_project,
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            values: formData
+        },
+        success: function (response) {
+            //$('#'+id).attr('readonly', true);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+
+ }
+
+  function save_adicionales(id_project){
+    var token = $("#token").val();
+    var formData = {};
+    $("input[name$='_adicionales'],input[name$='costo_estimado_sistema_hvac']").each(function() {
+        formData[$(this).attr('name')] = $(this).val();
+    });
+
+    console.log(formData);
+
+    $.ajax({
+        type: 'post',
+        url: '/save_adicionales/'+id_project,
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            values: formData
+        },
+        success: function (response) {
+            //$('#'+id).attr('readonly', true);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+
+ }
+
+ /* function save_justificacion_financiera(id_project){
+    var token = $("#token").val();
+    var formData = {};
+    $("input[name$='_adicionales'],input[name$='costo_estimado_sistema_hvac']").each(function() {
+        formData[$(this).attr('name')] = $(this).val();
+    });
+
+    console.log(formData);
+
+    $.ajax({
+        type: 'post',
+        url: '/save_adicionales/'+id_project,
+        headers: { 'X-CSRF-TOKEN': token },
+        data: {
+            values: formData
+        },
+        success: function (response) {
+            //$('#'+id).attr('readonly', true);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+
+ } */
+

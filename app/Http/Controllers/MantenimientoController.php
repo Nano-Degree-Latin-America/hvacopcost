@@ -2669,5 +2669,40 @@ return response()->json($array_to_response);
 
    }
 
+   public function update_form_project_mantenimiento(Request $request,$id_project){
+
+                $calculoMantenimientoService = new CalculoMantenimientoService();
+                $update_project= ProjectsModel::find($id_project);
+
+                //$update_project->type_p= $request->values['type_p'];
+
+                $pais = DB::table('pais')
+                ->where('pais.idPais','=',$request->values['paises_mantenimiento'])
+                ->first()->pais;
+
+                $ciudad = DB::table('ciudad')
+                ->where('ciudad.idCiudad','=',$request->values['ciudades_mantenimiento'])
+                ->first()->ciudad;
+
+                $update_project->region=$pais;
+                $update_project->ciudad=$ciudad;
+                $update_project->id_tipo_edificio=$request->values['tipo_edificio_mantenimiento'];
+                $update_project->id_cat_edifico=$request->values['cat_edi_mantenimiento'];
+                $cap_tot_ar_mant =$this->num_form($request->values['ar_project_mantenimiento']);
+                $update_project->area = floatval($cap_tot_ar_mant);
+                $update_project->update();
+
+                if($update_project->update()){
+                $mantenimiento =  $calculoMantenimientoService->update_calculo_mantenimiento_update($request,$update_project->id);
+                }
+   }
+
+   public function save_adicionales(Request $request,$id_project){
+
+     $calculoMantenimientoService = new CalculoMantenimientoService();
+     $calculoMantenimientoService->save_adicionales($request,$id_project);
+
+   }
+
 }
 
