@@ -18,7 +18,7 @@
                                 <label class="text-red-500 m-0">*</label>
                             </div>
                         </div>
-                        <input onchange="check_input(this.value,this.id,'cliente_pro_warning_mantenimiento');check_inp_count('count_cliente_pro_mantenimiento','cliente_pro_mantenimiento');" value="{{$mantenimiento_project->cliente_prospecto}}" name="cliente_pro_mantenimiento" id="cliente_pro_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input onchange="check_input(this.value,this.id,'cliente_pro_warning_mantenimiento');check_inp_count('count_cliente_pro_mantenimiento','cliente_pro_mantenimiento');valida_selects_inps(this.id);" value="{{$mantenimiento_project->cliente_prospecto}}" name="cliente_pro_mantenimiento" id="cliente_pro_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                         <input id="count_cliente_pro_mantenimiento" name="count_cliente_pro_mantenimiento" type="number" class="hidden" value="1">
                         <span id="cliente_pro_warning_mantenimiento" name="cliente_pro_warning_mantenimiento" class="text-red-500"></span>
                     </div>
@@ -28,7 +28,7 @@
                             <label class="font-roboto labels_index_mantenimiento  text-left m-0" for=""><b>{{ __('mantenimiento.categoria_edificio') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select name="cat_edi_mantenimiento" id="cat_edi_mantenimiento" onchange="traer_t_edif_edd(this.value,'tipo_edificio_mantenimiento','count_tipo_edificio_mantenimiento');check_input(this.value,this.id,'cat_ed_warning_mantenimiento');check_inp_count('count_cat_ed_mantenimiento','cat_edi_id_mantenimiento');" wire:change="traer_t_edif($event.target.value)" class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
+                        <select name="cat_edi_mantenimiento" id="cat_edi_mantenimiento" onchange="traer_t_edif_edd(this.value,'tipo_edificio_mantenimiento','count_tipo_edificio_mantenimiento');check_input(this.value,this.id,'cat_ed_warning_mantenimiento');check_inp_count('count_cat_ed_mantenimiento','cat_edi_id_mantenimiento');valida_selects_inps(this.id);" wire:change="traer_t_edif($event.target.value)" class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
                             @foreach ($cate_edificio as $cat_edi)
                             @if ($project_edit->id_cat_edifico == $cat_edi->id)
                             <option selected value="{{$cat_edi->id}}">{{$cat_edi->name}}</option>
@@ -47,7 +47,7 @@
                             <label class="labels_index_mantenimiento  font-roboto text-left m-0" for=""><b>{{ __('index.region') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'paises_warning_mantenimiento');check_inp_count('count_paises_mantenimiento','paises_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="paises_mantenimiento" id="paises_mantenimiento">
+                        <select onchange="check_input(this.value,this.id,'paises_warning_mantenimiento');check_inp_count('count_paises_mantenimiento','paises_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="paises_mantenimiento" id="paises_mantenimiento">
                             <option selected value="0">-{{ __('mantenimiento.selecciona_region') }}-</option>
                             <?php  $all_paises=$all_paises->all_paises(); ?>
                                                             @foreach ($all_paises as $pais)
@@ -276,7 +276,7 @@
                             <label class="labels_index_mantenimiento  text-left font-roboto font-bold m-0" for=""><b>{{ __('mantenimiento.distancia_sitio') }}</b></label>
                             <label class="text-red-500 text-left m-0"></label>
                         </div>
-                        <input onkeypress="return soloNumeros(event)" value="{{$mantenimiento_project->distancia_sitio}}kms" onchange="check_input(this.value,this.id,'distancia_sitio_warning_mantenimiento');change_to(this.value,'kms',this.id);check_inp_count('count_distancia_sitio_mantenimiento','distancia_sitio_mantenimiento');"  name="distancia_sitio_mantenimiento" id="distancia_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input onkeypress="return soloNumeros(event)" value="{{$mantenimiento_project->distancia_sitio}}kms" onchange="check_input(this.value,this.id,'distancia_sitio_warning_mantenimiento');change_to(this.value,'kms',this.id);check_inp_count('count_distancia_sitio_mantenimiento','distancia_sitio_mantenimiento');valida_selects_inps(this.id);"  name="distancia_sitio_mantenimiento" id="distancia_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                         <input id="count_distancia_sitio_mantenimiento" name="count_distancia_sitio_mantenimiento" type="number" class="hidden" value="1">
                         <span id="distancia_sitio_warning_mantenimiento" name="distancia_sitio_warning_mantenimiento" class="text-red-500"></span>
                     </div>
@@ -286,7 +286,7 @@
                             <label class="labels_index_mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.yrs_life_ed') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <input onkeypress="return soloNumeros(event)" value="{{$mantenimiento_project->yrs_edificio}}" onchange="check_input(this.value,this.id,'yrs_life_ed_warning_mantenimiento');no_cero(this.value,this.id);set_yrs_tarjet(this.value,'yrs_vida_mantenimiento');" name="yrs_life_ed_mantenimiento" id="yrs_life_ed_mantenimiento" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input onkeypress="return soloNumeros(event)" value="{{$mantenimiento_project->yrs_edificio}}" onchange="check_input(this.value,this.id,'yrs_life_ed_warning_mantenimiento');no_cero(this.value,this.id);set_yrs_tarjet(this.value,'yrs_vida_mantenimiento');valida_selects_inps(this.id);" name="yrs_life_ed_mantenimiento" id="yrs_life_ed_mantenimiento" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                         <input id="count_yrs_life_ed_mantenimiento" name="count_yrs_life_ed_mantenimiento" type="number" class="hidden" value="1">
                         <span id="yrs_life_ed_warning_mantenimiento" name="yrs_life_ed_warning_mantenimiento" class="text-red-500"></span>
                     </div>
@@ -296,7 +296,7 @@
                             <label class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.tipo_ambiente') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'tipo_ambiente_warning_mantenimiento');check_inp_count('count_tipo_ambiente_mantenimiento','tipo_ambiente_mantenimiento');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="tipo_ambiente_mantenimiento" id="tipo_ambiente_mantenimiento">
+                        <select onchange="check_input(this.value,this.id,'tipo_ambiente_warning_mantenimiento');check_inp_count('count_tipo_ambiente_mantenimiento','tipo_ambiente_mantenimiento');valida_selects_inps(this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="tipo_ambiente_mantenimiento" id="tipo_ambiente_mantenimiento">
                             <option value="">-{{ __('index.seleccionar') }}-</option>
 
                         </select>
@@ -310,7 +310,7 @@
                                 <div class="flex w-full">
                                     <label  class="font-roboto labels_index" for=""><b>{{ __('index.area') }}:</b></label><label class="text-red-500">*</label>
                                 </div>
-                                <input onchange="check_input(this.value,this.id,'ar_project_warning_mantenimiento');format_nums_no_$(this.value,this.id);check_inp_count('count_ar_project_mantenimiento','ar_project_mantenimiento');"  name="ar_project_mantenimiento" id="ar_project_mantenimiento" value="{{number_format($project_edit->area)}}" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" >
+                                <input onchange="check_input(this.value,this.id,'ar_project_warning_mantenimiento');format_nums_no_$(this.value,this.id);check_inp_count('count_ar_project_mantenimiento','ar_project_mantenimiento');valida_selects_inps(this.id);"  name="ar_project_mantenimiento" id="ar_project_mantenimiento" value="{{number_format($project_edit->area)}}" onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" >
                                 <input id="count_ar_project_mantenimiento" name="count_ar_project_mantenimiento" type="number" class="hidden" value="1">
                                 <span id="ar_project_warning_mantenimiento" name="ar_project_warning_mantenimiento" class="text-red-500"></span>
                         </div>
@@ -349,7 +349,7 @@
                         </div>
                         <div class="flex w-full">
 
-                            <input type="text" value="{{$mantenimiento_project->porcent_inflacion}}%" onkeypress="return soloNumeros(event)" onchange="change_to_porcent_mantenimiento(this.value,this.id);" class="w-1/4 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion_mantenimiento" id="inflacion_mantenimiento">
+                            <input type="text" value="{{$mantenimiento_project->porcent_inflacion}}%" onkeypress="return soloNumeros(event)" onchange="change_to_porcent_mantenimiento(this.value,this.id);valida_selects_inps(this.id);" class="w-1/4 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion_mantenimiento" id="inflacion_mantenimiento">
                             <input id="count_inflacion_mantenimiento" name="count_inflacion_mantenimiento" type="number" class="hidden" value="1">
 
                         </div>
@@ -365,7 +365,7 @@
                             <label class="labels_index_mantenimiento _mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.nombre_sitio') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <input value="{{$mantenimiento_project->nombre_propiedad}}" onchange="check_input(this.value,this.id,'name_sitio_warning_mantenimiento');check_inp_count('count_name_sitio_mantenimiento','name_sitio_mantenimiento');" name="name_sitio_mantenimiento" id="name_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input value="{{$mantenimiento_project->nombre_propiedad}}" onchange="check_input(this.value,this.id,'name_sitio_warning_mantenimiento');check_inp_count('count_name_sitio_mantenimiento','name_sitio_mantenimiento');valida_selects_inps(this.id);" name="name_sitio_mantenimiento" id="name_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                         <input id="count_name_sitio_mantenimiento" name="count_name_sitio_mantenimiento" type="number" class="hidden" value="1">
                         <span id="name_sitio_warning_mantenimiento" name="name_sitio_warning_mantenimiento" class="text-red-500"></span>
                     </div>
@@ -375,7 +375,7 @@
                             <label class="labels_index_mantenimiento  text-left font-roboto m-0" for=""><b>{{ __('mantenimiento.tipo_edificio') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select name="tipo_edificio_mantenimiento" id="tipo_edificio_mantenimiento" onchange="check_input(this.value,this.id,'tipo_edificio_warning_mantenimiento');check_inp_count('count_tipo_edificio_mantenimiento','tipo_edificio_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <select name="tipo_edificio_mantenimiento" id="tipo_edificio_mantenimiento" onchange="check_input(this.value,this.id,'tipo_edificio_warning_mantenimiento');check_inp_count('count_tipo_edificio_mantenimiento','tipo_edificio_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                             <option value="0">-{{ __('index.seleccionar') }}-</option>
                             {{-- @foreach ($tipo_edificios as $tipo_edificio)
                             <option value="{{$tipo_edificio->id}}">{{$tipo_edificio->name}}</option>
@@ -390,7 +390,7 @@
                             <label class="labels_index_mantenimiento  text-left font-roboto m-0" for=""><b>{{ __('index.ciudad') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'ciudad_warning_mantenimiento');check_inp_count('count_ciudad_mantenimiento','ciudades_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ciudades_mantenimiento" id="ciudades_mantenimiento">
+                        <select onchange="check_input(this.value,this.id,'ciudad_warning_mantenimiento');check_inp_count('count_ciudad_mantenimiento','ciudades_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ciudades_mantenimiento" id="ciudades_mantenimiento">
                             <option selected value="0">-{{ __('mantenimiento.selecciona_ciudad') }}-</option>
                             {{-- @foreach ($ciudades as $ciudad)
                             <option value="{{$ciudad->id}}">{{$ciudad->name}}</option>
@@ -405,7 +405,7 @@
                             <label class="labels_index_mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.velocidad_promedio') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'velocidad_promedio_warning_mantenimiento');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="velocidad_promedio_mantenimiento" id="velocidad_promedio_mantenimiento">
+                        <select onchange="check_input(this.value,this.id,'velocidad_promedio_warning_mantenimiento');valida_selects_inps(this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="velocidad_promedio_mantenimiento" id="velocidad_promedio_mantenimiento">
                             @for ($i = 0; $i <= 120; $i = $i + 10)
                                 @if ($mantenimiento_project->velocidad == $i)
                                     <option selected value="{{$i}}">{{$i}} Km/h</option>
@@ -423,7 +423,7 @@
                             <label class="font-roboto font-bold text-left labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.ocupacion_semanal') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="set_horas_diarias();check_input(this.value,this.id,'ocupacion_semanal_warning_mantenimiento');check_inp_count('count_ocupacion_semanal_mantenimiento','ocupacion_semanal_mantenimiento');" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ocupacion_semanal_mantenimiento" id="ocupacion_semanal_mantenimiento">
+                        <select onchange="set_horas_diarias();check_input(this.value,this.id,'ocupacion_semanal_warning_mantenimiento');check_inp_count('count_ocupacion_semanal_mantenimiento','ocupacion_semanal_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ocupacion_semanal_mantenimiento" id="ocupacion_semanal_mantenimiento">
                                                         @switch($mantenimiento_project->ocupacion_semanal)
                                                             @case('m_50')
                                                             <option selected value="m_50">{{ __('index.menos de 50 hrs') }}.</option>
@@ -456,7 +456,7 @@
                             <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.personal_enviado') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                            <select  onchange="check_input(this.value,this.id,'personal_enviado_mantenimiento_warning');check_inp_count('count_personal_enviado_mantenimiento','personal_enviado_mantenimiento');" class="w-full border-2 border-color-inps  rounded-md p-1 my-1 font-roboto" name="personal_enviado_mantenimiento"  id="personal_enviado_mantenimiento">
+                            <select  onchange="check_input(this.value,this.id,'personal_enviado_mantenimiento_warning');check_inp_count('count_personal_enviado_mantenimiento','personal_enviado_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps  rounded-md p-1 my-1 font-roboto" name="personal_enviado_mantenimiento"  id="personal_enviado_mantenimiento">
                                 @if ($mantenimiento_project->personal_enviado == 'tecnico')
                                     <option selected value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
                                     <option value="tecnico_ayudante ">{{ __('mantenimiento.tecnico_ayudante') }}</option>
@@ -494,7 +494,7 @@
                                 <label  class="font-roboto text-left labels_index" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
                             </div>
                             <div class="flex w-full">
-                                <input type="text" value="{{$project_edit->porcent_hvac}}%" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning_mantenimiento');check_inp_count('count_porcent_hvac_mantenimiento','porcent_hvac_mantenimiento');change_to_porcent(this.value,this.id);valida_formulario_mantenimiento();" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac_mantenimiento" id="porcent_hvac_mantenimiento">
+                                <input type="text" value="{{$project_edit->porcent_hvac}}%" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning_mantenimiento');check_inp_count('count_porcent_hvac_mantenimiento','porcent_hvac_mantenimiento');change_to_porcent(this.value,this.id);valida_formulario_mantenimiento();valida_selects_inps(this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac_mantenimiento" id="porcent_hvac_mantenimiento">
                                 <input id="count_porcent_hvac_mantenimiento" name="count_porcent_hvac_mantenimiento" type="number" class="hidden" value="1">
                                 <div class="ml-2" style="margin-top: 5.5px;">
                                     <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>

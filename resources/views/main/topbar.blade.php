@@ -10,7 +10,8 @@
              {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
 
         </div>
-
+ @inject('check_types_p','app\Http\Controllers\IndexController')
+ <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
         <div class="col-4 mt-5 flex justify-end"{{-- class="contenedor" --}}>
 
 
@@ -19,14 +20,13 @@
 
          <div class="col-4 flex justify-end gap-x-3 mt-5">
 
-            @if (Auth::user()->tipo_user == 5)
+
+
+            @if ($check_types_m == 1 )
+                @if (Auth::user()->tipo_user == 2 || Auth::user()->tipo_user == 5)
                 <button class="text_butons_top ml-5 mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='configuraciones'"><p class="text_butons_top">Configuraciónes</p></button>
-            @endif
-
-            @if (Auth::user()->tipo_user == 2 )
-            <button class="text_butons_top ml-5 mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"><p class="text_butons_top">Configuraciónes</p></button>
-
-            @endif
+                @endif
+             @endif
 
             @if (Auth::user()->tipo_user == 5)
                 <button class="text_butons_top mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='empresas'"><p class="text_butons_top">Admin</p></button>
