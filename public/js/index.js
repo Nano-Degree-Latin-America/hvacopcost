@@ -6399,10 +6399,13 @@ async function traer_unidad_hvac(id_project, num_sol, num_enf, cUnidad, csTipo, 
             $("#" + csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').prop("selected", "selected");
             await change_diseño(res.val_unidad.tipo_equipo, 1, csDisenio, tipo_control, dr, ventilacion, filtracion, lblCsTipo);
             $("#" + csDisenio).find('option[value="' + res.val_unidad.tipo_diseño + '"]').prop("selected", "selected");
-            $("#" + csDisenio).trigger('change');
+            //$("#" + csDisenio).trigger('change');
+            await check_sin_doa(csDisenio,ventilacion,csTipo);
             $("#" + tipo_control).find('option[value="' + res.val_unidad.tipo_control + '"]').prop("selected", "selected");
             $("#" + dr).find('option[value="' + res.val_unidad.dr + '"]').prop("selected", "selected");
-            $("#" + ventilacion).find('option[value="' + res.val_unidad.ventilacion + '"]').prop("selected", "selected");
+            var ventilacion_val = Math.round(res.val_unidad.ventilacion * 100) / 100;
+
+            $("#" + ventilacion).find('option[value="'+ventilacion_val+'"]').prop("selected", "selected");
             $("#" + filtracion).find('option[value="' + res.val_unidad.filtracion + '"]').prop("selected", "selected");
             $("#" + tipo_ambiente_1_1).find('option[value="' + res.val_unidad.tipo_ambiente + '"]').prop("selected", "selected");
             await show_prot_cond(res.val_unidad.tipo_ambiente, proteccion_condensador_1_1, 'new', 3, 'paises_edit');
@@ -6511,10 +6514,12 @@ async function traer_unidad_hvac(id_project, num_sol, num_enf, cUnidad, csTipo, 
                 $("#"+csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').prop("selected", "selected");
                 await change_diseño(res.val_unidad.tipo_equipo,1,csDisenio,tipo_control,dr,ventilacion,filtracion,lblCsTipo);
                 $("#"+csDisenio).find('option[value="' + res.val_unidad.tipo_diseño + '"]').prop("selected", "selected");
-                $("#"+csDisenio).trigger('change');
+                await check_sin_doa(csDisenio,ventilacion,csTipo);
                 $("#"+tipo_control).find('option[value="' + res.val_unidad.tipo_control + '"]').prop("selected", "selected");
                 $("#"+dr).find('option[value="' + res.val_unidad.dr + '"]').prop("selected", "selected");
-                $("#"+ventilacion).find('option[value="' + res.val_unidad.ventilacion + '"]').prop("selected", "selected");
+
+                var ventilacion_val = Math.round(res.val_unidad.ventilacion * 100) / 100;
+                $("#"+ventilacion).find('option[value="' + ventilacion_val + '"]').prop("selected", "selected");
                 $("#"+filtracion).find('option[value="' + res.val_unidad.filtracion + '"]').prop("selected", "selected");
                 $("#"+Mantenimiento).find('option[value="' +   res.val_unidad.mantenimiento + '"]').prop("selected", "selected");
                 send_marcas_to(marca,res.val_unidad.id_marca,res.val_unidad.unidad_hvac);
@@ -6523,7 +6528,8 @@ async function traer_unidad_hvac(id_project, num_sol, num_enf, cUnidad, csTipo, 
                 send_name_t_c(tipo_control);
                 send_name_dr(dr);
                 send_name_filt(filtracion);
-                send_name_vent(ventilacion); if(unidad_capacidad_tot != '_'){
+                send_name_vent(ventilacion);
+                if(unidad_capacidad_tot != '_'){
                     $("#" + unidad_capacidad_tot).find('option[value="' + res.val_unidad.unid_med + '"]').prop("selected", "selected");
                     cap_term_change(res.val_unidad.unid_med);
                 }
@@ -13768,13 +13774,14 @@ function red_alert_retro(tipo_ambiente,proteccion_condensador){
                 const myObj_vent = JSON.parse(arry_vent);
                         for (let i = 0; i < myObj_vent.length; i++) {
                         $('#'+select_id).append($('<option>', {
-                             value:  myObj_vent[i].value,
+                             value: Math.round(myObj_vent[i].value * 100) / 100,
                             text:  myObj_vent[i].text
                         }));
                     }
 
     }else{
         var value = $('#'+equipo_id).val();
+
         $('#'+select_id).empty();
         $('#'+select_id).append($('<option>', {
             value: '',
@@ -13784,7 +13791,7 @@ function red_alert_retro(tipo_ambiente,proteccion_condensador){
         const myObj_vent = JSON.parse(arry_vent);
                  for (let i = 0; i < myObj_vent.length; i++) {
                 $('#'+select_id).append($('<option>', {
-                     value:  myObj_vent[i].value,
+                     value:  Math.round(myObj_vent[i].value * 100) / 100,
                     text:  myObj_vent[i].text
                  }));
             }
