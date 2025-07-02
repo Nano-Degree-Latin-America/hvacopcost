@@ -13774,7 +13774,6 @@ function red_alert_retro(tipo_ambiente,proteccion_condensador){
                     }
 
     }else{
-
         var value = $('#'+equipo_id).val();
         $('#'+select_id).empty();
         $('#'+select_id).append($('<option>', {

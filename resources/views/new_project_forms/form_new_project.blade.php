@@ -176,7 +176,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select onchange="valida_selects_inps(this.id);send_name(this.id);check_sin_doa(this.id,'ventilacion_1_1','csTipo');" name="csDisenio_1_1" id="csDisenio_1_1" class="w-full border-2 border-color-inps rounded-md py-2">
+                        <select name="csDisenio_1_1" id="csDisenio_1_1" onchange="valida_selects_inps(this.id);send_name(this.id);check_sin_doa(this.id,'ventilacion_1_1','csTipo');"  class="w-full border-2 border-color-inps rounded-md py-2">
                         </select>
                     </div>
                     <input type="text" style="display: none" id="lblCsDisenio" name="lblCsDisenio" value="ASHRAE 55/62.1/90.1">
