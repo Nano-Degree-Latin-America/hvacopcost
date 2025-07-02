@@ -200,7 +200,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select onchange="valida_selects_inps(this.id);send_name(this.id);check_type_set_mant('type_p','cheDisenio_2_1_retro','cheDisenio_3_1_retro',this.value);check_sin_doa(this,'ventilacion_1_1_retro','csTipo_1_1_retro');" name="csDisenio_1_1_retro" id="csDisenio_1_1_retro" class="w-full border-2 border-color-inps rounded-md py-2">
+                        <select onchange="valida_selects_inps(this.id);send_name(this.id);check_type_set_mant('type_p','cheDisenio_2_1_retro','cheDisenio_3_1_retro',this.value);check_sin_doa(this.id,'ventilacion_1_1_retro','csTipo_1_1_retro');" name="csDisenio_1_1_retro" id="csDisenio_1_1_retro" class="w-full border-2 border-color-inps rounded-md py-2">
                         </select>
                     </div>
                     <input type="text" style="display: none" id="lblCsDisenio" name="lblCsDisenio" value="ASHRAE 55/62.1/90.1">
@@ -740,7 +740,7 @@
                                 <label  class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);check_sin_doa(this,'ventilacion_2_1_retro','cheTipo_2_1_retro');" name="cheDisenio_2_1_retro" id="cheDisenio_2_1_retro">
+                                <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);check_sin_doa(this.id,'ventilacion_2_1_retro','cheTipo_2_1_retro');" name="cheDisenio_2_1_retro" id="cheDisenio_2_1_retro">
 
                                 </select>
                             </div>
@@ -1090,7 +1090,7 @@
                                 <label  class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);check_sin_doa(this,'ventilacion_3_1_retro','cheTipo_3_1_retro');" name="cheDisenio_3_1_retro" id="cheDisenio_3_1_retro">
+                                <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="valida_selects_inps(this.id);send_name(this.id);check_sin_doa(this.id,'ventilacion_3_1_retro','cheTipo_3_1_retro');" name="cheDisenio_3_1_retro" id="cheDisenio_3_1_retro">
 
                                 </select>
                             </div>
