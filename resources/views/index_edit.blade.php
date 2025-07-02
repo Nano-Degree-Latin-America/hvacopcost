@@ -1437,7 +1437,7 @@ function traer_horas_enf_edit(id) {
         type: 'get',
         url: '/getDegreeHrsadd/'+ id,
         success: function (response) {
-            console.log(response);
+
 
             let dollarUSLocale = Intl.NumberFormat('en-US');
 
