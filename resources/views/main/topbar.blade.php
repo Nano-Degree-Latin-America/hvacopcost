@@ -49,12 +49,12 @@
          <button class="text_butons_top mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='home'"><p class="text_butons_top">{{ __('index.nuevo_projecto') }}</p></button>
          @endif
 
-         <a class="text_butons_top mt-2 button-size bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('cerrar_session') }}"
+         <a class="text_butons_top mt-2 button-size bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 place-items-center"  href="{{ route('cerrar_session') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-                <button class="">
+
                     {{ __('index.logout') }}
-                    </button>
+
             </a>
 
             @if (Auth::user()->tipo_user == 5)
@@ -81,106 +81,5 @@
             </form>
          </div>
      </div>
-     <style>
 
-
-@media (min-width: 380px) {
-            .text_butons_top{
-                font-size: 10px;
-            }
-            .button-size{
-                padding: .52rem;
-            }
- }
-
- @media (min-width: 400px) {
-            .text_butons_top{
-                font-size: 80%;
-            }
-            .button-size{
-                padding: .55rem
-            }
-
- }
-
- @media (min-width: 750px) {
-            .text_butons_top{
-                font-size: 80%;
-            }
-            .button-size{
-                padding: .55rem
-            }
-
- }
-
- @media (min-width: 780px) {
-            .text_butons_top{
-                font-size: 80%;
-            }
-            .button-size{
-                padding: .55rem
-            }
-
- }
-
- @media (min-width: 790px) {
-            .text_butons_top{
-                font-size: 80%;
-            }
-            .button-size{
-                padding: .55rem
-            }
-
- }
-
- @media (min-width: 800px) {
-            .text_butons_top{
-                font-size: 85%;
-            }
-            .button-size{
-                padding: .58rem
-            }
-
- }
-
- @media (min-width: 850px) {
-            .text_butons_top{
-                font-size: 85%;
-            }
-            .button-size{
-                padding: .58rem
-            }
-
- }
-
- @media (min-width: 880px) {
-            .text_butons_top{
-                font-size: 85%;
-            }
-            .button-size{
-                padding: .58rem
-            }
-
- }
-
- @media (min-width: 1016px) {
-            .text_butons_top{
-                font-size: 100%;
-            }
-            .button-size{
-                padding: .60rem
-            }
-
- }
-
- @media (min-width: 1020px) {
-            .text_butons_top{
-                font-size: 100%;
-            }
-            .button-size{
-                padding: .60rem
-            }
-
- }
-     </style>
  </header>
