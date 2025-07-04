@@ -3,7 +3,7 @@
 
 
             <div class="my-8">
-                <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight text-center" for="">{{ __('mantenimiento.calculo_analisis_precios') }} <br> {{ __('mantenimiento.contratos_mantenimiento_hvac') }}</label>
+                <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index_mant font-roboto drop-shadow-lg font-bold leading-tight text-center" for="">{{ __('mantenimiento.calculo_analisis_precios') }} <br> {{ __('mantenimiento.contratos_mantenimiento_hvac') }}</label>
             </div>
          <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-2">
 
@@ -292,7 +292,7 @@
                     </div>
 
                     <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
-                        <div class="flex w-3/5">
+                        <div class="flex w-full">
                             <label class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.tipo_ambiente') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>

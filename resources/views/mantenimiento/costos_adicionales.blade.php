@@ -26,7 +26,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex justify-center place-items-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue 2xl:text-xl xl:text-xl lg:text-lg md:text-md font-bold">
                         Servicios de Emergencias
                     </p>
                 </div>
