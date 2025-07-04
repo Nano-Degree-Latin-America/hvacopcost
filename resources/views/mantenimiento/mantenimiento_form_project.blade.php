@@ -76,7 +76,7 @@
                     </div>
 
                     <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
-                        <div class="flex w-3/5">
+                        <div class="flex w-full">
                             <label class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.tipo_ambiente') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
