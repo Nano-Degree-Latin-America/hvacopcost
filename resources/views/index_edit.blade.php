@@ -1281,7 +1281,7 @@ if(parseInt(type_project) === 3){
 }
 
         return {
-            step: 7,
+            step: page,
             passwordStrengthText: '',
             togglePassword: false,
             password: '',
