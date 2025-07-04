@@ -27,7 +27,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center place-items-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Servicios de Emergencias
                     </p>
                 </div>
@@ -41,7 +41,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center place-items-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Tiempo Adicional Accesos
                     </p>
                 </div>
@@ -56,7 +56,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center place-items-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-md font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                        Curso de Seguridad y Otros
                     </p>
                 </div>
@@ -70,7 +70,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center place-items-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Lavado de Filtros de Aire
                     </p>
                 </div>
@@ -84,7 +84,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center place-items-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                        Lavado Evaporadores
                     </p>
                 </div>
@@ -98,7 +98,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center place-items-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-lg font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Lavado Extra Condensadores
                     </p>
                 </div>
@@ -112,7 +112,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center place-items-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Lavado de Ventiladores
                     </p>
                 </div>
@@ -126,7 +126,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center place-items-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Limpieza de Grasa (Cocina)
                     </p>
                 </div>
@@ -140,7 +140,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center place-items-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Seguristas y/o Supervición
                     </p>
                 </div>
@@ -179,7 +179,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Filtros de Aire
                     </p>
                 </div>
@@ -193,7 +193,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center input-adicionales-uniforme">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Filtros Adicionales
                     </p>
                 </div>
@@ -207,7 +207,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Refacciones Básicas
                     </p>
                 </div>
@@ -221,7 +221,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Filtros de Aceite Chiller
                     </p>
                 </div>
@@ -235,7 +235,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Filtros Secador Chiller
                     </p>
                 </div>
@@ -272,7 +272,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Andamios, Gruas, etc.
                     </p>
                 </div>
@@ -286,7 +286,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Viaticos
                     </p>
                 </div>
@@ -300,7 +300,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Contratistas
                     </p>
                 </div>
@@ -314,7 +314,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Pruebas Acidez Básica
                     </p>
                 </div>
@@ -328,7 +328,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Pruebas Aceite Laboratorio
                     </p>
                 </div>
@@ -342,7 +342,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Pruebas de Refrigerante
                     </p>
                 </div>
@@ -356,7 +356,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                         Eddy Current Test
                     </p>
                 </div>
@@ -370,7 +370,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-md font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                        Limpieza Evaporador Chiller
                     </p>
                 </div>
@@ -384,7 +384,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-md font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                        Limpieza Condensador Agua
                     </p>
                 </div>
@@ -398,7 +398,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                        Cambio de Aceite Chillers
                     </p>
                 </div>
@@ -412,7 +412,7 @@
 
             <div style="width: 65%;" class="gap-x-3 flex mt-1 justify-center">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                        Limpieza Anual Torres Enf.
                     </p>
                 </div>

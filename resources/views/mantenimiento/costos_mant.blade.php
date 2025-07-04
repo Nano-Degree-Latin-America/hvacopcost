@@ -25,7 +25,7 @@
 
                 <div  class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
-                        <p class="text_blue text-2xl font-bold">
+                        <p class="text_blue text-title-costo-mantenimiento font-bold">
                             Mantenimiento Preventivo ASHRAE 180 - Base *
                         </p>
                     </div>
@@ -35,7 +35,7 @@
 
                 <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
-                        <p class="text_blue text-xl font-bold">
+                        <p class="text_blue text-size-adicionales font-bold">
                            Valor Contrato Anual
                         </p>
                     </div>
@@ -46,7 +46,7 @@
 
                 <div class="gap-x-3 flex py-2 justify-start width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
-                        <p class="text_blue text-2xl font-bold">
+                        <p class="text_blue text-title-costo-mantenimiento font-bold">
                            Tiempos Operacionales
                         </p>
                     </div>
@@ -54,7 +54,7 @@
 
                 <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
-                        <p class="text_blue text-xl font-bold">
+                        <p class="text_blue text-size-adicionales font-bold">
                            Días de Mantenimiento
                         </p>
                     </div>
@@ -68,7 +68,7 @@
 
                 <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
-                        <p class="text_blue text-xl font-bold">
+                        <p class="text_blue text-size-adicionalesfont-bold">
                            Horas Mantenimiento
                         </p>
                     </div>
@@ -82,7 +82,7 @@
 
                 <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
-                        <p class="text_blue text-xl font-bold">
+                        <p class="text_blue text-size-adicionales font-bold">
                            Horas Traslados
                         </p>
                     </div>
@@ -96,7 +96,7 @@
 
                 <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
-                        <p class="text_blue text-xl font-bold">
+                        <p class="text_blue text-size-adicionales font-bold">
                            Horas Acceso Edificio
                         </p>
                     </div>
@@ -110,7 +110,7 @@
 
                 <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales mb-2">
                     <div class="w-3/4 grid justify-items-start place-items-center">
-                        <p class="text_blue text-xl font-bold">
+                        <p class="text_blue text-size-adicionales font-bold">
                            Horas Para Garantías
                         </p>
                     </div>
@@ -135,7 +135,7 @@
 
             <div class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-2xl font-bold">
+                    <p class="text_blue text-title-costo-mantenimiento font-bold">
                         Mantenimiento Preventivo Costos Adicionales *
                     </p>
                 </div>
@@ -145,7 +145,7 @@
 
             <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                        Valor Contrato Anual
                     </p>
                 </div>
@@ -156,7 +156,7 @@
 
             <div class="gap-x-3 flex py-2 justify-start width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-2xl font-bold">
+                    <p class="text_blue text-title-costo-mantenimiento font-bold">
                        Tiempos Operacionales
                     </p>
                 </div>
@@ -164,7 +164,7 @@
 
             <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                        Días de Mantenimiento
                     </p>
                 </div>
@@ -178,7 +178,7 @@
 
             <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                        Horas Mantenimiento
                     </p>
                 </div>
@@ -192,7 +192,7 @@
 
             <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                        Horas Traslados
                     </p>
                 </div>
@@ -206,7 +206,7 @@
 
             <div class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                        Horas Acceso Edificio
                     </p>
                 </div>
@@ -220,7 +220,7 @@
 
             <div  class="gap-x-3 flex mt-1 justify-center width_tiempos_operacionales mb-2">
                 <div class="w-3/4 grid justify-items-start place-items-center">
-                    <p class="text_blue text-xl font-bold">
+                    <p class="text_blue text-size-adicionales font-bold">
                        Horas Para Garantías
                     </p>
                 </div>

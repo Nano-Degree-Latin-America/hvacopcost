@@ -245,6 +245,109 @@ input[type=number]::-webkit-outer-spin-button {
     border-color:#1B17BB;
 }
     </style>
+
+     <style>
+
+
+/* @media (min-width: 380px) {
+            .text_butons_top{
+                font-size: 10px;
+            }
+            .button-size{
+                padding: .52rem;
+            }
+ }
+
+ @media (min-width: 400px) {
+            .text_butons_top{
+                font-size: 80%;
+            }
+            .button-size{
+                padding: .55rem
+            }
+
+ }
+
+ @media (min-width: 750px) {
+            .text_butons_top{
+                font-size: 80%;
+            }
+            .button-size{
+                padding: .55rem
+            }
+
+ }
+
+ @media (min-width: 780px) {
+            .text_butons_top{
+                font-size: 80%;
+            }
+            .button-size{
+                padding: .55rem
+            }
+
+ }
+
+ @media (min-width: 790px) {
+            .text_butons_top{
+                font-size: 80%;
+            }
+            .button-size{
+                padding: .55rem
+            }
+
+ }
+
+ @media (min-width: 800px) {
+            .text_butons_top{
+                font-size: 85%;
+            }
+            .button-size{
+                padding: .58rem
+            }
+
+ }
+
+ @media (min-width: 850px) {
+            .text_butons_top{
+                font-size: 85%;
+            }
+            .button-size{
+                padding: .58rem
+            }
+
+ }
+
+ @media (min-width: 880px) {
+            .text_butons_top{
+                font-size: 85%;
+            }
+            .button-size{
+                padding: .58rem
+            }
+
+ }
+
+ @media (min-width: 1016px) {
+            .text_butons_top{
+                font-size: 100%;
+            }
+            .button-size{
+                padding: .60rem
+            }
+
+ }
+
+ @media (min-width: 1020px) {
+            .text_butons_top{
+                font-size: 100%;
+            }
+            .button-size{
+                padding: .60rem
+            }
+
+ } */
+     </style>
   <script src="https://cdn.tailwindcss.com"></script>
 
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
@@ -861,6 +964,17 @@ input[type=number]::-webkit-outer-spin-button {
        margin-top:215px;
    }
 
+    /* TOP BUTTONS */
+    .text_butons_top{
+        font-size: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .button-size{
+        padding: .30rem
+    }
+
 }
 
 @media (min-width: 1275px) {
@@ -897,6 +1011,17 @@ input[type=number]::-webkit-outer-spin-button {
     .type_proy_pos{
        margin-top:215px;
    }
+
+    /* TOP BUTTONS */
+    .text_butons_top{
+        font-size: 75%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .button-size{
+        padding: .30rem
+    }
 }
 
 /* xl	1280px */
@@ -934,6 +1059,17 @@ input[type=number]::-webkit-outer-spin-button {
   .type_proy_pos{
        margin-top:215px;
    }
+
+    /* TOP BUTTONS */
+    .text_butons_top{
+        font-size: 80%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .button-size{
+        padding: .30rem
+    }
 }
 
 @media (min-width: 1540px) {
@@ -976,6 +1112,18 @@ input[type=number]::-webkit-outer-spin-button {
   .type_proy_pos{
        margin-top:215px;
    }
+
+
+   /* TOP BUTTONS */
+    .text_butons_top{
+        font-size: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .button-size{
+        padding: .30rem
+    }
 }
 
 @media (min-width: 1640px) {
@@ -1016,6 +1164,16 @@ input[type=number]::-webkit-outer-spin-button {
   .type_proy_pos{
        margin-top:215px;
    }
+   /* TOP BUTTONS */
+    .text_butons_top{
+        font-size: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .button-size{
+        padding: .30rem
+    }
 }
 
 @media (min-width: 1760px) {
@@ -1055,8 +1213,19 @@ input[type=number]::-webkit-outer-spin-button {
         }
 
         .type_proy_pos{
-       margin-top:215px;
-   }
+            margin-top:215px;
+        }
+
+   /* TOP BUTTONS */
+    .text_butons_top{
+        font-size: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .button-size{
+        padding: .60rem
+    }
 }
 /* 2xl	1536px */
 @media (min-width: 1940px) {
@@ -1080,6 +1249,17 @@ input[type=number]::-webkit-outer-spin-button {
     .type_proy_pos{
        margin-top:215px;
    }
+
+   /* TOP BUTTONS */
+    .text_butons_top{
+        font-size: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .button-size{
+        padding: .60rem
+    }
 
 }
 </style>

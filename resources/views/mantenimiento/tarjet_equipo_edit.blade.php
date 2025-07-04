@@ -8,8 +8,8 @@
                 <input type="text" class="hidden" value="" id="indice_tabla_edit" name="indice_tabla_edit">
                 <input type="text" class="hidden" value="" id="tr_val" name="tr_val">
             </div>
-            <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex  2xl:justify-center xl:justify-center lg:justify-center  py-1">
-                <h2 style="color:#1B17BB;" class="font-bold text-3xl">{{ __('index.sis_ext') }}</h2>
+            <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex  2xl:justify-center xl:justify-center lg:justify-center md:lg:justify-center  py-1">
+                <h2 style="color:#1B17BB;" class="font-bold 2xl:text-3xl xl:text-3xl lg:text-xl md:text-xl">{{ __('index.sis_ext') }}</h2>
             </div>
             @include('mantenimiento.modal_add_marca_modelo_mantenimiento')
             <div class="mr-5 2xl:w-20 xl:w-auto lg:w-1/4 flex justify-end">

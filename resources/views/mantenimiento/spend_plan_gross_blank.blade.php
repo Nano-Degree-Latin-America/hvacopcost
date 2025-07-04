@@ -3,13 +3,13 @@
 
     <div  style="width:65%;" class=" h-full grid justify-items-start font-roboto gap-y-1">
         <div class="flex justify-center mr-20">
-            <h1 class="text-3xl text_blue font-bold">Spend Plan</h1> <input class="w-20 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center mx-1" id="spend_plan_porcent" name="spend_plan_porcent" onchange="change_to_porcent_mantenimiento(this.value,this.id);calcular_speendplan_base_adicional_gp(this.value);" type="text"><h1  class="text-3xl  font-bold"> Gross Profit</h1>
+            <h1 class="subtitles-just-financiera text_blue font-bold">Spend Plan</h1> <input class="w-20 text_blue border-2 border-color-inps text-lg rounded-md py-1 text-center mx-1" id="spend_plan_porcent" name="spend_plan_porcent" onchange="change_to_porcent_mantenimiento(this.value,this.id);calcular_speendplan_base_adicional_gp(this.value);" type="text"><h1  class="subtitles-just-financiera  font-bold"> Gross Profit</h1>
         </div>
     </div>
 
     <div style="width:65%;" class="gap-x-3 flex mt-4 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
-            <p class="text_blue text-xl font-bold">
+            <p class="text_blue text-size-adicionales font-bold">
                 Materiales
             </p>
         </div>
@@ -23,7 +23,7 @@
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
-            <p class="text_blue text-xl font-bold">
+            <p class="text_blue text-size-adicionales font-bold">
                 Equipos
             </p>
         </div>
@@ -37,7 +37,7 @@
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
-            <p class="text_blue text-xl font-bold">
+            <p class="text_blue text-size-adicionales font-bold">
                 Mano de Obra
             </p>
         </div>
@@ -51,7 +51,7 @@
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
-            <p class="text_blue text-xl font-bold">
+            <p class="text_blue text-size-adicionales font-bold">
                 Vehículos
             </p>
         </div>
@@ -65,7 +65,7 @@
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
-            <p class="text_blue text-xl font-bold">
+            <p class="text_blue text-size-adicionales font-bold">
                 Contratista
             </p>
         </div>
@@ -79,7 +79,7 @@
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
-            <p class="text_blue text-xl font-bold">
+            <p class="text_blue text-size-adicionales font-bold">
                 Viaticos
             </p>
         </div>
@@ -93,7 +93,7 @@
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
-            <p class="text_blue text-xl font-bold">
+            <p class="text_blue text-size-adicionales font-bold">
                 Burden
             </p>
         </div>
@@ -111,7 +111,7 @@
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
-            <p class="text_blue text-xl font-bold">
+            <p class="text_blue text-size-adicionales font-bold">
                 G&A
             </p>
         </div>
@@ -125,7 +125,7 @@
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
-            <p class="text_blue text-xl font-bold">
+            <p class="text_blue text-size-adicionales font-bold">
                 Ventas
             </p>
         </div>
@@ -139,7 +139,7 @@
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
-            <p class="text_blue text-xl font-bold">
+            <p class="text_blue text-size-adicionales font-bold">
                 Financiamiento
             </p>
         </div>
@@ -157,7 +157,7 @@
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
-            <p class="text-2xl font-bold">
+            <p class="text-title-costo-mantenimiento font-bold">
                 Valor de Venta
             </p>
         </div>
@@ -168,7 +168,7 @@
 
     <div style="width:65%;" class="gap-x-3 flex mt-1 justify-center">
         <div class="w-1/3 grid justify-items-start place-items-center ">
-            <p class="text-2xl font-bold">
+            <p class="text-title-costo-mantenimiento font-bold">
                 Ganancia
             </p>
         </div>

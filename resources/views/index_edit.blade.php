@@ -519,9 +519,15 @@ $idm = App::getLocale();
               color:#1B17BB !important;"
 }
 
+
+.title_index_mant{
+            color:#1B17BB !important;"
+}
+
 .text_blue{
     color:#1B17BB !important;
 }
+
 @media (min-width: 640px) {
     .labels{
         font-size:11px;
@@ -701,6 +707,10 @@ $idm = App::getLocale();
     font-size: 2rem;
   }
 
+   .title_index_mant{
+            font-size: 2rem;
+    }
+
   .unit_style{
     font-size: 1rem;
   }
@@ -730,12 +740,18 @@ $idm = App::getLocale();
     .mapa_img{
         width: 350px; height:550px;
  }
+
  .type_proyect_label{
     font-size:16px;
  }
+
  .title_index{
     font-size: 2rem;
   }
+
+  .title_index_mant{
+            font-size: 2rem;
+   }
 
   .unit_style{
     font-size: 1rem;
@@ -768,9 +784,14 @@ $idm = App::getLocale();
  .type_proyect_label{
     font-size:16px;
  }
+
  .title_index{
     font-size: 2rem;
   }
+
+   .title_index_mant{
+            font-size: 2rem;
+    }
 
   .unit_style{
     font-size: 1rem;
@@ -800,12 +821,18 @@ $idm = App::getLocale();
     .mapa_img{
         width: 350px; height:550px;
  }
+
  .type_proyect_label{
     font-size:16px;
  }
+
  .title_index{
     font-size: 2rem;
   }
+
+ .title_index_mant{
+            font-size: 2rem;
+        }
 
   .unit_style{
     font-size: 1rem;
@@ -838,9 +865,14 @@ $idm = App::getLocale();
  .type_proyect_label{
     font-size:16px;
  }
+
  .title_index{
     font-size: 2rem;
   }
+
+   .title_index_mant{
+            font-size: 2.5rem;
+        }
 
   .unit_style{
     font-size: 1rem;
@@ -872,9 +904,14 @@ $idm = App::getLocale();
  .type_proyect_label{
     font-size:16px;
  }
+
  .title_index{
     font-size: 2rem;
   }
+
+  .title_index_mant{
+            font-size: 2.5rem;
+        }
 
   .unit_style{
     font-size: 1rem;
@@ -906,12 +943,28 @@ $idm = App::getLocale();
     .mapa_img{
         width: 400px; height:600px;
  }
+
  .type_proyect_label{
     font-size:16px;
  }
+
  .title_index{
     font-size: 3rem;
   }
+
+  .title_index_mant{
+            font-size: 2.5rem;
+        }
+
+   .text-title-costo-mantenimiento{
+            font-size: 1.2rem
+    }
+
+
+    .subtitles-just-financiera{
+                font-size: 1.3rem;
+    }
+
 
   .unit_style{
     font-size: 1.25rem;
@@ -954,6 +1007,22 @@ $idm = App::getLocale();
     font-size: 3rem;
   }
 
+  .title_index_mant{
+            font-size: 2.5rem;
+  }
+
+  .text-size-adicionales{
+            font-size: .85rem;
+    }
+
+    .text-title-costo-mantenimiento{
+            font-size: 1.2rem
+    }
+
+    .subtitles-just-financiera{
+                font-size: 1.3rem;
+    }
+
   .unit_style{
     font-size: 1.25rem;
   }
@@ -989,6 +1058,23 @@ $idm = App::getLocale();
     font-size: 3rem;
   }
 
+    .title_index_mant{
+            font-size: 2.5rem;
+    }
+
+    .text-size-adicionales{
+            font-size: .95rem;
+    }
+
+    .text-title-costo-mantenimiento{
+            font-size: 1.3rem
+    }
+
+    .subtitles-just-financiera{
+                font-size: 1.5rem;
+    }
+
+
   .unit_style{
     font-size: 1.25rem;
   }
@@ -1020,9 +1106,27 @@ $idm = App::getLocale();
  .check_style{
         width: 30px;height: 30px;
     }
+
     .title_index{
     font-size: 3rem;
   }
+
+  .title_index_mant{
+            font-size: 3rem;
+  }
+
+    .text-size-adicionales{
+            font-size: 1.2rem;
+    }
+
+    .text-title-costo-mantenimiento{
+            font-size: 1.3rem
+        }
+
+
+        .subtitles-just-financiera{
+                font-size: 1.875rem;
+        }
 
   .unit_style{
     font-size: 1.25rem;
@@ -1055,8 +1159,26 @@ $idm = App::getLocale();
         .check_style{
                 width: 30px;height: 30px;
             }
+
         .title_index{
             font-size: 3rem;
+        }
+
+
+        .title_index_mant{
+            font-size: 3rem;
+        }
+
+        .text-size-adicionales{
+            font-size: 1.1rem;
+        }
+
+        .text-title-costo-mantenimiento{
+            font-size: 1.5rem
+        }
+
+        .subtitles-just-financiera{
+                font-size: 1.875rem;
         }
 
         .unit_style{
@@ -1159,7 +1281,7 @@ if(parseInt(type_project) === 3){
 }
 
         return {
-            step: page,
+            step: 7,
             passwordStrengthText: '',
             togglePassword: false,
             password: '',
