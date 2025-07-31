@@ -7333,6 +7333,7 @@ toggle between hiding and showing the dropdown content */
                if(response == 2){
                 $("#"+action_submit).val('store');
                }
+               console.log(response);
 
             },
             error: function (responsetext) {
