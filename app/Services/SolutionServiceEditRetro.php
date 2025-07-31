@@ -36,7 +36,7 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
 
             $action_submit_send = $request->get('action_submit_send');
             $action_submit_send_2_1 = $request->get('action_submit_2_1_retro');
-            $action_submit_send_3_1 = $request->get('action_submit_2_1_retro');
+            $action_submit_send_3_1 = $request->get('action_submit_3_1_retro');
             $enfriamiento1_retro = intval($request->get('cUnidad_1_1_retro'));
             $enfriamiento2_retro = intval($request->get('cUnidad_2_1_retro'));
             $enfriamiento3_retro =intval($request->get('cUnidad_3_1_retro'));
