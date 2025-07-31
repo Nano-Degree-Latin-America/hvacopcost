@@ -35,23 +35,26 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
 
 
             $action_submit_send = $request->get('action_submit_send');
+            $action_submit_send_2_1 = $request->get('action_submit_2_1_retro');
+            $action_submit_send_3_1 = $request->get('action_submit_2_1_retro');
             $enfriamiento1_retro = intval($request->get('cUnidad_1_1_retro'));
             $enfriamiento2_retro = intval($request->get('cUnidad_2_1_retro'));
             $enfriamiento3_retro =intval($request->get('cUnidad_3_1_retro'));
-        //guardar soluciones
+
+        //guardar solu|ciones
         if ($enfriamiento1_retro !== 0) {
             SolutionServiceEditRetro::update_solution_1_1_retro($request,$id_project,$action_submit_send);
             $this->update_results(1,$id_project,$action_submit_send);
         }
 
         if ($enfriamiento2_retro !== 0) {
-            SolutionServiceEditRetro::update_solution_2_1_retro($request,$id_project,$action_submit_send);
-            $this->update_results(2,$id_project,$action_submit_send);
+            SolutionServiceEditRetro::update_solution_2_1_retro($request,$id_project,$action_submit_send_2_1);
+            $this->update_results(2,$id_project,$action_submit_send_2_1);
         }
 
         if ($enfriamiento3_retro !== 0) {
-            SolutionServiceEditRetro::update_solution_3_1_retro($request,$id_project,$action_submit_send);
-            $this->update_results(3,$id_project,$action_submit_send);
+            SolutionServiceEditRetro::update_solution_3_1_retro($request,$id_project,$action_submit_send_3_1);
+            $this->update_results(3,$id_project,$action_submit_send_3_1);
         }
 
     }
@@ -201,6 +204,7 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
             ->where('solutions_project.num_enf','=',2)
             ->where('solutions_project.num_sol','=',1)
             ->first();
+
             $solution_enf_2_1_retro=SolutionsProjectModel::find($id_solution_2_1->id);
         }
 
@@ -332,7 +336,9 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
             ->where('solutions_project.num_enf','=',3)
             ->where('solutions_project.num_sol','=',1)
             ->first();
+
             $solution_enf_3_1_retro=SolutionsProjectModel::find($id_solution_3_1->id);
+
         }
         $solution_enf_3_1_retro->type_p=2;
         $solution_enf_3_1_retro->num_sol=1;
