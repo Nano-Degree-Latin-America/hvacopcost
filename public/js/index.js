@@ -1170,6 +1170,29 @@ async function set_ventilaciones_no_doa(value) {
     });
 }
 
+async function set_filtraciones_no_doa(value) {
+    const arr = [];
+
+    // Devolver una promesa
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: 'get',
+            url: '/traer_filtraciones_no_doa/' + value,
+            success: function (response) {
+                for (let i = 0; i < response.length; i++) {
+                    arr.push({ text: response[i].filtracion, value: response[i].valor });
+                }
+                // Convertir el arreglo a JSON y resolver la promesa
+                const arry = JSON.stringify(arr);
+                resolve(arry);
+            },
+            error: function (responsetext) {
+                reject(responsetext);
+            }
+        });
+    });
+}
+
   function check_unidad(value){
     var ft = document.getElementById("check_ft");
     var mc = document.getElementById("check_mc");
@@ -13291,7 +13314,7 @@ function copiar_solucion_tarjet(sol_copy,sol_paste){
     var csDisenio_1_1 = $('#csDisenio_1_1').val();
     $("#cheDisenio_2_1").find('option[value="'+csDisenio_1_1+'"]').attr("selected", true);
     send_name('cheDisenio_2_1');
-    await check_sin_doa('cheDisenio_2_1','ventilacion_2_1','cheTipo_2_1');
+    await check_sin_doa('cheDisenio_2_1','ventilacion_2_1','filtracion_2_1','cheTipo_2_1');
 
     var tipo_control_1_1 = $('#tipo_control_1_1').val();
     $("#tipo_control_2_1").find('option[value="'+tipo_control_1_1+'"]').attr("selected", true);
@@ -13372,7 +13395,7 @@ async function copiar_form_a_2(){
     var csDisenio_1_2 = $('#csDisenio_1_2').val();
     $("#cheDisenio_2_2").find('option[value="'+csDisenio_1_2+'"]').attr("selected", true);
     send_name('cheDisenio_2_2');
-    await check_sin_doa('cheDisenio_2_2','ventilacion_2_2','cheTipo_2_2');
+    await check_sin_doa('cheDisenio_2_2','filtracion_2_2','ventilacion_2_2','cheTipo_2_2');
 
 
     var tipo_control_1_2 = $('#tipo_control_1_2').val();
@@ -13459,7 +13482,7 @@ async function copiar_form_a_b(sol_paste){
     $("#cheDisenio_3_1").find('option[value="'+cheDisenio_2_1+'"]').attr("selected", true);
     //$("#cheDisenio_3_1").trigger('change');
     send_name('cheDisenio_3_1');
-    await check_sin_doa('cheDisenio_3_1','ventilacion_3_1','cheTipo_3_1');
+    await check_sin_doa('cheDisenio_3_1','ventilacion_3_1','filtracion_3_1','cheTipo_3_1');
 
     var tipo_control_2_1 = $('#tipo_control_2_1').val();
     $("#tipo_control_3_1").find('option[value="'+tipo_control_2_1+'"]').attr("selected", true);
@@ -13542,7 +13565,7 @@ async function copiar_form_b_2(sol_paste){
     var cheDisenio_2_2 = $('#cheDisenio_2_2').val();
     $("#cheDisenio_3_2").find('option[value="'+cheDisenio_2_2+'"]').attr("selected", true);
     send_name('cheDisenio_3_2');
-    await check_sin_doa('cheDisenio_3_2','ventilacion_3_2','cheTipo_3_2');
+    await check_sin_doa('cheDisenio_3_2','ventilacion_3_2','filtracion_3_2','cheTipo_3_2');
 
 
     var tipo_control_2_2 = $('#tipo_control_2_2').val();
@@ -13758,44 +13781,68 @@ function red_alert_retro(tipo_ambiente,proteccion_condensador){
         }
     }
 
- async function check_sin_doa(id,select_id,equipo_id){
+ async function check_sin_doa(id,ventilacion_id,filtracion_id,equipo_id){
 
 //me quede aqui
     if($("#"+id+" option:selected").text() == 'Sin Unidad DOA'){
         var value = $('#'+equipo_id).val();
-        $('#'+select_id).empty();
+        $('#'+ventilacion_id).empty();
+
+         arry_vent = await set_ventilaciones_no_doa(value);
+         const myObj_vent = JSON.parse(arry_vent);
+         for (let i = 0; i < myObj_vent.length; i++) {
+            $('#'+ventilacion_id).append($('<option>', {
+                 value: Math.round(myObj_vent[i].value * 100) / 100,
+                text:  myObj_vent[i].text
+            }));
+        }
 
 
-        $('#'+select_id).append($('<option>', {
-            value: '',
-            text: '-Seleccionar-'
-        }));
+         $('#'+filtracion_id).empty();
+         arry_filt = await set_filtraciones_no_doa(value);
+         const myObj_filt = JSON.parse(arry_filt);
+         for (let i = 0; i < myObj_filt.length; i++) {
+            $('#'+filtracion_id).append($('<option>', {
+                value: Math.round(myObj_filt[i].value * 100) / 100,
+                text:  myObj_filt[i].text
+            }));
+        }
 
-                const arry_vent = await set_ventilaciones_no_doa(value);
-                const myObj_vent = JSON.parse(arry_vent);
-                        for (let i = 0; i < myObj_vent.length; i++) {
-                        $('#'+select_id).append($('<option>', {
-                             value: Math.round(myObj_vent[i].value * 100) / 100,
-                            text:  myObj_vent[i].text
-                        }));
-                    }
 
     }else{
         var value = $('#'+equipo_id).val();
-
-        $('#'+select_id).empty();
-        $('#'+select_id).append($('<option>', {
+        /* ventilacion */
+        $('#'+ventilacion_id).empty();
+        $('#'+ventilacion_id).append($('<option>', {
             value: '',
             text: '-Seleccionar-'
         }));
         const arry_vent = await set_ventilaciones(value);
         const myObj_vent = JSON.parse(arry_vent);
-                 for (let i = 0; i < myObj_vent.length; i++) {
-                $('#'+select_id).append($('<option>', {
-                     value:  Math.round(myObj_vent[i].value * 100) / 100,
-                    text:  myObj_vent[i].text
-                 }));
-            }
+
+        for (let i = 0; i < myObj_vent.length; i++) {
+            $('#'+ventilacion_id).append($('<option>', {
+                value:  Math.round(myObj_vent[i].value * 100) / 100,
+                text:  myObj_vent[i].text
+            }));
+        }
+
+        /* filtracion */
+        $('#'+filtracion_id).empty();
+        $('#'+filtracion_id).append($('<option>', {
+            value: '',
+            text: '-Seleccionar-'
+        }));
+
+        const arry_filt = await set_filtraciones(value);
+        const myObj_filt = JSON.parse(arry_filt);
+
+        for (let i = 0; i < myObj_filt.length; i++) {
+            $('#'+filtracion_id).append($('<option>', {
+                value:  Math.round(myObj_filt[i].value * 100) / 100,
+                text:  myObj_filt[i].text
+            }));
+        }
     }
 }
 

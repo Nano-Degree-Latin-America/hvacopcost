@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -147,6 +149,7 @@ Route::get('traer_drs/{equipo}', 'ResultadosController@traer_drs');
 Route::get('traer_ventilaciones/{equipo}', 'ResultadosController@traer_ventilaciones');
 Route::get('traer_ventilaciones_no_doa/{equipo}', 'ResultadosController@traer_ventilaciones_no_doa');
 Route::get('traer_filtraciones/{equipo}', 'ResultadosController@traer_filtraciones');
+Route::get('traer_filtraciones_no_doa/{equipo}', 'ResultadosController@traer_filtraciones_no_doa');
 Route::get('traer_valor_unidad/{value}', 'ResultadosController@traer_valor_unidad');
 ///asigna tipo, existente
 Route::get('asigna_tipos', 'ResultadosController@asiga_typos');
@@ -236,5 +239,77 @@ Route::post('save_justificacion_financiera/{id_project}', 'MantenimientoControll
 Route::get('locale/{locale}', function($locale){
    session()->put('locale',$locale);
    return Redirect::back();
+});
+
+
+Route::get('/chatgpt-test', function (Request $request) {
+    $prompt = $request->get('q', '¿Quién fue Albert Einstein?');
+
+    $client = new Client([
+        'base_uri' => 'https://api.openai.com/v1/',
+        'headers' => [
+            'Authorization' => 'Bearer ' . config('services.openai.key'),
+            'Content-Type'  => 'application/json',
+        ],
+    ]);
+
+    try {
+        $response = $client->post('chat/completions', [
+            'json' => [
+                'model' => 'gpt-3.5-turbo',
+                'messages' => [
+                    ['role' => 'user', 'content' => $prompt],
+                ],
+            ],
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+        return $data['choices'][0]['message']['content'];
+
+    } catch (\Exception $e) {
+        return 'Error: ' . $e->getMessage();
+    }
+});
+
+
+
+Route::get('/openai-status', function () {
+    $client = new Client([
+        'base_uri' => 'https://api.openai.com/v1/',
+        'headers' => [
+            'Authorization' => 'Bearer ' . config('services.openai.key'),
+            'Content-Type' => 'application/json',
+        ],
+    ]);
+
+    try {
+        $response = $client->post('chat/completions', [
+            'json' => [
+                'model' => 'gpt-3.5-turbo',
+                'messages' => [
+                    ['role' => 'user', 'content' => 'Hola, ¿puedes responderme?'],
+                ],
+            ],
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+        return '✅ Tu API Key funciona correctamente. Respuesta: ' . $data['choices'][0]['message']['content'];
+
+    } catch (\GuzzleHttp\Exception\ClientException $e) {
+        $status = $e->getResponse()->getStatusCode();
+        $body = json_decode($e->getResponse()->getBody()->getContents(), true);
+
+        if ($status === 401) {
+            return '❌ Error 401: API Key inválida. Revisa tu clave.';
+        }
+
+        if ($status === 429) {
+            return '⚠️ Error 429: Ya no tienes créditos disponibles o estás haciendo demasiadas peticiones.';
+        }
+
+        return '❌ Error ' . $status . ': ' . ($body['error']['message'] ?? 'Error desconocido');
+    } catch (\Exception $e) {
+        return '❌ Error inesperado: ' . $e->getMessage();
+    }
 });
 

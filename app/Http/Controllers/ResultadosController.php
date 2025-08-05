@@ -1050,7 +1050,7 @@ class ResultadosController extends Controller
 
     public function traer_ventilaciones_no_doa($referencia){
         $ventilaciones = VentilacionModel::where('referencia','=',$referencia)
-        ->where('ventilacion','!=','Sin Ventilación')->get();
+        ->where('ventilacion','=','Sin Ventilación')->get();
         return response()->json($ventilaciones);
 
     }
@@ -1058,6 +1058,13 @@ class ResultadosController extends Controller
     public function traer_filtraciones($referencia){
         $filtraciones = FiltracionModel::where('referencia','=',$referencia)->get();
         return response()->json($filtraciones);
+    }
+
+    public function traer_filtraciones_no_doa($referencia){
+        $filtraciones = FiltracionModel::where('referencia','=',$referencia)
+        ->where('filtracion','=','Sin Filtros')->get();
+        return response()->json($filtraciones);
+
     }
 
     public function traer_valor_unidad($value){
