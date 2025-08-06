@@ -559,7 +559,6 @@ function active_display_retro(value){
 
 
  async function unidadHvac(value,num_div,id_select,module){
-    console.log(module);
 
     var ima =  $('#idioma').val();
     switch (module) {
@@ -6420,10 +6419,11 @@ async function traer_unidad_hvac(id_project, num_sol, num_enf, cUnidad, csTipo, 
             $("#" + cUnidad).find('option[value="' + res.val_unidad.unidad_hvac + '"]').prop("selected", "selected");
             await unidadHvac(res.val_unidad.unidad_hvac, 1, csTipo,1);
             $("#" + csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').prop("selected", "selected");
+
             await change_diseño(res.val_unidad.tipo_equipo, 1, csDisenio, tipo_control, dr, ventilacion, filtracion, lblCsTipo);
             $("#" + csDisenio).find('option[value="' + res.val_unidad.tipo_diseño + '"]').prop("selected", "selected");
             //$("#" + csDisenio).trigger('change');
-            await check_sin_doa(csDisenio,ventilacion,csTipo);
+            await check_sin_doa(csDisenio,ventilacion,filtracion,csTipo);
             $("#" + tipo_control).find('option[value="' + res.val_unidad.tipo_control + '"]').prop("selected", "selected");
             $("#" + dr).find('option[value="' + res.val_unidad.dr + '"]').prop("selected", "selected");
             var ventilacion_val = Math.round(res.val_unidad.ventilacion * 100) / 100;
@@ -6537,7 +6537,7 @@ async function traer_unidad_hvac(id_project, num_sol, num_enf, cUnidad, csTipo, 
                 $("#"+csTipo).find('option[value="' + res.val_unidad.tipo_equipo + '"]').prop("selected", "selected");
                 await change_diseño(res.val_unidad.tipo_equipo,1,csDisenio,tipo_control,dr,ventilacion,filtracion,lblCsTipo);
                 $("#"+csDisenio).find('option[value="' + res.val_unidad.tipo_diseño + '"]').prop("selected", "selected");
-                await check_sin_doa(csDisenio,ventilacion,csTipo);
+                 await check_sin_doa(csDisenio,ventilacion,filtracion,csTipo);
                 $("#"+tipo_control).find('option[value="' + res.val_unidad.tipo_control + '"]').prop("selected", "selected");
                 $("#"+dr).find('option[value="' + res.val_unidad.dr + '"]').prop("selected", "selected");
 
@@ -12942,13 +12942,14 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais){
 
     switch (tipo_ambiente_id) {
         case 'no_agresivo':
-            check_val_text(id_prot_comp,ima);
+            //check_val_text(id_prot_comp,ima);
+            $('#'+id_prot_comp).empty();
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'sin_proteccion',
                 text: 'Sin Protección'
             }));
 
-            if(pais == 17){
+            /* if(pais == 17){
                 $('#'+id_prot_comp).append($('<option>', {
                     value: 'infiniguard',
                     text: 'Infiniguard®'
@@ -12959,7 +12960,7 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais){
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'cobre_cobre',
                 text: 'Cobre - Cobre'
-            }));
+            })); */
 
         break;
 
@@ -13186,13 +13187,14 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima,pais)
     var yrs_val =  $('#'+yrs).val();
     switch (tipo_ambiente_id) {
         case 'no_agresivo':
-            check_val_text(id_prot_comp,ima);
+            //check_val_text(id_prot_comp,ima);
+            $('#'+id).empty();
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'sin_proteccion',
                 text: 'Sin Protección'
             }));
 
-            if(pais == 17){
+            /* if(pais == 17){
                 $('#'+id_prot_comp).append($('<option>', {
                     value: 'infiniguard',
                     text: 'Infiniguard®'
@@ -13202,7 +13204,7 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima,pais)
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'cobre_cobre',
                 text: 'Cobre - Cobre'
-            }));
+            })); */
 
         break;
 
@@ -13781,7 +13783,8 @@ function red_alert_retro(tipo_ambiente,proteccion_condensador){
         }
     }
 
- async function check_sin_doa(id,ventilacion_id,filtracion_id,equipo_id){
+
+async function check_sin_doa(id,ventilacion_id,filtracion_id,equipo_id){
 
 //me quede aqui
     if($("#"+id+" option:selected").text() == 'Sin Unidad DOA'){
@@ -13842,6 +13845,45 @@ function red_alert_retro(tipo_ambiente,proteccion_condensador){
                 value:  Math.round(myObj_filt[i].value * 100) / 100,
                 text:  myObj_filt[i].text
             }));
+        }
+    }
+}
+
+async function check_ventilacion(id,filtracion_id,equipo_id,unidad_id){
+
+//me quede aqui
+
+  var value = $('#'+unidad_id).val();
+    if($('#'+equipo_id).val() == '7'){
+        console.log('7');
+        if($("#"+id+" option:selected").text() == 'Sin Ventilación'){
+
+             $('#'+filtracion_id).empty();
+             arry_filt = await set_filtraciones_no_doa(value);
+             const myObj_filt = JSON.parse(arry_filt);
+             for (let i = 0; i < myObj_filt.length; i++) {
+                $('#'+filtracion_id).append($('<option>', {
+                    value: Math.round(myObj_filt[i].value * 100) / 100,
+                    text:  myObj_filt[i].text
+                }));
+            }
+        }else{
+
+        const arry_filt = await set_filtraciones(value);
+        const myObj_filt = JSON.parse(arry_filt);
+
+        $('#'+filtracion_id).empty();
+        $('#'+filtracion_id).append($('<option>', {
+            value: '',
+            text: '-Seleccionar-'
+        }));
+
+        for (let i = 0; i < myObj_filt.length; i++) {
+            $('#'+filtracion_id).append($('<option>', {
+                value:  Math.round(myObj_filt[i].value * 100) / 100,
+                text:  myObj_filt[i].text
+            }));
+        }
         }
     }
 }
