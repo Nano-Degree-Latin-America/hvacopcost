@@ -597,7 +597,7 @@ class ResultadosController extends Controller
         return view('result_retro_imp',['id_project'=>$id_project]);
     }
 
-    public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$dif_2_cost,$inv_ini_3,$costo_b,$counter_val_prod_ene){
+    public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$dif_2_cost,$inv_ini_3,$costo_b,$consumo_ene_anual_a,$consumo_ene_anual_b,$consumo_ene_anual_c,$counter_val_prod_ene){
 
         $funciones = new funciones();
         $array_a = [];
@@ -672,6 +672,12 @@ class ResultadosController extends Controller
         }
 
 
+        $mayor = max($consumo_ene_anual_a, $consumo_ene_anual_b, $consumo_ene_anual_c);
+        $inflacion = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+
+
         if($counter_val_prod_ene == 0){
             $array_a = [0,0,0,0];
             if(intval($dif_cost) === 0 || intval($inv_ini) === 0){
@@ -680,14 +686,14 @@ class ResultadosController extends Controller
             }else{
 
                 if($tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
-                    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,5);
+                    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_b,$mayor,$inflacion,5);
                 }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre'){
-                    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,10);
+                    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_b,$mayor,$inflacion,10);
 
                 }else if($tipo_mant_2 == null && $prot_cond_2 == null){
                     $array_b = [0,0,0,0];
                 }else{
-                    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,15);
+                    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_b,$mayor,$inflacion,15);
                 }
             }
 
@@ -698,14 +704,14 @@ class ResultadosController extends Controller
 
 
                 if($tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
-                    $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,5);
+                    $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,5);
                 }else if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre'){
 
-                     $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,10);
+                     $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,10);
                 }else if($tipo_mant_2 == null && $prot_cond_2 == null){
                     $array_c = [0,0,0,0];
                 }else{
-                    $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,15);
+                    $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,15);
                 }
 
 
@@ -721,14 +727,14 @@ class ResultadosController extends Controller
             }else{
 
                 if($tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
-                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,5);
+                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,5);
                 }else if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'infiniguard' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'cobre_cobre'){
-                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,10);
+                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,10);
 
                 }else if($tipo_mant_1 == null && $prot_cond_1 == null){
                     $array_a = [0,0,0,0];
                 }else{
-                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,15);
+                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,15);
                 }
             }
 
@@ -739,14 +745,14 @@ class ResultadosController extends Controller
 
 
                 if($tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
-                    $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,5);
+                    $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,5);
                 }else if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre'){
 
-                     $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,10);
+                     $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,10);
                 }else if($tipo_mant_3 == null && $prot_cond_3 == null){
                     $array_c = [0,0,0,0];
                 }else{
-                    $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,15);
+                    $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,15);
                 }
 
 
@@ -762,14 +768,14 @@ class ResultadosController extends Controller
             }else{
 
                 if($tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
-                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,5);
+                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,5);
                 }else if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'infiniguard' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'cobre_cobre'){
-                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,10);
+                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,10);
 
                 }else if($tipo_mant_1 == null && $prot_cond_1 == null){
                     $array_a = [0,0,0,0];
                 }else{
-                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,15);
+                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,15);
                 }
             }
 
@@ -780,14 +786,14 @@ class ResultadosController extends Controller
 
 
                 if($tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
-                    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,5);
+                    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_b,$mayor,$inflacion,5);
                 }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre'){
 
-                     $array_b = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,10);
+                     $array_b = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_b,$mayor,$inflacion,10);
                 }else if($tipo_mant_2 == null && $prot_cond_2 == null){
                     $array_b = [0,0,0,0];
                 }else{
-                    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,15);
+                    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_b,$mayor,$inflacion,15);
                 }
 
 
@@ -799,6 +805,53 @@ class ResultadosController extends Controller
         array_push($array_res,$array_a,$array_b,$array_c);
         return response()->json($array_res);
 
+    }
+
+    public function roi_only_energy($id_projecto,$consumo_ene_anual_a,$consumo_ene_anual_b,$consumo_ene_anual_c,$inv_ini_1,$inv_ini_2,$inv_ini_3){
+        $funciones = new funciones();
+        $array_a = [];
+        $array_b = [];
+        $array_c = [];
+        $array_res = [];
+        $inflacion = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+
+        $mayor = max($consumo_ene_anual_a, $consumo_ene_anual_b, $consumo_ene_anual_c);
+
+          $array_a = $funciones->roi_only_energy($consumo_ene_anual_a,$mayor,$inflacion,$inv_ini_1);
+
+          $array_b = $funciones->roi_only_energy($consumo_ene_anual_b,$mayor,$inflacion,$inv_ini_2);
+
+          $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3);
+
+        array_push($array_res,$array_a,$array_b,$array_c);
+        return response()->json($array_res);
+
+    }
+
+    public function roi_recu_prod($id_projecto,$costo_base,$costo_a,$costo_b,$inv_ini_1,$inv_ini_2,$inv_ini_3,$consumo_ene_anual_a,$consumo_ene_anual_b,$consumo_ene_anual_c){
+
+        $funciones = new funciones();
+        $array_a = [];
+        $array_b = [];
+        $array_c = [];
+        $array_res = [];
+        $inflacion = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion;
+
+          $mayor = max(intval($costo_base), intval($costo_a), intval($costo_b));
+          $mayor_roi_only_energy = max($consumo_ene_anual_a, $consumo_ene_anual_b, $consumo_ene_anual_c);
+
+          $array_a = $funciones->roi_recu_prod($id_projecto,$costo_base,$mayor,$mayor_roi_only_energy,$consumo_ene_anual_a,$inflacion,$inv_ini_1);
+
+          $array_b = $funciones->roi_recu_prod($id_projecto,$costo_a,$mayor,$mayor_roi_only_energy,$consumo_ene_anual_b,$inflacion,$inv_ini_2);
+
+          $array_c = $funciones->roi_recu_prod($id_projecto,$costo_b,$mayor,$mayor_roi_only_energy,$consumo_ene_anual_c,$inflacion,$inv_ini_3);
+
+        array_push($array_res,$array_a,$array_b,$array_c);
+        return response()->json($array_res);
     }
 
     public function roi_s_ene($id_projecto,$dif_cost,$inv_ini,$dif_cost_c,$inv_ini_c,$counter_val){

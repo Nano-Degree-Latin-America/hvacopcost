@@ -1023,7 +1023,6 @@ if($counter == 2){
         <div class="flex w-full justify-center">
             <div  class="padding_space_white flex justify-center">
             </div>
-
             @if ($result1 !== null)
             <?php  $prod_lab=$conf_val->prod_lab($id_project,1,1,$sumacap_term_1) ?>
             @endif
@@ -1067,12 +1066,12 @@ if($counter == 2){
       <div class="w-full grid mb-1">
         <div style="background-color:#fff;" class="w-full flex justify-center">
             <div style="margin-top:1rem;" class="flex w-full justify-center">
-                <p class="titulos_style" style="color:#1B17BB;">Personal Exedente y Costos Anuales</p>
+                <p class="titulos_style" style="color:#1B17BB;">Costo Adicional por Productividad Laboral (anual)</p>
             </div>
           </div>
 
           <div class="flex w-full justify-center">
-            <div class="w-1/8 flex grid justify-items-center gap-y-3">
+            <div class="w-1/8 grid justify-items-center gap-y-3">
                 <div class="flex jusfity-center w-full">
                     <img  src="{{asset('assets/images/pesos_personas.jpg')}}" class="img_prod_lab mx-2 mt-8 ml-5">
                 </div>
@@ -1081,7 +1080,31 @@ if($counter == 2){
                     <img src="{{asset('assets/images/ahorro.png')}}" class="img_ahorro mx-2">
                 </div> --}}
             </div>
+            @php
+                $personas=$conf_val->personas($id_project,$conf_val_base);
+                $personas_a=$conf_val->personas($id_project,$conf_val_a);
+                $personas_b=$conf_val->personas($id_project,$conf_val_b);
 
+                $costo_base=$conf_val->costo($personas,$id_project);
+                $costo_a=$conf_val->costo($personas_a,$id_project);
+                $costo_b=$conf_val->costo($personas_b,$id_project);
+                //VALIDAR SI SON DIREFENTES LOS TRES VALORES  personas personas_a personas_b , no se repiten
+
+                if($personas != $personas_a && $personas != $personas_b && $personas_a != $personas_b){
+
+                $menor = max($costo_base, $costo_a, $costo_b);
+
+                $costo_anual_base = $menor - $costo_base;
+                $costo_anual_a = $menor - $costo_a;
+                $costo_anual_b = $menor - $costo_b;
+
+                }else if( $personas == 0 && $personas_a == 0 && $personas_b == 0){
+                    $costo_anual_base = 0;
+                    $costo_anual_a = 0;
+                    $costo_anual_b = 0;
+                }
+
+            @endphp
 
             @if ($result1 !== null)
 
@@ -1107,7 +1130,7 @@ if($counter == 2){
                     </div>
 
                     <div class="flex w-full justify-center">
-                        <p class="cant_style">${{number_format($costo_base)}}</p>
+                        <p class="cant_style">${{number_format($costo_anual_base)}}</p>
                     </div>
                 </div>
 
@@ -1133,7 +1156,7 @@ if($counter == 2){
                     </div>
 
                     <div class="flex w-full justify-center">
-                        <p class="cant_style">${{number_format($costo_a)}}</p>
+                        <p class="cant_style">${{number_format($costo_anual_a)}}</p>
                     </div>
                 </div>
 
@@ -1158,7 +1181,7 @@ if($counter == 2){
                     </div>
 
                     <div class="flex w-full justify-center">
-                        <p class="cant_style">${{number_format($costo_b)}}</p>
+                        <p class="cant_style">${{number_format($costo_anual_b)}}</p>
                     </div>
                 </div>
             </div>
@@ -1331,10 +1354,8 @@ if($counter == 2){
 </div>
 </div>
 
+
 <?php  $dif_1_cost=$smasolutions->dif_1_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
-
-
-
 <?php  $dif_2_cost=$smasolutions->dif_2_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
  {{-- payback --}}
  <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
@@ -3580,7 +3601,7 @@ window.onload = function() {
     $('#modal_loding').addClass("hidden");
     $('#caja_principal').removeClass("hidden");
      /*  roi_base_a('{{$id_project}}'); */
-      roi_s_ene('{{$id_project}}');
+      roi_s_ene('{{$id_project}}','counter_val_prod_ene');
      /*  roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}'); */
       roi_ene_prod('{{$id_project}}');
      /*  roi_base_b('{{$id_project}}'); */
@@ -5692,7 +5713,162 @@ var vals_min_string = vals_min.toString();
     });
 } */
 
+
 function roi_s_ene(id_project){
+    var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
+    var inv_ini_1 = document.getElementById('inv_ini_1').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+
+    var consumo_ene_anual_a = '{{$sumaopex_1*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_b = '{{$sumaopex_2*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_c = '{{$sumaopex_3*$tar_ele->costo_elec}}'
+
+    $.ajax({
+        type: 'get',
+        url: "/roi_only_energy/" + id_project + '/' + consumo_ene_anual_a + '/' + consumo_ene_anual_b + '/' + consumo_ene_anual_c + '/' + inv_ini_1 + '/' + inv_ini_2 + '/' + inv_ini_3,
+        success: function (res) {
+
+    var options = {
+          series: [
+          {
+            name: "ROI - A",
+            data: [res[0][0], res[0][1], res[0][2], res[0][3]]
+          },
+          {
+            name: "ROI - B",
+            data: [res[1][0], res[1][1], res[1][2], res[1][3]]
+          },
+          {
+            name: "ROI - C",
+            data: [res[2][0], res[2][1], res[2][2], res[2][3]]
+          },
+          {
+            name: "MARR",
+            data: [45, 75, 150, 225]
+          }
+        ],
+          chart: {
+          height: 390,
+          width: 600,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [3,5,10,15],
+           range:4,
+          title: {
+            text: '',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_a"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+/* function roi_s_ene(id_project){
     var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
 
     if(counter_val_prod_ene == 0){
@@ -5858,7 +6034,7 @@ function roi_s_ene(id_project){
             console.log(responsetext);
         }
     });
-}
+} */
 
 function roi_base_b(id_project){
     var dif_2_cost = document.getElementById('dif_cost_base_b').value;
@@ -6007,6 +6183,168 @@ function roi_base_b(id_project){
     });
 }
 
+
+/* function roi_ene_prod(id_project){
+
+
+    var inv_ini_1 = document.getElementById('inv_ini_1').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
+
+    var consumo_ene_anual_a = '{{$sumaopex_1*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_b = '{{$sumaopex_2*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_c = '{{$sumaopex_3*$tar_ele->costo_elec}}'
+
+    var costo_anual_a = '{{$costo_base}}';
+    var costo_anual_b = '{{$costo_a}}';
+    var costo_anual_c = '{{$costo_b}}';
+
+    $.ajax({
+        type: 'get',
+        url: "/roi_recu_prod/" + id_project + '/' + costo_anual_a +'/'+ costo_anual_b +'/'+costo_anual_c +'/'+ inv_ini_1 + '/' + inv_ini_2 + '/' + inv_ini_3 + '/' + consumo_ene_anual_a +'/'+ consumo_ene_anual_b +'/'+ consumo_ene_anual_c,
+        success: function (res) {
+
+
+            //console.log(res);
+    var options = {
+          series: [
+            {
+            name: "ROI - A",
+            data: [res[0][0], res[0][1], res[0][2], res[0][3]]
+          },
+          {
+            name: "ROI - B",
+            data: [res[1][0], res[1][1], res[1][2], res[1][3]]
+          },
+          {
+            name: "ROI - C",
+            data: [res[2][0], res[2][1], res[2][2], res[2][3]]
+          },
+          {
+            name: "MARR",
+            data: [45, 75, 150, 225]
+          }
+        ],
+          chart: {
+          height: 390,
+          width: 600,
+          type: 'line',
+          dropShadow: {
+            enabled: true,
+            color: '#000',
+            top: 18,
+            left: 7,
+            blur: 10,
+            opacity: 0.2
+          },
+          toolbar: {
+            show: false
+          }
+        },
+        colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+        dataLabels: {
+                enabled: true,
+                style: {
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+            },
+        },
+        stroke: {
+          curve: 'smooth'
+        },
+        title: {
+
+          align: 'center',
+          style: {
+            fontSize: '24px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: "bold",
+            cssClass: 'apexcharts-yaxis-label',
+            color: '#000',
+          },
+        },
+        grid: {
+          borderColor: '#e7e7e7',
+          row: {
+            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+            opacity: 0.5
+          },
+        },
+        markers: {
+          size: 1
+        },
+        xaxis: {
+            tickPlacement: 'between',
+           categories: [3,5,10,15],
+           range:4,
+          title: {
+            text: '',
+            style: {
+                    colors: [],
+                    fontSize: '20px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+          },
+          labels: {
+            style: {
+                    colors: [],
+                    fontSize: '12px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-xaxis-label',
+                },
+          },
+        },
+        yaxis: {
+          labels:{
+            style: {
+                    colors: [],
+                    fontSize: '14px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                },
+            formatter: function (val) {
+              return val + "%"
+            },
+          },
+
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: 40,
+          fontSize: '14px',
+          fontFamily: 'ABeeZee, sans-serif',
+          fontWeight: 'bold',
+          markers: {
+          width: 12,
+          height: 12,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+          radius: 12,
+          customHTML: undefined,
+          onClick: undefined,
+          offsetX: 0,
+          offsetY: 0,
+      },
+
+        }
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart_roi_base_a_ene_prod"), options);
+        chart.render();
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+} */
+
 /* function roi_base_a_ene_prod(id_project,costo_base,costo_a){
     var dif_1_cost = document.getElementById('dif_cost_base_a').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
@@ -6148,45 +6486,52 @@ function roi_base_b(id_project){
     });
 } */
 
-function roi_ene_prod(id_project){
+ function roi_ene_prod(id_project){
     var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
-
-
 
 if(counter_val_prod_ene == 0){
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     var inv_ini_3 = document.getElementById('inv_ini_3').value;
-    var costo_base = '{{$costo_base}}';
-    var costo_a = '{{$costo_a}}';
-    var costo_b = '{{$costo_b}}';
+    var costo_anual_base = '{{$costo_anual_base}}';
+    var costo_anual_a = '{{$costo_anual_a}}';
+    var costo_anual_b = '{{$costo_anual_b}}';
 }
 
 if(counter_val_prod_ene == 1){
     var inv_ini_2 = document.getElementById('inv_ini_1').value;
     var inv_ini_3 = document.getElementById('inv_ini_3').value;
-    var costo_base = '{{$costo_a}}';
-    var costo_a = '{{$costo_base}}';
-    var costo_b = '{{$costo_b}}';
+    var costo_anual_base = '{{$costo_anual_a}}';
+    var costo_anual_a = '{{$costo_anual_base}}';
+    var costo_anual_b = '{{$costo_anual_b}}';
 }
 if(counter_val_prod_ene == 2){
     var inv_ini_2 = document.getElementById('inv_ini_1').value;
     var inv_ini_3 = document.getElementById('inv_ini_2').value;
-    var costo_base = '{{$costo_b}}';
-    var costo_a = '{{$costo_base}}';
-    var costo_b = '{{$costo_a}}';
+    var costo_anual_base = '{{$costo_anual_b}}';
+    var costo_anual_a = '{{$costo_anual_base}}';
+    var costo_anual_b = '{{$costo_anual_a}}';
 }
 
 var dif_1_cost = document.getElementById('dif_cost_base_a').value;
 
 var dif_2_cost = document.getElementById('dif_cost_base_b').value;
 
-    /* var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+/* var dif_1_cost = document.getElementById('dif_cost_base_a').value;
+
+var dif_2_cost = document.getElementById('dif_cost_base_b').value;
+
+     var dif_1_cost = document.getElementById('dif_cost_base_a').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     var dif_2_cost = document.getElementById('dif_cost_base_b').value;
     var inv_ini_3 = document.getElementById('inv_ini_3').value; */
+
+    var consumo_ene_anual_a = '{{$sumaopex_1*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_b = '{{$sumaopex_2*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_c = '{{$sumaopex_3*$tar_ele->costo_elec}}'
+
     $.ajax({
         type: 'get',
-        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b +'/'+counter_val_prod_ene,
+        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_anual_base +'/'+ costo_anual_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_anual_b +'/'+ consumo_ene_anual_a +'/'+ consumo_ene_anual_b +'/'+ consumo_ene_anual_c +'/'+counter_val_prod_ene,
         success: function (res) {
 
 
@@ -8890,7 +9235,164 @@ function roi_base_a_print(id_project){
     });
 }
 
+
 function roi_s_ene_print(id_project){
+    var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
+
+        var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
+        var inv_ini_1 = document.getElementById('inv_ini_1').value;
+        var inv_ini_2 = document.getElementById('inv_ini_2').value;
+        var inv_ini_3 = document.getElementById('inv_ini_3').value;
+
+        var consumo_ene_anual_a = '{{$sumaopex_1*$tar_ele->costo_elec}}'
+        var consumo_ene_anual_b = '{{$sumaopex_2*$tar_ele->costo_elec}}'
+        var consumo_ene_anual_c = '{{$sumaopex_3*$tar_ele->costo_elec}}'
+
+    $.ajax({
+        type: 'get',
+        url: "/roi_only_energy/" + id_project + '/' + consumo_ene_anual_a + '/' + consumo_ene_anual_b + '/' + consumo_ene_anual_c + '/' + inv_ini_1 + '/' + inv_ini_2 + '/' + inv_ini_3,
+        success: function (res) {
+
+            var options = {
+                series: [
+                {
+                    name: "ROI - A",
+                    data: [res[0][0], res[0][1], res[0][2], res[0][3]]
+                },
+                {
+                    name: "ROI - B",
+                    data: [res[1][0], res[1][1], res[1][2], res[1][3]]
+                },
+                {
+                    name: "ROI - C",
+                    data: [res[2][0], res[2][1], res[2][2], res[2][3]]
+                },
+                {
+                    name: "MARR",
+                    data: [45, 75, 150, 225]
+                }
+                ],
+                chart: {
+                    height:roi_height,
+                    width:roi_width,
+                type: 'line',
+                dropShadow: {
+                    enabled: true,
+                    color: '#000',
+                    top: 18,
+                    left: 7,
+                    blur: 10,
+                    opacity: 0.2
+                },
+                toolbar: {
+                    show: false
+                }
+                },
+                colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+                dataLabels: {
+                        enabled: true,
+                        style: {
+                        fontSize: '11px',
+                        fontFamily: 'ABeeZee, sans-serif',
+                        fontWeight: 'bold',
+                    },
+                },
+                stroke: {
+                curve: 'smooth'
+                },
+                title: {
+
+                align: 'center',
+                style: {
+                    fontSize: '18px',
+                    fontFamily: 'ABeeZee, sans-serif',
+                    fontWeight: "bold",
+                    cssClass: 'apexcharts-yaxis-label',
+                    color: '#000',
+                },
+                },
+                grid: {
+                borderColor: '#e7e7e7',
+                row: {
+                    colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                    opacity: 0.5
+                },
+                },
+                markers: {
+                size: 1
+                },
+                xaxis: {
+                    tickPlacement: 'between',
+                    categories: [3,5,10,15],
+                range:4,
+                title: {
+                    text: '',
+                    style: {
+                            colors: [],
+                            fontSize: '13px',
+                            fontFamily: 'ABeeZee, sans-serif',
+                            fontWeight: "bold",
+                            cssClass: 'apexcharts-yaxis-label',
+                        },
+                },
+                labels: {
+                    style: {
+                            colors: [],
+                            fontSize: '8px',
+                            fontFamily: 'ABeeZee, sans-serif',
+                            fontWeight: "bold",
+                            cssClass: 'apexcharts-xaxis-label',
+                        },
+                },
+                },
+                yaxis: {
+                labels:{
+                    style: {
+                            colors: [],
+                            fontSize: '11px',
+                            fontFamily: 'ABeeZee, sans-serif',
+                            fontWeight: "bold",
+                            cssClass: 'apexcharts-yaxis-label',
+                        },
+                    formatter: function (val) {
+                    return val + "%"
+                    },
+                },
+
+                },
+                legend: {
+                position: 'top',
+                horizontalAlign: 'right',
+                offsetX: 40,
+                fontSize: '11px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: 'bold',
+                markers: {
+                width: 12,
+                height: 12,
+                strokeWidth: 0,
+                strokeColor: '#fff',
+                fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+                radius: 12,
+                customHTML: undefined,
+                onClick: undefined,
+                offsetX: 0,
+                offsetY: 0,
+            },
+
+                }
+                };
+
+                var chart = new ApexCharts(document.querySelector("#chart_roi_base_a_print"), options);
+                chart.render();
+                },
+                error: function (responsetext) {
+                    console.log(responsetext);
+                }
+            });
+}
+
+/* function roi_s_ene_print(id_project){
     var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
 
 if(counter_val_prod_ene == 0){
@@ -9058,7 +9560,7 @@ $.ajax({
             console.log(responsetext);
         }
     });
-}
+} */
 
 function roi_base_b_print(id_project){
     var dif_2_cost = document.getElementById('dif_cost_base_b').value;

@@ -22,6 +22,85 @@ class funciones {
 
 
 //resultados trait //////////////////////////////////////////
+///roi_onlly_energy_retorna porcentaje
+public function roi_only_energy($costo_anual,$mayor,$inflacion,$inv_ini){
+
+    $costo_anual = intval($costo_anual);
+    $mayor = intval($mayor);
+    $array_res = [];
+    $año_3 = 0;
+    $año_3_res = 0;
+    $año_3_suma = 0;
+    $año_3_res_suma = 0;
+    $año_5 = 0;
+    $año_5_res = 0;
+    $año_5_suma = 0;
+    $año_5_res_suma = 0;
+    $año_10 = 0;
+    $año_10_res = 0;
+    $año_10_suma = 0;
+    $año_10_res_suma = 0;
+    $año_15 = 0;
+    $año_15_res = 0;
+    $año_15_suma = 0;
+    $año_15_res_suma = 0;
+    $inflacion = floatval($inflacion)/100;
+
+    for ($i = 1; $i <= 15; $i++) {
+        if($i == 1){
+            $año_3_suma =  $mayor - $costo_anual;
+            $año_5_suma =  $mayor - $costo_anual;
+            $año_10_suma =  $mayor - $costo_anual;
+            $año_15_suma =  $mayor - $costo_anual;
+            $año_3 = $año_3 + $año_3_suma;
+            $año_5 = $año_5 + $año_5_suma;
+            $año_10 = $año_10 + $año_10_suma;
+            $año_15 = $año_15 + $año_15_suma;
+
+        }else{
+
+            $año_3_suma =  $año_3_suma*(1+$inflacion);
+            $año_5_suma =  $año_5_suma*(1+$inflacion);
+            $año_10_suma = $año_10_suma*(1+$inflacion);
+            $año_15_suma =  $año_15_suma*(1+$inflacion);
+            $año_3 = $año_3 + $año_3_suma;
+            $año_5 = $año_5 + $año_5_suma;
+            $año_10 = $año_10 + $año_10_suma;
+            $año_15 = $año_15 + $año_15_suma;
+
+            if($i === 3){
+               $suma_3_años = $año_3;
+               $porcent_3 = $suma_3_años / $inv_ini * 100;
+               array_push($array_res,intval($porcent_3));
+
+            }
+
+            if($i === 5){
+                $suma_5_años = $año_5;
+                $porcent_5 = $suma_5_años / $inv_ini * 100;
+                array_push($array_res,intval($porcent_5));
+            }
+
+            if($i === 10){
+                $suma_10_años = $año_10;
+                $porcent_10 = $suma_10_años / $inv_ini * 100;
+                array_push($array_res,intval($porcent_10));
+
+            }
+
+            if($i === 15){
+                $suma_15_años = $año_15;
+                $porcent_15 = $suma_15_años / $inv_ini * 100;
+                array_push($array_res,intval($porcent_15));
+            }
+
+        }
+    }
+    return $array_res;
+    }
+
+
+
 //roi_s_ene
 public function roi($dif_cost,$inflacion,$inv_ini,$cant){
     $array_res = [];
@@ -118,7 +197,305 @@ public function roi($dif_cost,$inflacion,$inv_ini,$cant){
     return $array_res;
     }
 
-    public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo,$cant){
+    /* public function roi_recu_prod($id_projecto,$costo,$mayor,$mayor_roi_only_energy,$costo_anual,$inflacion,$inv_ini){
+        $funciones = new funciones();
+
+        $array_roi_recu_prod = $funciones->roi_only_energy_no_porcent($costo_anual,$mayor_roi_only_energy,$inflacion,$inv_ini);
+
+        $costo = intval($costo);
+        $mayor = intval($mayor);
+        $inflacion = floatval($inflacion)/100;
+        $array_sums_res = [];
+        $array_res = [];
+        $año_3 = 0;
+        $año_3_res = 0;
+        $año_3_suma = 0;
+        $año_3_res_suma = 0;
+        $año_5 = 0;
+        $año_5_res = 0;
+        $año_5_suma = 0;
+        $año_5_res_suma = 0;
+        $año_10 = 0;
+        $año_10_res = 0;
+        $año_10_suma = 0;
+        $año_10_res_suma = 0;
+        $año_15 = 0;
+        $año_15_res = 0;
+        $año_15_suma = 0;
+        $año_15_res_suma = 0;
+
+        for ($i = 1; $i <= 15; $i++) {
+        if($i == 1){
+            $año_3_suma =  $mayor - $costo;
+            $año_5_suma =  $mayor - $costo;
+            $año_10_suma =  $mayor - $costo;
+            $año_15_suma =  $mayor - $costo;
+            $año_3 = $año_3 + $año_3_suma;
+            $año_5 = $año_5 + $año_5_suma;
+            $año_10 = $año_10 + $año_10_suma;
+            $año_15 = $año_15 + $año_15_suma;
+
+        }else{
+
+            $año_3_suma =  $año_3_suma*(1+$inflacion);
+
+            $año_5_suma =  $año_5_suma*(1+$inflacion);
+            $año_10_suma = $año_10_suma*(1+$inflacion);
+            $año_15_suma =  $año_15_suma*(1+$inflacion);
+            $año_3 = $año_3 + $año_3_suma;
+            $año_5 = $año_5 + $año_5_suma;
+            $año_10 = $año_10 + $año_10_suma;
+            $año_15 = $año_15 + $año_15_suma;
+
+            if($i === 3){
+
+               $suma_3_años = $año_3;
+               $suma_mas_only_energy = $suma_3_años + $array_roi_recu_prod[0];
+               dd($inv_ini);
+               $porcent_3 = $suma_mas_only_energy / $inv_ini * 100;
+               array_push($array_res,intval($porcent_3));
+
+            }
+
+            if($i === 5){
+                $suma_5_años = $año_5;
+                $porcent_5 = $suma_5_años / $inv_ini * 100;
+                array_push($array_res,intval($porcent_5));
+            }
+
+            if($i === 10){
+                $suma_10_años = $año_10;
+                $porcent_10 = $suma_10_años / $inv_ini * 100;
+                array_push($array_res,intval($porcent_10));
+
+            }
+
+            if($i === 15){
+                $suma_15_años = $año_15;
+                $porcent_15 = $suma_15_años / $inv_ini * 100;
+                array_push($array_res,intval($porcent_15));
+            }
+
+        }
+    }
+
+    } */
+
+
+    public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo,$consumo_ene_anual,$mayor,$inflacion,$cant){
+
+        $funciones = new funciones();
+        //$array_roi_base_ene_solo_ene = $funciones->roi_base_a_retro_new_nojson($id_projecto,$dif_cost,$inv_ini);
+        //$array_sumas = $funciones->roi_sumas_grafics($id_projecto,$dif_cost,$inv_ini);
+        $array_only_energy = $funciones->roi_only_energy_no_porcent($consumo_ene_anual,$mayor,$inflacion,$inv_ini);
+
+        $costo = intval($costo);
+
+        $prod_m_prode =intval($costobase) - intval($costo);
+
+        ///formula
+        $array_sums_res = [];
+        $array_res = [];
+        $año_3 = 0;
+        $año_3_res = 0;
+        $año_3_suma = 0;
+        $año_3_res_suma = 0;
+        $año_5 = 0;
+        $año_5_res = 0;
+        $año_5_suma = 0;
+        $año_5_res_suma = 0;
+        $año_10 = 0;
+        $año_10_res = 0;
+        $año_10_suma = 0;
+        $año_10_res_suma = 0;
+        $año_15 = 0;
+        $año_15_res = 0;
+        $año_15_suma = 0;
+        $año_15_res_suma = 0;
+        $inflacion_aux = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion_rate;
+        $inv_ini = intval($inv_ini);
+        $dif_cost_aux = $prod_m_prode;
+       /*  $cost_an_ene = DB::table('projects')
+        ->where('id','=',$id_projecto)
+        ->first()->inflacion; */
+        //ince_an_ene
+
+        /* if( floatval($inflacion_aux) > 0){
+            $inflacion =  floatval($inflacion_aux)/100 + 1;
+        }else if( floatval($inflacion_aux) <= 0){
+            $inflacion = 1;
+        } */
+
+        for ($i = 1; $i <= 15; $i++) {
+            if($i == 1){
+                $año_3_suma =  $prod_m_prode + $año_3_suma;
+                $año_5_suma =  $prod_m_prode + $año_5_suma;
+                $año_10_suma =  $prod_m_prode + $año_10_suma;
+                $año_15_suma =  $prod_m_prode + $año_15_suma;
+
+
+
+            }else{
+
+                $prod_m_prode = $prod_m_prode * $inflacion;
+                /* $año_3_suma =  $prod_m_prode + $año_3_suma;
+                $año_5_suma =  $prod_m_prode + $año_5_suma;
+                $año_10_suma =  $prod_m_prode + $año_10_suma;
+                $año_15_suma =  $prod_m_prode + $año_15_suma; */
+
+                $año_3_suma =  $año_3_suma*(1+$inflacion);
+                $año_5_suma =  $año_5_suma*(1+$inflacion);
+                $año_10_suma = $año_10_suma*(1+$inflacion);
+                $año_15_suma =  $año_15_suma*(1+$inflacion);
+                $año_3 = $año_3 + $año_3_suma;
+                $año_5 = $año_5 + $año_5_suma;
+                $año_10 = $año_10 + $año_10_suma;
+                $año_15 = $año_15 + $año_15_suma;
+
+
+                if($i === 3){
+                    $suma_3_años = $año_3 +intval($array_only_energy[0]);
+                    $porcent_3 = $suma_3_años + intval($array_only_energy[0]) / $consumo_ene_anual;
+                    array_push($array_sums_res,intval($porcent_3));
+
+                }
+
+                if($i === 5){
+                    $suma_5_años = $año_5 +intval($array_only_energy[0]);
+                    $porcent_5 = $suma_5_años + intval($array_only_energy[0]) / $consumo_ene_anual;
+                    array_push($array_sums_res,intval($porcent_5));
+                }
+
+
+
+
+
+                if($i === 10){
+                 if($cant >=  10){
+                    $suma_10_años = $año_10 +intval($array_only_energy[0]);
+                    $porcent_10 = $suma_10_años + intval($array_only_energy[0]) / $consumo_ene_anual;
+                    array_push($array_sums_res,intval($porcent_10));
+
+                 }else{
+                    array_push($array_sums_res,null);
+                 }
+                }
+
+                if($i === 15){
+                 if($cant > 10){
+
+                    $suma_15_años = $año_15 +intval($array_only_energy[0]);
+                    $porcent_15 = $suma_15_años + intval($array_only_energy[0]) / $consumo_ene_anual;
+                    array_push($array_sums_res,intval($porcent_15));
+                 }else{
+
+                    array_push($array_sums_res,null);
+                 }
+
+                }
+
+
+            }
+        }
+
+        $count_arry= count($array_sums_res) - 1;
+        for ($i = 0; $i <= $count_arry; $i++) {
+
+
+            if($array_sums_res[$i] === null){
+                array_push($array_res,null);
+            }else{
+                $suma = $array_sums_res[$i] +  $array_only_energy[$i];
+                $div_Result = $suma / $inv_ini * 100;
+
+                array_push($array_res,intval($div_Result));
+            }
+
+        }
+
+        return $array_res;
+    }
+
+     ///roi_onlly_energy_ no retorna porcentaje
+public function roi_only_energy_no_porcent($costo_anual,$mayor,$inflacion,$inv_ini){
+
+    $costo_anual = intval($costo_anual);
+    $mayor = intval($mayor);
+    $array_res = [];
+    $año_3 = 0;
+    $año_3_res = 0;
+    $año_3_suma = 0;
+    $año_3_res_suma = 0;
+    $año_5 = 0;
+    $año_5_res = 0;
+    $año_5_suma = 0;
+    $año_5_res_suma = 0;
+    $año_10 = 0;
+    $año_10_res = 0;
+    $año_10_suma = 0;
+    $año_10_res_suma = 0;
+    $año_15 = 0;
+    $año_15_res = 0;
+    $año_15_suma = 0;
+    $año_15_res_suma = 0;
+    $inflacion = floatval($inflacion)/100;
+
+    for ($i = 1; $i <= 15; $i++) {
+        if($i == 1){
+            $año_3_suma =  $mayor - $costo_anual;
+            $año_5_suma =  $mayor - $costo_anual;
+            $año_10_suma =  $mayor - $costo_anual;
+            $año_15_suma =  $mayor - $costo_anual;
+            $año_3 = $año_3 + $año_3_suma;
+            $año_5 = $año_5 + $año_5_suma;
+            $año_10 = $año_10 + $año_10_suma;
+            $año_15 = $año_15 + $año_15_suma;
+
+        }else{
+
+            $año_3_suma =  $año_3_suma*(1+$inflacion);
+            $año_5_suma =  $año_5_suma*(1+$inflacion);
+            $año_10_suma = $año_10_suma*(1+$inflacion);
+            $año_15_suma =  $año_15_suma*(1+$inflacion);
+            $año_3 = $año_3 + $año_3_suma;
+            $año_5 = $año_5 + $año_5_suma;
+            $año_10 = $año_10 + $año_10_suma;
+            $año_15 = $año_15 + $año_15_suma;
+
+            if($i === 3){
+               $suma_3_años = $año_3;
+               $porcent_3 = $suma_3_años;
+               array_push($array_res,intval($porcent_3));
+
+            }
+
+            if($i === 5){
+                $suma_5_años = $año_5;
+                $porcent_5 = $suma_5_años;
+                array_push($array_res,intval($porcent_5));
+            }
+
+            if($i === 10){
+                $suma_10_años = $año_10;
+                $porcent_10 = $suma_10_años;
+                array_push($array_res,intval($porcent_10));
+
+            }
+
+            if($i === 15){
+                $suma_15_años = $año_15;
+                $porcent_15 = $suma_15_años;
+                array_push($array_res,intval($porcent_15));
+            }
+
+        }
+    }
+    return $array_res;
+    }
+
+    /* public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo,$cant){
 
         $funciones = new funciones();
         $array_roi_base_ene_solo_ene = $funciones->roi_base_a_retro_new_nojson($id_projecto,$dif_cost,$inv_ini);
@@ -247,7 +624,7 @@ public function roi($dif_cost,$inflacion,$inv_ini,$cant){
         }
 
         return $array_res;
-    }
+    } */
 
     public function roi_base_a_retro_new_nojson($id_projecto,$dif_cost,$inv_ini){
         $array_res = [];
