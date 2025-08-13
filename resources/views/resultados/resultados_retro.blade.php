@@ -1010,7 +1010,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
       <div class="w-full grid mb-1">
         <div style="background-color:#ffff;" class="w-full flex justify-center ">
             <div style="margin-top:1rem;" class="flex w-full justify-center">
-                <p style="color:#1B17BB;" class="titulos_style">Personal Exedente y Costos Anuales</p>
+                <p style="color:#1B17BB;" class="titulos_style">Costo Adicional por Productividad Laboral (anual)</p>
             </div>
           </div>
 
@@ -1024,6 +1024,33 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                     <img src="{{asset('assets/images/ahorro.png')}}" class="img_ahorro mx-2">
                 </div> --}}
             </div>
+
+            @php
+                $personas=$conf_val->personas($id_project,$conf_val_base);
+                $personas_a=$conf_val->personas($id_project,$conf_val_a);
+                $personas_b=$conf_val->personas($id_project,$conf_val_b);
+
+                $costo_base=$conf_val->costo($personas,$id_project);
+                $costo_a=$conf_val->costo($personas_a,$id_project);
+                $costo_b=$conf_val->costo($personas_b,$id_project);
+                //VALIDAR SI SON DIREFENTES LOS TRES VALORES  personas personas_a personas_b , no se repiten
+
+                if($personas != $personas_a && $personas != $personas_b && $personas_a != $personas_b){
+
+                $mayor = max($costo_base, $costo_a, $costo_b);
+
+                $costo_anual_base = $mayor - $costo_base;
+                $costo_anual_a = $mayor - $costo_a;
+                $costo_anual_b = $mayor - $costo_b;
+
+                }else{
+                    $costo_anual_base = 0;
+                    $costo_anual_a = 0;
+                    $costo_anual_b = 0;
+                }
+
+            @endphp
+
                 @if ($result1 !== null)
                 <?php  $personas=$conf_val->personas($id_project,$conf_val_base) ?>
                 <?php  $costo_base=$conf_val->costo($personas,$id_project) ?>
@@ -1043,7 +1070,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                     </div>
 
                     <div class="flex w-full justify-center">
-                        <p class="cant_style">${{number_format($costo_base)}}</p>
+                        <p class="cant_style">${{number_format($costo_anual_base)}}</p>
                     </div>
                 </div>
 
@@ -1067,7 +1094,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                     </div>
 
                     <div class="flex w-full justify-center">
-                        <p class="cant_style">${{number_format($costo_a)}}</p>
+                        <p class="cant_style">${{number_format($costo_anual_a)}}</p>
                     </div>
                 </div>
 
@@ -1094,7 +1121,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                     </div>
 
                     <div class="flex w-full justify-center">
-                        <p class="cant_style">${{number_format($costo_b)}}</p>
+                        <p class="cant_style">${{number_format($costo_anual_b)}}</p>
                     </div>
                 </div>
             </div>
@@ -1337,6 +1364,9 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                                     @if($val_base_red_ene === 0)
                                     <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                    @php
+                                        $pay_back_base = "N/A"
+                                    @endphp
                                     @endif
 
                                     @if($val_base_red_ene !== 0)
@@ -1382,7 +1412,11 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                                     @else
                                     <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
-                                    @endif                                  </div>
+                                    @php
+                                        $pay_back_base = "N/A"
+                                    @endphp
+                                    @endif
+                                    </div>
                                 </div>
                             </div>
 
@@ -1408,6 +1442,9 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                     <div  class="w-full mx-3 rounded-md flex justify-center">
                                         @if ($result2 === null)
                                         <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                        @php
+                                                $pay_back_a = "N/A"
+                                        @endphp
                                         @endif
 
                                         @if ($result2 != null)
@@ -1452,6 +1489,9 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                                             @else
                                             <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                            @php
+                                                $pay_back_a = "N/A"
+                                            @endphp
                                             @endif
                                         @endif
                                     </div>
@@ -1480,6 +1520,9 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                      <div  class="w-full mx-3 rounded-md flex justify-center">
                                     @if ($result3 === null)
                                     <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                    @php
+                                        $pay_back_b = "N/A"
+                                    @endphp
                                     @endif
                                     @if ($result3 != null)
                                         @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
@@ -1523,6 +1566,9 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                                         @else
                                             <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;"  class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
+                                            @php
+                                                $pay_back_b = "N/A"
+                                            @endphp
                                             <?php  $val_b_red_ene=0 ?>
                                         @endif
                                     @endif
@@ -1607,13 +1653,21 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                             <div style="" class="flex  rounded-md justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center place-items-center">
                                     <div  class="w-full mx-3 flex justify-center">
-                                    <?php  $pay_back_base=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,0,$costo_base) ?>
+                                    <?php
+                                        if( $costo_anual_base == 0 && $costo_anual_a == 0 && $costo_anual_b == 0){
+                                            $pay_back_base_ene_prod = $pay_back_base;
 
-                                    @if ($pay_back_base > 1)
+                                            }else{
+
+                                            $pay_back_base_ene_prod=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,0,$costo_base);
+                                        }
+                                    ?>
+
+                                    @if ($pay_back_base_ene_prod > 1)
                                     <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_base,1)}}</b>
                                     @endif
 
-                                    @if ($pay_back_base <= 1)
+                                    @if ($pay_back_base_ene_prod <= 1)
                                     <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
                                     @endif
                                     </div>
@@ -1647,29 +1701,38 @@ $costo_b
                                 <div  style="" class="grid justify-items-center  place-items-center">
                                   <div  class="w-full mx-3  flex justify-center">
                                     @if ( true == ( isset( $val_a_red_ene ) ? $val_a_red_ene : null ) )
-                                    <?php  $pay_back_a=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_a_red_ene,$costo_a) ?>
+                                    <?php
+                                        if( $costo_anual_base == 0 && $costo_anual_a == 0 && $costo_anual_b == 0){
 
-                                    @if ($pay_back_a >= 1)
+                                            $pay_back_a_ene_prod = $pay_back_a;
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 1 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_a,1)}}</b>
+                                            }else{
+
+                                            $pay_back_a_ene_prod=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_a_red_ene,$costo_a);
+                                        }
+                                    ?>
+
+                                    @if ($pay_back_a_ene_prod >= 1)
+
+                                        @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 1 )
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_a_ene_prod,1)}}</b>
                                         @endif
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 2 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_a,1)}}</b>
+                                        @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 2 )
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_a_ene_prod,1)}}</b>
                                         @endif
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 3 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_a,1)}}</b>
+                                        @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 3 )
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_a_ene_prod,1)}}</b>
                                         @endif
 
-                                        @if ((strlen(number_format($pay_back_a,1))) == 4 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_a,1)}}</b>
+                                        @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 4 )
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_a_ene_prod,1)}}</b>
                                         @endif
 
                                     @endif
 
-                                    @if ($pay_back_a < 1)
+                                    @if ($pay_back_a_ene_prod < 1)
                                     <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
                                     @endif
 
@@ -1701,28 +1764,38 @@ $costo_b
                                 <div  style="" class="grid justify-items-center  place-items-center">
                                     <div  class="w-full mx-3  flex justify-center">
                                     @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
-                                    <?php  $pay_back_b=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_b_red_ene,$costo_b) ?>
-                                    @if ($pay_back_b >= 1)
-                                   <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b,1)}}</b>
+                                    <?php
+                                    if( $costo_anual_base == 0 && $costo_anual_a == 0 && $costo_anual_b == 0){
 
-                                        @if ((strlen(number_format($pay_back_b,1))) == 1 )
-                                        <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_b,1)}}</b>
+                                            $pay_back_b_ene_prod = $pay_back_b;
+
+                                            }else{
+
+                                            $pay_back_b_ene_prod=$smasolutions->pay_back_ene_prod($inv_ini_1,$costo_base,$val_b_red_ene,$costo_b);
+
+                                        }
+                                    ?>
+                                    @if ($pay_back_b_ene_prod >= 1)
+                                   <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b_ene_prod,1)}}</b>
+
+                                        @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 1 )
+                                        <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_b_ene_prod,1)}}</b>
                                         @endif
 
-                                        @if ((strlen(number_format($pay_back_b,1))) == 2 )
-                                        <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_b,1)}}</b>
+                                        @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 2 )
+                                        <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_b_ene_prod,1)}}</b>
                                         @endif
 
-                                        @if ((strlen(number_format($pay_back_b,1))) == 3 )
-                                        <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_b,1)}}</b>
+                                        @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 3 )
+                                        <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_b_ene_prod,1)}}</b>
                                         @endif
 
-                                        @if ((strlen(number_format($pay_back_b,1))) == 4 )
-                                        <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_b,1)}}</b>
+                                        @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 4 )
+                                        <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_b_ene_prod,1)}}</b>
                                         @endif
                                    @endif
 
-                                    @if ($pay_back_b < 1)
+                                    @if ($pay_back_b_ene_prod < 1)
                                    <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
                                    @endif
 
@@ -3802,7 +3875,7 @@ function cap_op_10_retro(id_project,unidad){
 function roi_s_ene(id_project){
     var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
 
-if(counter_val_prod_ene == 0){
+/* if(counter_val_prod_ene == 0){
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     var inv_ini_3 = document.getElementById('inv_ini_3').value;
 }
@@ -3815,7 +3888,11 @@ if(counter_val_prod_ene == 1){
 if(counter_val_prod_ene == 2){
     var inv_ini_2 = document.getElementById('inv_ini_1').value;
     var inv_ini_3 = document.getElementById('inv_ini_2').value;
-}
+} */
+
+    var inv_ini_1 = document.getElementById('inv_ini_1').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
 
 var dif_1_cost = document.getElementById('dif_cost_base_a').value;
 
@@ -3823,9 +3900,13 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
 
 
 
-$.ajax({
-    type: 'get',
-    url: "/roi_s_ene/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 + '/' + dif_2_cost + '/' + inv_ini_3 + '/'+ counter_val_prod_ene,
+    var consumo_ene_anual_a = '{{$sumaopex_1*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_b = '{{$sumaopex_2*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_c = '{{$sumaopex_3*$tar_ele->costo_elec}}'
+
+    $.ajax({
+        type: 'get',
+        url: "/roi_only_energy/" + id_project + '/' + consumo_ene_anual_a + '/' + consumo_ene_anual_b + '/' + consumo_ene_anual_c + '/' + inv_ini_1 + '/' + inv_ini_2 + '/' + inv_ini_3,
         success: function (res) {
 
     var options = {
@@ -3970,8 +4051,6 @@ $.ajax({
 function roi_ene_prod(id_project){
     var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
 
-
-
 if(counter_val_prod_ene == 0){
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     var inv_ini_3 = document.getElementById('inv_ini_3').value;
@@ -4003,9 +4082,13 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     var dif_2_cost = document.getElementById('dif_cost_base_b').value;
     var inv_ini_3 = document.getElementById('inv_ini_3').value; */
+    var consumo_ene_anual_a = '{{$sumaopex_1*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_b = '{{$sumaopex_2*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_c = '{{$sumaopex_3*$tar_ele->costo_elec}}'
+
     $.ajax({
         type: 'get',
-        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b +'/'+counter_val_prod_ene,
+        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b +'/'+ consumo_ene_anual_a +'/'+ consumo_ene_anual_b +'/'+ consumo_ene_anual_c +'/'+counter_val_prod_ene,
         success: function (res) {
 
 
@@ -6907,7 +6990,7 @@ function roi_base_b_print(id_project){
 function roi_s_ene_print(id_project){
     var counter_val_prod_ene = document.getElementById('counter_val_prod_ene').value;
 
-if(counter_val_prod_ene == 0){
+/* if(counter_val_prod_ene == 0){
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     var inv_ini_3 = document.getElementById('inv_ini_3').value;
 }
@@ -6920,17 +7003,24 @@ if(counter_val_prod_ene == 1){
 if(counter_val_prod_ene == 2){
     var inv_ini_2 = document.getElementById('inv_ini_1').value;
     var inv_ini_3 = document.getElementById('inv_ini_2').value;
-}
+} */
+
+    var inv_ini_1 = document.getElementById('inv_ini_1').value;
+    var inv_ini_2 = document.getElementById('inv_ini_2').value;
+    var inv_ini_3 = document.getElementById('inv_ini_3').value;
 
 var dif_1_cost = document.getElementById('dif_cost_base_a').value;
 
 var dif_2_cost = document.getElementById('dif_cost_base_b').value;
 
 
+    var consumo_ene_anual_a = '{{$sumaopex_1*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_b = '{{$sumaopex_2*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_c = '{{$sumaopex_3*$tar_ele->costo_elec}}'
 
-$.ajax({
-    type: 'get',
-    url: "/roi_s_ene/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 + '/' + dif_2_cost + '/' + inv_ini_3 + '/'+ counter_val_prod_ene,
+    $.ajax({
+        type: 'get',
+        url: "/roi_only_energy/" + id_project + '/' + consumo_ene_anual_a + '/' + consumo_ene_anual_b + '/' + consumo_ene_anual_c + '/' + inv_ini_1 + '/' + inv_ini_2 + '/' + inv_ini_3,
         success: function (res) {
 
 
@@ -7110,9 +7200,13 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
     var inv_ini_2 = document.getElementById('inv_ini_2').value;
     var dif_2_cost = document.getElementById('dif_cost_base_b').value;
     var inv_ini_3 = document.getElementById('inv_ini_3').value; */
+    var consumo_ene_anual_a = '{{$sumaopex_1*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_b = '{{$sumaopex_2*$tar_ele->costo_elec}}'
+    var consumo_ene_anual_c = '{{$sumaopex_3*$tar_ele->costo_elec}}'
+
     $.ajax({
         type: 'get',
-        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b +'/'+counter_val_prod_ene,
+        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b +'/'+ consumo_ene_anual_a +'/'+ consumo_ene_anual_b +'/'+ consumo_ene_anual_c +'/'+counter_val_prod_ene,
         success: function (res) {
 
 

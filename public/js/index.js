@@ -12980,8 +12980,8 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais){
             }
 
             $('#'+id_prot_comp).append($('<option>', {
-                value: 'cobre_cobre',
-                text: 'Cobre - Cobre'
+                value: 'liquido_coating_basico',
+                text: 'Líquido o Coating Básico'
             }));
         break;
 
@@ -13000,8 +13000,8 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais){
             }
 
             $('#'+id_prot_comp).append($('<option>', {
-                value: 'cobre_cobre',
-                text: 'Cobre - Cobre'
+                value: 'liquido_coating_basico',
+                text: 'Líquido o Coating Básico'
             }));
         break;
 
