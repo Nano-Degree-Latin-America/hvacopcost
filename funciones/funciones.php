@@ -329,8 +329,13 @@ public function roi($dif_cost,$inflacion,$inv_ini,$cant){
             $inflacion_anual_energia = 1;
         }
 
+        if($cant == 3){
+            $tope = 10;
+        }else{
+             $tope = 15;
+        }
 
-        for ($i = 1; $i <= 15; $i++) {
+        for ($i = 1; $i <= $tope; $i++) {
             if($i == 1){
                 $año_3_suma =  $costo + $año_3_suma;
                 $año_5_suma =  $costo + $año_5_suma;
@@ -341,6 +346,9 @@ public function roi($dif_cost,$inflacion,$inv_ini,$cant){
                 $año_10 = $año_10 + $año_10_suma;
                 $año_15 = $año_15 + $año_15_suma;
 
+                if($cant == 3){
+                    array_push($array_sums_res,intval($año_3_suma));
+                }
 
             }else{
 
@@ -369,13 +377,15 @@ public function roi($dif_cost,$inflacion,$inv_ini,$cant){
                 }
 
                 if($i === 5){
+                    if($cant >=  5){
                     $suma_5_años = $año_5 +intval($array_only_energy[1]);
                     $porcent_5_aux = $suma_5_años + intval($array_only_energy[1]);
                     $porcent_5 = $porcent_5_aux / $inv_ini * 100;
                     array_push($array_sums_res,intval($porcent_5));
+                    }else{
+                         array_push($array_sums_res,null);
+                    }
                 }
-
-
 
 
 

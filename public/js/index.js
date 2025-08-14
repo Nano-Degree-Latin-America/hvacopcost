@@ -12972,6 +12972,11 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais){
                 text: 'Sin Protección'
             }));
 
+             $('#'+id_prot_comp).append($('<option>', {
+                value: 'liquido_coating_basico',
+                text: 'Líquido o Coating Básico'
+            }));
+
             if(pais == 17){
                 $('#'+id_prot_comp).append($('<option>', {
                     value: 'infiniguard',
@@ -12979,10 +12984,6 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais){
                 }));
             }
 
-            $('#'+id_prot_comp).append($('<option>', {
-                value: 'liquido_coating_basico',
-                text: 'Líquido o Coating Básico'
-            }));
         break;
 
         case 'contaminado':
@@ -12992,6 +12993,12 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais){
                 text: 'Sin Protección'
             }));
 
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'liquido_coating_basico',
+                text: 'Líquido o Coating Básico'
+            }));
+
+
             if(pais == 17){
                 $('#'+id_prot_comp).append($('<option>', {
                     value: 'infiniguard',
@@ -12999,10 +13006,6 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais){
                 }));
             }
 
-            $('#'+id_prot_comp).append($('<option>', {
-                value: 'liquido_coating_basico',
-                text: 'Líquido o Coating Básico'
-            }));
         break;
 
         default:
@@ -13028,7 +13031,7 @@ switch (tipo_ambiente_val) {
                  $('#'+id_get).val(0.99);
              break;
 
-             case 'cobre_cobre':
+             case 'liquido_coating_basico':
                  $('#'+id_get).val(1);
              break;
 
@@ -13052,7 +13055,7 @@ switch (tipo_ambiente_val) {
                  $('#'+id_get).val(0.98);
              break;
 
-             case 'cobre_cobre':
+             case 'liquido_coating_basico':
                  $('#'+id_get).val(1);
              break;
 
@@ -13078,7 +13081,7 @@ switch (tipo_ambiente_val) {
              $('#'+id_get).val(0.985);
          break;
 
-         case 'cobre_cobre':
+         case 'liquido_coating_basico':
              $('#'+id_get).val(1);
          break;
 
@@ -13115,7 +13118,7 @@ switch (tipo_ambiente_val) {
                  $('#'+id_get).val(0.99);
              break;
 
-             case 'cobre_cobre':
+             case 'liquido_coating_basico':
                  $('#'+id_get).val(1);
              break;
 
@@ -13139,8 +13142,8 @@ switch (tipo_ambiente_val) {
                  $('#'+id_get).val(0.98);
              break;
 
-             case 'cobre_cobre':
-                 $('#'+id_get).val(1);
+             case 'liquido_coating_basico':
+                 $('#'+id_get).val(1.05);
              break;
 
              default:
@@ -13165,8 +13168,8 @@ switch (tipo_ambiente_val) {
              $('#'+id_get).val(0.985);
          break;
 
-         case 'cobre_cobre':
-             $('#'+id_get).val(1);
+         case 'liquido_coating_basico':
+             $('#'+id_get).val(1.005);
          break;
 
          default:
@@ -13188,7 +13191,7 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima,pais)
     switch (tipo_ambiente_id) {
         case 'no_agresivo':
             //check_val_text(id_prot_comp,ima);
-            $('#'+id).empty();
+            $('#'+id_prot_comp).empty();
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'sin_proteccion',
                 text: 'Sin Protección'
@@ -13210,10 +13213,14 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima,pais)
 
         case 'marino':
             check_val_text(id_prot_comp,ima);
-
             $('#'+id_prot_comp).append($('<option>', {
                 value: 'sin_proteccion',
                 text: 'Sin Protección'
+            }));
+
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'liquido_coating_basico',
+                text: 'Líquido o Coating Básico'
             }));
 
             if(pais == 17){
@@ -13223,10 +13230,7 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima,pais)
                 }));
             }
 
-            $('#'+id_prot_comp).append($('<option>', {
-                value: 'cobre_cobre',
-                text: 'Cobre - Cobre'
-            }));
+
         break;
 
         case 'contaminado':
@@ -13236,17 +13240,17 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima,pais)
                 text: 'Sin Protección'
             }));
 
+            $('#'+id_prot_comp).append($('<option>', {
+                value: 'liquido_coating_basico',
+                text: 'Líquido o Coating Básico'
+            }));
+
             if(pais == 17){
                 $('#'+id_prot_comp).append($('<option>', {
                     value: 'infiniguard',
                     text: 'Infiniguard®'
                 }));
             }
-
-            $('#'+id_prot_comp).append($('<option>', {
-                value: 'cobre_cobre',
-                text: 'Cobre - Cobre'
-            }));
         break;
 
         default:

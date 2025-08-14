@@ -6566,6 +6566,23 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
 
     $.ajax({
         type: 'get',
+        url: '/check_marino/'+ id_project,
+        success: function (response) {
+            if(response == 1){
+                 var ano_a = 1;
+                 var ano_b = 3;
+                 var ano_c = 5;
+                 var ano_d = 10;
+            }else{
+                 var ano_a = 3;
+                 var ano_b = 5;
+                 var ano_c = 10;
+                 var ano_d = 15;
+
+            }
+
+$.ajax({
+        type: 'get',
         url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_anual_base +'/'+ costo_anual_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_anual_b +'/'+ consumo_ene_anual_a +'/'+ consumo_ene_anual_b +'/'+ consumo_ene_anual_c +'/'+counter_val_prod_ene,
         success: function (res) {
 
@@ -6641,7 +6658,7 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
         },
         xaxis: {
             tickPlacement: 'between',
-           categories: [3,5,10,15],
+           categories: [ano_a,ano_b,ano_c,ano_d],
            range:4,
           title: {
             text: '',
@@ -6708,6 +6725,15 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
             console.log(responsetext);
         }
     });
+
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+
+
 }
 
 function roi_base_b_ene_prod(id_project,costo_base,costo){
@@ -9914,6 +9940,23 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
 
     $.ajax({
         type: 'get',
+        url: '/check_marino/'+ id_project,
+        success: function (response) {
+            if(response == 1){
+                 var ano_a = 1;
+                 var ano_b = 3;
+                 var ano_c = 5;
+                 var ano_d = 10;
+            }else{
+                 var ano_a = 3;
+                 var ano_b = 5;
+                 var ano_c = 10;
+                 var ano_d = 15;
+
+            }
+
+$.ajax({
+        type: 'get',
         url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_anual_base +'/'+ costo_anual_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_anual_b +'/'+ consumo_ene_anual_a +'/'+ consumo_ene_anual_b +'/'+ consumo_ene_anual_c +'/'+counter_val_prod_ene,
         success: function (res) {
 
@@ -9989,7 +10032,7 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
         },
         xaxis: {
             tickPlacement: 'between',
-           categories: [3,5,10,15],
+           categories: [ano_a,ano_b,ano_c,ano_d],
            range:4,
           title: {
             text: '',
@@ -10056,6 +10099,15 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
             console.log(responsetext);
         }
     });
+
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+
+
 }
 
 function roi_base_b_ene_prod_print(id_project,costo_base,costo){

@@ -4088,148 +4088,174 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
 
     $.ajax({
         type: 'get',
-        url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b +'/'+ consumo_ene_anual_a +'/'+ consumo_ene_anual_b +'/'+ consumo_ene_anual_c +'/'+counter_val_prod_ene,
-        success: function (res) {
+        url: '/check_marino/'+ id_project,
+        success: function (response) {
+            if(response == 1){
+                 var ano_a = 1;
+                 var ano_b = 3;
+                 var ano_c = 5;
+                 var ano_d = 10;
+            }else{
+                 var ano_a = 3;
+                 var ano_b = 5;
+                 var ano_c = 10;
+                 var ano_d = 15;
+
+            }
 
 
-            //console.log(res);
-    var options = {
-          series: [
-            {
-            name: "ROI - Existente",
-            data: [res[0][0], res[0][1], res[0][2], res[0][3]]
-          },
-          {
-            name: "ROI - A",
-            data: [res[1][0], res[1][1], res[1][2], res[1][3]]
-          },
-          {
-            name: "ROI - B",
-            data: [res[2][0], res[2][1], res[2][2], res[2][3]]
-          },
-          {
-            name: "MARR",
-            data: [45, 75, 150, 225]
-          }
-        ],
-          chart: {
-          height: 390,
-          width: 600,
-          type: 'line',
-          dropShadow: {
-            enabled: true,
-            color: '#000',
-            top: 18,
-            left: 7,
-            blur: 10,
-            opacity: 0.2
-          },
-          toolbar: {
-            show: false
-          }
-        },
-        colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
-        dataLabels: {
-                enabled: true,
-                style: {
-                fontSize: '16px',
-                fontFamily: 'ABeeZee, sans-serif',
-                fontWeight: 'bold',
-            },
-        },
-        stroke: {
-          curve: 'smooth'
-        },
-        title: {
+            $.ajax({
+                    type: 'get',
+                    url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b +'/'+ consumo_ene_anual_a +'/'+ consumo_ene_anual_b +'/'+ consumo_ene_anual_c +'/'+counter_val_prod_ene,
+                    success: function (res) {
 
-          align: 'center',
-          style: {
-            fontSize: '24px',
-            fontFamily: 'ABeeZee, sans-serif',
-            fontWeight: "bold",
-            cssClass: 'apexcharts-yaxis-label',
-            color: '#000',
-          },
-        },
-        grid: {
-          borderColor: '#e7e7e7',
-          row: {
-            colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-            opacity: 0.5
-          },
-        },
-        markers: {
-          size: 1
-        },
-        xaxis: {
-            tickPlacement: 'between',
-           categories: [3,5,10,15],
-           range:4,
-          title: {
-            text: '',
-            style: {
-                    colors: [],
-                    fontSize: '20px',
-                    fontFamily: 'ABeeZee, sans-serif',
-                    fontWeight: "bold",
-                    cssClass: 'apexcharts-yaxis-label',
-                },
-          },
-          labels: {
-            style: {
-                    colors: [],
-                    fontSize: '12px',
-                    fontFamily: 'ABeeZee, sans-serif',
-                    fontWeight: "bold",
-                    cssClass: 'apexcharts-xaxis-label',
-                },
-          },
-        },
-        yaxis: {
-          labels:{
-            style: {
-                    colors: [],
+
+                        //console.log(res);
+                var options = {
+                    series: [
+                        {
+                        name: "ROI - Existente",
+                        data: [res[0][0], res[0][1], res[0][2], res[0][3]]
+                    },
+                    {
+                        name: "ROI - A",
+                        data: [res[1][0], res[1][1], res[1][2], res[1][3]]
+                    },
+                    {
+                        name: "ROI - B",
+                        data: [res[2][0], res[2][1], res[2][2], res[2][3]]
+                    },
+                    {
+                        name: "MARR",
+                        data: [45, 75, 150, 225]
+                    }
+                    ],
+                    chart: {
+                    height: 390,
+                    width: 600,
+                    type: 'line',
+                    dropShadow: {
+                        enabled: true,
+                        color: '#000',
+                        top: 18,
+                        left: 7,
+                        blur: 10,
+                        opacity: 0.2
+                    },
+                    toolbar: {
+                        show: false
+                    }
+                    },
+                    colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+                    dataLabels: {
+                            enabled: true,
+                            style: {
+                            fontSize: '16px',
+                            fontFamily: 'ABeeZee, sans-serif',
+                            fontWeight: 'bold',
+                        },
+                    },
+                    stroke: {
+                    curve: 'smooth'
+                    },
+                    title: {
+
+                    align: 'center',
+                    style: {
+                        fontSize: '24px',
+                        fontFamily: 'ABeeZee, sans-serif',
+                        fontWeight: "bold",
+                        cssClass: 'apexcharts-yaxis-label',
+                        color: '#000',
+                    },
+                    },
+                    grid: {
+                    borderColor: '#e7e7e7',
+                    row: {
+                        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+                        opacity: 0.5
+                    },
+                    },
+                    markers: {
+                    size: 1
+                    },
+                    xaxis: {
+                        tickPlacement: 'between',
+                    categories: [ano_a,ano_b,ano_c,ano_d],
+                    range:4,
+                    title: {
+                        text: '',
+                        style: {
+                                colors: [],
+                                fontSize: '20px',
+                                fontFamily: 'ABeeZee, sans-serif',
+                                fontWeight: "bold",
+                                cssClass: 'apexcharts-yaxis-label',
+                            },
+                    },
+                    labels: {
+                        style: {
+                                colors: [],
+                                fontSize: '12px',
+                                fontFamily: 'ABeeZee, sans-serif',
+                                fontWeight: "bold",
+                                cssClass: 'apexcharts-xaxis-label',
+                            },
+                    },
+                    },
+                    yaxis: {
+                    labels:{
+                        style: {
+                                colors: [],
+                                fontSize: '14px',
+                                fontFamily: 'ABeeZee, sans-serif',
+                                fontWeight: "bold",
+                                cssClass: 'apexcharts-yaxis-label',
+                            },
+                        formatter: function (val) {
+                        return val + "%"
+                        },
+                    },
+
+                    },
+                    legend: {
+                    position: 'top',
+                    horizontalAlign: 'right',
+                    offsetX: 40,
                     fontSize: '14px',
                     fontFamily: 'ABeeZee, sans-serif',
-                    fontWeight: "bold",
-                    cssClass: 'apexcharts-yaxis-label',
+                    fontWeight: 'bold',
+                    markers: {
+                    width: 12,
+                    height: 12,
+                    strokeWidth: 0,
+                    strokeColor: '#fff',
+                    fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+                    radius: 12,
+                    customHTML: undefined,
+                    onClick: undefined,
+                    offsetX: 0,
+                    offsetY: 0,
                 },
-            formatter: function (val) {
-              return val + "%"
-            },
-          },
 
-        },
-        legend: {
-          position: 'top',
-          horizontalAlign: 'right',
-          offsetX: 40,
-          fontSize: '14px',
-          fontFamily: 'ABeeZee, sans-serif',
-          fontWeight: 'bold',
-          markers: {
-          width: 12,
-          height: 12,
-          strokeWidth: 0,
-          strokeColor: '#fff',
-          fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
-          radius: 12,
-          customHTML: undefined,
-          onClick: undefined,
-          offsetX: 0,
-          offsetY: 0,
-      },
+                    }
+                    };
 
-        }
-        };
+                    var chart = new ApexCharts(document.querySelector("#chart_roi_base_a_ene_prod"), options);
+                    chart.render();
+                    },
+                    error: function (responsetext) {
+                        console.log(responsetext);
+                    }
+                });
 
-        var chart = new ApexCharts(document.querySelector("#chart_roi_base_a_ene_prod"), options);
-        chart.render();
         },
         error: function (responsetext) {
             console.log(responsetext);
         }
     });
+
+
 }
 
 function roi_base_a(id_project){
@@ -7206,6 +7232,23 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
 
     $.ajax({
         type: 'get',
+        url: '/check_marino/'+ id_project,
+        success: function (response) {
+            if(response == 1){
+                 var ano_a = 1;
+                 var ano_b = 3;
+                 var ano_c = 5;
+                 var ano_d = 10;
+            }else{
+                 var ano_a = 3;
+                 var ano_b = 5;
+                 var ano_c = 10;
+                 var ano_d = 15;
+
+            }
+
+$.ajax({
+        type: 'get',
         url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_base +'/'+ costo_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_b +'/'+ consumo_ene_anual_a +'/'+ consumo_ene_anual_b +'/'+ consumo_ene_anual_c +'/'+counter_val_prod_ene,
         success: function (res) {
 
@@ -7348,6 +7391,15 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
             console.log(responsetext);
         }
     });
+
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+
+
 }
 
 function roi_base_a_ene_prod_print(id_project,costo_base,costo){

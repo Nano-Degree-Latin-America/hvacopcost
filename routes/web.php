@@ -174,6 +174,8 @@ Route::get('roi_ene_prod/{id_project}/{dif_cost}/{inv_ini}/{costobase}/{costo_a}
 Route::get('roi_recu_prod/{id_project}/{costo_anual_base}/{costo_anual_a}/{costo_anual_b}/{inv_ini_1}/{inv_ini_2}/{inv_ini_3}/{consumo_ene_anual_a}/{consumo_ene_anual_b}/{consumo_ene_anual_c}', 'ResultadosController@roi_recu_prod');
 Route::get('red_hu_carb_grafic/{dif}/{dif_2}', 'ResultadosController@red_hu_carb_grafic');
 Route::get('red_en_mw_grafic/{dif}/{dif_2}', 'ResultadosController@red_en_mw_grafic');
+Route::get('check_marino/{id_project}', 'ResultadosController@check_marino');
+
 Route::post('cerrar_session', 'IndexController@cerrar_session')->name('cerrar_session');
 
 //marcas

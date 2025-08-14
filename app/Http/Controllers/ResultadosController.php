@@ -685,11 +685,12 @@ class ResultadosController extends Controller
                 $array_b = [0,0,0,0];
             }else{
 
-                if($tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+                if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
+                    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_b,$mayor,$inflacion,3);
+                }else if($tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
                     $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_b,$mayor,$inflacion,5);
-                }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre'){
+                }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico'){
                     $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_b,$mayor,$inflacion,10);
-
                 }else if($tipo_mant_2 == null && $prot_cond_2 == null){
                     $array_b = [0,0,0,0];
                 }else{
@@ -703,9 +704,11 @@ class ResultadosController extends Controller
             }else{
 
 
-                if($tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+                if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
+                    $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,3);
+                }else if($tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
                     $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,5);
-                }else if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre'){
+                }else if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico'){
 
                      $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,10);
                 }else if($tipo_mant_2 == null && $prot_cond_2 == null){
@@ -726,9 +729,11 @@ class ResultadosController extends Controller
                 $array_a = [0,0,0,0];
             }else{
 
-                if($tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
+                if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
+                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,3);
+                }else if($tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
                     $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,5);
-                }else if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'infiniguard' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'cobre_cobre'){
+                }else if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'infiniguard' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico'){
                     $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,10);
 
                 }else if($tipo_mant_1 == null && $prot_cond_1 == null){
@@ -744,9 +749,11 @@ class ResultadosController extends Controller
             }else{
 
 
-                if($tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+                if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
+                    $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,3);
+                }else if($tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
                     $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,5);
-                }else if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre'){
+                }else if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico'){
 
                      $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,10);
                 }else if($tipo_mant_3 == null && $prot_cond_3 == null){
@@ -766,10 +773,11 @@ class ResultadosController extends Controller
 
                 $array_a = [0,0,0,0];
             }else{
-
-                if($tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
+                if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
+                    $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,3);
+                }else if($tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
                     $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,5);
-                }else if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'infiniguard' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'cobre_cobre'){
+                }else if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'infiniguard' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico'){
                     $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,10);
 
                 }else if($tipo_mant_1 == null && $prot_cond_1 == null){
@@ -785,10 +793,11 @@ class ResultadosController extends Controller
             }else{
 
 
-                if($tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+                if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
+                    $array_b = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_b,$mayor,$inflacion,3);
+                }else if($tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
                     $array_b = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_b,$mayor,$inflacion,5);
-                }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre'){
-
+                }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico'){
                      $array_b = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_b,$mayor,$inflacion,10);
                 }else if($tipo_mant_2 == null && $prot_cond_2 == null){
                     $array_b = [0,0,0,0];
