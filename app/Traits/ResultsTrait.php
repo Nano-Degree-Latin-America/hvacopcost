@@ -905,5 +905,35 @@ trait  ResultsTrait{
         return intval($mult);
     }
 
+    public function check_marino($id_project){
+        $tipo_mant_1_set = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_project)
+            ->where('solutions_project.num_enf','=',1)
+            ->where('solutions_project.num_sol','=',1)
+            ->first();
+
+        $tipo_mant_2_set = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_project)
+            ->where('solutions_project.num_enf','=',2)
+            ->where('solutions_project.num_sol','=',1)
+            ->first();
+
+        $tipo_mant_3_set = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_project)
+            ->where('solutions_project.num_enf','=',3)
+            ->where('solutions_project.num_sol','=',1)
+            ->first();
+
+        $ambiente_1 = $tipo_mant_1_set ? $tipo_mant_1_set->tipo_ambiente : null;
+        $ambiente_2 = $tipo_mant_2_set ? $tipo_mant_2_set->tipo_ambiente : null;
+        $ambiente_3 = $tipo_mant_3_set ? $tipo_mant_3_set->tipo_ambiente : null;
+
+        // Verificar si cualquiera es igual a 'marino'
+        if ($ambiente_1 === 'marino' || $ambiente_2 === 'marino' || $ambiente_3 === 'marino') {
+            return true;
+        }
+        return false;
+    }
+
 
 }

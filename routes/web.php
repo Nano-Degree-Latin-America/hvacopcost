@@ -2,6 +2,8 @@
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -147,6 +149,7 @@ Route::get('traer_drs/{equipo}', 'ResultadosController@traer_drs');
 Route::get('traer_ventilaciones/{equipo}', 'ResultadosController@traer_ventilaciones');
 Route::get('traer_ventilaciones_no_doa/{equipo}', 'ResultadosController@traer_ventilaciones_no_doa');
 Route::get('traer_filtraciones/{equipo}', 'ResultadosController@traer_filtraciones');
+Route::get('traer_filtraciones_no_doa/{equipo}', 'ResultadosController@traer_filtraciones_no_doa');
 Route::get('traer_valor_unidad/{value}', 'ResultadosController@traer_valor_unidad');
 ///asigna tipo, existente
 Route::get('asigna_tipos', 'ResultadosController@asiga_typos');
@@ -163,12 +166,16 @@ Route::get('cap_op_10/{id_project}', 'ResultadosController@cap_op_10');
 Route::get('cap_op_15/{id_project}', 'ResultadosController@cap_op_15');
 Route::get('roi_base_a/{id_project}/{dif_cost}/{inv_ini}', 'ResultadosController@roi_base_a');
 Route::get('roi_s_ene/{id_project}/{dif_cost}/{inv_ini}/{dif_cost_2}/{inv_ini_2}/{counter_val}', 'ResultadosController@roi_s_ene');
+Route::get('roi_only_energy/{id_project}/{consumo_ene_anual_a}/{consumo_ene_anual_b}/{consumo_ene_anual_c}/{inv_ini_1}/{inv_ini_2}/{inv_ini_3}', 'ResultadosController@roi_only_energy');
 Route::get('roi_base_a_retro/{id_project}/{dif_cost}/{inv_ini}', 'ResultadosController@roi_base_a_retro');
 Route::get('roi_base_a_retro_new/{id_project}/{dif_cost}/{inv_ini}', 'ResultadosController@roi_base_a_retro_new');
 Route::get('roi_base_a_retro_ene_prod/{id_project}/{dif_cost}/{inv_ini}/{costobase}/{costo}', 'ResultadosController@roi_base_a_retro_ene_prod');
-Route::get('roi_ene_prod/{id_project}/{dif_cost}/{inv_ini}/{costobase}/{costo_a}/{dif_cost_2}/{inv_ini_2}/{costo_b}/{counter_val}', 'ResultadosController@roi_ene_prod');
+Route::get('roi_ene_prod/{id_project}/{dif_cost}/{inv_ini}/{costobase}/{costo_a}/{dif_cost_2}/{inv_ini_2}/{costo_b}/{consumo_ene_anual_a}/{consumo_ene_anual_b}/{consumo_ene_anual_c}/{counter_val}', 'ResultadosController@roi_ene_prod');
+Route::get('roi_recu_prod/{id_project}/{costo_anual_base}/{costo_anual_a}/{costo_anual_b}/{inv_ini_1}/{inv_ini_2}/{inv_ini_3}/{consumo_ene_anual_a}/{consumo_ene_anual_b}/{consumo_ene_anual_c}', 'ResultadosController@roi_recu_prod');
 Route::get('red_hu_carb_grafic/{dif}/{dif_2}', 'ResultadosController@red_hu_carb_grafic');
 Route::get('red_en_mw_grafic/{dif}/{dif_2}', 'ResultadosController@red_en_mw_grafic');
+Route::get('check_marino/{id_project}', 'ResultadosController@check_marino');
+
 Route::post('cerrar_session', 'IndexController@cerrar_session')->name('cerrar_session');
 
 //marcas
@@ -236,5 +243,98 @@ Route::post('save_justificacion_financiera/{id_project}', 'MantenimientoControll
 Route::get('locale/{locale}', function($locale){
    session()->put('locale',$locale);
    return Redirect::back();
+});
+
+
+Route::get('/chatgpt-test', function (Request $request) {
+    $prompt = $request->get('q', '¿Quién fue Albert Einstein?');
+    $apiKey = config('services.openai.key');
+
+    if (empty($apiKey)) {
+        return response()->json(['error' => '❌ API Key no encontrada. Verifica tu archivo .env y config/services.php.'], 500);
+    }
+
+    $client = new Client([
+        'base_uri' => 'https://api.openai.com/v1/',
+        'headers' => [
+            'Authorization' => 'Bearer ' . $apiKey,
+            'Content-Type'  => 'application/json',
+        ],
+    ]);
+
+    try {
+        $response = $client->post('chat/completions', [
+            'json' => [
+                'model' => 'gpt-3.5-turbo',
+                'messages' => [
+                    ['role' => 'user', 'content' => $prompt],
+                ],
+            ],
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+        return response()->json([
+            'question'  => $prompt,
+            'response'  => $data['choices'][0]['message']['content'],
+        ]);
+
+    } catch (\GuzzleHttp\Exception\ClientException $e) {
+        $status = $e->getResponse()->getStatusCode();
+        $body = json_decode($e->getResponse()->getBody()->getContents(), true);
+        $message = $body['error']['message'] ?? 'Error desconocido';
+
+        return response()->json(['error' => "❌ Error $status: $message"], $status);
+
+    } catch (\Exception $e) {
+        return response()->json(['error' => '❌ Error inesperado: ' . $e->getMessage()], 500);
+    }
+});
+
+
+
+Route::get('/openai-status', function () {
+    $apiKey = config('services.openai.key');
+
+    if (empty($apiKey)) {
+        return '❌ No se encontró la API Key. Revisa tu archivo .env y config/services.php.';
+    }
+
+    $client = new Client([
+        'base_uri' => 'https://api.openai.com/v1/',
+        'headers' => [
+            'Authorization' => 'Bearer ' . $apiKey,
+            'Content-Type' => 'application/json',
+        ],
+    ]);
+
+    try {
+        $response = $client->post('chat/completions', [
+            'json' => [
+                'model' => 'gpt-3.5-turbo',
+                'messages' => [
+                    ['role' => 'user', 'content' => 'Hola, ¿puedes responderme?'],
+                ],
+            ],
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+        return '✅ Tu API Key funciona correctamente. Respuesta: ' . $data['choices'][0]['message']['content'];
+
+    } catch (\GuzzleHttp\Exception\ClientException $e) {
+        $status = $e->getResponse()->getStatusCode();
+        $body = json_decode($e->getResponse()->getBody()->getContents(), true);
+
+        if ($status === 401) {
+            return '❌ Error 401: API Key inválida. Revisa tu clave.';
+        }
+
+        if ($status === 429) {
+            return '⚠️ Error 429: Ya no tienes créditos disponibles o estás haciendo demasiadas peticiones.';
+        }
+
+        return '❌ Error ' . $status . ': ' . ($body['error']['message'] ?? 'Error desconocido');
+    } catch (\Exception $e) {
+        return '❌ Error inesperado: ' . $e->getMessage();
+    }
 });
 
