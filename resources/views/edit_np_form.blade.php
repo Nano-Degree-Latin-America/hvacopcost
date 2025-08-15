@@ -194,7 +194,7 @@
                     </div>
 
                     <div class="w-1/2 flex justify-start">
-                        <select onchange="send_name(this.id);check_sin_doa(this.id,'ventilacion_1_1','csTipo');" name="csDisenio_1_1" id="csDisenio_1_1" class="w-full border-2 border-color-inps rounded-md py-2">
+                        <select onchange="send_name(this.id);check_sin_doa(this.id,'ventilacion_1_1','filtracion_1_1','csTipo');" name="csDisenio_1_1" id="csDisenio_1_1" class="w-full border-2 border-color-inps rounded-md py-2">
                         </select>
                     </div>
                     <input type="text" style="display: none" id="lblCsDisenio" name="lblCsDisenio" value="ASHRAE 55/62.1/90.1">
@@ -236,7 +236,7 @@
                         <label class="labels" for=""><b>{{ __('index.ventilacion') }}</b></label>
                     </div>
                     <div class="flex w-full justify-start">
-                        <select onchange="valida_selects_inps(this.id);send_name_vent(this.id);"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="ventilacion_1_1" id="ventilacion_1_1">
+                        <select onchange="valida_selects_inps(this.id);send_name_vent(this.id);check_ventilacion(this.id,'filtracion_1_1','cUnidad_1_1','csTipo');"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="ventilacion_1_1" id="ventilacion_1_1">
 
                         </select>
                         <input  id="ventilacion_1_1_count" name="ventilacion_1_1_count" type="number" class="hidden" value="1">
@@ -514,7 +514,7 @@
                         <label  class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                     </div>
                     <div class="w-1/2 flex justify-start">
-                        <select class="w-full border-2 border-color-inps rounded-md py-2"  onchange="send_name(this.id);check_sin_doa(this.id,'ventilacion_1_2','csTipo_1_2'); " name="csDisenio_1_2" id="csDisenio_1_2">
+                        <select class="w-full border-2 border-color-inps rounded-md py-2"  onchange="send_name(this.id);check_sin_doa(this.id,'ventilacion_1_2','filtracion_1_2','csTipo_1_2');" name="csDisenio_1_2" id="csDisenio_1_2">
                         </select>
                     </div>
                     <input  id="csDisenio_1_2_count" name="csDisenio_1_2_count" type="number" class="hidden" value="1">
@@ -1140,7 +1140,7 @@
                                 <label  class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="send_name(this.id);check_sin_doa(this.id,'ventilacion_2_1','cheTipo_2_1');" name="cheDisenio_2_1" id="cheDisenio_2_1">
+                                <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="send_name(this.id);check_sin_doa(this.id,'ventilacion_2_1','filtracion_2_1','cheTipo_2_1');" name="cheDisenio_2_1" id="cheDisenio_2_1">
 
                                 </select>
                             </div>
@@ -1185,7 +1185,7 @@
                                 <label class="labels" for=""><b>{{ __('index.ventilacion') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);send_name_vent(this.id);"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="ventilacion_2_1" id="ventilacion_2_1">
+                                <select onchange="valida_selects_inps(this.id);send_name_vent(this.id);check_ventilacion(this.id,'filtracion_2_1','cUnidad_2_1','cheTipo_2_1');"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="ventilacion_2_1" id="ventilacion_2_1">
 
                                 </select>
                                 <input  id="ventilacion_2_1_count" name="ventilacion_2_1_count" type="number" class="hidden" value="1">
@@ -1449,7 +1449,7 @@
                             <label class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-color-inps rounded-md py-2"  onchange="send_name(this.id);check_sin_doa(this.id,'ventilacion_2_2','cheTipo_2_2');" name="cheDisenio_2_2" id="cheDisenio_2_2">
+                            <select class="w-full border-2 border-color-inps rounded-md py-2"  onchange="send_name(this.id);check_sin_doa(this.id,'ventilacion_2_2','filtracion_2_2','cheTipo_2_2');" name="cheDisenio_2_2" id="cheDisenio_2_2">
 
                             </select>
                             <input  id="cheDisenio_2_1_count" name="cheDisenio_2_1_count" type="number" class="hidden" value="1">
@@ -1495,7 +1495,7 @@
                             <label class="labels" for=""><b>{{ __('index.ventilacion') }}</b></label>
                         </div>
                         <div class="flex w-full justify-start">
-                            <select onchange="valida_selects_inps(this.id);send_name_vent(this.id);"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="ventilacion_2_2" id="ventilacion_2_2">
+                            <select onchange="valida_selects_inps(this.id);send_name_vent(this.id);check_ventilacion(this.id,'filtracion_2_2','cUnidad_2_2','cheTipo_2_2');"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="ventilacion_2_2" id="ventilacion_2_2">
 
                             </select>
                             <input  id="ventilacion_2_2_count" name="ventilacion_2_2_count" type="number" class="hidden" value="1">
@@ -2086,7 +2086,7 @@
                                 <label class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                             </div>
                             <div class="w-1/2 flex justify-start">
-                                <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="send_name(this.id);check_sin_doa(this.id,'ventilacion_3_1','cheTipo_3_1');" name="cheDisenio_3_1" id="cheDisenio_3_1">
+                                <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="send_name(this.id);check_sin_doa(this.id,'ventilacion_3_1','filtracion_3_1','cheTipo_3_1');" name="cheDisenio_3_1" id="cheDisenio_3_1">
 
                                 </select>
                             </div>
@@ -2132,7 +2132,7 @@
                                 <label class="labels" for=""><b>{{ __('index.ventilacion') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
-                                <select onchange="valida_selects_inps(this.id);send_name_vent(this.id);"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="ventilacion_3_1" id="ventilacion_3_1">
+                                <select onchange="valida_selects_inps(this.id);send_name_vent(this.id);check_ventilacion(this.id,'filtracion_3_1','cUnidad_3_1','cheTipo_3_1');"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="ventilacion_3_1" id="ventilacion_3_1">
 
                                 </select>
                                 <input  id="ventilacion_3_1_count" name="ventilacion_3_1_count" type="number" class="hidden" value="1">
@@ -2395,7 +2395,7 @@
                             <label class="labels" for=""><b>{{ __('index.tipo diseño') }}</b> </label>
                         </div>
                         <div class="w-1/2 flex justify-start">
-                            <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="send_name(this.id);check_sin_doa(this.id,'ventilacion_3_2','cheTipo_3_2');" name="cheDisenio_3_2" id="cheDisenio_3_2">
+                            <select class="w-full border-2 border-color-inps rounded-md py-2" onchange="send_name(this.id);check_sin_doa(this.id,'ventilacion_3_2','filtracion_3_1','cheTipo_3_2');" name="cheDisenio_3_2" id="cheDisenio_3_2">
 
                             </select>
                         </div>
@@ -2438,7 +2438,7 @@
                             <label class="labels" for=""><b>{{ __('index.ventilacion') }}</b></label>
                         </div>
                         <div class="flex w-full justify-start">
-                            <select onchange="valida_selects_inps(this.id);send_name_vent(this.id);"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="ventilacion_3_2" id="ventilacion_3_2">
+                            <select onchange="valida_selects_inps(this.id);send_name_vent(this.id);check_ventilacion(this.id,'filtracion_3_2','cUnidad_3_2','cheTipo_3_2');"  style="margin-left: 2px;" class="w-full border-2 border-color-inps rounded-md py-2" name="ventilacion_3_2" id="ventilacion_3_2">
 
                             </select>
                             <input  id="ventilacion_3_2_count" name="ventilacion_3_2_count" type="number" class="hidden" value="1">
