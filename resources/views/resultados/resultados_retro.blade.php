@@ -182,13 +182,13 @@
     <div class="ancho border-2 border-blue-500 rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                <p class="titulos_style">Capacidad Térmica (TR) </p>
+                <p class="titulos_style">Capacidad Térmica (TR) e Inversión</p>
             </div>
 
             <div class="flex w-full justify-center my-2">
                 <div class="w-1/7 grid justify-items-center">
                     <div class="place-content-center">
-                        <img src="{{asset('assets/images/cap_term.PNG')}}" style="margin-top:2rem;" class="img_tr mx-2 ">
+                        <img src="{{asset('assets/images/cap_term.PNG')}}" style="margin-top:2rem;" class="img_tr mx-2 margin_top_cap_term">
                     </div>
                 </div>
 
@@ -214,6 +214,78 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="w-full grid">
+                    <div class="flex w-full justify-center my-2">
+                        <div class="w-auto grid justify-items-center">
+                            <div class="grid">
+                                <img style="margin-top:5px;" src="{{asset('assets/images/capex.png')}}" class="img_tr mx-2">
+                            </div>
+                        </div>
+
+                        <div class="w-1/3 grid justify-items-start gap-y-2">
+                            <?php  $result1=$results->result_1($id_project,1) ?>
+                                    @if ($result1 ==! null)
+                                    <?php  $sumaopex_1=$smasolutions->sumaopex($id_project,$result1->num_enf) ?>
+                                    <?php  $sumacap_term_1=$smasolutions->sumacap_term($id_project,$result1->num_enf) ?>
+                                    <?php  $unid_med_1=$smasolutions->unid_med($id_project,$result1->num_enf) ?>
+                                    <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
+                                    <?php  $inv_ini_1=$smasolutions->inv_ini($id_project,$result1->num_enf) ?>
+                                     <input type="number" class="hidden" id="inv_ini_1" name="inv_ini_1" value="{{$inv_ini_1}}">
+                                    @elseif($result1 === null)
+                                    <?php $sumaopex_1=0?>
+                                    <?php $sumacap_term_1=0?>
+                                     <?php $unid_med_1=""?>
+                                     <?php  $result_area_1=0 ?>
+                                     <?php $inv_ini_1=0?>
+                                     <input type="number" class="hidden" id="inv_ini_1" name="inv_ini_1" value="{{$inv_ini_1}}">
+                                    @endif
+                            <p class="capex_a font-bold font-roboto">${{number_format($inv_ini_1)}}</p>
+                        </div>
+
+                        <div class="w-1/3 grid justify-items-center gap-y-2">
+                            <?php  $result2=$results->result_1($id_project,2) ?>
+                                    @if ($result2 ==! null)
+                                    <?php  $sumaopex_2=$smasolutions->sumaopex($id_project,$result2->num_enf) ?>
+                                    <?php  $sumacap_term_2=$smasolutions->sumacap_term($id_project,$result2->num_enf) ?>
+                                    <?php  $unid_med_2=$smasolutions->unid_med($id_project,$result2->num_enf) ?>
+                                    <?php  $result_area_2=$results->result_area($id_project,$sumaopex_2) ?>
+                                    <?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
+                                    <input type="number" class="hidden" id="inv_ini_2" name="inv_ini_2" value="{{$inv_ini_2}}">
+                                    @elseif($result2 === null)
+                                    <?php $sumaopex_2=0?>
+                                    <?php $sumacap_term_2=0?>
+                                    <?php $unid_med_2=""?>
+                                    <?php  $result_area_2=0?>
+                                    <?php $inv_ini_2=0?>
+
+                                    @endif
+                            <p  style="margin-right:80px;" class="font-bold font-roboto cant_2">${{number_format($inv_ini_2)}}</p>
+                        </div>
+
+                        <div class="w-1/3 grid justify-items-start gap-y-2">
+                            <?php  $result3=$results->result_1($id_project,3) ?>
+                                    @if ($result3 ==! null)
+                                    <?php  $sumaopex_3=$smasolutions->sumaopex($id_project,$result3->num_enf) ?>
+                                    <?php  $sumacap_term_3=$smasolutions->sumacap_term($id_project,$result3->num_enf) ?>
+                                    <?php  $unid_med_3=$smasolutions->unid_med($id_project,$result3->num_enf) ?>
+                                    <?php  $result_area_3=$results->result_area($id_project,$sumaopex_3) ?>
+                                     <?php  $inv_ini_3=$smasolutions->inv_ini($id_project,$result3->num_enf) ?>
+                                      <input type="number" class="hidden" id="inv_ini_3" name="inv_ini_3" value="{{$inv_ini_3}}">
+                                    @elseif($result3 === null)
+                                    <?php $sumaopex_3=0?>
+                                    <?php $sumacap_term_3=0?>
+                                    <?php $unid_med_3=""?>
+                                    <?php  $result_area_3=0?>
+                                    <?php $inv_ini_3=0?>
+                                     <input type="number" class="hidden" id="inv_ini_3" name="inv_ini_3" value="{{$inv_ini_3}}">
+                                    @endif
+                            <p style="margin-left:80px;" class="cant_2 font-bold font-roboto">${{number_format($inv_ini_3)}}</p>
+                        </div>
+
+                    </div>
+                </div>
+
         </div>
     </div>
 </div>
@@ -237,22 +309,7 @@
 
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-items-center w-full">
-                                    <?php  $result1=$results->result_1($id_project,1) ?>
-                                    @if ($result1 ==! null)
-                                    <?php  $sumaopex_1=$smasolutions->sumaopex($id_project,$result1->num_enf) ?>
-                                    <?php  $sumacap_term_1=$smasolutions->sumacap_term($id_project,$result1->num_enf) ?>
-                                    <?php  $unid_med_1=$smasolutions->unid_med($id_project,$result1->num_enf) ?>
-                                    <?php  $result_area_1=$results->result_area($id_project,$sumaopex_1) ?>
-                                    <?php  $inv_ini_1=$smasolutions->inv_ini($id_project,$result1->num_enf) ?>
-                                     <input type="number" class="hidden" id="inv_ini_1" name="inv_ini_1" value="{{$inv_ini_1}}">
-                                    @elseif($result1 === null)
-                                    <?php $sumaopex_1=0?>
-                                    <?php $sumacap_term_1=0?>
-                                     <?php $unid_med_1=""?>
-                                     <?php  $result_area_1=0 ?>
-                                     <?php $inv_ini_1=0?>
-                                     <input type="number" class="hidden" id="inv_ini_1" name="inv_ini_1" value="{{$inv_ini_1}}">
-                                    @endif
+
                                     <div class="flex w-full justify-center gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_1)}}</p><b class="unit_style">Kwh</b>
                                     </div>
@@ -283,22 +340,6 @@
                             </div> --}}
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-center text-center">
-                                    <?php  $result2=$results->result_1($id_project,2) ?>
-                                    @if ($result2 ==! null)
-                                    <?php  $sumaopex_2=$smasolutions->sumaopex($id_project,$result2->num_enf) ?>
-                                    <?php  $sumacap_term_2=$smasolutions->sumacap_term($id_project,$result2->num_enf) ?>
-                                    <?php  $unid_med_2=$smasolutions->unid_med($id_project,$result2->num_enf) ?>
-                                    <?php  $result_area_2=$results->result_area($id_project,$sumaopex_2) ?>
-                                    <?php  $inv_ini_2=$smasolutions->inv_ini($id_project,$result2->num_enf) ?>
-                                    <input type="number" class="hidden" id="inv_ini_2" name="inv_ini_2" value="{{$inv_ini_2}}">
-                                    @elseif($result2 === null)
-                                    <?php $sumaopex_2=0?>
-                                    <?php $sumacap_term_2=0?>
-                                    <?php $unid_med_2=""?>
-                                    <?php  $result_area_2=0?>
-                                    <?php $inv_ini_2=0?>
-
-                                    @endif
                                     <div class="flex w-full justify-center  gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_2)}}</p><b class="unit_style">Kwh</b>
                                     </div>
@@ -321,22 +362,7 @@
                             </div> --}}
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-center text-center">
-                                    <?php  $result3=$results->result_1($id_project,3) ?>
-                                    @if ($result3 ==! null)
-                                    <?php  $sumaopex_3=$smasolutions->sumaopex($id_project,$result3->num_enf) ?>
-                                    <?php  $sumacap_term_3=$smasolutions->sumacap_term($id_project,$result3->num_enf) ?>
-                                    <?php  $unid_med_3=$smasolutions->unid_med($id_project,$result3->num_enf) ?>
-                                    <?php  $result_area_3=$results->result_area($id_project,$sumaopex_3) ?>
-                                     <?php  $inv_ini_3=$smasolutions->inv_ini($id_project,$result3->num_enf) ?>
-                                      <input type="number" class="hidden" id="inv_ini_3" name="inv_ini_3" value="{{$inv_ini_3}}">
-                                    @elseif($result3 === null)
-                                    <?php $sumaopex_3=0?>
-                                    <?php $sumacap_term_3=0?>
-                                    <?php $unid_med_3=""?>
-                                    <?php  $result_area_3=0?>
-                                    <?php $inv_ini_3=0?>
-                                     <input type="number" class="hidden" id="inv_ini_3" name="inv_ini_3" value="{{$inv_ini_3}}">
-                                    @endif
+
                                    <div class="flex w-full justify-center  gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_3)}}</p><b class="unit_style">Kwh</b>
                                     </div>
@@ -615,77 +641,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
     </div>
 </div>
 
-{{-- Índice Intensidad del Uso de Energía --}}
-<div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
-        <div class="w-full grid">
-            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                <p class="titulos_style">Índice Intensidad del Uso de Energía (Kbtu/ft²)</p>
-            </div>
-        </div>
 
-        <div class="flex w-full justify-center gap-x-3">
-            <div class="flex w-1/2 justify-center text-[24px]">
-                <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
-                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}"  class="energy_star_style_img mx-2 mt-4" alt="Nano Degree">
-                <b class="eui_energy_style">EUI - Energy Star</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{number_format($energy_star,1)}}</b>
-            </div>
-
-            <div class="flex w-1/2 justify-center text-[24px]">
-                <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
-                <img src="{{asset('/assets/images/Logo-ASHRAE-png.png')}}" class="ashrae_style_img" alt="Nano Degree">
-                <b class="eui_energy_style">EUI - ASHRAE</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{$ashrae}}</b>
-            </div>
-        </div>
-
-        <div class="flex w-full justify-center mb-1">
-            <div class="w-1/3 grid justify-items-center">
-                {{-- <div class="flex justify-center w-full">
-                    <label class="solucions_style_name">{{ __('index.sis_ext') }}</label>
-                </div> --}}
-                @if ($result1 ==! null)
-                <?php  $valor_eui_base=$smasolutions->valor_eui_aux($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                @endif
-                @if ($result1 === null)
-                <?php  $valor_eui_base=0 ?>
-                @endif
-                <div id="eui_sol_base" name="eui_sol_base"></div>
-                <div class="hidden" id="eui_sol_base_print" name="eui_sol_base_print"></div>
-            </div>
-            {{-- sumaopex_2
-            sumaopex_3 --}}
-            <div class="w-1/3 grid justify-items-center">
-               {{--  <div class="flex justify-center w-full">
-                    <label class="solucions_style_name">{{ __('index.solucion') }} A</label>
-                </div> --}}
-                @if ($result2 ==! null)
-                <?php  $valor_eui_a=$smasolutions->valor_eui_aux($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                @endif
-
-                @if ($result2 === null)
-                <?php  $valor_eui_a=0; ?>
-                @endif
-                <div id="eui_sol_a" name="eui_sol_a"></div>
-                <div class="hidden" id="eui_sol_a_print" name="eui_sol_a_print"></div>
-
-            </div>
-            <div class="w-1/3 grid justify-items-center">
-                {{-- <div class="flex justify-center w-full">
-                    <label class="solucions_style_name">{{ __('index.solucion') }} B</label>
-                </div> --}}
-                @if ($result3 ==! null)
-                <?php  $valor_eui_b=$smasolutions->valor_eui_aux($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                @endif
-
-                @if ($result3 === null)
-                <?php $valor_eui_b = 0; ?>
-                @endif
-                <div id="eui_sol_b" name="eui_sol_b"></div>
-                <div class="hidden" id="eui_sol_b_print" name="eui_sol_b_print"></div>
-            </div>
-    </div>
-    </div>
-</div>
 
 
 
@@ -729,7 +685,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 </div> --}}
 
 {{-- espacio --}}
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:40px;" >
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:230px;" >
 
 </div>
 
@@ -819,6 +775,78 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                 </div>
             </div>
         </div>
+</div>
+
+{{-- Índice Intensidad del Uso de Energía --}}
+<div class="w-full grid rounded-md justify-items-center mt-3">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
+        <div class="w-full grid">
+            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                <p class="titulos_style">Índice Intensidad del Uso de Energía (Kbtu/ft²)</p>
+            </div>
+        </div>
+
+        <div class="flex w-full justify-center gap-x-3">
+            <div class="flex w-1/2 justify-center text-[24px]">
+                <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
+                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}"  class="energy_star_style_img mx-2 mt-4" alt="Nano Degree">
+                <b class="eui_energy_style">EUI - Energy Star</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{number_format($energy_star,1)}}</b>
+            </div>
+
+            <div class="flex w-1/2 justify-center text-[24px]">
+                <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
+                <img src="{{asset('/assets/images/Logo-ASHRAE-png.png')}}" class="ashrae_style_img" alt="Nano Degree">
+                <b class="eui_energy_style">EUI - ASHRAE</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{$ashrae}}</b>
+            </div>
+        </div>
+
+        <div class="flex w-full justify-center mb-1">
+            <div class="w-1/3 grid justify-items-center">
+                {{-- <div class="flex justify-center w-full">
+                    <label class="solucions_style_name">{{ __('index.sis_ext') }}</label>
+                </div> --}}
+                @if ($result1 ==! null)
+                <?php  $valor_eui_base=$smasolutions->valor_eui_aux($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                @endif
+                @if ($result1 === null)
+                <?php  $valor_eui_base=0 ?>
+                @endif
+                <div id="eui_sol_base" name="eui_sol_base"></div>
+                <div class="hidden" id="eui_sol_base_print" name="eui_sol_base_print"></div>
+            </div>
+            {{-- sumaopex_2
+            sumaopex_3 --}}
+            <div class="w-1/3 grid justify-items-center">
+               {{--  <div class="flex justify-center w-full">
+                    <label class="solucions_style_name">{{ __('index.solucion') }} A</label>
+                </div> --}}
+                @if ($result2 ==! null)
+                <?php  $valor_eui_a=$smasolutions->valor_eui_aux($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                @endif
+
+                @if ($result2 === null)
+                <?php  $valor_eui_a=0; ?>
+                @endif
+                <div id="eui_sol_a" name="eui_sol_a"></div>
+                <div class="hidden" id="eui_sol_a_print" name="eui_sol_a_print"></div>
+
+            </div>
+            <div class="w-1/3 grid justify-items-center">
+                {{-- <div class="flex justify-center w-full">
+                    <label class="solucions_style_name">{{ __('index.solucion') }} B</label>
+                </div> --}}
+                @if ($result3 ==! null)
+                <?php  $valor_eui_b=$smasolutions->valor_eui_aux($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                @endif
+
+                @if ($result3 === null)
+                <?php $valor_eui_b = 0; ?>
+                @endif
+                <div id="eui_sol_b" name="eui_sol_b"></div>
+                <div class="hidden" id="eui_sol_b_print" name="eui_sol_b_print"></div>
+            </div>
+    </div>
+    </div>
 </div>
 
 {{-- Nivel de Confort --}}
@@ -954,7 +982,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
       <div class="w-full grid">
         <div style="background-color:#1B17BB;" class="w-full flex justify-center">
             <div class="flex w-full justify-center mt-1">
-                <p class="titulos_style">Perdida de Productividad Laboral</p>
+                <p class="titulos_style">Productividad Laboral</p>
             </div>
 
               <div id="button_prod" name="button_prod" class="flex justify-end mt-2">
@@ -1010,14 +1038,14 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
       <div class="w-full grid mb-1">
         <div style="background-color:#ffff;" class="w-full flex justify-center ">
             <div style="margin-top:1rem;" class="flex w-full justify-center">
-                <p style="color:#1B17BB;" class="titulos_style">Costo Adicional por Productividad Laboral (anual)</p>
+                <p style="color:#1B17BB;" class="titulos_style">Reducción Anual de Costo Salarial</p>
             </div>
           </div>
 
           <div class="flex w-full justify-center">
             <div class="w-1/8 flex grid justify-items-center">
                 <div>
-                    <img src="{{asset('assets/images/pesos_personas.jpg')}}" class="img_prod_lab mx-2 mt-8 ml-5">
+                    <img src="{{asset('assets/images/pesos_personas.jpg')}}" class="img_prod_lab mx-2 mt-0 ml-5">
                 </div>
 
                {{--  <div>
@@ -1060,14 +1088,14 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                 <?php  $personas=0; ?>
                 @endif
                 <div class="w-1/3 grid justify-items-center gap-y-3">
-                    <div class="flex w-full justify-center">
+                    {{-- <div class="flex w-full justify-center">
                         @if ($personas > 0)
                         <p style="color:#ea0000;" class="cant_style">{{$personas}}</p>
                         @endif
                         @if ($personas <= 0)
                         <p class="cant_style">{{$personas}}</p>
                         @endif
-                    </div>
+                    </div> --}}
 
                     <div class="flex w-full justify-center">
                         <p class="cant_style">${{number_format($costo_anual_base)}}</p>
@@ -1084,14 +1112,14 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                 <?php  $costo_a=0; ?>
                 @endif
                 <div class="w-1/3 grid justify-items-center gap-y-3">
-                    <div class="flex w-full justify-center">
+                   {{--  <div class="flex w-full justify-center">
                         @if ($personas_a > 0)
                         <p style="color:#ea0000;" class="cant_style">{{$personas_a}}</p>
                         @endif
                         @if ($personas_a <= 0)
                         <p class="cant_style">{{$personas_a}}</p>
                         @endif
-                    </div>
+                    </div> --}}
 
                     <div class="flex w-full justify-center">
                         <p class="cant_style">${{number_format($costo_anual_a)}}</p>
@@ -1109,7 +1137,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                 @endif
 
                 <div class="w-1/3 grid justify-items-center gap-y-3">
-                    <div class="flex w-full justify-center">
+                    {{-- <div class="flex w-full justify-center">
                         <div class="flex w-full justify-center">
                             @if ($personas_b > 0)
                             <p style="color:#ea0000;" class="cant_style">{{$personas_b}}</p>
@@ -1118,7 +1146,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                             <p class="cant_style">{{$personas_b}}</p>
                             @endif
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="flex w-full justify-center">
                         <p class="cant_style">${{number_format($costo_anual_b)}}</p>
@@ -1189,7 +1217,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 @endif
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_3" name="next_page_3" style="width: 80%; height:250px;" class="hidden">
+<div id="next_page_3" name="next_page_3" style="width: 80%; height:30px;" class="hidden">
 
 </div>
 
@@ -1341,13 +1369,13 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         </div>
 
-                        <div class="flex w-full justify-start gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start w-2/5  my-1">
-                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-10 mt-2">Existente</b>
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold ml-10 mt-2">Existente</b>
                             </div>
 
-                            <div  class="flex justify-start w-1/3  my-1 place-items-center">
+                           {{--  <div  class="flex justify-start w-1/3  my-1 place-items-center">
                                 @if (strlen(number_format($inv_ini_1)) > 9)
                                 <b  style="color:#2c5282;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_1)}}</b>
                                 @endif
@@ -1355,7 +1383,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                 <b  style="color:#2c5282;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_1)}}</b>
                                @endif
 
-                            </div>
+                            </div> --}}
 
                             <div   class="flex  rounded-md justify-center w-1/4  ">
                                 <div  class="grid justify-items-center  rounded-md place-items-center">
@@ -1422,20 +1450,20 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         </div>
 
-                        <div class="flex w-full justify-start gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start  w-2/5  my-1 place-items-center">
-                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-10">Inversión A</b>
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold ml-10">Inversión A</b>
                             </div>
 
-                            <div  class="flex justify-start w-1/3  my-1 place-items-center">
+                            {{-- <div  class="flex justify-start w-1/3  my-1 place-items-center">
                                 @if (strlen(number_format($inv_ini_2)) > 9)
                                 <b  style="color:#2c5282;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_2)}}</b>
                                 @endif
                                 @if (strlen(number_format($inv_ini_2)) <= 9)
                                 <b  style="color:#2c5282;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_2)}}</b>
                                @endif
-                            </div>
+                            </div> --}}
 
                             <div style="" class=" rounded-md flex justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center place-items-center">
@@ -1500,20 +1528,20 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         </div>
 
-                        <div class="flex w-full justify-start gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start  w-2/5 place-items-center my-1">
-                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-10">Inversión B</b>
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold ml-10">Inversión B</b>
                             </div>
 
-                            <div  class="flex justify-start w-1/3  my-1 place-items-center">
+                            {{-- <div  class="flex justify-start w-1/3  my-1 place-items-center">
                                 @if (strlen(number_format($inv_ini_3)) > 9)
                                 <b  style="color:#2c5282;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_3)}}</b>
                                 @endif
                                 @if (strlen(number_format($inv_ini_3)) <= 9)
                                 <b  style="color:#2c5282;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_3)}}</b>
                                @endif
-                            </div>
+                            </div> --}}
 
                             <div  class="rounded-md flex justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center  place-items-center">
@@ -1609,6 +1637,13 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                         <input type="number" class="hidden" id="counter_val_prod_ene" name="counter_val_prod_ene" value="{{$counter_val_prod_ene}}">
                     @endif
                     <div class="w-1/2">
+                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                            <div  class="flex justify-start w-full  my-1 gap-x-3">
+                                <div class="place-items-center">
+                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Retorno de Inversión</p>
+                                </div>
+                            </div>
+                        </div>
                         <div id="chart_roi_base_a" name="chart_roi_base_a" style="width: 600px;"></div>
                         <div class="hidden" style="height:250px;"  id="chart_roi_base_a_print" name="chart_roi_base_a_print"></div>
                     </div>
@@ -1635,20 +1670,20 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         </div>
 
-                        <div class="flex w-full justify-start gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start w-2/5 place-items-center my-1">
-                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-8">Existente</b>
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold ml-8">Existente</b>
                             </div>
 
-                            <div  class="flex justify-start w-1/3 place-items-center my-1">
+                            {{-- <div  class="flex justify-start w-1/3 place-items-center my-1">
                                 @if (strlen(number_format($inv_ini_1)) > 9)
                                 <b  style="color:#2c5282;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_1)}}</b>
                                 @endif
                                 @if (strlen(number_format($inv_ini_1)) <= 9)
                                 <b  style="color:#2c5282;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_1)}}</b>
                                @endif
-                            </div>
+                            </div> --}}
 
                             <div style="" class="flex  rounded-md justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center place-items-center">
@@ -1677,20 +1712,20 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         </div>
 
-                        <div class="flex w-full justify-start gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start w-2/5 place-items-center  my-1">
-                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-8">Inversión A</b>
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold ml-8">Inversión A</b>
                             </div>
 
-                            <div  class="flex justify-start w-1/3 place-items-center my-1">
+                            {{-- <div  class="flex justify-start w-1/3 place-items-center my-1">
                                 @if (strlen(number_format($inv_ini_2)) > 9)
                                 <b  style="color:#2c5282;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_2)}}</b>
                                 @endif
                                 @if (strlen(number_format($inv_ini_2)) <= 9)
                                 <b  style="color:#2c5282;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_2)}}</b>
                                @endif
-                            </div>
+                            </div> --}}
 
                             <div style="" class="rounded-md flex justify-center w-1/4 ">
                                 {{--
@@ -1745,20 +1780,20 @@ $costo_b
 
                         </div>
 
-                        <div class="flex w-full justify-start gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start w-2/5 place-items-center my-1">
-                                    <b  style="color:#1B17BB;" class="payback_cants font-roboto font-bold ml-8">Inversión B</b>
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold ml-8">Inversión B</b>
                             </div>
 
-                            <div  class="flex justify-start w-1/3 place-items-center my-1">
+                            {{-- <div  class="flex justify-start w-1/3 place-items-center my-1">
                                 @if (strlen(number_format($inv_ini_3)) > 9)
                                 <b  style="color:#2c5282;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_3)}}</b>
                                 @endif
                                 @if (strlen(number_format($inv_ini_3)) <= 9)
                                 <b  style="color:#2c5282;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_3)}}</b>
                                @endif
-                            </div>
+                            </div> --}}
 
                             <div style="" class="rounded-md  flex justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center  place-items-center">
@@ -1811,6 +1846,13 @@ $costo_b
 
                     </div>
                     <div class="w-1/2">
+                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                            <div  class="flex justify-start w-full  my-1 gap-x-3">
+                                <div class="place-items-center">
+                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Retorno de Inversión</p>
+                                </div>
+                            </div>
+                        </div>
                         <div id="chart_roi_base_a_ene_prod" name="chart_roi_base_a_ene_prod" style="width: 600px;"></div>
                         <div class="hidden" style="height:200px;"  id="chart_roi_base_a_ene_prod_print" name="chart_roi_base_a_ene_prod_print"></div>
                     </div>
@@ -1926,7 +1968,7 @@ $costo_b
 </div> --}}
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_4" name="next_page_4" style="width: 80%; height:280px;" class="hidden">
+<div id="next_page_4" name="next_page_4" style="width: 80%; height:80px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
@@ -3912,15 +3954,15 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
     var options = {
           series: [
           {
-            name: "ROI - Existente",
+            name: "Existente",
             data: [res[0][0], res[0][1], res[0][2], res[0][3]]
           },
           {
-            name: "ROI - A",
+            name: "A",
             data: [res[1][0], res[1][1], res[1][2], res[1][3]]
           },
           {
-            name: "ROI - B",
+            name: "B",
             data: [res[2][0], res[2][1], res[2][2], res[2][3]]
           },
           {
@@ -4017,7 +4059,7 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
 
         },
         legend: {
-          position: 'top',
+          position: 'bottom',
           horizontalAlign: 'right',
           offsetX: 40,
           fontSize: '14px',
@@ -6982,7 +7024,7 @@ function roi_base_b_print(id_project){
           },
         },
         legend: {
-          position: 'top',
+          position: 'bottom',
           horizontalAlign: 'right',
           offsetX: 40,
           fontSize: '11px',
@@ -7054,15 +7096,15 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
     var options = {
           series: [
           {
-            name: "ROI - Existente",
+            name: "Existente",
             data: [res[0][0], res[0][1], res[0][2], res[0][3]]
           },
           {
-            name: "ROI - A",
+            name: "A",
             data: [res[1][0], res[1][1], res[1][2], res[1][3]]
           },
           {
-            name: "ROI - B",
+            name: "B",
             data: [res[2][0], res[2][1], res[2][2], res[2][3]]
           },
           {
