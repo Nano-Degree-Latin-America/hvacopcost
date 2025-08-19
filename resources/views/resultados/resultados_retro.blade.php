@@ -2108,9 +2108,9 @@ $costo_b
     var ima_sol = document.getElementById('ima_sol').value;
     google.charts.load('current', {'packages':['gauge']});
     var cons_ene_ele_ancho = 400;
-    var cons_ene_ele_alto = 235;
+    var cons_ene_ele_alto = 250;
     var cons_ene_ele_ancho_print = 210;
-    var cons_ene_ele_alto_print = 120;
+    var cons_ene_ele_alto_print = 140;
     var eui_print_width = 470;
     var eui_print_height = 140;
     var red_ene_print_height= 200;
