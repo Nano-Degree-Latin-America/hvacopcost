@@ -1277,7 +1277,7 @@
                                     <input type="text" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-color-inps rounded-md py-2 text-center"  name="maintenance_cost_2_1" id="maintenance_cost_2_1" >
                                 </div>
                                 <div class="flex justify-end">
-                                    <button onclick="inactive_display_sol_edit('sol_2_1','{{$id_project}}',2,1,'A')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                    <button onclick="inactive_display_sol_edit('sol_2_1','{{$id_project}}',2,1,'B')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -2230,7 +2230,7 @@
                                     <input type="text" style="margin-left:1px;" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-color-inps rounded-md py-1 text-center"  name="maintenance_cost_3_1" id="maintenance_cost_3_1" >
                                 </div>
                                 <div class="flex justify-end">
-                                    <button  onclick="inactive_display_sol_edit('sol_3_1','{{$id_project}}',3,1,'B')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
+                                    <button  onclick="inactive_display_sol_edit('sol_3_1','{{$id_project}}',3,1,'C')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
                                 </div>
                             </div>
                         </div>
