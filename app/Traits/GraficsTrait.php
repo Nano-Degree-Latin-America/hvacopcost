@@ -276,7 +276,11 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_base =  $suma_enf_base/$area;
+            $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_1,$prot_cond_1);
+
+            $res_enf_base = ($suma_enf_base/$yrs_life_activo)*(1/$area);
+
+            //$res_enf_base =  $suma_enf_base/$area;
 
             //opex
             $solutions = DB::table('solutions_project')
@@ -348,7 +352,10 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_a =  $suma_enf_a/$area;
+            //$res_enf_a =  $suma_enf_a/$area;
+            $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_2,$prot_cond_2);
+
+            $res_enf_a = ($suma_enf_a/$yrs_life_activo)*(1/$area);
             //opex
             $solutions_a = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -419,7 +426,10 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_b =  $suma_enf_b/$area;
+            $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_3,$prot_cond_3);
+
+            $res_enf_b = ($suma_enf_b/$yrs_life_activo)*(1/$area);
+            //$res_enf_b =  $suma_enf_b/$area;
             //opex
             $solutions_b = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -517,6 +527,61 @@ public function red_en_mw_grafic($dif,$dif_2){
         ->first()->inflacion_rate;
         $inflacion_rate =  $inflacion_rate_aux/100 + 1;
 
+        $tipo_mant_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_2_set = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first();
+
+        $prot_cond_2_set = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first();
+
+        $tipo_mant_3_set = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first();
+
+        $prot_cond_3_set = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first();
+
+
+        if($tipo_mant_2_set){
+            $tipo_mant_2 = $tipo_mant_2_set->tipo_ambiente;
+            $prot_cond_2 = $prot_cond_2_set->proteccion_condensador;
+        }else{
+            $tipo_mant_2 = null;
+            $prot_cond_2 = null;
+        }
+
+
+
+        if($tipo_mant_3_set){
+            $tipo_mant_3 = $tipo_mant_3_set->tipo_ambiente;
+            $prot_cond_3 = $prot_cond_3_set->proteccion_condensador;
+        }else{
+            $tipo_mant_3 = null;
+            $prot_cond_3 = null;
+        }
+
 
         foreach( $num_enfs as $num_enf){
            if($num_enf->num_enf === 1){
@@ -540,7 +605,11 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_base =  $suma_enf_base/$area;
+            $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_1,$prot_cond_1);
+
+            $res_enf_base = ($suma_enf_base/$yrs_life_activo)*(3/$area);
+
+            //$res_enf_base =  $suma_enf_base/$area;
 
             //opex
             $solutions = DB::table('solutions_project')
@@ -625,7 +694,11 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_a =  $suma_enf_a/$area;
+            $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_2,$prot_cond_2);
+
+            $res_enf_a = ($suma_enf_a/$yrs_life_activo)*(3/$area);
+
+            //$res_enf_a =  $suma_enf_a/$area;
             //opex
             $solutions_a = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -703,7 +776,11 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_b =  $suma_enf_b/$area;
+            $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_3,$prot_cond_3);
+
+            $res_enf_b = ($suma_enf_b/$yrs_life_activo)*(3/$area);
+
+            //$res_enf_b =  $suma_enf_b/$area;
             //opex
             $solutions_b = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -804,6 +881,61 @@ public function red_en_mw_grafic($dif,$dif_2){
         ->first()->inflacion_rate;
         $inflacion_rate =  $inflacion_rate_aux/100 + 1;
 
+        $tipo_mant_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_2_set = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first();
+
+        $prot_cond_2_set = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first();
+
+        $tipo_mant_3_set = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first();
+
+        $prot_cond_3_set = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first();
+
+
+        if($tipo_mant_2_set){
+            $tipo_mant_2 = $tipo_mant_2_set->tipo_ambiente;
+            $prot_cond_2 = $prot_cond_2_set->proteccion_condensador;
+        }else{
+            $tipo_mant_2 = null;
+            $prot_cond_2 = null;
+        }
+
+
+
+        if($tipo_mant_3_set){
+            $tipo_mant_3 = $tipo_mant_3_set->tipo_ambiente;
+            $prot_cond_3 = $prot_cond_3_set->proteccion_condensador;
+        }else{
+            $tipo_mant_3 = null;
+            $prot_cond_3 = null;
+        }
+
 
         foreach( $num_enfs as $num_enf){
            if($num_enf->num_enf === 1){
@@ -827,7 +959,13 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_base =  $suma_enf_base/$area;
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
+               $res_enf_base = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_1,$prot_cond_1);
+               $res_enf_base = ($suma_enf_base/$yrs_life_activo)*(5/$area);
+            }
+            //$res_enf_base =  $suma_enf_base/$area;
 
             //opex
             $solutions = DB::table('solutions_project')
@@ -912,7 +1050,18 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_a =  $suma_enf_a/$area;
+
+            if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
+               $res_enf_a = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_2,$prot_cond_2);
+
+               $res_enf_a = ($suma_enf_a/$yrs_life_activo)*(5/$area);
+            }
+
+
+
+            //$res_enf_a =  $suma_enf_a/$area;
             //opex
             $solutions_a = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -990,7 +1139,18 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_b =  $suma_enf_b/$area;
+
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
+               $res_enf_b = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_3,$prot_cond_3);
+
+               $res_enf_b = ($suma_enf_b/$yrs_life_activo)*(5/$area);
+            }
+
+
+
+            //$res_enf_b =  $suma_enf_b/$area;
             //opex
             $solutions_b = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -1170,7 +1330,14 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_base =  $suma_enf_base/$area;
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico' || $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
+               $res_enf_base = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_1,$prot_cond_1);
+               $res_enf_base = ($suma_enf_base/$yrs_life_activo)*(10/$area);
+            }
+
+            //$res_enf_base =  $suma_enf_base/$area;
 
             //opex
             $solutions = DB::table('solutions_project')
@@ -1263,7 +1430,14 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_a =  $suma_enf_a/$area;
+            if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+               $res_enf_a = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_2,$prot_cond_2);
+               $res_enf_a = ($suma_enf_a/$yrs_life_activo)*(10/$area);
+            }
+
+            //$res_enf_a =  $suma_enf_a/$area;
             //opex
             $solutions_a = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -1344,7 +1518,14 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_b =  $suma_enf_b/$area;
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+               $res_enf_b = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_3,$prot_cond_3);
+               $res_enf_b = ($suma_enf_b/$yrs_life_activo)*(10/$area);
+            }
+
+            //$res_enf_b =  $suma_enf_b/$area;
             //opex
             $solutions_b = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -1496,8 +1677,6 @@ public function red_en_mw_grafic($dif,$dif_2){
             $prot_cond_2 = null;
         }
 
-
-
         if($tipo_mant_3_set){
             $tipo_mant_3 = $tipo_mant_3_set->tipo_ambiente;
             $prot_cond_3 = $prot_cond_3_set->proteccion_condensador;
@@ -1515,11 +1694,13 @@ public function red_en_mw_grafic($dif,$dif_2){
         foreach( $num_enfs as $num_enf){
 
            if($num_enf->num_enf === 1){
+
             $type_p = DB::table('solutions_project')
         ->where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',$num_enf->num_enf)
         ->first()->type_p;
             //capex
+
             $array_base = [];
             $inv_ini = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -1535,7 +1716,10 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_base =  $suma_enf_base/$area;
+            $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_1,$prot_cond_1);
+
+            $res_enf_base = ($suma_enf_base/$yrs_life_activo)*(3/$area);
+            //$res_enf_base =  $suma_enf_base/$area;
 
             //opex
             $solutions = DB::table('solutions_project')
@@ -1611,7 +1795,10 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_a =  $suma_enf_a/$area;
+            $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_2,$prot_cond_2);
+
+            $res_enf_a = ($suma_enf_a/$yrs_life_activo)*(3/$area);
+            //$res_enf_a =  $suma_enf_a/$area;
             //opex
             $solutions_a = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -1689,7 +1876,10 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_b =  $suma_enf_b/$area;
+            $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_3,$prot_cond_3);
+
+            $res_enf_b = ($suma_enf_b/$yrs_life_activo)*(3/$area);
+            //$res_enf_b =  $suma_enf_b/$area;
             //opex
             $solutions_b = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -1791,6 +1981,60 @@ public function red_en_mw_grafic($dif,$dif_2){
         ->first()->inflacion_rate;
         $inflacion_rate =  $inflacion_rate_aux/100 + 1;
 
+        $tipo_mant_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->tipo_ambiente;
+
+        $prot_cond_1 = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',1)
+        ->where('solutions_project.num_sol','=',1)
+        ->first()->proteccion_condensador;
+
+        $tipo_mant_2_set = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first();
+
+        $prot_cond_2_set = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',2)
+        ->where('solutions_project.num_sol','=',1)
+        ->first();
+
+        $tipo_mant_3_set = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first();
+
+        $prot_cond_3_set = DB::table('solutions_project')
+        ->where('solutions_project.id_project','=',$id_projecto)
+        ->where('solutions_project.num_enf','=',3)
+        ->where('solutions_project.num_sol','=',1)
+        ->first();
+
+
+        if($tipo_mant_2_set){
+            $tipo_mant_2 = $tipo_mant_2_set->tipo_ambiente;
+            $prot_cond_2 = $prot_cond_2_set->proteccion_condensador;
+        }else{
+            $tipo_mant_2 = null;
+            $prot_cond_2 = null;
+        }
+
+        if($tipo_mant_3_set){
+            $tipo_mant_3 = $tipo_mant_3_set->tipo_ambiente;
+            $prot_cond_3 = $prot_cond_3_set->proteccion_condensador;
+        }else{
+            $tipo_mant_3 = null;
+            $prot_cond_3 = null;
+        }
+
+
         foreach( $num_enfs as $num_enf){
            if($num_enf->num_enf === 1){
             $type_p = DB::table('solutions_project')
@@ -1813,7 +2057,16 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_base =  $suma_enf_base/$area;
+            //$res_enf_base =  $suma_enf_base/$area;
+
+            //valida marino y sin  proteccion
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
+               $res_enf_base = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_1,$prot_cond_1);
+               $res_enf_base = ($suma_enf_base/$yrs_life_activo)*(5/$area);
+            }
+
             //opex
             $solutions = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -1900,7 +2153,16 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_a =  $suma_enf_a/$area;
+            //valida marino y sin  proteccion
+            if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
+               $res_enf_a = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_2,$prot_cond_2);
+               $res_enf_a = ($suma_enf_a/$yrs_life_activo)*(5/$area);
+            }
+
+
+            //$res_enf_a =  $suma_enf_a/$area;
             //opex
             $solutions_a = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -1975,7 +2237,15 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_b =  $suma_enf_b/$area;
+             if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
+               $res_enf_b = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_3,$prot_cond_3);
+               $res_enf_b = ($suma_enf_b/$yrs_life_activo)*(5/$area);
+            }
+            //dd($tipo_mant_3,$prot_cond_3);
+
+            //$res_enf_b =  $suma_enf_b/$area;
             //opex
             $solutions_b = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -2144,7 +2414,14 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_base =  $suma_enf_base/$area;
+             if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico' || $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
+               $res_enf_base = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_1,$prot_cond_1);
+               $res_enf_base = ($suma_enf_base/$yrs_life_activo)*(10/$area);
+            }
+
+            //$res_enf_base =  $suma_enf_base/$area;
             //opex
             $solutions = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -2217,7 +2494,14 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_a =  $suma_enf_a/$area;
+            if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+               $res_enf_a = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_2,$prot_cond_2);
+               $res_enf_a = ($suma_enf_a/$yrs_life_activo)*(10/$area);
+            }
+            //dd($res_enf_a);
+            //$res_enf_a =  $suma_enf_a/$area;
             //opex
             $solutions_a = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -2293,7 +2577,14 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_b =  $suma_enf_b/$area;
+            //$res_enf_b =  $suma_enf_b/$area;
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+               $res_enf_b = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_3,$prot_cond_3);
+               $res_enf_b = ($suma_enf_b/$yrs_life_activo)*(10/$area);
+            }
+
             //opex
             $solutions_b = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -2465,7 +2756,14 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_base =  $suma_enf_base/$area;
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico' || $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion' ||  $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'liquido_coating_basico'){
+               $res_enf_base = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_1,$prot_cond_1);
+               $res_enf_base = ($suma_enf_base/$yrs_life_activo)*(15/$area);
+            }
+
+            //$res_enf_base =  $suma_enf_base/$area;
             //opex
             $solutions = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -2512,7 +2810,7 @@ public function red_en_mw_grafic($dif,$dif_2){
             }
 
             //$total_opex_base = $suma_enf_base_aux + $res_opex_base;
-            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'infiniguard' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'cobre_cobre' || $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'infiniguard' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico' || $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
                 array_push($array_base,0,0,0);
             }else{
                 array_push( $array_base,round($res_enf_base,1),round($suma_enf_base_aux,1),round($res_opex_base,1));
@@ -2536,7 +2834,15 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_a =  $suma_enf_a/$area;
+            if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion' ||  $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'liquido_coating_basico'){
+               $res_enf_a = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_2,$prot_cond_2);
+               $res_enf_a = ($suma_enf_a/$yrs_life_activo)*(15/$area);
+            }
+
+
+            //$res_enf_a =  $suma_enf_a/$area;
             //opex
             $solutions_a = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -2583,7 +2889,7 @@ public function red_en_mw_grafic($dif,$dif_2){
            }
 
            //$total_opex_a = $suma_enf_a_aux + $res_opex_a;
-           if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'cobre_cobre' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+           if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
             array_push($array_a,0,0,0);
             }else{
                 array_push($array_a,round($res_enf_a,1),round($suma_enf_a_aux,1),round($res_opex_a,1));
@@ -2608,7 +2914,15 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-            $res_enf_b =  $suma_enf_b/$area;
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion' ||  $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'liquido_coating_basico'){
+               $res_enf_b = 0;
+            }else{
+               $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_3,$prot_cond_3);
+               $res_enf_b = ($suma_enf_b/$yrs_life_activo)*(15/$area);
+            }
+
+
+            //$res_enf_b =  $suma_enf_b/$area;
             //opex
             $solutions_b = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -2656,7 +2970,7 @@ public function red_en_mw_grafic($dif,$dif_2){
 
             $total_opex_b = $suma_enf_b_aux + $res_opex_b;
 
-            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'cobre_cobre' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
                 array_push($array_b,0,0,0);
                 }else{
                 array_push($array_b,round($res_enf_b,1),round($suma_enf_b_aux,1),round($res_opex_b,1));
@@ -3032,6 +3346,35 @@ public function red_en_mw_grafic($dif,$dif_2){
 
             return floatval($sol);
         }
+    }
+
+    public function getYrsLifeActivo($tipo_mant,$prot_cond){
+        switch ($tipo_mant) {
+            case 'no_agresivo':
+                return 5;
+            case 'marino':
+                switch ($prot_cond) {
+                    case 'sin_proteccion':
+                        return 3;
+                    case 'liquido_coating_basico':
+                        return 5;
+                    case 'infiniguard':
+                        return 10;
+                }
+            break;
+
+            case 'contaminado':
+                switch ($prot_cond) {
+                    case 'sin_proteccion':
+                        return 5;
+                    case 'liquido_coating_basico':
+                        return 10;
+                    case 'infiniguard':
+                        return 15;
+                }
+            break;
+        }
+        return 0;
     }
 
 }
