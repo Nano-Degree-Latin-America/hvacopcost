@@ -347,7 +347,13 @@ public function roi($dif_cost,$inflacion,$inv_ini,$cant){
                 $año_15 = $año_15 + $año_15_suma;
 
                 if($cant == 3){
-                    array_push($array_sums_res,intval($año_3_suma));
+                    //checar
+                    $año_3_suma =  $costo + $año_3_suma;
+                    $año_3_suma =  $año_3_suma*$inflacion_anual_energia;
+                    $suma_3_años = $año_3 +intval($array_only_energy[0]);
+                    $porcent_3_aux = $suma_3_años + intval($array_only_energy[0]);
+                    $porcent_3 = $porcent_3_aux / $inv_ini * 100;
+                    array_push($array_sums_res,intval($porcent_3));
                 }
 
             }else{
