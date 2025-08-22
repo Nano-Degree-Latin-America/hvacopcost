@@ -12961,7 +12961,7 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais){
                 value: 'cobre_cobre',
                 text: 'Cobre - Cobre'
             })); */
-
+        $("#"+id_prot_comp).trigger('change');
         break;
 
         case 'marino':
@@ -12983,7 +12983,7 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais){
                     text: 'Infiniguard®'
                 }));
             }
-
+            $("#"+id_prot_comp).trigger('change');
         break;
 
         case 'contaminado':
@@ -13005,7 +13005,7 @@ function options_tipo_proyect(tipo_ambiente_id,id_prot_comp,ima,pais){
                     text: 'Infiniguard®'
                 }));
             }
-
+                $("#"+id_prot_comp).trigger('change');
         break;
 
         default:
@@ -13208,7 +13208,7 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima,pais)
                 value: 'cobre_cobre',
                 text: 'Cobre - Cobre'
             })); */
-
+            $("#"+id_prot_comp).trigger('change');
         break;
 
         case 'marino':
@@ -13229,7 +13229,7 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima,pais)
                     text: 'Infiniguard®'
                 }));
             }
-
+            $("#"+id_prot_comp).trigger('change');
 
         break;
 
@@ -13251,6 +13251,7 @@ function  options_tipo_proyect_retro(tipo_ambiente_id,id_prot_comp,yrs,ima,pais)
                     text: 'Infiniguard®'
                 }));
             }
+            $("#"+id_prot_comp).trigger('change');
         break;
 
         default:
