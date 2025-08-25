@@ -202,7 +202,7 @@ span{
                             @if ($project->type_p == 1 || $project->type_p == 2 || $project->type_p == 3)
                             <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
                                 <td class="border-grey-light border hover:bg-gray-100 p-3 text-left">
-                                    @if ($project->type_p == 3)
+                                    @if ($project->type_p === 3)
                                         <?php  $name_mant=$check_types_p->name_mant($project->id); ?>
                                         {{$name_mant}}
                                     @else
