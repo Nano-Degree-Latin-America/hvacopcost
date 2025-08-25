@@ -2685,8 +2685,8 @@ $costo_b
                                             Infiniguard®
                                         @endif
 
-                                        @if ($solution->proteccion_condensador == 'cobre_cobre')
-                                            Cobre Cobre
+                                        @if ($solution->proteccion_condensador == 'liquido_coating_basico')
+                                            Líquido o Coating Básico
                                         @endif
                                         </p>
                                     </div>
@@ -3052,8 +3052,8 @@ $costo_b
                                                 Infiniguard®
                                             @endif
 
-                                            @if ($solution->proteccion_condensador == 'cobre_cobre')
-                                                Cobre Cobre
+                                            @if ($solution->proteccion_condensador == 'liquido_coating_basico')
+                                                Líquido o Coating Básico
                                             @endif
                                             </p>
                                         </div>
