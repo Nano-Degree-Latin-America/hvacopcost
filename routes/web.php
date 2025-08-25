@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use App\Http\Controllers\HvacChatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -337,4 +338,7 @@ Route::get('/openai-status', function () {
         return '❌ Error inesperado: ' . $e->getMessage();
     }
 });
+
+//Route::get('/hvac/chat', [HvacChatController::class, 'chat'])->middleware('throttle:30,1'); // rate limit básico: 30 req/min
+
 

@@ -296,30 +296,21 @@
             </div>
         </div>
 
-        <div class="w-full flex justify-center">
+        <div class="w-full flex justify-center mt-10">
             <div class="grid w-1/3">
 
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
-                           {{--  <div class="flex justify-center w-full p-2">
-                                <label class="solucions_style_name">{{ __('index.solucion') }} Base</label>
-                            </div> --}}
-
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-items-center w-full">
-
-                                    <div class="flex w-full justify-center gap-x-2">
+                                   {{--  <div class="flex w-full justify-center gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_1)}}</p><b class="unit_style">Kwh</b>
-                                    </div>
-
+                                    </div> --}}
                                     <div class="flex w-full justify-center">
                                         <div id="chart_cons_ene_hvac_ar_base" name="chart_cons_ene_hvac_ar_base" class="js_charts_style">
 
                                         </div>
                                     </div>
-{{--                                     <div id="chart_cons_ene_hvac_ar_base_print" name="chart_cons_ene_hvac_ar_base_print" class="js_charts_style"></div>
- --}}
-
                                 </div>
                             </div>
 
@@ -327,22 +318,16 @@
                 </div>
             </div>
 
-
-
             <div class="grid w-1/3">
 
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
-{{--                             <div class="flex justify-center w-full p-2">
-                                <label class="solucions_style_name">{{ __('index.solucion') }} A</label>
-                            </div> --}}
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-center text-center">
-                                    <div class="flex w-full justify-center  gap-x-2">
+                                    {{-- <div class="flex w-full justify-center  gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_2)}}</p><b class="unit_style">Kwh</b>
-                                    </div>
+                                    </div> --}}
                                     <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style" ></div>
-
                           </div>
                             </div>
                         </div>
@@ -350,21 +335,14 @@
             </div>
 
             <div class="grid w-1/3">
-
-
-
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
-{{--                             <div class="flex justify-center w-full p-2">
-                                <label class="solucions_style_name">{{ __('index.solucion') }} B</label>
-                            </div> --}}
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-center text-center">
-                                   <div class="flex w-full justify-center  gap-x-2">
+                                  {{--  <div class="flex w-full justify-center  gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_3)}}</p><b class="unit_style">Kwh</b>
-                                    </div>
+                                    </div> --}}
                                      <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
-
                                </div>
                             </div>
                         </div>
@@ -3446,8 +3424,8 @@ $costo_b
                                                 Infiniguard®
                                             @endif
 
-                                            @if ($solution->proteccion_condensador == 'cobre_cobre')
-                                                Cobre Cobre
+                                            @if ($solution->proteccion_condensador == 'liquido_coating_basico')
+                                                Líquido o Coating Básico
                                             @endif
                                             </p>
                                         </div>
@@ -3479,6 +3457,7 @@ $costo_b
         </div>
     </div>
 </div>
+{{-- @include('components.hvac-chat') --}}
 </div>
 {{-- res_ana_ener --}}
 {{-- <div class="loader"></div> --}}

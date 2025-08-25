@@ -298,15 +298,11 @@
             </div>
         </div>
 
-        <div class="w-full flex justify-center">
+        <div class="w-full flex justify-center  mt-10">
             <div class="grid w-1/3">
 
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
-                           {{--  <div class="flex justify-center w-full p-2">
-                                <label class="solucions_style_name">Existente</label>
-                            </div> --}}
-
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-items-center w-full">
 
@@ -319,9 +315,6 @@
 
                                         </div>
                                     </div>
-{{--                                     <div id="chart_cons_ene_hvac_ar_base_print" name="chart_cons_ene_hvac_ar_base_print" class="js_charts_style"></div>
- --}}
-
                                 </div>
                             </div>
 
@@ -335,9 +328,6 @@
 
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
-                           {{--  <div class="flex justify-center w-full p-2">
-                                <label class="solucions_style_name">A</label>
-                            </div> --}}
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-center text-center">
                                     <div class="flex w-full justify-center  gap-x-2">
@@ -357,9 +347,6 @@
 
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
-                           {{--  <div class="flex justify-center w-full p-2">
-                                <label class="solucions_style_name">B</label>
-                            </div> --}}
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-center text-center">
 
@@ -2100,6 +2087,7 @@ $costo_b
 </div>
 {{-- capex vs opex --}}
 {{-- caja_principal --}}
+{{-- @include('components.hvac-chat') --}}
 </div>
 <script type="text/javascript">
     let dollarUSLocale = Intl.NumberFormat('en-US');
