@@ -1091,11 +1091,13 @@ if($counter == 2){
                 </div> --}}
             </div>
             @php
+
                 $personas=$conf_val->personas($id_project,$conf_val_base);
                 $personas_a=$conf_val->personas($id_project,$conf_val_a);
                 $personas_b=$conf_val->personas($id_project,$conf_val_b);
 
                 $costo_base=$conf_val->costo($personas,$id_project);
+
                 $costo_a=$conf_val->costo($personas_a,$id_project);
                 $costo_b=$conf_val->costo($personas_b,$id_project);
                 //VALIDAR SI SON DIREFENTES LOS TRES VALORES  personas personas_a personas_b , no se repiten
@@ -1105,8 +1107,21 @@ if($counter == 2){
                 $mayor = max($costo_base, $costo_a, $costo_b);
 
                 $costo_anual_base = $mayor - $costo_base;
-                $costo_anual_a = $mayor - $costo_a;
-                $costo_anual_b = $mayor - $costo_b;
+
+                //valida  si existe solucion
+                 $check_solution_a=$conf_val->check_solution($id_project,2);
+                if($check_solution_a !== null){
+                    $costo_anual_a = $mayor - $costo_a;
+                }else{
+                    $costo_anual_a=0;
+                }
+                //valida  si existe solucion
+                $check_solution_b=$conf_val->check_solution($id_project,3);
+                if($check_solution_b !== null){
+                      $costo_anual_b = $mayor - $costo_b;
+                }else{
+                    $costo_anual_b=0;
+                }
 
                 }else{
                     $costo_anual_base = 0;
@@ -1210,7 +1225,7 @@ if($counter == 2){
 <?php  $prim_buil_check=$conf_val->prim_buil_check($id_project) ?>
 
  @if ($prim_buil_check->id_cat_edifico == 3 || $prim_buil_check->id_cat_edifico == 7 || $prim_buil_check->id_cat_edifico == 8 || $prim_buil_check->id_cat_edifico == 9 || $prim_buil_check->id_cat_edifico == 10 || $prim_buil_check->id_cat_edifico == 11)
-                    <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
+              {{--       <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
                         <div class="ancho border_box border-blue-500 rounded-md grid">
                           <div class="w-full flex">
                                   <div style="background-color:#1B17BB;" class="w-full flex justify-center">
@@ -1256,11 +1271,8 @@ if($counter == 2){
                                 <div class="hidden" id="chart_cu_sho_Be_b_print" name="chart_cu_sho_Be_b_print"></div>
                             </div>
                         </div>
-
-    {{-- <div id="check_gauge" name="check_gauge"></div> --}}
-{{--                     <img style="width: 300px;height:200px; margin-left:50px;" src="https://quickchart.io/chart?v=2.9.4&c={ type: 'gauge', data: { datasets: [ { value: 3, data: [1.5, 4.5, 6], backgroundColor: ['red','yellow','green'], borderWidth: 2, }, ], }, options: { valueLabel: { display: false, }, }, }">
---}}                </div>
-</div>
+               </div>
+</div> --}}
 @endif
 
 
