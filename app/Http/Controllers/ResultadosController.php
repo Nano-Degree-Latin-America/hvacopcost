@@ -830,9 +830,20 @@ class ResultadosController extends Controller
 
           $array_a = $funciones->roi_only_energy($consumo_ene_anual_a,$mayor,$inflacion,$inv_ini_1);
 
-          $array_b = $funciones->roi_only_energy($consumo_ene_anual_b,$mayor,$inflacion,$inv_ini_2);
+          if($inv_ini_2  == '0'  || $inv_ini_2  == 0){
+              $array_b = [0,0,0,0];
+            }else{
+              $array_b = $funciones->roi_only_energy($consumo_ene_anual_b,$mayor,$inflacion,$inv_ini_2);
+          }
 
-          $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3);
+          if($inv_ini_3  == '0'  || $inv_ini_2  == 0){
+            $array_c = [0,0,0,0];
+            }else{
+            $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3);
+
+          }
+
+
 
         array_push($array_res,$array_a,$array_b,$array_c);
         return response()->json($array_res);
