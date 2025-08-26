@@ -935,5 +935,14 @@ trait  ResultsTrait{
         return false;
     }
 
+    public function check_solution($id_project,$num_sol){
+        $solution = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_project)
+            ->where('solutions_project.num_enf','=',$num_sol)
+            ->where('solutions_project.num_sol','=',1)
+            ->first();
+        return $solution;
+    }
+
 
 }
