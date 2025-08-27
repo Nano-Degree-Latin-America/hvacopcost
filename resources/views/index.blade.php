@@ -588,7 +588,9 @@ input[type=number]::-webkit-outer-spin-button {
     <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
 </div>
 </div>
-{{-- @include('components.hvac-chat') --}}
+ @if (Auth::user()->tipo_user == 5)
+    @include('components.hvac-chat')
+ @endif
 <style>
 
 .title_index{
