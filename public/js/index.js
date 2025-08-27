@@ -13651,7 +13651,7 @@ async function copiar_form_base_a_retro(sol_paste){
     var csDisenio_1_1_retro = $('#csDisenio_1_1_retro').val();
     $("#cheDisenio_2_1_retro").find('option[value="'+csDisenio_1_1_retro+'"]').attr("selected", true);
     send_name('cheDisenio_2_1_retro');
-    await check_sin_doa('cheDisenio_2_1_retro','ventilacion_2_1_retro','filtracion_1_1_retro','cheTipo_2_1_retro');
+    await check_sin_doa('cheDisenio_2_1_retro','ventilacion_2_1_retro','filtracion_2_1_retro','cheTipo_2_1_retro');
 
 
     var tipo_control_1_1_retro = $('#tipo_control_1_1_retro').val();
