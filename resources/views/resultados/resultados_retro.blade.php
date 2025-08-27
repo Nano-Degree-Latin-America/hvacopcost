@@ -2097,7 +2097,9 @@ $costo_b
 </div>
 {{-- capex vs opex --}}
 {{-- caja_principal --}}
-{{-- @include('components.hvac-chat') --}}
+ @if (Auth::user()->tipo_user == 5)
+    @include('components.hvac-chat')
+ @endif
 </div>
 <script type="text/javascript">
     let dollarUSLocale = Intl.NumberFormat('en-US');

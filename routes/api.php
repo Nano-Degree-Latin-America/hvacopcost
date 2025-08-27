@@ -32,13 +32,16 @@ Route::post('/chatgpt-support', function (Request $request) {
         ],
     ]);
 
+
+    /* 'Eres un asistente experto en soporte técnico de equipos HVAC. Solo puedes responder preguntas relacionadas con HVAC. Si la pregunta no es de HVAC, responde: "Lo siento, solo puedo responder preguntas sobre equipos HVAC" */
+
     try {
         $response = $client->post('chat/completions', [
             'json' => [
                 'model' => 'gpt-3.5-turbo',
                 'messages' => [
                     // Aquí forzamos el rol de soporte HVAC
-                    ['role' => 'system', 'content' => 'Eres un asistente experto en Análisis Energético y Financiero para Sistemas de HVAC. Solo puedes responder preguntas relacionadas con Análisis Energético y Financiero para Sistemas de HVAC .'],
+                    ['role' => 'system', 'content' => 'Eres un asistente experto soporte para el en Análisis Energético y Financiero para Sistemas de HVAC. Si la pregunta no es de Análisis Energético y Financiero para Sistemas de HVAC, responde: "Lo siento, solo puedo responder preguntas sobre equipos HVAC.'],
                     ['role' => 'user', 'content' => $prompt],
                 ],
             ],
