@@ -3469,7 +3469,9 @@ $costo_b
         </div>
     </div>
 </div>
-{{-- @include('components.hvac-chat') --}}
+ @if (Auth::user()->tipo_user == 5)
+    @include('components.hvac-chat')
+ @endif
 </div>
 {{-- res_ana_ener --}}
 {{-- <div class="loader"></div> --}}

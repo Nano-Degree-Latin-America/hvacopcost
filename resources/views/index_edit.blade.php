@@ -514,7 +514,9 @@ $idm = App::getLocale();
     </div>
     <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
 </div>
-{{-- @include('components.hvac-chat') --}}
+ @if (Auth::user()->tipo_user == 5)
+    @include('components.hvac-chat')
+ @endif
 <style>
 .title_index{
               color:#1B17BB !important;"
