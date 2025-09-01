@@ -66,6 +66,7 @@ class HvacChatController extends Controller
             ]);
         }
 
+
         // 3) Contexto opcional: podrías inyectar extractos de tu KB
         $context = []; // p.ej. últimos logs de la conversación o fragmentos de manuales
 
