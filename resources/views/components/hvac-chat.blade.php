@@ -110,7 +110,7 @@
     setLoading(true);
 
     try {
-      const res = await fetch('<?php echo url('/api/chatgpt-support'); ?>', {
+      const res = await fetch('<?php echo url('/api/hvac/chat'); ?>', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -121,8 +121,9 @@
 
       const data = await res.json();
       removeLoading();
-      if (data.reply) {
-        appendMessage(data.reply, 'bot');
+
+      if (data.response) {
+        appendMessage(data.response, 'bot');
       } else if (data.error) {
         appendMessage('Error: ' + data.error, 'bot');
       } else {
