@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use GuzzleHttp\Client;
+use App\Http\Controllers\HvacChatController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -41,7 +42,7 @@ Route::post('/chatgpt-support', function (Request $request) {
                 'model' => 'gpt-3.5-turbo',
                 'messages' => [
                     // Aquí forzamos el rol de soporte HVAC
-                    ['role' => 'system', 'content' => 'Eres un asistente experto soporte para el en Análisis Energético y Financiero para Sistemas de HVAC. Si la pregunta no es de Análisis Energético y Financiero para Sistemas de HVAC, responde: "Lo siento, solo puedo responder preguntas sobre equipos HVAC.'],
+                    /* ['role' => 'system', 'content' => 'Eres un asistente experto soporte para el en Análisis Energético y Financiero para Sistemas de HVAC. Si la pregunta no es de Análisis Energético y Financiero para Sistemas de HVAC, responde: "Lo siento, solo puedo responder preguntas sobre equipos HVAC.'], */
                     ['role' => 'user', 'content' => $prompt],
                 ],
             ],
@@ -57,3 +58,8 @@ Route::post('/chatgpt-support', function (Request $request) {
         ], 500);
     }
 });
+
+
+Route::post('/hvac/chat', [HvacChatController::class, 'chat'])
+    ->middleware('throttle:30,1'); // rate limit básico: 30 req/min
+
