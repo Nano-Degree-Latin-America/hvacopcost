@@ -27,10 +27,10 @@ class OpenAIService
 
         // Mensaje del sistema: limita a HVAC y define negativa educada si es off-topic
         $system = "Eres un asistente de soporte TÉCNICO especializado EXCLUSIVAMENTE en HVAC (calefacción, ventilación, aire acondicionado y refrigeración).
-- Responde con precisión y concisión.
-- Prioriza seguridad y buenas prácticas.";
+                    - Responde con precisión y concisión.
+                    - Prioriza seguridad y buenas prácticas.";
 
-        // Inyecta contexto opcional (FAQ, políticas, glosario)
+        // Inyecta contexto
         $contextText = '';
         if (!empty($context)) {
             $contextText = "Contexto de referencia (no repitas literal, úsalo para fundamentar):\n";
@@ -51,7 +51,7 @@ class OpenAIService
 
         $response = $this->client->post('chat/completions', [
             'json' => [
-                'model' => 'gpt-3.5-turbo',     // económico; puedes cambiar luego
+                'model' => 'gpt-3.5-turbo',     // modelo de chatgtp
                 'temperature' => 0.2,           // técnico y estable
                 'messages' => $messages,
             ],

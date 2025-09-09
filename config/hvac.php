@@ -6,7 +6,7 @@ return [
 
     ],
 
-    // FAQ interno para respuestas rápidas sin llamar a la API (ejemplo; ajusta contenido)
+    // FAQ interno para respuestas rápidas sin llamar a la API
     'faq' => [
         '¿Qué es burden?' => "En instrumentación, 'burden' suele referirse a la carga que presenta un instrumento (como un amperímetro) al circuito, produciendo caída de tensión. En HVAC, el término no es estándar; normalmente se habla de 'carga térmica' (heat load). ¿Te refieres a carga térmica?",
         '¿diferencia entre seer, seer2 y eer?' => "SEER es eficiencia estacional (promedio a lo largo de la temporada de enfriamiento). EER es eficiencia en un punto de operación fijo. Un SEER alto indica mejor rendimiento estacional.",
@@ -65,6 +65,6 @@ return [
 
     // Lista de palabras/temas HVAC (whitelist simple para filtro previo)
     'hvac_keywords' => [
-        'hvac','aire acondicionado','refrigeración','calefacción','ventilación','split','vrf','termostato','seer','eer','carga térmica','refrigerante','compresor','evaporador','condensador','conductos','fancoil','chiller','heat pump','btu','toneladas','manual j','ashrae','mantenimiento','filtro','presión estática','burden','CAPEX','OPEX','Paquete (RTU)','Split DX','Minisplit Inverter','WSHP','Chiller Aire Scroll','Chiller Aire Tornillo',' VRF Ductado','PTAC / VTAC','Payback','MARR','ROI','EUI','m²','ft²','RTU','VRF','PTAC','VTAC','LSP','MSP','HSP','TR','kW','Cooling Hours','EER','SEER','SEER2','IEER','IPLV','VAV','HR','DOA','DDC','Kwh','ROI','MARR','EUI','BTU','BTUH','Sqf','ASHRAE Estándar 100','ASHRAE Estándar 62.1','ASHRAE Estándar 180','ASHRAE Estándar 90.1','ASHRAE Estándar 169','ASHRAE Estándar 55','ASHRAE Estándar 70','ENERGY STAR',
+        'hvac','aire acondicionado','refrigeración','calefacción','ventilación','split','vrf','termostato','seer','eer','carga térmica','refrigerante','compresor','evaporador','condensador','conductos','fancoil','chiller','heat pump','btu','toneladas','manual j','ashrae','mantenimiento','filtro','presión estática','burden','CAPEX','OPEX','Paquete (RTU)','Split DX','Minisplit Inverter','WSHP','Chiller Aire Scroll','Chiller Aire Tornillo',' VRF Ductado','PTAC / VTAC','Payback','MARR','ROI','EUI','m²','ft²','RTU','VRF','PTAC','VTAC','LSP','MSP','HSP','TR','kW','Cooling Hours','EER','SEER','SEER2','IEER','IPLV','VAV','HR','DOA','DDC','Kwh','ROI','MARR','EUI','BTU','BTUH','Sqf','ASHRAE Estándar 100','ASHRAE Estándar 62.1','ASHRAE Estándar 180','ASHRAE Estándar 90.1','ASHRAE Estándar 169','ASHRAE Estándar 55','ASHRAE Estándar 70','ENERGY STAR','Hola','Estándar 100','Estándar 62.1','Estándar 180','Estándar 90.1','Estándar 169','Estándar 55','Estándar 70','gracias','adios'
     ],
 ];

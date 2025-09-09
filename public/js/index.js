@@ -16762,3 +16762,27 @@ function calcular_speendplan_base_update(id_project){
 
  }
 
+ function send_ambiente(value,type){
+    switch (type) {
+        case 'new':
+            $("#tipo_ambiente_1_2").find('option[value="' + value + '"]').prop("selected", "selected");
+            $('#tipo_ambiente_1_2').trigger('change');
+            $("#tipo_ambiente_2_1").find('option[value="' + value + '"]').prop("selected", "selected");
+            $('#tipo_ambiente_2_1').trigger('change');
+            $("#tipo_ambiente_2_2").find('option[value="' + value + '"]').prop("selected", "selected");
+            $('#tipo_ambiente_2_2').trigger('change');
+            $("#tipo_ambiente_3_1").find('option[value="' + value + '"]').prop("selected", "selected");
+            $('#tipo_ambiente_3_1').trigger('change');
+            $("#tipo_ambiente_3_2").find('option[value="' + value + '"]').prop("selected", "selected");
+            $('#tipo_ambiente_3_2').trigger('change');
+        break;
+
+         case 'retro':
+            $("#tipo_ambiente_2_1_retro").find('option[value="' + value + '"]').prop("selected", "selected");
+            $('#tipo_ambiente_2_1_retro').trigger('change');
+            $("#tipo_ambiente_3_1_retro").find('option[value="' + value + '"]').prop("selected", "selected");
+            $('#tipo_ambiente_3_1_retro').trigger('change');
+         break;
+
+    }
+ }
