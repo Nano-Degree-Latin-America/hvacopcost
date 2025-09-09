@@ -42,7 +42,7 @@ Route::post('/text-to-voice', function (Request $request) {
     $audioContent = $response->getBody()->getContents();
 
     $filename = 'voice_' . uniqid() . '.mp3';
-    Storage::disk('public')->put("voices/$filename", $audioData);
+    Storage::disk('public')->put("voices/$filename", $audioContent);
 
     // Retornas la URL al frontend
     return response()->json([
