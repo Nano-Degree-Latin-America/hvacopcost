@@ -14,7 +14,7 @@ class HvacChatController extends Controller
         $this->openai = $openai;
     }
 
-    // Filtro rápido basado en keywords (PHP 7.4 friendly)
+    // Filtro rápido basado en keywords
     protected function isHVACTopic(string $text): bool
     {
         $text = mb_strtolower($text, 'UTF-8');
@@ -25,7 +25,7 @@ class HvacChatController extends Controller
             }
         }
         // Permite preguntas generales si parecen técnicas pero sin keyword clara
-        // (puedes poner false si quieres bloquear TODO lo que no tenga keyword)
+
         return false;
     }
 
@@ -50,7 +50,7 @@ class HvacChatController extends Controller
 
         $msg = $request->input('message');
 
-        // 1) FAQ directo (ahorra costos)
+        // 1) Filtro FAQ directo
         if ($answer = $this->faqHit($msg)) {
             return response()->json([
                 'source'   => 'faq',
@@ -67,13 +67,14 @@ class HvacChatController extends Controller
         }
 
 
-        // 3) Contexto opcional: podrías inyectar extractos de tu KB
-        $context = []; // p.ej. últimos logs de la conversación o fragmentos de manuales
+        // 3) Contexto: inyectar extractos
+        $context = [];
 
         try {
             $answer = $this->openai->chatHVAC($msg, $context);
 
-            // (Opcional) guardar en BD conversación y mensajes
+            //aqui guardar en BD conversación y mensajes
+           
             return response()->json([
                 'source'   => 'openai',
                 'response' => $answer,

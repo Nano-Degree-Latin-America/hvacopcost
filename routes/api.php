@@ -21,45 +21,31 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 // routes/api.php
 
-
-Route::post('/chatgpt-support', function (Request $request) {
-    $prompt = $request->input('message', 'Hola');
-
-    $client = new Client([
-        'base_uri' => 'https://api.openai.com/v1/',
-        'headers' => [
-            'Authorization' => 'Bearer ' . config('services.openai.key'),
-            'Content-Type'  => 'application/json',
-        ],
-    ]);
-
-
-    /* 'Eres un asistente experto en soporte técnico de equipos HVAC. Solo puedes responder preguntas relacionadas con HVAC. Si la pregunta no es de HVAC, responde: "Lo siento, solo puedo responder preguntas sobre equipos HVAC" */
-
-    try {
-        $response = $client->post('chat/completions', [
-            'json' => [
-                'model' => 'gpt-3.5-turbo',
-                'messages' => [
-                    // Aquí forzamos el rol de soporte HVAC
-                    /* ['role' => 'system', 'content' => 'Eres un asistente experto soporte para el en Análisis Energético y Financiero para Sistemas de HVAC. Si la pregunta no es de Análisis Energético y Financiero para Sistemas de HVAC, responde: "Lo siento, solo puedo responder preguntas sobre equipos HVAC.'], */
-                    ['role' => 'user', 'content' => $prompt],
-                ],
-            ],
-        ]);
-
-        $data = json_decode($response->getBody(), true);
-        return response()->json([
-            'reply' => $data['choices'][0]['message']['content'] ?? 'No se recibió respuesta',
-        ]);
-    } catch (\Exception $e) {
-        return response()->json([
-            'error' => $e->getMessage()
-        ], 500);
-    }
-});
-
-
 Route::post('/hvac/chat', [HvacChatController::class, 'chat'])
     ->middleware('throttle:30,1'); // rate limit básico: 30 req/min
 
+Route::post('/text-to-voice', function (Request $request) {
+    $text = $request->input('text', 'Hola, soy tu asistente HVAC');
+
+    $client = new Client();
+    $response = $client->post('https://api.openai.com/v1/audio/speech', [
+        'headers' => [
+            'Authorization' => 'Bearer ' . config('services.openai.key'),
+        ],
+        'json' => [
+            'model' => 'gpt-4o-mini-tts',
+            'voice' => 'nova', // 👩 voz femenina
+            'input' => $text,
+        ],
+    ]);
+
+    $audioContent = $response->getBody()->getContents();
+
+    $filename = 'voice_' . uniqid() . '.mp3';
+    Storage::disk('public')->put("voices/$filename", $audioContent);
+
+    // Retornas la URL al frontend
+    return response()->json([
+        'audio_url' => asset("storage/voices/$filename")
+    ]);
+});

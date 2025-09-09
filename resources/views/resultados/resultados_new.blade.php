@@ -1402,9 +1402,9 @@ if($counter == 2){
 
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
-                            <div  class="flex justify-start w-full  my-1 gap-x-3">
+                            <div  class="flex justify-center w-full  my-1 gap-x-3">
                                 <div class="">
-                                    <img  style="margin-left: 1.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
+                                    <img  style="margin-left: .5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
 
                                 <div class="place-items-center">
@@ -1416,8 +1416,8 @@ if($counter == 2){
 {{-- {{$val_base_red_ene}}_{{$val_a_red_ene}}_{{$val_b_red_ene}} --}}
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
-                            <div style="" class="flex justify-start w-2/5  my-1">
-                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold mt-2">Solución A</b>
+                            <div style="" class="flex justify-start w-[30%]  my-1 place-items-center">
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold">Solución A</b>
                             </div>
 
                            {{--  <div  class="flex justify-start w-1/3  my-1 place-items-center">
@@ -1499,7 +1499,7 @@ if($counter == 2){
 
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
-                            <div  class="flex justify-start  w-2/5  my-1 place-items-center">
+                            <div  class="flex justify-start  w-[30%]  my-1 place-items-center">
                                     <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold">Solución B</b>
                             </div>
 
@@ -1584,7 +1584,7 @@ if($counter == 2){
 
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
-                            <div  class="flex justify-start  w-2/5 place-items-center my-1">
+                            <div  class="flex justify-start  w-[30%] place-items-center my-1">
                                     <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold">Solución C</b>
                             </div>
 
@@ -1709,8 +1709,93 @@ if($counter == 2){
                                 </div>
                             </div>
                         </div>
-                        <div id="chart_roi_base_a" name="chart_roi_base_a" style="width: 600px;"></div>
-                        <div class="hidden" style="height:250px;"  id="chart_roi_base_a_print" name="chart_roi_base_a_print"></div>
+
+                            <div class="max-w-6xl mx-auto bg-white rounded-lg p-6 md:p-8">
+
+                                    <!-- Timeline Container -->
+                                    <div class="timeline-component">
+
+                                        <!-- Headers Row -->
+                                        <div class="flex justify-between items-center mb-8 px-2">
+                                            <div class="text-center">
+                                                <h3 class="text-sm md:text-base font-semibold text-gray-700">3 años</h3>
+                                            </div>
+                                            <div class="text-center">
+                                                <h3 class="text-sm md:text-base font-semibold text-gray-700">5 años</h3>
+                                            </div>
+                                            <div class="text-center">
+                                                <h3 class="text-sm md:text-base font-semibold text-gray-700">10 años</h3>
+                                            </div>
+                                            <div class="text-center">
+                                                <h3 class="text-sm md:text-base font-semibold text-gray-700">15 años</h3>
+                                            </div>
+                                        </div>
+
+                                        <!-- First Row - All zeros -->
+                                        <div class="relative flex items-center justify-between mb-rois">
+                                            <!-- Timeline line -->
+                                            <div class="absolute border-2 border-gray-300 py-1 mt-3 top-1/2 left-0 right-0 timeline-line transform -translate-y-1/2 z-0"></div>
+
+                                            <!-- Timeline points -->
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="a_s_e_3" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="a_s_e_5" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="a_s_e_10" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="a_s_e_15" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Second Row - 12, 32, 92, 123 -->
+                                        <div class="relative flex items-center justify-between mb-rois">
+                                            <!-- Timeline line -->
+                                            <div class="absolute border-2 border-gray-300 py-1 mt-3 top-1/2 left-0 right-0 timeline-line transform -translate-y-1/2 z-0"></div>
+
+                                            <!-- Timeline points -->
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="b_s_e_3" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="b_s_e_5" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="b_s_e_10" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="b_s_e_15" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Third Row - 12, 32, 92, 123 (duplicate) -->
+                                        <div class="relative flex items-center justify-between">
+                                            <!-- Timeline line -->
+                                            <div class="absolute border-2 border-gray-300 py-1 mt-3 top-1/2 left-0 right-0 timeline-line transform -translate-y-1/2 z-0"></div>
+
+                                            <!-- Timeline points -->
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="c_s_e_3" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="c_s_e_5" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="c_s_e_10" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="c_s_e_15" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                        {{-- <div id="chart_roi_base_a" name="chart_roi_base_a" style="width: 600px;"></div>
+                        <div class="hidden" style="height:250px;"  id="chart_roi_base_a_print" name="chart_roi_base_a_print"></div> --}}
                     </div>
                 </div>
 
@@ -1723,9 +1808,9 @@ if($counter == 2){
 
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
-                            <div  class="flex justify-start w-full  my-1 gap-x-3">
+                            <div  class="flex justify-center w-full  my-1 gap-x-3">
                                 <div class="">
-                                    <img style="margin-left: 1.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
+                                    <img style="margin-left: 0.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
 
                                 <div class="place-items-center">
@@ -1737,7 +1822,7 @@ if($counter == 2){
 
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
-                            <div  class="flex justify-start w-2/5 place-items-center my-1">
+                            <div  class="flex justify-start w-[30%] place-items-center my-1">
                                     <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold">Solución A</b>
                             </div>
 
@@ -1815,7 +1900,7 @@ if($counter == 2){
 
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
-                            <div  class="flex justify-start w-2/5 place-items-center  my-1">
+                            <div  class="flex justify-start w-[30%] place-items-center  my-1">
                                     <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold">Solución B</b>
                             </div>
 
@@ -1910,7 +1995,7 @@ $costo_b
 
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
-                            <div  class="flex justify-start w-2/5 place-items-center my-1">
+                            <div  class="flex justify-start w-[30%] place-items-center my-1">
                                     <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold">Solución C</b>
                             </div>
 
@@ -2007,8 +2092,91 @@ $costo_b
                                 </div>
                             </div>
                         </div>
-                        <div id="chart_roi_base_a_ene_prod" name="chart_roi_base_a_ene_prod" style="width: 600px;"></div>
-                        <div class="hidden" style="height:200px;"  id="chart_roi_base_a_ene_prod_print" name="chart_roi_base_a_ene_prod_print"></div>
+                        <div class="max-w-6xl mx-auto bg-white rounded-lg p-6 md:p-8">
+
+                                    <!-- Timeline Container -->
+                                    <div class="timeline-component">
+
+                                        <!-- Headers Row -->
+                                        <div class="flex justify-between items-center mb-8 px-2">
+                                            <div class="text-center">
+                                                <h3 id="yrs_r_e_3" class="text-sm md:text-base font-semibold text-gray-700"></h3>
+                                            </div>
+                                            <div class="text-center">
+                                                <h3 id="yrs_r_e_5" class="text-sm md:text-base font-semibold text-gray-700"></h3>
+                                            </div>
+                                            <div class="text-center">
+                                                <h3 id="yrs_r_e_10" class="text-sm md:text-base font-semibold text-gray-700"></h3>
+                                            </div>
+                                            <div class="text-center">
+                                                <h3 id="yrs_r_e_15" class="text-sm md:text-base font-semibold text-gray-700"></h3>
+                                            </div>
+                                        </div>
+
+                                        <!-- First Row - All zeros -->
+                                        <div class="relative flex items-center justify-between mb-rois">
+                                            <!-- Timeline line -->
+                                            <div class="absolute border-2 border-gray-300 py-1 mt-3 top-1/2 left-0 right-0 timeline-line transform -translate-y-1/2 z-0"></div>
+
+                                            <!-- Timeline points -->
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="a_r_e_3" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="a_r_e_5" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="a_r_e_10" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="a_r_e_15" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Second Row - 12, 32, 92, 123 -->
+                                        <div class="relative flex items-center justify-between mb-rois">
+                                            <!-- Timeline line -->
+                                            <div class="absolute border-2 border-gray-300 py-1 mt-3 top-1/2 left-0 right-0 timeline-line transform -translate-y-1/2 z-0"></div>
+
+                                            <!-- Timeline points -->
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="b_r_e_3" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="b_r_e_5" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="b_r_e_10" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="b_r_e_15" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                        </div>
+
+                                        <!-- Third Row - 12, 32, 92, 123 (duplicate) -->
+                                        <div class="relative flex items-center justify-between">
+                                            <!-- Timeline line -->
+                                            <div class="absolute border-2 border-gray-300 py-1 mt-3 top-1/2 left-0 right-0 timeline-line transform -translate-y-1/2 z-0"></div>
+
+                                            <!-- Timeline points -->
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="c_r_e_3" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="c_r_e_5" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="c_r_e_10" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                                <span id="c_r_e_15" class="timeline-number text-lg md:text-2xl"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                        {{-- <div id="chart_roi_base_a_ene_prod" name="chart_roi_base_a_ene_prod" style="width: 600px;"></div>
+                        <div class="hidden" style="height:200px;"  id="chart_roi_base_a_ene_prod_print" name="chart_roi_base_a_ene_prod_print"></div> --}}
                     </div>
                 </div>
 
@@ -5797,13 +5965,28 @@ function roi_s_ene(id_project){
     var consumo_ene_anual_a = '{{$sumaopex_1*$tar_ele->costo_elec}}'
     var consumo_ene_anual_b = '{{$sumaopex_2*$tar_ele->costo_elec}}'
     var consumo_ene_anual_c = '{{$sumaopex_3*$tar_ele->costo_elec}}'
-
+//////
     $.ajax({
         type: 'get',
         url: "/roi_only_energy/" + id_project + '/' + consumo_ene_anual_a + '/' + consumo_ene_anual_b + '/' + consumo_ene_anual_c + '/' + inv_ini_1 + '/' + inv_ini_2 + '/' + inv_ini_3,
         success: function (res) {
+            document.getElementById('a_s_e_3').innerHTML = res[0][0];
+            document.getElementById('a_s_e_5').innerHTML = res[0][1];
+            document.getElementById('a_s_e_10').innerHTML = res[0][2];
+            document.getElementById('a_s_e_15').innerHTML = res[0][3];
 
-    var options = {
+            document.getElementById('b_s_e_3').innerHTML = res[1][0];
+            document.getElementById('b_s_e_5').innerHTML = res[1][1];
+            document.getElementById('b_s_e_10').innerHTML = res[1][2];
+            document.getElementById('b_s_e_15').innerHTML = res[1][3];
+
+            document.getElementById('c_s_e_3').innerHTML = res[2][0];
+            document.getElementById('c_s_e_5').innerHTML = res[2][1];
+            document.getElementById('c_s_e_10').innerHTML = res[2][2];
+            document.getElementById('c_s_e_15').innerHTML = res[2][3];
+
+
+    /* var options = {
           series: [
           {
             name: "A",
@@ -5931,7 +6114,7 @@ function roi_s_ene(id_project){
       },
 
         }
-        };
+        }; */
 
         var chart = new ApexCharts(document.querySelector("#chart_roi_base_a"), options);
         chart.render();
@@ -6625,9 +6808,29 @@ $.ajax({
         url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_anual_base +'/'+ costo_anual_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_anual_b +'/'+ consumo_ene_anual_a +'/'+ consumo_ene_anual_b +'/'+ consumo_ene_anual_c +'/'+counter_val_prod_ene,
         success: function (res) {
 
+            document.getElementById('yrs_r_e_3').innerHTML = ano_a + " años";
+            document.getElementById('yrs_r_e_5').innerHTML = ano_b + " años";
+            document.getElementById('yrs_r_e_10').innerHTML = ano_c + " años";
+            document.getElementById('yrs_r_e_15').innerHTML = ano_d + " años";
+
+            document.getElementById('a_r_e_3').innerHTML = res[0][0];
+            document.getElementById('a_r_e_5').innerHTML = res[0][1];
+            document.getElementById('a_r_e_10').innerHTML = res[0][2];
+            document.getElementById('a_r_e_15').innerHTML = res[0][3];
+
+            document.getElementById('b_r_e_3').innerHTML = res[1][0];
+            document.getElementById('b_r_e_5').innerHTML = res[1][1];
+            document.getElementById('b_r_e_10').innerHTML = res[1][2];
+            document.getElementById('b_r_e_15').innerHTML = res[1][3];
+
+            document.getElementById('c_r_e_3').innerHTML = res[2][0];
+            document.getElementById('c_r_e_5').innerHTML = res[2][1];
+            document.getElementById('c_r_e_10').innerHTML = res[2][2];
+            document.getElementById('c_r_e_15').innerHTML = res[2][3];
+
 
             //console.log(res);
-    var options = {
+    /* var options = {
           series: [
             {
             name: "A",
@@ -6755,7 +6958,7 @@ $.ajax({
       },
 
         }
-        };
+        }; */
 
         var chart = new ApexCharts(document.querySelector("#chart_roi_base_a_ene_prod"), options);
         chart.render();
