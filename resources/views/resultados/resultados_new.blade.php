@@ -1806,9 +1806,9 @@ if($counter == 2){
                 <div class="w-full flex">
                     <div class="w-1/2 grid h-full">
 
-                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-3 ">
 
-                            <div  class="flex justify-center w-full  my-1 gap-x-3">
+                            <div  class="flex justify-center w-full  my-1 gap-x-3 margin-r-payback">
                                 <div class="">
                                     <img style="margin-left: 0.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
