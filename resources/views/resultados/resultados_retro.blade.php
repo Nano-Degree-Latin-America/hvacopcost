@@ -1354,7 +1354,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
-                            <div  class="flex justify-center w-full  my-1 gap-x-3">
+                            <div  class="flex justify-center w-full  my-1 gap-x-3 margin-r-payback">
                                 <div class="">
                                     <img  style="margin-left: 1.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
@@ -1635,13 +1635,13 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                     @endif
                     <div class="w-1/2">
                         <div class="flex w-full justify-center gap-x-3 mb-3">
-                            <div  class="flex justify-start w-full  my-1 gap-x-3">
+                            <div  class="flex justify-start w-full my-1 gap-x-3">
                                 <div class="place-items-center">
-                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Retorno de Inversión</p>
+                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Retorno de Inversión (%)</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="max-w-6xl mx-auto bg-white rounded-lg p-6 md:p-8">
+                        <div class="max-w-6xl mx-auto bg-white rounded-lg mr-5">
 
                                     <!-- Timeline Container -->
                                     <div class="timeline-component">
@@ -1738,7 +1738,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
-                            <div  class="flex justify-center w-full  my-1 gap-x-3">
+                            <div  class="flex justify-center w-full  my-1 gap-x-3 margin-r-payback">
                                 <div class="">
                                     <img style="margin-left: 1.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
@@ -1753,7 +1753,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start w-[30%] place-items-center my-1">
-                                    <b  style="color:#1B17BB;margin-left:0.5rem;" class="payback_cants font-roboto font-bold ml-8">Existente &nbsp;&nbsp;</b>
+                                    <b  style="color:#1B17BB;margin-left:0rem;" class="payback_cants font-roboto font-bold ml-8">Existente &nbsp;&nbsp;</b>
                             </div>
 
                             {{-- <div  class="flex justify-start w-1/3 place-items-center my-1">
@@ -1929,11 +1929,11 @@ $costo_b
                         <div class="flex w-full justify-center gap-x-3 mb-3">
                             <div  class="flex justify-start w-full  my-1 gap-x-3">
                                 <div class="place-items-center">
-                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Retorno de Inversión</p>
+                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Retorno de Inversión (%)</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="max-w-6xl mx-auto bg-white rounded-lg p-6 md:p-8">
+                        <div class="max-w-6xl mx-auto bg-white rounded-lg mr-5 mb-5">
 
                                     <!-- Timeline Container -->
                                     <div class="timeline-component">
