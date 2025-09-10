@@ -1402,7 +1402,7 @@ if($counter == 2){
 
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
-                            <div  class="flex justify-center w-full  my-1 gap-x-3">
+                            <div class="flex justify-center w-full my-1 gap-x-3 margin-r-payback">
                                 <div class="">
                                     <img  style="margin-left: .5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
@@ -1705,12 +1705,12 @@ if($counter == 2){
                         <div class="flex w-full justify-center gap-x-3 mb-3">
                             <div  class="flex justify-start w-full  my-1 gap-x-3">
                                 <div class="place-items-center">
-                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Retorno de Inversión</p>
+                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Retorno de Inversión (%)</p>
                                 </div>
                             </div>
                         </div>
 
-                            <div class="max-w-6xl mx-auto bg-white rounded-lg p-6 md:p-8">
+                            <div class="max-w-6xl mx-auto bg-white rounded-lg mr-5">
 
                                     <!-- Timeline Container -->
                                     <div class="timeline-component">
@@ -2088,11 +2088,11 @@ $costo_b
                         <div class="flex w-full justify-center gap-x-3 mb-3">
                             <div  class="flex justify-start w-full  my-1 gap-x-3">
                                 <div class="place-items-center">
-                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Retorno de Inversión</p>
+                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Retorno de Inversión (%)</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="max-w-6xl mx-auto bg-white rounded-lg p-6 md:p-8">
+                        <div class="max-w-6xl mx-auto bg-white rounded-lg mr-5 mb-5">
 
                                     <!-- Timeline Container -->
                                     <div class="timeline-component">

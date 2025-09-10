@@ -339,6 +339,10 @@
             margin-bottom: 3rem;
         }
 
+        .margin-r-payback{
+            margin-right: 13.5rem;
+        }
+
 @media print{
   @page { margin: 0; }
 
@@ -631,6 +635,9 @@
         .mb-rois{
                     margin-bottom: 1.5rem;
                 }
+         .margin-r-payback{
+            margin-right: 6rem;
+        }
 }
 
 /* md	768px */
