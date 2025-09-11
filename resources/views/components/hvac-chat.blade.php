@@ -76,6 +76,7 @@
         <i class="fas fa-microphone" style="color: #ffffff;"></i>
     </button> --}}
     <button type="button" id="hvacSend" class="hvac-button-send">Enviar</button>
+
   </div>
 </div>
 
@@ -188,19 +189,31 @@
     });
   }
 
+  let userId = '{{ Auth::user()->id }}'; // 👈 este ID viene de tu backend (usuario logueado)
+
+
   async function ask(text){
     appendMessage(text, 'user');
     setLoading(true);
-
     try {
       const res = await fetch('<?php echo url('/api/hvac/chat'); ?>', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text })
+        body: JSON.stringify({
+            message: text,
+            user_id: userId,
+        })
       });
 
       const data = await res.json();
       removeLoading();
+
+      if (data.history) {
+        body.innerHTML = "";
+        data.history.forEach(msg => {
+        appendMessage(msg.content, msg.sender);
+        });
+  }
 
       if (data.response) {
         appendMessage(data.response, 'bot', lastInputWasVoice); // 🚀 si fue voz → autoplay
@@ -215,7 +228,11 @@
     }
   }
 
-  fab.addEventListener('click', ()=> toggle(true));
+  fab.addEventListener('click', ()=> {
+  toggle(true);
+  loadHistory();
+});
+
   close.addEventListener('click', ()=> toggle(false));
   send.addEventListener('click', ()=>{
     const text = (input.value || '').trim();
@@ -259,7 +276,23 @@
     };
   });
 
+async function loadHistory(){
+  const res = await fetch(`/api/hvac/history/${userId}`);
+  const history = await res.json();
+  body.innerHTML = "";
+  history.forEach(msg => appendMessage(msg.content, msg.role));
+}
+
+// cuando se abre el panel
+fab.addEventListener('click', ()=> {
+  toggle(true);
+  loadHistory();
+});
+
+
+
   renderChips();
 })();
 
 </script>
+
