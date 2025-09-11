@@ -62,7 +62,7 @@
 
 <div class="hvac-chat-panel border-2" id="hvacPanel" role="dialog" aria-modal="true" aria-label="Chat de soporte HVACopcost">
   <div class="hvac-chat-header">
-    <span>Soporte técnico inteligente HVACopcost</span>
+    <span>Soporte IA HVACopcost</span>
     <button type="button" id="hvacClose" style="background:transparent;border:none;color:#fff;font-size:18px;cursor:pointer;">✕</button>
   </div>
   <div class="hvac-chat-body" id="hvacBody">
