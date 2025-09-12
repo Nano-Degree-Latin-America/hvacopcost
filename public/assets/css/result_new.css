@@ -343,6 +343,11 @@
             margin-right: 13.5rem;
         }
 
+        .medids-circle{
+            width: 5rem;
+            height: 5rem;
+        }
+
 @media print{
   @page { margin: 0; }
 
@@ -638,6 +643,12 @@
          .margin-r-payback{
             margin-right: 6rem;
         }
+
+        .medids-circle{
+            width: 3rem;
+            height: 3rem;
+        }
+
 }
 
 /* md	768px */

@@ -1737,16 +1737,16 @@ if($counter == 2){
                                             <div class="absolute border-2 border-gray-300 py-1 mt-3 top-1/2 left-0 right-0 timeline-line transform -translate-y-1/2 z-0"></div>
 
                                             <!-- Timeline points -->
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="a_s_e_3" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="a_s_e_5" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="a_s_e_10" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="a_s_e_15" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
                                         </div>
@@ -1757,16 +1757,16 @@ if($counter == 2){
                                             <div class="absolute border-2 border-gray-300 py-1 mt-3 top-1/2 left-0 right-0 timeline-line transform -translate-y-1/2 z-0"></div>
 
                                             <!-- Timeline points -->
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="b_s_e_3" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="b_s_e_5" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="b_s_e_10" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="b_s_e_15" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
                                         </div>
@@ -1777,16 +1777,16 @@ if($counter == 2){
                                             <div class="absolute border-2 border-gray-300 py-1 mt-3 top-1/2 left-0 right-0 timeline-line transform -translate-y-1/2 z-0"></div>
 
                                             <!-- Timeline points -->
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="c_s_e_3" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="c_s_e_5" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="c_s_e_10" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="c_s_e_15" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
                                         </div>
@@ -2119,16 +2119,16 @@ $costo_b
                                             <div class="absolute border-2 border-gray-300 py-1 mt-3 top-1/2 left-0 right-0 timeline-line transform -translate-y-1/2 z-0"></div>
 
                                             <!-- Timeline points -->
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="a_r_e_3" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="a_r_e_5" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="a_r_e_10" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="a_r_e_15" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
                                         </div>
@@ -2139,16 +2139,16 @@ $costo_b
                                             <div class="absolute border-2 border-gray-300 py-1 mt-3 top-1/2 left-0 right-0 timeline-line transform -translate-y-1/2 z-0"></div>
 
                                             <!-- Timeline points -->
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="b_r_e_3" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="b_r_e_5" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="b_r_e_10" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="b_r_e_15" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
                                         </div>
@@ -2159,16 +2159,16 @@ $costo_b
                                             <div class="absolute border-2 border-gray-300 py-1 mt-3 top-1/2 left-0 right-0 timeline-line transform -translate-y-1/2 z-0"></div>
 
                                             <!-- Timeline points -->
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="c_r_e_3" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="c_r_e_5" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="c_r_e_10" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
-                                            <div class="timeline-circle w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center z-10">
+                                            <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
                                                 <span id="c_r_e_15" class="timeline-number text-lg md:text-2xl"></span>
                                             </div>
                                         </div>

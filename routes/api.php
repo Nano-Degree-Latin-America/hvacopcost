@@ -49,3 +49,7 @@ Route::post('/text-to-voice', function (Request $request) {
         'audio_url' => asset("storage/voices/$filename")
     ]);
 });
+
+
+
+Route::get('/hvac/history/{id}', [HvacChatController::class, 'history']);
