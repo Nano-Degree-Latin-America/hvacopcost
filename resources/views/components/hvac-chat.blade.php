@@ -276,11 +276,12 @@
     };
   });
 
+//cargamos el historial
 async function loadHistory(){
   const res = await fetch(`/api/hvac/history/${userId}`);
   const history = await res.json();
   body.innerHTML = "";
-  history.forEach(msg => appendMessage(msg.content, msg.role));
+  history.forEach(msg => appendMessage(msg.content, msg.role)); //contenido del historial
 }
 
 // cuando se abre el panel

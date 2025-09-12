@@ -85,7 +85,7 @@ class HvacChatController extends Controller
 
         // 2) Filtro de tema HVAC
         if (!$this->isHVACTopic($msg)) {
-
+                    // Guardar respuesta del bot
                 HvacMessageModel::create([
                     'conversation_id' => $conversation->id,
                     'role' => 'bot',
@@ -129,14 +129,13 @@ class HvacChatController extends Controller
         }
     }
 
-    public function history($userId)
-{
+    public function history($userId){
                 $id_conversation = ConversationModel::where('user_id', $userId)->firstOrFail();
                 $history = HvacMessageModel::where('conversation_id', $id_conversation->id)
                 ->orderBy('created_at', 'asc')
                 ->get(['role','content','created_at']);
 
-    return response()->json($history);
+         return response()->json($history);
 }
 
 
