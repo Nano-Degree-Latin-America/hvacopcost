@@ -222,15 +222,15 @@
   }
 
       if (data.response) {
-        appendMessage(data.response, 'bot', lastInputWasVoice); // 🚀 si fue voz → autoplay
+        appendMessage(data.response, 'assistant', lastInputWasVoice); // 🚀 si fue voz → autoplay
       } else if (data.error) {
-        appendMessage('Error: ' + data.error, 'bot');
+        appendMessage('Error: ' + data.error, 'assistant');
       } else {
-        appendMessage('No obtuve respuesta. Intenta de nuevo.', 'bot');
+        appendMessage('No obtuve respuesta. Intenta de nuevo.', 'assistant');
       }
     } catch (e) {
       removeLoading();
-      appendMessage('Error de red. Intenta más tarde.', 'bot');
+      appendMessage('Error de red. Intenta más tarde.', 'assistant');
     }
   }
 
