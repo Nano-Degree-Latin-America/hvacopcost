@@ -51,5 +51,9 @@ Route::post('/text-to-voice', function (Request $request) {
 });
 
 
-
 Route::get('/hvac/history/{id}', [HvacChatController::class, 'history']);
+
+Route::delete('/delete-voice/{file}', function($file){
+    Storage::disk('public')->delete("voices/$file");
+    return response()->json(['status' => 'deleted']);
+});

@@ -73,7 +73,7 @@ class HvacChatController extends Controller
              // Guardar respuesta del bot
                 HvacMessageModel::create([
                     'conversation_id' => $conversation->id,
-                    'role' => 'bot',
+                    'role' => 'assistant',
                     'content' => $answer,
                 ]);
             return response()->json([
@@ -88,7 +88,7 @@ class HvacChatController extends Controller
                     // Guardar respuesta del bot
                 HvacMessageModel::create([
                     'conversation_id' => $conversation->id,
-                    'role' => 'bot',
+                    'role' => 'assistant',
                     'content' => "Lo siento, solo puedo ayudar con temas de HVAC. ¿Puedes reformular tu pregunta relacionada con equipos HVAC?",
                 ]);
 
@@ -101,14 +101,28 @@ class HvacChatController extends Controller
 
 
         // 3) Contexto: inyectar extractos
-        $context = [];
+        $historyMessages = HvacMessageModel::where('conversation_id', $conversation->id)
+            ->orderBy('created_at', 'asc')
+            ->take(10) // 🔹 Solo enviamos los últimos 10 mensajes para no hacer demasiado largo el prompt
+            ->get()
+            ->map(function ($m) {
+                return [
+                    'role' => $m->role === 'user' ? 'user' : 'assistant', // OpenAI usa 'assistant' en lugar de 'bot'
+                    'content' => $m->content,
+                ];
+            })
+            ->toArray();
+
+            $context = array_merge($historyMessages, [
+            ['role' => 'user', 'content' => $msg],
+            ]);
 
         try {
             $answer = $this->openai->chatHVAC($msg, $context);
 
             HvacMessageModel::create([
                                 'conversation_id' => $conversation->id,
-                                'role' => 'bot',
+                                'role' => 'assistant',
                                 'content' => $answer,
                             ]);
 

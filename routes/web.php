@@ -249,4 +249,4 @@ Route::get('locale/{locale}', function($locale){
 
 //Route::get('/hvac/chat', [HvacChatController::class, 'chat'])->middleware('throttle:30,1'); // rate limit básico: 30 req/min
 
-
+Route::get('/hvac/history/{id}', [HvacChatController::class, 'history']);
