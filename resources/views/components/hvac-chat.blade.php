@@ -110,7 +110,7 @@
     wrap.appendChild(bubble);
 
     // ✅ Si es el bot, siempre agregamos botón para oír
-    if (who === 'bot') {
+    if (who === 'assistant') {
       const playBtn = document.createElement('button');
       playBtn.innerHTML = `
   <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="icon">
