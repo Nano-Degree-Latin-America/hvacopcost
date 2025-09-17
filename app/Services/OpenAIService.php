@@ -22,42 +22,41 @@ class OpenAIService
         ]);
     }
 
-    public function chatHVAC(string $userMessage, array $context = []): string
-    {
+    public function chatHVAC(string $userMessage, array $context = []): string{
+    // Mensaje del sistema: limita a HVAC y define negativa educada si es off-topic
+    $system = [
+        'role' => 'system',
+        'content' => "Eres un asistente de soporte TÉCNICO especializado EXCLUSIVAMENTE en HVAC (calefacción, ventilación, aire acondicionado y refrigeración).
+                      - Responde con precisión y concisión.
+                      - Usa el historial previo como contexto para dar mejores respuestas.
+                      - Si te preguntan algo fuera de HVAC, responde educadamente que no puedes ayudar en ese tema."
+    ];
 
-        // Mensaje del sistema: limita a HVAC y define negativa educada si es off-topic
-        $system = "Eres un asistente de soporte TÉCNICO especializado EXCLUSIVAMENTE en HVAC (calefacción, ventilación, aire acondicionado y refrigeración).
-                    - Responde con precisión y concisión.
-                    - Prioriza seguridad y buenas prácticas.";
+    // Construcción de messages
+    $messages = [$system];
 
-        // Inyecta contexto
-        $contextText = '';
-        if (!empty($context)) {
-            $contextText = "Contexto de referencia (no repitas literal, úsalo para fundamentar):\n";
-            foreach ($context as $c) {
-                $contextText .= "- " . trim($c) . "\n";
-            }
+    // Inyecta contexto como historial real
+    if (!empty($context)) {
+        foreach ($context as $c) {
+            $messages[] = [
+                'role'    => $c['role'],    // 'user' o 'assistant'
+                'content' => $c['content']
+            ];
         }
+    }
 
-        $messages = [
-            ['role' => 'system', 'content' => $system],
-        ];
+    // Agrega el mensaje actual del usuario
+    $messages[] = ['role' => 'user', 'content' => $userMessage];
 
-        if ($contextText) {
-            $messages[] = ['role' => 'system', 'content' => $contextText];
-        }
+    $response = $this->client->post('chat/completions', [
+        'json' => [
+            'model'       => 'gpt-3.5-turbo',
+            'temperature' => 0.2,
+            'messages'    => $messages,
+        ],
+    ]);
 
-        $messages[] = ['role' => 'user', 'content' => $userMessage];
-
-        $response = $this->client->post('chat/completions', [
-            'json' => [
-                'model' => 'gpt-3.5-turbo',     // modelo de chatgtp
-                'temperature' => 0.2,           // técnico y estable
-                'messages' => $messages,
-            ],
-        ]);
-
-        $data = json_decode($response->getBody(), true);
-        return $data['choices'][0]['message']['content'] ?? '';
+    $data = json_decode($response->getBody(), true);
+    return $data['choices'][0]['message']['content'] ?? '';
     }
 }

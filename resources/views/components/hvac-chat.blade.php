@@ -146,7 +146,7 @@
     body.scrollTop = body.scrollHeight;
   }
 
-  async function playAudio(text){
+  async function playAudio(text){  //función para reproducir audio
     try {
       const res = await fetch("<?php echo url('/api/text-to-voice'); ?>", {
         method: "POST",
@@ -157,6 +157,12 @@
       if (data.audio_url) {
         const audio = new Audio(data.audio_url);
         audio.play();
+
+        const filename = data.audio_url.split('/').pop(); // obtener nombre de archivo para borrar
+        // Cuando termine, borramos el archivo del servidor
+        audio.onended = async () => {
+            await fetch(`/api/delete-voice/${filename}`, { method: "DELETE" });
+        };
       }
     } catch (err) {
       console.error("Error al reproducir audio", err);
