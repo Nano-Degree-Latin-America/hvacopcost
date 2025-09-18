@@ -944,11 +944,7 @@ class ResultadosController extends Controller
         if($counter_val == 2){
             $array_c = [0,0,0,0];
         }else{
-            if(intval($dif_cost_c) === 0 || intval($inv_ini_c) === 0){
-                $array_c = [0,0,0,0];
-            }else{
-
-                if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
                     $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3,3);
                 }else if($tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
                     $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3,5);
@@ -961,7 +957,6 @@ class ResultadosController extends Controller
                     $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3,15);
                 }
 
-            }
         }
 
 
