@@ -164,6 +164,7 @@ class SolutionService
         $solution_enf1->id_user=Auth::user()->id;
 
         $am =$solution_enf1->proteccion_condensador_val;
+        
         $cooling_hrs =  $solution_enf1->coolings_hours;
         $cost_energ =  $solution_enf1->costo_elec;
         $eficiencia_cant = floatval($request->get('csStd_cant_1_1'));
