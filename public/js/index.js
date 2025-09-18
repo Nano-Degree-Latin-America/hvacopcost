@@ -13047,7 +13047,7 @@ switch (tipo_ambiente_val) {
         switch (value) {
              case 'sin_proteccion':
 
-             var value_sin_p =  Math.pow(1 - 0.04, 3);
+             var value_sin_p =  Math.pow(1 - 0.04, 0);
              $('#'+id_get).val(value_sin_p);
              break;
 
@@ -13056,7 +13056,7 @@ switch (tipo_ambiente_val) {
              break;
 
              case 'liquido_coating_basico':
-                 $('#'+id_get).val(1);
+                 $('#'+id_get).val(1.05);
              break;
 
              default:
@@ -13073,7 +13073,7 @@ switch (tipo_ambiente_val) {
     switch (value) {
          case 'sin_proteccion':
 
-         var value_sin_p =  Math.pow(1 - 0.015, 3);
+         var value_sin_p =  Math.pow(1 - 0.015, 0);
          $('#'+id_get).val(value_sin_p);
          break;
 
@@ -13082,7 +13082,7 @@ switch (tipo_ambiente_val) {
          break;
 
          case 'liquido_coating_basico':
-             $('#'+id_get).val(1);
+             $('#'+id_get).val(1.005);
          break;
 
          default:

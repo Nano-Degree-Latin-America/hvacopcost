@@ -63,9 +63,7 @@ trait  FormusTrait{
     }
 
     public function form_pn_no_chiller($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_zm,$factor_v,$factor_f,$am){
-        //((TR x 12000) x (Cooling Hours)  / (SEER) ) / 1000)
-        //((TR /3.5) x (Cooling Hours) x (Costo Energía) / IPVL)/ 1000
-       //((TR x cant)
+      //dd($tr,$eficiencia_ene,$cooling_hrs,$eficiencia_cant,$factor_s,$factor_d,$factor_t,$factor_c,$t_e,$factor_zm,$factor_v,$factor_f,$am);
        /* ((TR x 12000) x (Cooling Hours) /(SEER x ((1-Z)^Años de vida) x AM )/ 1000 */
        if($eficiencia_ene != 'IPLV' || $eficiencia_ene == 'IPLV (Kw/TR)'){
         $cant_aux = 12000;
@@ -99,7 +97,7 @@ trait  FormusTrait{
        $uno_m_zeta = 1-$z;
 
        //($uno_m_zeta)^Años de vida)
-       $uno_m_zeta_yrs_life = pow($uno_m_zeta,3);
+       $uno_m_zeta_yrs_life = pow($uno_m_zeta,0);
        //(SEER x uno_m_zeta_yrs_life)
        $efi_z_yrs_l = $eficiencia_cant * $uno_m_zeta_yrs_life;
 
@@ -128,7 +126,7 @@ trait  FormusTrait{
         //(FE x Factor M)
 
         $factor_m = $this->factor_m($t_e,$factor_zm);
-
+      
         $res_5_parent1= $res_ene_apl_tot_enf_1 * floatval($factor_m);
 
         $res_parent_1 = $res_1_parent1 + $res_2_parent1 + $res_3_parent1 + $res_4_parent1 + $res_5_parent1;
