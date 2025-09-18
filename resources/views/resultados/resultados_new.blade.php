@@ -1400,15 +1400,15 @@ if($counter == 2){
                 <div class="w-full flex">
                     <div class="w-1/2 grid h-full">
 
-                        <div class="flex w-full justify-center gap-x-3 mb-5">
+                        <div class="flex w-full justify-start gap-x-3 mb-5">
 
-                            <div class="flex justify-center w-full my-1 gap-x-3 margin-r-payback">
+                            <div class="flex justify-start w-full my-1 gap-x-3 margin-r-payback">
                                 <div class="">
-                                    <img  style="margin-left: 0rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
+                                    <img  style="margin-left: 1.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
 
                                 <div class="place-items-center">
-                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Payback Simple</p>
+                                    <p  style="margin-left: 2.3rem;" class="solucions_style_name font-bold font-roboto  mt-5">Payback Simple</p>
                                 </div>
                             </div>
 
@@ -1806,15 +1806,15 @@ if($counter == 2){
                 <div class="w-full flex">
                     <div class="w-1/2 grid h-full">
 
-                        <div class="flex w-full justify-center gap-x-3 mb-3 ">
+                        <div class="flex w-full justify-start gap-x-3 mb-3 ">
 
-                            <div  class="flex justify-center w-full  my-1 gap-x-3 margin-r-payback">
+                            <div  class="flex justify-start w-full  my-1 gap-x-3 margin-r-payback">
                                 <div class="">
-                                    <img style="margin-left: 0.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
+                                    <img  style="margin-left: 1.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
 
                                 <div class="place-items-center">
-                                    <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Payback Simple</p>
+                                    <p  style="margin-left: 2.3rem;" class="solucions_style_name font-bold font-roboto  mt-5">Payback Simple</p>
                                 </div>
                             </div>
 
@@ -5970,7 +5970,7 @@ function roi_s_ene(id_project){
 //////
     $.ajax({
         type: 'get',
-        url: "/roi_only_energy/" + id_project + '/' + consumo_ene_anual_a + '/' + consumo_ene_anual_b + '/' + consumo_ene_anual_c + '/' + inv_ini_1 + '/' + inv_ini_2 + '/' + inv_ini_3,
+        url: "/roi_only_energy/" + id_project + '/' + consumo_ene_anual_a + '/' + consumo_ene_anual_b + '/' + consumo_ene_anual_c + '/' + inv_ini_1 + '/' + inv_ini_2 + '/' + inv_ini_3 + '/' + counter_val_prod_ene,
         success: function (res) {
             document.getElementById('a_s_e_3').innerHTML = res[0][0];
             document.getElementById('a_s_e_5').innerHTML = res[0][1];

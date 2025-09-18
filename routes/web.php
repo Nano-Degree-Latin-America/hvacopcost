@@ -167,7 +167,7 @@ Route::get('cap_op_10/{id_project}', 'ResultadosController@cap_op_10');
 Route::get('cap_op_15/{id_project}', 'ResultadosController@cap_op_15');
 Route::get('roi_base_a/{id_project}/{dif_cost}/{inv_ini}', 'ResultadosController@roi_base_a');
 Route::get('roi_s_ene/{id_project}/{dif_cost}/{inv_ini}/{dif_cost_2}/{inv_ini_2}/{counter_val}', 'ResultadosController@roi_s_ene');
-Route::get('roi_only_energy/{id_project}/{consumo_ene_anual_a}/{consumo_ene_anual_b}/{consumo_ene_anual_c}/{inv_ini_1}/{inv_ini_2}/{inv_ini_3}', 'ResultadosController@roi_only_energy');
+Route::get('roi_only_energy/{id_project}/{consumo_ene_anual_a}/{consumo_ene_anual_b}/{consumo_ene_anual_c}/{inv_ini_1}/{inv_ini_2}/{inv_ini_3}/{counter_val}', 'ResultadosController@roi_only_energy');
 Route::get('roi_base_a_retro/{id_project}/{dif_cost}/{inv_ini}', 'ResultadosController@roi_base_a_retro');
 Route::get('roi_base_a_retro_new/{id_project}/{dif_cost}/{inv_ini}', 'ResultadosController@roi_base_a_retro_new');
 Route::get('roi_base_a_retro_ene_prod/{id_project}/{dif_cost}/{inv_ini}/{costobase}/{costo}', 'ResultadosController@roi_base_a_retro_ene_prod');
