@@ -13028,11 +13028,11 @@ switch (tipo_ambiente_val) {
 
              case 'infiniguard':
 
-                 $('#'+id_get).val(0.99);
+                 $('#'+id_get).val(0.98);
              break;
 
              case 'liquido_coating_basico':
-                 $('#'+id_get).val(1);
+                 $('#'+id_get).val(0.98);
              break;
 
              default:
@@ -13047,16 +13047,16 @@ switch (tipo_ambiente_val) {
         switch (value) {
              case 'sin_proteccion':
 
-             var value_sin_p =  Math.pow(1 - 0.04, 0);
-             $('#'+id_get).val(value_sin_p);
+             //var value_sin_p =  Math.pow(1 - 0.04, 0);
+             $('#'+id_get).val(0.9);
              break;
 
              case 'infiniguard':
-                 $('#'+id_get).val(0.98);
+                 $('#'+id_get).val(1.09);
              break;
 
              case 'liquido_coating_basico':
-                 $('#'+id_get).val(1.05);
+                 $('#'+id_get).val(1);
              break;
 
              default:
@@ -13073,16 +13073,16 @@ switch (tipo_ambiente_val) {
     switch (value) {
          case 'sin_proteccion':
 
-         var value_sin_p =  Math.pow(1 - 0.015, 0);
-         $('#'+id_get).val(value_sin_p);
+         //var value_sin_p =  Math.pow(1 - 0.015, 0);
+         $('#'+id_get).val(0.98);
          break;
 
          case 'infiniguard':
-             $('#'+id_get).val(0.985);
+             $('#'+id_get).val(1.14);
          break;
 
          case 'liquido_coating_basico':
-             $('#'+id_get).val(1.005);
+             $('#'+id_get).val(1.01);
          break;
 
          default:
