@@ -75,11 +75,15 @@ public function roi_only_energy($costo_anual,$mayor,$inflacion,$inv_ini,$cant){
                array_push($array_res,intval($porcent_3));
             }
 
-            if($i === 5){
 
-                $suma_5_años = $año_5;
-                $porcent_5 = $suma_5_años / $inv_ini * 100;
+            if($i === 5){
+                if($cant >= 5){
+                    $suma_5_años = $año_5;
+                    $porcent_5 = $suma_5_años / $inv_ini * 100;
                 array_push($array_res,intval($porcent_5));
+                }else{
+                    array_push($array_res,null);
+                }
             }
 
             if($i === 10){
@@ -505,9 +509,13 @@ public function roi_only_energy_no_porcent($costo_anual,$mayor,$inflacion,$inv_i
             }
 
             if($i === 5){
-                $suma_5_años = $año_5;
-                $porcent_5 = $suma_5_años;
+                if($cant >= 5){
+                    $suma_5_años = $año_5;
+                    $porcent_5 = $suma_5_años / $inv_ini * 100;
                 array_push($array_res,intval($porcent_5));
+                }else{
+                    array_push($array_res,null);
+                }
             }
 
             if($i === 10){
