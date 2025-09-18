@@ -257,9 +257,9 @@ public function red_en_mw_grafic($dif,$dif_2){
         foreach( $num_enfs as $num_enf){
            if($num_enf->num_enf === 1){
             $type_p = DB::table('solutions_project')
-        ->where('solutions_project.id_project','=',$id_projecto)
-        ->where('solutions_project.num_enf','=',$num_enf->num_enf)
-        ->first()->type_p;
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf->num_enf)
+            ->first()->type_p;
             //capex
             $array_base = [];
             $inv_ini = DB::table('solutions_project')
@@ -989,10 +989,16 @@ public function red_en_mw_grafic($dif,$dif_2){
 
             $suma_enf_base_aux = $res_opex_enf_base;
 
-            for ($i = 2; $i <= 5; $i++) {
+
+
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
+               $suma_enf_base_aux = 0;
+            }else{
+               for ($i = 2; $i <= 5; $i++) {
                 $res_opex_enf_base = $res_opex_enf_base * $inflacion;
                 $suma_enf_base_aux = $suma_enf_base_aux + $res_opex_enf_base;
                 }
+            }
 
 
                 //incremento inflacion
@@ -1019,9 +1025,15 @@ public function red_en_mw_grafic($dif,$dif_2){
             $suma_cost_mant_base_div_area = $rep_opex_base/$area;
             $res_opex_base = $suma_cost_mant_base_div_area;
 
-            for ($i = 2; $i <= 5; $i++) {
-                $suma_cost_mant_base_div_area = $suma_cost_mant_base_div_area * $inflacion_rate;
-                $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
+
+
+                if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
+                $res_opex_base = 0;
+                }else{
+                for ($i = 2; $i <= 5; $i++) {
+                    $suma_cost_mant_base_div_area = $suma_cost_mant_base_div_area * $inflacion_rate;
+                    $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
+                }
             }
 
 
@@ -1083,9 +1095,14 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_a = $consumo_anual_opex_a/$area;
              $suma_enf_a_aux = $res_opex_enf_a;
-             for ($i = 2; $i <= 5; $i++) {
+
+            if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
+               $suma_enf_a_aux = 0;
+             }else{
+               for ($i = 2; $i <= 5; $i++) {
                 $res_opex_enf_a = $res_opex_enf_a * $inflacion;
                 $suma_enf_a_aux = $suma_enf_a_aux +  $res_opex_enf_a;
+               }
             }
 
                 //incremento inflacion
@@ -1102,10 +1119,16 @@ public function red_en_mw_grafic($dif,$dif_2){
                 $suma_cost_mant_a_div_area = $suma_cost_mant_a/$area;
                 $res_opex_a = $suma_cost_mant_a_div_area;
 
-                for ($i = 2; $i <= 5; $i++) {
-                    $suma_cost_mant_a_div_area = $suma_cost_mant_a_div_area * $inflacion_rate;
-                    $res_opex_a = $res_opex_a +  $suma_cost_mant_a_div_area;
-               }
+
+
+                if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
+                    $res_opex_a = 0;
+                }else{
+                    for ($i = 2; $i <= 5; $i++) {
+                        $suma_cost_mant_a_div_area = $suma_cost_mant_a_div_area * $inflacion_rate;
+                        $res_opex_a = $res_opex_a +  $suma_cost_mant_a_div_area;
+                    }
+                }
 
                $total_opex_a = $suma_enf_a_aux + $res_opex_a;
 
@@ -1172,9 +1195,16 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_b = $consumo_anual_opex_b/$area;
              $suma_enf_b_aux = $res_opex_enf_b;
-             for ($i = 2; $i <= 5; $i++) {
+
+
+
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
+               $suma_enf_b_aux = 0;
+            }else{
+               for ($i = 2; $i <= 5; $i++) {
                  $res_opex_enf_b = $res_opex_enf_b * $inflacion;
                 $suma_enf_b_aux = $suma_enf_b_aux +  $res_opex_enf_b;
+               }
             }
 
             //incremento inflacion
@@ -1191,10 +1221,15 @@ public function red_en_mw_grafic($dif,$dif_2){
             $suma_cost_mant_b_div_area = $suma_cost_mant_b/$area;
             $res_opex_b = $suma_cost_mant_b_div_area;
 
-            for ($i = 2; $i <= 5; $i++) {
+           if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
+               $res_opex_b = 0;
+            }else{
+               for ($i = 2; $i <= 5; $i++) {
                 $suma_cost_mant_b_div_area = $suma_cost_mant_b_div_area * $inflacion_rate;
                 $res_opex_b = $res_opex_b +  $suma_cost_mant_b_div_area;
-           }
+                }
+            }
+
 
            $total_opex_b = $suma_enf_b_aux + $res_opex_b;
 
@@ -1361,10 +1396,16 @@ public function red_en_mw_grafic($dif,$dif_2){
 
             $suma_enf_base_aux = $res_opex_enf_base;
 
-            for ($i = 2; $i <= 10; $i++) {
+
+
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico' || $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
+               $suma_enf_base_aux = 0;
+            }else{
+               for ($i = 2; $i <= 10; $i++) {
                 $res_opex_enf_base = $res_opex_enf_base * $inflacion;
                 $suma_enf_base_aux = $suma_enf_base_aux + $res_opex_enf_base;
                 }
+            }
 
 
                 //incremento inflacion
@@ -1391,11 +1432,15 @@ public function red_en_mw_grafic($dif,$dif_2){
             $suma_cost_mant_base_div_area = $rep_opex_base/$area;
             $res_opex_base = $suma_cost_mant_base_div_area;
 
-            for ($i = 2; $i <= 10; $i++) {
+
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico' || $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
+               $res_opex_base = 0;
+            }else{
+               for ($i = 2; $i <= 10; $i++) {
                 $suma_cost_mant_base_div_area = $suma_cost_mant_base_div_area * $inflacion_rate;
                 $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
+               }
             }
-
 
 
             if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
@@ -1459,10 +1504,15 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_a = $consumo_anual_opex_a/$area;
              $suma_enf_a_aux = $res_opex_enf_a;
-             for ($i = 2; $i <= 10; $i++) {
-                $res_opex_enf_a = $res_opex_enf_a * $inflacion;
-                $suma_enf_a_aux = $suma_enf_a_aux +  $res_opex_enf_a;
-            }
+
+              if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+               $suma_enf_a_aux = 0;
+              }else{
+                for ($i = 2; $i <= 10; $i++) {
+                    $res_opex_enf_a = $res_opex_enf_a * $inflacion;
+                    $suma_enf_a_aux = $suma_enf_a_aux +  $res_opex_enf_a;
+                }
+             }
 
                 //incremento inflacion
                 $cost_mant_a = DB::table('solutions_project')
@@ -1478,10 +1528,16 @@ public function red_en_mw_grafic($dif,$dif_2){
                 $suma_cost_mant_a_div_area = $suma_cost_mant_a/$area;
                 $res_opex_a = $suma_cost_mant_a_div_area;
 
-                for ($i = 2; $i <= 10; $i++) {
-                    $suma_cost_mant_a_div_area = $suma_cost_mant_a_div_area * $inflacion_rate;
-                    $res_opex_a = $res_opex_a +  $suma_cost_mant_a_div_area;
-               }
+
+
+               if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+                    $res_opex_a = 0;
+                }else{
+                    for ($i = 2; $i <= 10; $i++) {
+                        $suma_cost_mant_a_div_area = $suma_cost_mant_a_div_area * $inflacion_rate;
+                        $res_opex_a = $res_opex_a +  $suma_cost_mant_a_div_area;
+                    }
+                }
 
                $total_opex_a = $suma_enf_a_aux + $res_opex_a;
 
@@ -1547,9 +1603,14 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_b = $consumo_anual_opex_b/$area;
              $suma_enf_b_aux = $res_opex_enf_b;
-             for ($i = 2; $i <= 10; $i++) {
+
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+               $suma_enf_b_aux = 0;
+            }else{
+               for ($i = 2; $i <= 10; $i++) {
                  $res_opex_enf_b = $res_opex_enf_b * $inflacion;
                 $suma_enf_b_aux = $suma_enf_b_aux +  $res_opex_enf_b;
+                }
             }
 
             //incremento inflacion
@@ -1566,10 +1627,16 @@ public function red_en_mw_grafic($dif,$dif_2){
             $suma_cost_mant_b_div_area = $suma_cost_mant_b/$area;
             $res_opex_b = $suma_cost_mant_b_div_area;
 
-            for ($i = 2; $i <= 10; $i++) {
+
+
+           if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+               $res_opex_b = 0;
+            }else{
+               for ($i = 2; $i <= 10; $i++) {
                 $suma_cost_mant_b_div_area = $suma_cost_mant_b_div_area * $inflacion_rate;
                 $res_opex_b = $res_opex_b +  $suma_cost_mant_b_div_area;
            }
+            }
 
            $total_opex_b = $suma_enf_b_aux + $res_opex_b;
 
@@ -1717,7 +1784,7 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->first()->area;
 
             $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_1,$prot_cond_1);
-
+            //dd($yrs_life_activo);
             $res_enf_base = ($suma_enf_base/$yrs_life_activo)*(3/$area);
             //$res_enf_base =  $suma_enf_base/$area;
 
@@ -2088,9 +2155,16 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_base = $consumo_anual_opex_base/$area;
              $suma_enf_base_aux = $res_opex_enf_base;
-             for ($i = 2; $i <= 5; $i++) {
+
+
+
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
+               $suma_enf_base_aux = 0;
+            }else{
+               for ($i = 2; $i <= 5; $i++) {
                  $res_opex_enf_base = $res_opex_enf_base * $inflacion;
                  $suma_enf_base_aux = $suma_enf_base_aux +  $res_opex_enf_base;
+                }
             }
 
             //incremento inflacion
@@ -2107,10 +2181,16 @@ public function red_en_mw_grafic($dif,$dif_2){
             $suma_cost_mant_base_div_area = $suma_cost_mant_base/$area;
             $res_opex_base = $suma_cost_mant_base_div_area;
 
-            for ($i = 2; $i <= 5; $i++) {
+
+
+           if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
+               $res_opex_base = 0;
+            }else{
+              for ($i = 2; $i <= 5; $i++) {
                 $suma_cost_mant_base_div_area = $suma_cost_mant_base_div_area * $inflacion_rate;
                 $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
            }
+            }
             ///recuperacion opex
             if($type_p == 2){
 
@@ -2184,9 +2264,15 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_a = $consumo_anual_opex_a/$area;
              $suma_enf_a_aux = $res_opex_enf_a;
-             for ($i = 2; $i <= 5; $i++) {
+
+
+            if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
+               $suma_enf_a_aux = 0;
+            }else{
+               for ($i = 2; $i <= 5; $i++) {
                  $res_opex_enf_a = $res_opex_enf_a * $inflacion;
                  $suma_enf_a_aux = $suma_enf_a_aux +  $res_opex_enf_a;
+                }
             }
 
              //incremento inflacion
@@ -2203,9 +2289,15 @@ public function red_en_mw_grafic($dif,$dif_2){
              $suma_cost_mant_a_div_area = $suma_cost_mant_a/$area;
              $res_opex_a = $suma_cost_mant_a_div_area;
 
-             for ($i = 2; $i <= 5; $i++) {
+
+
+            if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
+               $res_opex_a = 0;
+            }else{
+               for ($i = 2; $i <= 5; $i++) {
                  $suma_cost_mant_a_div_area = $suma_cost_mant_a_div_area * $inflacion_rate;
                  $res_opex_a = $res_opex_a +  $suma_cost_mant_a_div_area;
+                }
             }
 
             //$total_opex_a = $suma_enf_a_aux + $res_opex_a;
@@ -2237,7 +2329,7 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('projects.id','=',$id_projecto)
             ->first()->area;
 
-             if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
                $res_enf_b = 0;
             }else{
                $yrs_life_activo = $this->getYrsLifeActivo($tipo_mant_3,$prot_cond_3);
@@ -2267,10 +2359,17 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_b = $consumo_anual_opex_b/$area;
              $suma_enf_b_aux = $res_opex_enf_b;
-             for ($i = 2; $i <= 5; $i++) {
-                 $res_opex_enf_b = $res_opex_enf_b * $inflacion;
+
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
+               $suma_enf_b_aux = 0;
+            }else{
+              for ($i = 2; $i <= 5; $i++) {
+                $res_opex_enf_b = $res_opex_enf_b * $inflacion;
                 $suma_enf_b_aux = $suma_enf_b_aux +  $res_opex_enf_b;
+              }
             }
+
+
 
              //incremento inflacion
              $cost_mant_b = DB::table('solutions_project')
@@ -2286,9 +2385,15 @@ public function red_en_mw_grafic($dif,$dif_2){
              $suma_cost_mant_b_div_area = $suma_cost_mant_b/$area;
              $res_opex_b = $suma_cost_mant_b_div_area;
 
-             for ($i = 2; $i <= 5; $i++) {
+
+
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
+               $res_opex_b = 0;
+            }else{
+              for ($i = 2; $i <= 5; $i++) {
                  $suma_cost_mant_b_div_area = $suma_cost_mant_b_div_area * $inflacion_rate;
                  $res_opex_b = $res_opex_b + $suma_cost_mant_b_div_area;
+              }
             }
 
       /*       $total_opex_b = $suma_enf_b_aux + $res_opex_b; */
@@ -2443,10 +2548,17 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_base = $consumo_anual_opex_base/$area;
              $suma_enf_base_aux = $res_opex_enf_base;
-             for ($i = 2; $i <= 10; $i++) {
+
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico' || $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
+               $suma_enf_base_aux = 0;
+            }else{
+               for ($i = 2; $i <= 10; $i++) {
                  $res_opex_enf_base = $res_opex_enf_base * $inflacion;
                  $suma_enf_base_aux = $suma_enf_base_aux +  $res_opex_enf_base;
+               }
             }
+
+
 
             //incremento inflacion
             $cost_mant_base = DB::table('solutions_project')
@@ -2462,9 +2574,15 @@ public function red_en_mw_grafic($dif,$dif_2){
             $suma_cost_mant_base_div_area = $suma_cost_mant_base/$area;
             $res_opex_base = $suma_cost_mant_base_div_area;
 
-            for ($i = 2; $i <= 10; $i++) {
+
+
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico' || $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
+               $res_opex_base = 0;
+            }else{
+               for ($i = 2; $i <= 10; $i++) {
                 $suma_cost_mant_base_div_area = $suma_cost_mant_base_div_area * $inflacion_rate;
                 $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
+            }
             }
 
             //$total_opex_base = $suma_enf_base_aux + $res_opex_base;
@@ -2525,10 +2643,16 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_a = $consumo_anual_opex_a/$area;
              $suma_enf_a_aux = $res_opex_enf_a;
-             for ($i = 2; $i <= 10; $i++) {
+
+             if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+               $suma_enf_a_aux = 0;
+             }else{
+               for ($i = 2; $i <= 10; $i++) {
                  $res_opex_enf_a = $res_opex_enf_a * $inflacion;
                  $suma_enf_a_aux = $suma_enf_a_aux +  $res_opex_enf_a;
-            }
+               }
+             }
+
 
             //incremento inflacion
             $cost_mant_a = DB::table('solutions_project')
@@ -2544,10 +2668,16 @@ public function red_en_mw_grafic($dif,$dif_2){
             $suma_cost_mant_a_div_area = $suma_cost_mant_a/$area;
             $res_opex_a = $suma_cost_mant_a_div_area;
 
-            for ($i = 2; $i <= 10; $i++) {
+
+
+           if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+               $res_opex_a = 0;
+             }else{
+               for ($i = 2; $i <= 10; $i++) {
                 $suma_cost_mant_a_div_area = $suma_cost_mant_a_div_area * $inflacion_rate;
                 $res_opex_a = $res_opex_a +  $suma_cost_mant_a_div_area;
-           }
+              }
+            }
 
            //$total_opex_a = $suma_enf_a_aux + $res_opex_a;
 
@@ -2606,10 +2736,17 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_b = $consumo_anual_opex_b/$area;
              $suma_enf_b_aux = $res_opex_enf_b;
-             for ($i = 2; $i <= 10; $i++) {
+
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+               $suma_enf_b_aux = 0;
+            }else{
+               for ($i = 2; $i <= 10; $i++) {
                  $res_opex_enf_b = $res_opex_enf_b * $inflacion;
                 $suma_enf_b_aux = $suma_enf_b_aux +  $res_opex_enf_b;
+                }
             }
+
+
 
             //incremento inflacion
             $cost_mant_b = DB::table('solutions_project')
@@ -2625,10 +2762,14 @@ public function red_en_mw_grafic($dif,$dif_2){
             $suma_cost_mant_b_div_area = $suma_cost_mant_b/$area;
             $res_opex_b = $suma_cost_mant_b_div_area;
 
-            for ($i = 2; $i <= 10; $i++) {
+           if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+               $res_opex_b = 0;
+            }else{
+               for ($i = 2; $i <= 10; $i++) {
                 $suma_cost_mant_b_div_area = $suma_cost_mant_b_div_area * $inflacion_rate;
                 $res_opex_b = $res_opex_b + $suma_cost_mant_b_div_area;
-           }
+               }
+            }
 
            //$total_opex_b = $suma_enf_b_aux + $res_opex_b;
            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
@@ -2785,9 +2926,16 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_base = $consumo_anual_opex_base/$area;
              $suma_enf_base_aux = $res_opex_enf_base;
-             for ($i = 2; $i <= 15; $i++) {
+
+
+
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico' || $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion' ||  $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'liquido_coating_basico'){
+               $suma_enf_base_aux = 0;
+            }else{
+               for ($i = 2; $i <= 15; $i++) {
                  $res_opex_enf_base = $res_opex_enf_base * $inflacion;
                  $suma_enf_base_aux = $suma_enf_base_aux +  $res_opex_enf_base;
+              }
             }
 
             //incremento inflacion
@@ -2804,9 +2952,13 @@ public function red_en_mw_grafic($dif,$dif_2){
             $suma_cost_mant_base_div_area = $suma_cost_mant_base/$area;
             $res_opex_base = $suma_cost_mant_base_div_area;
 
-            for ($i = 2; $i <= 15; $i++) {
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico' || $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion' ||  $tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'liquido_coating_basico'){
+               $res_opex_base = 0;
+            }else{
+               for ($i = 2; $i <= 15; $i++) {
                 $suma_cost_mant_base_div_area = $suma_cost_mant_base_div_area * $inflacion_rate;
                 $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
+               }
             }
 
             //$total_opex_base = $suma_enf_base_aux + $res_opex_base;
@@ -2864,9 +3016,14 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_a = $consumo_anual_opex_a/$area;
              $suma_enf_a_aux = $res_opex_enf_a;
-             for ($i = 2; $i <= 15; $i++) {
+
+            if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion' ||  $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'liquido_coating_basico'){
+               $suma_enf_a_aux = 0;
+            }else{
+               for ($i = 2; $i <= 15; $i++) {
                  $res_opex_enf_a = $res_opex_enf_a * $inflacion;
                  $suma_enf_a_aux = $suma_enf_a_aux +  $res_opex_enf_a;
+               }
             }
 
             //incremento inflacion
@@ -2883,10 +3040,16 @@ public function red_en_mw_grafic($dif,$dif_2){
             $suma_cost_mant_a_div_area = $suma_cost_mant_a/$area;
             $res_opex_a = $suma_cost_mant_a_div_area;
 
-            for ($i = 2; $i <= 15; $i++) {
+
+
+           if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion' ||  $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'liquido_coating_basico'){
+               $res_opex_a = 0;
+             }else{
+               for ($i = 2; $i <= 15; $i++) {
                 $suma_cost_mant_a_div_area = $suma_cost_mant_a_div_area * $inflacion_rate;
                 $res_opex_a = $res_opex_a +  $suma_cost_mant_a_div_area;
-           }
+             }
+            }
 
            //$total_opex_a = $suma_enf_a_aux + $res_opex_a;
            if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico' || $tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
@@ -2944,9 +3107,14 @@ public function red_en_mw_grafic($dif,$dif_2){
 
              $res_opex_enf_b = $consumo_anual_opex_b/$area;
              $suma_enf_b_aux = $res_opex_enf_b;
-             for ($i = 2; $i <= 15; $i++) {
+
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion' ||  $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'liquido_coating_basico'){
+               $suma_enf_b_aux = 0;
+            }else{
+               for ($i = 2; $i <= 15; $i++) {
                  $res_opex_enf_b = $res_opex_enf_b * $inflacion;
                  $suma_enf_b_aux = $suma_enf_b_aux +  $res_opex_enf_b;
+              }
             }
 
             //incremento inflacion
@@ -2963,9 +3131,15 @@ public function red_en_mw_grafic($dif,$dif_2){
             $suma_cost_mant_b_div_area = $suma_cost_mant_b/$area;
             $res_opex_b = $suma_cost_mant_b_div_area;
 
-            for ($i = 2; $i <= 15; $i++) {
+
+
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico' || $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion' ||  $tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'liquido_coating_basico'){
+               $res_opex_b = 0;
+            }else{
+               for ($i = 2; $i <= 15; $i++) {
                 $suma_cost_mant_b_div_area = $suma_cost_mant_b_div_area * $inflacion_rate;
                  $res_opex_b = $res_opex_b + $suma_cost_mant_b_div_area;
+              }
             }
 
             $total_opex_b = $suma_enf_b_aux + $res_opex_b;
