@@ -1087,7 +1087,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                 @if ($result1 === null)
                 <?php  $personas=0; ?>
                 @endif
-                <div class="w-1/3 grid justify-items-center gap-y-3">
+                <div class="w-1/3 grid justify-items-center gap-y-3 place-items-center">
                     {{-- <div class="flex w-full justify-center">
                         @if ($personas > 0)
                         <p style="color:#ea0000;" class="cant_style">{{$personas}}</p>
@@ -1111,7 +1111,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                 <?php  $personas_a=0 ?>
                 <?php  $costo_a=0; ?>
                 @endif
-                <div class="w-1/3 grid justify-items-center gap-y-3">
+                <div class="w-1/3 grid justify-items-center gap-y-3 place-items-center">
                    {{--  <div class="flex w-full justify-center">
                         @if ($personas_a > 0)
                         <p style="color:#ea0000;" class="cant_style">{{$personas_a}}</p>
@@ -1136,7 +1136,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                 <?php  $costo_b=0 ?>
                 @endif
 
-                <div class="w-1/3 grid justify-items-center gap-y-3">
+                <div class="w-1/3 grid justify-items-center gap-y-3 place-items-center">
                     {{-- <div class="flex w-full justify-center">
                         <div class="flex w-full justify-center">
                             @if ($personas_b > 0)
@@ -1352,7 +1352,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                 <div class="w-full flex">
                     <div class="w-1/2 grid h-full">
 
-                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-5">
 
                             <div  class="flex justify-center w-full  my-1 gap-x-3 margin-r-payback">
                                 <div class="">
@@ -1366,10 +1366,10 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         </div>
 
-                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                        <div style="margin-top: 1.25rem" class="flex w-full justify-center gap-x-3 mb-5">
 
                             <div  class="flex justify-start w-[30%] place-items-center my-1">
-                                    <b  style="color:#1B17BB;margin-left:.0rem;" class="payback_cants font-roboto font-bold mt-2">Existente &nbsp;&nbsp;</b>
+                                    <b  style="color:#1B17BB;margin-left:.0rem;" class="payback_cants font-roboto font-bold mt-2">&nbsp;Existente &nbsp;</b>
                             </div>
 
                            {{--  <div  class="flex justify-start w-1/3  my-1 place-items-center">
@@ -1447,7 +1447,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         </div>
 
-                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                        <div style="margin-top: 0.4rem" class="flex w-full justify-center gap-x-3 mb-5">
 
                             <div  class="flex justify-start  w-[30%]  my-1 place-items-center">
                                     <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold ml-10">Solución A</b>
@@ -1525,7 +1525,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         </div>
 
-                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                        <div style="margin-top: 0.5rem" class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start  w-[30%] place-items-center my-1">
                                     <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold ml-10">Solución B</b>
@@ -1634,31 +1634,31 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                         <input type="number" class="hidden" id="counter_val_prod_ene" name="counter_val_prod_ene" value="{{$counter_val_prod_ene}}">
                     @endif
                     <div class="w-1/2">
-                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-1">
                             <div  class="flex justify-start w-full my-1 gap-x-3">
                                 <div class="place-items-center">
                                     <p  style="" class="solucions_style_name font-bold font-roboto  mt-5">Retorno de Inversión (%)</p>
                                 </div>
                             </div>
                         </div>
-                        <div class="max-w-6xl mx-auto bg-white rounded-lg mr-5">
+                        <div style="margin-right: 5rem" class="max-w-6xl mx-auto bg-white rounded-lg">
 
                                     <!-- Timeline Container -->
                                     <div class="timeline-component">
 
                                         <!-- Headers Row -->
-                                        <div class="flex justify-between items-center mb-8 px-2">
+                                        <div class="flex justify-between items-center mb-3 px-2">
                                             <div class="text-center">
-                                                <h3 class="text-sm md:text-base font-semibold text-gray-700">3 años</h3>
+                                                <h3 class="text-md md:text-lg  font-semibold text-gray-700">3 años</h3>
                                             </div>
                                             <div class="text-center">
-                                                <h3 class="text-sm md:text-base font-semibold text-gray-700">5 años</h3>
+                                                <h3 class="text-md md:text-lg font-semibold text-gray-700">5 años</h3>
                                             </div>
                                             <div class="text-center">
-                                                <h3 class="text-sm md:text-base font-semibold text-gray-700">10 años</h3>
+                                                <h3 class="text-md md:text-lg font-semibold text-gray-700">10 años</h3>
                                             </div>
                                             <div class="text-center">
-                                                <h3 class="text-sm md:text-base font-semibold text-gray-700">15 años</h3>
+                                                <h3 class="text-md md:text-lg font-semibold text-gray-700">15 años</h3>
                                             </div>
                                         </div>
 
@@ -1753,7 +1753,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start w-[30%] place-items-center my-1">
-                                    <b  style="color:#1B17BB;margin-left:0rem;" class="payback_cants font-roboto font-bold ml-8">Existente &nbsp;&nbsp;</b>
+                                    <b  style="color:#1B17BB;margin-left:0rem;" class="payback_cants font-roboto font-bold ml-8">&nbsp;Existente &nbsp;</b>
                             </div>
 
                             {{-- <div  class="flex justify-start w-1/3 place-items-center my-1">
@@ -1933,24 +1933,24 @@ $costo_b
                                 </div>
                             </div>
                         </div>
-                        <div class="max-w-6xl mx-auto bg-white rounded-lg mr-5 mb-5">
+                        <div  style="margin-right: 5rem" class="max-w-6xl mx-auto bg-white rounded-lg mb-5">
 
                                     <!-- Timeline Container -->
                                     <div class="timeline-component">
 
                                         <!-- Headers Row -->
-                                        <div class="flex justify-between items-center mb-8 px-2">
+                                        <div class="flex justify-between items-center mb-3 px-2">
                                             <div class="text-center">
-                                                <h3 id="yrs_r_e_3" class="text-sm md:text-base font-semibold text-gray-700"></h3>
+                                                <h3 id="yrs_r_e_3" class="text-md md:text-lg font-semibold text-gray-700"></h3>
                                             </div>
                                             <div class="text-center">
-                                                <h3 id="yrs_r_e_5" class="text-sm md:text-base font-semibold text-gray-700"></h3>
+                                                <h3 id="yrs_r_e_5" class="text-md md:text-lg font-semibold text-gray-700"></h3>
                                             </div>
                                             <div class="text-center">
-                                                <h3 id="yrs_r_e_10" class="text-sm md:text-base font-semibold text-gray-700"></h3>
+                                                <h3 id="yrs_r_e_10" class="text-md md:text-lg font-semibold text-gray-700"></h3>
                                             </div>
                                             <div class="text-center">
-                                                <h3 id="yrs_r_e_15" class="text-sm md:text-base font-semibold text-gray-700"></h3>
+                                                <h3 id="yrs_r_e_15" class="text-md md:text-lg font-semibold text-gray-700"></h3>
                                             </div>
                                         </div>
 
