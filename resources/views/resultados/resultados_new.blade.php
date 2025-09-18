@@ -1404,7 +1404,7 @@ if($counter == 2){
 
                             <div class="flex justify-center w-full my-1 gap-x-3 margin-r-payback">
                                 <div class="">
-                                    <img  style="margin-left: .5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
+                                    <img  style="margin-left: 0rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
 
                                 <div class="place-items-center">
