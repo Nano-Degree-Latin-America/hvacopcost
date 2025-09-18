@@ -23,7 +23,7 @@ class funciones {
 
 //resultados trait //////////////////////////////////////////
 ///roi_onlly_energy_retorna porcentaje
-public function roi_only_energy($costo_anual,$mayor,$inflacion,$inv_ini){
+public function roi_only_energy($costo_anual,$mayor,$inflacion,$inv_ini,$cant){
 
     $costo_anual = intval($costo_anual);
     $mayor = intval($mayor);
@@ -83,16 +83,25 @@ public function roi_only_energy($costo_anual,$mayor,$inflacion,$inv_ini){
             }
 
             if($i === 10){
-                $suma_10_años = $año_10;
-                $porcent_10 = $suma_10_años / $inv_ini * 100;
-                array_push($array_res,intval($porcent_10));
-
+                if($cant >=  10){
+                    $suma_10_años = $año_10;
+                    $porcent_10 = $suma_10_años / $inv_ini * 100;
+                    array_push($array_res,intval($porcent_10));
+                }else{
+                    array_push($array_res,null);
+                }
             }
 
             if($i === 15){
+                if($cant > 10){
                 $suma_15_años = $año_15;
                 $porcent_15 = $suma_15_años / $inv_ini * 100;
                 array_push($array_res,intval($porcent_15));
+                }else{
+
+                array_push($array_res,null);
+                }
+                //dd($array_res);
             }
 
         }
@@ -288,7 +297,7 @@ public function roi($dif_cost,$inflacion,$inv_ini,$cant){
         $funciones = new funciones();
         //$array_roi_base_ene_solo_ene = $funciones->roi_base_a_retro_new_nojson($id_projecto,$dif_cost,$inv_ini);
         //$array_sumas = $funciones->roi_sumas_grafics($id_projecto,$dif_cost,$inv_ini);
-        $array_only_energy = $funciones->roi_only_energy_no_porcent($consumo_ene_anual,$mayor,$inflacion,$inv_ini);
+        $array_only_energy = $funciones->roi_only_energy_no_porcent($consumo_ene_anual,$mayor,$inflacion,$inv_ini,$cant);
 
         $costo = intval($costo);
 
@@ -443,7 +452,7 @@ public function roi($dif_cost,$inflacion,$inv_ini,$cant){
     }
 
      ///roi_onlly_energy_ no retorna porcentaje
-public function roi_only_energy_no_porcent($costo_anual,$mayor,$inflacion,$inv_ini){
+public function roi_only_energy_no_porcent($costo_anual,$mayor,$inflacion,$inv_ini,$cant){
 
     $costo_anual = intval($costo_anual);
     $mayor = intval($mayor);
@@ -502,16 +511,25 @@ public function roi_only_energy_no_porcent($costo_anual,$mayor,$inflacion,$inv_i
             }
 
             if($i === 10){
-                $suma_10_años = $año_10;
-                $porcent_10 = $suma_10_años;
-                array_push($array_res,intval($porcent_10));
-
+                if($cant >=  10){
+                    $suma_10_años = $año_10;
+                    $porcent_10 = $suma_10_años / $inv_ini * 100;
+                    array_push($array_res,intval($porcent_10));
+                }else{
+                    array_push($array_res,null);
+                }
             }
 
             if($i === 15){
+                if($cant > 10){
                 $suma_15_años = $año_15;
-                $porcent_15 = $suma_15_años;
+                $porcent_15 = $suma_15_años / $inv_ini * 100;
                 array_push($array_res,intval($porcent_15));
+                }else{
+
+                array_push($array_res,null);
+                }
+                //dd($array_res);
             }
 
         }
