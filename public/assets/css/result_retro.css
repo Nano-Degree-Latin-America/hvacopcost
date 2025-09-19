@@ -31,7 +31,7 @@
 
 
          .titulos_style{
-            font-size:30px;
+            font-size:2.25rem;
             color: white;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -39,7 +39,7 @@
 
          .solucions_style_name{
             font-size: 2.25rem;
-            color: #1B17BB;
+            color: #2c5282;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
         }
@@ -323,6 +323,23 @@
         .medids-circle{
             width: 5rem;
             height: 5rem;
+        }
+
+        .text-yrs-payback {
+            color:#1B17BB;
+        }
+
+        .yrs-roi-3-padding{
+            padding-left:1.7rem;
+        }
+        .yrs-roi-5-padding{
+            padding-right:.1rem;
+        }
+        .yrs-roi-10-padding{
+            padding-right:.0rem;
+        }
+         .yrs-roi-15-padding{
+           padding-right:1.7rem;
         }
 
 @media print{
@@ -611,6 +628,19 @@
         .medids-circle{
             width: 3rem;
             height: 3rem;
+        }
+
+        .yrs-roi-3-padding{
+            padding-left:.7rem;
+        }
+        .yrs-roi-5-padding{
+            padding-right:.1rem;
+        }
+        .yrs-roi-10-padding{
+            padding-right:.0rem;
+        }
+         .yrs-roi-15-padding{
+           padding-right:.7rem;
         }
 
 }
