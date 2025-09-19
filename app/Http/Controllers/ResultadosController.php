@@ -679,10 +679,10 @@ class ResultadosController extends Controller
 
 
         if($counter_val_prod_ene == 0){
-            $array_a = [0,0,0,0];
+            $array_a = [null,null,null,null];
             if(intval($dif_cost) === 0 || intval($inv_ini) === 0){
 
-                $array_b = [0,0,0,0];
+                $array_b = [null,null,null,null];
             }else{
 
                 if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
@@ -692,7 +692,7 @@ class ResultadosController extends Controller
                 }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico'){
                     $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_b,$mayor,$inflacion,10);
                 }else if($tipo_mant_2 == null && $prot_cond_2 == null){
-                    $array_b = [0,0,0,0];
+                    $array_b = [null,null,null,null];
                 }else{
                     $array_b = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_b,$mayor,$inflacion,15);
                 }
@@ -700,7 +700,7 @@ class ResultadosController extends Controller
 
             if(intval($dif_2_cost) === 0 || intval($inv_ini_3) === 0){
 
-                $array_c = [0,0,0,0];
+                $array_c = [null,null,null,null];
             }else{
 
 
@@ -712,7 +712,7 @@ class ResultadosController extends Controller
 
                      $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,10);
                 }else if($tipo_mant_2 == null && $prot_cond_2 == null){
-                    $array_c = [0,0,0,0];
+                    $array_c = [null,null,null,null];
                 }else{
                     $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,15);
                 }
@@ -723,10 +723,10 @@ class ResultadosController extends Controller
 
 
         if($counter_val_prod_ene == 1){
-            $array_b = [0,0,0,0];
+            $array_b = [null,null,null,null];
             if(intval($dif_cost) === 0 || intval($inv_ini) === 0){
 
-                $array_a = [0,0,0,0];
+                $array_a = [null,null,null,null];
             }else{
 
                 if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
@@ -737,7 +737,7 @@ class ResultadosController extends Controller
                     $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,10);
 
                 }else if($tipo_mant_1 == null && $prot_cond_1 == null){
-                    $array_a = [0,0,0,0];
+                    $array_a = [null,null,null,null];
                 }else{
                     $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,15);
                 }
@@ -745,7 +745,7 @@ class ResultadosController extends Controller
 
             if(intval($dif_2_cost) === 0 || intval($inv_ini_3) === 0){
 
-                $array_c = [0,0,0,0];
+                $array_c = [null,null,null,null];
             }else{
 
 
@@ -757,7 +757,7 @@ class ResultadosController extends Controller
 
                      $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,10);
                 }else if($tipo_mant_3 == null && $prot_cond_3 == null){
-                    $array_c = [0,0,0,0];
+                    $array_c = [null,null,null,null];
                 }else{
                     $array_c = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_c,$mayor,$inflacion,15);
                 }
@@ -768,10 +768,10 @@ class ResultadosController extends Controller
 
 
         if($counter_val_prod_ene == 2){
-            $array_c = [0,0,0,0];
+            $array_c = [null,null,null,null];
             if(intval($dif_cost) === 0 || intval($inv_ini) === 0){
 
-                $array_a = [0,0,0,0];
+                $array_a = [null,null,null,null];
             }else{
                 if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
                     $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,3);
@@ -781,7 +781,7 @@ class ResultadosController extends Controller
                     $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,10);
 
                 }else if($tipo_mant_1 == null && $prot_cond_1 == null){
-                    $array_a = [0,0,0,0];
+                    $array_a = [null,null,null,null];
                 }else{
                     $array_a = $funciones->roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$consumo_ene_anual_a,$mayor,$inflacion,15);
                 }
@@ -789,7 +789,7 @@ class ResultadosController extends Controller
 
             if(intval($dif_2_cost) === 0 || intval($inv_ini_3) === 0){
 
-                $array_b = [0,0,0,0];
+                $array_b = [null,null,null,null];
             }else{
 
 
@@ -800,7 +800,7 @@ class ResultadosController extends Controller
                 }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico'){
                      $array_b = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_b,$mayor,$inflacion,10);
                 }else if($tipo_mant_2 == null && $prot_cond_2 == null){
-                    $array_b = [0,0,0,0];
+                    $array_b = [null,null,null,null];
                 }else{
                     $array_b = $funciones->roi_ene_prod($id_projecto,$dif_2_cost,$inv_ini_3,$costobase,$costo_b,$consumo_ene_anual_b,$mayor,$inflacion,15);
                 }
@@ -908,7 +908,7 @@ class ResultadosController extends Controller
           } */
 
            if($counter_val == 0){
-            $array_a = [0,0,0,0];
+            $array_a = [null,null,null,null];
         }else{
             if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
                     $array_a = $funciones->roi_only_energy($consumo_ene_anual_a,$mayor,$inflacion,$inv_ini_1,3);
@@ -918,14 +918,14 @@ class ResultadosController extends Controller
                      $array_a = $funciones->roi_only_energy($consumo_ene_anual_a,$mayor,$inflacion,$inv_ini_1,10);
 
                 }else if($tipo_mant_1 == null && $prot_cond_1 == null){
-                    $array_a = [0,0,0,0];
+                    $array_a = [null,null,null,null];
                 }else{
                      $array_a = $funciones->roi_only_energy($consumo_ene_anual_a,$mayor,$inflacion,$inv_ini_1,15);
                 }
         }
 
         if($counter_val == 1){
-            $array_b = [0,0,0,0];
+            $array_b = [null,null,null,null];
         }else{
             if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
                     $array_b = $funciones->roi_only_energy($consumo_ene_anual_b,$mayor,$inflacion,$inv_ini_2,3);
@@ -934,7 +934,7 @@ class ResultadosController extends Controller
                 }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico'){
                     $array_b = $funciones->roi_only_energy($consumo_ene_anual_b,$mayor,$inflacion,$inv_ini_2,10);
                 }else if($tipo_mant_2 == null && $prot_cond_2 == null){
-                    $array_b = [0,0,0,0];
+                    $array_b = [null,null,null,null];
                 }else{
                     $array_b = $funciones->roi_only_energy($consumo_ene_anual_b,$mayor,$inflacion,$inv_ini_2,15);
                 }
@@ -942,7 +942,7 @@ class ResultadosController extends Controller
 
 
         if($counter_val == 2){
-            $array_c = [0,0,0,0];
+            $array_c = [null,null,null,null];
         }else{
             if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
                     $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3,3);
@@ -952,7 +952,7 @@ class ResultadosController extends Controller
 
                      $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3,10);
                 }else if($tipo_mant_2 == null && $prot_cond_2 == null){
-                    $array_c = [0,0,0,0];
+                    $array_c = [null,null,null,null];
                 }else{
                     $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3,15);
                 }

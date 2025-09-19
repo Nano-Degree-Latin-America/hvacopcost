@@ -1075,7 +1075,7 @@ if($counter == 2){
 
       <div class="w-full grid mb-1">
         <div style="background-color:#fff;" class="w-full flex justify-center">
-            <div style="margin-top:1rem;" class="flex w-full justify-center">
+            <div style="margin-top:1.2rem;" class="flex w-full justify-center mb-1">
                 <p class="titulos_style" style="color:#1B17BB;">Reducción Anual de Costo Salarial</p>
             </div>
           </div>
@@ -1394,7 +1394,7 @@ if($counter == 2){
 
               <div class="w-full grid">
                 <div class="w-full flex justify-center mt-5">
-                        <p class="solucions_style_name  ">Recuperación - Solo Energía</p>
+                        <p class="solucions_style_name">Recuperación - Solo Energía</p>
                 </div>
 
                 <div class="w-full flex">
@@ -1407,7 +1407,7 @@ if($counter == 2){
                                     <img  style="margin-left: 1.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
 
-                                <div class="place-items-center">
+                                <div class="place-items-center w-full">
                                     <p  style="margin-left: 2.3rem;" class="solucions_style_name font-bold font-roboto  mt-5">Payback Simple</p>
                                 </div>
                             </div>
@@ -1417,7 +1417,7 @@ if($counter == 2){
                         <div style="margin-top: 1.25rem" class="flex w-full justify-center gap-x-3 mb-5">
 
                             <div style="" class="flex justify-start w-[30%]  my-1 place-items-center">
-                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold">Solución A</b>
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
                             </div>
 
                            {{--  <div  class="flex justify-start w-1/3  my-1 place-items-center">
@@ -1500,7 +1500,7 @@ if($counter == 2){
                         <div style="margin-top: 0.4rem" class="flex w-full justify-center gap-x-3 mb-5">
 
                             <div  class="flex justify-start  w-[30%]  my-1 place-items-center">
-                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold">Solución B</b>
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
                             </div>
 
                            {{--  <div  class="flex justify-start w-1/3  my-1 place-items-center">
@@ -1585,7 +1585,7 @@ if($counter == 2){
                         <div style="margin-top: 0.4rem" class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start  w-[30%] place-items-center my-1">
-                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold">Solución C</b>
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución C</b>
                             </div>
 
                             {{-- <div  class="flex justify-start w-1/3  my-1 place-items-center">
@@ -1718,16 +1718,16 @@ if($counter == 2){
                                         <!-- Headers Row -->
                                         <div class="flex justify-between items-center mb-3 px-2">
                                             <div class="text-center">
-                                                <h3 class="text-md md:text-lg font-semibold text-gray-700">3 años</h3>
+                                                <h3 id="yrs_r_sl_3" class="yrs-roi-3-padding font-bold text-lg md:text-xl text-yrs-payback"></h3>
                                             </div>
                                             <div class="text-center">
-                                                <h3 class="text--md md:text-lg font-semibold text-gray-700">5 años</h3>
+                                                <h3 id="yrs_r_sl_5" class="yrs-roi-5-padding font-bold text-lg md:text-xl text-yrs-payback"></h3>
                                             </div>
                                             <div class="text-center">
-                                                <h3 class="text--md md:text-lg font-semibold text-gray-700">10 años</h3>
+                                                <h3 id="yrs_r_sl_10" class="yrs-roi-10-padding font-bold text-lg md:text-xl text-yrs-payback"></h3>
                                             </div>
                                             <div class="text-center">
-                                                <h3 class="text--md md:text-lg font-semibold text-gray-700">15 años</h3>
+                                                <h3 id="yrs_r_sl_15" class="yrs-roi-15-padding font-bold text-lg md:text-xl text-yrs-payback"></h3>
                                             </div>
                                         </div>
 
@@ -1813,7 +1813,7 @@ if($counter == 2){
                                     <img  style="margin-left: 1.5rem;" src="{{asset('assets/images/payback.png')}}" class="img_payback mx-2">
                                 </div>
 
-                                <div class="place-items-center">
+                                <div class="place-items-center w-full">
                                     <p  style="margin-left: 2.3rem;" class="solucions_style_name font-bold font-roboto  mt-5">Payback Simple</p>
                                 </div>
                             </div>
@@ -1823,7 +1823,7 @@ if($counter == 2){
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start w-[30%] place-items-center my-1">
-                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold">Solución A</b>
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
                             </div>
 
                            {{--  <div  class="flex justify-start w-1/3 place-items-center my-1">
@@ -1901,7 +1901,7 @@ if($counter == 2){
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start w-[30%] place-items-center  my-1">
-                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold">Solución B</b>
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
                             </div>
 
                           {{--   <div  class="flex justify-start w-1/3 place-items-center my-1">
@@ -1996,7 +1996,7 @@ $costo_b
                         <div class="flex w-full justify-center gap-x-3 mb-3">
 
                             <div  class="flex justify-start w-[30%] place-items-center my-1">
-                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="payback_cants font-roboto font-bold">Solución C</b>
+                                    <b  style="color:#1B17BB;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución C</b>
                             </div>
 
                            {{--  <div  class="flex justify-start w-1/3 place-items-center my-1">
@@ -2101,16 +2101,16 @@ $costo_b
 
                                         <div class="flex justify-between items-center mb-3 px-2">
                                             <div class="text-center">
-                                                <h3 id="yrs_r_e_3" class="text-md md:text-lg font-semibold text-gray-700">3 años</h3>
+                                                <h3 id="yrs_r_e_3" class="yrs-roi-3-padding text-lg md:text-xl font-bold text-yrs-payback">3</h3>
                                             </div>
                                             <div class="text-center">
-                                                <h3  id="yrs_r_e_5" class="text--md md:text-lg font-semibold text-gray-700">5 años</h3>
+                                                <h3 id="yrs_r_e_5" class="yrs-roi-5-padding text-lg md:text-xl font-bold text-yrs-payback">5</h3>
                                             </div>
                                             <div class="text-center">
-                                                <h3 id="yrs_r_e_10" class="text--md md:text-lg font-semibold text-gray-700">10 años</h3>
+                                                <h3 id="yrs_r_e_10" class="yrs-roi-10-padding text-lg md:text-xl font-bold text-yrs-payback">10</h3>
                                             </div>
                                             <div class="text-center">
-                                                <h3 id="yrs_r_e_15" class="text--md md:text-lg font-semibold text-gray-700">15 años</h3>
+                                                <h3 id="yrs_r_e_15" class="yrs-roi-15-padding text-lg md:text-xl font-bold text-yrs-payback">15</h3>
                                             </div>
                                         </div>
 
@@ -5967,11 +5967,35 @@ function roi_s_ene(id_project){
     var consumo_ene_anual_a = '{{$sumaopex_1*$tar_ele->costo_elec}}'
     var consumo_ene_anual_b = '{{$sumaopex_2*$tar_ele->costo_elec}}'
     var consumo_ene_anual_c = '{{$sumaopex_3*$tar_ele->costo_elec}}'
-//////
+
     $.ajax({
+        type: 'get',
+        url: '/check_marino/'+ id_project,
+        success: function (response) {
+            if(response == 1){
+                 var ano_a = 1;
+                 var ano_b = 3;
+                 var ano_c = 5;
+                 var ano_d = 10;
+            }else{
+                 var ano_a = 3;
+                 var ano_b = 5;
+                 var ano_c = 10;
+                 var ano_d = 15;
+
+            }
+
+
+            $.ajax({
         type: 'get',
         url: "/roi_only_energy/" + id_project + '/' + consumo_ene_anual_a + '/' + consumo_ene_anual_b + '/' + consumo_ene_anual_c + '/' + inv_ini_1 + '/' + inv_ini_2 + '/' + inv_ini_3 + '/' + counter_val_prod_ene,
         success: function (res) {
+
+             document.getElementById('yrs_r_sl_3').innerHTML = ano_a;
+            document.getElementById('yrs_r_sl_5').innerHTML = ano_b;
+            document.getElementById('yrs_r_sl_10').innerHTML = ano_c;
+            document.getElementById('yrs_r_sl_15').innerHTML = ano_d;
+
             document.getElementById('a_s_e_3').innerHTML = res[0][0];
             document.getElementById('a_s_e_5').innerHTML = res[0][1];
             document.getElementById('a_s_e_10').innerHTML = res[0][2];
@@ -6125,6 +6149,17 @@ function roi_s_ene(id_project){
             console.log(responsetext);
         }
     });
+
+
+             },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+
+         });
+
+//////
+
 }
 
 /* function roi_s_ene(id_project){
@@ -6810,10 +6845,10 @@ $.ajax({
         url: "/roi_ene_prod/" + id_project + '/' + dif_1_cost + '/' + inv_ini_2 +'/'+ costo_anual_base +'/'+ costo_anual_a +'/'+ dif_2_cost + '/' + inv_ini_3 +'/'+ costo_anual_b +'/'+ consumo_ene_anual_a +'/'+ consumo_ene_anual_b +'/'+ consumo_ene_anual_c +'/'+counter_val_prod_ene,
         success: function (res) {
 
-            document.getElementById('yrs_r_e_3').innerHTML = ano_a + " años";
-            document.getElementById('yrs_r_e_5').innerHTML = ano_b + " años";
-            document.getElementById('yrs_r_e_10').innerHTML = ano_c + " años";
-            document.getElementById('yrs_r_e_15').innerHTML = ano_d + " años";
+            document.getElementById('yrs_r_e_3').innerHTML = ano_a;
+            document.getElementById('yrs_r_e_5').innerHTML = ano_b;
+            document.getElementById('yrs_r_e_10').innerHTML = ano_c;
+            document.getElementById('yrs_r_e_15').innerHTML = ano_d;
 
             document.getElementById('a_r_e_3').innerHTML = res[0][0];
             document.getElementById('a_r_e_5').innerHTML = res[0][1];
@@ -9555,7 +9590,7 @@ function roi_s_ene_print(id_project){
 
     $.ajax({
         type: 'get',
-        url: "/roi_only_energy/" + id_project + '/' + consumo_ene_anual_a + '/' + consumo_ene_anual_b + '/' + consumo_ene_anual_c + '/' + inv_ini_1 + '/' + inv_ini_2 + '/' + inv_ini_3,
+        url: "/roi_only_energy/" + id_project + '/' + consumo_ene_anual_a + '/' + consumo_ene_anual_b + '/' + consumo_ene_anual_c + '/' + inv_ini_1 + '/' + inv_ini_2 + '/' + inv_ini_3 + '/'+ counter_val_prod_ene,
         success: function (res) {
 
             var options = {
