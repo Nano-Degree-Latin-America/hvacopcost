@@ -10,7 +10,7 @@
              {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
 
         </div>
- @inject('check_types_p','app\Http\Controllers\IndexController')
+ @inject('check_types_p','App\Http\Controllers\IndexController')
  <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
         <div class="col-4 mt-5 flex justify-end"{{-- class="contenedor" --}}>
 
