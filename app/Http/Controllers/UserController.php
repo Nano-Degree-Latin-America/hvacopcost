@@ -129,7 +129,6 @@ class UserController extends Controller
         }else{
 
             if($request->get('password') !== '' && $request->get('password') !== null){
-                dd($request->get('password'));
                 $user_update->password=Hash::make($request->get('password'));
             }else{
                 $user_update->password=$user_update->password;
