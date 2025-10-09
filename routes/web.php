@@ -240,6 +240,9 @@ Route::post('update_form_project_mantenimiento/{id_project}', 'MantenimientoCont
 Route::post('save_adicionales/{id_project}', 'MantenimientoController@save_adicionales');
 Route::post('save_justificacion_financiera/{id_project}', 'MantenimientoController@save_justificacion_financiera');
 
+//operaciones
+Route::get('operaciones_index', 'OperacionesController@index');
+
 //lang
 Route::get('locale/{locale}', function($locale){
    session()->put('locale',$locale);
