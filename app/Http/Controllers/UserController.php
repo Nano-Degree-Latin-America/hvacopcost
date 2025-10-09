@@ -127,7 +127,9 @@ class UserController extends Controller
         if ($request->get('email') === "daniel24992@gmail.com") {
             # code...
         }else{
+
             if($request->get('password') !== '' && $request->get('password') !== null){
+                dd($request->get('password'));
                 $user_update->password=Hash::make($request->get('password'));
             }else{
                 $user_update->password=$user_update->password;
