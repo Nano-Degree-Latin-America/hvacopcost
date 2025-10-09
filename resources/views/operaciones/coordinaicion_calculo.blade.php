@@ -1,0 +1,351 @@
+
+<div class="h-[80vh] w-full overflow-y-auto overflow-x-hidden bg-gradient-to-br from-gray-50 to-gray-100 p-4 font-roboto">
+    <div class="flex justify-center w-full mt-6">
+        <div class="w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+            <table class="w-full">
+                <thead class="bg-gradient-to-r from-[#1B17BB] to-[#2d28d4]">
+                    <tr>
+                        <th style="width:100px;" class="px-4 py-4 font-roboto font-bold text-center text-white">
+
+                        </th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Sistema</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Cantidad</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Periodo</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P1</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P2</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P3</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P4</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P5</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P6</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P7</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P8</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P9</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P10</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P11</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P12</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Total Horas</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tbody_coordinacion_calculo" name="tbody_coordinacion_calculo" class="divide-y divide-gray-200">
+                    <!-- Fila de ejemplo -->
+                    <tr id="tr_exampe_calculo" name="tr_exampe_calculo" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    th, td {
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    /* Scrollbar personalizado */
+    .overflow-y-auto::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .overflow-y-auto::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    .overflow-y-auto::-webkit-scrollbar-thumb {
+        background: #1B17BB;
+        border-radius: 10px;
+    }
+
+    .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+        background: #2d28d4;
+    }
+
+    /* Animación para filas nuevas */
+    @keyframes fadeInRow {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    tbody tr {
+        animation: fadeInRow 0.3s ease-out;
+    }
+
+    /* Estilos para inputs y selects mejorados */
+    .form-control:focus {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 3px rgba(27, 23, 187, 0.1);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        th, td {
+            font-size: 12px;
+            padding: 8px 4px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .overflow-x-hidden {
+            overflow-x: auto;
+        }
+
+        table {
+            min-width: 800px;
+        }
+    }
+</style>
+
+<script>
+function coordinacionCalculo(rowCount) {
+    var tr_example_calculo = document.getElementById('tr_exampe_calculo');
+    tr_example_calculo.style.display = 'none';
+
+    /// elementos calculo
+    var tbody_calculo = document.getElementById('tbody_coordinacion_calculo');
+    var tr_calculo = document.createElement('tr');
+    /////////// elementos estilo calculo
+    tr_calculo.className = 'bg-white hover:bg-blue-50 transition-colors duration-200 border-b border-gray-100';
+
+    // Clase común para inputs
+    const inputClass = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+
+    const selectClass = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+
+    //  1er td : input text (columna vacía) calculo
+        var td0_calculo = document.createElement('td');
+        td0_calculo.className = 'px-2 py-1';
+        var input0_calculo = document.createElement('input');
+        input0_calculo.type = 'text';
+        input0_calculo.id = 'input0_calculo_' + rowCount;
+        input0_calculo.className = 'w-3/4 h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input0_calculo.value = rowCount;
+        input0_calculo.readOnly = true;
+        td0_calculo.appendChild(input0_calculo);
+        tr_calculo.appendChild(td0_calculo);
+
+    //  2do td : input text (columna vacía) calculo
+        var td1_calculo = document.createElement('td');
+        td1_calculo.className = 'px-2 py-1';
+        var input1_calculo = document.createElement('input');
+        input1_calculo.type = 'text';
+        input1_calculo.id = 'sistemainput1_calculo_' + rowCount;
+        input1_calculo.className = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input1_calculo.value = '';
+        input1_calculo.readOnly = true;
+        td1_calculo.appendChild(input1_calculo);
+        tr_calculo.appendChild(td1_calculo);
+
+    //  3er td : input text (columna vacía) calculo
+        var td2_calculo = document.createElement('td');
+        td2_calculo.className = 'px-2 py-1';
+        var input2_calculo = document.createElement('input');
+        input2_calculo.type = 'text';
+        input2_calculo.id = 'cantidadinput2_calculo_' + rowCount;
+        input2_calculo.className = 'w-3/4 h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input2_calculo.value = '';
+        input2_calculo.readOnly = true;
+        td2_calculo.appendChild(input2_calculo);
+        tr_calculo.appendChild(td2_calculo);
+
+    //  4to td : input text (columna vacía) calculo
+        var td3_calculo = document.createElement('td');
+        td3_calculo.className = 'px-2 py-1 justify-center text-center';
+        var select3 = document.createElement('select');
+        select3.id = 'periodoSelect_' + rowCount;
+        select3.className = selectClass;
+        select3.setAttribute('onchange', 'onSelectChange(this)');
+        var option3_1 = document.createElement('option');
+        option3_1.value = '0';
+        option3_1.text = 'Seleccionar';
+        select3.appendChild(option3_1);
+        var option3_2 = document.createElement('option');
+        option3_2.value = 'T';
+        option3_2.text = 'T';
+        select3.appendChild(option3_2);
+        var option3_3 = document.createElement('option');
+        option3_3.value = 'S';
+        option3_3.text = 'S';
+        select3.appendChild(option3_3);
+        var option3_4 = document.createElement('option');
+        option3_4.value = 'A';
+        option3_4.text = 'A';
+        select3.appendChild(option3_4);
+        td3_calculo.appendChild(select3);
+        tr_calculo.appendChild(td3_calculo);
+
+    // 5to al 16vo td : 12 inputs text (P1 a P12)
+    for (let i = 0; i < 13; i++) {
+        var td_calculo = document.createElement('td');
+        td_calculo.className = 'px-2 py-1';
+        var input_calculo = document.createElement('input');
+        input_calculo.type = 'text';
+        input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
+        input_calculo.className = 'w-3/4 h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input_calculo.value = '';
+        td_calculo.appendChild(input_calculo);
+        tr_calculo.appendChild(td_calculo);
+    }
+
+    tbody_calculo.appendChild(tr_calculo);
+}
+
+function delete_calculo_equiops(rowCount,tr) {
+
+
+    var tbody_calculo = document.getElementById('tbody_coordinacion_calculo');
+    var tr_calculo = getTrCalculoByContador(rowCount); //traer  el tr correspondiente al contador
+    tr_calculo.remove();
+            // Actualizar todos los id y valores de los elementos en cada tr
+            var trsActualizados = tbody_calculo.querySelectorAll('tr');
+            for (let i = 0; i < trsActualizados.length; i++) {
+                let idx = i;
+                let inputContador = trsActualizados[i].querySelector('input[id^="input0_calculo_"]');
+                if (inputContador) {
+                    inputContador.id = 'input0_calculo_' + idx;
+                    inputContador.value = idx;
+                }
+                let sistemainput = trsActualizados[i].querySelector('select[id^="sistemainput1_calculo_"]');
+                if (sistemainput) sistemainput.id = 'sistemainput1_calculo_' + idx;
+                let cantidadinput2 = trsActualizados[i].querySelector('select[id^="cantidadinput2_calculo_"]');
+                if (cantidadinput2) cantidadinput2.id = 'cantidadinput2_calculo_' + idx;
+                let periodoSelect = trsActualizados[i].querySelector('select[id^="periodoSelect_"]');
+                if (periodoSelect) periodoSelect.id = 'periodoSelect_' + idx;
+
+                 for (let z = 0; z < 13; z++) {
+                     let inputCalculo = trsActualizados[i].querySelector('input[id^="input' + (4 + z) + '_calculo_"]');
+                     if (inputCalculo) inputCalculo.id = 'input' + (4 + z) + '_calculo_' + idx;
+                 }
+
+            }
+            rowCount = trsActualizados.length;
+
+}
+
+function getTrCalculoByContador(contador) {
+    var tbody_calculo = document.getElementById('tbody_coordinacion_calculo');
+    var trs = tbody_calculo.querySelectorAll('tr');
+    for (let i = 0; i < trs.length; i++) {
+        let inputContador = trs[i].querySelector('input[id^="input0_calculo_"]');
+        if (inputContador && parseInt(inputContador.value) === contador) {
+            return trs[i];
+        }
+    }
+    return null;
+}
+</script>
