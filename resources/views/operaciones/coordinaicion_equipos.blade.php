@@ -19,6 +19,7 @@
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Modelo</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Capacidad</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Cantidad</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Cantidad total</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Mantenimiento</th>
                     </tr>
                 </thead>
@@ -26,6 +27,12 @@
                 <tbody id="tbody_equipos" name="tbody_equipos" class="divide-y divide-gray-200">
                     <!-- Fila de ejemplo -->
                     <tr id="tr_exampe" name="tr_exampe" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
@@ -214,8 +221,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (modeloSelect) modeloSelect.id = 'modeloSelect_' + idx;
                 let capacidadInput = trsActualizados[i].querySelector('input[id^="capacidadInput_"]');
                 if (capacidadInput) capacidadInput.id = 'capacidadInput_' + idx;
-                let cantidadInput = trsActualizados[i].querySelector('input[id^="cantidadInput_"]');
-                if (cantidadInput) cantidadInput.id = 'cantidadInput_' + idx;
+                let cantidadInputTotal = trsActualizados[i].querySelector('input[id^="cantidadInputTotal_"]');
+                if (cantidadInputTotal) cantidadInputTotal.id = 'cantidadInputTotal_' + idx;
                 let mantenimientoSelect = trsActualizados[i].querySelector('select[id^="mantenimientoSelect_"]');
                 if (mantenimientoSelect) mantenimientoSelect.id = 'mantenimientoSelect_' + idx;
                 let deleteBtn = trsActualizados[i].querySelector('button[id^="deleteBtn_"]');
@@ -229,9 +236,10 @@ document.addEventListener('DOMContentLoaded', function() {
         var select1 = document.createElement('select');
         id_unidadSelectAux = String("unidadSelect_" + rowCount);
         id_marcaSelectAux = String("marcaSelect_" + rowCount);
+        id_sistemaCalculoAux = String("sistemainput1_calculo_" + rowCount);
         select1.id = 'sistemaSelect_' + rowCount;
         select1.className = selectClass;
-        select1.setAttribute('onchange', 'unidadHvac(this.value,"","' + id_unidadSelectAux + '",2);send_value_equipo_marcas(this.id,this.value,"'+id_marcaSelectAux+'");');
+        select1.setAttribute('onchange', 'unidadHvac(this.value,"","' + id_unidadSelectAux + '",2);send_value_equipo_marcas(this.id,this.value,"'+id_marcaSelectAux+'");send_value_sistemas_calculo_coordinacion("' + id_sistemaCalculoAux + '",this.value);');
 
         const sistemas = [
             {value: '0', text: 'Seleccionar'},
@@ -320,17 +328,31 @@ document.addEventListener('DOMContentLoaded', function() {
         var td6 = document.createElement('td');
         td6.className = 'px-2 py-1';
         var input2 = document.createElement('input');
+        var id_sistemaCantidadAux = String("cantidadinput2_calculo_" + rowCount);
         input2.type = 'text';
         input2.id = 'cantidadInput_' + rowCount;
         input2.className = inputClass;
         input2.placeholder = '0';
         input2.setAttribute('onkeypress', 'return soloNumeros(event)');
+        input2.setAttribute('onchange', 'send_value_cantidad_calculo_coordinacion("' + id_sistemaCantidadAux + '",this.value);');
         td6.appendChild(input2);
         tr.appendChild(td6);
 
-        // 8vo td: select (Mantenimiento)
+        // 7mo td: input text (Cantidad total)
         var td7 = document.createElement('td');
         td7.className = 'px-2 py-1';
+        var input3 = document.createElement('input');
+        input3.type = 'text';
+        input3.id = 'cantidadTotalInput_' + rowCount;
+        input3.className = inputClass;
+        input3.placeholder = '0';
+        input3.setAttribute('onkeypress', 'return soloNumeros(event)');
+        td7.appendChild(input3);
+        tr.appendChild(td7);
+
+        // 8vo td: select (Mantenimiento)
+        var td8 = document.createElement('td');
+        td8.className = 'px-2 py-1';
         var select5 = document.createElement('select');
         select5.id = 'mantenimientoSelect_' + rowCount;
         select5.className = selectClass;
@@ -347,8 +369,8 @@ document.addEventListener('DOMContentLoaded', function() {
             option.text = item.text;
             select5.appendChild(option);
         });
-        td7.appendChild(select5);
-        tr.appendChild(td7);
+        td8.appendChild(select5);
+        tr.appendChild(td8);
 
  // Botón eliminar
         var tdDelete = document.createElement('td');
@@ -380,6 +402,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (capacidadInput) capacidadInput.id = 'capacidadInput_' + idx;
                 let cantidadInput = trsActualizados[i].querySelector('input[id^="cantidadInput_"]');
                 if (cantidadInput) cantidadInput.id = 'cantidadInput_' + idx;
+                let cantidadInputTotal = trsActualizados[i].querySelector('input[id^="cantidadInputTotal_"]');
+                if (cantidadInputTotal) cantidadInputTotal.id = 'cantidadInputTotal_' + idx;
+                let cantidadTotalInput = trsActualizados[i].querySelector('input[id^="cantidadTotalInput_"]');
+                if (cantidadTotalInput) cantidadTotalInput.id = 'cantidadTotalInput_' + idx;
                 let mantenimientoSelect = trsActualizados[i].querySelector('select[id^="mantenimientoSelect_"]');
                 if (mantenimientoSelect) mantenimientoSelect.id = 'mantenimientoSelect_' + idx;
                 let deleteBtn = trsActualizados[i].querySelector('button[id^="deleteBtn_"]');
