@@ -2471,10 +2471,10 @@ public function red_en_mw_grafic($dif,$dif_2){
         ->where('solutions_project.num_sol','=',1)
         ->first();
 
-        $mantenimiento_2 = SolutionsProjectModel::where('solutions_project.id_project','=',$id_projecto)
+        $mantenimiento_2_set = SolutionsProjectModel::where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',2)
         ->where('solutions_project.num_sol','=',1)
-        ->first()->mantenimiento;
+        ->first();
 
         $tipo_mant_3_set = SolutionsProjectModel::where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',3)
@@ -2486,26 +2486,30 @@ public function red_en_mw_grafic($dif,$dif_2){
         ->where('solutions_project.num_sol','=',1)
         ->first();
 
-         $mantenimiento_3 = SolutionsProjectModel::where('solutions_project.id_project','=',$id_projecto)
+         $mantenimiento_3_set = SolutionsProjectModel::where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',3)
         ->where('solutions_project.num_sol','=',1)
-        ->first()->mantenimiento;
+        ->first();
 
 
         if($tipo_mant_2_set){
             $tipo_mant_2 = $tipo_mant_2_set->tipo_ambiente;
             $prot_cond_2 = $prot_cond_2_set->proteccion_condensador;
+            $mantenimiento_2 = $mantenimiento_2_set->mantenimiento;
         }else{
             $tipo_mant_2 = null;
             $prot_cond_2 = null;
+            $mantenimiento_2 = null;
         }
 
         if($tipo_mant_3_set){
             $tipo_mant_3 = $tipo_mant_3_set->tipo_ambiente;
             $prot_cond_3 = $prot_cond_3_set->proteccion_condensador;
+            $mantenimiento_3 = $mantenimiento_3_set->mantenimiento;
         }else{
             $tipo_mant_3 = null;
             $prot_cond_3 = null;
+            $mantenimiento_3 = null;
         }
 
         foreach( $num_enfs as $num_enf){
@@ -2855,10 +2859,10 @@ public function red_en_mw_grafic($dif,$dif_2){
         ->where('solutions_project.num_sol','=',1)
         ->first();
 
-        $mantenimiento_2 = SolutionsProjectModel::where('solutions_project.id_project','=',$id_projecto)
+        $mantenimiento_2_set = SolutionsProjectModel::where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',2)
         ->where('solutions_project.num_sol','=',1)
-        ->first()->mantenimiento;
+        ->first();
 
         $tipo_mant_3_set = SolutionsProjectModel::where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',3)
@@ -2870,18 +2874,19 @@ public function red_en_mw_grafic($dif,$dif_2){
         ->where('solutions_project.num_sol','=',1)
         ->first();
 
-        $mantenimiento_3 = SolutionsProjectModel::where('solutions_project.id_project','=',$id_projecto)
+        $mantenimiento_3_set = SolutionsProjectModel::where('solutions_project.id_project','=',$id_projecto)
         ->where('solutions_project.num_enf','=',3)
         ->where('solutions_project.num_sol','=',1)
-        ->first()->mantenimiento;
-
+        ->first();
 
         if($tipo_mant_2_set){
             $tipo_mant_2 = $tipo_mant_2_set->tipo_ambiente;
             $prot_cond_2 = $prot_cond_2_set->proteccion_condensador;
+            $mantenimiento_2 = $mantenimiento_2_set->mantenimiento;
         }else{
             $tipo_mant_2 = null;
             $prot_cond_2 = null;
+            $mantenimiento_2 = null;
         }
 
 
@@ -2889,9 +2894,11 @@ public function red_en_mw_grafic($dif,$dif_2){
         if($tipo_mant_3_set){
             $tipo_mant_3 = $tipo_mant_3_set->tipo_ambiente;
             $prot_cond_3 = $prot_cond_3_set->proteccion_condensador;
+            $mantenimiento_3 = $mantenimiento_3_set->mantenimiento;
         }else{
             $tipo_mant_3 = null;
             $prot_cond_3 = null;
+            $mantenimiento_3 = null;
         }
 
         foreach( $num_enfs as $num_enf){

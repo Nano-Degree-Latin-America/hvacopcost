@@ -296,6 +296,10 @@ input[type=number]::-webkit-outer-spin-button {
                                 @include('operaciones.coordinaicion_calculo')
                             </div>
 
+                            <div style="height: 70%;"  x-show.transition.in="step === 4">
+                                @include('operaciones.spend_plan_ajustado')
+                            </div>
+
 
                             <div class="clearfix">
                                 <div class="my-5 gap-x-3">
@@ -370,7 +374,7 @@ input[type=number]::-webkit-outer-spin-button {
                     <button  type="button"
 
                    style="background-color:#1B17BB;"
-                       x-show="step == 2"
+                       x-show="step > 1"
                        @click="step++"
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                    >{{ __('index.siguiente') }}</button>
@@ -1111,7 +1115,7 @@ window.onclick = function(event) {
 
 function app() {
 			return {
-				step: 2,
+				step: 4,
 				passwordStrengthText: '',
 				togglePassword: false,
 				gender: 'Male',

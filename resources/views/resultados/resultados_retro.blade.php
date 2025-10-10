@@ -1891,7 +1891,7 @@ $costo_b
                                         }
                                     ?>
                                     @if ($pay_back_b_ene_prod >= 1)
-                                   <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b_ene_prod,1)}}</b>
+                                   {{-- <b style="color:#33cc33;border:solid  3px;border-color:#1B17BB;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b_ene_prod,1)}}</b> --}}
 
                                         @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 1 )
                                         <b style="border:solid  3px;border-color:#1B17BB;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_b_ene_prod,1)}}</b>
