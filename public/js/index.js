@@ -16787,3 +16787,21 @@ function calcular_speendplan_base_update(id_project){
 
     }
  }
+
+ function send_value_sistemas_calculo_coordinacion(id,value){
+    $.ajax({
+        type: 'get',
+        url: '/traer_sistemas_calculo_coordinacion/'+value,
+        success: function (response) {
+           $('#'+id).val(response);
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+    });
+ }
+
+ function send_value_cantidad_calculo_coordinacion(id,value){
+     $('#'+id).val(value);
+ }
+

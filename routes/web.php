@@ -242,6 +242,7 @@ Route::post('save_justificacion_financiera/{id_project}', 'MantenimientoControll
 
 //operaciones
 Route::get('operaciones_index', 'OperacionesController@index');
+Route::get('traer_sistemas_calculo_coordinacion/{id}', 'OperacionesController@traer_sistemas_calculo_coordinacion');
 
 //lang
 Route::get('locale/{locale}', function($locale){

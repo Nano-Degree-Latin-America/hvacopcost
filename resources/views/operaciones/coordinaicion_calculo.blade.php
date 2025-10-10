@@ -223,9 +223,9 @@ function coordinacionCalculo(rowCount) {
     tr_calculo.className = 'bg-white hover:bg-blue-50 transition-colors duration-200 border-b border-gray-100';
 
     // Clase común para inputs
-    const inputClass = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+    const inputClass = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
 
-    const selectClass = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+    const selectClass = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
 
     //  1er td : input text (columna vacía) calculo
         var td0_calculo = document.createElement('td');
@@ -233,7 +233,7 @@ function coordinacionCalculo(rowCount) {
         var input0_calculo = document.createElement('input');
         input0_calculo.type = 'text';
         input0_calculo.id = 'input0_calculo_' + rowCount;
-        input0_calculo.className = 'w-3/4 h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input0_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
         input0_calculo.value = rowCount;
         input0_calculo.readOnly = true;
         td0_calculo.appendChild(input0_calculo);
@@ -241,11 +241,11 @@ function coordinacionCalculo(rowCount) {
 
     //  2do td : input text (columna vacía) calculo
         var td1_calculo = document.createElement('td');
-        td1_calculo.className = 'px-2 py-1';
+        td1_calculo.className = 'py-1';
         var input1_calculo = document.createElement('input');
         input1_calculo.type = 'text';
         input1_calculo.id = 'sistemainput1_calculo_' + rowCount;
-        input1_calculo.className = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input1_calculo.className = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
         input1_calculo.value = '';
         input1_calculo.readOnly = true;
         td1_calculo.appendChild(input1_calculo);
@@ -257,7 +257,7 @@ function coordinacionCalculo(rowCount) {
         var input2_calculo = document.createElement('input');
         input2_calculo.type = 'text';
         input2_calculo.id = 'cantidadinput2_calculo_' + rowCount;
-        input2_calculo.className = 'w-3/4 h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input2_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
         input2_calculo.value = '';
         input2_calculo.readOnly = true;
         td2_calculo.appendChild(input2_calculo);
@@ -296,7 +296,7 @@ function coordinacionCalculo(rowCount) {
         var input_calculo = document.createElement('input');
         input_calculo.type = 'text';
         input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
-        input_calculo.className = 'w-3/4 h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
         input_calculo.value = '';
         td_calculo.appendChild(input_calculo);
         tr_calculo.appendChild(td_calculo);
@@ -307,12 +307,13 @@ function coordinacionCalculo(rowCount) {
 
 function delete_calculo_equiops(rowCount,tr) {
 
-
-    var tbody_calculo = document.getElementById('tbody_coordinacion_calculo');
-    var tr_calculo = getTrCalculoByContador(rowCount); //traer  el tr correspondiente al contador
+    var tr_calculo = getTrCalculoByContador(rowCount,tr); //traer  el tr correspondiente al contador
     tr_calculo.remove();
+    var tbody_calculo = document.getElementById('tbody_coordinacion_calculo');
             // Actualizar todos los id y valores de los elementos en cada tr
             var trsActualizados = tbody_calculo.querySelectorAll('tr');
+            console.log(trsActualizados);
+
             for (let i = 0; i < trsActualizados.length; i++) {
                 let idx = i;
                 let inputContador = trsActualizados[i].querySelector('input[id^="input0_calculo_"]');
@@ -320,9 +321,9 @@ function delete_calculo_equiops(rowCount,tr) {
                     inputContador.id = 'input0_calculo_' + idx;
                     inputContador.value = idx;
                 }
-                let sistemainput = trsActualizados[i].querySelector('select[id^="sistemainput1_calculo_"]');
+                let sistemainput = trsActualizados[i].querySelector('input[id^="sistemainput1_calculo_"]');
                 if (sistemainput) sistemainput.id = 'sistemainput1_calculo_' + idx;
-                let cantidadinput2 = trsActualizados[i].querySelector('select[id^="cantidadinput2_calculo_"]');
+                let cantidadinput2 = trsActualizados[i].querySelector('input[id^="cantidadinput2_calculo_"]');
                 if (cantidadinput2) cantidadinput2.id = 'cantidadinput2_calculo_' + idx;
                 let periodoSelect = trsActualizados[i].querySelector('select[id^="periodoSelect_"]');
                 if (periodoSelect) periodoSelect.id = 'periodoSelect_' + idx;
@@ -337,12 +338,18 @@ function delete_calculo_equiops(rowCount,tr) {
 
 }
 
-function getTrCalculoByContador(contador) {
+function getTrCalculoByContador(contador,tr) {
+    //obtener el numero de tr  elimnado
+    var tr_aux = tr.querySelector('input[id^="input0_"]').id
+    const myArray = tr_aux.split('_');
+    var number_tr = parseInt(myArray[1]); //numero de tr eliminado
+
     var tbody_calculo = document.getElementById('tbody_coordinacion_calculo');
     var trs = tbody_calculo.querySelectorAll('tr');
+
     for (let i = 0; i < trs.length; i++) {
         let inputContador = trs[i].querySelector('input[id^="input0_calculo_"]');
-        if (inputContador && parseInt(inputContador.value) === contador) {
+        if (inputContador && parseInt(inputContador.value) === number_tr) {
             return trs[i];
         }
     }
