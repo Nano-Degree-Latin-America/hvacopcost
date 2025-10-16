@@ -434,6 +434,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function onSelectChange(selectElem) {
-    console.log('Select cambiado:', selectElem.id, 'Nuevo valor:', selectElem.value);
+
 }
 </script>

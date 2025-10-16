@@ -1090,7 +1090,7 @@ input[type=number]::-webkit-outer-spin-button {
             });
         // Aquí puedes agregar el código que necesites ejecutar al recargar la página
         } else {
-            console.log("La página se ha cargado por primera vez.");
+
         }
 
     });
@@ -1115,7 +1115,7 @@ window.onclick = function(event) {
 
 function app() {
 			return {
-				step: 3,
+				step: 1,
 				passwordStrengthText: '',
 				togglePassword: false,
 				gender: 'Male',
