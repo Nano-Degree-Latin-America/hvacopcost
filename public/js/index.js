@@ -1,6 +1,5 @@
 
 
-
 // var sc = require('state-cities-db');
 
 $(document).ready(function () {
@@ -562,7 +561,6 @@ function active_display_retro(value){
 
 
  async function unidadHvac(value,num_div,id_select,module){
-    console.log(value,num_div,id_select,module);
 
     var ima =  $('#idioma').val();
     switch (module) {
@@ -16882,9 +16880,10 @@ function calcular_speendplan_base_update(id_project){
                 input.classList.remove('border-gray-300');
                 input.classList.add('border-[#1B17BB]');
             } else {
-                input.value = '';
+                input.value = 0;
                 input.classList.remove('border-[#1B17BB]');
                 input.classList.add('border-gray-300');
+                suma_horas_hombre(i);
             }
         }
     }
@@ -16922,9 +16921,10 @@ function calcular_speendplan_base_update(id_project){
                 input.classList.remove('border-gray-300');
                 input.classList.add('border-[#1B17BB]');
             } else {
-                input.value = '';
+                input.value = 0;
                 input.classList.remove('border-[#1B17BB]');
                 input.classList.add('border-gray-300');
+                suma_horas_hombre(i);
             }
         }
     }
@@ -16966,9 +16966,10 @@ function activarInputsAnuales(inputId,counter) {
                 input.classList.remove('border-gray-300');
                 input.classList.add('border-[#1B17BB]');
             } else {
-                input.value = '';
+                input.value = 0;
                 input.classList.remove('border-[#1B17BB]');
                 input.classList.add('border-gray-300');
+                suma_horas_hombre(i);
             }
         }
     }
@@ -17098,4 +17099,147 @@ function sumarAnuales(id,counter){
 
 }
 
+function suma_horas_hombre(i){
 
+    var suma_inps = suma_all_inputs(i);
+    var suma_total_idas_ajustados = 0;
+    var total_calculo_vehiculo = 0;
+    var mantenimiento = 0;
+    var ingresos_egresos = 0;
+    var traslados = 0;
+    var total_horas_operacion = 0;
+    $('#idas_ajustados_p'+i).val(suma_inps);
+
+    for (let z = 4 ; z < 16; z++) {
+        var ida = $('#idas_ajustados_p'+z).val();
+        //suma total dias ajustados
+        suma_total_idas_ajustados = parseFloat(ida) + parseFloat(suma_total_idas_ajustados);
+        //suma para calculo vehiculo
+        ida_aux = entero_medio(ida);
+        total_calculo_vehiculo = parseInt(ida_aux) + parseInt(total_calculo_vehiculo);
+    }
+
+    $('#idas_ajustados_total').val(suma_total_idas_ajustados);
+
+     //horas hombre mantenimiento formula : suma_total_idas_ajustados*F2/V3
+    mantenimiento = h_h_mantenimiento(suma_total_idas_ajustados);
+    $('#h_h_mantenimiento').val(mantenimiento);
+
+    //ingresos egresos
+    ingresos_egresos = h_h_ingresos_egresos(total_calculo_vehiculo);
+    $('#h_h_ingresos_egresos').val(ingresos_egresos);
+
+    //traslados
+    traslados = h_h_traslados(total_calculo_vehiculo);
+    $('#h_h_traslados').val(traslados);
+
+    //emergencia
+    emergencia = h_h_emergencia(mantenimiento);
+    $('#h_h_emergencia').val(emergencia);
+
+    total_horas_operacion = parseInt(mantenimiento) + parseInt(ingresos_egresos) + parseInt(traslados) + parseInt(emergencia);
+    $('#total_horas_operacion').val(total_horas_operacion);
+}
+
+function suma_all_inputs(i){
+    let suma = 0;
+    var horas_efectivas_mantenimiento = $('#horas_efectivas_mantenimiento').val();
+
+    document.querySelectorAll('input[id^="input'+i+'_calculo_"]').forEach(input => {
+        if (input.value !== '') {
+            suma += parseFloat(input.value) || 0;
+        }
+    });
+
+    var dias = suma / parseInt(horas_efectivas_mantenimiento);
+
+    var idas_ajustados = redondear_a_medio_o_entero(dias);
+
+    return idas_ajustados;
+
+
+}
+
+// Redondea el número a .5 o al entero superior si los decimales >= .5
+function redondear_a_medio_o_entero(valor) {
+    const entero = Math.floor(valor);
+    const decimales = valor - entero;
+
+    if (decimales === 0) {
+        return 0
+    }
+
+    if (decimales >= 0.5) {
+        return Math.ceil(valor);
+    } else {
+        return entero + 0.5;
+    }
+}
+
+function entero_medio(valor){
+    return Number.isInteger(valor) ? valor :
+           (valor % 1 === 0.5) ? Math.ceil(valor) : Math.round(valor);
+}
+
+function h_h_mantenimiento(total_dias){
+    //formula total_dias*horas_efectivas_mantenimiento/personal_enviado_mantenimiento
+    var horas_efectivas_mantenimiento = $('#horas_efectivas_mantenimiento').val();
+    var personal_enviado_mantenimiento = $('#personal_enviado_mantenimiento').val();
+    var factor_tecnico = 0;
+    var total = 0;
+
+    switch (personal_enviado_mantenimiento) {
+
+        case 'tecnico':
+            factor_tecnico = 1;
+        break;
+
+        case 'tecnico_ayudante':
+            factor_tecnico = 1.3;
+        break;
+
+        default:
+            break;
+    }
+
+    total = (total_dias*horas_efectivas_mantenimiento)/factor_tecnico;
+
+    return Math.ceil(total);
+}
+
+function h_h_ingresos_egresos(total_calculo_vehiculo){
+    //formula total_calculo_vehiculo*(ingreso+egreso)
+    var ingreso = $('#tiempo_ingreso').val();
+    var egreso = $('#tiempo_egreso').val();
+    var total = 0;
+
+    total = total_calculo_vehiculo*(parseFloat(ingreso) + parseFloat(egreso));
+
+    return parseInt(total);
+
+}
+
+function h_h_traslados(total_calculo_vehiculo){
+    //formula: total_calculo_vehiculo*2*distancia/velocidad
+    var distancia_kms = $('#distancia_sitio_mantenimiento').val();
+    var velocidad = $('#velocidad_promedio_mantenimiento').val();
+    var total = 0;
+    const myArray = distancia_kms.split('kms');
+    var distancia = parseInt(myArray[0]);
+
+    total = total_calculo_vehiculo*2*distancia/velocidad
+
+    return parseInt(total);
+
+}
+
+function h_h_emergencia(mantenimiento){
+    var porcent_mano_obra = $('#porcent_mano_obra').val();
+    const myArray = porcent_mano_obra.split('%');
+    var porcent_number = parseInt(myArray[0]);
+    var porcent = porcent_number / 100;
+    var total =  0
+
+    total = mantenimiento*porcent;
+    return parseInt(total);
+}
