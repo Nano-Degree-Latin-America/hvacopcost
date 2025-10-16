@@ -17,7 +17,7 @@
                                 <label class="text-red-500 m-0">*</label>
                             </div>
                         </div>
-                        <input onchange="check_input(this.value,this.id,'cliente_pro_warning_mantenimiento');check_inp_count_mantenimiento('count_cliente_pro_mantenimiento','cliente_pro_mantenimiento');valida_selects_inps(this.id);" name="cliente_pro_mantenimiento" id="cliente_pro_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input onchange="check_input(this.value,this.id,'cliente_pro_warning_mantenimiento');check_inp_count_coordinacion('count_cliente_pro_mantenimiento','cliente_pro_mantenimiento');valida_selects_inps(this.id);" name="cliente_pro_mantenimiento" id="cliente_pro_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                         <input id="count_cliente_pro_mantenimiento" name="count_cliente_pro_mantenimiento" type="number" class="hidden" value="0">
                         <span id="cliente_pro_warning_mantenimiento" name="cliente_pro_warning_mantenimiento" class="text-red-500"></span>
                     </div>
@@ -27,7 +27,7 @@
                             <label class="font-roboto labels_index_mantenimiento  text-left m-0" for=""><b>{{ __('mantenimiento.categoria_edificio') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select name="cat_edi_mantenimiento" id="cat_edi_mantenimiento" onchange="traer_t_edif(this.value,'tipo_edificio_mantenimiento','{{App::getLocale()}}');check_input(this.value,this.id,'cat_ed_warning_mantenimiento');check_inp_count_mantenimiento('count_cat_edi_mantenimiento','cat_edi_id_mantenimiento');valida_selects_inps(this.id);" class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
+                        <select name="cat_edi_mantenimiento" id="cat_edi_mantenimiento" onchange="traer_t_edif(this.value,'tipo_edificio_mantenimiento','{{App::getLocale()}}');check_input(this.value,this.id,'cat_ed_warning_mantenimiento');check_inp_count_coordinacion('count_cat_edi_mantenimiento','cat_edi_id_mantenimiento');valida_selects_inps(this.id);" class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
                             <option value="">-{{ __('index.seleccionar') }}-</option>
                             {{-- @forelse ($categorias_edificios as $edificio)
                             <option value="{{$edificio->id}}" wire:key="{{$edificio->id}}">{{$edificio->name}}</option>
@@ -44,7 +44,7 @@
                             <label class="labels_index_mantenimiento  font-roboto text-left m-0" for=""><b>{{ __('index.region') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'paises_warning_mantenimiento');check_inp_count_mantenimiento('count_paises_mantenimiento','paises_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="paises_mantenimiento" id="paises_mantenimiento">
+                        <select onchange="check_input(this.value,this.id,'paises_warning_mantenimiento');check_inp_count_coordinacion('count_paises_mantenimiento','paises_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="paises_mantenimiento" id="paises_mantenimiento">
                             <option selected value="">-{{ __('mantenimiento.selecciona_region') }}-</option>
                            {{--  @foreach ($all_paises as $pais)
                             <option class="font-roboto" value="{{$pais->id}}" wire:key="{{$edificio->id}}">{{$pais->name}}</option>
@@ -78,10 +78,20 @@
 
                     <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                         <div class="flex w-full">
+                            <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>Por definir:</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                            <input onchange="check_input(this.value,this.id,'tiempo_ingreso_warning');check_inp_count_coordinacion('count_tiempo_ingreso','tiempo_ingreso');valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)" onkeypress="return soloNumeros(event)" name="tiempo_ingreso" id="tiempo_ingreso" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <input id="count_tiempo_ingreso" name="count_tiempo_ingreso" type="number" class="hidden" value="0">
+                            <span id="tiempo_ingreso_warning" name="tiempo_ingreso_warning" class="text-red-500"></span>
+                    </div>
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                        <div class="flex w-full">
                             <label class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.tipo_ambiente') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'tipo_ambiente_warning_mantenimiento');check_inp_count_mantenimiento('count_tipo_ambiente_mantenimiento','tipo_ambiente_mantenimiento');valida_selects_inps(this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="tipo_ambiente_mantenimiento" id="tipo_ambiente_mantenimiento">
+                        <select onchange="check_input(this.value,this.id,'tipo_ambiente_warning_mantenimiento');check_inp_count_coordinacion('count_tipo_ambiente_mantenimiento','tipo_ambiente_mantenimiento');valida_selects_inps(this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="tipo_ambiente_mantenimiento" id="tipo_ambiente_mantenimiento">
                             <option value="">-{{ __('index.seleccionar') }}-</option>
 
                         </select>
@@ -90,43 +100,7 @@
                     </div>
 
 
-                    <div class="flex  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-start gap-x-3">
-                        <div class="grid w-1/2 justify-items-start">
-                                <div class="flex w-full">
-                                    <label  class="font-roboto labels_index" for=""><b>{{ __('index.area') }}:</b></label><label class="text-red-500">*</label>
-                                </div>
-                                <input onchange="check_input(this.value,this.id,'ar_project_warning_mantenimiento');format_nums_no_$(this.value,this.id);check_inp_count_mantenimiento('count_ar_project_mantenimiento','ar_project_mantenimiento');valida_selects_inps(this.id);"  name="ar_project_mantenimiento" id="ar_project_mantenimiento"  onkeypress="return soloNumeros(event)" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" >
-                                <input id="count_ar_project_mantenimiento" name="count_ar_project_mantenimiento" type="number" class="hidden" value="0">
-                                <span id="ar_project_warning_mantenimiento" name="ar_project_warning_mantenimiento" class="text-red-500"></span>
-                        </div>
 
-                        <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
-                            <div class="flex">
-                                <div>
-                                        <div class="flex w-full">
-                                            <label  class="font-roboto labels_index" for=""><b>{{ __('index.unidad') }}:</b></label><label class="text-red-500">*</label>
-                                        </div>
-                                        <div class="flex gap-x-3 mt-3">
-                                        <div class="flex">
-                                            <input  id="check_mc_mantenimiento"  {{-- onclick="check_unidad('mc');" --}} type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="check_mc_mantenimiento" class="ml-2 unit_style font-medium text-gray-900 dark:text-gray-300 font-roboto">m²</label>
-                                        </div>
-
-                                        <div class="flex">
-                                            <input  id="check_ft_mantenimiento"  {{-- onclick="check_unidad('ft'); "--}} disabled type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                            <label for="check_ft_mantenimiento"   class="ml-2 unit_style font-medium text-gray-900 dark:text-gray-300 font-roboto">ft²</label>
-                                        </div>
-                                        </div>
-
-                                </div>
-                            </div>
-                            <input type="text" style="font-size: 14px;" class="hidden w-full border-2 border-color-inps rounded-xl"  name="unidad_area_mantenimiento" id="unidad_area_mantenimiento" value="0">
-                            <input id="count_unidad" name="count_unidad" type="number" class="hidden" value="0">
-
-                        {{-- <input type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-xl"  name="nombre_projecto" id="nombre_projecto"> --}}
-                        </div>
-
-                    </div>
                     <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                         <div class="flex w-full">
                             <label  class="font-roboto text-left labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.porcentaje_inflacion') }}:</b></label>
@@ -150,7 +124,7 @@
                             <label class="labels_index_mantenimiento _mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.nombre_sitio') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <input onchange="check_input(this.value,this.id,'name_sitio_warning_mantenimiento');check_inp_count_mantenimiento('count_name_sitio_mantenimiento','name_sitio_mantenimiento');valida_selects_inps(this.id);" name="name_sitio_mantenimiento" id="name_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input onchange="check_input(this.value,this.id,'name_sitio_warning_mantenimiento');check_inp_count_coordinacion('count_name_sitio_mantenimiento','name_sitio_mantenimiento');valida_selects_inps(this.id);" name="name_sitio_mantenimiento" id="name_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                         <input id="count_name_sitio_mantenimiento" name="count_name_sitio_mantenimiento" type="number" class="hidden" value="0">
                         <span id="name_sitio_warning_mantenimiento" name="name_sitio_warning_mantenimiento" class="text-red-500"></span>
                     </div>
@@ -160,7 +134,7 @@
                             <label class="labels_index_mantenimiento  text-left font-roboto m-0" for=""><b>{{ __('mantenimiento.tipo_edificio') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'tipo_edificio_warning_mantenimiento');check_inp_count_mantenimiento('count_tipo_edificio_mantenimiento','tipo_edificio_mantenimiento');valida_selects_inps(this.id);" name="tipo_edificio_mantenimiento" id="tipo_edificio_mantenimiento"  class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <select onchange="check_input(this.value,this.id,'tipo_edificio_warning_mantenimiento');check_inp_count_coordinacion('count_tipo_edificio_mantenimiento','tipo_edificio_mantenimiento');valida_selects_inps(this.id);" name="tipo_edificio_mantenimiento" id="tipo_edificio_mantenimiento"  class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                             <option value="">-{{ __('index.seleccionar') }}-</option>
                             {{-- @foreach ($tipo_edificios as $tipo_edificio)
                             <option value="{{$tipo_edificio->id}}">{{$tipo_edificio->name}}</option>
@@ -175,7 +149,7 @@
                             <label class="labels_index_mantenimiento  text-left font-roboto m-0" for=""><b>{{ __('index.ciudad') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'ciudad_warning_mantenimiento');check_inp_count_mantenimiento('count_ciudad_mantenimiento','ciudades_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ciudades_mantenimiento" id="ciudades_mantenimiento">
+                        <select onchange="check_input(this.value,this.id,'ciudad_warning_mantenimiento');check_inp_count_coordinacion('count_ciudad_mantenimiento','ciudades_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ciudades_mantenimiento" id="ciudades_mantenimiento">
                             <option selected value="0">-{{ __('mantenimiento.selecciona_ciudad') }}-</option>
                             {{-- @foreach ($ciudades as $ciudad)
                             <option value="{{$ciudad->id}}">{{$ciudad->name}}</option>
@@ -190,7 +164,7 @@
                             <label class="labels_index_mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.velocidad_promedio') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="check_input(this.value,this.id,'velocidad_promedio_warning_mantenimiento');check_inp_count_mantenimiento('count_velocidad_promedio_mantenimiento','velocidad_promedio_mantenimiento');valida_selects_inps(this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="velocidad_promedio_mantenimiento" id="velocidad_promedio_mantenimiento">
+                        <select onchange="check_input(this.value,this.id,'velocidad_promedio_warning_mantenimiento');check_inp_count_coordinacion('count_velocidad_promedio_mantenimiento','velocidad_promedio_mantenimiento');valida_selects_inps(this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="velocidad_promedio_mantenimiento" id="velocidad_promedio_mantenimiento">
                             @for ($i = 0; $i <= 120; $i = $i + 10)
                             <option value="{{$i}}">{{$i}} Km/h</option>
                             @endfor
@@ -204,7 +178,7 @@
                             <label class="font-roboto font-bold text-left labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.ocupacion_semanal') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="set_horas_diarias();check_input(this.value,this.id,'ocupacion_semanal_warning_mantenimiento');check_inp_count_mantenimiento('count_ocupacion_semanal_mantenimiento','ocupacion_semanal_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ocupacion_semanal_mantenimiento" id="ocupacion_semanal_mantenimiento">
+                        <select onchange="set_horas_diarias();check_input(this.value,this.id,'ocupacion_semanal_warning_mantenimiento');check_inp_count_coordinacion('count_ocupacion_semanal_mantenimiento','ocupacion_semanal_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ocupacion_semanal_mantenimiento" id="ocupacion_semanal_mantenimiento">
                             <option value="">-{{ __('index.seleccionar') }}-</option>
                             <option value="m_50">{{ __('mantenimiento.menos_50') }}.</option>
                             <option value="51_167">{{ __('mantenimiento.51_167') }}.</option>
@@ -220,13 +194,23 @@
                             <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.personal_enviado') }}:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                            <select name="personal_enviado_mantenimiento"  id="personal_enviado_mantenimiento" onchange="check_input(this.value,this.id,'personal_enviado_mantenimiento_warning');check_inp_count_mantenimiento('count_personal_enviado','personal_enviado_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps  rounded-md p-1 my-1 font-roboto">
+                            <select name="personal_enviado_mantenimiento"  id="personal_enviado_mantenimiento" onchange="check_input(this.value,this.id,'personal_enviado_mantenimiento_warning');check_inp_count_coordinacion('count_personal_enviado','personal_enviado_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps  rounded-md p-1 my-1 font-roboto">
                                 <option value="">-{{ __('index.seleccionar') }}-</option>
                                 <option value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
                                 <option value="tecnico_ayudante ">{{ __('mantenimiento.tecnico_ayudante') }}</option>
                             </select>
                             <input id="count_personal_enviado_mantenimiento" name="count_personal_enviado_mantenimiento" type="number" class="hidden" value="0">
                             <span id="personal_enviado_mantenimiento_warning" name="personal_enviado_mantenimiento_warning" class="text-red-500"></span>
+                    </div>
+
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                        <div class="flex w-full">
+                            <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>Por definir:</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                            <input onchange="check_input(this.value,this.id,'tiempo_egreso_warning');check_inp_count_coordinacion('count_tiempo_egreso','tiempo_egreso');valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)" onkeypress="return soloNumeros(event)" name="tiempo_egreso" id="tiempo_egreso" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <input id="count_tiempo_egreso" name="count_tiempo_egreso" type="number" class="hidden" value="0">
+                            <span id="tiempo_egreso_warning" name="tiempo_egreso_warning" class="text-red-500"></span>
                     </div>
 
 
@@ -246,19 +230,7 @@
 
                         @include('modal_energia_hvac')
 
-                        <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
-                            <div class="flex w-full">
-                                <label  class="font-roboto text-left labels_index" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
-                            </div>
-                            <div class="flex w-full">
-                                <input type="text" onkeypress="return soloNumeros(event)" onchange="buton_check('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning_mantenimiento');check_inp_count_mantenimiento('count_porcent_hvac_mantenimiento','porcent_hvac_mantenimiento');change_to_porcent(this.value,this.id);valida_formulario_mantenimiento();valida_selects_inps(this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac_mantenimiento" id="porcent_hvac_mantenimiento">
-                                <input id="count_porcent_hvac_mantenimiento" name="count_porcent_hvac_mantenimiento" type="number" class="hidden" value="0">
-                                <div class="ml-2" style="margin-top: 5.5px;">
-                                    <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
-                                </div>
-                            </div>
-                            <span id="por_hvac_warning_mantenimiento" name="por_hvac_warning_mantenimiento" class="text-red-500"></span>
-                        </div>
+
 
 
 
@@ -494,7 +466,7 @@
             <div id="div_next_h_mantenimiento" name="div_next_h_mantenimiento" style="width: 80%;" class="">
                 <button  type="button"  id="next_h_mantenimiento" name="next_h_mantenimiento"
                     x-show="step < 2"
-                    onclick="valida_formulario_mantenimiento();"
+                    onclick="valida_formulario_coordinacion();"
                     style="background-color:#1B17BB;"
                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                 >{{ __('index.siguiente') }}</button>
@@ -519,3 +491,365 @@
         </div>
 
 </div>
+<script>
+function valida_formulario_coordinacion(){
+    /////////////////////////////////////
+    var cliente =$('#cliente_pro_mantenimiento');
+    var cliente_count = $('#count_cliente_pro_mantenimiento').val();
+
+    if(cliente.val() == ''){
+
+        cliente.css("border-color", "red")
+        cliente_count = 1;
+     $('#count_cliente_pro_mantenimiento').val(cliente_count);
+
+    }else if (cliente.val() != '') {
+
+        cliente_count = 0;
+     $('#count_cliente_pro_mantenimiento').val(cliente_count);
+
+    }
+    ////////////////////////////////////////////
+    ////////////////////
+
+    var cat_edi_mant =$('#cat_edi_mantenimiento');
+    var cat_edi_mant_count = $('#count_cat_ed_mantenimiento').val();
+
+    if(cat_edi_mant.val() == 0){
+
+        cat_edi_mant.css("border-color", "red")
+        cat_edi_mant_count = 1;
+     $('#count_cat_ed_mantenimiento').val(cat_edi_mant_count);
+
+    }else if (cat_edi_mant.val() != 0) {
+
+        cat_edi_mant_count = 0;
+     $('#count_cat_ed_mantenimiento').val(cat_edi_mant_count);
+
+    }
+
+    ////////////////////
+
+
+    ////////////////////
+    var cat_edi_mant =$('#cat_edi_mantenimiento');
+    var cat_edi_mant_count = $('#count_cat_ed_mantenimiento').val();
+
+    if(cat_edi_mant.val() == 0){
+
+        cat_edi_mant.css("border-color", "red")
+        cat_edi_mant_count = 1;
+     $('#count_cat_ed_mantenimiento').val(cat_edi_mant_count);
+
+    }else if (cat_edi_mant.val() != 0) {
+
+        cat_edi_mant_count = 0;
+     $('#count_cat_ed_mantenimiento').val(cat_edi_mant_count);
+
+    }
+    ////////////////////
+
+        ////////////////////
+        var pais_mant =$('#paises_mantenimiento');
+        var pais_mant_mant_count = $('#count_paises_mantenimiento').val();
+
+        if(pais_mant.val() == 0){
+
+            pais_mant.css("border-color", "red")
+            pais_mant_mant_count = 1;
+         $('#count_paises_mantenimiento').val(pais_mant_mant_count);
+
+        }else if (pais_mant.val() != 0) {
+
+            pais_mant_mant_count = 0;
+         $('#count_paises_mantenimiento').val(pais_mant_mant_count);
+
+        }
+        ////////////////////
+
+        ////////////////////
+        var ciudad_mantenimiento =$('#ciudades_mantenimiento');
+        var count_ciudad_mantenimiento_count = $('#count_ciudad_mantenimiento').val();
+
+        if(ciudad_mantenimiento.val() == 0){
+
+            ciudad_mantenimiento.css("border-color", "red")
+            count_ciudad_mantenimiento_count = 1;
+         $('#count_ciudad_mantenimiento').val(count_ciudad_mantenimiento_count);
+
+        }else if (ciudad_mantenimiento.val() != 0) {
+
+            count_ciudad_mantenimiento_count = 0;
+         $('#count_ciudad_mantenimiento').val(count_ciudad_mantenimiento_count);
+
+        }
+        ////////////////////
+
+         ////////////////////
+         var velocidad_promedio_mantenimiento =$('#velocidad_promedio_mantenimiento');
+         var count_velocidad_promedio_mantenimiento = $('#count_velocidad_promedio_mantenimiento').val();
+
+         if(velocidad_promedio_mantenimiento.val() == 0){
+
+            velocidad_promedio_mantenimiento.css("border-color", "red")
+             count_velocidad_promedio_mantenimiento = 1;
+          $('#count_velocidad_promedio_mantenimiento').val(count_velocidad_promedio_mantenimiento);
+
+         }else if (velocidad_promedio_mantenimiento.val() != 0) {
+
+            count_velocidad_promedio_mantenimiento = 0;
+          $('#count_velocidad_promedio_mantenimiento').val(count_velocidad_promedio_mantenimiento);
+
+         }
+         ////////////////////
+
+         ////////////////////
+         var name_sitio_mantenimiento =$('#name_sitio_mantenimiento');
+         var count_name_sitio_mantenimiento = $('#count_name_sitio_mantenimiento').val();
+
+         if(name_sitio_mantenimiento.val() == 0){
+
+            name_sitio_mantenimiento.css("border-color", "red")
+            count_name_sitio_mantenimiento = 1;
+          $('#count_name_sitio_mantenimiento').val(count_name_sitio_mantenimiento);
+
+         }else if (name_sitio_mantenimiento.val() != 0) {
+
+            count_name_sitio_mantenimiento = 0;
+          $('#count_name_sitio_mantenimiento').val(count_name_sitio_mantenimiento);
+
+         }
+         ////////////////////
+
+         ////////////////////
+         var tipo_edificio_mantenimiento =$('#tipo_edificio_mantenimiento');
+         var count_tipo_edificio_mantenimiento = $('#count_tipo_edificio_mantenimiento').val();
+
+         if(tipo_edificio_mantenimiento.val() == 0){
+
+            tipo_edificio_mantenimiento.css("border-color", "red")
+            count_tipo_edificio_mantenimiento = 1;
+          $('#count_tipo_edificio_mantenimiento').val(count_tipo_edificio_mantenimiento);
+
+         }else if (tipo_edificio_mantenimiento.val() != 0) {
+
+            count_tipo_edificio_mantenimiento = 0;
+          $('#count_tipo_edificio_mantenimiento').val(count_tipo_edificio_mantenimiento);
+
+         }
+         ////////////////////
+
+         ////////////////////
+         var tipo_edificio_mantenimiento =$('#tipo_edificio_mantenimiento');
+         var count_tipo_edificio_mantenimiento = $('#count_tipo_edificio_mantenimiento').val();
+
+         if(tipo_edificio_mantenimiento.val() == 0){
+
+            tipo_edificio_mantenimiento.css("border-color", "red")
+            count_tipo_edificio_mantenimiento = 1;
+          $('#count_tipo_edificio_mantenimiento').val(count_tipo_edificio_mantenimiento);
+
+         }else if (tipo_edificio_mantenimiento.val() != 0) {
+
+            count_tipo_edificio_mantenimiento = 0;
+          $('#count_tipo_edificio_mantenimiento').val(count_tipo_edificio_mantenimiento);
+
+         }
+         ////////////////////
+
+         ////////////////////
+         var distancia_sitio_mantenimiento =$('#distancia_sitio_mantenimiento');
+         var count_distancia_sitio_mantenimiento = $('#count_distancia_sitio_mantenimiento').val();
+
+         if(distancia_sitio_mantenimiento.val() == 0){
+
+            distancia_sitio_mantenimiento.css("border-color", "red")
+            count_distancia_sitio_mantenimiento = 1;
+          $('#count_distancia_sitio_mantenimiento').val(count_distancia_sitio_mantenimiento);
+
+         }else if (distancia_sitio_mantenimiento.val() != 0) {
+
+            count_distancia_sitio_mantenimiento = 0;
+          $('#count_distancia_sitio_mantenimiento').val(count_distancia_sitio_mantenimiento);
+
+         }
+         ////////////////////
+        /////////////////
+         var yrs_life_ed_mantenimiento =$('#yrs_life_ed_mantenimiento');
+         var count_yrs_life_ed_mantenimiento = $('#count_yrs_life_ed_mantenimiento').val();
+
+         if(yrs_life_ed_mantenimiento.val() == 0){
+
+            yrs_life_ed_mantenimiento.css("border-color", "red")
+            count_yrs_life_ed_mantenimiento = 1;
+          $('#count_yrs_life_ed_mantenimiento').val(count_yrs_life_ed_mantenimiento);
+
+         }else if (yrs_life_ed_mantenimiento.val() != 0) {
+
+            count_yrs_life_ed_mantenimiento = 0;
+          $('#count_yrs_life_ed_mantenimiento').val(count_yrs_life_ed_mantenimiento);
+
+         }
+         ////////////////////
+
+         /////////////////
+         var tipo_ambiente_mantenimiento =$('#tipo_ambiente_mantenimiento');
+         var count_tipo_ambiente_mantenimiento = $('#count_tipo_ambiente_mantenimiento').val();
+
+         if(tipo_ambiente_mantenimiento.val() == ""){
+
+            tipo_ambiente_mantenimiento.css("border-color", "red")
+            count_tipo_ambiente_mantenimiento = 1;
+          $('#count_tipo_ambiente_mantenimiento').val(count_tipo_ambiente_mantenimiento);
+
+         }else if (tipo_ambiente_mantenimiento.val() != "") {
+
+            count_tipo_ambiente_mantenimiento = 0;
+          $('#count_tipo_ambiente_mantenimiento').val(count_tipo_ambiente_mantenimiento);
+
+         }
+         ////////////////////
+
+          /////////////////
+          var personal_enviado =$('#personal_enviado_mantenimiento');
+          var count_personal_enviado = $('#count_personal_enviado_mantenimiento').val();
+
+          if(personal_enviado.val() == 0){
+
+            personal_enviado.css("border-color", "red")
+             count_personal_enviado = 1;
+           $('#count_personal_enviado_mantenimiento').val(count_personal_enviado);
+
+          }else if (personal_enviado.val() != 0) {
+
+            count_personal_enviado = 0;
+           $('#count_personal_enviado_mantenimiento').val(count_personal_enviado);
+
+          }
+          ////////////////////
+
+          /////////////////
+          var tiempo_egreso =$('#tiempo_egreso');
+          var count_tiempo_egreso = $('#count_tiempo_egreso').val();
+
+          if(tiempo_egreso.val() == ''){
+
+            tiempo_egreso.css("border-color", "red")
+            count_tiempo_egreso = 1;
+           $('#count_tiempo_egreso').val(count_tiempo_egreso);
+
+          }else if (tiempo_egreso.val() != '') {
+
+            count_tiempo_egreso = 0;
+           $('#count_tiempo_egreso').val(count_tiempo_egreso);
+
+          }
+          ////////////////////
+
+          /////////////////
+          var tiempo_ingreso =$('#tiempo_ingreso');
+          var count_tiempo_ingreso = $('#count_tiempo_ingreso').val();
+
+          if(tiempo_ingreso.val() == ''){
+
+            tiempo_ingreso.css("border-color", "red")
+            count_tiempo_ingreso = 1;
+           $('#count_tiempo_ingreso').val(count_tiempo_ingreso);
+
+          }else if (tiempo_ingreso.val() != '') {
+
+            count_tiempo_ingreso = 0;
+           $('#count_tiempo_ingreso').val(count_tiempo_ingreso);
+
+          }
+          ////////////////////
+
+          /////////////////
+          var ocupacion_semanal_mantenimiento =$('#ocupacion_semanal_mantenimiento');
+          var count_ocupacion_semanal_mantenimiento = $('#count_ocupacion_semanal_mantenimiento').val();
+
+          if(ocupacion_semanal_mantenimiento.val() == ''){
+
+            ocupacion_semanal_mantenimiento.css("border-color", "red")
+            count_ocupacion_semanal_mantenimiento = 1;
+           $('#count_ocupacion_semanal_mantenimiento').val(count_ocupacion_semanal_mantenimiento);
+
+          }else if (ocupacion_semanal_mantenimiento.val() != '') {
+
+            count_ocupacion_semanal_mantenimiento = 0;
+           $('#count_ocupacion_semanal_mantenimiento').val(count_ocupacion_semanal_mantenimiento);
+
+          }
+          ////////////////////
+
+
+
+
+
+
+        var count_inps = cliente_count + cat_edi_mant_count + pais_mant_mant_count  +  count_ciudad_mantenimiento_count + count_velocidad_promedio_mantenimiento + count_name_sitio_mantenimiento + count_tipo_edificio_mantenimiento + count_distancia_sitio_mantenimiento + count_yrs_life_ed_mantenimiento + count_tipo_ambiente_mantenimiento + count_personal_enviado + count_tiempo_egreso + count_tiempo_ingreso;
+
+      if(count_inps>0){
+
+                   return false;
+       }else if(count_inps==0){
+        $('#div_next_h_mantenimiento').addClass("hidden");
+        $('#div_next_mantenimiento').removeClass("hidden");
+       }
+ }
+
+  function check_inp_count_coordinacion(count_id,id){
+        var inp = $("#"+id).val();
+        var inp_cont = $("#"+count_id);
+        var suma_inps = 0;
+
+
+        if(inp == "" || inp == 0){
+             if(id == 'paises'){
+                 $('#count_ciudad').val(0);
+             }
+         inp_cont.val(0);
+        }
+
+        if(inp != "" && inp != 0){
+             inp_cont.val(1);
+
+        }
+
+        checksuma_coor();
+
+     }
+
+     function checksuma_coor(){
+        count_cliente_pro_mantenimiento = $('#count_cliente_pro_mantenimiento').val();
+        count_cat_edi_mantenimiento = $('#count_cat_edi_mantenimiento').val();
+        count_paises_mantenimiento = $('#count_paises_mantenimiento').val();
+        count_tipo_ambiente_mantenimiento = $('#count_tipo_ambiente_mantenimiento').val();
+        count_tiempo_ingreso = $('#count_tiempo_ingreso').val();
+        count_name_sitio_mantenimiento = $('#count_name_sitio_mantenimiento').val();
+        count_tipo_edificio_mantenimiento = $('#count_tipo_edificio_mantenimiento').val();
+        count_ciudad_mantenimiento = $('#count_ciudad_mantenimiento').val();
+        count_velocidad_promedio_mantenimiento = $('#count_velocidad_promedio_mantenimiento').val();
+        count_ocupacion_semanal_mantenimiento = $('#count_ocupacion_semanal_mantenimiento').val();
+        count_personal_enviado = $('#count_personal_enviado_mantenimiento').val();
+        count_tiempo_egreso = $('#count_tiempo_egreso').val();
+
+       suma_inps = parseInt(count_cliente_pro_mantenimiento) + parseInt(count_cat_edi_mantenimiento) + parseInt(count_paises_mantenimiento)
+       + parseInt(count_tipo_ambiente_mantenimiento) + parseInt(count_tiempo_ingreso) + parseInt(count_name_sitio_mantenimiento) + parseInt(count_tipo_edificio_mantenimiento) + parseInt(count_ciudad_mantenimiento)
+       + parseInt(count_velocidad_promedio_mantenimiento) + parseInt(count_ocupacion_semanal_mantenimiento) + parseInt(count_personal_enviado) + parseInt(count_tiempo_egreso);
+        console.log(suma_inps);
+
+       if(suma_inps == 11){
+        $('#div_next_mantenimiento').removeClass("hidden");
+        $('#div_next_h_mantenimiento').addClass("hidden");
+
+       }
+
+       if(suma_inps < 11){
+        $('#div_next_mantenimiento').addClass("hidden");
+        $('#div_next_h_mantenimiento').removeClass("hidden");
+
+       }
+
+    }
+</script>

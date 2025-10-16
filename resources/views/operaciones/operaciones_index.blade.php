@@ -1074,7 +1074,7 @@ input[type=number]::-webkit-outer-spin-button {
     $(document).ready(function () {
         set_ser_to_sers('SEER');
         mostrar_type_p('{{$check_types_pn}}','{{$check_types_pr}}');
-
+        set_options_factor_mantenimiento();
         if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
             var endpoint = "/reset_local_storage";
             $.ajax({
@@ -1115,7 +1115,7 @@ window.onclick = function(event) {
 
 function app() {
 			return {
-				step: 4,
+				step: 3,
 				passwordStrengthText: '',
 				togglePassword: false,
 				gender: 'Male',
