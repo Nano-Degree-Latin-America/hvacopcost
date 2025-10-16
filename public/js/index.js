@@ -1,3 +1,6 @@
+
+
+
 // var sc = require('state-cities-db');
 
 $(document).ready(function () {
@@ -1543,7 +1546,7 @@ async function set_filtraciones_no_doa(value) {
                 }));
             });
 
-            $("#tipo_ambiente_mantenimiento").find('option[value="' + medio_ambiente + '"]').prop("selected", "selected");;
+            $("#tipo_ambiente_mantenimiento").find('option[value="' + medio_ambiente + '"]').prop("selected", "selected");
         },
         error: function(xhr, status, error) {
             console.error('Error al enviar los datos:', error);
@@ -16804,4 +16807,295 @@ function calcular_speendplan_base_update(id_project){
  function send_value_cantidad_calculo_coordinacion(id,value){
      $('#'+id).val(value);
  }
+
+ function mult_capacidad_cantidad_coordinacion(capacidad,cantidad,id){
+    var capacidad = $('#'+capacidad).val();
+    var cantidad = $('#'+cantidad).val();
+    var total = parseInt(capacidad) * parseInt(cantidad);
+    $('#'+id).val(total);
+ }
+
+ function set_periodo(id_sistema,id_unidad,id_periodo,value){
+
+    var value_sistema = $('#'+id_sistema).val();
+    var value_unidad = $('#'+id_unidad).val();
+    if(value == 'ashrae'){
+        $.ajax({
+        type: 'get',
+        url: '/set_periodo/'+value_sistema+'/'+value_unidad,
+        success: function (response) {
+            $("#"+id_periodo).find('option[value="' + response + '"]').prop("selected", "selected");
+        },
+        error: function(xhr, status, error) {
+            console.error('Error al enviar los datos:', error);
+        }
+        });
+    }
+
+ }
+
+ function active_inputs_coordinacion(id,periodo,counter){
+      var periodoVal = $('#'+periodo).val();
+      switch (periodoVal) {
+        case 'T':
+            activarInputsTrimestrales(id,counter)
+        break;
+
+        case 'S':
+            activarInputsSemestrales(id,counter)
+        break;
+
+        case 'A':
+            activarInputsAnuales(id,counter)
+        break;
+
+        default:
+            break;
+      }
+
+ }
+
+ function activarInputsTrimestrales(inputId,counter) {
+    // Mapeo de grupos trimestrales
+    const grupos = [
+        ['input4_calculo_'+counter, 'input7_calculo_'+counter, 'input10_calculo_'+counter, 'input13_calculo_'+counter],
+        ['input5_calculo_'+counter, 'input8_calculo_'+counter, 'input11_calculo_'+counter, 'input14_calculo_'+counter],
+        ['input6_calculo_'+counter, 'input9_calculo_'+counter, 'input12_calculo_'+counter, 'input15_calculo_'+counter],
+        // Puedes agregar más grupos si hay más periodos
+    ];
+
+    // Encuentra el grupo al que pertenece el input activado
+    let grupoActivo = null;
+    grupos.forEach(grupo => {
+        if (grupo.includes(inputId)) {
+            grupoActivo = grupo;
+        }
+    });
+
+    // Limpia y desactiva todos los inputs que no pertenecen al grupo activo
+    for (let i = 4; i <= 15; i++) {
+        const id = 'input' + i + '_calculo_' + counter;
+        const input = document.getElementById(id);
+        if (input) {
+            if (grupoActivo && grupoActivo.includes(id)) {
+                input.disabled = false;
+                input.classList.remove('border-gray-300');
+                input.classList.add('border-[#1B17BB]');
+            } else {
+                input.value = '';
+                input.classList.remove('border-[#1B17BB]');
+                input.classList.add('border-gray-300');
+            }
+        }
+    }
+    //suma
+
+}
+
+ function activarInputsSemestrales(inputId,counter) {
+    // Mapeo de grupos semestrales
+    const grupos = [
+        ['input4_calculo_'+counter, 'input10_calculo_'+counter],
+        ['input5_calculo_'+counter, 'input11_calculo_'+counter],
+        ['input6_calculo_'+counter, 'input12_calculo_'+counter],
+        ['input7_calculo_'+counter, 'input13_calculo_'+counter],
+        ['input8_calculo_'+counter, 'input14_calculo_'+counter],
+        ['input9_calculo_'+counter, 'input15_calculo_'+counter],
+        // Puedes agregar más grupos si hay más periodos
+    ];
+
+    // Encuentra el grupo al que pertenece el input activado
+    let grupoActivo = null;
+    grupos.forEach(grupo => {
+        if (grupo.includes(inputId)) {
+            grupoActivo = grupo;
+        }
+    });
+
+    // Limpia y desactiva todos los inputs que no pertenecen al grupo activo
+    for (let i = 4; i <= 15; i++) {
+        const id = 'input' + i + '_calculo_' + counter;
+        const input = document.getElementById(id);
+        if (input) {
+            if (grupoActivo && grupoActivo.includes(id)) {
+                input.disabled = false;
+                input.classList.remove('border-gray-300');
+                input.classList.add('border-[#1B17BB]');
+            } else {
+                input.value = '';
+                input.classList.remove('border-[#1B17BB]');
+                input.classList.add('border-gray-300');
+            }
+        }
+    }
+}
+
+function activarInputsAnuales(inputId,counter) {
+    // Mapeo de grupos anuales
+    const grupos = [
+        ['input4_calculo_'+counter],
+        ['input5_calculo_'+counter],
+        ['input6_calculo_'+counter],
+        ['input7_calculo_'+counter],
+        ['input8_calculo_'+counter],
+        ['input9_calculo_'+counter],
+        ['input10_calculo_'+counter],
+        ['input11_calculo_'+counter],
+        ['input12_calculo_'+counter],
+        ['input13_calculo_'+counter],
+        ['input14_calculo_'+counter],
+        ['input15_calculo_'+counter],
+        // Puedes agregar más grupos si hay más periodos
+    ];
+
+    // Encuentra el grupo al que pertenece el input activado
+    let grupoActivo = null;
+    grupos.forEach(grupo => {
+        if (grupo.includes(inputId)) {
+            grupoActivo = grupo;
+        }
+    });
+
+    // Limpia y desactiva todos los inputs que no pertenecen al grupo activo
+    for (let i = 4; i <= 15; i++) {
+        const id = 'input' + i + '_calculo_' + counter;
+        const input = document.getElementById(id);
+        if (input) {
+            if (grupoActivo && grupoActivo.includes(id)) {
+                input.disabled = false;
+                input.classList.remove('border-gray-300');
+                input.classList.add('border-[#1B17BB]');
+            } else {
+                input.value = '';
+                input.classList.remove('border-[#1B17BB]');
+                input.classList.add('border-gray-300');
+            }
+        }
+    }
+}
+
+function suma_inputs_calculo(id,periodo_id,counter,value,id_total){
+
+    var periodoVal = $('#'+periodo_id).val();
+      switch (periodoVal) {
+        case 'T':
+            sumarTrimestrales(id,counter);
+        break;
+
+        case 'S':
+            sumarSemestrales(id,counter)
+        break;
+
+        case 'A':
+            sumarAnuales(id,counter)
+        break;
+
+        default:
+            break;
+      }
+}
+
+function sumarTrimestrales(id,counter){
+    const grupos = [
+        ['input4_calculo_'+counter, 'input7_calculo_'+counter, 'input10_calculo_'+counter, 'input13_calculo_'+counter],
+        ['input5_calculo_'+counter, 'input8_calculo_'+counter, 'input11_calculo_'+counter, 'input14_calculo_'+counter],
+        ['input6_calculo_'+counter, 'input9_calculo_'+counter, 'input12_calculo_'+counter, 'input15_calculo_'+counter],
+        // Puedes agregar más grupos si hay más periodos
+    ];
+
+
+    let grupoActivo = null;
+    grupos.forEach(grupo => {
+        if (grupo.includes(id)) {
+            grupoActivo = grupo;
+        }
+    });
+    let suma = 0;
+    if (grupoActivo) {
+        grupoActivo.forEach(id => {
+            const input = document.getElementById(id);
+            if (input && input.value !== '') {
+                suma += parseFloat(input.value) || 0;
+            }
+        });
+    }
+
+    $('#input16_calculo_'+counter).val(suma);
+
+
+}
+
+function sumarSemestrales(id,counter){
+    const grupos = [
+        ['input4_calculo_'+counter, 'input10_calculo_'+counter],
+        ['input5_calculo_'+counter, 'input11_calculo_'+counter],
+        ['input6_calculo_'+counter, 'input12_calculo_'+counter],
+        ['input7_calculo_'+counter, 'input13_calculo_'+counter],
+        ['input8_calculo_'+counter, 'input14_calculo_'+counter],
+        ['input9_calculo_'+counter, 'input15_calculo_'+counter],
+        // Puedes agregar más grupos si hay más periodos
+    ];
+
+
+    let grupoActivo = null;
+    grupos.forEach(grupo => {
+        if (grupo.includes(id)) {
+            grupoActivo = grupo;
+        }
+    });
+    let suma = 0;
+    if (grupoActivo) {
+        grupoActivo.forEach(id => {
+            const input = document.getElementById(id);
+            if (input && input.value !== '') {
+                suma += parseFloat(input.value) || 0;
+            }
+        });
+    }
+
+    $('#input16_calculo_'+counter).val(suma);
+
+
+}
+
+function sumarAnuales(id,counter){
+    // Mapeo de grupos anuales
+    const grupos = [
+        ['input4_calculo_'+counter],
+        ['input5_calculo_'+counter],
+        ['input6_calculo_'+counter],
+        ['input7_calculo_'+counter],
+        ['input8_calculo_'+counter],
+        ['input9_calculo_'+counter],
+        ['input10_calculo_'+counter],
+        ['input11_calculo_'+counter],
+        ['input12_calculo_'+counter],
+        ['input13_calculo_'+counter],
+        ['input14_calculo_'+counter],
+        ['input15_calculo_'+counter],
+        // Puedes agregar más grupos si hay más periodos
+    ];
+
+
+    let grupoActivo = null;
+    grupos.forEach(grupo => {
+        if (grupo.includes(id)) {
+            grupoActivo = grupo;
+        }
+    });
+    let suma = 0;
+    if (grupoActivo) {
+        grupoActivo.forEach(id => {
+            const input = document.getElementById(id);
+            if (input && input.value !== '') {
+                suma += parseFloat(input.value) || 0;
+            }
+        });
+    }
+
+    $('#input16_calculo_'+counter).val(suma);
+
+
+}
+
 
