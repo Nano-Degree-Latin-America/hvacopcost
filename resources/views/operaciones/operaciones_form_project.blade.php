@@ -78,7 +78,7 @@
 
                     <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                         <div class="flex w-full">
-                            <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>Por definir:</b></label>
+                            <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>Tiempo Ingreso:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
                             <input onchange="check_input(this.value,this.id,'tiempo_ingreso_warning');check_inp_count_coordinacion('count_tiempo_ingreso','tiempo_ingreso');valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)" onkeypress="return soloNumeros(event)" name="tiempo_ingreso" id="tiempo_ingreso" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
@@ -197,7 +197,7 @@
                             <select name="personal_enviado_mantenimiento"  id="personal_enviado_mantenimiento" onchange="check_input(this.value,this.id,'personal_enviado_mantenimiento_warning');check_inp_count_coordinacion('count_personal_enviado','personal_enviado_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps  rounded-md p-1 my-1 font-roboto">
                                 <option value="">-{{ __('index.seleccionar') }}-</option>
                                 <option value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
-                                <option value="tecnico_ayudante ">{{ __('mantenimiento.tecnico_ayudante') }}</option>
+                                <option value="tecnico_ayudante">{{ __('mantenimiento.tecnico_ayudante') }}</option>
                             </select>
                             <input id="count_personal_enviado_mantenimiento" name="count_personal_enviado_mantenimiento" type="number" class="hidden" value="0">
                             <span id="personal_enviado_mantenimiento_warning" name="personal_enviado_mantenimiento_warning" class="text-red-500"></span>
@@ -205,7 +205,7 @@
 
                     <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                         <div class="flex w-full">
-                            <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>Por definir:</b></label>
+                            <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>Tiempo Egreso:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
                             <input onchange="check_input(this.value,this.id,'tiempo_egreso_warning');check_inp_count_coordinacion('count_tiempo_egreso','tiempo_egreso');valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)" onkeypress="return soloNumeros(event)" name="tiempo_egreso" id="tiempo_egreso" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
@@ -837,7 +837,7 @@ function valida_formulario_coordinacion(){
        suma_inps = parseInt(count_cliente_pro_mantenimiento) + parseInt(count_cat_edi_mantenimiento) + parseInt(count_paises_mantenimiento)
        + parseInt(count_tipo_ambiente_mantenimiento) + parseInt(count_tiempo_ingreso) + parseInt(count_name_sitio_mantenimiento) + parseInt(count_tipo_edificio_mantenimiento) + parseInt(count_ciudad_mantenimiento)
        + parseInt(count_velocidad_promedio_mantenimiento) + parseInt(count_ocupacion_semanal_mantenimiento) + parseInt(count_personal_enviado) + parseInt(count_tiempo_egreso);
-        console.log(suma_inps);
+
 
        if(suma_inps == 11){
         $('#div_next_mantenimiento').removeClass("hidden");
