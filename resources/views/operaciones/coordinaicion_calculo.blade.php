@@ -1,7 +1,18 @@
 
-<div class="h-[80vh] w-full overflow-y-auto overflow-x-hidden bg-gradient-to-br from-gray-50 to-gray-100 p-4 font-roboto">
-    <div class="flex justify-center w-full mt-6">
+<div class="h-[80vh] w-full overflow-y-auto overflow-x-hidden bg-gradient-to-br from-gray-50 to-gray-100 font-roboto mt-1">
+    <div class="flex justify-center w-full mt-2">
         <div class="w-full bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div class="w-3/4 flex justify-between items-center mx-auto">
+                <div class="flex gap-x-2">
+                    <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Horas Efectivas de Mantenimiento en Sitio (Hrs/día)</h2>
+                    <input type="text" class="w-1/4 border-2 border-gray-300 rounded-lg px-4 py-2 text-center">
+                </div>
+
+                <div class="flex gap-x-2">
+                    <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Porcentaje Mano de Obra Emergencia</h2>
+                    <input id="porcent_mano_obra" name="porcent_mano_obra" type="text" onchange="change_to_porcent_mantenimiento(this.value,this.id);" class="w-1/4 border-2 border-gray-300 rounded-lg px-4 py-2 text-center">
+                </div>
+            </div>
             <table class="w-full">
                 <thead class="bg-gradient-to-r from-[#1B17BB] to-[#2d28d4]">
                     <tr>
@@ -135,6 +146,152 @@
                     </tr>
                 </tbody>
             </table>
+
+            {{-- Tabla de Idas Ajustados --}}
+            <table>
+                <tbody id="tbody_idas_ajustados" name="tbody_idas_ajustados" class="divide-y divide-gray-200">
+                        <!-- Fila de ejemplo -->
+                        <tr id="tr_idas_ajustados" name="tr_idas_ajustados" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                            <td class="px-2 py-2">
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            </td>
+                            <td class="px-2 py-2">
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            </td>
+                            <td class="px-2 py-2">
+                                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            </td>
+                            <td class="w-[160px] py-3">
+                                <label class="font-bold text-[#1B17BB]" for="">Idas ajustados</label>
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                            <td class="px-2 py-2">
+                                <input
+                                    disabled
+                                    type="number"
+                                    class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+
+            {{-- Tabla Horas--}}
+            <div class="w-auto flex gap-x-3 m-2 my-2 border-2 border-[#1B17BB] rounded-lg p-2">
+                <div class="flex gap-x-2 place-items-center">
+                    <label for="" class="text-2xl font-bold text-[#1B17BB]">Horas Hombre</label>
+                </div>
+
+                <div class="flex gap-x-2 place-items-center ml-5">
+                    <label for="" class="text-xl font-bold text-[#1B17BB]">Mantenimiento</label>
+                    <input
+                                    disabled
+                                    type="number"
+                                    class="w-1/3 h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                </div>
+
+                <div class="flex gap-x-2 place-items-center">
+                    <label for="" class="text-xl font-bold text-[#1B17BB]">Ingresos y Egresos</label>
+                    <input
+                                    disabled
+                                    type="number"
+                                    class="w-1/3 h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                </div>
+
+                <div class="flex gap-x-2 place-items-center">
+                    <label for="" class="text-xl font-bold text-[#1B17BB]">Traslados</label>
+                    <input
+                                    disabled
+                                    type="number"
+                                    class="w-1/3 h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                </div>
+
+                <div class="flex gap-x-2 place-items-center">
+                    <label for="" class="text-xl font-bold text-[#1B17BB]">Emergencia</label>
+                    <input
+                                    disabled
+                                    type="number"
+                                    class="w-1/3 h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                </div>
+
+                <div class="flex gap-x-2 place-items-center">
+                    <label for="" class="text-xl font-bold text-[#1B17BB]">Ajuste Manual</label>
+                    <input
+                                    type="text"
+                                    class="w-1/3 h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200  opacity-60">
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -291,13 +448,31 @@ function coordinacionCalculo(rowCount) {
 
     // 5to al 16vo td : 12 inputs text (P1 a P12)
     for (let i = 0; i < 13; i++) {
-        var td_calculo = document.createElement('td');
-        td_calculo.className = 'px-2 py-1';
-        var input_calculo = document.createElement('input');
-        input_calculo.type = 'text';
-        input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
-        input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
-        input_calculo.value = '';
+        if(i == 12){
+            var td_calculo = document.createElement('td');
+            td_calculo.className = 'px-2 py-1';
+            var input_calculo = document.createElement('input');
+            var inputTotal = 'input16_calculo_' + rowCount;
+            input_calculo.type = 'text';
+            input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
+            input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200 cursor-not-allowed opacity-60';
+            input_calculo.value = 0;
+            input_calculo.readOnly = true;
+
+        }else{
+            var td_calculo = document.createElement('td');
+            td_calculo.className = 'px-2 py-1';
+            var input_calculo = document.createElement('input');
+            var periodoSelect = 'periodoSelect_' + rowCount;
+            var inputTotal = 'input16_calculo_' + rowCount;
+            input_calculo.type = 'text';
+            input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
+            input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+            input_calculo.value = '';
+            input_calculo.setAttribute('onclick', 'active_inputs_coordinacion(this.id,"'+ periodoSelect +'","' + rowCount + '")');
+            input_calculo.setAttribute('onchange', 'suma_inputs_calculo(this.id,"'+ periodoSelect +'","' + rowCount + '",this.value,"'+inputTotal+'")');
+        }
+
         td_calculo.appendChild(input_calculo);
         tr_calculo.appendChild(td_calculo);
     }

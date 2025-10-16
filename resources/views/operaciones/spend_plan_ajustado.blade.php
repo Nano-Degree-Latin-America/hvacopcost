@@ -188,12 +188,12 @@
                         <tbody id="tbody_coordinacion_calculo_1" class="divide-y divide-gray-200">
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Facturación</label>
+                                   <label class="font-roboto font-bold text-center text-black text-lg md:text-xl" for="">Facturación</label>
                                 </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/2">
                                     <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
                                     <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
                             </tr>
@@ -283,8 +283,8 @@
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pt-3">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Costo Operacional</label>
+                                <td class="px-1 md:px-2 py-1 md:py-1 flex">
+                                   <label class="font-roboto font-bold text-left text-black text-lg md:text-xl" for="">Costo Operacional</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
@@ -296,7 +296,7 @@
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pb-3">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Gross Profit</label>
+                                   <label class="font-roboto font-bold text-center text-black text-lg md:text-xl" for="">Gross Profit</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
@@ -311,13 +311,20 @@
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Ganancia Esperada</label>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
+                                <td colspan="3" class="px-1 md:px-2 py-1 md:py-1 w-full">
+                                  <div class="w-full flex">
+                                    <div class="w-1/2  place-content-center">
+                                         <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Ganancia Esperada</label>
+                                    </div>
+                                    <div class="w-1/2">
+                                         <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    </div>
 
+                                  </div>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
+
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -334,12 +341,12 @@
                         <tbody id="tbody_coordinacion_calculo_1" class="divide-y divide-gray-200">
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Facturación</label>
+                                   <label class="font-roboto font-bold text-center text-black text-lg md:text-xl" for="">Facturación</label>
                                 </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/2">
                                     <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
                                     <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
                             </tr>
@@ -429,8 +436,8 @@
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pt-3">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Costo Operacional</label>
+                                <td class="px-1 md:px-2 py-1 md:py-1 flex">
+                                   <label class="font-roboto font-bold text-left text-black text-lg md:text-xl" for="">Costo Operacional</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
@@ -442,7 +449,7 @@
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pb-3">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Gross Profit</label>
+                                   <label class="font-roboto font-bold text-center text-black text-lg md:text-xl" for="">Gross Profit</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
@@ -457,13 +464,20 @@
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Ganancia Esperada</label>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
+                                <td colspan="3" class="px-1 md:px-2 py-1 md:py-1 w-full">
+                                  <div class="w-full flex">
+                                    <div class="w-1/2  place-content-center">
+                                         <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Ganancia Esperada</label>
+                                    </div>
+                                    <div class="w-1/2">
+                                         <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    </div>
 
+                                  </div>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
+
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -480,12 +494,12 @@
                         <tbody id="tbody_coordinacion_calculo_1" class="divide-y divide-gray-200">
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Facturación</label>
+                                   <label class="font-roboto font-bold text-center text-black text-lg md:text-xl" for="">Facturación</label>
                                 </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/2">
                                     <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
                                     <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
                             </tr>
@@ -575,8 +589,8 @@
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pt-3">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Costo Operacional</label>
+                                <td class="px-1 md:px-2 py-1 md:py-1 flex">
+                                   <label class="font-roboto font-bold text-left text-black text-lg md:text-xl" for="">Costo Operacional</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
@@ -588,7 +602,7 @@
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pb-3">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Gross Profit</label>
+                                   <label class="font-roboto font-bold text-center text-black text-lg md:text-xl" for="">Gross Profit</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
@@ -603,13 +617,20 @@
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Ganancia Esperada</label>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
+                                <td colspan="3" class="px-1 md:px-2 py-1 md:py-1 w-full">
+                                  <div class="w-full flex">
+                                    <div class="w-1/2  place-content-center">
+                                         <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Ganancia Esperada</label>
+                                    </div>
+                                    <div class="w-1/2">
+                                         <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    </div>
 
+                                  </div>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
+
+                                </td>
                             </tr>
                         </tbody>
                     </table>

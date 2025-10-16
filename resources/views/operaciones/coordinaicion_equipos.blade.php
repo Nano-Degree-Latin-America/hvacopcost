@@ -1,6 +1,6 @@
 <div class="h-[80vh] w-full overflow-y-auto overflow-x-hidden bg-gradient-to-br from-gray-50 to-gray-100 p-4 font-roboto">
     <div class="flex justify-center w-full mt-6">
-        <div class="w-full max-w-7xl bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="w-full max-w-[80%] bg-white rounded-2xl shadow-xl overflow-hidden">
             <table class="w-full">
                 <thead class="bg-gradient-to-r from-[#1B17BB] to-[#2d28d4]">
                     <tr>
@@ -13,10 +13,10 @@
                                 <i class="fas fa-plus text-base transition-transform group-hover:rotate-90 duration-300"></i>
                             </button>
                         </th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Sistema</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Unidad</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Marca</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Modelo</th>
+                        <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Sistema</th>
+                        <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Unidad</th>
+                        <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Marca</th>
+                        <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Modelo</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Capacidad</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Cantidad</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Cantidad total</th>
@@ -316,11 +316,14 @@ document.addEventListener('DOMContentLoaded', function() {
         var td5 = document.createElement('td');
         td5.className = 'px-2 py-1';
         var input1 = document.createElement('input');
+        var id_cantidadInputAux = String("cantidadInput_" + rowCount);
+        var id_cantidadTotalInputAux = String("cantidadTotalInput_" + rowCount);
         input1.type = 'text';
         input1.id = 'capacidadInput_' + rowCount;
         input1.className = inputClass;
         input1.placeholder = '0';
         input1.setAttribute('onkeypress', 'return soloNumeros(event)');
+        input1.setAttribute('onchange', 'mult_capacidad_cantidad_coordinacion("'+input1.id+'","'+id_cantidadInputAux+'","'+id_cantidadTotalInputAux+'");');
         td5.appendChild(input1);
         tr.appendChild(td5);
 
@@ -329,12 +332,14 @@ document.addEventListener('DOMContentLoaded', function() {
         td6.className = 'px-2 py-1';
         var input2 = document.createElement('input');
         var id_sistemaCantidadAux = String("cantidadinput2_calculo_" + rowCount);
+        var id_capacidadInputAux = String("capacidadInput_" + rowCount);
+        var id_cantidadTotalInputAux = String("cantidadTotalInput_" + rowCount);
         input2.type = 'text';
         input2.id = 'cantidadInput_' + rowCount;
         input2.className = inputClass;
         input2.placeholder = '0';
         input2.setAttribute('onkeypress', 'return soloNumeros(event)');
-        input2.setAttribute('onchange', 'send_value_cantidad_calculo_coordinacion("' + id_sistemaCantidadAux + '",this.value);');
+        input2.setAttribute('onchange', 'send_value_cantidad_calculo_coordinacion("' + id_sistemaCantidadAux + '",this.value);mult_capacidad_cantidad_coordinacion("'+id_capacidadInputAux+'","'+input2.id+'","'+id_cantidadTotalInputAux+'");');
         td6.appendChild(input2);
         tr.appendChild(td6);
 
@@ -346,6 +351,7 @@ document.addEventListener('DOMContentLoaded', function() {
         input3.id = 'cantidadTotalInput_' + rowCount;
         input3.className = inputClass;
         input3.placeholder = '0';
+        input3.readOnly = true;
         input3.setAttribute('onkeypress', 'return soloNumeros(event)');
         td7.appendChild(input3);
         tr.appendChild(td7);
@@ -356,6 +362,9 @@ document.addEventListener('DOMContentLoaded', function() {
         var select5 = document.createElement('select');
         select5.id = 'mantenimientoSelect_' + rowCount;
         select5.className = selectClass;
+        var periodoId = 'periodoSelect_' + rowCount;
+        var sistemaId = 'sistemaSelect_' + rowCount;
+        var unidadId = 'unidadSelect_' + rowCount;
 
         const mantenimientos = [
             {value: '0', text: 'Seleccionar'},
@@ -369,6 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
             option.text = item.text;
             select5.appendChild(option);
         });
+        select5.setAttribute('onchange', 'set_periodo("'+ sistemaId +'","' + unidadId + '","' + periodoId + '",this.value);');
         td8.appendChild(select5);
         tr.appendChild(td8);
 
