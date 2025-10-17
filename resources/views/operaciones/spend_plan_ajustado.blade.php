@@ -703,7 +703,7 @@
     </div>
 
     <script>
-        console.log('Dashboard Spend Plan cargado correctamente');
+
     </script>
 </body>
 </html>

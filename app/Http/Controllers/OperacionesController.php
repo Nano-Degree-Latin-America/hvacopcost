@@ -9,6 +9,8 @@ use App\SistemasModel;
 use App\UnidadesTrModel;
 use App\UnidadesCfmModel;
 use App\UnidadesUnidadModel;
+use App\ConfiguracionesMantenimientoModel;
+use Illuminate\Support\Facades\Auth;
 
 
 class OperacionesController extends Controller
@@ -78,5 +80,32 @@ class OperacionesController extends Controller
         }
 
         return $horas;
+     }
+
+     public function traer_tecnico_ayudante($value){
+        switch ($value) {
+            case 'tecnico_ayudante':
+                $set_valor = ConfiguracionesMantenimientoModel::where('slug','=','mo-tecnico-y-ayudante')
+                ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+                return $set_valor;
+            break;
+
+            case 'tecnico':
+                $set_valor = ConfiguracionesMantenimientoModel::where('slug','=','mano-obra-tecnico')
+                ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+                return $set_valor;
+            break;
+
+            default:
+                # code...
+                break;
+        }
+     }
+
+     public function traer_kms(){
+            $set_valor = ConfiguracionesMantenimientoModel::where('slug','=','valor-vehiculo')
+            ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+
+            return $set_valor;
      }
 }

@@ -16878,10 +16878,10 @@ function calcular_speendplan_base_update(id_project){
             if (grupoActivo && grupoActivo.includes(id)) {
                 input.disabled = false;
                 input.classList.remove('border-gray-300');
-                input.classList.add('border-[#1B17BB]');
+                input.classList.add('border-[#1B17BB]','bg-blue-200');
             } else {
                 input.value = 0;
-                input.classList.remove('border-[#1B17BB]');
+                input.classList.remove('border-[#1B17BB]','bg-blue-200');
                 input.classList.add('border-gray-300');
                 suma_horas_hombre(i);
             }
@@ -16919,10 +16919,10 @@ function calcular_speendplan_base_update(id_project){
             if (grupoActivo && grupoActivo.includes(id)) {
                 input.disabled = false;
                 input.classList.remove('border-gray-300');
-                input.classList.add('border-[#1B17BB]');
+                input.classList.add('border-[#1B17BB]','bg-blue-200');
             } else {
                 input.value = 0;
-                input.classList.remove('border-[#1B17BB]');
+                input.classList.remove('border-[#1B17BB]','bg-blue-200');
                 input.classList.add('border-gray-300');
                 suma_horas_hombre(i);
             }
@@ -16964,10 +16964,10 @@ function activarInputsAnuales(inputId,counter) {
             if (grupoActivo && grupoActivo.includes(id)) {
                 input.disabled = false;
                 input.classList.remove('border-gray-300');
-                input.classList.add('border-[#1B17BB]');
+                input.classList.add('border-[#1B17BB]','bg-blue-200');
             } else {
                 input.value = 0;
-                input.classList.remove('border-[#1B17BB]');
+                input.classList.remove('border-[#1B17BB]','bg-blue-200');
                 input.classList.add('border-gray-300');
                 suma_horas_hombre(i);
             }
@@ -17108,6 +17108,7 @@ function suma_horas_hombre(i){
     var ingresos_egresos = 0;
     var traslados = 0;
     var total_horas_operacion = 0;
+    var total_horas_venta = 0;
     $('#idas_ajustados_p'+i).val(suma_inps);
 
     for (let z = 4 ; z < 16; z++) {
@@ -17139,6 +17140,13 @@ function suma_horas_hombre(i){
 
     total_horas_operacion = parseInt(mantenimiento) + parseInt(ingresos_egresos) + parseInt(traslados) + parseInt(emergencia);
     $('#total_horas_operacion').val(total_horas_operacion);
+
+    /////total_horas_venta
+   var mano_obra_ventas = $('#mano_obra_ventas').val();
+   var val_tenicoychalan = $('#val_tenicoychalan').val();
+   var mano_obra_ventas_val =  money_format_to_integer(mano_obra_ventas);
+    total_horas_venta = mano_obra_ventas_val / val_tenicoychalan;
+    $('#total_horas_x_operacion').val(Math.ceil(total_horas_venta));
 }
 
 function suma_all_inputs(i){
@@ -17242,4 +17250,171 @@ function h_h_emergencia(mantenimiento){
 
     total = mantenimiento*porcent;
     return parseInt(total);
+}
+
+async function calculateSpendVentas(value){
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+    var materiales = 0;
+    var equipos = 0;
+    var mano_obra = 0;
+    var vehiculos = 0;
+    var contratistas = 0;
+    var viaticos = 0;
+    var burden = 0;
+    var costo_operacional = 0;
+    var porcent_costo_operacional = 0;
+    var porcent_gross_profit = 0;
+    var gross_profit = 0;
+    var ganancia_esperada = 0;
+    var horas_disponibles = 0;
+    var kilometros_disponibles = 0;
+
+    //materiales
+    materiales = calculateSpeendsVentas(value,'materiales');
+    $('#materiales_ventas').val('$'+dollarUSLocale.format(materiales));
+
+    //equipos
+    equipos = calculateSpeendsVentas(value,'equipos');
+    $('#equipos_ventas').val('$'+dollarUSLocale.format(equipos));
+
+     //mano_obra
+    mano_obra = calculateSpeendsVentas(value,'mano_obra');
+    $('#mano_obra_ventas').val('$'+dollarUSLocale.format(mano_obra));
+
+     //vehiculos
+    vehiculos = calculateSpeendsVentas(value,'vehiculos');
+    $('#vehiculos_ventas').val('$'+dollarUSLocale.format(vehiculos));
+
+    //contratistas
+    contratistas = calculateContratistasSpeendsVentas(equipos);
+    $('#contratistas_ventas').val('$'+dollarUSLocale.format(contratistas));
+
+    //viaticos
+    viaticos = calculateViaticosSpeendsVentas(mano_obra);
+    $('#viaticos_ventas').val('$'+dollarUSLocale.format(viaticos));
+
+     //burden
+    burden = calculateSpeendsVentas(value,'burden');
+    $('#burden_ventas').val('$'+dollarUSLocale.format(burden));
+
+    //costo operacional
+    costo_operacional =  materiales+equipos+mano_obra+vehiculos+contratistas+viaticos+burden;
+    $('#costo_operacional_ventas').val('$'+dollarUSLocale.format(costo_operacional));
+
+    porcent_costo_operacional = porcentCostoOperacional();
+    $('#porcent_costo_operacional_ventas').val(porcent_costo_operacional+'%');
+
+    //gross profit
+    porcent_gross_profit = 100-parseInt(porcent_costo_operacional);
+    $('#porcent_gross_profit_ventas').val(porcent_gross_profit+'%');
+
+    var fact_val =  money_format_to_integer(value);
+    gross_profit = fact_val*parseFloat(porcent_gross_profit/100);
+    $('#gross_profit_ventas').val('$'+dollarUSLocale.format(gross_profit));
+
+    //ganancia esperada
+    ganancia_esperada =  porcent_gross_profit-25;
+    $('#ganancia_esperada_ventas').val(ganancia_esperada+'%');
+
+    //horas disponibles
+    horas_disponibles = await horasDisponibles(mano_obra);
+    $('#horas_disponibles').val(horas_disponibles);
+
+    //kilometros disponibles
+    kilometros_disponibles = await kmsDisponibles(vehiculos);
+    $('#kilometros_disponibles').val(kilometros_disponibles);
+
+    //facturacion es valor de contrato
+}
+
+function calculateSpeendsVentas(facturacion,tipo){
+    materiales_porcent = $("#porcent_"+tipo+"_ventas").val();
+    const myArry = materiales_porcent.split('%')
+    var materiales_porcent_val = myArry[0] / 100;
+    var materiales_val = 0;
+    var fact_val =  money_format_to_integer(facturacion);
+
+    //formula : facturacion*materiales_porcent_val
+    materiales_val = fact_val * materiales_porcent_val;
+    return materiales_val;
+}
+
+function calculateContratistasSpeendsVentas(equipos){
+    contratistas_porcent = $("#porcent_contratistas_ventas").val();
+    const myArry = contratistas_porcent.split('%')
+    var contratistas_porcent_val = myArry[0] / 100;
+    var contratistas_val = 0;
+    var equipos_val =  equipos;
+
+    //formula : facturacion*materiales_porcent_val
+    contratistas_val = equipos_val * contratistas_porcent_val;
+    return contratistas_val;
+}
+
+function calculateViaticosSpeendsVentas(mano_obra){
+    viaticos_porcent = $("#porcent_viaticos_ventas").val();
+    const myArry = viaticos_porcent.split('%')
+    var viaticos_porcent_val = myArry[0] / 100;
+    var contratistas_val = 0;
+    var mano_obra_val =  mano_obra;
+
+    //formula : facturacion*materiales_porcent_val
+    viaticos_val = mano_obra_val * viaticos_porcent_val;
+    return viaticos_val;
+}
+
+function porcentCostoOperacional(){
+    const arry_porcents = ['materiales','equipos','mano_obra','vehiculos','contratistas','viaticos','burden'];
+    var porcent_suma = 0;
+    arry_porcents.forEach(tipo => {
+        val_porcent = $("#porcent_"+tipo+"_ventas").val();
+        const myArry = val_porcent.split('%')
+        porcent_suma = parseInt(myArry[0]) + parseInt(porcent_suma);
+    });
+
+    return porcent_suma;
+}
+
+
+async function horasDisponibles(mano_obra){
+     var personal_enviado_mantenimiento = $('#personal_enviado_mantenimiento').val();
+     var total = 0;
+
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: 'get',
+            url: '/traer_tecnico_ayudante/'+personal_enviado_mantenimiento,
+            success: function (response) {
+
+                    $('#val_tenicoychalan').val(response); //ppara calcular Total Horas x Ventas
+                   total = parseInt(mano_obra) / parseInt(response);
+                    resolve(total);
+            },
+            error: function (responsetext) {
+                reject(responsetext);
+            }
+        });
+    });
+}
+
+async function kmsDisponibles(vehiculo){
+     var total = 0;
+     return new Promise((resolve, reject) => {
+        $.ajax({
+            type: 'get',
+            url: '/traer_kms',
+            success: function (response) {
+
+                   total = parseInt(vehiculo) / parseInt(response)
+                    resolve(total);
+            },
+            error: function (responsetext) {
+                reject(responsetext);
+            }
+        });
+    });
+}
+
+function set_val_to_fact(val,id){
+    $('#'+id).val(val);
 }
