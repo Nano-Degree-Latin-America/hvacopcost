@@ -275,7 +275,6 @@ document.addEventListener('DOMContentLoaded', function() {
         var select2 = document.createElement('select');
         select2.id = 'unidadSelect_' + rowCount;
         select2.className = selectClass;
-        select2.setAttribute('onchange', 'onSelectChange(this)');
         var option0_2 = document.createElement('option');
         option0_2.value = '0';
         option0_2.text = 'Seleccionar';
@@ -304,7 +303,6 @@ document.addEventListener('DOMContentLoaded', function() {
         var select4 = document.createElement('select');
         select4.id = 'modeloSelect_' + rowCount;
         select4.className = selectClass;
-        select4.setAttribute('onchange', 'onSelectChange(this)');
         var option0_4 = document.createElement('option');
         option0_4.value = '0';
         option0_4.text = 'Seleccionar';
@@ -432,8 +430,4 @@ document.addEventListener('DOMContentLoaded', function() {
         coordinacionCalculo(rowCount);
     });
 });
-
-function onSelectChange(selectElem) {
-
-}
 </script>

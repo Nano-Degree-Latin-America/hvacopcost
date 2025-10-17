@@ -289,14 +289,18 @@ input[type=number]::-webkit-outer-spin-button {
                     <div  class="ancho">
 
                             <div style="height: 70%;"  x-show.transition.in="step === 2">
-                                @include('operaciones.coordinaicion_equipos')
+                                @include('operaciones.spend_plan_teorico')
                             </div>
 
                             <div style="height: 70%;"  x-show.transition.in="step === 3">
-                                @include('operaciones.coordinaicion_calculo')
+                                @include('operaciones.coordinaicion_equipos')
                             </div>
 
                             <div style="height: 70%;"  x-show.transition.in="step === 4">
+                                @include('operaciones.coordinaicion_calculo')
+                            </div>
+
+                            <div style="height: 70%;"  x-show.transition.in="step === 5">
                                 @include('operaciones.spend_plan_ajustado')
                             </div>
 

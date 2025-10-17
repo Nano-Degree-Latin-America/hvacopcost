@@ -213,6 +213,16 @@
                             <span id="tiempo_egreso_warning" name="tiempo_egreso_warning" class="text-red-500"></span>
                     </div>
 
+                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                        <div class="flex w-full">
+                            <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>Valor Contrato:</b></label>
+                            <label class="text-red-500 m-0">*</label>
+                        </div>
+                            <input onchange="check_input(this.value,this.id,'valor_contrato_warning');check_inp_count_coordinacion('count_valor_contrato','valor_contrato');valida_selects_inps(this.id);format_num(this.value,this.id);set_val_to_fact(this.value,'facturacion_ventas');calculateSpendVentas(this.value)" onkeypress="return soloNumeros(event)" name="valor_contrato" id="valor_contrato" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <input id="count_valor_contrato" name="count_valor_contrato" type="number" class="hidden" value="0">
+                            <span id="valor_contrato_warning" name="valor_contrato_warning" class="text-red-500"></span>
+                    </div>
+
 
                        {{--  <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
                             <div class="flex w-full">
@@ -764,6 +774,24 @@ function valida_formulario_coordinacion(){
           }
           ////////////////////
 
+           /////////////////
+          var valor_contrato =$('#valor_contrato');
+          var count_valor_contrato = $('#count_valor_contrato').val();
+
+          if(valor_contrato.val() == ''){
+
+            valor_contrato.css("border-color", "red")
+            valor_contrato = 1;
+           $('#count_valor_contrato').val(count_valor_contrato);
+
+          }else if (tiempo_ingreso.val() != '') {
+
+            count_valor_contrato = 0;
+           $('#count_valor_contrato').val(count_valor_contrato);
+
+          }
+          ////////////////////
+
           /////////////////
           var ocupacion_semanal_mantenimiento =$('#ocupacion_semanal_mantenimiento');
           var count_ocupacion_semanal_mantenimiento = $('#count_ocupacion_semanal_mantenimiento').val();
@@ -787,7 +815,7 @@ function valida_formulario_coordinacion(){
 
 
 
-        var count_inps = cliente_count + cat_edi_mant_count + pais_mant_mant_count  +  count_ciudad_mantenimiento_count + count_velocidad_promedio_mantenimiento + count_name_sitio_mantenimiento + count_tipo_edificio_mantenimiento + count_distancia_sitio_mantenimiento + count_yrs_life_ed_mantenimiento + count_tipo_ambiente_mantenimiento + count_personal_enviado + count_tiempo_egreso + count_tiempo_ingreso;
+        var count_inps = cliente_count + cat_edi_mant_count + pais_mant_mant_count  +  count_ciudad_mantenimiento_count + count_velocidad_promedio_mantenimiento + count_name_sitio_mantenimiento + count_tipo_edificio_mantenimiento + count_distancia_sitio_mantenimiento + count_yrs_life_ed_mantenimiento + count_tipo_ambiente_mantenimiento + count_personal_enviado + count_tiempo_egreso + count_tiempo_ingreso + count_valor_contrato;
 
       if(count_inps>0){
 
@@ -833,19 +861,20 @@ function valida_formulario_coordinacion(){
         count_ocupacion_semanal_mantenimiento = $('#count_ocupacion_semanal_mantenimiento').val();
         count_personal_enviado = $('#count_personal_enviado_mantenimiento').val();
         count_tiempo_egreso = $('#count_tiempo_egreso').val();
+        count_valor_contrato = $('#count_valor_contrato').val();
 
        suma_inps = parseInt(count_cliente_pro_mantenimiento) + parseInt(count_cat_edi_mantenimiento) + parseInt(count_paises_mantenimiento)
        + parseInt(count_tipo_ambiente_mantenimiento) + parseInt(count_tiempo_ingreso) + parseInt(count_name_sitio_mantenimiento) + parseInt(count_tipo_edificio_mantenimiento) + parseInt(count_ciudad_mantenimiento)
-       + parseInt(count_velocidad_promedio_mantenimiento) + parseInt(count_ocupacion_semanal_mantenimiento) + parseInt(count_personal_enviado) + parseInt(count_tiempo_egreso);
+       + parseInt(count_velocidad_promedio_mantenimiento) + parseInt(count_ocupacion_semanal_mantenimiento) + parseInt(count_personal_enviado) + parseInt(count_tiempo_egreso) + parseInt(count_valor_contrato);
 
 
-       if(suma_inps == 11){
+       if(suma_inps == 12){
         $('#div_next_mantenimiento').removeClass("hidden");
         $('#div_next_h_mantenimiento').addClass("hidden");
 
        }
 
-       if(suma_inps < 11){
+       if(suma_inps < 12){
         $('#div_next_mantenimiento').addClass("hidden");
         $('#div_next_h_mantenimiento').removeClass("hidden");
 
