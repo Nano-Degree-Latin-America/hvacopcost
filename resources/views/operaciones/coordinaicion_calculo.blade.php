@@ -5,12 +5,12 @@
             <div class="w-3/4 flex justify-between items-center mx-auto">
                 <div class="flex gap-x-2">
                     <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Horas Efectivas de Mantenimiento en Sitio (Hrs/día)</h2>
-                    <input id="horas_efectivas_mantenimiento" name="horas_efectivas_mantenimiento" type="text" value="0" class="w-1/4 border-2 border-gray-300 rounded-lg px-4 py-2 text-center">
+                    <input value="0" id="horas_efectivas_mantenimiento" name="horas_efectivas_mantenimiento" type="text" value="0" class="w-1/4 border-2 border-gray-300 rounded-lg px-4 py-2 text-center">
                 </div>
 
                 <div class="flex gap-x-2">
                     <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Porcentaje Mano de Obra Emergencia</h2>
-                    <input id="porcent_mano_obra" name="porcent_mano_obra" type="text" onchange="change_to_porcent_mantenimiento(this.value,this.id);" class="w-1/4 border-2 border-gray-300 rounded-lg px-4 py-2 text-center">
+                    <input value="0%" id="porcent_mano_obra" name="porcent_mano_obra" type="text" onchange="change_to_porcent_mantenimiento(this.value,this.id);" class="w-1/4 border-2 border-gray-300 rounded-lg px-4 py-2 text-center">
                 </div>
             </div>
             <table class="w-full">
