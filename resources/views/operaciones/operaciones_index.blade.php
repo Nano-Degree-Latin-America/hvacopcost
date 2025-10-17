@@ -1119,7 +1119,7 @@ window.onclick = function(event) {
 
 function app() {
 			return {
-				step: 4,
+				step: 1,
 				passwordStrengthText: '',
 				togglePassword: false,
 				gender: 'Male',
