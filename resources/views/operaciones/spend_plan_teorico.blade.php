@@ -192,7 +192,7 @@
                                 <th colspan="3" class="px-2 py-2 md:py-3 lg:py-4 font-roboto font-bold text-center text-[#1B17BB] text-base sm:text-lg md:text-xl lg:text-2xl">Spend Plan Ventas</th>
                             </tr>
                         </thead>
-                        <tbody id="tbody_coordinacion_calculo_1" class="divide-y divide-gray-200">
+                        <tbody id="tbody_ventas" class="divide-y divide-gray-200">
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                    <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Facturación</label>
@@ -289,7 +289,13 @@
                                 </td>
                             </tr>
 
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pt-3">
+                            <tr class="">
+                                <td class="">
+                                    <label class="text-sm" for="">&nbsp;</label>
+                                </td>
+                            </tr>
+
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                    <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Costo Operacional</label>
                                 </td>
@@ -301,7 +307,7 @@
                                 </td>
                             </tr>
 
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pb-3">
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                    <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Gross Profit</label>
                                 </td>
@@ -310,6 +316,12 @@
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input id="porcent_gross_profit_ventas" name="porcent_gross_profit_ventas" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="">
+                                <td class="">
+                                    <label class="text-sm" for="">&nbsp;</label>
                                 </td>
                             </tr>
 

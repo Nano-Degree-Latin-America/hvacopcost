@@ -246,6 +246,8 @@ Route::get('traer_sistemas_calculo_coordinacion/{id}', 'OperacionesController@tr
 Route::get('set_periodo/{id_sistema}/{id_unidad}', 'OperacionesController@set_periodo');
 Route::get('traer_tecnico_ayudante/{value}','OperacionesController@traer_tecnico_ayudante');
 Route::get('traer_kms','OperacionesController@traer_kms');
+Route::get('traer_burden','OperacionesController@traer_burden');
+
 
 //lang
 Route::get('locale/{locale}', function($locale){

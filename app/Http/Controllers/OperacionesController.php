@@ -108,4 +108,10 @@ class OperacionesController extends Controller
 
             return $set_valor;
      }
+
+     public function traer_burden(){
+            $set_valor = ConfiguracionesMantenimientoModel::where('slug','=','valor-burden')
+            ->where('id_empresa','=',Auth::user()->id_empresa)->first()->valor;
+            return $set_valor;
+     }
 }
