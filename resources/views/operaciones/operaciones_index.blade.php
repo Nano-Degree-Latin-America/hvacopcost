@@ -378,8 +378,20 @@ input[type=number]::-webkit-outer-spin-button {
                     <button  type="button"
 
                    style="background-color:#1B17BB;"
-                       x-show="step > 1"
+                       x-show="step > 1 && step < 4"
                        @click="step++"
+                       onclick="suma_cantidad_toneladas();"
+                       class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                   >{{ __('index.siguiente') }}</button>
+                </div>
+
+                <div class="w-1/2">
+                    <button  type="button"
+
+                   style="background-color:#1B17BB;"
+                       x-show="step == 4 && step < 5"
+                       @click="step++"
+                       onclick="spenPlanAjustado();"
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                    >{{ __('index.siguiente') }}</button>
                 </div>

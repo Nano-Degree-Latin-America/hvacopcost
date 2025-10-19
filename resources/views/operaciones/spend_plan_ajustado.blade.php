@@ -185,145 +185,149 @@
                                 <th colspan="3" class="px-2 py-1 md:py-4 font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-2xl">Spend Plan Ventas</th>
                             </tr>
                         </thead>
-                        <tbody id="tbody_coordinacion_calculo_1" class="divide-y divide-gray-200">
+                        <tbody id="tbody_spend_ventas" class="divide-y divide-gray-200">
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-black text-lg md:text-xl" for="">Facturación</label>
+                                   <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Facturación</label>
                                 </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/2">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/3 sm:w-1/2">
+                                    <input id="facturacion_ventas_ajustado" name="facturacion_ventas_ajustado" type="text" readonly onchange="format_num(this.value,this.id);" onkeypress="return soloNumeros(event)" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input value="100%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Materiales</label>
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Materiales</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="materiales_ventas_ajustado" name="materiales_ventas_ajustado" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                            </tr>
-
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Equipos</label>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_materiales_ventas_ajustado" name="porcent_materiales_ventas_ajustado" value="10%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Mano de Obra</label>
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Equipos</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="equipos_ventas_ajustado" name="equipos_ventas_ajustado" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                            </tr>
-
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Vehículos</label>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_equipos_ventas_ajustado" name="porcent_equipos_ventas_ajustado" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Contrtistas</label>
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Mano de Obra</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="mano_obra_ventas_ajustado" name="mano_obra_ventas_ajustado" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                            </tr>
-
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Viaticos</label>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_mano_obra_ventas_ajustado" name="porcent_mano_obra_ventas_ajustado" value="25%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Burden</label>
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Vehículos</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="vehiculos_ventas_ajustado" name="vehiculos_ventas_ajustado" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_vehiculos_ventas_ajustado" name="porcent_vehiculos_ventas_ajustado" value="5%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Contratistas</label>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="contratistas_ventas_ajustado" name="contratistas_ventas_ajustado" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="porcent_contratistas_ventas_ajustado" name="porcent_contratistas_ventas_ajustado" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Viáticos</label>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="viaticos_ventas_ajustado" name="viaticos_ventas_ajustado" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="porcent_viaticos_ventas_ajustado" name="porcent_viaticos_ventas_ajustado" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Burden</label>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="burden_ventas_ajustado" name="burden_ventas_ajustado" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="porcent_burden_ventas_ajustado" name="porcent_burden_ventas_ajustado" value="20%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                             <tr class="">
+                                <td class="">
+                                    <label class="text-xs" for="">&nbsp;</label>
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pt-3">
-                                <td class="px-1 md:px-2 py-1 md:py-1 flex">
-                                   <label class="font-roboto font-bold text-left text-black text-lg md:text-xl" for="">Costo Operacional</label>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                   <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Costo Operacional</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="costo_operacional_ventas_ajustado" name="costo_operacional_ventas_ajustado" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_costo_operacional_ventas_ajustado" name="porcent_costo_operacional_ventas_ajustado" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pb-3">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-black text-lg md:text-xl" for="">Gross Profit</label>
+                                   <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Gross Profit</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="gross_profit_ventas_ajustado" name="gross_profit_ventas_ajustado" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_gross_profit_ventas_ajustado" name="porcent_gross_profit_ventas_ajustado" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="">
+                                <td class="">
+                                    <label class="text-xs" for="">&nbsp;</label>
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-
-                            </tr>
-
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td colspan="3" class="px-1 md:px-2 py-1 md:py-1 w-full">
-                                  <div class="w-full flex">
-                                    <div class="w-1/2  place-content-center">
-                                         <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Ganancia Esperada</label>
+                                <td colspan="3" class="px-1 md:px-2 py-2 md:py-3 w-full">
+                                  <div class="w-full flex flex-col sm:flex-row gap-2">
+                                    <div class="w-full sm:w-1/2 place-content-center">
+                                         <label class="font-roboto font-bold text-center text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Ganancia Esperada</label>
                                     </div>
-                                    <div class="w-1/2">
-                                         <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <div class="w-full sm:w-1/2">
+                                         <input id="ganancia_esperada_ventas_ajustado" name="ganancia_esperada_ventas_ajustado" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                     </div>
-
                                   </div>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
-
                                 </td>
                             </tr>
                         </tbody>
@@ -339,144 +343,148 @@
                             </tr>
                         </thead>
                         <tbody id="tbody_coordinacion_calculo_1" class="divide-y divide-gray-200">
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-black text-lg md:text-xl" for="">Facturación</label>
+                                   <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Facturación</label>
                                 </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/2">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/3 sm:w-1/2">
+                                    <input id="facturacion_ventas_spa" name="facturacion_ventas_spa" type="text" readonly onchange="format_num(this.value,this.id);" onkeypress="return soloNumeros(event)" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input value="100%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Materiales</label>
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Materiales</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="materiales_ventas_spa" name="materiales_ventas_spa" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                            </tr>
-
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Equipos</label>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_materiales_ventas_spa" name="porcent_materiales_ventas_spa" value="10%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Mano de Obra</label>
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Equipos</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="equipos_ventas_spa" name="equipos_ventas_spa" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                            </tr>
-
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Vehículos</label>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_equipos_ventas_spa" name="porcent_equipos_ventas_spa" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Contrtistas</label>
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Mano de Obra</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="mano_obra_ventas_spa" name="mano_obra_ventas_spa" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                            </tr>
-
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Viaticos</label>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_mano_obra_ventas_spa" name="porcent_mano_obra_ventas_spa" value="25%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Burden</label>
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Vehículos</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="vehiculos_ventas_spa" name="vehiculos_ventas_spa" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_vehiculos_ventas_spa" name="porcent_vehiculos_ventas_spa" value="5%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Contratistas</label>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="contratistas_ventas_spa" name="contratistas_ventas_spa" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="porcent_contratistas_ventas_spa" name="porcent_contratistas_ventas_spa" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Viáticos</label>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="viaticos_ventas_spa" name="viaticos_ventas_spa" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="porcent_viaticos_ventas_spa" name="porcent_viaticos_ventas_spa" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Burden</label>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="burden_ventas_spa" name="burden_ventas_spa" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="porcent_burden_ventas_spa" name="porcent_burden_ventas_spa" value="20%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                             <tr class="">
+                                <td class="">
+                                    <label class="text-xs" for="">&nbsp;</label>
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pt-3">
-                                <td class="px-1 md:px-2 py-1 md:py-1 flex">
-                                   <label class="font-roboto font-bold text-left text-black text-lg md:text-xl" for="">Costo Operacional</label>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                   <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Costo Operacional</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="costo_operacional_ventas_spa" name="costo_operacional_ventas_spa" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_costo_operacional_ventas_spa" name="porcent_costo_operacional_ventas_spa" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pb-3">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-black text-lg md:text-xl" for="">Gross Profit</label>
+                                   <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Gross Profit</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="gross_profit_ventas_spa" name="gross_profit_ventas_spa" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_gross_profit_ventas_spa" name="porcent_gross_profit_ventas_spa" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="">
+                                <td class="">
+                                    <label class="text-xs" for="">&nbsp;</label>
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-
-                            </tr>
-
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td colspan="3" class="px-1 md:px-2 py-1 md:py-1 w-full">
-                                  <div class="w-full flex">
-                                    <div class="w-1/2  place-content-center">
-                                         <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Ganancia Esperada</label>
+                                <td colspan="3" class="px-1 md:px-2 py-2 md:py-3 w-full">
+                                  <div class="w-full flex flex-col sm:flex-row gap-2">
+                                    <div class="w-full sm:w-1/2 place-content-center">
+                                         <label class="font-roboto font-bold text-center text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Ganancia Esperada</label>
                                     </div>
-                                    <div class="w-1/2">
-                                         <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <div class="w-full sm:w-1/2">
+                                         <input id="ganancia_esperada_ventas_spa" name="ganancia_esperada_ventas_spa" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                     </div>
-
                                   </div>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
-
                                 </td>
                             </tr>
                         </tbody>
@@ -492,144 +500,149 @@
                             </tr>
                         </thead>
                         <tbody id="tbody_coordinacion_calculo_1" class="divide-y divide-gray-200">
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-black text-lg md:text-xl" for="">Facturación</label>
+                                   <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Facturación</label>
                                 </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/2">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/3 sm:w-1/2">
+                                    <input value="$0" id="facturacion_ventas_manual" name="facturacion_ventas_manual" type="text" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input value="100%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Materiales</label>
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Materiales</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input value="$0" id="materiales_ventas_manual" name="materiales_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                            </tr>
-
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Equipos</label>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_materiales_ventas_manual" name="porcent_materiales_ventas_manual" value="10%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Mano de Obra</label>
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Equipos</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input value="$0" id="equipos_ventas_manual" name="equipos_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                            </tr>
-
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Vehículos</label>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_equipos_ventas_manual" name="porcent_equipos_ventas_manual" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Contrtistas</label>
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Mano de Obra</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input value="$0" id="mano_obra_ventas_manual" name="mano_obra_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                            </tr>
-
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Viaticos</label>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_mano_obra_ventas_manual" name="porcent_mano_obra_ventas_manual" value="25%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Burden</label>
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Vehículos</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input value="$0" id="vehiculos_ventas_manual" name="vehiculos_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_vehiculos_ventas_manual" name="porcent_vehiculos_ventas_manual" value="5%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Contratistas</label>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input value="$0" id="contratistas_ventas_manual" name="contratistas_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)"  type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="porcent_contratistas_ventas_manual" name="porcent_contratistas_ventas_manual" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Viáticos</label>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input  value="$0"  id="viaticos_ventas_manual" name="viaticos_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)"  type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="porcent_viaticos_ventas_manual" name="porcent_viaticos_ventas_manual" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                   <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Burden</label>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="burden_ventas_manual" name="burden_ventas_manual" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                    <input type="text" id="burden_val" name="burden_val" hidden>
+                                </td>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                    <input id="porcent_burden_ventas_manual" name="porcent_burden_ventas_manual" value="20%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                             <tr class="">
+                                <td class="">
+                                    <label class="text-xs" for="">&nbsp;</label>
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pt-3">
-                                <td class="px-1 md:px-2 py-1 md:py-1 flex">
-                                   <label class="font-roboto font-bold text-left text-black text-lg md:text-xl" for="">Costo Operacional</label>
+                                <td class="px-1 md:px-2 py-1 md:py-1">
+                                   <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Costo Operacional</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="costo_operacional_ventas_manual" name="costo_operacional_ventas_manual" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_costo_operacional_ventas_manual" name="porcent_costo_operacional_ventas_manual" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200 pb-3">
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                   <label class="font-roboto font-bold text-center text-black text-lg md:text-xl" for="">Gross Profit</label>
+                                   <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Gross Profit</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="gross_profit_ventas_manual" name="gross_profit_ventas_manual" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input id="porcent_gross_profit_ventas_manual" name="porcent_gross_profit_ventas_manual" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                            <tr class="">
+                                <td class="">
+                                    <label class="text-xs" for="">&nbsp;</label>
                                 </td>
                             </tr>
 
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-
-                            </tr>
-
-                            <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                                <td colspan="3" class="px-1 md:px-2 py-1 md:py-1 w-full">
-                                  <div class="w-full flex">
-                                    <div class="w-1/2  place-content-center">
-                                         <label class="font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-xl" for="">Ganancia Esperada</label>
+                                <td colspan="3" class="px-1 md:px-2 py-2 md:py-3 w-full">
+                                  <div class="w-full flex flex-col sm:flex-row gap-2">
+                                    <div class="w-full sm:w-1/2 place-content-center">
+                                         <label class="font-roboto font-bold text-center text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Ganancia Esperada</label>
                                     </div>
-                                    <div class="w-1/2">
-                                         <input disabled type="number" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-xs md:text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <div class="w-full sm:w-1/2">
+                                         <input id="ganancia_esperada_ventas_manual" name="ganancia_esperada_ventas_manual" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                     </div>
-
                                   </div>
-                                </td>
-                                <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
-
                                 </td>
                             </tr>
                         </tbody>
@@ -646,13 +659,13 @@
                         <tbody id="tbody_coordinacion_calculo_mobile_1" class="divide-y divide-gray-200">
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 py-1">
-                                    <input disabled type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input readonly type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
                                 <td class="px-1 py-1">
-                                    <input disabled type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input readonly type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
                                 <td class="px-1 py-1">
-                                    <input disabled type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input readonly type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
                             </tr>
                         </tbody>
@@ -666,13 +679,13 @@
                         <tbody id="tbody_coordinacion_calculo_mobile_2" class="divide-y divide-gray-200">
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 py-1">
-                                    <input disabled type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input readonly type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
                                 <td class="px-1 py-1">
-                                    <input disabled type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input readonly type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
                                 <td class="px-1 py-1">
-                                    <input disabled type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input readonly type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
                             </tr>
                         </tbody>
@@ -686,13 +699,13 @@
                         <tbody id="tbody_coordinacion_calculo_mobile_3" class="divide-y divide-gray-200">
                             <tr class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                                 <td class="px-1 py-1">
-                                    <input disabled type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input readonly type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
                                 <td class="px-1 py-1">
-                                    <input disabled type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input readonly type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
                                 <td class="px-1 py-1">
-                                    <input disabled type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                    <input readonly type="number" class="w-full h-8 px-2 text-center text-xs font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                                 </td>
                             </tr>
                         </tbody>
