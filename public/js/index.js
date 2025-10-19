@@ -17118,7 +17118,9 @@ function suma_horas_hombre(i){
         //suma para calculo vehiculo
         ida_aux = entero_medio(ida);
         total_calculo_vehiculo = parseInt(ida_aux) + parseInt(total_calculo_vehiculo);
+
     }
+     $('#total_calculo_vehiculo').val(total_calculo_vehiculo);
 
     $('#idas_ajustados_total').val(suma_total_idas_ajustados);
 
@@ -17272,57 +17274,70 @@ async function calculateSpendVentas(value){
     //materiales
     materiales = calculateSpeendsVentas(value,'materiales');
     $('#materiales_ventas').val('$'+dollarUSLocale.format(materiales));
+    $('#materiales_ventas_ajustado').val('$'+dollarUSLocale.format(materiales));
+
 
     //equipos
     equipos = calculateSpeendsVentas(value,'equipos');
     $('#equipos_ventas').val('$'+dollarUSLocale.format(equipos));
-
+    $('#equipos_ventas_ajustado').val('$'+dollarUSLocale.format(equipos));
      //mano_obra
     mano_obra = calculateSpeendsVentas(value,'mano_obra');
     $('#mano_obra_ventas').val('$'+dollarUSLocale.format(mano_obra));
-
+     $('#mano_obra_ventas_ajustado').val('$'+dollarUSLocale.format(mano_obra));
      //vehiculos
     vehiculos = calculateSpeendsVentas(value,'vehiculos');
     $('#vehiculos_ventas').val('$'+dollarUSLocale.format(vehiculos));
+    $('#vehiculos_ventas_ajustado').val('$'+dollarUSLocale.format(vehiculos));
 
     //contratistas
     contratistas = calculateContratistasSpeendsVentas(equipos);
     $('#contratistas_ventas').val('$'+dollarUSLocale.format(contratistas));
+    $('#contratistas_ventas_ajustado').val('$'+dollarUSLocale.format(contratistas));
 
     //viaticos
     viaticos = calculateViaticosSpeendsVentas(mano_obra);
     $('#viaticos_ventas').val('$'+dollarUSLocale.format(viaticos));
+    $('#viaticos_ventas_ajustado').val('$'+dollarUSLocale.format(viaticos));
 
      //burden
     burden = calculateSpeendsVentas(value,'burden');
     $('#burden_ventas').val('$'+dollarUSLocale.format(burden));
+    $('#burden_ventas_ajustado').val('$'+dollarUSLocale.format(burden));
 
     //costo operacional
     costo_operacional =  materiales+equipos+mano_obra+vehiculos+contratistas+viaticos+burden;
     $('#costo_operacional_ventas').val('$'+dollarUSLocale.format(costo_operacional));
+    $('#costo_operacional_ventas_ajustado').val('$'+dollarUSLocale.format(costo_operacional));
 
     porcent_costo_operacional = porcentCostoOperacional();
     $('#porcent_costo_operacional_ventas').val(porcent_costo_operacional+'%');
+    $('#porcent_costo_operacional_ventas_ajustado').val(porcent_costo_operacional+'%');
 
     //gross profit
     porcent_gross_profit = 100-parseInt(porcent_costo_operacional);
     $('#porcent_gross_profit_ventas').val(porcent_gross_profit+'%');
+    $('#porcent_gross_profit_ventas_ajustado').val(porcent_gross_profit+'%');
 
     var fact_val =  money_format_to_integer(value);
     gross_profit = fact_val*parseFloat(porcent_gross_profit/100);
     $('#gross_profit_ventas').val('$'+dollarUSLocale.format(gross_profit));
+    $('#gross_profit_ventas_ajustado').val('$'+dollarUSLocale.format(gross_profit));
 
     //ganancia esperada
     ganancia_esperada =  porcent_gross_profit-25;
     $('#ganancia_esperada_ventas').val(ganancia_esperada+'%');
+    $('#ganancia_esperada_ventas_ajustado').val(ganancia_esperada+'%');
 
     //horas disponibles
     horas_disponibles = await horasDisponibles(mano_obra);
     $('#horas_disponibles').val(horas_disponibles);
+    $('#horas_disponibles_ajustado').val(horas_disponibles);
 
     //kilometros disponibles
     kilometros_disponibles = await kmsDisponibles(vehiculos);
     $('#kilometros_disponibles').val(kilometros_disponibles);
+    $('#kilometros_disponibles_ajustado').val(kilometros_disponibles);
 
     //facturacion es valor de contrato
 }
@@ -17404,7 +17419,7 @@ async function kmsDisponibles(vehiculo){
             type: 'get',
             url: '/traer_kms',
             success: function (response) {
-
+                    $('#kms_val').val(response);
                    total = parseInt(vehiculo) / parseInt(response)
                     resolve(total);
             },
@@ -17417,4 +17432,222 @@ async function kmsDisponibles(vehiculo){
 
 function set_val_to_fact(val,id){
     $('#'+id).val(val);
+    $('#'+id+'_ajustado').val(val);
+    $('#'+id+'_spa').val(val);
+}
+
+function suma_cantidad_toneladas(){
+    let suma = 0;
+
+    document.querySelectorAll('input[id^="cantidadTotalInput_"]').forEach(input => {
+        if (input.value !== '') {
+            suma += parseFloat(input.value) || 0;
+        }
+    });
+
+     $('#total_toneladas').val(parseInt(suma));
+
+}
+
+async function spenPlanAjustado(){
+   let dollarUSLocale = Intl.NumberFormat('en-US');
+    var materiales = 0;
+    var materiales_porcentaje = 0;
+    var equipos = 0;
+    var equipos_porcentaje = 0;
+    var mano_obra = 0;
+    var mano_obra_porcentaje = 0;
+    var vehiculos = 0;
+    var vehiculos_porcentaje = 0;
+    var contratistas = 0;
+    var contratistas_porcentaje = 0;
+    var viaticos = 0;
+    var viaticos_porcentaje = 0;
+    var burden = 0;
+    var burdern_porcentaje = 0;
+    var costo_operacional = 0;
+    var costo_operacional_porcentaje = 0;
+    var porcent_gross_profit = 0;
+    var gross_profit = 0;
+    var gross_profit_porcentaje = 0;
+    var ganancia_esperada = 0;
+    var facturacion_aux = $('#facturacion_ventas_spa').val();
+
+    var facturacion = money_format_to_integer(facturacion_aux);
+
+    //materiales
+    let total_toneladas =  $('#total_toneladas').val();
+    materiales = total_toneladas * 10 //pendiente, costo materiales
+    $('#materiales_ventas_spa').val('$'+dollarUSLocale.format(materiales));
+    //materiales pocentaje
+    materiales_porcentaje = calculatePorcentAjustado(facturacion,materiales);
+    $('#porcent_materiales_ventas_spa').val(materiales_porcentaje+'%');
+
+    //equipos
+    let porcent_equipos = change_porcent_to_num($('#porcent_equipos_ventas_spa').val());
+    equipos = facturacion * porcent_equipos;
+    $('#equipos_ventas_spa').val('$'+dollarUSLocale.format(equipos));
+    //equipos porcentaje
+    equipos_porcentaje = calculatePorcentAjustado(facturacion,equipos);
+    $('#porcent_equipos_ventas_spa').val(equipos_porcentaje+'%');
+
+    //mano_obra
+    let total_horas_operacion = $('#total_horas_operacion').val();
+    let val_tenicoychalan = $('#val_tenicoychalan').val();
+    mano_obra = total_horas_operacion * val_tenicoychalan;
+    $('#mano_obra_ventas_spa').val('$'+dollarUSLocale.format(mano_obra));
+    //mano_obra porcentaje
+    mano_obra_porcentaje = calculatePorcentAjustado(facturacion,(mano_obra));
+    $('#porcent_mano_obra_ventas_spa').val(mano_obra_porcentaje+'%');
+
+    //vehiculos
+    vehiculos = vehiculosAjustado();
+    $('#vehiculos_ventas_spa').val('$'+dollarUSLocale.format(vehiculos));
+    //vehiculos porcentaje
+    vehiculos_porcentaje = calculatePorcentAjustado(facturacion,vehiculos);
+    $('#porcent_vehiculos_ventas_spa').val(vehiculos_porcentaje+'%');
+
+    //contratistas porcentaje
+    contratistas_porcentaje = calculatePorcentAjustado(facturacion,contratistas);
+    $('#porcent_contratistas_ventas_spa').val(contratistas_porcentaje+'%');
+    //contratistas
+    contratistas = equipos * (change_porcent_to_num($('#porcent_contratistas_ventas_spa').val())/100);
+    $('#contratistas_ventas_spa').val('$'+dollarUSLocale.format(contratistas));
+
+    //viaticos porcentaje
+    viaticos_porcentaje = calculatePorcentAjustado(facturacion,viaticos);
+    $('#porcent_viaticos_ventas_spa').val(viaticos_porcentaje+'%');
+    //viaticos
+    viaticos = mano_obra * (change_porcent_to_num($('#porcent_viaticos_ventas_spa').val())/100);
+    $('#viaticos_ventas_spa').val('$'+dollarUSLocale.format(viaticos));
+
+
+    //burden
+    burdern = await burdenAjustado(total_horas_operacion);
+    $('#burden_ventas_spa').val('$'+dollarUSLocale.format(burdern));
+    //burden porcentaje
+    burdern_porcentaje = calculatePorcentAjustado(facturacion,burdern);
+    $('#porcent_burden_ventas_spa').val(burdern_porcentaje+'%');
+
+    //costo operacional
+    costo_operacional = materiales + equipos + mano_obra + vehiculos + contratistas + viaticos + burden;
+    $('#costo_operacional_ventas_spa').val('$'+dollarUSLocale.format(costo_operacional));
+    costo_operacional_porcentaje = materiales_porcentaje + equipos_porcentaje + mano_obra_porcentaje + vehiculos_porcentaje + contratistas_porcentaje + viaticos_porcentaje + burdern_porcentaje;
+     $('#porcent_costo_operacional_ventas_spa').val(costo_operacional_porcentaje+'%');
+
+    //gross profit
+    gross_profit_porcentaje = 100 - costo_operacional_porcentaje;
+    $('#porcent_gross_profit_ventas_spa').val(gross_profit_porcentaje+'%');
+    gross_profit = facturacion * (gross_profit_porcentaje / 100);
+    $('#gross_profit_ventas_spa').val('$'+dollarUSLocale.format(Math.ceil(gross_profit)));
+
+    //ganancia esperada
+    ganancia_esperada = gross_profit_porcentaje - 25;
+    $('#ganancia_esperada_ventas_spa').val(ganancia_esperada+'%');
+}
+
+function vehiculosAjustado(){
+    let total_calculo_vehiculo = $('#total_calculo_vehiculo').val();
+    let porcent_mano_obra_aux = change_porcent_to_num($('#porcent_mano_obra').val());
+    let porcent_mano_obra = porcent_mano_obra_aux/100;
+    let etupida_suma = 1+porcent_mano_obra;
+    let total_calculo_vehiculo_aux = total_calculo_vehiculo * etupida_suma;
+    var distancia_kms = $('#distancia_sitio_mantenimiento').val();
+    const myArray = distancia_kms.split('kms');
+    var distancia = parseInt(myArray[0]);
+    var kms_val = $('#kms_val').val();
+    console.log(Math.ceil(total_calculo_vehiculo_aux),distancia,parseInt(kms_val));
+
+    let vehiculos = Math.ceil(total_calculo_vehiculo_aux) * distancia * 2 * parseInt(kms_val);
+    return vehiculos;
+}
+
+function burdenAjustado(total_horas_operacion){
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: 'get',
+            url: '/traer_burden',
+            success: function (response) {
+                    $('#burden_val').val(response);
+                   total = parseInt(total_horas_operacion) * parseInt(response)
+                    resolve(total);
+            },
+            error: function (responsetext) {
+                reject(responsetext);
+            }
+        });
+    });
+}
+
+function calculatePorcentAjustado(facturacion,value){
+    total = value * 100 / facturacion;
+    return  Math.ceil(total);
+}
+
+async function spenPlanManual(){
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+    let val_tenicoychalan = $('#val_tenicoychalan').val();
+    var facturacion = money_format_to_integer($('#facturacion_ventas_manual').val());
+    var materiales = money_format_to_integer($('#materiales_ventas_manual').val());
+    var materiales_porcentaje = 0;
+    var equipos = money_format_to_integer($('#equipos_ventas_manual').val());
+    var equipos_porcentaje = 0;
+    var mano_obra = money_format_to_integer($('#mano_obra_ventas_manual').val());
+    var mano_obra_porcentaje = 0;
+    var vehiculos = money_format_to_integer($('#vehiculos_ventas_manual').val());
+    var vehiculos_porcentaje = 0;
+    var contratistas = money_format_to_integer($('#contratistas_ventas_manual').val());
+    var contratistas_porcentaje = 0;
+    var viaticos = money_format_to_integer($('#viaticos_ventas_manual').val());
+    var viaticos_porcentaje = 0;
+    var burden = 0;
+    var burden_val = $('#burden_val').val();
+    var burdern_porcentaje = 0;
+    var costo_operacional = 0;
+    var costo_operacional_porcentaje = 0;
+    var porcent_gross_profit = 0;
+    var gross_profit = 0;
+    var gross_profit_porcentaje = 0;
+    var ganancia_esperada = 0;;
+
+    //Burden formulua: ((contratistas/val_tenicoychalan)*300%)+((K6/val_tenicoychalan)*burden_val)
+    burden = ((contratistas/val_tenicoychalan)*3)+((mano_obra/val_tenicoychalan)*burden_val);
+    $('#burden_ventas_manual').val('$'+dollarUSLocale.format(burden));
+    //burden porcentaje
+    materiales_porcentaje = calculatePorcentManual(materiales,facturacion);
+    $('#porcent_materiales_ventas_manual').val(materiales_porcentaje+'%');
+    equipos_porcentaje = calculatePorcentManual(equipos,facturacion);
+    $('#porcent_equipos_ventas_manual').val(equipos_porcentaje+'%');
+    mano_obra_porcentaje = calculatePorcentManual(mano_obra,facturacion);
+    $('#porcent_mano_obra_ventas_manual').val(mano_obra_porcentaje+'%');
+    vehiculos_porcentaje = calculatePorcentManual(vehiculos,facturacion);
+    $('#porcent_vehiculos_ventas_manual').val(vehiculos_porcentaje+'%');
+    contratistas_porcentaje = calculatePorcentManual(contratistas,facturacion);
+    $('#porcent_contratistas_ventas_manual').val(contratistas_porcentaje+'%');
+    viaticos_porcentaje = calculatePorcentManual(viaticos,facturacion);
+    $('#porcent_viaticos_ventas_manual').val(viaticos_porcentaje+'%');
+    burdern_porcentaje = calculatePorcentManual(burden,facturacion);
+    $('#porcent_burden_ventas_manual').val(burdern_porcentaje+'%');
+
+    //costo operacional
+    costo_operacional = parseInt(materiales) + parseInt(equipos) + parseInt(mano_obra) + parseInt(vehiculos) + parseInt(contratistas) + parseInt(viaticos) + parseInt(burden);
+    $('#costo_operacional_ventas_manual').val('$'+dollarUSLocale.format(costo_operacional));
+     //costo porcent
+    costo_operacional_porcentaje = materiales_porcentaje + equipos_porcentaje + mano_obra_porcentaje + vehiculos_porcentaje + contratistas_porcentaje + viaticos_porcentaje + burdern_porcentaje;
+    $('#porcent_costo_operacional_ventas_manual').val(costo_operacional_porcentaje+'%');
+
+    //gross profit
+    gross_profit_porcentaje = 100 - costo_operacional_porcentaje;
+    $('#porcent_gross_profit_ventas_manual').val(gross_profit_porcentaje+'%');
+    gross_profit = facturacion * gross_profit_porcentaje / 100;
+    $('#gross_profit_ventas_manual').val('$'+dollarUSLocale.format(gross_profit));
+
+    //ganancia esperada
+    ganancia_esperada = gross_profit_porcentaje - 25;
+    $('#ganancia_esperada_ventas_manual').val(ganancia_esperada+'%');
+}
+
+function calculatePorcentManual(value,facturacion){
+    total = value * 100 / facturacion;
+    return  parseInt(total);
 }

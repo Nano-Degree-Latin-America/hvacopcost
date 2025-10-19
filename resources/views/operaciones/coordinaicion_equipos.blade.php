@@ -86,6 +86,7 @@
             </table>
         </div>
     </div>
+    <input id="total_toneladas" name="total_toneladas" class="hidden" type="text">
 </div>
 
 <style>

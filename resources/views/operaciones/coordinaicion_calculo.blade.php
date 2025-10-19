@@ -356,7 +356,7 @@
                                         id="total_horas_operacion"
                                         name="total_horas_operacion"
                                         readonly
-                                        type="number"
+                                        type="text"
                                         class="w-1/3 h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                     </div>
 
@@ -366,7 +366,7 @@
                                         id="total_horas_x_operacion"
                                         name="total_horas_x_operacion"
                                         readonly
-                                        type="number"
+                                        type="text"
                                         class="w-1/3 h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                         <input
                                         id="val_tenicoychalan"
@@ -374,6 +374,19 @@
                                         readonly
                                         type="number"
                                         class="w-1/3 hidden h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                        <input
+                                        id="total_calculo_vehiculo"
+                                        name="total_calculo_vehiculo"
+                                        readonly
+                                        type="number"
+                                        class="w-1/3 hidden h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                        <input
+                                        id="kms_val"
+                                        name="kms_val"
+                                        readonly
+                                        type="number"
+                                        class="w-1/3 hidden h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+
                     </div>
                    </div>
                 </div>
