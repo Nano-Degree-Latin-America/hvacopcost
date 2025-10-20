@@ -10,10 +10,10 @@
 
                 <div class="grid justify-items-end h-full gap-y-1 w-1/2">
 
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                    <div class="grid md:w-4/5 xl:w-4/5 lg:w-1/2 justify-items-start ">
                         <div class="flex w-full">
                             <div class="flex w-full">
-                                <label class="labels_index_mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.cliente_prospecto') }}</b></label>
+                                <label class="labels_index_coordinacion  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.cliente_prospecto') }}</b></label>
                                 <label class="text-red-500 m-0">*</label>
                             </div>
                         </div>
@@ -22,163 +22,24 @@
                         <span id="cliente_pro_warning_mantenimiento" name="cliente_pro_warning_mantenimiento" class="text-red-500"></span>
                     </div>
 
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                    <div class="grid md:w-4/5 xl:w-4/5 lg:w-1/2 justify-items-start ">
                         <div class="flex w-full">
-                            <label class="font-roboto labels_index_mantenimiento  text-left m-0" for=""><b>{{ __('mantenimiento.categoria_edificio') }}</b></label>
+                            <label class="font-roboto labels_index_coordinacion  text-left m-0" for=""><b>{{ __('mantenimiento.categoria_edificio') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
                         <select name="cat_edi_mantenimiento" id="cat_edi_mantenimiento" onchange="traer_t_edif(this.value,'tipo_edificio_mantenimiento','{{App::getLocale()}}');check_input(this.value,this.id,'cat_ed_warning_mantenimiento');check_inp_count_coordinacion('count_cat_edi_mantenimiento','cat_edi_id_mantenimiento');valida_selects_inps(this.id);" class="w-full font-roboto border-2 border-color-inps rounded-md p-1 my-1">
                             <option value="">-{{ __('index.seleccionar') }}-</option>
-                            {{-- @forelse ($categorias_edificios as $edificio)
-                            <option value="{{$edificio->id}}" wire:key="{{$edificio->id}}">{{$edificio->name}}</option>
-                            @empty
-
-                            @endforelse --}}
                         </select>
                         <input id="count_cat_edi_mantenimiento" name="count_cat_edi_mantenimiento" type="number" class="hidden" value="0">
                         <span id="cat_ed_warning_mantenimiento" name="cat_ed_warning_mantenimiento" class="text-red-500"></span>
                     </div>
 
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
-                        <div class="flex w-full">
-                            <label class="labels_index_mantenimiento  font-roboto text-left m-0" for=""><b>{{ __('index.region') }}</b></label>
-                            <label class="text-red-500 m-0">*</label>
-                        </div>
-                        <select onchange="check_input(this.value,this.id,'paises_warning_mantenimiento');check_inp_count_coordinacion('count_paises_mantenimiento','paises_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="paises_mantenimiento" id="paises_mantenimiento">
-                            <option selected value="">-{{ __('mantenimiento.selecciona_region') }}-</option>
-                           {{--  @foreach ($all_paises as $pais)
-                            <option class="font-roboto" value="{{$pais->id}}" wire:key="{{$edificio->id}}">{{$pais->name}}</option>
-                            @endforeach --}}
-                            <?php  $all_paises=$all_paises->all_paises(); ?>
-                            @include('index_elements.paises')
-                        </select>
-                        <input id="count_paises_mantenimiento" name="count_paises_mantenimiento" type="number" class="hidden" value="0">
-                        <span id="paises_warning_mantenimiento" name="paises_warning_mantenimiento" class="text-red-500"></span>
-                    </div>
-
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
-                        <div class="flex w-full">
-                            <label class="labels_index_mantenimiento  text-left font-roboto font-bold m-0" for=""><b>{{ __('mantenimiento.distancia_sitio') }}</b></label>
-                            <label class="text-red-500 text-left m-0"></label>
-                        </div>
-                        <input onkeypress="return soloNumeros(event)" value="0" onchange="check_input(this.value,this.id,'distancia_sitio_warning_mantenimiento');change_to(this.value,'kms',this.id);valida_selects_inps(this.id);" name="distancia_sitio_mantenimiento" id="distancia_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
-                        <input id="count_distancia_sitio_mantenimiento" name="count_distancia_sitio_mantenimiento" type="number" class="hidden" value="0">
-                        <span id="distancia_sitio_warning_mantenimiento" name="distancia_sitio_warning_mantenimiento" class="text-red-500"></span>
-                    </div>
-
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
-                        <div class="flex w-full">
-                            <label class="labels_index_mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.yrs_life_ed') }}:</b></label>
-                            <label class="text-red-500 m-0">*</label>
-                        </div>
-                        <input onkeypress="return soloNumeros(event)" value="0" onchange="check_input(this.value,this.id,'yrs_life_ed_warning_mantenimiento');no_cero(this.value,this.id);set_yrs_tarjet(this.value,'yrs_vida_mantenimiento');valida_selects_inps(this.id);" name="yrs_life_ed_mantenimiento" id="yrs_life_ed_mantenimiento" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
-                        <input id="count_yrs_life_ed_mantenimiento" name="count_yrs_life_ed_mantenimiento" type="number" class="hidden" value="0">
-                        <span id="yrs_life_ed_warning_mantenimiento" name="yrs_life_ed_warning_mantenimiento" class="text-red-500"></span>
-                    </div>
-
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
-                        <div class="flex w-full">
-                            <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>Tiempo Ingreso:</b></label>
-                            <label class="text-red-500 m-0">*</label>
-                        </div>
-                            <input onchange="check_input(this.value,this.id,'tiempo_ingreso_warning');check_inp_count_coordinacion('count_tiempo_ingreso','tiempo_ingreso');valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)" onkeypress="return soloNumeros(event)" name="tiempo_ingreso" id="tiempo_ingreso" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
-                            <input id="count_tiempo_ingreso" name="count_tiempo_ingreso" type="number" class="hidden" value="0">
-                            <span id="tiempo_ingreso_warning" name="tiempo_ingreso_warning" class="text-red-500"></span>
-                    </div>
-
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
-                        <div class="flex w-full">
-                            <label class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.tipo_ambiente') }}:</b></label>
-                            <label class="text-red-500 m-0">*</label>
-                        </div>
-                        <select onchange="check_input(this.value,this.id,'tipo_ambiente_warning_mantenimiento');check_inp_count_coordinacion('count_tipo_ambiente_mantenimiento','tipo_ambiente_mantenimiento');valida_selects_inps(this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="tipo_ambiente_mantenimiento" id="tipo_ambiente_mantenimiento">
-                            <option value="">-{{ __('index.seleccionar') }}-</option>
-
-                        </select>
-                        <input id="count_tipo_ambiente_mantenimiento" name="count_tipo_ambiente_mantenimiento" type="number" class="hidden" value="0">
-                        <span id="tipo_ambiente_warning_mantenimiento" name="tipo_ambiente_warning_mantenimiento" class="text-red-500"></span>
-                    </div>
-
-
-
-                    <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
-                        <div class="flex w-full">
-                            <label  class="font-roboto text-left labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.porcentaje_inflacion') }}:</b></label>
-                            <label class="text-red-500 m-0"></label>
-                        </div>
-                        <div class="flex w-full">
-
-                            <input type="text" value="0%" onkeypress="return soloNumeros(event)" onchange="change_to_porcent_mantenimiento(this.value,this.id);valida_selects_inps(this.id);" class="w-1/4 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion_mantenimiento" id="inflacion_mantenimiento">
-                            <input id="count_inflacion_mantenimiento" name="count_inflacion_mantenimiento" type="number" class="hidden" value="0">
-
-                        </div>
-                        <span id="inflacion_warning_mantenimiento" name="inflacion_warning_mantenimiento" class="text-red-500"></span>
-                    </div>
-
-                </div>
-
-                <div class="grid justify-items-start h-full gap-y-1 w-1/2">
-
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
-                        <div class="flex w-full">
-                            <label class="labels_index_mantenimiento _mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.nombre_sitio') }}</b></label>
-                            <label class="text-red-500 m-0">*</label>
-                        </div>
-                        <input onchange="check_input(this.value,this.id,'name_sitio_warning_mantenimiento');check_inp_count_coordinacion('count_name_sitio_mantenimiento','name_sitio_mantenimiento');valida_selects_inps(this.id);" name="name_sitio_mantenimiento" id="name_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
-                        <input id="count_name_sitio_mantenimiento" name="count_name_sitio_mantenimiento" type="number" class="hidden" value="0">
-                        <span id="name_sitio_warning_mantenimiento" name="name_sitio_warning_mantenimiento" class="text-red-500"></span>
-                    </div>
-
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
-                        <div class="flex w-full">
-                            <label class="labels_index_mantenimiento  text-left font-roboto m-0" for=""><b>{{ __('mantenimiento.tipo_edificio') }}</b></label>
-                            <label class="text-red-500 m-0">*</label>
-                        </div>
-                        <select onchange="check_input(this.value,this.id,'tipo_edificio_warning_mantenimiento');check_inp_count_coordinacion('count_tipo_edificio_mantenimiento','tipo_edificio_mantenimiento');valida_selects_inps(this.id);" name="tipo_edificio_mantenimiento" id="tipo_edificio_mantenimiento"  class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
-                            <option value="">-{{ __('index.seleccionar') }}-</option>
-                            {{-- @foreach ($tipo_edificios as $tipo_edificio)
-                            <option value="{{$tipo_edificio->id}}">{{$tipo_edificio->name}}</option>
-                            @endforeach --}}
-                        </select>
-                        <input id="count_tipo_edificio_mantenimiento" name="count_tipo_edificio_mantenimiento" type="number" class="hidden" value="0">
-                        <span id="tipo_edificio_warning_mantenimiento" name="tipo_edificio_warning_mantenimiento" class="text-red-500"></span>
-                    </div>
-
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
-                        <div class="flex w-full">
-                            <label class="labels_index_mantenimiento  text-left font-roboto m-0" for=""><b>{{ __('index.ciudad') }}</b></label>
-                            <label class="text-red-500 m-0">*</label>
-                        </div>
-                        <select onchange="check_input(this.value,this.id,'ciudad_warning_mantenimiento');check_inp_count_coordinacion('count_ciudad_mantenimiento','ciudades_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ciudades_mantenimiento" id="ciudades_mantenimiento">
-                            <option selected value="0">-{{ __('mantenimiento.selecciona_ciudad') }}-</option>
-                            {{-- @foreach ($ciudades as $ciudad)
-                            <option value="{{$ciudad->id}}">{{$ciudad->name}}</option>
-                            @endforeach --}}
-                        </select>
-                        <input id="count_ciudad_mantenimiento" name="count_ciudad_mantenimiento" type="number" class="hidden" value="0">
-                        <span id="ciudad_warning_mantenimiento" name="ciudad_warning_mantenimiento" class="text-red-500"></span>
-                    </div>
-
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
-                        <div class="flex w-full">
-                            <label class="labels_index_mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.velocidad_promedio') }}:</b></label>
-                            <label class="text-red-500 m-0">*</label>
-                        </div>
-                        <select onchange="check_input(this.value,this.id,'velocidad_promedio_warning_mantenimiento');check_inp_count_coordinacion('count_velocidad_promedio_mantenimiento','velocidad_promedio_mantenimiento');valida_selects_inps(this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="velocidad_promedio_mantenimiento" id="velocidad_promedio_mantenimiento">
-                            @for ($i = 0; $i <= 120; $i = $i + 10)
-                            <option value="{{$i}}">{{$i}} Km/h</option>
-                            @endfor
-                        </select>
-                        <input id="count_velocidad_promedio_mantenimiento" name="count_velocidad_promedio_mantenimiento" type="number" class="hidden" value="0">
-                        <span id="velocidad_promedio_warning_mantenimiento" name="velocidad_promedio_warning_mantenimiento" class="text-red-500"></span>
-                    </div>
-
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                    <div class="grid md:w-4/5 xl:w-4/5 lg:w-1/2 justify-items-start ">
                         <div class="flex w-full justify-start">
-                            <label class="font-roboto font-bold text-left labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.ocupacion_semanal') }}</b></label>
+                            <label class="font-roboto font-bold text-left labels_index_coordinacion  m-0" for=""><b>{{ __('mantenimiento.ocupacion_semanal') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                        <select onchange="set_horas_diarias();check_input(this.value,this.id,'ocupacion_semanal_warning_mantenimiento');check_inp_count_coordinacion('count_ocupacion_semanal_mantenimiento','ocupacion_semanal_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ocupacion_semanal_mantenimiento" id="ocupacion_semanal_mantenimiento">
+                        <select onchange="set_horas_diarias();check_input(this.value,this.id,'ocupacion_semanal_warning_mantenimiento');check_inp_count_coordinacion('count_ocupacion_semanal_mantenimiento','ocupacion_semanal_mantenimiento');valida_selects_inps(this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="ocupacion_semanal_mantenimiento" id="ocupacion_semanal_mantenimiento">
                             <option value="">-{{ __('index.seleccionar') }}-</option>
                             <option value="m_50">{{ __('mantenimiento.menos_50') }}.</option>
                             <option value="51_167">{{ __('mantenimiento.51_167') }}.</option>
@@ -189,44 +50,104 @@
                     </div>
 
 
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                    <div class="grid md:w-4/5 xl:w-4/5 lg:w-1/2 justify-items-start">
                         <div class="flex w-full">
-                            <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.personal_enviado') }}:</b></label>
+                            <label  class="font-roboto labels_index_coordinacion  m-0" for=""><b>Tiempo Ingreso:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                            <select name="personal_enviado_mantenimiento"  id="personal_enviado_mantenimiento" onchange="check_input(this.value,this.id,'personal_enviado_mantenimiento_warning');check_inp_count_coordinacion('count_personal_enviado','personal_enviado_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps  rounded-md p-1 my-1 font-roboto">
-                                <option value="">-{{ __('index.seleccionar') }}-</option>
-                                <option value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
-                                <option value="tecnico_ayudante">{{ __('mantenimiento.tecnico_ayudante') }}</option>
-                            </select>
-                            <input id="count_personal_enviado_mantenimiento" name="count_personal_enviado_mantenimiento" type="number" class="hidden" value="0">
-                            <span id="personal_enviado_mantenimiento_warning" name="personal_enviado_mantenimiento_warning" class="text-red-500"></span>
+                            <input onchange="check_input(this.value,this.id,'tiempo_ingreso_warning');check_inp_count_coordinacion('count_tiempo_ingreso','tiempo_ingreso');valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)" onkeypress="return soloNumeros(event)" name="tiempo_ingreso" id="tiempo_ingreso" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <input id="count_tiempo_ingreso" name="count_tiempo_ingreso" type="number" class="hidden" value="0">
+                            <span id="tiempo_ingreso_warning" name="tiempo_ingreso_warning" class="text-red-500"></span>
                     </div>
 
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                    <div class="grid md:w-4/5 xl:w-4/5 lg:w-1/2 justify-items-start">
                         <div class="flex w-full">
-                            <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>Tiempo Egreso:</b></label>
+                            <label  class="font-roboto labels_index_coordinacion  m-0" for=""><b>Tiempo Egreso:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                            <input onchange="check_input(this.value,this.id,'tiempo_egreso_warning');check_inp_count_coordinacion('count_tiempo_egreso','tiempo_egreso');valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)" onkeypress="return soloNumeros(event)" name="tiempo_egreso" id="tiempo_egreso" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <input onchange="check_input(this.value,this.id,'tiempo_egreso_warning');check_inp_count_coordinacion('count_tiempo_egreso','tiempo_egreso');valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)" onkeypress="return soloNumeros(event)" name="tiempo_egreso" id="tiempo_egreso" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
                             <input id="count_tiempo_egreso" name="count_tiempo_egreso" type="number" class="hidden" value="0">
                             <span id="tiempo_egreso_warning" name="tiempo_egreso_warning" class="text-red-500"></span>
                     </div>
+                </div>
 
-                    <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                <div class="grid justify-items-start h-full gap-y-1 w-1/2">
+
+                    <div class="grid md:w-4/5 xl:w-4/5 lg:w-1/2 justify-items-start ">
                         <div class="flex w-full">
-                            <label  class="font-roboto labels_index_mantenimiento  m-0" for=""><b>Valor Contrato:</b></label>
+                            <label class="labels_index_coordinacion _mantenimiento  font-roboto font-bold text-left m-0" for=""><b>{{ __('mantenimiento.nombre_sitio') }}</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                            <input onchange="check_input(this.value,this.id,'valor_contrato_warning');check_inp_count_coordinacion('count_valor_contrato','valor_contrato');valida_selects_inps(this.id);format_num(this.value,this.id);set_val_to_fact(this.value,'facturacion_ventas');calculateSpendVentas(this.value)" onkeypress="return soloNumeros(event)" name="valor_contrato" id="valor_contrato" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
-                            <input id="count_valor_contrato" name="count_valor_contrato" type="number" class="hidden" value="0">
-                            <span id="valor_contrato_warning" name="valor_contrato_warning" class="text-red-500"></span>
+                        <input onchange="check_input(this.value,this.id,'name_sitio_warning_mantenimiento');check_inp_count_coordinacion('count_name_sitio_mantenimiento','name_sitio_mantenimiento');valida_selects_inps(this.id);" name="name_sitio_mantenimiento" id="name_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                        <input id="count_name_sitio_mantenimiento" name="count_name_sitio_mantenimiento" type="number" class="hidden" value="0">
+                        <span id="name_sitio_warning_mantenimiento" name="name_sitio_warning_mantenimiento" class="text-red-500"></span>
                     </div>
 
-
-                       {{--  <div class="grid  md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                    <div class="flex md:w-4/5 xl:w-4/5 lg:w-1/2 justify-start gap-x-3">
+                        <div class="grid w-full justify-items-start ">
                             <div class="flex w-full">
-                                <label  class="font-roboto text-left labels_index_mantenimiento  m-0" for=""><b>{{ __('mantenimiento.porcentaje_inflacion') }}:</b></label>
+                                <label class="labels_index_coordinacion  font-roboto font-bold text-left m-0" for=""><b>Años Edificio:</b></label>
+                                <label class="text-red-500 m-0">*</label>
+                            </div>
+                            <input onkeypress="return soloNumeros(event)" value="0" onchange="check_input(this.value,this.id,'yrs_life_ed_warning_mantenimiento');no_cero(this.value,this.id);set_yrs_tarjet(this.value,'yrs_vida_mantenimiento');valida_selects_inps(this.id);" name="yrs_life_ed_mantenimiento" id="yrs_life_ed_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <input id="count_yrs_life_ed_mantenimiento" name="count_yrs_life_ed_mantenimiento" type="number" class="hidden" value="0">
+                            <span id="yrs_life_ed_warning_mantenimiento" name="yrs_life_ed_warning_mantenimiento" class="text-red-500"></span>
+                        </div>
+
+                        <div class="grid w-full justify-items-start">
+                            <div class="flex w-full">
+                                <label class="font-roboto labels_index_coordinacion  m-0" for=""><b>Ambiente:</b></label>
+                                <label class="text-red-500 m-0">*</label>
+                            </div>
+                            <select onchange="check_input(this.value,this.id,'tipo_ambiente_warning_mantenimiento');check_inp_count_coordinacion('count_tipo_ambiente_mantenimiento','tipo_ambiente_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="tipo_ambiente_mantenimiento" id="tipo_ambiente_mantenimiento">
+                                <option value="">-{{ __('index.seleccionar') }}-</option>
+
+                            </select>
+                            <input id="count_tipo_ambiente_mantenimiento" name="count_tipo_ambiente_mantenimiento" type="number" class="hidden" value="0">
+                            <span id="tipo_ambiente_warning_mantenimiento" name="tipo_ambiente_warning_mantenimiento" class="text-red-500"></span>
+                        </div>
+                    </div>
+
+                    <div class="flex md:w-4/5 xl:w-4/5 lg:w-1/2 justify-start gap-x-3">
+                        <div class="grid md:w-4/5 xl:w-4/5 lg:w-1/2 justify-items-start ">
+                            <div class="flex w-full">
+                                <label class="labels_index_coordinacion  text-left font-roboto font-bold m-0" for=""><b>{{ __('mantenimiento.distancia_sitio') }}</b></label>
+                                <label class="text-red-500 text-left m-0"></label>
+                            </div>
+                            <input onkeypress="return soloNumeros(event)" value="0" onchange="check_input(this.value,this.id,'distancia_sitio_warning_mantenimiento');change_to(this.value,'kms',this.id);valida_selects_inps(this.id);" name="distancia_sitio_mantenimiento" id="distancia_sitio_mantenimiento" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <input id="count_distancia_sitio_mantenimiento" name="count_distancia_sitio_mantenimiento" type="number" class="hidden" value="0">
+                            <span id="distancia_sitio_warning_mantenimiento" name="distancia_sitio_warning_mantenimiento" class="text-red-500"></span>
+                        </div>
+
+                        <div class="grid md:w-4/5 xl:w-4/5 lg:w-1/2 justify-items-start ">
+                            <div class="flex w-full">
+                                <label class="labels_index_coordinacion  font-roboto font-bold text-left m-0" for=""><b>Velocidad:</b></label>
+                                <label class="text-red-500 m-0">*</label>
+                            </div>
+                            <select onchange="check_input(this.value,this.id,'velocidad_promedio_warning_mantenimiento');check_inp_count_coordinacion('count_velocidad_promedio_mantenimiento','velocidad_promedio_mantenimiento');valida_selects_inps(this.id);" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="velocidad_promedio_mantenimiento" id="velocidad_promedio_mantenimiento">
+                                @for ($i = 0; $i <= 120; $i = $i + 10)
+                                <option value="{{$i}}">{{$i}} Km/h</option>
+                                @endfor
+                            </select>
+                            <input id="count_velocidad_promedio_mantenimiento" name="count_velocidad_promedio_mantenimiento" type="number" class="hidden" value="0">
+                            <span id="velocidad_promedio_warning_mantenimiento" name="velocidad_promedio_warning_mantenimiento" class="text-red-500"></span>
+                        </div>
+                    </div>
+
+                    <div class="flex md:w-4/5 xl:w-4/5 lg:w-1/2 justify-start gap-x-3">
+                        <div class="grid md:w-4/5 xl:w-4/5 lg:w-1/2 justify-items-start">
+                            <div class="flex w-full">
+                                <label  class="font-roboto text-md  m-0" for=""><b>Valor Contrato:</b></label>
+                                <label class="text-red-500 m-0">*</label>
+                            </div>
+                                <input onchange="check_input(this.value,this.id,'valor_contrato_warning');check_inp_count_coordinacion('count_valor_contrato','valor_contrato');valida_selects_inps(this.id);format_num(this.value,this.id);set_val_to_fact(this.value,'facturacion_ventas');" onkeypress="return soloNumeros(event)" name="valor_contrato" id="valor_contrato" type="text" style="font-size: 14px;" class="w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                                <input id="count_valor_contrato" name="count_valor_contrato" type="number" class="hidden" value="0">
+                                <span id="valor_contrato_warning" name="valor_contrato_warning" class="text-red-500"></span>
+                        </div>
+
+                        <div class="grid  md:w-4/5 xl:w-4/5 lg:w-1/2 justify-items-start">
+                            <div class="flex w-full">
+                                <label  class="font-roboto text-left labels_index_coordinacion  m-0" for=""><b>Escalación:</b></label>
                                 <label class="text-red-500 m-0"></label>
                             </div>
                             <div class="flex w-full">
@@ -236,7 +157,30 @@
 
                             </div>
                             <span id="inflacion_warning" name="inflacion_warning" class="text-red-500"></span>
-                        </div> --}}
+                        </div>
+
+                    </div>
+
+                    <div class="flex md:w-4/5 xl:w-4/5 lg:w-1/2 justify-start gap-x-3">
+
+                        <div class="grid md:w-4/5 xl:w-4/5 lg:w-1/2 justify-items-start">
+                            <div class="flex w-full">
+                                <label  class="font-roboto labels_index_coordinacion  m-0" for=""><b>Personal:</b></label>
+                                <label class="text-red-500 m-0">*</label>
+                            </div>
+                                <select name="personal_enviado_mantenimiento"  id="personal_enviado_mantenimiento" onchange="check_input(this.value,this.id,'personal_enviado_mantenimiento_warning');check_inp_count_coordinacion('count_personal_enviado','personal_enviado_mantenimiento');valida_selects_inps(this.id);" class="w-3/4 border-2 border-color-inps  rounded-md p-1 my-1 font-roboto">
+                                    <option value="">-{{ __('index.seleccionar') }}-</option>
+                                    <option value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
+                                    <option value="tecnico_ayudante">{{ __('mantenimiento.tecnico_ayudante') }}</option>
+                                </select>
+                                <input id="count_personal_enviado_mantenimiento" name="count_personal_enviado_mantenimiento" type="number" class="hidden" value="0">
+                                <span id="personal_enviado_mantenimiento_warning" name="personal_enviado_mantenimiento_warning" class="text-red-500"></span>
+                        </div>
+
+                    </div>
+
+
+
 
                         @include('modal_energia_hvac')
 
@@ -250,196 +194,11 @@
 
         </div>
 
-     {{-- <div class="bullets">
-       <h2><i class="far fa-snowflake"></i> Consulta</h2>
-        <div>
-            <span><i class="fas fa-check"></i> Horas de Enfriamiento por Región y Ciudad en Latin America</span>
-            <span><i class="fas fa-check"></i> Análisis ROI por Sistema Propuesto HVAC</span>
-        </div>
-        <h2><i class="far fa-snowflake"></i> Calcula</h2>
-        <div>
-            <span><i class="fas fa-check"></i> Costo Operativo Anual por Sistema</span>
-            <span><i class="fas fa-check"></i> Ahorro Financiero Acumulado del Sistema Propuesto</span>
-        </div>
-        <h2><i class="far fa-snowflake"></i> Compara</h2>
-        <div>
-            <span><i class="fas fa-check"></i> Tipos de Sistemas HVAC</span>
-            <span><i class="fas fa-check"></i> Mantenimientos de Sistemas HVAC</span>
-        </div>
-    </div> --}}
 
-   {{--  <table id="tabla-region" style="float: left; ">
-        <tr>
-            <td colspan="2"><b style="font-size: 20px">Selecciona tu Región y Ciudad.</b></td>
-        </tr>
-        <tr>
-            <td><label>Región</label></td>
-            <td style="position: relative; top: 7px">
-                <select class="fcontrol" name="paises" id="paises">
-                    <option value="0">-Selecciona tu región-</option>
-                </select>
-            </td>
-        </tr>
-
-        <tr>
-            <td><label>Ciudad</label></td>
-            <td style="position: relative; top: 7px">
-                <select class="fcontrol" name="ciudades" id="ciudades">
-                    <option value="0">-Selecciona tu ciudad-</option>
-                </select>
-            </td>
-        </tr>
-    </table> --}}
-
-    {{-- <div class="banner banner-h-sm" style="margin: 0px 0px !important">
-        <a href="https://www.universidadhvac.com/" target="_blank"><img src="{{asset('assets/images/banners/universidad.jpg')}}" alt="Universidad hvac"></a>
-        <span class="lbl-banner">Visitar</span>
-    </div> --}}
 
 <div style="width:16%" class="col-6 mx-1 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
 
-    {{-- <div class="grid gap-y-3 type_proy_pos">
 
-
-        @if ( $check_types_pn == 1 &&  $check_types_pr == 1 &&  $check_types_m == 1)
-        <div class="flex">
-            <input class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
-        </div>
-
-        <div class="flex">
-            <input class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
-        </div>
-
-        <div class="flex ">
-            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
-        </div>
-        @endif
-
-        @if ( $check_types_pn == 1 &&  $check_types_pr == 0 &&  $check_types_m == 0)
-        <div class="flex">
-            <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
-        </div>
-
-        <div class="flex">
-            <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
-        </div>
-
-        <div class="flex">
-            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
-        </div>
-        @endif
-
-        @if ( $check_types_pn == 0 &&  $check_types_pr == 1 &&  $check_types_m == 0)
-        <div class="flex">
-            <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"   class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
-        </div>
-
-        <div class="flex">
-            <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
-        </div>
-
-        <div class="flex ">
-            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
-        </div>
-        @endif
-
-        @if ( $check_types_pn == 0 &&  $check_types_pr == 0 &&  $check_types_m == 1)
-        <div class="flex">
-            <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"   class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
-        </div>
-
-        <div class="flex">
-            <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
-        </div>
-
-        <div class="flex ">
-            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
-        </div>
-        @endif
-
-        @if ( $check_types_pn == 0 &&  $check_types_pr == 1 &&  $check_types_m == 1)
-        <div class="flex">
-            <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"   class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
-        </div>
-
-        <div class="flex">
-            <input  class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" checked class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
-        </div>
-
-        <div class="flex ">
-            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
-        </div>
-        @endif
-
-        @if ( $check_types_pn == 1 &&  $check_types_pr == 1 &&  $check_types_m == 0)
-        <div class="flex">
-            <input  class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox" checked  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
-        </div>
-
-        <div class="flex">
-            <input  class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
-        </div>
-
-        <div class="flex ">
-            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
-        </div>
-        @endif
-
-        @if ( $check_types_pn == 1 &&  $check_types_pr == 0 &&  $check_types_m == 1)
-        <div class="flex">
-            <input  class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox" checked  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
-        </div>
-
-        <div class="flex">
-            <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
-        </div>
-
-        <div class="flex ">
-            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
-        </div>
-        @endif
-
-        @if ( !$check_types_pn && !$check_types_pr && !$check_types_m)
-        <?php  $check_types_pn = 0?>
-        <?php  $check_types_pr = 0?>
-        <div class="flex">
-            <input disabled class="check_style" id="pn" onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');" type="checkbox"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pn"  class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto nuevo') }}</label>
-        </div>
-
-        <div class="flex">
-            <input disabled class="check_style" id="pr" type="checkbox"  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="pr"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.proyecto retrofit') }}</label>
-        </div>
-
-        <div class="flex ">
-            <input disabled class="check_style" id="man" type="checkbox"  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','calcular_p_n','calcular_p_r','store');"  class="w-4 h-4 text-blue-800 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-            <label  for="man"   class="type_proyect_label ml-2 font-medium text-blue-800 dark:text-gray-300 font-roboto font-bold text-left">{{ __('index.type_man') }}</label>
-        </div>
-        @endif
-
-        </div> --}}
         <div style="margin-top:193px;" class="w-full">
 
         </div>
@@ -457,21 +216,6 @@
         <br>
         <br>
         <div class="w-full grid justify-items-center gap-y-1">
-            {{-- <div id="div_next" name="div_next" style="width: 80%;" class="">
-                <button type="button"  id="next" name="next"
-                    onclick="buton_check('{{App::getLocale()}}');"
-                    style="background-color:#1B17BB;"
-                    class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
-                >{{ __('index.siguiente') }}</button>
-            </div>
-            <div id="div_next_h" name="div_next_h" style="width: 80%;" class="">
-                    <button  type="button"  id="next_h" name="next_h"
-                        x-show="step < 2"
-                        @click="step++"
-                        style="background-color:#1B17BB;"
-                        class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
-                    >{{ __('index.siguiente') }}</button>
-            </div> --}}
 
             <div id="div_next_h_mantenimiento" name="div_next_h_mantenimiento" style="width: 80%;" class="">
                 <button  type="button"  id="next_h_mantenimiento" name="next_h_mantenimiento"
@@ -486,6 +230,7 @@
                 <button  type="button"  id="next_mantenimiento" name="next_mantenimiento"
                     x-show="step < 2"
                     @click="step++"
+                    onclick="calculateSpendVentas($('#valor_contrato').val());"
                     style="background-color:#1B17BB;"
                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                 >{{ __('index.siguiente') }}</button>
@@ -503,328 +248,40 @@
 </div>
 <script>
 function valida_formulario_coordinacion(){
-    /////////////////////////////////////
-    var cliente =$('#cliente_pro_mantenimiento');
-    var cliente_count = $('#count_cliente_pro_mantenimiento').val();
 
-    if(cliente.val() == ''){
+            // Validación de campos
+            let count_inps = 0;
 
-        cliente.css("border-color", "red")
-        cliente_count = 1;
-     $('#count_cliente_pro_mantenimiento').val(cliente_count);
+            const fields = [
+                'cliente_pro_mantenimiento',
+                'cat_edi_mantenimiento',
+                'ocupacion_semanal_mantenimiento',
+                'tiempo_ingreso',
+                'tiempo_egreso',
+                'name_sitio_mantenimiento',
+                'yrs_life_ed_mantenimiento',
+                'tipo_ambiente_mantenimiento',
+                'velocidad_promedio_mantenimiento',
+                'valor_contrato',
+                'personal_enviado_mantenimiento'
+            ];
 
-    }else if (cliente.val() != '') {
+            fields.forEach(field => {
+                const element = document.getElementById(field);
+                if (!element.value || element.value === '0' || element.value === '') {
+                    element.style.borderColor = 'red';
+                    count_inps++;
+                } else {
+                    element.style.borderColor = '#d1d5db';
+                }
+            });
 
-        cliente_count = 0;
-     $('#count_cliente_pro_mantenimiento').val(cliente_count);
-
-    }
-    ////////////////////////////////////////////
-    ////////////////////
-
-    var cat_edi_mant =$('#cat_edi_mantenimiento');
-    var cat_edi_mant_count = $('#count_cat_ed_mantenimiento').val();
-
-    if(cat_edi_mant.val() == 0){
-
-        cat_edi_mant.css("border-color", "red")
-        cat_edi_mant_count = 1;
-     $('#count_cat_ed_mantenimiento').val(cat_edi_mant_count);
-
-    }else if (cat_edi_mant.val() != 0) {
-
-        cat_edi_mant_count = 0;
-     $('#count_cat_ed_mantenimiento').val(cat_edi_mant_count);
-
-    }
-
-    ////////////////////
-
-
-    ////////////////////
-    var cat_edi_mant =$('#cat_edi_mantenimiento');
-    var cat_edi_mant_count = $('#count_cat_ed_mantenimiento').val();
-
-    if(cat_edi_mant.val() == 0){
-
-        cat_edi_mant.css("border-color", "red")
-        cat_edi_mant_count = 1;
-     $('#count_cat_ed_mantenimiento').val(cat_edi_mant_count);
-
-    }else if (cat_edi_mant.val() != 0) {
-
-        cat_edi_mant_count = 0;
-     $('#count_cat_ed_mantenimiento').val(cat_edi_mant_count);
-
-    }
-    ////////////////////
-
-        ////////////////////
-        var pais_mant =$('#paises_mantenimiento');
-        var pais_mant_mant_count = $('#count_paises_mantenimiento').val();
-
-        if(pais_mant.val() == 0){
-
-            pais_mant.css("border-color", "red")
-            pais_mant_mant_count = 1;
-         $('#count_paises_mantenimiento').val(pais_mant_mant_count);
-
-        }else if (pais_mant.val() != 0) {
-
-            pais_mant_mant_count = 0;
-         $('#count_paises_mantenimiento').val(pais_mant_mant_count);
-
+            if (count_inps === 0) {
+                document.getElementById('div_next_h_mantenimiento').classList.add('hidden');
+                document.getElementById('div_next_mantenimiento').classList.remove('hidden');
+            }
         }
-        ////////////////////
 
-        ////////////////////
-        var ciudad_mantenimiento =$('#ciudades_mantenimiento');
-        var count_ciudad_mantenimiento_count = $('#count_ciudad_mantenimiento').val();
-
-        if(ciudad_mantenimiento.val() == 0){
-
-            ciudad_mantenimiento.css("border-color", "red")
-            count_ciudad_mantenimiento_count = 1;
-         $('#count_ciudad_mantenimiento').val(count_ciudad_mantenimiento_count);
-
-        }else if (ciudad_mantenimiento.val() != 0) {
-
-            count_ciudad_mantenimiento_count = 0;
-         $('#count_ciudad_mantenimiento').val(count_ciudad_mantenimiento_count);
-
-        }
-        ////////////////////
-
-         ////////////////////
-         var velocidad_promedio_mantenimiento =$('#velocidad_promedio_mantenimiento');
-         var count_velocidad_promedio_mantenimiento = $('#count_velocidad_promedio_mantenimiento').val();
-
-         if(velocidad_promedio_mantenimiento.val() == 0){
-
-            velocidad_promedio_mantenimiento.css("border-color", "red")
-             count_velocidad_promedio_mantenimiento = 1;
-          $('#count_velocidad_promedio_mantenimiento').val(count_velocidad_promedio_mantenimiento);
-
-         }else if (velocidad_promedio_mantenimiento.val() != 0) {
-
-            count_velocidad_promedio_mantenimiento = 0;
-          $('#count_velocidad_promedio_mantenimiento').val(count_velocidad_promedio_mantenimiento);
-
-         }
-         ////////////////////
-
-         ////////////////////
-         var name_sitio_mantenimiento =$('#name_sitio_mantenimiento');
-         var count_name_sitio_mantenimiento = $('#count_name_sitio_mantenimiento').val();
-
-         if(name_sitio_mantenimiento.val() == 0){
-
-            name_sitio_mantenimiento.css("border-color", "red")
-            count_name_sitio_mantenimiento = 1;
-          $('#count_name_sitio_mantenimiento').val(count_name_sitio_mantenimiento);
-
-         }else if (name_sitio_mantenimiento.val() != 0) {
-
-            count_name_sitio_mantenimiento = 0;
-          $('#count_name_sitio_mantenimiento').val(count_name_sitio_mantenimiento);
-
-         }
-         ////////////////////
-
-         ////////////////////
-         var tipo_edificio_mantenimiento =$('#tipo_edificio_mantenimiento');
-         var count_tipo_edificio_mantenimiento = $('#count_tipo_edificio_mantenimiento').val();
-
-         if(tipo_edificio_mantenimiento.val() == 0){
-
-            tipo_edificio_mantenimiento.css("border-color", "red")
-            count_tipo_edificio_mantenimiento = 1;
-          $('#count_tipo_edificio_mantenimiento').val(count_tipo_edificio_mantenimiento);
-
-         }else if (tipo_edificio_mantenimiento.val() != 0) {
-
-            count_tipo_edificio_mantenimiento = 0;
-          $('#count_tipo_edificio_mantenimiento').val(count_tipo_edificio_mantenimiento);
-
-         }
-         ////////////////////
-
-         ////////////////////
-         var tipo_edificio_mantenimiento =$('#tipo_edificio_mantenimiento');
-         var count_tipo_edificio_mantenimiento = $('#count_tipo_edificio_mantenimiento').val();
-
-         if(tipo_edificio_mantenimiento.val() == 0){
-
-            tipo_edificio_mantenimiento.css("border-color", "red")
-            count_tipo_edificio_mantenimiento = 1;
-          $('#count_tipo_edificio_mantenimiento').val(count_tipo_edificio_mantenimiento);
-
-         }else if (tipo_edificio_mantenimiento.val() != 0) {
-
-            count_tipo_edificio_mantenimiento = 0;
-          $('#count_tipo_edificio_mantenimiento').val(count_tipo_edificio_mantenimiento);
-
-         }
-         ////////////////////
-
-         ////////////////////
-         var distancia_sitio_mantenimiento =$('#distancia_sitio_mantenimiento');
-         var count_distancia_sitio_mantenimiento = $('#count_distancia_sitio_mantenimiento').val();
-
-         if(distancia_sitio_mantenimiento.val() == 0){
-
-            distancia_sitio_mantenimiento.css("border-color", "red")
-            count_distancia_sitio_mantenimiento = 1;
-          $('#count_distancia_sitio_mantenimiento').val(count_distancia_sitio_mantenimiento);
-
-         }else if (distancia_sitio_mantenimiento.val() != 0) {
-
-            count_distancia_sitio_mantenimiento = 0;
-          $('#count_distancia_sitio_mantenimiento').val(count_distancia_sitio_mantenimiento);
-
-         }
-         ////////////////////
-        /////////////////
-         var yrs_life_ed_mantenimiento =$('#yrs_life_ed_mantenimiento');
-         var count_yrs_life_ed_mantenimiento = $('#count_yrs_life_ed_mantenimiento').val();
-
-         if(yrs_life_ed_mantenimiento.val() == 0){
-
-            yrs_life_ed_mantenimiento.css("border-color", "red")
-            count_yrs_life_ed_mantenimiento = 1;
-          $('#count_yrs_life_ed_mantenimiento').val(count_yrs_life_ed_mantenimiento);
-
-         }else if (yrs_life_ed_mantenimiento.val() != 0) {
-
-            count_yrs_life_ed_mantenimiento = 0;
-          $('#count_yrs_life_ed_mantenimiento').val(count_yrs_life_ed_mantenimiento);
-
-         }
-         ////////////////////
-
-         /////////////////
-         var tipo_ambiente_mantenimiento =$('#tipo_ambiente_mantenimiento');
-         var count_tipo_ambiente_mantenimiento = $('#count_tipo_ambiente_mantenimiento').val();
-
-         if(tipo_ambiente_mantenimiento.val() == ""){
-
-            tipo_ambiente_mantenimiento.css("border-color", "red")
-            count_tipo_ambiente_mantenimiento = 1;
-          $('#count_tipo_ambiente_mantenimiento').val(count_tipo_ambiente_mantenimiento);
-
-         }else if (tipo_ambiente_mantenimiento.val() != "") {
-
-            count_tipo_ambiente_mantenimiento = 0;
-          $('#count_tipo_ambiente_mantenimiento').val(count_tipo_ambiente_mantenimiento);
-
-         }
-         ////////////////////
-
-          /////////////////
-          var personal_enviado =$('#personal_enviado_mantenimiento');
-          var count_personal_enviado = $('#count_personal_enviado_mantenimiento').val();
-
-          if(personal_enviado.val() == 0){
-
-            personal_enviado.css("border-color", "red")
-             count_personal_enviado = 1;
-           $('#count_personal_enviado_mantenimiento').val(count_personal_enviado);
-
-          }else if (personal_enviado.val() != 0) {
-
-            count_personal_enviado = 0;
-           $('#count_personal_enviado_mantenimiento').val(count_personal_enviado);
-
-          }
-          ////////////////////
-
-          /////////////////
-          var tiempo_egreso =$('#tiempo_egreso');
-          var count_tiempo_egreso = $('#count_tiempo_egreso').val();
-
-          if(tiempo_egreso.val() == ''){
-
-            tiempo_egreso.css("border-color", "red")
-            count_tiempo_egreso = 1;
-           $('#count_tiempo_egreso').val(count_tiempo_egreso);
-
-          }else if (tiempo_egreso.val() != '') {
-
-            count_tiempo_egreso = 0;
-           $('#count_tiempo_egreso').val(count_tiempo_egreso);
-
-          }
-          ////////////////////
-
-          /////////////////
-          var tiempo_ingreso =$('#tiempo_ingreso');
-          var count_tiempo_ingreso = $('#count_tiempo_ingreso').val();
-
-          if(tiempo_ingreso.val() == ''){
-
-            tiempo_ingreso.css("border-color", "red")
-            count_tiempo_ingreso = 1;
-           $('#count_tiempo_ingreso').val(count_tiempo_ingreso);
-
-          }else if (tiempo_ingreso.val() != '') {
-
-            count_tiempo_ingreso = 0;
-           $('#count_tiempo_ingreso').val(count_tiempo_ingreso);
-
-          }
-          ////////////////////
-
-           /////////////////
-          var valor_contrato =$('#valor_contrato');
-          var count_valor_contrato = $('#count_valor_contrato').val();
-
-          if(valor_contrato.val() == ''){
-
-            valor_contrato.css("border-color", "red")
-            valor_contrato = 1;
-           $('#count_valor_contrato').val(count_valor_contrato);
-
-          }else if (tiempo_ingreso.val() != '') {
-
-            count_valor_contrato = 0;
-           $('#count_valor_contrato').val(count_valor_contrato);
-
-          }
-          ////////////////////
-
-          /////////////////
-          var ocupacion_semanal_mantenimiento =$('#ocupacion_semanal_mantenimiento');
-          var count_ocupacion_semanal_mantenimiento = $('#count_ocupacion_semanal_mantenimiento').val();
-
-          if(ocupacion_semanal_mantenimiento.val() == ''){
-
-            ocupacion_semanal_mantenimiento.css("border-color", "red")
-            count_ocupacion_semanal_mantenimiento = 1;
-           $('#count_ocupacion_semanal_mantenimiento').val(count_ocupacion_semanal_mantenimiento);
-
-          }else if (ocupacion_semanal_mantenimiento.val() != '') {
-
-            count_ocupacion_semanal_mantenimiento = 0;
-           $('#count_ocupacion_semanal_mantenimiento').val(count_ocupacion_semanal_mantenimiento);
-
-          }
-          ////////////////////
-
-
-
-
-
-
-        var count_inps = cliente_count + cat_edi_mant_count + pais_mant_mant_count  +  count_ciudad_mantenimiento_count + count_velocidad_promedio_mantenimiento + count_name_sitio_mantenimiento + count_tipo_edificio_mantenimiento + count_distancia_sitio_mantenimiento + count_yrs_life_ed_mantenimiento + count_tipo_ambiente_mantenimiento + count_personal_enviado + count_tiempo_egreso + count_tiempo_ingreso + count_valor_contrato;
-
-      if(count_inps>0){
-
-                   return false;
-       }else if(count_inps==0){
-        $('#div_next_h_mantenimiento').addClass("hidden");
-        $('#div_next_mantenimiento').removeClass("hidden");
-       }
- }
 
   function check_inp_count_coordinacion(count_id,id){
         var inp = $("#"+id).val();
