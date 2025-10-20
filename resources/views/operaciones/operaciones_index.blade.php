@@ -907,7 +907,7 @@ input[type=number]::-webkit-outer-spin-button {
     color:#1B17BB !important;"
     }
 
-    .labels_index_mantenimiento{
+    .labels_index_coordinacion{
             font-size: 19px;
             color:#1B17BB !important;"
     }
@@ -961,8 +961,8 @@ input[type=number]::-webkit-outer-spin-button {
     color:#1B17BB !important;"
     }
 
-    .labels_index_mantenimiento{
-            font-size: 19px;
+    .labels_index_coordinacion{
+            font-size: 15px;
             color:#1B17BB !important;"
     }
     .mapa_img{
@@ -1011,7 +1011,7 @@ input[type=number]::-webkit-outer-spin-button {
             color:#1B17BB !important;"
             }
 
-            .labels_index_mantenimiento{
+            .labels_index_coordinacion{
             font-size: 19px;
             color:#1B17BB !important;"
             }
@@ -1057,7 +1057,7 @@ input[type=number]::-webkit-outer-spin-button {
     color:#1B17BB !important;"
     }
 
-    .labels_index_mantenimiento{
+    .labels_index_coordinacion{
     font-size: 19px;
     color:#1B17BB !important;"
     }
