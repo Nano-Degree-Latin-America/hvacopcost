@@ -16975,7 +16975,7 @@ function activarInputsAnuales(inputId,counter) {
     }
 }
 
-function suma_inputs_calculo(id,periodo_id,counter,value,id_total){
+function suma_inputs_calculo(id,periodo_id,counter){
 
     var periodoVal = $('#'+periodo_id).val();
       switch (periodoVal) {
@@ -16997,6 +16997,8 @@ function suma_inputs_calculo(id,periodo_id,counter,value,id_total){
 }
 
 function sumarTrimestrales(id,counter){
+    console.log('si',id,counter);
+
     const grupos = [
         ['input4_calculo_'+counter, 'input7_calculo_'+counter, 'input10_calculo_'+counter, 'input13_calculo_'+counter],
         ['input5_calculo_'+counter, 'input8_calculo_'+counter, 'input11_calculo_'+counter, 'input14_calculo_'+counter],
@@ -17099,6 +17101,37 @@ function sumarAnuales(id,counter){
 
 }
 
+//calculo horas hombre al cambiar horas_efectivas_mantenimiento
+function alculate_h_h(){
+   /*  // Contar cuántos <tr> tiene la tabla objetivo
+    const filas_aux = countRowsInTbody('tbody_coordinacion_calculo');
+    var filas = 0;
+
+    // Si existe un input para mostrar el conteo, actualizarlo
+    const rowsInput = document.getElementById('rows_count_calculo');
+    if (rowsInput) rowsInput.value = filas_aux;
+
+    //filas_aux regrese un tr mas por ejempplo hay 4 tr pero regresa 5 entonces se resta 1
+    filas = filas_aux - 1; */
+
+  for (let z = 4; z <= 15; z++) {
+     /*    var input_calculo = 'input' + z + '_calculo_' + rowCount; */
+       /*  suma_inputs_calculo(input_calculo,periodoSelect,rowCount); */
+        suma_horas_hombre(z);
+ }
+
+
+
+}
+
+function countRowsInTbody(tbodyId) {
+    const tbody = document.getElementById(tbodyId);
+    if (!tbody) return 0;
+    // contar solo tr directos hijos (no conteo en nested tables)
+    return Array.from(tbody.children).filter(ch => ch.tagName.toLowerCase() === 'tr').length;
+}
+
+
 function suma_horas_hombre(i){
 
     var suma_inps = suma_all_inputs(i);
@@ -17120,6 +17153,8 @@ function suma_horas_hombre(i){
         total_calculo_vehiculo = parseInt(ida_aux) + parseInt(total_calculo_vehiculo);
 
     }
+
+
      $('#total_calculo_vehiculo').val(total_calculo_vehiculo);
 
     $('#idas_ajustados_total').val(suma_total_idas_ajustados);
@@ -17549,6 +17584,7 @@ async function spenPlanAjustado(){
 function vehiculosAjustado(){
     let total_calculo_vehiculo = $('#total_calculo_vehiculo').val();
     let porcent_mano_obra_aux = change_porcent_to_num($('#porcent_mano_obra').val());
+
     let porcent_mano_obra = porcent_mano_obra_aux/100;
     let etupida_suma = 1+porcent_mano_obra;
     let total_calculo_vehiculo_aux = total_calculo_vehiculo * etupida_suma;
@@ -17556,7 +17592,7 @@ function vehiculosAjustado(){
     const myArray = distancia_kms.split('kms');
     var distancia = parseInt(myArray[0]);
     var kms_val = $('#kms_val').val();
-    console.log(Math.ceil(total_calculo_vehiculo_aux),distancia,parseInt(kms_val));
+
 
     let vehiculos = Math.ceil(total_calculo_vehiculo_aux) * distancia * 2 * parseInt(kms_val);
     return vehiculos;
