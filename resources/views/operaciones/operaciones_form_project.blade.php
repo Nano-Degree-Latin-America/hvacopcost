@@ -55,7 +55,14 @@
                             <label  class="font-roboto labels_index_coordinacion  m-0" for=""><b>Tiempo Ingreso:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                            <input onchange="check_input(this.value,this.id,'tiempo_ingreso_warning');check_inp_count_coordinacion('count_tiempo_ingreso','tiempo_ingreso');valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)" onkeypress="return soloNumeros(event)" name="tiempo_ingreso" id="tiempo_ingreso" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <select onchange="check_input(this.value,this.id,'tiempo_ingreso_warning');check_inp_count_coordinacion('count_tiempo_ingreso','tiempo_ingreso');valida_selects_inps(this.id);" name="tiempo_ingreso" id="tiempo_ingreso" class="w-1/4 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                                <option value="0.0">0.0 hrs.</option>
+                                <option value="0.25">0.25 hrs.</option>
+                                <option value="0.5">0.5 hrs.</option>
+                                <option value="1.0">1.0 hrs.</option>
+                                <option value="1.5">1.5 hrs.</option>
+                                <option value="2.0">2.0 hrs.</option>
+                            </select>
                             <input id="count_tiempo_ingreso" name="count_tiempo_ingreso" type="number" class="hidden" value="0">
                             <span id="tiempo_ingreso_warning" name="tiempo_ingreso_warning" class="text-red-500"></span>
                     </div>
@@ -65,7 +72,15 @@
                             <label  class="font-roboto labels_index_coordinacion  m-0" for=""><b>Tiempo Egreso:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                            <input onchange="check_input(this.value,this.id,'tiempo_egreso_warning');check_inp_count_coordinacion('count_tiempo_egreso','tiempo_egreso');valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)" onkeypress="return soloNumeros(event)" name="tiempo_egreso" id="tiempo_egreso" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <select onchange="check_input(this.value,this.id,'tiempo_egreso_warning');check_inp_count_coordinacion('count_tiempo_egreso','tiempo_egreso');valida_selects_inps(this.id)" name="tiempo_egreso" id="tiempo_egreso" type="text" class="w-1/4 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                                <option value="0.0">0.0 hrs.</option>
+                                <option value="0.25">0.25 hrs.</option>
+                                <option value="0.5">0.5 hrs.</option>
+                                <option value="1.0">1.0 hrs.</option>
+                                <option value="1.5">1.5 hrs.</option>
+                                <option value="2.0">2.0 hrs.</option>
+                            </select>
+
                             <input id="count_tiempo_egreso" name="count_tiempo_egreso" type="number" class="hidden" value="0">
                             <span id="tiempo_egreso_warning" name="tiempo_egreso_warning" class="text-red-500"></span>
                     </div>
@@ -152,7 +167,7 @@
                             </div>
                             <div class="flex w-full">
 
-                                <input type="text" onkeypress="return soloNumeros(event)" onchange="change_to_porcent(this.value,this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion" id="inflacion">
+                                <input type="text" onkeypress="return soloNumeros(event)" onchange="change_to_porcent_mantenimiento(this.value,this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion" id="inflacion">
                                 <input id="count_inflacion" name="count_inflacion" type="number" class="hidden" value="0">
 
                             </div>

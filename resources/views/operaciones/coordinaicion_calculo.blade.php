@@ -343,7 +343,7 @@
                                             value="0"
                                             onkeypress="return soloNumeros(event)"
                                             type="text"
-                                            class="w-1/3 h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
+                                            class="w-1/3 h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-[#1B17BB] rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
                         </div>
                     </div>
 

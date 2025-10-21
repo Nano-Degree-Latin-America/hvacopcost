@@ -12066,6 +12066,7 @@ cUnidad_3_3 */
 
      }
 
+
      function change_to_porcent(porcent,id){
 
         const myArray = porcent.split('%');
@@ -17367,7 +17368,7 @@ async function calculateSpendVentas(value){
     //horas disponibles
     horas_disponibles = await horasDisponibles(mano_obra);
     $('#horas_disponibles').val(horas_disponibles);
-    $('#horas_disponibles_ajustado').val(horas_disponibles);
+    $('#horas_disponibles_ajustado').val(parseFloat(horas_disponibles).toFixed(1));
 
     //kilometros disponibles
     kilometros_disponibles = await kmsDisponibles(vehiculos);
