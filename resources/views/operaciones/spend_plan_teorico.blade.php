@@ -185,7 +185,7 @@
             <!-- Desktop/Tablet Layout -->
             <div class="flex flex-col lg:flex-row w-full gap-2 lg:gap-x-3 max-w-7xl justify-center main-container">
                 <!-- Table 1 - Spend Plan Ventas -->
-                <div class="bg-white rounded-xl lg:rounded-2xl shadow-xl overflow-hidden border-2 border-[#1B17BB] w-full lg:w-2/5 table-section">
+                <div class="bg-white rounded-xl lg:rounded-2xl shadow-xl overflow-hidden border-2 border-[#1B17BB] w-full lg:w-3/6 table-section">
                     <table>
                         <thead class="bg-gradient-to-r from-[#1B17BB] to-[#2d28d4]">
                             <tr>

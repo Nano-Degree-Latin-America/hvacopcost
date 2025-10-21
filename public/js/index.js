@@ -15105,19 +15105,19 @@ function check_porcent_max_min_kms(value,id,unidad){
 
     if(value > maxim){
         input_select.empty();
-        input_select.val(parseInt(maxim)+unidad);
+        input_select.val(parseInt(maxim)+' '+unidad);
         return false;
     }
 
     if(value >= min && value <= maxim){
         input_select.empty();
-        input_select.val(parseInt(value)+unidad);
+        input_select.val(parseInt(value)+' '+unidad);
         return false;
     }
 
     if(value < min){
         input_select.empty();
-        input_select.val(parseInt(min)+unidad);
+        input_select.val(parseInt(min)+' '+unidad);
         return false;
     }
 
