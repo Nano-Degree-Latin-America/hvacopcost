@@ -185,7 +185,7 @@
             <!-- Desktop/Tablet Layout -->
             <div class="flex flex-col lg:flex-row w-full gap-2 lg:gap-x-3 max-w-7xl justify-center main-container">
                 <!-- Table 1 - Spend Plan Ventas -->
-                <div class="bg-white rounded-xl lg:rounded-2xl shadow-xl overflow-hidden border-2 border-[#1B17BB] w-full lg:w-1/3 table-section">
+                <div class="bg-white rounded-xl lg:rounded-2xl shadow-xl overflow-hidden border-2 border-[#1B17BB] w-full lg:w-2/5 table-section">
                     <table>
                         <thead class="bg-gradient-to-r from-[#1B17BB] to-[#2d28d4]">
                             <tr>
@@ -202,6 +202,12 @@
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
                                     <input value="100%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                </td>
+                            </tr>
+
+                             <tr class="">
+                                <td class="">
+                                    <label class="text-sm" for="">&nbsp;</label>
                                 </td>
                             </tr>
 
