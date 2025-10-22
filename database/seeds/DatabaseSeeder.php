@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
          //$this->call(UnidadesTrSeeder::class);
          //$this->call(UnidadesCfmSeeder::class);
           //$this->call(UnidadesUnidadSeeder::class);
+          $this->call(UsuariosDemoSeeder::class);
 
     }
 }
