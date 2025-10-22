@@ -35,7 +35,7 @@
                     <button style="width: 30%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.mantenimiento_ventas') }}</button>
                     @endif
 
-                    @if (Auth::user()->tipo_user === 5 || Auth::user()->tipo_user === 1 && Auth::user()->id_empresa === 31)
+                    @if (Auth::user()->tipo_user === 5 || Auth::user()->tipo_user === 1 && Auth::user()->id_empresa === 75)
                     <a style="width: 30%;" href="operaciones_index">
                         <button style="background-color:#1B17BB;width: 100%;" type="button" class="py-2 px-6 rounded-lg shadow-sm text-center text-white hover_button_blue text-2xl font-roboto">{{ __('index.operaciones') }}</button>
                     </a>
