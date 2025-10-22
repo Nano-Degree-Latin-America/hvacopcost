@@ -521,7 +521,7 @@
                                    <label class="font-roboto font-bold text-left text-black text-sm sm:text-base md:text-lg lg:text-xl block" for="">Facturación</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1 w-1/3 sm:w-1/2">
-                                    <input value="$0" id="facturacion_ventas_manual" name="facturacion_ventas_manual" type="text" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
+                                    <input value="$0" id="facturacion_ventas_manual" name="facturacion_ventas_manual" type="text" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 bg-blue-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1 w-1/4">
                                     <input value="100%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
@@ -539,7 +539,7 @@
                                    <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Materiales</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input value="$0" id="materiales_ventas_manual" name="materiales_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
+                                    <input value="$0" id="materiales_ventas_manual" name="materiales_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 bg-blue-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input id="porcent_materiales_ventas_manual" name="porcent_materiales_ventas_manual" value="10%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
@@ -551,7 +551,7 @@
                                    <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Equipos</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input value="$0" id="equipos_ventas_manual" name="equipos_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
+                                    <input value="$0" id="equipos_ventas_manual" name="equipos_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 bg-blue-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input id="porcent_equipos_ventas_manual" name="porcent_equipos_ventas_manual" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
@@ -563,7 +563,7 @@
                                    <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Mano Obra</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input value="$0" id="mano_obra_ventas_manual" name="mano_obra_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
+                                    <input value="$0" id="mano_obra_ventas_manual" name="mano_obra_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-blue-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input id="porcent_mano_obra_ventas_manual" name="porcent_mano_obra_ventas_manual" value="25%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
@@ -575,7 +575,7 @@
                                    <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Vehículos</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input value="$0" id="vehiculos_ventas_manual" name="vehiculos_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
+                                    <input value="$0" id="vehiculos_ventas_manual" name="vehiculos_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-blue-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input id="porcent_vehiculos_ventas_manual" name="porcent_vehiculos_ventas_manual" value="5%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
@@ -587,7 +587,7 @@
                                    <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Contratistas</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input value="$0" id="contratistas_ventas_manual" name="contratistas_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)"  type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
+                                    <input value="$0" id="contratistas_ventas_manual" name="contratistas_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)"  type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-blue-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input id="porcent_contratistas_ventas_manual" name="porcent_contratistas_ventas_manual" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
@@ -599,7 +599,7 @@
                                    <label class="font-roboto font-bold text-left text-[#1B17BB] text-sm sm:text-base md:text-lg lg:text-xl block" for="">Viáticos</label>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input  value="$0"  id="viaticos_ventas_manual" name="viaticos_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)"  type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
+                                    <input  value="$0"  id="viaticos_ventas_manual" name="viaticos_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)"  type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-blue-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
                                     <input id="porcent_viaticos_ventas_manual" name="porcent_viaticos_ventas_manual" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
