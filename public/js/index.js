@@ -12066,6 +12066,7 @@ cUnidad_3_3 */
 
      }
 
+
      function change_to_porcent(porcent,id){
 
         const myArray = porcent.split('%');
@@ -15105,19 +15106,19 @@ function check_porcent_max_min_kms(value,id,unidad){
 
     if(value > maxim){
         input_select.empty();
-        input_select.val(parseInt(maxim)+unidad);
+        input_select.val(parseInt(maxim)+' '+unidad);
         return false;
     }
 
     if(value >= min && value <= maxim){
         input_select.empty();
-        input_select.val(parseInt(value)+unidad);
+        input_select.val(parseInt(value)+' '+unidad);
         return false;
     }
 
     if(value < min){
         input_select.empty();
-        input_select.val(parseInt(min)+unidad);
+        input_select.val(parseInt(min)+' '+unidad);
         return false;
     }
 
@@ -17227,13 +17228,14 @@ function entero_medio(valor){
 }
 
 function h_h_mantenimiento(total_dias){
-    //formula total_dias*horas_efectivas_mantenimiento/personal_enviado_mantenimiento
+    //formula total_dias*horas_efectivas_mantenimiento/personal_enviado_coordinacion
+
     var horas_efectivas_mantenimiento = $('#horas_efectivas_mantenimiento').val();
-    var personal_enviado_mantenimiento = $('#personal_enviado_mantenimiento').val();
+    var personal_enviado_coordinacion = $('#personal_enviado_coordinacion').val();
     var factor_tecnico = 0;
     var total = 0;
 
-    switch (personal_enviado_mantenimiento) {
+    switch (personal_enviado_coordinacion) {
 
         case 'tecnico':
             factor_tecnico = 1;
@@ -17366,8 +17368,8 @@ async function calculateSpendVentas(value){
 
     //horas disponibles
     horas_disponibles = await horasDisponibles(mano_obra);
-    $('#horas_disponibles').val(horas_disponibles);
-    $('#horas_disponibles_ajustado').val(horas_disponibles);
+    $('#horas_disponibles').val(parseInt(horas_disponibles));
+    $('#horas_disponibles_ajustado').val(parseInt(horas_disponibles));
 
     //kilometros disponibles
     kilometros_disponibles = await kmsDisponibles(vehiculos);
@@ -17427,13 +17429,13 @@ function porcentCostoOperacional(){
 
 
 async function horasDisponibles(mano_obra){
-     var personal_enviado_mantenimiento = $('#personal_enviado_mantenimiento').val();
+     var personal_enviado_coordinacion = $('#personal_enviado_coordinacion').val();
      var total = 0;
 
     return new Promise((resolve, reject) => {
         $.ajax({
             type: 'get',
-            url: '/traer_tecnico_ayudante/'+personal_enviado_mantenimiento,
+            url: '/traer_tecnico_ayudante/'+personal_enviado_coordinacion,
             success: function (response) {
 
                     $('#val_tenicoychalan').val(response); //ppara calcular Total Horas x Ventas
@@ -17686,4 +17688,10 @@ async function spenPlanManual(){
 function calculatePorcentManual(value,facturacion){
     total = value * 100 / facturacion;
     return  parseInt(total);
+}
+
+function send_value_personal_coordinacion(val,id){
+    $("#"+id).find('option[value="' + val + '"]').prop("selected", "selected");
+    alculate_h_h();
+    calculateSpendVentas($('#valor_contrato').val());
 }

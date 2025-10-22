@@ -327,7 +327,7 @@ input[type=number]::-webkit-outer-spin-button {
     <div class="fixed bottom-0 w-full left-0 right-0 py-1 bg-white shadow-md" x-show="step != 'complete'">
         <div class=" w-full mx-auto px-4 pb-2">
             <div class="flex w-full">
-                <div class="w-1/2">
+                <div class="w-1/2 justify-center flex">
                     @if (strlen(__('index.atras')) > 6)
                     <button
                     x-show="step > 1"
@@ -353,26 +353,55 @@ input[type=number]::-webkit-outer-spin-button {
 
 
                 </div>
-
                 <div class="w-1/2">
                     <div  x-show="step < 2" class="w-full flex" style=" justify-content: left;">
-                    <label style="font-size:10px;" class=" text-gray-500 font-montserrat"  for="">
-                        {{ __('index.de acuerdo a')}}:
-                    </label>
-                    <ul class="mt-3">
-                        <li class="flex items-center w-full">
-                        <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
-                        <p style="font-size:9px;" class="text-gray-500">{{ __('index.ASHRAE Standard')}}.</p>
-                        </li>
+                        <label style="font-size:10px;" class=" text-gray-500 font-montserrat"  for="">
+                            {{ __('index.de acuerdo a')}}:
+                        </label>
+                        <ul class="mt-3">
+                            <li class="flex items-center w-full">
+                            <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
+                            <p style="font-size:9px;" class="text-gray-500">{{ __('index.ASHRAE Standard')}}.</p>
+                            </li>
 
-                        <li class="flex items-center w-full">
-                        <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
-                        <p style="font-size:9px;" class="text-gray-500">{{ __('index.1-100 Energy Star Score')}}.</p>
-                        </li>
+                            <li class="flex items-center w-full">
+                            <span class="bg-gray-500 h-1 w-1 rounded-full mr-2"></span>
+                            <p style="font-size:9px;" class="text-gray-500">{{ __('index.1-100 Energy Star Score')}}.</p>
+                            </li>
 
-                    </ul>
+                        </ul>
                     </div>
+
+
+
+
+                <div class="w-full flex justify-center">
+                    <button  type="button"
+
+                   style="background-color:#1B17BB;"
+                       x-show="step == 4 && step < 5"
+                       @click="step++"
+                       onclick="spenPlanAjustado();"
+                       class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                   >{{ __('index.siguiente') }}</button>
+
+                   <button  type="button"
+
+                   style="background-color:#1B17BB;"
+                       x-show="step > 1 && step < 4"
+                       @click="step++"
+                       onclick="suma_cantidad_toneladas();"
+                       class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                   >{{ __('index.siguiente') }}</button>
+
                 </div>
+
+                </div>
+            </div>
+
+           {{--
+
+
 
                 <div class="w-1/2">
                     <button  type="button"
@@ -400,7 +429,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 
 
-            </div>
+            </div> --}}
 
             </div>
         </div>
@@ -1128,6 +1157,7 @@ window.onclick = function(event) {
     }
   }
 }
+
 
 function app() {
 			return {

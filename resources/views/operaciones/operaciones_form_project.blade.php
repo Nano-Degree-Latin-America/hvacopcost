@@ -55,7 +55,14 @@
                             <label  class="font-roboto labels_index_coordinacion  m-0" for=""><b>Tiempo Ingreso:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                            <input onchange="check_input(this.value,this.id,'tiempo_ingreso_warning');check_inp_count_coordinacion('count_tiempo_ingreso','tiempo_ingreso');valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)" onkeypress="return soloNumeros(event)" name="tiempo_ingreso" id="tiempo_ingreso" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <select onchange="check_input(this.value,this.id,'tiempo_ingreso_warning');check_inp_count_coordinacion('count_tiempo_ingreso','tiempo_ingreso');valida_selects_inps(this.id);" name="tiempo_ingreso" id="tiempo_ingreso" class="w-1/4 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                                <option value="0.0">0.0 hrs.</option>
+                                <option value="0.25">0.25 hrs.</option>
+                                <option value="0.5">0.5 hrs.</option>
+                                <option value="1.0">1.0 hrs.</option>
+                                <option value="1.5">1.5 hrs.</option>
+                                <option value="2.0">2.0 hrs.</option>
+                            </select>
                             <input id="count_tiempo_ingreso" name="count_tiempo_ingreso" type="number" class="hidden" value="0">
                             <span id="tiempo_ingreso_warning" name="tiempo_ingreso_warning" class="text-red-500"></span>
                     </div>
@@ -65,7 +72,15 @@
                             <label  class="font-roboto labels_index_coordinacion  m-0" for=""><b>Tiempo Egreso:</b></label>
                             <label class="text-red-500 m-0">*</label>
                         </div>
-                            <input onchange="check_input(this.value,this.id,'tiempo_egreso_warning');check_inp_count_coordinacion('count_tiempo_egreso','tiempo_egreso');valida_selects_inps(this.id);format_nums_no_$(this.value,this.id)" onkeypress="return soloNumeros(event)" name="tiempo_egreso" id="tiempo_egreso" type="text" style="font-size: 14px;" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                            <select onchange="check_input(this.value,this.id,'tiempo_egreso_warning');check_inp_count_coordinacion('count_tiempo_egreso','tiempo_egreso');valida_selects_inps(this.id)" name="tiempo_egreso" id="tiempo_egreso" type="text" class="w-1/4 border-2 border-color-inps rounded-md p-1 my-1 font-roboto">
+                                <option value="0.0">0.0 hrs.</option>
+                                <option value="0.25">0.25 hrs.</option>
+                                <option value="0.5">0.5 hrs.</option>
+                                <option value="1.0">1.0 hrs.</option>
+                                <option value="1.5">1.5 hrs.</option>
+                                <option value="2.0">2.0 hrs.</option>
+                            </select>
+
                             <input id="count_tiempo_egreso" name="count_tiempo_egreso" type="number" class="hidden" value="0">
                             <span id="tiempo_egreso_warning" name="tiempo_egreso_warning" class="text-red-500"></span>
                     </div>
@@ -152,7 +167,7 @@
                             </div>
                             <div class="flex w-full">
 
-                                <input type="text" onkeypress="return soloNumeros(event)" onchange="change_to_porcent(this.value,this.id);" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion" id="inflacion">
+                                <input type="text" onkeypress="return soloNumeros(event)" onchange="change_to_porcent_mantenimiento(this.value,this.id);check_inp_count_coordinacion('count_inflacion','inflacion');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="inflacion" id="inflacion">
                                 <input id="count_inflacion" name="count_inflacion" type="number" class="hidden" value="0">
 
                             </div>
@@ -168,7 +183,7 @@
                                 <label  class="font-roboto labels_index_coordinacion  m-0" for=""><b>Personal:</b></label>
                                 <label class="text-red-500 m-0">*</label>
                             </div>
-                                <select name="personal_enviado_mantenimiento"  id="personal_enviado_mantenimiento" onchange="check_input(this.value,this.id,'personal_enviado_mantenimiento_warning');check_inp_count_coordinacion('count_personal_enviado','personal_enviado_mantenimiento');valida_selects_inps(this.id);" class="w-3/4 border-2 border-color-inps  rounded-md p-1 my-1 font-roboto">
+                                <select name="personal_enviado_mantenimiento"  id="personal_enviado_mantenimiento" onchange="check_input(this.value,this.id,'personal_enviado_mantenimiento_warning');check_inp_count_coordinacion('count_personal_enviado','personal_enviado_mantenimiento');valida_selects_inps(this.id);send_value_personal_coordinacion(this.value,'personal_enviado_coordinacion');" class="w-3/4 border-2 border-color-inps  rounded-md p-1 my-1 font-roboto">
                                     <option value="">-{{ __('index.seleccionar') }}-</option>
                                     <option value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
                                     <option value="tecnico_ayudante">{{ __('mantenimiento.tecnico_ayudante') }}</option>
@@ -261,9 +276,11 @@ function valida_formulario_coordinacion(){
                 'name_sitio_mantenimiento',
                 'yrs_life_ed_mantenimiento',
                 'tipo_ambiente_mantenimiento',
+                'distancia_sitio_mantenimiento',
                 'velocidad_promedio_mantenimiento',
                 'valor_contrato',
-                'personal_enviado_mantenimiento'
+                'inflacion',
+                'personal_enviado_mantenimiento',
             ];
 
             fields.forEach(field => {
@@ -308,30 +325,24 @@ function valida_formulario_coordinacion(){
      function checksuma_coor(){
         count_cliente_pro_mantenimiento = $('#count_cliente_pro_mantenimiento').val();
         count_cat_edi_mantenimiento = $('#count_cat_edi_mantenimiento').val();
-        count_paises_mantenimiento = $('#count_paises_mantenimiento').val();
-        count_tipo_ambiente_mantenimiento = $('#count_tipo_ambiente_mantenimiento').val();
-        count_tiempo_ingreso = $('#count_tiempo_ingreso').val();
-        count_name_sitio_mantenimiento = $('#count_name_sitio_mantenimiento').val();
-        count_tipo_edificio_mantenimiento = $('#count_tipo_edificio_mantenimiento').val();
-        count_ciudad_mantenimiento = $('#count_ciudad_mantenimiento').val();
-        count_velocidad_promedio_mantenimiento = $('#count_velocidad_promedio_mantenimiento').val();
         count_ocupacion_semanal_mantenimiento = $('#count_ocupacion_semanal_mantenimiento').val();
-        count_personal_enviado = $('#count_personal_enviado_mantenimiento').val();
-        count_tiempo_egreso = $('#count_tiempo_egreso').val();
+        count_name_sitio_mantenimiento = $('#count_name_sitio_mantenimiento').val();
+        count_tipo_ambiente_mantenimiento = $('#count_tipo_ambiente_mantenimiento').val();
+        count_velocidad_promedio_mantenimiento = $('#count_velocidad_promedio_mantenimiento').val();
         count_valor_contrato = $('#count_valor_contrato').val();
-
-       suma_inps = parseInt(count_cliente_pro_mantenimiento) + parseInt(count_cat_edi_mantenimiento) + parseInt(count_paises_mantenimiento)
-       + parseInt(count_tipo_ambiente_mantenimiento) + parseInt(count_tiempo_ingreso) + parseInt(count_name_sitio_mantenimiento) + parseInt(count_tipo_edificio_mantenimiento) + parseInt(count_ciudad_mantenimiento)
-       + parseInt(count_velocidad_promedio_mantenimiento) + parseInt(count_ocupacion_semanal_mantenimiento) + parseInt(count_personal_enviado) + parseInt(count_tiempo_egreso) + parseInt(count_valor_contrato);
+        count_inflacion = $('#count_inflacion').val();
+        count_personal_enviado_mantenimiento = $('#count_personal_enviado_mantenimiento').val();
 
 
-       if(suma_inps == 12){
+       suma_inps = parseInt(count_cliente_pro_mantenimiento) + parseInt(count_cat_edi_mantenimiento) + parseInt(count_ocupacion_semanal_mantenimiento) + parseInt(count_name_sitio_mantenimiento) + parseInt(count_tipo_ambiente_mantenimiento) + parseInt(count_velocidad_promedio_mantenimiento) + parseInt(count_valor_contrato) + parseInt(count_inflacion) + parseInt(count_personal_enviado_mantenimiento);
+
+       if(suma_inps == 8){
         $('#div_next_mantenimiento').removeClass("hidden");
         $('#div_next_h_mantenimiento').addClass("hidden");
 
        }
 
-       if(suma_inps < 12){
+       if(suma_inps < 8){
         $('#div_next_mantenimiento').addClass("hidden");
         $('#div_next_h_mantenimiento').removeClass("hidden");
 

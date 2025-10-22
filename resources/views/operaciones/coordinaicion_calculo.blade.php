@@ -1,16 +1,26 @@
 
 <div class="h-[80vh] w-full overflow-y-auto overflow-x-hidden bg-gradient-to-br from-gray-50 to-gray-100 font-roboto mt-1">
     <div class="flex justify-center w-full mt-2">
-        <div class="w-full bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div class="w-3/4 flex justify-between items-center mx-auto">
-                <div class="flex gap-x-2">
-                    <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Horas Efectivas de Mantenimiento en Sitio (Hrs/día)</h2>
-                    <input value="0" id="horas_efectivas_mantenimiento" name="horas_efectivas_mantenimiento" type="text" onchange="alculate_h_h();" value="0" class="w-1/4 border-2 border-gray-300 rounded-lg px-4 py-2 text-center">
+        <div class="w-full bg-white rounded-2xl shadow-xl overflow-hidden mx-3">
+            <div class="w-full flex gap-x-3 justify-center items-center mx-5">
+
+                <div class="w-1/5 flex gap-x-2">
+                    <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Personal</h2>
+                    <select name="personal_enviado_coordinacion"  id="personal_enviado_coordinacion" onchange="send_value_personal_coordinacion(this.value,'personal_enviado_mantenimiento');alculate_h_h();" class="w-2/4 border-2 border-color-inps  rounded-md p-1 my-1 font-roboto">
+                                    <option value="">-{{ __('index.seleccionar') }}-</option>
+                                    <option value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
+                                    <option value="tecnico_ayudante">{{ __('mantenimiento.tecnico_ayudante') }}</option>
+                                </select>
                 </div>
 
-                <div class="flex gap-x-2">
-                    <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Porcentaje Mano de Obra Emergencia</h2>
-                    <input value="0%" id="porcent_mano_obra" name="porcent_mano_obra" type="text" onchange="change_to_porcent_mantenimiento(this.value,this.id);alculate_h_h();" class="w-1/4 border-2 border-gray-300 rounded-lg px-4 py-2 text-center">
+                <div class="w-1/3 flex gap-x-2">
+                    <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Horas Efectivas Mantenimiento en Sitio (Hrs/día)</h2>
+                    <input value="0" id="horas_efectivas_mantenimiento" name="horas_efectivas_mantenimiento" type="text" onchange="no_cero(this.value,this.id);alculate_h_h();" value="0" class="w-1/6 font-bold border-2 border-gray-300 rounded-lg px-4 py-2 text-center bg-blue-200">
+                </div>
+
+                <div class="w-1/3 flex gap-x-2">
+                    <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Porcentaje Mano Obra Emergencia</h2>
+                    <input value="0%" id="porcent_mano_obra" name="porcent_mano_obra" type="text" onchange="change_to_porcent_mantenimiento(this.value,this.id);alculate_h_h();" class="w-1/6 font-bold border-2 border-gray-300 rounded-lg px-4 py-2 text-center bg-blue-200">
                 </div>
             </div>
             <table class="w-full">
@@ -19,22 +29,22 @@
                         <th style="width:100px;" class="px-4 py-4 font-roboto font-bold text-center text-white">
 
                         </th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Sistema</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Cantidad</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Periodo</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P1</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P2</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P3</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P4</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P5</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P6</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P7</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P8</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P9</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P10</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P11</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">P12</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Total Horas</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">Sistema</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">Cantidad</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">Periodo</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M1</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M2</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M3</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M4</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M5</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M6</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M7</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M8</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M9</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M10</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M11</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M12</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">Total Horas</th>
                     </tr>
                 </thead>
 
@@ -287,7 +297,7 @@
 
             {{-- Tabla Horas--}}
             {{-- border-2 border-[#1B17BB] rounded-lg --}}
-            <div class="w-full flex gap-x-2 m-2 my-2  p-2">
+            <div class="w-full flex gap-x-2 m-2 my-2 p-2">
                 <div class="w-auto mx-1 border-2 border-[#1B17BB] rounded-lg">
 
                     <div class="w-full flex  my-2">
@@ -343,12 +353,12 @@
                                             value="0"
                                             onkeypress="return soloNumeros(event)"
                                             type="text"
-                                            class="w-1/3 h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
+                                            class="w-1/3 h-10 px-3 text-center text-sm font-semibold border-2 border-[#1B17BB] rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 bg-blue-200">
                         </div>
                     </div>
 
                 </div>
-                <div class="w-auto border-2 border-[#1B17BB] rounded-lg flex gap-x-2 ">
+                <div class="w-auto border-2 border-[#1B17BB] rounded-lg flex gap-x-2 mr-4">
                  <div class="w-full flex mx-1 my-2">
                     <div class="flex gap-x-1 place-items-center">
                         <label for="" class="text-sm font-bold text-[#1B17BB]">Total Horas Operación</label>

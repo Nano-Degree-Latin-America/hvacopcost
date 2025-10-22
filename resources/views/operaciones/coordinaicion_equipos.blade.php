@@ -1,6 +1,6 @@
 <div class="h-[80vh] w-full overflow-y-auto overflow-x-hidden bg-gradient-to-br from-gray-50 to-gray-100 p-4 font-roboto">
     <div class="flex justify-center w-full mt-6">
-        <div class="w-full max-w-[80%] bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="w-full max-w-[80%] bg-white rounded-2xl shadow-2xl overflow-hidden">
             <table class="w-full">
                 <thead class="bg-gradient-to-r from-[#1B17BB] to-[#2d28d4]">
                     <tr>
@@ -386,7 +386,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var btnDelete = document.createElement('button');
         btnDelete.type = 'button';
         btnDelete.id = 'deleteBtn_' + rowCount;
-        btnDelete.className = 'bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition-colors duration-200';
+        btnDelete.className = 'bg-red-500 text-white px-2 py-1 rounded hover:bg-red-600 transition-colors duration-200 mr-5';
         btnDelete.innerHTML = '<i class="fas fa-trash" aria-hidden="true"></i>';
         btnDelete.onclick = function() {
             tr.remove();
