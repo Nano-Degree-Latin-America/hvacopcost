@@ -542,7 +542,7 @@
                                     <input value="$0" id="materiales_ventas_manual" name="materiales_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 bg-blue-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input id="porcent_materiales_ventas_manual" name="porcent_materiales_ventas_manual" value="10%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                    <input id="porcent_materiales_ventas_manual" name="porcent_materiales_ventas_manual" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
@@ -566,7 +566,7 @@
                                     <input value="$0" id="mano_obra_ventas_manual" name="mano_obra_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-blue-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input id="porcent_mano_obra_ventas_manual" name="porcent_mano_obra_ventas_manual" value="25%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                    <input id="porcent_mano_obra_ventas_manual" name="porcent_mano_obra_ventas_manual" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
@@ -578,7 +578,7 @@
                                     <input value="$0" id="vehiculos_ventas_manual" name="vehiculos_ventas_manual" onchange="format_num(this.value,this.id);spenPlanManual();" onkeypress="return soloNumeros(event)" type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-blue-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200">
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input id="porcent_vehiculos_ventas_manual" name="porcent_vehiculos_ventas_manual" value="5%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                    <input id="porcent_vehiculos_ventas_manual" name="porcent_vehiculos_ventas_manual" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
@@ -615,7 +615,7 @@
                                     <input type="text" id="burden_val" name="burden_val" hidden>
                                 </td>
                                 <td class="px-1 md:px-2 py-1 md:py-1">
-                                    <input id="porcent_burden_ventas_manual" name="porcent_burden_ventas_manual" value="20%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
+                                    <input id="porcent_burden_ventas_manual" name="porcent_burden_ventas_manual" value="0%" readonly type="text" class="w-full h-9 md:h-10 px-2 md:px-3 text-center text-sm sm:text-base md:text-lg font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed">
                                 </td>
                             </tr>
 
