@@ -27,13 +27,15 @@
                 </div>
                 <div class="w-full flex justify-start gap-x-3 mt-2">
 
-                    @if ($check_types_m == 1)
+                    {{-- @if ($check_types_m == 1)
                     <button  onclick="check_form_proy('man','display_nuevo_project','display_nuevo_retrofit','display_mant','calcular_p_n','calcular_p_r','store');" style="background-color:#1B17BB;width: 30%;" type="button" class="py-2 px-6 rounded-lg shadow-sm text-center text-white hover_button_blue text-2xl font-roboto  ">{{ __('index.mantenimiento_ventas') }}</button>
                     @endif
 
                     @if ($check_types_m != 1)
                     <button style="width: 30%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.mantenimiento_ventas') }}</button>
-                    @endif
+                    @endif --}}
+                    <button style="width: 30%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.mantenimiento_ventas') }}</button>
+
 
                     @if (Auth::user()->tipo_user === 5 || Auth::user()->tipo_user === 1 && Auth::user()->id_empresa === 75)
                     <a style="width: 30%;" href="operaciones_index">
