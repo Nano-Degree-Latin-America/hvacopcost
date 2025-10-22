@@ -254,7 +254,7 @@
             <div id="div_atras_mant" name="div_atras_mant" style="width: 80%;" class="">
                 <button  type="button"  id="next_h_mant" name="next_h_mant"
                     x-show="step < 2"
-                     onclick="back_begin();"
+                     onclick="back_home();"
                     class="w-full focus:outline-none bg-gray-500 border-2 border-color-inps py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-xl font-roboto"
                 >{{ __('index.inicio') }}</button>
             </div>
@@ -348,5 +348,9 @@ function valida_formulario_coordinacion(){
 
        }
 
+    }
+
+    function back_home(){
+        window.location.href = "/home";
     }
 </script>
