@@ -17449,6 +17449,29 @@ async function horasDisponibles(mano_obra){
     });
 }
 
+async function traer_tecnico_ayudante(val){
+
+
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            type: 'get',
+            url: '/traer_tecnico_ayudante/'+val,
+            success: function (response) {
+                    $('#val_tenicoychalan').val(response); //ppara calcular Total Horas x Ventas
+                    var mano_obra_ventas = $('#mano_obra_ventas').val();
+                    var mano_obra = money_format_to_integer(mano_obra_ventas);
+                    total = parseInt(mano_obra) / parseInt(response);
+                    $('#total_horas_x_operacion').val(Math.ceil(total));
+
+            },
+            error: function (responsetext) {
+                reject(responsetext);
+            }
+        });
+    });
+
+}
+
 async function kmsDisponibles(vehiculo){
      var total = 0;
      return new Promise((resolve, reject) => {
@@ -17690,8 +17713,9 @@ function calculatePorcentManual(value,facturacion){
     return  parseInt(total);
 }
 
-function send_value_personal_coordinacion(val,id){
+async function send_value_personal_coordinacion(val,id){
     $("#"+id).find('option[value="' + val + '"]').prop("selected", "selected");
+    await traer_tecnico_ayudante(val);
     alculate_h_h();
     calculateSpendVentas($('#valor_contrato').val());
 }
