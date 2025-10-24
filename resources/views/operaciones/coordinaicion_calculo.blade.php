@@ -172,7 +172,7 @@
                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             </td>
                             <td class="w-[160px] py-3">
-                                <label class="font-bold text-[#1B17BB]" for="">Idas ajustados</label>
+                                <label class="font-bold text-[#1B17BB]" for="">Días ajustados</label>
                             </td>
                             <td class="px-2 py-2">
                                 <input

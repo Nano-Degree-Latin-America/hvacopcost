@@ -388,13 +388,22 @@ input[type=number]::-webkit-outer-spin-button {
                    <button  type="button"
 
                    style="background-color:#1B17BB;"
-                       x-show="step > 1 && step < 4"
+                       x-show="step > 1 && step < 3"
                        @click="step++"
                        onclick="suma_cantidad_toneladas();"
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                    >{{ __('index.siguiente') }}</button>
 
                 </div>
+
+                <button  type="button"
+
+                   style="background-color:#1B17BB;"
+                       x-show="step == 3"
+                       @click="step++"
+                       onclick="alculate_h_h();"
+                       class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
+                   >{{ __('index.siguiente') }}</button>
 
                 </div>
             </div>
