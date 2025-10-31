@@ -247,7 +247,14 @@ Route::get('set_periodo/{id_sistema}/{id_unidad}', 'OperacionesController@set_pe
 Route::get('traer_tecnico_ayudante/{value}','OperacionesController@traer_tecnico_ayudante');
 Route::get('traer_kms','OperacionesController@traer_kms');
 Route::get('traer_burden','OperacionesController@traer_burden');
-
+Route::post('save_project_coordinacion','OperacionesController@save_project_coordinacion');
+Route::get('project_coordinacion/{id_project}', 'OperacionesController@project_coordinacion');
+Route::get('get_vals_form_coordinacion/{id_project}','OperacionesController@get_vals_form_coordinacion');
+Route::post('save_equipo_coordinacion/{id_project}','OperacionesController@save_equipo_coordinacion');
+Route::post('save_dates_coordinacion_equipos/{id}/{val}/{campo}','OperacionesController@save_dates_coordinacion_equipos');
+Route::get('equipos_coordinacion/{id_project}','OperacionesController@equipos_coordinacion');
+Route::post('manage_units_coordinacion/{id}/{val}','OperacionesController@manage_units_coordinacion');
+Route::get('get_ids_units_calculo_coordinacion/{id_project}','OperacionesController@get_ids_units_calculo_coordinacion');
 
 //lang
 Route::get('locale/{locale}', function($locale){

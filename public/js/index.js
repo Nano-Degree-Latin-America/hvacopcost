@@ -14905,7 +14905,7 @@ var ids = [
 ];
 
 
-/* var countador_table = $('#contador_table').val();
+/* var countador_table = $('#contador   _table').val();
 countador_table = parseInt(countador_table) + 1;
 $('#contador_table').val(countador_table); */
 
@@ -17719,3 +17719,234 @@ async function send_value_personal_coordinacion(val,id){
     alculate_h_h();
     calculateSpendVentas($('#valor_contrato').val());
 }
+
+function save_project_coordinacion(){
+
+var valuesArray = [];
+var token = $("#token").val();
+
+var ids = [
+    'cliente_pro_mantenimiento',
+    'cat_edi_mantenimiento',
+    'ocupacion_semanal_mantenimiento',
+    'tiempo_ingreso',
+    'tiempo_egreso',
+    'name_sitio_mantenimiento',
+    'yrs_life_ed_mantenimiento',
+    'tipo_ambiente_mantenimiento',
+    'distancia_sitio_mantenimiento',
+    'velocidad_promedio_mantenimiento',
+    'valor_contrato',
+    'inflacion',
+    'personal_enviado_mantenimiento',
+];
+
+ids.forEach(function(id) {
+    var value = $('#' + id).val();
+    valuesArray.push(value);
+});
+
+                Swal.fire({
+                    title: 'Guardar?',
+                    text: "",
+                    showDenyButton: true,
+                    showConfirmButton: true,
+                    icon: 'question',
+                    showCancelButton: true,
+                    cancelButtonColor: '#FF6600',
+                    confirmButtonText:`Guardar`,
+                    confirmButtonColor: '#3182ce',
+
+                }).then((result) => {
+
+                    if (result.isDenied) {
+                    return false;
+                    }
+
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            url: '/save_project_coordinacion',
+                            type: 'POST',
+
+                            headers: { 'X-CSRF-TOKEN': token },
+                            data: {
+                                values: valuesArray,
+                            },
+                            success: function(response) {
+                                 Swal.fire({
+                                    title: '¡Exito!',
+                                    icon: 'success',
+                                    text:'Guardado'
+
+                                })
+                                window.location.href = 'project_coordinacion/' + response;
+                            },
+                            error: function(xhr, status, error) {
+                                console.error('Error al enviar los datos:', error);
+                            }
+                        });
+                    }
+
+                });
+
+}
+
+function setValContratoSPV(value){
+    let dollarUSLocale = Intl.NumberFormat('en-US');
+    var num_aux = dollarUSLocale.format(value);
+    $('#facturacion_ventas').val('$'+num_aux);
+}
+
+function save_dates_coordinacion_equipos(id,value,campo){
+    $.ajax({
+        type: 'POST',
+        url: '/save_dates_coordinacion_equipos/'+id+'/'+value+'/'+campo,
+        dataType: 'json',
+        data: {
+            "_token": $("meta[name='csrf-token']").attr("content")
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+/* function show_units_calculo_coordinacion(id,value){
+
+    $.ajax({
+        type: 'POST',
+        url: '/manage_units_coordinacion/'+id+'/'+value,
+        dataType: 'json',
+        data: {
+            "_token": $("meta[name='csrf-token']").attr("content")
+        },
+        success: function (response) {
+
+            $('#tbody_coordinacion_calculo').empty();
+            var tbody_calculo = document.getElementById('tbody_coordinacion_calculo');
+
+for (let index = 0; index < response.length; index++) {
+
+    let rowCount =  index + 1;
+    /// elementos calculo
+
+    var tr_calculo = document.createElement('tr');
+    /////////// elementos estilo calculo
+    tr_calculo.className = 'bg-white hover:bg-blue-50 transition-colors duration-200 border-b border-gray-100';
+
+    // Clase común para inputs
+    const inputClass = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+
+    const selectClass = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+
+
+
+    //  1er td : input text (columna vacía) calculo
+        var td0_calculo = document.createElement('td');
+        td0_calculo.className = 'px-2 py-1';
+        var input0_calculo = document.createElement('input');
+        input0_calculo.type = 'text';
+        input0_calculo.id = 'input0_calculo_' + rowCount;
+        input0_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input0_calculo.value = rowCount;
+        input0_calculo.readOnly = true;
+        td0_calculo.appendChild(input0_calculo);
+        tr_calculo.appendChild(td0_calculo);
+
+    //  2do td : input text (columna vacía) calculo
+        var td1_calculo = document.createElement('td');
+        td1_calculo.className = 'py-1';
+        var input1_calculo = document.createElement('input');
+        input1_calculo.type = 'text';
+        input1_calculo.id = 'sistemainput1_calculo_' + rowCount;
+        input1_calculo.className = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input1_calculo.value = response[index].sistema;
+        input1_calculo.readOnly = true;
+        td1_calculo.appendChild(input1_calculo);
+        tr_calculo.appendChild(td1_calculo);
+
+    //  3er td : input text (columna vacía) calculo
+        var td2_calculo = document.createElement('td');
+        td2_calculo.className = 'px-2 py-1';
+        var input2_calculo = document.createElement('input');
+        input2_calculo.type = 'text';
+        input2_calculo.id = 'cantidadinput2_calculo_' + rowCount;
+        input2_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input2_calculo.value = response[index].cantidad;
+        input2_calculo.readOnly = true;
+        td2_calculo.appendChild(input2_calculo);
+        tr_calculo.appendChild(td2_calculo);
+
+    //  4to td : input text (columna vacía) calculo
+        var td3_calculo = document.createElement('td');
+        td3_calculo.className = 'px-2 py-1 justify-center text-center';
+        var select3 = document.createElement('select');
+        select3.id = 'periodoSelect_' + rowCount;
+        select3.className = selectClass;
+        var option3_1 = document.createElement('option');
+        option3_1.value = '0';
+        option3_1.text = 'Seleccionar';
+        select3.appendChild(option3_1);
+        var option3_2 = document.createElement('option');
+        option3_2.value = 'T';
+        option3_2.text = 'T';
+        select3.appendChild(option3_2);
+        var option3_3 = document.createElement('option');
+        option3_3.value = 'S';
+        option3_3.text = 'S';
+        select3.appendChild(option3_3);
+        var option3_4 = document.createElement('option');
+        option3_4.value = 'A';
+        option3_4.text = 'A';
+        select3.appendChild(option3_4);
+        if(response[index].periodo === null){
+        }else{
+            select3.value = response[index].periodo;
+        }
+        td3_calculo.appendChild(select3);
+        tr_calculo.appendChild(td3_calculo);
+
+        // 5to al 16vo td : 12 inputs text (P1 a P12)
+    for (let i = 0; i < 13; i++) {
+        if(i == 12){
+            var td_calculo = document.createElement('td');
+            td_calculo.className = 'px-2 py-1';
+            var input_calculo = document.createElement('input');
+            var inputTotal = 'input16_calculo_' + rowCount;
+            input_calculo.type = 'text';
+            input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
+            input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-blue-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200 cursor-not-allowed';
+            input_calculo.value = 0;
+            input_calculo.readOnly = true;
+
+        }else{
+            var td_calculo = document.createElement('td');
+            td_calculo.className = 'px-2 py-1';
+            var input_calculo = document.createElement('input');
+            var periodoSelect = 'periodoSelect_' + rowCount;
+            var inputTotal = 'input16_calculo_' + rowCount;
+            var counterAux = 4 + i;
+            input_calculo.type = 'text';
+            input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
+            input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+            input_calculo.value = 0;
+            input_calculo.setAttribute('onclick', 'active_inputs_coordinacion(this.id,"'+ periodoSelect +'","' + rowCount + '")');
+            input_calculo.setAttribute('onchange', 'suma_inputs_calculo(this.id,"'+ periodoSelect +'","' + rowCount + '");suma_horas_hombre('+counterAux+');format_nums_no_$(this.value,this.id)');
+        }
+
+        td_calculo.appendChild(input_calculo);
+        tr_calculo.appendChild(td_calculo);
+    }
+
+        tbody_calculo.appendChild(tr_calculo);
+
+    }
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+} */
+
+

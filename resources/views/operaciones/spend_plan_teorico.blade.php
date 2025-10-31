@@ -181,13 +181,13 @@
 
 <body>
     <div class="h-auto md:h-[80vh] w-full overflow-y-auto overflow-x-hidden bg-gradient-to-br from-gray-50 to-gray-100 p-2 sm:p-4 md:p-6 font-roboto">
-        <div class="flex justify-center w-full mt-2 md:mt-6">
+        <div class="flex justify-center w-full mt-1 md:mt-4">
             <!-- Desktop/Tablet Layout -->
             <div class="flex flex-col lg:flex-row w-full gap-2 lg:gap-x-3 max-w-7xl justify-center main-container">
                 <!-- Table 1 - Spend Plan Ventas -->
                 <div class="bg-white rounded-xl lg:rounded-2xl shadow-xl overflow-hidden border-2 border-[#1B17BB] w-full lg:w-3/6 table-section">
                     <table>
-                        <thead class="bg-gradient-to-r from-[#1B17BB] to-[#2d28d4]">
+                        <thead class="bg-white">
                             <tr>
                                 <th colspan="3" class="px-2 py-2 md:py-3 lg:py-4 font-roboto font-bold text-center text-[#1B17BB] text-base sm:text-lg md:text-xl lg:text-2xl">Spend Plan Ventas</th>
                             </tr>
@@ -348,7 +348,7 @@
                 </div>
 
                 <!-- Section 2 - Info adicional -->
-                <div class="bg-white rounded-xl lg:rounded-2xl overflow-hidden w-full lg:w-1/2 grid place-items-center p-4 info-section">
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl lg:rounded-2xl overflow-hidden w-full lg:w-1/2 grid place-items-center p-4 info-section">
                     <div class="grid w-full gap-y-3 sm:gap-y-4">
                         <div class="w-full flex flex-col sm:flex-row gap-2 sm:gap-0">
                             <div class="w-full sm:w-2/5 place-items-center flex justify-start">
