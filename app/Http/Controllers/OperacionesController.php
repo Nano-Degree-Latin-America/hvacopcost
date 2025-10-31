@@ -4,14 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\ProjectsModel;
+use App\CoordinacionProjectModel;
 use App\UnidadesModel;
 use App\SistemasModel;
 use App\UnidadesTrModel;
 use App\UnidadesCfmModel;
 use App\UnidadesUnidadModel;
 use App\ConfiguracionesMantenimientoModel;
+use App\CategoriaEdificioModel;
+use App\FactorAmbienteModel;
+use App\EquipoCoordinacionModel;
+use App\CoordinacionMantenimientoModel;
 use Illuminate\Support\Facades\Auth;
-
+use App\Services\CoordinacionService;
+use Illuminate\Support\Facades\Redirect;
 
 class OperacionesController extends Controller
 {
@@ -19,6 +26,54 @@ class OperacionesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function save_project_coordinacion(Request $request,CoordinacionService $coordinacionService){
+        $new_project_coordinacion = $coordinacionService->CreateProjectCoordinacion($request);
+        return $new_project_coordinacion->id;
+    }
+
+    public function save_equipo_coordinacion($id_project,CoordinacionService $coordinacionService){
+        $new_equipo_coordinacion = $coordinacionService->CreateEquipoCoordinacion($id_project);
+        return $new_equipo_coordinacion;
+    }
+
+    public function save_dates_coordinacion_equipos($id,$value,$campo,CoordinacionService $coordinacionService){
+        $save_dates_coordinacion_equipo = $coordinacionService->UpdateEquipoCoordinacion($id,$value,$campo);
+        return $save_dates_coordinacion_equipo;
+    }
+
+    public function equipos_coordinacion($id_project){
+        $coordinacionEquipos = EquipoCoordinacionModel::where('id_project','=',$id_project)->get();
+         return response()->json($coordinacionEquipos);
+    }
+
+    public function manage_units_coordinacion($id,$value,CoordinacionService $coordinacionService){
+        $coordinacionEquipos_aux = EquipoCoordinacionModel::where('id','=',$id)->first();
+        $sistema = $this->traer_sistemas_calculo_coordinacion($coordinacionEquipos_aux->id_sistema);
+
+        if($coordinacionEquipos_aux->mantenimiento == 'ashrae'){
+             $periodo = $this->set_periodo($coordinacionEquipos_aux->id_sistema,$coordinacionEquipos_aux->unidad);
+        }else{
+            $periodo = null;
+        }
+
+        $units = $coordinacionService->ManageEquipoCoordinacionCalculo($id,$value,$periodo,$sistema,$coordinacionEquipos_aux->id_project);
+        return response()->json($units);
+    }
+
+    public function get_ids_units_calculo_coordinacion($id_project,CoordinacionService $coordinacionService){
+        $ids_values = $coordinacionService->get_ids_values($id_project);
+        return response()->json($ids_values);
+    }
+
+    public function project_coordinacion($id_project){
+            $project_edit = ProjectsModel::where('id',$id_project)->first();
+            $id_cat_edifico = ProjectsModel::where('id',$id_project)->first()->id_cat_edifico;
+            $cate_edificio = CategoriaEdificioModel::all();
+            $project_edit_coordinacion = CoordinacionProjectModel::where('id_project',$id_project)->first();
+            $factor_ambiente = FactorAmbienteModel::all();
+            return view('operaciones.operaciones_index_edit',compact('id_project','cate_edificio','id_cat_edifico','project_edit','project_edit_coordinacion','factor_ambiente'));
     }
 
     public function index(Request $request)
@@ -29,7 +84,15 @@ class OperacionesController extends Controller
 
     public function traer_sistemas_calculo_coordinacion($id){
         $sistema = SistemasModel::where('id',$id)->first()->name;
-        return response()->json($sistema);
+        return $sistema;
+    }
+
+    public function get_vals_form_coordinacion($id_project){
+        $coordinacion_project = ProjectsModel::where('id_project',$id_project)
+        ->join('coordinacion_projects','projects.id','=','coordinacion_projects.id_project')
+        ->select('projects.id_cat_edifico','coordinacion_projects.*')
+        ->first();
+        return response()->json($coordinacion_project);
     }
 
     public function set_periodo($id_sistema,$unidad){

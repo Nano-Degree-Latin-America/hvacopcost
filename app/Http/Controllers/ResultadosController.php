@@ -70,6 +70,7 @@ class ResultadosController extends Controller
      */
     private function getArrayOnlyEnergy($tipo_mant, $prot_cond, $consumo_ene_anual, $mayor, $inflacion, $inv_ini, $funciones, $tipo_mant_aux = null, $prot_cond_aux = null)
     {
+
         if ($tipo_mant === 'marino' && $prot_cond === 'sin_proteccion') {
             return $funciones->roi_only_energy($consumo_ene_anual, $mayor, $inflacion, $inv_ini, 3);
         }
@@ -86,6 +87,7 @@ class ResultadosController extends Controller
         if ($tipo_mant_aux === null && $prot_cond_aux === null) {
             return array_fill(0, 4, null);
         }
+
         return $funciones->roi_only_energy($consumo_ene_anual, $mayor, $inflacion, $inv_ini, 15);
     }
 
@@ -367,7 +369,7 @@ class ResultadosController extends Controller
 
 
 
-        if($counter_val == 0){
+        /* if($counter_val == 0){
             $array_a = array_fill(0, 4, null);
         } else {
             $array_a = $this->getArrayOnlyEnergy($tipo_mant_1, $prot_cond_1, $consumo_ene_anual_a, $mayor, $inflacion, $inv_ini_1, $funciones);
@@ -384,6 +386,57 @@ class ResultadosController extends Controller
             $array_c = array_fill(0, 4, null);
         } else {
             $array_c = $this->getArrayOnlyEnergy($tipo_mant_3, $prot_cond_3, $consumo_ene_anual_c, $mayor, $inflacion, $inv_ini_3, $funciones, $tipo_mant_2, $prot_cond_2);
+        } */
+       if($counter_val == 0){
+            $array_a = [null,null,null,null];
+        }else{
+            if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'sin_proteccion'){
+                    $array_a = $funciones->roi_only_energy($consumo_ene_anual_a,$mayor,$inflacion,$inv_ini_1,3);
+                }else if($tipo_mant_1 == 'contaminado' && $prot_cond_1 == 'sin_proteccion'){
+                     $array_a = $funciones->roi_only_energy($consumo_ene_anual_a,$mayor,$inflacion,$inv_ini_1,5);
+                }else if($tipo_mant_1 == 'marino' && $prot_cond_1 == 'infiniguard' || $tipo_mant_1 == 'marino' && $prot_cond_1 == 'liquido_coating_basico'){
+                     $array_a = $funciones->roi_only_energy($consumo_ene_anual_a,$mayor,$inflacion,$inv_ini_1,10);
+
+                }else if($tipo_mant_1 == null && $prot_cond_1 == null){
+                    $array_a = [null,null,null,null];
+                }else{
+                     $array_a = $funciones->roi_only_energy($consumo_ene_anual_a,$mayor,$inflacion,$inv_ini_1,15);
+                }
+        }
+
+        if($counter_val == 1){
+            $array_b = [null,null,null,null];
+        }else{
+            if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'sin_proteccion'){
+                    $array_b = $funciones->roi_only_energy($consumo_ene_anual_b,$mayor,$inflacion,$inv_ini_2,3);
+                }else if($tipo_mant_2 == 'contaminado' && $prot_cond_2 == 'sin_proteccion'){
+                    $array_b = $funciones->roi_only_energy($consumo_ene_anual_b,$mayor,$inflacion,$inv_ini_2,5);
+                }else if($tipo_mant_2 == 'marino' && $prot_cond_2 == 'infiniguard' || $tipo_mant_2 == 'marino' && $prot_cond_2 == 'liquido_coating_basico'){
+                    $array_b = $funciones->roi_only_energy($consumo_ene_anual_b,$mayor,$inflacion,$inv_ini_2,10);
+                }else if($tipo_mant_2 == null && $prot_cond_2 == null){
+                    $array_b = [null,null,null,null];
+                }else{
+                    $array_b = $funciones->roi_only_energy($consumo_ene_anual_b,$mayor,$inflacion,$inv_ini_2,15);
+                }
+        }
+
+
+        if($counter_val == 2){
+            $array_c = [null,null,null,null];
+        }else{
+            if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'sin_proteccion'){
+                    $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3,3);
+                }else if($tipo_mant_3 == 'contaminado' && $prot_cond_3 == 'sin_proteccion'){
+                    $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3,5);
+                }else if($tipo_mant_3 == 'marino' && $prot_cond_3 == 'infiniguard' || $tipo_mant_3 == 'marino' && $prot_cond_3 == 'liquido_coating_basico'){
+
+                     $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3,10);
+                }else if($tipo_mant_2 == null && $prot_cond_2 == null){
+                    $array_c = [null,null,null,null];
+                }else{
+                    $array_c = $funciones->roi_only_energy($consumo_ene_anual_c,$mayor,$inflacion,$inv_ini_3,15);
+                }
+
         }
 
 
