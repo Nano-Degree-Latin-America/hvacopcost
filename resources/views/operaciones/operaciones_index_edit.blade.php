@@ -7,9 +7,37 @@
 @section('content')
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<div id="blur" class="blur">
-    @include('main.topbar')
-    @include('modal_video_public')
+<div id="blur" class="">
+   <div class="bg-blue-900 w-full flex justify-center" style="background-color:#1B17BB ;">
+    <div class="w-1/3 flex h-full">
+        <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
+        <h1 style=" font-size: 4.3rem;" class="text-white font-roboto" >3.0</h1>
+    </div>
+    <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
+        {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
+
+
+    </div>
+    <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3 gap-x-3">
+    {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
+    <button class="p-2 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/mis_projectos'"><p>{{ __('index.mis proyectos') }}</p></button>
+
+    <button class="p-2 bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'"><p>{{ __('index.proyecto nuevo') }}</p></button>
+
+    <a class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('cerrar_session') }}"
+            onclick="event.preventDefault();
+                          document.getElementById('logout-form').submit();">
+                <button class="mt-1">
+                    {{ __('index.logout') }}
+                    </button>
+            </a>
+
+            <form id="logout-form" action="{{ route('cerrar_session') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+    </div>
+</div>
+
     <style>
 
 .botonF1{
@@ -270,7 +298,7 @@ input[type=number]::-webkit-outer-spin-button {
                             <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
                             <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>
                             <?php  $sistemas=$sistemas->sistemas(); ?>
-                            <form  novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
+                            <form action="{{route('resultados')}}" novalidate method="POST" name="formulario" id="formulario" files="true" enctype="multipart/form-data">
                                 @csrf
                                 <input type="text" name="idioma" id="idioma" value="{{$idm}}" class="hidden">
                                 <input type="number" class="hidden" id="type_p" name="type_p">
@@ -282,7 +310,7 @@ input[type=number]::-webkit-outer-spin-button {
                                     @include('mantenimiento.img_mantenimiento')
                                 </div>
                             </div>
-                             @include('operaciones.operaciones_form_project')
+                             @include('operaciones.operaciones_form_project_edit')
                         </div>
                         {{-- /////////////////////////////////////////////////////////////////////////////////////////////////// --}}
                     </div>
@@ -292,13 +320,13 @@ input[type=number]::-webkit-outer-spin-button {
                                 @include('operaciones.spend_plan_teorico')
                             </div>
 
-                            {{-- <div style="height: 70%;"  x-show.transition.in="step === 3">
+                            <div style="height: 70%;"  x-show.transition.in="step === 3">
                                 @include('operaciones.coordinaicion_equipos')
-                            </div> --}}
+                            </div>
 
-                            {{-- <div style="height: 70%;"  x-show.transition.in="step === 4">
+                            <div style="height: 70%;"  x-show.transition.in="step === 4">
                                 @include('operaciones.coordinaicion_calculo')
-                            </div> --}}
+                            </div>
 
                             <div style="height: 70%;"  x-show.transition.in="step === 5">
                                 @include('operaciones.spend_plan_ajustado')
@@ -389,11 +417,10 @@ input[type=number]::-webkit-outer-spin-button {
 
                    style="background-color:#1B17BB;"
                        x-show="step > 1 && step < 3"
-                       {{-- @click="step++" --}}
-                       {{-- onclick="suma_cantidad_toneladas();" --}}
-                       onclick="save_project_coordinacion();"
+                       @click="step++"
+                       onclick="suma_cantidad_toneladas();"
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
-                   >Guardar</button>
+                   >{{ __('index.siguiente') }}</button>
 
                 </div>
 
@@ -1127,6 +1154,8 @@ input[type=number]::-webkit-outer-spin-button {
 </style>
 <script>
     $(document).ready(function () {
+        setValContratoSPV('{{ $project_edit_coordinacion->valor_contrato }}');
+        calculateSpendVentas($('#valor_contrato').val());
         set_ser_to_sers('SEER');
         mostrar_type_p('{{$check_types_pn}}','{{$check_types_pr}}');
         set_options_factor_mantenimiento();
@@ -1171,7 +1200,7 @@ window.onclick = function(event) {
 
 function app() {
 			return {
-				step: 1,
+				step: 3,
 				passwordStrengthText: '',
 				togglePassword: false,
 				gender: 'Male',

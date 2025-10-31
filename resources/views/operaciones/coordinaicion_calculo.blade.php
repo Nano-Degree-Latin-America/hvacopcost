@@ -7,9 +7,15 @@
                 <div class="w-1/5 flex gap-x-2">
                     <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Personal</h2>
                     <select name="personal_enviado_coordinacion"  id="personal_enviado_coordinacion" onchange="send_value_personal_coordinacion(this.value,'personal_enviado_mantenimiento');alculate_h_h();" class="w-2/4 border-2 border-color-inps  rounded-md p-1 my-1 font-roboto">
-                                    <option value="">-{{ __('index.seleccionar') }}-</option>
-                                    <option value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
+                                    @if ($project_edit_coordinacion->personal == 'tecnico')
+                                    <option selected value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
                                     <option value="tecnico_ayudante">{{ __('mantenimiento.tecnico_ayudante') }}</option>
+                                    @endif
+
+                                    @if ($project_edit_coordinacion->personal == 'tecnico_ayudante')
+                                        <option  value="tecnico">{{ __('mantenimiento.tecnico') }}</option>
+                                        <option selected value="tecnico_ayudante">{{ __('mantenimiento.tecnico_ayudante') }}</option>
+                                    @endif
                                 </select>
                 </div>
 
@@ -24,7 +30,7 @@
                 </div>
             </div>
             <table class="w-full">
-                <thead class="bg-gradient-to-r from-[#1B17BB] to-[#2d28d4]">
+                <thead class="bg-white">
                     <tr>
                         <th style="width:100px;" class="px-4 py-4 font-roboto font-bold text-center text-white">
 
@@ -50,7 +56,7 @@
 
                 <tbody id="tbody_coordinacion_calculo" name="tbody_coordinacion_calculo" class="divide-y divide-gray-200">
                     <!-- Fila de ejemplo -->
-                    <tr id="tr_exampe_calculo" name="tr_exampe_calculo" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                    {{-- <tr id="tr_exampe_calculo" name="tr_exampe_calculo" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
                         <td class="px-2 py-3">
                             <input
                                 disabled
@@ -153,7 +159,7 @@
                                 type="number"
                                 class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
-                    </tr>
+                    </tr> --}}
                 </tbody>
             </table>
 
@@ -478,7 +484,232 @@
 </style>
 
 <script>
-function coordinacionCalculo(rowCount) {
+$(function () {
+    //despleegar unidadees_calculo
+    showCoordinacionCalculoUnits('{{ $id_project }}')
+ });
+
+ // Configuración CSRF global (una vez al inicio de tu app, antes de este código)
+$.ajaxSetup({
+  headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') }
+});
+
+const CLASES = {
+  input: 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200',
+  inputSmall: 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200',
+  inputReadonly: 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-blue-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200 cursor-not-allowed',
+  select: 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200',
+  tr: 'bg-white hover:bg-blue-50 transition-colors duration-200 border-b border-gray-100',
+  td: 'px-2 py-1'
+};
+
+const PERIODOS = [
+  { value: '0', text: 'Seleccionar' },
+  { value: 'T', text: 'T' },
+  { value: 'S', text: 'S' },
+  { value: 'A', text: 'A' }
+];
+
+/**
+ * Crea un input text con clases y atributos comunes
+ */
+function crearInput(id, valor, readonly = false, claseExtra = CLASES.inputSmall) {
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.id = id;
+  input.className = claseExtra;
+  input.value = valor;
+  input.readOnly = readonly;
+  return input;
+}
+
+/**
+ * Crea un select de periodos con opción preseleccionada
+ */
+function crearSelectPeriodo(rowId, periodoActual) {
+  const select = document.createElement('select');
+  select.id = `periodoSelect_${rowId}`;
+  select.className = CLASES.select;
+
+  PERIODOS.forEach(({ value, text }) => {
+    const opt = document.createElement('option');
+    opt.value = value;
+    opt.textContent = text;
+    if (periodoActual && value === periodoActual) opt.selected = true;
+    select.appendChild(opt);
+  });
+
+  return select;
+}
+
+/**
+ * Crea las 12 celdas de visitas (P1-P12) más la columna total
+ */
+function crearColumnasVisitas(rowId) {
+  const fragment = document.createDocumentFragment();
+
+  for (let i = 0; i < 13; i++) {
+    const td = document.createElement('td');
+    td.className = CLASES.td;
+
+    const esTotal = i === 12;
+    const inputId = `input${4 + i}_calculo_${rowId}`;
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.id = inputId;
+    input.value = '0';
+
+    if (esTotal) {
+      input.className = CLASES.inputReadonly;
+      input.readOnly = true;
+    } else {
+      input.className = CLASES.inputSmall;
+      // Guardamos metadata en dataset para event delegation
+      input.dataset.rowId = rowId;
+      input.dataset.colIndex = 4 + i;
+      
+    }
+
+    td.appendChild(input);
+    fragment.appendChild(td);
+  }
+
+  return fragment;
+}
+
+/**
+ * Renderiza una fila completa con todos sus datos
+ */
+function renderizarFila(item, index) {
+  const rowId = index + 1;
+  const tr = document.createElement('tr');
+  tr.className = CLASES.tr;
+  tr.dataset.rowId = rowId;
+
+  // Columna 1: Contador
+  const td0 = document.createElement('td');
+  td0.className = CLASES.td;
+  td0.appendChild(crearInput(`input0_calculo_${rowId}`, rowId, true));
+  tr.appendChild(td0);
+
+  // Columna 2: Sistema
+  const td1 = document.createElement('td');
+  td1.className = 'py-1';
+  td1.appendChild(crearInput(`sistemainput1_calculo_${rowId}`, item.sistema || '', true, CLASES.input));
+  tr.appendChild(td1);
+
+  // Columna 3: Cantidad
+  const td2 = document.createElement('td');
+  td2.className = CLASES.td;
+  td2.appendChild(crearInput(`cantidadinput2_calculo_${rowId}`, item.cantidad || '0', true));
+  tr.appendChild(td2);
+
+  // Columna 4: Select de periodo
+  const td3 = document.createElement('td');
+  td3.className = `${CLASES.td} justify-center text-center`;
+  td3.appendChild(crearSelectPeriodo(rowId, item.periodo));
+  tr.appendChild(td3);
+
+  // Columnas 5-17: Visitas P1-P12 + Total
+  tr.appendChild(crearColumnasVisitas(rowId));
+
+  return tr;
+}
+
+/**
+ * Función principal: carga datos y renderiza la tabla de cálculo de coordinación
+ */
+function show_units_calculo_coordinacion(id, value) {
+  $('#tr_exampe_calculo').hide();
+
+  $.ajax({
+    url: `/manage_units_coordinacion/${id}/${value}`,
+    method: 'POST',
+    dataType: 'json'
+  })
+    .done(function (response) {
+      const $tbody = $('#tbody_coordinacion_calculo');
+      $tbody.empty();
+
+      if (!Array.isArray(response) || response.length === 0) {
+        console.warn('No hay datos para mostrar en la tabla de cálculo.');
+        return;
+      }
+
+      // Renderizar en lote con DocumentFragment para un solo reflow
+      const fragment = document.createDocumentFragment();
+      response.forEach((item, idx) => {
+        fragment.appendChild(renderizarFila(item, idx));
+      });
+
+      $tbody[0].appendChild(fragment);
+
+      // Event delegation para inputs de visitas
+      inicializarEventosTabla();
+    })
+    .fail(function (xhr, status, error) {
+      console.error('Error al cargar unidades de coordinación:', error, xhr.responseText);
+    });
+}
+
+/**
+ * Event delegation: maneja clicks y cambios en inputs de visitas
+ */
+function inicializarEventosTabla() {
+  const $tbody = $('#tbody_coordinacion_calculo');
+
+  // Click en inputs de visitas (activa)
+  $tbody.off('click', 'input[data-row-id]').on('click', 'input[data-row-id]', function () {
+    const rowId = this.dataset.rowId;
+    const periodoSelectId = `periodoSelect_${rowId}`;
+    if (typeof active_inputs_coordinacion === 'function') {
+      active_inputs_coordinacion(this.id, periodoSelectId, rowId);
+    }
+  });
+
+  // Change en inputs de visitas (suma y formatea)
+  $tbody.off('change', 'input[data-row-id]').on('change', 'input[data-row-id]', function () {
+    const rowId = this.dataset.rowId;
+    const colIndex = parseInt(this.dataset.colIndex, 10);
+    const periodoSelectId = `periodoSelect_${rowId}`;
+
+    if (typeof suma_inputs_calculo === 'function') {
+      suma_inputs_calculo(this.id, periodoSelectId, rowId);
+    }
+    if (typeof suma_horas_hombre === 'function') {
+      suma_horas_hombre(colIndex);
+    }
+    if (typeof format_nums_no_$ === 'function') {
+      format_nums_no_$(this.value, this.id);
+    }
+  });
+
+  // Opcional: change en selects de periodo si necesitas lógica adicional
+  $tbody.off('change', 'select[id^="periodoSelect_"]').on('change', 'select[id^="periodoSelect_"]', function () {
+    const rowId = this.id.split('_').pop();
+    // Aquí puedes llamar funciones de recalculo si es necesario
+  });
+}
+
+function showCoordinacionCalculoUnits(id_project){
+    $.ajax({
+        type: 'get',
+        url: '/get_ids_units_calculo_coordinacion/'+id_project,
+        dataType: 'json',
+        success: function (response) {
+            response.forEach(element => {
+                show_units_calculo_coordinacion(element.id,element.cantidad)
+            });
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+
+/* function coordinacionCalculo(rowCount) {
     var tr_example_calculo = document.getElementById('tr_exampe_calculo');
     tr_example_calculo.style.display = 'none';
 
@@ -587,7 +818,7 @@ function coordinacionCalculo(rowCount) {
     }
 
     tbody_calculo.appendChild(tr_calculo);
-}
+} */
 
 function delete_calculo_equiops(rowCount,tr) {
 

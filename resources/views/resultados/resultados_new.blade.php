@@ -1100,34 +1100,41 @@ if($counter == 2){
 
                 $costo_a=$conf_val->costo($personas_a,$id_project);
                 $costo_b=$conf_val->costo($personas_b,$id_project);
+
+                    $costo_anual_base = $personas*$costo_base;
+                    $costo_anual_a = $personas_a*$costo_a;
+                    $costo_anual_b = $personas_b*$costo_b;
+
                 //VALIDAR SI SON DIREFENTES LOS TRES VALORES  personas personas_a personas_b , no se repiten
 
-                if($personas != $personas_a && $personas != $personas_b && $personas_a != $personas_b){
+                /* if($personas === $personas_a && $personas_a === $personas_b){
 
-                $mayor = max($costo_base, $costo_a, $costo_b);
 
-                $costo_anual_base = $mayor - $costo_base;
-
-                //valida  si existe solucion
-                 $check_solution_a=$conf_val->check_solution($id_project,2);
-                if($check_solution_a !== null){
-                    $costo_anual_a = $mayor - $costo_a;
-                }else{
-                    $costo_anual_a=0;
-                }
-                //valida  si existe solucion
-                $check_solution_b=$conf_val->check_solution($id_project,3);
-                if($check_solution_b !== null){
-                      $costo_anual_b = $mayor - $costo_b;
-                }else{
-                    $costo_anual_b=0;
-                }
-
-                }else{
                     $costo_anual_base = 0;
                     $costo_anual_a = 0;
                     $costo_anual_b = 0;
-                }
+
+
+                }else{
+                    $mayor = max($costo_base, $costo_a, $costo_b);
+
+                    $costo_anual_base = $mayor - $costo_base;
+
+                    //valida  si existe solucion
+                    $check_solution_a=$conf_val->check_solution($id_project,2);
+                    if($check_solution_a !== null){
+                        $costo_anual_a = $mayor - $costo_a;
+                    }else{
+                        $costo_anual_a=0;
+                    }
+                    //valida  si existe solucion
+                    $check_solution_b=$conf_val->check_solution($id_project,3);
+                    if($check_solution_b !== null){
+                        $costo_anual_b = $mayor - $costo_b;
+                    }else{
+                        $costo_anual_b=0;
+                    }
+                } */
 
             @endphp
 
@@ -1171,7 +1178,7 @@ if($counter == 2){
                 <?php  $inv_ini_2=0 ?>
                 @endif
                 <div class="w-1/3 grid justify-items-center place-items-center">
-                    {{-- <div class="flex w-full justify-center mt-3">
+                   {{--  <div class="flex w-full justify-center mt-3">
                         @if ($personas_a > 0)
                         <p style="color:#ea0000;" class="cant_style">{{$personas_a}}</p>
                         @endif
