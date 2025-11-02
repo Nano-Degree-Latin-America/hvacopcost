@@ -1097,17 +1097,16 @@ if($counter == 2){
                 $personas_b=$conf_val->personas($id_project,$conf_val_b);
 
                 $costo_base=$conf_val->costo($personas,$id_project);
-
                 $costo_a=$conf_val->costo($personas_a,$id_project);
                 $costo_b=$conf_val->costo($personas_b,$id_project);
 
-                    $costo_anual_base = $personas*$costo_base;
-                    $costo_anual_a = $personas_a*$costo_a;
-                    $costo_anual_b = $personas_b*$costo_b;
+                /* $costo_anual_base = $personas*$costo_base;
+                $costo_anual_a = $personas_a*$costo_a;
+                $costo_anual_b = $personas_b*$costo_b; */
 
                 //VALIDAR SI SON DIREFENTES LOS TRES VALORES  personas personas_a personas_b , no se repiten
 
-                /* if($personas === $personas_a && $personas_a === $personas_b){
+                if($personas === $personas_a && $personas_a === $personas_b){
 
 
                     $costo_anual_base = 0;
@@ -1134,7 +1133,7 @@ if($counter == 2){
                     }else{
                         $costo_anual_b=0;
                     }
-                } */
+                }
 
             @endphp
 

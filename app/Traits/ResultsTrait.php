@@ -890,10 +890,6 @@ trait  ResultsTrait{
             if($prod_lab <= 0){
                 return 0;
             }
-
-
-
-
     }
 
     public function costo($personas,$id_project){

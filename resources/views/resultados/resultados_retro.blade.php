@@ -1048,12 +1048,12 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                 $costo_base=$conf_val->costo($personas,$id_project);
                 $costo_a=$conf_val->costo($personas_a,$id_project);
                 $costo_b=$conf_val->costo($personas_b,$id_project);
-                    $costo_anual_base = $personas*$costo_base;
+                    /* $costo_anual_base = $personas*$costo_base;
                     $costo_anual_a = $personas_a*$costo_a;
-                    $costo_anual_b = $personas_b*$costo_b;
+                    $costo_anual_b = $personas_b*$costo_b; */
                 //VALIDAR SI SON DIREFENTES LOS TRES VALORES  personas personas_a personas_b , no se repiten
 
-                /* if($personas != $personas_a && $personas != $personas_b && $personas_a != $personas_b){
+                if($personas != $personas_a && $personas != $personas_b && $personas_a != $personas_b){
 
                 $mayor = max($costo_base, $costo_a, $costo_b);
 
@@ -1078,7 +1078,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                     $costo_anual_base = 0;
                     $costo_anual_a = 0;
                     $costo_anual_b = 0;
-                } */
+                }
 
             @endphp
 
