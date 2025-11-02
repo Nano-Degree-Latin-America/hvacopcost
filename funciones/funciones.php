@@ -399,7 +399,7 @@ public function roi($dif_cost,$inflacion,$inv_ini,$cant){
                 if($i === 5){
                     if($cant >=  5){
                     $suma_5_años = $año_5 +intval($array_only_energy[1]);
-                    //$porcent_5_aux = $suma_5_años + intval($array_only_energy[1]);
+
                     $porcent_5 = $suma_5_años / $inv_ini * 100;
 
                     array_push($array_sums_res,intval($porcent_5));
@@ -413,7 +413,7 @@ public function roi($dif_cost,$inflacion,$inv_ini,$cant){
                 if($i === 10){
                  if($cant >=  10){
                      $suma_10_años = $año_10 +intval($array_only_energy[2]);
-                     //$porcent_10_aux = $suma_10_años + intval($array_only_energy[2]);
+
                      $porcent_10 = $suma_10_años / $inv_ini * 100;
                     array_push($array_sums_res,intval($porcent_10));
 
