@@ -1114,6 +1114,68 @@ if($counter == 2){
                     $costo_anual_b = 0;
 
 
+                }else if($personas === $personas_a && $personas != $personas_b && $personas_a != $personas_b){
+                    //$mayor = max($costo_base, $costo_a, $costo_b);
+
+                    //no hay mayor toma cualquieera de  loss dos que  son iguales
+                    $costo_anual_base = $personas - $costo_base;
+
+                    //valida  si existe solucion
+                    $check_solution_a=$conf_val->check_solution($id_project,2);
+                    if($check_solution_a !== null){
+                        $costo_anual_a = $personas - $costo_a;
+                    }else{
+                        $costo_anual_a=0;
+                    }
+                    //valida  si existe solucion
+                    $check_solution_b=$conf_val->check_solution($id_project,3);
+                    if($check_solution_b !== null){
+                        $costo_anual_b = $personas - $costo_b;
+                    }else{
+                        $costo_anual_b=0;
+                    }
+
+                }else if($personas_a === $personas_b && $personas != $personas_a && $personas != $personas_b){
+                    //$mayor = max($costo_base, $costo_a, $costo_b);
+
+                    //no hay mayor toma cualquieera de  loss dos que  son iguales
+                    $costo_anual_base = $personas_a - $costo_base;
+
+                    //valida  si existe solucion
+                    $check_solution_a=$conf_val->check_solution($id_project,2);
+                    if($check_solution_a !== null){
+                        $costo_anual_a = $personas_a - $costo_a;
+                    }else{
+                        $costo_anual_a=0;
+                    }
+                    //valida  si existe solucion
+                    $check_solution_b=$conf_val->check_solution($id_project,3);
+                    if($check_solution_b !== null){
+                        $costo_anual_b = $personas_a - $costo_b;
+                    }else{
+                        $costo_anual_b=0;
+                    }
+
+                }else if($personas === $personas_b && $personas_a != $personas && $personas != $personas_b){
+                     //$mayor = max($costo_base, $costo_a, $costo_b);
+
+                    //no hay mayor toma cualquieera de  loss dos que  son iguales
+                    $costo_anual_base = $personas - $costo_base;
+
+                    //valida  si existe solucion
+                    $check_solution_a=$conf_val->check_solution($id_project,2);
+                    if($check_solution_a !== null){
+                        $costo_anual_a = $personas - $costo_a;
+                    }else{
+                        $costo_anual_a=0;
+                    }
+                    //valida  si existe solucion
+                    $check_solution_b=$conf_val->check_solution($id_project,3);
+                    if($check_solution_b !== null){
+                        $costo_anual_b = $personas - $costo_b;
+                    }else{
+                        $costo_anual_b=0;
+                    }
                 }else{
                     $mayor = max($costo_base, $costo_a, $costo_b);
 
