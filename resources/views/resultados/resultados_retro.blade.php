@@ -306,9 +306,9 @@
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-items-center w-full">
 
-                                    <div class="flex w-full justify-center gap-x-2">
+                                    {{-- <div class="flex w-full justify-center gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_1)}}</p><b class="unit_style">Kwh</b>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="flex w-full justify-center">
                                         <div id="chart_cons_ene_hvac_ar_base" name="chart_cons_ene_hvac_ar_base" class="js_charts_style">
@@ -330,9 +330,9 @@
                         <div class="grid w-full mx-3">
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-center text-center">
-                                    <div class="flex w-full justify-center  gap-x-2">
+                                    {{-- <div class="flex w-full justify-center  gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_2)}}</p><b class="unit_style">Kwh</b>
-                                    </div>
+                                    </div> --}}
                                     <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style" ></div>
 
                           </div>
@@ -350,9 +350,9 @@
                             <div class="flex justify-center w-full p-2">
                                 <div class="grid justify-center text-center">
 
-                                   <div class="flex w-full justify-center  gap-x-2">
+                                   {{-- <div class="flex w-full justify-center  gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_3)}}</p><b class="unit_style">Kwh</b>
-                                    </div>
+                                    </div> --}}
                                      <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
                                </div>
                             </div>
@@ -1053,31 +1053,95 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                     $costo_anual_b = $personas_b*$costo_b; */
                 //VALIDAR SI SON DIREFENTES LOS TRES VALORES  personas personas_a personas_b , no se repiten
 
-                if($personas != $personas_a && $personas != $personas_b && $personas_a != $personas_b){
+                if($personas === $personas_a && $personas_a === $personas_b){
 
-                $mayor = max($costo_base, $costo_a, $costo_b);
 
-                $costo_anual_base = $mayor - $costo_base;
-
-                    //valida  si existe solucion
-                 $check_solution_a=$conf_val->check_solution($id_project,2);
-                if($check_solution_a !== null){
-                    $costo_anual_a = $mayor - $costo_a;
-                }else{
-                    $costo_anual_a=0;
-                }
-                    //valida  si existe solucion
-                $check_solution_b=$conf_val->check_solution($id_project,3);
-                if($check_solution_b !== null){
-                      $costo_anual_b = $mayor - $costo_b;
-                }else{
-                    $costo_anual_b=0;
-                }
-
-                }else{
                     $costo_anual_base = 0;
                     $costo_anual_a = 0;
                     $costo_anual_b = 0;
+
+
+                }else if($personas === $personas_a && $personas != $personas_b && $personas_a != $personas_b){
+                    //$mayor = max($costo_base, $costo_a, $costo_b);
+
+                    //no hay mayor toma cualquieera de  loss dos que  son iguales
+                    $costo_anual_base = $costo_base - $costo_base;
+
+                    //valida  si existe solucion
+                    $check_solution_a=$conf_val->check_solution($id_project,2);
+                    if($check_solution_a !== null){
+                        $costo_anual_a = $costo_base - $costo_a;
+                    }else{
+                        $costo_anual_a=0;
+                    }
+                    //valida  si existe solucion
+                    $check_solution_b=$conf_val->check_solution($id_project,3);
+                    if($check_solution_b !== null){
+                        $costo_anual_b = $costo_base - $costo_b;
+                    }else{
+                        $costo_anual_b=0;
+                    }
+
+                }else if($personas_a === $personas_b && $personas != $personas_a && $personas != $personas_b){
+                    //$mayor = max($costo_base, $costo_a, $costo_b);
+
+                    //no hay mayor toma cualquieera de  loss dos que  son iguales
+                    $costo_anual_base = $costo_a - $costo_base;
+
+                    //valida  si existe solucion
+                    $check_solution_a=$conf_val->check_solution($id_project,2);
+                    if($check_solution_a !== null){
+                        $costo_anual_a = $costo_a - $costo_a;
+                    }else{
+                        $costo_anual_a=0;
+                    }
+                    //valida  si existe solucion
+                    $check_solution_b=$conf_val->check_solution($id_project,3);
+                    if($check_solution_b !== null){
+                        $costo_anual_b = $costo_a - $costo_b;
+                    }else{
+                        $costo_anual_b=0;
+                    }
+
+                }else if($personas === $personas_b && $personas_a != $personas && $personas != $personas_b){
+                     //$mayor = max($costo_base, $costo_a, $costo_b);
+
+                    //no hay mayor toma cualquieera de  loss dos que  son iguales
+                    $costo_anual_base = $costo_base - $costo_base;
+
+                    //valida  si existe solucion
+                    $check_solution_a=$conf_val->check_solution($id_project,2);
+                    if($check_solution_a !== null){
+                        $costo_anual_a = $costo_base - $costo_a;
+                    }else{
+                        $costo_anual_a=0;
+                    }
+                    //valida  si existe solucion
+                    $check_solution_b=$conf_val->check_solution($id_project,3);
+                    if($check_solution_b !== null){
+                        $costo_anual_b = $costo_base - $costo_b;
+                    }else{
+                        $costo_anual_b=0;
+                    }
+                }else{
+                    $mayor = max($costo_base, $costo_a, $costo_b);
+
+                    $costo_anual_base = $mayor - $costo_base;
+
+                    //valida  si existe solucion
+                    $check_solution_a=$conf_val->check_solution($id_project,2);
+                    if($check_solution_a !== null){
+                        $costo_anual_a = $mayor - $costo_a;
+                    }else{
+                        $costo_anual_a=0;
+                    }
+                    //valida  si existe solucion
+                    $check_solution_b=$conf_val->check_solution($id_project,3);
+                    if($check_solution_b !== null){
+                        $costo_anual_b = $mayor - $costo_b;
+                    }else{
+                        $costo_anual_b=0;
+                    }
                 }
 
             @endphp

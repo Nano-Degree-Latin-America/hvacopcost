@@ -208,8 +208,8 @@ class CoordinacionService
             }
 
             // Mantener el periodo consistente para todos los registros del grupo
-            CoordinacionMantenimientoModel::where('id_coordinacion', $id)
-                ->update(['periodo' => $periodo]);
+            /* CoordinacionMantenimientoModel::where('id_coordinacion', $id)
+                ->update(['periodo' => $periodo]); */
         });
 
         $units = EquipoCoordinacionModel::where('id_project', $id_project)
@@ -226,6 +226,37 @@ class CoordinacionService
        ->select('id','cantidad')
        ->get();
        return $units;
+    }
+
+    public function setValueVisita($value,$visita,$id_calculo){
+
+        $total_horas = 0;
+        $update_visita = CoordinacionMantenimientoModel::find($id_calculo);
+        $update_visita->$visita = intVal($value);
+        for ($i=1; $i <= 12; $i++) {
+                $prop = 'visita_' . $i;
+                $total_horas = $total_horas + intval($update_visita->$prop);
+            }
+        $update_visita->total_horas = $total_horas;
+        $update_visita->update();
+        if($update_visita->update()){
+             return $update_visita;
+        }
+    }
+
+    public function setPeriodoCoordinacion($value,$id_calculo){
+        $update_visita = CoordinacionMantenimientoModel::find($id_calculo);
+        $update_visita->periodo = $value;
+        $update_visita->update();
+
+        return true;
+
+    }
+
+    public function inputsCoordinacionToCero($id_calculo,$visita){
+        $update_visita = CoordinacionMantenimientoModel::find($id_calculo);
+        $update_visita->$visita = intVal(0);
+        $update_visita->update();
     }
 
     public function precio_to_integer($precio){
