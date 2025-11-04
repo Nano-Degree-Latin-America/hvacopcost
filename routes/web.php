@@ -255,6 +255,10 @@ Route::post('save_dates_coordinacion_equipos/{id}/{val}/{campo}','OperacionesCon
 Route::get('equipos_coordinacion/{id_project}','OperacionesController@equipos_coordinacion');
 Route::post('manage_units_coordinacion/{id}/{val}','OperacionesController@manage_units_coordinacion');
 Route::get('get_ids_units_calculo_coordinacion/{id_project}','OperacionesController@get_ids_units_calculo_coordinacion');
+Route::post('set_value_visita/{value}/{visita}/{id_calculo}','OperacionesController@set_value_visita');
+Route::post('save_periodo_coordinacion/{value}/{id_calculo}','OperacionesController@save_periodo_coordinacion');
+Route::post('inputs_coordinacion_to_cero/{id_coordinacion}/{visita}','OperacionesController@inputs_coordinacion_to_cero');
+
 
 //lang
 Route::get('locale/{locale}', function($locale){
