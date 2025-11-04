@@ -16834,8 +16834,53 @@ function calcular_speendplan_base_update(id_project){
  }
 
  function active_inputs_coordinacion(id,periodo,counter){
+
+
       var periodoVal = $('#'+periodo).val();
       switch (periodoVal) {
+        case 'T':
+            activarInputsTrimestrales(id,counter)
+        break;
+
+        case 'S':
+            activarInputsSemestrales(id,counter)
+        break;
+
+        case 'A':
+            activarInputsAnuales(id,counter)
+        break;
+
+        default:
+            break;
+      }
+
+ }
+
+ function inputs_coordinacion_to_cero(id,periodoSelect,counter,id_coordinacion,id_visita){
+
+
+     var periodoVal = $('#'+periodoSelect).val();
+
+      switch (periodoVal) {
+        case 'T':
+            cleanInputsTrimestrales(id_coordinacion,id_visita)
+        break;
+
+        case 'S':
+            cleanInputsSemestrales(id_coordinacion,id_visita)
+        break;
+
+        case 'A':
+            cleanInputsAnuales(id_coordinacion,id_visita)
+        break;
+
+        default:
+            break;
+      }
+ }
+
+ function active_inputs_coordinacion_periodo(id,periodo,counter){
+      switch (periodo) {
         case 'T':
             activarInputsTrimestrales(id,counter)
         break;
@@ -16892,6 +16937,54 @@ function calcular_speendplan_base_update(id_project){
 
 }
 
+function cleanInputsTrimestrales(id_coordinacion,visita) {
+
+    // Mapeo de grupos trimestrales
+    const grupos = [
+        ['visita_1', 'visita_4', 'visita_7', 'visita_10'],
+        ['visita_2', 'visita_5', 'visita_8', 'visita_11'],
+        ['visita_3', 'visita_6', 'visita_9', 'visita_12'],
+        // Puedes agregar más grupos si hay más periodos
+    ];
+
+    // Encuentra el grupo al que pertenece el input activado
+    let grupoActivo = null;
+    grupos.forEach(grupo => {
+        if (grupo.includes(visita)) {
+            grupoActivo = grupo;
+        }
+    });
+
+    // Determinar y devolver las visitas que NO pertenecen al grupo activo,
+    // manteniendo el orden por grupos definido en 'grupos'.
+    const visitasADeshabilitar = [];
+
+    grupos.forEach(grupo => {
+        // Si el grupo actual es el activo lo saltamos
+        const esActivo = grupoActivo && grupo.length === grupoActivo.length && grupo.every(v => grupoActivo.includes(v));
+        if (esActivo) return;
+        // Añadir las visitas de este grupo en orden
+        grupo.forEach(visitaNombre => {
+                visitasADeshabilitar.push(visitaNombre);
+        });
+    });
+
+
+    visitasADeshabilitar.forEach(visita_aux => {
+            $.ajax({
+                    type: 'post',
+                    url: '/inputs_coordinacion_to_cero/'+id_coordinacion+'/'+visita_aux,
+                    data: {
+                        "_token": $("meta[name='csrf-token']").attr("content")
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error al enviar los datos:', error);
+                    }
+                });
+        });
+
+}
+
  function activarInputsSemestrales(inputId,counter) {
     // Mapeo de grupos semestrales
     const grupos = [
@@ -16929,6 +17022,57 @@ function calcular_speendplan_base_update(id_project){
             }
         }
     }
+}
+
+function cleanInputsSemestrales(id_coordinacion,visita) {
+
+    // Mapeo de grupos trimestrales
+    const grupos = [
+        ['visita_1', 'visita_7'],
+        ['visita_2', 'visita_8'],
+        ['visita_3', 'visita_9'],
+        ['visita_4', 'visita_10'],
+        ['visita_5', 'visita_11'],
+        ['visita_6', 'visita_12'],
+        // Puedes agregar más grupos si hay más periodos
+    ];
+
+    // Encuentra el grupo al que pertenece el input activado
+    let grupoActivo = null;
+    grupos.forEach(grupo => {
+        if (grupo.includes(visita)) {
+            grupoActivo = grupo;
+        }
+    });
+
+    // Determinar y devolver las visitas que NO pertenecen al grupo activo,
+    // manteniendo el orden por grupos definido en 'grupos'.
+    const visitasADeshabilitar = [];
+
+    grupos.forEach(grupo => {
+        // Si el grupo actual es el activo lo saltamos
+        const esActivo = grupoActivo && grupo.length === grupoActivo.length && grupo.every(v => grupoActivo.includes(v));
+        if (esActivo) return;
+        // Añadir las visitas de este grupo en orden
+        grupo.forEach(visitaNombre => {
+                visitasADeshabilitar.push(visitaNombre);
+        });
+    });
+
+
+    visitasADeshabilitar.forEach(visita_aux => {
+            $.ajax({
+                    type: 'post',
+                    url: '/inputs_coordinacion_to_cero/'+id_coordinacion+'/'+visita_aux,
+                    data: {
+                        "_token": $("meta[name='csrf-token']").attr("content")
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error al enviar los datos:', error);
+                    }
+                });
+        });
+
 }
 
 function activarInputsAnuales(inputId,counter) {
@@ -16976,6 +17120,63 @@ function activarInputsAnuales(inputId,counter) {
     }
 }
 
+function cleanInputsAnuales(id_coordinacion,visita) {
+
+    // Mapeo de grupos trimestrales
+    const grupos = [
+        ['visita_1'],
+        ['visita_2'],
+        ['visita_3'],
+        ['visita_4'],
+        ['visita_5'],
+        ['visita_6'],
+        ['visita_7'],
+        ['visita_8'],
+        ['visita_9'],
+        ['visita_10'],
+        ['visita_11'],
+        ['visita_12'],
+        // Puedes agregar más grupos si hay más periodos
+    ];
+
+    // Encuentra el grupo al que pertenece el input activado
+    let grupoActivo = null;
+    grupos.forEach(grupo => {
+        if (grupo.includes(visita)) {
+            grupoActivo = grupo;
+        }
+    });
+
+    // Determinar y devolver las visitas que NO pertenecen al grupo activo,
+    // manteniendo el orden por grupos definido en 'grupos'.
+    const visitasADeshabilitar = [];
+
+    grupos.forEach(grupo => {
+        // Si el grupo actual es el activo lo saltamos
+        const esActivo = grupoActivo && grupo.length === grupoActivo.length && grupo.every(v => grupoActivo.includes(v));
+        if (esActivo) return;
+        // Añadir las visitas de este grupo en orden
+        grupo.forEach(visitaNombre => {
+                visitasADeshabilitar.push(visitaNombre);
+        });
+    });
+
+
+    visitasADeshabilitar.forEach(visita_aux => {
+            $.ajax({
+                    type: 'post',
+                    url: '/inputs_coordinacion_to_cero/'+id_coordinacion+'/'+visita_aux,
+                    data: {
+                        "_token": $("meta[name='csrf-token']").attr("content")
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error al enviar los datos:', error);
+                    }
+                });
+        });
+
+}
+
 function suma_inputs_calculo(id,periodo_id,counter){
 
     var periodoVal = $('#'+periodo_id).val();
@@ -16998,7 +17199,6 @@ function suma_inputs_calculo(id,periodo_id,counter){
 }
 
 function sumarTrimestrales(id,counter){
-    console.log('si',id,counter);
 
     const grupos = [
         ['input4_calculo_'+counter, 'input7_calculo_'+counter, 'input10_calculo_'+counter, 'input13_calculo_'+counter],
@@ -17812,7 +18012,23 @@ function save_dates_coordinacion_equipos(id,value,campo){
     });
 }
 
-/* function show_units_calculo_coordinacion(id,value){
+function showCoordinacionCalculoUnits(id_project){
+    $.ajax({
+        type: 'get',
+        url: '/get_ids_units_calculo_coordinacion/'+id_project,
+        dataType: 'json',
+        success: function (response) {
+            response.forEach(element => {
+                show_units_calculo_coordinacion(element.id,element.cantidad)
+            });
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
+}
+
+function show_units_calculo_coordinacion(id,value){
 
     $.ajax({
         type: 'POST',
@@ -17904,6 +18120,7 @@ for (let index = 0; index < response.length; index++) {
         }else{
             select3.value = response[index].periodo;
         }
+        select3.setAttribute('onchange', 'savePeriodoCoordinacion(this.value,"'+response[index].id+'");');
         td3_calculo.appendChild(select3);
         tr_calculo.appendChild(td3_calculo);
 
@@ -17917,9 +18134,8 @@ for (let index = 0; index < response.length; index++) {
             input_calculo.type = 'text';
             input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
             input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-blue-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200 cursor-not-allowed';
-            input_calculo.value = 0;
+            input_calculo.value = response[index].total_horas;
             input_calculo.readOnly = true;
-
         }else{
             var td_calculo = document.createElement('td');
             td_calculo.className = 'px-2 py-1';
@@ -17929,10 +18145,13 @@ for (let index = 0; index < response.length; index++) {
             var counterAux = 4 + i;
             input_calculo.type = 'text';
             input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
+            id_visita_aux = counterAux - 3;
+            id_visita = 'visita_' + id_visita_aux;
             input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
-            input_calculo.value = 0;
-            input_calculo.setAttribute('onclick', 'active_inputs_coordinacion(this.id,"'+ periodoSelect +'","' + rowCount + '")');
-            input_calculo.setAttribute('onchange', 'suma_inputs_calculo(this.id,"'+ periodoSelect +'","' + rowCount + '");suma_horas_hombre('+counterAux+');format_nums_no_$(this.value,this.id)');
+            input_calculo.value = response[index][id_visita];
+            input_calculo.setAttribute('onclick', 'active_inputs_coordinacion(this.id,"'+ periodoSelect +'","' + rowCount + '");inputs_coordinacion_to_cero(this.id,"'+ periodoSelect +'","' + rowCount + '","'+response[index].id+'","'+id_visita+'")');
+            input_calculo.setAttribute('onchange', 'suma_inputs_calculo(this.id,"'+ periodoSelect +'","' + rowCount + '");suma_horas_hombre('+counterAux+');format_nums_no_$(this.value,this.id);setValueVisita(this.value,"'+id_visita+'","'+response[index].id+'");');
+
         }
 
         td_calculo.appendChild(input_calculo);
@@ -17940,6 +18159,21 @@ for (let index = 0; index < response.length; index++) {
     }
 
         tbody_calculo.appendChild(tr_calculo);
+       for (let i = 0; i < 13; i++) {
+        if(i == 12){
+        }else{
+            var periodoSelect = 'periodoSelect_' + rowCount;
+            var counterAux = 4 + i;
+            var id = 'input' + (4 + i) + '_calculo_' + rowCount;
+            id_visita_aux = counterAux - 3;
+            id_visita = 'visita_' + id_visita_aux;
+            if(response[index][id_visita] > 0){
+                active_inputs_coordinacion(id,periodoSelect,rowCount);
+            }
+
+
+        }
+    }
 
     }
         },
@@ -17947,6 +18181,30 @@ for (let index = 0; index < response.length; index++) {
             console.log(responsetext);
         }
     });
-} */
+}
+
+function setValueVisita(value,visita,id_calculo){
+    $.ajax({
+        url: '/set_value_visita/'+value+'/'+visita+'/'+id_calculo,
+        method: 'post',
+        dataType: 'json'
+        })
+        .fail(function (xhr, status, err) {
+            console.error('Error al enviar los datos:', err);
+        });
+}
+
+function savePeriodoCoordinacion(value,id_calculo){
+    $.ajax({
+        url: '/save_periodo_coordinacion/'+value+'/'+id_calculo,
+        method: 'post',
+        dataType: 'json'
+        })
+        .fail(function (xhr, status, err) {
+            console.error('Error al enviar los datos:', err);
+        });
+}
+
+
 
 

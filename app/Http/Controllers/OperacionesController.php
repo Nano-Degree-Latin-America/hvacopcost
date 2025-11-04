@@ -43,6 +43,23 @@ class OperacionesController extends Controller
         return $save_dates_coordinacion_equipo;
     }
 
+    public function set_value_visita($value,$visita,$id_calculo,CoordinacionService $coordinacionService){
+        $set_value_visita = $coordinacionService->setValueVisita($value,$visita,$id_calculo);
+        return $set_value_visita;
+    }
+
+    public function save_periodo_coordinacion($value,$id_calculo,CoordinacionService $coordinacionService){
+        $set_periodo_coordinacion = $coordinacionService->setPeriodoCoordinacion($value,$id_calculo);
+        return $set_periodo_coordinacion;
+    }
+
+    public function inputs_coordinacion_to_cero($id_calculo,$visita,CoordinacionService $coordinacionService){
+        $inputs_coordinacion_to_cero = $coordinacionService->inputsCoordinacionToCero($id_calculo,$visita);
+        return $inputs_coordinacion_to_cero;
+    }
+
+
+
     public function equipos_coordinacion($id_project){
         $coordinacionEquipos = EquipoCoordinacionModel::where('id_project','=',$id_project)->get();
          return response()->json($coordinacionEquipos);
