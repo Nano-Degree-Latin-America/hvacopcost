@@ -218,16 +218,16 @@ $(function () {
 
   const accesos = [
     { value: '0', text: 'Seleccionar' },
-    { value: 'facil', text: 'Fácil' },
-    { value: 'medio', text: 'Medio' },
-    { value: 'dificil', text: 'Dificil' }
+    { value: 'Fácil', text: 'Fácil' },
+    { value: 'Medio', text: 'Medio' },
+    { value: 'Dificil', text: 'Dificil' }
   ];
 
   const estados = [
     { value: '0', text: 'Seleccionar' },
-    { value: 'bueno', text: 'Bueno' },
-    { value: 'deficiente', text: 'Deficiente' },
-    { value: 'malo', text: 'Malo' }
+    { value: 'Bueno', text: 'Bueno' },
+    { value: 'Deficiente', text: 'Deficiente' },
+    { value: 'Malo', text: 'Malo' }
   ];
 
   const optTags = list => list.map(o => `<option value="${o.value}">${o.text}</option>`).join('');

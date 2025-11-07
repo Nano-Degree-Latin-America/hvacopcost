@@ -1,68 +1,73 @@
 <?php
-
 namespace App\Services;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\ProjectsModel;
-use App\CoordinacionProjectModel;
-use App\EquipoCoordinacionModel;
-use App\ModelosEmpresaModel;
-use App\MarcasEmpresaModel;
-use Illuminate\Support\Facades\DB;
+use App\Contracts\PeriodoCalculatorInterface;
+use App\Repositories\EquipoCoordinacionRepository;
+use App\Repositories\CoordinacionMantenimientoRepository;
 use App\CoordinacionMantenimientoModel;
+use App\ProjectsModel;
+use App\EquipoCoordinacionModel;
+use App\CoordinacionProjectModel;
+use App\MarcasEmpresaModel;
+use App\ModelosEmpresaModel;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class CoordinacionService
 {
+    protected $equipos;
+    protected $mants;
+    protected $periodos;
 
-    public function CreateProjectCoordinacion(Request $request): ProjectsModel {
-
-            $new_project = new ProjectsModel;
-            $new_project->type_p=4;
-            $new_project->id_cat_edifico=$request->values[1];
-            $new_project->status=1;
-            $new_project->id_empresa=Auth::user()->id_empresa;
-            $new_project->id_user=Auth::user()->id;
-            $new_project->save();
-
-        if($new_project->save()){
-
-            $coordinacion = $this->SaveProjectCoordinacion($request,$new_project->id);
-
-            return $new_project;
-        }
+    public function __construct(
+         EquipoCoordinacionRepository $equipos,
+         CoordinacionMantenimientoRepository $mants,
+         PeriodoCalculatorInterface $periodos
+    ) {
+        $this->equipos = $equipos;
+        $this->mants = $mants;
+        $this->periodos = $periodos;
     }
 
-    public function SaveProjectCoordinacion(Request $request,$id_project){
-         $new_project_coordinacion = new CoordinacionProjectModel;
-         $new_project_coordinacion->id_project = $id_project;
-         $new_project_coordinacion->cliente_prospecto = $request->values[0];
-         $new_project_coordinacion->ocupacion_semanal = $request->values[2];
-         $new_project_coordinacion->tiempo_ingreso = $request->values[3];
-         $new_project_coordinacion->tiempo_egreso = $request->values[4];
-         $new_project_coordinacion->nombre_propiedad = $request->values[5];
-         $new_project_coordinacion->yrs_edificio = $request->values[6];
-         $new_project_coordinacion->medio_ambiente = $request->values[7];
-         $new_project_coordinacion_aux = explode('kms',$request->values[8]);
-         $new_project_coordinacion->distancia_sitio=$new_project_coordinacion_aux[0];
-         $new_project_coordinacion->velocidad=$request->values[9];
-         $new_project_coordinacion->valor_contrato= $this->precio_to_integer($request->values[10]);
-         $new_project_coordinacion_aux_porcent = explode('%',$request->values[11]);
-         $new_project_coordinacion->escalacion=$new_project_coordinacion_aux_porcent[0];
-         $new_project_coordinacion->personal=$request->values[12];
-         $new_project_coordinacion->save();
-         if($new_project_coordinacion->save()){
-            return $new_project_coordinacion;
-         }
+    public function createProjectCoordinacion(Request $request): ProjectsModel
+    {
+        return DB::transaction(function () use ($request) {
+            $p = new ProjectsModel();
+            $p->type_p = 4;
+            $p->id_cat_edifico = $request->values[1];
+            $p->status = 1;
+            $p->id_empresa = Auth::user()->id_empresa;
+            $p->id_user = Auth::user()->id;
+            $p->save();
+
+            $c = new CoordinacionProjectModel();
+            $c->id_project = $p->id;
+            $c->cliente_prospecto = $request->values[0];
+            $c->ocupacion_semanal = $request->values[2];
+            $c->tiempo_ingreso = $request->values[3];
+            $c->tiempo_egreso = $request->values[4];
+            $c->nombre_propiedad = $request->values[5];
+            $c->yrs_edificio = $request->values[6];
+            $c->medio_ambiente = $request->values[7];
+            $c->distancia_sitio = explode('kms', $request->values[8])[0] ?? null;
+            $c->velocidad = $request->values[9];
+            $c->valor_contrato = $this->precioToInteger($request->values[10]);
+            $c->escalacion = explode('%', $request->values[11])[0] ?? null;
+            $c->personal = $request->values[12];
+            $c->save();
+
+            return $p;
+        });
     }
 
-    public function CreateEquipoCoordinacion($id_project){
-       $project_info = CoordinacionProjectModel::where('id_project','=',$id_project)->first();
+    public function createEquipoCoordinacion(int $idProject)
+    {
+        $project_info = CoordinacionProjectModel::where('id_project','=',$idProject)->first();
        $ocupacion_semanal = $project_info->ocupacion_semanal;
 
        $new_equipo_coordinacion = new EquipoCoordinacionModel;
-       $new_equipo_coordinacion->id_project = $id_project;
+       $new_equipo_coordinacion->id_project = $idProject;
        $new_equipo_coordinacion->id_sistema = null;
        $new_equipo_coordinacion->unidad = null;
        $new_equipo_coordinacion->id_marca = null;
@@ -81,144 +86,99 @@ class CoordinacionService
        }
     }
 
-    public function UpdateEquipoCoordinacion($id,$value,$campo){
-        $update_equipo_coordinacion = EquipoCoordinacionModel::find($id);
-        switch ($campo) {
-            case 'id_sistema':
-                $update_equipo_coordinacion->id_sistema = $value;
-            break;
-
-            case 'unidad':
-                $update_equipo_coordinacion->unidad = $value;
-            break;
-
-            case 'id_marca':
-                $update_equipo_coordinacion->id_marca = $value;
-                $marca = MarcasEmpresaModel::where('id','=',$update_equipo_coordinacion->id_marca)->first();
-                if($marca->marca === 'Genérico'){
-                     $modelo = ModelosEmpresaModel::where('id_marca','=',$marca->id)->first();
-                     $update_equipo_coordinacion->id_modelo = $modelo->id;
-                }
-
-            break;
-
-            case 'id_modelo':
-                $update_equipo_coordinacion->id_modelo = $value;
-            break;
-
-            case 'capacidad':
-                $update_equipo_coordinacion->capacidad = $value;
-            break;
-
-            case 'cantidad':
-                $update_equipo_coordinacion->cantidad = $value;
-            break;
-
-            case 'acceso_equipo':
-                $update_equipo_coordinacion->acceso_equipo = $value;
-            break;
-
-            case 'estado':
-                $update_equipo_coordinacion->estado = $value;
-            break;
-
-            case 'mantenimiento':
-                $update_equipo_coordinacion->mantenimiento = $value;
-            break;
-
-            default:
-                # code...
-                break;
-        }
-        $update_equipo_coordinacion->update();
-        $this->calcularCantidadTotal($id);
-
-    }
-
-    public function calcularCantidadTotal($id){
-        $coordinacionEquipos_aux = EquipoCoordinacionModel::where('id','=',$id)->first();
-        $capacidad = $coordinacionEquipos_aux->capacidad;
-        $cantidad = $coordinacionEquipos_aux->cantidad;
-        $total =  intval($capacidad)*intval($cantidad);
-        $coordinacionEquipos = EquipoCoordinacionModel::find($id);
-        $coordinacionEquipos->cantidad_total = $total;
-        $coordinacionEquipos->update();
-    }
-
-    public function ManageEquipoCoordinacionCalculo($id, $value, $periodo, $sistema, $id_project)
+    public function updateEquipoCoordinacion(int $id, $value, string $campo): bool
     {
+        $ok = $this->equipos->updateField($id, $campo, $value);
 
-        $value = max(0, (int) $value);
+        if ($ok && $campo === 'id_marca') {
+            $marca = MarcasEmpresaModel::find($value);
+            if ($marca->marca === 'Genérico') {
+                $modelo = ModelosEmpresaModel::where('id_marca', $marca->id)->first();
+                if ($modelo) $this->equipos->updateField($id, 'id_modelo', $modelo->id);
+            }
+        }
 
-        DB::transaction(function () use ($id, $value, $periodo, $sistema) {
-            // Obtener todos los registros actuales ordenados por id asc (estables para decidir borrado)
-            $actuales = CoordinacionMantenimientoModel::where('id_coordinacion', $id)
-                ->orderBy('id', 'asc')
-                ->get();
+        if ($ok && in_array($campo, ['capacidad', 'cantidad'], true)) {
+            $this->equipos->updateCantidadTotal($id);
+        }
 
+        return $ok;
+    }
+
+    public function manageEquipoCoordinacionCalculo(
+        int $equipoId,
+        int $value,
+        ?string $periodo,
+        string $sistema,
+        int $projectId
+    ) {
+        $value = max(0, $value);
+
+        DB::transaction(function () use ($equipoId, $value, $periodo, $sistema) {
+            $actuales = $this->mants->getByEquipo($equipoId);
             $count = $actuales->count();
-
+            $data_array = [];
             if ($count < $value) {
-                // Crear los faltantes en bloque
-                $faltantes = $value - $count;
+                $faltan = $value - $count;
                 $rows = [];
                 $now = now();
-
-                for ($i = 0; $i < $faltantes; $i++) {
+                for ($i = 0; $i < $faltan; $i++) {
                     $rows[] = [
-                        'id_coordinacion' => $id,
+                        'id_coordinacion' => $equipoId,
                         'sistema'         => $sistema,
                         'cantidad'        => 1,
                         'periodo'         => $periodo,
-                        'visita_1'        => 0,
-                        'visita_2'        => 0,
-                        'visita_3'        => 0,
-                        'visita_4'        => 0,
-                        'visita_5'        => 0,
-                        'visita_6'        => 0,
-                        'visita_7'        => 0,
-                        'visita_8'        => 0,
-                        'visita_9'        => 0,
-                        'visita_10'       => 0,
-                        'visita_11'       => 0,
-                        'visita_12'       => 0,
-                        'total_horas'     => 0,
-                        'id_empresa'      => Auth::user()->id_empresa,
-                        'created_at'      => $now,
-                        'updated_at'      => $now,
+                        'visita_1' => 0, 'visita_2' => 0, 'visita_3' => 0, 'visita_4' => 0,
+                        'visita_5' => 0, 'visita_6' => 0, 'visita_7' => 0, 'visita_8' => 0,
+                        'visita_9' => 0, 'visita_10' => 0, 'visita_11' => 0, 'visita_12' => 0,
+                        'total_horas' => 0,
+                        'id_empresa'  => Auth::user()->id_empresa,
+                        'created_at'  => $now,
+                        'updated_at'  => $now,
                     ];
                 }
-
-                if (!empty($rows)) {
-                    CoordinacionMantenimientoModel::insert($rows);
-                }
+                if ($rows) $this->mants->insertBulk($rows);
             } elseif ($count > $value) {
-                // Eliminar los más recientes para quedar en $value
-                $aEliminar = $count - $value;
-
-                // Tomar los últimos por id (más recientes) y eliminarlos
-                $ids = $actuales->sortByDesc('id')
-                    ->take($aEliminar)
-                    ->pluck('id')
-                    ->all();
-
-                if (!empty($ids)) {
-                    CoordinacionMantenimientoModel::whereIn('id', $ids)->delete();
-                }
+                $sobran = $count - $value;
+                $ids = $actuales->sortByDesc('id')->take($sobran)->pluck('id')->all();
+                if ($ids) $this->mants->deleteByIds($ids);
             }
-
-            // Mantener el periodo consistente para todos los registros del grupo
-            /* CoordinacionMantenimientoModel::where('id_coordinacion', $id)
-                ->update(['periodo' => $periodo]); */
         });
 
-        $units = EquipoCoordinacionModel::where('id_project', $id_project)
-                ->join('coordinacion_mantenimiento','id_coordinacion','=','coordinacion_equipos.id')
-                ->select('coordinacion_mantenimiento.*')
-                ->orderBy('id_coordinacion', 'asc')
-                ->get();
+        $data = EquipoCoordinacionModel::where('id_project', $projectId)
+            ->join('coordinacion_mantenimiento', 'id_coordinacion', '=', 'coordinacion_equipos.id')
+            ->select('coordinacion_mantenimiento.*')
+            ->orderBy('id_coordinacion', 'asc')
+            ->get();
 
-        return $units;
+        $data_return = [];
+        foreach ($data as $item) {
+            $clon = clone $item;
+            // Para cada visita_1..visita_12
+            for ($i = 1; $i <= 12; $i++) {
+                $visita_prop = 'visita_' . $i;
+                if (isset($clon->$visita_prop)) {
+                    $clon->$visita_prop = $this->mants->noFormulaValue($item->id, $item->$visita_prop);
+                }
+            }
+            // Para total_horas
+            if (isset($clon->total_horas)) {
+                $clon->total_horas = $this->mants->noFormulaValue($item->id, $item->total_horas);
+            }
+            $data_return[] = $clon;
+        }
+        return $data_return;
+    }
+
+    public function setValueVisita(int $value, string $visita, int $idCalculo)
+    {
+        return $this->mants->updateVisitaYTotal($idCalculo, $visita, $value);
+    }
+
+    public function inputsCoordinacionToCero($id_calculo,$visita){
+        $update_visita = CoordinacionMantenimientoModel::find($id_calculo);
+        $update_visita->$visita = intVal(0);
+        $update_visita->update();
     }
 
     public function get_ids_values($id_project){
@@ -228,20 +188,10 @@ class CoordinacionService
        return $units;
     }
 
-    public function setValueVisita($value,$visita,$id_calculo){
-
-        $total_horas = 0;
-        $update_visita = CoordinacionMantenimientoModel::find($id_calculo);
-        $update_visita->$visita = intVal($value);
-        for ($i=1; $i <= 12; $i++) {
-                $prop = 'visita_' . $i;
-                $total_horas = $total_horas + intval($update_visita->$prop);
-            }
-        $update_visita->total_horas = $total_horas;
-        $update_visita->update();
-        if($update_visita->update()){
-             return $update_visita;
-        }
+    public function setValuesCoordinacion($value,$aux,$id_calculo){
+         $update_visita = CoordinacionProjectModel::find($id_calculo);
+         $update_visita->$aux = $value;
+         $update_visita->update();
     }
 
     public function setPeriodoCoordinacion($value,$id_calculo){
@@ -253,35 +203,9 @@ class CoordinacionService
 
     }
 
-    public function inputsCoordinacionToCero($id_calculo,$visita){
-        $update_visita = CoordinacionMantenimientoModel::find($id_calculo);
-        $update_visita->$visita = intVal(0);
-        $update_visita->update();
+    private function precioToInteger(string $precio): int
+    {
+        $precio = str_replace(['$', ','], '', $precio);
+        return (int)$precio;
     }
-
-    public function precio_to_integer($precio){
-                    $aux = explode("$",   $precio);
-
-                    if(count($aux) == 2){
-                        $precio = $aux[1];
-
-
-                        $aux_comillas= explode(",", $precio);
-
-                        if(count($aux_comillas) == 1){
-                            $precio_entero = $precio;
-                        }else if(count($aux_comillas)==2){
-                            $precio_entero = $aux_comillas[0].$aux_comillas[1];
-                        }else if(count($aux_comillas)==3){
-                            $precio_entero = $aux_comillas[0].$aux_comillas[1].$aux_comillas[2];
-                        }else if(count($aux_comillas)==4){
-                            $precio_entero = $aux_comillas[0].$aux_comillas[1].$aux_comillas[2].$aux_comillas[3];
-                        }
-
-                    }else if(count($aux)==1){
-                        $precio_entero =  $precio;
-                    }
-                    return $precio_entero;
-                }
-
 }

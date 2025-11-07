@@ -1,7 +1,4 @@
 
-
-// var sc = require('state-cities-db');
-
 $(document).ready(function () {
 
 
@@ -17993,9 +17990,21 @@ ids.forEach(function(id) {
 }
 
 function setValContratoSPV(value){
-    let dollarUSLocale = Intl.NumberFormat('en-US');
-    var num_aux = dollarUSLocale.format(value);
-    $('#facturacion_ventas').val('$'+num_aux);
+    const myArray = value.split('$');
+    if((myArray.length)>1){
+        let dollarUSLocale = Intl.NumberFormat('en-US');
+        var num_aux = dollarUSLocale.format(value);
+        $('#facturacion_ventas').val('$'+myArray[1]);
+        $('#facturacion_ventas_ajustado').val('$'+myArray[1]);
+        $('#facturacion_ventas_spa').val('$'+myArray[1]);
+    }else{
+        let dollarUSLocale = Intl.NumberFormat('en-US');
+        var num_aux = dollarUSLocale.format(value);
+        $('#facturacion_ventas').val('$'+num_aux);
+        $('#facturacion_ventas_ajustado').val('$'+num_aux);
+        $('#facturacion_ventas_spa').val('$'+num_aux);
+    }
+
 }
 
 function save_dates_coordinacion_equipos(id,value,campo){
@@ -18018,6 +18027,8 @@ function showCoordinacionCalculoUnits(id_project){
         url: '/get_ids_units_calculo_coordinacion/'+id_project,
         dataType: 'json',
         success: function (response) {
+            console.log(response);
+
             response.forEach(element => {
                 show_units_calculo_coordinacion(element.id,element.cantidad)
             });
@@ -18028,11 +18039,11 @@ function showCoordinacionCalculoUnits(id_project){
     });
 }
 
-function show_units_calculo_coordinacion(id,value){
+function show_units_calculo_coordinacion(id,cantidad){
 
     $.ajax({
         type: 'POST',
-        url: '/manage_units_coordinacion/'+id+'/'+value,
+        url: '/manage_units_coordinacion/'+id+'/'+cantidad,
         dataType: 'json',
         data: {
             "_token": $("meta[name='csrf-token']").attr("content")
@@ -18147,8 +18158,14 @@ for (let index = 0; index < response.length; index++) {
             input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
             id_visita_aux = counterAux - 3;
             id_visita = 'visita_' + id_visita_aux;
+            var value = response[index][id_visita];
+            /* if(response[index][id_visita] != 0){
+                var value = noFomulaValue(response[index].id,response[index][id_visita]);
+            }else{
+                var value = 0;
+            } */
             input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
-            input_calculo.value = response[index][id_visita];
+            input_calculo.value = value;
             input_calculo.setAttribute('onclick', 'active_inputs_coordinacion(this.id,"'+ periodoSelect +'","' + rowCount + '");inputs_coordinacion_to_cero(this.id,"'+ periodoSelect +'","' + rowCount + '","'+response[index].id+'","'+id_visita+'")');
             input_calculo.setAttribute('onchange', 'suma_inputs_calculo(this.id,"'+ periodoSelect +'","' + rowCount + '");suma_horas_hombre('+counterAux+');format_nums_no_$(this.value,this.id);setValueVisita(this.value,"'+id_visita+'","'+response[index].id+'");');
 
@@ -18184,14 +18201,21 @@ for (let index = 0; index < response.length; index++) {
 }
 
 function setValueVisita(value,visita,id_calculo){
-    $.ajax({
+        $.ajax({
+        type: 'post',
         url: '/set_value_visita/'+value+'/'+visita+'/'+id_calculo,
-        method: 'post',
-        dataType: 'json'
-        })
-        .fail(function (xhr, status, err) {
-            console.error('Error al enviar los datos:', err);
-        });
+        data: {
+            "_token": $("meta[name='csrf-token']").attr("content")
+        },
+        dataType: 'json',
+        success: function (response) {
+            console.log(response);
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
 }
 
 function savePeriodoCoordinacion(value,id_calculo){
@@ -18204,6 +18228,29 @@ function savePeriodoCoordinacion(value,id_calculo){
             console.error('Error al enviar los datos:', err);
         });
 }
+
+function setValuesCoordinacion(value,id_calculo,aux){
+    $.ajax({
+        url: '/set_values_coordinacion/'+value+"/"+aux+"/"+id_calculo,
+        method: 'post',
+        dataType: 'json'
+        })
+        .fail(function (xhr, status, err) {
+            console.error('Error al enviar los datos:', err);
+        });
+}
+
+function noFomulaValue(id, val) {
+    return $.ajax({
+        type: 'get',
+        url: '/no_formula_value/' + id + '/' + val
+    }).then(function(response){
+        return parseInt(response);
+    });
+}
+
+
+
 
 
 

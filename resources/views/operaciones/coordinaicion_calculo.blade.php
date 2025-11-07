@@ -21,12 +21,12 @@
 
                 <div class="w-1/3 flex gap-x-2">
                     <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Horas Efectivas Mantenimiento en Sitio (Hrs/día)</h2>
-                    <input value="0" id="horas_efectivas_mantenimiento" name="horas_efectivas_mantenimiento" type="text" onchange="no_cero(this.value,this.id);alculate_h_h();" value="0" class="w-1/6 font-bold border-2 border-gray-300 rounded-lg px-4 py-2 text-center bg-blue-200">
+                    <input onchange="setValuesCoordinacion(this.value,'{{ $project_edit_coordinacion->id }}','hrs_mantenimiento_sitio');" value="{{ $project_edit_coordinacion->hrs_mantenimiento_sitio }}" id="horas_efectivas_mantenimiento" name="horas_efectivas_mantenimiento" type="text" onchange="no_cero(this.value,this.id);alculate_h_h();" value="0" class="w-1/6 font-bold border-2 border-gray-300 rounded-lg px-4 py-2 text-center bg-blue-200">
                 </div>
 
                 <div class="w-1/3 flex gap-x-2">
                     <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Porcentaje Mano Obra Emergencia</h2>
-                    <input value="0%" id="porcent_mano_obra" name="porcent_mano_obra" type="text" onchange="change_to_porcent_mantenimiento(this.value,this.id);alculate_h_h();" class="w-1/6 font-bold border-2 border-gray-300 rounded-lg px-4 py-2 text-center bg-blue-200">
+                    <input value="{{ $project_edit_coordinacion->porcent_mano_obra }}" id="porcent_mano_obra" name="porcent_mano_obra" type="text" onchange="change_to_porcent_mantenimiento(this.value,this.id);setValuesCoordinacion(this.value,'{{ $project_edit_coordinacion->id }}','porcent_mano_obra');alculate_h_h();" class="w-1/6 font-bold border-2 border-gray-300 rounded-lg px-4 py-2 text-center bg-blue-200">
                 </div>
             </div>
             <table class="w-full">
@@ -486,7 +486,8 @@
 <script>
 $(function () {
     //despleegar unidadees_calculo
-    showCoordinacionCalculoUnits('{{ $id_project }}')
+    showCoordinacionCalculoUnits('{{ $id_project }}');
+    alculate_h_h();
  });
 
 
