@@ -184,7 +184,7 @@
                 <!-- Table 1 -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-[#1B17BB]">
                     <table>
-                        <thead class="bg-gradient-to-r from-[#1B17BB] to-[#2d28d4]">
+                        <thead class="bg-white">
                             <tr>
                                 <th colspan="3" class="px-2 py-1 md:py-4 font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-2xl">Spend Plan Ventas</th>
                             </tr>
@@ -347,7 +347,7 @@
                 <!-- Table 2 -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-[#1B17BB]">
                      <table>
-                        <thead class="bg-gradient-to-r from-[#1B17BB] to-[#2d28d4]">
+                        <thead class="bg-white">
                             <tr>
                                 <th colspan="3" class="px-2 py-1 md:py-4 font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-2xl">Spend Plan Ajustado</th>
                             </tr>
@@ -510,7 +510,7 @@
                 <!-- Table 3 -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-[#1B17BB]">
                      <table>
-                        <thead class="bg-gradient-to-r from-[#1B17BB] to-[#2d28d4]">
+                        <thead class="bg-white">
                             <tr>
                                 <th colspan="3" class="px-2 py-1 md:py-4 font-roboto font-bold text-center text-[#1B17BB] text-lg md:text-2xl">Spend Plan Manual</th>
                             </tr>

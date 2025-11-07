@@ -98,4 +98,29 @@ class CoordinacionMantenimientoRepository
         $val = (($value)+($value*$medio_ambiente_value)+($value*$estado_unidad_value)+($value*$horas_diarias_value))*$tipo_acceso_value*$yrs_life_value;
         return number_format($val, 2);
     }
+
+    public function noFormulaValue($id,$value){
+        $coordinacion_equipos = CoordinacionMantenimientoModel::where('coordinacion_mantenimiento.id', $id)
+        ->join('coordinacion_equipos', 'coordinacion_equipos.id', '=', 'coordinacion_mantenimiento.id_coordinacion')
+        ->select('coordinacion_equipos.*')
+        ->first();
+
+        $coordinacion_project = CoordinacionMantenimientoModel::where('coordinacion_mantenimiento.id', $id)
+        ->join('coordinacion_equipos', 'coordinacion_equipos.id', '=', 'coordinacion_mantenimiento.id_coordinacion')
+        ->join('coordinacion_projects', 'coordinacion_projects.id_project', '=', 'coordinacion_equipos.id_project')
+        ->select('coordinacion_projects.*')
+        ->first();
+
+        $medio_ambiente_value = $this->factorAmbiente->getFactorAmbiente($coordinacion_project->medio_ambiente);
+        $estado_unidad_value = $this->estadoUnidad->factorEstadoUnidad($coordinacion_equipos->estado);
+        $horas_diarias_value = $this->horasDiarias->getFactorHorasDiariasCoordinacion($coordinacion_equipos->horario);
+        $tipo_acceso_value = $this->tipo_acceso->getFactorTipoAcceso($coordinacion_equipos->acceso_equipo);
+        $yrs_life_value = $this->yrs_life->getFactorYrsLifeCoordinacion($coordinacion_equipos->yrs_life);
+
+       $denominator = (1 + $medio_ambiente_value + $estado_unidad_value + $horas_diarias_value) * $tipo_acceso_value * $yrs_life_value;
+        if ($denominator == 0) return null; // evitar división por cero
+        $val = $value / $denominator;
+        return number_format($val);
+    }
+
 }

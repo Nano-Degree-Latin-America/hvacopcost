@@ -259,6 +259,8 @@ Route::post('set_value_visita/{value}/{visita}/{id_calculo}','OperacionesControl
 Route::post('save_periodo_coordinacion/{value}/{id_calculo}','OperacionesController@save_periodo_coordinacion');
 Route::post('inputs_coordinacion_to_cero/{id_coordinacion}/{visita}','OperacionesController@inputs_coordinacion_to_cero');
 Route::post('set_values_coordinacion/{value}/{aux}/{id_calculo}','OperacionesController@set_values_coordinacion');
+Route::get('no_formula_value/{id}/{value}','OperacionesController@no_formula_value');
+Route::get('show_units_to_charge/{id}/{value}','OperacionesController@show_units_to_charge');
 
 
 //lang

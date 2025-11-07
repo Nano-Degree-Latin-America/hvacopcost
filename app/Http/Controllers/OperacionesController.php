@@ -10,6 +10,7 @@ use App\Repositories\ProjectRepository;
 use App\Repositories\CategoriaEdificioRepository;
 use App\Repositories\CoordinacionProjectRepository;
 use App\Repositories\FactorAmbienteRepository;
+use App\Repositories\CoordinacionMantenimientoRepository;
 use App\SistemasModel;
 use App\ConfiguracionesMantenimientoModel;
 use Illuminate\Support\Facades\Auth;
@@ -18,6 +19,7 @@ use Illuminate\Http\Request;
 class OperacionesController extends Controller
 {
     protected $coord;
+    protected $coordMantenimiento;
     protected $equipos;
     protected $configs;
     protected $calcPeriodo;
@@ -36,7 +38,8 @@ class OperacionesController extends Controller
         ProjectRepository $project,
         CategoriaEdificioRepository $categoriaEdificio,
         CoordinacionProjectRepository $coordinacionProject,
-        FactorAmbienteRepository $factorAmbiente
+        FactorAmbienteRepository $factorAmbiente,
+        CoordinacionMantenimientoRepository $coordMantenimiento
     ) {
         $this->middleware('auth');
         $this->coord = $coord;
@@ -48,6 +51,7 @@ class OperacionesController extends Controller
         $this->categoriaEdificio = $categoriaEdificio;
         $this->coordinacionProject = $coordinacionProject;
         $this->factorAmbiente = $factorAmbiente;
+        $this->coordMantenimiento = $coordMantenimiento;
     }
 
      // Método que existía antes
@@ -106,6 +110,11 @@ class OperacionesController extends Controller
         return $set_periodo_coordinacion;
     }
 
+    public function no_formula_value(int $id,float $value){
+        $get_no_formula_value = $this->coordMantenimiento->noFormulaValue($id,$value);
+        return $get_no_formula_value;
+    }
+
     public function manage_units_coordinacion(int $id, int $value)
     {
         $equipo = $this->equipos->find($id);
@@ -119,6 +128,14 @@ class OperacionesController extends Controller
         $units = $this->coord->manageEquipoCoordinacionCalculo($id, $value, $periodo, $sistema, (int)$equipo->id_project);
         return response()->json($units);
     }
+
+    public function show_units_to_charge(int $id, int $value)
+    {
+        $units = $this->coordMantenimiento->showUnitsToCharge($id, $value);
+        return response()->json($units);
+    }
+
+
 
 
     public function traer_tecnico_ayudante(string $value){

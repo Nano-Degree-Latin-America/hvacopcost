@@ -117,7 +117,7 @@ class CoordinacionService
         DB::transaction(function () use ($equipoId, $value, $periodo, $sistema) {
             $actuales = $this->mants->getByEquipo($equipoId);
             $count = $actuales->count();
-
+            $data_array = [];
             if ($count < $value) {
                 $faltan = $value - $count;
                 $rows = [];
@@ -145,12 +145,29 @@ class CoordinacionService
             }
         });
 
-        // Devuelve la colección de mantenimientos del proyecto
-        return \App\EquipoCoordinacionModel::where('id_project', $projectId)
+        $data = EquipoCoordinacionModel::where('id_project', $projectId)
             ->join('coordinacion_mantenimiento', 'id_coordinacion', '=', 'coordinacion_equipos.id')
             ->select('coordinacion_mantenimiento.*')
             ->orderBy('id_coordinacion', 'asc')
             ->get();
+
+        $data_return = [];
+        foreach ($data as $item) {
+            $clon = clone $item;
+            // Para cada visita_1..visita_12
+            for ($i = 1; $i <= 12; $i++) {
+                $visita_prop = 'visita_' . $i;
+                if (isset($clon->$visita_prop)) {
+                    $clon->$visita_prop = $this->mants->noFormulaValue($item->id, $item->$visita_prop);
+                }
+            }
+            // Para total_horas
+            if (isset($clon->total_horas)) {
+                $clon->total_horas = $this->mants->noFormulaValue($item->id, $item->total_horas);
+            }
+            $data_return[] = $clon;
+        }
+        return $data_return;
     }
 
     public function setValueVisita(int $value, string $visita, int $idCalculo)
