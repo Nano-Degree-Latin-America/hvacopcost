@@ -18184,14 +18184,21 @@ for (let index = 0; index < response.length; index++) {
 }
 
 function setValueVisita(value,visita,id_calculo){
-    $.ajax({
+        $.ajax({
+        type: 'post',
         url: '/set_value_visita/'+value+'/'+visita+'/'+id_calculo,
-        method: 'post',
-        dataType: 'json'
-        })
-        .fail(function (xhr, status, err) {
-            console.error('Error al enviar los datos:', err);
-        });
+        data: {
+            "_token": $("meta[name='csrf-token']").attr("content")
+        },
+        dataType: 'json',
+        success: function (response) {
+            console.log(response);
+
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
+        }
+    });
 }
 
 function savePeriodoCoordinacion(value,id_calculo){
@@ -18204,6 +18211,18 @@ function savePeriodoCoordinacion(value,id_calculo){
             console.error('Error al enviar los datos:', err);
         });
 }
+
+function setValuesCoordinacion(value,id_calculo,aux){
+    $.ajax({
+        url: '/set_values_coordinacion/'+value+"/"+aux+"/"+id_calculo,
+        method: 'post',
+        dataType: 'json'
+        })
+        .fail(function (xhr, status, err) {
+            console.error('Error al enviar los datos:', err);
+        });
+}
+
 
 
 
