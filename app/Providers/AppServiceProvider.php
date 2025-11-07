@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Contracts\PeriodoCalculatorInterface;
+use App\Services\AshraePeriodoCalculator;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -11,9 +12,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        //
+        $this->app->bind(PeriodoCalculatorInterface::class, AshraePeriodoCalculator::class);
     }
 
     /**

@@ -1164,10 +1164,6 @@ input[type=number]::-webkit-outer-spin-button {
             $.ajax({
                 url: endpoint,
                 type: 'get',
-
-                success: function(response) {
-
-                },
                 error: function(xhr, status, error) {
                     console.error('Error al enviar los datos:', error);
                 }
