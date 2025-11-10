@@ -26,7 +26,7 @@
 
                 <div class="w-1/3 flex gap-x-2">
                     <h2 class="text-xl font-bold text-[#1B17BB] place-content-center">Porcentaje Mano Obra Emergencia</h2>
-                    <input value="{{ $project_edit_coordinacion->porcent_mano_obra }}" id="porcent_mano_obra" name="porcent_mano_obra" type="text" onchange="change_to_porcent_mantenimiento(this.value,this.id);setValuesCoordinacion(this.value,'{{ $project_edit_coordinacion->id }}','porcent_mano_obra');alculate_h_h();" class="w-1/6 font-bold border-2 border-gray-300 rounded-lg px-4 py-2 text-center bg-blue-200">
+                    <input value="{{ $project_edit_coordinacion->porcent_mano_obra }}%" id="porcent_mano_obra" name="porcent_mano_obra" type="text" onchange="change_to_porcent_mantenimiento(this.value,this.id);setValuesCoordinacion(this.value,'{{ $project_edit_coordinacion->id }}','porcent_mano_obra');alculate_h_h();" class="w-1/6 font-bold border-2 border-gray-300 rounded-lg px-4 py-2 text-center bg-blue-200">
                 </div>
             </div>
             <table class="w-full">
