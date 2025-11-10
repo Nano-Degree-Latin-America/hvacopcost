@@ -17,11 +17,12 @@
                         <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Unidad</th>
                         <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Marca</th>
                         <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Modelo</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Capacidad</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Cantidad</th>
+                        <th style="width:100px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Capacidad</th>
+                        <th style="width:120px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm"></th>
+                        <th style="width:100px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Cantidad</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Acceso Equipo</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Estado</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Años Vida</th>
+                        <th style="width:100px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Años Vida</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Horario</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Mantenimiento</th>
                     </tr>
@@ -30,6 +31,12 @@
                 <tbody id="tbody_equipos" name="tbody_equipos" class="divide-y divide-gray-200">
                     <!-- Fila de ejemplo -->
                     <tr id="tr_exampe" name="tr_exampe" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
+                        <td class="px-2 py-3">
+                            <input
+                                disabled
+                                type="number"
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                        </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
@@ -230,6 +237,12 @@ $(function () {
     { value: 'Malo', text: 'Malo' }
   ];
 
+  const unidadesCant = [
+    { value: '0', text: 'Seleccionar' },
+    { value: 'TR', text: 'TR' },
+    { value: 'KW', text: 'KW' },
+  ];
+
   const optTags = list => list.map(o => `<option value="${o.value}">${o.text}</option>`).join('');
 
   function horarioTexto(code) {
@@ -249,6 +262,7 @@ $(function () {
       marca: `marcaSelect_${id}`,
       modelo: `modeloSelect_${id}`,
       capacidad: `capacidadInput_${id}`,
+      unidadCantidad: `unidadCantidadSelect_${id}`,
       cantidad: `cantidadInput_${id}`,
       acceso: `accesoEquipoSelect_${id}`,
       estado: `estadoEquipoSelect_${id}`,
@@ -294,6 +308,11 @@ $(function () {
       </td>
       <td class="px-2 py-1">
         <input type="text" id="${ids.capacidad}" class="${inputClass}" placeholder="0">
+      </td>
+      <td class="pr-2 py-1">
+        <select id="${ids.unidadCantidad}" class="${selectClass}">
+          ${optTags(unidadesCant)}
+        </select>
       </td>
       <td class="px-2 py-1">
         <input type="text" id="${ids.cantidad}" class="${inputClass}" placeholder="0">
@@ -412,6 +431,9 @@ $(function () {
     const cantInp = document.getElementById(`cantidadInput_${id}`);
     if (cantInp && resp.cantidad != null) cantInp.value = String(resp.cantidad);
 
+    const uniadCant = document.getElementById(`unidadCantidadSelect_${id}`);
+    if (uniadCant && resp.unidad_capacidad != null) uniadCant.value = String(resp.unidad_capacidad);
+
     $row.data('loading', false);
   }
 
@@ -521,6 +543,14 @@ $(function () {
     const id = this.id.split('_').pop();
     if (!$(this).closest('tr').data('loading') && typeof save_dates_coordinacion_equipos === 'function') {
       save_dates_coordinacion_equipos(id, this.value, 'acceso_equipo');
+    }
+  });
+
+  // Delegación: acceso_equipo -> set acceso
+  $tbody.on('change', 'select[id^="unidadCantidadSelect_"]', function () {
+    const id = this.id.split('_').pop();
+    if (!$(this).closest('tr').data('loading') && typeof save_dates_coordinacion_equipos === 'function') {
+      save_dates_coordinacion_equipos(id, this.value, 'unidad_capacidad');
     }
   });
 

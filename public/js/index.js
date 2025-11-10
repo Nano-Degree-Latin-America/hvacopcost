@@ -17394,6 +17394,7 @@ function suma_all_inputs(i){
         }
     });
 
+
     var dias = suma / parseInt(horas_efectivas_mantenimiento);
 
     var idas_ajustados = redondear_a_medio_o_entero(dias);
@@ -17626,7 +17627,13 @@ function porcentCostoOperacional(){
 
 
 async function horasDisponibles(mano_obra){
-     var personal_enviado_coordinacion = $('#personal_enviado_coordinacion').val();
+
+     if (personal_enviado_coordinacion == null) {
+        var personal_enviado_coordinacion = $('#personal_enviado_mantenimiento').val();
+     }else{
+        var personal_enviado_coordinacion = $('#personal_enviado_coordinacion').val();
+     }
+
      var total = 0;
 
     return new Promise((resolve, reject) => {
@@ -17806,6 +17813,8 @@ async function spenPlanAjustado(){
 function vehiculosAjustado(){
     let total_calculo_vehiculo = $('#total_calculo_vehiculo').val();
     let porcent_mano_obra_aux = change_porcent_to_num($('#porcent_mano_obra').val());
+    console.log(total_calculo_vehiculo,
+porcent_mano_obra_aux);
 
     let porcent_mano_obra = porcent_mano_obra_aux/100;
     let etupida_suma = 1+porcent_mano_obra;
@@ -18027,7 +18036,6 @@ function showCoordinacionCalculoUnits(id_project){
         url: '/get_ids_units_calculo_coordinacion/'+id_project,
         dataType: 'json',
         success: function (response) {
-            console.log(response);
 
             response.forEach(element => {
                 show_units_calculo_coordinacion(element.id,element.cantidad)
@@ -18209,7 +18217,7 @@ function setValueVisita(value,visita,id_calculo){
         },
         dataType: 'json',
         success: function (response) {
-            console.log(response);
+
 
         },
         error: function (responsetext) {
@@ -18230,8 +18238,14 @@ function savePeriodoCoordinacion(value,id_calculo){
 }
 
 function setValuesCoordinacion(value,id_calculo,aux){
+    const myArray = value.split('%');
+    if(myArray.length > 0){
+        var val = myArray[0];
+    }else{
+        var val = value;
+    }
     $.ajax({
-        url: '/set_values_coordinacion/'+value+"/"+aux+"/"+id_calculo,
+        url: '/set_values_coordinacion/'+val+"/"+aux+"/"+id_calculo,
         method: 'post',
         dataType: 'json'
         })
