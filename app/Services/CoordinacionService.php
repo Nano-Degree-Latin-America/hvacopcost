@@ -147,7 +147,7 @@ class CoordinacionService
 
         $data = EquipoCoordinacionModel::where('id_project', $projectId)
             ->join('coordinacion_mantenimiento', 'id_coordinacion', '=', 'coordinacion_equipos.id')
-            ->select('coordinacion_mantenimiento.*')
+            ->select('coordinacion_mantenimiento.*','coordinacion_equipos.capacidad','coordinacion_equipos.unidad_capacidad')
             ->orderBy('id_coordinacion', 'asc')
             ->get();
 
@@ -158,12 +158,21 @@ class CoordinacionService
             for ($i = 1; $i <= 12; $i++) {
                 $visita_prop = 'visita_' . $i;
                 if (isset($clon->$visita_prop)) {
-                    $clon->$visita_prop = $this->mants->noFormulaValue($item->id, $item->$visita_prop);
+                    if($clon->$visita_prop == 0){
+
+                    }else{
+                        $clon->$visita_prop = $this->mants->noFormulaValue($item->id, $item->$visita_prop);
+                    }
                 }
             }
             // Para total_horas
             if (isset($clon->total_horas)) {
-                $clon->total_horas = $this->mants->noFormulaValue($item->id, $item->total_horas);
+                if($clon->total_horas == 0){
+
+                    }else{
+                        $clon->total_horas = $this->mants->noFormulaValue($item->id, $item->total_horas);
+                    }
+
             }
             $data_return[] = $clon;
         }
@@ -198,9 +207,20 @@ class CoordinacionService
         $update_visita = CoordinacionMantenimientoModel::find($id_calculo);
         $update_visita->periodo = $value;
         $update_visita->update();
-
         return true;
+    }
 
+    public function deleteCoordinacionProject($id_calculo){
+        $delete_unit = EquipoCoordinacionModel::find($id_calculo);
+        $delete_unit->delete();
+        if($delete_unit->delete()){
+            $units = CoordinacionMantenimientoModel::where('id_coordinacion','=',$id_calculo)->get();
+            foreach($units as $unit){
+                $del_unit = CoordinacionMantenimientoModel::find($unit->id);
+                $del_unit->delete();
+            }
+        }
+        return true;
     }
 
     private function precioToInteger(string $precio): int

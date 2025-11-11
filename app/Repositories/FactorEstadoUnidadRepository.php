@@ -9,7 +9,12 @@ class FactorEstadoUnidadRepository
 {
 
     public function factorEstadoUnidad(string $factor){
-        $factor_ambiente = FactorEstadoUnidad::where('factor','=',$factor)->first()->valor;
+
+        if($factor == null){
+            $factor_ambiente = 0;
+        }else{
+            $factor_ambiente = FactorEstadoUnidad::where('factor','=',$factor)->first()->valor;
+        }
          return $factor_ambiente;
     }
 }

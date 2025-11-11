@@ -9,7 +9,7 @@
                                 id="addRowBtn"
                                 title="Agregar Equipo"
                                 type="button"
-                                class="group relative px-4 py-2 bg-white text-[#1B17BB] rounded-lg hover:bg-[#1B17BB] hover:text-white transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#1B17BB]">
+                                class="group relative px-4 py-2 bg-[#1B17BB] text-white rounded-lg border-2 border-white hover:bg-white hover:text-[#1B17BB]  hover:border-[#1B17BB] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#1B17BB] focus:ring-offset-2 focus:ring-offset-white">
                                 <i class="fas fa-plus text-base transition-transform group-hover:rotate-90 duration-300"></i>
                             </button>
                         </th>
@@ -529,9 +529,11 @@ $(function () {
     const id = this.id.split('_').pop();
     if (!$(this).closest('tr').data('loading')) {
       if (this.id.startsWith('capacidadInput_') && typeof save_dates_coordinacion_equipos === 'function') {
+        no_cero(this.value,this.id)
         save_dates_coordinacion_equipos(id, this.value, 'capacidad');
       }
       if (this.id.startsWith('cantidadInput_') && typeof save_dates_coordinacion_equipos === 'function') {
+        no_cero(this.value,this.id)
         save_dates_coordinacion_equipos(id, this.value, 'cantidad');
         show_units_calculo_coordinacion(id, this.value);
       }
@@ -582,11 +584,12 @@ $(function () {
 
   // Delegación: eliminar fila
   $tbody.on('click', 'button[id^="deleteBtn_"]', function () {
+    const id = this.id.split('_').pop(); //extrae id
     $(this).closest('tr').remove();
     renumberRows();
     if (typeof delete_calculo_equiops === 'function') {
       const rowCount = $tbody.children('tr').length;
-      delete_calculo_equiops(rowCount, null);
+      delete_calculo_equiops(rowCount, null,id);
     }
   });
 
