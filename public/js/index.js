@@ -17813,9 +17813,6 @@ async function spenPlanAjustado(){
 function vehiculosAjustado(){
     let total_calculo_vehiculo = $('#total_calculo_vehiculo').val();
     let porcent_mano_obra_aux = change_porcent_to_num($('#porcent_mano_obra').val());
-    console.log(total_calculo_vehiculo,
-porcent_mano_obra_aux);
-
     let porcent_mano_obra = porcent_mano_obra_aux/100;
     let etupida_suma = 1+porcent_mano_obra;
     let total_calculo_vehiculo_aux = total_calculo_vehiculo * etupida_suma;
@@ -18106,9 +18103,9 @@ for (let index = 0; index < response.length; index++) {
         td2_calculo.className = 'px-2 py-1';
         var input2_calculo = document.createElement('input');
         input2_calculo.type = 'text';
-        input2_calculo.id = 'cantidadinput2_calculo_' + rowCount;
+        input2_calculo.id = 'capacidadinput2_calculo_' + rowCount;
         input2_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
-        input2_calculo.value = response[index].cantidad;
+        input2_calculo.value = response[index].capacidad +' '+ response[index].unidad_capacidad;
         input2_calculo.readOnly = true;
         td2_calculo.appendChild(input2_calculo);
         tr_calculo.appendChild(td2_calculo);

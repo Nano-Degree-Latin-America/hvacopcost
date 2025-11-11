@@ -15,7 +15,11 @@ class FactorAmbienteRepository
     }
 
     public function getFactorAmbiente($id){
-        $factor_valor = FactorAmbienteModel::where('id','=',$id)->first()->valor;
-         return $factor_valor;
+        if($id == null){
+            $factor_valor = 0;
+        }else{
+            $factor_valor = FactorAmbienteModel::where('id','=',$id)->first()->valor;
+        }
+        return $factor_valor;
     }
 }

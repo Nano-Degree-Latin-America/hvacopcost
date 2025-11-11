@@ -115,6 +115,12 @@ class OperacionesController extends Controller
         return $get_no_formula_value;
     }
 
+    public function delete_coordinacion_project(int $id){
+        $delete_coordinacion_project = $this->coord->deleteCoordinacionProject($id);
+        return $delete_coordinacion_project;
+    }
+
+
     public function manage_units_coordinacion(int $id, int $value)
     {
         $equipo = $this->equipos->find($id);

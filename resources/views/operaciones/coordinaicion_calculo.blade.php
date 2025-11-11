@@ -36,7 +36,7 @@
 
                         </th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">Sistema</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">Cantidad</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">Capacidad</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">Periodo</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M1</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-md">M2</th>
@@ -56,110 +56,6 @@
 
                 <tbody id="tbody_coordinacion_calculo" name="tbody_coordinacion_calculo" class="divide-y divide-gray-200">
                     <!-- Fila de ejemplo -->
-                    {{-- <tr id="tr_exampe_calculo" name="tr_exampe_calculo" class="bg-gray-50 hover:bg-gray-100 transition-colors duration-200">
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                        <td class="px-2 py-3">
-                            <input
-                                disabled
-                                type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
-                        </td>
-                    </tr> --}}
                 </tbody>
             </table>
 
@@ -487,155 +383,60 @@
 $(function () {
     //despleegar unidadees_calculo
     showCoordinacionCalculoUnits('{{ $id_project }}');
-    alculate_h_h();
+
  });
 
+function delete_calculo_equiops(rowCount,tr,id) {
+
+     $.ajax({
+        type: 'DELETE',
+        url: '/delete_coordinacion_project/'+id,
+        dataType: 'json',
+        data: {
+            "_token": $("meta[name='csrf-token']").attr("content")
+        },
+        success: function (response) {
+                        showCoordinacionCalculoUnits('{{ $id_project }}');
+                        var tr_calculo = getTrCalculoByContador(rowCount,tr); //traer  el tr correspondiente al contador
+                        tr_calculo.remove();
+                        var tbody_calculo = document.getElementById('tbody_coordinacion_calculo');
+                                // Actualizar todos los id y valores de los elementos en cada tr
+                        var trsActualizados = tbody_calculo.querySelectorAll('tr');
 
 
+                                for (let i = 0; i < trsActualizados.length; i++) {
+                                    let idx = i;
+                                    let inputContador = trsActualizados[i].querySelector('input[id^="input0_calculo_"]');
+                                    if (inputContador) {
+                                        inputContador.id = 'input0_calculo_' + idx;
+                                        inputContador.value = idx;
+                                    }
+                                    let sistemainput = trsActualizados[i].querySelector('input[id^="sistemainput1_calculo_"]');
+                                    if (sistemainput) sistemainput.id = 'sistemainput1_calculo_' + idx;
+                                    let cantidadinput2 = trsActualizados[i].querySelector('input[id^="cantidadinput2_calculo_"]');
+                                    if (cantidadinput2) cantidadinput2.id = 'cantidadinput2_calculo_' + idx;
+                                    let periodoSelect = trsActualizados[i].querySelector('select[id^="periodoSelect_"]');
+                                    if (periodoSelect) periodoSelect.id = 'periodoSelect_' + idx;
 
-/* function coordinacionCalculo(rowCount) {
-    var tr_example_calculo = document.getElementById('tr_exampe_calculo');
-    tr_example_calculo.style.display = 'none';
+                                    for (let z = 0; z < 13; z++) {
+                                        let inputCalculo = trsActualizados[i].querySelector('input[id^="input' + (4 + z) + '_calculo_"]');
+                                        if (inputCalculo) inputCalculo.id = 'input' + (4 + z) + '_calculo_' + idx;
+                                    }
 
-    /// elementos calculo
-    var tbody_calculo = document.getElementById('tbody_coordinacion_calculo');
-    var tr_calculo = document.createElement('tr');
-    /////////// elementos estilo calculo
-    tr_calculo.className = 'bg-white hover:bg-blue-50 transition-colors duration-200 border-b border-gray-100';
+                                }
+                                rowCount = trsActualizados.length;
 
-    // Clase común para inputs
-    const inputClass = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
-
-    const selectClass = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
-
-    //  1er td : input text (columna vacía) calculo
-        var td0_calculo = document.createElement('td');
-        td0_calculo.className = 'px-2 py-1';
-        var input0_calculo = document.createElement('input');
-        input0_calculo.type = 'text';
-        input0_calculo.id = 'input0_calculo_' + rowCount;
-        input0_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
-        input0_calculo.value = rowCount;
-        input0_calculo.readOnly = true;
-        td0_calculo.appendChild(input0_calculo);
-        tr_calculo.appendChild(td0_calculo);
-
-    //  2do td : input text (columna vacía) calculo
-        var td1_calculo = document.createElement('td');
-        td1_calculo.className = 'py-1';
-        var input1_calculo = document.createElement('input');
-        input1_calculo.type = 'text';
-        input1_calculo.id = 'sistemainput1_calculo_' + rowCount;
-        input1_calculo.className = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
-        input1_calculo.value = '';
-        input1_calculo.readOnly = true;
-        td1_calculo.appendChild(input1_calculo);
-        tr_calculo.appendChild(td1_calculo);
-
-    //  3er td : input text (columna vacía) calculo
-        var td2_calculo = document.createElement('td');
-        td2_calculo.className = 'px-2 py-1';
-        var input2_calculo = document.createElement('input');
-        input2_calculo.type = 'text';
-        input2_calculo.id = 'cantidadinput2_calculo_' + rowCount;
-        input2_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
-        input2_calculo.value = '';
-        input2_calculo.readOnly = true;
-        td2_calculo.appendChild(input2_calculo);
-        tr_calculo.appendChild(td2_calculo);
-
-    //  4to td : input text (columna vacía) calculo
-        var td3_calculo = document.createElement('td');
-        td3_calculo.className = 'px-2 py-1 justify-center text-center';
-        var select3 = document.createElement('select');
-        select3.id = 'periodoSelect_' + rowCount;
-        select3.className = selectClass;
-        var option3_1 = document.createElement('option');
-        option3_1.value = '0';
-        option3_1.text = 'Seleccionar';
-        select3.appendChild(option3_1);
-        var option3_2 = document.createElement('option');
-        option3_2.value = 'T';
-        option3_2.text = 'T';
-        select3.appendChild(option3_2);
-        var option3_3 = document.createElement('option');
-        option3_3.value = 'S';
-        option3_3.text = 'S';
-        select3.appendChild(option3_3);
-        var option3_4 = document.createElement('option');
-        option3_4.value = 'A';
-        option3_4.text = 'A';
-        select3.appendChild(option3_4);
-        td3_calculo.appendChild(select3);
-        tr_calculo.appendChild(td3_calculo);
-
-    // 5to al 16vo td : 12 inputs text (P1 a P12)
-    for (let i = 0; i < 13; i++) {
-        if(i == 12){
-            var td_calculo = document.createElement('td');
-            td_calculo.className = 'px-2 py-1';
-            var input_calculo = document.createElement('input');
-            var inputTotal = 'input16_calculo_' + rowCount;
-            input_calculo.type = 'text';
-            input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
-            input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-blue-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200 cursor-not-allowed';
-            input_calculo.value = 0;
-            input_calculo.readOnly = true;
-
-        }else{
-            var td_calculo = document.createElement('td');
-            td_calculo.className = 'px-2 py-1';
-            var input_calculo = document.createElement('input');
-            var periodoSelect = 'periodoSelect_' + rowCount;
-            var inputTotal = 'input16_calculo_' + rowCount;
-            var counterAux = 4 + i;
-            input_calculo.type = 'text';
-            input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
-            input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
-            input_calculo.value = 0;
-            input_calculo.setAttribute('onclick', 'active_inputs_coordinacion(this.id,"'+ periodoSelect +'","' + rowCount + '")');
-            input_calculo.setAttribute('onchange', 'suma_inputs_calculo(this.id,"'+ periodoSelect +'","' + rowCount + '");suma_horas_hombre('+counterAux+');format_nums_no_$(this.value,this.id)');
+        },
+        error: function (responsetext) {
+            console.log(responsetext);
         }
-
-        td_calculo.appendChild(input_calculo);
-        tr_calculo.appendChild(td_calculo);
-    }
-
-    tbody_calculo.appendChild(tr_calculo);
-} */
-
-function delete_calculo_equiops(rowCount,tr) {
-
-    var tr_calculo = getTrCalculoByContador(rowCount,tr); //traer  el tr correspondiente al contador
-    tr_calculo.remove();
-    var tbody_calculo = document.getElementById('tbody_coordinacion_calculo');
-            // Actualizar todos los id y valores de los elementos en cada tr
-            var trsActualizados = tbody_calculo.querySelectorAll('tr');
+    });
 
 
-            for (let i = 0; i < trsActualizados.length; i++) {
-                let idx = i;
-                let inputContador = trsActualizados[i].querySelector('input[id^="input0_calculo_"]');
-                if (inputContador) {
-                    inputContador.id = 'input0_calculo_' + idx;
-                    inputContador.value = idx;
-                }
-                let sistemainput = trsActualizados[i].querySelector('input[id^="sistemainput1_calculo_"]');
-                if (sistemainput) sistemainput.id = 'sistemainput1_calculo_' + idx;
-                let cantidadinput2 = trsActualizados[i].querySelector('input[id^="cantidadinput2_calculo_"]');
-                if (cantidadinput2) cantidadinput2.id = 'cantidadinput2_calculo_' + idx;
-                let periodoSelect = trsActualizados[i].querySelector('select[id^="periodoSelect_"]');
-                if (periodoSelect) periodoSelect.id = 'periodoSelect_' + idx;
 
-                 for (let z = 0; z < 13; z++) {
-                     let inputCalculo = trsActualizados[i].querySelector('input[id^="input' + (4 + z) + '_calculo_"]');
-                     if (inputCalculo) inputCalculo.id = 'input' + (4 + z) + '_calculo_' + idx;
-                 }
-
-            }
-            rowCount = trsActualizados.length;
 
 }
+
 
 function getTrCalculoByContador(contador,tr) {
     //obtener el numero de tr  elimnado
