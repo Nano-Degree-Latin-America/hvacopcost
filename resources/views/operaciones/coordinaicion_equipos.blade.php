@@ -18,7 +18,7 @@
                         <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Marca</th>
                         <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Modelo</th>
                         <th style="width:100px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Capacidad</th>
-                        <th style="width:120px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm"></th>
+                        <th style="width:150px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm"></th>
                         <th style="width:100px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Cantidad</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Acceso Equipo</th>
                         <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Estado</th>
@@ -240,7 +240,13 @@ $(function () {
   const unidadesCant = [
     { value: '0', text: 'Seleccionar' },
     { value: 'TR', text: 'TR' },
-    { value: 'KW', text: 'KW' },
+    { value: 'KwT', text: 'KwT' },
+    { value: 'Hp', text: 'Hp' },
+    { value: 'KwE', text: 'KwE' },
+    { value: 'cfm', text: 'cfm' },
+    { value: 'l/s', text: 'l/s' },
+    { value: 'gpm', text: 'gpm' },
+    { value: 'm3/hr', text: 'm3/hr' },
   ];
 
   const optTags = list => list.map(o => `<option value="${o.value}">${o.text}</option>`).join('');
