@@ -3546,7 +3546,7 @@ public function red_en_mw_grafic($dif,$dif_2){
     public function getYrsLifeActivo($tipo_mant,$prot_cond){
         switch ($tipo_mant) {
             case 'no_agresivo':
-                return 5;
+                return 15;
             case 'marino':
                 switch ($prot_cond) {
                     case 'sin_proteccion':
