@@ -20,22 +20,7 @@
             </div>
 
             <div class="grid">
-                <div class="flex w-full justify-start">
-                    <label for=""></label>
-                    <label class="title_simulaciones_index font-roboto drop-shadow-lg font-bold leading-tight" for="">{{ __('index.calculo_precios_havc') }}
-                    </label>
-                </div>
-                <div class="w-full flex justify-start gap-x-3 mt-2">
-                    @if ($check_types_m == 1)
-                    <button   onclick="check_form_proy('man','display_nuevo_project_edit','display_nuevo_retrofit_edit','display_mant','calcular_p_n_Edit','calcular_p_r_Edit','edit','{{$type_p}}');show_buttons_type_project(3);" style="background-color:#1B17BB;width: 30%;" type="button" class="py-2 px-6 rounded-lg shadow-sm text-center text-white hover_button_blue text-2xl font-roboto ">{{ __('index.mantenimiento_ventas') }}</button>
-                    @endif
 
-                    @if ($check_types_m != 1)
-                    <button style="width: 30%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.mantenimiento_ventas') }}</button>
-                    @endif
-                    <button style="width: 30%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.operaciones') }}</button>
-                    <button style="width: 30%;" type="button" class="focus:outline-none bg-gray-500 border-2 border-color-inps py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-2xl font-roboto ">{{ __('index.proyectos') }}</button>
-                </div>
             </div>
 
             <div class="grid">
