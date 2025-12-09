@@ -817,6 +817,7 @@ function set_unit_type(value){
                         }));
                     }
 
+            $('#'+id_tipo_control).empty();
             const arry_control = await set_controles(value);
             const myObj_cont = JSON.parse(arry_control);
                         for (let i = 0; i < myObj_cont.length; i++) {
