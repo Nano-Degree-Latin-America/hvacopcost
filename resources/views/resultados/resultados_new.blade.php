@@ -16,6 +16,7 @@
 @inject('graficas_capex_opex','app\Http\Controllers\ResultadosController')
 @inject('capacidad_sol','app\Http\Controllers\ResultadosController')
 @inject('red_ene','app\Http\Controllers\ResultadosController')
+
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -55,6 +56,7 @@
    <link rel="stylesheet" href="{{asset("assets/css/result_new.css")}}">
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+
 <?php  $tar_ele=$solutions->tar_elec($id_project) ?>
 <?php  $kwh_yr=$results->kwh_yr($id_project,$tar_ele->cad_edi) ?>
 
@@ -296,7 +298,7 @@
             </div>
         </div>
 
-        <div class="w-full flex justify-center mt-10">
+        <div id="div_consumo_anual_energia_electrica" class="w-full flex justify-center">
             <div class="grid w-1/3">
 
                 <div class="flex w-full ">
@@ -514,7 +516,7 @@ if($counter == 2){
 
 ?>
 
-            <div class="w-full grid">
+            <div class="w-full grid hidden">
                 <div style="background-color:#ffff;" class="mt_titles w-full flex justify-center">
                     <p class="titulos_style" style="color:#1B17BB;">Reducción Anual del Costo de Energía</p>
                 </div>
@@ -619,7 +621,30 @@ if($counter == 2){
                     </div>
             </div>
 
-            <div class="w-full grid">
+            <div class="w-full flex gap-x-2 mt-2">
+
+                <div class="grid" style="max-width: 90%;margin: 0px auto">
+                   <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
+                     <label>Incremento del Costo de la Energía</label>
+                   </div>
+                    <div id="chart_1" class="js_charts_style_line"></div>
+
+                </div>
+
+                <div  class="grid" style="max-width: 90%;margin: 0px auto">
+                    <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
+                     <label>Recuperación de la Energía vs Capex</label>
+                   </div>
+                    <div id="chart_2" class="js_charts_style_line"></div>
+
+                </div>
+
+
+            </div>
+
+            </div>
+
+            <div class="w-full grid hidden">
                 <div style="background-color:#fff;" class="mt_titles w-full flex justify-center ">
                     <p style="color:#1B17BB;" class="titulos_style">Descarbonización (Ton CO2/año)</p>
                 </div>
@@ -720,7 +745,79 @@ if($counter == 2){
     </div>
 </div> --}}
 {{-- espacio --}}
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:220px;" >
+
+{{-- Índice Intensidad del Uso de Energía --}}
+<div class="w-full grid rounded-md justify-items-center mt-3">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
+        <div class="w-full grid">
+            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                <p class="titulos_style">Índice Intensidad del Uso de Energía (Kbtu/ft²)</p>
+            </div>
+        </div>
+
+        <div class="flex w-full justify-center gap-x-3">
+            <div class="flex w-1/2 justify-center text-[24px] m-1">
+                <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
+                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}"  class="energy_star_style_img mx-2 mt-5" alt="Nano Degree">
+                <b class="eui_energy_style">EUI - Energy Star</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{number_format($energy_star,1)}}</b>
+            </div>
+
+            <div class="flex w-1/2 justify-center text-[24px] m-1">
+                <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
+                <img src="{{asset('/assets/images/Logo-ASHRAE-png.png')}}" class="ashrae_style_img" alt="Nano Degree">
+                <b class="eui_energy_style">EUI - ASHRAE</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{$ashrae}}</b>
+            </div>
+        </div>
+
+        <div class="flex w-full justify-center mb-1">
+            <div class="w-1/3 grid justify-items-center">
+                {{-- <div class="flex justify-center w-full">
+                    <label class="solucions_style_name">Base</label>
+                </div> --}}
+                @if ($result1 ==! null)
+                <?php  $valor_eui_base=$smasolutions->valor_eui_aux($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                @endif
+                @if ($result1 === null)
+                <?php  $valor_eui_base=0 ?>
+                @endif
+                <div id="eui_sol_base" name="eui_sol_base"></div>
+                <div class="hidden" id="eui_sol_base_print" name="eui_sol_base_print"></div>
+            </div>
+            {{-- sumaopex_2
+            sumaopex_3 --}}
+            <div class="w-1/3 grid justify-items-center">
+                {{-- <div class="flex justify-center w-full">
+                    <label class="solucions_style_name">A</label>
+                </div> --}}
+                @if ($result2 ==! null)
+                <?php  $valor_eui_a=$smasolutions->valor_eui_aux($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                @endif
+
+                @if ($result2 === null)
+                <?php  $valor_eui_a=0; ?>
+                @endif
+                <div id="eui_sol_a" name="eui_sol_a"></div>
+                <div class="hidden" id="eui_sol_a_print" name="eui_sol_a_print"></div>
+
+            </div>
+            <div class="w-1/3 grid justify-items-center">
+                {{-- <div class="flex justify-center w-full">
+                    <label class="solucions_style_name">B</label>
+                </div> --}}
+                @if ($result3 ==! null)
+                <?php  $valor_eui_b=$smasolutions->valor_eui_aux($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                @endif
+
+                @if ($result3 === null)
+                <?php $valor_eui_b = 0; ?>
+                @endif
+                <div id="eui_sol_b" name="eui_sol_b"></div>
+                <div class="hidden" id="eui_sol_b_print" name="eui_sol_b_print"></div>
+            </div>
+    </div>
+    </div>
+</div>
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:230px;" >
 
 </div>
 
@@ -811,77 +908,7 @@ if($counter == 2){
             </div>
     </div>
 </div>
-{{-- Índice Intensidad del Uso de Energía --}}
-<div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box border-blue-500 rounded-md grid">
-        <div class="w-full grid">
-            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                <p class="titulos_style">Índice Intensidad del Uso de Energía (Kbtu/ft²)</p>
-            </div>
-        </div>
 
-        <div class="flex w-full justify-center gap-x-3">
-            <div class="flex w-1/2 justify-center text-[24px] m-1">
-                <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
-                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}"  class="energy_star_style_img mx-2 mt-5" alt="Nano Degree">
-                <b class="eui_energy_style">EUI - Energy Star</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{number_format($energy_star,1)}}</b>
-            </div>
-
-            <div class="flex w-1/2 justify-center text-[24px] m-1">
-                <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
-                <img src="{{asset('/assets/images/Logo-ASHRAE-png.png')}}" class="ashrae_style_img" alt="Nano Degree">
-                <b class="eui_energy_style">EUI - ASHRAE</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{$ashrae}}</b>
-            </div>
-        </div>
-
-        <div class="flex w-full justify-center mb-1">
-            <div class="w-1/3 grid justify-items-center">
-                {{-- <div class="flex justify-center w-full">
-                    <label class="solucions_style_name">Base</label>
-                </div> --}}
-                @if ($result1 ==! null)
-                <?php  $valor_eui_base=$smasolutions->valor_eui_aux($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                @endif
-                @if ($result1 === null)
-                <?php  $valor_eui_base=0 ?>
-                @endif
-                <div id="eui_sol_base" name="eui_sol_base"></div>
-                <div class="hidden" id="eui_sol_base_print" name="eui_sol_base_print"></div>
-            </div>
-            {{-- sumaopex_2
-            sumaopex_3 --}}
-            <div class="w-1/3 grid justify-items-center">
-                {{-- <div class="flex justify-center w-full">
-                    <label class="solucions_style_name">A</label>
-                </div> --}}
-                @if ($result2 ==! null)
-                <?php  $valor_eui_a=$smasolutions->valor_eui_aux($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                @endif
-
-                @if ($result2 === null)
-                <?php  $valor_eui_a=0; ?>
-                @endif
-                <div id="eui_sol_a" name="eui_sol_a"></div>
-                <div class="hidden" id="eui_sol_a_print" name="eui_sol_a_print"></div>
-
-            </div>
-            <div class="w-1/3 grid justify-items-center">
-                {{-- <div class="flex justify-center w-full">
-                    <label class="solucions_style_name">B</label>
-                </div> --}}
-                @if ($result3 ==! null)
-                <?php  $valor_eui_b=$smasolutions->valor_eui_aux($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                @endif
-
-                @if ($result3 === null)
-                <?php $valor_eui_b = 0; ?>
-                @endif
-                <div id="eui_sol_b" name="eui_sol_b"></div>
-                <div class="hidden" id="eui_sol_b_print" name="eui_sol_b_print"></div>
-            </div>
-    </div>
-    </div>
-</div>
 
 <a id="ir_modal_position_prod" name="ir_modal_position_prod" href=""></a>
 {{-- Nivel de Confort --}}
@@ -1012,6 +1039,67 @@ if($counter == 2){
 {{-- checar estos /divs --}}
   {{-- Nivel de Confort --}}
   @include('modal_prod')
+
+
+{{-- <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
+    <div class="ancho border-2 border-blue-500 rounded-md grid">
+
+    </div>
+</div> --}}
+<?php  $prim_buil_check=$conf_val->prim_buil_check($id_project) ?>
+
+ @if ($prim_buil_check->id_cat_edifico == 3 || $prim_buil_check->id_cat_edifico == 7 || $prim_buil_check->id_cat_edifico == 8 || $prim_buil_check->id_cat_edifico == 9 || $prim_buil_check->id_cat_edifico == 10 || $prim_buil_check->id_cat_edifico == 11)
+              {{--       <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
+                        <div class="ancho border_box border-blue-500 rounded-md grid">
+                          <div class="w-full flex">
+                                  <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                                    <div class="flex w-full justify-center mt-1">
+                                        <p class="titulos_style">{{ __('results.cu_sho_Be') }}</p>
+                                    </div>
+                                  </div>
+
+
+                          </div>
+
+                        <div class="flex w-full justify-center my-2">
+                            <div  class="padding_space_white flex justify-center">
+                            </div>
+                            @if ($result1 !== null)
+                            <?php  $prod_lab=$conf_val->prod_lab($id_project,1,1,$sumacap_term_1) ?>
+                            @endif
+                            @if ($result1 === null)
+                            <?php  $prod_lab=0; ?>
+                            @endif
+                            <div class="w-1/3 grid justify-items-center">
+                                <div id="chart_cu_sho_Be_base"></div>
+                                 <div class="hidden" id="chart_cu_sho_Be_base_print" name="chart_cu_sho_Be_base_print"></div>
+                            </div>
+                            @if ($result1 !== null)
+                            <?php  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) ?>
+                            @endif
+                            @if ($result1 === null)
+                            <?php  $prod_lab_a=0; ?>
+                            @endif
+                            <div class="w-1/3 grid justify-items-center">
+                                <div id="chart_cu_sho_Be_a"></div>
+                                <div class="hidden" id="chart_cu_sho_Be_a_print" name="chart_cu_sho_Be_a_print"></div>
+                            </div>
+                            @if ($result1 !== null)
+                            <?php  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) ?>
+                            @endif
+                            @if ($result1 === null)
+                            <?php  $prod_lab_b=0; ?>
+                            @endif
+                            <div class="w-1/3 grid justify-items-center">
+                                <div id="chart_cu_sho_Be_b"></div>
+                                <div class="hidden" id="chart_cu_sho_Be_b_print" name="chart_cu_sho_Be_b_print"></div>
+                            </div>
+                        </div>
+               </div>
+</div> --}}
+@endif
+
+
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
       <div class="w-full flex">
@@ -1028,7 +1116,7 @@ if($counter == 2){
 
       </div>
 
-      <div class="grid w-full justify-items-center gap-x-3 my-3">
+      <div class="grid w-full justify-items-center gap-x-3 my-2">
 
         <div class="flex w-full justify-center">
             <div  class="padding_space_white flex justify-center">
@@ -1075,7 +1163,7 @@ if($counter == 2){
 
       <div class="w-full grid mb-1">
         <div style="background-color:#fff;" class="w-full flex justify-center">
-            <div style="margin-top:1.2rem;" class="flex w-full justify-center mb-1">
+            <div  class="flex w-full justify-center mb-1">
                 <p class="titulos_style" style="color:#1B17BB;">Reducción Anual de Costo Salarial</p>
             </div>
           </div>
@@ -1279,85 +1367,26 @@ if($counter == 2){
                 </div>
             </div>
 
+           {{--  <div class="w-full flex gap-x-2  justify-center">
+                <div id="chart_red_anu_cos_sal" style="max-width: 90%;height: 400px;margin: 0px auto"></div>
+            </div> --}}
+
 
       </div>
 
     </div>
 </div>
 
-{{-- <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
-
-    </div>
-</div> --}}
-<?php  $prim_buil_check=$conf_val->prim_buil_check($id_project) ?>
-
- @if ($prim_buil_check->id_cat_edifico == 3 || $prim_buil_check->id_cat_edifico == 7 || $prim_buil_check->id_cat_edifico == 8 || $prim_buil_check->id_cat_edifico == 9 || $prim_buil_check->id_cat_edifico == 10 || $prim_buil_check->id_cat_edifico == 11)
-              {{--       <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-                        <div class="ancho border_box border-blue-500 rounded-md grid">
-                          <div class="w-full flex">
-                                  <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                                    <div class="flex w-full justify-center mt-1">
-                                        <p class="titulos_style">{{ __('results.cu_sho_Be') }}</p>
-                                    </div>
-                                  </div>
-
-
-                          </div>
-
-                        <div class="flex w-full justify-center my-2">
-                            <div  class="padding_space_white flex justify-center">
-                            </div>
-                            @if ($result1 !== null)
-                            <?php  $prod_lab=$conf_val->prod_lab($id_project,1,1,$sumacap_term_1) ?>
-                            @endif
-                            @if ($result1 === null)
-                            <?php  $prod_lab=0; ?>
-                            @endif
-                            <div class="w-1/3 grid justify-items-center">
-                                <div id="chart_cu_sho_Be_base"></div>
-                                 <div class="hidden" id="chart_cu_sho_Be_base_print" name="chart_cu_sho_Be_base_print"></div>
-                            </div>
-                            @if ($result1 !== null)
-                            <?php  $prod_lab_a=$conf_val->prod_lab($id_project,2,1,$sumacap_term_1) ?>
-                            @endif
-                            @if ($result1 === null)
-                            <?php  $prod_lab_a=0; ?>
-                            @endif
-                            <div class="w-1/3 grid justify-items-center">
-                                <div id="chart_cu_sho_Be_a"></div>
-                                <div class="hidden" id="chart_cu_sho_Be_a_print" name="chart_cu_sho_Be_a_print"></div>
-                            </div>
-                            @if ($result1 !== null)
-                            <?php  $prod_lab_b=$conf_val->prod_lab($id_project,3,1,$sumacap_term_1) ?>
-                            @endif
-                            @if ($result1 === null)
-                            <?php  $prod_lab_b=0; ?>
-                            @endif
-                            <div class="w-1/3 grid justify-items-center">
-                                <div id="chart_cu_sho_Be_b"></div>
-                                <div class="hidden" id="chart_cu_sho_Be_b_print" name="chart_cu_sho_Be_b_print"></div>
-                            </div>
-                        </div>
-               </div>
-</div> --}}
-@endif
-
-
-
-
-
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_3" name="next_page_3" style="width: 80%; height:30px;" class="hidden">
+<div id="next_page_4" name="next_page_4" style="width: 80%; height:610px;" class="hidden">
 
 </div>
-<div id="next_page_3_cushobe" name="next_page_3_cushobe" style="width: 80%; height:65px;" class="hidden">
+<div id="next_page_4_cushobe" name="next_page_4_cushobe" style="width: 80%; height:65px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
-
 {{-- principal --}}
-<div id="principal_hoja_3" name="principal_hoja_3" class="hidden w-full grid rounded-md justify-items-center mt-3">
+<div id="principal_hoja_4" name="principal_hoja_4" class="hidden w-full grid rounded-md justify-items-center mt-3">
     <div  class="ancho border_box border-blue-500 rounded-md flex">
 
 
@@ -1453,7 +1482,7 @@ if($counter == 2){
       <div class="w-full grid">
         <div style="background-color:#1B17BB;" class="w-full flex justify-center">
             <div class="flex w-full justify-center mt-1">
-                <p class="titulos_style ml-8">Análisis Financiero - Retornos de Inversión (años)</p>
+                <p class="titulos_style ml-8">Análisis Financiero</p>
             </div>
             <div id="button_marrr" name="button_marrr" class="flex justify-end mt-2">
                 <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr');" class="btn_roundf_retro mr-5" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
@@ -1868,7 +1897,7 @@ if($counter == 2){
                 </div>
 
 
-                <div class="w-full flex justify-center  mt-10">
+                <div class="w-full flex justify-center  margin-top-recuperacion-energia-productividad">
                     <p class="solucions_style_name  ">Recuperación - Energía + Productividad</p>
                 </div>
                 <div class="w-full flex">
@@ -2368,14 +2397,14 @@ $costo_b
     </div>
 </div> --}}
 
-{{-- espacio hoja pagina 3 --}}
-<div id="next_page_4" name="next_page_4" style="width: 80%; height:100px;" class="hidden">
+{{-- espacio hoja pagina 5 --}}
+<div id="next_page_5" name="next_page_5" style="width: 80%; height:510px;" class="hidden">
 
 </div>
-{{-- espacio hoja pagina 3 --}}
+{{-- espacio hoja pagina 5 --}}
 
 {{-- principal --}}
-<div id="principal_hoja_4" name="principal_hoja_4" class="hidden w-full grid rounded-md justify-items-center mt-3">
+<div id="principal_hoja_5" name="principal_hoja_5" class="hidden w-full grid rounded-md justify-items-center mt-3">
     <div  class="ancho border_box border-blue-500 rounded-md flex">
 
 
@@ -2502,13 +2531,13 @@ $costo_b
 {{-- capex vs opex --}}
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_5" name="next_page_5" style="width: 80%; height:340px;" class="hidden">
+<div id="next_page_6" name="next_page_6" style="width: 80%; height:610px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
 
 {{-- principal --}}
-<div id="principal_hoja_5" name="principal_hoja_5" class="hidden w-full grid rounded-md justify-items-center mt-3">
+<div id="principal_hoja_6" name="principal_hoja_6" class="hidden w-full grid rounded-md justify-items-center mt-3">
         <div  class="ancho border_box border-blue-500 rounded-md flex">
 
 
@@ -3707,9 +3736,9 @@ $costo_b
         </div>
     </div>
 </div>
- @if (Auth::user()->tipo_user == 5)
+{{--  @if (Auth::user()->tipo_user == 5)
     @include('components.hvac-chat')
- @endif
+ @endif --}}
 </div>
 {{-- res_ana_ener --}}
 {{-- <div class="loader"></div> --}}
@@ -3721,6 +3750,10 @@ $costo_b
     google.charts.load('current', {'packages':['gauge']});
     var cons_ene_ele_ancho = 400;
     var cons_ene_ele_alto = 250;
+    var cons_ene_ele_ancho_line = 580;
+    var cons_ene_ele_alto_line = 250;
+    var cons_ene_ele_ancho_line_print = 460;
+    var cons_ene_ele_alto_line_print = 200;
     var cons_ene_ele_ancho_print = 200;
     var cons_ene_ele_alto_print = 140;
     var eui_print_width = 400;
@@ -3751,6 +3784,8 @@ document.addEventListener('keydown', function(event) {
     $("#chart_descarb").width(200).height(120);
     $("#chart").width(200).height(120);
     $("#chart_3").width(200).height(120);
+    $("#chart_1").width(400).height(120);
+    $("#chart_2").width(400).height(120);
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
@@ -3759,11 +3794,14 @@ document.addEventListener('keydown', function(event) {
     $("#eui_sol_base").addClass("hidden");
     $("#eui_sol_a").addClass("hidden");
     $("#eui_sol_b").addClass("hidden");
+    $('#div_consumo_anual_energia_electrica').addClass("mt-10");
     $('#chart_red_ene_print').removeClass("hidden");
     $("#chart_descarb_print").removeClass("hidden");
     $('#eui_sol_base_print').removeClass("hidden");
     $("#eui_sol_a_print").removeClass("hidden");
     $('#eui_sol_b_print').removeClass("hidden");
+
+
     chart_prod_base_print();
     chart_prod_a_print();
     chart_prod_b_print();
@@ -3816,6 +3854,8 @@ function send_print(){
     $("#principal_hoja_3").removeClass("hidden");
     $("#principal_hoja_4").removeClass("hidden");
     $("#principal_hoja_5").removeClass("hidden");
+    $("#principal_hoja_6").removeClass("hidden");
+    $('#div_consumo_anual_energia_electrica').removeClass("mt-10");
     $("#name_no_print").addClass("hidden");
     $("#name_print").removeClass("hidden");
     $("#name_no_print_2").addClass("hidden");
@@ -3832,6 +3872,7 @@ function send_print(){
     }
     $("#next_page_4").removeClass("hidden");
     $("#next_page_5").removeClass("hidden");
+    $("#next_page_6").removeClass("hidden");
     $("#chart_cons_ene_hvac_ar_base").width(200).height(120);
     $("#chart_cons_ene_hvac_ar_a").width(200).height(120);
     $("#chart_cons_ene_hvac_ar_b").width(200).height(120);
@@ -3843,9 +3884,13 @@ function send_print(){
     $("#chart_5_print").width(380).height(200);
     $("#chart_10_print").width(380).height(200);
     $("#chart_15_print").width(380).height(200);
+    $("#chart_1").width(500).height(210);
+    $("#chart_2").width(500).height(210);
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+    chart_1_print();
+    chart_2_print();
     $('#chart_red_ene').addClass("hidden");
     $("#chart_descarb").addClass("hidden");
     $("#eui_sol_base").addClass("hidden");
@@ -3928,7 +3973,9 @@ $(document).ready(function() {
     cap_op_5_print('{{$id_project}}','{{$tar_ele->unidad}}');
     cap_op_10_print('{{$id_project}}','{{$tar_ele->unidad}}');
     cap_op_15_print('{{$id_project}}','{{$tar_ele->unidad}}');
-
+    chart_1();
+    chart_2();
+    //chart_red_anu_cos_sal();
     google.charts.setOnLoadCallback(chart_base_eui_print);
     google.charts.setOnLoadCallback(chart_a_eui_print);
     google.charts.setOnLoadCallback(chart_b_eui_print);
@@ -3967,13 +4014,522 @@ $(document).ready(function() {
       cap_op_5('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_10('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_15('{{$id_project}}','{{$tar_ele->unidad}}');
-
+    $('#div_consumo_anual_energia_electrica').addClass("mt-10");
       /* cap_op_1_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}'); */
-
+    //send_print();
     });
 
 /* window.print() */
+function chart_1(){
+    var suma_opex_1 = '{{ $sumaopex_1*$tar_ele->costo_elec }}';
+    var suma_opex_2 = '{{ $sumaopex_2*$tar_ele->costo_elec }}';
+    var suma_opex_3 = '{{ $sumaopex_3*$tar_ele->costo_elec }}';
+    var inflacion  = '{{$tar_ele->inflacion}}';
+
+    var array_a = incremento_1(Math.ceil(suma_opex_1),inflacion);
+    var array_b = incremento_1(Math.ceil(suma_opex_2),inflacion);
+    var array_c = incremento_1(Math.ceil(suma_opex_3),inflacion);
+
+// JS
+var chart = JSC.chart('chart_1', {
+  debug: true,
+  width:cons_ene_ele_ancho_line,
+  height:cons_ene_ele_alto_line,
+  xAxis: {
+    crosshair_enabled: true,
+    scale: { type: 'auto' },
+
+  },
+  legend:{visible: false},
+  defaultSeries: {
+    type: 'line',
+    line: {
+      width: 2,
+      caps_end: { type: '', size: '600%' }
+    },
+
+    opacity: 1,
+    lastPoint_marker_visible: false,
+    defaultPoint_marker: {
+      fill: 'lightenMore',
+      outline: { width: 2 }
+    }
+  },
+  series: [
+
+    {
+      line_dashStyle: 'solid',
+      name: 'A',
+      color:'#2be6ee',
+      points: [
+        [1, array_a[0]],
+        [2, array_a[1]],
+        [3, array_a[2]],
+        [4, array_a[3]],
+        [5, array_a[4]],
+        [6, array_a[5]],
+        [7, array_a[6]],
+        [8, array_a[7]],
+        [9, array_a[8]],
+        [10, array_a[9]],
+        [11, array_a[10]],
+        [12, array_a[11]],
+        [13, array_a[12]],
+        [14, array_a[13]],
+        [15, array_a[14]],
+      ]
+    },
+    {
+      line_dashStyle: 'solid',
+      name: 'B',
+      color:'#ff00ff',
+      points: [
+        [1, array_b[0]],
+        [2, array_b[1]],
+        [3, array_b[2]],
+        [4, array_b[3]],
+        [5, array_b[4]],
+        [6, array_b[5]],
+        [7, array_b[6]],
+        [8, array_b[7]],
+        [9, array_b[8]],
+        [10, array_b[9]],
+        [11, array_b[10]],
+        [12, array_b[11]],
+        [13, array_b[12]],
+        [14, array_b[13]],
+        [15, array_b[14]],
+      ]
+    },
+    {
+      line_dashStyle: 'solid',
+      name: 'C',
+      color:'#545454',
+      points: [
+        [1, array_c[0]],
+        [2, array_c[1]],
+        [3, array_c[2]],
+        [4, array_c[3]],
+        [5, array_c[4]],
+        [6, array_c[5]],
+        [7, array_c[6]],
+        [8, array_c[7]],
+        [9, array_c[8]],
+        [10, array_c[9]],
+        [11, array_c[10]],
+        [12, array_c[11]],
+        [13, array_c[12]],
+        [14, array_c[13]],
+        [15, array_c[14]],
+      ]
+    }
+  ],
+
+  style:{
+    fontSize:10,
+  },
+  yAxis: {
+    formatString: 'c',
+  }
+});
+/* '#01040a','#2be6ee','#ff00ff', '#545454' */
+}
+
+function chart_2(){
+
+    var val_base_red_ene = '{{ $val_base_red_ene }}';
+    var val_a_red_ene = '{{ $val_a_red_ene }}';
+    var val_b_red_ene = '{{ $val_b_red_ene }}';
+    var inflacion  = '{{$tar_ele->inflacion}}';
+    var inv_ini_base = '{{ $inv_ini_1 }}'
+    var inv_ini_a = '{{ $inv_ini_2 }}'
+    var inv_ini_b = '{{ $inv_ini_3 }}'
+
+    if(val_base_red_ene == 0 && val_a_red_ene > 0 && val_b_red_ene > 0){
+        var sol_1 = 'B';
+        var array_1 = incremento_2(val_a_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_a);
+        var val_red_ene_1 = val_a_red_ene;
+        var sol_2 = 'C';
+        var array_2 = incremento_2(val_b_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_b);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+
+    }
+
+    if(val_a_red_ene == 0 && val_base_red_ene > 0 && val_b_red_ene > 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'C';
+        var array_2 = incremento_2(val_b_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_b);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    if(val_b_red_ene == 0 && val_base_red_ene > 0 && val_a_red_ene > 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'B';
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+// JS
+var chart = JSC.chart('chart_2', {
+  width:cons_ene_ele_ancho_line,
+  height:cons_ene_ele_alto_line,
+  debug: true,
+  xAxis: {
+    crosshair_enabled: true,
+    scale: { type: 'stacked' }
+  },
+  legend:{visible: false},
+  defaultSeries: {
+    type: 'line',
+    line: {
+      width: 2,
+      caps_end: { type: '', size: '600%' }
+    },
+    opacity: 1,
+    lastPoint_marker_visible: false,
+    defaultPoint_marker: {
+      fill: 'lightenMore',
+      outline: { width: 2 }
+    }
+  },
+  series: [
+    {
+      line_dashStyle: 'solid',
+      name: 'Solucion '+sol_1,
+      color:'#2be6ee',
+      points: [
+        [1, array_1_suma[0]],
+        [2, array_1_suma[1]],
+        [3, array_1_suma[2]],
+        [4, array_1_suma[3]],
+        [5, array_1_suma[4]],
+        [6, array_1_suma[5]],
+        [7, array_1_suma[6]],
+        [8, array_1_suma[7]],
+        [9, array_1_suma[8]],
+        [10, array_1_suma[9]],
+        [11, array_1_suma[10]],
+        [12, array_1_suma[11]],
+        [13, array_1_suma[12]],
+        [14, array_1_suma[13]],
+        [15, array_1_suma[14]],
+      ]
+    },
+    {
+      line_dashStyle: 'solid',
+      name: 'Solucion '+sol_2,
+      color:'#ff00ff',
+      points: [
+        [1, array_2_suma[0]],
+        [2, array_2_suma[1]],
+        [3, array_2_suma[2]],
+        [4, array_2_suma[3]],
+        [5, array_2_suma[4]],
+        [6, array_2_suma[5]],
+        [7, array_2_suma[6]],
+        [8, array_2_suma[7]],
+        [9, array_2_suma[8]],
+        [10, array_2_suma[9]],
+        [11, array_2_suma[10]],
+        [12, array_2_suma[11]],
+        [13, array_2_suma[12]],
+        [14, array_2_suma[13]],
+        [15, array_2_suma[14]],
+      ]
+    },
+    {
+     line_dashStyle: 'longdashdot',
+     color:'#2a4365',
+     points: [
+        [1,capex_1],
+        [15,capex_1]
+    ]
+    },
+    {
+     line_dashStyle: 'longdashdot',
+     color:'##ed8936',
+     points: [
+        [1,capex_2],
+        [15,capex_2]
+    ]
+    },
+
+
+  ],
+
+  yAxis: { formatString: 'c' }
+});
+    return array_2_suma;
+}
+
+
+function chart_red_anu_cos_sal(){
+    var red_an_co_sal_1 = '{{ $costo_anual_base }}';
+    var red_an_co_sal_2 = '{{ $costo_anual_a }}';
+    var red_an_co_sal_3 = '{{ $costo_anual_b }}';
+    var inflacion_rate  = '{{$tar_ele->inflacion_rate}}';
+
+    var suma_opex_1 = '{{ $sumaopex_1*$tar_ele->costo_elec }}';
+    var suma_opex_2 = '{{ $sumaopex_2*$tar_ele->costo_elec }}';
+    var suma_opex_3 = '{{ $sumaopex_3*$tar_ele->costo_elec }}';
+    var inflacion  = '{{$tar_ele->inflacion}}';
+
+    var array_a = incremento_1(suma_opex_1,inflacion);
+    var array_b = incremento_1(suma_opex_2,inflacion);
+    var array_c = incremento_1(suma_opex_3,inflacion);
+
+    var array_a_red_an = incremento_1(red_an_co_sal_1,inflacion_rate);
+    var array_b_red_an = incremento_1(red_an_co_sal_2,inflacion_rate);
+    var array_c_red_an = incremento_1(red_an_co_sal_3,inflacion_rate);
+
+    var suma_array_a_1 = 0;
+    var suma_array_a_5 = 0;
+    var suma_array_a_10 = 0;
+    var suma_array_a_15 = 0;
+
+    var suma_array_b_1 = 0;
+    var suma_array_b_5 = 0;
+    var suma_array_b_10 = 0;
+    var suma_array_b_15 = 0;
+
+    var suma_array_c_1 = 0;
+    var suma_array_c_5 = 0;
+    var suma_array_c_10 = 0;
+    var suma_array_c_15 = 0;
+
+    var val_base_red_ene = '{{ $val_base_red_ene }}';
+    var val_a_red_ene = '{{ $val_a_red_ene }}';
+    var val_b_red_ene = '{{ $val_b_red_ene }}';
+    var inflacion  = '{{$tar_ele->inflacion}}';
+    var inv_ini_base = '{{ $inv_ini_1 }}'
+    var inv_ini_a = '{{ $inv_ini_2 }}'
+    var inv_ini_b = '{{ $inv_ini_3 }}'
+
+    if(val_base_red_ene == 0 && val_a_red_ene > 0 && val_b_red_ene > 0){
+        var array_1 = incremento_2(val_a_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+
+        var array_2 = incremento_2(val_b_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+
+    }
+
+    if(val_a_red_ene == 0 && val_base_red_ene > 0 && val_b_red_ene > 0){
+
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+
+
+        var array_2 = incremento_2(val_b_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+
+        var array_3_suma = [];
+
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+          array_3_suma.push(0);
+        }
+    }
+
+    if(val_b_red_ene == 0 && val_base_red_ene > 0 && val_a_red_ene > 0){
+
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+
+
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    //suma a
+    for (let index = 0; index < array_1_suma.length; index++) {
+          suma_array_a_5 = parseInt(array_a_red_an[index]) + parseInt(suma_array_a_5);
+          suma_array_b_5 = parseInt(array_b_red_an[index]) + parseInt(suma_array_b_5);
+          suma_array_c_5 = parseInt(array_c_red_an[index]) + parseInt(suma_array_c_5);
+
+        if(index == 0){
+           /*  */
+            suma_array_a_1 = parseInt(suma_array_b_5);
+            suma_array_b_1 = parseInt(suma_array_c_5);
+        }
+
+        if(index == 4){
+           /*  console.log(suma_array_a_5,array_a[index]); */
+            suma_array_a_5 = parseInt(suma_array_a_5) + parseInt(array_1_suma[index]);
+            suma_array_b_5 = parseInt(suma_array_b_5) + parseInt(array_2_suma[index]);
+
+        }
+
+        if(index == 9){
+           /*  console.log(suma_array_a_5,array_a[index]); */
+            suma_array_a_10 = parseInt(suma_array_a_10) + parseInt(array_1_suma[index]);
+            suma_array_b_10 = parseInt(suma_array_b_10) + parseInt(array_2_suma[index]);
+
+        }
+
+        if(index == 14){
+           /*  console.log(suma_array_a_5,array_a[index]); */
+            suma_array_a_15 = parseInt(suma_array_a_15) + parseInt(array_1_suma[index]);
+            suma_array_b_15 = parseInt(suma_array_b_15) + parseInt(array_2_suma[index]);
+        }
+    }
+
+
+
+
+    // JS
+    var chart = JSC.chart('chart_red_anu_cos_sal', {
+    debug: true,
+    xAxis: {
+        crosshair_enabled: true,
+        scale: { type: 'auto' },
+
+    },
+    legend:{visible: false},
+    defaultSeries: {
+        type: 'line',
+        line: {
+        width: 2,
+        caps_end: { type: '', size: '600%' }
+        },
+        opacity: 1,
+        lastPoint_marker_visible: false,
+        defaultPoint_marker: {
+        fill: 'lightenMore',
+        outline: { width: 2 }
+        }
+    },
+    series: [
+
+        {
+        line_dashStyle: 'solid',
+        name: 'A',
+        points: [
+            [1, suma_array_a_1],
+
+            [5, suma_array_a_5],
+
+            [10, suma_array_a_10],
+
+            [15, suma_array_a_15],
+        ]
+        },
+        {
+        line_dashStyle: 'solid',
+        name: 'B',
+
+        points: [
+            [1, suma_array_b_1],
+
+            [5, suma_array_b_5],
+
+            [10, suma_array_b_10],
+
+            [15, suma_array_b_15],
+        ]
+        },
+        {
+        line_dashStyle: 'solid',
+        name: 'C',
+        color:'#33cc33',
+        points: [
+            [1, suma_array_c_1],
+
+            [5, suma_array_c_5],
+
+            [10, suma_array_c_10],
+
+            [15, suma_array_c_15],
+        ]
+        }
+    ],
+    title_label_text: 'Reducción Anual de Costo Salarial',
+    yAxis: { formatString: 'c' }
+    });
+}
+
 function con_ene_hvac_ar_Base(kwh_yr,porcent_hvac){
 // JS
 /* var result_area = parseFloat('{{$result_area_1}}'); */
@@ -7334,7 +7890,7 @@ if(result_area > red){
 //result area aux es igual a rojo, para que no se pase del tope que es red
     var result_area_aux = red;
 }
-//si rojo es mayor a result
+//si rojo es mayor a result1
 if(result_area < red){
     //toma el valor de result para que este en el rango de maximo que es rojo
     var result_area_aux = result_area;
@@ -9429,7 +9985,7 @@ if (res[2][0] <= 0 || res[2][0] == null && res[1][0] <= 0 || res[1][0] == null  
       },
     },
     xaxis: {
-      categories: ['Solución B', 'Solución A', 'Solución Base'],
+      categories: ['Solución C', 'Solución B', 'Solución A'],
       labels: {
             style: {
                 colors: [],
@@ -10747,6 +11303,296 @@ function interp(conf_val){
 
 }
 
+function chart_1_print(){
+    var suma_opex_1 = '{{ $sumaopex_1*$tar_ele->costo_elec }}';
+    var suma_opex_2 = '{{ $sumaopex_2*$tar_ele->costo_elec }}';
+    var suma_opex_3 = '{{ $sumaopex_3*$tar_ele->costo_elec }}';
+    var inflacion  = '{{$tar_ele->inflacion}}';
+
+    var array_a = incremento_1(Math.ceil(suma_opex_1),inflacion);
+    var array_b = incremento_1(Math.ceil(suma_opex_2),inflacion);
+    var array_c = incremento_1(Math.ceil(suma_opex_3),inflacion);
+
+// JS
+var chart = JSC.chart('chart_1', {
+  debug: true,
+  width:cons_ene_ele_ancho_line_print,
+  height:cons_ene_ele_alto_line_print,
+  xAxis: {
+    crosshair_enabled: true,
+    scale: { type: 'auto' },
+
+  },
+  legend:{visible: false},
+  defaultSeries: {
+    type: 'line',
+    line: {
+      width: 2,
+      caps_end: { type: '', size: '600%' }
+    },
+
+    opacity: 1,
+    lastPoint_marker_visible: false,
+    defaultPoint_marker: {
+      fill: 'lightenMore',
+      outline: { width: 2 }
+    }
+  },
+  series: [
+
+    {
+      line_dashStyle: 'solid',
+      name: 'A',
+      color:'#2be6ee',
+      points: [
+        [1, array_a[0]],
+        [2, array_a[1]],
+        [3, array_a[2]],
+        [4, array_a[3]],
+        [5, array_a[4]],
+        [6, array_a[5]],
+        [7, array_a[6]],
+        [8, array_a[7]],
+        [9, array_a[8]],
+        [10, array_a[9]],
+        [11, array_a[10]],
+        [12, array_a[11]],
+        [13, array_a[12]],
+        [14, array_a[13]],
+        [15, array_a[14]],
+      ]
+    },
+    {
+      line_dashStyle: 'solid',
+      name: 'B',
+      color:'#ff00ff',
+      points: [
+        [1, array_b[0]],
+        [2, array_b[1]],
+        [3, array_b[2]],
+        [4, array_b[3]],
+        [5, array_b[4]],
+        [6, array_b[5]],
+        [7, array_b[6]],
+        [8, array_b[7]],
+        [9, array_b[8]],
+        [10, array_b[9]],
+        [11, array_b[10]],
+        [12, array_b[11]],
+        [13, array_b[12]],
+        [14, array_b[13]],
+        [15, array_b[14]],
+      ]
+    },
+    {
+      line_dashStyle: 'solid',
+      name: 'C',
+      color:'#545454',
+      points: [
+        [1, array_c[0]],
+        [2, array_c[1]],
+        [3, array_c[2]],
+        [4, array_c[3]],
+        [5, array_c[4]],
+        [6, array_c[5]],
+        [7, array_c[6]],
+        [8, array_c[7]],
+        [9, array_c[8]],
+        [10, array_c[9]],
+        [11, array_c[10]],
+        [12, array_c[11]],
+        [13, array_c[12]],
+        [14, array_c[13]],
+        [15, array_c[14]],
+      ]
+    }
+  ],
+
+  style:{
+    fontSize:10,
+  },
+  yAxis: {
+    formatString: 'c',
+  }
+});
+/* '#01040a','#2be6ee','#ff00ff', '#545454' */
+}
+
+function chart_2_print(){
+
+    var val_base_red_ene = '{{ $val_base_red_ene }}';
+    var val_a_red_ene = '{{ $val_a_red_ene }}';
+    var val_b_red_ene = '{{ $val_b_red_ene }}';
+    var inflacion  = '{{$tar_ele->inflacion}}';
+    var inv_ini_base = '{{ $inv_ini_1 }}'
+    var inv_ini_a = '{{ $inv_ini_2 }}'
+    var inv_ini_b = '{{ $inv_ini_3 }}'
+
+    if(val_base_red_ene == 0 && val_a_red_ene > 0 && val_b_red_ene > 0){
+        var sol_1 = 'B';
+        var array_1 = incremento_2(val_a_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_a);
+        var val_red_ene_1 = val_a_red_ene;
+        var sol_2 = 'C';
+        var array_2 = incremento_2(val_b_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_b);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+
+    }
+
+    if(val_a_red_ene == 0 && val_base_red_ene > 0 && val_b_red_ene > 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'C';
+        var array_2 = incremento_2(val_b_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_b);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    if(val_b_red_ene == 0 && val_base_red_ene > 0 && val_a_red_ene > 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'B';
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+// JS
+var chart = JSC.chart('chart_2', {
+  width:cons_ene_ele_ancho_line_print,
+  height:cons_ene_ele_alto_line_print,
+  debug: true,
+  xAxis: {
+    crosshair_enabled: true,
+    scale: { type: 'stacked' }
+  },
+  legend:{visible: false},
+  defaultSeries: {
+    type: 'line',
+    line: {
+      width: 2,
+      caps_end: { type: '', size: '600%' }
+    },
+    opacity: 1,
+    lastPoint_marker_visible: false,
+    defaultPoint_marker: {
+      fill: 'lightenMore',
+      outline: { width: 2 }
+    }
+  },
+  series: [
+    {
+      line_dashStyle: 'solid',
+      name: 'Solucion '+sol_1,
+      color:'#2be6ee',
+      points: [
+        [1, array_1_suma[0]],
+        [2, array_1_suma[1]],
+        [3, array_1_suma[2]],
+        [4, array_1_suma[3]],
+        [5, array_1_suma[4]],
+        [6, array_1_suma[5]],
+        [7, array_1_suma[6]],
+        [8, array_1_suma[7]],
+        [9, array_1_suma[8]],
+        [10, array_1_suma[9]],
+        [11, array_1_suma[10]],
+        [12, array_1_suma[11]],
+        [13, array_1_suma[12]],
+        [14, array_1_suma[13]],
+        [15, array_1_suma[14]],
+      ]
+    },
+    {
+      line_dashStyle: 'solid',
+      name: 'Solucion '+sol_2,
+      color:'#ff00ff',
+      points: [
+        [1, array_2_suma[0]],
+        [2, array_2_suma[1]],
+        [3, array_2_suma[2]],
+        [4, array_2_suma[3]],
+        [5, array_2_suma[4]],
+        [6, array_2_suma[5]],
+        [7, array_2_suma[6]],
+        [8, array_2_suma[7]],
+        [9, array_2_suma[8]],
+        [10, array_2_suma[9]],
+        [11, array_2_suma[10]],
+        [12, array_2_suma[11]],
+        [13, array_2_suma[12]],
+        [14, array_2_suma[13]],
+        [15, array_2_suma[14]],
+      ]
+    },
+    {
+     line_dashStyle: 'longdashdot',
+     color:'#2a4365',
+     points: [
+        [1,capex_1],
+        [15,capex_1]
+    ]
+    },
+    {
+     line_dashStyle: 'longdashdot',
+     color:'##ed8936',
+     points: [
+        [1,capex_2],
+        [15,capex_2]
+    ]
+    },
+
+
+  ],
+
+  yAxis: { formatString: 'c' }
+});
+    return array_2_suma;
+}
+
+
 function message_prod_lab_chart(check_prod){
 
 if(check_prod == 0){
@@ -10777,6 +11623,37 @@ function ocultar_modal(id){
     $("#"+id).addClass("hidden");
 }
 
+
+function incremento_1(suma_opex_1,inflacion){
+    const array = [];
+    var suma = suma_opex_1;
+    for (let index = 1; index <= 15; index++) {
+        if(index == 1){
+            array.push(parseInt(suma));
+        }else{
+            suma = suma * (1+(inflacion/100));
+            array.push(parseInt(suma));
+        }
+    }
+
+    return array;
+
+}
+
+function incremento_2(val_red_ene,inflacion){
+    const array = [];
+    var suma = val_red_ene;
+    for (let index = 1; index <= 15; index++) {
+        if(index == 1){
+            array.push(parseInt(suma));
+        }else{
+            suma = suma * (1+(inflacion/100));
+            array.push(parseInt(suma));
+        }
+    }
+
+    return array;
+}
 </script>
 @section('js')
 <?php

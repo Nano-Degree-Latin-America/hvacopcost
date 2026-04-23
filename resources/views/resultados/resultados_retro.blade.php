@@ -1404,7 +1404,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
       <div class="w-full grid">
         <div style="background-color:#1B17BB;" class="w-full flex justify-center">
             <div class="flex w-full justify-center mt-1">
-                <p class="titulos_style ml-8">Análisis Financiero - Retornos de Inversión (años)</p>
+                <p class="titulos_style ml-8">Análisis Financiero</p>
             </div>
             <div id="button_marrr" name="button_marrr" class="flex justify-end mt-2">
                 <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr_retro');" class="btn_roundf_retro mr-5" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
