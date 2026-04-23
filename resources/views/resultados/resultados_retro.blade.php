@@ -520,7 +520,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 ?>
 
 
-<div class="w-full grid">
+<div class="w-full grid hidden">
     <div style="background-color:#fff;" class="w-full flex justify-center mt_titles">
         <p style="color:#1B17BB;" class="titulos_style">Reducción Anual del Costo de Energía</p>
     </div>
@@ -578,53 +578,74 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 </div>
 
 
-<div class="w-full grid">
-    <div style="background-color:#ffff;" class="w-full flex justify-center  mt_titles">
-        <p style="color: #1B17BB" class="titulos_style">Descarbonización (Ton CO2)</p>
-    </div>
-
-    <div class="flex w-full justify-center">
-        <div class="w-1/7 grid justify-items-center">
-            <div class="place-content-center">
-                <img src="{{asset('assets/images/Huella.png')}}" class="img_tr mx-2">
-            </div>
-        </div>
-
-            <div class="w-1/3 grid justify-items-start ">
-
-                    <p  class="cant_2_cero_des font-bold font-roboto">0</p>
-            </div>
-
-            <div class="w-1/3 grid justify-items-center">
-                <?php  $red_hu_carb_a=$red_ene->red_hu_carb(1,$val_a_red_ene) ?>
-
-                    @if ($red_hu_carb_a  == 0)
-                    <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
-                    @endif
-
-                    @if ($red_hu_carb_a > 0)
-                        @if (strlen(number_format($red_hu_carb_a,2)) > 9)
-                        <p  style="margin-right:50px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
-                        @endif
-
-                        @if (strlen(number_format($red_hu_carb_a,2)) <= 9)
-                        <p  style="margin-right:75px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
-                        @endif
-
-                    @endif
-            </div>
-
-
-            <div class="w-1/3 grid justify-items-center">
-                <div class="flex w-full justify-center">
-                    <?php  $red_hu_carb_b=$red_ene->red_hu_carb(1,$val_b_red_ene) ?>
-                            <div class="flex w-full justify-center">
-                                <p style="" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_b,2)}}</p>
-                            </div>
+            <div class="w-full grid hidden">
+                <div style="background-color:#ffff;" class="w-full flex justify-center  mt_titles">
+                    <p style="color: #1B17BB" class="titulos_style">Descarbonización (Ton CO2)</p>
                 </div>
+
+                <div class="flex w-full justify-center">
+                    <div class="w-1/7 grid justify-items-center">
+                        <div class="place-content-center">
+                            <img src="{{asset('assets/images/Huella.png')}}" class="img_tr mx-2">
+                        </div>
+                    </div>
+
+                        <div class="w-1/3 grid justify-items-start ">
+
+                                <p  class="cant_2_cero_des font-bold font-roboto">0</p>
+                        </div>
+
+                        <div class="w-1/3 grid justify-items-center">
+                            <?php  $red_hu_carb_a=$red_ene->red_hu_carb(1,$val_a_red_ene) ?>
+
+                                @if ($red_hu_carb_a  == 0)
+                                <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                                @endif
+
+                                @if ($red_hu_carb_a > 0)
+                                    @if (strlen(number_format($red_hu_carb_a,2)) > 9)
+                                    <p  style="margin-right:50px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                                    @endif
+
+                                    @if (strlen(number_format($red_hu_carb_a,2)) <= 9)
+                                    <p  style="margin-right:75px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                                    @endif
+
+                                @endif
+                        </div>
+
+
+                        <div class="w-1/3 grid justify-items-center">
+                            <div class="flex w-full justify-center">
+                                <?php  $red_hu_carb_b=$red_ene->red_hu_carb(1,$val_b_red_ene) ?>
+                                        <div class="flex w-full justify-center">
+                                            <p style="" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_b,2)}}</p>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
-        </div>
-</div>
+
+            <div class="w-full flex gap-x-2 mt-2">
+
+                <div class="grid" style="max-width: 90%;margin: 0px auto">
+                   <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
+                     <label>Incremento del Costo de la Energía</label>
+                   </div>
+                    <div id="chart_1" class="js_charts_style_line"></div>
+
+                </div>
+
+                <div  class="grid" style="max-width: 90%;margin: 0px auto">
+                    <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
+                     <label>Recuperación de la Energía vs Capex</label>
+                   </div>
+                    <div id="chart_2" class="js_charts_style_line"></div>
+
+                </div>
+
+
+            </div>
     </div>
 </div>
 
@@ -672,7 +693,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 </div> --}}
 
 {{-- espacio --}}
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:230px;" >
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:440px;" >
 
 </div>
 
@@ -1281,7 +1302,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 @endif
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_3" name="next_page_3" style="width: 80%; height:30px;" class="hidden">
+<div id="next_page_3" name="next_page_3" style="width: 80%; height:360px;" class="hidden">
 
 </div>
 
@@ -2199,7 +2220,7 @@ $costo_b
 </div> --}}
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_4" name="next_page_4" style="width: 80%; height:80px;" class="hidden">
+<div id="next_page_4" name="next_page_4" style="width: 80%; height:450px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
@@ -2331,9 +2352,9 @@ $costo_b
 </div>
 {{-- capex vs opex --}}
 {{-- caja_principal --}}
- @if (Auth::user()->tipo_user == 5)
+{{--  @if (Auth::user()->tipo_user == 5)
     @include('components.hvac-chat')
- @endif
+ @endif --}}
 </div>
 <script type="text/javascript">
     let dollarUSLocale = Intl.NumberFormat('en-US');
@@ -2345,6 +2366,10 @@ $costo_b
     var cons_ene_ele_alto = 250;
     var cons_ene_ele_ancho_print = 210;
     var cons_ene_ele_alto_print = 140;
+    var cons_ene_ele_ancho_line = 580;
+    var cons_ene_ele_alto_line = 250;
+    var cons_ene_ele_ancho_line_print = 460;
+    var cons_ene_ele_alto_line_print = 200;
     var eui_print_width = 470;
     var eui_print_height = 140;
     var red_ene_print_height= 200;
@@ -2375,6 +2400,8 @@ document.addEventListener('keydown', function(event) {
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+    chart_1_print();
+    chart_2_print();
     $('#chart_red_ene').addClass("hidden");
     $("#chart_descarb").addClass("hidden");
     $("#eui_sol_base").addClass("hidden");
@@ -2460,9 +2487,13 @@ function send_print(){
     $("#chart_3").width(200).height(120);
     $("#chart_5_print").width(380).height(200);
     $("#chart_10_print").width(380).height(200);
+    $("#chart_1").width(500).height(210);
+    $("#chart_2").width(500).height(210);
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+    chart_1_print();
+    chart_2_print();
     $('#chart_red_ene').addClass("hidden");
     $("#chart_descarb").addClass("hidden");
     $("#eui_sol_base").addClass("hidden");
@@ -2574,7 +2605,8 @@ $(document).ready(function() {
       cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_5_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_10_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
-
+      chart_1();
+      chart_2();
 
       google.charts.setOnLoadCallback(chart_base_eui);
       google.charts.setOnLoadCallback(chart_a_eui);
@@ -2585,6 +2617,295 @@ $(document).ready(function() {
 
 });
 /* window.print() */
+function chart_1(){
+    var suma_opex_1 = '{{ $sumaopex_1*$tar_ele->costo_elec }}';
+    var suma_opex_2 = '{{ $sumaopex_2*$tar_ele->costo_elec }}';
+    var suma_opex_3 = '{{ $sumaopex_3*$tar_ele->costo_elec }}';
+    var inflacion  = '{{$tar_ele->inflacion}}';
+
+    var array_a = incremento_1(Math.ceil(suma_opex_1),inflacion);
+    var array_b = incremento_1(Math.ceil(suma_opex_2),inflacion);
+    var array_c = incremento_1(Math.ceil(suma_opex_3),inflacion);
+
+// JS
+var chart = JSC.chart('chart_1', {
+  debug: true,
+  width:cons_ene_ele_ancho_line,
+  height:cons_ene_ele_alto_line,
+  xAxis: {
+    crosshair_enabled: true,
+    scale: { type: 'auto' },
+
+  },
+  legend:{visible: false},
+  defaultSeries: {
+    type: 'line',
+    line: {
+      width: 2,
+      caps_end: { type: '', size: '600%' }
+    },
+
+    opacity: 1,
+    lastPoint_marker_visible: false,
+    defaultPoint_marker: {
+      fill: 'lightenMore',
+      outline: { width: 2 }
+    }
+  },
+  series: [
+
+    {
+      line_dashStyle: 'solid',
+      name: 'A',
+      color:'#2be6ee',
+      points: [
+        [1, array_a[0]],
+        [2, array_a[1]],
+        [3, array_a[2]],
+        [4, array_a[3]],
+        [5, array_a[4]],
+        [6, array_a[5]],
+        [7, array_a[6]],
+        [8, array_a[7]],
+        [9, array_a[8]],
+        [10, array_a[9]],
+        [11, array_a[10]],
+        [12, array_a[11]],
+        [13, array_a[12]],
+        [14, array_a[13]],
+        [15, array_a[14]],
+      ]
+    },
+    {
+      line_dashStyle: 'solid',
+      name: 'B',
+      color:'#ff00ff',
+      points: [
+        [1, array_b[0]],
+        [2, array_b[1]],
+        [3, array_b[2]],
+        [4, array_b[3]],
+        [5, array_b[4]],
+        [6, array_b[5]],
+        [7, array_b[6]],
+        [8, array_b[7]],
+        [9, array_b[8]],
+        [10, array_b[9]],
+        [11, array_b[10]],
+        [12, array_b[11]],
+        [13, array_b[12]],
+        [14, array_b[13]],
+        [15, array_b[14]],
+      ]
+    },
+    {
+      line_dashStyle: 'solid',
+      name: 'C',
+      color:'#545454',
+      points: [
+        [1, array_c[0]],
+        [2, array_c[1]],
+        [3, array_c[2]],
+        [4, array_c[3]],
+        [5, array_c[4]],
+        [6, array_c[5]],
+        [7, array_c[6]],
+        [8, array_c[7]],
+        [9, array_c[8]],
+        [10, array_c[9]],
+        [11, array_c[10]],
+        [12, array_c[11]],
+        [13, array_c[12]],
+        [14, array_c[13]],
+        [15, array_c[14]],
+      ]
+    }
+  ],
+
+  style:{
+    fontSize:10,
+  },
+  yAxis: {
+    formatString: 'c',
+  }
+});
+/* '#01040a','#2be6ee','#ff00ff', '#545454' */
+}
+
+function chart_2(){
+
+    var val_base_red_ene = '{{ $val_base_red_ene }}';
+    var val_a_red_ene = '{{ $val_a_red_ene }}';
+    var val_b_red_ene = '{{ $val_b_red_ene }}';
+    var inflacion  = '{{$tar_ele->inflacion}}';
+    var inv_ini_base = '{{ $inv_ini_1 }}'
+    var inv_ini_a = '{{ $inv_ini_2 }}'
+    var inv_ini_b = '{{ $inv_ini_3 }}'
+
+    if(val_base_red_ene == 0 && val_a_red_ene > 0 && val_b_red_ene > 0){
+        var sol_1 = 'B';
+        var array_1 = incremento_2(val_a_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_a);
+        var val_red_ene_1 = val_a_red_ene;
+        var sol_2 = 'C';
+        var array_2 = incremento_2(val_b_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_b);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+
+    }
+
+    if(val_a_red_ene == 0 && val_base_red_ene > 0 && val_b_red_ene > 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'C';
+        var array_2 = incremento_2(val_b_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_b);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    if(val_b_red_ene == 0 && val_base_red_ene > 0 && val_a_red_ene > 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'B';
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+// JS
+var chart = JSC.chart('chart_2', {
+  width:cons_ene_ele_ancho_line,
+  height:cons_ene_ele_alto_line,
+  debug: true,
+  xAxis: {
+    crosshair_enabled: true,
+    scale: { type: 'stacked' }
+  },
+  legend:{visible: false},
+  defaultSeries: {
+    type: 'line',
+    line: {
+      width: 2,
+      caps_end: { type: '', size: '600%' }
+    },
+    opacity: 1,
+    lastPoint_marker_visible: false,
+    defaultPoint_marker: {
+      fill: 'lightenMore',
+      outline: { width: 2 }
+    }
+  },
+  series: [
+    {
+      line_dashStyle: 'solid',
+      name: 'Solucion '+sol_1,
+      color:'#2be6ee',
+      points: [
+        [1, array_1_suma[0]],
+        [2, array_1_suma[1]],
+        [3, array_1_suma[2]],
+        [4, array_1_suma[3]],
+        [5, array_1_suma[4]],
+        [6, array_1_suma[5]],
+        [7, array_1_suma[6]],
+        [8, array_1_suma[7]],
+        [9, array_1_suma[8]],
+        [10, array_1_suma[9]],
+        [11, array_1_suma[10]],
+        [12, array_1_suma[11]],
+        [13, array_1_suma[12]],
+        [14, array_1_suma[13]],
+        [15, array_1_suma[14]],
+      ]
+    },
+    {
+      line_dashStyle: 'solid',
+      name: 'Solucion '+sol_2,
+      color:'#ff00ff',
+      points: [
+        [1, array_2_suma[0]],
+        [2, array_2_suma[1]],
+        [3, array_2_suma[2]],
+        [4, array_2_suma[3]],
+        [5, array_2_suma[4]],
+        [6, array_2_suma[5]],
+        [7, array_2_suma[6]],
+        [8, array_2_suma[7]],
+        [9, array_2_suma[8]],
+        [10, array_2_suma[9]],
+        [11, array_2_suma[10]],
+        [12, array_2_suma[11]],
+        [13, array_2_suma[12]],
+        [14, array_2_suma[13]],
+        [15, array_2_suma[14]],
+      ]
+    },
+    {
+     line_dashStyle: 'longdashdot',
+     color:'#2a4365',
+     points: [
+        [1,capex_1],
+        [15,capex_1]
+    ]
+    },
+    {
+     line_dashStyle: 'longdashdot',
+     color:'##ed8936',
+     points: [
+        [1,capex_2],
+        [15,capex_2]
+    ]
+    },
+
+
+  ],
+
+  yAxis: { formatString: 'c' }
+});
+    return array_2_suma;
+}
+
 function con_ene_hvac_ar_Base(kwh_yr,porcent_hvac){
 // JS
 /* var result_area = parseFloat('{{$result_area_1}}'); */
@@ -8175,6 +8496,295 @@ function interp(conf_val){
 
 }
 
+function chart_1_print(){
+    var suma_opex_1 = '{{ $sumaopex_1*$tar_ele->costo_elec }}';
+    var suma_opex_2 = '{{ $sumaopex_2*$tar_ele->costo_elec }}';
+    var suma_opex_3 = '{{ $sumaopex_3*$tar_ele->costo_elec }}';
+    var inflacion  = '{{$tar_ele->inflacion}}';
+
+    var array_a = incremento_1(Math.ceil(suma_opex_1),inflacion);
+    var array_b = incremento_1(Math.ceil(suma_opex_2),inflacion);
+    var array_c = incremento_1(Math.ceil(suma_opex_3),inflacion);
+
+// JS
+var chart = JSC.chart('chart_1', {
+  debug: true,
+  width:cons_ene_ele_ancho_line_print,
+  height:cons_ene_ele_alto_line_print,
+  xAxis: {
+    crosshair_enabled: true,
+    scale: { type: 'auto' },
+
+  },
+  legend:{visible: false},
+  defaultSeries: {
+    type: 'line',
+    line: {
+      width: 2,
+      caps_end: { type: '', size: '600%' }
+    },
+
+    opacity: 1,
+    lastPoint_marker_visible: false,
+    defaultPoint_marker: {
+      fill: 'lightenMore',
+      outline: { width: 2 }
+    }
+  },
+  series: [
+
+    {
+      line_dashStyle: 'solid',
+      name: 'A',
+      color:'#2be6ee',
+      points: [
+        [1, array_a[0]],
+        [2, array_a[1]],
+        [3, array_a[2]],
+        [4, array_a[3]],
+        [5, array_a[4]],
+        [6, array_a[5]],
+        [7, array_a[6]],
+        [8, array_a[7]],
+        [9, array_a[8]],
+        [10, array_a[9]],
+        [11, array_a[10]],
+        [12, array_a[11]],
+        [13, array_a[12]],
+        [14, array_a[13]],
+        [15, array_a[14]],
+      ]
+    },
+    {
+      line_dashStyle: 'solid',
+      name: 'B',
+      color:'#ff00ff',
+      points: [
+        [1, array_b[0]],
+        [2, array_b[1]],
+        [3, array_b[2]],
+        [4, array_b[3]],
+        [5, array_b[4]],
+        [6, array_b[5]],
+        [7, array_b[6]],
+        [8, array_b[7]],
+        [9, array_b[8]],
+        [10, array_b[9]],
+        [11, array_b[10]],
+        [12, array_b[11]],
+        [13, array_b[12]],
+        [14, array_b[13]],
+        [15, array_b[14]],
+      ]
+    },
+    {
+      line_dashStyle: 'solid',
+      name: 'C',
+      color:'#545454',
+      points: [
+        [1, array_c[0]],
+        [2, array_c[1]],
+        [3, array_c[2]],
+        [4, array_c[3]],
+        [5, array_c[4]],
+        [6, array_c[5]],
+        [7, array_c[6]],
+        [8, array_c[7]],
+        [9, array_c[8]],
+        [10, array_c[9]],
+        [11, array_c[10]],
+        [12, array_c[11]],
+        [13, array_c[12]],
+        [14, array_c[13]],
+        [15, array_c[14]],
+      ]
+    }
+  ],
+
+  style:{
+    fontSize:10,
+  },
+  yAxis: {
+    formatString: 'c',
+  }
+});
+/* '#01040a','#2be6ee','#ff00ff', '#545454' */
+}
+
+function chart_2_print(){
+
+    var val_base_red_ene = '{{ $val_base_red_ene }}';
+    var val_a_red_ene = '{{ $val_a_red_ene }}';
+    var val_b_red_ene = '{{ $val_b_red_ene }}';
+    var inflacion  = '{{$tar_ele->inflacion}}';
+    var inv_ini_base = '{{ $inv_ini_1 }}'
+    var inv_ini_a = '{{ $inv_ini_2 }}'
+    var inv_ini_b = '{{ $inv_ini_3 }}'
+
+    if(val_base_red_ene == 0 && val_a_red_ene > 0 && val_b_red_ene > 0){
+        var sol_1 = 'B';
+        var array_1 = incremento_2(val_a_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_a);
+        var val_red_ene_1 = val_a_red_ene;
+        var sol_2 = 'C';
+        var array_2 = incremento_2(val_b_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_b);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+
+    }
+
+    if(val_a_red_ene == 0 && val_base_red_ene > 0 && val_b_red_ene > 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'C';
+        var array_2 = incremento_2(val_b_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_b);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    if(val_b_red_ene == 0 && val_base_red_ene > 0 && val_a_red_ene > 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'B';
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+// JS
+var chart = JSC.chart('chart_2', {
+  width:cons_ene_ele_ancho_line_print,
+  height:cons_ene_ele_alto_line_print,
+  debug: true,
+  xAxis: {
+    crosshair_enabled: true,
+    scale: { type: 'stacked' }
+  },
+  legend:{visible: false},
+  defaultSeries: {
+    type: 'line',
+    line: {
+      width: 2,
+      caps_end: { type: '', size: '600%' }
+    },
+    opacity: 1,
+    lastPoint_marker_visible: false,
+    defaultPoint_marker: {
+      fill: 'lightenMore',
+      outline: { width: 2 }
+    }
+  },
+  series: [
+    {
+      line_dashStyle: 'solid',
+      name: 'Solucion '+sol_1,
+      color:'#2be6ee',
+      points: [
+        [1, array_1_suma[0]],
+        [2, array_1_suma[1]],
+        [3, array_1_suma[2]],
+        [4, array_1_suma[3]],
+        [5, array_1_suma[4]],
+        [6, array_1_suma[5]],
+        [7, array_1_suma[6]],
+        [8, array_1_suma[7]],
+        [9, array_1_suma[8]],
+        [10, array_1_suma[9]],
+        [11, array_1_suma[10]],
+        [12, array_1_suma[11]],
+        [13, array_1_suma[12]],
+        [14, array_1_suma[13]],
+        [15, array_1_suma[14]],
+      ]
+    },
+    {
+      line_dashStyle: 'solid',
+      name: 'Solucion '+sol_2,
+      color:'#ff00ff',
+      points: [
+        [1, array_2_suma[0]],
+        [2, array_2_suma[1]],
+        [3, array_2_suma[2]],
+        [4, array_2_suma[3]],
+        [5, array_2_suma[4]],
+        [6, array_2_suma[5]],
+        [7, array_2_suma[6]],
+        [8, array_2_suma[7]],
+        [9, array_2_suma[8]],
+        [10, array_2_suma[9]],
+        [11, array_2_suma[10]],
+        [12, array_2_suma[11]],
+        [13, array_2_suma[12]],
+        [14, array_2_suma[13]],
+        [15, array_2_suma[14]],
+      ]
+    },
+    {
+     line_dashStyle: 'longdashdot',
+     color:'#2a4365',
+     points: [
+        [1,capex_1],
+        [15,capex_1]
+    ]
+    },
+    {
+     line_dashStyle: 'longdashdot',
+     color:'##ed8936',
+     points: [
+        [1,capex_2],
+        [15,capex_2]
+    ]
+    },
+
+
+  ],
+
+  yAxis: { formatString: 'c' }
+});
+    return array_2_suma;
+}
+
 function message_prod_lab_chart(check_prod){
 
 if(check_prod == 0){
@@ -8195,7 +8805,36 @@ if(check_prod > 5 && check_prod <= 10){
 return message;
 }
 
+function incremento_1(suma_opex_1,inflacion){
+    const array = [];
+    var suma = suma_opex_1;
+    for (let index = 1; index <= 15; index++) {
+        if(index == 1){
+            array.push(parseInt(suma));
+        }else{
+            suma = suma * (1+(inflacion/100));
+            array.push(parseInt(suma));
+        }
+    }
 
+    return array;
+
+}
+
+function incremento_2(val_red_ene,inflacion){
+    const array = [];
+    var suma = val_red_ene;
+    for (let index = 1; index <= 15; index++) {
+        if(index == 1){
+            array.push(parseInt(suma));
+        }else{
+            suma = suma * (1+(inflacion/100));
+            array.push(parseInt(suma));
+        }
+    }
+
+    return array;
+}
 
 function mostrar_modal(id){
     $("#"+id).removeClass("hidden");
