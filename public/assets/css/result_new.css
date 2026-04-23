@@ -28,6 +28,10 @@
 
         }
 
+        .margin-top-recuperacion-energia-productividad{
+            margin-top: 2.5rem /* 40px */
+        }
+
         .info_project_res{
             font-size: 20px;
             font-family: 'ABeeZee', sans-serif;
@@ -379,6 +383,10 @@
     font-weight: bold;
   }
 
+  .margin-top-recuperacion-energia-productividad{
+            margin-top: .5rem /* 40px */
+        }
+
   .info_project_res{
     font-size: 14px;
     font-family: 'ABeeZee', sans-serif;
@@ -655,7 +663,7 @@
         }
 
         .mb-rois{
-                    margin-bottom: 1.5rem;
+                    margin-bottom: .3rem;
                 }
          .margin-r-payback{
             margin-right: 6rem;
@@ -689,6 +697,12 @@
                 height: 200px;
                 margin: 0px auto;
             }
+
+            .js_charts_style_line{
+                width: 550px;
+                height: 300px;
+                margin: 0px auto;
+            }
         }
 
 
@@ -696,6 +710,12 @@
             .js_charts_style{
                 width: 250px;
                 height: 200px;
+                margin: 0px auto;
+            }
+
+            .js_charts_style_line{
+                width: 550px;
+                height: 300px;
                 margin: 0px auto;
             }
         }
@@ -707,12 +727,24 @@
                 height: 200px;
                 margin: 0px auto;
             }
+
+            .js_charts_style_line{
+                width: 550px;
+                height: 300px;
+                margin: 0px auto;
+            }
         }
         /* lg	1024px */
         @media (min-width: 1024px) {
             .js_charts_style{
                 width: 280px;
                 height: 200px;
+                margin: 0px auto;
+            }
+
+            .js_charts_style_line{
+                width: 550px;
+                height: 300px;
                 margin: 0px auto;
             }
 
@@ -725,12 +757,24 @@
                 margin: 0px auto;
             }
 
+            .js_charts_style_line{
+                width: 570px;
+                height: 300px;
+                margin: 0px auto;
+            }
+
         }
 
         @media (min-width: 1800px) {
             .js_charts_style{
                 width: 410px;
                 height: 210px;
+                margin: 0px auto;
+            }
+
+            .js_charts_style_line{
+                width: 580px;
+                height: 310px;
                 margin: 0px auto;
             }
         }
@@ -741,12 +785,23 @@
                 height: 210px;
                 margin: 0px auto;
             }
+
+            .js_charts_style_line{
+                width: 580px;
+                height: 310px;
+                margin: 0px auto;
+            }
         }
 
         @media (min-width: 1900px) {
             .js_charts_style{
                 width: 410px;
                 height: 210px;
+                margin: 0px auto;
+            }
+            .js_charts_style_line{
+                width: 580px;
+                height: 310px;
                 margin: 0px auto;
             }
         }
