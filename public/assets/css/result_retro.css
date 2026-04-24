@@ -9,6 +9,18 @@
             font-family: 'ABeeZee', sans-serif;
         }
 
+        .tam_leyend_sols{
+            font-size: 14px;
+         }
+
+         .margin_sols_leyend_chart_1{
+            margin-left:300px;
+         }
+
+         .margin_sols_leyend_chart_2{
+            margin-right:10px;
+         }
+
         .info_project{
             font-size: 20px;
             font-family: 'ABeeZee', sans-serif;
@@ -342,6 +354,10 @@
            padding-right:1.7rem;
         }
 
+        .style_solution_charts_leyends{
+            max-height: 40px; width:200px;
+        }
+
 @media print{
   @page { margin: 0; }
 
@@ -361,6 +377,14 @@
     font-family: 'ABeeZee', sans-serif;
     font-weight: bold;
   }
+
+     .margin_sols_leyend_chart_1{
+            margin-left:20px;
+         }
+
+         .margin_sols_leyend_chart_2{
+            margin-right:50px;
+         }
 
   .img_porject{
             height:100px;
@@ -641,6 +665,12 @@
         }
          .yrs-roi-15-padding{
            padding-right:.7rem;
+        }
+
+        .style_solution_charts_leyends{
+            max-height: 40px;
+            width:150px;
+            margin-right: 50px;
         }
 
 }

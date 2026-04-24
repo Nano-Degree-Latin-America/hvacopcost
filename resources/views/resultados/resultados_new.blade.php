@@ -627,6 +627,22 @@ if($counter == 2){
                    <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
                      <label>Incremento del Costo de la Energía</label>
                    </div>
+                   <div class="w-full flex justify-end font-roboto font-bold mt-2">
+                        <div class="w-2/3 flex gap-x-1 margin_sols_leyend_chart_1">
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols">Solucion</p><p class="tam_leyend_sols" id="solution_1_chart_1">A</p><div style="background-color:#2be6ee;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols">Solucion</p><p class="tam_leyend_sols" id="solution_2_chart_1">B</p><div style="background-color:#ff00ff;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols">Solucion</p><p class="tam_leyend_sols" id="solution_3_chart_1">C</p><div style="background-color:#545454;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+                        </div>
+                        {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
+                   </div>
                     <div id="chart_1" class="js_charts_style_line"></div>
 
                 </div>
@@ -634,6 +650,25 @@ if($counter == 2){
                 <div  class="grid" style="max-width: 90%;margin: 0px auto">
                     <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
                      <label>Recuperación de la Energía vs Capex</label>
+                   </div>
+                    <div class="w-full flex justify-end font-roboto font-bold mt-2">
+                        <div class="w-[80%] flex gap-x-1 margin_sols_leyend_chart_2 text-md">
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols" >Solucion</p><p class="tam_leyend_sols" id="solution_1_chart_2"></p><div style="background-color:#2be6ee;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols" >Solucion</p><p class="tam_leyend_sols" id="solution_2_chart_2"></p><div style="background-color:#ff00ff;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_1_chart_2"></p><div style="background-color:#545454;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_2_chart_2"></p><div style="background-color:#e09b5e;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+                        </div>
+                        {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
                    </div>
                     <div id="chart_2" class="js_charts_style_line"></div>
 
@@ -4217,6 +4252,11 @@ function chart_2(){
         }
     }
 
+    $('#solution_1_chart_2').html(sol_1);
+    $('#solution_2_chart_2').html(sol_2);
+    $('#capex_1_chart_2').html(sol_1);
+    $('#capex_2_chart_2').html(sol_2);
+
 // JS
 var chart = JSC.chart('chart_2', {
   width:cons_ene_ele_ancho_line,
@@ -4295,7 +4335,7 @@ var chart = JSC.chart('chart_2', {
     },
     {
      line_dashStyle: 'longdashdot',
-     color:'##ed8936',
+     color:'#ed8936',
      points: [
         [1,capex_2],
         [15,capex_2]

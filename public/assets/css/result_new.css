@@ -223,6 +223,18 @@
             font-size: 16px;
          }
 
+         .tam_leyend_sols{
+            font-size: 14px;
+         }
+
+         .margin_sols_leyend_chart_1{
+            margin-left:300px;
+         }
+
+         .margin_sols_leyend_chart_2{
+            margin-right:10px;
+         }
+
          .margin_top_solus{
             margin-top: 1.5rem;
          }
@@ -369,6 +381,10 @@
            padding-right:1.7rem;
         }
 
+        .style_solution_charts_leyends{
+            max-height: 40px; width:200px;
+        }
+
 @media print{
   @page { margin: 0; }
 
@@ -386,6 +402,15 @@
   .margin-top-recuperacion-energia-productividad{
             margin-top: .5rem /* 40px */
         }
+
+
+   .margin_sols_leyend_chart_1{
+            margin-left:20px;
+         }
+
+         .margin_sols_leyend_chart_2{
+            margin-right:50px;
+         }
 
   .info_project_res{
     font-size: 14px;
@@ -685,6 +710,12 @@
         }
          .yrs-roi-15-padding{
            padding-right:.7rem;
+        }
+
+        .style_solution_charts_leyends{
+            max-height: 40px;
+            width:150px;
+            margin-right: 50px;
         }
 
 }
