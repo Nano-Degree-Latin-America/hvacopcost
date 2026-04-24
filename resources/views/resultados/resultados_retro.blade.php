@@ -632,6 +632,22 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                    <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
                      <label>Incremento del Costo de la Energía</label>
                    </div>
+                   <div class="w-full flex justify-end font-roboto font-bold mt-2">
+                        <div class="w-2/3 flex gap-x-1 margin_sols_leyend_chart_1">
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols">Existente</p><p class="tam_leyend_sols" id="solution_1_chart_1"></p><div style="background-color:#2be6ee;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols">Solución</p><p class="tam_leyend_sols" id="solution_2_chart_1">A</p><div style="background-color:#ff00ff;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols">Solución</p><p class="tam_leyend_sols" id="solution_3_chart_1">B</p><div style="background-color:#545454;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+                        </div>
+                        {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
+                   </div>
                     <div id="chart_1" class="js_charts_style_line"></div>
 
                 </div>
@@ -639,6 +655,25 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                 <div  class="grid" style="max-width: 90%;margin: 0px auto">
                     <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
                      <label>Recuperación de la Energía vs Capex</label>
+                   </div>
+                   <div class="w-full flex justify-end font-roboto font-bold mt-2">
+                        <div class="w-[80%] flex gap-x-1 margin_sols_leyend_chart_2 text-md">
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols" id="solution_1_chart_2"></p><div style="background-color:#2be6ee;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols" id="solution_2_chart_2"></p><div style="background-color:#ff00ff;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_1_chart_2"></p><div style="background-color:#545454;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_2_chart_2"></p><div style="background-color:#e09b5e;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                            </div>
+                        </div>
+                        {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
                    </div>
                     <div id="chart_2" class="js_charts_style_line"></div>
 
@@ -2743,13 +2778,15 @@ function chart_2(){
     var inv_ini_b = '{{ $inv_ini_3 }}'
 
     if(val_base_red_ene == 0 && val_a_red_ene > 0 && val_b_red_ene > 0){
-        var sol_1 = 'B';
+        var sol_1 = 'Solución A';
+        var cap_1 = 'A';
         var array_1 = incremento_2(val_a_red_ene,inflacion);
         var suma_1_aux = 0;
         var array_1_suma = [];
         var capex_1 = parseInt(inv_ini_a);
         var val_red_ene_1 = val_a_red_ene;
-        var sol_2 = 'C';
+        var sol_2 = 'Solución B';
+        var cap_2 = 'B';
         var array_2 = incremento_2(val_b_red_ene,inflacion);
         var suma_2_aux = 0;
         var array_2_suma = [];
@@ -2768,12 +2805,14 @@ function chart_2(){
     }
 
     if(val_a_red_ene == 0 && val_base_red_ene > 0 && val_b_red_ene > 0){
-        var sol_1 = 'A';
+        var sol_1 = 'Existente';
+        var cap_1 = 'Existente';
         var array_1 = incremento_2(val_base_red_ene,inflacion);
         var suma_1_aux = 0;
         var array_1_suma = [];
         var capex_1 = parseInt(inv_ini_base);
-        var sol_2 = 'C';
+        var sol_2 = 'Solución B';
+        var cap_2 = 'B';
         var array_2 = incremento_2(val_b_red_ene,inflacion);
         var suma_2_aux = 0;
         var array_2_suma = [];
@@ -2791,12 +2830,14 @@ function chart_2(){
     }
 
     if(val_b_red_ene == 0 && val_base_red_ene > 0 && val_a_red_ene > 0){
-        var sol_1 = 'A';
+        var sol_1 = 'Existente';
+        var cap_1 = 'Existente';
         var array_1 = incremento_2(val_base_red_ene,inflacion);
         var suma_1_aux = 0;
         var array_1_suma = [];
         var capex_1 = parseInt(inv_ini_base);
-        var sol_2 = 'B';
+        var sol_2 = 'Solución A';
+        var cap_2 = 'A';
         var array_2 = incremento_2(val_a_red_ene,inflacion);
         var suma_2_aux = 0;
         var array_2_suma = [];
@@ -2812,6 +2853,11 @@ function chart_2(){
           array_2_suma.push(suma_2_aux);
         }
     }
+
+    $('#solution_1_chart_2').html(sol_1);
+    $('#solution_2_chart_2').html(sol_2);
+    $('#capex_1_chart_2').html(cap_1);
+    $('#capex_2_chart_2').html(cap_2);
 
 // JS
 var chart = JSC.chart('chart_2', {
