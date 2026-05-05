@@ -176,6 +176,8 @@ Route::get('roi_recu_prod/{id_project}/{costo_anual_base}/{costo_anual_a}/{costo
 Route::get('red_hu_carb_grafic/{dif}/{dif_2}', 'ResultadosController@red_hu_carb_grafic');
 Route::get('red_en_mw_grafic/{dif}/{dif_2}', 'ResultadosController@red_en_mw_grafic');
 Route::get('check_marino/{id_project}', 'ResultadosController@check_marino');
+Route::get('calculate_opex/{id_project}/{yrs_ciclo_vida}/{num_enf}', 'ResultadosController@calculate_opex');
+
 
 Route::post('cerrar_session', 'IndexController@cerrar_session')->name('cerrar_session');
 

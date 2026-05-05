@@ -2531,7 +2531,51 @@ $costo_b
 
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                <p class="titulos_style">{{-- {{ __('results.analisis') }} --}}CAPEX v/s OPEX (@if($tar_ele->unidad == 'mc')$/m²)@endif
+                <p class="titulos_style">
+                    Costo Ciclo de Vida
+                </p>
+            </div>
+        </div>
+
+        <div class="w-full flex justify-start font-roboto font-bold">
+                <div class="w-1/3 flex ml-10 mt-3">
+                    <label style="color:#1B17BB;" class="size_solutions_confort ">Año</label>
+                    <select name="yrs_ciclo_vida" id="yrs_ciclo_vida" class="w-[20px] border-2 rounded-md py-2 border-color-inps text-xl justify-center">
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                    </select>
+                </div>
+        </div>
+
+        <div class="grid w-full justify-items-center gap-y-1">
+            <div class="w-full flex justify-center">
+                <div id="chart_ciclo_vida_a" name="chart_ciclo_vida_a" style="width:90%;"></div>
+                <div class="hidden w-full" id="chart_ciclo_vida_a_print" name="chart_ciclo_vida_a_print" ></div>
+            </div>
+
+            <div class="w-full flex justify-center">
+                <div id="chart_ciclo_vida_b" name="chart_ciclo_vida_b" style="width:90%;"></div>
+                <div class="hidden w-full" id="chart_ciclo_vida_b_print" name="chart_ciclo_vida_b_print" ></div>
+            </div>
+
+            <div class="w-full flex justify-center">
+                <div id="chart_ciclo_vida_c" name="chart_ciclo_vida_c" style="width:90%;"></div>
+                <div class="hidden w-full" id="chart_ciclo_vida_c_print" name="chart_ciclo_vida_c_print" ></div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- capex vs opex --}}
+
+{{-- capex vs opex --}}
+{{-- <div class="w-full grid rounded-md justify-items-center mt-3">
+    <div class="ancho border_box border-blue-500 rounded-md grid">
+
+        <div class="w-full grid">
+            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                <p class="titulos_style">CAPEX v/s OPEX (@if($tar_ele->unidad == 'mc')$/m²)@endif
                     @if($tar_ele->unidad == 'ft')$/ft²)@endif
                 </p>
             </div>
@@ -2562,7 +2606,7 @@ $costo_b
         </div>
 
     </div>
-</div>
+</div> --}}
 {{-- capex vs opex --}}
 
 {{-- espacio hoja pagina 3 --}}
@@ -3821,6 +3865,10 @@ document.addEventListener('keydown', function(event) {
     $("#chart_3").width(200).height(120);
     $("#chart_1").width(400).height(120);
     $("#chart_2").width(400).height(120);
+    $("#chart_ciclo_vida_a").width(200).height(120);
+    $("#chart_ciclo_vida_b").width(200).height(120);
+    $("#chart_ciclo_vida_c").width(200).height(120);
+
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
@@ -3921,6 +3969,9 @@ function send_print(){
     $("#chart_15_print").width(380).height(200);
     $("#chart_1").width(500).height(210);
     $("#chart_2").width(500).height(210);
+    $("#chart_ciclo_vida_a_print").width(380).height(200);
+    $("#chart_ciclo_vida_b_print").width(380).height(200);
+    $("#chart_ciclo_vida_c_print").width(380).height(200);
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
@@ -3937,10 +3988,16 @@ function send_print(){
     $("#chart_5_print").removeClass("hidden");
     $("#chart_10_print").removeClass("hidden");
     $("#chart_15_print").removeClass("hidden");
+    $("#chart_ciclo_vida_a_print").removeClass("hidden");
+    $("#chart_ciclo_vida_b_print").removeClass("hidden");
+    $("#chart_ciclo_vida_c_print").removeClass("hidden");
     $('#chart_3').addClass("hidden");
     $("#chart_5").addClass("hidden");
     $('#chart_10').addClass("hidden");
     $("#chart_15").addClass("hidden");
+    $("#chart_ciclo_vida_a").addClass("hidden");
+    $("#chart_ciclo_vida_b").addClass("hidden");
+    $("#chart_ciclo_vida_c").addClass("hidden");
     $('#chart_cu_sho_Be_base').addClass("hidden");
     $("#chart_cu_sho_Be_a").addClass("hidden");
     $('#chart_cu_sho_Be_b').addClass("hidden");
@@ -4010,6 +4067,9 @@ $(document).ready(function() {
     cap_op_15_print('{{$id_project}}','{{$tar_ele->unidad}}');
     chart_1();
     chart_2();
+    ciclo_vida_a('{{$id_project}}');
+    ciclo_vida_b('{{$id_project}}');
+    ciclo_vida_c('{{$id_project}}');
     //chart_red_anu_cos_sal();
     google.charts.setOnLoadCallback(chart_base_eui_print);
     google.charts.setOnLoadCallback(chart_a_eui_print);
@@ -5501,6 +5561,415 @@ chart.draw(data, options); */
 }
 
 
+function ciclo_vida_a(id_project){
+    var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
+    var capex = '{{ $inv_ini_1 }}'
+    var reparaciones_aux = capex / 5;
+    var reparaciones = reparaciones_aux * 0.05
+$.ajax({
+    type: 'get',
+    url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 1,
+    success: function (res) {
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
+    var options = {
+      series: [{
+      name: 'Suministro e Instalación (CAPEX)',
+      data: [capex]
+    },{
+      name:'Costo de la Energía y Mantenimiento (OPEX)',
+      data: [0,res[0],0,0]
+    },{
+      name:'Reparaciones',
+      data: [0,res[1],reparaciones,0]
+    },{
+      name:'Total',
+      data: [0, 0,0,total]
+    }],
+      chart: {
+      type: 'bar',
+      height: 350,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '16px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+      text: 'Solución A',
+      align: 'left',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '24px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Suministro e Instalación (CAPEX)', 'Costo de la Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
+      labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: '14px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-xaxis-label',
+
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            return "$"+val
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '14px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_ciclo_vida_a"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
+function ciclo_vida_b(id_project){
+    var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
+    var capex = '{{ $inv_ini_2 }}'
+$.ajax({
+    type: 'get',
+    url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 2,
+    success: function (res) {
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
+    var options = {
+      series: [{
+      name: 'Suministro e Instalación (CAPEX)',
+      data: [capex]
+    },{
+      name:'Costo de la Energía y Mantenimiento (OPEX)',
+      data: [0,res[0],0,0]
+    },{
+      name:'Reparaciones',
+      data: [0,res[1],0,0]
+    },{
+      name:'Total',
+      data: [0, 0,0,total]
+    }],
+      chart: {
+      type: 'bar',
+      height: 350,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '16px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+      text: 'Solución B',
+      align: 'left',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '24px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Suministro e Instalación (CAPEX)', 'Costo de la Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
+      labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: '14px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-xaxis-label',
+
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            return "$"+val
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '14px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_ciclo_vida_b"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
+function ciclo_vida_c(id_project){
+
+    var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
+    var capex = '{{ $inv_ini_3 }}'
+$.ajax({
+    type: 'get',
+    url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 3,
+    success: function (res) {
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
+    var options = {
+      series: [{
+      name: 'Suministro e Instalación (CAPEX)',
+      data: [capex]
+    },{
+      name:'Costo de la Energía y Mantenimiento (OPEX)',
+      data: [0,res[0],0,0]
+    },{
+      name:'Reparaciones',
+      data: [0,res[1],0,0]
+    },{
+      name:'Total',
+      data: [0, 0,0,total]
+    }],
+      chart: {
+      type: 'bar',
+      height: 350,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '16px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    },
+    title: {
+      text: 'Solución C',
+      align: 'left',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '24px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    },
+    xaxis: {
+      categories: ['Suministro e Instalación (CAPEX)', 'Costo de la Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
+      labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: '14px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-xaxis-label',
+
+            },
+        },
+    },
+    yaxis: {
+        labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: '16px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            return "$"+val
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '14px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_ciclo_vida_c"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
+
 
 function cap_op_1_retro(id_project,unidad){
 
@@ -5765,17 +6234,14 @@ function cap_op_3_retro(id_project,unidad){
 }
 
 //grafica capex_vx_opex 3 años
-function cap_op_3(id_project,unidad){
+/* function cap_op_3(id_project,unidad){
 
 
 $.ajax({
     type: 'get',
     url: "/cap_op_3/" + id_project,
     success: function (res) {
-/*
-        var vals_min = Math.min(res[2][0], res[1][0], res[0][0],res[2][1], res[1][1], res[0][1],res[2][2], res[1][2],res[0][2]);}
-        var sumacapex =
-       */
+
 
 if (res[2][0] > 0 || res[2][0] != null && res[1][0] > 0 || res[1][0] != null  && res[0][0] > 0 || res[0][0] != null) {
         var vals_min = parseInt(Math.min(res[2][0], res[1][0], res[0][0]));
@@ -5949,7 +6415,7 @@ var vals_min_string = vals_min.toString();
     }
 });
 
-}
+} */
 
 function cap_op_5(id_project,unidad){
 $.ajax({
