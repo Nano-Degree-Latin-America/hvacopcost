@@ -2526,6 +2526,7 @@ $costo_b
 </div>
 </div>
 {{-- capex vs opex --}}
+@if (Auth::user()->tipo_user == 5)
 <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
 
@@ -2567,10 +2568,11 @@ $costo_b
         </div>
     </div>
 </div>
+@endif
 {{-- capex vs opex --}}
 
 {{-- capex vs opex --}}
-{{-- <div class="w-full grid rounded-md justify-items-center mt-3">
+<div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
@@ -2606,7 +2608,7 @@ $costo_b
         </div>
 
     </div>
-</div> --}}
+</div>
 {{-- capex vs opex --}}
 
 {{-- espacio hoja pagina 3 --}}
@@ -3855,7 +3857,6 @@ document.addEventListener('keydown', function(event) {
     $("#principal_hoja_4").removeClass("hidden");
     $("#next_page_3").removeClass("hidden");
     $("#next_page_4").removeClass("hidden");
-
     $("#chart_cons_ene_hvac_ar_base").width(200).height(150);
     $("#chart_cons_ene_hvac_ar_a").width(200).height(150);
     $("#chart_cons_ene_hvac_ar_b").width(200).height(150);
@@ -4297,6 +4298,76 @@ function chart_2(){
         var capex_1 = parseInt(inv_ini_base);
         var sol_2 = 'B';
         var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+
+    if(parseInt(val_base_red_ene) > 0  && parseInt(val_a_red_ene) == 0 && parseInt(val_b_red_ene) == 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'B';
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    if(parseInt(val_base_red_ene) == 0  && parseInt(val_a_red_ene) == 0 && parseInt(val_b_red_ene) == 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'B';
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    if(parseInt(val_base_red_ene) == 0  && parseInt(val_a_red_ene) == 0 && parseInt(val_b_red_ene) > 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'C';
+        var array_2 = incremento_2(val_b_red_ene,inflacion);
         var suma_2_aux = 0;
         var array_2_suma = [];
         var capex_2 = parseInt(inv_ini_a);
@@ -6234,7 +6305,7 @@ function cap_op_3_retro(id_project,unidad){
 }
 
 //grafica capex_vx_opex 3 años
-/* function cap_op_3(id_project,unidad){
+function cap_op_3(id_project,unidad){
 
 
 $.ajax({
@@ -6415,7 +6486,7 @@ var vals_min_string = vals_min.toString();
     }
 });
 
-} */
+}
 
 function cap_op_5(id_project,unidad){
 $.ajax({
@@ -11990,6 +12061,75 @@ function chart_2_print(){
         var capex_1 = parseInt(inv_ini_base);
         var sol_2 = 'B';
         var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    if(parseInt(val_base_red_ene) > 0  && parseInt(val_a_red_ene) == 0 && parseInt(val_b_red_ene) == 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'B';
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    if(parseInt(val_base_red_ene) == 0  && parseInt(val_a_red_ene) == 0 && parseInt(val_b_red_ene) == 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'B';
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    if(parseInt(val_base_red_ene) == 0  && parseInt(val_a_red_ene) == 0 && parseInt(val_b_red_ene) > 0){
+        var sol_1 = 'A';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'C';
+        var array_2 = incremento_2(val_b_red_ene,inflacion);
         var suma_2_aux = 0;
         var array_2_suma = [];
         var capex_2 = parseInt(inv_ini_a);
