@@ -2540,8 +2540,10 @@ $costo_b
 
         <div class="w-full flex justify-start font-roboto font-bold">
                 <div class="w-1/3 flex ml-10 mt-3">
-                    <label style="color:#1B17BB;" class="size_solutions_confort ">Año</label>
-                    <select name="yrs_ciclo_vida" id="yrs_ciclo_vida" class="w-[20px] border-2 rounded-md py-2 border-color-inps text-xl justify-center">
+                    <div class="ml-10 flex justify-start">
+                        <label style="color:#1B17BB;" class="size_solutions_confort">Año </label>
+                    </div>
+                    <select style="width:100px;" name="yrs_ciclo_vida" id="yrs_ciclo_vida" onchange="ciclo_vida_a('{{ $id_project }}')" class="border-2 rounded-md py-2 border-color-inps text-xl text-center">
                             <option value="3">3</option>
                             <option value="5">5</option>
                             <option value="10">10</option>
@@ -2550,7 +2552,7 @@ $costo_b
                 </div>
         </div>
 
-        <div class="grid w-full justify-items-center gap-y-1">
+        <div class="grid w-full justify-items-center">
             <div class="w-full flex justify-center">
                 <div id="chart_ciclo_vida_a" name="chart_ciclo_vida_a" style="width:90%;"></div>
                 <div class="hidden w-full" id="chart_ciclo_vida_a_print" name="chart_ciclo_vida_a_print" ></div>
@@ -5645,6 +5647,7 @@ $.ajax({
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
       data: [capex]
     },{
       name:'Costo de la Energía y Mantenimiento (OPEX)',
@@ -5708,8 +5711,8 @@ $.ajax({
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-xaxis-label',
-
             },
+
         },
     },
     yaxis: {
@@ -5722,6 +5725,7 @@ $.ajax({
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
             },
+            maxWidth: 600,
         },
     },
 
@@ -5857,6 +5861,7 @@ $.ajax({
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
             },
+            maxWidth: 600,
         },
     },
 
@@ -5993,6 +5998,7 @@ $.ajax({
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
             },
+            maxWidth: 600,
         },
     },
 
