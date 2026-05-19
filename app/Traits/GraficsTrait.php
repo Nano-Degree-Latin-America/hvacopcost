@@ -1752,7 +1752,7 @@ public function red_en_mw_grafic($dif,$dif_2){
             $prot_cond_3 = null;
         }
 
-        if( floatval($inflacion_aux) > 0){
+        if(floatval($inflacion_aux) > 0){
             $inflacion =  floatval($inflacion_aux)/100 + 1;
         }else if( floatval($inflacion_aux) <= 0){
             $inflacion = 1;
@@ -3176,6 +3176,87 @@ public function red_en_mw_grafic($dif,$dif_2){
 
   array_push( $array_tot,$array_base,$array_a,$array_b);
        return response()->json($array_tot);
+    }
+
+    public function calculate_opex($id_projecto,$yrs_ciclo_vida,$num_enf){
+
+            $sumaopex_base = 0;
+
+            $suma_cost_mant_base = 0;
+
+            $inflacion_aux = DB::table('projects')
+            ->where('id','=',$id_projecto)
+            ->first()->inflacion;
+
+            $inflacion =  $inflacion_aux/100 + 1;
+
+            $inflacion_rate_aux = DB::table('projects')
+            ->where('id','=',$id_projecto)
+            ->first()->inflacion_rate;
+            $inflacion_rate =  $inflacion_rate_aux/100 + 1;
+
+            $area = DB::table('projects')
+            ->where('projects.id','=',$id_projecto)
+            ->first()->area;
+
+            $solutions = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf)
+            ->select('solutions_project.cost_op_an')
+            ->get();
+
+            foreach($solutions as $sol){
+                $sumaopex_base = $sumaopex_base + $sol->cost_op_an;
+            }
+
+            $costo_electrico_base = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf)
+            ->select('solutions_project.costo_elec')
+            ->first()->costo_elec;
+
+            $consumo_anual_opex_base = $sumaopex_base * $costo_electrico_base;
+            $res_opex_enf_base = $consumo_anual_opex_base/$area;
+
+            $opex = $res_opex_enf_base;
+
+            for ($i = 2; $i <= 3; $i++) {
+                $res_opex_enf_base = $res_opex_enf_base * $inflacion;
+                $opex = $opex + $res_opex_enf_base;
+            }
+
+
+                //incremento inflacion
+            $cost_mant_base = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf)
+            ->select('solutions_project.costo_mantenimiento')
+            ->get();
+
+            foreach($cost_mant_base as $cost){
+                $suma_cost_mant_base = $suma_cost_mant_base + $cost->costo_mantenimiento;
+
+            }
+            //costo_mantenimiento / area solucoin base
+            $suma_cost_mant_base_div_area = $suma_cost_mant_base/$area;
+            $res_opex_base = $suma_cost_mant_base_div_area;
+
+            for ($i = 2; $i <= 3; $i++) {
+                $suma_cost_mant_base_div_area = $suma_cost_mant_base_div_area * $inflacion_rate;
+                $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
+            }
+
+            $costo_energia = $opex * $area;
+
+            $mantenimiento_realizado = $res_opex_base * $area;
+
+            $total = $costo_energia + $mantenimiento_realizado;
+
+
+
+            $array = [round($costo_energia,1),round($mantenimiento_realizado,1),round($total)];
+
+            return $array;
     }
 
     public function roi_ene_prod($id_projecto,$dif_cost,$inv_ini,$costobase,$costo_a,$dif_2_cost,$inv_ini_3,$costo_b,$counter_val_prod_ene){
