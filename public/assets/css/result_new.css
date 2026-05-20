@@ -766,24 +766,11 @@
             }
         }
         /* lg	1024px */
+
+
         @media (min-width: 1024px) {
             .js_charts_style{
                 width: 280px;
-                height: 200px;
-                margin: 0px auto;
-            }
-
-            .js_charts_style_line{
-                width: 550px;
-                height: 300px;
-                margin: 0px auto;
-            }
-
-        }
-
-        @media (min-width: 1024px) {
-            .js_charts_style{
-                width: 300px;
                 height: 200px;
                 margin: 0px auto;
             }
@@ -796,9 +783,37 @@
 
         }
 
+        @media (min-width: 17950px) {
+            .js_charts_style{
+                width: 400px;
+                height: 210px;
+                margin: 0px auto;
+            }
+
+            .js_charts_style_line{
+                width: 580px;
+                height: 310px;
+                margin: 0px auto;
+            }
+        }
+
         @media (min-width: 1800px) {
             .js_charts_style{
-                width: 410px;
+                width: 400px;
+                height: 210px;
+                margin: 0px auto;
+            }
+
+            .js_charts_style_line{
+                width: 580px;
+                height: 310px;
+                margin: 0px auto;
+            }
+        }
+
+        @media (min-width: 1850px) {
+            .js_charts_style{
+                width: 400px;
                 height: 210px;
                 margin: 0px auto;
             }
