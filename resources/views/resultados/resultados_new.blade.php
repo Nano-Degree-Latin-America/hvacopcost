@@ -96,8 +96,9 @@
             <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
         </div>
 
-        <div class="w-1/3 grid justify-left ml-2">
-            <div class="w-full flex ">
+        <div class="w-1/3 grid justify-items-left ml-2">
+          <div class="w-full">
+            <div class="w-full flex">
                 <div id="name_no_print" name="name_no_print" class="w-full flex ">
                     <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
                </div>
@@ -151,6 +152,7 @@
                 @endswitch
                 </p>
             </div>
+          </div>
         </div>
 
         <div class="w-1/3 grid justify-left">

@@ -168,10 +168,7 @@
             font-size: 2.25rem;
         }
 
-        .img_porject{
-            height:150px;
-            width:350px;
-         }
+
 
          .border_box{
             border:2px solid;
@@ -419,8 +416,10 @@
   }
 
   .img_porject{
-            height:100px;
-            width:255px;
+            height:103px;
+            width:220px;
+            margin-top: 5px;
+            margin-bottom: 5px;
          }
 
   .titulos_style{
@@ -780,6 +779,60 @@
                 height: 300px;
                 margin: 0px auto;
             }
+        }
+
+        @media (min-width: 1280px) {
+
+            .img_porject{
+                height:87px;
+                width:190px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            .info_project{
+            font-size: 12px;
+            font-family: 'ABeeZee', sans-serif;
+            color:#2c5282;
+            font-weight: bold;
+
+            }
+
+            .info_project_res{
+            font-size: 12px;
+            font-family: 'ABeeZee', sans-serif;
+            color:#3182ce;
+            font-weight: bold;
+            }
+
+            .js_charts_style{
+                width: 280px;
+                height: 200px;
+                margin: 0px auto;
+            }
+
+            .js_charts_style_line{
+                width: 570px;
+                height: 300px;
+                margin: 0px auto;
+            }
+        }
+
+
+
+
+            @media (min-width: 1650px) {
+            .js_charts_style{
+                width: 250px;
+                height: 200px;
+                margin: 0px auto;
+            }
+
+            .js_charts_style_line{
+                width: 570px;
+                height: 300px;
+                margin: 0px auto;
+            }
 
         }
 
@@ -850,6 +903,25 @@
                 height: 310px;
                 margin: 0px auto;
             }
+
+            .img_porject{
+                height:138px;
+                width:310px;
+            }
+
+            .info_project{
+            font-size: 20px;
+            font-family: 'ABeeZee', sans-serif;
+            color:#2c5282;
+            font-weight: bold;
+            }
+
+            .info_project_res{
+            font-size: 20px;
+            font-family: 'ABeeZee', sans-serif;
+            color:#3182ce;
+            font-weight: bold;
+           }
         }
 
         .btn_roundf_retro{
@@ -898,3 +970,4 @@ text-align: center;
 align-items: center;
 cursor: pointer;
 }
+
