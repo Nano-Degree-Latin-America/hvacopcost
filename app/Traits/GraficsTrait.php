@@ -3220,7 +3220,7 @@ public function red_en_mw_grafic($dif,$dif_2){
 
             $opex = $res_opex_enf_base;
 
-            for ($i = 2; $i <= 3; $i++) {
+            for ($i = 2; $i <= intval($yrs_ciclo_vida); $i++) {
                 $res_opex_enf_base = $res_opex_enf_base * $inflacion;
                 $opex = $opex + $res_opex_enf_base;
             }
