@@ -367,7 +367,7 @@
                                         <p class="cant_style">{{number_format($sumaopex_1)}}</p><b class="unit_style">Kwh</b>
                                     </div> --}}
                                     <div class="flex w-full justify-center">
-                                        <div id="chart_cons_ene_hvac_ar_base" name="chart_cons_ene_hvac_ar_base" class=" js_charts_style">
+                                        <div id="chart_cons_ene_hvac_ar_base" name="chart_cons_ene_hvac_ar_base" class="js_charts_style">
 
                                         </div>
                                     </div>
@@ -3845,6 +3845,8 @@ $costo_b
         var fontSize_cons_ene_ele_kwh = '16px';
         var cons_ene_ele_ancho_line = "100%";
         var cons_ene_ele_alto_line = "100%";
+        var eui_chart_width = 480;
+        var eui_chart_height = 200;
     }
 
     if(screenWidth == 1920 ){
@@ -3854,6 +3856,8 @@ $costo_b
         var fontSize_cons_ene_ele_kwh = '26px';
         var cons_ene_ele_ancho_line = "100%";
         var cons_ene_ele_alto_line = "100%";
+        var eui_chart_width = 550;
+        var eui_chart_height = 280;
     }
 
 
@@ -5974,7 +5978,8 @@ $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 3,
     success: function (res) {
-     var reparaciones = parseInt(capex) / parseFloat(res[4]);
+     var reparaciones_aux = parseInt(capex) / 5;
+     var reparaciones = parseFloat(res[4]) / 100
     var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + reparaciones + 0;
     var options = {
       series: [{
@@ -8862,7 +8867,7 @@ if(result_area < red){
         if(parseInt(energy) > parseInt(ashrae)){
 
             var options = {
-          width: 550, height: 280,
+          width: eui_chart_width, height: eui_chart_height,
           greenFrom:1,greenTo:parseInt(ashrae),
           redFrom: parseInt(energy), redTo: 400,
           yellowFrom:parseInt(ashrae), yellowTo: parseInt(energy),
@@ -8875,7 +8880,7 @@ if(result_area < red){
         if(parseInt(energy) < parseInt(ashrae)){
 
             var options = {
-          width: 550, height: 280,
+          width: eui_chart_width, height: eui_chart_height,
           greenFrom:1,greenTo:energy,
           redFrom: ashrae, redTo: 400,
           yellowFrom:energy, yellowTo: ashrae,
@@ -8920,7 +8925,7 @@ if(result_area < red){
 
         if(parseInt(energy) > parseInt(ashrae)){
             var options = {
-          width: 550, height: 280,
+          width: eui_chart_width, height: eui_chart_height,
           greenFrom:1,greenTo:ashrae,
           redFrom: energy, redTo: 400,
           yellowFrom:ashrae, yellowTo: energy,
@@ -8932,7 +8937,7 @@ if(result_area < red){
 
         if(parseInt(energy) < parseInt(ashrae)){
             var options = {
-          width: 550, height: 280,
+          width: eui_chart_width, height: eui_chart_height,
           greenFrom:1,greenTo:energy,
           redFrom: ashrae, redTo: 400,
           yellowFrom:energy, yellowTo: ashrae,
@@ -8977,7 +8982,7 @@ if(result_area < red){
 
             if(parseInt(energy) > parseInt(ashrae)){
                     var options = {
-                width: 550, height: 280,
+                width: eui_chart_width, height: eui_chart_height,
                 greenFrom:1,greenTo:ashrae,
                 redFrom: energy, redTo: 400,
                 yellowFrom:ashrae, yellowTo: energy,
@@ -8989,7 +8994,7 @@ if(result_area < red){
 
                 if(parseInt(energy) < parseInt(ashrae)){
                     var options = {
-                width: 550, height: 280,
+                width: eui_chart_width, height: eui_chart_height,
                 greenFrom:1,greenTo:energy,
                 redFrom: ashrae, redTo: 400,
                 yellowFrom:energy, yellowTo: ashrae,

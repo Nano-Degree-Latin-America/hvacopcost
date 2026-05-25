@@ -884,6 +884,38 @@
             margin-right:35px;
             }
 
+            .energy_star_style_img{
+            margin-left: .5rem;
+            margin-right: .5rem;
+            margin-top: 1.5rem;
+            width:100px;
+            height:60px;
+            }
+
+            .eui_energy_val_style{
+            margin-top: .75rem;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            font-size: 3rem;
+            }
+
+            .eui_energy_style{
+            margin-top: 2rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            margin-right: .25rem;
+            font-size: 1.5rem;
+            }
+
+            .ashrae_style_img{
+            margin-left: .5rem;
+            margin-right: .5rem;
+            margin-top: 1.1rem;
+            width: 100px;
+            height: 70px;
+        }
+
 
         }
 
@@ -1058,6 +1090,38 @@
          .margin_sols_leyend_chart_2{
             margin-right:10px;
          }
+
+         .energy_star_style_img{
+            margin-left: .5rem;
+            margin-right: .5rem;
+            margin-top: 1.5rem;
+            width:120px;
+            height:75px;
+        }
+
+        .eui_energy_val_style{
+            margin-top: .75rem;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            font-size: 4rem;
+        }
+
+        .eui_energy_style{
+            margin-top: 2rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            margin-right: .25rem;
+            font-size: 2.25rem;
+        }
+
+        .ashrae_style_img{
+            margin-left: .5rem;
+            margin-right: .5rem;
+            margin-top: 1.5rem;
+            width: 115px;
+            height: 75px;
+        }
     }
 
         .btn_roundf_retro{
