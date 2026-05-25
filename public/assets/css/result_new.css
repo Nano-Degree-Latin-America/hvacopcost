@@ -242,7 +242,7 @@
             margin-left:40px;
         }
 
-         .cant_2{
+        .cant_2{
             font-size:3.5rem;
             color:#2c5282;
         }
@@ -807,15 +807,84 @@
 
             .js_charts_style{
                 width: 280px;
-                height: 200px;
+                height: 160px;
                 margin: 0px auto;
             }
 
             .js_charts_style_line{
-                width: 570px;
-                height: 300px;
+                width: 470px;
+                height: 250px;
                 margin: 0px auto;
             }
+
+            .titulos_style{
+            font-size:1rem;
+            color: white;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            }
+
+            .tam_leyend_sols{
+                font-size: 10px;
+            }
+
+            .solucions_style_name {
+                font-size: 1.5rem;
+                color: #2c5282;
+                font-weight: bold;
+                font-family: 'ABeeZee', sans-serif;
+            }
+
+            .img_tr{
+            height:58px;
+            width:53px;
+            }
+
+            .margin_top_cap_term{
+             margin-top:45px;
+            }
+
+            .cant_2_l{
+            font-size:2.3rem;
+            color:#2c5282;
+            margin-left:90px;
+            }
+
+            .cant_2{
+            font-size:2.3rem;
+            color:#2c5282;
+            }
+
+            .capex_a{
+            font-size:2.3rem;
+            color:#2c5282;
+            margin-left:40px;
+            }
+
+            .cant_style{
+            font-size: 2.3rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            }
+
+            .point_solution{
+            border-radius:100%;
+            padding-left:8px;
+            padding-right:8px;
+            padding-top:1px;
+            padding-bottom:1px;
+            }
+
+            .margin_sols_leyend_chart_1{
+            margin-left:222px;
+            }
+
+            .margin_sols_leyend_chart_2{
+            margin-right:35px;
+            }
+
+
         }
 
 
@@ -899,7 +968,7 @@
                 margin: 0px auto;
             }
             .js_charts_style_line{
-                width: 580px;
+                width: 780px;
                 height: 310px;
                 margin: 0px auto;
             }
@@ -922,7 +991,74 @@
             color:#3182ce;
             font-weight: bold;
            }
+
+           .titulos_style{
+            font-size:2.25rem;
+            color: white;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+         }
+
+        .solucions_style_name {
+            font-size: 2.25rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
         }
+
+        .img_tr{
+            height:68px;
+            width:63px;
+        }
+
+        .margin_top_cap_term{
+             margin-top:70px;
+        }
+
+        .cant_2_l{
+            font-size:3.5rem;
+            color:#2c5282;
+            margin-left:110px;
+        }
+
+        .cant_2{
+            font-size:3.5rem;
+            color:#2c5282;
+        }
+
+        .capex_a{
+            font-size:3.5rem;
+            color:#2c5282;
+            margin-left:40px;
+        }
+
+        .cant_style{
+            font-size: 3.5rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+        }
+
+        .tam_leyend_sols{
+            font-size: 14px;
+         }
+
+         .point_solution{
+            border-radius:100%;
+            padding-left:12px;
+            padding-right:12px;
+            padding-top:5px;
+            padding-bottom:5px;
+        }
+
+        .margin_sols_leyend_chart_1{
+            margin-left:300px;
+         }
+
+         .margin_sols_leyend_chart_2{
+            margin-right:10px;
+         }
+    }
 
         .btn_roundf_retro{
 border:1px solid #ffff;
