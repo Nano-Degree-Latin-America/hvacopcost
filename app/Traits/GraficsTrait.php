@@ -3233,6 +3233,13 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->select('solutions_project.costo_mantenimiento')
             ->get();
 
+            $cost_mant_base_a = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',1)
+            ->where('solutions_project.num_sol','=',1)
+            ->select('solutions_project.costo_mantenimiento')
+            ->first()->costo_mantenimiento;
+
             foreach($cost_mant_base as $cost){
                 $suma_cost_mant_base = $suma_cost_mant_base + $cost->costo_mantenimiento;
 
@@ -3253,8 +3260,29 @@ public function red_en_mw_grafic($dif,$dif_2){
             $total = $costo_energia + $mantenimiento_realizado;
 
 
+            ///porcent byunidad
+            $unidad_hvac = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf)
+            ->where('solutions_project.num_sol','=',1)
+            ->select('solutions_project.unidad_hvac')
+            ->first()->unidad_hvac;
 
-            $array = [round($costo_energia,1),round($mantenimiento_realizado,1),round($total)];
+        if($unidad_hvac == 7){
+           $porcent = 20 / 100;
+        }
+
+        if($unidad_hvac == 3 || $unidad_hvac == 4){
+           $porcent = 8 / 100;
+        }
+
+       if($unidad_hvac != 7 && $unidad_hvac != 3 && $unidad_hvac != 4){
+            $porcent = 5 / 100;
+       }
+
+
+
+            $array = [round($costo_energia,1),round($mantenimiento_realizado,1),round($total),$cost_mant_base_a,$porcent];
 
             return $array;
     }

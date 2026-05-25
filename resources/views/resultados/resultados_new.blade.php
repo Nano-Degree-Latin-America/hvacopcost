@@ -4046,7 +4046,7 @@ function send_print(){
     chart_prod_a_print();
     chart_prod_b_print();
      setTimeout(function() {
-        //window.print();
+        window.print();
 }, 3000);
 
 }
@@ -5699,7 +5699,7 @@ $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 1,
     success: function (res) {
-    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -5710,7 +5710,7 @@ $.ajax({
       data: [0,res[0],0,0]
     },{
       name:'Reparaciones',
-      data: [0,res[1],reparaciones,0]
+      data: [0,res[1],res[3],0]
     },{
       name:'Total',
       data: [0, 0,0,total]
@@ -5836,7 +5836,8 @@ $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 2,
     success: function (res) {
-    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
+    var reparaciones = parseInt(capex) / parseFloat(res[4]);
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + reparaciones + 0;
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -5846,7 +5847,7 @@ $.ajax({
       data: [0,res[0],0,0]
     },{
       name:'Reparaciones',
-      data: [0,res[1],0,0]
+      data: [0,res[1],reparaciones,0]
     },{
       name:'Total',
       data: [0, 0,0,total]
@@ -5973,7 +5974,8 @@ $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 3,
     success: function (res) {
-    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
+     var reparaciones = parseInt(capex) / parseFloat(res[4]);
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + reparaciones + 0;
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -5983,7 +5985,7 @@ $.ajax({
       data: [0,res[0],0,0]
     },{
       name:'Reparaciones',
-      data: [0,res[1],0,0]
+      data: [0,res[1],reparaciones,0]
     },{
       name:'Total',
       data: [0, 0,0,total]
