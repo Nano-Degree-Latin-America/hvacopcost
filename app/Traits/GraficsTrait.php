@@ -3205,6 +3205,12 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->select('solutions_project.cost_op_an')
             ->get();
 
+            $val_aprox = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf)
+            ->select('solutions_project.val_aprox')
+            ->first();
+
             foreach($solutions as $sol){
                 $sumaopex_base = $sumaopex_base + $sol->cost_op_an;
             }
@@ -3253,11 +3259,16 @@ public function red_en_mw_grafic($dif,$dif_2){
                 $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
             }
 
+
             $costo_energia = $opex * $area;
+
+/* dd("costo_mantenimiento".$val_aprox->val_aprox*0.05); */
 
             $mantenimiento_realizado = $res_opex_base * $area;
 
             $total = $costo_energia + $mantenimiento_realizado;
+
+
 
 
             ///porcent byunidad
@@ -3269,6 +3280,7 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->first()->unidad_hvac;
 
         if($unidad_hvac == 7){
+
            $porcent = 20 / 100;
         }
 

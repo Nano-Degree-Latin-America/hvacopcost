@@ -240,7 +240,8 @@
                                      <?php $inv_ini_1=0?>
                                      <input type="number" class="hidden" id="inv_ini_1" name="inv_ini_1" value="{{$inv_ini_1}}">
                                     @endif
-                            <p class="capex_a font-bold font-roboto">${{number_format($inv_ini_1)}}</p>
+
+                            <p class="margin-cero-capex capex_a font-bold font-roboto">${{number_format($inv_ini_1)}}</p>
                         </div>
 
                         <div class="w-1/3 grid justify-items-center gap-y-2">
@@ -280,7 +281,7 @@
                                     <?php $inv_ini_3=0?>
                                      <input type="number" class="hidden" id="inv_ini_3" name="inv_ini_3" value="{{$inv_ini_3}}">
                                     @endif
-                            <p style="margin-left:80px;" class="cant_2 font-bold font-roboto">${{number_format($inv_ini_3)}}</p>
+                            <p  class="margin-cero-capex-b cant_2 font-bold font-roboto">${{number_format($inv_ini_3)}}</p>
                         </div>
 
                     </div>
