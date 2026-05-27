@@ -3262,17 +3262,10 @@ public function red_en_mw_grafic($dif,$dif_2){
 
             $costo_energia = $opex * $area;
 
-/* dd("costo_mantenimiento".$val_aprox->val_aprox*0.05); */
+            //costo_mantenimiento opex para ciclo vida
 
-            $mantenimiento_realizado = $res_opex_base * $area;
-
-            $total = $costo_energia + $mantenimiento_realizado;
-
-
-
-
-            ///porcent byunidad
-            $unidad_hvac = DB::table('solutions_project')
+       ///porcent byunidad
+        $unidad_hvac = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
             ->where('solutions_project.num_enf','=',$num_enf)
             ->where('solutions_project.num_sol','=',1)
@@ -3288,13 +3281,20 @@ public function red_en_mw_grafic($dif,$dif_2){
            $porcent = 8 / 100;
         }
 
-       if($unidad_hvac != 7 && $unidad_hvac != 3 && $unidad_hvac != 4){
-            $porcent = 5 / 100;
-       }
+        if($unidad_hvac != 7 && $unidad_hvac != 3 && $unidad_hvac != 4){
+                $porcent = 5 / 100;
+        }
 
+        $costo_mantenimiento = $val_aprox->val_aprox*$porcent;
 
-
-            $array = [round($costo_energia,1),round($mantenimiento_realizado,1),round($total),$cost_mant_base_a,$porcent];
+        //REPARACIONES
+        $reparaciones = $costo_mantenimiento*(1/5);
+        //mantenimiento_realizado
+            //$mantenimiento_realizado = $res_opex_base * $area;
+        //total
+            $total = $costo_energia + $costo_mantenimiento;
+        //array
+            $array = [round($costo_energia,1),round($costo_mantenimiento,1),round($total),$reparaciones,$porcent];
 
             return $array;
     }

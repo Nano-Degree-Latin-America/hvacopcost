@@ -5719,25 +5719,28 @@ $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 1,
     success: function (res) {
-     var reparaciones_aux = parseInt(capex) / 5;
+     /* var reparaciones_aux = parseInt(capex) / 5;
      var Reparaciones = reparaciones_aux * parseFloat(res[4]);
-     console.log(reparaciones_aux);
+     console.log(reparaciones_aux); */
 
-    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(Reparaciones) + 0;
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
       /* width '95px', */
       data: [capex]
     },{
-      name:'Energía y Mantenimiento (OPEX)',
+      name:'Energía (OPEX)',
       data: [0,res[0],0,0]
     },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,res[1],0,0]
+    },{
       name:'Reparaciones',
-      data: [0,res[1],parseInt(Reparaciones),0]
+      data: [0,0,parseInt(res[3]),0]
     },{
       name:'Total',
-      data: [0, 0,0,total]
+      data: [0,0,0,total]
     }],
       chart: {
       type: 'bar',
@@ -5818,7 +5821,7 @@ $.ajax({
     },
     fill: {
       opacity: 1,
-      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
 
     },
     legend: {
@@ -5833,7 +5836,7 @@ $.ajax({
       height: 12,
       strokeWidth: 0,
       strokeColor: '#fff',
-      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
       radius: 12,
       customHTML: undefined,
       onClick: undefined,
@@ -5860,22 +5863,24 @@ $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 2,
     success: function (res) {
-    var reparaciones_aux = parseInt(capex) / 5;
-     var Reparaciones = reparaciones_aux * parseFloat(res[4]);
-    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + Reparaciones + 0;
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
       data: [capex]
     },{
-      name:'Energía y Mantenimiento (OPEX)',
+      name:'Energía (OPEX)',
       data: [0,res[0],0,0]
     },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,res[1],0,0]
+    },{
       name:'Reparaciones',
-      data: [0,res[1],Reparaciones,0]
+      data: [0,0,parseInt(res[3]),0]
     },{
       name:'Total',
-      data: [0, 0,0,total]
+      data: [0,0,0,total]
     }],
       chart: {
       type: 'bar',
@@ -5956,7 +5961,7 @@ $.ajax({
     },
     fill: {
       opacity: 1,
-      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
 
     },
     legend: {
@@ -5971,7 +5976,7 @@ $.ajax({
       height: 12,
       strokeWidth: 0,
       strokeColor: '#fff',
-      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
       radius: 12,
       customHTML: undefined,
       onClick: undefined,
@@ -5999,22 +6004,24 @@ $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 3,
     success: function (res) {
-     var reparaciones_aux = parseInt(capex) / 5;
-     var Reparaciones = reparaciones_aux * parseFloat(res[4]);
-    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + Reparaciones + 0;
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
       data: [capex]
     },{
-      name:'Energía y Mantenimiento (OPEX) (OPEX)',
+      name:'Energía (OPEX)',
       data: [0,res[0],0,0]
     },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,res[1],0,0]
+    },{
       name:'Reparaciones',
-      data: [0,res[1],Reparaciones,0]
+      data: [0,0,parseInt(res[3]),0]
     },{
       name:'Total',
-      data: [0, 0,0,total]
+      data: [0,0,0,total]
     }],
       chart: {
       type: 'bar',
@@ -6095,7 +6102,7 @@ $.ajax({
     },
     fill: {
       opacity: 1,
-      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
 
     },
     legend: {
@@ -6110,7 +6117,7 @@ $.ajax({
       height: 12,
       strokeWidth: 0,
       strokeColor: '#fff',
-      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
       radius: 12,
       customHTML: undefined,
       onClick: undefined,
