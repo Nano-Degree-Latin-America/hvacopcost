@@ -29,6 +29,10 @@
 
         }
 
+        .border_box{
+            border:2px solid;
+         }
+
         .info_project_res{
             font-size: 20px;
             font-family: 'ABeeZee', sans-serif;
@@ -751,6 +755,250 @@
 
         }
 
+        @media (min-width: 1280px) {
+
+            .img_porject{
+                height:87px;
+                width:190px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            .info_project{
+            font-size: 12px;
+            font-family: 'ABeeZee', sans-serif;
+            color:#2c5282;
+            font-weight: bold;
+
+            }
+
+            .info_project_res{
+            font-size: 12px;
+            font-family: 'ABeeZee', sans-serif;
+            color:#3182ce;
+            font-weight: bold;
+            }
+
+            .js_charts_style{
+                width: 280px;
+                height: 160px;
+                margin: 0px auto;
+            }
+
+            .js_charts_style_line{
+                width: 470px;
+                height: 250px;
+                margin: 0px auto;
+            }
+
+            .titulos_style{
+            font-size:1.5rem;
+            color: white;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            }
+
+            .tam_leyend_sols{
+                font-size: 10px;
+            }
+
+            .solucions_style_name {
+                font-size: 1.5rem;
+                color: #2c5282;
+                font-weight: bold;
+                font-family: 'ABeeZee', sans-serif;
+            }
+
+            .img_tr{
+            height:58px;
+            width:53px;
+            }
+
+            .margin_top_cap_term{
+             margin-top:45px;
+            }
+
+            .cant_2_l{
+            font-size:2.3rem;
+            color:#2c5282;
+            margin-left:90px;
+            }
+
+            .cant_2{
+            font-size:2.3rem;
+            color:#2c5282;
+            }
+
+            .capex_a{
+            font-size:2.3rem;
+            color:#2c5282;
+            margin-left:40px;
+            }
+
+            .cant_style{
+            font-size: 2rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            }
+
+            .point_solution{
+            border-radius:100%;
+            padding-left:8px;
+            padding-right:8px;
+            padding-top:1px;
+            padding-bottom:1px;
+            }
+
+            .margin_sols_leyend_chart_1{
+            margin-left:222px;
+            }
+
+            .margin_sols_leyend_chart_2{
+            margin-right:35px;
+            }
+
+            .energy_star_style_img{
+            margin-left: .5rem;
+            margin-right: .5rem;
+            margin-top: 1.5rem;
+            width:100px;
+            height:60px;
+            }
+
+            .eui_energy_val_style{
+            margin-top: .75rem;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            font-size: 3rem;
+            }
+
+            .eui_energy_style{
+            margin-top: 2rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            margin-right: .25rem;
+            font-size: 1.5rem;
+            }
+
+            .ashrae_style_img{
+            margin-left: .5rem;
+            margin-right: .5rem;
+            margin-top: 1.1rem;
+            width: 100px;
+            height: 70px;
+            }
+
+            .size_solutions_confort{
+            font-size:1.5rem;
+            color: #1B17BB;
+            }
+
+            .ancho_rang {
+            width: 1rem;
+            height: 2.5rem;
+            }
+
+            .puntero_medidas {
+                width: 70px;
+                height: 50px;
+                margin-top: 8px;
+            }
+
+            .img_prod_lab{
+              height:70px;
+              width:60px;
+            }
+
+            .margin-top-button-suport{
+            margin-top:.2rem;
+            }
+
+            .btn_roundf_retro{
+                border:1px solid #ffff;
+                background: #ffff;
+                color:#3182ce;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                z-index: 90090;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                cursor: pointer;
+            }
+                .btn_roundf_retro:hover {
+                border:1px solid #4299e1;
+                background: #4299e1;
+                color:#ffff;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                z-index: 90090;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                cursor: pointer;
+            }
+
+                .btn_roundf_retro:active {
+                border:1px solid #ffff;
+                background: #ffff;
+                color:#4299e1;
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                z-index: 90090;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .img_payback{
+                height:50px;
+                width:50px;
+            }
+
+            .margin-r-payback{
+            margin-right: 11rem;
+            }
+
+            .padding_pay {
+                padding-right: 13px;
+                padding-left: 13px;
+            }
+
+            .payback_cants_green{
+            font-size: 2rem;
+            }
+
+            .medids-circle {
+                    width: 4rem;
+                    height: 4rem;
+            }
+
+            .cant-retorno-inversion{
+            font-size: 1.3rem;
+            }
+
+            .margin-cero-capex{
+            margin-left:86px;
+            }
+
+            .margin-cero-capex-b{
+            margin-left:126px;
+            }
+
+        }
+
         @media (min-width: 1800px) {
             .js_charts_style{
                 width: 410px;
@@ -778,16 +1026,244 @@
         }
 
         @media (min-width: 1900px) {
-            .js_charts_style{
+
+             .js_charts_style{
                 width: 410px;
                 height: 210px;
                 margin: 0px auto;
             }
             .js_charts_style_line{
-                width: 580px;
-                height: 310px;
+                width: 680px;
+                height: 350px;
                 margin: 0px auto;
             }
+            .img_porject{
+                height:138px;
+                width:310px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+            }
+
+            .info_project{
+            font-size: 20px;
+            font-family: 'ABeeZee', sans-serif;
+            color:#2c5282;
+            font-weight: bold;
+            }
+
+            .info_project_res{
+            font-size: 20px;
+            font-family: 'ABeeZee', sans-serif;
+            color:#3182ce;
+            font-weight: bold;
+           }
+
+           .titulos_style{
+            font-size:2.25rem;
+            color: white;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+         }
+
+        .solucions_style_name {
+            font-size: 2.25rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+        }
+
+        .img_tr{
+            height:68px;
+            width:63px;
+        }
+
+        .margin_top_cap_term{
+             margin-top:70px;
+        }
+
+        .cant_2_l{
+            font-size:3.5rem;
+            color:#2c5282;
+            margin-left:110px;
+        }
+
+        .cant_2{
+            font-size:3.5rem;
+            color:#2c5282;
+        }
+
+        .capex_a{
+            font-size:3.5rem;
+            color:#2c5282;
+            margin-left:40px;
+        }
+
+        .cant_style{
+            font-size: 3.5rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+        }
+
+        .tam_leyend_sols{
+            font-size: 14px;
+         }
+
+         .point_solution{
+            border-radius:100%;
+            padding-left:12px;
+            padding-right:12px;
+            padding-top:5px;
+            padding-bottom:5px;
+        }
+
+        .margin_sols_leyend_chart_1{
+            margin-left:300px;
+         }
+
+         .margin_sols_leyend_chart_2{
+            margin-right:10px;
+         }
+
+         .energy_star_style_img{
+            margin-left: .5rem;
+            margin-right: .5rem;
+            margin-top: 1.5rem;
+            width:120px;
+            height:75px;
+        }
+
+        .eui_energy_val_style{
+            margin-top: .75rem;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            font-size: 4rem;
+        }
+
+        .eui_energy_style{
+            margin-top: 2rem;
+            color: #2c5282;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+            margin-right: .25rem;
+            font-size: 2.25rem;
+        }
+
+        .ashrae_style_img{
+            margin-left: .5rem;
+            margin-right: .5rem;
+            margin-top: 1.5rem;
+            width: 115px;
+            height: 75px;
+        }
+
+        .size_solutions_confort{
+            font-size:2rem;
+            color: #1B17BB;
+        }
+
+        .ancho_rang{
+            width:1.3rem;
+            height:3rem;
+        }
+
+        .puntero_medidas{
+            width: 85px; height:65px;
+            margin-top:5px;
+        }
+
+        .img_prod_lab{
+              height:100px;
+              width:90px;
+         }
+
+         .margin-top-button-suport{
+            margin-top:.5rem;
+         }
+
+                 .btn_roundf_retro{
+                border:1px solid #ffff;
+                background: #ffff;
+                color:#3182ce;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                z-index: 90090;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                cursor: pointer;
+                }
+                .btn_roundf_retro:hover {
+                border:1px solid #4299e1;
+                background: #4299e1;
+                color:#ffff;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                z-index: 90090;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                cursor: pointer;
+                }
+
+                .btn_roundf_retro:active {
+                border:1px solid #ffff;
+                background: #ffff;
+                color:#4299e1;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                z-index: 90090;
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                cursor: pointer;
+                }
+
+
+         .img_payback{
+            height:80px;
+            width:80px;
+         }
+
+         .margin-r-payback{
+            margin-right: 13.5rem;
+        }
+
+        .padding_pay{
+          padding-right:33px;
+          padding-left:33px;
+        }
+
+        .payback_cants_green{
+            font-size: 2.5rem;
+        }
+
+        .medids-circle{
+            width: 5rem;
+            height: 5rem;
+        }
+
+        .cant-retorno-inversion{
+            font-size: 1.5rem;
+        }
+
+        .margin-cero-capex{
+            margin-left:110px;
+        }
+
+        .margin-cero-capex-b{
+            margin-left:200px;
+        }
+
         }
 
         .btn_roundf_retro{

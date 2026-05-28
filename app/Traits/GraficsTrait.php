@@ -3205,6 +3205,20 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->select('solutions_project.cost_op_an')
             ->get();
 
+            $val_aprox = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf)
+            ->select('solutions_project.val_aprox')
+            ->first();
+
+            $cost_an_re = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf)
+            ->select('solutions_project.cost_an_re')
+            ->first()->cost_an_re;
+
+
+
             foreach($solutions as $sol){
                 $sumaopex_base = $sumaopex_base + $sol->cost_op_an;
             }
@@ -3233,6 +3247,13 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->select('solutions_project.costo_mantenimiento')
             ->get();
 
+            $cost_mant_base_a = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',1)
+            ->where('solutions_project.num_sol','=',1)
+            ->select('solutions_project.costo_mantenimiento')
+            ->first()->costo_mantenimiento;
+
             foreach($cost_mant_base as $cost){
                 $suma_cost_mant_base = $suma_cost_mant_base + $cost->costo_mantenimiento;
 
@@ -3246,15 +3267,59 @@ public function red_en_mw_grafic($dif,$dif_2){
                 $res_opex_base = $res_opex_base +  $suma_cost_mant_base_div_area;
             }
 
-            $costo_energia = $opex * $area;
 
-            $mantenimiento_realizado = $res_opex_base * $area;
+        $costo_energia = $opex * $area;
 
-            $total = $costo_energia + $mantenimiento_realizado;
+        //costo_mantenimiento opex para ciclo vida
+        $suma_costo_mantenimiento = 0;
+        $suma_reparaciones = 0;
+       ///porcent byunidad
+        $unidad_hvac = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf)
+            ->where('solutions_project.num_sol','=',1)
+            ->select('solutions_project.unidad_hvac')
+            ->first()->unidad_hvac;
 
+        if($unidad_hvac == 7){
 
+           $porcent = 20 / 100;
+        }
 
-            $array = [round($costo_energia,1),round($mantenimiento_realizado,1),round($total)];
+        if($unidad_hvac == 3 || $unidad_hvac == 4){
+           $porcent = 8 / 100;
+        }
+
+        if($unidad_hvac != 7 && $unidad_hvac != 3 && $unidad_hvac != 4){
+                $porcent = 5 / 100;
+        }
+
+        $costo_mantenimiento = $val_aprox->val_aprox*$porcent;
+        $porcent_to_calculate_yrs_inflacion = 1+($inflacion_rate_aux/100);
+        $costo_mantenimiento_aux = $costo_mantenimiento;
+
+        for ($i = 2; $i <= intval($yrs_ciclo_vida); $i++) {
+            $costo_mant_inflacion_anual = $costo_mantenimiento_aux*$porcent_to_calculate_yrs_inflacion;
+            $costo_mantenimiento_aux = $costo_mant_inflacion_anual;
+        }
+
+        //REPARACIONES
+        $reparaciones = $costo_mantenimiento*(1/5);
+        $reparaciones_aux = $reparaciones;
+        for ($i = 2; $i <= intval($yrs_ciclo_vida); $i++) {
+            $reparaciones_inflacion_anual = $reparaciones_aux*$porcent_to_calculate_yrs_inflacion;
+            $reparaciones_aux = $reparaciones_inflacion_anual;
+        }
+        //cost_an_re_anual
+        $cost_an_re_aux = $cost_an_re;
+        for ($i = 2; $i <= intval($yrs_ciclo_vida); $i++) {
+            $cost_an_re_anual = $cost_an_re_aux*$porcent_to_calculate_yrs_inflacion;
+            $cost_an_re_aux = $cost_an_re_anual;
+        }
+        //total
+            $total = $costo_energia + $costo_mant_inflacion_anual;
+        //array
+            $array = [round($costo_energia),round($costo_mant_inflacion_anual),round($total),$reparaciones_inflacion_anual,$porcent,$cost_an_re_anual];
 
             return $array;
     }
