@@ -2558,20 +2558,34 @@ $costo_b
                 </div>
         </div>
 
-        <div class="grid w-full justify-items-center mb-2">
-            <div class="w-full flex justify-center">
-                <div id="chart_ciclo_vida_a" name="chart_ciclo_vida_a" style="width:90%;"></div>
-                <div class="hidden w-full" id="chart_ciclo_vida_a_print" name="chart_ciclo_vida_a_print" ></div>
+        <div class="grid w-full justify-items-center">
+            <div class="w-full grid">
+                <div class="w-full flex justify-end">
+                    <label style="color:#1B17BB;" class="text-xl font-roboto font-bold mr-10" id="costo_ciclo_vida_a"></label>
+                </div>
+                <div class="w-full flex justify-center">
+                    <div id="chart_ciclo_vida_a" name="chart_ciclo_vida_a" style="width:90%;"></div>
+                    <div class="hidden w-full" id="chart_ciclo_vida_a_print" name="chart_ciclo_vida_a_print" ></div>
+                </div>
+            </div>
+            <div class="w-full grid">
+                <div class="w-full flex justify-end">
+                    <label style="color:#1B17BB;" class="text-xl font-roboto font-bold mr-10" id="costo_ciclo_vida_b"></label>
+                </div>
+                <div class="w-full flex justify-center">
+                    <div id="chart_ciclo_vida_b" name="chart_ciclo_vida_b" style="width:90%;"></div>
+                    <div class="hidden w-full" id="chart_ciclo_vida_b_print" name="chart_ciclo_vida_b_print" ></div>
+                </div>
             </div>
 
-            <div class="w-full flex justify-center">
-                <div id="chart_ciclo_vida_b" name="chart_ciclo_vida_b" style="width:90%;"></div>
-                <div class="hidden w-full" id="chart_ciclo_vida_b_print" name="chart_ciclo_vida_b_print" ></div>
-            </div>
-
-            <div class="w-full flex justify-center">
-                <div id="chart_ciclo_vida_c" name="chart_ciclo_vida_c" style="width:90%;"></div>
-                <div class="hidden w-full" id="chart_ciclo_vida_c_print" name="chart_ciclo_vida_c_print" ></div>
+            <div class="w-full grid">
+                <div class="w-full flex justify-end">
+                    <label style="color:#1B17BB;" class="text-xl font-roboto font-bold mr-10" id="costo_ciclo_vida_c"></label>
+                </div>
+                <div class="w-full flex justify-center">
+                    <div id="chart_ciclo_vida_c" name="chart_ciclo_vida_c" style="width:90%;"></div>
+                    <div class="hidden w-full" id="chart_ciclo_vida_c_print" name="chart_ciclo_vida_c_print" ></div>
+                </div>
             </div>
         </div>
     </div>
@@ -5713,6 +5727,7 @@ chart.draw(data, options); */
 
 function ciclo_vida_a(id_project){
     var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
+    var area = "{{ $tar_ele->area }}";
     var capex = '{{ $inv_ini_1 }}'
 $.ajax({
     type: 'get',
@@ -5723,6 +5738,7 @@ $.ajax({
      console.log(reparaciones_aux); */
 
     var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
+    var costo = document.getElementById('costo_ciclo_vida_a').innerHTML ='Costo: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -5857,12 +5873,14 @@ $.ajax({
 
 function ciclo_vida_b(id_project){
     var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
+    var area = "{{ $tar_ele->area }}";
     var capex = '{{ $inv_ini_2 }}'
 $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 2,
     success: function (res) {
     var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
+    var costo = document.getElementById('costo_ciclo_vida_b').innerHTML ='Costo: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -5996,14 +6014,15 @@ $.ajax({
 }
 
 function ciclo_vida_c(id_project){
-
     var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
+    var area = "{{ $tar_ele->area }}";
     var capex = '{{ $inv_ini_3 }}'
 $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 3,
     success: function (res) {
     var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
+    var costo = document.getElementById('costo_ciclo_vida_c').innerHTML ='Costo: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
