@@ -2487,6 +2487,8 @@ $costo_b
 
     var cons_ene_ele_ancho_line_print = 460;
     var cons_ene_ele_alto_line_print = 200;
+    var cons_ene_ele_ancho_print = 200;
+    var cons_ene_ele_alto_print = 140;
     var eui_print_width = 470;
     var eui_print_height = 140;
     var red_ene_print_height= 200;
@@ -2914,6 +2916,57 @@ function chart_2(){
         var suma_2_aux = 0;
         var array_2_suma = [];
         var capex_2 = parseInt(inv_ini_b);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+
+    if(val_base_red_ene > 0 && val_a_red_ene > 0 && val_b_red_ene == 0){
+        var sol_1 = 'Existente';
+        var cap_1 = 'Existente';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'Solución A';
+        var cap_2 = 'A';
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    if(val_base_red_ene == 0 && val_a_red_ene > 0 && val_b_red_ene == 0){
+        var sol_1 = 'Existente';
+        var cap_1 = 'Existente';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'Solución A';
+        var cap_2 = 'A';
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
 
         for (let index = 0; index < array_1.length; index++) {
           suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
@@ -8892,6 +8945,56 @@ function chart_2_print(){
         var suma_2_aux = 0;
         var array_2_suma = [];
         var capex_2 = parseInt(inv_ini_b);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    if(val_base_red_ene > 0 && val_a_red_ene > 0 && val_b_red_ene == 0){
+        var sol_1 = 'Existente';
+        var cap_1 = 'Existente';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'Solución A';
+        var cap_2 = 'A';
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
+          array_1_suma.push(suma_1_aux);
+        }
+
+        for (let index = 0; index < array_1.length; index++) {
+          suma_2_aux = parseInt(array_2[index]) + parseInt(suma_2_aux);
+          array_2_suma.push(suma_2_aux);
+        }
+    }
+
+    if(val_base_red_ene == 0 && val_a_red_ene > 0 && val_b_red_ene == 0){
+        var sol_1 = 'Existente';
+        var cap_1 = 'Existente';
+        var array_1 = incremento_2(val_base_red_ene,inflacion);
+        var suma_1_aux = 0;
+        var array_1_suma = [];
+        var capex_1 = parseInt(inv_ini_base);
+        var sol_2 = 'Solución A';
+        var cap_2 = 'A';
+        var array_2 = incremento_2(val_a_red_ene,inflacion);
+        var suma_2_aux = 0;
+        var array_2_suma = [];
+        var capex_2 = parseInt(inv_ini_a);
 
         for (let index = 0; index < array_1.length; index++) {
           suma_1_aux = parseInt(array_1[index]) + parseInt(suma_1_aux);
