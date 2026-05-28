@@ -2374,19 +2374,29 @@ $costo_b
                 </div>
         </div>
 
-        <div class="grid w-full justify-items-center mb-2">
-            <div class="w-full grid">
-                <div class="w-full flex justify-end">
-                    <label style="color:#1B17BB;" class="text-xl font-roboto font-bold mr-10" id="costo_ciclo_vida_a"></label>
+        <div class="grid w-full justify-items-center mt-3 gap-y-3">
+            <div class="w-full grid gap-y-1 ">
+                <div class="w-full flex">
+                    <div class="w-1/2">
+                       <b style="color:#1B17BB;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Existente</b>
+                    </div>
+                    <div class="w-1/2 flex justify-end">
+                        <label style="color:#2c5282;" class="text-2xl font-roboto font-bold mr-10" id="costo_ciclo_vida_a"></label>
+                    </div>
                 </div>
                 <div class="w-full flex justify-center">
                     <div id="chart_ciclo_vida_a" name="chart_ciclo_vida_a" style="width:90%;"></div>
                     <div class="hidden w-full" id="chart_ciclo_vida_a_print" name="chart_ciclo_vida_a_print" ></div>
                 </div>
             </div>
-            <div class="w-full grid">
-                <div class="w-full flex justify-end">
-                    <label style="color:#1B17BB;" class="text-xl font-roboto font-bold mr-10" id="costo_ciclo_vida_b"></label>
+            <div class="w-full grid gap-y-1">
+                <div class="w-full flex">
+                    <div class="w-1/2">
+                       <b style="color:#1B17BB;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
+                    </div>
+                    <div class="w-1/2 flex justify-end">
+                         <label style="color:#2c5282;" class="text-2xl font-roboto font-bold mr-10" id="costo_ciclo_vida_b"></label>
+                    </div>
                 </div>
                 <div class="w-full flex justify-center">
                     <div id="chart_ciclo_vida_b" name="chart_ciclo_vida_b" style="width:90%;"></div>
@@ -2394,9 +2404,14 @@ $costo_b
                 </div>
             </div>
 
-            <div class="w-full grid">
-                <div class="w-full flex justify-end">
-                    <label style="color:#1B17BB;" class="text-xl font-roboto font-bold mr-10" id="costo_ciclo_vida_c"></label>
+            <div class="w-full grid gap-y-1">
+                <div class="w-full flex">
+                    <div class="w-1/2">
+                       <b style="color:#1B17BB;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
+                    </div>
+                    <div class="w-1/2 flex justify-end">
+                         <label style="color:#2c5282;" class="text-2xl font-roboto font-bold mr-10" id="costo_ciclo_vida_c"></label>
+                    </div>
                 </div>
                 <div class="w-full flex justify-center">
                     <div id="chart_ciclo_vida_c" name="chart_ciclo_vida_c" style="width:90%;"></div>
@@ -9150,7 +9165,7 @@ $.ajax({
      console.log(reparaciones_aux); */
 
     var total = parseInt(res[5]) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
-    var costo = document.getElementById('costo_ciclo_vida_a').innerHTML ='Costo: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var costo = document.getElementById('costo_ciclo_vida_a').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -9198,7 +9213,7 @@ $.ajax({
             fontWeight: 'bold',
         },
     },
-    title: {
+    /* title: {
       text: 'Existente',
       align: 'left',
       offsetY:25,
@@ -9210,7 +9225,7 @@ $.ajax({
         cssClass: 'apexcharts-yaxis-label',
         color: '#000',
       },
-    },
+    }, */
     xaxis: {
       categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
@@ -9292,7 +9307,7 @@ $.ajax({
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 2,
     success: function (res) {
     var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
-    var costo = document.getElementById('costo_ciclo_vida_b').innerHTML ='Costo: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var costo = document.getElementById('costo_ciclo_vida_b').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -9340,7 +9355,7 @@ $.ajax({
             fontWeight: 'bold',
         },
     },
-    title: {
+    /* title: {
       text: 'Solución A',
       align: 'left',
       offsetY:25,
@@ -9352,7 +9367,7 @@ $.ajax({
         cssClass: 'apexcharts-yaxis-label',
         color: '#000',
       },
-    },
+    }, */
     xaxis: {
       categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
@@ -9435,7 +9450,7 @@ $.ajax({
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 3,
     success: function (res) {
     var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
-    var costo = document.getElementById('costo_ciclo_vida_c').innerHTML ='Costo: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var costo = document.getElementById('costo_ciclo_vida_c').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -9483,7 +9498,7 @@ $.ajax({
             fontWeight: 'bold',
         },
     },
-    title: {
+    /* title: {
       text: 'Solución B',
       align: 'left',
       offsetY:25,
@@ -9495,7 +9510,7 @@ $.ajax({
         cssClass: 'apexcharts-yaxis-label',
         color: '#000',
       },
-    },
+    }, */
     xaxis: {
       categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
