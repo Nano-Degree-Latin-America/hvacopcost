@@ -2558,19 +2558,29 @@ $costo_b
                 </div>
         </div>
 
-        <div class="grid w-full justify-items-center">
-            <div class="w-full grid">
-                <div class="w-full flex justify-end">
-                    <label style="color:#1B17BB;" class="text-xl font-roboto font-bold mr-10" id="costo_ciclo_vida_a"></label>
+        <div class="grid w-full justify-items-center mt-3 gap-y-3">
+            <div class="w-full grid gap-y-1 ">
+                <div class="w-full flex">
+                    <div class="w-1/2">
+                       <b style="color:#1B17BB;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
+                    </div>
+                    <div class="w-1/2 flex justify-end">
+                        <label style="color:#2c5282;" class="text-2xl font-roboto font-bold mr-10" id="costo_ciclo_vida_a"></label>
+                    </div>
                 </div>
                 <div class="w-full flex justify-center">
                     <div id="chart_ciclo_vida_a" name="chart_ciclo_vida_a" style="width:90%;"></div>
                     <div class="hidden w-full" id="chart_ciclo_vida_a_print" name="chart_ciclo_vida_a_print" ></div>
                 </div>
             </div>
-            <div class="w-full grid">
-                <div class="w-full flex justify-end">
-                    <label style="color:#1B17BB;" class="text-xl font-roboto font-bold mr-10" id="costo_ciclo_vida_b"></label>
+            <div class="w-full grid gap-y-1">
+                <div class="w-full flex">
+                    <div class="w-1/2">
+                       <b style="color:#1B17BB;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
+                    </div>
+                    <div class="w-1/2 flex justify-end">
+                         <label style="color:#2c5282;" class="text-2xl font-roboto font-bold mr-10" id="costo_ciclo_vida_b"></label>
+                    </div>
                 </div>
                 <div class="w-full flex justify-center">
                     <div id="chart_ciclo_vida_b" name="chart_ciclo_vida_b" style="width:90%;"></div>
@@ -2578,9 +2588,14 @@ $costo_b
                 </div>
             </div>
 
-            <div class="w-full grid">
-                <div class="w-full flex justify-end">
-                    <label style="color:#1B17BB;" class="text-xl font-roboto font-bold mr-10" id="costo_ciclo_vida_c"></label>
+            <div class="w-full grid gap-y-1">
+                <div class="w-full flex">
+                    <div class="w-1/2">
+                       <b style="color:#1B17BB;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución C</b>
+                    </div>
+                    <div class="w-1/2 flex justify-end">
+                         <label style="color:#2c5282;" class="text-2xl font-roboto font-bold mr-10" id="costo_ciclo_vida_c"></label>
+                    </div>
                 </div>
                 <div class="w-full flex justify-center">
                     <div id="chart_ciclo_vida_c" name="chart_ciclo_vida_c" style="width:90%;"></div>
@@ -5785,20 +5800,20 @@ $.ajax({
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: 'bold',
         },
-    },
+    }/* ,
     title: {
       text: 'Solución A',
       align: 'left',
       offsetY:25,
       style: {
         fontWeight:  'bold',
-        fontSize: '24px',
+        fontSize: '26px',
         fontFamily: 'ABeeZee, sans-serif',
         fontWeight: "bold",
         cssClass: 'apexcharts-yaxis-label',
         color: '#000',
       },
-    },
+    } */,
     xaxis: {
       categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
@@ -5927,7 +5942,7 @@ $.ajax({
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: 'bold',
         },
-    },
+    },/*
     title: {
       text: 'Solución B',
       align: 'left',
@@ -5940,7 +5955,7 @@ $.ajax({
         cssClass: 'apexcharts-yaxis-label',
         color: '#000',
       },
-    },
+    }, */
     xaxis: {
       categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
@@ -6070,7 +6085,7 @@ $.ajax({
             fontWeight: 'bold',
         },
     },
-    title: {
+    /* title: {
       text: 'Solución C',
       align: 'left',
       offsetY:25,
@@ -6082,7 +6097,7 @@ $.ajax({
         cssClass: 'apexcharts-yaxis-label',
         color: '#000',
       },
-    },
+    }, */
     xaxis: {
       categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
