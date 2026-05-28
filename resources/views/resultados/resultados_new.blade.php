@@ -5753,7 +5753,7 @@ $.ajax({
      console.log(reparaciones_aux); */
 
     var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
-    var costo = document.getElementById('costo_ciclo_vida_a').innerHTML ='Costo: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var costo = document.getElementById('costo_ciclo_vida_a').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -5895,7 +5895,7 @@ $.ajax({
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 2,
     success: function (res) {
     var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
-    var costo = document.getElementById('costo_ciclo_vida_b').innerHTML ='Costo: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var costo = document.getElementById('costo_ciclo_vida_b').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -6037,7 +6037,7 @@ $.ajax({
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 3,
     success: function (res) {
     var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
-    var costo = document.getElementById('costo_ciclo_vida_c').innerHTML ='Costo: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var costo = document.getElementById('costo_ciclo_vida_c').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
