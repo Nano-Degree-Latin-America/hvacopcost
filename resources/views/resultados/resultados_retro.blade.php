@@ -629,22 +629,22 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
             <div class="w-full flex gap-x-2 mt-2">
 
-                <div class="grid" style="max-width: 90%;margin: 0px auto">
+                <div class="grid w-1/2" >
                    <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
                      <label>Incremento del Costo de la Energía</label>
                    </div>
-                   <div class="w-full flex justify-end font-roboto font-bold mt-2">
+                   <div class="w-full grid justify-end font-roboto font-bold mt-2">
                         <div class="w-2/3 flex gap-x-1 margin_sols_leyend_chart_1">
                             <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols">Existente</p><p class="tam_leyend_sols" id="solution_1_chart_1"></p><div style="background-color:#2be6ee;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                                <p class="tam_leyend_sols">Existente</p>{{-- <p class="tam_leyend_sols" id="solution_1_chart_1">A</p> --}}<div style="background-color:#2be6ee;" class="point_solution"></div>
                             </div>
 
                             <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols">Solución</p><p class="tam_leyend_sols" id="solution_2_chart_1">A</p><div style="background-color:#ff00ff;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                                <p class="tam_leyend_sols">Solución</p><p class="tam_leyend_sols" id="solution_2_chart_1">B</p><div style="background-color:#ff00ff;" class="point_solution"></div>
                             </div>
 
                             <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols">Solución</p><p class="tam_leyend_sols" id="solution_3_chart_1">B</p><div style="background-color:#545454;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                                <p class="tam_leyend_sols">Solución</p><p class="tam_leyend_sols" id="solution_3_chart_1">C</p><div style="background-color:#545454;" class="point_solution"></div>
                             </div>
                         </div>
                         {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
@@ -653,25 +653,25 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                 </div>
 
-                <div  class="grid" style="max-width: 90%;margin: 0px auto">
-                    <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
+                <div  class="grid w-1/2" >
+                   <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
                      <label>Recuperación de la Energía vs Capex</label>
                    </div>
-                   <div class="w-full flex justify-end font-roboto font-bold mt-2">
+                    <div class="w-full flex justify-end font-roboto font-bold mt-2">
                         <div class="w-[80%] flex gap-x-1 margin_sols_leyend_chart_2 text-md">
                             <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols" id="solution_1_chart_2"></p><div style="background-color:#2be6ee;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                                <p class="tam_leyend_sols" >Existente</p><p class="tam_leyend_sols" id="solution_1_chart_2"></p><div style="background-color:#2be6ee;" class="point_solution"></div>
                             </div>
 
                             <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols" id="solution_2_chart_2"></p><div style="background-color:#ff00ff;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                                <p class="tam_leyend_sols" >Solución</p><p class="tam_leyend_sols" id="solution_2_chart_2"></p><div style="background-color:#ff00ff;" class="point_solution"></div>
                             </div>
 
                             <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_1_chart_2"></p><div style="background-color:#545454;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                                <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_1_chart_2"></p><div style="background-color:#32b381;" class="point_solution"></div>
                             </div>
                             <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_2_chart_2"></p><div style="background-color:#e09b5e;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
+                                <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_2_chart_2"></p><div style="background-color:#e09b5e;" class="point_solution"></div>
                             </div>
                         </div>
                         {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
@@ -2443,10 +2443,47 @@ $costo_b
     var man_lang = document.getElementById('ima_man').value;
     var ima_sol = document.getElementById('ima_sol').value;
     google.charts.load('current', {'packages':['gauge']});
-    var cons_ene_ele_ancho = 400;
-    var cons_ene_ele_alto = 250;
-    var cons_ene_ele_ancho_print = 210;
-    var cons_ene_ele_alto_print = 140;
+
+    var screenWidth = window.screen.width;
+    var screenHeight = window.screen.height;
+
+    if(screenWidth >= 1280){
+        var cons_ene_ele_ancho = 265;
+        var cons_ene_ele_alto = 185;
+        var fontSize_cons_ene_ele = '26px';
+        var fontSize_cons_ene_ele_kwh = '16px';
+        var cons_ene_ele_ancho_line = "100%";
+        var cons_ene_ele_alto_line = "100%";
+        var eui_chart_width = 480;
+        var eui_chart_height = 200;
+        var prod_size_width = 280;
+        var prod_size_height = 220;
+        var prod_size_font_size = 20;
+        var prod_size_point_grafic = 8;
+        var prod_size_width_grafic = 25;
+        var prod_size_font_message = 20;
+        var prod_size_grafic_width = 15;
+        var ciclo_vida_size_xaxis = '14px'
+    }
+
+    if(screenWidth == 1920 ){
+        var cons_ene_ele_ancho = 410;
+        var cons_ene_ele_alto = 255;
+        var fontSize_cons_ene_ele = '46px';
+        var fontSize_cons_ene_ele_kwh = '26px';
+        var cons_ene_ele_ancho_line = "100%";
+        var cons_ene_ele_alto_line = "100%";
+        var eui_chart_width = 550;
+        var eui_chart_height = 280;
+        var prod_size_width = 300;
+        var prod_size_height = 250;
+        var prod_size_font_size = 48;
+        var prod_size_point_grafic = 10;
+        var prod_size_width_grafic = 35;
+        var prod_size_font_message = 30;
+        var prod_size_grafic_width = 20;
+        var ciclo_vida_size_xaxis = '16px'
+    }
     var cons_ene_ele_ancho_line = 580;
     var cons_ene_ele_alto_line = 250;
     var cons_ene_ele_ancho_line_print = 460;
@@ -3177,8 +3214,8 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
-        style_fontSize: '46px',
+          '<span color="%color">'+parseFloat(result_area).toFixed(1)+'</span><br/><span color="#696969" fontSize="'+fontSize_cons_ene_ele_kwh+'">Kwh/m²</span>',
+        style_fontSize: fontSize_cons_ene_ele,
         verticalAlign: 'middle'
       }
     }
@@ -3283,8 +3320,8 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
-        style_fontSize: '46px',
+          '<span color="%color">'+parseFloat(result_area).toFixed(1)+'</span><br/><span color="#696969" fontSize="'+fontSize_cons_ene_ele_kwh+'">Kwh/m²</span>',
+        style_fontSize: fontSize_cons_ene_ele,
         verticalAlign: 'middle'
       }
     }
@@ -3392,8 +3429,8 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
-        style_fontSize: '46px',
+          '<span color="%color">'+parseFloat(result_area).toFixed(1)+'</span><br/><span color="#696969" fontSize="'+fontSize_cons_ene_ele_kwh+'">Kwh/m²</span>',
+        style_fontSize: fontSize_cons_ene_ele,
         verticalAlign: 'middle'
       }
     }

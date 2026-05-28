@@ -813,12 +813,12 @@
 
             .js_charts_style_line{
                 width: 470px;
-                height: 250px;
+                height: 275px;
                 margin: 0px auto;
             }
 
             .titulos_style{
-            font-size:1.8rem;
+            font-size:1.6rem;
             color: white;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -1098,8 +1098,8 @@
                 margin: 0px auto;
             }
             .js_charts_style_line{
-                width: 780px;
-                height: 310px;
+                width: 680px;
+                height: 350px;
                 margin: 0px auto;
             }
 

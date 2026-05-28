@@ -300,7 +300,7 @@
             </div>
         </div>
 
-        <div id="div_consumo_anual_energia_electrica" class="w-full flex justify-center">
+        <div style="margin-top:40px;" id="div_consumo_anual_energia_electrica" class="w-full flex justify-center">
             <div class="grid w-1/3">
 
                 <div class="flex w-full ">
@@ -354,7 +354,7 @@
             </div>
         </div>
 
-        <div style="margin-top:40px;"  class="flex w-full justify-center ">
+        <div style="margin-top:10px;"  class="flex w-full justify-center ">
             <div class="w-1/7 grid justify-items-center">
                 <div class="place-content-center ">
                     <img src="{{asset('assets/images/pesosjpg.jpg')}}" class="img_tr mx-2 mt-5">
@@ -404,11 +404,11 @@
                 </div>
             </div>
 
-        <div class="w-full grid justify-items-center gap-x-2">
+        <div class="w-full flex justify-items-center gap-x-2">
 
                 <div class="grid w-1/2" >
-                   <div style="background-color:#1B17BB;" class="w-full flex justify-center solucions_style_name font-roboto rounded-md" >
-                     <label class="text-white">Incremento del Costo de la Energía</label>
+                   <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
+                     <label>Incremento del Costo de la Energía</label>
                    </div>
                    <div class="w-full grid justify-end font-roboto font-bold mt-2">
                         <div class="w-2/3 flex gap-x-1 margin_sols_leyend_chart_1">
@@ -431,8 +431,8 @@
                 </div>
 
                 <div  class="grid w-1/2" >
-                   <div style="background-color:#1B17BB;" class="w-full flex justify-center solucions_style_name font-roboto rounded-md" >
-                     <label class="text-white">Recuperación de la Energía vs Capex</label>
+                   <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
+                     <label>Recuperación de la Energía vs Capex</label>
                    </div>
                     <div class="w-full flex justify-end font-roboto font-bold mt-2">
                         <div class="w-[80%] flex gap-x-1 margin_sols_leyend_chart_2 text-md">
@@ -2532,23 +2532,22 @@ $costo_b
         </div>
 </div>
 </div>
-{{-- capex vs opex --}}
-@if (Auth::user()->tipo_user == 5)
+{{-- Costo Ciclo de Vida --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                 <p class="titulos_style">
-                    Costo Ciclo de Vida
+                    Costo Ciclo de Vida ($)
                 </p>
             </div>
         </div>
 
-        <div class="w-full flex justify-start font-roboto font-bold">
-                <div class="w-1/3 flex ml-10 mt-3">
+        <div class="w-full flex justify-start font-roboto font-bold mt-3">
+                <div class="w-1/3 flex ml-10 mt-3 gap-x-2">
                     <div class="ml-10 flex justify-start">
-                        <label style="color:#1B17BB;" class="size_solutions_confort">Año </label>
+                        <label style="color:#1B17BB;" class="size_solutions_confort">Año</label>
                     </div>
                     <select style="width:100px;" name="yrs_ciclo_vida" id="yrs_ciclo_vida" onchange="ciclo_vida_a('{{ $id_project }}')" class="border-2 rounded-md py-2 border-color-inps text-xl text-center">
                             <option value="3">3</option>
@@ -2559,7 +2558,7 @@ $costo_b
                 </div>
         </div>
 
-        <div class="grid w-full justify-items-center">
+        <div class="grid w-full justify-items-center mb-2">
             <div class="w-full flex justify-center">
                 <div id="chart_ciclo_vida_a" name="chart_ciclo_vida_a" style="width:90%;"></div>
                 <div class="hidden w-full" id="chart_ciclo_vida_a_print" name="chart_ciclo_vida_a_print" ></div>
@@ -2577,11 +2576,11 @@ $costo_b
         </div>
     </div>
 </div>
-@endif
+
 {{-- capex vs opex --}}
 
 {{-- capex vs opex --}}
-<div class="w-full grid rounded-md justify-items-center mt-3">
+{{-- <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
@@ -2617,7 +2616,7 @@ $costo_b
         </div>
 
     </div>
-</div>
+</div> --}}
 {{-- capex vs opex --}}
 
 {{-- espacio hoja pagina 3 --}}
@@ -3862,7 +3861,7 @@ $costo_b
 
     if(screenWidth == 1920 ){
         var cons_ene_ele_ancho = 410;
-        var cons_ene_ele_alto = 250;
+        var cons_ene_ele_alto = 255;
         var fontSize_cons_ene_ele = '46px';
         var fontSize_cons_ene_ele_kwh = '26px';
         var cons_ene_ele_ancho_line = "100%";
@@ -4854,7 +4853,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="'+fontSize_cons_ene_ele_kwh+'">Kwh/m²</span>',
+          '<span color="%color">'+parseFloat(result_area).toFixed(1)+'</span><br/><span color="#696969" fontSize="'+fontSize_cons_ene_ele_kwh+'">Kwh/m²</span>',
         style_fontSize: fontSize_cons_ene_ele,
         verticalAlign: 'middle'
       }
@@ -4960,7 +4959,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="'+fontSize_cons_ene_ele_kwh+'">Kwh/m²</span>',
+          '<span color="%color">'+parseFloat(result_area).toFixed(1)+'</span><br/><span color="#696969" fontSize="'+fontSize_cons_ene_ele_kwh+'">Kwh/m²</span>',
         style_fontSize: fontSize_cons_ene_ele,
         verticalAlign: 'middle'
       }
@@ -5069,7 +5068,7 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="'+fontSize_cons_ene_ele_kwh+'">Kwh/m²</span>',
+          '<span color="%color">'+parseFloat(result_area).toFixed(1)+'</span><br/><span color="#696969" fontSize="'+fontSize_cons_ene_ele_kwh+'">Kwh/m²</span>',
         style_fontSize: fontSize_cons_ene_ele,
         verticalAlign: 'middle'
       }
@@ -6066,7 +6065,7 @@ $.ajax({
       },
     },
     xaxis: {
-      categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX) (OPEX)', 'Reparaciones','Total'],
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
             hideOverlappingLabels: true,
             style: {

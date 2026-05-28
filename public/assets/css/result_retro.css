@@ -788,7 +788,7 @@
             }
 
             .titulos_style{
-            font-size:1.8rem;
+            font-size:1.5rem;
             color: white;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -1022,6 +1022,18 @@
         }
 
         @media (min-width: 1900px) {
+
+             .js_charts_style{
+                width: 410px;
+                height: 210px;
+                margin: 0px auto;
+            }
+            .js_charts_style_line{
+                width: 680px;
+                height: 350px;
+                margin: 0px auto;
+            }
+
             .img_porject{
                 height:138px;
                 width:310px;
