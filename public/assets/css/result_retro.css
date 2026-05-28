@@ -29,6 +29,10 @@
 
         }
 
+        .border_box{
+            border:2px solid;
+         }
+
         .info_project_res{
             font-size: 20px;
             font-family: 'ABeeZee', sans-serif;
@@ -1033,7 +1037,6 @@
                 height: 350px;
                 margin: 0px auto;
             }
-
             .img_porject{
                 height:138px;
                 width:310px;

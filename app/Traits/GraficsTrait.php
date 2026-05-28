@@ -3211,6 +3211,14 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->select('solutions_project.val_aprox')
             ->first();
 
+            $cost_an_re = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf)
+            ->select('solutions_project.cost_an_re')
+            ->first()->cost_an_re;
+
+
+
             foreach($solutions as $sol){
                 $sumaopex_base = $sumaopex_base + $sol->cost_op_an;
             }
@@ -3302,12 +3310,16 @@ public function red_en_mw_grafic($dif,$dif_2){
             $reparaciones_inflacion_anual = $reparaciones_aux*$porcent_to_calculate_yrs_inflacion;
             $reparaciones_aux = $reparaciones_inflacion_anual;
         }
-        //mantenimiento_realizado
-            //$mantenimiento_realizado = $res_opex_base * $area;
+        //cost_an_re_anual
+        $cost_an_re_aux = $cost_an_re;
+        for ($i = 2; $i <= intval($yrs_ciclo_vida); $i++) {
+            $cost_an_re_anual = $cost_an_re_aux*$porcent_to_calculate_yrs_inflacion;
+            $cost_an_re_aux = $cost_an_re_anual;
+        }
         //total
             $total = $costo_energia + $costo_mant_inflacion_anual;
         //array
-            $array = [round($costo_energia),round($costo_mant_inflacion_anual),round($total),$reparaciones_inflacion_anual,$porcent];
+            $array = [round($costo_energia),round($costo_mant_inflacion_anual),round($total),$reparaciones_inflacion_anual,$porcent,$cost_an_re_anual];
 
             return $array;
     }

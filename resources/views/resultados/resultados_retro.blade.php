@@ -2348,22 +2348,22 @@ $costo_b
         </div>
     </div>
 </div>
-@if (Auth::user()->tipo_user == 5)
+
 <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                 <p class="titulos_style">
-                    Costo Ciclo de Vida
+                    Costo Ciclo de Vida ($)
                 </p>
             </div>
         </div>
 
-        <div class="w-full flex justify-start font-roboto font-bold">
-                <div class="w-1/3 flex ml-10 mt-3">
+        <div class="w-full flex justify-start font-roboto font-bold mt-3">
+                <div class="w-1/3 flex ml-10 mt-3 gap-x-2">
                     <div class="ml-10 flex justify-start">
-                        <label style="color:#1B17BB;" class="size_solutions_confort">Año </label>
+                        <label style="color:#1B17BB;" class="size_solutions_confort">Año</label>
                     </div>
                     <select style="width:100px;" name="yrs_ciclo_vida" id="yrs_ciclo_vida" onchange="ciclo_vida_a('{{ $id_project }}')" class="border-2 rounded-md py-2 border-color-inps text-xl text-center">
                             <option value="3">3</option>
@@ -2374,7 +2374,7 @@ $costo_b
                 </div>
         </div>
 
-        <div class="grid w-full justify-items-center">
+        <div class="grid w-full justify-items-center mb-2">
             <div class="w-full flex justify-center">
                 <div id="chart_ciclo_vida_a" name="chart_ciclo_vida_a" style="width:90%;"></div>
                 <div class="hidden w-full" id="chart_ciclo_vida_a_print" name="chart_ciclo_vida_a_print" ></div>
@@ -2392,14 +2392,14 @@ $costo_b
         </div>
     </div>
 </div>
-@endif
+
 {{-- capex vs opex --}}
-<div class="w-full grid rounded-md justify-items-center mt-3">
+{{-- <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border-2 border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                <p class="titulos_style">{{-- {{ __('results.analisis') }} --}}CAPEX v/s OPEX (@if($tar_ele->unidad == 'mc')$/m²)@endif
+                <p class="titulos_style">CAPEX v/s OPEX (@if($tar_ele->unidad == 'mc')$/m²)@endif
                     @if($tar_ele->unidad == 'ft')$/ft²)@endif
                 </p>
             </div>
@@ -2430,7 +2430,7 @@ $costo_b
         </div>
 
     </div>
-</div>
+</div> --}}
 {{-- capex vs opex --}}
 {{-- caja_principal --}}
 {{--  @if (Auth::user()->tipo_user == 5)
@@ -2484,8 +2484,7 @@ $costo_b
         var prod_size_grafic_width = 20;
         var ciclo_vida_size_xaxis = '16px'
     }
-    var cons_ene_ele_ancho_line = 580;
-    var cons_ene_ele_alto_line = 250;
+
     var cons_ene_ele_ancho_line_print = 460;
     var cons_ene_ele_alto_line_print = 200;
     var eui_print_width = 470;
@@ -9024,27 +9023,32 @@ var chart = JSC.chart('chart_2', {
 function ciclo_vida_a(id_project){
     var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
     var capex = '{{ $inv_ini_1 }}'
-    var reparaciones_aux = capex / 5;
-    var reparaciones = reparaciones_aux * 0.05
 $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 1,
     success: function (res) {
-    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
+     /* var reparaciones_aux = parseInt(capex) / 5;
+     var Reparaciones = reparaciones_aux * parseFloat(res[4]);
+     console.log(reparaciones_aux); */
+
+    var total = parseInt(res[5]) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
       /* width '95px', */
-      data: [capex]
+      data: [parseInt(res[5])]
     },{
-      name:'Costo de la Energía y Mantenimiento (OPEX)',
+      name:'Energía (OPEX)',
       data: [0,res[0],0,0]
     },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,res[1],0,0]
+    },{
       name:'Reparaciones',
-      data: [0,res[1],reparaciones,0]
+      data: [0,0,parseInt(res[3]),0]
     },{
       name:'Total',
-      data: [0, 0,0,total]
+      data: [0,0,0,total]
     }],
       chart: {
       type: 'bar',
@@ -9089,7 +9093,7 @@ $.ajax({
       },
     },
     xaxis: {
-      categories: ['Suministro e Instalación (CAPEX)', 'Costo de la Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
             hideOverlappingLabels: true,
             style: {
@@ -9107,7 +9111,7 @@ $.ajax({
             hideOverlappingLabels: true,
             style: {
                 colors: [],
-                fontSize: '16px',
+                fontSize: ciclo_vida_size_xaxis,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -9125,7 +9129,7 @@ $.ajax({
     },
     fill: {
       opacity: 1,
-      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
 
     },
     legend: {
@@ -9140,7 +9144,7 @@ $.ajax({
       height: 12,
       strokeWidth: 0,
       strokeColor: '#fff',
-      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
       radius: 12,
       customHTML: undefined,
       onClick: undefined,
@@ -9171,16 +9175,20 @@ $.ajax({
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
       data: [capex]
     },{
-      name:'Costo de la Energía y Mantenimiento (OPEX)',
+      name:'Energía (OPEX)',
       data: [0,res[0],0,0]
     },{
-      name:'Reparaciones',
+      name:'Mantenimiento (OPEX)',
       data: [0,res[1],0,0]
     },{
+      name:'Reparaciones',
+      data: [0,0,parseInt(res[3]),0]
+    },{
       name:'Total',
-      data: [0, 0,0,total]
+      data: [0,0,0,total]
     }],
       chart: {
       type: 'bar',
@@ -9225,7 +9233,7 @@ $.ajax({
       },
     },
     xaxis: {
-      categories: ['Suministro e Instalación (CAPEX)', 'Costo de la Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
             hideOverlappingLabels: true,
             style: {
@@ -9261,7 +9269,7 @@ $.ajax({
     },
     fill: {
       opacity: 1,
-      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
 
     },
     legend: {
@@ -9276,7 +9284,7 @@ $.ajax({
       height: 12,
       strokeWidth: 0,
       strokeColor: '#fff',
-      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
       radius: 12,
       customHTML: undefined,
       onClick: undefined,
@@ -9304,20 +9312,24 @@ $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 3,
     success: function (res) {
-    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
       data: [capex]
     },{
-      name:'Costo de la Energía y Mantenimiento (OPEX)',
+      name:'Energía (OPEX)',
       data: [0,res[0],0,0]
     },{
-      name:'Reparaciones',
+      name:'Mantenimiento (OPEX)',
       data: [0,res[1],0,0]
     },{
+      name:'Reparaciones',
+      data: [0,0,parseInt(res[3]),0]
+    },{
       name:'Total',
-      data: [0, 0,0,total]
+      data: [0,0,0,total]
     }],
       chart: {
       type: 'bar',
@@ -9362,7 +9374,7 @@ $.ajax({
       },
     },
     xaxis: {
-      categories: ['Suministro e Instalación (CAPEX)', 'Costo de la Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
             hideOverlappingLabels: true,
             style: {
@@ -9380,7 +9392,7 @@ $.ajax({
             hideOverlappingLabels: true,
             style: {
                 colors: [],
-                fontSize: '16px',
+                fontSize: ciclo_vida_size_xaxis,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -9398,7 +9410,7 @@ $.ajax({
     },
     fill: {
       opacity: 1,
-      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
 
     },
     legend: {
@@ -9413,7 +9425,7 @@ $.ajax({
       height: 12,
       strokeWidth: 0,
       strokeColor: '#fff',
-      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
       radius: 12,
       customHTML: undefined,
       onClick: undefined,
