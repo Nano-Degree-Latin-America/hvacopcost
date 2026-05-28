@@ -88,7 +88,7 @@
 {{-- caja_principal --}}
 <div id="caja_principal" name="caja_principal" class="hidden">
 {{-- principal --}}
-<div class="w-full grid rounded-md justify-items-center mt-4">
+<div class="w-full grid rounded-md justify-items-center mt-3">
     <div  class="ancho border_box border-blue-500 rounded-xl flex">
 
 
@@ -96,8 +96,9 @@
             <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
         </div>
 
-        <div class="w-1/3 grid justify-left ml-2">
-            <div class="w-full flex ">
+        <div class="w-1/3 grid justify-items-left ml-2">
+          <div class="w-full">
+            <div class="w-full flex">
                 <div id="name_no_print" name="name_no_print" class="w-full flex ">
                     <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
                </div>
@@ -151,6 +152,7 @@
                 @endswitch
                 </p>
             </div>
+          </div>
         </div>
 
         <div class="w-1/3 grid justify-left">
@@ -195,7 +197,7 @@
                                 <p class="cant_2_l font-bold font-roboto">{{$capacidad1}}</p>
                     </div>
 
-                    <div class="w-1/3 grid justify-items-center gap-y-2">
+                    <div class="w-1/3 grid justify-items-center gap-y-2 ml-2">
                         <?php  $capacidad2=$smasolutions->sumacap_term($id_project,2) ?>
                             <label style="margin-right:100px;" class="solucions_style_name  font-bold">Solución B</label>
                             <p  style="margin-right:100px;" class="font-bold font-roboto cant_2">{{$capacidad2}}</p>
@@ -298,12 +300,12 @@
             </div>
         </div>
 
-        <div id="div_consumo_anual_energia_electrica" class="w-full flex justify-center">
+        <div style="margin-top:40px;" id="div_consumo_anual_energia_electrica" class="w-full flex justify-center">
             <div class="grid w-1/3">
 
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
-                            <div class="flex justify-center w-full p-2">
+                            <div class="flex justify-center w-full">
                                 <div class="grid justify-items-center w-full">
                                    {{--  <div class="flex w-full justify-center gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_1)}}</p><b class="unit_style">Kwh</b>
@@ -324,12 +326,12 @@
 
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
-                            <div class="flex justify-center w-full p-2">
+                            <div class="flex justify-center w-full">
                                 <div class="grid justify-center text-center">
                                     {{-- <div class="flex w-full justify-center  gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_2)}}</p><b class="unit_style">Kwh</b>
                                     </div> --}}
-                                    <div id="chart_cons_ene_hvac_ar_a" class="js_charts_style" ></div>
+                                    <div id="chart_cons_ene_hvac_ar_a" class=" js_charts_style" ></div>
                           </div>
                             </div>
                         </div>
@@ -339,12 +341,12 @@
             <div class="grid w-1/3">
                 <div class="flex w-full ">
                         <div class="grid w-full mx-3">
-                            <div class="flex justify-center w-full p-2">
+                            <div class="flex justify-center w-full">
                                 <div class="grid justify-center text-center">
                                   {{--  <div class="flex w-full justify-center  gap-x-2">
                                         <p class="cant_style">{{number_format($sumaopex_3)}}</p><b class="unit_style">Kwh</b>
                                     </div> --}}
-                                     <div id="chart_cons_ene_hvac_ar_b" class="js_charts_style"></div>
+                                     <div id="chart_cons_ene_hvac_ar_b" class=" js_charts_style"></div>
                                </div>
                             </div>
                         </div>
@@ -352,13 +354,12 @@
             </div>
         </div>
 
-        <div class="flex w-full justify-center">
+        <div style="margin-top:10px;"  class="flex w-full justify-center ">
             <div class="w-1/7 grid justify-items-center">
                 <div class="place-content-center ">
                     <img src="{{asset('assets/images/pesosjpg.jpg')}}" class="img_tr mx-2 mt-5">
                 </div>
             </div>
-
                 <div class="w-1/3 grid justify-items-start gap-y-2  mt-8">
 
 {{--                         <p style="margin-left:50px;" class="cant_2  font-bold font-roboto">${{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
@@ -402,6 +403,66 @@
                     </div>
                 </div>
             </div>
+
+        <div class="w-full flex justify-items-center gap-x-2">
+
+                <div class="grid w-1/2" >
+                   <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
+                     <label>Incremento del Costo de la Energía</label>
+                   </div>
+                   <div class="w-full grid justify-end font-roboto font-bold mt-2">
+                        <div class="w-2/3 flex gap-x-1 margin_sols_leyend_chart_1">
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols">Solución</p><p class="tam_leyend_sols" id="solution_1_chart_1">A</p><div style="background-color:#2be6ee;" class="point_solution"></div>
+                            </div>
+
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols">Solución</p><p class="tam_leyend_sols" id="solution_2_chart_1">B</p><div style="background-color:#ff00ff;" class="point_solution"></div>
+                            </div>
+
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols">Solución</p><p class="tam_leyend_sols" id="solution_3_chart_1">C</p><div style="background-color:#545454;" class="point_solution"></div>
+                            </div>
+                        </div>
+                        {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
+                   </div>
+                    <div id="chart_1" class="js_charts_style_line"></div>
+
+                </div>
+
+                <div  class="grid w-1/2" >
+                   <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
+                     <label>Recuperación de la Energía vs Capex</label>
+                   </div>
+                    <div class="w-full flex justify-end font-roboto font-bold mt-2">
+                        <div class="w-[80%] flex gap-x-1 margin_sols_leyend_chart_2 text-md">
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols" >Solución</p><p class="tam_leyend_sols" id="solution_1_chart_2"></p><div style="background-color:#2be6ee;" class="point_solution"></div>
+                            </div>
+
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols" >Solución</p><p class="tam_leyend_sols" id="solution_2_chart_2"></p><div style="background-color:#ff00ff;" class="point_solution"></div>
+                            </div>
+
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_1_chart_2"></p><div style="background-color:#32b381;" class="point_solution"></div>
+                            </div>
+                            <div class="flex gap-x-1">
+                                <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_2_chart_2"></p><div style="background-color:#e09b5e;" class="point_solution"></div>
+                            </div>
+                        </div>
+                        {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
+                   </div>
+                    <div id="chart_2" class="js_charts_style_line"></div>
+
+                </div>
+
+
+            </div>
+
+
+
+
 
             <?php  $results_aux=$results->results($id_project) ?>
 @if ($result2 ==! null)
@@ -621,61 +682,7 @@ if($counter == 2){
                     </div>
             </div>
 
-            <div class="w-full flex gap-x-2 mt-2">
 
-                <div class="grid" style="max-width: 90%;margin: 0px auto">
-                   <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
-                     <label>Incremento del Costo de la Energía</label>
-                   </div>
-                   <div class="w-full flex justify-end font-roboto font-bold mt-2">
-                        <div class="w-2/3 flex gap-x-1 margin_sols_leyend_chart_1">
-                            <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols">Solucion</p><p class="tam_leyend_sols" id="solution_1_chart_1">A</p><div style="background-color:#2be6ee;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
-                            </div>
-
-                            <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols">Solucion</p><p class="tam_leyend_sols" id="solution_2_chart_1">B</p><div style="background-color:#ff00ff;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
-                            </div>
-
-                            <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols">Solucion</p><p class="tam_leyend_sols" id="solution_3_chart_1">C</p><div style="background-color:#545454;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
-                            </div>
-                        </div>
-                        {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
-                   </div>
-                    <div id="chart_1" class="js_charts_style_line"></div>
-
-                </div>
-
-                <div  class="grid" style="max-width: 90%;margin: 0px auto">
-                    <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
-                     <label>Recuperación de la Energía vs Capex</label>
-                   </div>
-                    <div class="w-full flex justify-end font-roboto font-bold mt-2">
-                        <div class="w-[80%] flex gap-x-1 margin_sols_leyend_chart_2 text-md">
-                            <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols" >Solucion</p><p class="tam_leyend_sols" id="solution_1_chart_2"></p><div style="background-color:#2be6ee;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
-                            </div>
-
-                            <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols" >Solucion</p><p class="tam_leyend_sols" id="solution_2_chart_2"></p><div style="background-color:#ff00ff;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
-                            </div>
-
-                            <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_1_chart_2"></p><div style="background-color:#545454;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
-                            </div>
-                            <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_2_chart_2"></p><div style="background-color:#e09b5e;border-radius:100%;padding-left:12px;padding-right:12px;padding-top:5px;padding-bottom:5px;" class=""></div>
-                            </div>
-                        </div>
-                        {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
-                   </div>
-                    <div id="chart_2" class="js_charts_style_line"></div>
-
-                </div>
-
-
-            </div>
 
             </div>
 
@@ -1139,11 +1146,11 @@ if($counter == 2){
     <div class="ancho border_box border-blue-500 rounded-md grid">
       <div class="w-full flex">
               <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-                <div class="flex w-full justify-center mt-1">
+                <div class="flex w-full justify-center place-items-center">
                     <p class="titulos_style">Perdida de Productividad Laboral</p>
                 </div>
 
-                  <div id="button_prod" name="button_prod" class="flex justify-end mt-2">
+                  <div id="button_prod" name="button_prod" class="flex justify-end place-items-center">
                     <a href="#ir_modal_position_prod" onclick="mostrar_modal('modal_prod');" class="btn_roundf_retro mr-5" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                   </div>
               </div>
@@ -1199,7 +1206,7 @@ if($counter == 2){
       <div class="w-full grid mb-1">
         <div style="background-color:#fff;" class="w-full flex justify-center">
             <div  class="flex w-full justify-center mb-1">
-                <p class="titulos_style" style="color:#1B17BB;">Reducción Anual de Costo Salarial</p>
+                <p class="solucions_style_name" style="color:#1B17BB;">Reducción Anual de Costo Salarial</p>
             </div>
           </div>
 
@@ -1516,10 +1523,10 @@ if($counter == 2){
     <div class="ancho border-2 border-blue-500 rounded-md grid">
       <div class="w-full grid">
         <div style="background-color:#1B17BB;" class="w-full flex justify-center">
-            <div class="flex w-full justify-center mt-1">
+            <div class="flex w-full justify-center place-items-center">
                 <p class="titulos_style ml-8">Análisis Financiero</p>
             </div>
-            <div id="button_marrr" name="button_marrr" class="flex justify-end mt-2">
+            <div id="button_marrr" name="button_marrr" class="flex justify-end place-items-center">
                 <a href="#ir_modal_position_marr" onclick="mostrar_modal('modal_marr');" class="btn_roundf_retro mr-5" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
             </div>
         </div>
@@ -1870,16 +1877,16 @@ if($counter == 2){
 
                                             <!-- Timeline points -->
                                             <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
-                                                <span id="a_s_e_3" class="timeline-number text-lg md:text-2xl"></span>
+                                                <span id="a_s_e_3" class="timeline-number  cant-retorno-inversion"></span>
                                             </div>
                                             <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
-                                                <span id="a_s_e_5" class="timeline-number text-lg md:text-2xl"></span>
+                                                <span id="a_s_e_5" class="timeline-number  cant-retorno-inversion"></span>
                                             </div>
                                             <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
-                                                <span id="a_s_e_10" class="timeline-number text-lg md:text-2xl"></span>
+                                                <span id="a_s_e_10" class="timeline-number  cant-retorno-inversion"></span>
                                             </div>
                                             <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
-                                                <span id="a_s_e_15" class="timeline-number text-lg md:text-2xl"></span>
+                                                <span id="a_s_e_15" class="timeline-number  cant-retorno-inversion"></span>
                                             </div>
                                         </div>
 
@@ -1890,16 +1897,16 @@ if($counter == 2){
 
                                             <!-- Timeline points -->
                                             <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
-                                                <span id="b_s_e_3" class="timeline-number text-lg md:text-2xl"></span>
+                                                <span id="b_s_e_3" class="timeline-number  cant-retorno-inversion"></span>
                                             </div>
                                             <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
-                                                <span id="b_s_e_5" class="timeline-number text-lg md:text-2xl"></span>
+                                                <span id="b_s_e_5" class="timeline-number  cant-retorno-inversion"></span>
                                             </div>
                                             <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
-                                                <span id="b_s_e_10" class="timeline-number text-lg md:text-2xl"></span>
+                                                <span id="b_s_e_10" class="timeline-number  cant-retorno-inversion"></span>
                                             </div>
                                             <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
-                                                <span id="b_s_e_15" class="timeline-number text-lg md:text-2xl"></span>
+                                                <span id="b_s_e_15" class="timeline-number  cant-retorno-inversion"></span>
                                             </div>
                                         </div>
 
@@ -1910,16 +1917,16 @@ if($counter == 2){
 
                                             <!-- Timeline points -->
                                             <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
-                                                <span id="c_s_e_3" class="timeline-number text-lg md:text-2xl"></span>
+                                                <span id="c_s_e_3" class="timeline-number cant-retorno-inversion"></span>
                                             </div>
                                             <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
-                                                <span id="c_s_e_5" class="timeline-number text-lg md:text-2xl"></span>
+                                                <span id="c_s_e_5" class="timeline-number  cant-retorno-inversion"></span>
                                             </div>
                                             <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
-                                                <span id="c_s_e_10" class="timeline-number text-lg md:text-2xl"></span>
+                                                <span id="c_s_e_10" class="timeline-number  cant-retorno-inversion"></span>
                                             </div>
                                             <div class="timeline-circle medids-circle md:medids-circle rounded-full flex items-center justify-center z-10">
-                                                <span id="c_s_e_15" class="timeline-number text-lg md:text-2xl"></span>
+                                                <span id="c_s_e_15" class="timeline-number cant-retorno-inversion"></span>
                                             </div>
                                         </div>
 
@@ -2525,23 +2532,22 @@ $costo_b
         </div>
 </div>
 </div>
-{{-- capex vs opex --}}
-@if (Auth::user()->tipo_user == 5)
+{{-- Costo Ciclo de Vida --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
             <div style="background-color:#1B17BB;" class="w-full flex justify-center">
                 <p class="titulos_style">
-                    Costo Ciclo de Vida
+                    Costo Ciclo de Vida ($)
                 </p>
             </div>
         </div>
 
-        <div class="w-full flex justify-start font-roboto font-bold">
-                <div class="w-1/3 flex ml-10 mt-3">
+        <div class="w-full flex justify-start font-roboto font-bold mt-3">
+                <div class="w-1/3 flex ml-10 mt-3 gap-x-2">
                     <div class="ml-10 flex justify-start">
-                        <label style="color:#1B17BB;" class="size_solutions_confort">Año </label>
+                        <label style="color:#1B17BB;" class="size_solutions_confort">Año</label>
                     </div>
                     <select style="width:100px;" name="yrs_ciclo_vida" id="yrs_ciclo_vida" onchange="ciclo_vida_a('{{ $id_project }}')" class="border-2 rounded-md py-2 border-color-inps text-xl text-center">
                             <option value="3">3</option>
@@ -2552,7 +2558,7 @@ $costo_b
                 </div>
         </div>
 
-        <div class="grid w-full justify-items-center">
+        <div class="grid w-full justify-items-center mb-2">
             <div class="w-full flex justify-center">
                 <div id="chart_ciclo_vida_a" name="chart_ciclo_vida_a" style="width:90%;"></div>
                 <div class="hidden w-full" id="chart_ciclo_vida_a_print" name="chart_ciclo_vida_a_print" ></div>
@@ -2570,11 +2576,11 @@ $costo_b
         </div>
     </div>
 </div>
-@endif
+
 {{-- capex vs opex --}}
 
 {{-- capex vs opex --}}
-<div class="w-full grid rounded-md justify-items-center mt-3">
+{{-- <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
@@ -2610,7 +2616,7 @@ $costo_b
         </div>
 
     </div>
-</div>
+</div> --}}
 {{-- capex vs opex --}}
 
 {{-- espacio hoja pagina 3 --}}
@@ -3831,10 +3837,48 @@ $costo_b
     var man_lang = document.getElementById('ima_man').value;
     var ima_sol = document.getElementById('ima_sol').value;
     google.charts.load('current', {'packages':['gauge']});
-    var cons_ene_ele_ancho = 350;
-    var cons_ene_ele_alto = 250;
-    var cons_ene_ele_ancho_line = 580;
-    var cons_ene_ele_alto_line = 250;
+    var screenWidth = window.screen.width;
+    var screenHeight = window.screen.height;
+
+    if(screenWidth >= 1280){
+        var cons_ene_ele_ancho = 265;
+        var cons_ene_ele_alto = 185;
+        var fontSize_cons_ene_ele = '26px';
+        var fontSize_cons_ene_ele_kwh = '16px';
+        var cons_ene_ele_ancho_line = "100%";
+        var cons_ene_ele_alto_line = "100%";
+        var eui_chart_width = 480;
+        var eui_chart_height = 200;
+        var prod_size_width = 280;
+        var prod_size_height = 220;
+        var prod_size_font_size = 20;
+        var prod_size_point_grafic = 8;
+        var prod_size_width_grafic = 25;
+        var prod_size_font_message = 20;
+        var prod_size_grafic_width = 15;
+        var ciclo_vida_size_xaxis = '14px'
+    }
+
+    if(screenWidth == 1920 ){
+        var cons_ene_ele_ancho = 410;
+        var cons_ene_ele_alto = 255;
+        var fontSize_cons_ene_ele = '46px';
+        var fontSize_cons_ene_ele_kwh = '26px';
+        var cons_ene_ele_ancho_line = "100%";
+        var cons_ene_ele_alto_line = "100%";
+        var eui_chart_width = 550;
+        var eui_chart_height = 280;
+        var prod_size_width = 300;
+        var prod_size_height = 250;
+        var prod_size_font_size = 48;
+        var prod_size_point_grafic = 10;
+        var prod_size_width_grafic = 35;
+        var prod_size_font_message = 30;
+        var prod_size_grafic_width = 20;
+        var ciclo_vida_size_xaxis = '16px'
+    }
+
+
     var cons_ene_ele_ancho_line_print = 460;
     var cons_ene_ele_alto_line_print = 200;
     var cons_ene_ele_ancho_print = 200;
@@ -3880,7 +3924,7 @@ document.addEventListener('keydown', function(event) {
     $("#eui_sol_base").addClass("hidden");
     $("#eui_sol_a").addClass("hidden");
     $("#eui_sol_b").addClass("hidden");
-    $('#div_consumo_anual_energia_electrica').addClass("mt-10");
+    $('#div_consumo_anual_energia_electrica').addClass("mt-5");
     $('#chart_red_ene_print').removeClass("hidden");
     $("#chart_descarb_print").removeClass("hidden");
     $('#eui_sol_base_print').removeClass("hidden");
@@ -4062,6 +4106,16 @@ window.onload = function() {
 };
 
 $(document).ready(function() {
+// Resolución física de la pantalla
+        var screenWidth = window.screen.width;
+        var screenHeight = window.screen.height;
+
+        // Tamaño actual de la ventana del navegador
+        let windowWidth = $(window).width();
+        let windowHeight = $(window).height();
+
+        console.log(`Resolución de pantalla: ${screenWidth} x ${screenHeight}`);
+        console.log(`Tamaño de ventana: ${windowWidth} x ${windowHeight}`);
     red_ene_print('{{$dif_1}}','{{$dif_2}}');
     descarb_print('{{$dif_1}}','{{$dif_2}}');
     cap_op_3_print('{{$id_project}}','{{$tar_ele->unidad}}');
@@ -4112,7 +4166,7 @@ $(document).ready(function() {
       cap_op_5('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_10('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_15('{{$id_project}}','{{$tar_ele->unidad}}');
-    $('#div_consumo_anual_energia_electrica').addClass("mt-10");
+    $('#div_consumo_anual_energia_electrica').addClass("mt-5");
       /* cap_op_1_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}'); */
     //send_print();
@@ -4484,7 +4538,7 @@ var chart = JSC.chart('chart_2', {
     },
     {
      line_dashStyle: 'longdashdot',
-     color:'#2a4365',
+     color:'#32b381',
      points: [
         [1,capex_1],
         [15,capex_1]
@@ -4799,8 +4853,8 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
-        style_fontSize: '46px',
+          '<span color="%color">'+parseFloat(result_area).toFixed(1)+'</span><br/><span color="#696969" fontSize="'+fontSize_cons_ene_ele_kwh+'">Kwh/m²</span>',
+        style_fontSize: fontSize_cons_ene_ele,
         verticalAlign: 'middle'
       }
     }
@@ -4905,8 +4959,8 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
-        style_fontSize: '46px',
+          '<span color="%color">'+parseFloat(result_area).toFixed(1)+'</span><br/><span color="#696969" fontSize="'+fontSize_cons_ene_ele_kwh+'">Kwh/m²</span>',
+        style_fontSize: fontSize_cons_ene_ele,
         verticalAlign: 'middle'
       }
     }
@@ -5014,8 +5068,8 @@ if(result_area < red){
     shape: {
         label: {
         text:
-          '<span color="%color">'+dollarUSLocale.format(parseInt(result_area))+'</span><br/><span color="#696969" fontSize="20px">Kwh/m²</span>',
-        style_fontSize: '46px',
+          '<span color="%color">'+parseFloat(result_area).toFixed(1)+'</span><br/><span color="#696969" fontSize="'+fontSize_cons_ene_ele_kwh+'">Kwh/m²</span>',
+        style_fontSize: fontSize_cons_ene_ele,
         verticalAlign: 'middle'
       }
     }
@@ -5385,15 +5439,14 @@ function chart_prod_base() {
         var interpolacion = interp(check_prod);
 
         var message = message_prod_lab_chart(interpolacion);
-
             // JS
             var chart = JSC.chart('chart_prod_base', {
             debug: true,
             type: 'gauge ',
             legend_visible: false,
             chartArea_boxVisible: false,
-            width:300,
-            height:250,
+            width:prod_size_width,
+            height:prod_size_height,
             box:{
                 fill:'white',
             },
@@ -5415,7 +5468,7 @@ function chart_prod_base() {
                 defaultTick: { padding: 13, enabled: false },
                 customTicks: [5,10,15,20,25],
                 line: {
-                width: 20,
+                width: prod_size_grafic_width,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
@@ -5438,20 +5491,20 @@ function chart_prod_base() {
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize: 30">'+message+'</span>',
-                    style: { fontSize: 48 }
+                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize:'+prod_size_font_message+'">'+message+'</span>',
+                    style: { fontSize: prod_size_font_size }
                 },
                 defaultPoint: {
                     tooltip: '%yValue',
                     marker: {
                     outline: {
-                        width: 10,
+                        width: prod_size_point_grafic,
                         color: 'currentColor'
                     },
                     fill: 'white',
                     type: 'circle',
                     visible: true,
-                    size: 35
+                    size: prod_size_width_grafic
                     }
                 },
                 points: [[1, parseFloat(interpolacion)]]
@@ -5491,8 +5544,8 @@ chart.draw(data, options); */
             debug: true,
             type: 'gauge ',
             legend_visible: false,
-            width:300,
-            height:250,
+            width:prod_size_width,
+            height:prod_size_height,
             chartArea_boxVisible: false,
             box:{
                 fill:'white',
@@ -5514,7 +5567,7 @@ chart.draw(data, options); */
                 defaultTick: { padding: 13, enabled: false },
                customTicks: [5,10,15,20,25],
                 line: {
-                width: 20,
+                width: prod_size_grafic_width,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
@@ -5536,20 +5589,20 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize: 30">'+message+'</span>',
-                    style: { fontSize: 48 }
+                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize:'+prod_size_font_message+'">'+message+'</span>',
+                    style: { fontSize: prod_size_font_size }
                 },
                 defaultPoint: {
                     tooltip: '%yValue',
                     marker: {
                     outline: {
-                        width: 10,
+                        width: prod_size_point_grafic,
                         color: 'currentColor'
                     },
                     fill: 'white',
                     type: 'circle',
                     visible: true,
-                    size: 35
+                    size: prod_size_width_grafic
                     }
                 },
                 points: [[1, parseFloat(interpolacion)]]
@@ -5590,8 +5643,8 @@ chart.draw(data, options); */
             debug: true,
             type: 'gauge ',
             legend_visible: false,
-            width:300,
-            height:250,
+            width:prod_size_width,
+            height:prod_size_height,
             chartArea_boxVisible: false,
             box:{
                 fill:'white',
@@ -5613,7 +5666,7 @@ chart.draw(data, options); */
                 defaultTick: { padding: 13, enabled: false },
                  customTicks: [5,10,15,20,25],
                 line: {
-                width: 20,
+                width: prod_size_grafic_width,
                 breaks_gap: 0.03,
                 color: 'smartPalette'
                 },
@@ -5635,20 +5688,20 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize: 30">'+message+'</span>',
-                    style: { fontSize: 48 }
+                    parseFloat(interpolacion).toFixed(1)+'%'+'<br/> <span style="fontSize:'+prod_size_font_message+'">'+message+'</span>',
+                    style: { fontSize: prod_size_font_size }
                 },
                 defaultPoint: {
                     tooltip: '%yValue',
                     marker: {
                     outline: {
-                        width: 10,
+                        width: prod_size_point_grafic,
                         color: 'currentColor'
                     },
                     fill: 'white',
                     type: 'circle',
                     visible: true,
-                    size: 35
+                    size: prod_size_width_grafic
                     }
                 },
                 points: [[1, parseFloat(interpolacion)]]
@@ -5661,27 +5714,32 @@ chart.draw(data, options); */
 function ciclo_vida_a(id_project){
     var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
     var capex = '{{ $inv_ini_1 }}'
-    var reparaciones_aux = capex / 5;
-    var reparaciones = reparaciones_aux * 0.05
 $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 1,
     success: function (res) {
-    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
+     /* var reparaciones_aux = parseInt(capex) / 5;
+     var Reparaciones = reparaciones_aux * parseFloat(res[4]);
+     console.log(reparaciones_aux); */
+
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
       /* width '95px', */
       data: [capex]
     },{
-      name:'Costo de la Energía y Mantenimiento (OPEX)',
+      name:'Energía (OPEX)',
       data: [0,res[0],0,0]
     },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,res[1],0,0]
+    },{
       name:'Reparaciones',
-      data: [0,res[1],reparaciones,0]
+      data: [0,0,parseInt(res[3]),0]
     },{
       name:'Total',
-      data: [0, 0,0,total]
+      data: [0,0,0,total]
     }],
       chart: {
       type: 'bar',
@@ -5726,7 +5784,7 @@ $.ajax({
       },
     },
     xaxis: {
-      categories: ['Suministro e Instalación (CAPEX)', 'Costo de la Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
             hideOverlappingLabels: true,
             style: {
@@ -5744,7 +5802,7 @@ $.ajax({
             hideOverlappingLabels: true,
             style: {
                 colors: [],
-                fontSize: '16px',
+                fontSize: ciclo_vida_size_xaxis,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -5762,7 +5820,7 @@ $.ajax({
     },
     fill: {
       opacity: 1,
-      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
 
     },
     legend: {
@@ -5777,7 +5835,7 @@ $.ajax({
       height: 12,
       strokeWidth: 0,
       strokeColor: '#fff',
-      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
       radius: 12,
       customHTML: undefined,
       onClick: undefined,
@@ -5804,20 +5862,24 @@ $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 2,
     success: function (res) {
-    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
       data: [capex]
     },{
-      name:'Costo de la Energía y Mantenimiento (OPEX)',
+      name:'Energía (OPEX)',
       data: [0,res[0],0,0]
     },{
-      name:'Reparaciones',
+      name:'Mantenimiento (OPEX)',
       data: [0,res[1],0,0]
     },{
+      name:'Reparaciones',
+      data: [0,0,parseInt(res[3]),0]
+    },{
       name:'Total',
-      data: [0, 0,0,total]
+      data: [0,0,0,total]
     }],
       chart: {
       type: 'bar',
@@ -5862,7 +5924,7 @@ $.ajax({
       },
     },
     xaxis: {
-      categories: ['Suministro e Instalación (CAPEX)', 'Costo de la Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
             hideOverlappingLabels: true,
             style: {
@@ -5880,7 +5942,7 @@ $.ajax({
             hideOverlappingLabels: true,
             style: {
                 colors: [],
-                fontSize: '16px',
+                fontSize: ciclo_vida_size_xaxis,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -5898,7 +5960,7 @@ $.ajax({
     },
     fill: {
       opacity: 1,
-      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
 
     },
     legend: {
@@ -5913,7 +5975,7 @@ $.ajax({
       height: 12,
       strokeWidth: 0,
       strokeColor: '#fff',
-      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
       radius: 12,
       customHTML: undefined,
       onClick: undefined,
@@ -5941,20 +6003,24 @@ $.ajax({
     type: 'get',
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 3,
     success: function (res) {
-    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
       data: [capex]
     },{
-      name:'Costo de la Energía y Mantenimiento (OPEX)',
+      name:'Energía (OPEX)',
       data: [0,res[0],0,0]
     },{
-      name:'Reparaciones',
+      name:'Mantenimiento (OPEX)',
       data: [0,res[1],0,0]
     },{
+      name:'Reparaciones',
+      data: [0,0,parseInt(res[3]),0]
+    },{
       name:'Total',
-      data: [0, 0,0,total]
+      data: [0,0,0,total]
     }],
       chart: {
       type: 'bar',
@@ -5999,7 +6065,7 @@ $.ajax({
       },
     },
     xaxis: {
-      categories: ['Suministro e Instalación (CAPEX)', 'Costo de la Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
             hideOverlappingLabels: true,
             style: {
@@ -6017,7 +6083,7 @@ $.ajax({
             hideOverlappingLabels: true,
             style: {
                 colors: [],
-                fontSize: '16px',
+                fontSize: ciclo_vida_size_xaxis,
                 fontFamily: 'ABeeZee, sans-serif',
                 fontWeight: "bold",
                 cssClass: 'apexcharts-yaxis-label',
@@ -6035,7 +6101,7 @@ $.ajax({
     },
     fill: {
       opacity: 1,
-      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
 
     },
     legend: {
@@ -6050,7 +6116,7 @@ $.ajax({
       height: 12,
       strokeWidth: 0,
       strokeColor: '#fff',
-      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ed8936'],
+      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
       radius: 12,
       customHTML: undefined,
       onClick: undefined,
@@ -8828,7 +8894,7 @@ if(result_area < red){
         if(parseInt(energy) > parseInt(ashrae)){
 
             var options = {
-          width: 550, height: 280,
+          width: eui_chart_width, height: eui_chart_height,
           greenFrom:1,greenTo:parseInt(ashrae),
           redFrom: parseInt(energy), redTo: 400,
           yellowFrom:parseInt(ashrae), yellowTo: parseInt(energy),
@@ -8841,7 +8907,7 @@ if(result_area < red){
         if(parseInt(energy) < parseInt(ashrae)){
 
             var options = {
-          width: 550, height: 280,
+          width: eui_chart_width, height: eui_chart_height,
           greenFrom:1,greenTo:energy,
           redFrom: ashrae, redTo: 400,
           yellowFrom:energy, yellowTo: ashrae,
@@ -8886,7 +8952,7 @@ if(result_area < red){
 
         if(parseInt(energy) > parseInt(ashrae)){
             var options = {
-          width: 550, height: 280,
+          width: eui_chart_width, height: eui_chart_height,
           greenFrom:1,greenTo:ashrae,
           redFrom: energy, redTo: 400,
           yellowFrom:ashrae, yellowTo: energy,
@@ -8898,7 +8964,7 @@ if(result_area < red){
 
         if(parseInt(energy) < parseInt(ashrae)){
             var options = {
-          width: 550, height: 280,
+          width: eui_chart_width, height: eui_chart_height,
           greenFrom:1,greenTo:energy,
           redFrom: ashrae, redTo: 400,
           yellowFrom:energy, yellowTo: ashrae,
@@ -8943,7 +9009,7 @@ if(result_area < red){
 
             if(parseInt(energy) > parseInt(ashrae)){
                     var options = {
-                width: 550, height: 280,
+                width: eui_chart_width, height: eui_chart_height,
                 greenFrom:1,greenTo:ashrae,
                 redFrom: energy, redTo: 400,
                 yellowFrom:ashrae, yellowTo: energy,
@@ -8955,7 +9021,7 @@ if(result_area < red){
 
                 if(parseInt(energy) < parseInt(ashrae)){
                     var options = {
-                width: 550, height: 280,
+                width: eui_chart_width, height: eui_chart_height,
                 greenFrom:1,greenTo:energy,
                 redFrom: ashrae, redTo: 400,
                 yellowFrom:energy, yellowTo: ashrae,
@@ -12245,7 +12311,7 @@ var chart = JSC.chart('chart_2', {
     },
     {
      line_dashStyle: 'longdashdot',
-     color:'#2a4365',
+     color:'#32b381',
      points: [
         [1,capex_1],
         [15,capex_1]
