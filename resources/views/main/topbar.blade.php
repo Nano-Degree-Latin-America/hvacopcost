@@ -29,7 +29,7 @@
              @endif --}}
 
             @if (Auth::user()->tipo_user == 5)
-                <button class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/empresas'"><img src="{{asset('/assets/images/admin.png')}}" title="Mis Proyectos" style="max-height: 50px; width:50px;"></button>
+                <button class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/empresas'"><img src="{{asset('/assets/images/admin.png')}}" title="Administrador" style="max-height: 50px; width:50px;"></button>
             @endif
 
          {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
@@ -49,7 +49,7 @@
          <button class="text_butons_top mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='home'"><p class="text_butons_top">{{ __('index.nuevo_projecto') }}</p></button>
          @endif
 
-         <a class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 grid place-content-center"  href="{{ route('cerrar_session') }}"
+         <a class="p-1 bg-red-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 grid place-content-center"  href="{{ route('cerrar_session') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
                 <img src="{{asset('/assets/images/cerrar sesion.png')}}" title="Cerrar Sesión" style="height: 44px; width:35px;">
