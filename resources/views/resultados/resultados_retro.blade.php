@@ -76,13 +76,15 @@
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
-    <button class="bg-orange-500  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/edit_project/{{$id_project}}'"><p class="mx-1">{{ __('index.edit_proj') }}</p></button>
+    <button  title="Inicio" class="bg-blue-600 mx-1 px-3 py-2 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='home'"><i class="text-2xl fas fa-arrow-left"></i></button>
+
+    <button title="Editar Proyecto" class="bg-orange-500 px-3 py-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/edit_project/{{$id_project}}'"><i class="text-2xl far fa-edit"></i></button>
 
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
 {{--     <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" onclick="window.open('/generatePDF/{{$id_project}}', '_blank');" ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
  --}}
- <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" onclick="send_print();" ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
-    <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'">Nuevo Proyecto</button>
+    <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" onclick="send_print();" ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
+
 
     </div>
 </div>
@@ -579,7 +581,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 </div>
 
 
-            <div class="w-full grid hidden">
+            <div class="w-full grid">
                 <div style="background-color:#ffff;" class="w-full flex justify-center  mt_titles">
                     <p style="color: #1B17BB" class="titulos_style">Descarbonización (Ton CO2)</p>
                 </div>
@@ -627,7 +629,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                     </div>
             </div>
 
-            <div class="w-full flex gap-x-2 mt-2">
+            {{-- <div class="w-full flex gap-x-2 mt-2">
 
                 <div class="grid w-1/2" >
                    <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
@@ -636,7 +638,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                    <div class="w-full grid justify-end font-roboto font-bold mt-2">
                         <div class="w-2/3 flex gap-x-1 margin_sols_leyend_chart_1">
                             <div class="flex gap-x-1">
-                                <p class="tam_leyend_sols">Existente</p>{{-- <p class="tam_leyend_sols" id="solution_1_chart_1">A</p> --}}<div style="background-color:#2be6ee;" class="point_solution"></div>
+                                <p class="tam_leyend_sols">Existente</p><div style="background-color:#2be6ee;" class="point_solution"></div>
                             </div>
 
                             <div class="flex gap-x-1">
@@ -647,7 +649,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                 <p class="tam_leyend_sols">Solución</p><p class="tam_leyend_sols" id="solution_3_chart_1">C</p><div style="background-color:#545454;" class="point_solution"></div>
                             </div>
                         </div>
-                        {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
+
                    </div>
                     <div id="chart_1" class="js_charts_style_line"></div>
 
@@ -674,14 +676,14 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                                 <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_2_chart_2"></p><div style="background-color:#e09b5e;" class="point_solution"></div>
                             </div>
                         </div>
-                        {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
+
                    </div>
                     <div id="chart_2" class="js_charts_style_line"></div>
 
                 </div>
 
 
-            </div>
+            </div> --}}
     </div>
 </div>
 
@@ -2374,19 +2376,29 @@ $costo_b
                 </div>
         </div>
 
-        <div class="grid w-full justify-items-center mb-2">
-            <div class="w-full grid">
-                <div class="w-full flex justify-end">
-                    <label style="color:#1B17BB;" class="text-xl font-roboto font-bold mr-10" id="costo_ciclo_vida_a"></label>
+        <div class="grid w-full justify-items-center mt-3 gap-y-3">
+            <div class="w-full grid gap-y-1 ">
+                <div class="w-full flex">
+                    <div class="w-1/2">
+                       <b style="color:#1B17BB;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Existente</b>
+                    </div>
+                    <div class="w-1/2 flex justify-end">
+                        <label style="color:#2c5282;" class="text-2xl font-roboto font-bold mr-10" id="costo_ciclo_vida_a"></label>
+                    </div>
                 </div>
                 <div class="w-full flex justify-center">
                     <div id="chart_ciclo_vida_a" name="chart_ciclo_vida_a" style="width:90%;"></div>
                     <div class="hidden w-full" id="chart_ciclo_vida_a_print" name="chart_ciclo_vida_a_print" ></div>
                 </div>
             </div>
-            <div class="w-full grid">
-                <div class="w-full flex justify-end">
-                    <label style="color:#1B17BB;" class="text-xl font-roboto font-bold mr-10" id="costo_ciclo_vida_b"></label>
+            <div class="w-full grid gap-y-1">
+                <div class="w-full flex">
+                    <div class="w-1/2">
+                       <b style="color:#1B17BB;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
+                    </div>
+                    <div class="w-1/2 flex justify-end">
+                         <label style="color:#2c5282;" class="text-2xl font-roboto font-bold mr-10" id="costo_ciclo_vida_b"></label>
+                    </div>
                 </div>
                 <div class="w-full flex justify-center">
                     <div id="chart_ciclo_vida_b" name="chart_ciclo_vida_b" style="width:90%;"></div>
@@ -2394,9 +2406,14 @@ $costo_b
                 </div>
             </div>
 
-            <div class="w-full grid">
-                <div class="w-full flex justify-end">
-                    <label style="color:#1B17BB;" class="text-xl font-roboto font-bold mr-10" id="costo_ciclo_vida_c"></label>
+            <div class="w-full grid gap-y-1">
+                <div class="w-full flex">
+                    <div class="w-1/2">
+                       <b style="color:#1B17BB;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
+                    </div>
+                    <div class="w-1/2 flex justify-end">
+                         <label style="color:#2c5282;" class="text-2xl font-roboto font-bold mr-10" id="costo_ciclo_vida_c"></label>
+                    </div>
                 </div>
                 <div class="w-full flex justify-center">
                     <div id="chart_ciclo_vida_c" name="chart_ciclo_vida_c" style="width:90%;"></div>
@@ -2628,8 +2645,8 @@ function send_print(){
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-    chart_1_print();
-    chart_2_print();
+/*     chart_1_print();
+    chart_2_print(); */
     $('#chart_red_ene').addClass("hidden");
     $("#chart_descarb").addClass("hidden");
     $("#eui_sol_base").addClass("hidden");
@@ -2723,8 +2740,8 @@ $(document).ready(function() {
     con_ene_hvac_ar_Base('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-    chart_1();
-    chart_2();
+    /* chart_1();
+    chart_2(); */
     ciclo_vida_a('{{$id_project}}');
     ciclo_vida_b('{{$id_project}}');
     ciclo_vida_c('{{$id_project}}');
@@ -2753,8 +2770,8 @@ $(document).ready(function() {
       cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_5_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_10_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
-      chart_1();
-      chart_2();
+     /*  chart_1();
+      chart_2(); */
 
       google.charts.setOnLoadCallback(chart_base_eui);
       google.charts.setOnLoadCallback(chart_a_eui);
@@ -9150,7 +9167,7 @@ $.ajax({
      console.log(reparaciones_aux); */
 
     var total = parseInt(res[5]) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
-    var costo = document.getElementById('costo_ciclo_vida_a').innerHTML ='Costo: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var costo = document.getElementById('costo_ciclo_vida_a').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -9198,7 +9215,7 @@ $.ajax({
             fontWeight: 'bold',
         },
     },
-    title: {
+    /* title: {
       text: 'Existente',
       align: 'left',
       offsetY:25,
@@ -9210,7 +9227,7 @@ $.ajax({
         cssClass: 'apexcharts-yaxis-label',
         color: '#000',
       },
-    },
+    }, */
     xaxis: {
       categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
@@ -9292,7 +9309,7 @@ $.ajax({
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 2,
     success: function (res) {
     var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + 0;
-    var costo = document.getElementById('costo_ciclo_vida_b').innerHTML ='Costo: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var costo = document.getElementById('costo_ciclo_vida_b').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -9340,7 +9357,7 @@ $.ajax({
             fontWeight: 'bold',
         },
     },
-    title: {
+    /* title: {
       text: 'Solución A',
       align: 'left',
       offsetY:25,
@@ -9352,7 +9369,7 @@ $.ajax({
         cssClass: 'apexcharts-yaxis-label',
         color: '#000',
       },
-    },
+    }, */
     xaxis: {
       categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {
@@ -9435,7 +9452,7 @@ $.ajax({
     url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 3,
     success: function (res) {
     var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
-    var costo = document.getElementById('costo_ciclo_vida_c').innerHTML ='Costo: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var costo = document.getElementById('costo_ciclo_vida_c').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
     var options = {
       series: [{
       name: 'Suministro e Instalación (CAPEX)',
@@ -9483,7 +9500,7 @@ $.ajax({
             fontWeight: 'bold',
         },
     },
-    title: {
+    /* title: {
       text: 'Solución B',
       align: 'left',
       offsetY:25,
@@ -9495,7 +9512,7 @@ $.ajax({
         cssClass: 'apexcharts-yaxis-label',
         color: '#000',
       },
-    },
+    }, */
     xaxis: {
       categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
       labels: {

@@ -22,14 +22,14 @@
 
 
 
-            @if ($check_types_m == 1 )
+            {{-- @if ($check_types_m == 1 )
                 @if (Auth::user()->tipo_user == 2 || Auth::user()->tipo_user == 5)
                 <button class="text_butons_top ml-5 mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='configuraciones'"><p class="text_butons_top">Configuraciónes</p></button>
                 @endif
-             @endif
+             @endif --}}
 
             @if (Auth::user()->tipo_user == 5)
-                <button class="text_butons_top mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='empresas'"><p class="text_butons_top">Admin</p></button>
+                <button class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/empresas'"><img src="{{asset('/assets/images/admin.png')}}" title="Mis Proyectos" style="max-height: 50px; width:50px;"></button>
             @endif
 
          {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
@@ -37,7 +37,7 @@
 
             @if (Auth::user()->tipo_user != 3)
                 @if (Request::path() == 'home')
-                <button class="text_butons_top mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='mis_projectos'"><p class="text_butons_top">{{ __('index.mis proyectos') }}</p></button>
+                <button class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/mis_projectos'"><img src="{{asset('/assets/images/mis_proyectos.png')}}" title="Mis Proyectos" style="max-height: 50px; width:50px;"></button>
                 @endif
             @endif
 
@@ -49,19 +49,17 @@
          <button class="text_butons_top mt-2 button-size  bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='home'"><p class="text_butons_top">{{ __('index.nuevo_projecto') }}</p></button>
          @endif
 
-         <a class="text_butons_top mt-2 button-size bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 place-items-center"  href="{{ route('cerrar_session') }}"
+         <a class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 grid place-content-center"  href="{{ route('cerrar_session') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-
-                    {{ __('index.logout') }}
-
+                <img src="{{asset('/assets/images/cerrar sesion.png')}}" title="Cerrar Sesión" style="height: 44px; width:35px;">
             </a>
 
-            @if (Auth::user()->tipo_user == 5)
+{{--             @if (Auth::user()->tipo_user == 5)
             <div class="dropdown">
                 <button onclick="myFunction()" class="dropbtn font-roboto">{{ __('index.idioma') }}</button>
                 <div id="myDropdown" class="dropdown-content">
-                  {{--   {{ App::getLocale() }} --}}
+
                   @if (App::getLocale() == 'es')
                   <a href="{{ url('locale/port')}}" class="font-roboto">Port</a>
                   @endif
@@ -69,11 +67,9 @@
                   @if (App::getLocale() == 'port')
                   <a href="{{ url('locale/es')}}" class="font-roboto">Es</a>
                   @endif
-
-
                 </div>
               </div>
-            @endif
+            @endif --}}
 
 
               <form id="logout-form" action="{{ route('cerrar_session') }}" method="POST" class="d-none">

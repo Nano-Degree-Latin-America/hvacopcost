@@ -20,16 +20,16 @@
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3 gap-x-3">
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
-    <button class="p-2 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/mis_projectos'"><p>{{ __('index.mis proyectos') }}</p></button>
 
-    <button class="p-2 bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'"><p>{{ __('index.proyecto nuevo') }}</p></button>
 
-    <a class="p-3 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600"  href="{{ route('cerrar_session') }}"
+    <button  title="Inicio" class="bg-blue-600 mx-1 px-3 py-2 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='home'"><i class="text-2xl fas fa-arrow-left mt-1"></i></button>
+
+    <button class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/mis_projectos'"><img src="{{asset('/assets/images/mis_proyectos.png')}}" title="Mis Proyectos" style="max-height: 50px; width:50px;"></button>
+
+    <a class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 grid place-content-center"  href="{{ route('cerrar_session') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-                <button class="mt-1">
-                    {{ __('index.logout') }}
-                    </button>
+                <img src="{{asset('/assets/images/cerrar sesion.png')}}" title="Cerrar Sesión" style="height: 44px; width:35px;">
             </a>
 
             <form id="logout-form" action="{{ route('cerrar_session') }}" method="POST" class="d-none">
