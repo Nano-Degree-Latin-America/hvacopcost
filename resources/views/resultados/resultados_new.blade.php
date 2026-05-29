@@ -3947,8 +3947,8 @@ document.addEventListener('keydown', function(event) {
     $("#chart_descarb").width(200).height(120);
     $("#chart").width(200).height(120);
     $("#chart_3").width(200).height(120);
-    $("#chart_1").width(400).height(120);
-    $("#chart_2").width(400).height(120);
+    /* $("#chart_1").width(400).height(120);
+    $("#chart_2").width(400).height(120); */
     $("#chart_ciclo_vida_a").width(200).height(120);
     $("#chart_ciclo_vida_b").width(200).height(120);
     $("#chart_ciclo_vida_c").width(200).height(120);

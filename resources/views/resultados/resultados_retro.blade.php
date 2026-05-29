@@ -2770,8 +2770,8 @@ $(document).ready(function() {
       cap_op_3_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_5_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
       cap_op_10_retro_print('{{$id_project}}','{{$tar_ele->unidad}}');
-      chart_1();
-      chart_2();
+     /*  chart_1();
+      chart_2(); */
 
       google.charts.setOnLoadCallback(chart_base_eui);
       google.charts.setOnLoadCallback(chart_a_eui);
