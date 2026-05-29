@@ -3217,6 +3217,8 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->select('solutions_project.cost_an_re')
             ->first()->cost_an_re;
 
+            $type_project = ProjectsModel::where('id','=',$id_projecto)
+            ->first()->type_p;
 
 
             foreach($solutions as $sol){
@@ -3246,6 +3248,13 @@ public function red_en_mw_grafic($dif,$dif_2){
             ->where('solutions_project.num_enf','=',$num_enf)
             ->select('solutions_project.costo_mantenimiento')
             ->get();
+
+            $cost_mant_sol = DB::table('solutions_project')
+            ->where('solutions_project.id_project','=',$id_projecto)
+            ->where('solutions_project.num_enf','=',$num_enf)
+            ->where('solutions_project.num_sol','=',1)
+            ->select('solutions_project.costo_mantenimiento')
+            ->first()->costo_mantenimiento;
 
             $cost_mant_base_a = DB::table('solutions_project')
             ->where('solutions_project.id_project','=',$id_projecto)
@@ -3294,7 +3303,15 @@ public function red_en_mw_grafic($dif,$dif_2){
                 $porcent = 5 / 100;
         }
 
-        $costo_mantenimiento = $val_aprox->val_aprox*$porcent;
+        if($type_project == 1){
+            $costo_mantenimiento = $val_aprox->val_aprox*$porcent;
+        }
+
+        if($type_project == 2){
+            $costo_mantenimiento = $cost_mant_sol*$porcent;
+        }
+
+
         $porcent_to_calculate_yrs_inflacion = 1+($inflacion_rate_aux/100);
         $costo_mantenimiento_aux = $costo_mantenimiento;
 

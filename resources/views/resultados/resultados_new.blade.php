@@ -73,13 +73,17 @@
     </div>
     <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3">
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
-    <button class="bg-orange-500  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/edit_project/{{$id_project}}'"><p class="mx-1">{{ __('index.edit_proj') }}</p></button>
+
+     <button  title="Inicio" class="bg-blue-600 mx-1 px-3 py-2 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='home'"><i class="text-2xl fas fa-arrow-left"></i></button>
+
+    <button title="Editar Proyecto" class="bg-orange-500 px-3 py-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/edit_project/{{$id_project}}'"><i class="text-2xl far fa-edit"></i></button>
 
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
 {{--     <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" onclick="window.open('/generatePDF/{{$id_project}}', '_blank');" ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
  --}}
- <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" onclick="send_print();" ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
-    <button class="bg-blue-600  rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 " onclick="window.location.href='/home'">Nuevo Proyecto</button>
+    <button title="Ver PDF" class="bg-blue-600 mx-1 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 p-2" target="_blank" onclick="send_print();" ><i class="fa-solid fa-file-pdf text-2xl text-red-600"></i></button>
+
+
 
     </div>
 </div>
@@ -404,7 +408,7 @@
                 </div>
             </div>
 
-        <div class="w-full flex justify-items-center gap-x-2">
+        {{-- <div class="w-full flex justify-items-center gap-x-2">
 
                 <div class="grid w-1/2" >
                    <div style="color:#1B17BB;" class="w-full flex justify-center titulos_style font-roboto" >
@@ -424,7 +428,7 @@
                                 <p class="tam_leyend_sols">Solución</p><p class="tam_leyend_sols" id="solution_3_chart_1">C</p><div style="background-color:#545454;" class="point_solution"></div>
                             </div>
                         </div>
-                        {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
+
                    </div>
                     <div id="chart_1" class="js_charts_style_line"></div>
 
@@ -451,14 +455,14 @@
                                 <p class="tam_leyend_sols" >Capex</p><p class="tam_leyend_sols" id="capex_2_chart_2"></p><div style="background-color:#e09b5e;" class="point_solution"></div>
                             </div>
                         </div>
-                        {{-- <img class="style_solution_charts_leyends" src="{{asset('/assets/images/soluciones.png')}}"> --}}
+
                    </div>
                     <div id="chart_2" class="js_charts_style_line"></div>
 
                 </div>
 
 
-            </div>
+            </div> --}}
 
 
 
@@ -683,10 +687,7 @@ if($counter == 2){
             </div>
 
 
-
-            </div>
-
-            <div class="w-full grid hidden">
+            <div class="w-full grid ">
                 <div style="background-color:#fff;" class="mt_titles w-full flex justify-center ">
                     <p style="color:#1B17BB;" class="titulos_style">Descarbonización (Ton CO2/año)</p>
                 </div>
@@ -736,6 +737,9 @@ if($counter == 2){
                         </div>
                     </div>
             </div>
+
+            </div>
+
 
     </div>
 </div>
@@ -2558,14 +2562,12 @@ $costo_b
                 </div>
         </div>
 
-        <div class="grid w-full justify-items-center mt-3 gap-y-3">
+        <div class="grid w-full justify-items-center mt-10 gap-y-8">
             <div class="w-full grid gap-y-1 ">
                 <div class="w-full flex">
-                    <div class="w-1/2">
+                    <div class="flex justify-between w-1/2 gap-x-5">
                        <b style="color:#1B17BB;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
-                    </div>
-                    <div class="w-1/2 flex justify-end">
-                        <label style="color:#2c5282;" class="text-2xl font-roboto font-bold mr-10" id="costo_ciclo_vida_a"></label>
+                       <label style="color:#2c5282;" class="text-3xl font-roboto font-bold ml-5" id="costo_ciclo_vida_a"></label>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
@@ -2574,12 +2576,18 @@ $costo_b
                 </div>
             </div>
             <div class="w-full grid gap-y-1">
-                <div class="w-full flex">
+                {{-- <div class="w-full flex">
                     <div class="w-1/2">
                        <b style="color:#1B17BB;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
                     </div>
                     <div class="w-1/2 flex justify-end">
                          <label style="color:#2c5282;" class="text-2xl font-roboto font-bold mr-10" id="costo_ciclo_vida_b"></label>
+                    </div>
+                </div> --}}
+                <div class="w-full flex">
+                    <div class="flex justify-between w-1/2 gap-x-5">
+                       <b style="color:#1B17BB;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
+                       <label style="color:#2c5282;" class="text-3xl font-roboto font-bold ml-5" id="costo_ciclo_vida_b"></label>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
@@ -3939,8 +3947,8 @@ document.addEventListener('keydown', function(event) {
     $("#chart_descarb").width(200).height(120);
     $("#chart").width(200).height(120);
     $("#chart_3").width(200).height(120);
-    $("#chart_1").width(400).height(120);
-    $("#chart_2").width(400).height(120);
+    /* $("#chart_1").width(400).height(120);
+    $("#chart_2").width(400).height(120); */
     $("#chart_ciclo_vida_a").width(200).height(120);
     $("#chart_ciclo_vida_b").width(200).height(120);
     $("#chart_ciclo_vida_c").width(200).height(120);
@@ -4051,8 +4059,8 @@ function send_print(){
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
-    chart_1_print();
-    chart_2_print();
+    /* chart_1_print();
+    chart_2_print(); */
     $('#chart_red_ene').addClass("hidden");
     $("#chart_descarb").addClass("hidden");
     $("#eui_sol_base").addClass("hidden");
@@ -4151,8 +4159,8 @@ $(document).ready(function() {
     cap_op_5_print('{{$id_project}}','{{$tar_ele->unidad}}');
     cap_op_10_print('{{$id_project}}','{{$tar_ele->unidad}}');
     cap_op_15_print('{{$id_project}}','{{$tar_ele->unidad}}');
-    chart_1();
-    chart_2();
+    /* chart_1();
+    chart_2(); */
     ciclo_vida_a('{{$id_project}}');
     ciclo_vida_b('{{$id_project}}');
     ciclo_vida_c('{{$id_project}}');
