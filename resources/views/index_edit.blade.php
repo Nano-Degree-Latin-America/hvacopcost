@@ -24,9 +24,9 @@
 
     <button  title="Inicio" class="bg-blue-600 mx-1 px-3 py-2 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/home'"><i class="text-2xl fas fa-arrow-left mt-1"></i></button>
 
-    <button class="p-1 bg-red-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/mis_projectos'"><img src="{{asset('/assets/images/mis_proyectos.png')}}" title="Mis Proyectos" style="max-height: 50px; width:50px;"></button>
+    <button class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/mis_projectos'"><img src="{{asset('/assets/images/mis_proyectos.png')}}" title="Mis Proyectos" style="max-height: 50px; width:50px;"></button>
 
-    <a class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 grid place-content-center"  href="{{ route('cerrar_session') }}"
+    <a class="p-1 bg-red-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 grid place-content-center"  href="{{ route('cerrar_session') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
                 <img src="{{asset('/assets/images/cerrar sesion.png')}}" title="Cerrar Sesión" style="height: 44px; width:35px;">
