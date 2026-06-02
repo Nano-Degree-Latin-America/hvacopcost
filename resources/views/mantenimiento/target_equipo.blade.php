@@ -9,7 +9,7 @@
                 <input type="text" class="hidden" value="" id="tr_val" name="tr_val">
             </div>
             <div class="2xl:ml-5 xl:ml-5 lg:ml-10 w-full flex  2xl:justify-center xl:justify-center lg:justify-center  py-1">
-                <h2 style="color:#1B17BB;" class="font-bold text-3xl">{{ __('index.sis_ext') }}</h2>
+                <h2 style="color:#0D08EE;" class="font-bold text-3xl">{{ __('index.sis_ext') }}</h2>
             </div>
             @include('mantenimiento.modal_add_marca_modelo_mantenimiento')
             <div class="mr-5 2xl:w-20 xl:w-auto lg:w-1/4 flex justify-end">
@@ -232,7 +232,7 @@
 
                 <div class="lg:grid 2xl:flex xl:flex w-1/2 gap-x-1 gap-y-1">
                     <button onclick="check_form_mantenimiento_tarjet('{{App::getLocale()}}')"
-                    style="background-color:#1B17BB;" type="button" name="save__button_mantenimiento" id="save__button_mantenimiento" class=" focus:outline-none border border-transparent py-2 px-3 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-lg font-roboto">Guardar</button>
+                    style="background-color:#0D08EE;" type="button" name="save__button_mantenimiento" id="save__button_mantenimiento" class=" focus:outline-none border border-transparent py-2 px-3 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-lg font-roboto">Guardar</button>
 
                     <div class="flex justify-end">
                         <button onclick="clean_form_tarjet_mantenimiento();" type="button" title="Limpiar Tarjeta" class="py-1 px-3 border-2 rounded-md text-xl bg-orange-500 text-white hover:text-gray-200"><i class="fas fa-trash"></i></button>

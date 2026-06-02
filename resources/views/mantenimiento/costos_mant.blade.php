@@ -21,7 +21,7 @@
     <div class="w-full flex gap-x-3 h-full mx-5">
         {{-- mant_prev --}}
         <div class="grid  tarjets_mant">
-            <div style="border-color:#1B17BB;" class="w-full grid justify-items-center gap-y-1  h-auto self-start border-2 rounded-xl">
+            <div style="border-color:#0D08EE;" class="w-full grid justify-items-center gap-y-1  h-auto self-start border-2 rounded-xl">
 
                 <div  class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                     <div class="w-3/4 grid justify-items-start place-items-center">
@@ -131,7 +131,7 @@
         </div>
 
         {{--Materiales  --}}
-        <div style="border-color:#1B17BB;" class="tarjets_mant grid justify-items-center gap-y-1 h-auto self-start border-2 rounded-xl">
+        <div style="border-color:#0D08EE;" class="tarjets_mant grid justify-items-center gap-y-1 h-auto self-start border-2 rounded-xl">
 
             <div class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                 <div class="w-3/4 grid justify-items-start place-items-center">

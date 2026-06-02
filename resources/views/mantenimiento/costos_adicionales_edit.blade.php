@@ -432,7 +432,7 @@
                 <div id="div_next" name="div_next" class="w-full flex justify-center">
                     <button type="button"  id="next" name="next"
                         onclick="calcular_speendplan_base_adicionales();"
-                        style="background-color:#1B17BB;"
+                        style="background-color:#0D08EE;"
                         @click="step++"
                          x-show="step == 3"
                         class="w-1/4 focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-2xl font-roboto"

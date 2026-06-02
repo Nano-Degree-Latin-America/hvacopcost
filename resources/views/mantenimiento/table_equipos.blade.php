@@ -19,16 +19,16 @@
 
         <tbody id="tbody_equipos" name="tbody_equipos">
             <tr  id="tr_exampe" name="tr_exampe"  class="">
-                <td><input style="border-color:#1B17BB;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
-                <td><input style="border-color:#1B17BB;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
-                <td><input style="border-color:#1B17BB;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
-                <td><input style="border-color:#1B17BB;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
-                <td><input style="border-color:#1B17BB;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
-                <td><input style="border-color:#1B17BB;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
-                <td><input style="border-color:#1B17BB;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
-                <td><input style="border-color:#1B17BB;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
-                <td><input style="border-color:#1B17BB;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
-                <td><input style="border-color:#1B17BB;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
+                <td><input style="border-color:#0D08EE;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
+                <td><input style="border-color:#0D08EE;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
+                <td><input style="border-color:#0D08EE;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
+                <td><input style="border-color:#0D08EE;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
+                <td><input style="border-color:#0D08EE;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
+                <td><input style="border-color:#0D08EE;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
+                <td><input style="border-color:#0D08EE;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
+                <td><input style="border-color:#0D08EE;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
+                <td><input style="border-color:#0D08EE;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
+                <td><input style="border-color:#0D08EE;!important" disabled type="number" class="form-control form-finanza form-control-sm text-center text-sm font-bold h-8"></td>
             </tr>
         </tbody>
 

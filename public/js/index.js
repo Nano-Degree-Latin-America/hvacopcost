@@ -6363,7 +6363,7 @@ $('#proteccion_condensador_3_1_retro_count').val(proteccion_condensador_3_1_retr
 function valida_selects_inps(id_input){
    input_select = $('#'+id_input);
    if (input_select.val() != 0 || input_select.val() != null ){
-    input_select.css('border-color','#1B17BB');
+    input_select.css('border-color','#0D08EE');
    }else if (input_select.val() == 0 || input_select.val() == null){
     input_select.css("border-color", "red");
    }
@@ -6378,7 +6378,7 @@ function valida_form_calc(p_type){
 
         if (sol_1_1.val() != 0){
             $('#calcular_p_n').attr('disabled', false);
-            $('#calcular_p_n').css('background-color','#1B17BB');
+            $('#calcular_p_n').css('background-color','#0D08EE');
         }else if (sol_1_1.val() == 0){
             $('#calcular_p_n').attr('disabled', true);
             $('#calcular_p_n').css('background-color','gray');
@@ -6390,7 +6390,7 @@ function valida_form_calc(p_type){
 
         if (sol_1_1.val() != 0){
             $('#calcular_p_r').attr('disabled', false);
-            $('#calcular_p_r').css('background-color','#1B17BB');
+            $('#calcular_p_r').css('background-color','#0D08EE');
         }else if (sol_1_1.val() == 0){
             $('#calcular_p_r').attr('disabled', true);
             $('#calcular_p_r').css('background-color','gray');
@@ -14189,9 +14189,9 @@ async function check_form_mantenimiento_tarjet(idm){
 
                         var value = arregloInterno[j];
                         if (String(value).endsWith('_hidden')) {
-                            newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                            newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#0D08EE!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                         }else{
-                            newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                            newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#0D08EE!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                         }
 
 
@@ -14637,9 +14637,9 @@ async function del_td_tr(tr) {
                     var value = arregloInterno[j];
 
                     if (String(value).endsWith('_hidden')) {
-                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#0D08EE!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                     }else{
-                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#0D08EE!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                     }
                 }
                 //newRow += '<input type="hidden"  value="' + res_formula + '" id="precio_'+i+'" name="precio_'+i+'">';
@@ -14813,9 +14813,9 @@ function edit_registro_tabla(){
                     var value = arregloInterno[j];
 
                     if (String(value).endsWith('_hidden')) {
-                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#0D08EE!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                     }else{
-                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                        newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#0D08EE!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                     }
 
 
@@ -14827,7 +14827,7 @@ function edit_registro_tabla(){
                 $('#tbody_equipos').append(newRow);
             }
             var input_name_tr = $('#tr_val').val();
-            $('#'+input_name_tr).find('input').css('border-color', '#1B17BB');
+            $('#'+input_name_tr).find('input').css('border-color', '#0D08EE');
             $('#tr_val').val('');
             $('#indice_tabla_edit').val('');
         },
@@ -14926,7 +14926,7 @@ $.ajax({
     success: async function(response) {
         listar_mantenimiento_equipos(response);
         var input_name_tr = $('#tr_val').val();
-        $('#'+input_name_tr).find('input').css('border-color', '#1B17BB');
+        $('#'+input_name_tr).find('input').css('border-color', '#0D08EE');
         $('#tr_val').val('');
         $('#indice_tabla_edit').val('');
         $('#id_tabla_edit').val('');
@@ -16540,9 +16540,9 @@ function calcular_speendplan_base_update(id_project){
                         var id = id_aux[0];
 
                         if (String(value).endsWith('_hidden')) {
-                            newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                            newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#0D08EE!important; width:100%;" hidden type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                         }else{
-                            newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#1B17BB!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
+                            newRow += '<td id="'+'td_'+ids[j]+'_'+i+'" name="'+'td_'+ids[j]+'_'+i+'"><input id="'+ids[j]+'_'+i+'" name="'+ids[j]+'_'+i+'" style="border: 2px solid; border-color:#0D08EE!important; width:100%;" readonly type="text" class="text-center text-sm font-bold h-8" value="' + value + '"></td>';
                         }
 
 
@@ -16922,10 +16922,10 @@ function calcular_speendplan_base_update(id_project){
             if (grupoActivo && grupoActivo.includes(id)) {
                 input.disabled = false;
                 input.classList.remove('border-gray-300');
-                input.classList.add('border-[#1B17BB]','bg-blue-200');
+                input.classList.add('border-[#0D08EE]','bg-blue-200');
             } else {
                 input.value = 0;
-                input.classList.remove('border-[#1B17BB]','bg-blue-200');
+                input.classList.remove('border-[#0D08EE]','bg-blue-200');
                 input.classList.add('border-gray-300');
                 suma_horas_hombre(i);
             }
@@ -17011,10 +17011,10 @@ function cleanInputsTrimestrales(id_coordinacion,visita) {
             if (grupoActivo && grupoActivo.includes(id)) {
                 input.disabled = false;
                 input.classList.remove('border-gray-300');
-                input.classList.add('border-[#1B17BB]','bg-blue-200');
+                input.classList.add('border-[#0D08EE]','bg-blue-200');
             } else {
                 input.value = 0;
-                input.classList.remove('border-[#1B17BB]','bg-blue-200');
+                input.classList.remove('border-[#0D08EE]','bg-blue-200');
                 input.classList.add('border-gray-300');
                 suma_horas_hombre(i);
             }
@@ -17107,10 +17107,10 @@ function activarInputsAnuales(inputId,counter) {
             if (grupoActivo && grupoActivo.includes(id)) {
                 input.disabled = false;
                 input.classList.remove('border-gray-300');
-                input.classList.add('border-[#1B17BB]','bg-blue-200');
+                input.classList.add('border-[#0D08EE]','bg-blue-200');
             } else {
                 input.value = 0;
-                input.classList.remove('border-[#1B17BB]','bg-blue-200');
+                input.classList.remove('border-[#0D08EE]','bg-blue-200');
                 input.classList.add('border-gray-300');
                 suma_horas_hombre(i);
             }
@@ -18069,9 +18069,9 @@ for (let index = 0; index < response.length; index++) {
     tr_calculo.className = 'bg-white hover:bg-blue-50 transition-colors duration-200 border-b border-gray-100';
 
     // Clase común para inputs
-    const inputClass = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+    const inputClass = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 hover:border-[#0D08EE]/50 transition-all duration-200';
 
-    const selectClass = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+    const selectClass = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 hover:border-[#0D08EE]/50 transition-all duration-200';
 
 
 
@@ -18081,7 +18081,7 @@ for (let index = 0; index < response.length; index++) {
         var input0_calculo = document.createElement('input');
         input0_calculo.type = 'text';
         input0_calculo.id = 'input0_calculo_' + rowCount;
-        input0_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input0_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 hover:border-[#0D08EE]/50 transition-all duration-200';
         input0_calculo.value = rowCount;
         input0_calculo.readOnly = true;
         td0_calculo.appendChild(input0_calculo);
@@ -18093,7 +18093,7 @@ for (let index = 0; index < response.length; index++) {
         var input1_calculo = document.createElement('input');
         input1_calculo.type = 'text';
         input1_calculo.id = 'sistemainput1_calculo_' + rowCount;
-        input1_calculo.className = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input1_calculo.className = 'w-full h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 hover:border-[#0D08EE]/50 transition-all duration-200';
         input1_calculo.value = response[index].sistema;
         input1_calculo.readOnly = true;
         td1_calculo.appendChild(input1_calculo);
@@ -18105,7 +18105,7 @@ for (let index = 0; index < response.length; index++) {
         var input2_calculo = document.createElement('input');
         input2_calculo.type = 'text';
         input2_calculo.id = 'capacidadinput2_calculo_' + rowCount;
-        input2_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input2_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 hover:border-[#0D08EE]/50 transition-all duration-200';
         input2_calculo.value = response[index].capacidad +' '+ response[index].unidad_capacidad;
         input2_calculo.readOnly = true;
         td2_calculo.appendChild(input2_calculo);
@@ -18150,7 +18150,7 @@ for (let index = 0; index < response.length; index++) {
             var inputTotal = 'input16_calculo_' + rowCount;
             input_calculo.type = 'text';
             input_calculo.id = 'input' + (4 + i) + '_calculo_' + rowCount;
-            input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-blue-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200 cursor-not-allowed';
+            input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-blue-200 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 hover:border-[#0D08EE]/50 transition-all duration-200 cursor-not-allowed';
             input_calculo.value = response[index].total_horas;
             input_calculo.readOnly = true;
         }else{
@@ -18170,7 +18170,7 @@ for (let index = 0; index < response.length; index++) {
             }else{
                 var value = 0;
             } */
-            input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+            input_calculo.className = 'w-3/4 h-10 px-2 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 hover:border-[#0D08EE]/50 transition-all duration-200';
             input_calculo.value = value;
             input_calculo.setAttribute('onclick', 'active_inputs_coordinacion(this.id,"'+ periodoSelect +'","' + rowCount + '");inputs_coordinacion_to_cero(this.id,"'+ periodoSelect +'","' + rowCount + '","'+response[index].id+'","'+id_visita+'")');
             input_calculo.setAttribute('onchange', 'suma_inputs_calculo(this.id,"'+ periodoSelect +'","' + rowCount + '");suma_horas_hombre('+counterAux+');format_nums_no_$(this.value,this.id);setValueVisita(this.value,"'+id_visita+'","'+response[index].id+'");');

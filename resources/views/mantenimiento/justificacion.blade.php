@@ -24,7 +24,7 @@
         <div class="w-1/2 grid gap-x-3 h-full justify-items-center gap-y-3 ">
             {{-- mant_prev --}}
             <div class="grid w-3/4">
-                <div style="border-color:#1B17BB;" class="w-full grid bg-gray-100 justify-items-center gap-y-1 h-auto self-start border-2 rounded-xl py-5 shadow-lg">
+                <div style="border-color:#0D08EE;" class="w-full grid bg-gray-100 justify-items-center gap-y-1 h-auto self-start border-2 rounded-xl py-5 shadow-lg">
 
                     <div  class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                         <div class="w-3/4 grid justify-items-center place-items-center">
@@ -87,7 +87,7 @@
 
             {{--Materiales  --}}
             <div class="grid w-3/4">
-                <div style="border-color:#1B17BB;" class="w-full grid bg-gray-100 justify-items-center gap-y-1  h-auto self-start border-2 rounded-xl py-5 shadow-lg">
+                <div style="border-color:#0D08EE;" class="w-full grid bg-gray-100 justify-items-center gap-y-1  h-auto self-start border-2 rounded-xl py-5 shadow-lg">
 
                     <div  class="gap-x-3 flex py-2 justify-center width_tiempos_operacionales">
                         <div class="w-3/4 grid justify-items-center place-items-center">
@@ -224,7 +224,7 @@ function justidicacion_financiera_chart(total_justificacion_mantenimiento,total_
             fontFamily: 'ABeeZee, sans-serif',
             fontWeight: "bold",
             cssClass: 'apexcharts-yaxis-label',
-            color: '#1B17BB',
+            color: '#0D08EE',
           },
         },
         grid: {

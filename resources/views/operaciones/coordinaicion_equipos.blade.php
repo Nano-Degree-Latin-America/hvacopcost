@@ -9,22 +9,22 @@
                                 id="addRowBtn"
                                 title="Agregar Equipo"
                                 type="button"
-                                class="group relative px-4 py-2 bg-[#1B17BB] text-white rounded-lg border-2 border-white hover:bg-white hover:text-[#1B17BB]  hover:border-[#1B17BB] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#1B17BB] focus:ring-offset-2 focus:ring-offset-white">
+                                class="group relative px-4 py-2 bg-[#0D08EE] text-white rounded-lg border-2 border-white hover:bg-white hover:text-[#0D08EE]  hover:border-[#0D08EE] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#0D08EE] focus:ring-offset-2 focus:ring-offset-white">
                                 <i class="fas fa-plus text-base transition-transform group-hover:rotate-90 duration-300"></i>
                             </button>
                         </th>
-                        <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Sistema</th>
-                        <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Unidad</th>
-                        <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Marca</th>
-                        <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Modelo</th>
-                        <th style="width:100px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Capacidad</th>
-                        <th style="width:150px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm"></th>
-                        <th style="width:100px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Cantidad</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Acceso Equipo</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Estado</th>
-                        <th style="width:100px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Años Vida</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Horario</th>
-                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#1B17BB] text-sm">Mantenimiento</th>
+                        <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#0D08EE] text-sm">Sistema</th>
+                        <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#0D08EE] text-sm">Unidad</th>
+                        <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#0D08EE] text-sm">Marca</th>
+                        <th style="width:300px;" class="px-1 py-4 font-roboto font-bold text-center text-[#0D08EE] text-sm">Modelo</th>
+                        <th style="width:100px;" class="px-1 py-4 font-roboto font-bold text-center text-[#0D08EE] text-sm">Capacidad</th>
+                        <th style="width:150px;" class="px-1 py-4 font-roboto font-bold text-center text-[#0D08EE] text-sm"></th>
+                        <th style="width:100px;" class="px-1 py-4 font-roboto font-bold text-center text-[#0D08EE] text-sm">Cantidad</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#0D08EE] text-sm">Acceso Equipo</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#0D08EE] text-sm">Estado</th>
+                        <th style="width:100px;" class="px-1 py-4 font-roboto font-bold text-center text-[#0D08EE] text-sm">Años Vida</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#0D08EE] text-sm">Horario</th>
+                        <th style="width:200px;" class="px-1 py-4 font-roboto font-bold text-center text-[#0D08EE] text-sm">Mantenimiento</th>
                     </tr>
                 </thead>
 
@@ -35,79 +35,79 @@
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
                         <td class="px-2 py-3">
                             <input
                                 disabled
                                 type="number"
-                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 transition-all duration-200 cursor-not-allowed opacity-60">
+                                class="w-full h-10 px-3 text-center text-sm font-semibold bg-gray-100 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 transition-all duration-200 cursor-not-allowed opacity-60">
                         </td>
 
                     </tr>
@@ -141,7 +141,7 @@
     }
 
     .overflow-y-auto::-webkit-scrollbar-thumb {
-        background: #1B17BB;
+        background: #0D08EE;
         border-radius: 10px;
     }
 
@@ -202,8 +202,8 @@ $(function () {
   const $tbody = $('#tbody_equipos');
   const $addBtn = $('#addRowBtn');
 
-  const selectClass = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
-  const inputClass  = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+  const selectClass = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 hover:border-[#0D08EE]/50 transition-all duration-200';
+  const inputClass  = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 hover:border-[#0D08EE]/50 transition-all duration-200';
 
   const sistemas = [
     { value: '0', text: 'Seleccionar' },
@@ -628,9 +628,9 @@ $(function () {
         tr.className = 'bg-white hover:bg-blue-50 transition-colors duration-200 border-b border-gray-100';
 
         // Clase común para inputs
-        const inputClass = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        const inputClass = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 hover:border-[#0D08EE]/50 transition-all duration-200';
 
-        const selectClass = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        const selectClass = 'w-full h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 hover:border-[#0D08EE]/50 transition-all duration-200';
 
         // 1er td: input text (columna vacía)
         var td0 = document.createElement('td');
@@ -638,7 +638,7 @@ $(function () {
         var input0 = document.createElement('input');
         input0.type = 'text';
         input0.id = 'input0_' + rowCount;
-        input0.className = 'w-3/4 h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#1B17BB] focus:ring-2 focus:ring-[#1B17BB]/20 hover:border-[#1B17BB]/50 transition-all duration-200';
+        input0.className = 'w-3/4 h-10 px-3 text-center text-sm font-semibold bg-white border-2 border-gray-300 rounded-lg focus:outline-none focus:border-[#0D08EE] focus:ring-2 focus:ring-[#0D08EE]/20 hover:border-[#0D08EE]/50 transition-all duration-200';
         input0.value = rowCount;
         input0.readOnly = true;
         td0.appendChild(input0);
