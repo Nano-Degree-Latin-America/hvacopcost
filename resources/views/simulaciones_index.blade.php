@@ -1,34 +1,19 @@
 <div class="col-5 ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 h-full justify-items-center">
-    <div class="margin-title-top-simulaciones">
-        <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight uppercase" for="">{{ __('index.titulo1_simulaciones') }} <br> {{ __('index.titulo2_simulaciones') }}
-        </label>
-    </div>
 
-    <div style="margin-top:50px;" class="w-full flex justify-center">
+
+    <div style="margin-top:14rem;margin-left:12rem;" class="w-full flex justify-center">
         <div style="width:70%" class="grid gap-y-5">
-            <div class="grid mt-3">
-                <div class="flex w-full justify-start">
-                    <label for=""></label>
-                    <label class="title_simulaciones_index font-roboto drop-shadow-lg font-bold leading-tight" for="">{{ __('index.eneretico_financiero_projectos_hvac') }}
-                    </label>
-                </div>
-                <div class="w-full flex justify-start gap-x-3 mt-2">
-                    <button  onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','display_mant','calcular_p_n','calcular_p_r','store');" style="background-color:#1B17BB;width: 30%;" type="button" class="py-2 px-6 rounded-lg shadow-sm text-center text-white hover_button_blue text-2xl font-roboto ">{{ __('index.nuevo') }}</button>
-                    <button  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','display_mant','calcular_p_n','calcular_p_r','store');" style="background-color:#1B17BB;width: 30%;" type="button" class="py-2 px-6 rounded-lg shadow-sm text-center text-white hover_button_blue text-2xl font-roboto ">{{ __('index.retrofit') }}</button>
-{{--                     <button style="width: 30%;" type="button" class="bg-gray-500 border-2 border-color-inps focus:outline-none  py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-xl font-roboto ">{{ __('index.chillers') }}</button>
- --}}                </div>
+            <div class="grid  w-full">
+                <div class="w-full grid justify-center gap-y-8 mt-2 mb-3">
+                    <button  onclick="check_form_proy('pn','display_nuevo_project','display_nuevo_retrofit','display_mant','calcular_p_n','calcular_p_r','store');" style="background-color:#0D08EE;box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, 1.04);" type="button" class="w-full py-8 px-20 rounded-lg shadow-xl text-center text-white hover_button_blue text-3xl font-bold font-roboto flex place-items-center gap-x-6">
+                    <label for="">Proyecto Nuevo</label><img src="{{asset('/assets/images/p_new.png')}}" style="width: 100px; height:80px;s" alt="">
+                    </button>
+
+                    <button  onclick="check_form_proy('pr','display_nuevo_project','display_nuevo_retrofit','display_mant','calcular_p_n','calcular_p_r','store');" style="background-color:#0D08EE;box-shadow: 0 20px 25px -5px rgba(0, 0, 0, .1), 0 10px 10px -5px rgba(0, 0, 0, 1.04);" type="button" class="w-full py-8 px-20 rounded-lg shadow-xl text-center text-white hover_button_blue text-3xl font-bold font-roboto flex place-items-center gap-x-6">
+                    <label for="">Proyecto Retrofit</label><img src="{{asset('/assets/images/p_nuevo.png')}}" style="width: 100px; height:80px;s" alt="">
+                    </button>
+                 </div>
             </div>
-
-
-
-            <div class="grid">
-
-            </div>
-
-            <div class="grid">
-
-            </div>
-
         </div>
     </div>
 </div>

@@ -8,7 +8,7 @@
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<div class="bg-blue-900 w-full flex justify-center" style="background-color:#1B17BB ;">
+<div class="bg-blue-900 w-full flex justify-center" style="background-color:#0D08EE ;">
     <div class="w-1/3 flex h-full">
         <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
         <h1 style=" font-size: 4.3rem;" class="text-white font-roboto" >2.0</h1>
@@ -216,7 +216,7 @@ cursor: pointer;
 }
 
 .border-color-inps{
-    border-color:#1B17BB;
+    border-color:#0D08EE;
 }
     </style>
 
@@ -672,14 +672,14 @@ $idm = App::getLocale();
                                     <div class="w-full mt-2 grid justify-items-start mt-7 gap-y-2">
                                         <div id="div_next" name="div_next" style="width: 73%;" class="text-start">
                                             <button type="button" id="next" name="next"
-                                            style="background-color:#1B17BB;"
+                                            style="background-color:#0D08EE;"
                                                 onclick="buton_check_edit();"
                                                 class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
                                             >{{ __('index.siguiente') }}</button>
                                         </div>
                                         <div id="div_next_h" name="div_next_h" style="width: 73%;" class="text-start">
                                                 <button  type="button" id="next_h" name="next_h"
-                                                style="background-color:#1B17BB;"
+                                                style="background-color:#0D08EE;"
                                                     x-show="step < 2"
                                                     @click="step++"
                                                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white bg-blue-500 hover:bg-blue-600 text-xl font-roboto"
@@ -688,7 +688,7 @@ $idm = App::getLocale();
                                         <div id="div_inicio_edit" name="div_inicio_edit" style="width: 73%;" class="">
                                             <button  type="button"  id="inicio_edit" name="inicio_edit"
                                                 x-show="step < 2"
-                                                style="background-color:#1B17BB;"
+                                                style="background-color:#0D08EE;"
                                                 onclick="back_begin();"
                                                 class="w-full hover_button_blue focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                                             >{{ __('index.inicio') }}</button>
@@ -804,8 +804,8 @@ $idm = App::getLocale();
                 </div>
                 <div  x-show="step === 2" class="w-1/2 flex" style=" justify-content: center;">
 
-                <button style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
-                <button style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
+                <button style="background-color:#0D08EE;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
+                <button style="background-color:#0D08EE;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
 
             </div>
             </div>
@@ -815,7 +815,7 @@ $idm = App::getLocale();
 </div>
 <style>
 .title_index{
-              color:#1B17BB !important;"
+              color:#0D08EE !important;"
         }
 @media (min-width: 640px) {
     .labels{
@@ -830,7 +830,7 @@ $idm = App::getLocale();
 
     labels_index{
     font-size: 10px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 }
 /* lg	1024px */
@@ -845,7 +845,7 @@ $idm = App::getLocale();
 
     .labels_index{
     font-size: 12px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .type_proyect_label{
@@ -949,7 +949,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 11px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
     .mapa_img{
         width: 320px; height:520px;
@@ -983,7 +983,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 13px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -1019,7 +1019,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -1054,7 +1054,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -1089,7 +1089,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -1124,7 +1124,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -1159,7 +1159,7 @@ $idm = App::getLocale();
 
     .labels_index{
     font-size: 12px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
      .mapa_img{
         width: 350px; height:550px;
@@ -1195,7 +1195,7 @@ $idm = App::getLocale();
 
     .labels_index{
     font-size: 18px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -1232,7 +1232,7 @@ $idm = App::getLocale();
 
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -1267,7 +1267,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
     .mapa_img{
         width: 480px; height:630px;
@@ -1302,7 +1302,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
     .mapa_img{
         width: 500px; height:650px;
@@ -1337,7 +1337,7 @@ $idm = App::getLocale();
             }
             .labels_index{
             font-size: 20px;
-            color:#2c5282 !important;"
+            color:#0D124F !important;"
             }
 
             .mapa_img{
@@ -1366,7 +1366,7 @@ $idm = App::getLocale();
 @media (min-width: 1940px) {
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
     .labels{
         font-size:14px;

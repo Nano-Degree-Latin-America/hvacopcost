@@ -17,6 +17,12 @@ b,
 strong {
     color: rgb(58, 56, 56);
 }
+
+.font-arial-narrow {
+    font-family: "Arial Narrow", Arial, sans-serif; /* Fallbacks */
+    font-weight: 700; /* Bold */
+    font-style: italic; /* Italic */
+}
 .banner {
     padding: 10px;
     position: relative;
@@ -59,7 +65,7 @@ strong {
     /* background: rgba(0, 46, 93); */
     /* background-image: radial-gradient(rgb(10,19,59) 0%,rgb(5,1,25) 100%); */
     /* text-align: -webkit-center; */
-    background-color:#1B17BB ;
+    background-color:transparent;
 }
 #slider  .col-4 {
     padding: 0px !important;
@@ -433,8 +439,6 @@ img[usemap] {
     border-bottom: 1px solid rgb(236, 224, 200); */
     margin-bottom: 40px;
     overflow-x: auto;
-
-    /* background-color: #ebe7e0; */
 }
 
 #mapa-div .col-8 {
@@ -456,11 +460,11 @@ img[usemap] {
 
 #mapa-div .col-6 {
     line-height: 23px;
-    width: 30%;
+    width: 45%;
 }
 
 #mapa-div .col-5 {
-    width: 65%;
+    width: 45%;
 }
 
 

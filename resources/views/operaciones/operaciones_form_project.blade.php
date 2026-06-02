@@ -236,7 +236,7 @@
                 <button  type="button"  id="next_h_mantenimiento" name="next_h_mantenimiento"
                     x-show="step < 2"
                     onclick="valida_formulario_coordinacion();"
-                    style="background-color:#1B17BB;"
+                    style="background-color:#0D08EE;"
                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                 >{{ __('index.siguiente') }}</button>
             </div>
@@ -246,7 +246,7 @@
                     x-show="step < 2"
                     @click="step++"
                     onclick="calculateSpendVentas($('#valor_contrato').val());"
-                    style="background-color:#1B17BB;"
+                    style="background-color:#0D08EE;"
                     class="w-full focus:outline-none border border-transparent py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                 >{{ __('index.siguiente') }}</button>
             </div>

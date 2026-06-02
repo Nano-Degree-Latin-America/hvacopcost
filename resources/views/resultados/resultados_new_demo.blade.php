@@ -77,7 +77,7 @@
         .info_project{
             font-size: 20px;
             font-family: 'ABeeZee', sans-serif;
-            color:#2c5282;
+            color:#0D124F;
             font-weight: bold;
 
         }
@@ -103,21 +103,21 @@
 
          .solucions_style_name{
         font-size: 2.25rem;
-        color: #2c5282;
+        color: #0D124F;
         font-weight: bold;
         font-family: 'ABeeZee', sans-serif;
         }
 
         .cant_style{
             font-size: 3rem;
-            color: #2c5282;
+            color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
         }
 
         .cant_style_minim{
             font-size: 2.8rem;
-            color: #2c5282;
+            color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
         }
@@ -136,7 +136,7 @@
 
         .eui_energy_style{
             margin-top: 2rem;
-            color: #2c5282;
+            color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
             margin-right: .25rem;
@@ -174,7 +174,7 @@
 
         .red_energetica_style{
             font-size: 2.25rem;
-            color: #2c5282;
+            color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
             margin-top:5px;
@@ -196,7 +196,7 @@
 
         .size_solutions_confort{
             font-size:2rem;
-            color: #2c5282;
+            color: #0D124F;
         }
 
 
@@ -255,7 +255,7 @@
   .info_project{
     font-size: 14px;
     font-family: 'ABeeZee', sans-serif;
-    color:#2c5282;
+    color:#0D124F;
     font-weight: bold;
   }
 
@@ -278,21 +278,21 @@
          }
    .solucions_style_name{
         font-size: 1.2rem;
-        color: #2c5282;
+        color: #0D124F;
         font-weight: bold;
         font-family: 'ABeeZee', sans-serif;
    }
 
    .cant_style{
             font-size: 1.6rem;
-            color: #2c5282;
+            color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
    }
 
    .cant_style_minim{
             font-size: 1.4rem;
-            color: #2c5282;
+            color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
         }
@@ -311,7 +311,7 @@
 
    .eui_energy_style{
     margin-top: 2rem;
-    color: #2c5282;
+    color: #0D124F;
     font-weight: bold;
     font-family: 'ABeeZee', sans-serif;
     margin-right: .15rem;
@@ -349,7 +349,7 @@
 
    .red_energetica_style{
             font-size: 1rem;
-            color: #2c5282;
+            color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
             margin-top:15px;
@@ -371,7 +371,7 @@
 
         .size_solutions_confort{
             font-size:1.1rem;
-            color: #2c5282;
+            color: #0D124F;
         }
 
         .size_solutions_payback{
@@ -540,7 +540,7 @@ cursor: pointer;
 <?php  $kwh_yr=$results->kwh_yr($id_project,$tar_ele->cad_edi) ?>
 @csrf
 {{-- navbar --}}
-<div id="navbar"  name="navbar" class="bg-blue-900 w-full flex justify-center" style="background-color:#1B17BB ;">
+<div id="navbar"  name="navbar" class="bg-blue-900 w-full flex justify-center" style="background-color:#0D08EE ;">
     <div class="w-1/3">
         <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
     </div>
@@ -650,7 +650,7 @@ cursor: pointer;
 <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
         <div class="w-full grid">
-            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+            <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <p class="titulos_style">Consumo Anual Energía Eléctrica</p>
             </div>
         </div>
@@ -788,7 +788,7 @@ cursor: pointer;
 <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
         <div class="w-full grid">
-            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+            <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <p class="titulos_style">Índice Intensidad del Uso de Energía (Kbtu/ft²)</p>
             </div>
         </div>
@@ -862,7 +862,7 @@ cursor: pointer;
 
 
         <div class="w-full grid">
-            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+            <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <p class="titulos_style">Sustentabilidad</p>
             </div>
         </div>
@@ -987,7 +987,7 @@ cursor: pointer;
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
       <div class="w-full grid">
-              <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+              <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                   <p class="titulos_style">{{ __('results.niv_conf') }}</p>
               </div>
       </div>
@@ -1007,7 +1007,7 @@ cursor: pointer;
                           </div>
 
                       <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                      background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+                      background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #0D124F;">
                               {{-- 1 --} --}}
                           @for ($i = 1; $i <= 32; $i++)
                           <div id="term_{{$i}}" name="term_{{$i}}" class="grid ancho_rang">
@@ -1026,7 +1026,7 @@ cursor: pointer;
 
                           </div>
                         <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #0D124F;">
 
                                       @for ($i = 1; $i <= 32; $i++)
                                       <div id="term_{{$i}}_a" name="term_{{$i}}_a" class="grid ancho_rang">
@@ -1045,7 +1045,7 @@ cursor: pointer;
                                   <p class="size_solutions_confort font-roboto font-bold text-left">{{ __('index.solucion') }} A</p>
                           </div>
                         <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #0D124F;">
 
                                       @for ($i = 1; $i <= 32; $i++)
                                       <div id="term_{{$i}}_a" name="term_{{$i}}_a" class="grid ancho_rang">
@@ -1063,7 +1063,7 @@ cursor: pointer;
                                   <p class="size_solutions_confort font-roboto font-bold text-left">{{ __('index.solucion') }} B</p>
                           </div>
                         <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #0D124F;">
 
                                   @for ($i = 1; $i <= 32; $i++)
                                   <div id="term_{{$i}}_b" name="term_{{$i}}_b" class="grid ancho_rang">
@@ -1084,7 +1084,7 @@ cursor: pointer;
 
                           </div>
                         <div class="flex rounded-lg" style="background: rgb(255,0,56);
-                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #2c5282;">
+                        background: linear-gradient(90deg, rgba(255,0,56,1) 0%, rgba(251,255,4,1) 50%, rgba(29,255,0,1) 100%); border: 5px solid #0D124F;">
 
                                   @for ($i = 1; $i <= 32; $i++)
                                   <div id="term_{{$i}}_b" name="term_{{$i}}_b" class="grid ancho_rang">
@@ -1110,7 +1110,7 @@ cursor: pointer;
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
       <div class="w-full flex">
-              <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+              <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <div class="flex w-full justify-center mt-1">
                     <p class="titulos_style">Perdida de Productividad Laboral</p>
                 </div>
@@ -1281,7 +1281,7 @@ cursor: pointer;
                     <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
                         <div class="ancho border_box border-blue-500 rounded-md grid">
                           <div class="w-full flex">
-                                  <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+                                  <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                                     <div class="flex w-full justify-center mt-1">
                                         <p class="titulos_style">{{ __('results.cu_sho_Be') }}</p>
                                     </div>
@@ -1419,7 +1419,7 @@ cursor: pointer;
  <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
       <div class="w-full grid">
-              <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+              <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                   <p class="titulos_style">Payback {{ __('results.simple') }} ({{ __('results.ans') }})</p>
               </div>
 
@@ -1495,7 +1495,7 @@ cursor: pointer;
                 </div>
 
                 <div  class="flex justify-center w-1/5  my-1">
-                    <div  style="border-style: solid; border-width: 5px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
+                    <div  style="border-style: solid; border-width: 5px; width:150px;border-color:#0D124F;" class="flex justify-center rounded-md">
 {{--                         <b class="size_solutions_confort text-blue-600 font-roboto font-bold"> <p class="cant_style">7</p></b>
  --}}                        @if ( true == ( isset( $dif_1_cost ) ? $dif_1_cost : null ) )
                                                     <?php  $pay_back_a=$smasolutions->pay_back($inv_ini_1,$inv_ini_2,$dif_1_cost) ?>
@@ -1516,7 +1516,7 @@ cursor: pointer;
                 </div>
 
                 <div  class="flex justify-center w-1/5  my-1">
-                    <div  style="border-style: solid; border-width: 5px; width:150px;border-color:#2c5282;" class="flex justify-center rounded-md">
+                    <div  style="border-style: solid; border-width: 5px; width:150px;border-color:#0D124F;" class="flex justify-center rounded-md">
 
                         @if ( true == ( isset( $dif_2_cost ) ? $dif_2_cost : null ) )
                              <?php  $pay_back_b=$smasolutions->pay_back($inv_ini_1,$inv_ini_3,$dif_2_cost) ?>
@@ -1553,7 +1553,7 @@ cursor: pointer;
 
 
         <div class="w-full flex grid">
-            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+            <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <div class="flex w-full justify-center mt-1">
                     <p class="titulos_style ml-8">ROI v/s MARR (solo Energía)</p>
                 </div>
@@ -1612,7 +1612,7 @@ cursor: pointer;
     <div class="ancho border_box border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
-            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+            <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <p class="titulos_style">ROI v/s MARR (Energía + Productividad)</p>
             </div>
         </div>
@@ -1729,7 +1729,7 @@ cursor: pointer;
     <div class="ancho border_box border-blue-500 rounded-md grid">
 
         <div class="w-full grid">
-            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+            <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <p class="titulos_style">{{-- {{ __('results.analisis') }} --}}CAPEX v/s OPEX (@if($tar_ele->unidad == 'mc')$/m²)@endif
                     @if($tar_ele->unidad == 'ft')$/ft²)@endif
                 </p>
@@ -1824,19 +1824,19 @@ cursor: pointer;
 <div class="w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box border-blue-500 rounded-md grid">
         <div class="w-full grid">
-            <div style="background-color:#1B17BB;" class="w-full flex justify-center">
+            <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <p class="titulos_style">{{ __('results.analisis_ener') }} - {{ __('results.enfriamiento') }}</p>
             </div>
             <?php  $solutions=$solutions->solutions($id_project) ?>
             <div class="w-90 grid  mt-10 mx-2">
-                <div style="background-color:#1B17BB;" class="w-full flex justify-center rounded-md">
+                <div style="background-color:#0D08EE;" class="w-full flex justify-center rounded-md">
                     <p class="titulos_style">Solución Base</p>
                 </div>
                 <div style="" class="w-full flex">
                     @foreach ($solutions as $solution)
                     @if ($solution->num_enf == 1)
                         {{-- @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                            <div class="w-1/2 grid rounded-md mx-2 my-2 border-2" style="border-color:#1B17BB;">
+                            <div class="w-1/2 grid rounded-md mx-2 my-2 border-2" style="border-color:#0D08EE;">
                                 {{-- cap_term --}}
                                 <div class="flex w-full mx-1">
                                     <div class="w-1/2 flex justify-start">
@@ -2090,14 +2090,14 @@ cursor: pointer;
 
                 {{-- Solucion A --}}
                 <div class="w-90 grid  margin_top_solus mx-2">
-                    <div style="background-color:#1B17BB;" class="w-full flex justify-center rounded-md">
+                    <div style="background-color:#0D08EE;" class="w-full flex justify-center rounded-md">
                         <p class="titulos_style">Solución A</p>
                     </div>
                     <div style="" class="w-full flex">
                         @foreach ($solutions as $solution)
                         @if ($solution->num_enf == 2)
                             {{-- @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                                <div class="w-1/2 grid rounded-md mx-2 my-2 border-2" style="border-color:#1B17BB;">
+                                <div class="w-1/2 grid rounded-md mx-2 my-2 border-2" style="border-color:#0D08EE;">
                                     {{-- cap_term --}}
                                     <div class="flex w-full mx-1">
                                         <div class="w-1/2 flex justify-start">
@@ -2351,14 +2351,14 @@ cursor: pointer;
 
                     {{-- Solucion B --}}
                 <div class="w-90 grid  margin_top_solus mx-2 mb-3">
-                    <div style="background-color:#1B17BB;" class="w-full flex justify-center rounded-md">
+                    <div style="background-color:#0D08EE;" class="w-full flex justify-center rounded-md">
                         <p class="titulos_style">Solución B</p>
                     </div>
                     <div style="" class="w-full flex">
                         @foreach ($solutions as $solution)
                         @if ($solution->num_enf == 3)
                             {{-- @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                                <div class="w-1/2 grid rounded-md mx-2 my-2 border-2" style="border-color:#1B17BB;">
+                                <div class="w-1/2 grid rounded-md mx-2 my-2 border-2" style="border-color:#0D08EE;">
                                     {{-- cap_term --}}
                                     <div class="flex w-full mx-1">
                                         <div class="w-1/2 flex justify-start">

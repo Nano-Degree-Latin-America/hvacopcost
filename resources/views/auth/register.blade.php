@@ -2,7 +2,7 @@
 
 @section('content')
 @inject('empresas','app\Http\Controllers\Auth\RegisterController')
-<div style="background-color:#1B17BB;" class="container">
+<div style="background-color:#0D08EE;" class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

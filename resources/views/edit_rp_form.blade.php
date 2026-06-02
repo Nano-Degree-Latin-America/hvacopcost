@@ -373,7 +373,7 @@
 </div>
 <div style="width: 100%" class="mx-1">
     {{-- 2.1 --}}
-    <div style="background-color: #1B17BB;" class="text-white rounded-t-xl w-80 bg-orange-500  2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
+    <div style="background-color: #0D08EE;" class="text-white rounded-t-xl w-80 bg-orange-500  2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
         <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
             <a href="#final2">
                 <button onclick="active_display_retro('sol_2_retro');" type="button"  class="rounded-xl p-1 m-0 hover-button-plus text-3xl">{{-- <i class="fa-solid fa-plus text-white "></i> --}}</button>
@@ -749,7 +749,7 @@
 
 <div style="width: 100%" class="mx-1">
     {{-- 3.1 --}}
-    <div style="background-color: #1B17BB;" class="text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
+    <div style="background-color: #0D08EE;" class="text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
        <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
            <a href="#final3">
                <button onclick="active_display_retro('sol_3_retro');" type="button"  class="rounded-xl p-1 m-0 hover-button-plus text-3xl">{{-- <i class="fa-solid fa-plus text-white"></i> --}}</button>

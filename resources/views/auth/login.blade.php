@@ -28,7 +28,7 @@
     <style type="text/css">
     	.container-login100
     	{
-    		background-image: url("{{asset('assets/images/portada_2.webp')}}");
+    		background-image: url("{{asset('assets/images/fondoo.webp')}}");
     	}
     </style>
     <title>Desprosoft Hvacopcost</title>
@@ -38,10 +38,10 @@
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100 p-b-20">
-                <div class="w-full flex justify-center">
+                <div class="w-full flex justify-center mb-5">
                     {{-- <img src="{{asset('assets\images\Logotipo-HVACOPCOST.png')}}" class="mr-10" style="height:350px; width:700px;" > --}}
 
-                    <img src="{{asset('assets\images\Logotipo-HVACOPCOST_blanco.png')}}" class="mr-10" style="height:350px; width:700px;" >
+                    <img src="{{asset('assets\images\Logotipo-HVACOPCOST.png')}}" class="mr-10" style="height:340px; width:700px;" >
                 </div>
                 <div class="w-full flex justify-center">
                     <form  style="width: 390px;" role="form" method="POST"  action="{{ route('login') }}">
