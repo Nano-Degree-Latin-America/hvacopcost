@@ -4,11 +4,11 @@
     width: 80px; height: 80px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
     box-shadow: 0 4px 16px rgba(0,0,0,.2); cursor: pointer;
-    border: 2px solid #1B17BB;
+    border: 2px solid #0D08EE;
   }
 
   .hvac-chat-fab:hover {
-    background: #1B17BB;
+    background: #0D08EE;
     border: 2px solid #0ea5e9;
   }
 
@@ -48,11 +48,11 @@
   }
 
   .hvac-button-mic:hover{
-    background:#1B17BB;
+    background:#0D08EE;
   }
 
   .hvac-button-send:hover{
-    background:#1B17BB;
+    background:#0D08EE;
   }
 </style>
 

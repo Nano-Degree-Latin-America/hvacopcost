@@ -8,7 +8,7 @@
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<div class="bg-blue-900 w-full flex justify-center" style="background-color:#1B17BB ;">
+<div class="bg-blue-900 w-full flex justify-center" style="background-color:#0D08EE ;">
     <div class="w-1/3 flex h-full">
         <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
         <h1 style=" font-size: 4.3rem;" class="text-white font-roboto" >3.0</h1>
@@ -26,10 +26,10 @@
 
     <button class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600" onclick="window.location.href='/mis_projectos'"><img src="{{asset('/assets/images/mis_proyectos.png')}}" title="Mis Proyectos" style="max-height: 50px; width:50px;"></button>
 
-    <a class="p-1 bg-red-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 grid place-content-center"  href="{{ route('cerrar_session') }}"
+    <a class="p-1 bg-blue-600 rounded-md hover:bg-blue-900 text-white font-roboto action:bg-blue-600 grid place-content-center"  href="{{ route('cerrar_session') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-                <img src="{{asset('/assets/images/cerrar sesion.png')}}" title="Cerrar Sesión" style="height: 44px; width:35px;">
+               <i title="Cerrar Sesión" class="fas fa-sign-out-alt text-4xl"></i>
             </a>
 
             <form id="logout-form" action="{{ route('cerrar_session') }}" method="POST" class="d-none">
@@ -216,7 +216,7 @@ cursor: pointer;
 }
 
 .border-color-inps{
-    border-color:#1B17BB;
+    border-color:#0D08EE;
 }
     </style>
 
@@ -425,9 +425,9 @@ $idm = App::getLocale();
 
                 <div id="buttons_energy" name="buttons_energy" x-show="step === 2" class="w-1/2 flex hidden" style=" justify-content: center;">
 
-                    <button  style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
+                    <button  style="background-color:#0D08EE;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
 
-                    <button  style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
+                    <button  style="background-color:#0D08EE;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
                 </div>
 
 
@@ -436,7 +436,7 @@ $idm = App::getLocale();
 
                     <button  type="button" id="button_next_mantenimiento_noadicionales_edit" name="button_next_mantenimiento_noadicionales_edit"
 
-                    style="background-color:#1B17BB;"
+                    style="background-color:#0D08EE;"
                         x-show="step == 2"
                         @click="step++"
                         onclick="calcular_speendplan_base_edit({{ $project_edit->id }});"
@@ -446,7 +446,7 @@ $idm = App::getLocale();
 
                     {{-- button siguiente mantenimiento --}}
                     <button  type="button" id="button_next_mantenimiento_noadicionales" name="button_next_mantenimiento_noadicionales"
-                    style="background-color:#1B17BB;"
+                    style="background-color:#0D08EE;"
                         x-show="step == 2"
                         onclick="calcular_speendplan_base_update({{ $project_edit->id }});"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto hidden"
@@ -455,7 +455,7 @@ $idm = App::getLocale();
 
                     <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
                     onclick="calcular_speendplan_base_adicionales_edit({{ $project_edit->id }});save_adicionales({{ $project_edit->id }});"
-                   style="background-color:#1B17BB;"
+                   style="background-color:#0D08EE;"
                        x-show="step == 3"
                        @click="step++"
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
@@ -463,7 +463,7 @@ $idm = App::getLocale();
 
                    <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
 
-                   style="background-color:#1B17BB;"
+                   style="background-color:#0D08EE;"
                        x-show="step == 4"
                        @click="step++"
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
@@ -471,7 +471,7 @@ $idm = App::getLocale();
 
                    <button  type="button" id="button_next_mantenimiento_justificacion" name="button_next_mantenimiento_justificacion"
 
-                   style="background-color:#1B17BB;"
+                   style="background-color:#0D08EE;"
                        x-show="step == 5"
                        @click="step++"
                        onclick="justificacion_financiera_send_mant_edit($('#costo_mantenimiento_mantenimiento_financiero').val());justificacion_financiera_send();save_justificacion_financiera({{ $project_edit->id }});"
@@ -479,13 +479,13 @@ $idm = App::getLocale();
                    >{{ __('mantenimiento.justificacion_financiera') }}</button>
 
                    <button  type="button" id="button_next_an_cost_mant" name="button_next_an_cost_mant"
-                    style="background-color:#1B17BB;"
+                    style="background-color:#0D08EE;"
                         x-show="step == 6"
                         @click="step++"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('mantenimiento.speend_plan') }}</button>
 
-                    {{-- <button style="background-color:#1B17BB;width: 20%;"  x-show="step == 7" type="button"
+                    {{-- <button style="background-color:#0D08EE;width: 20%;"  x-show="step == 7" type="button"
                     onclick="update_mantenimiento();" name="guardar_mantenimiento" id="guardar_mantenimiento" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button> --}}
                     <div  x-show="step < 2" class="w-full flex" style=" justify-content: right;">
                         <div  x-show="step < 2" class="w-full flex" style=" justify-content: left;">
@@ -519,16 +519,16 @@ $idm = App::getLocale();
  @endif
 <style>
 .title_index{
-              color:#1B17BB !important;"
+              color:#0D08EE !important;"
 }
 
 
 .title_index_mant{
-            color:#1B17BB !important;"
+            color:#0D08EE !important;"
 }
 
 .text_blue{
-    color:#1B17BB !important;
+    color:#0D08EE !important;
 }
 
 @media (min-width: 640px) {
@@ -544,7 +544,7 @@ $idm = App::getLocale();
 
     labels_index{
     font-size: 10px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 }
 /* lg	1024px */
@@ -559,7 +559,7 @@ $idm = App::getLocale();
 
     .labels_index{
     font-size: 12px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .type_proyect_label{
@@ -663,7 +663,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 11px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
     .mapa_img{
         width: 320px; height:520px;
@@ -697,7 +697,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 13px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -737,7 +737,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -778,7 +778,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -818,7 +818,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -859,7 +859,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -899,7 +899,7 @@ $idm = App::getLocale();
 
     .labels_index{
     font-size: 12px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
      .mapa_img{
         width: 350px; height:550px;
@@ -940,7 +940,7 @@ $idm = App::getLocale();
 
     .labels_index{
     font-size: 18px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -993,7 +993,7 @@ $idm = App::getLocale();
 
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -1044,7 +1044,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
     .mapa_img{
         width: 480px; height:630px;
@@ -1096,7 +1096,7 @@ $idm = App::getLocale();
     }
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
     .mapa_img{
         width: 500px; height:650px;
@@ -1149,7 +1149,7 @@ $idm = App::getLocale();
             }
             .labels_index{
             font-size: 20px;
-            color:#2c5282 !important;"
+            color:#0D124F !important;"
             }
 
             .mapa_img{
@@ -1196,7 +1196,7 @@ $idm = App::getLocale();
 @media (min-width: 1940px) {
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
     .labels{
         font-size:14px;

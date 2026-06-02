@@ -2,8 +2,8 @@
 
 return [
 
-    'titulo1_simulaciones'=>'Software de Análisis Energético y',
-    'titulo2_simulaciones'=>'Financiero para Sistemas de HVAC',
+    'titulo1_simulaciones'=>'Análisis Energético y Financiero',
+    'titulo2_simulaciones'=>'para Sistemas de HVAC',
 
     'eneretico_financiero_projectos_hvac'=>'Energético y Financiero de Proyectos HVAC',
     'nuevo'=>'Nuevo',

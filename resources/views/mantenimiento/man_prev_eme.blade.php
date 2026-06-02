@@ -135,7 +135,7 @@
     </div>
 
     <button  type="button" id="next_h_mantenimiento" name="next_h_mantenimiento"
-                    style="background-color:#1B17BB;"
+                    style="background-color:#0D08EE;"
                         x-show="step < 4"
                         @click="step++"
                         class="ocus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"

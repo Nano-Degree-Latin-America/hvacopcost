@@ -149,7 +149,7 @@ span{
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
-<div class="bg-blue-900 w-full flex justify-center" style="background-color:#1B17BB ;">
+<div class="bg-blue-900 w-full flex justify-center" style="background-color:#0D08EE ;">
     <div class="w-1/3 flex h-full">
         <a><img src="{{asset('/assets/images/Logotipo-HVACOPCOST_blanco.png')}}" alt="hvacopcost latinoamérica" style="max-height: 100px; width:230px;"></a>
         <h1 style=" font-size: 4.3rem;margin-top:.80rem;" class="text-white font-roboto" >3.0</h1>
@@ -168,7 +168,7 @@ span{
 <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 <div class="w-full flex justify-center">
     <div class="w-5/4">
-        <div style="color: #1B17BB;" class="w-full flex justify-center mt-3 text-4xl font-roboto font-bold">
+        <div style="color: #0D08EE;" class="w-full flex justify-center mt-3 text-4xl font-roboto font-bold">
             <p>Coordinacion</p>
         </div>
       {{--   @include('search') --}}

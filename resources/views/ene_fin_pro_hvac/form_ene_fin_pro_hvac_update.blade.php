@@ -479,7 +479,7 @@
                                         @include('modal_analisis_prod')
 
                                         <div class="flex justify-center w-2/3  mt-8">
-                                            <label style="color:#1B17BB;margin-top:2px;" class="text-2xl font-roboto  font-bold" for="">Análisis de Productividad Laboral</label>
+                                            <label style="color:#0D08EE;margin-top:2px;" class="text-2xl font-roboto  font-bold" for="">Análisis de Productividad Laboral</label>
                                             <div class="ml-2" style="">
                                                 <a onclick="mostrar_modal('modal_analisis_prod');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                                             </div>
@@ -907,14 +907,14 @@
                                     <div class="w-full mt-2 grid justify-items-start mt-7 gap-y-2">
                                         <div id="div_next" name="div_next" style="width: 80%;" class="text-start">
                                             <button type="button" id="next" name="next"
-                                            style="background-color:#1B17BB;"
+                                            style="background-color:#0D08EE;"
                                                 onclick="buton_check_edit();"
                                                 class="w-full  py-4 px-7 rounded-lg shadow-sm text-center text-white hover_button_blue text-xl font-roboto"
                                             >{{ __('index.siguiente') }}</button>
                                         </div>
                                         <div id="div_next_h" name="div_next_h" style="width: 80%;" class="text-start">
                                                 <button  type="button" id="next_h" name="next_h"
-                                                style="background-color:#1B17BB;"
+                                                style="background-color:#0D08EE;"
                                                     x-show="step < 2"
                                                     @click="step++"
                                                     class="w-full  py-4 px-7 rounded-lg shadow-sm text-center text-white hover_button_blue text-xl font-roboto"

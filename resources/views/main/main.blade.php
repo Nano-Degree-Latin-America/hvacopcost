@@ -68,6 +68,17 @@
 .select2-selection__arrow {
     height: 34px !important;
 }
+
+.container-login100
+    	{
+    		background-image: url("{{ asset('assets/images/fondoo.png') }}");
+            background-size: cover;         /* Hace que la imagen cubra todo el contenedor */
+            background-position: center;    /* Centra la imagen */
+            background-repeat: no-repeat;   /* Evita que la imagen se repita */
+            width: 100vw;                   /* 100% del ancho de la ventana */
+            height: 100vh;                  /* 100% del alto de la ventana */
+            min-height: 100vh;              /* Altura mínima igual a la pantalla */
+    	}
     </style>
 
     @section('css')
@@ -82,7 +93,7 @@
     proyecto hvac, aire acondicionado, diferencia de costos, incremento de energía, ahorro energía,
     calcular, calculadora hvac, hvac calculadora">
 </head>
-<body class="bg-white">
+<body class="container-login100 overflow-hidden">
    {{--  <div id="loader" class="">
         <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
     </div> --}}

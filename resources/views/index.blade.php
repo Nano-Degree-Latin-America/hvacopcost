@@ -51,7 +51,7 @@ span{
 
 .border-blue{
 border: 2px;
-border-color: #1B17BB;
+border-color: #0D08EE;
 border-radius: 10px;
 }
 
@@ -242,7 +242,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .border-color-inps{
-    border-color:#1B17BB;
+    border-color:#0D08EE;
 }
     </style>
 
@@ -356,7 +356,7 @@ input[type=number]::-webkit-outer-spin-button {
 <script src="https://code.jscharting.com/latest/jscharting.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-<div class="bg-white s" x-data="app()" x-cloak>
+<div class="bg-transparent" x-data="app()" x-cloak>
     <div class="w-full px-2">
         <input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
         @inject('paises_empresa','app\Http\Controllers\IndexController')
@@ -465,7 +465,7 @@ input[type=number]::-webkit-outer-spin-button {
     </div>
 
     <!-- Bottom Navigation -->
-    <div class="fixed bottom-0 w-full left-0 right-0 py-1 bg-white shadow-md" x-show="step != 'complete'">
+    <div class="fixed bottom-0 w-full left-0 right-0 py-1 bg-transparent shadow-md" x-show="step != 'complete'">
         <div class=" w-full mx-auto px-4 pb-2">
             <div class="flex w-full">
                 <div class="w-1/2">
@@ -522,14 +522,14 @@ input[type=number]::-webkit-outer-spin-button {
                 @endif --}}
 
                 <div id="button_calcular_ene_fin" class="hidden">
-                    <button style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1,'{{App::getLocale()}}','store','','');" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
-                    <button style="background-color:#1B17BB;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r" id="calcular_p_r" onclick="check_form_submit(2,'{{App::getLocale()}}','store','','');" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto hidden">{{ __('index.calcular') }}</button>
+                    <button style="background-color:#0D08EE;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n" id="calcular_p_n" onclick="check_form_submit(1,'{{App::getLocale()}}','store','','');" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto ">{{ __('index.calcular') }}</button>
+                    <button style="background-color:#0D08EE;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r" id="calcular_p_r" onclick="check_form_submit(2,'{{App::getLocale()}}','store','','');" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto hidden">{{ __('index.calcular') }}</button>
                 </div>
 
                 <div id="button_sigiuente_mantenimiento" class="hidden">
 
                     <button  type="button" id="button_next_mantenimiento_noadicionales" name="button_next_mantenimiento_noadicionales"
-                    style="background-color:#1B17BB;"
+                    style="background-color:#0D08EE;"
                         x-show="step == 2"
                         onclick="calcular_speendplan_base();"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
@@ -538,7 +538,7 @@ input[type=number]::-webkit-outer-spin-button {
 
                     <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
 
-                   style="background-color:#1B17BB;"
+                   style="background-color:#0D08EE;"
                        x-show="step == 4"
                        @click="step++"
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
@@ -546,7 +546,7 @@ input[type=number]::-webkit-outer-spin-button {
 
                     <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
                     onclick="calcular_speendplan_base_adicionales();"
-                   style="background-color:#1B17BB;"
+                   style="background-color:#0D08EE;"
                        x-show="step == 3"
                        @click="step++"
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
@@ -554,7 +554,7 @@ input[type=number]::-webkit-outer-spin-button {
 
                    <button  type="button" id="button_next_mantenimiento_justificacion" name="button_next_mantenimiento_justificacion"
 
-                  style="background-color:#1B17BB;"
+                  style="background-color:#0D08EE;"
                       x-show="step == 5"
                       @click="step++"
                       onclick="justificacion_financiera_send();"
@@ -562,13 +562,13 @@ input[type=number]::-webkit-outer-spin-button {
                   >{{ __('mantenimiento.justificacion_financiera') }}</button>
 
                     <button  type="button" id="button_next_an_cost_mant" name="button_next_an_cost_mant"
-                    style="background-color:#1B17BB;"
+                    style="background-color:#0D08EE;"
                         x-show="step == 6"
                         @click="step++"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('mantenimiento.speend_plan') }}</button>
 
-                    <button style="background-color:#1B17BB;width: 20%;"  x-show="step == 7" type="button"
+                    <button style="background-color:#0D08EE;width: 20%;"  x-show="step == 7" type="button"
                     onclick="save_mantenimiento();" name="guardar_mantenimiento" id="guardar_mantenimiento" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button>
 
 
@@ -594,11 +594,11 @@ input[type=number]::-webkit-outer-spin-button {
 <style>
 
 .title_index{
-              color:#1B17BB !important;"
+              color:#0D08EE !important;"
         }
 
 .text_blue{
-    color:#1B17BB !important;
+    color:#0D08EE !important;
 }
 @media (min-width: 640px) {
     .labels{
@@ -613,7 +613,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     labels_index{
     font-size: 10px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 }
 
@@ -629,7 +629,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     .labels_index{
     font-size: 12px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .type_proyect_label{
@@ -733,7 +733,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 11px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
     .mapa_img{
         width: 320px; height:520px;
@@ -767,7 +767,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 13px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -803,7 +803,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -838,7 +838,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -873,7 +873,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -908,7 +908,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -943,7 +943,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     .labels_index{
     font-size: 12px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
      .mapa_img{
         width: 350px; height:550px;
@@ -990,7 +990,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     .labels_index{
     font-size: 18px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -1038,7 +1038,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -1084,12 +1084,12 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 20px;
-    color:#1B17BB !important;"
+    color:#0D08EE !important;"
     }
 
     .labels_index_mantenimiento{
             font-size: 19px;
-            color:#1B17BB !important;"
+            color:#0D08EE !important;"
     }
 
 
@@ -1138,12 +1138,12 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 20px;
-    color:#1B17BB !important;"
+    color:#0D08EE !important;"
     }
 
     .labels_index_mantenimiento{
             font-size: 19px;
-            color:#1B17BB !important;"
+            color:#0D08EE !important;"
     }
     .mapa_img{
         width: 500px; height:650px;
@@ -1188,12 +1188,12 @@ input[type=number]::-webkit-outer-spin-button {
             }
             .labels_index{
             font-size: 20px;
-            color:#1B17BB !important;"
+            color:#0D08EE !important;"
             }
 
             .labels_index_mantenimiento{
             font-size: 19px;
-            color:#1B17BB !important;"
+            color:#0D08EE !important;"
             }
 
             .mapa_img{
@@ -1208,7 +1208,7 @@ input[type=number]::-webkit-outer-spin-button {
             }
         .title_index{
             font-size: 3rem;
-              color:#1B17BB !important;"
+              color:#0D08EE !important;"
         }
 
         .unit_style{
@@ -1234,12 +1234,12 @@ input[type=number]::-webkit-outer-spin-button {
 @media (min-width: 1940px) {
     .labels_index{
     font-size: 20px;
-    color:#1B17BB !important;"
+    color:#0D08EE !important;"
     }
 
     .labels_index_mantenimiento{
     font-size: 19px;
-    color:#1B17BB !important;"
+    color:#0D08EE !important;"
     }
 
     .labels{

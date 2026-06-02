@@ -1,8 +1,8 @@
 <div id="content" style=" display: flex; justify-content: center;" class="font-roboto">
     <div style="width: 100%; text-align: -webkit-right;" class="mx-1">
-        <div style="background-color: #1B17BB;" class="text-white rounded-t-xl w-full 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0  ">
+        <div style="background-color: #0D08EE;" class="text-white rounded-t-xl w-full 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0  ">
             <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
-             <a href="#final1">   <button onclick="active_display('sol_1');" type="button" style="background-color: #1B17BB;" class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button></a>
+             <a href="#final1">   <button onclick="active_display('sol_1');" type="button" style="background-color: #0D08EE;" class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button></a>
                 <input type="text" class="hidden" value="2" id="cont_sol_1" name="cont_sol_1">
                 <input type="text" class="hidden" value="1" id="set_sol_1" name="set_sol_1">
             </div>
@@ -648,7 +648,7 @@
             </div>
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
                 <button  onclick="copy_base_a();" type="button" title="Copiar Solucion A" class="rounded-xl p-1 m-0 text-3xl">
-                    <i style="color:#1B17BB;" class="fa-solid fa-file-import"></i>
+                    <i style="color:#0D08EE;" class="fa-solid fa-file-import"></i>
                 </button>
             </div>
         </div>
@@ -1252,7 +1252,7 @@
             </div>
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
                 <button  onclick="copiar_form_a_b('A','B');" type="button" title="Copiar Solucion B" class="rounded-xl p-1 m-0 text-3xl">
-                    <i style="color:#1B17BB;" class="fa-solid fa-file-import"></i>
+                    <i style="color:#0D08EE;" class="fa-solid fa-file-import"></i>
                 </button>
             </div>
         </div>

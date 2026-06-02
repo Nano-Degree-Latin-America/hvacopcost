@@ -6,7 +6,7 @@
     </style>
     <table id="table_projects"  name="table_projects" class="font-roboto w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg">
         <thead class="text-white">
-            <tr style="background-color:#1B17BB;" class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+            <tr style="background-color:#0D08EE;" class="flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
                 <th class="p-3 text-left"><span class="text-lg">Sistema HVAC</span></th>
                 <th class="p-3 text-left"><span class="text-lg">Unidad HVAC</span></th>
                 <th class="p-3 text-left"><span class="text-lg">1 - 2.9</span></th>

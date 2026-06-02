@@ -48,7 +48,7 @@ span{
 
 .border-blue{
 border: 2px;
-border-color: #1B17BB;
+border-color: #0D08EE;
 border-radius: 10px;
 }
 
@@ -239,7 +239,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .border-color-inps{
-    border-color:#1B17BB;
+    border-color:#0D08EE;
 }
 </style>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -378,7 +378,7 @@ input[type=number]::-webkit-outer-spin-button {
                 <div class="w-full flex justify-center">
                     <button  type="button"
 
-                   style="background-color:#1B17BB;"
+                   style="background-color:#0D08EE;"
                        x-show="step == 4 && step < 5"
                        @click="step++"
                        onclick="spenPlanAjustado();"
@@ -387,7 +387,7 @@ input[type=number]::-webkit-outer-spin-button {
 
                    <button  type="button"
 
-                   style="background-color:#1B17BB;"
+                   style="background-color:#0D08EE;"
                        x-show="step > 1 && step < 3"
                        {{-- @click="step++" --}}
                        {{-- onclick="suma_cantidad_toneladas();" --}}
@@ -399,7 +399,7 @@ input[type=number]::-webkit-outer-spin-button {
 
                 <button  type="button"
 
-                   style="background-color:#1B17BB;"
+                   style="background-color:#0D08EE;"
                        x-show="step == 3"
                        @click="step++"
                        onclick="alculate_h_h();"
@@ -416,7 +416,7 @@ input[type=number]::-webkit-outer-spin-button {
                 <div class="w-1/2">
                     <button  type="button"
 
-                   style="background-color:#1B17BB;"
+                   style="background-color:#0D08EE;"
                        x-show="step > 1 && step < 4"
                        @click="step++"
                        onclick="suma_cantidad_toneladas();"
@@ -427,7 +427,7 @@ input[type=number]::-webkit-outer-spin-button {
                 <div class="w-1/2">
                     <button  type="button"
 
-                   style="background-color:#1B17BB;"
+                   style="background-color:#0D08EE;"
                        x-show="step == 4 && step < 5"
                        @click="step++"
                        onclick="spenPlanAjustado();"
@@ -453,11 +453,11 @@ input[type=number]::-webkit-outer-spin-button {
 <style>
 
 .title_index{
-              color:#1B17BB !important;"
+              color:#0D08EE !important;"
         }
 
 .text_blue{
-    color:#1B17BB !important;
+    color:#0D08EE !important;
 }
 @media (min-width: 640px) {
     .labels{
@@ -472,7 +472,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     labels_index{
     font-size: 10px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 }
 
@@ -488,7 +488,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     .labels_index{
     font-size: 12px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .type_proyect_label{
@@ -592,7 +592,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 11px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
     .mapa_img{
         width: 320px; height:520px;
@@ -626,7 +626,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 13px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -662,7 +662,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -697,7 +697,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -732,7 +732,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -767,7 +767,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 14px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -802,7 +802,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     .labels_index{
     font-size: 12px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
      .mapa_img{
         width: 350px; height:550px;
@@ -849,7 +849,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     .labels_index{
     font-size: 18px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -897,7 +897,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     .labels_index{
     font-size: 20px;
-    color:#2c5282 !important;"
+    color:#0D124F !important;"
     }
 
     .mapa_img{
@@ -943,12 +943,12 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 20px;
-    color:#1B17BB !important;"
+    color:#0D08EE !important;"
     }
 
     .labels_index_coordinacion{
             font-size: 19px;
-            color:#1B17BB !important;"
+            color:#0D08EE !important;"
     }
 
 
@@ -997,12 +997,12 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .labels_index{
     font-size: 20px;
-    color:#1B17BB !important;"
+    color:#0D08EE !important;"
     }
 
     .labels_index_coordinacion{
             font-size: 15px;
-            color:#1B17BB !important;"
+            color:#0D08EE !important;"
     }
     .mapa_img{
         width: 500px; height:650px;
@@ -1047,12 +1047,12 @@ input[type=number]::-webkit-outer-spin-button {
             }
             .labels_index{
             font-size: 20px;
-            color:#1B17BB !important;"
+            color:#0D08EE !important;"
             }
 
             .labels_index_coordinacion{
             font-size: 19px;
-            color:#1B17BB !important;"
+            color:#0D08EE !important;"
             }
 
             .mapa_img{
@@ -1067,7 +1067,7 @@ input[type=number]::-webkit-outer-spin-button {
             }
         .title_index{
             font-size: 3rem;
-              color:#1B17BB !important;"
+              color:#0D08EE !important;"
         }
 
         .unit_style{
@@ -1093,12 +1093,12 @@ input[type=number]::-webkit-outer-spin-button {
 @media (min-width: 1940px) {
     .labels_index{
     font-size: 20px;
-    color:#1B17BB !important;"
+    color:#0D08EE !important;"
     }
 
     .labels_index_coordinacion{
     font-size: 19px;
-    color:#1B17BB !important;"
+    color:#0D08EE !important;"
     }
 
     .labels{
