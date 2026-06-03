@@ -463,6 +463,11 @@ img[usemap] {
     width: 45%;
 }
 
+#mapa-div .col-2 {
+    line-height: 23px;
+    width: 25%;
+}
+
 #mapa-div .col-5 {
     width: 45%;
 }
