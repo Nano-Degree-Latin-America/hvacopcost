@@ -357,7 +357,7 @@
         <hr>
        </div>
         <div class="flex">
-        <div class="rounded-xl mt-2 bg-white rounded-md shadow-xl mx-2">
+        <div class="rounded-xl mt-2 bg-transparent rounded-md shadow-xl mx-2">
           <div class="grid gap-y-1 my-2">
             <div class="flex w-full">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
@@ -986,7 +986,7 @@
         <div class="grid w-full">
 
             <div class="flex">
-                <div class="w-full mx-2 mt-2 bg-white rounded-md shadow-md">
+                <div class="w-full mx-2 mt-2 bg-transparent rounded-md shadow-md">
                   <div class="grid gap-y-1 my-2">
                     <div class="flex w-full gap-x-1">
                         <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2">
@@ -1298,7 +1298,7 @@
             <hr>
         </div>
         <div class="flex">
-            <div class=" mt-2  mx-2 bg-white rounded-md shadow-md">
+            <div class=" mt-2  mx-2 bg-transparent rounded-md shadow-md">
               <div class="grid gap-y-1 my-2">
                 <div class="flex w-full gap-x-1">
                     <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2">
@@ -1933,7 +1933,7 @@
          <div class="grid w-full">
 
             <div class="flex">
-                <div class="w-full mx-2 mt-2 bg-white rounded-md shadow-md">
+                <div class="w-full mx-2 mt-2 bg-transparent rounded-md shadow-md">
                   <div class="grid gap-y-1 my-2">
                     <div class="flex w-full">
                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
@@ -2243,7 +2243,7 @@
             <hr>
         </div>
         <div class="flex w-full">
-            <div class="mx-2 bg-white rounded-md shadow-md w-full  mt-2">
+            <div class="mx-2 bg-transparent rounded-md shadow-md w-full  mt-2">
               <div class="grid gap-y-1 my-2">
                 <div class="flex w-full">
                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
