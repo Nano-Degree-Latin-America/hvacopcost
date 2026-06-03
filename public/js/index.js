@@ -1229,22 +1229,26 @@ async function set_filtraciones_no_doa(value) {
 
             $('#forms_ene_fin_proy').removeClass("hidden");
             $('#ene_fin_pro_form_project').removeClass("hidden");
-            $('#img_ene_fin_proy_hvac').removeClass("hidden");
             $('#button_calcular_ene_fin').removeClass("hidden");
+            $('#div_left_simulaciones').removeClass("col-6");
+
+            $('#div_left_simulaciones').addClass("col-2");
+            $('#eslogan').addClass("hidden");
             $('#forms_cal_pre').addClass("hidden");
 
+
+            $('#space').removeClass("hidden");
             $('#forms_ene_fin_proy_edit').removeClass("hidden");  //forms editar
             $('#display_nuevo_retrofit_edit').addClass("hidden"); //forms editar
             $('#display_nuevo_project_edit').removeClass("hidden"); //forms editar
             //mantenimiento
-            $('#mantenimiento_form_project').addClass("hidden");
+           /*  $('#mantenimiento_form_project').addClass("hidden");
             $('#'+mant_p).addClass("hidden");
             $('#simulaciones_update').addClass("hidden");
             $('#ene_fin_pro_hvac_update').removeClass("hidden");
-            //$('#forms_cal_pre').removeClass("hidden");
             $('#mant_prev').addClass("hidden");
             $('#img_mantenimiento').addClass("hidden");
-            $('#button_sigiuente_mantenimiento').addClass("hidden");
+            $('#button_sigiuente_mantenimiento').addClass("hidden"); */
 
 
             $('#type_project_name').text('Nuevo');
@@ -1280,21 +1284,24 @@ async function set_filtraciones_no_doa(value) {
             $('#simulaciones').addClass("hidden");
             $('#forms_ene_fin_proy').removeClass("hidden");
             $('#ene_fin_pro_form_project').removeClass("hidden");
-            $('#img_ene_fin_proy_hvac').removeClass("hidden");
             $('#button_calcular_ene_fin').removeClass("hidden");
             $('#forms_cal_pre').addClass("hidden");
+            $('#div_left_simulaciones').removeClass("col-6");
 
+            $('#div_left_simulaciones').addClass("col-2");
+            $('#eslogan').addClass("hidden");
+            $('#space').removeClass("hidden");
             $('#forms_ene_fin_proy_edit').removeClass("hidden");  //forms editar
             $('#display_nuevo_retrofit_edit').addClass("hidden"); //forms editar
             $('#display_nuevo_project_edit').removeClass("hidden"); //forms editar
 
-            $('#'+mant_p).addClass("hidden");
+           /*  $('#'+mant_p).addClass("hidden");
             $('#mantenimiento_form_project').addClass("hidden");
             $('#mant_prev').addClass("hidden");
             $('#type_project_name').text('Retrofit');
             $('#img_mantenimiento').addClass("hidden");
             $('#button_sigiuente_mantenimiento').addClass("hidden");
-
+ */
 
             $('#simulaciones_update').addClass("hidden");
             $('#ene_fin_pro_hvac_update').removeClass("hidden");
