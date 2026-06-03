@@ -1,7 +1,10 @@
 <link rel="stylesheet" href="{{asset("assets/css/simulaciones.css")}}">
 
-<div class="grid col-6 justify-items-center">
-    <div style="margin-top:14rem;margin-left:8rem;" class="w-full grid text-5xl text-left font-arial-narrow">
+<div id="div_left_simulaciones" class="grid col-6 justify-items-center">
+    <div id="space" class="w-1/4 hidden">
+            &nbsp;
+    </div>
+    <div id="eslogan" style="margin-top:14rem;margin-left:8rem;" class="w-full grid text-5xl text-left font-arial-narrow">
         <h2 style="color:#0D08EE;">Comparando Soluciones para <br> la Optimización</h2>
         <h2 style="color:#0D08EE;font-size:4rem;">Energética y Financiera</h2>
         <h2 style="color:#0D08EE;" >de Proyectos de Sistemas</h2>
