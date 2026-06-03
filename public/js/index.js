@@ -1419,6 +1419,12 @@ async function set_filtraciones_no_doa(value) {
         $('#display_nuevo_project_edit').removeClass("hidden");
         $('#display_nuevo_retrofit_edit').addClass("hidden");
 
+         $('#div_left_simulaciones').removeClass("col-6");
+
+            $('#div_left_simulaciones').addClass("col-2");
+            $('#eslogan').addClass("hidden");
+            $('#space').removeClass("hidden");
+
         $('#type_p').val(1);
         $('#forms_cal_pre').addClass("hidden");
         $('#type_project_name').text('Nuevo');
@@ -1441,6 +1447,11 @@ async function set_filtraciones_no_doa(value) {
         $('#type_p').val(type_p);
         $('#display_mant').addClass("hidden");
         $('#type_project_name').text('Retrofit');
+        $('#div_left_simulaciones').removeClass("col-6");
+
+            $('#div_left_simulaciones').addClass("col-2");
+            $('#eslogan').addClass("hidden");
+            $('#space').removeClass("hidden");
         calcular_p_n.addClass("hidden");
         //calcular_p_n.attr('disabled', 'disabled');
         calcular_p_r.removeClass("hidden");

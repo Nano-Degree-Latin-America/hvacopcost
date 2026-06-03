@@ -168,11 +168,11 @@ span{
 @inject('check_types_p','app\Http\Controllers\ProjectController')
 <div class="w-full flex justify-center">
     <div class="w-3/4">
-        <div style="color: #0D08EE;" class="w-full flex justify-center mt-3 text-4xl font-roboto font-bold">
+        <div style="color: #0D08EE;" class="w-full flex justify-center text-4xl font-roboto font-bold">
             <p>{{ __('index.mis proyectos') }} : {{$empresa_name}}</p>
         </div>
       {{--   @include('search') --}}
-        <div class="grid my-3 rounded-md shadow-xl w-full">
+        <div class="grid rounded-md shadow-xl w-full">
             <div class="w-full">
                 <table id="table_projects"  name="table_projects" class="font-roboto w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg">
                     <thead class="text-white">

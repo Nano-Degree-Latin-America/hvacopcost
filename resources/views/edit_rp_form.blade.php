@@ -28,7 +28,7 @@
                 <input type="text" name="ciudad_retro" id="ciudad_retro" class="hidden">
 
                <div class="flex w-full ">
-                <div class="w-full  mt-2 mx-2 bg-white rounded-md shadow-md">
+                <div class="w-full  mt-2 mx-2 bg-transparent rounded-md shadow-md">
                   <div class="grid gap-y-1 my-2 ">
 
                     <div class="flex w-full">
@@ -395,7 +395,7 @@
     <div class="grid w-full">
 
         <div class="flex">
-            <div class="w-full mx-2 mt-2 bg-white rounded-md shadow-md">
+            <div class="w-full mx-2 mt-2 bg-transparent rounded-md shadow-md">
               <div class="grid gap-y-1 my-2">
                 <div class="flex w-full gap-x-1">
                     <div class="lg:grid 2xl:flex xl:flex  gap-x-1 w-1/2">
@@ -771,7 +771,7 @@
     <div class="grid w-full">
 
        <div class="flex">
-           <div class="w-full mx-2 mt-2 bg-white rounded-md shadow-md">
+           <div class="w-full mx-2 mt-2 bg-transparent rounded-md shadow-md">
              <div class="grid gap-y-1 my-2">
                <div class="flex w-full">
                 <input type="text" value="" class="hidden" id="action_submit_3_1_retro" name="action_submit_3_1_retro">
