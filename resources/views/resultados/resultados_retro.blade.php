@@ -267,7 +267,7 @@
                             <p  style="margin-right:80px;" class="font-bold font-roboto cant_2">${{number_format($inv_ini_2)}}</p>
                         </div>
 
-                        <div class="w-1/3 grid justify-items-start gap-y-2">
+                        <div class="w-1/3 grid justify-items-center gap-y-2">
                             <?php  $result3=$results->result_1($id_project,3) ?>
                                     @if ($result3 ==! null)
                                     <?php  $sumaopex_3=$smasolutions->sumaopex($id_project,$result3->num_enf) ?>
@@ -289,7 +289,7 @@
                                     @endif
 
                                      @if ($inv_ini_3 != 0)
-                                        <p  class=" cant_2 font-bold font-roboto">${{number_format($inv_ini_3)}}</p>
+                                        <p style="margin-right:26px;" class=" cant_2 font-bold font-roboto">${{number_format($inv_ini_3)}}</p>
                                     @endif
 
                         </div>
