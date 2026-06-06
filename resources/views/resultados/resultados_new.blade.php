@@ -90,22 +90,22 @@
 <div id="caja_principal" name="caja_principal" class="hidden">
 {{-- principal --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div  class="ancho border_box border-blue-500 rounded-xl flex">
+    <div  class="ancho border_box rounded-xl flex">
 
 
-        <div class="w-1/4 flex justify-center">
+        <div class="w-1/4 flex justify-center  my-3">
             <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
         </div>
 
-        <div class="w-1/3 grid justify-items-left ml-2">
+        <div class="w-1/3 grid justify-items-left ml-2 my-3">
           <div class="w-full">
             <div class="w-full flex">
                 <div id="name_no_print" name="name_no_print" class="w-full flex ">
-                    <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
+                    <label class="info_project" for="">{{ __('index.nombre') }}: </label><p class="info_project_res">&nbsp;{{$tar_ele->name }}</p>
                </div>
 
                <div id="name_print" name="name_print" class="hidden w-full flex ">
-                <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
+                <label class="info_project" for="">{{ __('index.nombre') }}: </label><p class="info_project_res">
                     @if (strlen($tar_ele->name) > 21)
                     {{substr($tar_ele->name, 0, 21)}}...
                     @endif
@@ -117,13 +117,13 @@
                </div>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
+                <label class="info_project" for="">{{ __('index.categoria edificio') }}: </label><p class="info_project_res">&nbsp;{{$tar_ele->cad_edi}}</p>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project_res">{{$tar_ele->tipo_edi}}</p>
+                <label class="info_project" for="">{{ __('index.tipo edificio') }}: </label><p class="info_project_res">&nbsp;{{$tar_ele->tipo_edi}}</p>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project_res">{{number_format($tar_ele->area)}}
+                <label class="info_project" for="">{{ __('index.area') }}: </label><p class="info_project_res">&nbsp;{{number_format($tar_ele->area)}}
                     @if ($tar_ele->unidad == 'mc')
                     m²
                 @endif
@@ -134,44 +134,46 @@
                 </p>
             </div>
             <div class="w-full flex">
-                <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">
-                    @switch($tar_ele->hrs_tiempo)
+
+                    {{-- @switch($tar_ele->hrs_tiempo)
                     @case(30)
-                        {{ __('index.menos de 50 hrs') }}.
+                        &nbsp;{{ __('index.menos de 50 hrs') }}.
                     @break
 
                     @case(80)
-                        {{ __('index.51 a 167 hrs') }}.
+                        &nbsp;{{ __('index.51 a 167 hrs') }}.
                     @break
 
                     @case(168)
-                        168 Hrs.
+                        &nbsp; 168 Hrs.
                     @break
 
                     @default
 
-                @endswitch
-                </p>
+                    @endswitch
+                </p>--}}
+
+                <label class="info_project" for="">Inflacion Anual:</label><p class="info_project_res">&nbsp;{{$tar_ele->inflacion_rate}}%</p>
             </div>
           </div>
         </div>
 
-        <div class="w-1/3 grid justify-left">
+        <div class="w-1/3 grid justify-left my-3">
             <div class="w-full">
                 <div class="w-full flex">
-                    <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">{{$tar_ele->region}}</p>
+                    <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">&nbsp;{{$tar_ele->region}}</p>
                 </div>
                 <div class="w-full flex">
-                    <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">{{$tar_ele->ciudad}}</p>
+                    <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">&nbsp;{{$tar_ele->ciudad}}</p>
                 </div>
                 <div class="w-full flex">
                     <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project_res">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
                 </div>
                 <div class="w-full flex">
-                    <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
+                    <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">&nbsp;{{$tar_ele->costo_elec}} $/Kwh</p>
                 </div>
                 <div class="w-full flex">
-                    <label class="info_project" for="">{{ __('index.incremento anual energia') }}:</label><p class="info_project_res">{{$tar_ele->inflacion}}%</p>
+                    <label class="info_project" for="">{{ __('index.incremento anual energia') }}:</label><p class="info_project_res">&nbsp;{{$tar_ele->inflacion}}%</p>
                 </div>
             </div>
         </div>
@@ -179,42 +181,42 @@
 </div>
 
 <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box border-blue-500 rounded-md grid">
+    <div class="ancho border_box  rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#0D08EE;" class="w-full flex justify-center">
-                <p class="titulos_style">Capacidad (TR) e Inversión</p>
+                <p class="titulos_style">Capacidad Térmica (TR) e Inversión</p>
             </div>
 
-            <div class="flex w-full justify-center my-2">
+            <div style="margin-top:2.3rem;" class="flex w-full justify-center">
                 <div class="w-auto grid justify-items-center">
                     <div class="grid">
                         <img src="{{asset('assets/images/cap_term.PNG')}}" class="img_tr mx-2  margin_top_cap_term">
                     </div>
                 </div>
 
-                    <div class="w-1/3 grid justify-items-start gap-y-2">
-                                <label style="margin-left:60px;" class="solucions_style_name  font-bold">Solución A</label>
+                    <div class="w-1/3 grid justify-items-start gap-y-2 font-roboto">
+                                <label style="margin-left:60px;" class="size_solutions_confort  font-bold">Solución A</label>
                                 <?php  $capacidad1=$smasolutions->sumacap_term($id_project,1) ?>
                                 <p class="cant_2_l font-bold font-roboto">{{$capacidad1}}</p>
                     </div>
 
-                    <div class="w-1/3 grid justify-items-center gap-y-2 ml-2">
+                    <div class="w-1/3 grid justify-items-center gap-y-2 ml-2 font-roboto">
                         <?php  $capacidad2=$smasolutions->sumacap_term($id_project,2) ?>
-                            <label style="margin-right:100px;" class="solucions_style_name  font-bold">Solución B</label>
+                            <label style="margin-right:100px;" class="size_solutions_confort  font-bold">Solución B</label>
                             <p  style="margin-right:100px;" class="font-bold font-roboto cant_2">{{$capacidad2}}</p>
                     </div>
 
 
-                    <div class="w-1/3 grid justify-items-center gap-y-2">
+                    <div class="w-1/3 grid justify-items-center gap-y-2  font-roboto">
                         <?php  $capacidad3=$smasolutions->sumacap_term($id_project,3) ?>
-                            <label class="solucions_style_name  font-bold">Solución C</label>
+                            <label class="size_solutions_confort  font-bold">Solución C</label>
                             <p style="" class="cant_2 font-bold font-roboto">{{$capacidad3}}</p>
 
                     </div>
                 </div>
         </div>
 
-        <div class="w-full grid">
+        <div style="margin-bottom:2.3rem;" class="w-full grid">
             <div class="flex w-full justify-center my-2">
                 <div class="w-auto grid justify-items-center">
                     <div class="grid">
@@ -294,7 +296,7 @@
 </div>
 {{-- Counsumo energia electrica --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box border-blue-500 rounded-md grid">
+    <div class="ancho border_box  rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <p class="titulos_style">Consumo Anual Energía Eléctrica</p>
@@ -355,18 +357,14 @@
             </div>
         </div>
 
-        <div style="margin-top:10px;"  class="flex w-full justify-center ">
+        <div style="margin-top:18px;"  class="flex w-full justify-center ">
             <div class="w-1/7 grid justify-items-center">
                 <div class="place-content-center ">
                     <img src="{{asset('assets/images/pesosjpg.jpg')}}" class="img_tr mx-2 mt-5">
                 </div>
             </div>
+
                 <div class="w-1/3 grid justify-items-start gap-y-2  mt-8">
-
-{{--                         <p style="margin-left:50px;" class="cant_2  font-bold font-roboto">${{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
- --}}
-
-
                     @if (strlen(number_format($sumaopex_1*$tar_ele->costo_elec)) > 9)
                     <p style="margin-left:13px;" class="cant_style_minim font-bold font-roboto">${{number_format($sumaopex_1*$tar_ele->costo_elec)}}</p>
                     @endif
@@ -399,6 +397,154 @@
 
                             @if (strlen(number_format($sumaopex_3*$tar_ele->costo_elec)) <= 9)
                             <p style="margin-right:75px;" class="cant_style font-bold font-roboto">${{number_format($sumaopex_3*$tar_ele->costo_elec)}}</p>
+                            @endif
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+
+            <div style="margin-top:25px;" style="background-color:#fff;" class="mt_titles w-full flex justify-center ">
+                    <p style="color:#0D08EE;" class="titulos_style">Ahorro 1 Año</p>
+            </div>
+            <div class="flex w-full justify-center ">
+            <div class="w-1/7 grid justify-items-center">
+                <div class="place-content-center ">
+                    <img src="{{asset('assets/images/pesosjpg.jpg')}}" class="img_tr mx-2">
+                </div>
+            </div>
+
+            @php
+                $porcent_ahorro15 = $tar_ele->inflacion/100;
+                $suma_tot_15yra = 0;
+                $suma_ahorro15yrb = 0;
+                $suma_ahorro15yrc = 0;
+                $ahorro1yra = 0;
+                $ahorro1yrb = 0;
+                $ahorro1yrc = 0;
+
+                $calcAhorro15 = function ($ahorroAnual, $tasa, $anos = 15) {
+                    $suma = 0;
+                    $valor = $ahorroAnual;
+                    for ($i = 1; $i <= $anos; $i++) {
+                        $suma += $valor;
+                        $valor *= (1 + $tasa);
+                    }
+                    return $suma;
+                };
+
+                if($sumaopex_1*$tar_ele->costo_elec === $sumaopex_2*$tar_ele->costo_elec && $sumaopex_2*$tar_ele->costo_elec === $sumaopex_3*$tar_ele->costo_elec){
+                    $ahorro1yra = 0;
+                    $ahorro1yrb = 0;
+                    $ahorro1yrc = 0;
+                } else if($sumaopex_1*$tar_ele->costo_elec > $sumaopex_2*$tar_ele->costo_elec && $sumaopex_1*$tar_ele->costo_elec > $sumaopex_3*$tar_ele->costo_elec){
+                    $ahorro1yra = 0;
+                    $ahorro1yrb = $sumaopex_1*$tar_ele->costo_elec - $sumaopex_2*$tar_ele->costo_elec;
+                    $ahorro1yrc = $sumaopex_1*$tar_ele->costo_elec - $sumaopex_3*$tar_ele->costo_elec;
+
+                    $suma_ahorro15yrb = $calcAhorro15($ahorro1yrb, $porcent_ahorro15);
+                    $suma_ahorro15yrc = $calcAhorro15($ahorro1yrc, $porcent_ahorro15);
+                } else if($sumaopex_2*$tar_ele->costo_elec > $sumaopex_1*$tar_ele->costo_elec && $sumaopex_2*$tar_ele->costo_elec > $sumaopex_3*$tar_ele->costo_elec){
+                    $ahorro1yra = $sumaopex_2*$tar_ele->costo_elec - $sumaopex_1*$tar_ele->costo_elec;
+                    $ahorro1yrb = 0;
+                    $ahorro1yrc = $sumaopex_2*$tar_ele->costo_elec - $sumaopex_3*$tar_ele->costo_elec;
+
+                    $suma_tot_15yra = $calcAhorro15($ahorro1yra, $porcent_ahorro15);
+                    $suma_ahorro15yrc = $calcAhorro15($ahorro1yrc, $porcent_ahorro15);
+
+                } else if($sumaopex_3*$tar_ele->costo_elec > $sumaopex_1*$tar_ele->costo_elec && $sumaopex_3*$tar_ele->costo_elec > $sumaopex_2*$tar_ele->costo_elec){
+                    $ahorro1yra = $sumaopex_3*$tar_ele->costo_elec - $sumaopex_1*$tar_ele->costo_elec;
+                    $ahorro1yrb = $sumaopex_3*$tar_ele->costo_elec - $sumaopex_2*$tar_ele->costo_elec;
+                    $ahorro1yrc = 0;
+
+                    $suma_tot_15yra = $calcAhorro15($ahorro1yra, $porcent_ahorro15);
+                    $suma_ahorro15yrb = $calcAhorro15($ahorro1yrb, $porcent_ahorro15);
+                }
+            @endphp
+
+                <div class="w-1/3 grid justify-items-start gap-y-2  ">
+                    @if (strlen(number_format($ahorro1yra)) > 9)
+
+                    <p style="margin-left:13px;" class="cant_style_minim font-bold font-roboto">${{number_format($ahorro1yra)}}</p>
+                    @endif
+
+                    @if (strlen(number_format($ahorro1yra)) <= 9)
+                    <p style="margin-left:50px;" class="cant_style font-bold font-roboto">${{number_format($ahorro1yra)}}</p>
+                    @endif
+                </div>
+
+                <div class="w-1/3 grid justify-items-center gap-y-2 ">
+                    @if (strlen(number_format($ahorro1yrb)) > 9)
+                    <p  style="margin-right:100px;" class="cant_style_minim font-bold font-roboto">${{number_format($ahorro1yrb)}}</p>
+                    @endif
+
+                    @if (strlen(number_format($ahorro1yrb)) <= 9)
+                    <p  style="margin-right:95px;" class="cant_style font-bold font-roboto">${{number_format($ahorro1yrb)}}</p>
+                    @endif
+                </div>
+
+                <div class="w-1/3 grid justify-items-center gap-y-2">
+                    <div class="flex w-full justify-center ">
+                        @if ($sumaopex_3  == 0)
+                        <p style="margin-right:40px;" class="cant_style_minim font-bold font-roboto">$0</p>
+                        @endif
+
+                        @if ($sumaopex_3 > 0)
+                            @if (strlen(number_format($ahorro1yrc)) > 9)
+                            <p style="margin-right:30px;" class="cant_style_minim font-bold font-roboto">${{number_format($ahorro1yrc)}}</p>
+                            @endif
+
+                            @if (strlen(number_format($ahorro1yrc)) <= 9)
+                            <p style="margin-right:75px;" class="cant_style font-bold font-roboto">${{number_format($ahorro1yrc)}}</p>
+                            @endif
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top:25px;" class="mt_titles w-full flex justify-center ">
+                    <p style="color:#0D08EE;" class="titulos_style">Ahorro 15 Años</p>
+            </div>
+            <div style="margin-bottom:2.3rem;" class="flex w-full justify-center ">
+            <div class="w-1/7 grid justify-items-center">
+                <div class="place-content-center ">
+                    <img src="{{asset('assets/images/pesosjpg.jpg')}}" class="img_tr mx-2">
+                </div>
+            </div>
+
+                <div class="w-1/3 grid justify-items-start gap-y-2 ">
+                    @if (strlen(number_format($suma_tot_15yra)) > 9)
+                    <p style="margin-left:13px;" class="cant_style_minim font-bold font-roboto">${{number_format($suma_tot_15yra)}}</p>
+                    @endif
+
+                    @if (strlen(number_format($suma_tot_15yra)) <= 9)
+                    <p style="margin-left:50px;" class="cant_style font-bold font-roboto">${{number_format($suma_tot_15yra)}}</p>
+                    @endif
+                </div>
+
+                <div class="w-1/3 grid justify-items-center gap-y-2">
+                    @if (strlen(number_format($suma_ahorro15yrb)) > 9)
+                    <p  style="margin-right:100px;" class="cant_style_minim font-bold font-roboto">${{number_format($suma_ahorro15yrb)}}</p>
+                    @endif
+
+                    @if (strlen(number_format($suma_ahorro15yrb)) <= 9)
+                    <p  style="margin-right:95px;" class="cant_style font-bold font-roboto">${{number_format($suma_ahorro15yrb)}}</p>
+                    @endif
+                </div>
+
+                <div class="w-1/3 grid justify-items-center gap-y-2">
+                    <div class="flex w-full justify-center">
+                        @if ($sumaopex_3  == 0)
+                        <p style="margin-right:40px;" class="cant_style_minim font-bold font-roboto">$0</p>
+                        @endif
+
+                        @if ($sumaopex_3 > 0)
+                            @if (strlen(number_format($suma_ahorro15yrc)) > 9)
+                            <p style="margin-right:30px;" class="cant_style_minim font-bold font-roboto">${{number_format($suma_ahorro15yrc)}}</p>
+                            @endif
+
+                            @if (strlen(number_format($suma_ahorro15yrc)) <= 9)
+                            <p style="margin-right:75px;" class="cant_style font-bold font-roboto">${{number_format($suma_ahorro15yrc)}}</p>
                             @endif
                         @endif
                     </div>
@@ -583,7 +729,7 @@ if($counter == 2){
                     <p class="titulos_style" style="color:#0D08EE;">Reducción Anual del Costo de Energía</p>
                 </div>
 
-                <div class="flex w-full justify-center my-2">
+                <div  class="flex w-full justify-center my-2">
                     <div class="w-1/7 grid justify-items-center">
                         <div class="place-content-center">
                             <img src="{{asset('assets/images/watts.png')}}" class="img_tr mx-2">
@@ -684,57 +830,6 @@ if($counter == 2){
             </div>
 
 
-            <div class="w-full grid ">
-                <div style="background-color:#fff;" class="mt_titles w-full flex justify-center ">
-                    <p style="color:#0D08EE;" class="titulos_style">Descarbonización (Ton CO2/año)</p>
-                </div>
-
-                <div class="flex w-full justify-center my-2">
-                    <div class="w-1/7 grid justify-items-center">
-                        <div class="place-content-center">
-                            <img  style="" src="{{asset('assets/images/Huella.png')}}" class="img_huella mx-2 mb-1">
-                        </div>
-                    </div>
-
-                        <div class="w-1/3 grid justify-items-start gap-y-2  mt-3">
-
-                                <p  class="cant_2_cero_des font-bold font-roboto">0</p>
-                        </div>
-
-                        <div class="w-1/3 grid justify-items-center gap-y-2 mt-3">
-                            <?php  $red_hu_carb_a=$red_ene->red_hu_carb(1,$val_a_red_ene) ?> {{-- se quito  dif y se pego val_b_red_ene --}}
-                            @if ($red_hu_carb_a  < 0)
-                            <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
-                            @endif
-
-                            @if ($red_hu_carb_a  == 0)
-                            <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
-                            @endif
-
-                            @if ($red_hu_carb_a > 0)
-                                @if (strlen(number_format($red_hu_carb_a,2)) > 9)
-                                <p  style="margin-right:50px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
-                                @endif
-
-                                @if (strlen(number_format($red_hu_carb_a,2)) <= 9)
-                                <p  style="margin-right:75px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
-                                @endif
-
-                            @endif
-                        </div>
-
-
-                        <div class="w-1/3 grid justify-items-center gap-y-2">
-                            <div class="flex w-full justify-center">
-                                <?php  $red_hu_carb_b=$red_ene->red_hu_carb(1,$val_b_red_ene) ?>
-                                        <div class="flex w-full justify-center mt-3">
-                                            <p  style="" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_b,2)}}</p>
-                                        </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-
             </div>
 
 
@@ -746,7 +841,7 @@ if($counter == 2){
 {{-- Índice Intensidad del Uso de Energía --}}
 
 {{-- <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box border-blue-500 rounded-md grid">
+    <div class="ancho border_box  rounded-md grid">
 
 
         <div class="w-full grid">
@@ -791,14 +886,14 @@ if($counter == 2){
 
 {{-- Índice Intensidad del Uso de Energía --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box border-blue-500 rounded-md grid">
+    <div class="ancho border_box  rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <p class="titulos_style">Índice Intensidad del Uso de Energía (Kbtu/ft²)</p>
             </div>
         </div>
 
-        <div class="flex w-full justify-center gap-x-3">
+        <div style="margin-top:1.5rem;" class="flex w-full justify-center gap-x-3 ">
             <div class="flex w-1/2 justify-center text-[24px] m-1">
                 <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
                 <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}"  class="energy_star_style_img mx-2 mt-5" alt="Nano Degree">
@@ -858,6 +953,79 @@ if($counter == 2){
                 <div class="hidden" id="eui_sol_b_print" name="eui_sol_b_print"></div>
             </div>
     </div>
+
+
+    <div class="w-full grid ">
+                <div style="background-color:#fff;" class="mt_titles w-full flex justify-center ">
+                    <p style="color:#0D08EE;" class="titulos_style">Descarbonización (Ton CO2/año)</p>
+                </div>
+
+                <div style="margin-bottom:2.3rem;" class="flex w-full justify-center">
+                    <div class="w-1/7 grid justify-items-center">
+                        <div class="place-content-center">
+                            <img  style="" src="{{asset('assets/images/Huella.png')}}" class="img_huella mx-4 mb-1">
+                        </div>
+                    </div>
+
+                        <div style="margin-left:6.5rem;" class="w-1/3 grid justify-items-start gap-y-2  mt-3">
+
+
+                                  <?php  $red_hu_carb_base=$red_ene->red_hu_carb(1,$val_base_red_ene) ?> {{-- se quito  dif y se pego val_b_red_ene --}}
+                            @if ($red_hu_carb_base  < 0)
+                            <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_base,2)}}</p>
+                            @endif
+
+                            @if ($red_hu_carb_base  == 0)
+                            <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_base,2)}}</p>
+                            @endif
+
+                            @if ($red_hu_carb_base > 0)
+                                @if (strlen(number_format($red_hu_carb_base,2)) > 9)
+                                <p  style="margin-right:50px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_base,2)}}</p>
+                                @endif
+
+                                @if (strlen(number_format($red_hu_carb_base,2)) <= 9)
+                                <p  style="margin-right:75px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_base,2)}}</p>
+                                @endif
+
+                            @endif
+                        </div>
+
+                        <div class="w-1/3 grid justify-items-center gap-y-2 mt-3">
+                            <?php  $red_hu_carb_a=$red_ene->red_hu_carb(1,$val_a_red_ene) ?> {{-- se quito  dif y se pego val_b_red_ene --}}
+                            @if ($red_hu_carb_a  < 0)
+                            <p  style="margin-right:150px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                            @endif
+
+                            @if ($red_hu_carb_a  == 0)
+                            <p  style="margin-right:150px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                            @endif
+
+                            @if ($red_hu_carb_a > 0)
+                                @if (strlen(number_format($red_hu_carb_a,2)) > 9)
+                                <p  style="margin-right:150px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                                @endif
+
+                                @if (strlen(number_format($red_hu_carb_a,2)) <= 9)
+                                <p  style="margin-right:150px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                                @endif
+
+                            @endif
+                        </div>
+
+
+                        <div class="w-1/3 grid justify-items-center gap-y-2">
+                            <div class="flex w-full justify-center">
+                                <?php  $red_hu_carb_b=$red_ene->red_hu_carb(1,$val_b_red_ene) ?>
+                                        <div class="flex w-full justify-center mt-3">
+                                            <p  style="" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_b,2)}}</p>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
     </div>
 </div>
 <div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:230px;" >
@@ -866,7 +1034,7 @@ if($counter == 2){
 
     {{-- principal --}}
     <div id="principal_hoja_2" name="principal_hoja_2" class="hidden w-full grid rounded-md justify-items-center mt-3">
-        <div  class="ancho border_box border-blue-500 rounded-md flex">
+        <div  class="ancho border_box  rounded-md flex">
 
 
             <div class="w-1/4 flex justify-center">
@@ -956,7 +1124,7 @@ if($counter == 2){
 <a id="ir_modal_position_prod" name="ir_modal_position_prod" href=""></a>
 {{-- Nivel de Confort --}}
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box border-blue-500 rounded-md grid">
+    <div class="ancho border_box  rounded-md grid">
       <div class="w-full grid">
               <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                   <p class="titulos_style">{{ __('results.niv_conf') }}</p>
@@ -965,11 +1133,11 @@ if($counter == 2){
       <?php  $conf_val_base=$conf_val->conf_val($id_project,1,1,$sumacap_term_1); ?>
       <?php  $conf_val_a=$conf_val->conf_val($id_project,2,1,$sumacap_term_2);?>
       <?php  $conf_val_b=$conf_val->conf_val($id_project,3,1,$sumacap_term_3) ?>
-      <div class="flex w-full justify-center gap-x-3 mb-8">
+      <div style="margin-bottom:3.3rem;" class="flex w-full justify-center gap-x-3">
 
               {{--  --}}
               <div class="w-full grid mb-0 gap-y-5">
-                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg" style="margin-top:1.3rem;">
+                      <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg" style="margin-top:3.3rem;">
                           <div style="width: 8.666667%"></div>
                           <div class="w-1/5 flex justify-start">
                           {{--  <div class="ml-10 flex w-full mt-5"> --}}
@@ -1085,7 +1253,7 @@ if($counter == 2){
 
 
 {{-- <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
+    <div class="ancho border-2  rounded-md grid">
 
     </div>
 </div> --}}
@@ -1093,7 +1261,7 @@ if($counter == 2){
 
  @if ($prim_buil_check->id_cat_edifico == 3 || $prim_buil_check->id_cat_edifico == 7 || $prim_buil_check->id_cat_edifico == 8 || $prim_buil_check->id_cat_edifico == 9 || $prim_buil_check->id_cat_edifico == 10 || $prim_buil_check->id_cat_edifico == 11)
               {{--       <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-                        <div class="ancho border_box border-blue-500 rounded-md grid">
+                        <div class="ancho border_box  rounded-md grid">
                           <div class="w-full flex">
                                   <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                                     <div class="flex w-full justify-center mt-1">
@@ -1144,7 +1312,7 @@ if($counter == 2){
 
 
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box border-blue-500 rounded-md grid">
+    <div class="ancho border_box  rounded-md grid">
       <div class="w-full flex">
               <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <div class="flex w-full justify-center place-items-center">
@@ -1159,7 +1327,7 @@ if($counter == 2){
 
       </div>
 
-      <div class="grid w-full justify-items-center gap-x-3 my-2">
+      <div style="margin-top:2.3rem;" class="grid w-full justify-items-center gap-x-3">
 
         <div class="flex w-full justify-center">
             <div  class="padding_space_white flex justify-center">
@@ -1204,14 +1372,14 @@ if($counter == 2){
       </div>
 
 
-      <div class="w-full grid mb-1">
+      <div class="w-full grid mb-4 mt-5">
         <div style="background-color:#fff;" class="w-full flex justify-center">
             <div  class="flex w-full justify-center mb-1">
-                <p class="solucions_style_name" style="color:#0D08EE;">Reducción Anual de Costo Salarial</p>
+                <p class="solucions_style_name" style="color:#0D08EE;">Ahorro Anual por Costos Salariales</p>
             </div>
           </div>
 
-          <div class="flex w-full justify-center">
+          <div style="margin-bottom:1.3rem;" class="flex w-full justify-center">
             <div class="w-1/8 grid justify-items-center gap-y-3">
                 <div class="flex jusfity-center w-full">
                     <img  src="{{asset('assets/images/pesos_personas.jpg')}}" class="img_prod_lab mx-2 mt-0 ml-5">
@@ -1430,7 +1598,7 @@ if($counter == 2){
 {{-- espacio hoja pagina 3 --}}
 {{-- principal --}}
 <div id="principal_hoja_4" name="principal_hoja_4" class="hidden w-full grid rounded-md justify-items-center mt-3">
-    <div  class="ancho border_box border-blue-500 rounded-md flex">
+    <div  class="ancho border_box  rounded-md flex">
 
 
         <div class="w-1/4 flex justify-center">
@@ -1521,7 +1689,7 @@ if($counter == 2){
 <?php  $dif_2_cost=$smasolutions->dif_2_cost($id_project,count($results_aux),$tar_ele->costo_elec) ?>
  {{-- payback --}}
  <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border-2 border-blue-500 rounded-md grid">
+    <div class="ancho rounded-md grid border_box">
       <div class="w-full grid">
         <div style="background-color:#0D08EE;" class="w-full flex justify-center">
             <div class="flex w-full justify-center place-items-center">
@@ -1532,9 +1700,9 @@ if($counter == 2){
             </div>
         </div>
 
-              <div class="w-full grid">
-                <div class="w-full flex justify-center mt-5">
-                        <p class="solucions_style_nameno_azul">Recuperación - Solo Energía</p>
+              <div style="margin-top:2.3rem;" class="w-full grid ">
+                <div class="w-full flex justify-center">
+                        <p class="solucions_style_nameno_azul">Recuperación por Ahorro Energetico</p>
                 </div>
 
                 <div class="w-full flex">
@@ -1554,7 +1722,7 @@ if($counter == 2){
 
                         </div>
 {{-- {{$val_base_red_ene}}_{{$val_a_red_ene}}_{{$val_b_red_ene}} --}}
-                        <div style="" class="flex w-full justify-center gap-x-3 mb-5">
+                        <div style="" class="flex w-full justify-center gap-x-3 mb-8">
 
                             <div style="" class="flex justify-start w-[30%]  my-1 place-items-center">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
@@ -1573,8 +1741,7 @@ if($counter == 2){
                             <div   class="flex  rounded-md justify-center w-1/4  ">
                                 <div  class="grid justify-items-center  rounded-md place-items-center">
                                   <div style="" class="w-full mx-3 my-1 flex justify-center">
-{{--                                     <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;"  class="payback_cants_green rounded-md font-roboto font-bold rounded-md padding_pay">N/A</b>
- --}}
+
                                                 @if ( true == ( isset( $val_base_red_ene ) ? $val_base_red_ene : null ) )
 
                                                 @if($val_base_red_ene === 0)
@@ -1637,7 +1804,7 @@ if($counter == 2){
 
                         </div>
 
-                        <div style="margin-top: 0.4rem" class="flex w-full justify-center gap-x-3 mb-5">
+                        <div style="margin-top: 0.4rem" class="flex w-full justify-center gap-x-3 mb-10">
 
                             <div  class="flex justify-start  w-[30%]  my-1 place-items-center">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
@@ -1722,7 +1889,7 @@ if($counter == 2){
 
                         </div>
 
-                        <div style="margin-top: 0.4rem" class="flex w-full justify-center gap-x-3 mb-3">
+                        <div style="margin-top: 0.4rem" class="flex w-full justify-center gap-x-3 mb-10">
 
                             <div  class="flex justify-start  w-[30%] place-items-center my-1">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución C</b>
@@ -1941,9 +2108,9 @@ if($counter == 2){
 
 
                 <div class="w-full flex justify-center  margin-top-recuperacion-energia-productividad">
-                    <p class="solucions_style_nameno_azul  ">Recuperación - Energía + Productividad</p>
+                    <p class="solucions_style_nameno_azul  ">Recuperación por Energía + Productividad</p>
                 </div>
-                <div class="w-full flex">
+                <div style="margin-bottom:2.3rem;" class="w-full flex">
                     <div class="w-1/2 grid h-full">
 
                         <div class="flex w-full justify-start gap-x-3 mb-3">
@@ -1960,7 +2127,7 @@ if($counter == 2){
 
                         </div>
 
-                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-8">
 
                             <div  class="flex justify-start w-[30%] place-items-center my-1">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
@@ -2021,7 +2188,7 @@ if($counter == 2){
                                     <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
                                     @else
                                         @if ($pay_back_base_ene_prod > 1)
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_base_ene_prod),1}}</b>
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_base_ene_prod,1)}}</b>
                                         @endif
                                         @if ($pay_back_base_ene_prod < 1)
                                         <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay"> < 1 </b>
@@ -2038,7 +2205,7 @@ if($counter == 2){
 
                         </div>
 
-                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-8">
 
                             <div  class="flex justify-start w-[30%] place-items-center  my-1">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
@@ -2133,7 +2300,7 @@ $costo_b
 
                         </div>
 
-                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-8">
 
                             <div  class="flex justify-start w-[30%] place-items-center my-1">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución C</b>
@@ -2337,7 +2504,7 @@ $costo_b
 
 {{-- <div class="w-full grid rounded-md justify-items-center mt-3">
 
-    <div class="ancho border_box border-blue-500 rounded-md grid">
+    <div class="ancho border_box  rounded-md grid">
 
 
         <div class="w-full flex grid">
@@ -2397,7 +2564,7 @@ $costo_b
 
 {{-- MARR --}}
 {{-- <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box border-blue-500 rounded-md grid">
+    <div class="ancho border_box  rounded-md grid">
 
         <div class="w-full grid">
             <div style="background-color:#0D08EE;" class="w-full flex justify-center">
@@ -2448,7 +2615,7 @@ $costo_b
 
 {{-- principal --}}
 <div id="principal_hoja_5" name="principal_hoja_5" class="hidden w-full grid rounded-md justify-items-center mt-3">
-    <div  class="ancho border_box border-blue-500 rounded-md flex">
+    <div  class="ancho border_box  rounded-md flex">
 
 
         <div class="w-1/4 flex justify-center">
@@ -2535,7 +2702,7 @@ $costo_b
 </div>
 {{-- Costo Ciclo de Vida --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box border-blue-500 rounded-md grid">
+    <div class="ancho border_box  rounded-md grid">
 
         <div class="w-full grid">
             <div style="background-color:#0D08EE;" class="w-full flex justify-center">
@@ -2545,7 +2712,7 @@ $costo_b
             </div>
         </div>
 
-        <div class="w-full flex justify-start font-roboto font-bold mt-3">
+        <div style="margin-top:2.3rem;" class="w-full flex justify-start font-roboto font-bold">
                 <div class="w-1/3 flex ml-10 mt-3 gap-x-2">
                     <div class="ml-10 flex justify-start">
                         <label style="color:#0D08EE;" class="size_solutions_confort">Año</label>
@@ -2593,11 +2760,11 @@ $costo_b
                 </div>
             </div>
 
-            <div class="w-full grid gap-y-1">
+            <div style="margin-bottom:2.3rem;" class="w-full grid gap-y-1">
                 <div class="w-full flex">
                     <div class="flex justify-between w-1/2 gap-x-5">
                         <b style="color:#0D08EE;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución C</b>
-                      <label style="color:#0D124F;" class="text-2xl font-roboto font-bold mr-10" id="costo_ciclo_vida_c"></label>
+                      <label style="color:#0D124F;" class="text-3xl font-roboto font-bold ml-5" id="costo_ciclo_vida_c"></label>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
@@ -2617,7 +2784,7 @@ $costo_b
 
 {{-- capex vs opex --}}
 {{-- <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box border-blue-500 rounded-md grid">
+    <div class="ancho border_box  rounded-md grid">
 
         <div class="w-full grid">
             <div style="background-color:#0D08EE;" class="w-full flex justify-center">
@@ -2663,7 +2830,7 @@ $costo_b
 
 {{-- principal --}}
 <div id="principal_hoja_6" name="principal_hoja_6" class="hidden w-full grid rounded-md justify-items-center mt-3">
-        <div  class="ancho border_box border-blue-500 rounded-md flex">
+        <div  class="ancho border_box  rounded-md flex">
 
 
             <div class="w-1/4 flex justify-center">
@@ -2750,7 +2917,7 @@ $costo_b
 </div>
 {{-- res_ana_ener --}}
 <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box border-blue-500 rounded-md grid">
+    <div class="ancho border_box  rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <p class="titulos_style">Soluciones - Enfriamiento</p>
@@ -5770,11 +5937,11 @@ $.ajax({
       name:'Energía (OPEX)',
       data: [0,res[0],0,0]
     },{
-      name:'Mantenimiento (OPEX)',
-      data: [0,res[1],0,0]
-    },{
       name:'Reparaciones',
       data: [0,0,parseInt(res[3]),0]
+    },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,0,res[1],0]
     },{
       name:'Total',
       data: [0,0,0,total]
@@ -5822,7 +5989,7 @@ $.ajax({
       },
     } */,
     xaxis: {
-      categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía (OPEX)', 'Reparaciones  y Mantenimiento (OPEX)','Total'],
       labels: {
             hideOverlappingLabels: true,
             style: {
@@ -5858,7 +6025,7 @@ $.ajax({
     },
     fill: {
       opacity: 1,
-      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
+      colors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
 
     },
     legend: {
@@ -5873,7 +6040,7 @@ $.ajax({
       height: 12,
       strokeWidth: 0,
       strokeColor: '#fff',
-      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
+      fillColors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
       radius: 12,
       customHTML: undefined,
       onClick: undefined,
@@ -5912,11 +6079,11 @@ $.ajax({
       name:'Energía (OPEX)',
       data: [0,res[0],0,0]
     },{
-      name:'Mantenimiento (OPEX)',
-      data: [0,res[1],0,0]
-    },{
       name:'Reparaciones',
       data: [0,0,parseInt(res[3]),0]
+    },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,0,res[1],0]
     },{
       name:'Total',
       data: [0,0,0,total]
@@ -5964,7 +6131,7 @@ $.ajax({
       },
     }, */
     xaxis: {
-      categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
+    categories: ['Suministro e Instalación (CAPEX)', 'Energía (OPEX)', 'Reparaciones  y Mantenimiento (OPEX)','Total'],
       labels: {
             hideOverlappingLabels: true,
             style: {
@@ -6000,7 +6167,7 @@ $.ajax({
     },
     fill: {
       opacity: 1,
-      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
+      colors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
 
     },
     legend: {
@@ -6015,7 +6182,7 @@ $.ajax({
       height: 12,
       strokeWidth: 0,
       strokeColor: '#fff',
-      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
+      fillColors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
       radius: 12,
       customHTML: undefined,
       onClick: undefined,
@@ -6054,11 +6221,11 @@ $.ajax({
       name:'Energía (OPEX)',
       data: [0,res[0],0,0]
     },{
-      name:'Mantenimiento (OPEX)',
-      data: [0,res[1],0,0]
-    },{
       name:'Reparaciones',
       data: [0,0,parseInt(res[3]),0]
+    },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,0,res[1],0]
     },{
       name:'Total',
       data: [0,0,0,total]
@@ -6106,7 +6273,7 @@ $.ajax({
       },
     }, */
     xaxis: {
-      categories: ['Suministro e Instalación (CAPEX)', 'Energía y Mantenimiento (OPEX)', 'Reparaciones','Total'],
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía (OPEX)', 'Reparaciones  y Mantenimiento (OPEX)','Total'],
       labels: {
             hideOverlappingLabels: true,
             style: {
@@ -6142,7 +6309,7 @@ $.ajax({
     },
     fill: {
       opacity: 1,
-      colors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
+      colors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
 
     },
     legend: {
@@ -6157,7 +6324,7 @@ $.ajax({
       height: 12,
       strokeWidth: 0,
       strokeColor: '#fff',
-      fillColors: ['rgb(0, 143, 251)', '#7668af','rgb(146, 133, 201)','#ff00ff','#ed8936'],
+      fillColors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
       radius: 12,
       customHTML: undefined,
       onClick: undefined,

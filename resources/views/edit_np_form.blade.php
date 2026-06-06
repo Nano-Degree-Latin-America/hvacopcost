@@ -27,7 +27,7 @@
         <div class="grid w-full" id="sol_1_1" name="sol_1_1">
         <input type="text" name="pais" id="pais" class="hidden">
         <input type="text" name="ciudad" id="ciudad" class="hidden">
-       <div class="flex w-full ">
+       <div  style="background-color: #ffffffc0;" class="flex w-full ">
         <div class="w-full  mt-2 mx-2  rounded-md shadow-xl">
           <div class="w-full grid gap-y-1 my-2 ">
             <div class="flex w-full  gap-x-1">
@@ -359,7 +359,7 @@
         <div class="flex">
         <div class="rounded-xl mt-2 bg-transparent rounded-md shadow-xl mx-2">
           <div class="grid gap-y-1 my-2">
-            <div class="flex w-full">
+            <div style="background-color: #ffffffc0;" class="flex w-full ">
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
                     <input type="text" value="" class="hidden" id="action_submit_1_2" name="action_submit_1_2">
                     <div class="w-1/3 flex justify-start text-left">
@@ -983,7 +983,7 @@
         <div class="border-r-2 border-l-2 border-blue-500" id="2_border_bottom" name="2_border_bottom">
 
 
-        <div class="grid w-full">
+        <div style="background-color: #ffffffc0;" class="grid w-full ">
 
             <div class="flex">
                 <div class="w-full mx-2 mt-2 bg-transparent rounded-md shadow-md">
@@ -1297,7 +1297,7 @@
         <div class="mx-2">
             <hr>
         </div>
-        <div class="flex">
+        <div style="background-color: #ffffffc0;" class="flex ">
             <div class=" mt-2  mx-2 bg-transparent rounded-md shadow-md">
               <div class="grid gap-y-1 my-2">
                 <div class="flex w-full gap-x-1">
@@ -1930,7 +1930,7 @@
         <div class="border-r-2 border-l-2 border-color-inps" id="3_border_bottom" name="3_border_bottom">
 
 
-         <div class="grid w-full">
+         <div style="background-color: #ffffffc0;" class="grid w-full ">
 
             <div class="flex">
                 <div class="w-full mx-2 mt-2 bg-transparent rounded-md shadow-md">
@@ -2242,7 +2242,7 @@
         <div class="mx-2">
             <hr>
         </div>
-        <div class="flex w-full">
+        <div style="background-color: #ffffffc0;" class="flex w-full ">
             <div class="mx-2 bg-transparent rounded-md shadow-md w-full  mt-2">
               <div class="grid gap-y-1 my-2">
                 <div class="flex w-full">

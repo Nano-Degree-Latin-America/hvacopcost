@@ -25,8 +25,8 @@
         <input type="text" name="pais" id="pais" class="hidden">
         <input type="text" name="ciudad" id="ciudad" class="hidden">
 
-       <div class="flex w-full ">
-        <div class="w-full  mt-2 mx-2 rounded-md shadow-xl">
+       <div style="background-color: #ffffffc0;" class="flex w-full">
+        <div class="w-full bg-[##ffffffd1] mt-2 mx-2 rounded-md shadow-xl">
           <div class="grid gap-y-1 my-2 ">
             <div class="flex w-full">
 
@@ -317,13 +317,13 @@
                 </div>
 
                 <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                    <div class="w-1/3 flex justify-start text-left">
+                    {{-- <div class="w-1/3 flex justify-start text-left">
                         <label  class="labels" for=""><b>{{ __('index.costo anual') }}</b> </label>
                     </div>
 
                     <div class="w-1/2 flex justify-start">
                         <input type="text" style="margin-left: 2px;" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-color-inps rounded-md py-1 text-center"  name="maintenance_cost_1_1" id="maintenance_cost_1_1" >
-                    </div>
+                    </div> --}}
                 </div>
 
 
@@ -614,12 +614,12 @@
                     </div>
 
                     <div class="w-full flex gap-x-2 justify-start">
-                        <div class="flex">
+                        {{-- <div class="flex">
                             <input type="text" style="margin-left: 2.5px;" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-color-inps rounded-md py-2 text-center"  name="maintenance_cost_1_2" id="maintenance_cost_1_2" >
                         </div>
                         <div class="flex justify-end">
                             <button onclick="inactive_display('sol_1')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -924,13 +924,13 @@
                         </div>
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                            <div class="w-1/3 flex justify-start text-left">
+                            {{-- <div class="w-1/3 flex justify-start text-left">
                                 <label class="labels" for=""><b>{{ __('index.costo anual') }}</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
                                 <input type="text" style="margin-left: 3px;" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-color-inps rounded-md py-1 text-center"  name="maintenance_cost_2_1" id="maintenance_cost_2_1" >
-                            </div>
+                            </div> --}}
                         </div>
 
 
@@ -1214,12 +1214,12 @@
                         </div>
 
                         <div class="w-full flex gap-x-2 justify-start">
-                            <div class="flex">
+                            {{-- <div class="flex">
                                 <input type="text" onchange="format_num(this.value,this.id);" class="2xl:w-full xl:w-full xl:w-full lg:w-3/6 border-2 border-color-inps rounded-md py-2 text-center"  name="maintenance_cost_2_2" id="maintenance_cost_2_2" >
                             </div>
                             <div class="flex justify-end">
                                 <button onclick="inactive_display('sol_2')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -1527,13 +1527,13 @@
                         </div>
 
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                            <div class="w-1/3 flex justify-start text-left">
+                           {{--  <div class="w-1/3 flex justify-start text-left">
                                 <label class="labels" for=""><b>{{ __('index.costo anual') }}</b> </label>
                             </div>
 
                             <div class="w-1/2 flex justify-start">
                                 <input type="text" tyle="margin-left: 2px;" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-color-inps rounded-md py-1 text-center"   name="maintenance_cost_3_1" id="maintenance_cost_3_1" >
-                            </div>
+                            </div> --}}
                         </div>
 
 
@@ -1812,12 +1812,12 @@
                         </div>
 
                         <div class="w-full flex gap-x-2 justify-start">
-                            <div class="flex">
+                            {{-- <div class="flex">
                                 <input type="text" style="margin-left: 2.5px;" onchange="format_num(this.value,this.id);" class="2xl:xl:w-full xl:w-full lg:w-3/6 border-2 border-color-inps rounded-md py-2 text-center"  name="maintenance_cost_3_2" id="maintenance_cost_3_2" >
                             </div>
                             <div class="flex justify-end">
                                 <button onclick="inactive_display('sol_3')" type="button" class="py-1 px-3 border-2 border-red-500 rounded-md mr-5 text-xl text-orange-400 mt-1 hover:text-white hover:bg-orange-400"><i class="fa-solid fa-trash"></i></button>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

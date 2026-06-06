@@ -15,7 +15,7 @@
 
 
                                         <div class="my-5">
-                                            <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight" for="">{{ __('index.análisis energético y financiero') }} <br> {{ __('index.de sistemas HVAC') }} <p id="type_project_name" name="type_project_name"></p></label>
+                                            <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight" for="">Simulador Energético y Financiero <br> de Proyectos de HVAC <label id="type_project_name" name="type_project_name"></label></label>
                                         </div>
                                      <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-1">
 
