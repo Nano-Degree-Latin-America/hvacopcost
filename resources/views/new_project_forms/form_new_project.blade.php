@@ -25,7 +25,7 @@
         <input type="text" name="pais" id="pais" class="hidden">
         <input type="text" name="ciudad" id="ciudad" class="hidden">
 
-       <div class="flex w-full ">
+       <div style="background-color: #ffffffc0;" class="flex w-full">
         <div class="w-full bg-[##ffffffd1] mt-2 mx-2 rounded-md shadow-xl">
           <div class="grid gap-y-1 my-2 ">
             <div class="flex w-full">

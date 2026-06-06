@@ -27,7 +27,7 @@
          </div> --}}
 
             <div class="my-5">
-                <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight" for="">Simulador Energético y Financiero <br> de Proyectos de HVAC Nuevos{{-- <p id="type_project_name" name="type_project_name"></p> --}}</label>
+                <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight" for="">Simulador Energético y Financiero <br> de Proyectos de HVAC <label id="type_project_name" name="type_project_name"></label></label>
             </div>
          <div class="w-full {{-- rounded-xl border-2 border-blue-500 --}} mt-1">
 
@@ -73,8 +73,7 @@
                             <div class="flex w-full">
                                 <label  class="labels_index text-left font-roboto font-bold text-left" for=""><b>{{ __('index.incremento anual energia') }}</b></label><label class="text-red-500 text-left"></label>
                             </div>
-{{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-color-inps rounded-md p-1 my-1 font-roboto" >
---}}                         <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="inc_ene" id="inc_ene">
+                         <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="inc_ene" id="inc_ene">
                                     @for ($i = 0; $i <= 15; $i++)
                                     <option value="{{$i}}">{{$i}}%</option>
                                     @endfor
@@ -86,8 +85,8 @@
                             <div class="flex w-full">
                                 <label  class="labels_index font-roboto font-bold text-left" for=""><b>{{ __('index.inflacion anual') }}:</b></label><label class="text-red-500">*</label>
                             </div>
-{{--                                                     <input onkeypress="return soloNumeros(event)" onchange="check_input(this.value,this.id,'inc_ene_warning');" name="inc_ene" id="inc_ene" type="text" style="font-size: 14px;" class="w-full border-2  border-color-inps rounded-md p-1 my-1 font-roboto" >
---}}                                                    <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="inflation_rate" id="inflation_rate">
+
+                            <select  onchange="check_input(this.value,this.id,'inc_ene_warning');" class="w-1/2 border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="inflation_rate" id="inflation_rate">
                                     @for ($i = 0; $i <= 15; $i++)
                                     <option value="{{$i}}">{{$i}}%</option>
                                     @endfor
