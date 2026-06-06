@@ -3304,6 +3304,7 @@ public function red_en_mw_grafic($dif,$dif_2){
         }
 
         if($type_project == 1){
+            //$costo_mantenimiento = $val_aprox->val_aprox*$porcent;
             $costo_mantenimiento = $val_aprox->val_aprox*$porcent;
         }
 
@@ -3312,21 +3313,24 @@ public function red_en_mw_grafic($dif,$dif_2){
         }
 
 
-        $porcent_to_calculate_yrs_inflacion = 1+($inflacion_rate_aux/100);
+        $porcent_to_calculate_yrs_inflacion = $inflacion;
         $costo_mantenimiento_aux = $costo_mantenimiento;
 
         for ($i = 2; $i <= intval($yrs_ciclo_vida); $i++) {
+
             $costo_mant_inflacion_anual = $costo_mantenimiento_aux*$porcent_to_calculate_yrs_inflacion;
             $costo_mantenimiento_aux = $costo_mant_inflacion_anual;
         }
 
         //REPARACIONES
-        $reparaciones = $costo_mantenimiento*(1/5);
+        $reparaciones = $costo_mantenimiento/5;
+
         $reparaciones_aux = $reparaciones;
         for ($i = 2; $i <= intval($yrs_ciclo_vida); $i++) {
-            $reparaciones_inflacion_anual = $reparaciones_aux*$porcent_to_calculate_yrs_inflacion;
+            $reparaciones_inflacion_anual = $reparaciones_aux/(pow(1-0.02,$i));
             $reparaciones_aux = $reparaciones_inflacion_anual;
         }
+
         //cost_an_re_anual
         $cost_an_re_aux = $cost_an_re;
         for ($i = 2; $i <= intval($yrs_ciclo_vida); $i++) {

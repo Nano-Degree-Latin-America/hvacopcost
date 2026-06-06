@@ -1242,16 +1242,16 @@ async function set_filtraciones_no_doa(value) {
             $('#display_nuevo_retrofit_edit').addClass("hidden"); //forms editar
             $('#display_nuevo_project_edit').removeClass("hidden"); //forms editar
             //mantenimiento
-           /*  $('#mantenimiento_form_project').addClass("hidden");
-            $('#'+mant_p).addClass("hidden");
+            /* $('#mantenimiento_form_project').addClass("hidden");
+            $('#'+mant_p).addClass("hidden"); */
             $('#simulaciones_update').addClass("hidden");
             $('#ene_fin_pro_hvac_update').removeClass("hidden");
             $('#mant_prev').addClass("hidden");
-            $('#img_mantenimiento').addClass("hidden");
+            /* $('#img_mantenimiento').addClass("hidden");
             $('#button_sigiuente_mantenimiento').addClass("hidden"); */
 
 
-            $('#type_project_name').text('Nuevo');
+            $('#type_project_name').text('Nuevos');
 
 
             type_p.value = 1;
@@ -1294,7 +1294,7 @@ async function set_filtraciones_no_doa(value) {
             $('#forms_ene_fin_proy_edit').removeClass("hidden");  //forms editar
             $('#display_nuevo_retrofit_edit').addClass("hidden"); //forms editar
             $('#display_nuevo_project_edit').removeClass("hidden"); //forms editar
-
+            $('#type_project_name').text('Retrofit');
            /*  $('#'+mant_p).addClass("hidden");
             $('#mantenimiento_form_project').addClass("hidden");
             $('#mant_prev').addClass("hidden");
@@ -1427,7 +1427,7 @@ async function set_filtraciones_no_doa(value) {
 
         $('#type_p').val(1);
         $('#forms_cal_pre').addClass("hidden");
-        $('#type_project_name').text('Nuevo');
+        $('#type_project_name').text('Nuevos');
         calcular_p_n.removeClass("hidden");
         calcular_p_r.addClass("hidden");
         $('#display_mant').addClass("hidden");
@@ -13920,8 +13920,10 @@ function back_begin(){
 
     $('#simulaciones_update').removeClass("hidden");
     $('#ene_fin_pro_hvac_update').addClass("hidden");
-    $('#img_ene_fin_proy_hvac').removeClass("hidden");
-    $('#img_mantenimiento').addClass("hidden");
+    $('#div_left_simulaciones').removeClass("col-2");
+
+    $('#div_left_simulaciones').addClass("col-6");
+    $('#eslogan').removeClass("hidden");
     //$('#mantenimiento_form_project').addClass("hidden");
 
 
@@ -16692,6 +16694,7 @@ function calcular_speendplan_base_update(id_project){
  }
 
  function show_buttons_type_project(type){
+
     if(type == 1 || type == 2){
         $('#buttons_energy').removeClass('hidden');
         $('#buttons_mantainance').addClass('hidden');

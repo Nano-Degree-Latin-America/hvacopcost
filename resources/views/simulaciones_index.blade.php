@@ -1,7 +1,7 @@
 <div class="col-5 ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 h-full justify-items-center">
 
 
-    <div style="margin-top:14rem;margin-left:12rem;" class="w-full flex justify-center">
+    <div style="margin-top:11rem;margin-left:12rem;" class="w-full flex justify-center">
         <div style="width:70%" class="grid gap-y-5">
             <div class="grid  w-full">
                 <div class="w-full grid justify-center gap-y-8 mt-2 mb-3">

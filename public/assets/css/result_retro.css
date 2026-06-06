@@ -31,7 +31,15 @@
 
         .border_box{
             border:2px solid;
+            border-color: #0D08EE !important;
          }
+
+         .solucions_style_nameno_azul {
+            font-size: 2.25rem;
+            color: #0D08EE;
+            font-weight: bold;
+            font-family: 'ABeeZee', sans-serif;
+        }
 
         .info_project_res{
             font-size: 20px;
@@ -47,11 +55,15 @@
 
 
          .titulos_style{
-            font-size:2.25rem;
+            font-size:2.5rem;
             color: white;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
          }
+
+          .margin-top-recuperacion-energia-productividad{
+            margin-top: 2.5rem /* 40px */
+        }
 
          .solucions_style_name{
             font-size: 2.25rem;
@@ -61,14 +73,14 @@
         }
 
         .cant_style{
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
         }
 
         .cant_style_minim{
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -381,6 +393,10 @@
     font-family: 'ABeeZee', sans-serif;
     font-weight: bold;
   }
+
+  .margin-top-recuperacion-energia-productividad{
+            margin-top: .5rem /* 40px */
+        }
 
      .margin_sols_leyend_chart_1{
             margin-left:20px;
@@ -1059,7 +1075,7 @@
            }
 
            .titulos_style{
-            font-size:2.25rem;
+            font-size:2.5rem;
             color: white;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -1073,8 +1089,8 @@
         }
 
         .img_tr{
-            height:68px;
-            width:63px;
+            height:78px;
+            width:73px;
         }
 
         .margin_top_cap_term{
@@ -1099,7 +1115,7 @@
         }
 
         .cant_style{
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;

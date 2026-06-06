@@ -66,7 +66,7 @@
         }
 
         .cant_style_minim{
-            font-size: 2.8rem;
+            font-size: 3rem;
             color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -172,6 +172,7 @@
 
          .border_box{
             border:2px solid;
+            border-color: #0D08EE !important;
          }
 
          .img_persona{
@@ -189,8 +190,8 @@
          }
 
          .img_huella{
-            height:90px;
-            width:85px;
+            height:85px;
+            width:80px;
          }
 
 
@@ -287,7 +288,7 @@
         }
 
         .mt_titles{
-            margin-top:2.5rem;
+            margin-top:3rem;
         }
 
         .padding_na{
@@ -845,18 +846,18 @@
             }
 
             .cant_2_l{
-            font-size:2.3rem;
+            font-size:2rem;
             color:#0D124F;
             margin-left:90px;
             }
 
             .cant_2{
-            font-size:2.3rem;
+            font-size:2rem;
             color:#0D124F;
             }
 
             .capex_a{
-            font-size:2.3rem;
+            font-size:2rem;
             color:#0D124F;
             margin-left:40px;
             }
@@ -1123,7 +1124,7 @@
            }
 
            .titulos_style{
-            font-size:2.25rem;
+            font-size:2.5rem;
             color: white;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -1170,7 +1171,7 @@
         }
 
         .cant_style{
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;

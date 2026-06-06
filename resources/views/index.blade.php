@@ -1182,6 +1182,7 @@ input[type=number]::-webkit-outer-spin-button {
 @media (min-width: 1760px) {
             .labels{
                 font-size:14px;
+                color:#0D08EE !important;"
             }
             .ancho{
                 width:100%;
@@ -1244,6 +1245,7 @@ input[type=number]::-webkit-outer-spin-button {
 
     .labels{
         font-size:14px;
+        color:#0D08EE !important;"
     }
     .ancho{
         width:100%;
