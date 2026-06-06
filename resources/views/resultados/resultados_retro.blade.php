@@ -284,7 +284,14 @@
                                     <?php $inv_ini_3=0?>
                                      <input type="number" class="hidden" id="inv_ini_3" name="inv_ini_3" value="{{$inv_ini_3}}">
                                     @endif
-                            <p  class="margin-cero-capex-b cant_2 font-bold font-roboto">${{number_format($inv_ini_3)}}</p>
+                                    @if ($inv_ini_3 == 0)
+                                        <p  class="margin-cero-capex-b cant_2 font-bold font-roboto">${{number_format($inv_ini_3)}}</p>
+                                    @endif
+
+                                     @if ($inv_ini_3 != 0)
+                                        <p  class=" cant_2 font-bold font-roboto">${{number_format($inv_ini_3)}}</p>
+                                    @endif
+
                         </div>
 
                     </div>
