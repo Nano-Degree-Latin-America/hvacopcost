@@ -181,16 +181,16 @@
 </div>
 
 <div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box  rounded-md grid">
+    <div class="ancho border_box rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#0D08EE;" class="w-full flex justify-center">
                 <p class="titulos_style">Capacidad Térmica (TR) e Inversión</p>
             </div>
 
-            <div style="margin-top:2.3rem;" class="flex w-full justify-center">
+            <div class="flex w-full justify-center margn-top-cards">
                 <div class="w-auto grid justify-items-center">
                     <div class="grid">
-                        <img src="{{asset('assets/images/cap_term.PNG')}}" class="img_tr mx-2  margin_top_cap_term">
+                        <img src="{{asset('assets/images/cap_term.PNG')}}" class="img_tr mx-2 margin_top_cap_term">
                     </div>
                 </div>
 
@@ -216,7 +216,7 @@
                 </div>
         </div>
 
-        <div style="margin-bottom:2.3rem;" class="w-full grid">
+        <div class="w-full grid margn-bottom-cards">
             <div class="flex w-full justify-center my-2">
                 <div class="w-auto grid justify-items-center">
                     <div class="grid">
@@ -303,7 +303,7 @@
             </div>
         </div>
 
-        <div style="margin-top:40px;" id="div_consumo_anual_energia_electrica" class="w-full flex justify-center">
+        <div id="div_consumo_anual_energia_electrica" class="w-full flex justify-center margin-top-consumo-anual">
             <div class="grid w-1/3">
 
                 <div class="flex w-full ">
@@ -505,7 +505,7 @@
             <div style="margin-top:25px;" class="mt_titles w-full flex justify-center ">
                     <p style="color:#0D08EE;" class="titulos_style">Ahorro 15 Años</p>
             </div>
-            <div style="margin-bottom:2.3rem;" class="flex w-full justify-center ">
+            <div class="flex w-full justify-center margn-bottom-cards">
             <div class="w-1/7 grid justify-items-center">
                 <div class="place-content-center ">
                     <img src="{{asset('assets/images/pesosjpg.jpg')}}" class="img_tr mx-2">
@@ -883,156 +883,11 @@ if($counter == 2){
     </div>
 </div> --}}
 {{-- espacio --}}
-
-{{-- Índice Intensidad del Uso de Energía --}}
-<div class="w-full grid rounded-md justify-items-center mt-3">
-    <div class="ancho border_box  rounded-md grid">
-        <div class="w-full grid">
-            <div style="background-color:#0D08EE;" class="w-full flex justify-center">
-                <p class="titulos_style">Índice Intensidad del Uso de Energía (Kbtu/ft²)</p>
-            </div>
-        </div>
-
-        <div style="margin-top:1.5rem;" class="flex w-full justify-center gap-x-3 ">
-            <div class="flex w-1/2 justify-center text-[24px] m-1">
-                <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
-                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}"  class="energy_star_style_img mx-2 mt-5" alt="Nano Degree">
-                <b class="eui_energy_style">EUI - Energy Star</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{number_format($energy_star,1)}}</b>
-            </div>
-
-            <div class="flex w-1/2 justify-center text-[24px] m-1">
-                <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
-                <img src="{{asset('/assets/images/Logo-ASHRAE-png.png')}}" class="ashrae_style_img" alt="Nano Degree">
-                <b class="eui_energy_style">EUI - ASHRAE</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{$ashrae}}</b>
-            </div>
-        </div>
-
-        <div class="flex w-full justify-center mb-1">
-            <div class="w-1/3 grid justify-items-center">
-                {{-- <div class="flex justify-center w-full">
-                    <label class="solucions_style_name">Base</label>
-                </div> --}}
-                @if ($result1 ==! null)
-                <?php  $valor_eui_base=$smasolutions->valor_eui_aux($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                @endif
-                @if ($result1 === null)
-                <?php  $valor_eui_base=0 ?>
-                @endif
-                <div id="eui_sol_base" name="eui_sol_base"></div>
-                <div class="hidden" id="eui_sol_base_print" name="eui_sol_base_print"></div>
-            </div>
-            {{-- sumaopex_2
-            sumaopex_3 --}}
-            <div class="w-1/3 grid justify-items-center">
-                {{-- <div class="flex justify-center w-full">
-                    <label class="solucions_style_name">A</label>
-                </div> --}}
-                @if ($result2 ==! null)
-                <?php  $valor_eui_a=$smasolutions->valor_eui_aux($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                @endif
-
-                @if ($result2 === null)
-                <?php  $valor_eui_a=0; ?>
-                @endif
-                <div id="eui_sol_a" name="eui_sol_a"></div>
-                <div class="hidden" id="eui_sol_a_print" name="eui_sol_a_print"></div>
-
-            </div>
-            <div class="w-1/3 grid justify-items-center">
-                {{-- <div class="flex justify-center w-full">
-                    <label class="solucions_style_name">B</label>
-                </div> --}}
-                @if ($result3 ==! null)
-                <?php  $valor_eui_b=$smasolutions->valor_eui_aux($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
-                @endif
-
-                @if ($result3 === null)
-                <?php $valor_eui_b = 0; ?>
-                @endif
-                <div id="eui_sol_b" name="eui_sol_b"></div>
-                <div class="hidden" id="eui_sol_b_print" name="eui_sol_b_print"></div>
-            </div>
-    </div>
-
-
-    <div class="w-full grid ">
-                <div style="background-color:#fff;" class="mt_titles w-full flex justify-center ">
-                    <p style="color:#0D08EE;" class="titulos_style">Descarbonización (Ton CO2/año)</p>
-                </div>
-
-                <div style="margin-bottom:2.3rem;" class="flex w-full justify-center">
-                    <div class="w-1/7 grid justify-items-center">
-                        <div class="place-content-center">
-                            <img  style="" src="{{asset('assets/images/Huella.png')}}" class="img_huella mx-4 mb-1">
-                        </div>
-                    </div>
-
-                        <div style="margin-left:6.5rem;" class="w-1/3 grid justify-items-start gap-y-2  mt-3">
-
-
-                                  <?php  $red_hu_carb_base=$red_ene->red_hu_carb(1,$val_base_red_ene) ?> {{-- se quito  dif y se pego val_b_red_ene --}}
-                            @if ($red_hu_carb_base  < 0)
-                            <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_base,2)}}</p>
-                            @endif
-
-                            @if ($red_hu_carb_base  == 0)
-                            <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_base,2)}}</p>
-                            @endif
-
-                            @if ($red_hu_carb_base > 0)
-                                @if (strlen(number_format($red_hu_carb_base,2)) > 9)
-                                <p  style="margin-right:50px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_base,2)}}</p>
-                                @endif
-
-                                @if (strlen(number_format($red_hu_carb_base,2)) <= 9)
-                                <p  style="margin-right:75px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_base,2)}}</p>
-                                @endif
-
-                            @endif
-                        </div>
-
-                        <div class="w-1/3 grid justify-items-center gap-y-2 mt-3">
-                            <?php  $red_hu_carb_a=$red_ene->red_hu_carb(1,$val_a_red_ene) ?> {{-- se quito  dif y se pego val_b_red_ene --}}
-                            @if ($red_hu_carb_a  < 0)
-                            <p  style="margin-right:150px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
-                            @endif
-
-                            @if ($red_hu_carb_a  == 0)
-                            <p  style="margin-right:150px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
-                            @endif
-
-                            @if ($red_hu_carb_a > 0)
-                                @if (strlen(number_format($red_hu_carb_a,2)) > 9)
-                                <p  style="margin-right:150px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
-                                @endif
-
-                                @if (strlen(number_format($red_hu_carb_a,2)) <= 9)
-                                <p  style="margin-right:150px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
-                                @endif
-
-                            @endif
-                        </div>
-
-
-                        <div class="w-1/3 grid justify-items-center gap-y-2">
-                            <div class="flex w-full justify-center">
-                                <?php  $red_hu_carb_b=$red_ene->red_hu_carb(1,$val_b_red_ene) ?>
-                                        <div class="flex w-full justify-center mt-3">
-                                            <p  style="" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_b,2)}}</p>
-                                        </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-
-
-    </div>
-</div>
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:230px;" >
+<div id="espacio_pagina" name="espacio_pagina" class="hidden" style="width:100%; height:210px;" >
 
 </div>
 
-    {{-- principal --}}
+{{-- principal --}}
     <div id="principal_hoja_2" name="principal_hoja_2" class="hidden w-full grid rounded-md justify-items-center mt-3">
         <div  class="ancho border_box  rounded-md flex">
 
@@ -1120,6 +975,150 @@ if($counter == 2){
     </div>
 </div>
 
+{{-- Índice Intensidad del Uso de Energía --}}
+<div class="w-full grid rounded-md justify-items-center mt-3">
+    <div class="ancho border_box  rounded-md grid">
+        <div class="w-full grid">
+            <div style="background-color:#0D08EE;" class="w-full flex justify-center">
+                <p class="titulos_style">Índice Intensidad del Uso de Energía (Kbtu/ft²)</p>
+            </div>
+        </div>
+
+        <div style="margin-top:1.5rem;" class="flex w-full justify-center gap-x-3 ">
+            <div class="flex w-1/2 justify-center text-[24px] m-1">
+                <?php  $energy_star=$smasolutions->energy_star($id_project) ?>
+                <img src="{{asset('/assets/images/Energy-Star-Logo.png')}}"  class="energy_star_style_img mx-2 mt-5" alt="Nano Degree">
+                <b class="eui_energy_style">EUI - Energy Star</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{number_format($energy_star,1)}}</b>
+            </div>
+
+            <div class="flex w-1/2 justify-center text-[24px] m-1">
+                <?php  $ashrae=$smasolutions->ashrae($id_project) ?>
+                <img src="{{asset('/assets/images/Logo-ASHRAE-png.png')}}" class="ashrae_style_img" alt="Nano Degree">
+                <b class="eui_energy_style">EUI - ASHRAE</b><b style="color:#33cc33;" class="eui_energy_val_style">&nbsp;{{$ashrae}}</b>
+            </div>
+        </div>
+
+        <div class="flex w-full justify-center mb-1">
+            <div class="w-1/3 grid justify-items-center">
+                {{-- <div class="flex justify-center w-full">
+                    <label class="solucions_style_name">Base</label>
+                </div> --}}
+                @if ($result1 ==! null)
+                <?php  $valor_eui_base=$smasolutions->valor_eui_aux($sumaopex_1,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                @endif
+                @if ($result1 === null)
+                <?php  $valor_eui_base=0 ?>
+                @endif
+                <div id="eui_sol_base" name="eui_sol_base"></div>
+                <div class="hidden" id="eui_sol_base_print" name="eui_sol_base_print"></div>
+            </div>
+            {{-- sumaopex_2
+            sumaopex_3 --}}
+            <div class="w-1/3 grid justify-items-center">
+                {{-- <div class="flex justify-center w-full">
+                    <label class="solucions_style_name">A</label>
+                </div> --}}
+                @if ($result2 ==! null)
+                <?php  $valor_eui_a=$smasolutions->valor_eui_aux($sumaopex_2,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                @endif
+
+                @if ($result2 === null)
+                <?php  $valor_eui_a=0; ?>
+                @endif
+                <div id="eui_sol_a" name="eui_sol_a"></div>
+                <div class="hidden" id="eui_sol_a_print" name="eui_sol_a_print"></div>
+
+            </div>
+            <div class="w-1/3 grid justify-items-center">
+                {{-- <div class="flex justify-center w-full">
+                    <label class="solucions_style_name">B</label>
+                </div> --}}
+                @if ($result3 ==! null)
+                <?php  $valor_eui_b=$smasolutions->valor_eui_aux($sumaopex_3,$tar_ele->costo_elec,$tar_ele->area,$tar_ele->porcent_hvac,$energy_star,$tar_ele->unidad) ?>
+                @endif
+
+                @if ($result3 === null)
+                <?php $valor_eui_b = 0; ?>
+                @endif
+                <div id="eui_sol_b" name="eui_sol_b"></div>
+                <div class="hidden" id="eui_sol_b_print" name="eui_sol_b_print"></div>
+            </div>
+    </div>
+
+
+    <div class="w-full grid ">
+                <div style="background-color:#fff;" class="mt_titles w-full flex justify-center ">
+                    <p style="color:#0D08EE;" class="titulos_style">Descarbonización (Ton CO2/año)</p>
+                </div>
+
+                <div class="flex w-full justify-center margn-bottom-cards">
+                    <div class="w-1/7 grid justify-items-center">
+                        <div class="place-content-center">
+                            <img  style="" src="{{asset('assets/images/Huella.png')}}" class="img_huella mx-4 mb-1">
+                        </div>
+                    </div>
+
+                        <div style="margin-left:6.5rem;" class="w-1/3 grid justify-items-start gap-y-2  mt-3">
+
+
+                                  <?php  $red_hu_carb_base=$red_ene->red_hu_carb(1,$val_base_red_ene) ?> {{-- se quito  dif y se pego val_b_red_ene --}}
+                            @if ($red_hu_carb_base  < 0)
+                            <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_base,2)}}</p>
+                            @endif
+
+                            @if ($red_hu_carb_base  == 0)
+                            <p  style="margin-right:30px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_base,2)}}</p>
+                            @endif
+
+                            @if ($red_hu_carb_base > 0)
+                                @if (strlen(number_format($red_hu_carb_base,2)) > 9)
+                                <p  style="margin-right:50px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_base,2)}}</p>
+                                @endif
+
+                                @if (strlen(number_format($red_hu_carb_base,2)) <= 9)
+                                <p  style="margin-right:75px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_base,2)}}</p>
+                                @endif
+
+                            @endif
+                        </div>
+
+                        <div class="w-1/3 grid justify-items-center gap-y-2 mt-3">
+                            <?php  $red_hu_carb_a=$red_ene->red_hu_carb(1,$val_a_red_ene) ?> {{-- se quito  dif y se pego val_b_red_ene --}}
+                            @if ($red_hu_carb_a  < 0)
+                            <p  style="margin-right:150px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                            @endif
+
+                            @if ($red_hu_carb_a  == 0)
+                            <p  style="margin-right:150px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                            @endif
+
+                            @if ($red_hu_carb_a > 0)
+                                @if (strlen(number_format($red_hu_carb_a,2)) > 9)
+                                <p  style="margin-right:150px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                                @endif
+
+                                @if (strlen(number_format($red_hu_carb_a,2)) <= 9)
+                                <p  style="margin-right:150px;" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_a,2)}}</p>
+                                @endif
+
+                            @endif
+                        </div>
+
+
+                        <div class="w-1/3 grid justify-items-center gap-y-2">
+                            <div class="flex w-full justify-center">
+                                <?php  $red_hu_carb_b=$red_ene->red_hu_carb(1,$val_b_red_ene) ?>
+                                        <div class="flex w-full justify-center mt-3">
+                                            <p  style="" class="cant_2 font-bold font-roboto">{{number_format($red_hu_carb_b,2)}}</p>
+                                        </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+    </div>
+</div>
 
 <a id="ir_modal_position_prod" name="ir_modal_position_prod" href=""></a>
 {{-- Nivel de Confort --}}
@@ -1310,6 +1309,97 @@ if($counter == 2){
 </div> --}}
 @endif
 
+<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:230px;" >
+
+</div>
+
+{{-- principal --}}
+    <div id="principal_hoja" name="principal_hoja" class="hidden w-full grid rounded-md justify-items-center mt-3">
+        <div  class="ancho border_box  rounded-md flex">
+
+
+            <div class="w-1/4 flex justify-center">
+                <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+            </div>
+
+            <div class="w-1/3 grid justify-left ml-2">
+                <div class="w-full flex ">
+                    <div id="name_no_print" name="name_no_print" class="w-full flex ">
+                        <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
+                   </div>
+
+                   <div id="name_print" name="name_print" class="hidden w-full flex ">
+                    <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
+                        @if (strlen($tar_ele->name) > 21)
+                        {{substr($tar_ele->name, 0, 21)}}...
+                        @endif
+
+                        @if (strlen($tar_ele->name) < 21)
+                        {{$tar_ele->name}}
+                        @endif
+                        </p>
+                   </div>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project_res">{{$tar_ele->tipo_edi}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project_res">{{number_format($tar_ele->area)}}
+                        @if ($tar_ele->unidad == 'mc')
+                        m²
+                    @endif
+
+                    @if ($tar_ele->unidad == 'ft')
+                    ft²
+                    @endif
+                    </p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">
+                        @switch($tar_ele->hrs_tiempo)
+                            @case(30)
+                                {{ __('index.menos de 50 hrs') }}.
+                            @break
+
+                            @case(80)
+                                {{ __('index.51 a 167 hrs') }}.
+                            @break
+
+                            @case(168)
+                                168 Hrs.
+                            @break
+
+                            @default
+
+                        @endswitch
+                    </p>
+                </div>
+            </div>
+
+            <div class="w-1/3 grid justify-left">
+                <div class="w-full">
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">{{$tar_ele->region}}</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">{{$tar_ele->ciudad}}</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project_res">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.incremento anual energia') }}:</label><p class="info_project_res">{{$tar_ele->inflacion}}%</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
 
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box  rounded-md grid">
@@ -1327,7 +1417,7 @@ if($counter == 2){
 
       </div>
 
-      <div style="margin-top:2.3rem;" class="grid w-full justify-items-center gap-x-3">
+      <div class="grid w-full justify-items-center gap-x-3 margn-top-cards">
 
         <div class="flex w-full justify-center">
             <div  class="padding_space_white flex justify-center">
@@ -1700,7 +1790,7 @@ if($counter == 2){
             </div>
         </div>
 
-              <div style="margin-top:2.3rem;" class="w-full grid ">
+              <div class="w-full grid margn-top-cards">
                 <div class="w-full flex justify-center">
                         <p class="solucions_style_nameno_azul">Recuperación por Ahorro Energetico</p>
                 </div>
@@ -2110,7 +2200,7 @@ if($counter == 2){
                 <div class="w-full flex justify-center  margin-top-recuperacion-energia-productividad">
                     <p class="solucions_style_nameno_azul  ">Recuperación por Energía + Productividad</p>
                 </div>
-                <div style="margin-bottom:2.3rem;" class="w-full flex">
+                <div class="w-full flex margn-bottom-cards">
                     <div class="w-1/2 grid h-full">
 
                         <div class="flex w-full justify-start gap-x-3 mb-3">
@@ -2608,7 +2698,7 @@ $costo_b
 </div> --}}
 
 {{-- espacio hoja pagina 5 --}}
-<div id="next_page_5" name="next_page_5" style="width: 80%; height:510px;" class="hidden">
+<div id="next_page_5" name="next_page_5" style="width: 80%; height:110px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 5 --}}
@@ -2712,7 +2802,7 @@ $costo_b
             </div>
         </div>
 
-        <div style="margin-top:2.3rem;" class="w-full flex justify-start font-roboto font-bold">
+        <div class="w-full flex justify-start font-roboto font-bold margn-top-cards">
                 <div class="w-1/3 flex ml-10 mt-3 gap-x-2">
                     <div class="ml-10 flex justify-start">
                         <label style="color:#0D08EE;" class="size_solutions_confort">Año</label>
@@ -2731,12 +2821,12 @@ $costo_b
                 <div class="w-full flex">
                     <div class="flex justify-between w-1/2 gap-x-5">
                        <b style="color:#0D08EE;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
-                       <label style="color:#0D124F;" class="text-3xl font-roboto font-bold ml-5" id="costo_ciclo_vida_a"></label>
+                       <label style="color:#0D124F;" class="total_text_sizes font-roboto font-bold ml-5" id="costo_ciclo_vida_a"></label>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
                     <div id="chart_ciclo_vida_a" name="chart_ciclo_vida_a" style="width:90%;"></div>
-                    <div class="hidden w-full" id="chart_ciclo_vida_a_print" name="chart_ciclo_vida_a_print" ></div>
+                    <div class="hidden w-full" id="chart_ciclo_vida_a_print" name="chart_ciclo_vida_a_print"></div>
                 </div>
             </div>
             <div class="w-full grid gap-y-1">
@@ -2751,7 +2841,7 @@ $costo_b
                 <div class="w-full flex">
                     <div class="flex justify-between w-1/2 gap-x-5">
                        <b style="color:#0D08EE;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
-                       <label style="color:#0D124F;" class="text-3xl font-roboto font-bold ml-5" id="costo_ciclo_vida_b"></label>
+                       <label style="color:#0D124F;" class="total_text_sizes font-roboto font-bold ml-5" id="costo_ciclo_vida_b"></label>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
@@ -2760,11 +2850,11 @@ $costo_b
                 </div>
             </div>
 
-            <div style="margin-bottom:2.3rem;" class="w-full grid gap-y-1">
+            <div class="w-full grid gap-y-1 margn-bottom-cards">
                 <div class="w-full flex">
                     <div class="flex justify-between w-1/2 gap-x-5">
                         <b style="color:#0D08EE;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución C</b>
-                      <label style="color:#0D124F;" class="text-3xl font-roboto font-bold ml-5" id="costo_ciclo_vida_c"></label>
+                      <label style="color:#0D124F;" class="total_text_sizes font-roboto font-bold ml-5" id="costo_ciclo_vida_c"></label>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
@@ -4060,6 +4150,7 @@ $costo_b
         var prod_size_font_message = 20;
         var prod_size_grafic_width = 15;
         var ciclo_vida_size_xaxis = '14px'
+
     }
 
     if(screenWidth == 1920 ){
@@ -4079,6 +4170,7 @@ $costo_b
         var prod_size_font_message = 30;
         var prod_size_grafic_width = 20;
         var ciclo_vida_size_xaxis = '16px'
+         var ciclo_vida_size_xaxis_print = '11px'
     }
 
 
@@ -4179,10 +4271,15 @@ window.matchMedia('print').addListener((event)=>{
 });
 
 function send_print(){
+        ciclo_vida_a_print('{{$id_project}}');
+        ciclo_vida_b_print('{{$id_project}}');
+        ciclo_vida_c_print('{{$id_project}}');
+
 
     $("#button_prod").addClass("hidden");
     $("#button_marrr").addClass("hidden");
     $("#navbar").addClass("hidden");
+    $("#principal_hoja").removeClass("hidden");
     $("#principal_hoja_2").removeClass("hidden");
     $("#principal_hoja_3").removeClass("hidden");
     $("#principal_hoja_4").removeClass("hidden");
@@ -4219,9 +4316,9 @@ function send_print(){
     $("#chart_15_print").width(380).height(200);
     $("#chart_1").width(500).height(210);
     $("#chart_2").width(500).height(210);
-    $("#chart_ciclo_vida_a_print").width(380).height(200);
-    $("#chart_ciclo_vida_b_print").width(380).height(200);
-    $("#chart_ciclo_vida_c_print").width(380).height(200);
+    $("#chart_ciclo_vida_a_print").width(730).height(100);
+    $("#chart_ciclo_vida_b_print").width(730).height(100);
+    $("#chart_ciclo_vida_c_print").width(730).height(100);
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
@@ -4238,9 +4335,7 @@ function send_print(){
     $("#chart_5_print").removeClass("hidden");
     $("#chart_10_print").removeClass("hidden");
     $("#chart_15_print").removeClass("hidden");
-    $("#chart_ciclo_vida_a_print").removeClass("hidden");
-    $("#chart_ciclo_vida_b_print").removeClass("hidden");
-    $("#chart_ciclo_vida_c_print").removeClass("hidden");
+
     $('#chart_3').addClass("hidden");
     $("#chart_5").addClass("hidden");
     $('#chart_10').addClass("hidden");
@@ -4252,6 +4347,7 @@ function send_print(){
     $("#chart_cu_sho_Be_a").addClass("hidden");
     $('#chart_cu_sho_Be_b').addClass("hidden");
     $("#espacio_pagina_1").removeClass("hidden");
+    $("#espacio_pagina").removeClass("hidden");
     $('#eui_sol_base_print').removeClass("hidden");
     $("#eui_sol_a_print").removeClass("hidden");
     $('#eui_sol_b_print').removeClass("hidden");
@@ -4262,6 +4358,9 @@ function send_print(){
     $('#chart_roi_base_b_print').removeClass("hidden");
     $('#chart_roi_base_a').addClass("hidden");
     $("#chart_roi_base_b").addClass("hidden");
+    $("#chart_ciclo_vida_a_print").removeClass("hidden");
+    $("#chart_ciclo_vida_b_print").removeClass("hidden");
+    $("#chart_ciclo_vida_c_print").removeClass("hidden");
 
     $("#chart_roi_base_a_ene_prod_print").removeClass("hidden");
     $('#chart_roi_base_b_ene_prod_print').removeClass("hidden");
@@ -4272,7 +4371,7 @@ function send_print(){
     chart_prod_b_print();
      setTimeout(function() {
         window.print();
-}, 3000);
+}, 3500);
 
 }
 
@@ -4319,17 +4418,18 @@ $(document).ready(function() {
 
         console.log(`Resolución de pantalla: ${screenWidth} x ${screenHeight}`);
         console.log(`Tamaño de ventana: ${windowWidth} x ${windowHeight}`);
-    red_ene_print('{{$dif_1}}','{{$dif_2}}');
-    descarb_print('{{$dif_1}}','{{$dif_2}}');
-    cap_op_3_print('{{$id_project}}','{{$tar_ele->unidad}}');
-    cap_op_5_print('{{$id_project}}','{{$tar_ele->unidad}}');
-    cap_op_10_print('{{$id_project}}','{{$tar_ele->unidad}}');
-    cap_op_15_print('{{$id_project}}','{{$tar_ele->unidad}}');
+        red_ene_print('{{$dif_1}}','{{$dif_2}}');
+        descarb_print('{{$dif_1}}','{{$dif_2}}');
+        ciclo_vida_a('{{$id_project}}');
+        ciclo_vida_b('{{$id_project}}');
+        ciclo_vida_c('{{$id_project}}');
+        /* cap_op_3_print('{{$id_project}}','{{$tar_ele->unidad}}');
+        cap_op_5_print('{{$id_project}}','{{$tar_ele->unidad}}');
+        cap_op_10_print('{{$id_project}}','{{$tar_ele->unidad}}');
+        cap_op_15_print('{{$id_project}}','{{$tar_ele->unidad}}'); */
     /* chart_1();
     chart_2(); */
-    ciclo_vida_a('{{$id_project}}');
-    ciclo_vida_b('{{$id_project}}');
-    ciclo_vida_c('{{$id_project}}');
+
     //chart_red_anu_cos_sal();
     google.charts.setOnLoadCallback(chart_base_eui_print);
     google.charts.setOnLoadCallback(chart_a_eui_print);
@@ -6060,6 +6160,148 @@ $.ajax({
 
 }
 
+function ciclo_vida_a_print(id_project){
+    var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
+    var area = "{{ $tar_ele->area }}";
+    var capex = '{{ $inv_ini_1 }}'
+$.ajax({
+    type: 'get',
+    url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 1,
+    success: function (res) {
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
+    var costo = document.getElementById('costo_ciclo_vida_a').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var options = {
+      series: [{
+      name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
+      data: [capex]
+    },{
+      name:'Energía (OPEX)',
+      data: [0,res[0],0,0]
+    },{
+      name:'Reparaciones',
+      data: [0,0,parseInt(res[3]),0]
+    },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,0,res[1],0]
+    },{
+      name:'Total',
+      data: [0,0,0,total]
+    }],
+      chart: {
+      type: 'bar',
+      height: 300,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '12px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    }/* ,
+    title: {
+      text: 'Solución A',
+      align: 'left',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '26px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    } */,
+    xaxis: {
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía (OPEX)', 'Reparaciones  y Mantenimiento (OPEX)','Total'],
+      labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: '11px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-xaxis-label',
+            },
+
+        },
+    },
+    yaxis: {
+        labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: ciclo_vida_size_xaxis_print,
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+            maxWidth: 200,
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            return "$"+val
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '11px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_ciclo_vida_a_print"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
 function ciclo_vida_b(id_project){
     var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
     var area = "{{ $tar_ele->area }}";
@@ -6202,6 +6444,148 @@ $.ajax({
 
 }
 
+function ciclo_vida_b_print(id_project){
+    var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
+    var area = "{{ $tar_ele->area }}";
+    var capex = '{{ $inv_ini_2 }}'
+$.ajax({
+    type: 'get',
+    url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 2,
+    success: function (res) {
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
+    var costo = document.getElementById('costo_ciclo_vida_b').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var options = {
+      series: [{
+      name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
+      data: [capex]
+    },{
+      name:'Energía (OPEX)',
+      data: [0,res[0],0,0]
+    },{
+      name:'Reparaciones',
+      data: [0,0,parseInt(res[3]),0]
+    },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,0,res[1],0]
+    },{
+      name:'Total',
+      data: [0,0,0,total]
+    }],
+      chart: {
+      type: 'bar',
+      height: 300,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '12px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    }/* ,
+    title: {
+      text: 'Solución A',
+      align: 'left',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '26px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    } */,
+    xaxis: {
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía (OPEX)', 'Reparaciones  y Mantenimiento (OPEX)','Total'],
+      labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: '11px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-xaxis-label',
+            },
+
+        },
+    },
+    yaxis: {
+        labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: ciclo_vida_size_xaxis_print,
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+            maxWidth: 200,
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            return "$"+val
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '11px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_ciclo_vida_b_print"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
 function ciclo_vida_c(id_project){
     var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
     var area = "{{ $tar_ele->area }}";
@@ -6335,6 +6719,148 @@ $.ajax({
     };
 
     var chart = new ApexCharts(document.querySelector("#chart_ciclo_vida_c"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+
+}
+
+function ciclo_vida_c_print(id_project){
+    var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
+    var area = "{{ $tar_ele->area }}";
+    var capex = '{{ $inv_ini_3 }}'
+$.ajax({
+    type: 'get',
+    url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 2,
+    success: function (res) {
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
+    var costo = document.getElementById('costo_ciclo_vida_c').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var options = {
+      series: [{
+      name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
+      data: [capex]
+    },{
+      name:'Energía (OPEX)',
+      data: [0,res[0],0,0]
+    },{
+      name:'Reparaciones',
+      data: [0,0,parseInt(res[3]),0]
+    },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,0,res[1],0]
+    },{
+      name:'Total',
+      data: [0,0,0,total]
+    }],
+      chart: {
+      type: 'bar',
+      height: 300,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '12px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    }/* ,
+    title: {
+      text: 'Solución A',
+      align: 'left',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '26px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    } */,
+    xaxis: {
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía (OPEX)', 'Reparaciones  y Mantenimiento (OPEX)','Total'],
+      labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: '11px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-xaxis-label',
+            },
+
+        },
+    },
+    yaxis: {
+        labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: ciclo_vida_size_xaxis_print,
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+            maxWidth: 200,
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            return "$"+val
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '11px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_ciclo_vida_c_print"), options);
     chart.render();
     },
     error: function (responsetext) {
