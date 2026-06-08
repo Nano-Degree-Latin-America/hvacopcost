@@ -17,16 +17,16 @@
 
 
     </div>
-    <div class="w-1/3 my-6 mr-2 flex justify-end h-1/3 gap-x-3">
+    <div class="w-1/3 mt-5 mr-2 flex justify-end gap-x-3">
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
 
 
-    <button  title="Inicio" class="bg-transparent mx-1 px-3 py-2 rounded-md hover:bg-blue-900 font-roboto action:bg-blue-600" onclick="window.location.href='/home'"><i style="color:#0D08EE;" class="text-4xl fas fa-arrow-left"></i></button>
+    <button style="height:50px;" title="Inicio" class="bg-transparent mx-1 px-3 py-2 rounded-md hover:bg-blue-900 font-roboto action:bg-blue-600" onclick="window.location.href='/home'"><i style="color:#0D08EE;" class="text-4xl fas fa-arrow-left"></i></button>
 
-    <button class="p-1 bg-transparent rounded-md hover:bg-blue-900 text-[#0D08EE] font-roboto action:bg-transparent" onclick="window.location.href='/mis_projectos'"><img src="{{asset('/assets/images/mis_proyectos.png')}}" title="Mis Proyectos" style="max-height: 40px; width:40px;;"></button>
+    <button style="height:50px;"  class="p-1 bg-transparent rounded-md hover:bg-blue-900 text-[#0D08EE] font-roboto action:bg-transparent" onclick="window.location.href='/mis_projectos'"><img src="{{asset('/assets/images/mis_proyectos.png')}}" title="Mis Proyectos" style="max-height: 40px; width:40px;;"></button>
 
 
-    <a class="p-1 bg-transparent rounded-md hover:bg-blue-900 text-[#0D08EE] font-roboto action:bg-transparent grid place-content-center"  href="{{ route('cerrar_session') }}"
+    <a style="height:50px;"  class="p-1 bg-transparent rounded-md hover:bg-blue-900 text-[#0D08EE] font-roboto action:bg-transparent grid place-content-center"  href="{{ route('cerrar_session') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
                <i style="color:#0D08EE;" title="Cerrar Sesión" class="fas fa-sign-out-alt text-4xl"></i>
