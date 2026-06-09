@@ -2807,7 +2807,7 @@ $costo_b
                     <div class="ml-10 flex justify-start">
                         <label style="color:#0D08EE;" class="size_solutions_confort">Año</label>
                     </div>
-                    <select style="width:100px;" name="yrs_ciclo_vida" id="yrs_ciclo_vida" onchange="ciclo_vida_a('{{ $id_project }}')" class="border-2 rounded-md py-2 border-color-inps text-xl text-center">
+                    <select style="width:100px;" name="yrs_ciclo_vida" id="yrs_ciclo_vida" onchange="ciclos_vida('{{ $id_project }}')" class="border-2 rounded-md py-2 border-color-inps text-xl text-center">
                             <option value="3">3</option>
                             <option value="5">5</option>
                             <option value="10">10</option>
@@ -2821,7 +2821,7 @@ $costo_b
                 <div class="w-full flex">
                     <div class="flex justify-between w-1/2 gap-x-5">
                        <b style="color:#0D08EE;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
-                       <label style="color:#0D124F;" class="total_text_sizes font-roboto font-bold ml-5" id="costo_ciclo_vida_a"></label>
+                       <label style="color:#0D124F;" class="total_text_size font-roboto font-bold ml-5" id="costo_ciclo_vida_a"></label>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
@@ -2841,7 +2841,7 @@ $costo_b
                 <div class="w-full flex">
                     <div class="flex justify-between w-1/2 gap-x-5">
                        <b style="color:#0D08EE;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
-                       <label style="color:#0D124F;" class="total_text_sizes font-roboto font-bold ml-5" id="costo_ciclo_vida_b"></label>
+                       <label style="color:#0D124F;" class="total_text_size font-roboto font-bold ml-5" id="costo_ciclo_vida_b"></label>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
@@ -2854,7 +2854,7 @@ $costo_b
                 <div class="w-full flex">
                     <div class="flex justify-between w-1/2 gap-x-5">
                         <b style="color:#0D08EE;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución C</b>
-                      <label style="color:#0D124F;" class="total_text_sizes font-roboto font-bold ml-5" id="costo_ciclo_vida_c"></label>
+                      <label style="color:#0D124F;" class="total_text_size font-roboto font-bold ml-5" id="costo_ciclo_vida_c"></label>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
@@ -2913,7 +2913,7 @@ $costo_b
 {{-- capex vs opex --}}
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_6" name="next_page_6" style="width: 80%; height:610px;" class="hidden">
+<div id="next_page_6" name="next_page_6" style="width: 80%; height:30px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
@@ -4150,7 +4150,7 @@ $costo_b
         var prod_size_font_message = 20;
         var prod_size_grafic_width = 15;
         var ciclo_vida_size_xaxis = '14px'
-
+        var height_ciclo_vida_print = 180;
     }
 
     if(screenWidth == 1920 ){
@@ -4170,7 +4170,8 @@ $costo_b
         var prod_size_font_message = 30;
         var prod_size_grafic_width = 20;
         var ciclo_vida_size_xaxis = '16px'
-         var ciclo_vida_size_xaxis_print = '11px'
+        var ciclo_vida_size_xaxis_print = '11px'
+        var height_ciclo_vida_print = 180;
     }
 
 
@@ -6013,6 +6014,12 @@ chart.draw(data, options); */
             });
 }
 
+function ciclos_vida(id_project){
+    ciclo_vida_a(id_project);
+    ciclo_vida_b(id_project);
+    ciclo_vida_c(id_project);
+}
+
 
 function ciclo_vida_a(id_project){
     var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
@@ -6190,7 +6197,7 @@ $.ajax({
     }],
       chart: {
       type: 'bar',
-      height: 300,
+      height: height_ciclo_vida_print,
       stacked: true,
       stackType: 'normal',
       dropShadow: {
@@ -6299,7 +6306,6 @@ $.ajax({
         console.log(responsetext);
     }
 });
-
 }
 
 function ciclo_vida_b(id_project){
@@ -6474,7 +6480,7 @@ $.ajax({
     }],
       chart: {
       type: 'bar',
-      height: 300,
+      height: height_ciclo_vida_print,
       stacked: true,
       stackType: 'normal',
       dropShadow: {
@@ -6583,7 +6589,6 @@ $.ajax({
         console.log(responsetext);
     }
 });
-
 }
 
 function ciclo_vida_c(id_project){
@@ -6758,7 +6763,7 @@ $.ajax({
     }],
       chart: {
       type: 'bar',
-      height: 300,
+      height: height_ciclo_vida_print,
       stacked: true,
       stackType: 'normal',
       dropShadow: {
@@ -6867,7 +6872,6 @@ $.ajax({
         console.log(responsetext);
     }
 });
-
 }
 
 
@@ -8112,7 +8116,7 @@ function roi_s_ene(id_project){
            categories: [3,5,10,15],
            range:4,
           title: {
-            text: '',
+            text: 'Años',
             style: {
                     colors: [],
                     fontSize: '20px',
@@ -8963,7 +8967,7 @@ $.ajax({
            categories: [ano_a,ano_b,ano_c,ano_d],
            range:4,
           title: {
-            text: '',
+            text: 'Años',
             style: {
                     colors: [],
                     fontSize: '20px',

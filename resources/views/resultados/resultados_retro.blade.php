@@ -188,7 +188,7 @@
                 <p class="titulos_style">Capacidad Térmica (TR) e Inversión</p>
             </div>
 
-            <div style="margin-top:2.3rem;" class="flex w-full justify-center">
+            <div class="flex w-full justify-center margn-top-cards">
                 <div class="w-1/7 grid justify-items-center">
                     <div class="place-content-center">
                         <img src="{{asset('assets/images/cap_term.PNG')}}" style="margin-top:2rem;" class="img_tr mx-2 margin_top_cap_term">
@@ -210,7 +210,7 @@
 
                     <div class="w-1/3 grid justify-items-center gap-y-2">
 
-                                <label class="solucions_style_name  font-bold">B</label>
+                                <label class="solucions_style_name font-bold">B</label>
                             <?php  $capacidad3=$smasolutions->sumacap_term($id_project,3) ?>
                                 <p style="" class="cant_2 font-bold font-roboto">{{$capacidad3}}</p>
 
@@ -218,7 +218,7 @@
                 </div>
             </div>
 
-                <div style="margin-bottom:2.3rem;" class="w-full grid">
+                <div class="w-full grid margn-bottom-cards">
                     <div class="flex w-full justify-center">
                         <div class="w-auto grid justify-items-center">
                             <div class="grid">
@@ -521,7 +521,7 @@
             <div style="margin-top:25px;" class="mt_titles w-full flex justify-center ">
                     <p style="color:#0D08EE;" class="titulos_style">Ahorro 15 Años</p>
             </div>
-            <div style="margin-bottom:2.3rem;" class="flex w-full justify-center ">
+            <div class="flex w-full justify-center margn-bottom-cards">
             <div class="w-1/7 grid justify-items-center">
                 <div class="place-content-center ">
                     <img src="{{asset('assets/images/pesosjpg.jpg')}}" class="img_tr mx-2">
@@ -840,12 +840,12 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 </div> --}}
 
 {{-- espacio --}}
-<div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:440px;" >
+<div id="espacio_pagina" name="espacio_pagina" class="hidden" style="width:100%; height:185px;" >
 
 </div>
 
     {{-- principal --}}
-    <div id="principal_hoja_2" name="principal_hoja_2" class="hidden w-full grid rounded-md justify-items-center mt-3">
+    <div id="principal_hoja" name="principal_hoja" class="hidden w-full grid rounded-md justify-items-center mt-3">
         <div  class="ancho border_box rounded-md flex">
 
 
@@ -1002,7 +1002,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
             </div>
     </div>
 
-    <div style="margin-bottom:2.3rem;" class="w-full grid">
+    <div  class="w-full grid  margn-bottom-cards">
                 <div style="background-color:#ffff;" class="w-full flex justify-center  mt_titles">
                     <p style="color: #0D08EE" class="titulos_style">Descarbonización (Ton CO2)</p>
                 </div>
@@ -1085,7 +1085,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
       <div class="flex w-full justify-center gap-x-3 mb-10">
 
         {{--  --}}
-        <div style="margin-top:2.3rem;" class="w-full grid mb-0 gap-y-5">
+        <div class="w-full grid mb-0 gap-y-5 margn-top-cards">
                 <div class="ml-5 flex w-full rounded-l-lg rounded-r-lg" style="margin-top:1.3rem;">
                     <div style="width: 8.666667%"></div>
                     <div class="w-1/5 flex justify-start">
@@ -1199,6 +1199,100 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 {{-- checar estos /divs --}}
   {{-- Nivel de Confort --}}
    @include('modal_prod_retro')
+
+
+   <div id="espacio_pagina_1" name="espacio_pagina_1" class="hidden" style="width:100%; height:220px;" >
+
+</div>
+
+    {{-- principal --}}
+    <div id="principal_hoja_2" name="principal_hoja_2" class="hidden w-full grid rounded-md justify-items-center mt-3">
+        <div  class="ancho border_box rounded-md flex">
+
+
+            <div class="w-1/4 flex justify-center">
+                <img src="{{asset('assets/images/Logotipo-HVACOPCOST.png')}}" alt="hvacopcost latinoamérica" class="img_porject mx-2">
+            </div>
+
+            <div class="w-1/3 grid justify-left ml-2">
+                <div class="w-full flex ">
+                   <div id="name_no_print" name="name_no_print" class="w-full flex ">
+                        <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">{{$tar_ele->name }}</p>
+                   </div>
+
+                   <div id="name_print" name="name_print" class="hidden w-full flex ">
+                    <label class="info_project" for="">{{ __('index.nombre') }}:</label><p class="info_project_res">
+                        @if (strlen($tar_ele->name) > 21)
+                        {{substr($tar_ele->name, 0, 21)}}...
+                        @endif
+
+                        @if (strlen($tar_ele->name) < 21)
+                        {{$tar_ele->name}}
+                        @endif
+                        </p>
+                   </div>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.categoria edificio') }}:</label><p class="info_project_res">{{$tar_ele->cad_edi}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.tipo edificio') }}:</label><p class="info_project_res">{{$tar_ele->tipo_edi}}</p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.area') }}:</label><p class="info_project_res">{{number_format($tar_ele->area)}}
+                        @if ($tar_ele->unidad == 'mc')
+                        m²
+                    @endif
+
+                    @if ($tar_ele->unidad == 'ft')
+                    ft²
+                    @endif
+                    </p>
+                </div>
+                <div class="w-full flex">
+                    <label class="info_project" for="">{{ __('index.ocupacion semanal') }}:</label><p class="info_project_res">
+                    @switch($tar_ele->hrs_tiempo)
+                        @case(30)
+                            {{ __('index.menos de 50 hrs') }}.
+                        @break
+
+                        @case(80)
+                            {{ __('index.51 a 167 hrs') }}.
+                        @break
+
+                        @case(168)
+                            168 Hrs.
+                        @break
+
+                        @default
+
+                    @endswitch
+                        </p>
+                </div>
+            </div>
+
+            <div class="w-1/3 grid justify-left">
+                <div class="w-full">
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.region') }}:</label><p class="info_project_res">{{$tar_ele->region}}</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.ciudad') }}:</label><p class="info_project_res">{{$tar_ele->ciudad}}</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.hors_enft_anual') }}:</label><p class="info_project_res">&nbsp;{{number_format($tar_ele->coolings_hours)}}</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.tar_ele') }}:</label><p class="info_project_res">{{$tar_ele->costo_elec}} $/Kwh</p>
+                    </div>
+                    <div class="w-full flex">
+                        <label class="info_project" for="">{{ __('index.incremento anual energia') }}:</label><p class="info_project_res">{{$tar_ele->inflacion}}%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
 <div class="margin_new_page w-full grid rounded-md justify-items-center mt-3">
     <div class="ancho border_box rounded-md grid">
       <div class="w-full grid">
@@ -1213,7 +1307,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
           </div>
       </div>
 
-      <div style="margin-top:2.3rem;" class="grid w-full justify-items-center gap-x-3">
+      <div class="grid w-full justify-items-center gap-x-3 margn-top-cards">
 
         <div class="flex w-full justify-center">
             <div  class="padding_space_white flex justify-center">
@@ -1264,7 +1358,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
             </div>
           </div>
 
-          <div style="margin-bottom:2.3rem;" class="flex w-full justify-center">
+          <div class="flex w-full justify-center margn-bottom-cards">
             <div class="w-1/8 flex grid justify-items-center">
                 <div>
                     <img src="{{asset('assets/images/pesos_personas.jpg')}}" class="img_prod_lab mx-2 mt-0 ml-5">
@@ -1516,7 +1610,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 @endif
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_3" name="next_page_3" style="width: 80%; height:360px;" class="hidden">
+<div id="next_page_3" name="next_page_3" style="width: 80%; height:560px;" class="hidden">
 
 </div>
 
@@ -1646,7 +1740,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
             </div>
         </div>
 
-              <div style="margin-top:2.3rem;" class="w-full grid">
+              <div  class="w-full grid margn-top-cards">
                 <div class="w-full flex justify-center ">
                         <p class="solucions_style_nameno_azul">Recuperación por Ahorro Energetico</p>
                 </div>
@@ -2035,7 +2129,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                 <div class="w-full flex justify-center  mt-10">
                     <p class="solucions_style_nameno_azul  ">Recuperación por Energía + Productividad</p>
                 </div>
-                <div style="margin-bottom:2.3rem;" class="w-full flex">
+                <div class="w-full flex margn-bottom-cards">
                     <div class="w-1/2 grid h-full">
 
                         <div class="flex w-full justify-start gap-x-3 mb-3">
@@ -2434,7 +2528,7 @@ $costo_b
 </div> --}}
 
 {{-- espacio hoja pagina 3 --}}
-<div id="next_page_4" name="next_page_4" style="width: 80%; height:450px;" class="hidden">
+<div id="next_page_4" name="next_page_4" style="width: 80%; height:80px;" class="hidden">
 
 </div>
 {{-- espacio hoja pagina 3 --}}
@@ -2538,12 +2632,12 @@ $costo_b
             </div>
         </div>
 
-        <div style="margin-top:2.3rem;" class="w-full flex justify-start font-roboto font-bold">
+        <div class="w-full flex justify-start font-roboto font-bold margn-top-cards">
                 <div class="w-1/3 flex ml-10 mt-3 gap-x-2">
                     <div class="ml-10 flex justify-start">
                         <label style="color:#0D08EE;" class="size_solutions_confort">Año</label>
                     </div>
-                    <select style="width:100px;" name="yrs_ciclo_vida" id="yrs_ciclo_vida" onchange="ciclo_vida_a('{{ $id_project }}')" class="border-2 rounded-md py-2 border-color-inps text-xl text-center">
+                    <select style="width:100px;" name="yrs_ciclo_vida" id="yrs_ciclo_vida" onchange="ciclos_vida('{{ $id_project }}')" class="border-2 rounded-md py-2 border-color-inps text-xl text-center">
                             <option value="3">3</option>
                             <option value="5">5</option>
                             <option value="10">10</option>
@@ -2557,7 +2651,7 @@ $costo_b
                 <div class="w-full flex">
                     <div class="flex justify-between w-1/2 gap-x-5">
                        <b style="color:#0D08EE;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Existente</b>
-                       <label style="color:#0D124F;" class="text-3xl font-roboto font-bold mr-10" id="costo_ciclo_vida_a"></label>
+                       <label style="color:#0D124F;" class="total_text_size font-roboto font-bold mr-10" id="costo_ciclo_vida_a"></label>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
@@ -2569,7 +2663,7 @@ $costo_b
                 <div class="w-full flex">
                     <div class="flex justify-between w-1/2 gap-x-5">
                        <b style="color:#0D08EE;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
-                       <label style="color:#0D124F;" class="text-3xl font-roboto font-bold mr-10" id="costo_ciclo_vida_b"></label>
+                       <label style="color:#0D124F;" class="total_text_size font-roboto font-bold mr-10" id="costo_ciclo_vida_b"></label>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
@@ -2578,11 +2672,11 @@ $costo_b
                 </div>
             </div>
 
-            <div style="margin-bottom:2.3rem;" class="w-full grid gap-y-1">
+            <div class="w-full grid gap-y-1 margn-bottom-cards">
                 <div class="w-full flex">
                     <div class="flex justify-between w-1/2 gap-x-5">
                        <b style="color:#0D08EE;margin-left:3rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
-                       <label style="color:#0D124F;" class="text-3xl font-roboto font-bold mr-10" id="costo_ciclo_vida_c"></label>
+                       <label style="color:#0D124F;" class="total_text_size font-roboto font-bold mr-10" id="costo_ciclo_vida_c"></label>
                     </div>
                 </div>
                 <div class="w-full flex justify-center">
@@ -2665,6 +2759,8 @@ $costo_b
         var prod_size_font_message = 20;
         var prod_size_grafic_width = 15;
         var ciclo_vida_size_xaxis = '14px'
+        var ciclo_vida_size_xaxis_print = '11px'
+        var height_ciclo_vida_print = 200;
     }
 
     if(screenWidth == 1920 ){
@@ -2684,6 +2780,8 @@ $costo_b
         var prod_size_font_message = 30;
         var prod_size_grafic_width = 20;
         var ciclo_vida_size_xaxis = '16px'
+        var ciclo_vida_size_xaxis_print = '11px'
+        var height_ciclo_vida_print = 200;
     }
 
     var cons_ene_ele_ancho_line_print = 460;
@@ -2776,10 +2874,16 @@ window.matchMedia('print').addListener((event)=>{
 });
 
 function send_print(){
+
+        ciclo_vida_a_print('{{$id_project}}');
+        ciclo_vida_b_print('{{$id_project}}');
+        ciclo_vida_c_print('{{$id_project}}');
+
     $("#button_prod").addClass("hidden");
     $("#button_marrr").addClass("hidden");
     $("#navbar").addClass("hidden");
     $("#principal_hoja_2").removeClass("hidden");
+    $("#principal_hoja").removeClass("hidden");
     $("#name_no_print").addClass("hidden");
     $("#name_print").removeClass("hidden");
     $("#name_no_print_2").addClass("hidden");
@@ -2809,9 +2913,9 @@ function send_print(){
     $("#chart_10_print").width(380).height(200);
     $("#chart_1").width(500).height(210);
     $("#chart_2").width(500).height(210);
-    $("#chart_ciclo_vida_a_print").width(380).height(200);
-    $("#chart_ciclo_vida_b_print").width(380).height(200);
-    $("#chart_ciclo_vida_c_print").width(380).height(200);
+    $("#chart_ciclo_vida_a_print").width(730).height(100);
+    $("#chart_ciclo_vida_b_print").width(730).height(100);
+    $("#chart_ciclo_vida_c_print").width(730).height(100);
     con_ene_hvac_ar_Base_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b_print('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
@@ -2843,6 +2947,7 @@ function send_print(){
     $("#chart_ciclo_vida_b_print").removeClass("hidden");
     $("#chart_ciclo_vida_c_print").removeClass("hidden");
     $("#espacio_pagina_1").removeClass("hidden");
+    $("#espacio_pagina").removeClass("hidden");
     $('#eui_sol_base_print').removeClass("hidden");
     $("#eui_sol_a_print").removeClass("hidden");
     $('#eui_sol_b_print').removeClass("hidden");
@@ -2863,7 +2968,7 @@ function send_print(){
     chart_prod_b_print();
     setTimeout(function() {
         window.print();
-}, 3000);
+}, 3500);
 
 }
 
@@ -2894,6 +2999,7 @@ window.onload = function() {
       roi_ene_prod('{{$id_project}}');
       roi_s_ene_print('{{$id_project}}');
       roi_ene_prod_print('{{$id_project}}');
+
       /* roi_base_b_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_b}}');
       roi_base_a_ene_prod('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
       roi_base_a_ene_prod_print('{{$id_project}}','{{$costo_base}}','{{$costo_a}}');
@@ -2912,9 +3018,7 @@ $(document).ready(function() {
     con_ene_hvac_ar_b('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     /* chart_1();
     chart_2(); */
-    ciclo_vida_a('{{$id_project}}');
-    ciclo_vida_b('{{$id_project}}');
-    ciclo_vida_c('{{$id_project}}');
+
 
       google.charts.setOnLoadCallback(chart_base_eui_print);
       google.charts.setOnLoadCallback(chart_a_eui_print);
@@ -9316,6 +9420,13 @@ var chart = JSC.chart('chart_2', {
     return array_2_suma;
 }
 
+
+function ciclos_vida(id_project){
+    ciclo_vida_a(id_project);
+    ciclo_vida_b(id_project);
+    ciclo_vida_c(id_project);
+}
+
 function ciclo_vida_a(id_project){
     var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
     var area = "{{ $tar_ele->area }}";
@@ -9462,6 +9573,147 @@ $.ajax({
 
 }
 
+function ciclo_vida_a_print(id_project){
+    var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
+    var area = "{{ $tar_ele->area }}";
+    var capex = '{{ $inv_ini_1 }}'
+$.ajax({
+    type: 'get',
+    url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 1,
+    success: function (res) {
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
+    var costo = document.getElementById('costo_ciclo_vida_a').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var options = {
+      series: [{
+      name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
+      data: [capex]
+    },{
+      name:'Energía (OPEX)',
+      data: [0,res[0],0,0]
+    },{
+      name:'Reparaciones',
+      data: [0,0,parseInt(res[3]),0]
+    },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,0,res[1],0]
+    },{
+      name:'Total',
+      data: [0,0,0,total]
+    }],
+      chart: {
+      type: 'bar',
+      height: height_ciclo_vida_print,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '12px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    }/* ,
+    title: {
+      text: 'Solución A',
+      align: 'left',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '26px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    } */,
+    xaxis: {
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía (OPEX)', 'Reparaciones  y Mantenimiento (OPEX)','Total'],
+      labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: '11px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-xaxis-label',
+            },
+
+        },
+    },
+    yaxis: {
+        labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: ciclo_vida_size_xaxis_print,
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+            maxWidth: 200,
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            return "$"+val
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '11px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_ciclo_vida_a_print"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
+}
+
 function ciclo_vida_b(id_project){
     var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
     var area = "{{ $tar_ele->area }}";
@@ -9602,6 +9854,147 @@ $.ajax({
     }
 });
 
+}
+
+function ciclo_vida_b_print(id_project){
+    var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
+    var area = "{{ $tar_ele->area }}";
+    var capex = '{{ $inv_ini_2 }}'
+$.ajax({
+    type: 'get',
+    url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 2,
+    success: function (res) {
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
+    var costo = document.getElementById('costo_ciclo_vida_b').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var options = {
+      series: [{
+      name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
+      data: [capex]
+    },{
+      name:'Energía (OPEX)',
+      data: [0,res[0],0,0]
+    },{
+      name:'Reparaciones',
+      data: [0,0,parseInt(res[3]),0]
+    },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,0,res[1],0]
+    },{
+      name:'Total',
+      data: [0,0,0,total]
+    }],
+      chart: {
+      type: 'bar',
+      height: height_ciclo_vida_print,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '12px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    }/* ,
+    title: {
+      text: 'Solución A',
+      align: 'left',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '26px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    } */,
+    xaxis: {
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía (OPEX)', 'Reparaciones  y Mantenimiento (OPEX)','Total'],
+      labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: '11px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-xaxis-label',
+            },
+
+        },
+    },
+    yaxis: {
+        labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: ciclo_vida_size_xaxis_print,
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+            maxWidth: 200,
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            return "$"+val
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '11px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_ciclo_vida_b_print"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
 }
 
 function ciclo_vida_c(id_project){
@@ -9745,6 +10138,147 @@ $.ajax({
     }
 });
 
+}
+
+function ciclo_vida_c_print(id_project){
+    var yrs_ciclo_vida = $('#yrs_ciclo_vida').val();
+    var area = "{{ $tar_ele->area }}";
+    var capex = '{{ $inv_ini_3 }}'
+$.ajax({
+    type: 'get',
+    url: "/calculate_opex/" + id_project + '/' + yrs_ciclo_vida + '/'+ 2,
+    success: function (res) {
+    var total = parseInt(capex) + parseInt(res[0]) + parseInt(res[1]) + parseInt(res[3]) + 0;
+    var costo = document.getElementById('costo_ciclo_vida_c').innerHTML ='Total: ' + dollarUSLocale.format(parseFloat(total/area).toFixed(1)) +' $/m²';
+    var options = {
+      series: [{
+      name: 'Suministro e Instalación (CAPEX)',
+      /* width '95px', */
+      data: [capex]
+    },{
+      name:'Energía (OPEX)',
+      data: [0,res[0],0,0]
+    },{
+      name:'Reparaciones',
+      data: [0,0,parseInt(res[3]),0]
+    },{
+      name:'Mantenimiento (OPEX)',
+      data: [0,0,res[1],0]
+    },{
+      name:'Total',
+      data: [0,0,0,total]
+    }],
+      chart: {
+      type: 'bar',
+      height: height_ciclo_vida_print,
+      stacked: true,
+      stackType: 'normal',
+      dropShadow: {
+        enabled: true,
+        enabledOnSeries: undefined,
+     },
+
+     toolbar: {
+        show: false,
+    },
+
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+
+      },
+    },
+    dataLabels: {
+            enabled: true,
+            style: {
+            fontSize: '12px',
+            fontFamily: 'ABeeZee, sans-serif',
+            fontWeight: 'bold',
+        },
+    }/* ,
+    title: {
+      text: 'Solución A',
+      align: 'left',
+      offsetY:25,
+      style: {
+        fontWeight:  'bold',
+        fontSize: '26px',
+        fontFamily: 'ABeeZee, sans-serif',
+        fontWeight: "bold",
+        cssClass: 'apexcharts-yaxis-label',
+        color: '#000',
+      },
+    } */,
+    xaxis: {
+      categories: ['Suministro e Instalación (CAPEX)', 'Energía (OPEX)', 'Reparaciones  y Mantenimiento (OPEX)','Total'],
+      labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: '11px',
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-xaxis-label',
+            },
+
+        },
+    },
+    yaxis: {
+        labels: {
+            hideOverlappingLabels: true,
+            style: {
+                colors: [],
+                fontSize: ciclo_vida_size_xaxis_print,
+                fontFamily: 'ABeeZee, sans-serif',
+                fontWeight: "bold",
+                cssClass: 'apexcharts-yaxis-label',
+            },
+            maxWidth: 200,
+        },
+    },
+
+    tooltip: {
+      y: {
+        formatter: function (val) {
+            return "$"+val
+        }
+      }
+    },
+    fill: {
+      opacity: 1,
+      colors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
+
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'left',
+      offsetX: 40,
+      fontSize: '11px',
+      fontFamily: 'ABeeZee, sans-serif',
+      fontWeight: 'bold',
+      markers: {
+      width: 12,
+      height: 12,
+      strokeWidth: 0,
+      strokeColor: '#fff',
+      fillColors: ['rgb(0, 143, 251)', '#7668af','#444edb','rgb(146, 133, 201)','#ed8936'],
+      radius: 12,
+      customHTML: undefined,
+      onClick: undefined,
+      offsetX: 0,
+      offsetY: 0,
+  },
+    }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart_ciclo_vida_c_print"), options);
+    chart.render();
+    },
+    error: function (responsetext) {
+        console.log(responsetext);
+    }
+});
 }
 
 function message_prod_lab_chart(check_prod){
