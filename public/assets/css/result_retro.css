@@ -374,6 +374,19 @@
             max-height: 40px; width:200px;
         }
 
+        .margn-top-cards{
+            margin-top:2.3rem;
+        }
+
+        .margn-bottom-cards{
+            margin-bottom:2.3rem;
+        }
+
+        .total_text_size{
+            font-size: 1.875rem /* 30px */;
+            line-height: 2.25rem /* 36px */;
+        }
+
 @media print{
   @page { margin: 0; }
 
@@ -691,6 +704,19 @@
             max-height: 40px;
             width:150px;
             margin-right: 50px;
+        }
+
+        .margn-top-cards{
+            margin-top:0.5rem;
+        }
+
+        .margn-bottom-cards{
+            margin-bottom:0.2rem;
+        }
+
+        .total_text_size{
+            font-size: 1rem;
+            line-height: 1.25rem;
         }
 
 }
@@ -1277,7 +1303,7 @@
         }
 
         .margin-cero-capex-b{
-            margin-left:200px;
+            margin-left:0px;
         }
 
         }

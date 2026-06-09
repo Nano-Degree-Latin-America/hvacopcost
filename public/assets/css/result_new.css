@@ -28,6 +28,11 @@
 
         }
 
+        .total_text_size{
+            font-size: 1.875rem /* 30px */;
+            line-height: 2.25rem /* 36px */;
+        }
+
         .margin-top-recuperacion-energia-productividad{
             margin-top: 2.5rem /* 40px */
         }
@@ -56,6 +61,18 @@
         color: #0D08EE;
         font-weight: bold;
         font-family: 'ABeeZee', sans-serif;
+        }
+
+        .margn-top-cards{
+            margin-top:2.3rem;
+        }
+
+        .margn-bottom-cards{
+            margin-bottom:2.3rem;
+        }
+
+        .margin-top-consumo-anual{
+            margin-top:2.3rem !important;
         }
 
         .cant_style{
@@ -718,6 +735,23 @@
             margin-right: 50px;
         }
 
+        .margn-top-cards{
+            margin-top:0.5rem;
+        }
+
+        .margn-bottom-cards{
+            margin-bottom:0.2rem;
+        }
+
+        .margin-top-consumo-anual{
+            margin-top:10px !important;
+        }
+
+        .total_text_size{
+            font-size: 1rem;
+            line-height: 1.25rem;
+        }
+
 }
 
 /* md	768px */
@@ -1248,6 +1282,8 @@
               height:100px;
               width:90px;
          }
+
+
 
          .margin-top-button-suport{
             margin-top:.5rem;
