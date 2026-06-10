@@ -2804,10 +2804,10 @@ $costo_b
 
         <div class="w-full flex justify-start font-roboto font-bold margn-top-cards">
                 <div class="w-1/3 flex ml-10 mt-3 gap-x-2">
-                    <div class="ml-10 flex justify-start">
+                    <div class="ml-10 flex justify-start place-items-center">
                         <label style="color:#0D08EE;" class="size_solutions_confort">Año</label>
                     </div>
-                    <select style="width:100px;" name="yrs_ciclo_vida" id="yrs_ciclo_vida" onchange="ciclos_vida('{{ $id_project }}')" class="border-2 rounded-md py-2 border-color-inps text-xl text-center">
+                    <select name="yrs_ciclo_vida" id="yrs_ciclo_vida" onchange="ciclos_vida('{{ $id_project }}')" class="border-2 rounded-md py-2 border-color-inps text-center style-box-yr">
                             <option value="3">3</option>
                             <option value="5">5</option>
                             <option value="10">10</option>
