@@ -3016,6 +3016,7 @@ $(document).ready(function() {
     con_ene_hvac_ar_Base('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_a('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
     con_ene_hvac_ar_b('{{$kwh_yr}}','{{$tar_ele->porcent_hvac}}');
+    ciclos_vida('{{$id_project}}');
     /* chart_1();
     chart_2(); */
 
@@ -7188,8 +7189,8 @@ function chart_prod_base_print() {
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 20">'+message+'</span>',
-                    style: { fontSize: 30 }
+                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 15">'+message+'</span>',
+                    style: { fontSize: 25 }
                 },
                 defaultPoint: {
                     tooltip: '%yValue',
@@ -7286,8 +7287,8 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 20">'+message+'</span>',
-                    style: { fontSize: 30 }
+                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 15">'+message+'</span>',
+                    style: { fontSize: 25 }
                 },
                 defaultPoint: {
                     tooltip: '%yValue',
@@ -7383,8 +7384,8 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 20">'+message+'</span>',
-                    style: { fontSize: 30  }
+                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 15">'+message+'</span>',
+                    style: { fontSize: 25  }
                 },
                 defaultPoint: {
                     tooltip: '%yValue',
@@ -8307,10 +8308,6 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
           {
             name: "B",
             data: [res[2][0], res[2][1], res[2][2], res[2][3]]
-          },
-          {
-            name: "MARR",
-            data: [45, 75, 150, 225]
           }
         ],
           chart: {
@@ -8329,7 +8326,7 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
             show: false
           }
         },
-        colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+        colors: ['#545454','#2be6ee','#ff00ff'],
         dataLabels: {
                 enabled: true,
                 style: {
@@ -8367,7 +8364,7 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
             categories: [3,5,10,15],
            range:4,
           title: {
-            text: '',
+            text: 'Años',
             style: {
                     colors: [],
                     fontSize: '13px',
@@ -8413,7 +8410,7 @@ var dif_2_cost = document.getElementById('dif_cost_base_b').value;
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+          fillColors:['#545454','#2be6ee','#ff00ff'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
@@ -8510,10 +8507,6 @@ $.ajax({
           {
             name: "ROI - B",
             data: [res[2][0], res[2][1], res[2][2], res[2][3]]
-          },
-          {
-            name: "MARR",
-            data: [45, 75, 150, 225]
           }
         ],
           chart: {
@@ -8532,7 +8525,7 @@ $.ajax({
             show: false
           }
         },
-        colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+        colors: ['#545454','#2be6ee','#ff00ff'],
         dataLabels: {
                 enabled: true,
                 style: {
@@ -8570,7 +8563,7 @@ $.ajax({
            categories: [3,5,10,15],
            range:4,
           title: {
-            text: '',
+            text: 'Años',
             style: {
                     colors: [],
                     fontSize: '13px',
@@ -8616,7 +8609,7 @@ $.ajax({
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+          fillColors: ['#545454','#2be6ee','#ff00ff'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
