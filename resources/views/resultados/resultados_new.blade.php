@@ -4167,7 +4167,7 @@ $costo_b
         var prod_size_font_size = 48;
         var prod_size_point_grafic = 10;
         var prod_size_width_grafic = 35;
-        var prod_size_font_message = 30;
+        var prod_size_font_message = 25;
         var prod_size_grafic_width = 20;
         var ciclo_vida_size_xaxis = '16px'
         var ciclo_vida_size_xaxis_print = '11px'
@@ -4272,6 +4272,10 @@ window.matchMedia('print').addListener((event)=>{
 });
 
 function send_print(){
+
+
+
+
         ciclo_vida_a_print('{{$id_project}}');
         ciclo_vida_b_print('{{$id_project}}');
         ciclo_vida_c_print('{{$id_project}}');
@@ -10293,8 +10297,8 @@ function chart_prod_base_print() {
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 20">'+message+'</span>',
-                    style: { fontSize: 30 }
+                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 15">'+message+'</span>',
+                    style: { fontSize: 25 }
                 },
                 defaultPoint: {
                     tooltip: '%yValue',
@@ -10391,8 +10395,8 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 20">'+message+'</span>',
-                    style: { fontSize: 30 }
+                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 15">'+message+'</span>',
+                    style: { fontSize: 25 }
                 },
                 defaultPoint: {
                     tooltip: '%yValue',
@@ -10488,8 +10492,8 @@ chart.draw(data, options); */
                 name: 'Score',
                 shape_label: {
                     text:
-                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 20">'+message+'</span>',
-                    style: { fontSize: 30 }
+                    parseFloat(interpolacion).toFixed(1)+'<br/> <span style="fontSize: 15">'+message+'</span>',
+                    style: { fontSize: 25 }
                 },
                 defaultPoint: {
                     tooltip: '%yValue',
@@ -11622,23 +11626,19 @@ function roi_s_ene_print(id_project){
 
             var options = {
                 series: [
-                {
-                    name: "A",
-                    data: [res[0][0], res[0][1], res[0][2], res[0][3]]
-                },
-                {
-                    name: "B",
-                    data: [res[1][0], res[1][1], res[1][2], res[1][3]]
-                },
-                {
-                    name: "C",
-                    data: [res[2][0], res[2][1], res[2][2], res[2][3]]
-                },
-                {
-                    name: "MARR",
-                    data: [45, 75, 150, 225]
-                }
-                ],
+                    {
+                        name: "A",
+                        data: [res[0][0], res[0][1], res[0][2], res[0][3]]
+                    },
+                    {
+                        name: "B",
+                        data: [res[1][0], res[1][1], res[1][2], res[1][3]]
+                    },
+                    {
+                        name: "C",
+                        data: [res[2][0], res[2][1], res[2][2], res[2][3]]
+                    },
+                    ],
                 chart: {
                     height:roi_height,
                     width:roi_width,
@@ -11655,7 +11655,7 @@ function roi_s_ene_print(id_project){
                     show: false
                 }
                 },
-                colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+                colors: ['#545454','#2be6ee','#ff00ff'],
                 dataLabels: {
                         enabled: true,
                         style: {
@@ -11693,7 +11693,7 @@ function roi_s_ene_print(id_project){
                     categories: [3,5,10,15],
                 range:4,
                 title: {
-                    text: '',
+                    text: 'Años',
                     style: {
                             colors: [],
                             fontSize: '13px',
@@ -11728,7 +11728,7 @@ function roi_s_ene_print(id_project){
 
                 },
                 legend: {
-                position: 'bottom',
+                position: 'top',
                 horizontalAlign: 'right',
                 offsetX: 40,
                 fontSize: '11px',
@@ -11739,7 +11739,7 @@ function roi_s_ene_print(id_project){
                 height: 12,
                 strokeWidth: 0,
                 strokeColor: '#fff',
-                fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+                fillColors: ['#545454','#2be6ee','#ff00ff'],
                 radius: 12,
                 customHTML: undefined,
                 onClick: undefined,
@@ -12281,10 +12281,6 @@ $.ajax({
             name: "C",
             data: [res[2][0], res[2][1], res[2][2], res[2][3]]
           },
-          {
-            name: "MARR",
-            data: [45, 75, 150, 225]
-          }
         ],
           chart: {
             height:roi_height,
@@ -12302,7 +12298,7 @@ $.ajax({
             show: false
           }
         },
-        colors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+        colors: ['#545454','#2be6ee','#ff00ff'],
         dataLabels: {
                 enabled: true,
                 style: {
@@ -12340,7 +12336,7 @@ $.ajax({
            categories: [ano_a,ano_b,ano_c,ano_d],
            range:4,
           title: {
-            text: '',
+            text: 'Años',
             style: {
                     colors: [],
                     fontSize: '13px',
@@ -12375,7 +12371,7 @@ $.ajax({
 
         },
         legend: {
-          position: 'bottom',
+          position: 'top',
           horizontalAlign: 'right',
           offsetX: 40,
           fontSize: '11px',
@@ -12386,7 +12382,7 @@ $.ajax({
           height: 12,
           strokeWidth: 0,
           strokeColor: '#fff',
-          fillColors: ['#01040a','#2be6ee','#ff00ff', '#545454'],
+          fillColors: ['#545454','#2be6ee','#ff00ff'],
           radius: 12,
           customHTML: undefined,
           onClick: undefined,
