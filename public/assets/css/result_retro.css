@@ -387,6 +387,14 @@
             line-height: 2.25rem /* 36px */;
         }
 
+        .style-box-yr{
+            width:100px;
+            padding-top: 0.5rem /* 8px */;
+            padding-bottom: 0.5rem /* 8px */;
+            font-size: 1.25rem /* 20px */;
+            line-height: 1.75rem /* 28px */;
+        }
+
 @media print{
   @page { margin: 0; }
 
@@ -715,6 +723,14 @@
         }
 
         .total_text_size{
+            font-size: 1rem;
+            line-height: 1.25rem;
+        }
+
+        .style-box-yr{
+            width:70px;
+            padding-top: 0rem;
+            padding-bottom: 0rem;
             font-size: 1rem;
             line-height: 1.25rem;
         }
