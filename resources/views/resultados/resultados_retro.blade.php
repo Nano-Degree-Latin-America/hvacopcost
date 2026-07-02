@@ -2163,7 +2163,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                             <div style="" class="flex  rounded-md justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center place-items-start">
-                                    <div  class="w-full mx-3 flex justify-center">
+                                    <div  class="w-full flex justify-center">
                                     <?php
                                         if( $costo_anual_base == 0 && $costo_anual_a == 0 && $costo_anual_b == 0){
                                             $pay_back_base_ene_prod = $pay_back_base;
@@ -2277,7 +2277,7 @@ $costo_b
 
                             <div style="" class="rounded-md  flex justify-center w-1/4 ">
                                 <div  style="" class="grid justify-items-center  place-items-start">
-                                    <div  class="w-full mx-3  flex justify-center">
+                                    <div  class="w-full  flex justify-center">
                                     @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
                                     <?php
                                     if( $costo_anual_base == 0 && $costo_anual_a == 0 && $costo_anual_b == 0){
