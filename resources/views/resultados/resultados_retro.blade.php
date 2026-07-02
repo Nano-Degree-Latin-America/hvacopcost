@@ -2226,19 +2226,19 @@ $costo_b
                                     @if ($pay_back_a_ene_prod >= 1)
 
                                         @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 1 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a_ene_prod,1)}}</b>
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_a_ene_prod,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 2 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a_ene_prod,1)}}</b>
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_a_ene_prod,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 3 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a_ene_prod,1)}}</b>
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_a_ene_prod,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 4 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a_ene_prod,1)}}</b>
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_a_ene_prod,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 5 )
@@ -2294,19 +2294,19 @@ $costo_b
                                    {{-- <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b_ene_prod,1)}}</b> --}}
 
                                         @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 1 )
-                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_b_ene_prod,1)}}</b>
+                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_b_ene_prod,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 2 )
-                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_b_ene_prod,1)}}</b>
+                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_b_ene_prod,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 3 )
-                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_b_ene_prod,1)}}</b>
+                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_b_ene_prod,1)}}</b>
                                         @endif
 
                                          @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 4 )
-                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_b_ene_prod,1)}}</b>
+                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_b_ene_prod,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 5 )
