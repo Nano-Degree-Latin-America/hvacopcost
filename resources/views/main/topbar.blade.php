@@ -74,8 +74,9 @@
 
               <form id="logout-form" action="{{ route('cerrar_session') }}" method="POST" class="d-none">
                 @csrf
-            </form>
+              </form>
          </div>
      </div>
 
  </header>
+-+
