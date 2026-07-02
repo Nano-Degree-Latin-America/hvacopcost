@@ -1812,9 +1812,9 @@ if($counter == 2){
 
                         </div>
 {{-- {{$val_base_red_ene}}_{{$val_a_red_ene}}_{{$val_b_red_ene}} --}}
-                        <div style="" class="flex w-full justify-center gap-x-3 mb-8">
+                        <div style="" class="flex w-full justify-center gap-x-3">
 
-                            <div style="" class="flex justify-start w-[30%]  my-1 place-items-center">
+                            <div style="" class="flex justify-start w-[30%]  my-1 place-items-start">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
                             </div>
 
@@ -1829,7 +1829,7 @@ if($counter == 2){
                             </div> --}}
 
                             <div   class="flex  rounded-md justify-center w-1/4  ">
-                                <div  class="grid justify-items-center  rounded-md place-items-center">
+                                <div  class="grid justify-items-center  rounded-md place-items-start">
                                   <div style="" class="w-full mx-3 my-1 flex justify-center">
 
                                                 @if ( true == ( isset( $val_base_red_ene ) ? $val_base_red_ene : null ) )
@@ -1894,9 +1894,9 @@ if($counter == 2){
 
                         </div>
 
-                        <div style="margin-top: 0.4rem" class="flex w-full justify-center gap-x-3 mb-10">
+                        <div style="margin-top: 0.4rem" class="flex w-full justify-center gap-x-3">
 
-                            <div  class="flex justify-start  w-[30%]  my-1 place-items-center">
+                            <div  class="flex justify-start  w-[30%]  my-1 place-items-start">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
                             </div>
 
@@ -1910,7 +1910,7 @@ if($counter == 2){
                             </div> --}}
 
                             <div style="" class=" rounded-md flex justify-center w-1/4 ">
-                                <div  style="" class="grid justify-items-center place-items-center">
+                                <div  style="" class="grid justify-items-center place-items-start">
                                     <div  class="w-full mx-3 rounded-md flex justify-center">
                                     @if ($result2 === null)
                                         <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
@@ -1981,21 +1981,12 @@ if($counter == 2){
 
                         <div style="margin-top: 0.4rem" class="flex w-full justify-center gap-x-3 mb-10">
 
-                            <div  class="flex justify-start  w-[30%] place-items-center my-1">
+                            <div  class="flex justify-start  w-[30%] place-items-start my-1">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución C</b>
                             </div>
 
-                            {{-- <div  class="flex justify-start w-1/3  my-1 place-items-center">
-                                @if (strlen(number_format($inv_ini_3)) > 9)
-                                <b  style="color:#0D124F;" class="payback_cants_min font-roboto font-bold">${{number_format($inv_ini_3)}}</b>
-                                @endif
-                                @if (strlen(number_format($inv_ini_3)) <= 9)
-                                <b  style="color:#0D124F;" class="payback_cants font-roboto font-bold">${{number_format($inv_ini_3)}}</b>
-                               @endif
-                            </div> --}}
-
                             <div  class="rounded-md flex justify-center w-1/4 ">
-                                <div  style="" class="grid justify-items-center  place-items-center">
+                                <div  style="" class="grid justify-items-center  place-items-start">
                                      <div  class="w-full mx-3 rounded-md flex justify-center">
                                     @if ($result3 === null)
                                         <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;"  class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
@@ -2217,9 +2208,9 @@ if($counter == 2){
 
                         </div>
 
-                        <div class="flex w-full justify-center gap-x-3 mb-8">
+                        <div class="flex w-full justify-center gap-x-3">
 
-                            <div  class="flex justify-start w-[30%] place-items-center my-1">
+                            <div  class="flex justify-start w-[30%] place-items-start my-1">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución A</b>
                             </div>
 
@@ -2233,7 +2224,7 @@ if($counter == 2){
                             </div> --}}
 
                             <div style="" class="flex  rounded-md justify-center w-1/4 ">
-                                <div  style="" class="grid justify-items-center place-items-center">
+                                <div  style="" class="grid justify-items-center place-items-start">
                                     <div  class="w-full mx-3 flex justify-center">
 
                                     <?php
@@ -2295,9 +2286,9 @@ if($counter == 2){
 
                         </div>
 
-                        <div class="flex w-full justify-center gap-x-3 mb-8">
+                        <div class="flex w-full justify-center gap-x-3">
 
-                            <div  class="flex justify-start w-[30%] place-items-center  my-1">
+                            <div  class="flex justify-start w-[30%] place-items-start  my-1">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución B</b>
                             </div>
 
@@ -2316,7 +2307,7 @@ if($counter == 2){
 $costo_a
 $costo_b
                                 --}}
-                                <div  style="" class="grid justify-items-center  place-items-center">
+                                <div  style="" class="grid justify-items-center  place-items-start">
                                   <div  class="w-full mx-3  flex justify-center">
 
                                 @if ($result2 === null)
@@ -2392,7 +2383,7 @@ $costo_b
 
                         <div class="flex w-full justify-center gap-x-3 mb-8">
 
-                            <div  class="flex justify-start w-[30%] place-items-center my-1">
+                            <div  class="flex justify-start w-[30%] place-items-start my-1">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold">Solución C</b>
                             </div>
 
@@ -2406,7 +2397,7 @@ $costo_b
                             </div> --}}
 
                             <div style="" class="rounded-md  flex justify-center w-1/4 ">
-                                <div  style="" class="grid justify-items-center  place-items-center">
+                                <div  style="" class="grid justify-items-center  place-items-start">
                                     <div  class="w-full mx-3  flex justify-center">
 
                                 @if ($result3 === null)
@@ -3006,7 +2997,7 @@ $costo_b
     </div>
 </div>
 {{-- res_ana_ener --}}
-<div class="w-full grid rounded-md justify-items-center mt-3">
+<div class="w-full grid rounded-md justify-items-center mt-3 mb-3">
     <div class="ancho border_box  rounded-md grid">
         <div class="w-full grid">
             <div style="background-color:#0D08EE;" class="w-full flex justify-center">

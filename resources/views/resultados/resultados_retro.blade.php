@@ -1762,9 +1762,9 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         </div>
 
-                        <div style="margin-top: 1.25rem" class="flex w-full justify-center gap-x-3 mb-8">
+                        <div style="" class="flex w-full justify-center gap-x-3">
 
-                            <div  class="flex justify-start w-[30%] place-items-center my-1">
+                            <div  class="flex justify-start w-[30%] place-items-start my-1">
                                     <b  style="color:#0D08EE;margin-left:.0rem;" class="size_solutions_confort font-roboto font-bold mt-2">&nbsp;Existente &nbsp;</b>
                             </div>
 
@@ -1778,8 +1778,8 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                             </div> --}}
 
-                            <div   class="flex  rounded-md justify-center margin-top-recuperacion-energia-productividad w-1/4  ">
-                                <div  class="grid justify-items-center  rounded-md place-items-center">
+                            <div   class="flex  rounded-md justify-center  w-1/4">
+                                <div  class="grid justify-items-center  rounded-md place-items-start">
                                   <div style="" class="w-full mx-3 my-1  flex justify-center">
                                     @if ( true == ( isset( $val_base_red_ene ) ? $val_base_red_ene : null ) )
 
@@ -1843,9 +1843,9 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         </div>
 
-                        <div style="margin-top: 0.4rem" class="flex w-full justify-center gap-x-3 mb-5">
+                        <div style="margin-top: 0.4rem" class="flex w-full justify-center gap-x-3 mb-2">
 
-                            <div  class="flex justify-start  w-[30%]  my-1 place-items-center">
+                            <div  class="flex justify-start  w-[30%]  my-1 place-items-start">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold ml-10">Solución A</b>
                             </div>
 
@@ -1859,7 +1859,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                             </div> --}}
 
                             <div style="" class=" rounded-md flex justify-center w-1/4 ">
-                                <div  style="" class="grid justify-items-center place-items-center">
+                                <div  style="" class="grid justify-items-center place-items-start">
                                     <div  class="w-full mx-3 rounded-md flex justify-center">
                                         @if ($result2 === null)
                                         <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
@@ -1923,7 +1923,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         <div style="margin-top: 0.5rem" class="flex w-full justify-center gap-x-3 mb-3">
 
-                            <div  class="flex justify-start  w-[30%] place-items-center my-1">
+                            <div  class="flex justify-start  w-[30%] place-items-start my-1">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold ml-10">Solución B</b>
                             </div>
 
@@ -1937,7 +1937,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                             </div> --}}
 
                             <div  class="rounded-md flex justify-center w-1/4 ">
-                                <div  style="" class="grid justify-items-center  place-items-center">
+                                <div  style="" class="grid justify-items-center  place-items-start">
                                      <div  class="w-full mx-3 rounded-md flex justify-center">
                                     @if ($result3 === null)
                                     <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">N/A</b>
@@ -2146,9 +2146,9 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         </div>
 
-                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3">
 
-                            <div  class="flex justify-start w-[30%] place-items-center my-1">
+                            <div  class="flex justify-start w-[30%] place-items-start my-1">
                                     <b  style="color:#0D08EE;margin-left:0rem;" class="size_solutions_confort font-roboto font-bold ml-8">&nbsp;Existente &nbsp;</b>
                             </div>
 
@@ -2162,7 +2162,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
                             </div> --}}
 
                             <div style="" class="flex  rounded-md justify-center w-1/4 ">
-                                <div  style="" class="grid justify-items-center place-items-center">
+                                <div  style="" class="grid justify-items-center place-items-start">
                                     <div  class="w-full mx-3 flex justify-center">
                                     <?php
                                         if( $costo_anual_base == 0 && $costo_anual_a == 0 && $costo_anual_b == 0){
@@ -2188,9 +2188,9 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 
                         </div>
 
-                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-3 mt-1">
 
-                            <div  class="flex justify-start w-[30%] place-items-center  my-1">
+                            <div  class="flex justify-start w-[30%] place-items-start  my-1">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold ml-8">Solución A</b>
                             </div>
 
@@ -2209,7 +2209,7 @@ $arr_red_ene   = [$sumaopex_1*$tar_ele->costo_elec,$sumaopex_2*$tar_ele->costo_e
 $costo_a
 $costo_b
                                 --}}
-                                <div  style="" class="grid justify-items-center  place-items-center">
+                                <div  style="" class="grid justify-items-center  place-items-start">
                                   <div  class="w-full mx-3  flex justify-center">
                                     @if ( true == ( isset( $val_a_red_ene ) ? $val_a_red_ene : null ) )
                                     <?php
@@ -2226,25 +2226,29 @@ $costo_b
                                     @if ($pay_back_a_ene_prod >= 1)
 
                                         @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 1 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_a_ene_prod,1)}}</b>
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a_ene_prod,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 2 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_a_ene_prod,1)}}</b>
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a_ene_prod,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 3 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_a_ene_prod,1)}}</b>
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a_ene_prod,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 4 )
-                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_a_ene_prod,1)}}</b>
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a_ene_prod,1)}}</b>
+                                        @endif
+
+                                        @if ((strlen(number_format($pay_back_a_ene_prod,1))) == 5 )
+                                        <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_a_ene_prod,1)}}</b>
                                         @endif
 
                                     @endif
 
                                     @if ($pay_back_a_ene_prod < 1)
-                                    <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
+                                    <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">< 1</b>
                                     @endif
 
                                     @else
@@ -2256,9 +2260,9 @@ $costo_b
 
                         </div>
 
-                        <div class="flex w-full justify-center gap-x-3 mb-3">
+                        <div class="flex w-full justify-center gap-x-3 mb-3 mt-1">
 
-                            <div  class="flex justify-start w-[30%] place-items-center my-1">
+                            <div  class="flex justify-start w-[30%] place-items-start my-1">
                                     <b  style="color:#0D08EE;margin-left:.75rem;" class="size_solutions_confort font-roboto font-bold ml-8">Solución B</b>
                             </div>
 
@@ -2272,7 +2276,7 @@ $costo_b
                             </div> --}}
 
                             <div style="" class="rounded-md  flex justify-center w-1/4 ">
-                                <div  style="" class="grid justify-items-center  place-items-center">
+                                <div  style="" class="grid justify-items-center  place-items-start">
                                     <div  class="w-full mx-3  flex justify-center">
                                     @if ( true == ( isset( $val_b_red_ene ) ? $val_b_red_ene : null ) )
                                     <?php
@@ -2290,24 +2294,28 @@ $costo_b
                                    {{-- <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">{{number_format($pay_back_b_ene_prod,1)}}</b> --}}
 
                                         @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 1 )
-                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_1">{{number_format($pay_back_b_ene_prod,1)}}</b>
+                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_b_ene_prod,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 2 )
-                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_2">{{number_format($pay_back_b_ene_prod,1)}}</b>
+                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_b_ene_prod,1)}}</b>
                                         @endif
 
                                         @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 3 )
-                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_3">{{number_format($pay_back_b_ene_prod,1)}}</b>
+                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_b_ene_prod,1)}}</b>
                                         @endif
 
-                                        @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 4 )
-                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_4">{{number_format($pay_back_b_ene_prod,1)}}</b>
+                                         @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 4 )
+                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_b_ene_prod,1)}}</b>
+                                        @endif
+
+                                        @if ((strlen(number_format($pay_back_b_ene_prod,1))) == 5 )
+                                        <b style="border:solid  3px;border-color:#0D08EE;color:#33cc33;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">{{number_format($pay_back_b_ene_prod,1)}}</b>
                                         @endif
                                    @endif
 
                                     @if ($pay_back_b_ene_prod < 1)
-                                   <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay">< 1</b>
+                                   <b style="color:#33cc33;border:solid  3px;border-color:#0D08EE;" class="payback_cants_green font-roboto font-bold rounded-md padding_pay_5">< 1</b>
                                    @endif
 
                                     @else
@@ -2621,7 +2629,7 @@ $costo_b
     </div>
 </div>
 
-<div class="w-full grid rounded-md justify-items-center mt-3">
+<div class="w-full grid rounded-md justify-items-center mt-3 mb-5">
     <div class="ancho border_box rounded-md grid">
 
         <div class="w-full grid">
