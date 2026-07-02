@@ -1,6 +1,6 @@
-<div id="content" style=" display: flex; justify-content: center;" class="font-roboto">
+<div id="" style=" display: flex; justify-content: center; mt-2" class="font-roboto">
     <div style="width: 100%; text-align: -webkit-right;" class="mx-1">
-        <div class="bg-orange-500 text-white rounded-t-xl w-full 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0  ">
+        <div class="bg-orange-500 text-white rounded-t-xl w-full 2xl:flex xl:flex lg:grid justify-between 2xl:py-2 xl:py-2 lg:py-0  ">
             <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
              <a href="#final1">   <button onclick="active_display_retro('sol_1_retro');" type="button" class="rounded-xl p-1 m-0 hover-button-plus text-3xl">{{-- <i class="fa-solid fa-plus text-white"></i> --}}</button></a>
                 <input type="text" class="hidden" value="2" id="cont_sol_1_retro" name="cont_sol_1_retro">
@@ -11,7 +11,7 @@
             </div>
             @include('modal_add_marca_modelo_retro')
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
-                <button id="button_modal" name="button_modal" onclick="mostrar_modal_marcas_modelos('modal_add_marca_modelo_retro');send_marcas_to_datalist();" type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning_blue.png')}}" height ="60" width="60" /></button>
+                <button id="button_modal" name="button_modal" onclick="mostrar_modal_marcas_modelos('modal_add_marca_modelo_retro');send_marcas_to_datalist();" type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning_blue.png')}}" height ="55" width="55" /></button>
             </div>
                 {{--   <div cslass="w-1/2 flex justify-start">
                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
