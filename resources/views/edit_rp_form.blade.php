@@ -1,4 +1,4 @@
-<div id="content" style=" display: flex; justify-content: center;" class="font-roboto">
+<div id="" style=" display: flex; justify-content: center; mt-2" class="font-roboto">
     <div style="width: 100%; text-align: -webkit-right;" class="mx-1">
         <div class="bg-orange-500 text-white rounded-t-xl w-80 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0 ">
             <?php  $module_1=1?>
@@ -14,7 +14,7 @@
             </div>
             @include('modal_add_marca_modelo_retro')
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
-                <button id="button_modal_retro" name="button_modal_retro" onclick="mostrar_modal('modal_add_marca_modelo_retro');send_marcas_to_datalist();" type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning_blue.png')}}" height ="59" width="59" /></button>
+                <button id="button_modal_retro" name="button_modal_retro" onclick="mostrar_modal('modal_add_marca_modelo_retro');send_marcas_to_datalist();" type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning_blue.png')}}" height ="58" width="58" /></button>
             </div>
           {{--   <div cslass="w-1/2 flex justify-start">
                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>

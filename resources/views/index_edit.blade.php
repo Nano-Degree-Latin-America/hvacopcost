@@ -359,7 +359,7 @@ $idm = App::getLocale();
     </div>
 
     <!-- Bottom Navigation -->
-    <div class="fixed bottom-0 left-0 right-0 py-2 bg-transparent shadow-md" x-show="step != 'complete'">
+    <div class="fixed bottom-0 left-0 right-0 py-4 bg-transparent shadow-md" x-show="step != 'complete'">
         <div class="w-full mx-auto px-4">
             <div class="flex  w-full">
                 <div class="w-1/2">

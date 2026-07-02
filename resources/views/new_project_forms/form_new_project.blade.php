@@ -1,4 +1,4 @@
-<div id="content" style=" display: flex; justify-content: center;" class="font-roboto">
+<div id="" style=" display: flex; justify-content: center;" class="font-roboto mt-2">
     <div style="width: 100%; text-align: -webkit-right;" class="mx-1">
         <div style="background-color: #0D08EE;" class="text-white rounded-t-xl w-full 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0  ">
             <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
@@ -12,7 +12,7 @@
 
             @include('modal_add_marca_modelo')
             <div class="mr-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-end">
-                <button  onclick="mostrar_modal_marcas_modelos('modal_add_marca_modelo');send_marcas_to_datalist();" type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning.png')}}" height ="60" width="60" /></button>
+                <button  onclick="mostrar_modal_marcas_modelos('modal_add_marca_modelo');send_marcas_to_datalist();" type="button"  class="rounded-xl p-1 m-0 text-3xl"><img src="{{asset('/assets/images/air-conditioning.png')}}" height ="50" width="50" /></button>
             </div>
           {{--   <div cslass="w-1/2 flex justify-start">
                 <h2 class="text-white font-bold justify-start">ENFRIAMIENTO SOLUCIÓN 1</h2>
