@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee&family=Comfortaa&family=Dongle&family=Montserrat:wght@500;600&family=Rubik:wght@300&display=swap');
 
+    .ancho_caja{
+        width:78%;
+        display: flex;
+        margin: auto;
+    }
     .ancho{
         width:75%;
     }
@@ -29,7 +34,7 @@
         }
 
         .total_text_size{
-            font-size: 1.875rem /* 30px */;
+            font-size: 1.5rem /* 30px */;
             line-height: 2.25rem /* 36px */;
         }
 
@@ -64,11 +69,11 @@
         }
 
         .margn-top-cards{
-            margin-top:2.3rem;
+            margin-top:1rem;
         }
 
         .margn-bottom-cards{
-            margin-bottom:2.3rem;
+            margin-bottom:1rem;
         }
 
         .margin-top-consumo-anual{
@@ -83,7 +88,7 @@
         }
 
         .cant_style_minim{
-            font-size: 3rem;
+            font-size: 2.3rem;
             color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -120,7 +125,7 @@
         .energy_star_style_img{
             margin-left: .5rem;
             margin-right: .5rem;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             width:120px;
             height:75px;
         }
@@ -189,7 +194,7 @@
 
          .border_box{
             border:2px solid;
-            border-color: #0D08EE !important;
+            border-color: #000 !important;
          }
 
          .img_persona{
@@ -235,7 +240,7 @@
          }
 
          .tam_info_sols{
-            font-size: 16px;
+            font-size: 14px;
          }
 
          .tam_leyend_sols{
@@ -305,7 +310,7 @@
         }
 
         .mt_titles{
-            margin-top:3rem;
+            margin-top:1rem;
         }
 
         .padding_na{
@@ -404,7 +409,7 @@
             width:100px;
             padding-top: 0.5rem /* 8px */;
             padding-bottom: 0.5rem /* 8px */;
-            font-size: 1.25rem /* 20px */;
+            font-size: 1.1rem /* 20px */;
             line-height: 1.75rem /* 28px */;
         }
 
@@ -842,7 +847,7 @@
             }
 
             .info_project{
-            font-size: 12px;
+            font-size: 15px;
             font-family: 'ABeeZee', sans-serif;
             color:#0D124F;
             font-weight: bold;
@@ -850,7 +855,7 @@
             }
 
             .info_project_res{
-            font-size: 12px;
+            font-size: 15px;
             font-family: 'ABeeZee', sans-serif;
             color:#3182ce;
             font-weight: bold;
@@ -884,6 +889,15 @@
                 color: #0D08EE;
                 font-weight: bold;
                 font-family: 'ABeeZee', sans-serif;
+            }
+            .solucions_style_nameno_azul {
+                font-size: 1.5rem;
+                color: #0D08EE;
+                font-weight: bold;
+                font-family: 'ABeeZee', sans-serif;
+            }
+            .margin_solucion_payback{
+                margin-left:5.3rem;
             }
 
             .img_tr{
@@ -947,7 +961,7 @@
             margin-top: .75rem;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
-            font-size: 3rem;
+            font-size: 2.8rem;
             }
 
             .eui_energy_style{
@@ -968,18 +982,18 @@
             }
 
             .size_solutions_confort{
-            font-size:1.5rem;
+            font-size:1.2rem;
             color: #0D08EE;
             }
 
             .ancho_rang {
             width: 1rem;
-            height: 2.5rem;
+            height: 2rem;
             }
 
             .puntero_medidas {
                 width: 70px;
-                height: 50px;
+                height: 45px;
                 margin-top: 8px;
             }
 
@@ -995,7 +1009,7 @@
             .btn_roundf_retro{
                 border:1px solid #ffff;
                 background: #ffff;
-                color:#3182ce;
+                color:#000;
                 border-radius: 50%;
                 width: 25px;
                 height: 25px;
@@ -1054,7 +1068,7 @@
             }
 
             .payback_cants_green{
-            font-size: 2rem;
+            font-size: 1.8rem;
             }
 
             .medids-circle {
@@ -1174,21 +1188,21 @@
            }
 
            .titulos_style{
-            font-size:2.5rem;
+            font-size:2rem;
             color: white;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
          }
 
         .solucions_style_nameno_azul {
-            font-size: 2.25rem;
+            font-size: 2rem;
             color: #0D08EE;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
         }
 
         .solucions_style_name {
-            font-size: 2.25rem;
+            font-size: 2rem;
             color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -1204,24 +1218,24 @@
         }
 
         .cant_2_l{
-            font-size:3.5rem;
+            font-size:2.5rem;
             color:#0D124F;
             margin-left:110px;
         }
 
         .cant_2{
-            font-size:3.5rem;
+            font-size:2.5rem;
             color:#0D124F;
         }
 
         .capex_a{
-            font-size:3.5rem;
+            font-size:2.5rem;
             color:#0D124F;
             margin-left:40px;
         }
 
         .cant_style{
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
@@ -1250,25 +1264,25 @@
          .energy_star_style_img{
             margin-left: .5rem;
             margin-right: .5rem;
-            margin-top: 1.5rem;
+            margin-top: 0.5rem;
             width:120px;
             height:75px;
         }
 
         .eui_energy_val_style{
-            margin-top: .75rem;
+            margin-top: .5rem;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
-            font-size: 4rem;
+            font-size: 3rem;
         }
 
         .eui_energy_style{
-            margin-top: 2rem;
+            margin-top: 1rem;
             color: #0D124F;
             font-weight: bold;
             font-family: 'ABeeZee', sans-serif;
             margin-right: .25rem;
-            font-size: 2.25rem;
+            font-size: 2rem;
         }
 
         .ashrae_style_img{
@@ -1280,17 +1294,18 @@
         }
 
         .size_solutions_confort{
-            font-size:2rem;
+            font-size:1.7rem;
             color: #0D08EE;
         }
 
         .ancho_rang{
             width:1.3rem;
-            height:3rem;
+            /* height:3rem; */
         }
 
         .puntero_medidas{
-            width: 85px; height:65px;
+            width: 85px;
+            /* height:65px; */
             margin-top:5px;
         }
 
@@ -1308,7 +1323,7 @@
                  .btn_roundf_retro{
                 border:1px solid #ffff;
                 background: #ffff;
-                color:#3182ce;
+                color:#000;
                 border-radius: 50%;
                 width: 30px;
                 height: 30px;
@@ -1354,8 +1369,8 @@
 
 
          .img_payback{
-            height:80px;
-            width:80px;
+            height:70px;
+            width:70px;
          }
 
          .margin-r-payback{
@@ -1368,7 +1383,7 @@
         }
 
         .payback_cants_green{
-            font-size: 2.5rem;
+            font-size: 2.1rem;
         }
 
         .medids-circle{

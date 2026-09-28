@@ -1,8 +1,8 @@
 <div id="" style=" display: flex; justify-content: center;" class="font-roboto mt-8">
     <div style="width: 100%; text-align: -webkit-right;" class="mx-1">
-        <div style="background-color: #0D08EE;" class="text-white rounded-t-xl w-full 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0  ">
+        <div style="background-color: #000;" class="text-white rounded-t-xl w-full 2xl:flex xl:flex lg:grid justify-between 2xl:py-3 xl:py-3 lg:py-0  ">
             <div class="ml-5 2xl:w-10 xl:w-auto lg:w-1/4 flex justify-start">
-             <a href="#final1">   <button onclick="active_display('sol_1');" type="button" style="background-color: #0D08EE;" class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button></a>
+             <a href="#final1">   <button onclick="active_display('sol_1');" type="button" style="background-color: #000;" class="rounded-xl p-1 m-0 hover-button-plus text-3xl"><i class="fa-solid fa-plus text-white"></i></button></a>
                 <input type="text" class="hidden" value="2" id="cont_sol_1" name="cont_sol_1">
                 <input type="text" class="hidden" value="1" id="set_sol_1" name="set_sol_1">
             </div>
@@ -412,7 +412,7 @@
             </div>
 
             <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2 mr-1">
 
                     <div class="flex justify-start w-1/3 text-left">
                         <label class="labels" for=""><b>{{ __('index.capacidad termica') }}</b> </label>
@@ -727,7 +727,7 @@
                     </div>
 
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                        <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2 mr-1">
                             <div class="flex justify-start w-1/3 text-left">
                                 <label  class="labels" for=""><b>{{ __('index.capacidad termica') }}</b> </label>
                             </div>
@@ -1016,7 +1016,7 @@
 
 
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
+                    <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2 mr-1">
                         <div class="flex w-1/3 justify-start text-left">
                             <label class="labels" for=""><b>{{ __('index.capacidad termica') }}</b> </label>
                         </div>
@@ -1303,7 +1303,7 @@
 
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                            <div class="w-1/3 flex justify-start text-left">
+                            <div class="w-1/3 flex justify-start text-left mr-1">
                                 <label class="labels" for=""><b>{{ __('index.marca') }}</b> </label>
                             </div>
 
@@ -1329,7 +1329,7 @@
                     </div>
 
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                        <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 mr-1">
                             <div class="flex justify-start w-1/3 text-left">
                                 <label class="labels" for=""><b>{{ __('index.capacidad termica') }}</b> </label>
                             </div>
@@ -1453,7 +1453,7 @@
 
                     <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                         <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                            <div class="flex w-1/2 justify-start text-left">
+                            <div class="flex w-1/2 justify-start text-left mr-1">
                                 <label class="labels" for=""><b>{{ __('index.filtracion') }}</b></label>
                             </div>
                             <div class="flex w-full justify-start">
@@ -1486,7 +1486,7 @@
 
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                        <div class="flex w-1/2 justify-start text-left">
+                        <div class="flex w-1/2 justify-start text-left mr-1">
                             <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                         </div>
                         <div class="flex w-full justify-start">
@@ -1589,7 +1589,7 @@
 
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex gap-x-1 w-1/2">
-                        <div class="w-1/3 flex justify-start text-left">
+                        <div class="w-1/3 flex justify-start text-left mr-1">
                             <label class="labels" for=""><b>{{ __('index.marca') }}</b> </label>
                         </div>
 
@@ -1615,7 +1615,7 @@
                 </div>
 
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
-                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
+                    <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2 mr-1">
                         <div class="flex w-1/3 justify-start text-left">
                             <label  class="labels" for=""><b>{{ __('index.capacidad termica') }}</b> </label>
                         </div>
@@ -1736,7 +1736,7 @@
 
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                        <div class="flex w-1/2 justify-start text-left">
+                        <div class="flex w-1/2 justify-start text-left mr-1">
                             <label class="labels" for=""><b>{{ __('index.filtracion') }}</b></label>
                         </div>
                         <div class="flex w-full justify-start">
@@ -1769,7 +1769,7 @@
 
                 <div class="flex w-full 2xl:mt-3 xl:mt-3 lg:mt-0">
                     <div class="lg:grid 2xl:flex xl:flex gap-x-2 w-1/2">
-                        <div class="flex w-1/2 justify-start text-left">
+                        <div class="flex w-1/2 justify-start text-left mr-1">
                             <label class="labels" for=""><b>{{ __('index.tipo_ambiente') }}</b></label>
                         </div>
                         <div class="flex w-full justify-start">

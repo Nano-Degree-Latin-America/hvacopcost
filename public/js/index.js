@@ -6381,7 +6381,7 @@ $('#proteccion_condensador_3_1_retro_count').val(proteccion_condensador_3_1_retr
 function valida_selects_inps(id_input){
    input_select = $('#'+id_input);
    if (input_select.val() != 0 || input_select.val() != null ){
-    input_select.css('border-color','#0D08EE');
+    input_select.css('border-color','#000');
    }else if (input_select.val() == 0 || input_select.val() == null){
     input_select.css("border-color", "red");
    }

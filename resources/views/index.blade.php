@@ -126,8 +126,8 @@ border-radius: 10px;
 
 .btn_roundf{
 
-    border:1px solid #3182ce;
-    background: #3182ce;
+    border:1px solid #000;
+    background: #000;
     color:#ffff;
     border-radius: 50%;
     width: 30px;
@@ -143,8 +143,8 @@ border-radius: 10px;
 
 
   .btn_roundf_retro{
-border:1px solid #3182ce;
-background: #3182ce;
+border:1px solid #000;
+background: #000;
 color:#ffff;
 border-radius: 50%;
 width: 30px;
@@ -158,8 +158,8 @@ align-items: center;
 cursor: pointer;
 }
 .btn_roundf_retro,.btn_roundf:hover {
-    border:1px solid #4299e1;
-background: #4299e1;
+    border:1px solid #000;
+background: #000;
 color:#ffff;
 border-radius: 50%;
 width: 30px;
@@ -174,8 +174,8 @@ cursor: pointer;
 }
 
 .btn_roundf_retro,.btn_roundf:active {
-    border:1px solid #3182ce;
-background: #3182ce;
+    border:1px solid #000;
+background: #000;
 color:#ffff;
 border-radius: 50%;
 width: 30px;
@@ -242,7 +242,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .border-color-inps{
-    border-color:#0D08EE;
+    border-color:#000;
 }
     </style>
 
@@ -588,13 +588,13 @@ input[type=number]::-webkit-outer-spin-button {
     <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
 </div>
 </div>
- @if (Auth::user()->tipo_user == 5)
+ {{-- @if (Auth::user()->tipo_user == 5)
     @include('components.hvac-chat')
- @endif
+ @endif --}}
 <style>
 
 .title_index{
-              color:#0D08EE !important;"
+              color:#000 !important;"
         }
 
 .text_blue{
@@ -1209,7 +1209,7 @@ input[type=number]::-webkit-outer-spin-button {
             }
         .title_index{
             font-size: 3rem;
-              color:#0D08EE !important;"
+              color:#000 !important;"
         }
 
         .unit_style{

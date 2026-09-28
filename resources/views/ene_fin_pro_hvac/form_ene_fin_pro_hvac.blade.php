@@ -212,7 +212,7 @@
             </div>
             @include('modal_analisis_prod')
             <div class="flex justify-center w-2/3 mt-8">
-                <label style="color:#0D08EE;margin-top:2px;" class="text-2xl font-roboto  font-bold" for="">Análisis de Productividad Laboral</label>
+                <label style="color:#000;margin-top:2px;" class="text-2xl font-roboto  font-bold" for="">Análisis de Productividad Laboral</label>
                 <div class="ml-2" style="">
                     <a onclick="mostrar_modal('modal_analisis_prod');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                 </div>
@@ -290,7 +290,7 @@
         <div id="div_next" name="div_next" style="width: 80%;" class="">
             <button type="button"  id="next" name="next"
                 onclick="buton_check('{{App::getLocale()}}');"
-                style="background-color:#0D08EE;"
+                style="background-color:#000;"
                 class="w-full py-4 px-7 rounded-lg shadow-sm text-center text-white hover_button_blue text-xl font-roboto"
             >{{ __('index.siguiente') }}</button>
         </div>
@@ -298,7 +298,7 @@
                 <button  type="button"  id="next_h" name="next_h"
                     x-show="step < 2"
                     @click="step++"
-                    style="background-color:#0D08EE;"
+                    style="background-color:#000;"
                     class="w-full py-4 px-7 rounded-lg shadow-sm text-center text-white hover_button_blue text-xl font-roboto"
                 >{{ __('index.siguiente') }}</button>
         </div>

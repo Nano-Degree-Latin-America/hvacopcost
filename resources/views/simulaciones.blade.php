@@ -5,10 +5,10 @@
             &nbsp;
     </div>
     <div id="eslogan" style="margin-top:13rem;margin-left:18rem;" class="w-full grid text-5xl text-left font-arial-narrow">
-        <h2 style="color:#0D08EE;">Comparando Soluciones para <br> la Optimización</h2>
-        <h2 class="font-bold" style="color:#0D08EE;font-size:4rem;">Energética y Financiera</h2>
-        <h2 style="color:#0D08EE;" >de Proyectos de Sistemas de</h2>
-        <h2 class="font-bold flex" style="color:#0D08EE;font-size:5rem;"></p>HVAC</h2>
+        <h2 style="color:#000;">Comparando Soluciones para <br> la Optimización</h2>
+        <h2 class="font-bold" style="color:#000;font-size:4rem;">Energética y Financiera</h2>
+        <h2 style="color:#000;" >de Proyectos de Sistemas de</h2>
+        <h2 class="font-bold flex" style="color:#000;font-size:5rem;"></p>HVAC</h2>
     </div>
 </div>
 

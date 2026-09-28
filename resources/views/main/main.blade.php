@@ -78,6 +78,8 @@
             width: 100vw;                   /* 100% del ancho de la ventana */
             height: 100vh;                  /* 100% del alto de la ventana */
             min-height: 100vh;              /* Altura mínima igual a la pantalla */
+            overflow-x: hidden;
+            overflow-y: auto;
     	}
     </style>
 
@@ -93,7 +95,7 @@
     proyecto hvac, aire acondicionado, diferencia de costos, incremento de energía, ahorro energía,
     calcular, calculadora hvac, hvac calculadora">
 </head>
-<body class="container-login100 overflow-hidden">
+<body class="container-login100">
    {{--  <div id="loader" class="">
         <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
     </div> --}}
