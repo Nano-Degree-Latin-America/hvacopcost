@@ -71,7 +71,7 @@
 
 .container-login100
     	{
-    		background-image: url("{{ asset('assets/images/fondoo.png') }}");
+    		background-image: url("{{ asset('assets/images/fondoo2.png') }}");
             background-size: cover;         /* Hace que la imagen cubra todo el contenedor */
             background-position: center;    /* Centra la imagen */
             background-repeat: no-repeat;   /* Evita que la imagen se repita */

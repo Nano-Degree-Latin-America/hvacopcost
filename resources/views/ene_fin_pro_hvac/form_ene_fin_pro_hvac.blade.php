@@ -1,4 +1,4 @@
-<div class="col-4 ml-5 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
+<div class="flex items-start justify-center gap-6 w-full px-4">
     {{-- <ul style="padding-bottom: 60px; text-align: justify; font-size: 15px; font-style: italic; font-weight: 400">
         <li>Horas de Enfriamiento por Región y Ciudad de Latin América </li>
         <li>Comparador de Sistemas de Enfriamiento </li>
@@ -25,7 +25,7 @@
 
 
          </div> --}}
-
+         <div class="w-full min-w-0 max-w-5xl">
             <div class="my-5">
                 <label style=" text-shadow: 2px 2px 4px #a9a9b9 ;" class="title_index font-roboto drop-shadow-lg font-bold leading-tight" for="">Simulador Energético y Financiero <br> de Proyectos <label id="type_project_name" name="type_project_name"></label> HVAC</label>
             </div>
@@ -261,7 +261,9 @@
 </div>
 
 
-<div class="col-3 mx-1 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
+
+<div class="w-44 shrink-0 mx-0">
+
     <br>
     <br>
     <br>
@@ -311,7 +313,7 @@
             >{{ __('index.inicio') }}</button>
         </div>
     </div>
-</div>
+
 
 {{-- <div class="col-6 mx-1 xl:ml-0 lg:ml-0 md:ml-0 lg:sm-0 ">
     <div class="grid gap-y-3 type_proy_pos">
@@ -488,3 +490,6 @@
 
 </div> --}}
 
+
+</div>
+</div>

@@ -10,7 +10,7 @@
 
 <div class="bg-transparent w-full flex justify-center">
     <div class="w-1/3 flex h-full">
-         <img class="my-5" style="max-height: 100px; width:230px;margin-left:4.3rem;"  src="{{asset('/assets/images/Logotipo-HVACOPCOST.png')}}">
+         {{-- <img class="my-5" style="max-height: 100px; width:230px;margin-left:4.3rem;"  src="{{asset('/assets/images/Logotipo-HVACOPCOST.png')}}"> --}}
     </div>
     <div class=" w-1/3 flex justify-center" style="line-height: 30px; height:99px;">
         {{-- <a href="{{route('index')}}"><img class="header" id="logoSitio" id="logoSitio" src="assets/images/logos/hvac.png" alt=""></a> --}}
@@ -21,20 +21,20 @@
     {{--     <a href="#"><img class="header" id="logoDesprosoft" id="logoDesprosoft" src="{{asset('assets/images/logos/sarsoftware.png')}}" alt="sarsoftware"></a> --}}
 
 
-    <button style="height:50px;" title="Inicio" class="bg-transparent mx-1 px-3 py-2 rounded-md hover:bg-blue-900 font-roboto action:bg-blue-600" onclick="window.location.href='/home'"><i style="color:#0D08EE;" class="text-4xl fas fa-arrow-left"></i></button>
+    {{-- <button style="height:50px;" title="Inicio" class="bg-transparent mx-1 px-3 py-2 rounded-md hover:bg-blue-900 font-roboto action:bg-blue-600" onclick="window.location.href='/home'"><i style="color:#000;" class="text-4xl fas fa-arrow-left"></i></button>
 
-    <button style="height:50px;"  class="p-1 bg-transparent rounded-md hover:bg-blue-900 text-[#0D08EE] font-roboto action:bg-transparent" onclick="window.location.href='/mis_projectos'"><img src="{{asset('/assets/images/mis_proyectos.png')}}" title="Mis Proyectos" style="max-height: 40px; width:40px;;"></button>
+    <button style="height:50px;"  class="p-1 bg-transparent rounded-md hover:bg-blue-900 text-[#000] font-roboto action:bg-transparent" onclick="window.location.href='/mis_projectos'"><img src="{{asset('/assets/images/mis_proyectos.png')}}" title="Mis Proyectos" style="max-height: 40px; width:40px;;"></button>
 
 
-    <a style="height:50px;"  class="p-1 bg-transparent rounded-md hover:bg-blue-900 text-[#0D08EE] font-roboto action:bg-transparent grid place-content-center"  href="{{ route('cerrar_session') }}"
+    <a style="height:50px;"  class="p-1 bg-transparent rounded-md hover:bg-blue-900 text-[#000] font-roboto action:bg-transparent grid place-content-center"  href="{{ route('cerrar_session') }}"
             onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-               <i style="color:#0D08EE;" title="Cerrar Sesión" class="fas fa-sign-out-alt text-4xl"></i>
+               <i style="color:#000;" title="Cerrar Sesión" class="fas fa-sign-out-alt text-4xl"></i>
             </a>
 
             <form id="logout-form" action="{{ route('cerrar_session') }}" method="POST" class="d-none">
                 @csrf
-            </form>
+            </form> --}}
     </div>
 </div>
     {{-- <div id="divSettings">
@@ -147,8 +147,8 @@ span{
 
 .btn_roundf{
 
-border:1px solid #3182ce;
-background: #3182ce;
+border:1px solid #000;
+background: #000;
 color:#ffff;
 border-radius: 50%;
 width: 30px;
@@ -164,8 +164,8 @@ align-items: center;
 
 .btn_roundf_retro{
 
-border:1px solid #3182ce;
-background: #3182ce;
+border:1px solid #000;
+background: #000;
 color:#ffff;
 border-radius: 50%;
 width: 30px;
@@ -180,8 +180,8 @@ cursor: pointer;
 }
 
 .btn_roundf_retro:hover {
-    border:1px solid #4299e1;
-background: #4299e1;
+    border:1px solid #000;
+background: #000;
 color:#ffff;
 border-radius: 50%;
 width: 30px;
@@ -196,8 +196,8 @@ cursor: pointer;
 }
 
 .btn_roundf_retro:active {
-    border:1px solid #3182ce;
-background: #3182ce;
+    border:1px solid #000;
+background: #000;
 color:#ffff;
 border-radius: 50%;
 width: 30px;
@@ -216,7 +216,7 @@ cursor: pointer;
 }
 
 .border-color-inps{
-    border-color:#0D08EE;
+    border-color:#000;
 }
     </style>
 
@@ -425,9 +425,9 @@ $idm = App::getLocale();
 
                 <div id="buttons_energy" name="buttons_energy" x-show="step === 2" class="w-1/2 flex hidden" style=" justify-content: center;">
 
-                    <button  style="background-color:#0D08EE;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
+                    <button  style="background-color:#000;width: 20%;" x-show="step > 1" type="button" name="calcular_p_n_Edit" title="Guardar Proyecto Nuevo" id="calcular_p_n_Edit" onclick="check_form_submit(1,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
 
-                    <button  style="background-color:#0D08EE;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
+                    <button  style="background-color:#000;width: 20%;" x-show="step > 1" type="button" name="calcular_p_r_Edit" title="Guardar Proyecto Retrofit" id="calcular_p_r_Edit" onclick="check_form_submit(2,'{{$idm}}','update',{{$id_project}},'{{$project_edit->created_at}}');"  class="hidden focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.calcular') }}</button>
                 </div>
 
 
@@ -436,7 +436,7 @@ $idm = App::getLocale();
 
                     <button  type="button" id="button_next_mantenimiento_noadicionales_edit" name="button_next_mantenimiento_noadicionales_edit"
 
-                    style="background-color:#0D08EE;"
+                    style="background-color:#000;"
                         x-show="step == 2"
                         @click="step++"
                         onclick="calcular_speendplan_base_edit({{ $project_edit->id }});"
@@ -446,7 +446,7 @@ $idm = App::getLocale();
 
                     {{-- button siguiente mantenimiento --}}
                     <button  type="button" id="button_next_mantenimiento_noadicionales" name="button_next_mantenimiento_noadicionales"
-                    style="background-color:#0D08EE;"
+                    style="background-color:#000;"
                         x-show="step == 2"
                         onclick="calcular_speendplan_base_update({{ $project_edit->id }});"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto hidden"
@@ -455,7 +455,7 @@ $idm = App::getLocale();
 
                     <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
                     onclick="calcular_speendplan_base_adicionales_edit({{ $project_edit->id }});save_adicionales({{ $project_edit->id }});"
-                   style="background-color:#0D08EE;"
+                   style="background-color:#000;"
                        x-show="step == 3"
                        @click="step++"
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
@@ -463,7 +463,7 @@ $idm = App::getLocale();
 
                    <button  type="button" id="button_next_mantenimiento_costos_adicionales" name="button_next_mantenimiento_costos_adicionales"
 
-                   style="background-color:#0D08EE;"
+                   style="background-color:#000;"
                        x-show="step == 4"
                        @click="step++"
                        class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
@@ -471,7 +471,7 @@ $idm = App::getLocale();
 
                    <button  type="button" id="button_next_mantenimiento_justificacion" name="button_next_mantenimiento_justificacion"
 
-                   style="background-color:#0D08EE;"
+                   style="background-color:#000;"
                        x-show="step == 5"
                        @click="step++"
                        onclick="justificacion_financiera_send_mant_edit($('#costo_mantenimiento_mantenimiento_financiero').val());justificacion_financiera_send();save_justificacion_financiera({{ $project_edit->id }});"
@@ -479,13 +479,13 @@ $idm = App::getLocale();
                    >{{ __('mantenimiento.justificacion_financiera') }}</button>
 
                    <button  type="button" id="button_next_an_cost_mant" name="button_next_an_cost_mant"
-                    style="background-color:#0D08EE;"
+                    style="background-color:#000;"
                         x-show="step == 6"
                         @click="step++"
                         class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto"
                     >{{ __('mantenimiento.speend_plan') }}</button>
 
-                    {{-- <button style="background-color:#0D08EE;width: 20%;"  x-show="step == 7" type="button"
+                    {{-- <button style="background-color:#000;width: 20%;"  x-show="step == 7" type="button"
                     onclick="update_mantenimiento();" name="guardar_mantenimiento" id="guardar_mantenimiento" class="focus:outline-none border border-transparent py-2 px-6 rounded-lg shadow-sm text-center text-white hover:bg-blue-600 text-xl font-roboto">{{ __('index.guardar') }}</button> --}}
                     <div  x-show="step < 2" class="w-full flex" style=" justify-content: right;">
                         <div  x-show="step < 2" class="w-full flex" style=" justify-content: left;">
@@ -514,21 +514,21 @@ $idm = App::getLocale();
     </div>
     <!-- / Bottom Navigation https://placehold.co/300x300/e2e8f0/cccccc -->
 </div>
- @if (Auth::user()->tipo_user == 5)
+ {{-- @if (Auth::user()->tipo_user == 5)
     @include('components.hvac-chat')
- @endif
+ @endif --}}
 <style>
 .title_index{
-              color:#0D08EE !important;"
+              color:#000 !important;"
 }
 
 
 .title_index_mant{
-            color:#0D08EE !important;"
+            color:#000 !important;"
 }
 
 .text_blue{
-    color:#0D08EE !important;
+    color:#000 !important;
 }
 
 @media (min-width: 640px) {

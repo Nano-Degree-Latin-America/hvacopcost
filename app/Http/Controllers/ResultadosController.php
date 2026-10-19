@@ -139,7 +139,9 @@ class ResultadosController extends Controller
 
     public function edit_project($id){
         $project_edit = DB::table('projects')
+        ->leftJoin('propiedades','projects.id_propiedad','=','propiedades.id')
         ->where('projects.id','=',$id)
+        ->select('projects.*','propiedades.cliente','propiedades.name as propiedad')
         ->first();
 
         $id_project = $id;

@@ -1,4 +1,6 @@
-
+.overflow-x-hidden{
+    overflow-x: hidden !important;
+}
 .hover_button_blue{
     border: 2px solid transparent;
 }

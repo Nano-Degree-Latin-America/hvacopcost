@@ -2409,6 +2409,8 @@ function buton_check(idm){
        /*  $('#next').attr('disabled', false); */
        $('#div_next').addClass("hidden");
        $('#div_next_h').removeClass("hidden");
+    //    $('#forms_ene_fin_proy').removeClass("hidden");
+    //    $('#button_calcular_ene_fin').removeClass("hidden");
     }
 }
 
@@ -7312,11 +7314,12 @@ toggle between hiding and showing the dropdown content */
         count_unidad = $('#count_unidad').val();
         count_tiempo_porcent = $('#count_tiempo_porcent').val();
         count_porcent_hvac = $('#count_porcent_hvac').val();
+        count_select_propiedad = $('#count_select_propiedad').val();
 
        suma_inps = parseInt(count_name_pro) + parseInt(count_paises) + parseInt(count_ciudad) + parseInt(count_cat_ed) + parseInt(count_tipo_edificio)
-       + parseInt(count_ar_project) + parseInt(count_unidad) + parseInt(count_tiempo_porcent) + parseInt(count_porcent_hvac);
+       + parseInt(count_ar_project) + parseInt(count_unidad) + parseInt(count_tiempo_porcent) + parseInt(count_porcent_hvac)+parseInt(count_select_propiedad);
 
-       if(suma_inps == 9){
+       if(suma_inps == 10){
         $('#div_next').addClass("hidden");
         $('#div_next_h').removeClass("hidden");
        }
@@ -13922,7 +13925,7 @@ function back_begin(){
     $('#ene_fin_pro_hvac_update').addClass("hidden");
     $('#div_left_simulaciones').removeClass("col-2");
 
-    $('#div_left_simulaciones').addClass("col-6");
+    // $('#div_left_simulaciones').addClass("col-6");
     $('#eslogan').removeClass("hidden");
     //$('#mantenimiento_form_project').addClass("hidden");
 
@@ -18281,10 +18284,30 @@ function noFomulaValue(id, val) {
         return parseInt(response);
     });
 }
-
-
-
-
-
-
-
+function getPropiedadesForProyecto(){
+    $.ajax({
+        url: '/propiedadesform',
+        type:'get',
+        success:function(response){
+            $('#select_propiedad').empty();
+            $('#select_propiedad').append($('<option>', {
+                value: '',
+                text: '-Seleccionar-'
+            }));
+            if (response) {
+                response.forEach(element => {
+                    $('#select_propiedad').append($('<option>', {
+                        value: element.id,
+                        text: element.cliente+' - '+element.name
+                    }));
+                })
+            }
+            else{
+                $('#select_propiedad').append($('<option>', {
+                    value: '',
+                    text: 'Sin propiedades'
+                }));
+            }
+        }
+    })
+}

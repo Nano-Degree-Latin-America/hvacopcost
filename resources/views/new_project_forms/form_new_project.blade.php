@@ -338,11 +338,11 @@
       {{-- 1.1 --}}
 
       {{-- 1.2 --}}
-      <div class="grid w-full hidden mb-1"  id="sol_1_2" name="sol_1_2">
+      <div class="grid w-full hidden mb-5 pb-5"  id="sol_1_2" name="sol_1_2">
        <div class="mx-2">
         <hr>
        </div>
-        <div class="flex">
+        <div class="flex pb-5">
         <div class="rounded-xl mt-3 shadow-md mx-2">
 
           <div class="grid gap-y-1 my-2">

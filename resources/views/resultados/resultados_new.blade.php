@@ -2565,7 +2565,7 @@ $costo_b
 
                                     </div>
                                 </div> --}}
-                        <div id="chart_roi_base_a_ene_prod" name="chart_roi_base_a_ene_prod" style="width: 600px;margin-right: 5rem;margin-top: 1rem;"></div>
+                        <div id="chart_roi_base_a_ene_prod" name="chart_roi_base_a_ene_prod" style="margin-top: 1rem;"></div>
                         <div class="hidden" style="height:200px;"  id="chart_roi_base_a_ene_prod_print" name="chart_roi_base_a_ene_prod_print"></div>
                     </div>
                 </div>
@@ -3011,16 +3011,16 @@ $costo_b
                     </div>
                 </div>
                 <div style="" class="w-full flex">
-                    {{-- {{print_r($solutions)}} --}}
+                    {{-- {{print_r($solution)}} --}}
                     @foreach ($solutions as $solution)
                     @if ($solution->num_enf == 1)
                         {{-- @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
-                            {{-- @if(count(array_filter($solutions,fn($item)=>$item->num_enf==1))>1) --}}
+                            @if($solutions->where('num_enf',1)->count()>1)
                             <div class="w-1/2 grid rounded-md mx-2 my-2 border-2" style="border-color:#000;">
                                 {{-- cap_term --}}
-                            {{-- @else --}}
-                            {{-- <div class="w-full grid rounded-md mx-2 my-2 border-2" style="border-color:#000;"> --}}
-                            {{-- @endif --}}
+                            @else
+                            <div class="rounded-md mx-auto my-2 border-2" style="width:70%;border-color:#000;">
+                            @endif
                                 <div class="flex w-full mx-1">
                                     <div class="w-1/2 flex justify-start">
                                         <p class="text-blue-900 font-bold font-roboto tam_info_sols" for="">{{ __('index.capacidad termica') }}</p>
@@ -3383,7 +3383,11 @@ $costo_b
                         @foreach ($solutions as $solution)
                         @if ($solution->num_enf == 2)
                             {{-- @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
+                                @if($solutions->where('num_enf',2)->count()>1)
                                 <div class="w-1/2 grid rounded-md mx-2 my-2 border-2" style="border-color:#000;">
+                                @else
+                                <div class="rounded-md mx-auto my-2 border-2" style="width:70%;border-color:#000;">
+                                @endif
                                     {{-- cap_term --}}
                                     <div class="flex w-full mx-1">
                                         <div class="w-1/2 flex justify-start">
@@ -3750,7 +3754,11 @@ $costo_b
                         @foreach ($solutions as $solution)
                         @if ($solution->num_enf == 3)
                             {{-- @if ($solution->num_sol == 1 && $solution->num_enf == 1) --}}
+                                @if($solutions->where('num_enf',3)->count()>1)
                                 <div class="w-1/2 grid rounded-md mx-2 my-2 border-2" style="border-color:#000;">
+                                @else
+                                <div class="rounded-md mx-auto my-2 border-2" style="width:70%;border-color:#000;">
+                                @endif
                                     {{-- cap_term --}}
                                     <div class="flex w-full mx-1">
                                         <div class="w-1/2 flex justify-start">
@@ -4130,7 +4138,7 @@ $costo_b
     var screenHeight = window.screen.height;
 
     if(screenWidth >= 1280){
-        var cons_ene_ele_ancho = 265;
+        var cons_ene_ele_ancho = 345;
         var cons_ene_ele_alto = 185;
         var fontSize_cons_ene_ele = '26px';
         var fontSize_cons_ene_ele_kwh = '16px';

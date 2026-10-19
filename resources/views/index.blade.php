@@ -371,7 +371,7 @@ input[type=number]::-webkit-outer-spin-button {
             <div class="overscroll-none">
                 <div x-show.transition.in="step === 1">
 
-                        <div id="mapa-div">
+                        <div id="mapa-div overflow-x-hidden">
                             <?php  $check_types_pn=$check_types_p->check_p_type_pn(Auth::user()->id_empresa); ?>
                             <?php  $check_types_pr=$check_types_p->check_p_type_pr(Auth::user()->id_empresa); ?>
                             <?php  $check_types_m=$check_types_p->check_p_type_m(Auth::user()->id_empresa); ?>

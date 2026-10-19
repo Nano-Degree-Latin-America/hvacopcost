@@ -54,6 +54,10 @@ class IndexController extends Controller
 
     }
 
+    public function new_project(){
+        return view('proyectos.index');
+    }
+
     public function cerrar_session(){
         $user = Auth::user()->tipo_user;
         if($user === 5){

@@ -28,7 +28,7 @@
     <style type="text/css">
     	.container-login100
     	{
-    		background-image: url("{{asset('assets/images/fondoo.webp')}}");
+    		background-image: url("{{asset('assets/images/fondoo2.png')}}");
     	}
     </style>
     <title>Desprosoft Hvacopcost</title>

@@ -52,6 +52,7 @@ use FormusTrait,ConfortTrait,SaveResultsTrait;
             $hrs_tiempo = $request->get('tiempo_porcent');
             $mew_project->id_tipo_edificio=$request->get('tipo_edificio');
             $mew_project->id_cat_edifico=$request->get('cat_ed');
+            $mew_project->id_propiedad=$request->get('select_propiedad');
             //horas tiempo
             switch ($hrs_tiempo) {
                 case 'm_50':

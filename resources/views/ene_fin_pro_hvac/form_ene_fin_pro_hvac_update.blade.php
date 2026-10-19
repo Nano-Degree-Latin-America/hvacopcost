@@ -315,10 +315,34 @@
                                                         </select>
                                                 <span id="inflation_rate_warning" name="inflation_rate_warning" class="text-red-500"></span>
                                                 </div>
-
+                                                <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
+                                                    <div class="flex w-full">
+                                                        <label  class="labels_index font-roboto" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
+                                                    </div>
+                                                    <div class="flex w-full">
+                                                       {{--  <select onchange="buton_check_edit();check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
+                                                            <option value="0">-{{ __('index.selecciona porcentaje') }}-</option>
+                                                        </select> --}}
+                                                        <input type="text" value="{{$project_edit->porcent_hvac}}%" onkeypress="return soloNumeros(event)" onchange="buton_check_edit('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');change_to_porcent(this.value,this.id);" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac" id="porcent_hvac">
+                                                        <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="1">
+                                                        <div class="ml-2" style="margin-top: 5.5px;">
+                                                            <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
+                                                        </div>
+                                                    </div>
+                                                    <span id="por_hvac_warning" name="por_hvac_warning" class="text-red-500"></span>
+                                                </div>
                                             </div>
 
                                             <div class="grid justify-items-start h-full gap-y-3 w-1/2">
+                                                <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
+                                                    <div class="flex w-full">
+                                                        <label  class="labels_index font-roboto font-bold" for=""><b>Propiedad</b></label><label class="text-red-500">*</label>
+                                                    </div>
+                                                <input id="count_propiedad" name="count_propiedad" type="number" class="hidden" value="1">
+                                                <input onchange="check_input(this.value,this.id,'name_warning');check_inp_count('count_name_pro','name_pro');" name="name_pro" id="name_pro" value="{{$project_edit->cliente.' - '.$project_edit->propiedad}}" type="text" style="font-size: 14px;" class="w-full border-2  border-color-inps rounded-md p-1 my-1 font-roboto" disabled>
+                                                <span id="propiedad_warning" name="propiedad_warning" class="text-red-500"></span>
+                                                </div>
+
                                                 <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start ">
                                                     <div class="flex w-full">
                                                         <label class="labels_index font-roboto" for=""><b>{{ __('index.categoria edificio') }}</b></label></label><label class="text-red-500">*</label>
@@ -456,22 +480,6 @@
                                                     <span id="tiempo_porcent_warning" name="tiempo_porcent_warning" class="text-red-500"></span>
                                                 </div>
                                                 @include('modal_energia_hvac')
-                                                <div class="grid md:w-3/5 xl:w-3/5 lg:w-1/2 justify-items-start">
-                                                    <div class="flex w-full">
-                                                        <label  class="labels_index font-roboto" for=""><b>{{ __('index.energia hvac en el edificio') }}:</b></label><label class="text-red-500">*</label>
-                                                    </div>
-                                                    <div class="flex w-full">
-                                                       {{--  <select onchange="buton_check_edit();check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto" name="porcent_hvac" id="porcent_hvac">
-                                                            <option value="0">-{{ __('index.selecciona porcentaje') }}-</option>
-                                                        </select> --}}
-                                                        <input type="text" value="{{$project_edit->porcent_hvac}}%" onkeypress="return soloNumeros(event)" onchange="buton_check_edit('{{App::getLocale()}}');check_input(this.value,this.id,'por_hvac_warning');check_inp_count('count_porcent_hvac','porcent_hvac');change_to_porcent(this.value,this.id);" class=" w-full border-2 border-color-inps rounded-md p-1 my-1 font-roboto text-center" name="porcent_hvac" id="porcent_hvac">
-                                                        <input id="count_porcent_hvac" name="count_porcent_hvac" type="number" class="hidden" value="1">
-                                                        <div class="ml-2" style="margin-top: 5.5px;">
-                                                            <a onclick="mostrar_modal_energia_hvac('modal_energia_hvac');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <span id="por_hvac_warning" name="por_hvac_warning" class="text-red-500"></span>
-                                                </div>
 
                                             </div>
 
@@ -479,7 +487,7 @@
                                         @include('modal_analisis_prod')
 
                                         <div class="flex justify-center w-2/3  mt-8">
-                                            <label style="color:#0D08EE;margin-top:2px;" class="text-2xl font-roboto  font-bold" for="">Análisis de Productividad Laboral</label>
+                                            <label style="color:#000;margin-top:2px;" class="text-2xl font-roboto  font-bold" for="">Análisis de Productividad Laboral</label>
                                             <div class="ml-2" style="">
                                                 <a onclick="mostrar_modal('modal_analisis_prod');" class="btn_roundf" title="Ayuda" alt="Ayuda"><i class="fa fa-question"></i></a>
                                             </div>
@@ -907,14 +915,14 @@
                                     <div class="w-full mt-2 grid justify-items-start mt-7 gap-y-2">
                                         <div id="div_next" name="div_next" style="width: 80%;" class="text-start">
                                             <button type="button" id="next" name="next"
-                                            style="background-color:#0D08EE;"
+                                            style="background-color:#000;"
                                                 onclick="buton_check_edit();"
                                                 class="w-full  py-4 px-7 rounded-lg shadow-sm text-center text-white hover_button_blue text-xl font-roboto"
                                             >{{ __('index.siguiente') }}</button>
                                         </div>
                                         <div id="div_next_h" name="div_next_h" style="width: 80%;" class="text-start">
                                                 <button  type="button" id="next_h" name="next_h"
-                                                style="background-color:#0D08EE;"
+                                                style="background-color:#000;"
                                                     x-show="step < 2"
                                                     @click="step++"
                                                     class="w-full  py-4 px-7 rounded-lg shadow-sm text-center text-white hover_button_blue text-xl font-roboto"
@@ -924,7 +932,7 @@
                                             <button  type="button"  id="inicio" name="inicio"
                                                 x-show="step < 2"
 
-                                                onclick="back_begin();"
+                                                onclick="window.location.href='/';"
                                                 class="w-full focus:outline-none bg-gray-500 border-2 border-color-inps py-4 px-7 rounded-lg shadow-sm text-center text-white hover:bg-gray-800 text-xl font-roboto"
                                             >{{ __('index.inicio') }}</button>
                                         </div>

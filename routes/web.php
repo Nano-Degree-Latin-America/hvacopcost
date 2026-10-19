@@ -128,7 +128,9 @@ Route::get('project/{id_project}', 'ResultadosController@project');
 Route::get('get_cat_edi', 'ProjectController@categories_paieses')->name('get_cat_edi');
 Route::get('get_cat_edi/{id}', 'ProjectController@get_cat_edi');
 Route::get('mis_projectos', 'ProjectController@mis_projectos')->name('mis_projectos');
+Route::get('dashboard', 'ProjectController@dashboard')->name('dashboard');
 Route::get('porcents_aux/{id}', 'ProjectController@porcents_aux');
+Route::get('new_project', 'IndexController@new_project')->name('new_project');
 Route::get('edit_project/{id_project}', 'ResultadosController@edit_project');
 Route::get('get_ciudades/{pais}', 'ProjectController@get_ciudades');
 Route::get('get_ciudades_Edit/{pais}', 'ProjectController@get_ciudades_Edit');
@@ -265,6 +267,17 @@ Route::get('no_formula_value/{id}/{value}','OperacionesController@no_formula_val
 Route::get('show_units_to_charge/{id}/{value}','OperacionesController@show_units_to_charge');
 Route::delete('delete_coordinacion_project/{id}','OperacionesController@delete_coordinacion_project');
 
+//Propiedades
+Route::get('propiedades/{id_cliente}', 'PropiedadesController@index');
+Route::get('propiedades', 'PropiedadesController@list');
+Route::get('propiedadesform', 'PropiedadesController@listgral');
+// Route::post('save_propiedad/{id_cliente}', 'PropiedadesController@store');
+Route::post('save_propiedad/{id_empresa}', 'PropiedadesController@store');
+Route::get('get_propiedad/{id}', 'PropiedadesController@edit');
+Route::post('edit_propiedad/{id}', 'PropiedadesController@edit_save');
+Route::delete('propiedad/{id}','PropiedadesController@delete');
+Route::get('generar_propiedades', 'PropiedadesController@generar_propiedades');
+Route::get('get_propiedades_cliente/{id_cliente}', 'PropiedadesController@get_propiedades_cliente');
 
 //lang
 Route::get('locale/{locale}', function($locale){
